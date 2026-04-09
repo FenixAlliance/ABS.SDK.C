@@ -1,0 +1,47 @@
+/*
+ * project_hours_approval_status_update_dto.h
+ *
+ * 
+ */
+
+#ifndef _project_hours_approval_status_update_dto_H_
+#define _project_hours_approval_status_update_dto_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct project_hours_approval_status_update_dto_t project_hours_approval_status_update_dto_t;
+
+
+// Enum APPROVALSTATUS for project_hours_approval_status_update_dto
+
+typedef enum  { timetrackerservice_project_hours_approval_status_update_dto_APPROVALSTATUS_NULL = 0, timetrackerservice_project_hours_approval_status_update_dto_APPROVALSTATUS_Pending, timetrackerservice_project_hours_approval_status_update_dto_APPROVALSTATUS_Approved, timetrackerservice_project_hours_approval_status_update_dto_APPROVALSTATUS_Rejected } timetrackerservice_project_hours_approval_status_update_dto_APPROVALSTATUS_e;
+
+char* project_hours_approval_status_update_dto_approval_status_ToString(timetrackerservice_project_hours_approval_status_update_dto_APPROVALSTATUS_e approval_status);
+
+timetrackerservice_project_hours_approval_status_update_dto_APPROVALSTATUS_e project_hours_approval_status_update_dto_approval_status_FromString(char* approval_status);
+
+
+
+typedef struct project_hours_approval_status_update_dto_t {
+    timetrackerservice_project_hours_approval_status_update_dto_APPROVALSTATUS_e approval_status; //enum
+    char *comments; // string
+
+} project_hours_approval_status_update_dto_t;
+
+project_hours_approval_status_update_dto_t *project_hours_approval_status_update_dto_create(
+    timetrackerservice_project_hours_approval_status_update_dto_APPROVALSTATUS_e approval_status,
+    char *comments
+);
+
+void project_hours_approval_status_update_dto_free(project_hours_approval_status_update_dto_t *project_hours_approval_status_update_dto);
+
+project_hours_approval_status_update_dto_t *project_hours_approval_status_update_dto_parseFromJSON(cJSON *project_hours_approval_status_update_dtoJSON);
+
+cJSON *project_hours_approval_status_update_dto_convertToJSON(project_hours_approval_status_update_dto_t *project_hours_approval_status_update_dto);
+
+#endif /* _project_hours_approval_status_update_dto_H_ */
+

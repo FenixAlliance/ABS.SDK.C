@@ -1,0 +1,50 @@
+# portal_options_t
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**title** | **char \*** |  | [optional] 
+**description** | **char \*** |  | [optional] 
+**portal_ui_engine** | **contentservice_portal_options_PORTALUIENGINE_e** |  | [optional] 
+**seo** | [**seo_options_t**](seo_options.md) \* |  | [optional] 
+**store** | [**store_options_t**](store_options.md) \* |  | [optional] 
+**theming** | [**theming_options_t**](theming_options.md) \* |  | [optional] 
+**branding** | [**branding_options_t**](branding_options.md) \* |  | [optional] 
+**social** | [**social_media_options_t**](social_media_options.md) \* |  | [optional] 
+**privacy** | [**privacy_options_t**](privacy_options.md) \* |  | [optional] 
+**blog** | [**blog_options_t**](blog_options.md) \* |  | [optional] 
+**forums** | [**forum_options_t**](forum_options.md) \* |  | [optional] 
+**footer** | [**footer_options_t**](footer_options.md) \* |  | [optional] 
+**background** | [**background_options_t**](background_options.md) \* |  | [optional] 
+**breadcrumbs** | [**breadcrumbs_options_t**](breadcrumbs_options.md) \* |  | [optional] 
+**contact** | [**contact_options_t**](contact_options.md) \* |  | [optional] 
+**color** | [**color_options_t**](color_options.md) \* |  | [optional] 
+**dashboard** | [**dashboard_options_t**](dashboard_options.md) \* |  | [optional] 
+**header** | [**header_options_t**](header_options.md) \* |  | [optional] 
+**title_bar** | [**title_bar_options_t**](title_bar_options.md) \* |  | [optional] 
+**typography** | [**typography_options_t**](typography_options.md) \* |  | [optional] 
+**social_media** | [**social_media_options_t**](social_media_options.md) \* |  | [optional] 
+**sliding_bar** | [**sliding_bar_options_t**](sliding_bar_options.md) \* |  | [optional] 
+**slideshow** | [**object_t**](.md) \* |  | [optional] 
+**slider** | [**object_t**](.md) \* |  | [optional] 
+**sidebar** | [**object_t**](.md) \* |  | [optional] 
+**search** | [**object_t**](.md) \* |  | [optional] 
+**responsive** | [**responsive_options_t**](responsive_options.md) \* |  | [optional] 
+**portfolio** | [**object_t**](.md) \* |  | [optional] 
+**performance** | [**object_t**](.md) \* |  | [optional] 
+**pagination** | [**object_t**](.md) \* |  | [optional] 
+**miscellaneous** | [**object_t**](.md) \* |  | [optional] 
+**menu** | [**menu_options_t**](menu_options.md) \* |  | [optional] 
+**grid** | [**object_t**](.md) \* |  | [optional] 
+**mansory** | [**object_t**](.md) \* |  | [optional] 
+**lightbox** | [**object_t**](.md) \* |  | [optional] 
+**layout** | [**layout_options_t**](layout_options.md) \* |  | [optional] 
+**code_fields** | [**object_t**](.md) \* |  | [optional] 
+**features** | [**object_t**](.md) \* |  | [optional] 
+**forms** | [**object_t**](.md) \* |  | [optional] 
+**integrations** | [**integrations_options_t**](integrations_options.md) \* |  | [optional] 
+**emails** | [**emails_options_t**](emails_options.md) \* |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

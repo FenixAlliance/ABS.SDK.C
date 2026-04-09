@@ -1,0 +1,41 @@
+/*
+ * task_type_update_dto.h
+ *
+ * 
+ */
+
+#ifndef _task_type_update_dto_H_
+#define _task_type_update_dto_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct task_type_update_dto_t task_type_update_dto_t;
+
+
+
+
+typedef struct task_type_update_dto_t {
+    char *title; // string
+    int display_in_time_tracker; //boolean
+    int requires_description; //boolean
+
+} task_type_update_dto_t;
+
+task_type_update_dto_t *task_type_update_dto_create(
+    char *title,
+    int display_in_time_tracker,
+    int requires_description
+);
+
+void task_type_update_dto_free(task_type_update_dto_t *task_type_update_dto);
+
+task_type_update_dto_t *task_type_update_dto_parseFromJSON(cJSON *task_type_update_dtoJSON);
+
+cJSON *task_type_update_dto_convertToJSON(task_type_update_dto_t *task_type_update_dto);
+
+#endif /* _task_type_update_dto_H_ */
+

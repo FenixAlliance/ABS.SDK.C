@@ -1,0 +1,86 @@
+#ifndef transaction_create_dto_TEST
+#define transaction_create_dto_TEST
+
+// the following is to include only the main from the first c file
+#ifndef TEST_MAIN
+#define TEST_MAIN
+#define transaction_create_dto_MAIN
+#endif // TEST_MAIN
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include "../external/cJSON.h"
+
+#include "../model/transaction_create_dto.h"
+transaction_create_dto_t* instantiate_transaction_create_dto(int include_optional);
+
+
+
+transaction_create_dto_t* instantiate_transaction_create_dto(int include_optional) {
+  transaction_create_dto_t* transaction_create_dto = NULL;
+  if (include_optional) {
+    transaction_create_dto = transaction_create_dto_create(
+      "0",
+      "2013-10-20T19:20:30+01:00",
+      "0",
+      1.337,
+      1.337,
+      "0",
+      1.337,
+      1.337,
+      1.337,
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    );
+  } else {
+    transaction_create_dto = transaction_create_dto_create(
+      "0",
+      "2013-10-20T19:20:30+01:00",
+      "0",
+      1.337,
+      1.337,
+      "0",
+      1.337,
+      1.337,
+      1.337,
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    );
+  }
+
+  return transaction_create_dto;
+}
+
+
+#ifdef transaction_create_dto_MAIN
+
+void test_transaction_create_dto(int include_optional) {
+    transaction_create_dto_t* transaction_create_dto_1 = instantiate_transaction_create_dto(include_optional);
+
+	cJSON* jsontransaction_create_dto_1 = transaction_create_dto_convertToJSON(transaction_create_dto_1);
+	printf("transaction_create_dto :\n%s\n", cJSON_Print(jsontransaction_create_dto_1));
+	transaction_create_dto_t* transaction_create_dto_2 = transaction_create_dto_parseFromJSON(jsontransaction_create_dto_1);
+	cJSON* jsontransaction_create_dto_2 = transaction_create_dto_convertToJSON(transaction_create_dto_2);
+	printf("repeating transaction_create_dto:\n%s\n", cJSON_Print(jsontransaction_create_dto_2));
+}
+
+int main() {
+  test_transaction_create_dto(1);
+  test_transaction_create_dto(0);
+
+  printf("Hello world \n");
+  return 0;
+}
+
+#endif // transaction_create_dto_MAIN
+#endif // transaction_create_dto_TEST

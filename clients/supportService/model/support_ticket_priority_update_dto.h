@@ -1,0 +1,39 @@
+/*
+ * support_ticket_priority_update_dto.h
+ *
+ * 
+ */
+
+#ifndef _support_ticket_priority_update_dto_H_
+#define _support_ticket_priority_update_dto_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct support_ticket_priority_update_dto_t support_ticket_priority_update_dto_t;
+
+
+
+
+typedef struct support_ticket_priority_update_dto_t {
+    char *title; // string
+    char *description; // string
+
+} support_ticket_priority_update_dto_t;
+
+support_ticket_priority_update_dto_t *support_ticket_priority_update_dto_create(
+    char *title,
+    char *description
+);
+
+void support_ticket_priority_update_dto_free(support_ticket_priority_update_dto_t *support_ticket_priority_update_dto);
+
+support_ticket_priority_update_dto_t *support_ticket_priority_update_dto_parseFromJSON(cJSON *support_ticket_priority_update_dtoJSON);
+
+cJSON *support_ticket_priority_update_dto_convertToJSON(support_ticket_priority_update_dto_t *support_ticket_priority_update_dto);
+
+#endif /* _support_ticket_priority_update_dto_H_ */
+

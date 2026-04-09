@@ -1,0 +1,63 @@
+/*
+ * account_update_dto.h
+ *
+ * 
+ */
+
+#ifndef _account_update_dto_H_
+#define _account_update_dto_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct account_update_dto_t account_update_dto_t;
+
+
+// Enum ACCOUNTCATEGORY for account_update_dto
+
+typedef enum  { accountingservice_account_update_dto_ACCOUNTCATEGORY_NULL = 0, accountingservice_account_update_dto_ACCOUNTCATEGORY_Assets, accountingservice_account_update_dto_ACCOUNTCATEGORY_Equity, accountingservice_account_update_dto_ACCOUNTCATEGORY_Revenue, accountingservice_account_update_dto_ACCOUNTCATEGORY_Expense, accountingservice_account_update_dto_ACCOUNTCATEGORY_Liabilities } accountingservice_account_update_dto_ACCOUNTCATEGORY_e;
+
+char* account_update_dto_account_category_ToString(accountingservice_account_update_dto_ACCOUNTCATEGORY_e account_category);
+
+accountingservice_account_update_dto_ACCOUNTCATEGORY_e account_update_dto_account_category_FromString(char* account_category);
+
+
+
+typedef struct account_update_dto_t {
+    int group; //boolean
+    int frozen; //boolean
+    char *name; // string
+    char *code; // string
+    char *path; // string
+    char *prefix; // string
+    char *currency_id; // string
+    char *account_type_id; // string
+    char *parent_account_id; // string
+    accountingservice_account_update_dto_ACCOUNTCATEGORY_e account_category; //enum
+
+} account_update_dto_t;
+
+account_update_dto_t *account_update_dto_create(
+    int group,
+    int frozen,
+    char *name,
+    char *code,
+    char *path,
+    char *prefix,
+    char *currency_id,
+    char *account_type_id,
+    char *parent_account_id,
+    accountingservice_account_update_dto_ACCOUNTCATEGORY_e account_category
+);
+
+void account_update_dto_free(account_update_dto_t *account_update_dto);
+
+account_update_dto_t *account_update_dto_parseFromJSON(cJSON *account_update_dtoJSON);
+
+cJSON *account_update_dto_convertToJSON(account_update_dto_t *account_update_dto);
+
+#endif /* _account_update_dto_H_ */
+
