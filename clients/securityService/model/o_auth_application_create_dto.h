@@ -19,6 +19,8 @@ typedef struct o_auth_application_create_dto_t o_auth_application_create_dto_t;
 
 
 typedef struct o_auth_application_create_dto_t {
+    char *id; // string
+    char *timestamp; //date time
     char *display_name; // string
     char *client_id; // string
     char *client_secret; // string
@@ -28,12 +30,12 @@ typedef struct o_auth_application_create_dto_t {
     char *redirect_uris; // string
     char *post_logout_redirect_uris; // string
     char *logo; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
 
 } o_auth_application_create_dto_t;
 
 o_auth_application_create_dto_t *o_auth_application_create_dto_create(
+    char *id,
+    char *timestamp,
     char *display_name,
     char *client_id,
     char *client_secret,
@@ -42,9 +44,7 @@ o_auth_application_create_dto_t *o_auth_application_create_dto_create(
     char *requirements,
     char *redirect_uris,
     char *post_logout_redirect_uris,
-    char *logo,
-    char *business_id,
-    char *business_profile_record_id
+    char *logo
 );
 
 void o_auth_application_create_dto_free(o_auth_application_create_dto_t *o_auth_application_create_dto);

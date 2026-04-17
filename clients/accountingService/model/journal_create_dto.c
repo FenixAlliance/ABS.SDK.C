@@ -11,8 +11,6 @@ journal_create_dto_t *journal_create_dto_create(
     char *name,
     char *description,
     char *date_time,
-    char *tenant_id,
-    char *enrollment_id,
     char *parent_journal_id,
     char *journal_type_id,
     char *ledger_id
@@ -26,8 +24,6 @@ journal_create_dto_t *journal_create_dto_create(
     journal_create_dto_local_var->name = name;
     journal_create_dto_local_var->description = description;
     journal_create_dto_local_var->date_time = date_time;
-    journal_create_dto_local_var->tenant_id = tenant_id;
-    journal_create_dto_local_var->enrollment_id = enrollment_id;
     journal_create_dto_local_var->parent_journal_id = parent_journal_id;
     journal_create_dto_local_var->journal_type_id = journal_type_id;
     journal_create_dto_local_var->ledger_id = ledger_id;
@@ -60,14 +56,6 @@ void journal_create_dto_free(journal_create_dto_t *journal_create_dto) {
     if (journal_create_dto->date_time) {
         free(journal_create_dto->date_time);
         journal_create_dto->date_time = NULL;
-    }
-    if (journal_create_dto->tenant_id) {
-        free(journal_create_dto->tenant_id);
-        journal_create_dto->tenant_id = NULL;
-    }
-    if (journal_create_dto->enrollment_id) {
-        free(journal_create_dto->enrollment_id);
-        journal_create_dto->enrollment_id = NULL;
     }
     if (journal_create_dto->parent_journal_id) {
         free(journal_create_dto->parent_journal_id);
@@ -124,22 +112,6 @@ cJSON *journal_create_dto_convertToJSON(journal_create_dto_t *journal_create_dto
     if(journal_create_dto->date_time) {
     if(cJSON_AddStringToObject(item, "dateTime", journal_create_dto->date_time) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // journal_create_dto->tenant_id
-    if(journal_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantID", journal_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // journal_create_dto->enrollment_id
-    if(journal_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentID", journal_create_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -227,24 +199,6 @@ journal_create_dto_t *journal_create_dto_parseFromJSON(cJSON *journal_create_dto
     }
     }
 
-    // journal_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "tenantID");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // journal_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "enrollmentID");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // journal_create_dto->parent_journal_id
     cJSON *parent_journal_id = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "parentJournalID");
     if (parent_journal_id) { 
@@ -279,8 +233,6 @@ journal_create_dto_t *journal_create_dto_parseFromJSON(cJSON *journal_create_dto
         strdup(name->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         date_time && !cJSON_IsNull(date_time) ? strdup(date_time->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         parent_journal_id && !cJSON_IsNull(parent_journal_id) ? strdup(parent_journal_id->valuestring) : NULL,
         journal_type_id && !cJSON_IsNull(journal_type_id) ? strdup(journal_type_id->valuestring) : NULL,
         ledger_id && !cJSON_IsNull(ledger_id) ? strdup(ledger_id->valuestring) : NULL

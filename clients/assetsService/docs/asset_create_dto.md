@@ -5,8 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | [optional] 
-**business_profile_record_id** | **char \*** |  | [optional] 
 **name** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
 **asset_class** | **assetsservice_asset_create_dto_ASSETCLASS_e** |  | [optional] 

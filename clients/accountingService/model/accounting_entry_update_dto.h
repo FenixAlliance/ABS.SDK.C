@@ -27,8 +27,6 @@ accountingservice_accounting_entry_update_dto_ACCOUNTINGENTRYTYPE_e accounting_e
 
 
 typedef struct accounting_entry_update_dto_t {
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *description; // string
     double amount; //numeric
     char *date; //date time
@@ -41,8 +39,6 @@ typedef struct accounting_entry_update_dto_t {
 } accounting_entry_update_dto_t;
 
 accounting_entry_update_dto_t *accounting_entry_update_dto_create(
-    char *tenant_id,
-    char *enrollment_id,
     char *description,
     double amount,
     char *date,

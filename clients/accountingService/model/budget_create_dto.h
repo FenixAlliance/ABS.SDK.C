@@ -22,7 +22,6 @@ typedef struct budget_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *name; // string
-    char *tenant_id; // string
     char *fiscal_year_id; // string
 
 } budget_create_dto_t;
@@ -31,7 +30,6 @@ budget_create_dto_t *budget_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *tenant_id,
     char *fiscal_year_id
 );
 

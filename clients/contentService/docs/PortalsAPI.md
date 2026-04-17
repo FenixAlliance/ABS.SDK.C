@@ -4,10 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**PortalsAPI_countPortalsAsync**](PortalsAPI.md#PortalsAPI_countPortalsAsync) | **GET** /api/v2/ContentService/Portals/Count | Count portals
 [**PortalsAPI_createWebPortalAsync**](PortalsAPI.md#PortalsAPI_createWebPortalAsync) | **POST** /api/v2/ContentService/Portals | Create a new web portal
 [**PortalsAPI_deleteWebPortalAsync**](PortalsAPI.md#PortalsAPI_deleteWebPortalAsync) | **DELETE** /api/v2/ContentService/Portals/{portalId} | Delete a web portal
 [**PortalsAPI_getCurrentWebPortalAsync**](PortalsAPI.md#PortalsAPI_getCurrentWebPortalAsync) | **GET** /api/v2/ContentService/Portals/Current | Get the current portal
 [**PortalsAPI_getCurrentWebPortalOptionsAsync**](PortalsAPI.md#PortalsAPI_getCurrentWebPortalOptionsAsync) | **GET** /api/v2/ContentService/Portals/Current/Options | Get the current portal&#39;s options
+[**PortalsAPI_getPortalsAsync**](PortalsAPI.md#PortalsAPI_getPortalsAsync) | **GET** /api/v2/ContentService/Portals | Get portals
 [**PortalsAPI_getRootWebPortalAsync**](PortalsAPI.md#PortalsAPI_getRootWebPortalAsync) | **GET** /api/v2/ContentService/Portals/Root | Get the root portal
 [**PortalsAPI_getWebPortalByIdAsync**](PortalsAPI.md#PortalsAPI_getWebPortalByIdAsync) | **GET** /api/v2/ContentService/Portals/{portalId} | Get a web portal by its ID
 [**PortalsAPI_getWebPortalOptionsAsync**](PortalsAPI.md#PortalsAPI_getWebPortalOptionsAsync) | **GET** /api/v2/ContentService/Portals/{portalId}/Options | Get a web portal&#39;s options by its ID
@@ -17,6 +19,39 @@ Method | HTTP request | Description
 [**PortalsAPI_searchWebPortalAsync**](PortalsAPI.md#PortalsAPI_searchWebPortalAsync) | **GET** /api/v2/ContentService/Portals/Search | Search for a portal by its domain
 [**PortalsAPI_updateWebPortalAsync**](PortalsAPI.md#PortalsAPI_updateWebPortalAsync) | **PUT** /api/v2/ContentService/Portals/{portalId} | Update an existing web portal
 
+
+# **PortalsAPI_countPortalsAsync**
+```c
+// Count portals
+//
+// Counts all portals for the specified tenant.
+//
+int32_envelope_t* PortalsAPI_countPortalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PortalsAPI_createWebPortalAsync**
 ```c
@@ -137,6 +172,39 @@ Name | Type | Description  | Notes
 ### Return type
 
 [portal_options_envelope_t](portal_options_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PortalsAPI_getPortalsAsync**
+```c
+// Get portals
+//
+// Retrieves all portals for the specified tenant.
+//
+web_portal_dto_list_envelope_t* PortalsAPI_getPortalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[web_portal_dto_list_envelope_t](web_portal_dto_list_envelope.md) *
 
 
 ### Authorization

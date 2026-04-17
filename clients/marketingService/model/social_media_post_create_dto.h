@@ -19,22 +19,22 @@ typedef struct social_media_post_create_dto_t social_media_post_create_dto_t;
 
 
 typedef struct social_media_post_create_dto_t {
+    char *id; // string
+    char *timestamp; //date time
     char *title; // string
     char *content; // string
     char *featured_image_url; // string
-    char *tenant_id; // string
     char *social_post_bucket_id; // string
-    char *enrollment_id; // string
 
 } social_media_post_create_dto_t;
 
 social_media_post_create_dto_t *social_media_post_create_dto_create(
+    char *id,
+    char *timestamp,
     char *title,
     char *content,
     char *featured_image_url,
-    char *tenant_id,
-    char *social_post_bucket_id,
-    char *enrollment_id
+    char *social_post_bucket_id
 );
 
 void social_media_post_create_dto_free(social_media_post_create_dto_t *social_media_post_create_dto);

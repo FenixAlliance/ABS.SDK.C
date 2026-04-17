@@ -11,6 +11,15 @@
 #include "../model/blog_post_tag_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/int32_envelope.h"
+
+
+// Count blog post tags
+//
+// Counts all blog post tags for the specified tenant.
+//
+int32_envelope_t*
+BlogPostTagsAPI_countBlogPostTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Create a blog post tag

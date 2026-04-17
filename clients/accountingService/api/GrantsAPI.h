@@ -9,8 +9,8 @@
 #include "../model/grant_create_dto.h"
 #include "../model/grant_dto_envelope.h"
 #include "../model/grant_dto_i_read_only_list_envelope.h"
-#include "../model/grant_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/object.h"
 
 
 // Create grant
@@ -58,6 +58,6 @@ GrantsAPI_getGrantsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_
 // Updates an existing grant identified by its ID.
 //
 empty_envelope_t*
-GrantsAPI_updateGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId, char *api_version, char *x_api_version, grant_update_dto_t *grant_update_dto);
+GrantsAPI_updateGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId, char *api_version, char *x_api_version, object_t *body);
 
 

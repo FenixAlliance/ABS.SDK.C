@@ -24,7 +24,6 @@ typedef struct course_forum_create_dto_t {
     char *title; // string
     char *description; // string
     char *course_id; // string
-    char *business_id; // string
 
 } course_forum_create_dto_t;
 
@@ -33,8 +32,7 @@ course_forum_create_dto_t *course_forum_create_dto_create(
     char *timestamp,
     char *title,
     char *description,
-    char *course_id,
-    char *business_id
+    char *course_id
 );
 
 void course_forum_create_dto_free(course_forum_create_dto_t *course_forum_create_dto);

@@ -9,7 +9,6 @@ security_permission_create_dto_t *security_permission_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *tenant_id,
     char *description
     ) {
     security_permission_create_dto_t *security_permission_create_dto_local_var = malloc(sizeof(security_permission_create_dto_t));
@@ -19,7 +18,6 @@ security_permission_create_dto_t *security_permission_create_dto_create(
     security_permission_create_dto_local_var->id = id;
     security_permission_create_dto_local_var->timestamp = timestamp;
     security_permission_create_dto_local_var->name = name;
-    security_permission_create_dto_local_var->tenant_id = tenant_id;
     security_permission_create_dto_local_var->description = description;
 
     return security_permission_create_dto_local_var;
@@ -42,10 +40,6 @@ void security_permission_create_dto_free(security_permission_create_dto_t *secur
     if (security_permission_create_dto->name) {
         free(security_permission_create_dto->name);
         security_permission_create_dto->name = NULL;
-    }
-    if (security_permission_create_dto->tenant_id) {
-        free(security_permission_create_dto->tenant_id);
-        security_permission_create_dto->tenant_id = NULL;
     }
     if (security_permission_create_dto->description) {
         free(security_permission_create_dto->description);
@@ -78,15 +72,6 @@ cJSON *security_permission_create_dto_convertToJSON(security_permission_create_d
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "name", security_permission_create_dto->name) == NULL) {
-    goto fail; //String
-    }
-
-
-    // security_permission_create_dto->tenant_id
-    if (!security_permission_create_dto->tenant_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "tenantId", security_permission_create_dto->tenant_id) == NULL) {
     goto fail; //String
     }
 
@@ -140,18 +125,6 @@ security_permission_create_dto_t *security_permission_create_dto_parseFromJSON(c
     goto end; //String
     }
 
-    // security_permission_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(security_permission_create_dtoJSON, "tenantId");
-    if (!tenant_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(tenant_id))
-    {
-    goto end; //String
-    }
-
     // security_permission_create_dto->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(security_permission_create_dtoJSON, "description");
     if (description) { 
@@ -166,7 +139,6 @@ security_permission_create_dto_t *security_permission_create_dto_parseFromJSON(c
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         strdup(name->valuestring),
-        strdup(tenant_id->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
         );
 

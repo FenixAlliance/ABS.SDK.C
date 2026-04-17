@@ -47,12 +47,9 @@ support_entitlement_create_dto_t *support_entitlement_create_dto_create(
     char *data8_label,
     char *data9,
     char *data9_label,
-    char *account_holder_id,
     char *individual_id,
     char *organization_id,
     char *receiver_business_id,
-    char *business_id,
-    char *business_profile_record_id,
     char *payment_token_id,
     char *wallet_account_id,
     char *security_certificate_id
@@ -102,12 +99,9 @@ support_entitlement_create_dto_t *support_entitlement_create_dto_create(
     support_entitlement_create_dto_local_var->data8_label = data8_label;
     support_entitlement_create_dto_local_var->data9 = data9;
     support_entitlement_create_dto_local_var->data9_label = data9_label;
-    support_entitlement_create_dto_local_var->account_holder_id = account_holder_id;
     support_entitlement_create_dto_local_var->individual_id = individual_id;
     support_entitlement_create_dto_local_var->organization_id = organization_id;
     support_entitlement_create_dto_local_var->receiver_business_id = receiver_business_id;
-    support_entitlement_create_dto_local_var->business_id = business_id;
-    support_entitlement_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     support_entitlement_create_dto_local_var->payment_token_id = payment_token_id;
     support_entitlement_create_dto_local_var->wallet_account_id = wallet_account_id;
     support_entitlement_create_dto_local_var->security_certificate_id = security_certificate_id;
@@ -237,10 +231,6 @@ void support_entitlement_create_dto_free(support_entitlement_create_dto_t *suppo
         free(support_entitlement_create_dto->data9_label);
         support_entitlement_create_dto->data9_label = NULL;
     }
-    if (support_entitlement_create_dto->account_holder_id) {
-        free(support_entitlement_create_dto->account_holder_id);
-        support_entitlement_create_dto->account_holder_id = NULL;
-    }
     if (support_entitlement_create_dto->individual_id) {
         free(support_entitlement_create_dto->individual_id);
         support_entitlement_create_dto->individual_id = NULL;
@@ -252,14 +242,6 @@ void support_entitlement_create_dto_free(support_entitlement_create_dto_t *suppo
     if (support_entitlement_create_dto->receiver_business_id) {
         free(support_entitlement_create_dto->receiver_business_id);
         support_entitlement_create_dto->receiver_business_id = NULL;
-    }
-    if (support_entitlement_create_dto->business_id) {
-        free(support_entitlement_create_dto->business_id);
-        support_entitlement_create_dto->business_id = NULL;
-    }
-    if (support_entitlement_create_dto->business_profile_record_id) {
-        free(support_entitlement_create_dto->business_profile_record_id);
-        support_entitlement_create_dto->business_profile_record_id = NULL;
     }
     if (support_entitlement_create_dto->payment_token_id) {
         free(support_entitlement_create_dto->payment_token_id);
@@ -607,14 +589,6 @@ cJSON *support_entitlement_create_dto_convertToJSON(support_entitlement_create_d
     }
 
 
-    // support_entitlement_create_dto->account_holder_id
-    if(support_entitlement_create_dto->account_holder_id) {
-    if(cJSON_AddStringToObject(item, "accountHolderID", support_entitlement_create_dto->account_holder_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // support_entitlement_create_dto->individual_id
     if(support_entitlement_create_dto->individual_id) {
     if(cJSON_AddStringToObject(item, "individualID", support_entitlement_create_dto->individual_id) == NULL) {
@@ -634,22 +608,6 @@ cJSON *support_entitlement_create_dto_convertToJSON(support_entitlement_create_d
     // support_entitlement_create_dto->receiver_business_id
     if(support_entitlement_create_dto->receiver_business_id) {
     if(cJSON_AddStringToObject(item, "receiverBusinessID", support_entitlement_create_dto->receiver_business_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // support_entitlement_create_dto->business_id
-    if(support_entitlement_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", support_entitlement_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // support_entitlement_create_dto->business_profile_record_id
-    if(support_entitlement_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", support_entitlement_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -1059,15 +1017,6 @@ support_entitlement_create_dto_t *support_entitlement_create_dto_parseFromJSON(c
     }
     }
 
-    // support_entitlement_create_dto->account_holder_id
-    cJSON *account_holder_id = cJSON_GetObjectItemCaseSensitive(support_entitlement_create_dtoJSON, "accountHolderID");
-    if (account_holder_id) { 
-    if(!cJSON_IsString(account_holder_id) && !cJSON_IsNull(account_holder_id))
-    {
-    goto end; //String
-    }
-    }
-
     // support_entitlement_create_dto->individual_id
     cJSON *individual_id = cJSON_GetObjectItemCaseSensitive(support_entitlement_create_dtoJSON, "individualID");
     if (individual_id) { 
@@ -1090,24 +1039,6 @@ support_entitlement_create_dto_t *support_entitlement_create_dto_parseFromJSON(c
     cJSON *receiver_business_id = cJSON_GetObjectItemCaseSensitive(support_entitlement_create_dtoJSON, "receiverBusinessID");
     if (receiver_business_id) { 
     if(!cJSON_IsString(receiver_business_id) && !cJSON_IsNull(receiver_business_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // support_entitlement_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(support_entitlement_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // support_entitlement_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(support_entitlement_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
     {
     goto end; //String
     }
@@ -1183,12 +1114,9 @@ support_entitlement_create_dto_t *support_entitlement_create_dto_parseFromJSON(c
         data8_label && !cJSON_IsNull(data8_label) ? strdup(data8_label->valuestring) : NULL,
         data9 && !cJSON_IsNull(data9) ? strdup(data9->valuestring) : NULL,
         data9_label && !cJSON_IsNull(data9_label) ? strdup(data9_label->valuestring) : NULL,
-        account_holder_id && !cJSON_IsNull(account_holder_id) ? strdup(account_holder_id->valuestring) : NULL,
         individual_id && !cJSON_IsNull(individual_id) ? strdup(individual_id->valuestring) : NULL,
         organization_id && !cJSON_IsNull(organization_id) ? strdup(organization_id->valuestring) : NULL,
         receiver_business_id && !cJSON_IsNull(receiver_business_id) ? strdup(receiver_business_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         payment_token_id && !cJSON_IsNull(payment_token_id) ? strdup(payment_token_id->valuestring) : NULL,
         wallet_account_id && !cJSON_IsNull(wallet_account_id) ? strdup(wallet_account_id->valuestring) : NULL,
         security_certificate_id && !cJSON_IsNull(security_certificate_id) ? strdup(security_certificate_id->valuestring) : NULL

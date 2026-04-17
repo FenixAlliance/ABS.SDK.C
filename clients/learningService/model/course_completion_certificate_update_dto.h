@@ -21,8 +21,6 @@ typedef struct course_completion_certificate_update_dto_t course_completion_cert
 typedef struct course_completion_certificate_update_dto_t {
     char *student_profile_id; // string
     char *course_enrollment_id; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
     char *course_completion_certificate_template_id; // string
     char *course_id; // string
 
@@ -31,8 +29,6 @@ typedef struct course_completion_certificate_update_dto_t {
 course_completion_certificate_update_dto_t *course_completion_certificate_update_dto_create(
     char *student_profile_id,
     char *course_enrollment_id,
-    char *business_id,
-    char *business_profile_record_id,
     char *course_completion_certificate_template_id,
     char *course_id
 );

@@ -11,11 +11,11 @@
 #include "../model/loan_application_create_dto.h"
 #include "../model/loan_application_dto_envelope.h"
 #include "../model/loan_application_dto_i_read_only_list_envelope.h"
-#include "../model/loan_application_update_dto.h"
 #include "../model/loan_create_dto.h"
 #include "../model/loan_dto_envelope.h"
 #include "../model/loan_dto_i_read_only_list_envelope.h"
 #include "../model/loan_update_dto.h"
+#include "../model/object.h"
 
 
 // Creates a loan application
@@ -103,7 +103,7 @@ LoansAPI_getLoansCountAsync(apiClient_t *apiClient, char *tenantId, char *api_ve
 // Updates the specified loan application.
 //
 empty_envelope_t*
-LoansAPI_updateLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, loan_application_update_dto_t *loan_application_update_dto, char *api_version, char *x_api_version);
+LoansAPI_updateLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, object_t *body, char *api_version, char *x_api_version);
 
 
 // Updates a loan

@@ -23,8 +23,6 @@ typedef struct transaction_category_create_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *description; // string
-    char *enrollment_id; // string
-    char *tenant_id; // string
 
 } transaction_category_create_dto_t;
 
@@ -32,9 +30,7 @@ transaction_category_create_dto_t *transaction_category_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *description,
-    char *enrollment_id,
-    char *tenant_id
+    char *description
 );
 
 void transaction_category_create_dto_free(transaction_category_create_dto_t *transaction_category_create_dto);

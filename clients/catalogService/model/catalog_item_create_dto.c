@@ -38,7 +38,6 @@ catalog_item_create_dto_t *catalog_item_create_dto_create(
     char *pattern,
     char *features,
     char *material,
-    char *tenant_id,
     char *permalink,
     char *brand_name,
     char *variations,
@@ -203,7 +202,6 @@ catalog_item_create_dto_t *catalog_item_create_dto_create(
     catalog_item_create_dto_local_var->pattern = pattern;
     catalog_item_create_dto_local_var->features = features;
     catalog_item_create_dto_local_var->material = material;
-    catalog_item_create_dto_local_var->tenant_id = tenant_id;
     catalog_item_create_dto_local_var->permalink = permalink;
     catalog_item_create_dto_local_var->brand_name = brand_name;
     catalog_item_create_dto_local_var->variations = variations;
@@ -468,10 +466,6 @@ void catalog_item_create_dto_free(catalog_item_create_dto_t *catalog_item_create
     if (catalog_item_create_dto->material) {
         free(catalog_item_create_dto->material);
         catalog_item_create_dto->material = NULL;
-    }
-    if (catalog_item_create_dto->tenant_id) {
-        free(catalog_item_create_dto->tenant_id);
-        catalog_item_create_dto->tenant_id = NULL;
     }
     if (catalog_item_create_dto->permalink) {
         free(catalog_item_create_dto->permalink);
@@ -992,14 +986,6 @@ cJSON *catalog_item_create_dto_convertToJSON(catalog_item_create_dto_t *catalog_
     // catalog_item_create_dto->material
     if(catalog_item_create_dto->material) {
     if(cJSON_AddStringToObject(item, "material", catalog_item_create_dto->material) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // catalog_item_create_dto->tenant_id
-    if(catalog_item_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", catalog_item_create_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -2488,15 +2474,6 @@ catalog_item_create_dto_t *catalog_item_create_dto_parseFromJSON(cJSON *catalog_
     }
     }
 
-    // catalog_item_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(catalog_item_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // catalog_item_create_dto->permalink
     cJSON *permalink = cJSON_GetObjectItemCaseSensitive(catalog_item_create_dtoJSON, "permalink");
     if (permalink) { 
@@ -3814,7 +3791,6 @@ catalog_item_create_dto_t *catalog_item_create_dto_parseFromJSON(cJSON *catalog_
         pattern && !cJSON_IsNull(pattern) ? strdup(pattern->valuestring) : NULL,
         features && !cJSON_IsNull(features) ? strdup(features->valuestring) : NULL,
         material && !cJSON_IsNull(material) ? strdup(material->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         permalink && !cJSON_IsNull(permalink) ? strdup(permalink->valuestring) : NULL,
         brand_name && !cJSON_IsNull(brand_name) ? strdup(brand_name->valuestring) : NULL,
         variations && !cJSON_IsNull(variations) ? strdup(variations->valuestring) : NULL,

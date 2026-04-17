@@ -34,9 +34,7 @@ student_profile_create_dto_t *student_profile_create_dto_create(
     char *data8_label,
     char *data9,
     char *data9_label,
-    char *business_id,
-    char *contact_id,
-    char *business_profile_record_id
+    char *contact_id
     ) {
     student_profile_create_dto_t *student_profile_create_dto_local_var = malloc(sizeof(student_profile_create_dto_t));
     if (!student_profile_create_dto_local_var) {
@@ -70,9 +68,7 @@ student_profile_create_dto_t *student_profile_create_dto_create(
     student_profile_create_dto_local_var->data8_label = data8_label;
     student_profile_create_dto_local_var->data9 = data9;
     student_profile_create_dto_local_var->data9_label = data9_label;
-    student_profile_create_dto_local_var->business_id = business_id;
     student_profile_create_dto_local_var->contact_id = contact_id;
-    student_profile_create_dto_local_var->business_profile_record_id = business_profile_record_id;
 
     return student_profile_create_dto_local_var;
 }
@@ -187,17 +183,9 @@ void student_profile_create_dto_free(student_profile_create_dto_t *student_profi
         free(student_profile_create_dto->data9_label);
         student_profile_create_dto->data9_label = NULL;
     }
-    if (student_profile_create_dto->business_id) {
-        free(student_profile_create_dto->business_id);
-        student_profile_create_dto->business_id = NULL;
-    }
     if (student_profile_create_dto->contact_id) {
         free(student_profile_create_dto->contact_id);
         student_profile_create_dto->contact_id = NULL;
-    }
-    if (student_profile_create_dto->business_profile_record_id) {
-        free(student_profile_create_dto->business_profile_record_id);
-        student_profile_create_dto->business_profile_record_id = NULL;
     }
     free(student_profile_create_dto);
 }
@@ -429,25 +417,9 @@ cJSON *student_profile_create_dto_convertToJSON(student_profile_create_dto_t *st
     }
 
 
-    // student_profile_create_dto->business_id
-    if(student_profile_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", student_profile_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // student_profile_create_dto->contact_id
     if(student_profile_create_dto->contact_id) {
     if(cJSON_AddStringToObject(item, "contactID", student_profile_create_dto->contact_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // student_profile_create_dto->business_profile_record_id
-    if(student_profile_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", student_profile_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -716,28 +688,10 @@ student_profile_create_dto_t *student_profile_create_dto_parseFromJSON(cJSON *st
     }
     }
 
-    // student_profile_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(student_profile_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
     // student_profile_create_dto->contact_id
     cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(student_profile_create_dtoJSON, "contactID");
     if (contact_id) { 
     if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // student_profile_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(student_profile_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
     {
     goto end; //String
     }
@@ -773,9 +727,7 @@ student_profile_create_dto_t *student_profile_create_dto_parseFromJSON(cJSON *st
         data8_label && !cJSON_IsNull(data8_label) ? strdup(data8_label->valuestring) : NULL,
         data9 && !cJSON_IsNull(data9) ? strdup(data9->valuestring) : NULL,
         data9_label && !cJSON_IsNull(data9_label) ? strdup(data9_label->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL
         );
 
     return student_profile_create_dto_local_var;

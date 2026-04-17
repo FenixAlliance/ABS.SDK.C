@@ -58,7 +58,6 @@ paymentsservice_payment_update_dto_PAYMENTSTATUS_e payment_update_dto_payment_st
 
 payment_update_dto_t *payment_update_dto_create(
     char *invoice_id,
-    char *tenant_id,
     char *emisor_wallet_id,
     char *receiver_wallet_id,
     char *currency_id,
@@ -110,7 +109,6 @@ payment_update_dto_t *payment_update_dto_create(
     char *accounting_entry_id,
     char *payment_gateway_id,
     char *bank_account_id,
-    char *enrollment_id,
     char *bank_id,
     char *payment_token_id,
     char *emisor_wallet_account_id,
@@ -121,7 +119,6 @@ payment_update_dto_t *payment_update_dto_create(
         return NULL;
     }
     payment_update_dto_local_var->invoice_id = invoice_id;
-    payment_update_dto_local_var->tenant_id = tenant_id;
     payment_update_dto_local_var->emisor_wallet_id = emisor_wallet_id;
     payment_update_dto_local_var->receiver_wallet_id = receiver_wallet_id;
     payment_update_dto_local_var->currency_id = currency_id;
@@ -173,7 +170,6 @@ payment_update_dto_t *payment_update_dto_create(
     payment_update_dto_local_var->accounting_entry_id = accounting_entry_id;
     payment_update_dto_local_var->payment_gateway_id = payment_gateway_id;
     payment_update_dto_local_var->bank_account_id = bank_account_id;
-    payment_update_dto_local_var->enrollment_id = enrollment_id;
     payment_update_dto_local_var->bank_id = bank_id;
     payment_update_dto_local_var->payment_token_id = payment_token_id;
     payment_update_dto_local_var->emisor_wallet_account_id = emisor_wallet_account_id;
@@ -191,10 +187,6 @@ void payment_update_dto_free(payment_update_dto_t *payment_update_dto) {
     if (payment_update_dto->invoice_id) {
         free(payment_update_dto->invoice_id);
         payment_update_dto->invoice_id = NULL;
-    }
-    if (payment_update_dto->tenant_id) {
-        free(payment_update_dto->tenant_id);
-        payment_update_dto->tenant_id = NULL;
     }
     if (payment_update_dto->emisor_wallet_id) {
         free(payment_update_dto->emisor_wallet_id);
@@ -344,10 +336,6 @@ void payment_update_dto_free(payment_update_dto_t *payment_update_dto) {
         free(payment_update_dto->bank_account_id);
         payment_update_dto->bank_account_id = NULL;
     }
-    if (payment_update_dto->enrollment_id) {
-        free(payment_update_dto->enrollment_id);
-        payment_update_dto->enrollment_id = NULL;
-    }
     if (payment_update_dto->bank_id) {
         free(payment_update_dto->bank_id);
         payment_update_dto->bank_id = NULL;
@@ -373,14 +361,6 @@ cJSON *payment_update_dto_convertToJSON(payment_update_dto_t *payment_update_dto
     // payment_update_dto->invoice_id
     if(payment_update_dto->invoice_id) {
     if(cJSON_AddStringToObject(item, "invoiceId", payment_update_dto->invoice_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // payment_update_dto->tenant_id
-    if(payment_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", payment_update_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -797,14 +777,6 @@ cJSON *payment_update_dto_convertToJSON(payment_update_dto_t *payment_update_dto
     }
 
 
-    // payment_update_dto->enrollment_id
-    if(payment_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", payment_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // payment_update_dto->bank_id
     if(payment_update_dto->bank_id) {
     if(cJSON_AddStringToObject(item, "bankId", payment_update_dto->bank_id) == NULL) {
@@ -852,15 +824,6 @@ payment_update_dto_t *payment_update_dto_parseFromJSON(cJSON *payment_update_dto
     cJSON *invoice_id = cJSON_GetObjectItemCaseSensitive(payment_update_dtoJSON, "invoiceId");
     if (invoice_id) { 
     if(!cJSON_IsString(invoice_id) && !cJSON_IsNull(invoice_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // payment_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(payment_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -1331,15 +1294,6 @@ payment_update_dto_t *payment_update_dto_parseFromJSON(cJSON *payment_update_dto
     }
     }
 
-    // payment_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(payment_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // payment_update_dto->bank_id
     cJSON *bank_id = cJSON_GetObjectItemCaseSensitive(payment_update_dtoJSON, "bankId");
     if (bank_id) { 
@@ -1379,7 +1333,6 @@ payment_update_dto_t *payment_update_dto_parseFromJSON(cJSON *payment_update_dto
 
     payment_update_dto_local_var = payment_update_dto_create (
         invoice_id && !cJSON_IsNull(invoice_id) ? strdup(invoice_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         emisor_wallet_id && !cJSON_IsNull(emisor_wallet_id) ? strdup(emisor_wallet_id->valuestring) : NULL,
         receiver_wallet_id && !cJSON_IsNull(receiver_wallet_id) ? strdup(receiver_wallet_id->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
@@ -1431,7 +1384,6 @@ payment_update_dto_t *payment_update_dto_parseFromJSON(cJSON *payment_update_dto
         accounting_entry_id && !cJSON_IsNull(accounting_entry_id) ? strdup(accounting_entry_id->valuestring) : NULL,
         payment_gateway_id && !cJSON_IsNull(payment_gateway_id) ? strdup(payment_gateway_id->valuestring) : NULL,
         bank_account_id && !cJSON_IsNull(bank_account_id) ? strdup(bank_account_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         bank_id && !cJSON_IsNull(bank_id) ? strdup(bank_id->valuestring) : NULL,
         payment_token_id && !cJSON_IsNull(payment_token_id) ? strdup(payment_token_id->valuestring) : NULL,
         emisor_wallet_account_id && !cJSON_IsNull(emisor_wallet_account_id) ? strdup(emisor_wallet_account_id->valuestring) : NULL,

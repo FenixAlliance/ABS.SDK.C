@@ -9,8 +9,6 @@ Name | Type | Description | Notes
 **added_percent** | **double** |  | [optional] 
 **added_amount** | **double** |  | [optional] 
 **tax_comission** | **double** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
-**enrollment_id** | **char \*** |  | [optional] 
 **salary_id** | **char \*** |  | [optional] 
 **emisor_wallet_account_id** | **char \*** |  | [optional] 
 **receiver_wallet_account_id** | **char \*** |  | [optional] 

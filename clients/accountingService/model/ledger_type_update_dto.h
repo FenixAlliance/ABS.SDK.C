@@ -29,16 +29,12 @@ accountingservice_ledger_type_update_dto_LEDGERCLASS_e ledger_type_update_dto_le
 typedef struct ledger_type_update_dto_t {
     char *name; // string
     accountingservice_ledger_type_update_dto_LEDGERCLASS_e ledger_class; //enum
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } ledger_type_update_dto_t;
 
 ledger_type_update_dto_t *ledger_type_update_dto_create(
     char *name,
-    accountingservice_ledger_type_update_dto_LEDGERCLASS_e ledger_class,
-    char *tenant_id,
-    char *enrollment_id
+    accountingservice_ledger_type_update_dto_LEDGERCLASS_e ledger_class
 );
 
 void ledger_type_update_dto_free(ledger_type_update_dto_t *ledger_type_update_dto);

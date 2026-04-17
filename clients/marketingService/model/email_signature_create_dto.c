@@ -25,8 +25,6 @@ marketingservice_email_signature_create_dto_CODETYPE_e email_signature_create_dt
 email_signature_create_dto_t *email_signature_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
-    char *enrollment_id,
     char *title,
     char *code,
     int published,
@@ -41,8 +39,6 @@ email_signature_create_dto_t *email_signature_create_dto_create(
     }
     email_signature_create_dto_local_var->id = id;
     email_signature_create_dto_local_var->timestamp = timestamp;
-    email_signature_create_dto_local_var->tenant_id = tenant_id;
-    email_signature_create_dto_local_var->enrollment_id = enrollment_id;
     email_signature_create_dto_local_var->title = title;
     email_signature_create_dto_local_var->code = code;
     email_signature_create_dto_local_var->published = published;
@@ -67,14 +63,6 @@ void email_signature_create_dto_free(email_signature_create_dto_t *email_signatu
     if (email_signature_create_dto->timestamp) {
         free(email_signature_create_dto->timestamp);
         email_signature_create_dto->timestamp = NULL;
-    }
-    if (email_signature_create_dto->tenant_id) {
-        free(email_signature_create_dto->tenant_id);
-        email_signature_create_dto->tenant_id = NULL;
-    }
-    if (email_signature_create_dto->enrollment_id) {
-        free(email_signature_create_dto->enrollment_id);
-        email_signature_create_dto->enrollment_id = NULL;
     }
     if (email_signature_create_dto->title) {
         free(email_signature_create_dto->title);
@@ -114,22 +102,6 @@ cJSON *email_signature_create_dto_convertToJSON(email_signature_create_dto_t *em
     if(email_signature_create_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", email_signature_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // email_signature_create_dto->tenant_id
-    if(email_signature_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", email_signature_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // email_signature_create_dto->enrollment_id
-    if(email_signature_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", email_signature_create_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -220,24 +192,6 @@ email_signature_create_dto_t *email_signature_create_dto_parseFromJSON(cJSON *em
     }
     }
 
-    // email_signature_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(email_signature_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // email_signature_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(email_signature_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // email_signature_create_dto->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(email_signature_create_dtoJSON, "title");
     if (title) { 
@@ -307,8 +261,6 @@ email_signature_create_dto_t *email_signature_create_dto_parseFromJSON(cJSON *em
     email_signature_create_dto_local_var = email_signature_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
         published ? published->valueint : 0,

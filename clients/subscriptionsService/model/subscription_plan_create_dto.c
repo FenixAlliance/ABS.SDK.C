@@ -38,7 +38,6 @@ subscription_plan_create_dto_t *subscription_plan_create_dto_create(
     char *pattern,
     char *features,
     char *material,
-    char *tenant_id,
     char *permalink,
     char *brand_name,
     char *variations,
@@ -208,7 +207,6 @@ subscription_plan_create_dto_t *subscription_plan_create_dto_create(
     subscription_plan_create_dto_local_var->pattern = pattern;
     subscription_plan_create_dto_local_var->features = features;
     subscription_plan_create_dto_local_var->material = material;
-    subscription_plan_create_dto_local_var->tenant_id = tenant_id;
     subscription_plan_create_dto_local_var->permalink = permalink;
     subscription_plan_create_dto_local_var->brand_name = brand_name;
     subscription_plan_create_dto_local_var->variations = variations;
@@ -478,10 +476,6 @@ void subscription_plan_create_dto_free(subscription_plan_create_dto_t *subscript
     if (subscription_plan_create_dto->material) {
         free(subscription_plan_create_dto->material);
         subscription_plan_create_dto->material = NULL;
-    }
-    if (subscription_plan_create_dto->tenant_id) {
-        free(subscription_plan_create_dto->tenant_id);
-        subscription_plan_create_dto->tenant_id = NULL;
     }
     if (subscription_plan_create_dto->permalink) {
         free(subscription_plan_create_dto->permalink);
@@ -1006,14 +1000,6 @@ cJSON *subscription_plan_create_dto_convertToJSON(subscription_plan_create_dto_t
     // subscription_plan_create_dto->material
     if(subscription_plan_create_dto->material) {
     if(cJSON_AddStringToObject(item, "material", subscription_plan_create_dto->material) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // subscription_plan_create_dto->tenant_id
-    if(subscription_plan_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", subscription_plan_create_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -2542,15 +2528,6 @@ subscription_plan_create_dto_t *subscription_plan_create_dto_parseFromJSON(cJSON
     }
     }
 
-    // subscription_plan_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(subscription_plan_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // subscription_plan_create_dto->permalink
     cJSON *permalink = cJSON_GetObjectItemCaseSensitive(subscription_plan_create_dtoJSON, "permalink");
     if (permalink) { 
@@ -3913,7 +3890,6 @@ subscription_plan_create_dto_t *subscription_plan_create_dto_parseFromJSON(cJSON
         pattern && !cJSON_IsNull(pattern) ? strdup(pattern->valuestring) : NULL,
         features && !cJSON_IsNull(features) ? strdup(features->valuestring) : NULL,
         material && !cJSON_IsNull(material) ? strdup(material->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         permalink && !cJSON_IsNull(permalink) ? strdup(permalink->valuestring) : NULL,
         brand_name && !cJSON_IsNull(brand_name) ? strdup(brand_name->valuestring) : NULL,
         variations && !cJSON_IsNull(variations) ? strdup(variations->valuestring) : NULL,

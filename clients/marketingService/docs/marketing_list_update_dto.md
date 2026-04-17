@@ -12,8 +12,6 @@ Name | Type | Description | Notes
 **modified_on** | **char \*** |  | [optional] 
 **last_used_on** | **char \*** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
-**enrollment_id** | **char \*** |  | [optional] 
 **marketing_list_type** | **marketingservice_marketing_list_update_dto_MARKETINGLISTTYPE_e** |  | [optional] 
 **marketing_list_target** | **marketingservice_marketing_list_update_dto_MARKETINGLISTTARGET_e** |  | [optional] 
 

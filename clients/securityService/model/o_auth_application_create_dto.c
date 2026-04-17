@@ -6,6 +6,8 @@
 
 
 o_auth_application_create_dto_t *o_auth_application_create_dto_create(
+    char *id,
+    char *timestamp,
     char *display_name,
     char *client_id,
     char *client_secret,
@@ -14,14 +16,14 @@ o_auth_application_create_dto_t *o_auth_application_create_dto_create(
     char *requirements,
     char *redirect_uris,
     char *post_logout_redirect_uris,
-    char *logo,
-    char *business_id,
-    char *business_profile_record_id
+    char *logo
     ) {
     o_auth_application_create_dto_t *o_auth_application_create_dto_local_var = malloc(sizeof(o_auth_application_create_dto_t));
     if (!o_auth_application_create_dto_local_var) {
         return NULL;
     }
+    o_auth_application_create_dto_local_var->id = id;
+    o_auth_application_create_dto_local_var->timestamp = timestamp;
     o_auth_application_create_dto_local_var->display_name = display_name;
     o_auth_application_create_dto_local_var->client_id = client_id;
     o_auth_application_create_dto_local_var->client_secret = client_secret;
@@ -31,8 +33,6 @@ o_auth_application_create_dto_t *o_auth_application_create_dto_create(
     o_auth_application_create_dto_local_var->redirect_uris = redirect_uris;
     o_auth_application_create_dto_local_var->post_logout_redirect_uris = post_logout_redirect_uris;
     o_auth_application_create_dto_local_var->logo = logo;
-    o_auth_application_create_dto_local_var->business_id = business_id;
-    o_auth_application_create_dto_local_var->business_profile_record_id = business_profile_record_id;
 
     return o_auth_application_create_dto_local_var;
 }
@@ -43,6 +43,14 @@ void o_auth_application_create_dto_free(o_auth_application_create_dto_t *o_auth_
         return ;
     }
     listEntry_t *listEntry;
+    if (o_auth_application_create_dto->id) {
+        free(o_auth_application_create_dto->id);
+        o_auth_application_create_dto->id = NULL;
+    }
+    if (o_auth_application_create_dto->timestamp) {
+        free(o_auth_application_create_dto->timestamp);
+        o_auth_application_create_dto->timestamp = NULL;
+    }
     if (o_auth_application_create_dto->display_name) {
         free(o_auth_application_create_dto->display_name);
         o_auth_application_create_dto->display_name = NULL;
@@ -79,19 +87,27 @@ void o_auth_application_create_dto_free(o_auth_application_create_dto_t *o_auth_
         free(o_auth_application_create_dto->logo);
         o_auth_application_create_dto->logo = NULL;
     }
-    if (o_auth_application_create_dto->business_id) {
-        free(o_auth_application_create_dto->business_id);
-        o_auth_application_create_dto->business_id = NULL;
-    }
-    if (o_auth_application_create_dto->business_profile_record_id) {
-        free(o_auth_application_create_dto->business_profile_record_id);
-        o_auth_application_create_dto->business_profile_record_id = NULL;
-    }
     free(o_auth_application_create_dto);
 }
 
 cJSON *o_auth_application_create_dto_convertToJSON(o_auth_application_create_dto_t *o_auth_application_create_dto) {
     cJSON *item = cJSON_CreateObject();
+
+    // o_auth_application_create_dto->id
+    if(o_auth_application_create_dto->id) {
+    if(cJSON_AddStringToObject(item, "id", o_auth_application_create_dto->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // o_auth_application_create_dto->timestamp
+    if(o_auth_application_create_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", o_auth_application_create_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
 
     // o_auth_application_create_dto->display_name
     if (!o_auth_application_create_dto->display_name) {
@@ -165,22 +181,6 @@ cJSON *o_auth_application_create_dto_convertToJSON(o_auth_application_create_dto
     }
     }
 
-
-    // o_auth_application_create_dto->business_id
-    if(o_auth_application_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", o_auth_application_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // o_auth_application_create_dto->business_profile_record_id
-    if(o_auth_application_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", o_auth_application_create_dto->business_profile_record_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -192,6 +192,24 @@ fail:
 o_auth_application_create_dto_t *o_auth_application_create_dto_parseFromJSON(cJSON *o_auth_application_create_dtoJSON){
 
     o_auth_application_create_dto_t *o_auth_application_create_dto_local_var = NULL;
+
+    // o_auth_application_create_dto->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(o_auth_application_create_dtoJSON, "id");
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // o_auth_application_create_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(o_auth_application_create_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
 
     // o_auth_application_create_dto->display_name
     cJSON *display_name = cJSON_GetObjectItemCaseSensitive(o_auth_application_create_dtoJSON, "displayName");
@@ -277,26 +295,10 @@ o_auth_application_create_dto_t *o_auth_application_create_dto_parseFromJSON(cJS
     }
     }
 
-    // o_auth_application_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(o_auth_application_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // o_auth_application_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(o_auth_application_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     o_auth_application_create_dto_local_var = o_auth_application_create_dto_create (
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         strdup(display_name->valuestring),
         client_id && !cJSON_IsNull(client_id) ? strdup(client_id->valuestring) : NULL,
         client_secret && !cJSON_IsNull(client_secret) ? strdup(client_secret->valuestring) : NULL,
@@ -305,9 +307,7 @@ o_auth_application_create_dto_t *o_auth_application_create_dto_parseFromJSON(cJS
         requirements && !cJSON_IsNull(requirements) ? strdup(requirements->valuestring) : NULL,
         redirect_uris && !cJSON_IsNull(redirect_uris) ? strdup(redirect_uris->valuestring) : NULL,
         post_logout_redirect_uris && !cJSON_IsNull(post_logout_redirect_uris) ? strdup(post_logout_redirect_uris->valuestring) : NULL,
-        logo && !cJSON_IsNull(logo) ? strdup(logo->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        logo && !cJSON_IsNull(logo) ? strdup(logo->valuestring) : NULL
         );
 
     return o_auth_application_create_dto_local_var;

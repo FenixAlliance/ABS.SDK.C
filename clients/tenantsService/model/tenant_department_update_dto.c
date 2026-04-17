@@ -9,7 +9,6 @@ tenant_department_update_dto_t *tenant_department_update_dto_create(
     char *name,
     char *description,
     int disabled,
-    char *business_profile_record_id,
     char *organization_profile_id,
     char *parent_department_id
     ) {
@@ -20,7 +19,6 @@ tenant_department_update_dto_t *tenant_department_update_dto_create(
     tenant_department_update_dto_local_var->name = name;
     tenant_department_update_dto_local_var->description = description;
     tenant_department_update_dto_local_var->disabled = disabled;
-    tenant_department_update_dto_local_var->business_profile_record_id = business_profile_record_id;
     tenant_department_update_dto_local_var->organization_profile_id = organization_profile_id;
     tenant_department_update_dto_local_var->parent_department_id = parent_department_id;
 
@@ -40,10 +38,6 @@ void tenant_department_update_dto_free(tenant_department_update_dto_t *tenant_de
     if (tenant_department_update_dto->description) {
         free(tenant_department_update_dto->description);
         tenant_department_update_dto->description = NULL;
-    }
-    if (tenant_department_update_dto->business_profile_record_id) {
-        free(tenant_department_update_dto->business_profile_record_id);
-        tenant_department_update_dto->business_profile_record_id = NULL;
     }
     if (tenant_department_update_dto->organization_profile_id) {
         free(tenant_department_update_dto->organization_profile_id);
@@ -79,14 +73,6 @@ cJSON *tenant_department_update_dto_convertToJSON(tenant_department_update_dto_t
     if(tenant_department_update_dto->disabled) {
     if(cJSON_AddBoolToObject(item, "disabled", tenant_department_update_dto->disabled) == NULL) {
     goto fail; //Bool
-    }
-    }
-
-
-    // tenant_department_update_dto->business_profile_record_id
-    if(tenant_department_update_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", tenant_department_update_dto->business_profile_record_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -145,15 +131,6 @@ tenant_department_update_dto_t *tenant_department_update_dto_parseFromJSON(cJSON
     }
     }
 
-    // tenant_department_update_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(tenant_department_update_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
     // tenant_department_update_dto->organization_profile_id
     cJSON *organization_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_department_update_dtoJSON, "organizationProfileID");
     if (organization_profile_id) { 
@@ -177,7 +154,6 @@ tenant_department_update_dto_t *tenant_department_update_dto_parseFromJSON(cJSON
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         disabled ? disabled->valueint : 0,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         organization_profile_id && !cJSON_IsNull(organization_profile_id) ? strdup(organization_profile_id->valuestring) : NULL,
         parent_department_id && !cJSON_IsNull(parent_department_id) ? strdup(parent_department_id->valuestring) : NULL
         );

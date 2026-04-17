@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **content** | **char \*** |  | [optional] 
 **order** | **int** |  | [optional] 
 **course_id** | **char \*** |  | 
-**business_id** | **char \*** |  | 
 **course_unit_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

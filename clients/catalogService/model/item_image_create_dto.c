@@ -8,8 +8,6 @@
 item_image_create_dto_t *item_image_create_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
-    char *business_profile_record_id,
     char *item_id,
     int is_item_mozaic_bg,
     char *m_d5_hash,
@@ -25,8 +23,7 @@ item_image_create_dto_t *item_image_create_dto_create(
     long file_length,
     int valid_response,
     char *social_profile_id,
-    char *parent_file_upload_id,
-    char *account_holder_id
+    char *parent_file_upload_id
     ) {
     item_image_create_dto_t *item_image_create_dto_local_var = malloc(sizeof(item_image_create_dto_t));
     if (!item_image_create_dto_local_var) {
@@ -34,8 +31,6 @@ item_image_create_dto_t *item_image_create_dto_create(
     }
     item_image_create_dto_local_var->id = id;
     item_image_create_dto_local_var->timestamp = timestamp;
-    item_image_create_dto_local_var->business_id = business_id;
-    item_image_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     item_image_create_dto_local_var->item_id = item_id;
     item_image_create_dto_local_var->is_item_mozaic_bg = is_item_mozaic_bg;
     item_image_create_dto_local_var->m_d5_hash = m_d5_hash;
@@ -52,7 +47,6 @@ item_image_create_dto_t *item_image_create_dto_create(
     item_image_create_dto_local_var->valid_response = valid_response;
     item_image_create_dto_local_var->social_profile_id = social_profile_id;
     item_image_create_dto_local_var->parent_file_upload_id = parent_file_upload_id;
-    item_image_create_dto_local_var->account_holder_id = account_holder_id;
 
     return item_image_create_dto_local_var;
 }
@@ -70,14 +64,6 @@ void item_image_create_dto_free(item_image_create_dto_t *item_image_create_dto) 
     if (item_image_create_dto->timestamp) {
         free(item_image_create_dto->timestamp);
         item_image_create_dto->timestamp = NULL;
-    }
-    if (item_image_create_dto->business_id) {
-        free(item_image_create_dto->business_id);
-        item_image_create_dto->business_id = NULL;
-    }
-    if (item_image_create_dto->business_profile_record_id) {
-        free(item_image_create_dto->business_profile_record_id);
-        item_image_create_dto->business_profile_record_id = NULL;
     }
     if (item_image_create_dto->item_id) {
         free(item_image_create_dto->item_id);
@@ -131,10 +117,6 @@ void item_image_create_dto_free(item_image_create_dto_t *item_image_create_dto) 
         free(item_image_create_dto->parent_file_upload_id);
         item_image_create_dto->parent_file_upload_id = NULL;
     }
-    if (item_image_create_dto->account_holder_id) {
-        free(item_image_create_dto->account_holder_id);
-        item_image_create_dto->account_holder_id = NULL;
-    }
     free(item_image_create_dto);
 }
 
@@ -153,23 +135,6 @@ cJSON *item_image_create_dto_convertToJSON(item_image_create_dto_t *item_image_c
     if(item_image_create_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", item_image_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // item_image_create_dto->business_id
-    if (!item_image_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", item_image_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // item_image_create_dto->business_profile_record_id
-    if(item_image_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", item_image_create_dto->business_profile_record_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -302,14 +267,6 @@ cJSON *item_image_create_dto_convertToJSON(item_image_create_dto_t *item_image_c
     }
     }
 
-
-    // item_image_create_dto->account_holder_id
-    if(item_image_create_dto->account_holder_id) {
-    if(cJSON_AddStringToObject(item, "accountHolderID", item_image_create_dto->account_holder_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -337,27 +294,6 @@ item_image_create_dto_t *item_image_create_dto_parseFromJSON(cJSON *item_image_c
     if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
     {
     goto end; //DateTime
-    }
-    }
-
-    // item_image_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_image_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
-    // item_image_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(item_image_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
     }
     }
 
@@ -508,21 +444,10 @@ item_image_create_dto_t *item_image_create_dto_parseFromJSON(cJSON *item_image_c
     }
     }
 
-    // item_image_create_dto->account_holder_id
-    cJSON *account_holder_id = cJSON_GetObjectItemCaseSensitive(item_image_create_dtoJSON, "accountHolderID");
-    if (account_holder_id) { 
-    if(!cJSON_IsString(account_holder_id) && !cJSON_IsNull(account_holder_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     item_image_create_dto_local_var = item_image_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        strdup(business_id->valuestring),
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
         is_item_mozaic_bg ? is_item_mozaic_bg->valueint : 0,
         m_d5_hash && !cJSON_IsNull(m_d5_hash) ? strdup(m_d5_hash->valuestring) : NULL,
@@ -538,8 +463,7 @@ item_image_create_dto_t *item_image_create_dto_parseFromJSON(cJSON *item_image_c
         file_length ? file_length->valuedouble : 0,
         valid_response ? valid_response->valueint : 0,
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL,
-        parent_file_upload_id && !cJSON_IsNull(parent_file_upload_id) ? strdup(parent_file_upload_id->valuestring) : NULL,
-        account_holder_id && !cJSON_IsNull(account_holder_id) ? strdup(account_holder_id->valuestring) : NULL
+        parent_file_upload_id && !cJSON_IsNull(parent_file_upload_id) ? strdup(parent_file_upload_id->valuestring) : NULL
         );
 
     return item_image_create_dto_local_var;

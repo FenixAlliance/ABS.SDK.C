@@ -10,9 +10,7 @@ share_class_update_dto_t *share_class_update_dto_create(
     int value,
     char *description,
     char *forex_rates,
-    char *currency_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *currency_id
     ) {
     share_class_update_dto_t *share_class_update_dto_local_var = malloc(sizeof(share_class_update_dto_t));
     if (!share_class_update_dto_local_var) {
@@ -23,8 +21,6 @@ share_class_update_dto_t *share_class_update_dto_create(
     share_class_update_dto_local_var->description = description;
     share_class_update_dto_local_var->forex_rates = forex_rates;
     share_class_update_dto_local_var->currency_id = currency_id;
-    share_class_update_dto_local_var->tenant_id = tenant_id;
-    share_class_update_dto_local_var->enrollment_id = enrollment_id;
 
     return share_class_update_dto_local_var;
 }
@@ -50,14 +46,6 @@ void share_class_update_dto_free(share_class_update_dto_t *share_class_update_dt
     if (share_class_update_dto->currency_id) {
         free(share_class_update_dto->currency_id);
         share_class_update_dto->currency_id = NULL;
-    }
-    if (share_class_update_dto->tenant_id) {
-        free(share_class_update_dto->tenant_id);
-        share_class_update_dto->tenant_id = NULL;
-    }
-    if (share_class_update_dto->enrollment_id) {
-        free(share_class_update_dto->enrollment_id);
-        share_class_update_dto->enrollment_id = NULL;
     }
     free(share_class_update_dto);
 }
@@ -100,22 +88,6 @@ cJSON *share_class_update_dto_convertToJSON(share_class_update_dto_t *share_clas
     // share_class_update_dto->currency_id
     if(share_class_update_dto->currency_id) {
     if(cJSON_AddStringToObject(item, "currencyId", share_class_update_dto->currency_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // share_class_update_dto->tenant_id
-    if(share_class_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", share_class_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // share_class_update_dto->enrollment_id
-    if(share_class_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", share_class_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -177,33 +149,13 @@ share_class_update_dto_t *share_class_update_dto_parseFromJSON(cJSON *share_clas
     }
     }
 
-    // share_class_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(share_class_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // share_class_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(share_class_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     share_class_update_dto_local_var = share_class_update_dto_create (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         value ? value->valueint : 0,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         forex_rates && !cJSON_IsNull(forex_rates) ? strdup(forex_rates->valuestring) : NULL,
-        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL
         );
 
     return share_class_update_dto_local_var;

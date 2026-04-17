@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
 **name** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
 **fiscal_year_id** | **char \*** |  | [optional] 
 **cost_centre_id** | **char \*** |  | [optional] 
 

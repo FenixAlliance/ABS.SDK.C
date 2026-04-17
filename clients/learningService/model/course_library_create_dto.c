@@ -12,7 +12,6 @@ course_library_create_dto_t *course_library_create_dto_create(
     char *description,
     char *course_id,
     char *course_unit_id,
-    char *business_id,
     char *release_date_time
     ) {
     course_library_create_dto_t *course_library_create_dto_local_var = malloc(sizeof(course_library_create_dto_t));
@@ -25,7 +24,6 @@ course_library_create_dto_t *course_library_create_dto_create(
     course_library_create_dto_local_var->description = description;
     course_library_create_dto_local_var->course_id = course_id;
     course_library_create_dto_local_var->course_unit_id = course_unit_id;
-    course_library_create_dto_local_var->business_id = business_id;
     course_library_create_dto_local_var->release_date_time = release_date_time;
 
     return course_library_create_dto_local_var;
@@ -60,10 +58,6 @@ void course_library_create_dto_free(course_library_create_dto_t *course_library_
     if (course_library_create_dto->course_unit_id) {
         free(course_library_create_dto->course_unit_id);
         course_library_create_dto->course_unit_id = NULL;
-    }
-    if (course_library_create_dto->business_id) {
-        free(course_library_create_dto->business_id);
-        course_library_create_dto->business_id = NULL;
     }
     if (course_library_create_dto->release_date_time) {
         free(course_library_create_dto->release_date_time);
@@ -122,15 +116,6 @@ cJSON *course_library_create_dto_convertToJSON(course_library_create_dto_t *cour
     if(cJSON_AddStringToObject(item, "courseUnitID", course_library_create_dto->course_unit_id) == NULL) {
     goto fail; //String
     }
-    }
-
-
-    // course_library_create_dto->business_id
-    if (!course_library_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_library_create_dto->business_id) == NULL) {
-    goto fail; //String
     }
 
 
@@ -213,18 +198,6 @@ course_library_create_dto_t *course_library_create_dto_parseFromJSON(cJSON *cour
     }
     }
 
-    // course_library_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_library_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
     // course_library_create_dto->release_date_time
     cJSON *release_date_time = cJSON_GetObjectItemCaseSensitive(course_library_create_dtoJSON, "releaseDateTime");
     if (release_date_time) { 
@@ -242,7 +215,6 @@ course_library_create_dto_t *course_library_create_dto_parseFromJSON(cJSON *cour
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         strdup(course_id->valuestring),
         course_unit_id && !cJSON_IsNull(course_unit_id) ? strdup(course_unit_id->valuestring) : NULL,
-        strdup(business_id->valuestring),
         release_date_time && !cJSON_IsNull(release_date_time) ? strdup(release_date_time->valuestring) : NULL
         );
 

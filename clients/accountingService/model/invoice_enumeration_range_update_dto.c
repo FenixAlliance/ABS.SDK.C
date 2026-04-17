@@ -33,8 +33,6 @@ invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto_cre
     char *valid_from,
     char *valid_to,
     char *fiscal_authority_id,
-    char *tenant_id,
-    char *enrollment_id,
     accountingservice_invoice_enumeration_range_update_dto_DOCUMENTTYPE_e document_type
     ) {
     invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto_local_var = malloc(sizeof(invoice_enumeration_range_update_dto_t));
@@ -51,8 +49,6 @@ invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto_cre
     invoice_enumeration_range_update_dto_local_var->valid_from = valid_from;
     invoice_enumeration_range_update_dto_local_var->valid_to = valid_to;
     invoice_enumeration_range_update_dto_local_var->fiscal_authority_id = fiscal_authority_id;
-    invoice_enumeration_range_update_dto_local_var->tenant_id = tenant_id;
-    invoice_enumeration_range_update_dto_local_var->enrollment_id = enrollment_id;
     invoice_enumeration_range_update_dto_local_var->document_type = document_type;
 
     return invoice_enumeration_range_update_dto_local_var;
@@ -91,14 +87,6 @@ void invoice_enumeration_range_update_dto_free(invoice_enumeration_range_update_
     if (invoice_enumeration_range_update_dto->fiscal_authority_id) {
         free(invoice_enumeration_range_update_dto->fiscal_authority_id);
         invoice_enumeration_range_update_dto->fiscal_authority_id = NULL;
-    }
-    if (invoice_enumeration_range_update_dto->tenant_id) {
-        free(invoice_enumeration_range_update_dto->tenant_id);
-        invoice_enumeration_range_update_dto->tenant_id = NULL;
-    }
-    if (invoice_enumeration_range_update_dto->enrollment_id) {
-        free(invoice_enumeration_range_update_dto->enrollment_id);
-        invoice_enumeration_range_update_dto->enrollment_id = NULL;
     }
     free(invoice_enumeration_range_update_dto);
 }
@@ -181,22 +169,6 @@ cJSON *invoice_enumeration_range_update_dto_convertToJSON(invoice_enumeration_ra
     // invoice_enumeration_range_update_dto->fiscal_authority_id
     if(invoice_enumeration_range_update_dto->fiscal_authority_id) {
     if(cJSON_AddStringToObject(item, "fiscalAuthorityId", invoice_enumeration_range_update_dto->fiscal_authority_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // invoice_enumeration_range_update_dto->tenant_id
-    if(invoice_enumeration_range_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", invoice_enumeration_range_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // invoice_enumeration_range_update_dto->enrollment_id
-    if(invoice_enumeration_range_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", invoice_enumeration_range_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -312,24 +284,6 @@ invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto_par
     }
     }
 
-    // invoice_enumeration_range_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(invoice_enumeration_range_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // invoice_enumeration_range_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(invoice_enumeration_range_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // invoice_enumeration_range_update_dto->document_type
     cJSON *document_type = cJSON_GetObjectItemCaseSensitive(invoice_enumeration_range_update_dtoJSON, "documentType");
     accountingservice_invoice_enumeration_range_update_dto_DOCUMENTTYPE_e document_typeVariable;
@@ -353,8 +307,6 @@ invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto_par
         valid_from && !cJSON_IsNull(valid_from) ? strdup(valid_from->valuestring) : NULL,
         valid_to && !cJSON_IsNull(valid_to) ? strdup(valid_to->valuestring) : NULL,
         fiscal_authority_id && !cJSON_IsNull(fiscal_authority_id) ? strdup(fiscal_authority_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         document_type ? document_typeVariable : accountingservice_invoice_enumeration_range_update_dto_DOCUMENTTYPE_NULL
         );
 

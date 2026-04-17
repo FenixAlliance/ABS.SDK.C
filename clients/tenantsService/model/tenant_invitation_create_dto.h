@@ -22,17 +22,13 @@ typedef struct tenant_invitation_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *user_email; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } tenant_invitation_create_dto_t;
 
 tenant_invitation_create_dto_t *tenant_invitation_create_dto_create(
     char *id,
     char *timestamp,
-    char *user_email,
-    char *tenant_id,
-    char *enrollment_id
+    char *user_email
 );
 
 void tenant_invitation_create_dto_free(tenant_invitation_create_dto_t *tenant_invitation_create_dto);

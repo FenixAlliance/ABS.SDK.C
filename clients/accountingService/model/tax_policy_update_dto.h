@@ -40,8 +40,6 @@ typedef struct tax_policy_update_dto_t {
     char *custom_state; // string
     char *custom_city; // string
     char *city_id; // string
-    char *enrollment_id; // string
-    char *tenant_id; // string
     int zero; //boolean
     int reduced; //boolean
     int withholding; //boolean
@@ -71,8 +69,6 @@ tax_policy_update_dto_t *tax_policy_update_dto_create(
     char *custom_state,
     char *custom_city,
     char *city_id,
-    char *enrollment_id,
-    char *tenant_id,
     int zero,
     int reduced,
     int withholding,

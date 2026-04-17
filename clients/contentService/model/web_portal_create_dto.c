@@ -12,11 +12,9 @@ web_portal_create_dto_t *web_portal_create_dto_create(
     char *title,
     char *domain,
     int disabled,
-    char *business_id,
     char *description,
     char *website_theme_id,
     char *business_domain_id,
-    char *business_profile_record_id,
     char *business_portal_application_id
     ) {
     web_portal_create_dto_t *web_portal_create_dto_local_var = malloc(sizeof(web_portal_create_dto_t));
@@ -29,11 +27,9 @@ web_portal_create_dto_t *web_portal_create_dto_create(
     web_portal_create_dto_local_var->title = title;
     web_portal_create_dto_local_var->domain = domain;
     web_portal_create_dto_local_var->disabled = disabled;
-    web_portal_create_dto_local_var->business_id = business_id;
     web_portal_create_dto_local_var->description = description;
     web_portal_create_dto_local_var->website_theme_id = website_theme_id;
     web_portal_create_dto_local_var->business_domain_id = business_domain_id;
-    web_portal_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     web_portal_create_dto_local_var->business_portal_application_id = business_portal_application_id;
 
     return web_portal_create_dto_local_var;
@@ -61,10 +57,6 @@ void web_portal_create_dto_free(web_portal_create_dto_t *web_portal_create_dto) 
         free(web_portal_create_dto->domain);
         web_portal_create_dto->domain = NULL;
     }
-    if (web_portal_create_dto->business_id) {
-        free(web_portal_create_dto->business_id);
-        web_portal_create_dto->business_id = NULL;
-    }
     if (web_portal_create_dto->description) {
         free(web_portal_create_dto->description);
         web_portal_create_dto->description = NULL;
@@ -76,10 +68,6 @@ void web_portal_create_dto_free(web_portal_create_dto_t *web_portal_create_dto) 
     if (web_portal_create_dto->business_domain_id) {
         free(web_portal_create_dto->business_domain_id);
         web_portal_create_dto->business_domain_id = NULL;
-    }
-    if (web_portal_create_dto->business_profile_record_id) {
-        free(web_portal_create_dto->business_profile_record_id);
-        web_portal_create_dto->business_profile_record_id = NULL;
     }
     if (web_portal_create_dto->business_portal_application_id) {
         free(web_portal_create_dto->business_portal_application_id);
@@ -139,14 +127,6 @@ cJSON *web_portal_create_dto_convertToJSON(web_portal_create_dto_t *web_portal_c
     }
 
 
-    // web_portal_create_dto->business_id
-    if(web_portal_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", web_portal_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // web_portal_create_dto->description
     if(web_portal_create_dto->description) {
     if(cJSON_AddStringToObject(item, "description", web_portal_create_dto->description) == NULL) {
@@ -166,14 +146,6 @@ cJSON *web_portal_create_dto_convertToJSON(web_portal_create_dto_t *web_portal_c
     // web_portal_create_dto->business_domain_id
     if(web_portal_create_dto->business_domain_id) {
     if(cJSON_AddStringToObject(item, "businessDomainID", web_portal_create_dto->business_domain_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // web_portal_create_dto->business_profile_record_id
-    if(web_portal_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", web_portal_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -252,15 +224,6 @@ web_portal_create_dto_t *web_portal_create_dto_parseFromJSON(cJSON *web_portal_c
     }
     }
 
-    // web_portal_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(web_portal_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
     // web_portal_create_dto->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(web_portal_create_dtoJSON, "description");
     if (description) { 
@@ -288,15 +251,6 @@ web_portal_create_dto_t *web_portal_create_dto_parseFromJSON(cJSON *web_portal_c
     }
     }
 
-    // web_portal_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(web_portal_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
     // web_portal_create_dto->business_portal_application_id
     cJSON *business_portal_application_id = cJSON_GetObjectItemCaseSensitive(web_portal_create_dtoJSON, "businessPortalApplicationID");
     if (business_portal_application_id) { 
@@ -314,11 +268,9 @@ web_portal_create_dto_t *web_portal_create_dto_parseFromJSON(cJSON *web_portal_c
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         domain && !cJSON_IsNull(domain) ? strdup(domain->valuestring) : NULL,
         disabled ? disabled->valueint : 0,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         website_theme_id && !cJSON_IsNull(website_theme_id) ? strdup(website_theme_id->valuestring) : NULL,
         business_domain_id && !cJSON_IsNull(business_domain_id) ? strdup(business_domain_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         business_portal_application_id && !cJSON_IsNull(business_portal_application_id) ? strdup(business_portal_application_id->valuestring) : NULL
         );
 

@@ -4,12 +4,46 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**WebPageTagsAPI_countWebPageTagsAsync**](WebPageTagsAPI.md#WebPageTagsAPI_countWebPageTagsAsync) | **GET** /api/v2/ContentService/WebPageTags/Count | Count web page tags
 [**WebPageTagsAPI_createWebPageTagAsync**](WebPageTagsAPI.md#WebPageTagsAPI_createWebPageTagAsync) | **POST** /api/v2/ContentService/WebPageTags | Create a web page tag
 [**WebPageTagsAPI_deleteWebPageTagAsync**](WebPageTagsAPI.md#WebPageTagsAPI_deleteWebPageTagAsync) | **DELETE** /api/v2/ContentService/WebPageTags/{webPageTagId} | Delete a web page tag
 [**WebPageTagsAPI_getWebPageTagByIdAsync**](WebPageTagsAPI.md#WebPageTagsAPI_getWebPageTagByIdAsync) | **GET** /api/v2/ContentService/WebPageTags/{webPageTagId} | Get web page tag by ID
 [**WebPageTagsAPI_getWebPageTagsAsync**](WebPageTagsAPI.md#WebPageTagsAPI_getWebPageTagsAsync) | **GET** /api/v2/ContentService/WebPageTags | Get web page tags
 [**WebPageTagsAPI_updateWebPageTagAsync**](WebPageTagsAPI.md#WebPageTagsAPI_updateWebPageTagAsync) | **PUT** /api/v2/ContentService/WebPageTags/{webPageTagId} | Update a web page tag
 
+
+# **WebPageTagsAPI_countWebPageTagsAsync**
+```c
+// Count web page tags
+//
+// Counts all web page tags for the specified tenant.
+//
+int32_envelope_t* WebPageTagsAPI_countWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **WebPageTagsAPI_createWebPageTagAsync**
 ```c

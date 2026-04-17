@@ -35,9 +35,7 @@ typedef struct bank_account_create_dto_t {
     char *code; // string
     char *path; // string
     char *prefix; // string
-    char *tenant_id; // string
     char *currency_id; // string
-    char *enrollment_id; // string
     char *account_type_id; // string
     char *parent_account_id; // string
     accountingservice_bank_account_create_dto_ACCOUNTCATEGORY_e account_category; //enum
@@ -60,9 +58,7 @@ bank_account_create_dto_t *bank_account_create_dto_create(
     char *code,
     char *path,
     char *prefix,
-    char *tenant_id,
     char *currency_id,
-    char *enrollment_id,
     char *account_type_id,
     char *parent_account_id,
     accountingservice_bank_account_create_dto_ACCOUNTCATEGORY_e account_category,

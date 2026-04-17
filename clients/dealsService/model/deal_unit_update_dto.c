@@ -111,10 +111,8 @@ deal_unit_update_dto_t *deal_unit_update_dto_create(
     int closed,
     char *title,
     char *user_id,
-    char *tenant_id,
     char *price_list_id,
     char *description,
-    char *enrollment_id,
     char *individual_id,
     char *payment_term_id,
     char *organization_id,
@@ -188,10 +186,8 @@ deal_unit_update_dto_t *deal_unit_update_dto_create(
     deal_unit_update_dto_local_var->closed = closed;
     deal_unit_update_dto_local_var->title = title;
     deal_unit_update_dto_local_var->user_id = user_id;
-    deal_unit_update_dto_local_var->tenant_id = tenant_id;
     deal_unit_update_dto_local_var->price_list_id = price_list_id;
     deal_unit_update_dto_local_var->description = description;
-    deal_unit_update_dto_local_var->enrollment_id = enrollment_id;
     deal_unit_update_dto_local_var->individual_id = individual_id;
     deal_unit_update_dto_local_var->payment_term_id = payment_term_id;
     deal_unit_update_dto_local_var->organization_id = organization_id;
@@ -275,10 +271,6 @@ void deal_unit_update_dto_free(deal_unit_update_dto_t *deal_unit_update_dto) {
         free(deal_unit_update_dto->user_id);
         deal_unit_update_dto->user_id = NULL;
     }
-    if (deal_unit_update_dto->tenant_id) {
-        free(deal_unit_update_dto->tenant_id);
-        deal_unit_update_dto->tenant_id = NULL;
-    }
     if (deal_unit_update_dto->price_list_id) {
         free(deal_unit_update_dto->price_list_id);
         deal_unit_update_dto->price_list_id = NULL;
@@ -286,10 +278,6 @@ void deal_unit_update_dto_free(deal_unit_update_dto_t *deal_unit_update_dto) {
     if (deal_unit_update_dto->description) {
         free(deal_unit_update_dto->description);
         deal_unit_update_dto->description = NULL;
-    }
-    if (deal_unit_update_dto->enrollment_id) {
-        free(deal_unit_update_dto->enrollment_id);
-        deal_unit_update_dto->enrollment_id = NULL;
     }
     if (deal_unit_update_dto->individual_id) {
         free(deal_unit_update_dto->individual_id);
@@ -493,14 +481,6 @@ cJSON *deal_unit_update_dto_convertToJSON(deal_unit_update_dto_t *deal_unit_upda
     }
 
 
-    // deal_unit_update_dto->tenant_id
-    if(deal_unit_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", deal_unit_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // deal_unit_update_dto->price_list_id
     if(deal_unit_update_dto->price_list_id) {
     if(cJSON_AddStringToObject(item, "priceListId", deal_unit_update_dto->price_list_id) == NULL) {
@@ -512,14 +492,6 @@ cJSON *deal_unit_update_dto_convertToJSON(deal_unit_update_dto_t *deal_unit_upda
     // deal_unit_update_dto->description
     if(deal_unit_update_dto->description) {
     if(cJSON_AddStringToObject(item, "description", deal_unit_update_dto->description) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // deal_unit_update_dto->enrollment_id
-    if(deal_unit_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", deal_unit_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -1089,15 +1061,6 @@ deal_unit_update_dto_t *deal_unit_update_dto_parseFromJSON(cJSON *deal_unit_upda
     }
     }
 
-    // deal_unit_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(deal_unit_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // deal_unit_update_dto->price_list_id
     cJSON *price_list_id = cJSON_GetObjectItemCaseSensitive(deal_unit_update_dtoJSON, "priceListId");
     if (price_list_id) { 
@@ -1111,15 +1074,6 @@ deal_unit_update_dto_t *deal_unit_update_dto_parseFromJSON(cJSON *deal_unit_upda
     cJSON *description = cJSON_GetObjectItemCaseSensitive(deal_unit_update_dtoJSON, "description");
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
-    {
-    goto end; //String
-    }
-    }
-
-    // deal_unit_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(deal_unit_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -1727,10 +1681,8 @@ deal_unit_update_dto_t *deal_unit_update_dto_parseFromJSON(cJSON *deal_unit_upda
         closed ? closed->valueint : 0,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         price_list_id && !cJSON_IsNull(price_list_id) ? strdup(price_list_id->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         individual_id && !cJSON_IsNull(individual_id) ? strdup(individual_id->valuestring) : NULL,
         payment_term_id && !cJSON_IsNull(payment_term_id) ? strdup(payment_term_id->valuestring) : NULL,
         organization_id && !cJSON_IsNull(organization_id) ? strdup(organization_id->valuestring) : NULL,

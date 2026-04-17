@@ -10,9 +10,7 @@ deal_unit_flow_create_dto_t *deal_unit_flow_create_dto_create(
     char *timestamp,
     char *name,
     char *description,
-    char *parent_business_process_id,
-    char *tenant_id,
-    char *tenant_enrollment_id
+    char *parent_business_process_id
     ) {
     deal_unit_flow_create_dto_t *deal_unit_flow_create_dto_local_var = malloc(sizeof(deal_unit_flow_create_dto_t));
     if (!deal_unit_flow_create_dto_local_var) {
@@ -23,8 +21,6 @@ deal_unit_flow_create_dto_t *deal_unit_flow_create_dto_create(
     deal_unit_flow_create_dto_local_var->name = name;
     deal_unit_flow_create_dto_local_var->description = description;
     deal_unit_flow_create_dto_local_var->parent_business_process_id = parent_business_process_id;
-    deal_unit_flow_create_dto_local_var->tenant_id = tenant_id;
-    deal_unit_flow_create_dto_local_var->tenant_enrollment_id = tenant_enrollment_id;
 
     return deal_unit_flow_create_dto_local_var;
 }
@@ -54,14 +50,6 @@ void deal_unit_flow_create_dto_free(deal_unit_flow_create_dto_t *deal_unit_flow_
     if (deal_unit_flow_create_dto->parent_business_process_id) {
         free(deal_unit_flow_create_dto->parent_business_process_id);
         deal_unit_flow_create_dto->parent_business_process_id = NULL;
-    }
-    if (deal_unit_flow_create_dto->tenant_id) {
-        free(deal_unit_flow_create_dto->tenant_id);
-        deal_unit_flow_create_dto->tenant_id = NULL;
-    }
-    if (deal_unit_flow_create_dto->tenant_enrollment_id) {
-        free(deal_unit_flow_create_dto->tenant_enrollment_id);
-        deal_unit_flow_create_dto->tenant_enrollment_id = NULL;
     }
     free(deal_unit_flow_create_dto);
 }
@@ -104,22 +92,6 @@ cJSON *deal_unit_flow_create_dto_convertToJSON(deal_unit_flow_create_dto_t *deal
     // deal_unit_flow_create_dto->parent_business_process_id
     if(deal_unit_flow_create_dto->parent_business_process_id) {
     if(cJSON_AddStringToObject(item, "parentBusinessProcessId", deal_unit_flow_create_dto->parent_business_process_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // deal_unit_flow_create_dto->tenant_id
-    if(deal_unit_flow_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", deal_unit_flow_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // deal_unit_flow_create_dto->tenant_enrollment_id
-    if(deal_unit_flow_create_dto->tenant_enrollment_id) {
-    if(cJSON_AddStringToObject(item, "tenantEnrollmentId", deal_unit_flow_create_dto->tenant_enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -181,33 +153,13 @@ deal_unit_flow_create_dto_t *deal_unit_flow_create_dto_parseFromJSON(cJSON *deal
     }
     }
 
-    // deal_unit_flow_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(deal_unit_flow_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // deal_unit_flow_create_dto->tenant_enrollment_id
-    cJSON *tenant_enrollment_id = cJSON_GetObjectItemCaseSensitive(deal_unit_flow_create_dtoJSON, "tenantEnrollmentId");
-    if (tenant_enrollment_id) { 
-    if(!cJSON_IsString(tenant_enrollment_id) && !cJSON_IsNull(tenant_enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     deal_unit_flow_create_dto_local_var = deal_unit_flow_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        parent_business_process_id && !cJSON_IsNull(parent_business_process_id) ? strdup(parent_business_process_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        tenant_enrollment_id && !cJSON_IsNull(tenant_enrollment_id) ? strdup(tenant_enrollment_id->valuestring) : NULL
+        parent_business_process_id && !cJSON_IsNull(parent_business_process_id) ? strdup(parent_business_process_id->valuestring) : NULL
         );
 
     return deal_unit_flow_create_dto_local_var;

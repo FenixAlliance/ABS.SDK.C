@@ -28,9 +28,7 @@ pricing_rule_create_dto_t *pricing_rule_create_dto_create(
     char *country_state_id,
     char *custom_state,
     char *custom_city,
-    char *city_id,
-    char *business_id,
-    char *business_profile_record_id
+    char *city_id
     ) {
     pricing_rule_create_dto_t *pricing_rule_create_dto_local_var = malloc(sizeof(pricing_rule_create_dto_t));
     if (!pricing_rule_create_dto_local_var) {
@@ -59,8 +57,6 @@ pricing_rule_create_dto_t *pricing_rule_create_dto_create(
     pricing_rule_create_dto_local_var->custom_state = custom_state;
     pricing_rule_create_dto_local_var->custom_city = custom_city;
     pricing_rule_create_dto_local_var->city_id = city_id;
-    pricing_rule_create_dto_local_var->business_id = business_id;
-    pricing_rule_create_dto_local_var->business_profile_record_id = business_profile_record_id;
 
     return pricing_rule_create_dto_local_var;
 }
@@ -114,14 +110,6 @@ void pricing_rule_create_dto_free(pricing_rule_create_dto_t *pricing_rule_create
     if (pricing_rule_create_dto->city_id) {
         free(pricing_rule_create_dto->city_id);
         pricing_rule_create_dto->city_id = NULL;
-    }
-    if (pricing_rule_create_dto->business_id) {
-        free(pricing_rule_create_dto->business_id);
-        pricing_rule_create_dto->business_id = NULL;
-    }
-    if (pricing_rule_create_dto->business_profile_record_id) {
-        free(pricing_rule_create_dto->business_profile_record_id);
-        pricing_rule_create_dto->business_profile_record_id = NULL;
     }
     free(pricing_rule_create_dto);
 }
@@ -308,22 +296,6 @@ cJSON *pricing_rule_create_dto_convertToJSON(pricing_rule_create_dto_t *pricing_
     // pricing_rule_create_dto->city_id
     if(pricing_rule_create_dto->city_id) {
     if(cJSON_AddStringToObject(item, "cityID", pricing_rule_create_dto->city_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // pricing_rule_create_dto->business_id
-    if(pricing_rule_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", pricing_rule_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // pricing_rule_create_dto->business_profile_record_id
-    if(pricing_rule_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", pricing_rule_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -547,24 +519,6 @@ pricing_rule_create_dto_t *pricing_rule_create_dto_parseFromJSON(cJSON *pricing_
     }
     }
 
-    // pricing_rule_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(pricing_rule_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // pricing_rule_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(pricing_rule_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     pricing_rule_create_dto_local_var = pricing_rule_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -589,9 +543,7 @@ pricing_rule_create_dto_t *pricing_rule_create_dto_parseFromJSON(cJSON *pricing_
         country_state_id && !cJSON_IsNull(country_state_id) ? strdup(country_state_id->valuestring) : NULL,
         custom_state && !cJSON_IsNull(custom_state) ? strdup(custom_state->valuestring) : NULL,
         custom_city && !cJSON_IsNull(custom_city) ? strdup(custom_city->valuestring) : NULL,
-        city_id && !cJSON_IsNull(city_id) ? strdup(city_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        city_id && !cJSON_IsNull(city_id) ? strdup(city_id->valuestring) : NULL
         );
 
     return pricing_rule_create_dto_local_var;

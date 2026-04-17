@@ -25,7 +25,6 @@ typedef struct course_library_create_dto_t {
     char *description; // string
     char *course_id; // string
     char *course_unit_id; // string
-    char *business_id; // string
     char *release_date_time; //date time
 
 } course_library_create_dto_t;
@@ -37,7 +36,6 @@ course_library_create_dto_t *course_library_create_dto_create(
     char *description,
     char *course_id,
     char *course_unit_id,
-    char *business_id,
     char *release_date_time
 );
 

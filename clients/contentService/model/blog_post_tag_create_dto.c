@@ -20,9 +20,7 @@ blog_post_tag_create_dto_t *blog_post_tag_create_dto_create(
     char *canonical_url,
     char *image_url,
     char *image,
-    char *web_portal_id,
-    char *business_id,
-    char *business_profile_record_id
+    char *web_portal_id
     ) {
     blog_post_tag_create_dto_t *blog_post_tag_create_dto_local_var = malloc(sizeof(blog_post_tag_create_dto_t));
     if (!blog_post_tag_create_dto_local_var) {
@@ -43,8 +41,6 @@ blog_post_tag_create_dto_t *blog_post_tag_create_dto_create(
     blog_post_tag_create_dto_local_var->image_url = image_url;
     blog_post_tag_create_dto_local_var->image = image;
     blog_post_tag_create_dto_local_var->web_portal_id = web_portal_id;
-    blog_post_tag_create_dto_local_var->business_id = business_id;
-    blog_post_tag_create_dto_local_var->business_profile_record_id = business_profile_record_id;
 
     return blog_post_tag_create_dto_local_var;
 }
@@ -106,14 +102,6 @@ void blog_post_tag_create_dto_free(blog_post_tag_create_dto_t *blog_post_tag_cre
     if (blog_post_tag_create_dto->web_portal_id) {
         free(blog_post_tag_create_dto->web_portal_id);
         blog_post_tag_create_dto->web_portal_id = NULL;
-    }
-    if (blog_post_tag_create_dto->business_id) {
-        free(blog_post_tag_create_dto->business_id);
-        blog_post_tag_create_dto->business_id = NULL;
-    }
-    if (blog_post_tag_create_dto->business_profile_record_id) {
-        free(blog_post_tag_create_dto->business_profile_record_id);
-        blog_post_tag_create_dto->business_profile_record_id = NULL;
     }
     free(blog_post_tag_create_dto);
 }
@@ -236,22 +224,6 @@ cJSON *blog_post_tag_create_dto_convertToJSON(blog_post_tag_create_dto_t *blog_p
     // blog_post_tag_create_dto->web_portal_id
     if(blog_post_tag_create_dto->web_portal_id) {
     if(cJSON_AddStringToObject(item, "webPortalID", blog_post_tag_create_dto->web_portal_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // blog_post_tag_create_dto->business_id
-    if(blog_post_tag_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", blog_post_tag_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // blog_post_tag_create_dto->business_profile_record_id
-    if(blog_post_tag_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", blog_post_tag_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -403,24 +375,6 @@ blog_post_tag_create_dto_t *blog_post_tag_create_dto_parseFromJSON(cJSON *blog_p
     }
     }
 
-    // blog_post_tag_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(blog_post_tag_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // blog_post_tag_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(blog_post_tag_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     blog_post_tag_create_dto_local_var = blog_post_tag_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -437,9 +391,7 @@ blog_post_tag_create_dto_t *blog_post_tag_create_dto_parseFromJSON(cJSON *blog_p
         canonical_url && !cJSON_IsNull(canonical_url) ? strdup(canonical_url->valuestring) : NULL,
         image_url && !cJSON_IsNull(image_url) ? strdup(image_url->valuestring) : NULL,
         image && !cJSON_IsNull(image) ? strdup(image->valuestring) : NULL,
-        web_portal_id && !cJSON_IsNull(web_portal_id) ? strdup(web_portal_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        web_portal_id && !cJSON_IsNull(web_portal_id) ? strdup(web_portal_id->valuestring) : NULL
         );
 
     return blog_post_tag_create_dto_local_var;

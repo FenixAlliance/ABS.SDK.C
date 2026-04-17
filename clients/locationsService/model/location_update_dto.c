@@ -18,7 +18,6 @@ location_update_dto_t *location_update_dto_create(
     char *state_id,
     char *postal_code,
     char *country_id,
-    char *tenant_id,
     double longitude,
     double latitude,
     int is_routable,
@@ -45,7 +44,6 @@ location_update_dto_t *location_update_dto_create(
     location_update_dto_local_var->state_id = state_id;
     location_update_dto_local_var->postal_code = postal_code;
     location_update_dto_local_var->country_id = country_id;
-    location_update_dto_local_var->tenant_id = tenant_id;
     location_update_dto_local_var->longitude = longitude;
     location_update_dto_local_var->latitude = latitude;
     location_update_dto_local_var->is_routable = is_routable;
@@ -112,10 +110,6 @@ void location_update_dto_free(location_update_dto_t *location_update_dto) {
     if (location_update_dto->country_id) {
         free(location_update_dto->country_id);
         location_update_dto->country_id = NULL;
-    }
-    if (location_update_dto->tenant_id) {
-        free(location_update_dto->tenant_id);
-        location_update_dto->tenant_id = NULL;
     }
     free(location_update_dto);
 }
@@ -214,14 +208,6 @@ cJSON *location_update_dto_convertToJSON(location_update_dto_t *location_update_
     // location_update_dto->country_id
     if(location_update_dto->country_id) {
     if(cJSON_AddStringToObject(item, "countryId", location_update_dto->country_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // location_update_dto->tenant_id
-    if(location_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", location_update_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -418,15 +404,6 @@ location_update_dto_t *location_update_dto_parseFromJSON(cJSON *location_update_
     }
     }
 
-    // location_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(location_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // location_update_dto->longitude
     cJSON *longitude = cJSON_GetObjectItemCaseSensitive(location_update_dtoJSON, "longitude");
     if (longitude) { 
@@ -522,7 +499,6 @@ location_update_dto_t *location_update_dto_parseFromJSON(cJSON *location_update_
         state_id && !cJSON_IsNull(state_id) ? strdup(state_id->valuestring) : NULL,
         postal_code && !cJSON_IsNull(postal_code) ? strdup(postal_code->valuestring) : NULL,
         country_id && !cJSON_IsNull(country_id) ? strdup(country_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         longitude ? longitude->valuedouble : 0,
         latitude ? latitude->valuedouble : 0,
         is_routable ? is_routable->valueint : 0,

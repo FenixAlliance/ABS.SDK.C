@@ -29,7 +29,6 @@ cost_centre_create_dto_t *cost_centre_create_dto_create(
     int disabled,
     char *description,
     accountingservice_cost_centre_create_dto_COSTCENTRETYPE_e cost_centre_type,
-    char *tenant_id,
     char *cost_centres_group_id,
     char *parent_cost_centre_id
     ) {
@@ -43,7 +42,6 @@ cost_centre_create_dto_t *cost_centre_create_dto_create(
     cost_centre_create_dto_local_var->disabled = disabled;
     cost_centre_create_dto_local_var->description = description;
     cost_centre_create_dto_local_var->cost_centre_type = cost_centre_type;
-    cost_centre_create_dto_local_var->tenant_id = tenant_id;
     cost_centre_create_dto_local_var->cost_centres_group_id = cost_centres_group_id;
     cost_centre_create_dto_local_var->parent_cost_centre_id = parent_cost_centre_id;
 
@@ -71,10 +69,6 @@ void cost_centre_create_dto_free(cost_centre_create_dto_t *cost_centre_create_dt
     if (cost_centre_create_dto->description) {
         free(cost_centre_create_dto->description);
         cost_centre_create_dto->description = NULL;
-    }
-    if (cost_centre_create_dto->tenant_id) {
-        free(cost_centre_create_dto->tenant_id);
-        cost_centre_create_dto->tenant_id = NULL;
     }
     if (cost_centre_create_dto->cost_centres_group_id) {
         free(cost_centre_create_dto->cost_centres_group_id);
@@ -135,14 +129,6 @@ cJSON *cost_centre_create_dto_convertToJSON(cost_centre_create_dto_t *cost_centr
     if(cJSON_AddStringToObject(item, "costCentreType", cost_centre_typecost_centre_create_dto_ToString(cost_centre_create_dto->cost_centre_type)) == NULL)
     {
     goto fail; //Enum
-    }
-    }
-
-
-    // cost_centre_create_dto->tenant_id
-    if(cost_centre_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", cost_centre_create_dto->tenant_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -230,15 +216,6 @@ cost_centre_create_dto_t *cost_centre_create_dto_parseFromJSON(cJSON *cost_centr
     cost_centre_typeVariable = cost_centre_create_dto_cost_centre_type_FromString(cost_centre_type->valuestring);
     }
 
-    // cost_centre_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(cost_centre_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // cost_centre_create_dto->cost_centres_group_id
     cJSON *cost_centres_group_id = cJSON_GetObjectItemCaseSensitive(cost_centre_create_dtoJSON, "costCentresGroupId");
     if (cost_centres_group_id) { 
@@ -265,7 +242,6 @@ cost_centre_create_dto_t *cost_centre_create_dto_parseFromJSON(cJSON *cost_centr
         disabled ? disabled->valueint : 0,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         cost_centre_type ? cost_centre_typeVariable : accountingservice_cost_centre_create_dto_COSTCENTRETYPE_NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         cost_centres_group_id && !cJSON_IsNull(cost_centres_group_id) ? strdup(cost_centres_group_id->valuestring) : NULL,
         parent_cost_centre_id && !cJSON_IsNull(parent_cost_centre_id) ? strdup(parent_cost_centre_id->valuestring) : NULL
         );

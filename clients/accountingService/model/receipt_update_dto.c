@@ -7,15 +7,12 @@
 
 receipt_update_dto_t *receipt_update_dto_create(
     char *payment_id,
-    char *tenant_id,
     double forex_rate,
     double total_amount,
     double total_amount_in_usd,
     int closed,
     char *currency_id,
-    char *account_holder_id,
     char *contact_id,
-    char *enrollment_id,
     char *order_id,
     char *invoice_id
     ) {
@@ -24,15 +21,12 @@ receipt_update_dto_t *receipt_update_dto_create(
         return NULL;
     }
     receipt_update_dto_local_var->payment_id = payment_id;
-    receipt_update_dto_local_var->tenant_id = tenant_id;
     receipt_update_dto_local_var->forex_rate = forex_rate;
     receipt_update_dto_local_var->total_amount = total_amount;
     receipt_update_dto_local_var->total_amount_in_usd = total_amount_in_usd;
     receipt_update_dto_local_var->closed = closed;
     receipt_update_dto_local_var->currency_id = currency_id;
-    receipt_update_dto_local_var->account_holder_id = account_holder_id;
     receipt_update_dto_local_var->contact_id = contact_id;
-    receipt_update_dto_local_var->enrollment_id = enrollment_id;
     receipt_update_dto_local_var->order_id = order_id;
     receipt_update_dto_local_var->invoice_id = invoice_id;
 
@@ -49,25 +43,13 @@ void receipt_update_dto_free(receipt_update_dto_t *receipt_update_dto) {
         free(receipt_update_dto->payment_id);
         receipt_update_dto->payment_id = NULL;
     }
-    if (receipt_update_dto->tenant_id) {
-        free(receipt_update_dto->tenant_id);
-        receipt_update_dto->tenant_id = NULL;
-    }
     if (receipt_update_dto->currency_id) {
         free(receipt_update_dto->currency_id);
         receipt_update_dto->currency_id = NULL;
     }
-    if (receipt_update_dto->account_holder_id) {
-        free(receipt_update_dto->account_holder_id);
-        receipt_update_dto->account_holder_id = NULL;
-    }
     if (receipt_update_dto->contact_id) {
         free(receipt_update_dto->contact_id);
         receipt_update_dto->contact_id = NULL;
-    }
-    if (receipt_update_dto->enrollment_id) {
-        free(receipt_update_dto->enrollment_id);
-        receipt_update_dto->enrollment_id = NULL;
     }
     if (receipt_update_dto->order_id) {
         free(receipt_update_dto->order_id);
@@ -86,14 +68,6 @@ cJSON *receipt_update_dto_convertToJSON(receipt_update_dto_t *receipt_update_dto
     // receipt_update_dto->payment_id
     if(receipt_update_dto->payment_id) {
     if(cJSON_AddStringToObject(item, "paymentId", receipt_update_dto->payment_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // receipt_update_dto->tenant_id
-    if(receipt_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", receipt_update_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -139,25 +113,9 @@ cJSON *receipt_update_dto_convertToJSON(receipt_update_dto_t *receipt_update_dto
     }
 
 
-    // receipt_update_dto->account_holder_id
-    if(receipt_update_dto->account_holder_id) {
-    if(cJSON_AddStringToObject(item, "accountHolderId", receipt_update_dto->account_holder_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // receipt_update_dto->contact_id
     if(receipt_update_dto->contact_id) {
     if(cJSON_AddStringToObject(item, "contactId", receipt_update_dto->contact_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // receipt_update_dto->enrollment_id
-    if(receipt_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", receipt_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -194,15 +152,6 @@ receipt_update_dto_t *receipt_update_dto_parseFromJSON(cJSON *receipt_update_dto
     cJSON *payment_id = cJSON_GetObjectItemCaseSensitive(receipt_update_dtoJSON, "paymentId");
     if (payment_id) { 
     if(!cJSON_IsString(payment_id) && !cJSON_IsNull(payment_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // receipt_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(receipt_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -253,28 +202,10 @@ receipt_update_dto_t *receipt_update_dto_parseFromJSON(cJSON *receipt_update_dto
     }
     }
 
-    // receipt_update_dto->account_holder_id
-    cJSON *account_holder_id = cJSON_GetObjectItemCaseSensitive(receipt_update_dtoJSON, "accountHolderId");
-    if (account_holder_id) { 
-    if(!cJSON_IsString(account_holder_id) && !cJSON_IsNull(account_holder_id))
-    {
-    goto end; //String
-    }
-    }
-
     // receipt_update_dto->contact_id
     cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(receipt_update_dtoJSON, "contactId");
     if (contact_id) { 
     if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // receipt_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(receipt_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -301,15 +232,12 @@ receipt_update_dto_t *receipt_update_dto_parseFromJSON(cJSON *receipt_update_dto
 
     receipt_update_dto_local_var = receipt_update_dto_create (
         payment_id && !cJSON_IsNull(payment_id) ? strdup(payment_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         forex_rate ? forex_rate->valuedouble : 0,
         total_amount ? total_amount->valuedouble : 0,
         total_amount_in_usd ? total_amount_in_usd->valuedouble : 0,
         closed ? closed->valueint : 0,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        account_holder_id && !cJSON_IsNull(account_holder_id) ? strdup(account_holder_id->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         order_id && !cJSON_IsNull(order_id) ? strdup(order_id->valuestring) : NULL,
         invoice_id && !cJSON_IsNull(invoice_id) ? strdup(invoice_id->valuestring) : NULL
         );

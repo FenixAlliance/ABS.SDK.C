@@ -30,8 +30,6 @@ typedef struct transaction_update_dto_t {
     char *unit_id; // string
     char *transaction_category_id; // string
     char *currency_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } transaction_update_dto_t;
 
@@ -46,9 +44,7 @@ transaction_update_dto_t *transaction_update_dto_create(
     char *unit_group_id,
     char *unit_id,
     char *transaction_category_id,
-    char *currency_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *currency_id
 );
 
 void transaction_update_dto_free(transaction_update_dto_t *transaction_update_dto);

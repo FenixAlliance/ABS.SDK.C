@@ -25,7 +25,6 @@ typedef struct item_question_record_create_dto_t {
     int needs_revision; //boolean
     char *question; // string
     char *social_profile_id; // string
-    char *business_id; // string
 
 } item_question_record_create_dto_t;
 
@@ -35,8 +34,7 @@ item_question_record_create_dto_t *item_question_record_create_dto_create(
     char *title,
     int needs_revision,
     char *question,
-    char *social_profile_id,
-    char *business_id
+    char *social_profile_id
 );
 
 void item_question_record_create_dto_free(item_question_record_create_dto_t *item_question_record_create_dto);

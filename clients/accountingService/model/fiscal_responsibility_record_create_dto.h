@@ -23,8 +23,6 @@ typedef struct fiscal_responsibility_record_create_dto_t {
     char *timestamp; //date time
     char *fiscal_responsibility_id; // string
     char *billing_profile_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } fiscal_responsibility_record_create_dto_t;
 
@@ -32,9 +30,7 @@ fiscal_responsibility_record_create_dto_t *fiscal_responsibility_record_create_d
     char *id,
     char *timestamp,
     char *fiscal_responsibility_id,
-    char *billing_profile_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *billing_profile_id
 );
 
 void fiscal_responsibility_record_create_dto_free(fiscal_responsibility_record_create_dto_t *fiscal_responsibility_record_create_dto);

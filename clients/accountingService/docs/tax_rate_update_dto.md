@@ -17,12 +17,10 @@ Name | Type | Description | Notes
 **cumulative_transaction_threshold** | **double** |  | [optional] 
 **fiscal_authority_id** | **char \*** |  | [optional] 
 **fiscal_year_id** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
 **country_id** | **char \*** |  | [optional] 
 **tax_class_id** | **char \*** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
 **tax_policy_id** | **char \*** |  | [optional] 
-**enrollment_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

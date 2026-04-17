@@ -21,8 +21,6 @@ typedef struct newsletter_update_dto_t newsletter_update_dto_t;
 typedef struct newsletter_update_dto_t {
     char *code; // string
     char *title; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *name; // string
 
 } newsletter_update_dto_t;
@@ -30,8 +28,6 @@ typedef struct newsletter_update_dto_t {
 newsletter_update_dto_t *newsletter_update_dto_create(
     char *code,
     char *title,
-    char *tenant_id,
-    char *enrollment_id,
     char *name
 );
 

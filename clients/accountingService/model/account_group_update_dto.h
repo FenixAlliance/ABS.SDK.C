@@ -22,17 +22,13 @@ typedef struct account_group_update_dto_t {
     char *title; // string
     char *description; // string
     char *parent_account_group_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } account_group_update_dto_t;
 
 account_group_update_dto_t *account_group_update_dto_create(
     char *title,
     char *description,
-    char *parent_account_group_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *parent_account_group_id
 );
 
 void account_group_update_dto_free(account_group_update_dto_t *account_group_update_dto);

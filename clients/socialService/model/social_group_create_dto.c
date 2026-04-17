@@ -6,6 +6,8 @@
 
 
 social_group_create_dto_t *social_group_create_dto_create(
+    char *id,
+    char *timestamp,
     char *name,
     char *title,
     char *avatar_url,
@@ -15,6 +17,8 @@ social_group_create_dto_t *social_group_create_dto_create(
     if (!social_group_create_dto_local_var) {
         return NULL;
     }
+    social_group_create_dto_local_var->id = id;
+    social_group_create_dto_local_var->timestamp = timestamp;
     social_group_create_dto_local_var->name = name;
     social_group_create_dto_local_var->title = title;
     social_group_create_dto_local_var->avatar_url = avatar_url;
@@ -29,6 +33,14 @@ void social_group_create_dto_free(social_group_create_dto_t *social_group_create
         return ;
     }
     listEntry_t *listEntry;
+    if (social_group_create_dto->id) {
+        free(social_group_create_dto->id);
+        social_group_create_dto->id = NULL;
+    }
+    if (social_group_create_dto->timestamp) {
+        free(social_group_create_dto->timestamp);
+        social_group_create_dto->timestamp = NULL;
+    }
     if (social_group_create_dto->name) {
         free(social_group_create_dto->name);
         social_group_create_dto->name = NULL;
@@ -50,6 +62,22 @@ void social_group_create_dto_free(social_group_create_dto_t *social_group_create
 
 cJSON *social_group_create_dto_convertToJSON(social_group_create_dto_t *social_group_create_dto) {
     cJSON *item = cJSON_CreateObject();
+
+    // social_group_create_dto->id
+    if(social_group_create_dto->id) {
+    if(cJSON_AddStringToObject(item, "id", social_group_create_dto->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // social_group_create_dto->timestamp
+    if(social_group_create_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", social_group_create_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
 
     // social_group_create_dto->name
     if(social_group_create_dto->name) {
@@ -94,6 +122,24 @@ social_group_create_dto_t *social_group_create_dto_parseFromJSON(cJSON *social_g
 
     social_group_create_dto_t *social_group_create_dto_local_var = NULL;
 
+    // social_group_create_dto->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(social_group_create_dtoJSON, "id");
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // social_group_create_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(social_group_create_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
+
     // social_group_create_dto->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(social_group_create_dtoJSON, "name");
     if (name) { 
@@ -132,6 +178,8 @@ social_group_create_dto_t *social_group_create_dto_parseFromJSON(cJSON *social_g
 
 
     social_group_create_dto_local_var = social_group_create_dto_create (
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,

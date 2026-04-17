@@ -13,8 +13,7 @@ course_file_create_dto_t *course_file_create_dto_create(
     char *file_upload_url,
     char *content_type,
     long file_length,
-    char *course_id,
-    char *business_id
+    char *course_id
     ) {
     course_file_create_dto_t *course_file_create_dto_local_var = malloc(sizeof(course_file_create_dto_t));
     if (!course_file_create_dto_local_var) {
@@ -28,7 +27,6 @@ course_file_create_dto_t *course_file_create_dto_create(
     course_file_create_dto_local_var->content_type = content_type;
     course_file_create_dto_local_var->file_length = file_length;
     course_file_create_dto_local_var->course_id = course_id;
-    course_file_create_dto_local_var->business_id = business_id;
 
     return course_file_create_dto_local_var;
 }
@@ -66,10 +64,6 @@ void course_file_create_dto_free(course_file_create_dto_t *course_file_create_dt
     if (course_file_create_dto->course_id) {
         free(course_file_create_dto->course_id);
         course_file_create_dto->course_id = NULL;
-    }
-    if (course_file_create_dto->business_id) {
-        free(course_file_create_dto->business_id);
-        course_file_create_dto->business_id = NULL;
     }
     free(course_file_create_dto);
 }
@@ -141,15 +135,6 @@ cJSON *course_file_create_dto_convertToJSON(course_file_create_dto_t *course_fil
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "courseID", course_file_create_dto->course_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // course_file_create_dto->business_id
-    if (!course_file_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_file_create_dto->business_id) == NULL) {
     goto fail; //String
     }
 
@@ -249,18 +234,6 @@ course_file_create_dto_t *course_file_create_dto_parseFromJSON(cJSON *course_fil
     goto end; //String
     }
 
-    // course_file_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_file_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
 
     course_file_create_dto_local_var = course_file_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -270,8 +243,7 @@ course_file_create_dto_t *course_file_create_dto_parseFromJSON(cJSON *course_fil
         strdup(file_upload_url->valuestring),
         content_type && !cJSON_IsNull(content_type) ? strdup(content_type->valuestring) : NULL,
         file_length ? file_length->valuedouble : 0,
-        strdup(course_id->valuestring),
-        strdup(business_id->valuestring)
+        strdup(course_id->valuestring)
         );
 
     return course_file_create_dto_local_var;

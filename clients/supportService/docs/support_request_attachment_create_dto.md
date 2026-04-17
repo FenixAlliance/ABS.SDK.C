@@ -15,8 +15,6 @@ Name | Type | Description | Notes
 **valid_response** | **int** |  | [optional] 
 **parent_file_upload_id** | **char \*** |  | [optional] 
 **file_path** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | [optional] 
-**business_profile_record_id** | **char \*** |  | [optional] 
 **metadata** | **char \*** |  | [optional] 
 **support_request_id** | **char \*** |  | [optional] 
 

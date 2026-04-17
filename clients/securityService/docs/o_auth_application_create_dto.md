@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **char \*** |  | [optional] 
+**timestamp** | **char \*** |  | [optional] 
 **display_name** | **char \*** |  | 
 **client_id** | **char \*** |  | [optional] 
 **client_secret** | **char \*** |  | [optional] 
@@ -12,8 +14,6 @@ Name | Type | Description | Notes
 **redirect_uris** | **char \*** |  | [optional] 
 **post_logout_redirect_uris** | **char \*** |  | [optional] 
 **logo** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | [optional] 
-**business_profile_record_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

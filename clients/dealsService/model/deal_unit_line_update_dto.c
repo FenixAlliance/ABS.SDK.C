@@ -46,8 +46,6 @@ deal_unit_line_update_dto_t *deal_unit_line_update_dto_create(
     char *item_short_description,
     char *item_primary_image_url,
     char *shipping_policy_id,
-    char *tenant_id,
-    char *enrollment_id,
     char *currency_id,
     char *description,
     double quantity,
@@ -133,7 +131,6 @@ deal_unit_line_update_dto_t *deal_unit_line_update_dto_create(
     char *shipping_location_id,
     char *location_id,
     char *quote_item_record_id,
-    char *business_profile_record_id,
     char *parent_billing_item_record_id
     ) {
     deal_unit_line_update_dto_t *deal_unit_line_update_dto_local_var = malloc(sizeof(deal_unit_line_update_dto_t));
@@ -146,8 +143,6 @@ deal_unit_line_update_dto_t *deal_unit_line_update_dto_create(
     deal_unit_line_update_dto_local_var->item_short_description = item_short_description;
     deal_unit_line_update_dto_local_var->item_primary_image_url = item_primary_image_url;
     deal_unit_line_update_dto_local_var->shipping_policy_id = shipping_policy_id;
-    deal_unit_line_update_dto_local_var->tenant_id = tenant_id;
-    deal_unit_line_update_dto_local_var->enrollment_id = enrollment_id;
     deal_unit_line_update_dto_local_var->currency_id = currency_id;
     deal_unit_line_update_dto_local_var->description = description;
     deal_unit_line_update_dto_local_var->quantity = quantity;
@@ -233,7 +228,6 @@ deal_unit_line_update_dto_t *deal_unit_line_update_dto_create(
     deal_unit_line_update_dto_local_var->shipping_location_id = shipping_location_id;
     deal_unit_line_update_dto_local_var->location_id = location_id;
     deal_unit_line_update_dto_local_var->quote_item_record_id = quote_item_record_id;
-    deal_unit_line_update_dto_local_var->business_profile_record_id = business_profile_record_id;
     deal_unit_line_update_dto_local_var->parent_billing_item_record_id = parent_billing_item_record_id;
 
     return deal_unit_line_update_dto_local_var;
@@ -264,14 +258,6 @@ void deal_unit_line_update_dto_free(deal_unit_line_update_dto_t *deal_unit_line_
     if (deal_unit_line_update_dto->shipping_policy_id) {
         free(deal_unit_line_update_dto->shipping_policy_id);
         deal_unit_line_update_dto->shipping_policy_id = NULL;
-    }
-    if (deal_unit_line_update_dto->tenant_id) {
-        free(deal_unit_line_update_dto->tenant_id);
-        deal_unit_line_update_dto->tenant_id = NULL;
-    }
-    if (deal_unit_line_update_dto->enrollment_id) {
-        free(deal_unit_line_update_dto->enrollment_id);
-        deal_unit_line_update_dto->enrollment_id = NULL;
     }
     if (deal_unit_line_update_dto->currency_id) {
         free(deal_unit_line_update_dto->currency_id);
@@ -473,10 +459,6 @@ void deal_unit_line_update_dto_free(deal_unit_line_update_dto_t *deal_unit_line_
         free(deal_unit_line_update_dto->quote_item_record_id);
         deal_unit_line_update_dto->quote_item_record_id = NULL;
     }
-    if (deal_unit_line_update_dto->business_profile_record_id) {
-        free(deal_unit_line_update_dto->business_profile_record_id);
-        deal_unit_line_update_dto->business_profile_record_id = NULL;
-    }
     if (deal_unit_line_update_dto->parent_billing_item_record_id) {
         free(deal_unit_line_update_dto->parent_billing_item_record_id);
         deal_unit_line_update_dto->parent_billing_item_record_id = NULL;
@@ -530,22 +512,6 @@ cJSON *deal_unit_line_update_dto_convertToJSON(deal_unit_line_update_dto_t *deal
     // deal_unit_line_update_dto->shipping_policy_id
     if(deal_unit_line_update_dto->shipping_policy_id) {
     if(cJSON_AddStringToObject(item, "shippingPolicyId", deal_unit_line_update_dto->shipping_policy_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // deal_unit_line_update_dto->tenant_id
-    if(deal_unit_line_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", deal_unit_line_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // deal_unit_line_update_dto->enrollment_id
-    if(deal_unit_line_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", deal_unit_line_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -1233,14 +1199,6 @@ cJSON *deal_unit_line_update_dto_convertToJSON(deal_unit_line_update_dto_t *deal
     }
 
 
-    // deal_unit_line_update_dto->business_profile_record_id
-    if(deal_unit_line_update_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordId", deal_unit_line_update_dto->business_profile_record_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // deal_unit_line_update_dto->parent_billing_item_record_id
     if(deal_unit_line_update_dto->parent_billing_item_record_id) {
     if(cJSON_AddStringToObject(item, "parentBillingItemRecordId", deal_unit_line_update_dto->parent_billing_item_record_id) == NULL) {
@@ -1309,24 +1267,6 @@ deal_unit_line_update_dto_t *deal_unit_line_update_dto_parseFromJSON(cJSON *deal
     cJSON *shipping_policy_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_update_dtoJSON, "shippingPolicyId");
     if (shipping_policy_id) { 
     if(!cJSON_IsString(shipping_policy_id) && !cJSON_IsNull(shipping_policy_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // deal_unit_line_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // deal_unit_line_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -2101,15 +2041,6 @@ deal_unit_line_update_dto_t *deal_unit_line_update_dto_parseFromJSON(cJSON *deal
     }
     }
 
-    // deal_unit_line_update_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_update_dtoJSON, "businessProfileRecordId");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
     // deal_unit_line_update_dto->parent_billing_item_record_id
     cJSON *parent_billing_item_record_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_update_dtoJSON, "parentBillingItemRecordId");
     if (parent_billing_item_record_id) { 
@@ -2127,8 +2058,6 @@ deal_unit_line_update_dto_t *deal_unit_line_update_dto_parseFromJSON(cJSON *deal
         item_short_description && !cJSON_IsNull(item_short_description) ? strdup(item_short_description->valuestring) : NULL,
         item_primary_image_url && !cJSON_IsNull(item_primary_image_url) ? strdup(item_primary_image_url->valuestring) : NULL,
         shipping_policy_id && !cJSON_IsNull(shipping_policy_id) ? strdup(shipping_policy_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         quantity ? quantity->valuedouble : 0,
@@ -2214,7 +2143,6 @@ deal_unit_line_update_dto_t *deal_unit_line_update_dto_parseFromJSON(cJSON *deal
         shipping_location_id && !cJSON_IsNull(shipping_location_id) ? strdup(shipping_location_id->valuestring) : NULL,
         location_id && !cJSON_IsNull(location_id) ? strdup(location_id->valuestring) : NULL,
         quote_item_record_id && !cJSON_IsNull(quote_item_record_id) ? strdup(quote_item_record_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         parent_billing_item_record_id && !cJSON_IsNull(parent_billing_item_record_id) ? strdup(parent_billing_item_record_id->valuestring) : NULL
         );
 

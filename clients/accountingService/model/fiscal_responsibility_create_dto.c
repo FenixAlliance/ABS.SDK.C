@@ -10,9 +10,7 @@ fiscal_responsibility_create_dto_t *fiscal_responsibility_create_dto_create(
     char *timestamp,
     char *code,
     char *name,
-    char *fiscal_authority_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *fiscal_authority_id
     ) {
     fiscal_responsibility_create_dto_t *fiscal_responsibility_create_dto_local_var = malloc(sizeof(fiscal_responsibility_create_dto_t));
     if (!fiscal_responsibility_create_dto_local_var) {
@@ -23,8 +21,6 @@ fiscal_responsibility_create_dto_t *fiscal_responsibility_create_dto_create(
     fiscal_responsibility_create_dto_local_var->code = code;
     fiscal_responsibility_create_dto_local_var->name = name;
     fiscal_responsibility_create_dto_local_var->fiscal_authority_id = fiscal_authority_id;
-    fiscal_responsibility_create_dto_local_var->tenant_id = tenant_id;
-    fiscal_responsibility_create_dto_local_var->enrollment_id = enrollment_id;
 
     return fiscal_responsibility_create_dto_local_var;
 }
@@ -54,14 +50,6 @@ void fiscal_responsibility_create_dto_free(fiscal_responsibility_create_dto_t *f
     if (fiscal_responsibility_create_dto->fiscal_authority_id) {
         free(fiscal_responsibility_create_dto->fiscal_authority_id);
         fiscal_responsibility_create_dto->fiscal_authority_id = NULL;
-    }
-    if (fiscal_responsibility_create_dto->tenant_id) {
-        free(fiscal_responsibility_create_dto->tenant_id);
-        fiscal_responsibility_create_dto->tenant_id = NULL;
-    }
-    if (fiscal_responsibility_create_dto->enrollment_id) {
-        free(fiscal_responsibility_create_dto->enrollment_id);
-        fiscal_responsibility_create_dto->enrollment_id = NULL;
     }
     free(fiscal_responsibility_create_dto);
 }
@@ -104,22 +92,6 @@ cJSON *fiscal_responsibility_create_dto_convertToJSON(fiscal_responsibility_crea
     // fiscal_responsibility_create_dto->fiscal_authority_id
     if(fiscal_responsibility_create_dto->fiscal_authority_id) {
     if(cJSON_AddStringToObject(item, "fiscalAuthorityId", fiscal_responsibility_create_dto->fiscal_authority_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // fiscal_responsibility_create_dto->tenant_id
-    if(fiscal_responsibility_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", fiscal_responsibility_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // fiscal_responsibility_create_dto->enrollment_id
-    if(fiscal_responsibility_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", fiscal_responsibility_create_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -181,33 +153,13 @@ fiscal_responsibility_create_dto_t *fiscal_responsibility_create_dto_parseFromJS
     }
     }
 
-    // fiscal_responsibility_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(fiscal_responsibility_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // fiscal_responsibility_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(fiscal_responsibility_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     fiscal_responsibility_create_dto_local_var = fiscal_responsibility_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        fiscal_authority_id && !cJSON_IsNull(fiscal_authority_id) ? strdup(fiscal_authority_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        fiscal_authority_id && !cJSON_IsNull(fiscal_authority_id) ? strdup(fiscal_authority_id->valuestring) : NULL
         );
 
     return fiscal_responsibility_create_dto_local_var;

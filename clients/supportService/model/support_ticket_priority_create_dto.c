@@ -6,18 +6,20 @@
 
 
 support_ticket_priority_create_dto_t *support_ticket_priority_create_dto_create(
+    char *id,
+    char *timestamp,
     char *title,
     char *description,
-    char *business_id,
     char *support_entitlement_id
     ) {
     support_ticket_priority_create_dto_t *support_ticket_priority_create_dto_local_var = malloc(sizeof(support_ticket_priority_create_dto_t));
     if (!support_ticket_priority_create_dto_local_var) {
         return NULL;
     }
+    support_ticket_priority_create_dto_local_var->id = id;
+    support_ticket_priority_create_dto_local_var->timestamp = timestamp;
     support_ticket_priority_create_dto_local_var->title = title;
     support_ticket_priority_create_dto_local_var->description = description;
-    support_ticket_priority_create_dto_local_var->business_id = business_id;
     support_ticket_priority_create_dto_local_var->support_entitlement_id = support_entitlement_id;
 
     return support_ticket_priority_create_dto_local_var;
@@ -29,6 +31,14 @@ void support_ticket_priority_create_dto_free(support_ticket_priority_create_dto_
         return ;
     }
     listEntry_t *listEntry;
+    if (support_ticket_priority_create_dto->id) {
+        free(support_ticket_priority_create_dto->id);
+        support_ticket_priority_create_dto->id = NULL;
+    }
+    if (support_ticket_priority_create_dto->timestamp) {
+        free(support_ticket_priority_create_dto->timestamp);
+        support_ticket_priority_create_dto->timestamp = NULL;
+    }
     if (support_ticket_priority_create_dto->title) {
         free(support_ticket_priority_create_dto->title);
         support_ticket_priority_create_dto->title = NULL;
@@ -36,10 +46,6 @@ void support_ticket_priority_create_dto_free(support_ticket_priority_create_dto_
     if (support_ticket_priority_create_dto->description) {
         free(support_ticket_priority_create_dto->description);
         support_ticket_priority_create_dto->description = NULL;
-    }
-    if (support_ticket_priority_create_dto->business_id) {
-        free(support_ticket_priority_create_dto->business_id);
-        support_ticket_priority_create_dto->business_id = NULL;
     }
     if (support_ticket_priority_create_dto->support_entitlement_id) {
         free(support_ticket_priority_create_dto->support_entitlement_id);
@@ -50,6 +56,22 @@ void support_ticket_priority_create_dto_free(support_ticket_priority_create_dto_
 
 cJSON *support_ticket_priority_create_dto_convertToJSON(support_ticket_priority_create_dto_t *support_ticket_priority_create_dto) {
     cJSON *item = cJSON_CreateObject();
+
+    // support_ticket_priority_create_dto->id
+    if(support_ticket_priority_create_dto->id) {
+    if(cJSON_AddStringToObject(item, "id", support_ticket_priority_create_dto->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // support_ticket_priority_create_dto->timestamp
+    if(support_ticket_priority_create_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", support_ticket_priority_create_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
 
     // support_ticket_priority_create_dto->title
     if(support_ticket_priority_create_dto->title) {
@@ -62,14 +84,6 @@ cJSON *support_ticket_priority_create_dto_convertToJSON(support_ticket_priority_
     // support_ticket_priority_create_dto->description
     if(support_ticket_priority_create_dto->description) {
     if(cJSON_AddStringToObject(item, "description", support_ticket_priority_create_dto->description) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // support_ticket_priority_create_dto->business_id
-    if(support_ticket_priority_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", support_ticket_priority_create_dto->business_id) == NULL) {
     goto fail; //String
     }
     }
@@ -94,6 +108,24 @@ support_ticket_priority_create_dto_t *support_ticket_priority_create_dto_parseFr
 
     support_ticket_priority_create_dto_t *support_ticket_priority_create_dto_local_var = NULL;
 
+    // support_ticket_priority_create_dto->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_create_dtoJSON, "id");
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // support_ticket_priority_create_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_create_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
+
     // support_ticket_priority_create_dto->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_create_dtoJSON, "title");
     if (title) { 
@@ -112,15 +144,6 @@ support_ticket_priority_create_dto_t *support_ticket_priority_create_dto_parseFr
     }
     }
 
-    // support_ticket_priority_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
     // support_ticket_priority_create_dto->support_entitlement_id
     cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_create_dtoJSON, "supportEntitlementID");
     if (support_entitlement_id) { 
@@ -132,9 +155,10 @@ support_ticket_priority_create_dto_t *support_ticket_priority_create_dto_parseFr
 
 
     support_ticket_priority_create_dto_local_var = support_ticket_priority_create_dto_create (
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
         support_entitlement_id && !cJSON_IsNull(support_entitlement_id) ? strdup(support_entitlement_id->valuestring) : NULL
         );
 

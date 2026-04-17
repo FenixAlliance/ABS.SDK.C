@@ -24,6 +24,7 @@ typedef struct fiscal_year_update_dto_t {
     int closed; //boolean
     char *end_date; //date time
     char *start_date; //date time
+    char *fiscal_authority_id; // string
 
 } fiscal_year_update_dto_t;
 
@@ -32,7 +33,8 @@ fiscal_year_update_dto_t *fiscal_year_update_dto_create(
     char *description,
     int closed,
     char *end_date,
-    char *start_date
+    char *start_date,
+    char *fiscal_authority_id
 );
 
 void fiscal_year_update_dto_free(fiscal_year_update_dto_t *fiscal_year_update_dto);

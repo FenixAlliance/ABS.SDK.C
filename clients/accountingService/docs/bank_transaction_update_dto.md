@@ -14,8 +14,6 @@ Name | Type | Description | Notes
 **unit_id** | **char \*** |  | [optional] 
 **transaction_category_id** | **char \*** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
-**enrollment_id** | **char \*** |  | [optional] 
 **bank_profile_id** | **char \*** |  | [optional] 
 **bank_account_id** | **char \*** |  | [optional] 
 

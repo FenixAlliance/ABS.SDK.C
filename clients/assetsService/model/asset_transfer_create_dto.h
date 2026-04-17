@@ -19,6 +19,8 @@ typedef struct asset_transfer_create_dto_t asset_transfer_create_dto_t;
 
 
 typedef struct asset_transfer_create_dto_t {
+    char *id; // string
+    char *timestamp; //date time
     char *asset_id; // string
     int is_root_transfer; //boolean
     char *serial_list; // string
@@ -35,6 +37,8 @@ typedef struct asset_transfer_create_dto_t {
 } asset_transfer_create_dto_t;
 
 asset_transfer_create_dto_t *asset_transfer_create_dto_create(
+    char *id,
+    char *timestamp,
     char *asset_id,
     int is_root_transfer,
     char *serial_list,

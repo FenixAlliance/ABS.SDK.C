@@ -21,16 +21,12 @@ typedef struct discount_list_update_dto_t discount_list_update_dto_t;
 typedef struct discount_list_update_dto_t {
     char *name; // string
     char *currency_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } discount_list_update_dto_t;
 
 discount_list_update_dto_t *discount_list_update_dto_create(
     char *name,
-    char *currency_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *currency_id
 );
 
 void discount_list_update_dto_free(discount_list_update_dto_t *discount_list_update_dto);

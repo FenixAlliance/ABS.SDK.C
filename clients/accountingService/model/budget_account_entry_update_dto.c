@@ -23,8 +23,6 @@ accountingservice_budget_account_entry_update_dto_ACCOUNTINGENTRYTYPE_e budget_a
 }
 
 budget_account_entry_update_dto_t *budget_account_entry_update_dto_create(
-    char *tenant_id,
-    char *enrollment_id,
     char *description,
     double amount,
     char *date,
@@ -39,8 +37,6 @@ budget_account_entry_update_dto_t *budget_account_entry_update_dto_create(
     if (!budget_account_entry_update_dto_local_var) {
         return NULL;
     }
-    budget_account_entry_update_dto_local_var->tenant_id = tenant_id;
-    budget_account_entry_update_dto_local_var->enrollment_id = enrollment_id;
     budget_account_entry_update_dto_local_var->description = description;
     budget_account_entry_update_dto_local_var->amount = amount;
     budget_account_entry_update_dto_local_var->date = date;
@@ -60,14 +56,6 @@ void budget_account_entry_update_dto_free(budget_account_entry_update_dto_t *bud
         return ;
     }
     listEntry_t *listEntry;
-    if (budget_account_entry_update_dto->tenant_id) {
-        free(budget_account_entry_update_dto->tenant_id);
-        budget_account_entry_update_dto->tenant_id = NULL;
-    }
-    if (budget_account_entry_update_dto->enrollment_id) {
-        free(budget_account_entry_update_dto->enrollment_id);
-        budget_account_entry_update_dto->enrollment_id = NULL;
-    }
     if (budget_account_entry_update_dto->description) {
         free(budget_account_entry_update_dto->description);
         budget_account_entry_update_dto->description = NULL;
@@ -101,22 +89,6 @@ void budget_account_entry_update_dto_free(budget_account_entry_update_dto_t *bud
 
 cJSON *budget_account_entry_update_dto_convertToJSON(budget_account_entry_update_dto_t *budget_account_entry_update_dto) {
     cJSON *item = cJSON_CreateObject();
-
-    // budget_account_entry_update_dto->tenant_id
-    if(budget_account_entry_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", budget_account_entry_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // budget_account_entry_update_dto->enrollment_id
-    if(budget_account_entry_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", budget_account_entry_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
 
     // budget_account_entry_update_dto->description
     if(budget_account_entry_update_dto->description) {
@@ -201,24 +173,6 @@ fail:
 budget_account_entry_update_dto_t *budget_account_entry_update_dto_parseFromJSON(cJSON *budget_account_entry_update_dtoJSON){
 
     budget_account_entry_update_dto_t *budget_account_entry_update_dto_local_var = NULL;
-
-    // budget_account_entry_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(budget_account_entry_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // budget_account_entry_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(budget_account_entry_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
 
     // budget_account_entry_update_dto->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(budget_account_entry_update_dtoJSON, "description");
@@ -305,8 +259,6 @@ budget_account_entry_update_dto_t *budget_account_entry_update_dto_parseFromJSON
 
 
     budget_account_entry_update_dto_local_var = budget_account_entry_update_dto_create (
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         amount ? amount->valuedouble : 0,
         date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,

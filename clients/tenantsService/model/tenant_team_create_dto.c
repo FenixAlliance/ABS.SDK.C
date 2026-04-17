@@ -8,8 +8,6 @@
 tenant_team_create_dto_t *tenant_team_create_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
-    char *business_profile_record_id,
     char *name,
     char *description,
     char *avatar_url,
@@ -23,8 +21,6 @@ tenant_team_create_dto_t *tenant_team_create_dto_create(
     }
     tenant_team_create_dto_local_var->id = id;
     tenant_team_create_dto_local_var->timestamp = timestamp;
-    tenant_team_create_dto_local_var->business_id = business_id;
-    tenant_team_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     tenant_team_create_dto_local_var->name = name;
     tenant_team_create_dto_local_var->description = description;
     tenant_team_create_dto_local_var->avatar_url = avatar_url;
@@ -48,14 +44,6 @@ void tenant_team_create_dto_free(tenant_team_create_dto_t *tenant_team_create_dt
     if (tenant_team_create_dto->timestamp) {
         free(tenant_team_create_dto->timestamp);
         tenant_team_create_dto->timestamp = NULL;
-    }
-    if (tenant_team_create_dto->business_id) {
-        free(tenant_team_create_dto->business_id);
-        tenant_team_create_dto->business_id = NULL;
-    }
-    if (tenant_team_create_dto->business_profile_record_id) {
-        free(tenant_team_create_dto->business_profile_record_id);
-        tenant_team_create_dto->business_profile_record_id = NULL;
     }
     if (tenant_team_create_dto->name) {
         free(tenant_team_create_dto->name);
@@ -95,23 +83,6 @@ cJSON *tenant_team_create_dto_convertToJSON(tenant_team_create_dto_t *tenant_tea
     if(tenant_team_create_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", tenant_team_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // tenant_team_create_dto->business_id
-    if (!tenant_team_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", tenant_team_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // tenant_team_create_dto->business_profile_record_id
-    if(tenant_team_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", tenant_team_create_dto->business_profile_record_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -193,27 +164,6 @@ tenant_team_create_dto_t *tenant_team_create_dto_parseFromJSON(cJSON *tenant_tea
     }
     }
 
-    // tenant_team_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(tenant_team_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
-    // tenant_team_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(tenant_team_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
     // tenant_team_create_dto->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(tenant_team_create_dtoJSON, "name");
     if (name) { 
@@ -272,8 +222,6 @@ tenant_team_create_dto_t *tenant_team_create_dto_parseFromJSON(cJSON *tenant_tea
     tenant_team_create_dto_local_var = tenant_team_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        strdup(business_id->valuestring),
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,

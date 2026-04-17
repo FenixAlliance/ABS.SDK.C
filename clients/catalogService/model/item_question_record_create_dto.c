@@ -11,8 +11,7 @@ item_question_record_create_dto_t *item_question_record_create_dto_create(
     char *title,
     int needs_revision,
     char *question,
-    char *social_profile_id,
-    char *business_id
+    char *social_profile_id
     ) {
     item_question_record_create_dto_t *item_question_record_create_dto_local_var = malloc(sizeof(item_question_record_create_dto_t));
     if (!item_question_record_create_dto_local_var) {
@@ -24,7 +23,6 @@ item_question_record_create_dto_t *item_question_record_create_dto_create(
     item_question_record_create_dto_local_var->needs_revision = needs_revision;
     item_question_record_create_dto_local_var->question = question;
     item_question_record_create_dto_local_var->social_profile_id = social_profile_id;
-    item_question_record_create_dto_local_var->business_id = business_id;
 
     return item_question_record_create_dto_local_var;
 }
@@ -54,10 +52,6 @@ void item_question_record_create_dto_free(item_question_record_create_dto_t *ite
     if (item_question_record_create_dto->social_profile_id) {
         free(item_question_record_create_dto->social_profile_id);
         item_question_record_create_dto->social_profile_id = NULL;
-    }
-    if (item_question_record_create_dto->business_id) {
-        free(item_question_record_create_dto->business_id);
-        item_question_record_create_dto->business_id = NULL;
     }
     free(item_question_record_create_dto);
 }
@@ -113,15 +107,6 @@ cJSON *item_question_record_create_dto_convertToJSON(item_question_record_create
     if(cJSON_AddStringToObject(item, "socialProfileID", item_question_record_create_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
-    }
-
-
-    // item_question_record_create_dto->business_id
-    if (!item_question_record_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", item_question_record_create_dto->business_id) == NULL) {
-    goto fail; //String
     }
 
     return item;
@@ -199,18 +184,6 @@ item_question_record_create_dto_t *item_question_record_create_dto_parseFromJSON
     }
     }
 
-    // item_question_record_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_question_record_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
 
     item_question_record_create_dto_local_var = item_question_record_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -218,8 +191,7 @@ item_question_record_create_dto_t *item_question_record_create_dto_parseFromJSON
         strdup(title->valuestring),
         needs_revision->valueint,
         strdup(question->valuestring),
-        social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL,
-        strdup(business_id->valuestring)
+        social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL
         );
 
     return item_question_record_create_dto_local_var;

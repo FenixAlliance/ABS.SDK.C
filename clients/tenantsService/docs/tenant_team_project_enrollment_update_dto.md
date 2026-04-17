@@ -3,8 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**business_id** | **char \*** |  | [optional] 
-**business_profile_record_id** | **char \*** |  | [optional] 
 **business_team_id** | **char \*** |  | [optional] 
 **project_id** | **char \*** |  | [optional] 
 

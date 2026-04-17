@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **title** | **char \*** |  | 
 **description** | **char \*** |  | [optional] 
 **course_id** | **char \*** |  | 
-**business_id** | **char \*** |  | 
 **course_unit_id** | **char \*** |  | [optional] 
 **release_date_time** | **char \*** |  | [optional] 
 

@@ -38,9 +38,7 @@ typedef struct bank_guarantee_create_dto_t {
     char *start_date; //date time
     char *end_date; //date time
     int validity_in_days; //numeric
-    char *tenant_id; // string
     accountingservice_bank_guarantee_create_dto_BANKGUARANTEETYPE_e bank_guarantee_type; //enum
-    char *enrollment_id; // string
     char *contact_id; // string
     char *project_id; // string
     char *order_id; // string
@@ -62,9 +60,7 @@ bank_guarantee_create_dto_t *bank_guarantee_create_dto_create(
     char *start_date,
     char *end_date,
     int validity_in_days,
-    char *tenant_id,
     accountingservice_bank_guarantee_create_dto_BANKGUARANTEETYPE_e bank_guarantee_type,
-    char *enrollment_id,
     char *contact_id,
     char *project_id,
     char *order_id,

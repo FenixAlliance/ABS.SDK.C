@@ -1531,7 +1531,7 @@ end:
 // Updates the specified loan application.
 //
 empty_envelope_t*
-LoansAPI_updateLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, loan_application_update_dto_t *loan_application_update_dto, char *api_version, char *x_api_version)
+LoansAPI_updateLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, object_t *body, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1602,12 +1602,12 @@ LoansAPI_updateLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_loan_application_update_dto = NULL;
-    if (loan_application_update_dto != NULL)
+    cJSON *localVarSingleItemJSON_body = NULL;
+    if (body != NULL)
     {
         //string
-        localVarSingleItemJSON_loan_application_update_dto = loan_application_update_dto_convertToJSON(loan_application_update_dto);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_loan_application_update_dto);
+        localVarSingleItemJSON_body = object_convertToJSON(body);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_body);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1665,9 +1665,9 @@ LoansAPI_updateLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarSingleItemJSON_loan_application_update_dto) {
-        cJSON_Delete(localVarSingleItemJSON_loan_application_update_dto);
-        localVarSingleItemJSON_loan_application_update_dto = NULL;
+    if (localVarSingleItemJSON_body) {
+        cJSON_Delete(localVarSingleItemJSON_body);
+        localVarSingleItemJSON_body = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

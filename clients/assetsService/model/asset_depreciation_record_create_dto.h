@@ -19,6 +19,8 @@ typedef struct asset_depreciation_record_create_dto_t asset_depreciation_record_
 
 
 typedef struct asset_depreciation_record_create_dto_t {
+    char *id; // string
+    char *timestamp; //date time
     char *asset_id; // string
     char *asset_depreciation_policy_id; // string
     double depreciation_amount; //numeric
@@ -31,6 +33,8 @@ typedef struct asset_depreciation_record_create_dto_t {
 } asset_depreciation_record_create_dto_t;
 
 asset_depreciation_record_create_dto_t *asset_depreciation_record_create_dto_create(
+    char *id,
+    char *timestamp,
     char *asset_id,
     char *asset_depreciation_policy_id,
     double depreciation_amount,

@@ -37,8 +37,6 @@ assetsservice_asset_create_dto_ASSETOWNER_e asset_create_dto_asset_owner_FromStr
 typedef struct asset_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *business_id; // string
-    char *business_profile_record_id; // string
     char *name; // string
     char *description; // string
     assetsservice_asset_create_dto_ASSETCLASS_e asset_class; //enum
@@ -63,8 +61,6 @@ typedef struct asset_create_dto_t {
 asset_create_dto_t *asset_create_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
-    char *business_profile_record_id,
     char *name,
     char *description,
     assetsservice_asset_create_dto_ASSETCLASS_e asset_class,

@@ -48,8 +48,6 @@ order_line_create_dto_t *order_line_create_dto_create(
     char *item_short_description,
     char *item_primary_image_url,
     char *shipping_policy_id,
-    char *tenant_id,
-    char *enrollment_id,
     char *currency_id,
     char *description,
     double quantity,
@@ -135,7 +133,6 @@ order_line_create_dto_t *order_line_create_dto_create(
     char *shipping_location_id,
     char *location_id,
     char *quote_item_record_id,
-    char *business_profile_record_id,
     char *parent_billing_item_record_id,
     char *order_id
     ) {
@@ -151,8 +148,6 @@ order_line_create_dto_t *order_line_create_dto_create(
     order_line_create_dto_local_var->item_short_description = item_short_description;
     order_line_create_dto_local_var->item_primary_image_url = item_primary_image_url;
     order_line_create_dto_local_var->shipping_policy_id = shipping_policy_id;
-    order_line_create_dto_local_var->tenant_id = tenant_id;
-    order_line_create_dto_local_var->enrollment_id = enrollment_id;
     order_line_create_dto_local_var->currency_id = currency_id;
     order_line_create_dto_local_var->description = description;
     order_line_create_dto_local_var->quantity = quantity;
@@ -238,7 +233,6 @@ order_line_create_dto_t *order_line_create_dto_create(
     order_line_create_dto_local_var->shipping_location_id = shipping_location_id;
     order_line_create_dto_local_var->location_id = location_id;
     order_line_create_dto_local_var->quote_item_record_id = quote_item_record_id;
-    order_line_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     order_line_create_dto_local_var->parent_billing_item_record_id = parent_billing_item_record_id;
     order_line_create_dto_local_var->order_id = order_id;
 
@@ -278,14 +272,6 @@ void order_line_create_dto_free(order_line_create_dto_t *order_line_create_dto) 
     if (order_line_create_dto->shipping_policy_id) {
         free(order_line_create_dto->shipping_policy_id);
         order_line_create_dto->shipping_policy_id = NULL;
-    }
-    if (order_line_create_dto->tenant_id) {
-        free(order_line_create_dto->tenant_id);
-        order_line_create_dto->tenant_id = NULL;
-    }
-    if (order_line_create_dto->enrollment_id) {
-        free(order_line_create_dto->enrollment_id);
-        order_line_create_dto->enrollment_id = NULL;
     }
     if (order_line_create_dto->currency_id) {
         free(order_line_create_dto->currency_id);
@@ -487,10 +473,6 @@ void order_line_create_dto_free(order_line_create_dto_t *order_line_create_dto) 
         free(order_line_create_dto->quote_item_record_id);
         order_line_create_dto->quote_item_record_id = NULL;
     }
-    if (order_line_create_dto->business_profile_record_id) {
-        free(order_line_create_dto->business_profile_record_id);
-        order_line_create_dto->business_profile_record_id = NULL;
-    }
     if (order_line_create_dto->parent_billing_item_record_id) {
         free(order_line_create_dto->parent_billing_item_record_id);
         order_line_create_dto->parent_billing_item_record_id = NULL;
@@ -564,22 +546,6 @@ cJSON *order_line_create_dto_convertToJSON(order_line_create_dto_t *order_line_c
     // order_line_create_dto->shipping_policy_id
     if(order_line_create_dto->shipping_policy_id) {
     if(cJSON_AddStringToObject(item, "shippingPolicyId", order_line_create_dto->shipping_policy_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // order_line_create_dto->tenant_id
-    if(order_line_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", order_line_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // order_line_create_dto->enrollment_id
-    if(order_line_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", order_line_create_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -1267,14 +1233,6 @@ cJSON *order_line_create_dto_convertToJSON(order_line_create_dto_t *order_line_c
     }
 
 
-    // order_line_create_dto->business_profile_record_id
-    if(order_line_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordId", order_line_create_dto->business_profile_record_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // order_line_create_dto->parent_billing_item_record_id
     if(order_line_create_dto->parent_billing_item_record_id) {
     if(cJSON_AddStringToObject(item, "parentBillingItemRecordId", order_line_create_dto->parent_billing_item_record_id) == NULL) {
@@ -1369,24 +1327,6 @@ order_line_create_dto_t *order_line_create_dto_parseFromJSON(cJSON *order_line_c
     cJSON *shipping_policy_id = cJSON_GetObjectItemCaseSensitive(order_line_create_dtoJSON, "shippingPolicyId");
     if (shipping_policy_id) { 
     if(!cJSON_IsString(shipping_policy_id) && !cJSON_IsNull(shipping_policy_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // order_line_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(order_line_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // order_line_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(order_line_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -2161,15 +2101,6 @@ order_line_create_dto_t *order_line_create_dto_parseFromJSON(cJSON *order_line_c
     }
     }
 
-    // order_line_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(order_line_create_dtoJSON, "businessProfileRecordId");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
     // order_line_create_dto->parent_billing_item_record_id
     cJSON *parent_billing_item_record_id = cJSON_GetObjectItemCaseSensitive(order_line_create_dtoJSON, "parentBillingItemRecordId");
     if (parent_billing_item_record_id) { 
@@ -2198,8 +2129,6 @@ order_line_create_dto_t *order_line_create_dto_parseFromJSON(cJSON *order_line_c
         item_short_description && !cJSON_IsNull(item_short_description) ? strdup(item_short_description->valuestring) : NULL,
         item_primary_image_url && !cJSON_IsNull(item_primary_image_url) ? strdup(item_primary_image_url->valuestring) : NULL,
         shipping_policy_id && !cJSON_IsNull(shipping_policy_id) ? strdup(shipping_policy_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         quantity ? quantity->valuedouble : 0,
@@ -2285,7 +2214,6 @@ order_line_create_dto_t *order_line_create_dto_parseFromJSON(cJSON *order_line_c
         shipping_location_id && !cJSON_IsNull(shipping_location_id) ? strdup(shipping_location_id->valuestring) : NULL,
         location_id && !cJSON_IsNull(location_id) ? strdup(location_id->valuestring) : NULL,
         quote_item_record_id && !cJSON_IsNull(quote_item_record_id) ? strdup(quote_item_record_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         parent_billing_item_record_id && !cJSON_IsNull(parent_billing_item_record_id) ? strdup(parent_billing_item_record_id->valuestring) : NULL,
         order_id && !cJSON_IsNull(order_id) ? strdup(order_id->valuestring) : NULL
         );

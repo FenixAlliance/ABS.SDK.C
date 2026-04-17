@@ -21,7 +21,6 @@ typedef struct tenant_enrollment_create_dto_t tenant_enrollment_create_dto_t;
 typedef struct tenant_enrollment_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *tenant_id; // string
     char *user_id; // string
 
 } tenant_enrollment_create_dto_t;
@@ -29,7 +28,6 @@ typedef struct tenant_enrollment_create_dto_t {
 tenant_enrollment_create_dto_t *tenant_enrollment_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
     char *user_id
 );
 

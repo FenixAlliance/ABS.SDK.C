@@ -7,11 +7,9 @@ Name | Type | Description | Notes
 **timestamp** | **char \*** |  | [optional] 
 **item_id** | **char \*** |  | 
 **unit_id** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
 **price_list_id** | **char \*** |  | [optional] 
 **unit_group_id** | **char \*** |  | [optional] 
-**enrollment_id** | **char \*** |  | [optional] 
 **discount_list_id** | **char \*** |  | [optional] 
 **rounding_policy_id** | **char \*** |  | [optional] 
 **price** | **double** |  | [optional] 

@@ -41,8 +41,6 @@ typedef struct quote_line_upsert_dto_t {
     char *item_short_description; // string
     char *item_primary_image_url; // string
     char *shipping_policy_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *currency_id; // string
     char *description; // string
     double quantity; //numeric
@@ -128,7 +126,6 @@ typedef struct quote_line_upsert_dto_t {
     char *shipping_location_id; // string
     char *location_id; // string
     char *quote_item_record_id; // string
-    char *business_profile_record_id; // string
     char *parent_billing_item_record_id; // string
     char *id; // string
     char *quote_id; // string
@@ -142,8 +139,6 @@ quote_line_upsert_dto_t *quote_line_upsert_dto_create(
     char *item_short_description,
     char *item_primary_image_url,
     char *shipping_policy_id,
-    char *tenant_id,
-    char *enrollment_id,
     char *currency_id,
     char *description,
     double quantity,
@@ -229,7 +224,6 @@ quote_line_upsert_dto_t *quote_line_upsert_dto_create(
     char *shipping_location_id,
     char *location_id,
     char *quote_item_record_id,
-    char *business_profile_record_id,
     char *parent_billing_item_record_id,
     char *id,
     char *quote_id

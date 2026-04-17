@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **name** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
 **disabled** | **int** |  | [optional] 
-**business_profile_record_id** | **char \*** |  | [optional] 
 **organization_profile_id** | **char \*** |  | [optional] 
 **parent_department_id** | **char \*** |  | [optional] 
 

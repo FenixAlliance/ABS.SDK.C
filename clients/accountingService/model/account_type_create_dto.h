@@ -23,8 +23,6 @@ typedef struct account_type_create_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *description; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } account_type_create_dto_t;
 
@@ -32,9 +30,7 @@ account_type_create_dto_t *account_type_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *description,
-    char *tenant_id,
-    char *enrollment_id
+    char *description
 );
 
 void account_type_create_dto_free(account_type_create_dto_t *account_type_create_dto);

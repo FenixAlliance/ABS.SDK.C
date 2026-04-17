@@ -24,8 +24,6 @@ typedef struct newsletter_create_dto_t {
     char *name; // string
     char *code; // string
     char *title; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } newsletter_create_dto_t;
 
@@ -34,9 +32,7 @@ newsletter_create_dto_t *newsletter_create_dto_create(
     char *timestamp,
     char *name,
     char *code,
-    char *title,
-    char *tenant_id,
-    char *enrollment_id
+    char *title
 );
 
 void newsletter_create_dto_free(newsletter_create_dto_t *newsletter_create_dto);

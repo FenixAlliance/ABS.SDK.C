@@ -32,9 +32,7 @@ bank_guarantee_update_dto_t *bank_guarantee_update_dto_create(
     char *start_date,
     char *end_date,
     int validity_in_days,
-    char *tenant_id,
     accountingservice_bank_guarantee_update_dto_BANKGUARANTEETYPE_e bank_guarantee_type,
-    char *enrollment_id,
     char *contact_id,
     char *project_id,
     char *order_id,
@@ -55,9 +53,7 @@ bank_guarantee_update_dto_t *bank_guarantee_update_dto_create(
     bank_guarantee_update_dto_local_var->start_date = start_date;
     bank_guarantee_update_dto_local_var->end_date = end_date;
     bank_guarantee_update_dto_local_var->validity_in_days = validity_in_days;
-    bank_guarantee_update_dto_local_var->tenant_id = tenant_id;
     bank_guarantee_update_dto_local_var->bank_guarantee_type = bank_guarantee_type;
-    bank_guarantee_update_dto_local_var->enrollment_id = enrollment_id;
     bank_guarantee_update_dto_local_var->contact_id = contact_id;
     bank_guarantee_update_dto_local_var->project_id = project_id;
     bank_guarantee_update_dto_local_var->order_id = order_id;
@@ -93,14 +89,6 @@ void bank_guarantee_update_dto_free(bank_guarantee_update_dto_t *bank_guarantee_
     if (bank_guarantee_update_dto->end_date) {
         free(bank_guarantee_update_dto->end_date);
         bank_guarantee_update_dto->end_date = NULL;
-    }
-    if (bank_guarantee_update_dto->tenant_id) {
-        free(bank_guarantee_update_dto->tenant_id);
-        bank_guarantee_update_dto->tenant_id = NULL;
-    }
-    if (bank_guarantee_update_dto->enrollment_id) {
-        free(bank_guarantee_update_dto->enrollment_id);
-        bank_guarantee_update_dto->enrollment_id = NULL;
     }
     if (bank_guarantee_update_dto->contact_id) {
         free(bank_guarantee_update_dto->contact_id);
@@ -204,27 +192,11 @@ cJSON *bank_guarantee_update_dto_convertToJSON(bank_guarantee_update_dto_t *bank
     }
 
 
-    // bank_guarantee_update_dto->tenant_id
-    if(bank_guarantee_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", bank_guarantee_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // bank_guarantee_update_dto->bank_guarantee_type
     if(bank_guarantee_update_dto->bank_guarantee_type != accountingservice_bank_guarantee_update_dto_BANKGUARANTEETYPE_NULL) {
     if(cJSON_AddStringToObject(item, "bankGuaranteeType", bank_guarantee_typebank_guarantee_update_dto_ToString(bank_guarantee_update_dto->bank_guarantee_type)) == NULL)
     {
     goto fail; //Enum
-    }
-    }
-
-
-    // bank_guarantee_update_dto->enrollment_id
-    if(bank_guarantee_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", bank_guarantee_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -369,15 +341,6 @@ bank_guarantee_update_dto_t *bank_guarantee_update_dto_parseFromJSON(cJSON *bank
     }
     }
 
-    // bank_guarantee_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(bank_guarantee_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // bank_guarantee_update_dto->bank_guarantee_type
     cJSON *bank_guarantee_type = cJSON_GetObjectItemCaseSensitive(bank_guarantee_update_dtoJSON, "bankGuaranteeType");
     accountingservice_bank_guarantee_update_dto_BANKGUARANTEETYPE_e bank_guarantee_typeVariable;
@@ -387,15 +350,6 @@ bank_guarantee_update_dto_t *bank_guarantee_update_dto_parseFromJSON(cJSON *bank
     goto end; //Enum
     }
     bank_guarantee_typeVariable = bank_guarantee_update_dto_bank_guarantee_type_FromString(bank_guarantee_type->valuestring);
-    }
-
-    // bank_guarantee_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(bank_guarantee_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
     }
 
     // bank_guarantee_update_dto->contact_id
@@ -463,9 +417,7 @@ bank_guarantee_update_dto_t *bank_guarantee_update_dto_parseFromJSON(cJSON *bank
         start_date && !cJSON_IsNull(start_date) ? strdup(start_date->valuestring) : NULL,
         end_date && !cJSON_IsNull(end_date) ? strdup(end_date->valuestring) : NULL,
         validity_in_days ? validity_in_days->valuedouble : 0,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         bank_guarantee_type ? bank_guarantee_typeVariable : accountingservice_bank_guarantee_update_dto_BANKGUARANTEETYPE_NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
         project_id && !cJSON_IsNull(project_id) ? strdup(project_id->valuestring) : NULL,
         order_id && !cJSON_IsNull(order_id) ? strdup(order_id->valuestring) : NULL,

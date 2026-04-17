@@ -26,7 +26,6 @@ typedef struct loan_update_dto_t {
     int is_compund_interest_rate; //boolean
     char *loan_type_id; // string
     char *currency_id; // string
-    char *enrollment_id; // string
 
 } loan_update_dto_t;
 
@@ -37,8 +36,7 @@ loan_update_dto_t *loan_update_dto_create(
     double interest_rate,
     int is_compund_interest_rate,
     char *loan_type_id,
-    char *currency_id,
-    char *enrollment_id
+    char *currency_id
 );
 
 void loan_update_dto_free(loan_update_dto_t *loan_update_dto);

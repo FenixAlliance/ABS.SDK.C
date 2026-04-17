@@ -12,8 +12,6 @@ commission_update_dto_t *commission_update_dto_create(
     double added_percent,
     double added_amount,
     double tax_comission,
-    char *tenant_id,
-    char *enrollment_id,
     char *salary_id,
     char *emisor_wallet_account_id,
     char *receiver_wallet_account_id,
@@ -30,8 +28,6 @@ commission_update_dto_t *commission_update_dto_create(
     commission_update_dto_local_var->added_percent = added_percent;
     commission_update_dto_local_var->added_amount = added_amount;
     commission_update_dto_local_var->tax_comission = tax_comission;
-    commission_update_dto_local_var->tenant_id = tenant_id;
-    commission_update_dto_local_var->enrollment_id = enrollment_id;
     commission_update_dto_local_var->salary_id = salary_id;
     commission_update_dto_local_var->emisor_wallet_account_id = emisor_wallet_account_id;
     commission_update_dto_local_var->receiver_wallet_account_id = receiver_wallet_account_id;
@@ -54,14 +50,6 @@ void commission_update_dto_free(commission_update_dto_t *commission_update_dto) 
     if (commission_update_dto->description) {
         free(commission_update_dto->description);
         commission_update_dto->description = NULL;
-    }
-    if (commission_update_dto->tenant_id) {
-        free(commission_update_dto->tenant_id);
-        commission_update_dto->tenant_id = NULL;
-    }
-    if (commission_update_dto->enrollment_id) {
-        free(commission_update_dto->enrollment_id);
-        commission_update_dto->enrollment_id = NULL;
     }
     if (commission_update_dto->salary_id) {
         free(commission_update_dto->salary_id);
@@ -133,22 +121,6 @@ cJSON *commission_update_dto_convertToJSON(commission_update_dto_t *commission_u
     if(commission_update_dto->tax_comission) {
     if(cJSON_AddNumberToObject(item, "taxComission", commission_update_dto->tax_comission) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // commission_update_dto->tenant_id
-    if(commission_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", commission_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // commission_update_dto->enrollment_id
-    if(commission_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", commission_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -258,24 +230,6 @@ commission_update_dto_t *commission_update_dto_parseFromJSON(cJSON *commission_u
     }
     }
 
-    // commission_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(commission_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // commission_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(commission_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // commission_update_dto->salary_id
     cJSON *salary_id = cJSON_GetObjectItemCaseSensitive(commission_update_dtoJSON, "salaryId");
     if (salary_id) { 
@@ -329,8 +283,6 @@ commission_update_dto_t *commission_update_dto_parseFromJSON(cJSON *commission_u
         added_percent ? added_percent->valuedouble : 0,
         added_amount ? added_amount->valuedouble : 0,
         tax_comission ? tax_comission->valuedouble : 0,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         salary_id && !cJSON_IsNull(salary_id) ? strdup(salary_id->valuestring) : NULL,
         emisor_wallet_account_id && !cJSON_IsNull(emisor_wallet_account_id) ? strdup(emisor_wallet_account_id->valuestring) : NULL,
         receiver_wallet_account_id && !cJSON_IsNull(receiver_wallet_account_id) ? strdup(receiver_wallet_account_id->valuestring) : NULL,

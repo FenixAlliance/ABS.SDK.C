@@ -21,8 +21,6 @@ typedef struct asset_category_create_dto_t asset_category_create_dto_t;
 typedef struct asset_category_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *business_id; // string
-    char *business_profile_record_id; // string
     char *name; // string
     char *description; // string
 
@@ -31,8 +29,6 @@ typedef struct asset_category_create_dto_t {
 asset_category_create_dto_t *asset_category_create_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
-    char *business_profile_record_id,
     char *name,
     char *description
 );

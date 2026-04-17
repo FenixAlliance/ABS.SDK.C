@@ -23,7 +23,6 @@ typedef struct tenant_industry_create_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *parent_business_industry_id; // string
-    char *business_profile_record_id; // string
 
 } tenant_industry_create_dto_t;
 
@@ -31,8 +30,7 @@ tenant_industry_create_dto_t *tenant_industry_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *parent_business_industry_id,
-    char *business_profile_record_id
+    char *parent_business_industry_id
 );
 
 void tenant_industry_create_dto_free(tenant_industry_create_dto_t *tenant_industry_create_dto);

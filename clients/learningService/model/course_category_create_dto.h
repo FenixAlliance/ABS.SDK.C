@@ -25,7 +25,6 @@ typedef struct course_category_create_dto_t {
     char *description; // string
     char *image_url; // string
     int is_featured; //boolean
-    char *business_id; // string
 
 } course_category_create_dto_t;
 
@@ -35,8 +34,7 @@ course_category_create_dto_t *course_category_create_dto_create(
     char *title,
     char *description,
     char *image_url,
-    int is_featured,
-    char *business_id
+    int is_featured
 );
 
 void course_category_create_dto_free(course_category_create_dto_t *course_category_create_dto);

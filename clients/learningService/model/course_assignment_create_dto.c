@@ -13,7 +13,6 @@ course_assignment_create_dto_t *course_assignment_create_dto_create(
     char *instructions,
     double points,
     char *course_id,
-    char *business_id,
     char *course_unit_id,
     char *course_cohort_id,
     char *course_assignment_type_id,
@@ -32,7 +31,6 @@ course_assignment_create_dto_t *course_assignment_create_dto_create(
     course_assignment_create_dto_local_var->instructions = instructions;
     course_assignment_create_dto_local_var->points = points;
     course_assignment_create_dto_local_var->course_id = course_id;
-    course_assignment_create_dto_local_var->business_id = business_id;
     course_assignment_create_dto_local_var->course_unit_id = course_unit_id;
     course_assignment_create_dto_local_var->course_cohort_id = course_cohort_id;
     course_assignment_create_dto_local_var->course_assignment_type_id = course_assignment_type_id;
@@ -72,10 +70,6 @@ void course_assignment_create_dto_free(course_assignment_create_dto_t *course_as
     if (course_assignment_create_dto->course_id) {
         free(course_assignment_create_dto->course_id);
         course_assignment_create_dto->course_id = NULL;
-    }
-    if (course_assignment_create_dto->business_id) {
-        free(course_assignment_create_dto->business_id);
-        course_assignment_create_dto->business_id = NULL;
     }
     if (course_assignment_create_dto->course_unit_id) {
         free(course_assignment_create_dto->course_unit_id);
@@ -157,15 +151,6 @@ cJSON *course_assignment_create_dto_convertToJSON(course_assignment_create_dto_t
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "courseID", course_assignment_create_dto->course_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // course_assignment_create_dto->business_id
-    if (!course_assignment_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_assignment_create_dto->business_id) == NULL) {
     goto fail; //String
     }
 
@@ -298,18 +283,6 @@ course_assignment_create_dto_t *course_assignment_create_dto_parseFromJSON(cJSON
     goto end; //String
     }
 
-    // course_assignment_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_assignment_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
     // course_assignment_create_dto->course_unit_id
     cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_assignment_create_dtoJSON, "courseUnitID");
     if (course_unit_id) { 
@@ -373,7 +346,6 @@ course_assignment_create_dto_t *course_assignment_create_dto_parseFromJSON(cJSON
         instructions && !cJSON_IsNull(instructions) ? strdup(instructions->valuestring) : NULL,
         points ? points->valuedouble : 0,
         strdup(course_id->valuestring),
-        strdup(business_id->valuestring),
         course_unit_id && !cJSON_IsNull(course_unit_id) ? strdup(course_unit_id->valuestring) : NULL,
         course_cohort_id && !cJSON_IsNull(course_cohort_id) ? strdup(course_cohort_id->valuestring) : NULL,
         course_assignment_type_id && !cJSON_IsNull(course_assignment_type_id) ? strdup(course_assignment_type_id->valuestring) : NULL,

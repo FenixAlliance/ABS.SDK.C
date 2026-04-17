@@ -21,14 +21,12 @@ typedef struct tenant_industry_update_dto_t tenant_industry_update_dto_t;
 typedef struct tenant_industry_update_dto_t {
     char *name; // string
     char *parent_business_industry_id; // string
-    char *business_profile_record_id; // string
 
 } tenant_industry_update_dto_t;
 
 tenant_industry_update_dto_t *tenant_industry_update_dto_create(
     char *name,
-    char *parent_business_industry_id,
-    char *business_profile_record_id
+    char *parent_business_industry_id
 );
 
 void tenant_industry_update_dto_free(tenant_industry_update_dto_t *tenant_industry_update_dto);

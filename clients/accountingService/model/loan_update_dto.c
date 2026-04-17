@@ -12,8 +12,7 @@ loan_update_dto_t *loan_update_dto_create(
     double interest_rate,
     int is_compund_interest_rate,
     char *loan_type_id,
-    char *currency_id,
-    char *enrollment_id
+    char *currency_id
     ) {
     loan_update_dto_t *loan_update_dto_local_var = malloc(sizeof(loan_update_dto_t));
     if (!loan_update_dto_local_var) {
@@ -26,7 +25,6 @@ loan_update_dto_t *loan_update_dto_create(
     loan_update_dto_local_var->is_compund_interest_rate = is_compund_interest_rate;
     loan_update_dto_local_var->loan_type_id = loan_type_id;
     loan_update_dto_local_var->currency_id = currency_id;
-    loan_update_dto_local_var->enrollment_id = enrollment_id;
 
     return loan_update_dto_local_var;
 }
@@ -52,10 +50,6 @@ void loan_update_dto_free(loan_update_dto_t *loan_update_dto) {
     if (loan_update_dto->currency_id) {
         free(loan_update_dto->currency_id);
         loan_update_dto->currency_id = NULL;
-    }
-    if (loan_update_dto->enrollment_id) {
-        free(loan_update_dto->enrollment_id);
-        loan_update_dto->enrollment_id = NULL;
     }
     free(loan_update_dto);
 }
@@ -114,14 +108,6 @@ cJSON *loan_update_dto_convertToJSON(loan_update_dto_t *loan_update_dto) {
     // loan_update_dto->currency_id
     if(loan_update_dto->currency_id) {
     if(cJSON_AddStringToObject(item, "currencyId", loan_update_dto->currency_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // loan_update_dto->enrollment_id
-    if(loan_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", loan_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -201,15 +187,6 @@ loan_update_dto_t *loan_update_dto_parseFromJSON(cJSON *loan_update_dtoJSON){
     }
     }
 
-    // loan_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(loan_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     loan_update_dto_local_var = loan_update_dto_create (
         loan_timestamp && !cJSON_IsNull(loan_timestamp) ? strdup(loan_timestamp->valuestring) : NULL,
@@ -218,8 +195,7 @@ loan_update_dto_t *loan_update_dto_parseFromJSON(cJSON *loan_update_dtoJSON){
         interest_rate ? interest_rate->valuedouble : 0,
         is_compund_interest_rate ? is_compund_interest_rate->valueint : 0,
         loan_type_id && !cJSON_IsNull(loan_type_id) ? strdup(loan_type_id->valuestring) : NULL,
-        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL
         );
 
     return loan_update_dto_local_var;

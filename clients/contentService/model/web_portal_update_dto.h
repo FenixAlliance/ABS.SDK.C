@@ -26,7 +26,6 @@ typedef struct web_portal_update_dto_t {
     char *description; // string
     char *website_theme_id; // string
     char *business_domain_id; // string
-    char *business_profile_record_id; // string
     char *business_portal_application_id; // string
 
 } web_portal_update_dto_t;
@@ -39,7 +38,6 @@ web_portal_update_dto_t *web_portal_update_dto_create(
     char *description,
     char *website_theme_id,
     char *business_domain_id,
-    char *business_profile_record_id,
     char *business_portal_application_id
 );
 

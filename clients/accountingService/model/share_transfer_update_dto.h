@@ -24,8 +24,6 @@ typedef struct share_transfer_update_dto_t {
     char *new_share_holder_id; // string
     char *former_share_holder_id; // string
     char *share_transfer_reason_id; // string
-    char *enrollment_id; // string
-    char *tenant_id; // string
 
 } share_transfer_update_dto_t;
 
@@ -34,9 +32,7 @@ share_transfer_update_dto_t *share_transfer_update_dto_create(
     double value,
     char *new_share_holder_id,
     char *former_share_holder_id,
-    char *share_transfer_reason_id,
-    char *enrollment_id,
-    char *tenant_id
+    char *share_transfer_reason_id
 );
 
 void share_transfer_update_dto_free(share_transfer_update_dto_t *share_transfer_update_dto);

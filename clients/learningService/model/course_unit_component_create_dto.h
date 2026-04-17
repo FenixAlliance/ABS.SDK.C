@@ -26,7 +26,6 @@ typedef struct course_unit_component_create_dto_t {
     char *content; // string
     int order; //numeric
     char *course_id; // string
-    char *business_id; // string
     char *course_unit_id; // string
 
 } course_unit_component_create_dto_t;
@@ -39,7 +38,6 @@ course_unit_component_create_dto_t *course_unit_component_create_dto_create(
     char *content,
     int order,
     char *course_id,
-    char *business_id,
     char *course_unit_id
 );
 

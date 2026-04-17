@@ -6,8 +6,6 @@
 
 
 share_issuance_update_dto_t *share_issuance_update_dto_create(
-    char *tenant_id,
-    char *enrollment_id,
     int unit_price,
     int quantity,
     char *currency_id
@@ -16,8 +14,6 @@ share_issuance_update_dto_t *share_issuance_update_dto_create(
     if (!share_issuance_update_dto_local_var) {
         return NULL;
     }
-    share_issuance_update_dto_local_var->tenant_id = tenant_id;
-    share_issuance_update_dto_local_var->enrollment_id = enrollment_id;
     share_issuance_update_dto_local_var->unit_price = unit_price;
     share_issuance_update_dto_local_var->quantity = quantity;
     share_issuance_update_dto_local_var->currency_id = currency_id;
@@ -31,14 +27,6 @@ void share_issuance_update_dto_free(share_issuance_update_dto_t *share_issuance_
         return ;
     }
     listEntry_t *listEntry;
-    if (share_issuance_update_dto->tenant_id) {
-        free(share_issuance_update_dto->tenant_id);
-        share_issuance_update_dto->tenant_id = NULL;
-    }
-    if (share_issuance_update_dto->enrollment_id) {
-        free(share_issuance_update_dto->enrollment_id);
-        share_issuance_update_dto->enrollment_id = NULL;
-    }
     if (share_issuance_update_dto->currency_id) {
         free(share_issuance_update_dto->currency_id);
         share_issuance_update_dto->currency_id = NULL;
@@ -48,22 +36,6 @@ void share_issuance_update_dto_free(share_issuance_update_dto_t *share_issuance_
 
 cJSON *share_issuance_update_dto_convertToJSON(share_issuance_update_dto_t *share_issuance_update_dto) {
     cJSON *item = cJSON_CreateObject();
-
-    // share_issuance_update_dto->tenant_id
-    if(share_issuance_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", share_issuance_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // share_issuance_update_dto->enrollment_id
-    if(share_issuance_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", share_issuance_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
 
     // share_issuance_update_dto->unit_price
     if(share_issuance_update_dto->unit_price) {
@@ -100,24 +72,6 @@ share_issuance_update_dto_t *share_issuance_update_dto_parseFromJSON(cJSON *shar
 
     share_issuance_update_dto_t *share_issuance_update_dto_local_var = NULL;
 
-    // share_issuance_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(share_issuance_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // share_issuance_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(share_issuance_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // share_issuance_update_dto->unit_price
     cJSON *unit_price = cJSON_GetObjectItemCaseSensitive(share_issuance_update_dtoJSON, "unitPrice");
     if (unit_price) { 
@@ -147,8 +101,6 @@ share_issuance_update_dto_t *share_issuance_update_dto_parseFromJSON(cJSON *shar
 
 
     share_issuance_update_dto_local_var = share_issuance_update_dto_create (
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         unit_price ? unit_price->valuedouble : 0,
         quantity ? quantity->valuedouble : 0,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL

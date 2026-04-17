@@ -14,8 +14,7 @@ course_handout_create_dto_t *course_handout_create_dto_create(
     char *url,
     char *release_date_time,
     char *course_id,
-    char *course_unit_id,
-    char *business_id
+    char *course_unit_id
     ) {
     course_handout_create_dto_t *course_handout_create_dto_local_var = malloc(sizeof(course_handout_create_dto_t));
     if (!course_handout_create_dto_local_var) {
@@ -30,7 +29,6 @@ course_handout_create_dto_t *course_handout_create_dto_create(
     course_handout_create_dto_local_var->release_date_time = release_date_time;
     course_handout_create_dto_local_var->course_id = course_id;
     course_handout_create_dto_local_var->course_unit_id = course_unit_id;
-    course_handout_create_dto_local_var->business_id = business_id;
 
     return course_handout_create_dto_local_var;
 }
@@ -76,10 +74,6 @@ void course_handout_create_dto_free(course_handout_create_dto_t *course_handout_
     if (course_handout_create_dto->course_unit_id) {
         free(course_handout_create_dto->course_unit_id);
         course_handout_create_dto->course_unit_id = NULL;
-    }
-    if (course_handout_create_dto->business_id) {
-        free(course_handout_create_dto->business_id);
-        course_handout_create_dto->business_id = NULL;
     }
     free(course_handout_create_dto);
 }
@@ -158,15 +152,6 @@ cJSON *course_handout_create_dto_convertToJSON(course_handout_create_dto_t *cour
     if(cJSON_AddStringToObject(item, "courseUnitID", course_handout_create_dto->course_unit_id) == NULL) {
     goto fail; //String
     }
-    }
-
-
-    // course_handout_create_dto->business_id
-    if (!course_handout_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_handout_create_dto->business_id) == NULL) {
-    goto fail; //String
     }
 
     return item;
@@ -268,18 +253,6 @@ course_handout_create_dto_t *course_handout_create_dto_parseFromJSON(cJSON *cour
     }
     }
 
-    // course_handout_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_handout_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
 
     course_handout_create_dto_local_var = course_handout_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -290,8 +263,7 @@ course_handout_create_dto_t *course_handout_create_dto_parseFromJSON(cJSON *cour
         url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL,
         release_date_time && !cJSON_IsNull(release_date_time) ? strdup(release_date_time->valuestring) : NULL,
         strdup(course_id->valuestring),
-        course_unit_id && !cJSON_IsNull(course_unit_id) ? strdup(course_unit_id->valuestring) : NULL,
-        strdup(business_id->valuestring)
+        course_unit_id && !cJSON_IsNull(course_unit_id) ? strdup(course_unit_id->valuestring) : NULL
         );
 
     return course_handout_create_dto_local_var;

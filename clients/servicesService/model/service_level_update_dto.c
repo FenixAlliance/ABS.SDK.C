@@ -57,7 +57,6 @@ service_level_update_dto_t *service_level_update_dto_create(
     char *material,
     int on_discount,
     double total_tax,
-    char *tenant_id,
     char *permalink,
     char *brand_name,
     int reviews_count,
@@ -82,7 +81,6 @@ service_level_update_dto_t *service_level_update_dto_create(
     double custom_tax_value,
     int has_variations,
     int questions_count,
-    char *enrollment_id,
     char *supplier_code,
     char *auction_end,
     char *purchase_note,
@@ -235,7 +233,6 @@ service_level_update_dto_t *service_level_update_dto_create(
     service_level_update_dto_local_var->material = material;
     service_level_update_dto_local_var->on_discount = on_discount;
     service_level_update_dto_local_var->total_tax = total_tax;
-    service_level_update_dto_local_var->tenant_id = tenant_id;
     service_level_update_dto_local_var->permalink = permalink;
     service_level_update_dto_local_var->brand_name = brand_name;
     service_level_update_dto_local_var->reviews_count = reviews_count;
@@ -260,7 +257,6 @@ service_level_update_dto_t *service_level_update_dto_create(
     service_level_update_dto_local_var->custom_tax_value = custom_tax_value;
     service_level_update_dto_local_var->has_variations = has_variations;
     service_level_update_dto_local_var->questions_count = questions_count;
-    service_level_update_dto_local_var->enrollment_id = enrollment_id;
     service_level_update_dto_local_var->supplier_code = supplier_code;
     service_level_update_dto_local_var->auction_end = auction_end;
     service_level_update_dto_local_var->purchase_note = purchase_note;
@@ -491,10 +487,6 @@ void service_level_update_dto_free(service_level_update_dto_t *service_level_upd
         free(service_level_update_dto->material);
         service_level_update_dto->material = NULL;
     }
-    if (service_level_update_dto->tenant_id) {
-        free(service_level_update_dto->tenant_id);
-        service_level_update_dto->tenant_id = NULL;
-    }
     if (service_level_update_dto->permalink) {
         free(service_level_update_dto->permalink);
         service_level_update_dto->permalink = NULL;
@@ -538,10 +530,6 @@ void service_level_update_dto_free(service_level_update_dto_t *service_level_upd
     if (service_level_update_dto->release_date) {
         free(service_level_update_dto->release_date);
         service_level_update_dto->release_date = NULL;
-    }
-    if (service_level_update_dto->enrollment_id) {
-        free(service_level_update_dto->enrollment_id);
-        service_level_update_dto->enrollment_id = NULL;
     }
     if (service_level_update_dto->supplier_code) {
         free(service_level_update_dto->supplier_code);
@@ -1217,14 +1205,6 @@ cJSON *service_level_update_dto_convertToJSON(service_level_update_dto_t *servic
     }
 
 
-    // service_level_update_dto->tenant_id
-    if(service_level_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", service_level_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // service_level_update_dto->permalink
     if(service_level_update_dto->permalink) {
     if(cJSON_AddStringToObject(item, "permalink", service_level_update_dto->permalink) == NULL) {
@@ -1413,14 +1393,6 @@ cJSON *service_level_update_dto_convertToJSON(service_level_update_dto_t *servic
     if(service_level_update_dto->questions_count) {
     if(cJSON_AddNumberToObject(item, "questionsCount", service_level_update_dto->questions_count) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // service_level_update_dto->enrollment_id
-    if(service_level_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", service_level_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -2855,15 +2827,6 @@ service_level_update_dto_t *service_level_update_dto_parseFromJSON(cJSON *servic
     }
     }
 
-    // service_level_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(service_level_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // service_level_update_dto->permalink
     cJSON *permalink = cJSON_GetObjectItemCaseSensitive(service_level_update_dtoJSON, "permalink");
     if (permalink) { 
@@ -3077,15 +3040,6 @@ service_level_update_dto_t *service_level_update_dto_parseFromJSON(cJSON *servic
     if(!cJSON_IsNumber(questions_count))
     {
     goto end; //Numeric
-    }
-    }
-
-    // service_level_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(service_level_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
     }
     }
 
@@ -4166,7 +4120,6 @@ service_level_update_dto_t *service_level_update_dto_parseFromJSON(cJSON *servic
         material && !cJSON_IsNull(material) ? strdup(material->valuestring) : NULL,
         on_discount ? on_discount->valueint : 0,
         total_tax ? total_tax->valuedouble : 0,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         permalink && !cJSON_IsNull(permalink) ? strdup(permalink->valuestring) : NULL,
         brand_name && !cJSON_IsNull(brand_name) ? strdup(brand_name->valuestring) : NULL,
         reviews_count ? reviews_count->valuedouble : 0,
@@ -4191,7 +4144,6 @@ service_level_update_dto_t *service_level_update_dto_parseFromJSON(cJSON *servic
         custom_tax_value ? custom_tax_value->valuedouble : 0,
         has_variations ? has_variations->valueint : 0,
         questions_count ? questions_count->valuedouble : 0,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         supplier_code && !cJSON_IsNull(supplier_code) ? strdup(supplier_code->valuestring) : NULL,
         auction_end && !cJSON_IsNull(auction_end) ? strdup(auction_end->valuestring) : NULL,
         purchase_note && !cJSON_IsNull(purchase_note) ? strdup(purchase_note->valuestring) : NULL,

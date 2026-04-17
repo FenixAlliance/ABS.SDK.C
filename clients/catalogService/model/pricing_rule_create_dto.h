@@ -42,8 +42,6 @@ typedef struct pricing_rule_create_dto_t {
     char *custom_state; // string
     char *custom_city; // string
     char *city_id; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
 
 } pricing_rule_create_dto_t;
 
@@ -70,9 +68,7 @@ pricing_rule_create_dto_t *pricing_rule_create_dto_create(
     char *country_state_id,
     char *custom_state,
     char *custom_city,
-    char *city_id,
-    char *business_id,
-    char *business_profile_record_id
+    char *city_id
 );
 
 void pricing_rule_create_dto_free(pricing_rule_create_dto_t *pricing_rule_create_dto);

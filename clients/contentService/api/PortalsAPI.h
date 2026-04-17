@@ -7,12 +7,22 @@
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/int32_envelope.h"
 #include "../model/operation.h"
 #include "../model/portal_options_envelope.h"
 #include "../model/portal_settings_envelope.h"
 #include "../model/web_portal_create_dto.h"
 #include "../model/web_portal_dto_envelope.h"
+#include "../model/web_portal_dto_list_envelope.h"
 #include "../model/web_portal_update_dto.h"
+
+
+// Count portals
+//
+// Counts all portals for the specified tenant.
+//
+int32_envelope_t*
+PortalsAPI_countPortalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Create a new web portal
@@ -45,6 +55,14 @@ PortalsAPI_getCurrentWebPortalAsync(apiClient_t *apiClient, char *api_version, c
 //
 portal_options_envelope_t*
 PortalsAPI_getCurrentWebPortalOptionsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+
+
+// Get portals
+//
+// Retrieves all portals for the specified tenant.
+//
+web_portal_dto_list_envelope_t*
+PortalsAPI_getPortalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get the root portal

@@ -20,15 +20,11 @@ typedef struct social_post_bucket_update_dto_t social_post_bucket_update_dto_t;
 
 typedef struct social_post_bucket_update_dto_t {
     char *name; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } social_post_bucket_update_dto_t;
 
 social_post_bucket_update_dto_t *social_post_bucket_update_dto_create(
-    char *name,
-    char *tenant_id,
-    char *enrollment_id
+    char *name
 );
 
 void social_post_bucket_update_dto_free(social_post_bucket_update_dto_t *social_post_bucket_update_dto);

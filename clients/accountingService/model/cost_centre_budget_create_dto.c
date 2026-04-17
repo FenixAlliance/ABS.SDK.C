@@ -9,7 +9,6 @@ cost_centre_budget_create_dto_t *cost_centre_budget_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *tenant_id,
     char *fiscal_year_id,
     char *cost_centre_id
     ) {
@@ -20,7 +19,6 @@ cost_centre_budget_create_dto_t *cost_centre_budget_create_dto_create(
     cost_centre_budget_create_dto_local_var->id = id;
     cost_centre_budget_create_dto_local_var->timestamp = timestamp;
     cost_centre_budget_create_dto_local_var->name = name;
-    cost_centre_budget_create_dto_local_var->tenant_id = tenant_id;
     cost_centre_budget_create_dto_local_var->fiscal_year_id = fiscal_year_id;
     cost_centre_budget_create_dto_local_var->cost_centre_id = cost_centre_id;
 
@@ -44,10 +42,6 @@ void cost_centre_budget_create_dto_free(cost_centre_budget_create_dto_t *cost_ce
     if (cost_centre_budget_create_dto->name) {
         free(cost_centre_budget_create_dto->name);
         cost_centre_budget_create_dto->name = NULL;
-    }
-    if (cost_centre_budget_create_dto->tenant_id) {
-        free(cost_centre_budget_create_dto->tenant_id);
-        cost_centre_budget_create_dto->tenant_id = NULL;
     }
     if (cost_centre_budget_create_dto->fiscal_year_id) {
         free(cost_centre_budget_create_dto->fiscal_year_id);
@@ -82,14 +76,6 @@ cJSON *cost_centre_budget_create_dto_convertToJSON(cost_centre_budget_create_dto
     // cost_centre_budget_create_dto->name
     if(cost_centre_budget_create_dto->name) {
     if(cJSON_AddStringToObject(item, "name", cost_centre_budget_create_dto->name) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // cost_centre_budget_create_dto->tenant_id
-    if(cost_centre_budget_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", cost_centre_budget_create_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -149,15 +135,6 @@ cost_centre_budget_create_dto_t *cost_centre_budget_create_dto_parseFromJSON(cJS
     }
     }
 
-    // cost_centre_budget_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(cost_centre_budget_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // cost_centre_budget_create_dto->fiscal_year_id
     cJSON *fiscal_year_id = cJSON_GetObjectItemCaseSensitive(cost_centre_budget_create_dtoJSON, "fiscalYearId");
     if (fiscal_year_id) { 
@@ -181,7 +158,6 @@ cost_centre_budget_create_dto_t *cost_centre_budget_create_dto_parseFromJSON(cJS
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         fiscal_year_id && !cJSON_IsNull(fiscal_year_id) ? strdup(fiscal_year_id->valuestring) : NULL,
         cost_centre_id && !cJSON_IsNull(cost_centre_id) ? strdup(cost_centre_id->valuestring) : NULL
         );

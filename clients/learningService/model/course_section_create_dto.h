@@ -25,7 +25,6 @@ typedef struct course_section_create_dto_t {
     char *icon; // string
     char *description; // string
     char *course_id; // string
-    char *business_id; // string
     char *release_date_time; //date time
     int hide_from_students; //boolean
 
@@ -38,7 +37,6 @@ course_section_create_dto_t *course_section_create_dto_create(
     char *icon,
     char *description,
     char *course_id,
-    char *business_id,
     char *release_date_time,
     int hide_from_students
 );

@@ -21,16 +21,12 @@ typedef struct transaction_category_update_dto_t transaction_category_update_dto
 typedef struct transaction_category_update_dto_t {
     char *name; // string
     char *description; // string
-    char *enrollment_id; // string
-    char *tenant_id; // string
 
 } transaction_category_update_dto_t;
 
 transaction_category_update_dto_t *transaction_category_update_dto_create(
     char *name,
-    char *description,
-    char *enrollment_id,
-    char *tenant_id
+    char *description
 );
 
 void transaction_category_update_dto_free(transaction_category_update_dto_t *transaction_category_update_dto);

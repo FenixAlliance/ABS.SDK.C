@@ -28,7 +28,6 @@ typedef struct course_handout_create_dto_t {
     char *release_date_time; //date time
     char *course_id; // string
     char *course_unit_id; // string
-    char *business_id; // string
 
 } course_handout_create_dto_t;
 
@@ -41,8 +40,7 @@ course_handout_create_dto_t *course_handout_create_dto_create(
     char *url,
     char *release_date_time,
     char *course_id,
-    char *course_unit_id,
-    char *business_id
+    char *course_unit_id
 );
 
 void course_handout_create_dto_free(course_handout_create_dto_t *course_handout_create_dto);

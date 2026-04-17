@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **instructions** | **char \*** |  | [optional] 
 **points** | **double** |  | [optional] 
 **course_id** | **char \*** |  | 
-**business_id** | **char \*** |  | 
 **course_unit_id** | **char \*** |  | [optional] 
 **course_cohort_id** | **char \*** |  | [optional] 
 **course_assignment_type_id** | **char \*** |  | [optional] 

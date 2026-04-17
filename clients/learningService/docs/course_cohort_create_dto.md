@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **timestamp** | **char \*** |  | [optional] 
 **name** | **char \*** |  | 
 **course_id** | **char \*** |  | 
-**business_id** | **char \*** |  | 
 **start_date_time** | **char \*** |  | [optional] 
 **end_date_time** | **char \*** |  | [optional] 
 **expected_start_date_time** | **char \*** |  | [optional] 

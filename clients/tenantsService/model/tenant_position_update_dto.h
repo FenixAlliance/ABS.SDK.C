@@ -22,15 +22,13 @@ typedef struct tenant_position_update_dto_t {
     char *title; // string
     char *description; // string
     char *type; // string
-    char *business_profile_record_id; // string
 
 } tenant_position_update_dto_t;
 
 tenant_position_update_dto_t *tenant_position_update_dto_create(
     char *title,
     char *description,
-    char *type,
-    char *business_profile_record_id
+    char *type
 );
 
 void tenant_position_update_dto_free(tenant_position_update_dto_t *tenant_position_update_dto);

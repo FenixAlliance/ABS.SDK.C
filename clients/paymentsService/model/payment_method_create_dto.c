@@ -9,9 +9,7 @@ payment_method_create_dto_t *payment_method_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *description,
-    char *tenant_id,
-    char *enrollment_id
+    char *description
     ) {
     payment_method_create_dto_t *payment_method_create_dto_local_var = malloc(sizeof(payment_method_create_dto_t));
     if (!payment_method_create_dto_local_var) {
@@ -21,8 +19,6 @@ payment_method_create_dto_t *payment_method_create_dto_create(
     payment_method_create_dto_local_var->timestamp = timestamp;
     payment_method_create_dto_local_var->name = name;
     payment_method_create_dto_local_var->description = description;
-    payment_method_create_dto_local_var->tenant_id = tenant_id;
-    payment_method_create_dto_local_var->enrollment_id = enrollment_id;
 
     return payment_method_create_dto_local_var;
 }
@@ -48,14 +44,6 @@ void payment_method_create_dto_free(payment_method_create_dto_t *payment_method_
     if (payment_method_create_dto->description) {
         free(payment_method_create_dto->description);
         payment_method_create_dto->description = NULL;
-    }
-    if (payment_method_create_dto->tenant_id) {
-        free(payment_method_create_dto->tenant_id);
-        payment_method_create_dto->tenant_id = NULL;
-    }
-    if (payment_method_create_dto->enrollment_id) {
-        free(payment_method_create_dto->enrollment_id);
-        payment_method_create_dto->enrollment_id = NULL;
     }
     free(payment_method_create_dto);
 }
@@ -91,22 +79,6 @@ cJSON *payment_method_create_dto_convertToJSON(payment_method_create_dto_t *paym
     // payment_method_create_dto->description
     if(payment_method_create_dto->description) {
     if(cJSON_AddStringToObject(item, "description", payment_method_create_dto->description) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // payment_method_create_dto->tenant_id
-    if(payment_method_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", payment_method_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // payment_method_create_dto->enrollment_id
-    if(payment_method_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", payment_method_create_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -162,32 +134,12 @@ payment_method_create_dto_t *payment_method_create_dto_parseFromJSON(cJSON *paym
     }
     }
 
-    // payment_method_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(payment_method_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // payment_method_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(payment_method_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     payment_method_create_dto_local_var = payment_method_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         strdup(name->valuestring),
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
         );
 
     return payment_method_create_dto_local_var;

@@ -9,7 +9,6 @@ cost_centre_group_update_dto_t *cost_centre_group_update_dto_create(
     char *name,
     char *description,
     int disabled,
-    char *tenant_id,
     char *parent_cost_centres_group_id
     ) {
     cost_centre_group_update_dto_t *cost_centre_group_update_dto_local_var = malloc(sizeof(cost_centre_group_update_dto_t));
@@ -19,7 +18,6 @@ cost_centre_group_update_dto_t *cost_centre_group_update_dto_create(
     cost_centre_group_update_dto_local_var->name = name;
     cost_centre_group_update_dto_local_var->description = description;
     cost_centre_group_update_dto_local_var->disabled = disabled;
-    cost_centre_group_update_dto_local_var->tenant_id = tenant_id;
     cost_centre_group_update_dto_local_var->parent_cost_centres_group_id = parent_cost_centres_group_id;
 
     return cost_centre_group_update_dto_local_var;
@@ -38,10 +36,6 @@ void cost_centre_group_update_dto_free(cost_centre_group_update_dto_t *cost_cent
     if (cost_centre_group_update_dto->description) {
         free(cost_centre_group_update_dto->description);
         cost_centre_group_update_dto->description = NULL;
-    }
-    if (cost_centre_group_update_dto->tenant_id) {
-        free(cost_centre_group_update_dto->tenant_id);
-        cost_centre_group_update_dto->tenant_id = NULL;
     }
     if (cost_centre_group_update_dto->parent_cost_centres_group_id) {
         free(cost_centre_group_update_dto->parent_cost_centres_group_id);
@@ -73,14 +67,6 @@ cJSON *cost_centre_group_update_dto_convertToJSON(cost_centre_group_update_dto_t
     if(cost_centre_group_update_dto->disabled) {
     if(cJSON_AddBoolToObject(item, "disabled", cost_centre_group_update_dto->disabled) == NULL) {
     goto fail; //Bool
-    }
-    }
-
-
-    // cost_centre_group_update_dto->tenant_id
-    if(cost_centre_group_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", cost_centre_group_update_dto->tenant_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -131,15 +117,6 @@ cost_centre_group_update_dto_t *cost_centre_group_update_dto_parseFromJSON(cJSON
     }
     }
 
-    // cost_centre_group_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(cost_centre_group_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // cost_centre_group_update_dto->parent_cost_centres_group_id
     cJSON *parent_cost_centres_group_id = cJSON_GetObjectItemCaseSensitive(cost_centre_group_update_dtoJSON, "parentCostCentresGroupId");
     if (parent_cost_centres_group_id) { 
@@ -154,7 +131,6 @@ cost_centre_group_update_dto_t *cost_centre_group_update_dto_parseFromJSON(cJSON
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         disabled ? disabled->valueint : 0,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         parent_cost_centres_group_id && !cJSON_IsNull(parent_cost_centres_group_id) ? strdup(parent_cost_centres_group_id->valuestring) : NULL
         );
 

@@ -29,8 +29,6 @@ contentservice_blog_post_create_dto_CODETYPE_e blog_post_create_dto_code_type_Fr
 typedef struct blog_post_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *title; // string
     char *code; // string
     int published; //boolean
@@ -46,8 +44,6 @@ typedef struct blog_post_create_dto_t {
 blog_post_create_dto_t *blog_post_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
-    char *enrollment_id,
     char *title,
     char *code,
     int published,

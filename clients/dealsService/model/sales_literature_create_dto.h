@@ -26,8 +26,6 @@ typedef struct sales_literature_create_dto_t {
     char *description; // string
     char *modified_date; //date time
     char *expiration_date; //date time
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *sales_literature_type_id; // string
 
 } sales_literature_create_dto_t;
@@ -40,8 +38,6 @@ sales_literature_create_dto_t *sales_literature_create_dto_create(
     char *description,
     char *modified_date,
     char *expiration_date,
-    char *tenant_id,
-    char *enrollment_id,
     char *sales_literature_type_id
 );
 

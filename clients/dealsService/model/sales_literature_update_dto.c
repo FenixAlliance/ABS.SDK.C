@@ -11,8 +11,6 @@ sales_literature_update_dto_t *sales_literature_update_dto_create(
     char *description,
     char *modified_date,
     char *expiration_date,
-    char *tenant_id,
-    char *enrollment_id,
     char *sales_literature_type_id
     ) {
     sales_literature_update_dto_t *sales_literature_update_dto_local_var = malloc(sizeof(sales_literature_update_dto_t));
@@ -24,8 +22,6 @@ sales_literature_update_dto_t *sales_literature_update_dto_create(
     sales_literature_update_dto_local_var->description = description;
     sales_literature_update_dto_local_var->modified_date = modified_date;
     sales_literature_update_dto_local_var->expiration_date = expiration_date;
-    sales_literature_update_dto_local_var->tenant_id = tenant_id;
-    sales_literature_update_dto_local_var->enrollment_id = enrollment_id;
     sales_literature_update_dto_local_var->sales_literature_type_id = sales_literature_type_id;
 
     return sales_literature_update_dto_local_var;
@@ -56,14 +52,6 @@ void sales_literature_update_dto_free(sales_literature_update_dto_t *sales_liter
     if (sales_literature_update_dto->expiration_date) {
         free(sales_literature_update_dto->expiration_date);
         sales_literature_update_dto->expiration_date = NULL;
-    }
-    if (sales_literature_update_dto->tenant_id) {
-        free(sales_literature_update_dto->tenant_id);
-        sales_literature_update_dto->tenant_id = NULL;
-    }
-    if (sales_literature_update_dto->enrollment_id) {
-        free(sales_literature_update_dto->enrollment_id);
-        sales_literature_update_dto->enrollment_id = NULL;
     }
     if (sales_literature_update_dto->sales_literature_type_id) {
         free(sales_literature_update_dto->sales_literature_type_id);
@@ -111,22 +99,6 @@ cJSON *sales_literature_update_dto_convertToJSON(sales_literature_update_dto_t *
     if(sales_literature_update_dto->expiration_date) {
     if(cJSON_AddStringToObject(item, "expirationDate", sales_literature_update_dto->expiration_date) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // sales_literature_update_dto->tenant_id
-    if(sales_literature_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", sales_literature_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // sales_literature_update_dto->enrollment_id
-    if(sales_literature_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", sales_literature_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -195,24 +167,6 @@ sales_literature_update_dto_t *sales_literature_update_dto_parseFromJSON(cJSON *
     }
     }
 
-    // sales_literature_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(sales_literature_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // sales_literature_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(sales_literature_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // sales_literature_update_dto->sales_literature_type_id
     cJSON *sales_literature_type_id = cJSON_GetObjectItemCaseSensitive(sales_literature_update_dtoJSON, "salesLiteratureTypeId");
     if (sales_literature_type_id) { 
@@ -229,8 +183,6 @@ sales_literature_update_dto_t *sales_literature_update_dto_parseFromJSON(cJSON *
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         modified_date && !cJSON_IsNull(modified_date) ? strdup(modified_date->valuestring) : NULL,
         expiration_date && !cJSON_IsNull(expiration_date) ? strdup(expiration_date->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         sales_literature_type_id && !cJSON_IsNull(sales_literature_type_id) ? strdup(sales_literature_type_id->valuestring) : NULL
         );
 

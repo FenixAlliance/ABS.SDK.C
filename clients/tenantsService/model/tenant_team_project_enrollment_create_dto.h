@@ -21,8 +21,6 @@ typedef struct tenant_team_project_enrollment_create_dto_t tenant_team_project_e
 typedef struct tenant_team_project_enrollment_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *business_id; // string
-    char *business_profile_record_id; // string
     char *business_team_id; // string
     char *project_id; // string
 
@@ -31,8 +29,6 @@ typedef struct tenant_team_project_enrollment_create_dto_t {
 tenant_team_project_enrollment_create_dto_t *tenant_team_project_enrollment_create_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
-    char *business_profile_record_id,
     char *business_team_id,
     char *project_id
 );

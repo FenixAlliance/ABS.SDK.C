@@ -25,8 +25,6 @@ contentservice_blog_post_create_dto_CODETYPE_e blog_post_create_dto_code_type_Fr
 blog_post_create_dto_t *blog_post_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
-    char *enrollment_id,
     char *title,
     char *code,
     int published,
@@ -43,8 +41,6 @@ blog_post_create_dto_t *blog_post_create_dto_create(
     }
     blog_post_create_dto_local_var->id = id;
     blog_post_create_dto_local_var->timestamp = timestamp;
-    blog_post_create_dto_local_var->tenant_id = tenant_id;
-    blog_post_create_dto_local_var->enrollment_id = enrollment_id;
     blog_post_create_dto_local_var->title = title;
     blog_post_create_dto_local_var->code = code;
     blog_post_create_dto_local_var->published = published;
@@ -71,14 +67,6 @@ void blog_post_create_dto_free(blog_post_create_dto_t *blog_post_create_dto) {
     if (blog_post_create_dto->timestamp) {
         free(blog_post_create_dto->timestamp);
         blog_post_create_dto->timestamp = NULL;
-    }
-    if (blog_post_create_dto->tenant_id) {
-        free(blog_post_create_dto->tenant_id);
-        blog_post_create_dto->tenant_id = NULL;
-    }
-    if (blog_post_create_dto->enrollment_id) {
-        free(blog_post_create_dto->enrollment_id);
-        blog_post_create_dto->enrollment_id = NULL;
     }
     if (blog_post_create_dto->title) {
         free(blog_post_create_dto->title);
@@ -126,22 +114,6 @@ cJSON *blog_post_create_dto_convertToJSON(blog_post_create_dto_t *blog_post_crea
     if(blog_post_create_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", blog_post_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // blog_post_create_dto->tenant_id
-    if(blog_post_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", blog_post_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // blog_post_create_dto->enrollment_id
-    if(blog_post_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", blog_post_create_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -248,24 +220,6 @@ blog_post_create_dto_t *blog_post_create_dto_parseFromJSON(cJSON *blog_post_crea
     }
     }
 
-    // blog_post_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(blog_post_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // blog_post_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(blog_post_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // blog_post_create_dto->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(blog_post_create_dtoJSON, "title");
     if (title) { 
@@ -353,8 +307,6 @@ blog_post_create_dto_t *blog_post_create_dto_parseFromJSON(cJSON *blog_post_crea
     blog_post_create_dto_local_var = blog_post_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
         published ? published->valueint : 0,

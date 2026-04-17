@@ -8,8 +8,6 @@
 applied_tax_policy_record_create_dto_t *applied_tax_policy_record_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
-    char *enrollment_id,
     char *tax_policy_id,
     char *invoice_id,
     char *item_id,
@@ -22,8 +20,6 @@ applied_tax_policy_record_create_dto_t *applied_tax_policy_record_create_dto_cre
     }
     applied_tax_policy_record_create_dto_local_var->id = id;
     applied_tax_policy_record_create_dto_local_var->timestamp = timestamp;
-    applied_tax_policy_record_create_dto_local_var->tenant_id = tenant_id;
-    applied_tax_policy_record_create_dto_local_var->enrollment_id = enrollment_id;
     applied_tax_policy_record_create_dto_local_var->tax_policy_id = tax_policy_id;
     applied_tax_policy_record_create_dto_local_var->invoice_id = invoice_id;
     applied_tax_policy_record_create_dto_local_var->item_id = item_id;
@@ -46,14 +42,6 @@ void applied_tax_policy_record_create_dto_free(applied_tax_policy_record_create_
     if (applied_tax_policy_record_create_dto->timestamp) {
         free(applied_tax_policy_record_create_dto->timestamp);
         applied_tax_policy_record_create_dto->timestamp = NULL;
-    }
-    if (applied_tax_policy_record_create_dto->tenant_id) {
-        free(applied_tax_policy_record_create_dto->tenant_id);
-        applied_tax_policy_record_create_dto->tenant_id = NULL;
-    }
-    if (applied_tax_policy_record_create_dto->enrollment_id) {
-        free(applied_tax_policy_record_create_dto->enrollment_id);
-        applied_tax_policy_record_create_dto->enrollment_id = NULL;
     }
     if (applied_tax_policy_record_create_dto->tax_policy_id) {
         free(applied_tax_policy_record_create_dto->tax_policy_id);
@@ -85,22 +73,6 @@ cJSON *applied_tax_policy_record_create_dto_convertToJSON(applied_tax_policy_rec
     if(applied_tax_policy_record_create_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", applied_tax_policy_record_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // applied_tax_policy_record_create_dto->tenant_id
-    if(applied_tax_policy_record_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", applied_tax_policy_record_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // applied_tax_policy_record_create_dto->enrollment_id
-    if(applied_tax_policy_record_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", applied_tax_policy_record_create_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -174,24 +146,6 @@ applied_tax_policy_record_create_dto_t *applied_tax_policy_record_create_dto_par
     }
     }
 
-    // applied_tax_policy_record_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(applied_tax_policy_record_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // applied_tax_policy_record_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(applied_tax_policy_record_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // applied_tax_policy_record_create_dto->tax_policy_id
     cJSON *tax_policy_id = cJSON_GetObjectItemCaseSensitive(applied_tax_policy_record_create_dtoJSON, "taxPolicyId");
     if (tax_policy_id) { 
@@ -241,8 +195,6 @@ applied_tax_policy_record_create_dto_t *applied_tax_policy_record_create_dto_par
     applied_tax_policy_record_create_dto_local_var = applied_tax_policy_record_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         tax_policy_id && !cJSON_IsNull(tax_policy_id) ? strdup(tax_policy_id->valuestring) : NULL,
         invoice_id && !cJSON_IsNull(invoice_id) ? strdup(invoice_id->valuestring) : NULL,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,

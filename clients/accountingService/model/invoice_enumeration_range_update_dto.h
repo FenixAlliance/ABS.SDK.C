@@ -37,8 +37,6 @@ typedef struct invoice_enumeration_range_update_dto_t {
     char *valid_from; //date time
     char *valid_to; //date time
     char *fiscal_authority_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
     accountingservice_invoice_enumeration_range_update_dto_DOCUMENTTYPE_e document_type; //enum
 
 } invoice_enumeration_range_update_dto_t;
@@ -54,8 +52,6 @@ invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto_cre
     char *valid_from,
     char *valid_to,
     char *fiscal_authority_id,
-    char *tenant_id,
-    char *enrollment_id,
     accountingservice_invoice_enumeration_range_update_dto_DOCUMENTTYPE_e document_type
 );
 

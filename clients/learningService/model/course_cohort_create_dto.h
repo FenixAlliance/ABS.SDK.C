@@ -23,7 +23,6 @@ typedef struct course_cohort_create_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *course_id; // string
-    char *business_id; // string
     char *start_date_time; //date time
     char *end_date_time; //date time
     char *expected_start_date_time; //date time
@@ -36,7 +35,6 @@ course_cohort_create_dto_t *course_cohort_create_dto_create(
     char *timestamp,
     char *name,
     char *course_id,
-    char *business_id,
     char *start_date_time,
     char *end_date_time,
     char *expected_start_date_time,

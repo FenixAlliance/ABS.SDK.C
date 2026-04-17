@@ -21,16 +21,12 @@ typedef struct share_transfer_reason_update_dto_t share_transfer_reason_update_d
 typedef struct share_transfer_reason_update_dto_t {
     char *name; // string
     char *description; // string
-    char *enrollment_id; // string
-    char *tenant_id; // string
 
 } share_transfer_reason_update_dto_t;
 
 share_transfer_reason_update_dto_t *share_transfer_reason_update_dto_create(
     char *name,
-    char *description,
-    char *enrollment_id,
-    char *tenant_id
+    char *description
 );
 
 void share_transfer_reason_update_dto_free(share_transfer_reason_update_dto_t *share_transfer_reason_update_dto);

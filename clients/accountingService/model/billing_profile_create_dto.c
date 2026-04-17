@@ -9,7 +9,6 @@ billing_profile_create_dto_t *billing_profile_create_dto_create(
     char *id,
     char *timestamp,
     char *contact_id,
-    char *tenant_id,
     char *tax_id,
     char *phone,
     char *email,
@@ -37,7 +36,6 @@ billing_profile_create_dto_t *billing_profile_create_dto_create(
     billing_profile_create_dto_local_var->id = id;
     billing_profile_create_dto_local_var->timestamp = timestamp;
     billing_profile_create_dto_local_var->contact_id = contact_id;
-    billing_profile_create_dto_local_var->tenant_id = tenant_id;
     billing_profile_create_dto_local_var->tax_id = tax_id;
     billing_profile_create_dto_local_var->phone = phone;
     billing_profile_create_dto_local_var->email = email;
@@ -78,10 +76,6 @@ void billing_profile_create_dto_free(billing_profile_create_dto_t *billing_profi
     if (billing_profile_create_dto->contact_id) {
         free(billing_profile_create_dto->contact_id);
         billing_profile_create_dto->contact_id = NULL;
-    }
-    if (billing_profile_create_dto->tenant_id) {
-        free(billing_profile_create_dto->tenant_id);
-        billing_profile_create_dto->tenant_id = NULL;
     }
     if (billing_profile_create_dto->tax_id) {
         free(billing_profile_create_dto->tax_id);
@@ -176,14 +170,6 @@ cJSON *billing_profile_create_dto_convertToJSON(billing_profile_create_dto_t *bi
     // billing_profile_create_dto->contact_id
     if(billing_profile_create_dto->contact_id) {
     if(cJSON_AddStringToObject(item, "contactId", billing_profile_create_dto->contact_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // billing_profile_create_dto->tenant_id
-    if(billing_profile_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", billing_profile_create_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -387,15 +373,6 @@ billing_profile_create_dto_t *billing_profile_create_dto_parseFromJSON(cJSON *bi
     cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(billing_profile_create_dtoJSON, "contactId");
     if (contact_id) { 
     if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // billing_profile_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(billing_profile_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -616,7 +593,6 @@ billing_profile_create_dto_t *billing_profile_create_dto_parseFromJSON(cJSON *bi
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         strdup(tax_id->valuestring),
         strdup(phone->valuestring),
         strdup(email->valuestring),

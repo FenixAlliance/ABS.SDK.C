@@ -34,8 +34,6 @@ typedef struct business_application_create_dto_t {
     char *contact_email; // string
     char *privacy_policy_url; // string
     char *terms_and_conditions_url; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
     int require_https; //boolean
     int require_app_secret; //boolean
     int enable_client_oauth_login; //boolean
@@ -77,8 +75,6 @@ business_application_create_dto_t *business_application_create_dto_create(
     char *contact_email,
     char *privacy_policy_url,
     char *terms_and_conditions_url,
-    char *business_id,
-    char *business_profile_record_id,
     int require_https,
     int require_app_secret,
     int enable_client_oauth_login,

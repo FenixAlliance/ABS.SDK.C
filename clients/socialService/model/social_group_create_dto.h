@@ -19,6 +19,8 @@ typedef struct social_group_create_dto_t social_group_create_dto_t;
 
 
 typedef struct social_group_create_dto_t {
+    char *id; // string
+    char *timestamp; //date time
     char *name; // string
     char *title; // string
     char *avatar_url; // string
@@ -27,6 +29,8 @@ typedef struct social_group_create_dto_t {
 } social_group_create_dto_t;
 
 social_group_create_dto_t *social_group_create_dto_create(
+    char *id,
+    char *timestamp,
     char *name,
     char *title,
     char *avatar_url,

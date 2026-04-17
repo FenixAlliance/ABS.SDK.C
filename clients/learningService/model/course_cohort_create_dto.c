@@ -10,7 +10,6 @@ course_cohort_create_dto_t *course_cohort_create_dto_create(
     char *timestamp,
     char *name,
     char *course_id,
-    char *business_id,
     char *start_date_time,
     char *end_date_time,
     char *expected_start_date_time,
@@ -24,7 +23,6 @@ course_cohort_create_dto_t *course_cohort_create_dto_create(
     course_cohort_create_dto_local_var->timestamp = timestamp;
     course_cohort_create_dto_local_var->name = name;
     course_cohort_create_dto_local_var->course_id = course_id;
-    course_cohort_create_dto_local_var->business_id = business_id;
     course_cohort_create_dto_local_var->start_date_time = start_date_time;
     course_cohort_create_dto_local_var->end_date_time = end_date_time;
     course_cohort_create_dto_local_var->expected_start_date_time = expected_start_date_time;
@@ -54,10 +52,6 @@ void course_cohort_create_dto_free(course_cohort_create_dto_t *course_cohort_cre
     if (course_cohort_create_dto->course_id) {
         free(course_cohort_create_dto->course_id);
         course_cohort_create_dto->course_id = NULL;
-    }
-    if (course_cohort_create_dto->business_id) {
-        free(course_cohort_create_dto->business_id);
-        course_cohort_create_dto->business_id = NULL;
     }
     if (course_cohort_create_dto->start_date_time) {
         free(course_cohort_create_dto->start_date_time);
@@ -111,15 +105,6 @@ cJSON *course_cohort_create_dto_convertToJSON(course_cohort_create_dto_t *course
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "courseID", course_cohort_create_dto->course_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // course_cohort_create_dto->business_id
-    if (!course_cohort_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_cohort_create_dto->business_id) == NULL) {
     goto fail; //String
     }
 
@@ -209,18 +194,6 @@ course_cohort_create_dto_t *course_cohort_create_dto_parseFromJSON(cJSON *course
     goto end; //String
     }
 
-    // course_cohort_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_cohort_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
     // course_cohort_create_dto->start_date_time
     cJSON *start_date_time = cJSON_GetObjectItemCaseSensitive(course_cohort_create_dtoJSON, "startDateTime");
     if (start_date_time) { 
@@ -263,7 +236,6 @@ course_cohort_create_dto_t *course_cohort_create_dto_parseFromJSON(cJSON *course
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         strdup(name->valuestring),
         strdup(course_id->valuestring),
-        strdup(business_id->valuestring),
         start_date_time && !cJSON_IsNull(start_date_time) ? strdup(start_date_time->valuestring) : NULL,
         end_date_time && !cJSON_IsNull(end_date_time) ? strdup(end_date_time->valuestring) : NULL,
         expected_start_date_time && !cJSON_IsNull(expected_start_date_time) ? strdup(expected_start_date_time->valuestring) : NULL,

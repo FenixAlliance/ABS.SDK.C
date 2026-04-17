@@ -29,7 +29,6 @@ crmservice_contact_create_dto_TYPE_e contact_create_dto_type_FromString(char* ty
 typedef struct contact_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *tenant_id; // string
     crmservice_contact_create_dto_TYPE_e type; //enum
     char *first_name; // string
     char *last_name; // string
@@ -76,7 +75,6 @@ typedef struct contact_create_dto_t {
 contact_create_dto_t *contact_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
     crmservice_contact_create_dto_TYPE_e type,
     char *first_name,
     char *last_name,

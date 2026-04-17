@@ -26,7 +26,6 @@ typedef struct course_article_create_dto_t {
     char *content; // string
     char *course_id; // string
     char *course_wiki_id; // string
-    char *business_id; // string
 
 } course_article_create_dto_t;
 
@@ -37,8 +36,7 @@ course_article_create_dto_t *course_article_create_dto_create(
     char *description,
     char *content,
     char *course_id,
-    char *course_wiki_id,
-    char *business_id
+    char *course_wiki_id
 );
 
 void course_article_create_dto_free(course_article_create_dto_t *course_article_create_dto);

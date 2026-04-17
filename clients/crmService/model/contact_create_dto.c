@@ -25,7 +25,6 @@ crmservice_contact_create_dto_TYPE_e contact_create_dto_type_FromString(char* ty
 contact_create_dto_t *contact_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
     crmservice_contact_create_dto_TYPE_e type,
     char *first_name,
     char *last_name,
@@ -73,7 +72,6 @@ contact_create_dto_t *contact_create_dto_create(
     }
     contact_create_dto_local_var->id = id;
     contact_create_dto_local_var->timestamp = timestamp;
-    contact_create_dto_local_var->tenant_id = tenant_id;
     contact_create_dto_local_var->type = type;
     contact_create_dto_local_var->first_name = first_name;
     contact_create_dto_local_var->last_name = last_name;
@@ -131,10 +129,6 @@ void contact_create_dto_free(contact_create_dto_t *contact_create_dto) {
     if (contact_create_dto->timestamp) {
         free(contact_create_dto->timestamp);
         contact_create_dto->timestamp = NULL;
-    }
-    if (contact_create_dto->tenant_id) {
-        free(contact_create_dto->tenant_id);
-        contact_create_dto->tenant_id = NULL;
     }
     if (contact_create_dto->first_name) {
         free(contact_create_dto->first_name);
@@ -311,15 +305,6 @@ cJSON *contact_create_dto_convertToJSON(contact_create_dto_t *contact_create_dto
     if(cJSON_AddStringToObject(item, "timestamp", contact_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
     }
-    }
-
-
-    // contact_create_dto->tenant_id
-    if (!contact_create_dto->tenant_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "tenantId", contact_create_dto->tenant_id) == NULL) {
-    goto fail; //String
     }
 
 
@@ -674,18 +659,6 @@ contact_create_dto_t *contact_create_dto_parseFromJSON(cJSON *contact_create_dto
     {
     goto end; //DateTime
     }
-    }
-
-    // contact_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(contact_create_dtoJSON, "tenantId");
-    if (!tenant_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(tenant_id))
-    {
-    goto end; //String
     }
 
     // contact_create_dto->type
@@ -1063,7 +1036,6 @@ contact_create_dto_t *contact_create_dto_parseFromJSON(cJSON *contact_create_dto
     contact_create_dto_local_var = contact_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        strdup(tenant_id->valuestring),
         typeVariable,
         strdup(first_name->valuestring),
         last_name && !cJSON_IsNull(last_name) ? strdup(last_name->valuestring) : NULL,

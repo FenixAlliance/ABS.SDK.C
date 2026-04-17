@@ -23,8 +23,6 @@ typedef struct discount_list_create_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *currency_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } discount_list_create_dto_t;
 
@@ -32,9 +30,7 @@ discount_list_create_dto_t *discount_list_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *currency_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *currency_id
 );
 
 void discount_list_create_dto_free(discount_list_create_dto_t *discount_list_create_dto);

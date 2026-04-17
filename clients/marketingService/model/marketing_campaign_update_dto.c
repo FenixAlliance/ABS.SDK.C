@@ -19,9 +19,7 @@ marketing_campaign_update_dto_t *marketing_campaign_update_dto_create(
     double misc_cost,
     double expected_response_percent,
     char *marketing_area_id,
-    char *currency_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *currency_id
     ) {
     marketing_campaign_update_dto_t *marketing_campaign_update_dto_local_var = malloc(sizeof(marketing_campaign_update_dto_t));
     if (!marketing_campaign_update_dto_local_var) {
@@ -41,8 +39,6 @@ marketing_campaign_update_dto_t *marketing_campaign_update_dto_create(
     marketing_campaign_update_dto_local_var->expected_response_percent = expected_response_percent;
     marketing_campaign_update_dto_local_var->marketing_area_id = marketing_area_id;
     marketing_campaign_update_dto_local_var->currency_id = currency_id;
-    marketing_campaign_update_dto_local_var->tenant_id = tenant_id;
-    marketing_campaign_update_dto_local_var->enrollment_id = enrollment_id;
 
     return marketing_campaign_update_dto_local_var;
 }
@@ -88,14 +84,6 @@ void marketing_campaign_update_dto_free(marketing_campaign_update_dto_t *marketi
     if (marketing_campaign_update_dto->currency_id) {
         free(marketing_campaign_update_dto->currency_id);
         marketing_campaign_update_dto->currency_id = NULL;
-    }
-    if (marketing_campaign_update_dto->tenant_id) {
-        free(marketing_campaign_update_dto->tenant_id);
-        marketing_campaign_update_dto->tenant_id = NULL;
-    }
-    if (marketing_campaign_update_dto->enrollment_id) {
-        free(marketing_campaign_update_dto->enrollment_id);
-        marketing_campaign_update_dto->enrollment_id = NULL;
     }
     free(marketing_campaign_update_dto);
 }
@@ -210,22 +198,6 @@ cJSON *marketing_campaign_update_dto_convertToJSON(marketing_campaign_update_dto
     // marketing_campaign_update_dto->currency_id
     if(marketing_campaign_update_dto->currency_id) {
     if(cJSON_AddStringToObject(item, "currencyId", marketing_campaign_update_dto->currency_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // marketing_campaign_update_dto->tenant_id
-    if(marketing_campaign_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", marketing_campaign_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // marketing_campaign_update_dto->enrollment_id
-    if(marketing_campaign_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", marketing_campaign_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -368,24 +340,6 @@ marketing_campaign_update_dto_t *marketing_campaign_update_dto_parseFromJSON(cJS
     }
     }
 
-    // marketing_campaign_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(marketing_campaign_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // marketing_campaign_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(marketing_campaign_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     marketing_campaign_update_dto_local_var = marketing_campaign_update_dto_create (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
@@ -401,9 +355,7 @@ marketing_campaign_update_dto_t *marketing_campaign_update_dto_parseFromJSON(cJS
         misc_cost ? misc_cost->valuedouble : 0,
         expected_response_percent ? expected_response_percent->valuedouble : 0,
         marketing_area_id && !cJSON_IsNull(marketing_area_id) ? strdup(marketing_area_id->valuestring) : NULL,
-        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL
         );
 
     return marketing_campaign_update_dto_local_var;

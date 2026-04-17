@@ -20,12 +20,10 @@ tax_rate_update_dto_t *tax_rate_update_dto_create(
     double cumulative_transaction_threshold,
     char *fiscal_authority_id,
     char *fiscal_year_id,
-    char *tenant_id,
     char *country_id,
     char *tax_class_id,
     char *currency_id,
-    char *tax_policy_id,
-    char *enrollment_id
+    char *tax_policy_id
     ) {
     tax_rate_update_dto_t *tax_rate_update_dto_local_var = malloc(sizeof(tax_rate_update_dto_t));
     if (!tax_rate_update_dto_local_var) {
@@ -45,12 +43,10 @@ tax_rate_update_dto_t *tax_rate_update_dto_create(
     tax_rate_update_dto_local_var->cumulative_transaction_threshold = cumulative_transaction_threshold;
     tax_rate_update_dto_local_var->fiscal_authority_id = fiscal_authority_id;
     tax_rate_update_dto_local_var->fiscal_year_id = fiscal_year_id;
-    tax_rate_update_dto_local_var->tenant_id = tenant_id;
     tax_rate_update_dto_local_var->country_id = country_id;
     tax_rate_update_dto_local_var->tax_class_id = tax_class_id;
     tax_rate_update_dto_local_var->currency_id = currency_id;
     tax_rate_update_dto_local_var->tax_policy_id = tax_policy_id;
-    tax_rate_update_dto_local_var->enrollment_id = enrollment_id;
 
     return tax_rate_update_dto_local_var;
 }
@@ -85,10 +81,6 @@ void tax_rate_update_dto_free(tax_rate_update_dto_t *tax_rate_update_dto) {
         free(tax_rate_update_dto->fiscal_year_id);
         tax_rate_update_dto->fiscal_year_id = NULL;
     }
-    if (tax_rate_update_dto->tenant_id) {
-        free(tax_rate_update_dto->tenant_id);
-        tax_rate_update_dto->tenant_id = NULL;
-    }
     if (tax_rate_update_dto->country_id) {
         free(tax_rate_update_dto->country_id);
         tax_rate_update_dto->country_id = NULL;
@@ -104,10 +96,6 @@ void tax_rate_update_dto_free(tax_rate_update_dto_t *tax_rate_update_dto) {
     if (tax_rate_update_dto->tax_policy_id) {
         free(tax_rate_update_dto->tax_policy_id);
         tax_rate_update_dto->tax_policy_id = NULL;
-    }
-    if (tax_rate_update_dto->enrollment_id) {
-        free(tax_rate_update_dto->enrollment_id);
-        tax_rate_update_dto->enrollment_id = NULL;
     }
     free(tax_rate_update_dto);
 }
@@ -227,14 +215,6 @@ cJSON *tax_rate_update_dto_convertToJSON(tax_rate_update_dto_t *tax_rate_update_
     }
 
 
-    // tax_rate_update_dto->tenant_id
-    if(tax_rate_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", tax_rate_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // tax_rate_update_dto->country_id
     if(tax_rate_update_dto->country_id) {
     if(cJSON_AddStringToObject(item, "countryId", tax_rate_update_dto->country_id) == NULL) {
@@ -262,14 +242,6 @@ cJSON *tax_rate_update_dto_convertToJSON(tax_rate_update_dto_t *tax_rate_update_
     // tax_rate_update_dto->tax_policy_id
     if(tax_rate_update_dto->tax_policy_id) {
     if(cJSON_AddStringToObject(item, "taxPolicyId", tax_rate_update_dto->tax_policy_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // tax_rate_update_dto->enrollment_id
-    if(tax_rate_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", tax_rate_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -412,15 +384,6 @@ tax_rate_update_dto_t *tax_rate_update_dto_parseFromJSON(cJSON *tax_rate_update_
     }
     }
 
-    // tax_rate_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(tax_rate_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // tax_rate_update_dto->country_id
     cJSON *country_id = cJSON_GetObjectItemCaseSensitive(tax_rate_update_dtoJSON, "countryId");
     if (country_id) { 
@@ -457,15 +420,6 @@ tax_rate_update_dto_t *tax_rate_update_dto_parseFromJSON(cJSON *tax_rate_update_
     }
     }
 
-    // tax_rate_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(tax_rate_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     tax_rate_update_dto_local_var = tax_rate_update_dto_create (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
@@ -482,12 +436,10 @@ tax_rate_update_dto_t *tax_rate_update_dto_parseFromJSON(cJSON *tax_rate_update_
         cumulative_transaction_threshold ? cumulative_transaction_threshold->valuedouble : 0,
         fiscal_authority_id && !cJSON_IsNull(fiscal_authority_id) ? strdup(fiscal_authority_id->valuestring) : NULL,
         fiscal_year_id && !cJSON_IsNull(fiscal_year_id) ? strdup(fiscal_year_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         country_id && !cJSON_IsNull(country_id) ? strdup(country_id->valuestring) : NULL,
         tax_class_id && !cJSON_IsNull(tax_class_id) ? strdup(tax_class_id->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        tax_policy_id && !cJSON_IsNull(tax_policy_id) ? strdup(tax_policy_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        tax_policy_id && !cJSON_IsNull(tax_policy_id) ? strdup(tax_policy_id->valuestring) : NULL
         );
 
     return tax_rate_update_dto_local_var;

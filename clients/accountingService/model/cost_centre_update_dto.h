@@ -31,7 +31,6 @@ typedef struct cost_centre_update_dto_t {
     int disabled; //boolean
     char *description; // string
     accountingservice_cost_centre_update_dto_COSTCENTRETYPE_e cost_centre_type; //enum
-    char *tenant_id; // string
     char *cost_centres_group_id; // string
     char *parent_cost_centre_id; // string
 
@@ -42,7 +41,6 @@ cost_centre_update_dto_t *cost_centre_update_dto_create(
     int disabled,
     char *description,
     accountingservice_cost_centre_update_dto_COSTCENTRETYPE_e cost_centre_type,
-    char *tenant_id,
     char *cost_centres_group_id,
     char *parent_cost_centre_id
 );

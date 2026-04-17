@@ -38,7 +38,6 @@ service_create_dto_t *service_create_dto_create(
     char *pattern,
     char *features,
     char *material,
-    char *tenant_id,
     char *permalink,
     char *brand_name,
     char *variations,
@@ -205,7 +204,6 @@ service_create_dto_t *service_create_dto_create(
     service_create_dto_local_var->pattern = pattern;
     service_create_dto_local_var->features = features;
     service_create_dto_local_var->material = material;
-    service_create_dto_local_var->tenant_id = tenant_id;
     service_create_dto_local_var->permalink = permalink;
     service_create_dto_local_var->brand_name = brand_name;
     service_create_dto_local_var->variations = variations;
@@ -472,10 +470,6 @@ void service_create_dto_free(service_create_dto_t *service_create_dto) {
     if (service_create_dto->material) {
         free(service_create_dto->material);
         service_create_dto->material = NULL;
-    }
-    if (service_create_dto->tenant_id) {
-        free(service_create_dto->tenant_id);
-        service_create_dto->tenant_id = NULL;
     }
     if (service_create_dto->permalink) {
         free(service_create_dto->permalink);
@@ -1004,14 +998,6 @@ cJSON *service_create_dto_convertToJSON(service_create_dto_t *service_create_dto
     // service_create_dto->material
     if(service_create_dto->material) {
     if(cJSON_AddStringToObject(item, "material", service_create_dto->material) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // service_create_dto->tenant_id
-    if(service_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", service_create_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -2516,15 +2502,6 @@ service_create_dto_t *service_create_dto_parseFromJSON(cJSON *service_create_dto
     }
     }
 
-    // service_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(service_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // service_create_dto->permalink
     cJSON *permalink = cJSON_GetObjectItemCaseSensitive(service_create_dtoJSON, "permalink");
     if (permalink) { 
@@ -3860,7 +3837,6 @@ service_create_dto_t *service_create_dto_parseFromJSON(cJSON *service_create_dto
         pattern && !cJSON_IsNull(pattern) ? strdup(pattern->valuestring) : NULL,
         features && !cJSON_IsNull(features) ? strdup(features->valuestring) : NULL,
         material && !cJSON_IsNull(material) ? strdup(material->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         permalink && !cJSON_IsNull(permalink) ? strdup(permalink->valuestring) : NULL,
         brand_name && !cJSON_IsNull(brand_name) ? strdup(brand_name->valuestring) : NULL,
         variations && !cJSON_IsNull(variations) ? strdup(variations->valuestring) : NULL,

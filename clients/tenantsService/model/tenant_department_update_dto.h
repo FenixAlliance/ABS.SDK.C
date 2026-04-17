@@ -22,7 +22,6 @@ typedef struct tenant_department_update_dto_t {
     char *name; // string
     char *description; // string
     int disabled; //boolean
-    char *business_profile_record_id; // string
     char *organization_profile_id; // string
     char *parent_department_id; // string
 
@@ -32,7 +31,6 @@ tenant_department_update_dto_t *tenant_department_update_dto_create(
     char *name,
     char *description,
     int disabled,
-    char *business_profile_record_id,
     char *organization_profile_id,
     char *parent_department_id
 );

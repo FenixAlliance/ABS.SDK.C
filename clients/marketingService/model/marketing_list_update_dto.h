@@ -44,8 +44,6 @@ typedef struct marketing_list_update_dto_t {
     char *modified_on; //date time
     char *last_used_on; //date time
     char *currency_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
     marketingservice_marketing_list_update_dto_MARKETINGLISTTYPE_e marketing_list_type; //enum
     marketingservice_marketing_list_update_dto_MARKETINGLISTTARGET_e marketing_list_target; //enum
 
@@ -61,8 +59,6 @@ marketing_list_update_dto_t *marketing_list_update_dto_create(
     char *modified_on,
     char *last_used_on,
     char *currency_id,
-    char *tenant_id,
-    char *enrollment_id,
     marketingservice_marketing_list_update_dto_MARKETINGLISTTYPE_e marketing_list_type,
     marketingservice_marketing_list_update_dto_MARKETINGLISTTARGET_e marketing_list_target
 );

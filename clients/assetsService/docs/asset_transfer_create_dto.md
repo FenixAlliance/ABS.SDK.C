@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **char \*** |  | [optional] 
+**timestamp** | **char \*** |  | [optional] 
 **asset_id** | **char \*** |  | [optional] 
 **is_root_transfer** | **int** |  | [optional] 
 **serial_list** | **char \*** |  | [optional] 

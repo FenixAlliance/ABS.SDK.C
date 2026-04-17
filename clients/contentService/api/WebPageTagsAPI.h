@@ -7,10 +7,19 @@
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/int32_envelope.h"
 #include "../model/web_page_tag_create_dto.h"
 #include "../model/web_page_tag_dto_envelope.h"
 #include "../model/web_page_tag_dto_list_envelope.h"
 #include "../model/web_page_tag_update_dto.h"
+
+
+// Count web page tags
+//
+// Counts all web page tags for the specified tenant.
+//
+int32_envelope_t*
+WebPageTagsAPI_countWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Create a web page tag

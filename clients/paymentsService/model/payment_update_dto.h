@@ -44,7 +44,6 @@ paymentsservice_payment_update_dto_PAYMENTSTATUS_e payment_update_dto_payment_st
 
 typedef struct payment_update_dto_t {
     char *invoice_id; // string
-    char *tenant_id; // string
     char *emisor_wallet_id; // string
     char *receiver_wallet_id; // string
     char *currency_id; // string
@@ -96,7 +95,6 @@ typedef struct payment_update_dto_t {
     char *accounting_entry_id; // string
     char *payment_gateway_id; // string
     char *bank_account_id; // string
-    char *enrollment_id; // string
     char *bank_id; // string
     char *payment_token_id; // string
     char *emisor_wallet_account_id; // string
@@ -106,7 +104,6 @@ typedef struct payment_update_dto_t {
 
 payment_update_dto_t *payment_update_dto_create(
     char *invoice_id,
-    char *tenant_id,
     char *emisor_wallet_id,
     char *receiver_wallet_id,
     char *currency_id,
@@ -158,7 +155,6 @@ payment_update_dto_t *payment_update_dto_create(
     char *accounting_entry_id,
     char *payment_gateway_id,
     char *bank_account_id,
-    char *enrollment_id,
     char *bank_id,
     char *payment_token_id,
     char *emisor_wallet_account_id,

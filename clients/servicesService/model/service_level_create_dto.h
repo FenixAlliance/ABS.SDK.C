@@ -51,7 +51,6 @@ typedef struct service_level_create_dto_t {
     char *pattern; // string
     char *features; // string
     char *material; // string
-    char *tenant_id; // string
     char *permalink; // string
     char *brand_name; // string
     char *variations; // string
@@ -216,7 +215,6 @@ service_level_create_dto_t *service_level_create_dto_create(
     char *pattern,
     char *features,
     char *material,
-    char *tenant_id,
     char *permalink,
     char *brand_name,
     char *variations,

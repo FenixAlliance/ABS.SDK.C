@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **order** | **int** |  | [optional] 
 **name** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
-**enrollment_id** | **char \*** |  | [optional] 
 **deal_unit_flow_id** | **char \*** |  | [optional] 
 **parent_business_process_stage_id** | **char \*** |  | [optional] 
 

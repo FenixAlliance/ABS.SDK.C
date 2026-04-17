@@ -12,7 +12,6 @@ item_question_create_dto_t *item_question_create_dto_create(
     int needs_revision,
     char *question,
     char *social_profile_id,
-    char *business_id,
     char *item_id
     ) {
     item_question_create_dto_t *item_question_create_dto_local_var = malloc(sizeof(item_question_create_dto_t));
@@ -25,7 +24,6 @@ item_question_create_dto_t *item_question_create_dto_create(
     item_question_create_dto_local_var->needs_revision = needs_revision;
     item_question_create_dto_local_var->question = question;
     item_question_create_dto_local_var->social_profile_id = social_profile_id;
-    item_question_create_dto_local_var->business_id = business_id;
     item_question_create_dto_local_var->item_id = item_id;
 
     return item_question_create_dto_local_var;
@@ -56,10 +54,6 @@ void item_question_create_dto_free(item_question_create_dto_t *item_question_cre
     if (item_question_create_dto->social_profile_id) {
         free(item_question_create_dto->social_profile_id);
         item_question_create_dto->social_profile_id = NULL;
-    }
-    if (item_question_create_dto->business_id) {
-        free(item_question_create_dto->business_id);
-        item_question_create_dto->business_id = NULL;
     }
     if (item_question_create_dto->item_id) {
         free(item_question_create_dto->item_id);
@@ -119,15 +113,6 @@ cJSON *item_question_create_dto_convertToJSON(item_question_create_dto_t *item_q
     if(cJSON_AddStringToObject(item, "socialProfileID", item_question_create_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
-    }
-
-
-    // item_question_create_dto->business_id
-    if (!item_question_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", item_question_create_dto->business_id) == NULL) {
-    goto fail; //String
     }
 
 
@@ -214,18 +199,6 @@ item_question_create_dto_t *item_question_create_dto_parseFromJSON(cJSON *item_q
     }
     }
 
-    // item_question_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_question_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
     // item_question_create_dto->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_question_create_dtoJSON, "itemID");
     if (!item_id) {
@@ -246,7 +219,6 @@ item_question_create_dto_t *item_question_create_dto_parseFromJSON(cJSON *item_q
         needs_revision->valueint,
         strdup(question->valuestring),
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL,
-        strdup(business_id->valuestring),
         strdup(item_id->valuestring)
         );
 

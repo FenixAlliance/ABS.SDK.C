@@ -35,14 +35,14 @@ dealsservice_deal_unit_line_create_dto_COSTCALCULATIONMETHOD_e deal_unit_line_cr
 
 
 typedef struct deal_unit_line_create_dto_t {
+    char *id; // string
+    char *timestamp; //date time
     int closed; //boolean
     char *item_id; // string
     char *item_title; // string
     char *item_short_description; // string
     char *item_primary_image_url; // string
     char *shipping_policy_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *currency_id; // string
     char *description; // string
     double quantity; //numeric
@@ -99,14 +99,14 @@ typedef struct deal_unit_line_create_dto_t {
     char *custom_global_discounts_amount_currency_id; // string
     double total_detail; //numeric
     char *total_detail_currency_id; // string
-    double total_profit; //numeric
-    char *total_profit_currency_id; // string
     double total_discounts; //numeric
     char *total_discounts_currency_id; // string
-    double total_surcharges; //numeric
-    char *total_surcharges_currency_id; // string
     double total_tax_base; //numeric
     char *total_tax_base_currency_id; // string
+    double total_surcharges; //numeric
+    char *total_surcharges_currency_id; // string
+    double total_profit; //numeric
+    char *total_profit_currency_id; // string
     double total_shipping_cost; //numeric
     char *total_shipping_cost_currency_id; // string
     double total_shipping_tax; //numeric
@@ -128,21 +128,20 @@ typedef struct deal_unit_line_create_dto_t {
     char *shipping_location_id; // string
     char *location_id; // string
     char *quote_item_record_id; // string
-    char *business_profile_record_id; // string
     char *parent_billing_item_record_id; // string
     char *deal_unit_id; // string
 
 } deal_unit_line_create_dto_t;
 
 deal_unit_line_create_dto_t *deal_unit_line_create_dto_create(
+    char *id,
+    char *timestamp,
     int closed,
     char *item_id,
     char *item_title,
     char *item_short_description,
     char *item_primary_image_url,
     char *shipping_policy_id,
-    char *tenant_id,
-    char *enrollment_id,
     char *currency_id,
     char *description,
     double quantity,
@@ -199,14 +198,14 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_create(
     char *custom_global_discounts_amount_currency_id,
     double total_detail,
     char *total_detail_currency_id,
-    double total_profit,
-    char *total_profit_currency_id,
     double total_discounts,
     char *total_discounts_currency_id,
-    double total_surcharges,
-    char *total_surcharges_currency_id,
     double total_tax_base,
     char *total_tax_base_currency_id,
+    double total_surcharges,
+    char *total_surcharges_currency_id,
+    double total_profit,
+    char *total_profit_currency_id,
     double total_shipping_cost,
     char *total_shipping_cost_currency_id,
     double total_shipping_tax,
@@ -228,7 +227,6 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_create(
     char *shipping_location_id,
     char *location_id,
     char *quote_item_record_id,
-    char *business_profile_record_id,
     char *parent_billing_item_record_id,
     char *deal_unit_id
 );

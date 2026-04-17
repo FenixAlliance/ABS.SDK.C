@@ -11,8 +11,6 @@ item_category_create_dto_t *item_category_create_dto_create(
     char *title,
     char *description,
     char *image_url,
-    char *business_id,
-    char *business_profile_record_id,
     char *parent_item_category_id
     ) {
     item_category_create_dto_t *item_category_create_dto_local_var = malloc(sizeof(item_category_create_dto_t));
@@ -24,8 +22,6 @@ item_category_create_dto_t *item_category_create_dto_create(
     item_category_create_dto_local_var->title = title;
     item_category_create_dto_local_var->description = description;
     item_category_create_dto_local_var->image_url = image_url;
-    item_category_create_dto_local_var->business_id = business_id;
-    item_category_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     item_category_create_dto_local_var->parent_item_category_id = parent_item_category_id;
 
     return item_category_create_dto_local_var;
@@ -56,14 +52,6 @@ void item_category_create_dto_free(item_category_create_dto_t *item_category_cre
     if (item_category_create_dto->image_url) {
         free(item_category_create_dto->image_url);
         item_category_create_dto->image_url = NULL;
-    }
-    if (item_category_create_dto->business_id) {
-        free(item_category_create_dto->business_id);
-        item_category_create_dto->business_id = NULL;
-    }
-    if (item_category_create_dto->business_profile_record_id) {
-        free(item_category_create_dto->business_profile_record_id);
-        item_category_create_dto->business_profile_record_id = NULL;
     }
     if (item_category_create_dto->parent_item_category_id) {
         free(item_category_create_dto->parent_item_category_id);
@@ -111,23 +99,6 @@ cJSON *item_category_create_dto_convertToJSON(item_category_create_dto_t *item_c
     // item_category_create_dto->image_url
     if(item_category_create_dto->image_url) {
     if(cJSON_AddStringToObject(item, "imageURL", item_category_create_dto->image_url) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // item_category_create_dto->business_id
-    if (!item_category_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", item_category_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // item_category_create_dto->business_profile_record_id
-    if(item_category_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", item_category_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -200,27 +171,6 @@ item_category_create_dto_t *item_category_create_dto_parseFromJSON(cJSON *item_c
     }
     }
 
-    // item_category_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_category_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
-    // item_category_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(item_category_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
     // item_category_create_dto->parent_item_category_id
     cJSON *parent_item_category_id = cJSON_GetObjectItemCaseSensitive(item_category_create_dtoJSON, "parentItemCategoryID");
     if (parent_item_category_id) { 
@@ -237,8 +187,6 @@ item_category_create_dto_t *item_category_create_dto_parseFromJSON(cJSON *item_c
         strdup(title->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         image_url && !cJSON_IsNull(image_url) ? strdup(image_url->valuestring) : NULL,
-        strdup(business_id->valuestring),
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         parent_item_category_id && !cJSON_IsNull(parent_item_category_id) ? strdup(parent_item_category_id->valuestring) : NULL
         );
 

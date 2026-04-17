@@ -24,8 +24,6 @@ typedef struct fiscal_identification_type_create_dto_t {
     char *code; // string
     char *name; // string
     char *fiscal_authority_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } fiscal_identification_type_create_dto_t;
 
@@ -34,9 +32,7 @@ fiscal_identification_type_create_dto_t *fiscal_identification_type_create_dto_c
     char *timestamp,
     char *code,
     char *name,
-    char *fiscal_authority_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *fiscal_authority_id
 );
 
 void fiscal_identification_type_create_dto_free(fiscal_identification_type_create_dto_t *fiscal_identification_type_create_dto);

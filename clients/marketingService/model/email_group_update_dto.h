@@ -22,17 +22,13 @@ typedef struct email_group_update_dto_t {
     char *name; // string
     char *description; // string
     int enabled; //boolean
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } email_group_update_dto_t;
 
 email_group_update_dto_t *email_group_update_dto_create(
     char *name,
     char *description,
-    int enabled,
-    char *tenant_id,
-    char *enrollment_id
+    int enabled
 );
 
 void email_group_update_dto_free(email_group_update_dto_t *email_group_update_dto);

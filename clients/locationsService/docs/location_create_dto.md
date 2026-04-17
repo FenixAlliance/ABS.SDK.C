@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **state_id** | **char \*** |  | [optional] 
 **postal_code** | **char \*** |  | [optional] 
 **country_id** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
 **longitude** | **double** |  | [optional] 
 **latitude** | **double** |  | [optional] 
 **is_routable** | **int** |  | [optional] 

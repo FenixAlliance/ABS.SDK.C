@@ -35,7 +35,6 @@ ordersservice_order_update_dto_TAXCALCULATIONMETHOD_e order_update_dto_tax_calcu
 
 
 typedef struct order_update_dto_t {
-    char *tenant_id; // string
     char *first_name; // string
     char *last_name; // string
     char *company_name; // string
@@ -79,7 +78,6 @@ typedef struct order_update_dto_t {
     char *user_id; // string
     double forex_rate; //numeric
     char *currency_id; // string
-    char *enrollment_id; // string
     char *individual_id; // string
     char *organization_id; // string
     double total_amount_in_usd; //numeric
@@ -97,7 +95,6 @@ typedef struct order_update_dto_t {
 } order_update_dto_t;
 
 order_update_dto_t *order_update_dto_create(
-    char *tenant_id,
     char *first_name,
     char *last_name,
     char *company_name,
@@ -141,7 +138,6 @@ order_update_dto_t *order_update_dto_create(
     char *user_id,
     double forex_rate,
     char *currency_id,
-    char *enrollment_id,
     char *individual_id,
     char *organization_id,
     double total_amount_in_usd,

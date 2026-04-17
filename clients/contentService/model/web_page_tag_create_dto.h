@@ -33,7 +33,6 @@ typedef struct web_page_tag_create_dto_t {
     char *image_url; // string
     char *image; // string
     char *web_portal_id; // string
-    char *business_profile_record_id; // string
 
 } web_page_tag_create_dto_t;
 
@@ -51,8 +50,7 @@ web_page_tag_create_dto_t *web_page_tag_create_dto_create(
     char *canonical_url,
     char *image_url,
     char *image,
-    char *web_portal_id,
-    char *business_profile_record_id
+    char *web_portal_id
 );
 
 void web_page_tag_create_dto_free(web_page_tag_create_dto_t *web_page_tag_create_dto);

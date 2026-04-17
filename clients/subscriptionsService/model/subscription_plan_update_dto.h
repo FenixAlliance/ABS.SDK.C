@@ -70,7 +70,6 @@ typedef struct subscription_plan_update_dto_t {
     char *material; // string
     int on_discount; //boolean
     double total_tax; //numeric
-    char *tenant_id; // string
     char *permalink; // string
     char *brand_name; // string
     int reviews_count; //numeric
@@ -95,7 +94,6 @@ typedef struct subscription_plan_update_dto_t {
     double custom_tax_value; //numeric
     int has_variations; //boolean
     int questions_count; //numeric
-    char *enrollment_id; // string
     char *supplier_code; // string
     char *auction_end; //date time
     char *purchase_note; // string
@@ -251,7 +249,6 @@ subscription_plan_update_dto_t *subscription_plan_update_dto_create(
     char *material,
     int on_discount,
     double total_tax,
-    char *tenant_id,
     char *permalink,
     char *brand_name,
     int reviews_count,
@@ -276,7 +273,6 @@ subscription_plan_update_dto_t *subscription_plan_update_dto_create(
     double custom_tax_value,
     int has_variations,
     int questions_count,
-    char *enrollment_id,
     char *supplier_code,
     char *auction_end,
     char *purchase_note,

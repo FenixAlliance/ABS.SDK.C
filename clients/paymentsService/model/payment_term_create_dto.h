@@ -30,8 +30,6 @@ typedef struct payment_term_create_dto_t {
     double credit_months; //numeric
     double credit_years; //numeric
     char *payment_mode_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } payment_term_create_dto_t;
 
@@ -46,9 +44,7 @@ payment_term_create_dto_t *payment_term_create_dto_create(
     double credit_weeks,
     double credit_months,
     double credit_years,
-    char *payment_mode_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *payment_mode_id
 );
 
 void payment_term_create_dto_free(payment_term_create_dto_t *payment_term_create_dto);

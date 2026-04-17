@@ -9,7 +9,6 @@ budget_create_dto_t *budget_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *tenant_id,
     char *fiscal_year_id
     ) {
     budget_create_dto_t *budget_create_dto_local_var = malloc(sizeof(budget_create_dto_t));
@@ -19,7 +18,6 @@ budget_create_dto_t *budget_create_dto_create(
     budget_create_dto_local_var->id = id;
     budget_create_dto_local_var->timestamp = timestamp;
     budget_create_dto_local_var->name = name;
-    budget_create_dto_local_var->tenant_id = tenant_id;
     budget_create_dto_local_var->fiscal_year_id = fiscal_year_id;
 
     return budget_create_dto_local_var;
@@ -42,10 +40,6 @@ void budget_create_dto_free(budget_create_dto_t *budget_create_dto) {
     if (budget_create_dto->name) {
         free(budget_create_dto->name);
         budget_create_dto->name = NULL;
-    }
-    if (budget_create_dto->tenant_id) {
-        free(budget_create_dto->tenant_id);
-        budget_create_dto->tenant_id = NULL;
     }
     if (budget_create_dto->fiscal_year_id) {
         free(budget_create_dto->fiscal_year_id);
@@ -76,14 +70,6 @@ cJSON *budget_create_dto_convertToJSON(budget_create_dto_t *budget_create_dto) {
     // budget_create_dto->name
     if(budget_create_dto->name) {
     if(cJSON_AddStringToObject(item, "name", budget_create_dto->name) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // budget_create_dto->tenant_id
-    if(budget_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", budget_create_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -135,15 +121,6 @@ budget_create_dto_t *budget_create_dto_parseFromJSON(cJSON *budget_create_dtoJSO
     }
     }
 
-    // budget_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(budget_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // budget_create_dto->fiscal_year_id
     cJSON *fiscal_year_id = cJSON_GetObjectItemCaseSensitive(budget_create_dtoJSON, "fiscalYearId");
     if (fiscal_year_id) { 
@@ -158,7 +135,6 @@ budget_create_dto_t *budget_create_dto_parseFromJSON(cJSON *budget_create_dtoJSO
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         fiscal_year_id && !cJSON_IsNull(fiscal_year_id) ? strdup(fiscal_year_id->valuestring) : NULL
         );
 

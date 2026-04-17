@@ -23,8 +23,6 @@ typedef struct share_transfer_reason_create_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *description; // string
-    char *enrollment_id; // string
-    char *tenant_id; // string
 
 } share_transfer_reason_create_dto_t;
 
@@ -32,9 +30,7 @@ share_transfer_reason_create_dto_t *share_transfer_reason_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *description,
-    char *enrollment_id,
-    char *tenant_id
+    char *description
 );
 
 void share_transfer_reason_create_dto_free(share_transfer_reason_create_dto_t *share_transfer_reason_create_dto);

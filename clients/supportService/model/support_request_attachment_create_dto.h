@@ -31,8 +31,6 @@ typedef struct support_request_attachment_create_dto_t {
     int valid_response; //boolean
     char *parent_file_upload_id; // string
     char *file_path; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
     char *metadata; // string
     char *support_request_id; // string
 
@@ -51,8 +49,6 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_c
     int valid_response,
     char *parent_file_upload_id,
     char *file_path,
-    char *business_id,
-    char *business_profile_record_id,
     char *metadata,
     char *support_request_id
 );

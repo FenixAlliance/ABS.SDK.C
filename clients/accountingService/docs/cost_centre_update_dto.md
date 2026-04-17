@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **disabled** | **int** |  | [optional] 
 **description** | **char \*** |  | [optional] 
 **cost_centre_type** | **accountingservice_cost_centre_update_dto_COSTCENTRETYPE_e** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
 **cost_centres_group_id** | **char \*** |  | [optional] 
 **parent_cost_centre_id** | **char \*** |  | [optional] 
 

@@ -25,8 +25,6 @@ typedef struct payment_commission_update_dto_t {
     double added_percent; //numeric
     double added_amount; //numeric
     double tax_comission; //numeric
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *salary_id; // string
     char *emisor_wallet_account_id; // string
     char *receiver_wallet_account_id; // string
@@ -43,8 +41,6 @@ payment_commission_update_dto_t *payment_commission_update_dto_create(
     double added_percent,
     double added_amount,
     double tax_comission,
-    char *tenant_id,
-    char *enrollment_id,
     char *salary_id,
     char *emisor_wallet_account_id,
     char *receiver_wallet_account_id,

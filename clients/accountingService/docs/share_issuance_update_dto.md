@@ -3,8 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id** | **char \*** |  | [optional] 
-**enrollment_id** | **char \*** |  | [optional] 
 **unit_price** | **int** |  | [optional] 
 **quantity** | **int** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 

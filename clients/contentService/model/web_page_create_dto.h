@@ -29,8 +29,6 @@ contentservice_web_page_create_dto_CODETYPE_e web_page_create_dto_code_type_From
 typedef struct web_page_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *title; // string
     char *code; // string
     int published; //boolean
@@ -45,8 +43,6 @@ typedef struct web_page_create_dto_t {
 web_page_create_dto_t *web_page_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
-    char *enrollment_id,
     char *title,
     char *code,
     int published,

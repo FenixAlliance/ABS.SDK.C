@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **needs_revision** | **int** |  | 
 **question** | **char \*** |  | 
 **social_profile_id** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

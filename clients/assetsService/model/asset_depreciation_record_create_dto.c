@@ -6,6 +6,8 @@
 
 
 asset_depreciation_record_create_dto_t *asset_depreciation_record_create_dto_create(
+    char *id,
+    char *timestamp,
     char *asset_id,
     char *asset_depreciation_policy_id,
     double depreciation_amount,
@@ -19,6 +21,8 @@ asset_depreciation_record_create_dto_t *asset_depreciation_record_create_dto_cre
     if (!asset_depreciation_record_create_dto_local_var) {
         return NULL;
     }
+    asset_depreciation_record_create_dto_local_var->id = id;
+    asset_depreciation_record_create_dto_local_var->timestamp = timestamp;
     asset_depreciation_record_create_dto_local_var->asset_id = asset_id;
     asset_depreciation_record_create_dto_local_var->asset_depreciation_policy_id = asset_depreciation_policy_id;
     asset_depreciation_record_create_dto_local_var->depreciation_amount = depreciation_amount;
@@ -37,6 +41,14 @@ void asset_depreciation_record_create_dto_free(asset_depreciation_record_create_
         return ;
     }
     listEntry_t *listEntry;
+    if (asset_depreciation_record_create_dto->id) {
+        free(asset_depreciation_record_create_dto->id);
+        asset_depreciation_record_create_dto->id = NULL;
+    }
+    if (asset_depreciation_record_create_dto->timestamp) {
+        free(asset_depreciation_record_create_dto->timestamp);
+        asset_depreciation_record_create_dto->timestamp = NULL;
+    }
     if (asset_depreciation_record_create_dto->asset_id) {
         free(asset_depreciation_record_create_dto->asset_id);
         asset_depreciation_record_create_dto->asset_id = NULL;
@@ -54,6 +66,22 @@ void asset_depreciation_record_create_dto_free(asset_depreciation_record_create_
 
 cJSON *asset_depreciation_record_create_dto_convertToJSON(asset_depreciation_record_create_dto_t *asset_depreciation_record_create_dto) {
     cJSON *item = cJSON_CreateObject();
+
+    // asset_depreciation_record_create_dto->id
+    if(asset_depreciation_record_create_dto->id) {
+    if(cJSON_AddStringToObject(item, "id", asset_depreciation_record_create_dto->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // asset_depreciation_record_create_dto->timestamp
+    if(asset_depreciation_record_create_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", asset_depreciation_record_create_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
 
     // asset_depreciation_record_create_dto->asset_id
     if(asset_depreciation_record_create_dto->asset_id) {
@@ -130,6 +158,24 @@ asset_depreciation_record_create_dto_t *asset_depreciation_record_create_dto_par
 
     asset_depreciation_record_create_dto_t *asset_depreciation_record_create_dto_local_var = NULL;
 
+    // asset_depreciation_record_create_dto->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_create_dtoJSON, "id");
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // asset_depreciation_record_create_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_create_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
+
     // asset_depreciation_record_create_dto->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_create_dtoJSON, "assetId");
     if (asset_id) { 
@@ -204,6 +250,8 @@ asset_depreciation_record_create_dto_t *asset_depreciation_record_create_dto_par
 
 
     asset_depreciation_record_create_dto_local_var = asset_depreciation_record_create_dto_create (
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         asset_depreciation_policy_id && !cJSON_IsNull(asset_depreciation_policy_id) ? strdup(asset_depreciation_policy_id->valuestring) : NULL,
         depreciation_amount ? depreciation_amount->valuedouble : 0,

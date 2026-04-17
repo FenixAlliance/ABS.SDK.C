@@ -13,7 +13,6 @@ item_type_create_dto_t *item_type_create_dto_create(
     char *description,
     char *image_url,
     char *google_category_taxonomy,
-    char *business_id,
     char *item_category_id,
     char *item_google_category_id
     ) {
@@ -28,7 +27,6 @@ item_type_create_dto_t *item_type_create_dto_create(
     item_type_create_dto_local_var->description = description;
     item_type_create_dto_local_var->image_url = image_url;
     item_type_create_dto_local_var->google_category_taxonomy = google_category_taxonomy;
-    item_type_create_dto_local_var->business_id = business_id;
     item_type_create_dto_local_var->item_category_id = item_category_id;
     item_type_create_dto_local_var->item_google_category_id = item_google_category_id;
 
@@ -68,10 +66,6 @@ void item_type_create_dto_free(item_type_create_dto_t *item_type_create_dto) {
     if (item_type_create_dto->google_category_taxonomy) {
         free(item_type_create_dto->google_category_taxonomy);
         item_type_create_dto->google_category_taxonomy = NULL;
-    }
-    if (item_type_create_dto->business_id) {
-        free(item_type_create_dto->business_id);
-        item_type_create_dto->business_id = NULL;
     }
     if (item_type_create_dto->item_category_id) {
         free(item_type_create_dto->item_category_id);
@@ -140,15 +134,6 @@ cJSON *item_type_create_dto_convertToJSON(item_type_create_dto_t *item_type_crea
     if(cJSON_AddStringToObject(item, "googleCategoryTaxonomy", item_type_create_dto->google_category_taxonomy) == NULL) {
     goto fail; //String
     }
-    }
-
-
-    // item_type_create_dto->business_id
-    if (!item_type_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", item_type_create_dto->business_id) == NULL) {
-    goto fail; //String
     }
 
 
@@ -243,18 +228,6 @@ item_type_create_dto_t *item_type_create_dto_parseFromJSON(cJSON *item_type_crea
     }
     }
 
-    // item_type_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_type_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
     // item_type_create_dto->item_category_id
     cJSON *item_category_id = cJSON_GetObjectItemCaseSensitive(item_type_create_dtoJSON, "itemCategoryID");
     if (!item_category_id) {
@@ -285,7 +258,6 @@ item_type_create_dto_t *item_type_create_dto_parseFromJSON(cJSON *item_type_crea
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         image_url && !cJSON_IsNull(image_url) ? strdup(image_url->valuestring) : NULL,
         google_category_taxonomy && !cJSON_IsNull(google_category_taxonomy) ? strdup(google_category_taxonomy->valuestring) : NULL,
-        strdup(business_id->valuestring),
         strdup(item_category_id->valuestring),
         item_google_category_id && !cJSON_IsNull(item_google_category_id) ? strdup(item_google_category_id->valuestring) : NULL
         );

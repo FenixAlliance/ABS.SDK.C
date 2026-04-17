@@ -19,8 +19,6 @@ typedef struct applied_tax_policy_record_update_dto_t applied_tax_policy_record_
 
 
 typedef struct applied_tax_policy_record_update_dto_t {
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *tax_policy_id; // string
     char *invoice_id; // string
     char *item_id; // string
@@ -30,8 +28,6 @@ typedef struct applied_tax_policy_record_update_dto_t {
 } applied_tax_policy_record_update_dto_t;
 
 applied_tax_policy_record_update_dto_t *applied_tax_policy_record_update_dto_create(
-    char *tenant_id,
-    char *enrollment_id,
     char *tax_policy_id,
     char *invoice_id,
     char *item_id,

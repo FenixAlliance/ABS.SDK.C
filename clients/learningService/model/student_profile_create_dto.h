@@ -47,9 +47,7 @@ typedef struct student_profile_create_dto_t {
     char *data8_label; // string
     char *data9; // string
     char *data9_label; // string
-    char *business_id; // string
     char *contact_id; // string
-    char *business_profile_record_id; // string
 
 } student_profile_create_dto_t;
 
@@ -82,9 +80,7 @@ student_profile_create_dto_t *student_profile_create_dto_create(
     char *data8_label,
     char *data9,
     char *data9_label,
-    char *business_id,
-    char *contact_id,
-    char *business_profile_record_id
+    char *contact_id
 );
 
 void student_profile_create_dto_free(student_profile_create_dto_t *student_profile_create_dto);

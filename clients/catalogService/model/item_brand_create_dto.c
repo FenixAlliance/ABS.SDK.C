@@ -13,8 +13,7 @@ item_brand_create_dto_t *item_brand_create_dto_create(
     char *description,
     char *website_url,
     int featured,
-    int trending,
-    char *business_id
+    int trending
     ) {
     item_brand_create_dto_t *item_brand_create_dto_local_var = malloc(sizeof(item_brand_create_dto_t));
     if (!item_brand_create_dto_local_var) {
@@ -28,7 +27,6 @@ item_brand_create_dto_t *item_brand_create_dto_create(
     item_brand_create_dto_local_var->website_url = website_url;
     item_brand_create_dto_local_var->featured = featured;
     item_brand_create_dto_local_var->trending = trending;
-    item_brand_create_dto_local_var->business_id = business_id;
 
     return item_brand_create_dto_local_var;
 }
@@ -62,10 +60,6 @@ void item_brand_create_dto_free(item_brand_create_dto_t *item_brand_create_dto) 
     if (item_brand_create_dto->website_url) {
         free(item_brand_create_dto->website_url);
         item_brand_create_dto->website_url = NULL;
-    }
-    if (item_brand_create_dto->business_id) {
-        free(item_brand_create_dto->business_id);
-        item_brand_create_dto->business_id = NULL;
     }
     free(item_brand_create_dto);
 }
@@ -135,15 +129,6 @@ cJSON *item_brand_create_dto_convertToJSON(item_brand_create_dto_t *item_brand_c
     if(cJSON_AddBoolToObject(item, "trending", item_brand_create_dto->trending) == NULL) {
     goto fail; //Bool
     }
-    }
-
-
-    // item_brand_create_dto->business_id
-    if (!item_brand_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", item_brand_create_dto->business_id) == NULL) {
-    goto fail; //String
     }
 
     return item;
@@ -233,18 +218,6 @@ item_brand_create_dto_t *item_brand_create_dto_parseFromJSON(cJSON *item_brand_c
     }
     }
 
-    // item_brand_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_brand_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
 
     item_brand_create_dto_local_var = item_brand_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -254,8 +227,7 @@ item_brand_create_dto_t *item_brand_create_dto_parseFromJSON(cJSON *item_brand_c
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         website_url && !cJSON_IsNull(website_url) ? strdup(website_url->valuestring) : NULL,
         featured ? featured->valueint : 0,
-        trending ? trending->valueint : 0,
-        strdup(business_id->valuestring)
+        trending ? trending->valueint : 0
         );
 
     return item_brand_create_dto_local_var;

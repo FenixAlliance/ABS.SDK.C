@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **description** | **char \*** |  | [optional] 
 **overall_score** | **double** |  | [optional] 
 **course_id** | **char \*** |  | 
-**business_id** | **char \*** |  | 
 **course_unit_id** | **char \*** |  | [optional] 
 **course_grading_rubric_id** | **char \*** |  | [optional] 
 **release_date_time** | **char \*** |  | [optional] 

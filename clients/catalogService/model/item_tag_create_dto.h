@@ -23,7 +23,6 @@ typedef struct item_tag_create_dto_t {
     char *timestamp; //date time
     char *title; // string
     char *description; // string
-    char *business_id; // string
 
 } item_tag_create_dto_t;
 
@@ -31,8 +30,7 @@ item_tag_create_dto_t *item_tag_create_dto_create(
     char *id,
     char *timestamp,
     char *title,
-    char *description,
-    char *business_id
+    char *description
 );
 
 void item_tag_create_dto_free(item_tag_create_dto_t *item_tag_create_dto);

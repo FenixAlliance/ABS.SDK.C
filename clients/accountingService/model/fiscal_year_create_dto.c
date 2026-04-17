@@ -11,10 +11,9 @@ fiscal_year_create_dto_t *fiscal_year_create_dto_create(
     char *name,
     char *description,
     int closed,
-    char *tenant_id,
-    char *enrollment_id,
     char *end_date,
-    char *start_date
+    char *start_date,
+    char *fiscal_authority_id
     ) {
     fiscal_year_create_dto_t *fiscal_year_create_dto_local_var = malloc(sizeof(fiscal_year_create_dto_t));
     if (!fiscal_year_create_dto_local_var) {
@@ -25,10 +24,9 @@ fiscal_year_create_dto_t *fiscal_year_create_dto_create(
     fiscal_year_create_dto_local_var->name = name;
     fiscal_year_create_dto_local_var->description = description;
     fiscal_year_create_dto_local_var->closed = closed;
-    fiscal_year_create_dto_local_var->tenant_id = tenant_id;
-    fiscal_year_create_dto_local_var->enrollment_id = enrollment_id;
     fiscal_year_create_dto_local_var->end_date = end_date;
     fiscal_year_create_dto_local_var->start_date = start_date;
+    fiscal_year_create_dto_local_var->fiscal_authority_id = fiscal_authority_id;
 
     return fiscal_year_create_dto_local_var;
 }
@@ -55,14 +53,6 @@ void fiscal_year_create_dto_free(fiscal_year_create_dto_t *fiscal_year_create_dt
         free(fiscal_year_create_dto->description);
         fiscal_year_create_dto->description = NULL;
     }
-    if (fiscal_year_create_dto->tenant_id) {
-        free(fiscal_year_create_dto->tenant_id);
-        fiscal_year_create_dto->tenant_id = NULL;
-    }
-    if (fiscal_year_create_dto->enrollment_id) {
-        free(fiscal_year_create_dto->enrollment_id);
-        fiscal_year_create_dto->enrollment_id = NULL;
-    }
     if (fiscal_year_create_dto->end_date) {
         free(fiscal_year_create_dto->end_date);
         fiscal_year_create_dto->end_date = NULL;
@@ -70,6 +60,10 @@ void fiscal_year_create_dto_free(fiscal_year_create_dto_t *fiscal_year_create_dt
     if (fiscal_year_create_dto->start_date) {
         free(fiscal_year_create_dto->start_date);
         fiscal_year_create_dto->start_date = NULL;
+    }
+    if (fiscal_year_create_dto->fiscal_authority_id) {
+        free(fiscal_year_create_dto->fiscal_authority_id);
+        fiscal_year_create_dto->fiscal_authority_id = NULL;
     }
     free(fiscal_year_create_dto);
 }
@@ -117,22 +111,6 @@ cJSON *fiscal_year_create_dto_convertToJSON(fiscal_year_create_dto_t *fiscal_yea
     }
 
 
-    // fiscal_year_create_dto->tenant_id
-    if(fiscal_year_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", fiscal_year_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // fiscal_year_create_dto->enrollment_id
-    if(fiscal_year_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", fiscal_year_create_dto->enrollment_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // fiscal_year_create_dto->end_date
     if(fiscal_year_create_dto->end_date) {
     if(cJSON_AddStringToObject(item, "endDate", fiscal_year_create_dto->end_date) == NULL) {
@@ -145,6 +123,14 @@ cJSON *fiscal_year_create_dto_convertToJSON(fiscal_year_create_dto_t *fiscal_yea
     if(fiscal_year_create_dto->start_date) {
     if(cJSON_AddStringToObject(item, "startDate", fiscal_year_create_dto->start_date) == NULL) {
     goto fail; //Date-Time
+    }
+    }
+
+
+    // fiscal_year_create_dto->fiscal_authority_id
+    if(fiscal_year_create_dto->fiscal_authority_id) {
+    if(cJSON_AddStringToObject(item, "fiscalAuthorityId", fiscal_year_create_dto->fiscal_authority_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -205,24 +191,6 @@ fiscal_year_create_dto_t *fiscal_year_create_dto_parseFromJSON(cJSON *fiscal_yea
     }
     }
 
-    // fiscal_year_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(fiscal_year_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // fiscal_year_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(fiscal_year_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // fiscal_year_create_dto->end_date
     cJSON *end_date = cJSON_GetObjectItemCaseSensitive(fiscal_year_create_dtoJSON, "endDate");
     if (end_date) { 
@@ -241,6 +209,15 @@ fiscal_year_create_dto_t *fiscal_year_create_dto_parseFromJSON(cJSON *fiscal_yea
     }
     }
 
+    // fiscal_year_create_dto->fiscal_authority_id
+    cJSON *fiscal_authority_id = cJSON_GetObjectItemCaseSensitive(fiscal_year_create_dtoJSON, "fiscalAuthorityId");
+    if (fiscal_authority_id) { 
+    if(!cJSON_IsString(fiscal_authority_id) && !cJSON_IsNull(fiscal_authority_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     fiscal_year_create_dto_local_var = fiscal_year_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -248,10 +225,9 @@ fiscal_year_create_dto_t *fiscal_year_create_dto_parseFromJSON(cJSON *fiscal_yea
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         closed ? closed->valueint : 0,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         end_date && !cJSON_IsNull(end_date) ? strdup(end_date->valuestring) : NULL,
-        start_date && !cJSON_IsNull(start_date) ? strdup(start_date->valuestring) : NULL
+        start_date && !cJSON_IsNull(start_date) ? strdup(start_date->valuestring) : NULL,
+        fiscal_authority_id && !cJSON_IsNull(fiscal_authority_id) ? strdup(fiscal_authority_id->valuestring) : NULL
         );
 
     return fiscal_year_create_dto_local_var;

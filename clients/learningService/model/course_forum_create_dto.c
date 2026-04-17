@@ -10,8 +10,7 @@ course_forum_create_dto_t *course_forum_create_dto_create(
     char *timestamp,
     char *title,
     char *description,
-    char *course_id,
-    char *business_id
+    char *course_id
     ) {
     course_forum_create_dto_t *course_forum_create_dto_local_var = malloc(sizeof(course_forum_create_dto_t));
     if (!course_forum_create_dto_local_var) {
@@ -22,7 +21,6 @@ course_forum_create_dto_t *course_forum_create_dto_create(
     course_forum_create_dto_local_var->title = title;
     course_forum_create_dto_local_var->description = description;
     course_forum_create_dto_local_var->course_id = course_id;
-    course_forum_create_dto_local_var->business_id = business_id;
 
     return course_forum_create_dto_local_var;
 }
@@ -52,10 +50,6 @@ void course_forum_create_dto_free(course_forum_create_dto_t *course_forum_create
     if (course_forum_create_dto->course_id) {
         free(course_forum_create_dto->course_id);
         course_forum_create_dto->course_id = NULL;
-    }
-    if (course_forum_create_dto->business_id) {
-        free(course_forum_create_dto->business_id);
-        course_forum_create_dto->business_id = NULL;
     }
     free(course_forum_create_dto);
 }
@@ -101,15 +95,6 @@ cJSON *course_forum_create_dto_convertToJSON(course_forum_create_dto_t *course_f
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "courseID", course_forum_create_dto->course_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // course_forum_create_dto->business_id
-    if (!course_forum_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_forum_create_dto->business_id) == NULL) {
     goto fail; //String
     }
 
@@ -176,26 +161,13 @@ course_forum_create_dto_t *course_forum_create_dto_parseFromJSON(cJSON *course_f
     goto end; //String
     }
 
-    // course_forum_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_forum_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
 
     course_forum_create_dto_local_var = course_forum_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         strdup(title->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        strdup(course_id->valuestring),
-        strdup(business_id->valuestring)
+        strdup(course_id->valuestring)
         );
 
     return course_forum_create_dto_local_var;

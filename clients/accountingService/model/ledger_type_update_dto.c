@@ -24,9 +24,7 @@ accountingservice_ledger_type_update_dto_LEDGERCLASS_e ledger_type_update_dto_le
 
 ledger_type_update_dto_t *ledger_type_update_dto_create(
     char *name,
-    accountingservice_ledger_type_update_dto_LEDGERCLASS_e ledger_class,
-    char *tenant_id,
-    char *enrollment_id
+    accountingservice_ledger_type_update_dto_LEDGERCLASS_e ledger_class
     ) {
     ledger_type_update_dto_t *ledger_type_update_dto_local_var = malloc(sizeof(ledger_type_update_dto_t));
     if (!ledger_type_update_dto_local_var) {
@@ -34,8 +32,6 @@ ledger_type_update_dto_t *ledger_type_update_dto_create(
     }
     ledger_type_update_dto_local_var->name = name;
     ledger_type_update_dto_local_var->ledger_class = ledger_class;
-    ledger_type_update_dto_local_var->tenant_id = tenant_id;
-    ledger_type_update_dto_local_var->enrollment_id = enrollment_id;
 
     return ledger_type_update_dto_local_var;
 }
@@ -49,14 +45,6 @@ void ledger_type_update_dto_free(ledger_type_update_dto_t *ledger_type_update_dt
     if (ledger_type_update_dto->name) {
         free(ledger_type_update_dto->name);
         ledger_type_update_dto->name = NULL;
-    }
-    if (ledger_type_update_dto->tenant_id) {
-        free(ledger_type_update_dto->tenant_id);
-        ledger_type_update_dto->tenant_id = NULL;
-    }
-    if (ledger_type_update_dto->enrollment_id) {
-        free(ledger_type_update_dto->enrollment_id);
-        ledger_type_update_dto->enrollment_id = NULL;
     }
     free(ledger_type_update_dto);
 }
@@ -77,22 +65,6 @@ cJSON *ledger_type_update_dto_convertToJSON(ledger_type_update_dto_t *ledger_typ
     if(cJSON_AddStringToObject(item, "ledgerClass", ledger_classledger_type_update_dto_ToString(ledger_type_update_dto->ledger_class)) == NULL)
     {
     goto fail; //Enum
-    }
-    }
-
-
-    // ledger_type_update_dto->tenant_id
-    if(ledger_type_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", ledger_type_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // ledger_type_update_dto->enrollment_id
-    if(ledger_type_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", ledger_type_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -128,30 +100,10 @@ ledger_type_update_dto_t *ledger_type_update_dto_parseFromJSON(cJSON *ledger_typ
     ledger_classVariable = ledger_type_update_dto_ledger_class_FromString(ledger_class->valuestring);
     }
 
-    // ledger_type_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(ledger_type_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // ledger_type_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(ledger_type_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     ledger_type_update_dto_local_var = ledger_type_update_dto_create (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        ledger_class ? ledger_classVariable : accountingservice_ledger_type_update_dto_LEDGERCLASS_NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        ledger_class ? ledger_classVariable : accountingservice_ledger_type_update_dto_LEDGERCLASS_NULL
         );
 
     return ledger_type_update_dto_local_var;

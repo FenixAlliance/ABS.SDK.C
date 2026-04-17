@@ -11,7 +11,6 @@ course_wiki_create_dto_t *course_wiki_create_dto_create(
     char *title,
     char *description,
     char *course_id,
-    char *business_id,
     char *course_unit_id,
     char *release_date_time
     ) {
@@ -24,7 +23,6 @@ course_wiki_create_dto_t *course_wiki_create_dto_create(
     course_wiki_create_dto_local_var->title = title;
     course_wiki_create_dto_local_var->description = description;
     course_wiki_create_dto_local_var->course_id = course_id;
-    course_wiki_create_dto_local_var->business_id = business_id;
     course_wiki_create_dto_local_var->course_unit_id = course_unit_id;
     course_wiki_create_dto_local_var->release_date_time = release_date_time;
 
@@ -56,10 +54,6 @@ void course_wiki_create_dto_free(course_wiki_create_dto_t *course_wiki_create_dt
     if (course_wiki_create_dto->course_id) {
         free(course_wiki_create_dto->course_id);
         course_wiki_create_dto->course_id = NULL;
-    }
-    if (course_wiki_create_dto->business_id) {
-        free(course_wiki_create_dto->business_id);
-        course_wiki_create_dto->business_id = NULL;
     }
     if (course_wiki_create_dto->course_unit_id) {
         free(course_wiki_create_dto->course_unit_id);
@@ -113,15 +107,6 @@ cJSON *course_wiki_create_dto_convertToJSON(course_wiki_create_dto_t *course_wik
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "courseID", course_wiki_create_dto->course_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // course_wiki_create_dto->business_id
-    if (!course_wiki_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_wiki_create_dto->business_id) == NULL) {
     goto fail; //String
     }
 
@@ -204,18 +189,6 @@ course_wiki_create_dto_t *course_wiki_create_dto_parseFromJSON(cJSON *course_wik
     goto end; //String
     }
 
-    // course_wiki_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_wiki_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
     // course_wiki_create_dto->course_unit_id
     cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_wiki_create_dtoJSON, "courseUnitID");
     if (course_unit_id) { 
@@ -241,7 +214,6 @@ course_wiki_create_dto_t *course_wiki_create_dto_parseFromJSON(cJSON *course_wik
         strdup(title->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         strdup(course_id->valuestring),
-        strdup(business_id->valuestring),
         course_unit_id && !cJSON_IsNull(course_unit_id) ? strdup(course_unit_id->valuestring) : NULL,
         release_date_time && !cJSON_IsNull(release_date_time) ? strdup(release_date_time->valuestring) : NULL
         );

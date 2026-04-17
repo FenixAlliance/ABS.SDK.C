@@ -65,10 +65,8 @@ typedef struct invoice_update_dto_t {
     int closed; //boolean
     char *title; // string
     char *user_id; // string
-    char *tenant_id; // string
     char *price_list_id; // string
     char *description; // string
-    char *enrollment_id; // string
     char *individual_id; // string
     char *payment_term_id; // string
     char *organization_id; // string
@@ -142,10 +140,8 @@ invoice_update_dto_t *invoice_update_dto_create(
     int closed,
     char *title,
     char *user_id,
-    char *tenant_id,
     char *price_list_id,
     char *description,
-    char *enrollment_id,
     char *individual_id,
     char *payment_term_id,
     char *organization_id,

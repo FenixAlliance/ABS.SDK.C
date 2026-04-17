@@ -5,7 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | 
 **type** | **crmservice_contact_create_dto_TYPE_e** |  | 
 **first_name** | **char \*** |  | 
 **last_name** | **char \*** |  | [optional] 

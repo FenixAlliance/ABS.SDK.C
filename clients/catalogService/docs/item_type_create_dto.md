@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **description** | **char \*** |  | [optional] 
 **image_url** | **char \*** |  | [optional] 
 **google_category_taxonomy** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | 
 **item_category_id** | **char \*** |  | 
 **item_google_category_id** | **char \*** |  | [optional] 
 

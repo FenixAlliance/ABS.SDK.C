@@ -11,8 +11,7 @@ course_news_create_dto_t *course_news_create_dto_create(
     char *title,
     char *description,
     char *content,
-    char *course_id,
-    char *business_id
+    char *course_id
     ) {
     course_news_create_dto_t *course_news_create_dto_local_var = malloc(sizeof(course_news_create_dto_t));
     if (!course_news_create_dto_local_var) {
@@ -24,7 +23,6 @@ course_news_create_dto_t *course_news_create_dto_create(
     course_news_create_dto_local_var->description = description;
     course_news_create_dto_local_var->content = content;
     course_news_create_dto_local_var->course_id = course_id;
-    course_news_create_dto_local_var->business_id = business_id;
 
     return course_news_create_dto_local_var;
 }
@@ -58,10 +56,6 @@ void course_news_create_dto_free(course_news_create_dto_t *course_news_create_dt
     if (course_news_create_dto->course_id) {
         free(course_news_create_dto->course_id);
         course_news_create_dto->course_id = NULL;
-    }
-    if (course_news_create_dto->business_id) {
-        free(course_news_create_dto->business_id);
-        course_news_create_dto->business_id = NULL;
     }
     free(course_news_create_dto);
 }
@@ -115,15 +109,6 @@ cJSON *course_news_create_dto_convertToJSON(course_news_create_dto_t *course_new
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "courseID", course_news_create_dto->course_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // course_news_create_dto->business_id
-    if (!course_news_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_news_create_dto->business_id) == NULL) {
     goto fail; //String
     }
 
@@ -199,18 +184,6 @@ course_news_create_dto_t *course_news_create_dto_parseFromJSON(cJSON *course_new
     goto end; //String
     }
 
-    // course_news_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_news_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
 
     course_news_create_dto_local_var = course_news_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -218,8 +191,7 @@ course_news_create_dto_t *course_news_create_dto_parseFromJSON(cJSON *course_new
         strdup(title->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         content && !cJSON_IsNull(content) ? strdup(content->valuestring) : NULL,
-        strdup(course_id->valuestring),
-        strdup(business_id->valuestring)
+        strdup(course_id->valuestring)
         );
 
     return course_news_create_dto_local_var;

@@ -11,8 +11,7 @@ course_category_create_dto_t *course_category_create_dto_create(
     char *title,
     char *description,
     char *image_url,
-    int is_featured,
-    char *business_id
+    int is_featured
     ) {
     course_category_create_dto_t *course_category_create_dto_local_var = malloc(sizeof(course_category_create_dto_t));
     if (!course_category_create_dto_local_var) {
@@ -24,7 +23,6 @@ course_category_create_dto_t *course_category_create_dto_create(
     course_category_create_dto_local_var->description = description;
     course_category_create_dto_local_var->image_url = image_url;
     course_category_create_dto_local_var->is_featured = is_featured;
-    course_category_create_dto_local_var->business_id = business_id;
 
     return course_category_create_dto_local_var;
 }
@@ -54,10 +52,6 @@ void course_category_create_dto_free(course_category_create_dto_t *course_catego
     if (course_category_create_dto->image_url) {
         free(course_category_create_dto->image_url);
         course_category_create_dto->image_url = NULL;
-    }
-    if (course_category_create_dto->business_id) {
-        free(course_category_create_dto->business_id);
-        course_category_create_dto->business_id = NULL;
     }
     free(course_category_create_dto);
 }
@@ -111,15 +105,6 @@ cJSON *course_category_create_dto_convertToJSON(course_category_create_dto_t *co
     if(cJSON_AddBoolToObject(item, "isFeatured", course_category_create_dto->is_featured) == NULL) {
     goto fail; //Bool
     }
-    }
-
-
-    // course_category_create_dto->business_id
-    if (!course_category_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_category_create_dto->business_id) == NULL) {
-    goto fail; //String
     }
 
     return item;
@@ -191,18 +176,6 @@ course_category_create_dto_t *course_category_create_dto_parseFromJSON(cJSON *co
     }
     }
 
-    // course_category_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_category_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
 
     course_category_create_dto_local_var = course_category_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -210,8 +183,7 @@ course_category_create_dto_t *course_category_create_dto_parseFromJSON(cJSON *co
         strdup(title->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         image_url && !cJSON_IsNull(image_url) ? strdup(image_url->valuestring) : NULL,
-        is_featured ? is_featured->valueint : 0,
-        strdup(business_id->valuestring)
+        is_featured ? is_featured->valueint : 0
         );
 
     return course_category_create_dto_local_var;

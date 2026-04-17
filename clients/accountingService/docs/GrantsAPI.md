@@ -186,7 +186,7 @@ No authorization required
 //
 // Updates an existing grant identified by its ID.
 //
-empty_envelope_t* GrantsAPI_updateGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId, char *api_version, char *x_api_version, grant_update_dto_t *grant_update_dto);
+empty_envelope_t* GrantsAPI_updateGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId, char *api_version, char *x_api_version, object_t *body);
 ```
 
 ### Parameters
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 **grantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**grant_update_dto** | **[grant_update_dto_t](grant_update_dto.md) \*** |  | [optional] 
+**body** | **[object_t](object.md) \*** |  | [optional] 
 
 ### Return type
 

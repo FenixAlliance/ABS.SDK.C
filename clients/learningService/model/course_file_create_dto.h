@@ -27,7 +27,6 @@ typedef struct course_file_create_dto_t {
     char *content_type; // string
     long file_length; //numeric
     char *course_id; // string
-    char *business_id; // string
 
 } course_file_create_dto_t;
 
@@ -39,8 +38,7 @@ course_file_create_dto_t *course_file_create_dto_create(
     char *file_upload_url,
     char *content_type,
     long file_length,
-    char *course_id,
-    char *business_id
+    char *course_id
 );
 
 void course_file_create_dto_free(course_file_create_dto_t *course_file_create_dto);

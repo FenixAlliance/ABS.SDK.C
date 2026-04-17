@@ -18,9 +18,7 @@ transaction_create_dto_t *transaction_create_dto_create(
     char *unit_group_id,
     char *unit_id,
     char *transaction_category_id,
-    char *currency_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *currency_id
     ) {
     transaction_create_dto_t *transaction_create_dto_local_var = malloc(sizeof(transaction_create_dto_t));
     if (!transaction_create_dto_local_var) {
@@ -39,8 +37,6 @@ transaction_create_dto_t *transaction_create_dto_create(
     transaction_create_dto_local_var->unit_id = unit_id;
     transaction_create_dto_local_var->transaction_category_id = transaction_category_id;
     transaction_create_dto_local_var->currency_id = currency_id;
-    transaction_create_dto_local_var->tenant_id = tenant_id;
-    transaction_create_dto_local_var->enrollment_id = enrollment_id;
 
     return transaction_create_dto_local_var;
 }
@@ -82,14 +78,6 @@ void transaction_create_dto_free(transaction_create_dto_t *transaction_create_dt
     if (transaction_create_dto->currency_id) {
         free(transaction_create_dto->currency_id);
         transaction_create_dto->currency_id = NULL;
-    }
-    if (transaction_create_dto->tenant_id) {
-        free(transaction_create_dto->tenant_id);
-        transaction_create_dto->tenant_id = NULL;
-    }
-    if (transaction_create_dto->enrollment_id) {
-        free(transaction_create_dto->enrollment_id);
-        transaction_create_dto->enrollment_id = NULL;
     }
     free(transaction_create_dto);
 }
@@ -196,22 +184,6 @@ cJSON *transaction_create_dto_convertToJSON(transaction_create_dto_t *transactio
     // transaction_create_dto->currency_id
     if(transaction_create_dto->currency_id) {
     if(cJSON_AddStringToObject(item, "currencyId", transaction_create_dto->currency_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // transaction_create_dto->tenant_id
-    if(transaction_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", transaction_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // transaction_create_dto->enrollment_id
-    if(transaction_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", transaction_create_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -345,24 +317,6 @@ transaction_create_dto_t *transaction_create_dto_parseFromJSON(cJSON *transactio
     }
     }
 
-    // transaction_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(transaction_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // transaction_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(transaction_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     transaction_create_dto_local_var = transaction_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -377,9 +331,7 @@ transaction_create_dto_t *transaction_create_dto_parseFromJSON(cJSON *transactio
         unit_group_id && !cJSON_IsNull(unit_group_id) ? strdup(unit_group_id->valuestring) : NULL,
         unit_id && !cJSON_IsNull(unit_id) ? strdup(unit_id->valuestring) : NULL,
         transaction_category_id && !cJSON_IsNull(transaction_category_id) ? strdup(transaction_category_id->valuestring) : NULL,
-        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL
         );
 
     return transaction_create_dto_local_var;

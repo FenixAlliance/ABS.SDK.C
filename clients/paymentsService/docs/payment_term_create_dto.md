@@ -14,8 +14,6 @@ Name | Type | Description | Notes
 **credit_months** | **double** |  | [optional] 
 **credit_years** | **double** |  | [optional] 
 **payment_mode_id** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
-**enrollment_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

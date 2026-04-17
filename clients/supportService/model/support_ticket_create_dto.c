@@ -9,10 +9,7 @@ support_ticket_create_dto_t *support_ticket_create_dto_create(
     char *id,
     char *timestamp,
     char *description,
-    char *account_holder_id,
     char *contact_id,
-    char *business_id,
-    char *business_profile_record_id,
     char *support_ticket_type_id,
     char *support_entitlement_id,
     char *support_priority_id
@@ -24,10 +21,7 @@ support_ticket_create_dto_t *support_ticket_create_dto_create(
     support_ticket_create_dto_local_var->id = id;
     support_ticket_create_dto_local_var->timestamp = timestamp;
     support_ticket_create_dto_local_var->description = description;
-    support_ticket_create_dto_local_var->account_holder_id = account_holder_id;
     support_ticket_create_dto_local_var->contact_id = contact_id;
-    support_ticket_create_dto_local_var->business_id = business_id;
-    support_ticket_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     support_ticket_create_dto_local_var->support_ticket_type_id = support_ticket_type_id;
     support_ticket_create_dto_local_var->support_entitlement_id = support_entitlement_id;
     support_ticket_create_dto_local_var->support_priority_id = support_priority_id;
@@ -53,21 +47,9 @@ void support_ticket_create_dto_free(support_ticket_create_dto_t *support_ticket_
         free(support_ticket_create_dto->description);
         support_ticket_create_dto->description = NULL;
     }
-    if (support_ticket_create_dto->account_holder_id) {
-        free(support_ticket_create_dto->account_holder_id);
-        support_ticket_create_dto->account_holder_id = NULL;
-    }
     if (support_ticket_create_dto->contact_id) {
         free(support_ticket_create_dto->contact_id);
         support_ticket_create_dto->contact_id = NULL;
-    }
-    if (support_ticket_create_dto->business_id) {
-        free(support_ticket_create_dto->business_id);
-        support_ticket_create_dto->business_id = NULL;
-    }
-    if (support_ticket_create_dto->business_profile_record_id) {
-        free(support_ticket_create_dto->business_profile_record_id);
-        support_ticket_create_dto->business_profile_record_id = NULL;
     }
     if (support_ticket_create_dto->support_ticket_type_id) {
         free(support_ticket_create_dto->support_ticket_type_id);
@@ -111,33 +93,9 @@ cJSON *support_ticket_create_dto_convertToJSON(support_ticket_create_dto_t *supp
     }
 
 
-    // support_ticket_create_dto->account_holder_id
-    if(support_ticket_create_dto->account_holder_id) {
-    if(cJSON_AddStringToObject(item, "accountHolderID", support_ticket_create_dto->account_holder_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // support_ticket_create_dto->contact_id
     if(support_ticket_create_dto->contact_id) {
     if(cJSON_AddStringToObject(item, "contactID", support_ticket_create_dto->contact_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // support_ticket_create_dto->business_id
-    if(support_ticket_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", support_ticket_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // support_ticket_create_dto->business_profile_record_id
-    if(support_ticket_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", support_ticket_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -205,37 +163,10 @@ support_ticket_create_dto_t *support_ticket_create_dto_parseFromJSON(cJSON *supp
     }
     }
 
-    // support_ticket_create_dto->account_holder_id
-    cJSON *account_holder_id = cJSON_GetObjectItemCaseSensitive(support_ticket_create_dtoJSON, "accountHolderID");
-    if (account_holder_id) { 
-    if(!cJSON_IsString(account_holder_id) && !cJSON_IsNull(account_holder_id))
-    {
-    goto end; //String
-    }
-    }
-
     // support_ticket_create_dto->contact_id
     cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(support_ticket_create_dtoJSON, "contactID");
     if (contact_id) { 
     if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // support_ticket_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(support_ticket_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // support_ticket_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(support_ticket_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
     {
     goto end; //String
     }
@@ -273,10 +204,7 @@ support_ticket_create_dto_t *support_ticket_create_dto_parseFromJSON(cJSON *supp
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        account_holder_id && !cJSON_IsNull(account_holder_id) ? strdup(account_holder_id->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         support_ticket_type_id && !cJSON_IsNull(support_ticket_type_id) ? strdup(support_ticket_type_id->valuestring) : NULL,
         support_entitlement_id && !cJSON_IsNull(support_entitlement_id) ? strdup(support_entitlement_id->valuestring) : NULL,
         support_priority_id && !cJSON_IsNull(support_priority_id) ? strdup(support_priority_id->valuestring) : NULL

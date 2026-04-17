@@ -4,7 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **contact_id** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
 **tax_id** | **char \*** |  | [optional] 
 **phone** | **char \*** |  | [optional] 
 **email** | **char \*** |  | [optional] 

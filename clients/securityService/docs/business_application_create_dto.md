@@ -18,8 +18,6 @@ Name | Type | Description | Notes
 **contact_email** | **char \*** |  | [optional] 
 **privacy_policy_url** | **char \*** |  | [optional] 
 **terms_and_conditions_url** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | [optional] 
-**business_profile_record_id** | **char \*** |  | [optional] 
 **require_https** | **int** |  | [optional] 
 **require_app_secret** | **int** |  | [optional] 
 **enable_client_oauth_login** | **int** |  | [optional] 

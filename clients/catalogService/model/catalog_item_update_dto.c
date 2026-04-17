@@ -57,7 +57,6 @@ catalog_item_update_dto_t *catalog_item_update_dto_create(
     char *material,
     int on_discount,
     double total_tax,
-    char *tenant_id,
     char *permalink,
     char *brand_name,
     int reviews_count,
@@ -82,7 +81,6 @@ catalog_item_update_dto_t *catalog_item_update_dto_create(
     double custom_tax_value,
     int has_variations,
     int questions_count,
-    char *enrollment_id,
     char *supplier_code,
     char *auction_end,
     char *purchase_note,
@@ -234,7 +232,6 @@ catalog_item_update_dto_t *catalog_item_update_dto_create(
     catalog_item_update_dto_local_var->material = material;
     catalog_item_update_dto_local_var->on_discount = on_discount;
     catalog_item_update_dto_local_var->total_tax = total_tax;
-    catalog_item_update_dto_local_var->tenant_id = tenant_id;
     catalog_item_update_dto_local_var->permalink = permalink;
     catalog_item_update_dto_local_var->brand_name = brand_name;
     catalog_item_update_dto_local_var->reviews_count = reviews_count;
@@ -259,7 +256,6 @@ catalog_item_update_dto_t *catalog_item_update_dto_create(
     catalog_item_update_dto_local_var->custom_tax_value = custom_tax_value;
     catalog_item_update_dto_local_var->has_variations = has_variations;
     catalog_item_update_dto_local_var->questions_count = questions_count;
-    catalog_item_update_dto_local_var->enrollment_id = enrollment_id;
     catalog_item_update_dto_local_var->supplier_code = supplier_code;
     catalog_item_update_dto_local_var->auction_end = auction_end;
     catalog_item_update_dto_local_var->purchase_note = purchase_note;
@@ -489,10 +485,6 @@ void catalog_item_update_dto_free(catalog_item_update_dto_t *catalog_item_update
         free(catalog_item_update_dto->material);
         catalog_item_update_dto->material = NULL;
     }
-    if (catalog_item_update_dto->tenant_id) {
-        free(catalog_item_update_dto->tenant_id);
-        catalog_item_update_dto->tenant_id = NULL;
-    }
     if (catalog_item_update_dto->permalink) {
         free(catalog_item_update_dto->permalink);
         catalog_item_update_dto->permalink = NULL;
@@ -536,10 +528,6 @@ void catalog_item_update_dto_free(catalog_item_update_dto_t *catalog_item_update
     if (catalog_item_update_dto->release_date) {
         free(catalog_item_update_dto->release_date);
         catalog_item_update_dto->release_date = NULL;
-    }
-    if (catalog_item_update_dto->enrollment_id) {
-        free(catalog_item_update_dto->enrollment_id);
-        catalog_item_update_dto->enrollment_id = NULL;
     }
     if (catalog_item_update_dto->supplier_code) {
         free(catalog_item_update_dto->supplier_code);
@@ -1211,14 +1199,6 @@ cJSON *catalog_item_update_dto_convertToJSON(catalog_item_update_dto_t *catalog_
     }
 
 
-    // catalog_item_update_dto->tenant_id
-    if(catalog_item_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", catalog_item_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // catalog_item_update_dto->permalink
     if(catalog_item_update_dto->permalink) {
     if(cJSON_AddStringToObject(item, "permalink", catalog_item_update_dto->permalink) == NULL) {
@@ -1407,14 +1387,6 @@ cJSON *catalog_item_update_dto_convertToJSON(catalog_item_update_dto_t *catalog_
     if(catalog_item_update_dto->questions_count) {
     if(cJSON_AddNumberToObject(item, "questionsCount", catalog_item_update_dto->questions_count) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // catalog_item_update_dto->enrollment_id
-    if(catalog_item_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", catalog_item_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -2841,15 +2813,6 @@ catalog_item_update_dto_t *catalog_item_update_dto_parseFromJSON(cJSON *catalog_
     }
     }
 
-    // catalog_item_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(catalog_item_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // catalog_item_update_dto->permalink
     cJSON *permalink = cJSON_GetObjectItemCaseSensitive(catalog_item_update_dtoJSON, "permalink");
     if (permalink) { 
@@ -3063,15 +3026,6 @@ catalog_item_update_dto_t *catalog_item_update_dto_parseFromJSON(cJSON *catalog_
     if(!cJSON_IsNumber(questions_count))
     {
     goto end; //Numeric
-    }
-    }
-
-    // catalog_item_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(catalog_item_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
     }
     }
 
@@ -4143,7 +4097,6 @@ catalog_item_update_dto_t *catalog_item_update_dto_parseFromJSON(cJSON *catalog_
         material && !cJSON_IsNull(material) ? strdup(material->valuestring) : NULL,
         on_discount ? on_discount->valueint : 0,
         total_tax ? total_tax->valuedouble : 0,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         permalink && !cJSON_IsNull(permalink) ? strdup(permalink->valuestring) : NULL,
         brand_name && !cJSON_IsNull(brand_name) ? strdup(brand_name->valuestring) : NULL,
         reviews_count ? reviews_count->valuedouble : 0,
@@ -4168,7 +4121,6 @@ catalog_item_update_dto_t *catalog_item_update_dto_parseFromJSON(cJSON *catalog_
         custom_tax_value ? custom_tax_value->valuedouble : 0,
         has_variations ? has_variations->valueint : 0,
         questions_count ? questions_count->valuedouble : 0,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         supplier_code && !cJSON_IsNull(supplier_code) ? strdup(supplier_code->valuestring) : NULL,
         auction_end && !cJSON_IsNull(auction_end) ? strdup(auction_end->valuestring) : NULL,
         purchase_note && !cJSON_IsNull(purchase_note) ? strdup(purchase_note->valuestring) : NULL,

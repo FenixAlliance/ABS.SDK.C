@@ -19,17 +19,19 @@ typedef struct support_ticket_priority_create_dto_t support_ticket_priority_crea
 
 
 typedef struct support_ticket_priority_create_dto_t {
+    char *id; // string
+    char *timestamp; //date time
     char *title; // string
     char *description; // string
-    char *business_id; // string
     char *support_entitlement_id; // string
 
 } support_ticket_priority_create_dto_t;
 
 support_ticket_priority_create_dto_t *support_ticket_priority_create_dto_create(
+    char *id,
+    char *timestamp,
     char *title,
     char *description,
-    char *business_id,
     char *support_entitlement_id
 );
 

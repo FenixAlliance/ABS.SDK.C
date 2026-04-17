@@ -195,6 +195,7 @@ set(SRCS
     model/web_portal_create_dto.c
     model/web_portal_dto.c
     model/web_portal_dto_envelope.c
+    model/web_portal_dto_list_envelope.c
     model/web_portal_update_dto.c
     model/web_template_create_dto.c
     model/web_template_dto.c
@@ -365,6 +366,7 @@ set(HDRS
     model/web_portal_create_dto.h
     model/web_portal_dto.h
     model/web_portal_dto_envelope.h
+    model/web_portal_dto_list_envelope.h
     model/web_portal_update_dto.h
     model/web_template_create_dto.h
     model/web_template_dto.h

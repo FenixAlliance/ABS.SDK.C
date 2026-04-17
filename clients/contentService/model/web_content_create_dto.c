@@ -25,8 +25,6 @@ contentservice_web_content_create_dto_CODETYPE_e web_content_create_dto_code_typ
 web_content_create_dto_t *web_content_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
-    char *enrollment_id,
     char *title,
     char *code,
     int published,
@@ -41,8 +39,6 @@ web_content_create_dto_t *web_content_create_dto_create(
     }
     web_content_create_dto_local_var->id = id;
     web_content_create_dto_local_var->timestamp = timestamp;
-    web_content_create_dto_local_var->tenant_id = tenant_id;
-    web_content_create_dto_local_var->enrollment_id = enrollment_id;
     web_content_create_dto_local_var->title = title;
     web_content_create_dto_local_var->code = code;
     web_content_create_dto_local_var->published = published;
@@ -67,14 +63,6 @@ void web_content_create_dto_free(web_content_create_dto_t *web_content_create_dt
     if (web_content_create_dto->timestamp) {
         free(web_content_create_dto->timestamp);
         web_content_create_dto->timestamp = NULL;
-    }
-    if (web_content_create_dto->tenant_id) {
-        free(web_content_create_dto->tenant_id);
-        web_content_create_dto->tenant_id = NULL;
-    }
-    if (web_content_create_dto->enrollment_id) {
-        free(web_content_create_dto->enrollment_id);
-        web_content_create_dto->enrollment_id = NULL;
     }
     if (web_content_create_dto->title) {
         free(web_content_create_dto->title);
@@ -114,22 +102,6 @@ cJSON *web_content_create_dto_convertToJSON(web_content_create_dto_t *web_conten
     if(web_content_create_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", web_content_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // web_content_create_dto->tenant_id
-    if(web_content_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", web_content_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // web_content_create_dto->enrollment_id
-    if(web_content_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", web_content_create_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -220,24 +192,6 @@ web_content_create_dto_t *web_content_create_dto_parseFromJSON(cJSON *web_conten
     }
     }
 
-    // web_content_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(web_content_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // web_content_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(web_content_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // web_content_create_dto->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(web_content_create_dtoJSON, "title");
     if (title) { 
@@ -307,8 +261,6 @@ web_content_create_dto_t *web_content_create_dto_parseFromJSON(cJSON *web_conten
     web_content_create_dto_local_var = web_content_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
         published ? published->valueint : 0,

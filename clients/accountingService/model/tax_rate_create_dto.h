@@ -35,12 +35,10 @@ typedef struct tax_rate_create_dto_t {
     double cumulative_transaction_threshold; //numeric
     char *fiscal_authority_id; // string
     char *fiscal_year_id; // string
-    char *tenant_id; // string
     char *country_id; // string
     char *tax_class_id; // string
     char *currency_id; // string
     char *tax_policy_id; // string
-    char *enrollment_id; // string
 
 } tax_rate_create_dto_t;
 
@@ -61,12 +59,10 @@ tax_rate_create_dto_t *tax_rate_create_dto_create(
     double cumulative_transaction_threshold,
     char *fiscal_authority_id,
     char *fiscal_year_id,
-    char *tenant_id,
     char *country_id,
     char *tax_class_id,
     char *currency_id,
-    char *tax_policy_id,
-    char *enrollment_id
+    char *tax_policy_id
 );
 
 void tax_rate_create_dto_free(tax_rate_create_dto_t *tax_rate_create_dto);

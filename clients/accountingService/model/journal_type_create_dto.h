@@ -22,17 +22,13 @@ typedef struct journal_type_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *name; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } journal_type_create_dto_t;
 
 journal_type_create_dto_t *journal_type_create_dto_create(
     char *id,
     char *timestamp,
-    char *name,
-    char *tenant_id,
-    char *enrollment_id
+    char *name
 );
 
 void journal_type_create_dto_free(journal_type_create_dto_t *journal_type_create_dto);

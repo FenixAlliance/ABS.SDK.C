@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 CMakeLists.txt
 Packing.cmake
 README.md
@@ -56,15 +55,3 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_access_token_response.c
-unit-test/test_forgot_password_request.c
-unit-test/test_http_validation_problem_details.c
-unit-test/test_info_request.c
-unit-test/test_info_response.c
-unit-test/test_login_request.c
-unit-test/test_refresh_request.c
-unit-test/test_register_request.c
-unit-test/test_resend_confirmation_email_request.c
-unit-test/test_reset_password_request.c
-unit-test/test_two_factor_request.c
-unit-test/test_two_factor_response.c

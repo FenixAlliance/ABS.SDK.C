@@ -25,8 +25,6 @@ accountingservice_accounting_entry_create_dto_ACCOUNTINGENTRYTYPE_e accounting_e
 accounting_entry_create_dto_t *accounting_entry_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
-    char *enrollment_id,
     char *description,
     char *date,
     double amount,
@@ -42,8 +40,6 @@ accounting_entry_create_dto_t *accounting_entry_create_dto_create(
     }
     accounting_entry_create_dto_local_var->id = id;
     accounting_entry_create_dto_local_var->timestamp = timestamp;
-    accounting_entry_create_dto_local_var->tenant_id = tenant_id;
-    accounting_entry_create_dto_local_var->enrollment_id = enrollment_id;
     accounting_entry_create_dto_local_var->description = description;
     accounting_entry_create_dto_local_var->date = date;
     accounting_entry_create_dto_local_var->amount = amount;
@@ -69,14 +65,6 @@ void accounting_entry_create_dto_free(accounting_entry_create_dto_t *accounting_
     if (accounting_entry_create_dto->timestamp) {
         free(accounting_entry_create_dto->timestamp);
         accounting_entry_create_dto->timestamp = NULL;
-    }
-    if (accounting_entry_create_dto->tenant_id) {
-        free(accounting_entry_create_dto->tenant_id);
-        accounting_entry_create_dto->tenant_id = NULL;
-    }
-    if (accounting_entry_create_dto->enrollment_id) {
-        free(accounting_entry_create_dto->enrollment_id);
-        accounting_entry_create_dto->enrollment_id = NULL;
     }
     if (accounting_entry_create_dto->description) {
         free(accounting_entry_create_dto->description);
@@ -120,22 +108,6 @@ cJSON *accounting_entry_create_dto_convertToJSON(accounting_entry_create_dto_t *
     if(accounting_entry_create_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", accounting_entry_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // accounting_entry_create_dto->tenant_id
-    if(accounting_entry_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", accounting_entry_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // accounting_entry_create_dto->enrollment_id
-    if(accounting_entry_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", accounting_entry_create_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -236,24 +208,6 @@ accounting_entry_create_dto_t *accounting_entry_create_dto_parseFromJSON(cJSON *
     }
     }
 
-    // accounting_entry_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // accounting_entry_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // accounting_entry_create_dto->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "description");
     if (!description) {
@@ -338,8 +292,6 @@ accounting_entry_create_dto_t *accounting_entry_create_dto_parseFromJSON(cJSON *
     accounting_entry_create_dto_local_var = accounting_entry_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         strdup(description->valuestring),
         date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,
         amount ? amount->valuedouble : 0,

@@ -14,9 +14,7 @@ price_list_create_dto_t *price_list_create_dto_create(
     char *end_date,
     char *currency_id,
     char *unit_id,
-    char *unit_group_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *unit_group_id
     ) {
     price_list_create_dto_t *price_list_create_dto_local_var = malloc(sizeof(price_list_create_dto_t));
     if (!price_list_create_dto_local_var) {
@@ -31,8 +29,6 @@ price_list_create_dto_t *price_list_create_dto_create(
     price_list_create_dto_local_var->currency_id = currency_id;
     price_list_create_dto_local_var->unit_id = unit_id;
     price_list_create_dto_local_var->unit_group_id = unit_group_id;
-    price_list_create_dto_local_var->tenant_id = tenant_id;
-    price_list_create_dto_local_var->enrollment_id = enrollment_id;
 
     return price_list_create_dto_local_var;
 }
@@ -78,14 +74,6 @@ void price_list_create_dto_free(price_list_create_dto_t *price_list_create_dto) 
     if (price_list_create_dto->unit_group_id) {
         free(price_list_create_dto->unit_group_id);
         price_list_create_dto->unit_group_id = NULL;
-    }
-    if (price_list_create_dto->tenant_id) {
-        free(price_list_create_dto->tenant_id);
-        price_list_create_dto->tenant_id = NULL;
-    }
-    if (price_list_create_dto->enrollment_id) {
-        free(price_list_create_dto->enrollment_id);
-        price_list_create_dto->enrollment_id = NULL;
     }
     free(price_list_create_dto);
 }
@@ -161,22 +149,6 @@ cJSON *price_list_create_dto_convertToJSON(price_list_create_dto_t *price_list_c
     // price_list_create_dto->unit_group_id
     if(price_list_create_dto->unit_group_id) {
     if(cJSON_AddStringToObject(item, "unitGroupId", price_list_create_dto->unit_group_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // price_list_create_dto->tenant_id
-    if(price_list_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", price_list_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // price_list_create_dto->enrollment_id
-    if(price_list_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", price_list_create_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -277,24 +249,6 @@ price_list_create_dto_t *price_list_create_dto_parseFromJSON(cJSON *price_list_c
     }
     }
 
-    // price_list_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(price_list_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // price_list_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(price_list_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     price_list_create_dto_local_var = price_list_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -305,9 +259,7 @@ price_list_create_dto_t *price_list_create_dto_parseFromJSON(cJSON *price_list_c
         end_date && !cJSON_IsNull(end_date) ? strdup(end_date->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         unit_id && !cJSON_IsNull(unit_id) ? strdup(unit_id->valuestring) : NULL,
-        unit_group_id && !cJSON_IsNull(unit_group_id) ? strdup(unit_group_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        unit_group_id && !cJSON_IsNull(unit_group_id) ? strdup(unit_group_id->valuestring) : NULL
         );
 
     return price_list_create_dto_local_var;

@@ -14,9 +14,7 @@ loan_create_dto_t *loan_create_dto_create(
     double interest_rate,
     int is_compund_interest_rate,
     char *loan_type_id,
-    char *currency_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *currency_id
     ) {
     loan_create_dto_t *loan_create_dto_local_var = malloc(sizeof(loan_create_dto_t));
     if (!loan_create_dto_local_var) {
@@ -31,8 +29,6 @@ loan_create_dto_t *loan_create_dto_create(
     loan_create_dto_local_var->is_compund_interest_rate = is_compund_interest_rate;
     loan_create_dto_local_var->loan_type_id = loan_type_id;
     loan_create_dto_local_var->currency_id = currency_id;
-    loan_create_dto_local_var->tenant_id = tenant_id;
-    loan_create_dto_local_var->enrollment_id = enrollment_id;
 
     return loan_create_dto_local_var;
 }
@@ -66,14 +62,6 @@ void loan_create_dto_free(loan_create_dto_t *loan_create_dto) {
     if (loan_create_dto->currency_id) {
         free(loan_create_dto->currency_id);
         loan_create_dto->currency_id = NULL;
-    }
-    if (loan_create_dto->tenant_id) {
-        free(loan_create_dto->tenant_id);
-        loan_create_dto->tenant_id = NULL;
-    }
-    if (loan_create_dto->enrollment_id) {
-        free(loan_create_dto->enrollment_id);
-        loan_create_dto->enrollment_id = NULL;
     }
     free(loan_create_dto);
 }
@@ -148,22 +136,6 @@ cJSON *loan_create_dto_convertToJSON(loan_create_dto_t *loan_create_dto) {
     // loan_create_dto->currency_id
     if(loan_create_dto->currency_id) {
     if(cJSON_AddStringToObject(item, "currencyId", loan_create_dto->currency_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // loan_create_dto->tenant_id
-    if(loan_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", loan_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // loan_create_dto->enrollment_id
-    if(loan_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", loan_create_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -261,24 +233,6 @@ loan_create_dto_t *loan_create_dto_parseFromJSON(cJSON *loan_create_dtoJSON){
     }
     }
 
-    // loan_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(loan_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // loan_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(loan_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     loan_create_dto_local_var = loan_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -289,9 +243,7 @@ loan_create_dto_t *loan_create_dto_parseFromJSON(cJSON *loan_create_dtoJSON){
         interest_rate ? interest_rate->valuedouble : 0,
         is_compund_interest_rate ? is_compund_interest_rate->valueint : 0,
         loan_type_id && !cJSON_IsNull(loan_type_id) ? strdup(loan_type_id->valuestring) : NULL,
-        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL
         );
 
     return loan_create_dto_local_var;

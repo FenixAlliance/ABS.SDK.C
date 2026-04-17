@@ -24,8 +24,6 @@ typedef struct discount_update_dto_t {
     double end_quantity; //numeric
     double percent; //numeric
     double value; //numeric
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *discount_list_id; // string
 
 } discount_update_dto_t;
@@ -36,8 +34,6 @@ discount_update_dto_t *discount_update_dto_create(
     double end_quantity,
     double percent,
     double value,
-    char *tenant_id,
-    char *enrollment_id,
     char *discount_list_id
 );
 

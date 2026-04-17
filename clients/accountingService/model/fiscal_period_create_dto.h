@@ -24,8 +24,6 @@ typedef struct fiscal_period_create_dto_t {
     char *name; // string
     char *from_date; //date time
     char *to_date; //date time
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *fiscal_year_id; // string
 
 } fiscal_period_create_dto_t;
@@ -36,8 +34,6 @@ fiscal_period_create_dto_t *fiscal_period_create_dto_create(
     char *name,
     char *from_date,
     char *to_date,
-    char *tenant_id,
-    char *enrollment_id,
     char *fiscal_year_id
 );
 

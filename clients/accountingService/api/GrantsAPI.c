@@ -734,7 +734,7 @@ end:
 // Updates an existing grant identified by its ID.
 //
 empty_envelope_t*
-GrantsAPI_updateGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId, char *api_version, char *x_api_version, grant_update_dto_t *grant_update_dto)
+GrantsAPI_updateGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId, char *api_version, char *x_api_version, object_t *body)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -805,12 +805,12 @@ GrantsAPI_updateGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_grant_update_dto = NULL;
-    if (grant_update_dto != NULL)
+    cJSON *localVarSingleItemJSON_body = NULL;
+    if (body != NULL)
     {
         //string
-        localVarSingleItemJSON_grant_update_dto = grant_update_dto_convertToJSON(grant_update_dto);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_grant_update_dto);
+        localVarSingleItemJSON_body = object_convertToJSON(body);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_body);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -860,9 +860,9 @@ GrantsAPI_updateGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarSingleItemJSON_grant_update_dto) {
-        cJSON_Delete(localVarSingleItemJSON_grant_update_dto);
-        localVarSingleItemJSON_grant_update_dto = NULL;
+    if (localVarSingleItemJSON_body) {
+        cJSON_Delete(localVarSingleItemJSON_body);
+        localVarSingleItemJSON_body = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

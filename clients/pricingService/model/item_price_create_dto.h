@@ -23,11 +23,9 @@ typedef struct item_price_create_dto_t {
     char *timestamp; //date time
     char *item_id; // string
     char *unit_id; // string
-    char *tenant_id; // string
     char *currency_id; // string
     char *price_list_id; // string
     char *unit_group_id; // string
-    char *enrollment_id; // string
     char *discount_list_id; // string
     char *rounding_policy_id; // string
     double price; //numeric
@@ -40,11 +38,9 @@ item_price_create_dto_t *item_price_create_dto_create(
     char *timestamp,
     char *item_id,
     char *unit_id,
-    char *tenant_id,
     char *currency_id,
     char *price_list_id,
     char *unit_group_id,
-    char *enrollment_id,
     char *discount_list_id,
     char *rounding_policy_id,
     double price,

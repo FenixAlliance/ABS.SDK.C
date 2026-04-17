@@ -24,8 +24,6 @@ typedef struct share_class_update_dto_t {
     char *description; // string
     char *forex_rates; // string
     char *currency_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } share_class_update_dto_t;
 
@@ -34,9 +32,7 @@ share_class_update_dto_t *share_class_update_dto_create(
     int value,
     char *description,
     char *forex_rates,
-    char *currency_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *currency_id
 );
 
 void share_class_update_dto_free(share_class_update_dto_t *share_class_update_dto);

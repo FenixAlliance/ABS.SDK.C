@@ -12,7 +12,6 @@ course_section_create_dto_t *course_section_create_dto_create(
     char *icon,
     char *description,
     char *course_id,
-    char *business_id,
     char *release_date_time,
     int hide_from_students
     ) {
@@ -26,7 +25,6 @@ course_section_create_dto_t *course_section_create_dto_create(
     course_section_create_dto_local_var->icon = icon;
     course_section_create_dto_local_var->description = description;
     course_section_create_dto_local_var->course_id = course_id;
-    course_section_create_dto_local_var->business_id = business_id;
     course_section_create_dto_local_var->release_date_time = release_date_time;
     course_section_create_dto_local_var->hide_from_students = hide_from_students;
 
@@ -62,10 +60,6 @@ void course_section_create_dto_free(course_section_create_dto_t *course_section_
     if (course_section_create_dto->course_id) {
         free(course_section_create_dto->course_id);
         course_section_create_dto->course_id = NULL;
-    }
-    if (course_section_create_dto->business_id) {
-        free(course_section_create_dto->business_id);
-        course_section_create_dto->business_id = NULL;
     }
     if (course_section_create_dto->release_date_time) {
         free(course_section_create_dto->release_date_time);
@@ -123,15 +117,6 @@ cJSON *course_section_create_dto_convertToJSON(course_section_create_dto_t *cour
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "courseID", course_section_create_dto->course_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // course_section_create_dto->business_id
-    if (!course_section_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_section_create_dto->business_id) == NULL) {
     goto fail; //String
     }
 
@@ -223,18 +208,6 @@ course_section_create_dto_t *course_section_create_dto_parseFromJSON(cJSON *cour
     goto end; //String
     }
 
-    // course_section_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_section_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
     // course_section_create_dto->release_date_time
     cJSON *release_date_time = cJSON_GetObjectItemCaseSensitive(course_section_create_dtoJSON, "releaseDateTime");
     if (release_date_time) { 
@@ -261,7 +234,6 @@ course_section_create_dto_t *course_section_create_dto_parseFromJSON(cJSON *cour
         icon && !cJSON_IsNull(icon) ? strdup(icon->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         strdup(course_id->valuestring),
-        strdup(business_id->valuestring),
         release_date_time && !cJSON_IsNull(release_date_time) ? strdup(release_date_time->valuestring) : NULL,
         hide_from_students ? hide_from_students->valueint : 0
         );

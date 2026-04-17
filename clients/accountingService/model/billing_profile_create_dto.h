@@ -22,7 +22,6 @@ typedef struct billing_profile_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *contact_id; // string
-    char *tenant_id; // string
     char *tax_id; // string
     char *phone; // string
     char *email; // string
@@ -49,7 +48,6 @@ billing_profile_create_dto_t *billing_profile_create_dto_create(
     char *id,
     char *timestamp,
     char *contact_id,
-    char *tenant_id,
     char *tax_id,
     char *phone,
     char *email,

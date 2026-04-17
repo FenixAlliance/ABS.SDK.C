@@ -21,8 +21,6 @@ typedef struct item_image_create_dto_t item_image_create_dto_t;
 typedef struct item_image_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *business_id; // string
-    char *business_profile_record_id; // string
     char *item_id; // string
     int is_item_mozaic_bg; //boolean
     char *m_d5_hash; // string
@@ -39,15 +37,12 @@ typedef struct item_image_create_dto_t {
     int valid_response; //boolean
     char *social_profile_id; // string
     char *parent_file_upload_id; // string
-    char *account_holder_id; // string
 
 } item_image_create_dto_t;
 
 item_image_create_dto_t *item_image_create_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
-    char *business_profile_record_id,
     char *item_id,
     int is_item_mozaic_bg,
     char *m_d5_hash,
@@ -63,8 +58,7 @@ item_image_create_dto_t *item_image_create_dto_create(
     long file_length,
     int valid_response,
     char *social_profile_id,
-    char *parent_file_upload_id,
-    char *account_holder_id
+    char *parent_file_upload_id
 );
 
 void item_image_create_dto_free(item_image_create_dto_t *item_image_create_dto);

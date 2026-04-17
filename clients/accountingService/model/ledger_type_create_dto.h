@@ -31,8 +31,6 @@ typedef struct ledger_type_create_dto_t {
     char *timestamp; //date time
     char *name; // string
     accountingservice_ledger_type_create_dto_LEDGERCLASS_e ledger_class; //enum
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } ledger_type_create_dto_t;
 
@@ -40,9 +38,7 @@ ledger_type_create_dto_t *ledger_type_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    accountingservice_ledger_type_create_dto_LEDGERCLASS_e ledger_class,
-    char *tenant_id,
-    char *enrollment_id
+    accountingservice_ledger_type_create_dto_LEDGERCLASS_e ledger_class
 );
 
 void ledger_type_create_dto_free(ledger_type_create_dto_t *ledger_type_create_dto);

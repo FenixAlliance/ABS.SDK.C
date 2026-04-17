@@ -20,15 +20,11 @@ typedef struct account_relation_update_dto_t account_relation_update_dto_t;
 
 typedef struct account_relation_update_dto_t {
     char *account_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } account_relation_update_dto_t;
 
 account_relation_update_dto_t *account_relation_update_dto_create(
-    char *account_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *account_id
 );
 
 void account_relation_update_dto_free(account_relation_update_dto_t *account_relation_update_dto);

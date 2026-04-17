@@ -360,7 +360,7 @@ No authorization required
 //
 // Updates the specified loan application.
 //
-empty_envelope_t* LoansAPI_updateLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, loan_application_update_dto_t *loan_application_update_dto, char *api_version, char *x_api_version);
+empty_envelope_t* LoansAPI_updateLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, object_t *body, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **applicationId** | **char \*** |  | 
-**loan_application_update_dto** | **[loan_application_update_dto_t](loan_application_update_dto.md) \*** |  | 
+**body** | **[object_t](object.md) \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

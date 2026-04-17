@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **title** | **char \*** |  | 
 **description** | **char \*** |  | [optional] 
 **course_id** | **char \*** |  | 
-**business_id** | **char \*** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

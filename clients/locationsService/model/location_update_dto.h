@@ -31,7 +31,6 @@ typedef struct location_update_dto_t {
     char *state_id; // string
     char *postal_code; // string
     char *country_id; // string
-    char *tenant_id; // string
     double longitude; //numeric
     double latitude; //numeric
     int is_routable; //boolean
@@ -57,7 +56,6 @@ location_update_dto_t *location_update_dto_create(
     char *state_id,
     char *postal_code,
     char *country_id,
-    char *tenant_id,
     double longitude,
     double latitude,
     int is_routable,

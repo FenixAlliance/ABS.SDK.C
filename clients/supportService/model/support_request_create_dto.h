@@ -25,11 +25,8 @@ typedef struct support_request_create_dto_t {
     char *description; // string
     int approved; //boolean
     char *approved_timestamp; //date time
-    char *business_id; // string
-    char *business_profile_record_id; // string
     char *support_entitlement_id; // string
     char *contact_id; // string
-    char *account_holder_id; // string
 
 } support_request_create_dto_t;
 
@@ -40,11 +37,8 @@ support_request_create_dto_t *support_request_create_dto_create(
     char *description,
     int approved,
     char *approved_timestamp,
-    char *business_id,
-    char *business_profile_record_id,
     char *support_entitlement_id,
-    char *contact_id,
-    char *account_holder_id
+    char *contact_id
 );
 
 void support_request_create_dto_free(support_request_create_dto_t *support_request_create_dto);

@@ -22,8 +22,6 @@ typedef struct accounting_period_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *name; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *date_start; //date time
     char *date_end; //date time
 
@@ -33,8 +31,6 @@ accounting_period_create_dto_t *accounting_period_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *tenant_id,
-    char *enrollment_id,
     char *date_start,
     char *date_end
 );

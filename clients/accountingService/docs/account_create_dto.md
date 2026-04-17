@@ -11,9 +11,7 @@ Name | Type | Description | Notes
 **code** | **char \*** |  | [optional] 
 **path** | **char \*** |  | [optional] 
 **prefix** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
 **currency_id** | **char \*** |  | 
-**enrollment_id** | **char \*** |  | [optional] 
 **account_type_id** | **char \*** |  | [optional] 
 **parent_account_id** | **char \*** |  | [optional] 
 **account_category** | **accountingservice_account_create_dto_ACCOUNTCATEGORY_e** |  | 

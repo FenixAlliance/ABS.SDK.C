@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **course_id** | **char \*** |  | [optional] 
 **course_cohort_id** | **char \*** |  | [optional] 
 **student_profile_id** | **char \*** |  | [optional] 
-**business_profile_record_id** | **char \*** |  | [optional] 
 **course_completion_certificate_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

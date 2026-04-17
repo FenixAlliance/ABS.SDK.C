@@ -22,7 +22,6 @@ typedef struct cost_centre_group_update_dto_t {
     char *name; // string
     char *description; // string
     int disabled; //boolean
-    char *tenant_id; // string
     char *parent_cost_centres_group_id; // string
 
 } cost_centre_group_update_dto_t;
@@ -31,7 +30,6 @@ cost_centre_group_update_dto_t *cost_centre_group_update_dto_create(
     char *name,
     char *description,
     int disabled,
-    char *tenant_id,
     char *parent_cost_centres_group_id
 );
 

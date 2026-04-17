@@ -24,8 +24,6 @@ typedef struct item_category_create_dto_t {
     char *title; // string
     char *description; // string
     char *image_url; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
     char *parent_item_category_id; // string
 
 } item_category_create_dto_t;
@@ -36,8 +34,6 @@ item_category_create_dto_t *item_category_create_dto_create(
     char *title,
     char *description,
     char *image_url,
-    char *business_id,
-    char *business_profile_record_id,
     char *parent_item_category_id
 );
 

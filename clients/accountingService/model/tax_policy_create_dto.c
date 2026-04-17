@@ -29,8 +29,6 @@ tax_policy_create_dto_t *tax_policy_create_dto_create(
     char *custom_state,
     char *custom_city,
     char *city_id,
-    char *enrollment_id,
-    char *tenant_id,
     int zero,
     int reduced,
     int withholding,
@@ -63,8 +61,6 @@ tax_policy_create_dto_t *tax_policy_create_dto_create(
     tax_policy_create_dto_local_var->custom_state = custom_state;
     tax_policy_create_dto_local_var->custom_city = custom_city;
     tax_policy_create_dto_local_var->city_id = city_id;
-    tax_policy_create_dto_local_var->enrollment_id = enrollment_id;
-    tax_policy_create_dto_local_var->tenant_id = tenant_id;
     tax_policy_create_dto_local_var->zero = zero;
     tax_policy_create_dto_local_var->reduced = reduced;
     tax_policy_create_dto_local_var->withholding = withholding;
@@ -122,14 +118,6 @@ void tax_policy_create_dto_free(tax_policy_create_dto_t *tax_policy_create_dto) 
     if (tax_policy_create_dto->city_id) {
         free(tax_policy_create_dto->city_id);
         tax_policy_create_dto->city_id = NULL;
-    }
-    if (tax_policy_create_dto->enrollment_id) {
-        free(tax_policy_create_dto->enrollment_id);
-        tax_policy_create_dto->enrollment_id = NULL;
-    }
-    if (tax_policy_create_dto->tenant_id) {
-        free(tax_policy_create_dto->tenant_id);
-        tax_policy_create_dto->tenant_id = NULL;
     }
     if (tax_policy_create_dto->fiscal_authority_id) {
         free(tax_policy_create_dto->fiscal_authority_id);
@@ -320,22 +308,6 @@ cJSON *tax_policy_create_dto_convertToJSON(tax_policy_create_dto_t *tax_policy_c
     // tax_policy_create_dto->city_id
     if(tax_policy_create_dto->city_id) {
     if(cJSON_AddStringToObject(item, "cityId", tax_policy_create_dto->city_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // tax_policy_create_dto->enrollment_id
-    if(tax_policy_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", tax_policy_create_dto->enrollment_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // tax_policy_create_dto->tenant_id
-    if(tax_policy_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", tax_policy_create_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -591,24 +563,6 @@ tax_policy_create_dto_t *tax_policy_create_dto_parseFromJSON(cJSON *tax_policy_c
     }
     }
 
-    // tax_policy_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(tax_policy_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // tax_policy_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(tax_policy_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // tax_policy_create_dto->zero
     cJSON *zero = cJSON_GetObjectItemCaseSensitive(tax_policy_create_dtoJSON, "zero");
     if (zero) { 
@@ -670,8 +624,6 @@ tax_policy_create_dto_t *tax_policy_create_dto_parseFromJSON(cJSON *tax_policy_c
         custom_state && !cJSON_IsNull(custom_state) ? strdup(custom_state->valuestring) : NULL,
         custom_city && !cJSON_IsNull(custom_city) ? strdup(custom_city->valuestring) : NULL,
         city_id && !cJSON_IsNull(city_id) ? strdup(city_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         zero ? zero->valueint : 0,
         reduced ? reduced->valueint : 0,
         withholding ? withholding->valueint : 0,

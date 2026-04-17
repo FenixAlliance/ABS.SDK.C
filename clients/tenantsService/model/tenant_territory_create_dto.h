@@ -21,8 +21,6 @@ typedef struct tenant_territory_create_dto_t tenant_territory_create_dto_t;
 typedef struct tenant_territory_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *business_id; // string
-    char *business_profile_record_id; // string
     char *name; // string
     char *description; // string
     char *parent_territory_id; // string
@@ -32,8 +30,6 @@ typedef struct tenant_territory_create_dto_t {
 tenant_territory_create_dto_t *tenant_territory_create_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
-    char *business_profile_record_id,
     char *name,
     char *description,
     char *parent_territory_id

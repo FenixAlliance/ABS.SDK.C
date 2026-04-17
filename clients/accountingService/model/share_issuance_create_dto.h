@@ -21,8 +21,6 @@ typedef struct share_issuance_create_dto_t share_issuance_create_dto_t;
 typedef struct share_issuance_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *tenant_id; // string
-    char *enrollment_id; // string
     int unit_price; //numeric
     int quantity; //numeric
     char *currency_id; // string
@@ -32,8 +30,6 @@ typedef struct share_issuance_create_dto_t {
 share_issuance_create_dto_t *share_issuance_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
-    char *enrollment_id,
     int unit_price,
     int quantity,
     char *currency_id

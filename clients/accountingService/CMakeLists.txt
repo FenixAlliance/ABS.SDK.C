@@ -193,7 +193,6 @@ set(SRCS
     model/grant_dto.c
     model/grant_dto_envelope.c
     model/grant_dto_i_read_only_list_envelope.c
-    model/grant_update_dto.c
     model/http_validation_problem_details.c
     model/info_request.c
     model/info_response.c
@@ -234,7 +233,6 @@ set(SRCS
     model/loan_application_dto.c
     model/loan_application_dto_envelope.c
     model/loan_application_dto_i_read_only_list_envelope.c
-    model/loan_application_update_dto.c
     model/loan_create_dto.c
     model/loan_dto.c
     model/loan_dto_envelope.c
@@ -480,7 +478,6 @@ set(HDRS
     model/grant_dto.h
     model/grant_dto_envelope.h
     model/grant_dto_i_read_only_list_envelope.h
-    model/grant_update_dto.h
     model/http_validation_problem_details.h
     model/info_request.h
     model/info_response.h
@@ -521,7 +518,6 @@ set(HDRS
     model/loan_application_dto.h
     model/loan_application_dto_envelope.h
     model/loan_application_dto_i_read_only_list_envelope.h
-    model/loan_application_update_dto.h
     model/loan_create_dto.h
     model/loan_dto.h
     model/loan_dto_envelope.h

@@ -24,10 +24,9 @@ typedef struct fiscal_year_create_dto_t {
     char *name; // string
     char *description; // string
     int closed; //boolean
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *end_date; //date time
     char *start_date; //date time
+    char *fiscal_authority_id; // string
 
 } fiscal_year_create_dto_t;
 
@@ -37,10 +36,9 @@ fiscal_year_create_dto_t *fiscal_year_create_dto_create(
     char *name,
     char *description,
     int closed,
-    char *tenant_id,
-    char *enrollment_id,
     char *end_date,
-    char *start_date
+    char *start_date,
+    char *fiscal_authority_id
 );
 
 void fiscal_year_create_dto_free(fiscal_year_create_dto_t *fiscal_year_create_dto);

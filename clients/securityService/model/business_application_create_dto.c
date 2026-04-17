@@ -21,8 +21,6 @@ business_application_create_dto_t *business_application_create_dto_create(
     char *contact_email,
     char *privacy_policy_url,
     char *terms_and_conditions_url,
-    char *business_id,
-    char *business_profile_record_id,
     int require_https,
     int require_app_secret,
     int enable_client_oauth_login,
@@ -65,8 +63,6 @@ business_application_create_dto_t *business_application_create_dto_create(
     business_application_create_dto_local_var->contact_email = contact_email;
     business_application_create_dto_local_var->privacy_policy_url = privacy_policy_url;
     business_application_create_dto_local_var->terms_and_conditions_url = terms_and_conditions_url;
-    business_application_create_dto_local_var->business_id = business_id;
-    business_application_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     business_application_create_dto_local_var->require_https = require_https;
     business_application_create_dto_local_var->require_app_secret = require_app_secret;
     business_application_create_dto_local_var->enable_client_oauth_login = enable_client_oauth_login;
@@ -138,14 +134,6 @@ void business_application_create_dto_free(business_application_create_dto_t *bus
     if (business_application_create_dto->terms_and_conditions_url) {
         free(business_application_create_dto->terms_and_conditions_url);
         business_application_create_dto->terms_and_conditions_url = NULL;
-    }
-    if (business_application_create_dto->business_id) {
-        free(business_application_create_dto->business_id);
-        business_application_create_dto->business_id = NULL;
-    }
-    if (business_application_create_dto->business_profile_record_id) {
-        free(business_application_create_dto->business_profile_record_id);
-        business_application_create_dto->business_profile_record_id = NULL;
     }
     if (business_application_create_dto->spa_ui_engine) {
         free(business_application_create_dto->spa_ui_engine);
@@ -305,22 +293,6 @@ cJSON *business_application_create_dto_convertToJSON(business_application_create
     // business_application_create_dto->terms_and_conditions_url
     if(business_application_create_dto->terms_and_conditions_url) {
     if(cJSON_AddStringToObject(item, "termsAndConditionsURL", business_application_create_dto->terms_and_conditions_url) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // business_application_create_dto->business_id
-    if(business_application_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", business_application_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // business_application_create_dto->business_profile_record_id
-    if(business_application_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", business_application_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -651,24 +623,6 @@ business_application_create_dto_t *business_application_create_dto_parseFromJSON
     }
     }
 
-    // business_application_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(business_application_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // business_application_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(business_application_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
     // business_application_create_dto->require_https
     cJSON *require_https = cJSON_GetObjectItemCaseSensitive(business_application_create_dtoJSON, "requireHttps");
     if (require_https) { 
@@ -884,8 +838,6 @@ business_application_create_dto_t *business_application_create_dto_parseFromJSON
         contact_email && !cJSON_IsNull(contact_email) ? strdup(contact_email->valuestring) : NULL,
         privacy_policy_url && !cJSON_IsNull(privacy_policy_url) ? strdup(privacy_policy_url->valuestring) : NULL,
         terms_and_conditions_url && !cJSON_IsNull(terms_and_conditions_url) ? strdup(terms_and_conditions_url->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         require_https ? require_https->valueint : 0,
         require_app_secret ? require_app_secret->valueint : 0,
         enable_client_oauth_login ? enable_client_oauth_login->valueint : 0,

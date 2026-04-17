@@ -8,7 +8,6 @@
 tenant_enrollment_create_dto_t *tenant_enrollment_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
     char *user_id
     ) {
     tenant_enrollment_create_dto_t *tenant_enrollment_create_dto_local_var = malloc(sizeof(tenant_enrollment_create_dto_t));
@@ -17,7 +16,6 @@ tenant_enrollment_create_dto_t *tenant_enrollment_create_dto_create(
     }
     tenant_enrollment_create_dto_local_var->id = id;
     tenant_enrollment_create_dto_local_var->timestamp = timestamp;
-    tenant_enrollment_create_dto_local_var->tenant_id = tenant_id;
     tenant_enrollment_create_dto_local_var->user_id = user_id;
 
     return tenant_enrollment_create_dto_local_var;
@@ -36,10 +34,6 @@ void tenant_enrollment_create_dto_free(tenant_enrollment_create_dto_t *tenant_en
     if (tenant_enrollment_create_dto->timestamp) {
         free(tenant_enrollment_create_dto->timestamp);
         tenant_enrollment_create_dto->timestamp = NULL;
-    }
-    if (tenant_enrollment_create_dto->tenant_id) {
-        free(tenant_enrollment_create_dto->tenant_id);
-        tenant_enrollment_create_dto->tenant_id = NULL;
     }
     if (tenant_enrollment_create_dto->user_id) {
         free(tenant_enrollment_create_dto->user_id);
@@ -63,14 +57,6 @@ cJSON *tenant_enrollment_create_dto_convertToJSON(tenant_enrollment_create_dto_t
     if(tenant_enrollment_create_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", tenant_enrollment_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // tenant_enrollment_create_dto->tenant_id
-    if(tenant_enrollment_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", tenant_enrollment_create_dto->tenant_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -112,15 +98,6 @@ tenant_enrollment_create_dto_t *tenant_enrollment_create_dto_parseFromJSON(cJSON
     }
     }
 
-    // tenant_enrollment_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(tenant_enrollment_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // tenant_enrollment_create_dto->user_id
     cJSON *user_id = cJSON_GetObjectItemCaseSensitive(tenant_enrollment_create_dtoJSON, "userId");
     if (user_id) { 
@@ -134,7 +111,6 @@ tenant_enrollment_create_dto_t *tenant_enrollment_create_dto_parseFromJSON(cJSON
     tenant_enrollment_create_dto_local_var = tenant_enrollment_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL
         );
 

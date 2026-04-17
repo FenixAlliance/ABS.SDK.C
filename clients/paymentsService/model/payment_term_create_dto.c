@@ -16,9 +16,7 @@ payment_term_create_dto_t *payment_term_create_dto_create(
     double credit_weeks,
     double credit_months,
     double credit_years,
-    char *payment_mode_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *payment_mode_id
     ) {
     payment_term_create_dto_t *payment_term_create_dto_local_var = malloc(sizeof(payment_term_create_dto_t));
     if (!payment_term_create_dto_local_var) {
@@ -35,8 +33,6 @@ payment_term_create_dto_t *payment_term_create_dto_create(
     payment_term_create_dto_local_var->credit_months = credit_months;
     payment_term_create_dto_local_var->credit_years = credit_years;
     payment_term_create_dto_local_var->payment_mode_id = payment_mode_id;
-    payment_term_create_dto_local_var->tenant_id = tenant_id;
-    payment_term_create_dto_local_var->enrollment_id = enrollment_id;
 
     return payment_term_create_dto_local_var;
 }
@@ -66,14 +62,6 @@ void payment_term_create_dto_free(payment_term_create_dto_t *payment_term_create
     if (payment_term_create_dto->payment_mode_id) {
         free(payment_term_create_dto->payment_mode_id);
         payment_term_create_dto->payment_mode_id = NULL;
-    }
-    if (payment_term_create_dto->tenant_id) {
-        free(payment_term_create_dto->tenant_id);
-        payment_term_create_dto->tenant_id = NULL;
-    }
-    if (payment_term_create_dto->enrollment_id) {
-        free(payment_term_create_dto->enrollment_id);
-        payment_term_create_dto->enrollment_id = NULL;
     }
     free(payment_term_create_dto);
 }
@@ -165,22 +153,6 @@ cJSON *payment_term_create_dto_convertToJSON(payment_term_create_dto_t *payment_
     // payment_term_create_dto->payment_mode_id
     if(payment_term_create_dto->payment_mode_id) {
     if(cJSON_AddStringToObject(item, "paymentModeID", payment_term_create_dto->payment_mode_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // payment_term_create_dto->tenant_id
-    if(payment_term_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", payment_term_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // payment_term_create_dto->enrollment_id
-    if(payment_term_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", payment_term_create_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -299,24 +271,6 @@ payment_term_create_dto_t *payment_term_create_dto_parseFromJSON(cJSON *payment_
     }
     }
 
-    // payment_term_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(payment_term_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // payment_term_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(payment_term_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     payment_term_create_dto_local_var = payment_term_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -329,9 +283,7 @@ payment_term_create_dto_t *payment_term_create_dto_parseFromJSON(cJSON *payment_
         credit_weeks ? credit_weeks->valuedouble : 0,
         credit_months ? credit_months->valuedouble : 0,
         credit_years ? credit_years->valuedouble : 0,
-        payment_mode_id && !cJSON_IsNull(payment_mode_id) ? strdup(payment_mode_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        payment_mode_id && !cJSON_IsNull(payment_mode_id) ? strdup(payment_mode_id->valuestring) : NULL
         );
 
     return payment_term_create_dto_local_var;

@@ -26,7 +26,6 @@ typedef struct course_assignment_create_dto_t {
     char *instructions; // string
     double points; //numeric
     char *course_id; // string
-    char *business_id; // string
     char *course_unit_id; // string
     char *course_cohort_id; // string
     char *course_assignment_type_id; // string
@@ -44,7 +43,6 @@ course_assignment_create_dto_t *course_assignment_create_dto_create(
     char *instructions,
     double points,
     char *course_id,
-    char *business_id,
     char *course_unit_id,
     char *course_cohort_id,
     char *course_assignment_type_id,

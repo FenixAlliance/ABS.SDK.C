@@ -12,7 +12,6 @@ course_problem_set_create_dto_t *course_problem_set_create_dto_create(
     char *description,
     double overall_score,
     char *course_id,
-    char *business_id,
     char *course_unit_id,
     char *course_grading_rubric_id,
     char *release_date_time
@@ -27,7 +26,6 @@ course_problem_set_create_dto_t *course_problem_set_create_dto_create(
     course_problem_set_create_dto_local_var->description = description;
     course_problem_set_create_dto_local_var->overall_score = overall_score;
     course_problem_set_create_dto_local_var->course_id = course_id;
-    course_problem_set_create_dto_local_var->business_id = business_id;
     course_problem_set_create_dto_local_var->course_unit_id = course_unit_id;
     course_problem_set_create_dto_local_var->course_grading_rubric_id = course_grading_rubric_id;
     course_problem_set_create_dto_local_var->release_date_time = release_date_time;
@@ -60,10 +58,6 @@ void course_problem_set_create_dto_free(course_problem_set_create_dto_t *course_
     if (course_problem_set_create_dto->course_id) {
         free(course_problem_set_create_dto->course_id);
         course_problem_set_create_dto->course_id = NULL;
-    }
-    if (course_problem_set_create_dto->business_id) {
-        free(course_problem_set_create_dto->business_id);
-        course_problem_set_create_dto->business_id = NULL;
     }
     if (course_problem_set_create_dto->course_unit_id) {
         free(course_problem_set_create_dto->course_unit_id);
@@ -129,15 +123,6 @@ cJSON *course_problem_set_create_dto_convertToJSON(course_problem_set_create_dto
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "courseID", course_problem_set_create_dto->course_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // course_problem_set_create_dto->business_id
-    if (!course_problem_set_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_problem_set_create_dto->business_id) == NULL) {
     goto fail; //String
     }
 
@@ -237,18 +222,6 @@ course_problem_set_create_dto_t *course_problem_set_create_dto_parseFromJSON(cJS
     goto end; //String
     }
 
-    // course_problem_set_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_problem_set_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
     // course_problem_set_create_dto->course_unit_id
     cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_problem_set_create_dtoJSON, "courseUnitID");
     if (course_unit_id) { 
@@ -284,7 +257,6 @@ course_problem_set_create_dto_t *course_problem_set_create_dto_parseFromJSON(cJS
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         overall_score ? overall_score->valuedouble : 0,
         strdup(course_id->valuestring),
-        strdup(business_id->valuestring),
         course_unit_id && !cJSON_IsNull(course_unit_id) ? strdup(course_unit_id->valuestring) : NULL,
         course_grading_rubric_id && !cJSON_IsNull(course_grading_rubric_id) ? strdup(course_grading_rubric_id->valuestring) : NULL,
         release_date_time && !cJSON_IsNull(release_date_time) ? strdup(release_date_time->valuestring) : NULL

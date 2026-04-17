@@ -29,8 +29,6 @@ accountingservice_accounting_entry_create_dto_ACCOUNTINGENTRYTYPE_e accounting_e
 typedef struct accounting_entry_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *description; // string
     char *date; //date time
     double amount; //numeric
@@ -45,8 +43,6 @@ typedef struct accounting_entry_create_dto_t {
 accounting_entry_create_dto_t *accounting_entry_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
-    char *enrollment_id,
     char *description,
     char *date,
     double amount,

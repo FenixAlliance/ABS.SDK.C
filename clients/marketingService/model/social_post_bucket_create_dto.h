@@ -22,17 +22,13 @@ typedef struct social_post_bucket_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *name; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } social_post_bucket_create_dto_t;
 
 social_post_bucket_create_dto_t *social_post_bucket_create_dto_create(
     char *id,
     char *timestamp,
-    char *name,
-    char *tenant_id,
-    char *enrollment_id
+    char *name
 );
 
 void social_post_bucket_create_dto_free(social_post_bucket_create_dto_t *social_post_bucket_create_dto);

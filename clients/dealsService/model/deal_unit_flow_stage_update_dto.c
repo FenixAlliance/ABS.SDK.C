@@ -9,7 +9,6 @@ deal_unit_flow_stage_update_dto_t *deal_unit_flow_stage_update_dto_create(
     int order,
     char *name,
     char *description,
-    char *enrollment_id,
     char *deal_unit_flow_id,
     char *parent_business_process_stage_id
     ) {
@@ -20,7 +19,6 @@ deal_unit_flow_stage_update_dto_t *deal_unit_flow_stage_update_dto_create(
     deal_unit_flow_stage_update_dto_local_var->order = order;
     deal_unit_flow_stage_update_dto_local_var->name = name;
     deal_unit_flow_stage_update_dto_local_var->description = description;
-    deal_unit_flow_stage_update_dto_local_var->enrollment_id = enrollment_id;
     deal_unit_flow_stage_update_dto_local_var->deal_unit_flow_id = deal_unit_flow_id;
     deal_unit_flow_stage_update_dto_local_var->parent_business_process_stage_id = parent_business_process_stage_id;
 
@@ -40,10 +38,6 @@ void deal_unit_flow_stage_update_dto_free(deal_unit_flow_stage_update_dto_t *dea
     if (deal_unit_flow_stage_update_dto->description) {
         free(deal_unit_flow_stage_update_dto->description);
         deal_unit_flow_stage_update_dto->description = NULL;
-    }
-    if (deal_unit_flow_stage_update_dto->enrollment_id) {
-        free(deal_unit_flow_stage_update_dto->enrollment_id);
-        deal_unit_flow_stage_update_dto->enrollment_id = NULL;
     }
     if (deal_unit_flow_stage_update_dto->deal_unit_flow_id) {
         free(deal_unit_flow_stage_update_dto->deal_unit_flow_id);
@@ -78,14 +72,6 @@ cJSON *deal_unit_flow_stage_update_dto_convertToJSON(deal_unit_flow_stage_update
     // deal_unit_flow_stage_update_dto->description
     if(deal_unit_flow_stage_update_dto->description) {
     if(cJSON_AddStringToObject(item, "description", deal_unit_flow_stage_update_dto->description) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // deal_unit_flow_stage_update_dto->enrollment_id
-    if(deal_unit_flow_stage_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", deal_unit_flow_stage_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -145,15 +131,6 @@ deal_unit_flow_stage_update_dto_t *deal_unit_flow_stage_update_dto_parseFromJSON
     }
     }
 
-    // deal_unit_flow_stage_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(deal_unit_flow_stage_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // deal_unit_flow_stage_update_dto->deal_unit_flow_id
     cJSON *deal_unit_flow_id = cJSON_GetObjectItemCaseSensitive(deal_unit_flow_stage_update_dtoJSON, "dealUnitFlowId");
     if (deal_unit_flow_id) { 
@@ -177,7 +154,6 @@ deal_unit_flow_stage_update_dto_t *deal_unit_flow_stage_update_dto_parseFromJSON
         order ? order->valuedouble : 0,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         deal_unit_flow_id && !cJSON_IsNull(deal_unit_flow_id) ? strdup(deal_unit_flow_id->valuestring) : NULL,
         parent_business_process_stage_id && !cJSON_IsNull(parent_business_process_stage_id) ? strdup(parent_business_process_stage_id->valuestring) : NULL
         );

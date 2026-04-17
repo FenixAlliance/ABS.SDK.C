@@ -23,7 +23,6 @@ typedef struct financial_book_create_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *description; // string
-    char *tenant_id; // string
 
 } financial_book_create_dto_t;
 
@@ -31,8 +30,7 @@ financial_book_create_dto_t *financial_book_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *description,
-    char *tenant_id
+    char *description
 );
 
 void financial_book_create_dto_free(financial_book_create_dto_t *financial_book_create_dto);

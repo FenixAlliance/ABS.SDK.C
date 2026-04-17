@@ -20,9 +20,7 @@ typedef struct support_ticket_update_dto_t support_ticket_update_dto_t;
 
 typedef struct support_ticket_update_dto_t {
     char *description; // string
-    char *account_holder_id; // string
     char *contact_id; // string
-    char *business_profile_record_id; // string
     char *support_ticket_type_id; // string
     char *support_entitlement_id; // string
     char *support_priority_id; // string
@@ -31,9 +29,7 @@ typedef struct support_ticket_update_dto_t {
 
 support_ticket_update_dto_t *support_ticket_update_dto_create(
     char *description,
-    char *account_holder_id,
     char *contact_id,
-    char *business_profile_record_id,
     char *support_ticket_type_id,
     char *support_entitlement_id,
     char *support_priority_id

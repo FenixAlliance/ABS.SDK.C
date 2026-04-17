@@ -6,23 +6,23 @@
 
 
 social_media_post_create_dto_t *social_media_post_create_dto_create(
+    char *id,
+    char *timestamp,
     char *title,
     char *content,
     char *featured_image_url,
-    char *tenant_id,
-    char *social_post_bucket_id,
-    char *enrollment_id
+    char *social_post_bucket_id
     ) {
     social_media_post_create_dto_t *social_media_post_create_dto_local_var = malloc(sizeof(social_media_post_create_dto_t));
     if (!social_media_post_create_dto_local_var) {
         return NULL;
     }
+    social_media_post_create_dto_local_var->id = id;
+    social_media_post_create_dto_local_var->timestamp = timestamp;
     social_media_post_create_dto_local_var->title = title;
     social_media_post_create_dto_local_var->content = content;
     social_media_post_create_dto_local_var->featured_image_url = featured_image_url;
-    social_media_post_create_dto_local_var->tenant_id = tenant_id;
     social_media_post_create_dto_local_var->social_post_bucket_id = social_post_bucket_id;
-    social_media_post_create_dto_local_var->enrollment_id = enrollment_id;
 
     return social_media_post_create_dto_local_var;
 }
@@ -33,6 +33,14 @@ void social_media_post_create_dto_free(social_media_post_create_dto_t *social_me
         return ;
     }
     listEntry_t *listEntry;
+    if (social_media_post_create_dto->id) {
+        free(social_media_post_create_dto->id);
+        social_media_post_create_dto->id = NULL;
+    }
+    if (social_media_post_create_dto->timestamp) {
+        free(social_media_post_create_dto->timestamp);
+        social_media_post_create_dto->timestamp = NULL;
+    }
     if (social_media_post_create_dto->title) {
         free(social_media_post_create_dto->title);
         social_media_post_create_dto->title = NULL;
@@ -45,23 +53,31 @@ void social_media_post_create_dto_free(social_media_post_create_dto_t *social_me
         free(social_media_post_create_dto->featured_image_url);
         social_media_post_create_dto->featured_image_url = NULL;
     }
-    if (social_media_post_create_dto->tenant_id) {
-        free(social_media_post_create_dto->tenant_id);
-        social_media_post_create_dto->tenant_id = NULL;
-    }
     if (social_media_post_create_dto->social_post_bucket_id) {
         free(social_media_post_create_dto->social_post_bucket_id);
         social_media_post_create_dto->social_post_bucket_id = NULL;
-    }
-    if (social_media_post_create_dto->enrollment_id) {
-        free(social_media_post_create_dto->enrollment_id);
-        social_media_post_create_dto->enrollment_id = NULL;
     }
     free(social_media_post_create_dto);
 }
 
 cJSON *social_media_post_create_dto_convertToJSON(social_media_post_create_dto_t *social_media_post_create_dto) {
     cJSON *item = cJSON_CreateObject();
+
+    // social_media_post_create_dto->id
+    if(social_media_post_create_dto->id) {
+    if(cJSON_AddStringToObject(item, "id", social_media_post_create_dto->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // social_media_post_create_dto->timestamp
+    if(social_media_post_create_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", social_media_post_create_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
 
     // social_media_post_create_dto->title
     if(social_media_post_create_dto->title) {
@@ -87,25 +103,9 @@ cJSON *social_media_post_create_dto_convertToJSON(social_media_post_create_dto_t
     }
 
 
-    // social_media_post_create_dto->tenant_id
-    if(social_media_post_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", social_media_post_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // social_media_post_create_dto->social_post_bucket_id
     if(social_media_post_create_dto->social_post_bucket_id) {
     if(cJSON_AddStringToObject(item, "socialPostBucketId", social_media_post_create_dto->social_post_bucket_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // social_media_post_create_dto->enrollment_id
-    if(social_media_post_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", social_media_post_create_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -121,6 +121,24 @@ fail:
 social_media_post_create_dto_t *social_media_post_create_dto_parseFromJSON(cJSON *social_media_post_create_dtoJSON){
 
     social_media_post_create_dto_t *social_media_post_create_dto_local_var = NULL;
+
+    // social_media_post_create_dto->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(social_media_post_create_dtoJSON, "id");
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // social_media_post_create_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(social_media_post_create_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
 
     // social_media_post_create_dto->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(social_media_post_create_dtoJSON, "title");
@@ -149,15 +167,6 @@ social_media_post_create_dto_t *social_media_post_create_dto_parseFromJSON(cJSON
     }
     }
 
-    // social_media_post_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(social_media_post_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // social_media_post_create_dto->social_post_bucket_id
     cJSON *social_post_bucket_id = cJSON_GetObjectItemCaseSensitive(social_media_post_create_dtoJSON, "socialPostBucketId");
     if (social_post_bucket_id) { 
@@ -167,23 +176,14 @@ social_media_post_create_dto_t *social_media_post_create_dto_parseFromJSON(cJSON
     }
     }
 
-    // social_media_post_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(social_media_post_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     social_media_post_create_dto_local_var = social_media_post_create_dto_create (
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         content && !cJSON_IsNull(content) ? strdup(content->valuestring) : NULL,
         featured_image_url && !cJSON_IsNull(featured_image_url) ? strdup(featured_image_url->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        social_post_bucket_id && !cJSON_IsNull(social_post_bucket_id) ? strdup(social_post_bucket_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        social_post_bucket_id && !cJSON_IsNull(social_post_bucket_id) ? strdup(social_post_bucket_id->valuestring) : NULL
         );
 
     return social_media_post_create_dto_local_var;

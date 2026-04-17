@@ -9,10 +9,8 @@ course_certificate_template_create_dto_t *course_certificate_template_create_dto
     char *id,
     char *timestamp,
     char *course_id,
-    char *business_id,
     char *web_portal_id,
     char *website_theme_id,
-    char *business_profile_record_id,
     char *social_profile_id,
     char *parent_web_content_id,
     char *parent_web_content_version_id
@@ -24,10 +22,8 @@ course_certificate_template_create_dto_t *course_certificate_template_create_dto
     course_certificate_template_create_dto_local_var->id = id;
     course_certificate_template_create_dto_local_var->timestamp = timestamp;
     course_certificate_template_create_dto_local_var->course_id = course_id;
-    course_certificate_template_create_dto_local_var->business_id = business_id;
     course_certificate_template_create_dto_local_var->web_portal_id = web_portal_id;
     course_certificate_template_create_dto_local_var->website_theme_id = website_theme_id;
-    course_certificate_template_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     course_certificate_template_create_dto_local_var->social_profile_id = social_profile_id;
     course_certificate_template_create_dto_local_var->parent_web_content_id = parent_web_content_id;
     course_certificate_template_create_dto_local_var->parent_web_content_version_id = parent_web_content_version_id;
@@ -53,10 +49,6 @@ void course_certificate_template_create_dto_free(course_certificate_template_cre
         free(course_certificate_template_create_dto->course_id);
         course_certificate_template_create_dto->course_id = NULL;
     }
-    if (course_certificate_template_create_dto->business_id) {
-        free(course_certificate_template_create_dto->business_id);
-        course_certificate_template_create_dto->business_id = NULL;
-    }
     if (course_certificate_template_create_dto->web_portal_id) {
         free(course_certificate_template_create_dto->web_portal_id);
         course_certificate_template_create_dto->web_portal_id = NULL;
@@ -64,10 +56,6 @@ void course_certificate_template_create_dto_free(course_certificate_template_cre
     if (course_certificate_template_create_dto->website_theme_id) {
         free(course_certificate_template_create_dto->website_theme_id);
         course_certificate_template_create_dto->website_theme_id = NULL;
-    }
-    if (course_certificate_template_create_dto->business_profile_record_id) {
-        free(course_certificate_template_create_dto->business_profile_record_id);
-        course_certificate_template_create_dto->business_profile_record_id = NULL;
     }
     if (course_certificate_template_create_dto->social_profile_id) {
         free(course_certificate_template_create_dto->social_profile_id);
@@ -112,15 +100,6 @@ cJSON *course_certificate_template_create_dto_convertToJSON(course_certificate_t
     }
 
 
-    // course_certificate_template_create_dto->business_id
-    if (!course_certificate_template_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", course_certificate_template_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-
-
     // course_certificate_template_create_dto->web_portal_id
     if(course_certificate_template_create_dto->web_portal_id) {
     if(cJSON_AddStringToObject(item, "webPortalID", course_certificate_template_create_dto->web_portal_id) == NULL) {
@@ -132,14 +111,6 @@ cJSON *course_certificate_template_create_dto_convertToJSON(course_certificate_t
     // course_certificate_template_create_dto->website_theme_id
     if(course_certificate_template_create_dto->website_theme_id) {
     if(cJSON_AddStringToObject(item, "websiteThemeID", course_certificate_template_create_dto->website_theme_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // course_certificate_template_create_dto->business_profile_record_id
-    if(course_certificate_template_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", course_certificate_template_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -210,18 +181,6 @@ course_certificate_template_create_dto_t *course_certificate_template_create_dto
     goto end; //String
     }
 
-    // course_certificate_template_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
     // course_certificate_template_create_dto->web_portal_id
     cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_create_dtoJSON, "webPortalID");
     if (web_portal_id) { 
@@ -235,15 +194,6 @@ course_certificate_template_create_dto_t *course_certificate_template_create_dto
     cJSON *website_theme_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_create_dtoJSON, "websiteThemeID");
     if (website_theme_id) { 
     if(!cJSON_IsString(website_theme_id) && !cJSON_IsNull(website_theme_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // course_certificate_template_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
     {
     goto end; //String
     }
@@ -281,10 +231,8 @@ course_certificate_template_create_dto_t *course_certificate_template_create_dto
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         strdup(course_id->valuestring),
-        strdup(business_id->valuestring),
         web_portal_id && !cJSON_IsNull(web_portal_id) ? strdup(web_portal_id->valuestring) : NULL,
         website_theme_id && !cJSON_IsNull(website_theme_id) ? strdup(website_theme_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL,
         parent_web_content_id && !cJSON_IsNull(parent_web_content_id) ? strdup(parent_web_content_id->valuestring) : NULL,
         parent_web_content_version_id && !cJSON_IsNull(parent_web_content_version_id) ? strdup(parent_web_content_version_id->valuestring) : NULL

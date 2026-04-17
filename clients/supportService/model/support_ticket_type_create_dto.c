@@ -9,8 +9,7 @@ support_ticket_type_create_dto_t *support_ticket_type_create_dto_create(
     char *id,
     char *timestamp,
     char *title,
-    char *description,
-    char *business_id
+    char *description
     ) {
     support_ticket_type_create_dto_t *support_ticket_type_create_dto_local_var = malloc(sizeof(support_ticket_type_create_dto_t));
     if (!support_ticket_type_create_dto_local_var) {
@@ -20,7 +19,6 @@ support_ticket_type_create_dto_t *support_ticket_type_create_dto_create(
     support_ticket_type_create_dto_local_var->timestamp = timestamp;
     support_ticket_type_create_dto_local_var->title = title;
     support_ticket_type_create_dto_local_var->description = description;
-    support_ticket_type_create_dto_local_var->business_id = business_id;
 
     return support_ticket_type_create_dto_local_var;
 }
@@ -46,10 +44,6 @@ void support_ticket_type_create_dto_free(support_ticket_type_create_dto_t *suppo
     if (support_ticket_type_create_dto->description) {
         free(support_ticket_type_create_dto->description);
         support_ticket_type_create_dto->description = NULL;
-    }
-    if (support_ticket_type_create_dto->business_id) {
-        free(support_ticket_type_create_dto->business_id);
-        support_ticket_type_create_dto->business_id = NULL;
     }
     free(support_ticket_type_create_dto);
 }
@@ -84,14 +78,6 @@ cJSON *support_ticket_type_create_dto_convertToJSON(support_ticket_type_create_d
     // support_ticket_type_create_dto->description
     if(support_ticket_type_create_dto->description) {
     if(cJSON_AddStringToObject(item, "description", support_ticket_type_create_dto->description) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // support_ticket_type_create_dto->business_id
-    if(support_ticket_type_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", support_ticket_type_create_dto->business_id) == NULL) {
     goto fail; //String
     }
     }
@@ -144,22 +130,12 @@ support_ticket_type_create_dto_t *support_ticket_type_create_dto_parseFromJSON(c
     }
     }
 
-    // support_ticket_type_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(support_ticket_type_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     support_ticket_type_create_dto_local_var = support_ticket_type_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
         );
 
     return support_ticket_type_create_dto_local_var;

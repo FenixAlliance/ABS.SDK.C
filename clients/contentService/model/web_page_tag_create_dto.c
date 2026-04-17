@@ -19,8 +19,7 @@ web_page_tag_create_dto_t *web_page_tag_create_dto_create(
     char *canonical_url,
     char *image_url,
     char *image,
-    char *web_portal_id,
-    char *business_profile_record_id
+    char *web_portal_id
     ) {
     web_page_tag_create_dto_t *web_page_tag_create_dto_local_var = malloc(sizeof(web_page_tag_create_dto_t));
     if (!web_page_tag_create_dto_local_var) {
@@ -40,7 +39,6 @@ web_page_tag_create_dto_t *web_page_tag_create_dto_create(
     web_page_tag_create_dto_local_var->image_url = image_url;
     web_page_tag_create_dto_local_var->image = image;
     web_page_tag_create_dto_local_var->web_portal_id = web_portal_id;
-    web_page_tag_create_dto_local_var->business_profile_record_id = business_profile_record_id;
 
     return web_page_tag_create_dto_local_var;
 }
@@ -98,10 +96,6 @@ void web_page_tag_create_dto_free(web_page_tag_create_dto_t *web_page_tag_create
     if (web_page_tag_create_dto->web_portal_id) {
         free(web_page_tag_create_dto->web_portal_id);
         web_page_tag_create_dto->web_portal_id = NULL;
-    }
-    if (web_page_tag_create_dto->business_profile_record_id) {
-        free(web_page_tag_create_dto->business_profile_record_id);
-        web_page_tag_create_dto->business_profile_record_id = NULL;
     }
     free(web_page_tag_create_dto);
 }
@@ -216,14 +210,6 @@ cJSON *web_page_tag_create_dto_convertToJSON(web_page_tag_create_dto_t *web_page
     // web_page_tag_create_dto->web_portal_id
     if(web_page_tag_create_dto->web_portal_id) {
     if(cJSON_AddStringToObject(item, "webPortalID", web_page_tag_create_dto->web_portal_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // web_page_tag_create_dto->business_profile_record_id
-    if(web_page_tag_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", web_page_tag_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -366,15 +352,6 @@ web_page_tag_create_dto_t *web_page_tag_create_dto_parseFromJSON(cJSON *web_page
     }
     }
 
-    // web_page_tag_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(web_page_tag_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     web_page_tag_create_dto_local_var = web_page_tag_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -390,8 +367,7 @@ web_page_tag_create_dto_t *web_page_tag_create_dto_parseFromJSON(cJSON *web_page
         canonical_url && !cJSON_IsNull(canonical_url) ? strdup(canonical_url->valuestring) : NULL,
         image_url && !cJSON_IsNull(image_url) ? strdup(image_url->valuestring) : NULL,
         image && !cJSON_IsNull(image) ? strdup(image->valuestring) : NULL,
-        web_portal_id && !cJSON_IsNull(web_portal_id) ? strdup(web_portal_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        web_portal_id && !cJSON_IsNull(web_portal_id) ? strdup(web_portal_id->valuestring) : NULL
         );
 
     return web_page_tag_create_dto_local_var;

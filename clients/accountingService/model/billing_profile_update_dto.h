@@ -20,7 +20,6 @@ typedef struct billing_profile_update_dto_t billing_profile_update_dto_t;
 
 typedef struct billing_profile_update_dto_t {
     char *contact_id; // string
-    char *tenant_id; // string
     char *tax_id; // string
     char *phone; // string
     char *email; // string
@@ -45,7 +44,6 @@ typedef struct billing_profile_update_dto_t {
 
 billing_profile_update_dto_t *billing_profile_update_dto_create(
     char *contact_id,
-    char *tenant_id,
     char *tax_id,
     char *phone,
     char *email,

@@ -5,8 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | 
-**business_profile_record_id** | **char \*** |  | 
 **business_team_id** | **char \*** |  | 
 **employee_profile_id** | **char \*** |  | 
 

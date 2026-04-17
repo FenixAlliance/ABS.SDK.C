@@ -13,8 +13,6 @@ discount_create_dto_t *discount_create_dto_create(
     double end_quantity,
     double percent,
     double value,
-    char *tenant_id,
-    char *enrollment_id,
     char *discount_list_id
     ) {
     discount_create_dto_t *discount_create_dto_local_var = malloc(sizeof(discount_create_dto_t));
@@ -28,8 +26,6 @@ discount_create_dto_t *discount_create_dto_create(
     discount_create_dto_local_var->end_quantity = end_quantity;
     discount_create_dto_local_var->percent = percent;
     discount_create_dto_local_var->value = value;
-    discount_create_dto_local_var->tenant_id = tenant_id;
-    discount_create_dto_local_var->enrollment_id = enrollment_id;
     discount_create_dto_local_var->discount_list_id = discount_list_id;
 
     return discount_create_dto_local_var;
@@ -52,14 +48,6 @@ void discount_create_dto_free(discount_create_dto_t *discount_create_dto) {
     if (discount_create_dto->description) {
         free(discount_create_dto->description);
         discount_create_dto->description = NULL;
-    }
-    if (discount_create_dto->tenant_id) {
-        free(discount_create_dto->tenant_id);
-        discount_create_dto->tenant_id = NULL;
-    }
-    if (discount_create_dto->enrollment_id) {
-        free(discount_create_dto->enrollment_id);
-        discount_create_dto->enrollment_id = NULL;
     }
     if (discount_create_dto->discount_list_id) {
         free(discount_create_dto->discount_list_id);
@@ -123,22 +111,6 @@ cJSON *discount_create_dto_convertToJSON(discount_create_dto_t *discount_create_
     if(discount_create_dto->value) {
     if(cJSON_AddNumberToObject(item, "value", discount_create_dto->value) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // discount_create_dto->tenant_id
-    if(discount_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", discount_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // discount_create_dto->enrollment_id
-    if(discount_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", discount_create_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -225,24 +197,6 @@ discount_create_dto_t *discount_create_dto_parseFromJSON(cJSON *discount_create_
     }
     }
 
-    // discount_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(discount_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // discount_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(discount_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // discount_create_dto->discount_list_id
     cJSON *discount_list_id = cJSON_GetObjectItemCaseSensitive(discount_create_dtoJSON, "discountListId");
     if (discount_list_id) { 
@@ -261,8 +215,6 @@ discount_create_dto_t *discount_create_dto_parseFromJSON(cJSON *discount_create_
         end_quantity ? end_quantity->valuedouble : 0,
         percent ? percent->valuedouble : 0,
         value ? value->valuedouble : 0,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         discount_list_id && !cJSON_IsNull(discount_list_id) ? strdup(discount_list_id->valuestring) : NULL
         );
 

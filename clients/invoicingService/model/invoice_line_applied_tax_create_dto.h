@@ -21,20 +21,16 @@ typedef struct invoice_line_applied_tax_create_dto_t invoice_line_applied_tax_cr
 typedef struct invoice_line_applied_tax_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *tenant_id; // string
     char *invoice_id; // string
     char *tax_policy_id; // string
-    char *enrollment_id; // string
 
 } invoice_line_applied_tax_create_dto_t;
 
 invoice_line_applied_tax_create_dto_t *invoice_line_applied_tax_create_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
     char *invoice_id,
-    char *tax_policy_id,
-    char *enrollment_id
+    char *tax_policy_id
 );
 
 void invoice_line_applied_tax_create_dto_free(invoice_line_applied_tax_create_dto_t *invoice_line_applied_tax_create_dto);

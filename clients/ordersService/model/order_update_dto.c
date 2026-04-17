@@ -40,7 +40,6 @@ ordersservice_order_update_dto_TAXCALCULATIONMETHOD_e order_update_dto_tax_calcu
 }
 
 order_update_dto_t *order_update_dto_create(
-    char *tenant_id,
     char *first_name,
     char *last_name,
     char *company_name,
@@ -84,7 +83,6 @@ order_update_dto_t *order_update_dto_create(
     char *user_id,
     double forex_rate,
     char *currency_id,
-    char *enrollment_id,
     char *individual_id,
     char *organization_id,
     double total_amount_in_usd,
@@ -103,7 +101,6 @@ order_update_dto_t *order_update_dto_create(
     if (!order_update_dto_local_var) {
         return NULL;
     }
-    order_update_dto_local_var->tenant_id = tenant_id;
     order_update_dto_local_var->first_name = first_name;
     order_update_dto_local_var->last_name = last_name;
     order_update_dto_local_var->company_name = company_name;
@@ -147,7 +144,6 @@ order_update_dto_t *order_update_dto_create(
     order_update_dto_local_var->user_id = user_id;
     order_update_dto_local_var->forex_rate = forex_rate;
     order_update_dto_local_var->currency_id = currency_id;
-    order_update_dto_local_var->enrollment_id = enrollment_id;
     order_update_dto_local_var->individual_id = individual_id;
     order_update_dto_local_var->organization_id = organization_id;
     order_update_dto_local_var->total_amount_in_usd = total_amount_in_usd;
@@ -171,10 +167,6 @@ void order_update_dto_free(order_update_dto_t *order_update_dto) {
         return ;
     }
     listEntry_t *listEntry;
-    if (order_update_dto->tenant_id) {
-        free(order_update_dto->tenant_id);
-        order_update_dto->tenant_id = NULL;
-    }
     if (order_update_dto->first_name) {
         free(order_update_dto->first_name);
         order_update_dto->first_name = NULL;
@@ -287,10 +279,6 @@ void order_update_dto_free(order_update_dto_t *order_update_dto) {
         free(order_update_dto->currency_id);
         order_update_dto->currency_id = NULL;
     }
-    if (order_update_dto->enrollment_id) {
-        free(order_update_dto->enrollment_id);
-        order_update_dto->enrollment_id = NULL;
-    }
     if (order_update_dto->individual_id) {
         free(order_update_dto->individual_id);
         order_update_dto->individual_id = NULL;
@@ -336,14 +324,6 @@ void order_update_dto_free(order_update_dto_t *order_update_dto) {
 
 cJSON *order_update_dto_convertToJSON(order_update_dto_t *order_update_dto) {
     cJSON *item = cJSON_CreateObject();
-
-    // order_update_dto->tenant_id
-    if(order_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", order_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
 
     // order_update_dto->first_name
     if(order_update_dto->first_name) {
@@ -691,14 +671,6 @@ cJSON *order_update_dto_convertToJSON(order_update_dto_t *order_update_dto) {
     }
 
 
-    // order_update_dto->enrollment_id
-    if(order_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", order_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // order_update_dto->individual_id
     if(order_update_dto->individual_id) {
     if(cJSON_AddStringToObject(item, "individualId", order_update_dto->individual_id) == NULL) {
@@ -813,15 +785,6 @@ fail:
 order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
 
     order_update_dto_t *order_update_dto_local_var = NULL;
-
-    // order_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
 
     // order_update_dto->first_name
     cJSON *first_name = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "firstName");
@@ -1214,15 +1177,6 @@ order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
     }
     }
 
-    // order_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // order_update_dto->individual_id
     cJSON *individual_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "individualId");
     if (individual_id) { 
@@ -1342,7 +1296,6 @@ order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
 
 
     order_update_dto_local_var = order_update_dto_create (
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         first_name && !cJSON_IsNull(first_name) ? strdup(first_name->valuestring) : NULL,
         last_name && !cJSON_IsNull(last_name) ? strdup(last_name->valuestring) : NULL,
         company_name && !cJSON_IsNull(company_name) ? strdup(company_name->valuestring) : NULL,
@@ -1386,7 +1339,6 @@ order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
         user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL,
         forex_rate ? forex_rate->valuedouble : 0,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         individual_id && !cJSON_IsNull(individual_id) ? strdup(individual_id->valuestring) : NULL,
         organization_id && !cJSON_IsNull(organization_id) ? strdup(organization_id->valuestring) : NULL,
         total_amount_in_usd ? total_amount_in_usd->valuedouble : 0,

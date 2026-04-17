@@ -35,8 +35,6 @@ typedef struct marketing_campaign_create_dto_t {
     double expected_response_percent; //numeric
     char *marketing_area_id; // string
     char *currency_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } marketing_campaign_create_dto_t;
 
@@ -56,9 +54,7 @@ marketing_campaign_create_dto_t *marketing_campaign_create_dto_create(
     double misc_cost,
     double expected_response_percent,
     char *marketing_area_id,
-    char *currency_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *currency_id
 );
 
 void marketing_campaign_create_dto_free(marketing_campaign_create_dto_t *marketing_campaign_create_dto);

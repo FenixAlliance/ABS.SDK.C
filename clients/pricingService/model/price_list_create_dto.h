@@ -28,8 +28,6 @@ typedef struct price_list_create_dto_t {
     char *currency_id; // string
     char *unit_id; // string
     char *unit_group_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } price_list_create_dto_t;
 
@@ -42,9 +40,7 @@ price_list_create_dto_t *price_list_create_dto_create(
     char *end_date,
     char *currency_id,
     char *unit_id,
-    char *unit_group_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *unit_group_id
 );
 
 void price_list_create_dto_free(price_list_create_dto_t *price_list_create_dto);

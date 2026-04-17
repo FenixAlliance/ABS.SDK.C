@@ -18,8 +18,6 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_c
     int valid_response,
     char *parent_file_upload_id,
     char *file_path,
-    char *business_id,
-    char *business_profile_record_id,
     char *metadata,
     char *support_request_id
     ) {
@@ -39,8 +37,6 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_c
     support_request_attachment_create_dto_local_var->valid_response = valid_response;
     support_request_attachment_create_dto_local_var->parent_file_upload_id = parent_file_upload_id;
     support_request_attachment_create_dto_local_var->file_path = file_path;
-    support_request_attachment_create_dto_local_var->business_id = business_id;
-    support_request_attachment_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     support_request_attachment_create_dto_local_var->metadata = metadata;
     support_request_attachment_create_dto_local_var->support_request_id = support_request_id;
 
@@ -92,14 +88,6 @@ void support_request_attachment_create_dto_free(support_request_attachment_creat
     if (support_request_attachment_create_dto->file_path) {
         free(support_request_attachment_create_dto->file_path);
         support_request_attachment_create_dto->file_path = NULL;
-    }
-    if (support_request_attachment_create_dto->business_id) {
-        free(support_request_attachment_create_dto->business_id);
-        support_request_attachment_create_dto->business_id = NULL;
-    }
-    if (support_request_attachment_create_dto->business_profile_record_id) {
-        free(support_request_attachment_create_dto->business_profile_record_id);
-        support_request_attachment_create_dto->business_profile_record_id = NULL;
     }
     if (support_request_attachment_create_dto->metadata) {
         free(support_request_attachment_create_dto->metadata);
@@ -206,22 +194,6 @@ cJSON *support_request_attachment_create_dto_convertToJSON(support_request_attac
     // support_request_attachment_create_dto->file_path
     if(support_request_attachment_create_dto->file_path) {
     if(cJSON_AddStringToObject(item, "filePath", support_request_attachment_create_dto->file_path) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // support_request_attachment_create_dto->business_id
-    if(support_request_attachment_create_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", support_request_attachment_create_dto->business_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // support_request_attachment_create_dto->business_profile_record_id
-    if(support_request_attachment_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", support_request_attachment_create_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -362,24 +334,6 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_p
     }
     }
 
-    // support_request_attachment_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(support_request_attachment_create_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // support_request_attachment_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(support_request_attachment_create_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
     // support_request_attachment_create_dto->metadata
     cJSON *metadata = cJSON_GetObjectItemCaseSensitive(support_request_attachment_create_dtoJSON, "metadata");
     if (metadata) { 
@@ -412,8 +366,6 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_p
         valid_response ? valid_response->valueint : 0,
         parent_file_upload_id && !cJSON_IsNull(parent_file_upload_id) ? strdup(parent_file_upload_id->valuestring) : NULL,
         file_path && !cJSON_IsNull(file_path) ? strdup(file_path->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         metadata && !cJSON_IsNull(metadata) ? strdup(metadata->valuestring) : NULL,
         support_request_id && !cJSON_IsNull(support_request_id) ? strdup(support_request_id->valuestring) : NULL
         );

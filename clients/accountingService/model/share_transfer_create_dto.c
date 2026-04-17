@@ -12,9 +12,7 @@ share_transfer_create_dto_t *share_transfer_create_dto_create(
     double value,
     char *new_share_holder_id,
     char *former_share_holder_id,
-    char *share_transfer_reason_id,
-    char *enrollment_id,
-    char *tenant_id
+    char *share_transfer_reason_id
     ) {
     share_transfer_create_dto_t *share_transfer_create_dto_local_var = malloc(sizeof(share_transfer_create_dto_t));
     if (!share_transfer_create_dto_local_var) {
@@ -27,8 +25,6 @@ share_transfer_create_dto_t *share_transfer_create_dto_create(
     share_transfer_create_dto_local_var->new_share_holder_id = new_share_holder_id;
     share_transfer_create_dto_local_var->former_share_holder_id = former_share_holder_id;
     share_transfer_create_dto_local_var->share_transfer_reason_id = share_transfer_reason_id;
-    share_transfer_create_dto_local_var->enrollment_id = enrollment_id;
-    share_transfer_create_dto_local_var->tenant_id = tenant_id;
 
     return share_transfer_create_dto_local_var;
 }
@@ -62,14 +58,6 @@ void share_transfer_create_dto_free(share_transfer_create_dto_t *share_transfer_
     if (share_transfer_create_dto->share_transfer_reason_id) {
         free(share_transfer_create_dto->share_transfer_reason_id);
         share_transfer_create_dto->share_transfer_reason_id = NULL;
-    }
-    if (share_transfer_create_dto->enrollment_id) {
-        free(share_transfer_create_dto->enrollment_id);
-        share_transfer_create_dto->enrollment_id = NULL;
-    }
-    if (share_transfer_create_dto->tenant_id) {
-        free(share_transfer_create_dto->tenant_id);
-        share_transfer_create_dto->tenant_id = NULL;
     }
     free(share_transfer_create_dto);
 }
@@ -128,22 +116,6 @@ cJSON *share_transfer_create_dto_convertToJSON(share_transfer_create_dto_t *shar
     // share_transfer_create_dto->share_transfer_reason_id
     if(share_transfer_create_dto->share_transfer_reason_id) {
     if(cJSON_AddStringToObject(item, "shareTransferReasonId", share_transfer_create_dto->share_transfer_reason_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // share_transfer_create_dto->enrollment_id
-    if(share_transfer_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", share_transfer_create_dto->enrollment_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // share_transfer_create_dto->tenant_id
-    if(share_transfer_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", share_transfer_create_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -223,24 +195,6 @@ share_transfer_create_dto_t *share_transfer_create_dto_parseFromJSON(cJSON *shar
     }
     }
 
-    // share_transfer_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(share_transfer_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // share_transfer_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(share_transfer_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     share_transfer_create_dto_local_var = share_transfer_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -249,9 +203,7 @@ share_transfer_create_dto_t *share_transfer_create_dto_parseFromJSON(cJSON *shar
         value ? value->valuedouble : 0,
         new_share_holder_id && !cJSON_IsNull(new_share_holder_id) ? strdup(new_share_holder_id->valuestring) : NULL,
         former_share_holder_id && !cJSON_IsNull(former_share_holder_id) ? strdup(former_share_holder_id->valuestring) : NULL,
-        share_transfer_reason_id && !cJSON_IsNull(share_transfer_reason_id) ? strdup(share_transfer_reason_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
+        share_transfer_reason_id && !cJSON_IsNull(share_transfer_reason_id) ? strdup(share_transfer_reason_id->valuestring) : NULL
         );
 
     return share_transfer_create_dto_local_var;

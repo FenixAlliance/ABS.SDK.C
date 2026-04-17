@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **item_short_description** | **char \*** |  | [optional] 
 **item_primary_image_url** | **char \*** |  | [optional] 
 **shipping_policy_id** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
-**enrollment_id** | **char \*** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
 **quantity** | **double** |  | [optional] 
@@ -98,7 +96,6 @@ Name | Type | Description | Notes
 **shipping_location_id** | **char \*** |  | [optional] 
 **location_id** | **char \*** |  | [optional] 
 **quote_item_record_id** | **char \*** |  | [optional] 
-**business_profile_record_id** | **char \*** |  | [optional] 
 **parent_billing_item_record_id** | **char \*** |  | [optional] 
 **order_id** | **char \*** |  | [optional] 
 

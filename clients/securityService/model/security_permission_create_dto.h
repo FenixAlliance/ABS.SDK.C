@@ -22,7 +22,6 @@ typedef struct security_permission_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *name; // string
-    char *tenant_id; // string
     char *description; // string
 
 } security_permission_create_dto_t;
@@ -31,7 +30,6 @@ security_permission_create_dto_t *security_permission_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
-    char *tenant_id,
     char *description
 );
 

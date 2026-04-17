@@ -40,14 +40,14 @@ dealsservice_deal_unit_line_create_dto_COSTCALCULATIONMETHOD_e deal_unit_line_cr
 }
 
 deal_unit_line_create_dto_t *deal_unit_line_create_dto_create(
+    char *id,
+    char *timestamp,
     int closed,
     char *item_id,
     char *item_title,
     char *item_short_description,
     char *item_primary_image_url,
     char *shipping_policy_id,
-    char *tenant_id,
-    char *enrollment_id,
     char *currency_id,
     char *description,
     double quantity,
@@ -104,14 +104,14 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_create(
     char *custom_global_discounts_amount_currency_id,
     double total_detail,
     char *total_detail_currency_id,
-    double total_profit,
-    char *total_profit_currency_id,
     double total_discounts,
     char *total_discounts_currency_id,
-    double total_surcharges,
-    char *total_surcharges_currency_id,
     double total_tax_base,
     char *total_tax_base_currency_id,
+    double total_surcharges,
+    char *total_surcharges_currency_id,
+    double total_profit,
+    char *total_profit_currency_id,
     double total_shipping_cost,
     char *total_shipping_cost_currency_id,
     double total_shipping_tax,
@@ -133,7 +133,6 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_create(
     char *shipping_location_id,
     char *location_id,
     char *quote_item_record_id,
-    char *business_profile_record_id,
     char *parent_billing_item_record_id,
     char *deal_unit_id
     ) {
@@ -141,14 +140,14 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_create(
     if (!deal_unit_line_create_dto_local_var) {
         return NULL;
     }
+    deal_unit_line_create_dto_local_var->id = id;
+    deal_unit_line_create_dto_local_var->timestamp = timestamp;
     deal_unit_line_create_dto_local_var->closed = closed;
     deal_unit_line_create_dto_local_var->item_id = item_id;
     deal_unit_line_create_dto_local_var->item_title = item_title;
     deal_unit_line_create_dto_local_var->item_short_description = item_short_description;
     deal_unit_line_create_dto_local_var->item_primary_image_url = item_primary_image_url;
     deal_unit_line_create_dto_local_var->shipping_policy_id = shipping_policy_id;
-    deal_unit_line_create_dto_local_var->tenant_id = tenant_id;
-    deal_unit_line_create_dto_local_var->enrollment_id = enrollment_id;
     deal_unit_line_create_dto_local_var->currency_id = currency_id;
     deal_unit_line_create_dto_local_var->description = description;
     deal_unit_line_create_dto_local_var->quantity = quantity;
@@ -205,14 +204,14 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_create(
     deal_unit_line_create_dto_local_var->custom_global_discounts_amount_currency_id = custom_global_discounts_amount_currency_id;
     deal_unit_line_create_dto_local_var->total_detail = total_detail;
     deal_unit_line_create_dto_local_var->total_detail_currency_id = total_detail_currency_id;
-    deal_unit_line_create_dto_local_var->total_profit = total_profit;
-    deal_unit_line_create_dto_local_var->total_profit_currency_id = total_profit_currency_id;
     deal_unit_line_create_dto_local_var->total_discounts = total_discounts;
     deal_unit_line_create_dto_local_var->total_discounts_currency_id = total_discounts_currency_id;
-    deal_unit_line_create_dto_local_var->total_surcharges = total_surcharges;
-    deal_unit_line_create_dto_local_var->total_surcharges_currency_id = total_surcharges_currency_id;
     deal_unit_line_create_dto_local_var->total_tax_base = total_tax_base;
     deal_unit_line_create_dto_local_var->total_tax_base_currency_id = total_tax_base_currency_id;
+    deal_unit_line_create_dto_local_var->total_surcharges = total_surcharges;
+    deal_unit_line_create_dto_local_var->total_surcharges_currency_id = total_surcharges_currency_id;
+    deal_unit_line_create_dto_local_var->total_profit = total_profit;
+    deal_unit_line_create_dto_local_var->total_profit_currency_id = total_profit_currency_id;
     deal_unit_line_create_dto_local_var->total_shipping_cost = total_shipping_cost;
     deal_unit_line_create_dto_local_var->total_shipping_cost_currency_id = total_shipping_cost_currency_id;
     deal_unit_line_create_dto_local_var->total_shipping_tax = total_shipping_tax;
@@ -234,7 +233,6 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_create(
     deal_unit_line_create_dto_local_var->shipping_location_id = shipping_location_id;
     deal_unit_line_create_dto_local_var->location_id = location_id;
     deal_unit_line_create_dto_local_var->quote_item_record_id = quote_item_record_id;
-    deal_unit_line_create_dto_local_var->business_profile_record_id = business_profile_record_id;
     deal_unit_line_create_dto_local_var->parent_billing_item_record_id = parent_billing_item_record_id;
     deal_unit_line_create_dto_local_var->deal_unit_id = deal_unit_id;
 
@@ -247,6 +245,14 @@ void deal_unit_line_create_dto_free(deal_unit_line_create_dto_t *deal_unit_line_
         return ;
     }
     listEntry_t *listEntry;
+    if (deal_unit_line_create_dto->id) {
+        free(deal_unit_line_create_dto->id);
+        deal_unit_line_create_dto->id = NULL;
+    }
+    if (deal_unit_line_create_dto->timestamp) {
+        free(deal_unit_line_create_dto->timestamp);
+        deal_unit_line_create_dto->timestamp = NULL;
+    }
     if (deal_unit_line_create_dto->item_id) {
         free(deal_unit_line_create_dto->item_id);
         deal_unit_line_create_dto->item_id = NULL;
@@ -266,14 +272,6 @@ void deal_unit_line_create_dto_free(deal_unit_line_create_dto_t *deal_unit_line_
     if (deal_unit_line_create_dto->shipping_policy_id) {
         free(deal_unit_line_create_dto->shipping_policy_id);
         deal_unit_line_create_dto->shipping_policy_id = NULL;
-    }
-    if (deal_unit_line_create_dto->tenant_id) {
-        free(deal_unit_line_create_dto->tenant_id);
-        deal_unit_line_create_dto->tenant_id = NULL;
-    }
-    if (deal_unit_line_create_dto->enrollment_id) {
-        free(deal_unit_line_create_dto->enrollment_id);
-        deal_unit_line_create_dto->enrollment_id = NULL;
     }
     if (deal_unit_line_create_dto->currency_id) {
         free(deal_unit_line_create_dto->currency_id);
@@ -403,21 +401,21 @@ void deal_unit_line_create_dto_free(deal_unit_line_create_dto_t *deal_unit_line_
         free(deal_unit_line_create_dto->total_detail_currency_id);
         deal_unit_line_create_dto->total_detail_currency_id = NULL;
     }
-    if (deal_unit_line_create_dto->total_profit_currency_id) {
-        free(deal_unit_line_create_dto->total_profit_currency_id);
-        deal_unit_line_create_dto->total_profit_currency_id = NULL;
-    }
     if (deal_unit_line_create_dto->total_discounts_currency_id) {
         free(deal_unit_line_create_dto->total_discounts_currency_id);
         deal_unit_line_create_dto->total_discounts_currency_id = NULL;
+    }
+    if (deal_unit_line_create_dto->total_tax_base_currency_id) {
+        free(deal_unit_line_create_dto->total_tax_base_currency_id);
+        deal_unit_line_create_dto->total_tax_base_currency_id = NULL;
     }
     if (deal_unit_line_create_dto->total_surcharges_currency_id) {
         free(deal_unit_line_create_dto->total_surcharges_currency_id);
         deal_unit_line_create_dto->total_surcharges_currency_id = NULL;
     }
-    if (deal_unit_line_create_dto->total_tax_base_currency_id) {
-        free(deal_unit_line_create_dto->total_tax_base_currency_id);
-        deal_unit_line_create_dto->total_tax_base_currency_id = NULL;
+    if (deal_unit_line_create_dto->total_profit_currency_id) {
+        free(deal_unit_line_create_dto->total_profit_currency_id);
+        deal_unit_line_create_dto->total_profit_currency_id = NULL;
     }
     if (deal_unit_line_create_dto->total_shipping_cost_currency_id) {
         free(deal_unit_line_create_dto->total_shipping_cost_currency_id);
@@ -475,10 +473,6 @@ void deal_unit_line_create_dto_free(deal_unit_line_create_dto_t *deal_unit_line_
         free(deal_unit_line_create_dto->quote_item_record_id);
         deal_unit_line_create_dto->quote_item_record_id = NULL;
     }
-    if (deal_unit_line_create_dto->business_profile_record_id) {
-        free(deal_unit_line_create_dto->business_profile_record_id);
-        deal_unit_line_create_dto->business_profile_record_id = NULL;
-    }
     if (deal_unit_line_create_dto->parent_billing_item_record_id) {
         free(deal_unit_line_create_dto->parent_billing_item_record_id);
         deal_unit_line_create_dto->parent_billing_item_record_id = NULL;
@@ -492,6 +486,22 @@ void deal_unit_line_create_dto_free(deal_unit_line_create_dto_t *deal_unit_line_
 
 cJSON *deal_unit_line_create_dto_convertToJSON(deal_unit_line_create_dto_t *deal_unit_line_create_dto) {
     cJSON *item = cJSON_CreateObject();
+
+    // deal_unit_line_create_dto->id
+    if(deal_unit_line_create_dto->id) {
+    if(cJSON_AddStringToObject(item, "id", deal_unit_line_create_dto->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // deal_unit_line_create_dto->timestamp
+    if(deal_unit_line_create_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", deal_unit_line_create_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
 
     // deal_unit_line_create_dto->closed
     if(deal_unit_line_create_dto->closed) {
@@ -536,22 +546,6 @@ cJSON *deal_unit_line_create_dto_convertToJSON(deal_unit_line_create_dto_t *deal
     // deal_unit_line_create_dto->shipping_policy_id
     if(deal_unit_line_create_dto->shipping_policy_id) {
     if(cJSON_AddStringToObject(item, "shippingPolicyId", deal_unit_line_create_dto->shipping_policy_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // deal_unit_line_create_dto->tenant_id
-    if(deal_unit_line_create_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", deal_unit_line_create_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // deal_unit_line_create_dto->enrollment_id
-    if(deal_unit_line_create_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", deal_unit_line_create_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -1007,22 +1001,6 @@ cJSON *deal_unit_line_create_dto_convertToJSON(deal_unit_line_create_dto_t *deal
     }
 
 
-    // deal_unit_line_create_dto->total_profit
-    if(deal_unit_line_create_dto->total_profit) {
-    if(cJSON_AddNumberToObject(item, "totalProfit", deal_unit_line_create_dto->total_profit) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // deal_unit_line_create_dto->total_profit_currency_id
-    if(deal_unit_line_create_dto->total_profit_currency_id) {
-    if(cJSON_AddStringToObject(item, "totalProfitCurrencyId", deal_unit_line_create_dto->total_profit_currency_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // deal_unit_line_create_dto->total_discounts
     if(deal_unit_line_create_dto->total_discounts) {
     if(cJSON_AddNumberToObject(item, "totalDiscounts", deal_unit_line_create_dto->total_discounts) == NULL) {
@@ -1034,6 +1012,22 @@ cJSON *deal_unit_line_create_dto_convertToJSON(deal_unit_line_create_dto_t *deal
     // deal_unit_line_create_dto->total_discounts_currency_id
     if(deal_unit_line_create_dto->total_discounts_currency_id) {
     if(cJSON_AddStringToObject(item, "totalDiscountsCurrencyId", deal_unit_line_create_dto->total_discounts_currency_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // deal_unit_line_create_dto->total_tax_base
+    if(deal_unit_line_create_dto->total_tax_base) {
+    if(cJSON_AddNumberToObject(item, "totalTaxBase", deal_unit_line_create_dto->total_tax_base) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // deal_unit_line_create_dto->total_tax_base_currency_id
+    if(deal_unit_line_create_dto->total_tax_base_currency_id) {
+    if(cJSON_AddStringToObject(item, "totalTaxBaseCurrencyId", deal_unit_line_create_dto->total_tax_base_currency_id) == NULL) {
     goto fail; //String
     }
     }
@@ -1055,17 +1049,17 @@ cJSON *deal_unit_line_create_dto_convertToJSON(deal_unit_line_create_dto_t *deal
     }
 
 
-    // deal_unit_line_create_dto->total_tax_base
-    if(deal_unit_line_create_dto->total_tax_base) {
-    if(cJSON_AddNumberToObject(item, "totalTaxBase", deal_unit_line_create_dto->total_tax_base) == NULL) {
+    // deal_unit_line_create_dto->total_profit
+    if(deal_unit_line_create_dto->total_profit) {
+    if(cJSON_AddNumberToObject(item, "totalProfit", deal_unit_line_create_dto->total_profit) == NULL) {
     goto fail; //Numeric
     }
     }
 
 
-    // deal_unit_line_create_dto->total_tax_base_currency_id
-    if(deal_unit_line_create_dto->total_tax_base_currency_id) {
-    if(cJSON_AddStringToObject(item, "totalTaxBaseCurrencyId", deal_unit_line_create_dto->total_tax_base_currency_id) == NULL) {
+    // deal_unit_line_create_dto->total_profit_currency_id
+    if(deal_unit_line_create_dto->total_profit_currency_id) {
+    if(cJSON_AddStringToObject(item, "totalProfitCurrencyId", deal_unit_line_create_dto->total_profit_currency_id) == NULL) {
     goto fail; //String
     }
     }
@@ -1239,14 +1233,6 @@ cJSON *deal_unit_line_create_dto_convertToJSON(deal_unit_line_create_dto_t *deal
     }
 
 
-    // deal_unit_line_create_dto->business_profile_record_id
-    if(deal_unit_line_create_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordId", deal_unit_line_create_dto->business_profile_record_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // deal_unit_line_create_dto->parent_billing_item_record_id
     if(deal_unit_line_create_dto->parent_billing_item_record_id) {
     if(cJSON_AddStringToObject(item, "parentBillingItemRecordId", deal_unit_line_create_dto->parent_billing_item_record_id) == NULL) {
@@ -1273,6 +1259,24 @@ fail:
 deal_unit_line_create_dto_t *deal_unit_line_create_dto_parseFromJSON(cJSON *deal_unit_line_create_dtoJSON){
 
     deal_unit_line_create_dto_t *deal_unit_line_create_dto_local_var = NULL;
+
+    // deal_unit_line_create_dto->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "id");
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // deal_unit_line_create_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
 
     // deal_unit_line_create_dto->closed
     cJSON *closed = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "closed");
@@ -1323,24 +1327,6 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_parseFromJSON(cJSON *deal
     cJSON *shipping_policy_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "shippingPolicyId");
     if (shipping_policy_id) { 
     if(!cJSON_IsString(shipping_policy_id) && !cJSON_IsNull(shipping_policy_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // deal_unit_line_create_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // deal_unit_line_create_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -1854,24 +1840,6 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_parseFromJSON(cJSON *deal
     }
     }
 
-    // deal_unit_line_create_dto->total_profit
-    cJSON *total_profit = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "totalProfit");
-    if (total_profit) { 
-    if(!cJSON_IsNumber(total_profit))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // deal_unit_line_create_dto->total_profit_currency_id
-    cJSON *total_profit_currency_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "totalProfitCurrencyId");
-    if (total_profit_currency_id) { 
-    if(!cJSON_IsString(total_profit_currency_id) && !cJSON_IsNull(total_profit_currency_id))
-    {
-    goto end; //String
-    }
-    }
-
     // deal_unit_line_create_dto->total_discounts
     cJSON *total_discounts = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "totalDiscounts");
     if (total_discounts) { 
@@ -1885,6 +1853,24 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_parseFromJSON(cJSON *deal
     cJSON *total_discounts_currency_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "totalDiscountsCurrencyId");
     if (total_discounts_currency_id) { 
     if(!cJSON_IsString(total_discounts_currency_id) && !cJSON_IsNull(total_discounts_currency_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // deal_unit_line_create_dto->total_tax_base
+    cJSON *total_tax_base = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "totalTaxBase");
+    if (total_tax_base) { 
+    if(!cJSON_IsNumber(total_tax_base))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // deal_unit_line_create_dto->total_tax_base_currency_id
+    cJSON *total_tax_base_currency_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "totalTaxBaseCurrencyId");
+    if (total_tax_base_currency_id) { 
+    if(!cJSON_IsString(total_tax_base_currency_id) && !cJSON_IsNull(total_tax_base_currency_id))
     {
     goto end; //String
     }
@@ -1908,19 +1894,19 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_parseFromJSON(cJSON *deal
     }
     }
 
-    // deal_unit_line_create_dto->total_tax_base
-    cJSON *total_tax_base = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "totalTaxBase");
-    if (total_tax_base) { 
-    if(!cJSON_IsNumber(total_tax_base))
+    // deal_unit_line_create_dto->total_profit
+    cJSON *total_profit = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "totalProfit");
+    if (total_profit) { 
+    if(!cJSON_IsNumber(total_profit))
     {
     goto end; //Numeric
     }
     }
 
-    // deal_unit_line_create_dto->total_tax_base_currency_id
-    cJSON *total_tax_base_currency_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "totalTaxBaseCurrencyId");
-    if (total_tax_base_currency_id) { 
-    if(!cJSON_IsString(total_tax_base_currency_id) && !cJSON_IsNull(total_tax_base_currency_id))
+    // deal_unit_line_create_dto->total_profit_currency_id
+    cJSON *total_profit_currency_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "totalProfitCurrencyId");
+    if (total_profit_currency_id) { 
+    if(!cJSON_IsString(total_profit_currency_id) && !cJSON_IsNull(total_profit_currency_id))
     {
     goto end; //String
     }
@@ -2115,15 +2101,6 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_parseFromJSON(cJSON *deal
     }
     }
 
-    // deal_unit_line_create_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "businessProfileRecordId");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
     // deal_unit_line_create_dto->parent_billing_item_record_id
     cJSON *parent_billing_item_record_id = cJSON_GetObjectItemCaseSensitive(deal_unit_line_create_dtoJSON, "parentBillingItemRecordId");
     if (parent_billing_item_record_id) { 
@@ -2144,14 +2121,14 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_parseFromJSON(cJSON *deal
 
 
     deal_unit_line_create_dto_local_var = deal_unit_line_create_dto_create (
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         closed ? closed->valueint : 0,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
         item_title && !cJSON_IsNull(item_title) ? strdup(item_title->valuestring) : NULL,
         item_short_description && !cJSON_IsNull(item_short_description) ? strdup(item_short_description->valuestring) : NULL,
         item_primary_image_url && !cJSON_IsNull(item_primary_image_url) ? strdup(item_primary_image_url->valuestring) : NULL,
         shipping_policy_id && !cJSON_IsNull(shipping_policy_id) ? strdup(shipping_policy_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         quantity ? quantity->valuedouble : 0,
@@ -2208,14 +2185,14 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_parseFromJSON(cJSON *deal
         custom_global_discounts_amount_currency_id && !cJSON_IsNull(custom_global_discounts_amount_currency_id) ? strdup(custom_global_discounts_amount_currency_id->valuestring) : NULL,
         total_detail ? total_detail->valuedouble : 0,
         total_detail_currency_id && !cJSON_IsNull(total_detail_currency_id) ? strdup(total_detail_currency_id->valuestring) : NULL,
-        total_profit ? total_profit->valuedouble : 0,
-        total_profit_currency_id && !cJSON_IsNull(total_profit_currency_id) ? strdup(total_profit_currency_id->valuestring) : NULL,
         total_discounts ? total_discounts->valuedouble : 0,
         total_discounts_currency_id && !cJSON_IsNull(total_discounts_currency_id) ? strdup(total_discounts_currency_id->valuestring) : NULL,
-        total_surcharges ? total_surcharges->valuedouble : 0,
-        total_surcharges_currency_id && !cJSON_IsNull(total_surcharges_currency_id) ? strdup(total_surcharges_currency_id->valuestring) : NULL,
         total_tax_base ? total_tax_base->valuedouble : 0,
         total_tax_base_currency_id && !cJSON_IsNull(total_tax_base_currency_id) ? strdup(total_tax_base_currency_id->valuestring) : NULL,
+        total_surcharges ? total_surcharges->valuedouble : 0,
+        total_surcharges_currency_id && !cJSON_IsNull(total_surcharges_currency_id) ? strdup(total_surcharges_currency_id->valuestring) : NULL,
+        total_profit ? total_profit->valuedouble : 0,
+        total_profit_currency_id && !cJSON_IsNull(total_profit_currency_id) ? strdup(total_profit_currency_id->valuestring) : NULL,
         total_shipping_cost ? total_shipping_cost->valuedouble : 0,
         total_shipping_cost_currency_id && !cJSON_IsNull(total_shipping_cost_currency_id) ? strdup(total_shipping_cost_currency_id->valuestring) : NULL,
         total_shipping_tax ? total_shipping_tax->valuedouble : 0,
@@ -2237,7 +2214,6 @@ deal_unit_line_create_dto_t *deal_unit_line_create_dto_parseFromJSON(cJSON *deal
         shipping_location_id && !cJSON_IsNull(shipping_location_id) ? strdup(shipping_location_id->valuestring) : NULL,
         location_id && !cJSON_IsNull(location_id) ? strdup(location_id->valuestring) : NULL,
         quote_item_record_id && !cJSON_IsNull(quote_item_record_id) ? strdup(quote_item_record_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         parent_billing_item_record_id && !cJSON_IsNull(parent_billing_item_record_id) ? strdup(parent_billing_item_record_id->valuestring) : NULL,
         deal_unit_id && !cJSON_IsNull(deal_unit_id) ? strdup(deal_unit_id->valuestring) : NULL
         );

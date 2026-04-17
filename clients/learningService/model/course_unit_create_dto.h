@@ -26,7 +26,6 @@ typedef struct course_unit_create_dto_t {
     char *content; // string
     char *course_id; // string
     char *course_section_id; // string
-    char *business_id; // string
     char *course_content_group_id; // string
     char *release_date_time; //date time
 
@@ -40,7 +39,6 @@ course_unit_create_dto_t *course_unit_create_dto_create(
     char *content,
     char *course_id,
     char *course_section_id,
-    char *business_id,
     char *course_content_group_id,
     char *release_date_time
 );

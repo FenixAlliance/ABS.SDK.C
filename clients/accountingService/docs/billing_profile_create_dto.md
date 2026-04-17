@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
 **contact_id** | **char \*** |  | [optional] 
-**tenant_id** | **char \*** |  | [optional] 
 **tax_id** | **char \*** |  | 
 **phone** | **char \*** |  | 
 **email** | **char \*** |  | 

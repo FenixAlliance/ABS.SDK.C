@@ -21,16 +21,12 @@ typedef struct fiscal_responsibility_record_update_dto_t fiscal_responsibility_r
 typedef struct fiscal_responsibility_record_update_dto_t {
     char *fiscal_responsibility_id; // string
     char *billing_profile_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
 
 } fiscal_responsibility_record_update_dto_t;
 
 fiscal_responsibility_record_update_dto_t *fiscal_responsibility_record_update_dto_create(
     char *fiscal_responsibility_id,
-    char *billing_profile_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *billing_profile_id
 );
 
 void fiscal_responsibility_record_update_dto_free(fiscal_responsibility_record_update_dto_t *fiscal_responsibility_record_update_dto);

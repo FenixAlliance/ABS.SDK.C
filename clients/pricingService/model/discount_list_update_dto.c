@@ -7,9 +7,7 @@
 
 discount_list_update_dto_t *discount_list_update_dto_create(
     char *name,
-    char *currency_id,
-    char *tenant_id,
-    char *enrollment_id
+    char *currency_id
     ) {
     discount_list_update_dto_t *discount_list_update_dto_local_var = malloc(sizeof(discount_list_update_dto_t));
     if (!discount_list_update_dto_local_var) {
@@ -17,8 +15,6 @@ discount_list_update_dto_t *discount_list_update_dto_create(
     }
     discount_list_update_dto_local_var->name = name;
     discount_list_update_dto_local_var->currency_id = currency_id;
-    discount_list_update_dto_local_var->tenant_id = tenant_id;
-    discount_list_update_dto_local_var->enrollment_id = enrollment_id;
 
     return discount_list_update_dto_local_var;
 }
@@ -37,14 +33,6 @@ void discount_list_update_dto_free(discount_list_update_dto_t *discount_list_upd
         free(discount_list_update_dto->currency_id);
         discount_list_update_dto->currency_id = NULL;
     }
-    if (discount_list_update_dto->tenant_id) {
-        free(discount_list_update_dto->tenant_id);
-        discount_list_update_dto->tenant_id = NULL;
-    }
-    if (discount_list_update_dto->enrollment_id) {
-        free(discount_list_update_dto->enrollment_id);
-        discount_list_update_dto->enrollment_id = NULL;
-    }
     free(discount_list_update_dto);
 }
 
@@ -62,22 +50,6 @@ cJSON *discount_list_update_dto_convertToJSON(discount_list_update_dto_t *discou
     // discount_list_update_dto->currency_id
     if(discount_list_update_dto->currency_id) {
     if(cJSON_AddStringToObject(item, "currencyId", discount_list_update_dto->currency_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // discount_list_update_dto->tenant_id
-    if(discount_list_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", discount_list_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // discount_list_update_dto->enrollment_id
-    if(discount_list_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", discount_list_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -112,30 +84,10 @@ discount_list_update_dto_t *discount_list_update_dto_parseFromJSON(cJSON *discou
     }
     }
 
-    // discount_list_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(discount_list_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // discount_list_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(discount_list_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     discount_list_update_dto_local_var = discount_list_update_dto_create (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
+        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL
         );
 
     return discount_list_update_dto_local_var;

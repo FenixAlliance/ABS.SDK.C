@@ -57,7 +57,6 @@ subscription_plan_update_dto_t *subscription_plan_update_dto_create(
     char *material,
     int on_discount,
     double total_tax,
-    char *tenant_id,
     char *permalink,
     char *brand_name,
     int reviews_count,
@@ -82,7 +81,6 @@ subscription_plan_update_dto_t *subscription_plan_update_dto_create(
     double custom_tax_value,
     int has_variations,
     int questions_count,
-    char *enrollment_id,
     char *supplier_code,
     char *auction_end,
     char *purchase_note,
@@ -239,7 +237,6 @@ subscription_plan_update_dto_t *subscription_plan_update_dto_create(
     subscription_plan_update_dto_local_var->material = material;
     subscription_plan_update_dto_local_var->on_discount = on_discount;
     subscription_plan_update_dto_local_var->total_tax = total_tax;
-    subscription_plan_update_dto_local_var->tenant_id = tenant_id;
     subscription_plan_update_dto_local_var->permalink = permalink;
     subscription_plan_update_dto_local_var->brand_name = brand_name;
     subscription_plan_update_dto_local_var->reviews_count = reviews_count;
@@ -264,7 +261,6 @@ subscription_plan_update_dto_t *subscription_plan_update_dto_create(
     subscription_plan_update_dto_local_var->custom_tax_value = custom_tax_value;
     subscription_plan_update_dto_local_var->has_variations = has_variations;
     subscription_plan_update_dto_local_var->questions_count = questions_count;
-    subscription_plan_update_dto_local_var->enrollment_id = enrollment_id;
     subscription_plan_update_dto_local_var->supplier_code = supplier_code;
     subscription_plan_update_dto_local_var->auction_end = auction_end;
     subscription_plan_update_dto_local_var->purchase_note = purchase_note;
@@ -499,10 +495,6 @@ void subscription_plan_update_dto_free(subscription_plan_update_dto_t *subscript
         free(subscription_plan_update_dto->material);
         subscription_plan_update_dto->material = NULL;
     }
-    if (subscription_plan_update_dto->tenant_id) {
-        free(subscription_plan_update_dto->tenant_id);
-        subscription_plan_update_dto->tenant_id = NULL;
-    }
     if (subscription_plan_update_dto->permalink) {
         free(subscription_plan_update_dto->permalink);
         subscription_plan_update_dto->permalink = NULL;
@@ -546,10 +538,6 @@ void subscription_plan_update_dto_free(subscription_plan_update_dto_t *subscript
     if (subscription_plan_update_dto->release_date) {
         free(subscription_plan_update_dto->release_date);
         subscription_plan_update_dto->release_date = NULL;
-    }
-    if (subscription_plan_update_dto->enrollment_id) {
-        free(subscription_plan_update_dto->enrollment_id);
-        subscription_plan_update_dto->enrollment_id = NULL;
     }
     if (subscription_plan_update_dto->supplier_code) {
         free(subscription_plan_update_dto->supplier_code);
@@ -1225,14 +1213,6 @@ cJSON *subscription_plan_update_dto_convertToJSON(subscription_plan_update_dto_t
     }
 
 
-    // subscription_plan_update_dto->tenant_id
-    if(subscription_plan_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", subscription_plan_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // subscription_plan_update_dto->permalink
     if(subscription_plan_update_dto->permalink) {
     if(cJSON_AddStringToObject(item, "permalink", subscription_plan_update_dto->permalink) == NULL) {
@@ -1421,14 +1401,6 @@ cJSON *subscription_plan_update_dto_convertToJSON(subscription_plan_update_dto_t
     if(subscription_plan_update_dto->questions_count) {
     if(cJSON_AddNumberToObject(item, "questionsCount", subscription_plan_update_dto->questions_count) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // subscription_plan_update_dto->enrollment_id
-    if(subscription_plan_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", subscription_plan_update_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -2895,15 +2867,6 @@ subscription_plan_update_dto_t *subscription_plan_update_dto_parseFromJSON(cJSON
     }
     }
 
-    // subscription_plan_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(subscription_plan_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // subscription_plan_update_dto->permalink
     cJSON *permalink = cJSON_GetObjectItemCaseSensitive(subscription_plan_update_dtoJSON, "permalink");
     if (permalink) { 
@@ -3117,15 +3080,6 @@ subscription_plan_update_dto_t *subscription_plan_update_dto_parseFromJSON(cJSON
     if(!cJSON_IsNumber(questions_count))
     {
     goto end; //Numeric
-    }
-    }
-
-    // subscription_plan_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(subscription_plan_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
     }
     }
 
@@ -4242,7 +4196,6 @@ subscription_plan_update_dto_t *subscription_plan_update_dto_parseFromJSON(cJSON
         material && !cJSON_IsNull(material) ? strdup(material->valuestring) : NULL,
         on_discount ? on_discount->valueint : 0,
         total_tax ? total_tax->valuedouble : 0,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         permalink && !cJSON_IsNull(permalink) ? strdup(permalink->valuestring) : NULL,
         brand_name && !cJSON_IsNull(brand_name) ? strdup(brand_name->valuestring) : NULL,
         reviews_count ? reviews_count->valuedouble : 0,
@@ -4267,7 +4220,6 @@ subscription_plan_update_dto_t *subscription_plan_update_dto_parseFromJSON(cJSON
         custom_tax_value ? custom_tax_value->valuedouble : 0,
         has_variations ? has_variations->valueint : 0,
         questions_count ? questions_count->valuedouble : 0,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         supplier_code && !cJSON_IsNull(supplier_code) ? strdup(supplier_code->valuestring) : NULL,
         auction_end && !cJSON_IsNull(auction_end) ? strdup(auction_end->valuestring) : NULL,
         purchase_note && !cJSON_IsNull(purchase_note) ? strdup(purchase_note->valuestring) : NULL,

@@ -9,8 +9,7 @@ item_tag_create_dto_t *item_tag_create_dto_create(
     char *id,
     char *timestamp,
     char *title,
-    char *description,
-    char *business_id
+    char *description
     ) {
     item_tag_create_dto_t *item_tag_create_dto_local_var = malloc(sizeof(item_tag_create_dto_t));
     if (!item_tag_create_dto_local_var) {
@@ -20,7 +19,6 @@ item_tag_create_dto_t *item_tag_create_dto_create(
     item_tag_create_dto_local_var->timestamp = timestamp;
     item_tag_create_dto_local_var->title = title;
     item_tag_create_dto_local_var->description = description;
-    item_tag_create_dto_local_var->business_id = business_id;
 
     return item_tag_create_dto_local_var;
 }
@@ -46,10 +44,6 @@ void item_tag_create_dto_free(item_tag_create_dto_t *item_tag_create_dto) {
     if (item_tag_create_dto->description) {
         free(item_tag_create_dto->description);
         item_tag_create_dto->description = NULL;
-    }
-    if (item_tag_create_dto->business_id) {
-        free(item_tag_create_dto->business_id);
-        item_tag_create_dto->business_id = NULL;
     }
     free(item_tag_create_dto);
 }
@@ -87,15 +81,6 @@ cJSON *item_tag_create_dto_convertToJSON(item_tag_create_dto_t *item_tag_create_
     if(cJSON_AddStringToObject(item, "description", item_tag_create_dto->description) == NULL) {
     goto fail; //String
     }
-    }
-
-
-    // item_tag_create_dto->business_id
-    if (!item_tag_create_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", item_tag_create_dto->business_id) == NULL) {
-    goto fail; //String
     }
 
     return item;
@@ -149,25 +134,12 @@ item_tag_create_dto_t *item_tag_create_dto_parseFromJSON(cJSON *item_tag_create_
     }
     }
 
-    // item_tag_create_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_tag_create_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
-    {
-    goto end; //String
-    }
-
 
     item_tag_create_dto_local_var = item_tag_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         strdup(title->valuestring),
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        strdup(business_id->valuestring)
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
         );
 
     return item_tag_create_dto_local_var;

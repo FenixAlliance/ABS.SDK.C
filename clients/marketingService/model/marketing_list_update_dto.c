@@ -49,8 +49,6 @@ marketing_list_update_dto_t *marketing_list_update_dto_create(
     char *modified_on,
     char *last_used_on,
     char *currency_id,
-    char *tenant_id,
-    char *enrollment_id,
     marketingservice_marketing_list_update_dto_MARKETINGLISTTYPE_e marketing_list_type,
     marketingservice_marketing_list_update_dto_MARKETINGLISTTARGET_e marketing_list_target
     ) {
@@ -67,8 +65,6 @@ marketing_list_update_dto_t *marketing_list_update_dto_create(
     marketing_list_update_dto_local_var->modified_on = modified_on;
     marketing_list_update_dto_local_var->last_used_on = last_used_on;
     marketing_list_update_dto_local_var->currency_id = currency_id;
-    marketing_list_update_dto_local_var->tenant_id = tenant_id;
-    marketing_list_update_dto_local_var->enrollment_id = enrollment_id;
     marketing_list_update_dto_local_var->marketing_list_type = marketing_list_type;
     marketing_list_update_dto_local_var->marketing_list_target = marketing_list_target;
 
@@ -108,14 +104,6 @@ void marketing_list_update_dto_free(marketing_list_update_dto_t *marketing_list_
     if (marketing_list_update_dto->currency_id) {
         free(marketing_list_update_dto->currency_id);
         marketing_list_update_dto->currency_id = NULL;
-    }
-    if (marketing_list_update_dto->tenant_id) {
-        free(marketing_list_update_dto->tenant_id);
-        marketing_list_update_dto->tenant_id = NULL;
-    }
-    if (marketing_list_update_dto->enrollment_id) {
-        free(marketing_list_update_dto->enrollment_id);
-        marketing_list_update_dto->enrollment_id = NULL;
     }
     free(marketing_list_update_dto);
 }
@@ -190,22 +178,6 @@ cJSON *marketing_list_update_dto_convertToJSON(marketing_list_update_dto_t *mark
     // marketing_list_update_dto->currency_id
     if(marketing_list_update_dto->currency_id) {
     if(cJSON_AddStringToObject(item, "currencyId", marketing_list_update_dto->currency_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // marketing_list_update_dto->tenant_id
-    if(marketing_list_update_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", marketing_list_update_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // marketing_list_update_dto->enrollment_id
-    if(marketing_list_update_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", marketing_list_update_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -321,24 +293,6 @@ marketing_list_update_dto_t *marketing_list_update_dto_parseFromJSON(cJSON *mark
     }
     }
 
-    // marketing_list_update_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(marketing_list_update_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // marketing_list_update_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(marketing_list_update_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // marketing_list_update_dto->marketing_list_type
     cJSON *marketing_list_type = cJSON_GetObjectItemCaseSensitive(marketing_list_update_dtoJSON, "marketingListType");
     marketingservice_marketing_list_update_dto_MARKETINGLISTTYPE_e marketing_list_typeVariable;
@@ -372,8 +326,6 @@ marketing_list_update_dto_t *marketing_list_update_dto_parseFromJSON(cJSON *mark
         modified_on && !cJSON_IsNull(modified_on) ? strdup(modified_on->valuestring) : NULL,
         last_used_on && !cJSON_IsNull(last_used_on) ? strdup(last_used_on->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         marketing_list_type ? marketing_list_typeVariable : marketingservice_marketing_list_update_dto_MARKETINGLISTTYPE_NULL,
         marketing_list_target ? marketing_list_targetVariable : marketingservice_marketing_list_update_dto_MARKETINGLISTTARGET_NULL
         );

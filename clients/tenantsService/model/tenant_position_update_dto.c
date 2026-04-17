@@ -8,8 +8,7 @@
 tenant_position_update_dto_t *tenant_position_update_dto_create(
     char *title,
     char *description,
-    char *type,
-    char *business_profile_record_id
+    char *type
     ) {
     tenant_position_update_dto_t *tenant_position_update_dto_local_var = malloc(sizeof(tenant_position_update_dto_t));
     if (!tenant_position_update_dto_local_var) {
@@ -18,7 +17,6 @@ tenant_position_update_dto_t *tenant_position_update_dto_create(
     tenant_position_update_dto_local_var->title = title;
     tenant_position_update_dto_local_var->description = description;
     tenant_position_update_dto_local_var->type = type;
-    tenant_position_update_dto_local_var->business_profile_record_id = business_profile_record_id;
 
     return tenant_position_update_dto_local_var;
 }
@@ -40,10 +38,6 @@ void tenant_position_update_dto_free(tenant_position_update_dto_t *tenant_positi
     if (tenant_position_update_dto->type) {
         free(tenant_position_update_dto->type);
         tenant_position_update_dto->type = NULL;
-    }
-    if (tenant_position_update_dto->business_profile_record_id) {
-        free(tenant_position_update_dto->business_profile_record_id);
-        tenant_position_update_dto->business_profile_record_id = NULL;
     }
     free(tenant_position_update_dto);
 }
@@ -70,14 +64,6 @@ cJSON *tenant_position_update_dto_convertToJSON(tenant_position_update_dto_t *te
     // tenant_position_update_dto->type
     if(tenant_position_update_dto->type) {
     if(cJSON_AddStringToObject(item, "type", tenant_position_update_dto->type) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // tenant_position_update_dto->business_profile_record_id
-    if(tenant_position_update_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", tenant_position_update_dto->business_profile_record_id) == NULL) {
     goto fail; //String
     }
     }
@@ -121,21 +107,11 @@ tenant_position_update_dto_t *tenant_position_update_dto_parseFromJSON(cJSON *te
     }
     }
 
-    // tenant_position_update_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(tenant_position_update_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     tenant_position_update_dto_local_var = tenant_position_update_dto_create (
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL
         );
 
     return tenant_position_update_dto_local_var;
