@@ -18,7 +18,7 @@ typedef struct blog_post_update_dto_t blog_post_update_dto_t;
 
 // Enum CODETYPE for blog_post_update_dto
 
-typedef enum  { contentservice_blog_post_update_dto_CODETYPE_NULL = 0, contentservice_blog_post_update_dto_CODETYPE_Razor, contentservice_blog_post_update_dto_CODETYPE_CSharp, contentservice_blog_post_update_dto_CODETYPE_CSHtml, contentservice_blog_post_update_dto_CODETYPE_Liquid, contentservice_blog_post_update_dto_CODETYPE_Html5, contentservice_blog_post_update_dto_CODETYPE_Markdown } contentservice_blog_post_update_dto_CODETYPE_e;
+typedef enum  { contentservice_blog_post_update_dto_CODETYPE_NULL = 0, contentservice_blog_post_update_dto_CODETYPE_Razor, contentservice_blog_post_update_dto_CODETYPE_CSharp, contentservice_blog_post_update_dto_CODETYPE_CSHtml, contentservice_blog_post_update_dto_CODETYPE_Liquid, contentservice_blog_post_update_dto_CODETYPE_Html5, contentservice_blog_post_update_dto_CODETYPE_Markdown, contentservice_blog_post_update_dto_CODETYPE_Markup } contentservice_blog_post_update_dto_CODETYPE_e;
 
 char* blog_post_update_dto_code_type_ToString(contentservice_blog_post_update_dto_CODETYPE_e code_type);
 
@@ -81,6 +81,8 @@ typedef struct blog_post_update_dto_t {
     int cornerstone_content; //boolean
     int is_essential_content; //boolean
     int allow_search_engine_indexing; //boolean
+    char *blog_post_category_id; // string
+    char *web_template_id; // string
 
 } blog_post_update_dto_t;
 
@@ -138,7 +140,9 @@ blog_post_update_dto_t *blog_post_update_dto_create(
     int allow_trackbacks,
     int cornerstone_content,
     int is_essential_content,
-    int allow_search_engine_indexing
+    int allow_search_engine_indexing,
+    char *blog_post_category_id,
+    char *web_template_id
 );
 
 void blog_post_update_dto_free(blog_post_update_dto_t *blog_post_update_dto);

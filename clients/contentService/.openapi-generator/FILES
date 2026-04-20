@@ -499,4 +499,3 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_web_portal_dto_list_envelope.c

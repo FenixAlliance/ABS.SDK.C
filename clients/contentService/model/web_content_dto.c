@@ -5,13 +5,13 @@
 
 
 char* web_content_dto_code_type_ToString(contentservice_web_content_dto_CODETYPE_e code_type) {
-    char* code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown" };
+    char* code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown", "Markup" };
     return code_typeArray[code_type];
 }
 
 contentservice_web_content_dto_CODETYPE_e web_content_dto_code_type_FromString(char* code_type){
     int stringToReturn = 0;
-    char *code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown" };
+    char *code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown", "Markup" };
     size_t sizeofArray = sizeof(code_typeArray) / sizeof(code_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(code_type, code_typeArray[stringToReturn]) == 0) {

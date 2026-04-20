@@ -5,13 +5,13 @@
 
 
 char* blog_post_update_dto_code_type_ToString(contentservice_blog_post_update_dto_CODETYPE_e code_type) {
-    char* code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown" };
+    char* code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown", "Markup" };
     return code_typeArray[code_type];
 }
 
 contentservice_blog_post_update_dto_CODETYPE_e blog_post_update_dto_code_type_FromString(char* code_type){
     int stringToReturn = 0;
-    char *code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown" };
+    char *code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown", "Markup" };
     size_t sizeofArray = sizeof(code_typeArray) / sizeof(code_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(code_type, code_typeArray[stringToReturn]) == 0) {
@@ -76,7 +76,9 @@ blog_post_update_dto_t *blog_post_update_dto_create(
     int allow_trackbacks,
     int cornerstone_content,
     int is_essential_content,
-    int allow_search_engine_indexing
+    int allow_search_engine_indexing,
+    char *blog_post_category_id,
+    char *web_template_id
     ) {
     blog_post_update_dto_t *blog_post_update_dto_local_var = malloc(sizeof(blog_post_update_dto_t));
     if (!blog_post_update_dto_local_var) {
@@ -136,6 +138,8 @@ blog_post_update_dto_t *blog_post_update_dto_create(
     blog_post_update_dto_local_var->cornerstone_content = cornerstone_content;
     blog_post_update_dto_local_var->is_essential_content = is_essential_content;
     blog_post_update_dto_local_var->allow_search_engine_indexing = allow_search_engine_indexing;
+    blog_post_update_dto_local_var->blog_post_category_id = blog_post_category_id;
+    blog_post_update_dto_local_var->web_template_id = web_template_id;
 
     return blog_post_update_dto_local_var;
 }
@@ -281,6 +285,14 @@ void blog_post_update_dto_free(blog_post_update_dto_t *blog_post_update_dto) {
     if (blog_post_update_dto->c_sharp_generated_code) {
         free(blog_post_update_dto->c_sharp_generated_code);
         blog_post_update_dto->c_sharp_generated_code = NULL;
+    }
+    if (blog_post_update_dto->blog_post_category_id) {
+        free(blog_post_update_dto->blog_post_category_id);
+        blog_post_update_dto->blog_post_category_id = NULL;
+    }
+    if (blog_post_update_dto->web_template_id) {
+        free(blog_post_update_dto->web_template_id);
+        blog_post_update_dto->web_template_id = NULL;
     }
     free(blog_post_update_dto);
 }
@@ -717,6 +729,22 @@ cJSON *blog_post_update_dto_convertToJSON(blog_post_update_dto_t *blog_post_upda
     if(blog_post_update_dto->allow_search_engine_indexing) {
     if(cJSON_AddBoolToObject(item, "allowSearchEngineIndexing", blog_post_update_dto->allow_search_engine_indexing) == NULL) {
     goto fail; //Bool
+    }
+    }
+
+
+    // blog_post_update_dto->blog_post_category_id
+    if(blog_post_update_dto->blog_post_category_id) {
+    if(cJSON_AddStringToObject(item, "blogPostCategoryId", blog_post_update_dto->blog_post_category_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // blog_post_update_dto->web_template_id
+    if(blog_post_update_dto->web_template_id) {
+    if(cJSON_AddStringToObject(item, "webTemplateId", blog_post_update_dto->web_template_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -1220,6 +1248,24 @@ blog_post_update_dto_t *blog_post_update_dto_parseFromJSON(cJSON *blog_post_upda
     }
     }
 
+    // blog_post_update_dto->blog_post_category_id
+    cJSON *blog_post_category_id = cJSON_GetObjectItemCaseSensitive(blog_post_update_dtoJSON, "blogPostCategoryId");
+    if (blog_post_category_id) { 
+    if(!cJSON_IsString(blog_post_category_id) && !cJSON_IsNull(blog_post_category_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // blog_post_update_dto->web_template_id
+    cJSON *web_template_id = cJSON_GetObjectItemCaseSensitive(blog_post_update_dtoJSON, "webTemplateId");
+    if (web_template_id) { 
+    if(!cJSON_IsString(web_template_id) && !cJSON_IsNull(web_template_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     blog_post_update_dto_local_var = blog_post_update_dto_create (
         order ? order->valuedouble : 0,
@@ -1275,7 +1321,9 @@ blog_post_update_dto_t *blog_post_update_dto_parseFromJSON(cJSON *blog_post_upda
         allow_trackbacks ? allow_trackbacks->valueint : 0,
         cornerstone_content ? cornerstone_content->valueint : 0,
         is_essential_content ? is_essential_content->valueint : 0,
-        allow_search_engine_indexing ? allow_search_engine_indexing->valueint : 0
+        allow_search_engine_indexing ? allow_search_engine_indexing->valueint : 0,
+        blog_post_category_id && !cJSON_IsNull(blog_post_category_id) ? strdup(blog_post_category_id->valuestring) : NULL,
+        web_template_id && !cJSON_IsNull(web_template_id) ? strdup(web_template_id->valuestring) : NULL
         );
 
     return blog_post_update_dto_local_var;

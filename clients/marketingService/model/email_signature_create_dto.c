@@ -5,13 +5,13 @@
 
 
 char* email_signature_create_dto_code_type_ToString(marketingservice_email_signature_create_dto_CODETYPE_e code_type) {
-    char* code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown" };
+    char* code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown", "Markup" };
     return code_typeArray[code_type];
 }
 
 marketingservice_email_signature_create_dto_CODETYPE_e email_signature_create_dto_code_type_FromString(char* code_type){
     int stringToReturn = 0;
-    char *code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown" };
+    char *code_typeArray[] =  { "NULL", "Razor", "CSharp", "CSHtml", "Liquid", "Html5", "Markdown", "Markup" };
     size_t sizeofArray = sizeof(code_typeArray) / sizeof(code_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(code_type, code_typeArray[stringToReturn]) == 0) {
@@ -26,10 +26,10 @@ email_signature_create_dto_t *email_signature_create_dto_create(
     char *id,
     char *timestamp,
     char *title,
-    char *code,
     int published,
     char *description,
-    char *html_content,
+    char *code,
+    char *markup,
     char *featured_image_url,
     marketingservice_email_signature_create_dto_CODETYPE_e code_type
     ) {
@@ -40,10 +40,10 @@ email_signature_create_dto_t *email_signature_create_dto_create(
     email_signature_create_dto_local_var->id = id;
     email_signature_create_dto_local_var->timestamp = timestamp;
     email_signature_create_dto_local_var->title = title;
-    email_signature_create_dto_local_var->code = code;
     email_signature_create_dto_local_var->published = published;
     email_signature_create_dto_local_var->description = description;
-    email_signature_create_dto_local_var->html_content = html_content;
+    email_signature_create_dto_local_var->code = code;
+    email_signature_create_dto_local_var->markup = markup;
     email_signature_create_dto_local_var->featured_image_url = featured_image_url;
     email_signature_create_dto_local_var->code_type = code_type;
 
@@ -68,17 +68,17 @@ void email_signature_create_dto_free(email_signature_create_dto_t *email_signatu
         free(email_signature_create_dto->title);
         email_signature_create_dto->title = NULL;
     }
-    if (email_signature_create_dto->code) {
-        free(email_signature_create_dto->code);
-        email_signature_create_dto->code = NULL;
-    }
     if (email_signature_create_dto->description) {
         free(email_signature_create_dto->description);
         email_signature_create_dto->description = NULL;
     }
-    if (email_signature_create_dto->html_content) {
-        free(email_signature_create_dto->html_content);
-        email_signature_create_dto->html_content = NULL;
+    if (email_signature_create_dto->code) {
+        free(email_signature_create_dto->code);
+        email_signature_create_dto->code = NULL;
+    }
+    if (email_signature_create_dto->markup) {
+        free(email_signature_create_dto->markup);
+        email_signature_create_dto->markup = NULL;
     }
     if (email_signature_create_dto->featured_image_url) {
         free(email_signature_create_dto->featured_image_url);
@@ -107,18 +107,11 @@ cJSON *email_signature_create_dto_convertToJSON(email_signature_create_dto_t *em
 
 
     // email_signature_create_dto->title
-    if(email_signature_create_dto->title) {
+    if (!email_signature_create_dto->title) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "title", email_signature_create_dto->title) == NULL) {
     goto fail; //String
-    }
-    }
-
-
-    // email_signature_create_dto->code
-    if(email_signature_create_dto->code) {
-    if(cJSON_AddStringToObject(item, "code", email_signature_create_dto->code) == NULL) {
-    goto fail; //String
-    }
     }
 
 
@@ -138,9 +131,17 @@ cJSON *email_signature_create_dto_convertToJSON(email_signature_create_dto_t *em
     }
 
 
-    // email_signature_create_dto->html_content
-    if(email_signature_create_dto->html_content) {
-    if(cJSON_AddStringToObject(item, "htmlContent", email_signature_create_dto->html_content) == NULL) {
+    // email_signature_create_dto->code
+    if(email_signature_create_dto->code) {
+    if(cJSON_AddStringToObject(item, "code", email_signature_create_dto->code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // email_signature_create_dto->markup
+    if(email_signature_create_dto->markup) {
+    if(cJSON_AddStringToObject(item, "markup", email_signature_create_dto->markup) == NULL) {
     goto fail; //String
     }
     }
@@ -194,20 +195,14 @@ email_signature_create_dto_t *email_signature_create_dto_parseFromJSON(cJSON *em
 
     // email_signature_create_dto->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(email_signature_create_dtoJSON, "title");
-    if (title) { 
-    if(!cJSON_IsString(title) && !cJSON_IsNull(title))
-    {
-    goto end; //String
-    }
+    if (!title) {
+        goto end;
     }
 
-    // email_signature_create_dto->code
-    cJSON *code = cJSON_GetObjectItemCaseSensitive(email_signature_create_dtoJSON, "code");
-    if (code) { 
-    if(!cJSON_IsString(code) && !cJSON_IsNull(code))
+    
+    if(!cJSON_IsString(title))
     {
     goto end; //String
-    }
     }
 
     // email_signature_create_dto->published
@@ -228,10 +223,19 @@ email_signature_create_dto_t *email_signature_create_dto_parseFromJSON(cJSON *em
     }
     }
 
-    // email_signature_create_dto->html_content
-    cJSON *html_content = cJSON_GetObjectItemCaseSensitive(email_signature_create_dtoJSON, "htmlContent");
-    if (html_content) { 
-    if(!cJSON_IsString(html_content) && !cJSON_IsNull(html_content))
+    // email_signature_create_dto->code
+    cJSON *code = cJSON_GetObjectItemCaseSensitive(email_signature_create_dtoJSON, "code");
+    if (code) { 
+    if(!cJSON_IsString(code) && !cJSON_IsNull(code))
+    {
+    goto end; //String
+    }
+    }
+
+    // email_signature_create_dto->markup
+    cJSON *markup = cJSON_GetObjectItemCaseSensitive(email_signature_create_dtoJSON, "markup");
+    if (markup) { 
+    if(!cJSON_IsString(markup) && !cJSON_IsNull(markup))
     {
     goto end; //String
     }
@@ -261,11 +265,11 @@ email_signature_create_dto_t *email_signature_create_dto_parseFromJSON(cJSON *em
     email_signature_create_dto_local_var = email_signature_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
-        code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
+        strdup(title->valuestring),
         published ? published->valueint : 0,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        html_content && !cJSON_IsNull(html_content) ? strdup(html_content->valuestring) : NULL,
+        code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
+        markup && !cJSON_IsNull(markup) ? strdup(markup->valuestring) : NULL,
         featured_image_url && !cJSON_IsNull(featured_image_url) ? strdup(featured_image_url->valuestring) : NULL,
         code_type ? code_typeVariable : marketingservice_email_signature_create_dto_CODETYPE_NULL
         );

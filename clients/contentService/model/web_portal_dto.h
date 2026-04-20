@@ -27,9 +27,9 @@ typedef struct web_portal_dto_t {
     int disabled; //boolean
     char *tenant_id; // string
     char *description; // string
+    char *enrollment_id; // string
     char *website_theme_id; // string
     char *business_domain_id; // string
-    char *business_profile_record_id; // string
     char *business_portal_application_id; // string
 
 } web_portal_dto_t;
@@ -43,9 +43,9 @@ web_portal_dto_t *web_portal_dto_create(
     int disabled,
     char *tenant_id,
     char *description,
+    char *enrollment_id,
     char *website_theme_id,
     char *business_domain_id,
-    char *business_profile_record_id,
     char *business_portal_application_id
 );
 

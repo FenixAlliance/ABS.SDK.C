@@ -5,11 +5,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
-**title** | **char \*** |  | [optional] 
-**code** | **char \*** |  | [optional] 
+**title** | **char \*** |  | 
 **published** | **int** |  | [optional] 
 **description** | **char \*** |  | [optional] 
-**html_content** | **char \*** |  | [optional] 
+**code** | **char \*** |  | [optional] 
+**markup** | **char \*** |  | [optional] 
 **featured_image_url** | **char \*** |  | [optional] 
 **code_type** | **marketingservice_email_template_create_dto_CODETYPE_e** |  | [optional] 
 **marketing_campaign_id** | **char \*** |  | [optional] 

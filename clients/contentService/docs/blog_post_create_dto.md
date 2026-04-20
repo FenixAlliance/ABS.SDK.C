@@ -5,11 +5,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
-**title** | **char \*** |  | [optional] 
-**code** | **char \*** |  | [optional] 
+**title** | **char \*** |  | 
 **published** | **int** |  | [optional] 
 **description** | **char \*** |  | [optional] 
-**html_content** | **char \*** |  | [optional] 
+**code** | **char \*** |  | [optional] 
+**markup** | **char \*** |  | [optional] 
 **featured_image_url** | **char \*** |  | [optional] 
 **code_type** | **contentservice_blog_post_create_dto_CODETYPE_e** |  | [optional] 
 **blog_post_category_id** | **char \*** |  | [optional] 

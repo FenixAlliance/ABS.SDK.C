@@ -18,7 +18,7 @@ typedef struct web_content_create_dto_t web_content_create_dto_t;
 
 // Enum CODETYPE for web_content_create_dto
 
-typedef enum  { contentservice_web_content_create_dto_CODETYPE_NULL = 0, contentservice_web_content_create_dto_CODETYPE_Razor, contentservice_web_content_create_dto_CODETYPE_CSharp, contentservice_web_content_create_dto_CODETYPE_CSHtml, contentservice_web_content_create_dto_CODETYPE_Liquid, contentservice_web_content_create_dto_CODETYPE_Html5, contentservice_web_content_create_dto_CODETYPE_Markdown } contentservice_web_content_create_dto_CODETYPE_e;
+typedef enum  { contentservice_web_content_create_dto_CODETYPE_NULL = 0, contentservice_web_content_create_dto_CODETYPE_Razor, contentservice_web_content_create_dto_CODETYPE_CSharp, contentservice_web_content_create_dto_CODETYPE_CSHtml, contentservice_web_content_create_dto_CODETYPE_Liquid, contentservice_web_content_create_dto_CODETYPE_Html5, contentservice_web_content_create_dto_CODETYPE_Markdown, contentservice_web_content_create_dto_CODETYPE_Markup } contentservice_web_content_create_dto_CODETYPE_e;
 
 char* web_content_create_dto_code_type_ToString(contentservice_web_content_create_dto_CODETYPE_e code_type);
 
@@ -30,10 +30,10 @@ typedef struct web_content_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *title; // string
-    char *code; // string
     int published; //boolean
     char *description; // string
-    char *html_content; // string
+    char *code; // string
+    char *markup; // string
     char *featured_image_url; // string
     contentservice_web_content_create_dto_CODETYPE_e code_type; //enum
 
@@ -43,10 +43,10 @@ web_content_create_dto_t *web_content_create_dto_create(
     char *id,
     char *timestamp,
     char *title,
-    char *code,
     int published,
     char *description,
-    char *html_content,
+    char *code,
+    char *markup,
     char *featured_image_url,
     contentservice_web_content_create_dto_CODETYPE_e code_type
 );
