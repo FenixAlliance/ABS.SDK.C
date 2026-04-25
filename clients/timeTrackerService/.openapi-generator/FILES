@@ -1,13 +1,13 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/ProjectTimeLogsAPI.c
 api/ProjectTimeLogsAPI.h
 api/TimeLogApprovalsAPI.c
 api/TimeLogApprovalsAPI.h
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ProjectTimeLogsAPI.md
 docs/TimeLogApprovalsAPI.md
 docs/access_token_response.md

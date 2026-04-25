@@ -7,8 +7,8 @@ api/EmployeeEnrollmentsAPI.c
 api/EmployeeEnrollmentsAPI.h
 api/EnrollmentsAPI.c
 api/EnrollmentsAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/IndustriesAPI.c
 api/IndustriesAPI.h
 api/InvitationsAPI.c
@@ -42,7 +42,7 @@ api/UnitsAPI.h
 docs/DepartmentsAPI.md
 docs/EmployeeEnrollmentsAPI.md
 docs/EnrollmentsAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/IndustriesAPI.md
 docs/InvitationsAPI.md
 docs/OptionsAPI.md

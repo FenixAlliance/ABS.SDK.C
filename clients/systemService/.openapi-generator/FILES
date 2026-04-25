@@ -5,8 +5,8 @@ api/AntiforgeryAPI.c
 api/AntiforgeryAPI.h
 api/EmailsAPI.c
 api/EmailsAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/LicensingAPI.c
 api/LicensingAPI.h
 api/MigrationsAPI.c
@@ -21,7 +21,7 @@ api/UsersAPI.c
 api/UsersAPI.h
 docs/AntiforgeryAPI.md
 docs/EmailsAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/LicensingAPI.md
 docs/MigrationsAPI.md
 docs/ModulesAPI.md

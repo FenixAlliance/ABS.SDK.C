@@ -1,9 +1,9 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
-docs/FenixAllianceABPWebAPI.md
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
+docs/FenixAllianceABSWebAPI.md
 docs/access_token_response.md
 docs/forgot_password_request.md
 docs/http_validation_problem_details.md

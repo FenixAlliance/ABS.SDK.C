@@ -74,7 +74,7 @@ set(SRCS
     model/two_factor_response.c
     api/AvatarsAPI.c
     api/BlobsAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/FilesAPI.c
     api/RadzenEditorAPI.c
     api/UploadsAPI.c
@@ -108,7 +108,7 @@ set(HDRS
     model/two_factor_response.h
     api/AvatarsAPI.h
     api/BlobsAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/FilesAPI.h
     api/RadzenEditorAPI.h
     api/UploadsAPI.h
@@ -195,7 +195,7 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-AvatarsAPI.c
 #    unit-tests/manual-BlobsAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-FilesAPI.c
 #    unit-tests/manual-RadzenEditorAPI.c
 #    unit-tests/manual-UploadsAPI.c

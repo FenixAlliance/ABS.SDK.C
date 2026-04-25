@@ -115,7 +115,7 @@ set(SRCS
     model/wallet_dto.c
     api/AntiforgeryAPI.c
     api/EmailsAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/LicensingAPI.c
     api/MigrationsAPI.c
     api/ModulesAPI.c
@@ -193,7 +193,7 @@ set(HDRS
     model/wallet_dto.h
     api/AntiforgeryAPI.h
     api/EmailsAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/LicensingAPI.h
     api/MigrationsAPI.h
     api/ModulesAPI.h
@@ -283,7 +283,7 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-AntiforgeryAPI.c
 #    unit-tests/manual-EmailsAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-LicensingAPI.c
 #    unit-tests/manual-MigrationsAPI.c
 #    unit-tests/manual-ModulesAPI.c

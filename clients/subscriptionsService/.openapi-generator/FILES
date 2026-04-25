@@ -1,13 +1,13 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/SubscriptionPlansAPI.c
 api/SubscriptionPlansAPI.h
 api/SubscriptionsAPI.c
 api/SubscriptionsAPI.h
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/SubscriptionPlansAPI.md
 docs/SubscriptionsAPI.md
 docs/access_token_response.md

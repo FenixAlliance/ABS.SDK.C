@@ -1,11 +1,11 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/OrdersAPI.c
 api/OrdersAPI.h
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/OrdersAPI.md
 docs/access_token_response.md
 docs/contact_dto.md

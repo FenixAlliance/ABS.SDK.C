@@ -105,7 +105,7 @@ set(SRCS
     model/support_ticket_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/SupportEntitlementsAPI.c
     api/SupportRequestAttachmentsAPI.c
     api/SupportRequestsAPI.c
@@ -173,7 +173,7 @@ set(HDRS
     model/support_ticket_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/SupportEntitlementsAPI.h
     api/SupportRequestAttachmentsAPI.h
     api/SupportRequestsAPI.h
@@ -261,7 +261,7 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-SupportEntitlementsAPI.c
 #    unit-tests/manual-SupportRequestAttachmentsAPI.c
 #    unit-tests/manual-SupportRequestsAPI.c

@@ -78,19 +78,23 @@ Category | Method | HTTP request | Description
 *DiscountListsAPI* | [**DiscountListsAPI_getDiscountListsCount**](docs/DiscountListsAPI.md#DiscountListsAPI_getDiscountListsCount) | **GET** /api/v2/PricingService/DiscountLists/Count | Counts discount lists
 *DiscountListsAPI* | [**DiscountListsAPI_updateDiscountList**](docs/DiscountListsAPI.md#DiscountListsAPI_updateDiscountList) | **PUT** /api/v2/PricingService/DiscountLists/{discountListId} | Updates a discount list
 *DiscountListsAPI* | [**DiscountListsAPI_updateDiscountListEntry**](docs/DiscountListsAPI.md#DiscountListsAPI_updateDiscountListEntry) | **PUT** /api/v2/PricingService/DiscountLists/{discountListId}/Discounts/{discountListEntryId} | Updates a discount list entry
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_forgotPasswordPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_healthGet**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_healthGet) | **GET** /health | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_helloGet**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_helloGet) | **GET** /hello | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_loginPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_loginPost) | **POST** /login | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_manage2faPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_manage2faPost) | **POST** /manage/2fa | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_manageInfoGet**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_manageInfoGet) | **GET** /manage/info | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_manageInfoPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_manageInfoPost) | **POST** /manage/info | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_mapIdentityApiConfirmEmail**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_mapIdentityApiConfirmEmail) | **GET** /confirmEmail | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_refreshPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_refreshPost) | **POST** /refresh | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_registerPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_registerPost) | **POST** /register | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_resendConfirmationEmailPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_resendConfirmationEmailPost) | **POST** /resendConfirmationEmail | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_resetPasswordPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_resetPasswordPost) | **POST** /resetPassword | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_versionGet**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_versionGet) | **GET** /version | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountLogoutPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountLogoutPost) | **POST** /Account/Logout | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_loginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_loginPost) | **POST** /login | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_manage2faPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_manage2faPost) | **POST** /manage/2fa | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_manageInfoGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_manageInfoGet) | **GET** /manage/info | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_manageInfoPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_manageInfoPost) | **POST** /manage/info | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_mapIdentityApiConfirmEmail**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_mapIdentityApiConfirmEmail) | **GET** /confirmEmail | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_refreshPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_refreshPost) | **POST** /refresh | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_registerPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_registerPost) | **POST** /register | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_resendConfirmationEmailPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_resendConfirmationEmailPost) | **POST** /resendConfirmationEmail | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_resetPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_resetPasswordPost) | **POST** /resetPassword | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_versionGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_versionGet) | **GET** /version | 
 *PriceListsAPI* | [**PriceListsAPI_createPriceListAsync**](docs/PriceListsAPI.md#PriceListsAPI_createPriceListAsync) | **POST** /api/v2/PricingService/PriceLists | Creates a new price list
 *PriceListsAPI* | [**PriceListsAPI_createPriceListPricesAsync**](docs/PriceListsAPI.md#PriceListsAPI_createPriceListPricesAsync) | **POST** /api/v2/PricingService/PriceLists/{priceListId}/Prices | Creates a price list entry
 *PriceListsAPI* | [**PriceListsAPI_deletePriceListAsync**](docs/PriceListsAPI.md#PriceListsAPI_deletePriceListAsync) | **DELETE** /api/v2/PricingService/PriceLists/{priceListId} | Deletes a price list

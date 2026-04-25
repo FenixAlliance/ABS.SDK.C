@@ -88,7 +88,7 @@ set(SRCS
     model/reset_password_request.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/PaymentMethodsAPI.c
     api/PaymentModesAPI.c
     api/PaymentTermsAPI.c
@@ -137,7 +137,7 @@ set(HDRS
     model/reset_password_request.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/PaymentMethodsAPI.h
     api/PaymentModesAPI.h
     api/PaymentTermsAPI.h
@@ -223,7 +223,7 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-PaymentMethodsAPI.c
 #    unit-tests/manual-PaymentModesAPI.c
 #    unit-tests/manual-PaymentTermsAPI.c

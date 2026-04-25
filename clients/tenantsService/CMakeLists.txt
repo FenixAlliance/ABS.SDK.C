@@ -191,7 +191,7 @@ set(SRCS
     api/DepartmentsAPI.c
     api/EmployeeEnrollmentsAPI.c
     api/EnrollmentsAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/IndustriesAPI.c
     api/InvitationsAPI.c
     api/OptionsAPI.c
@@ -354,7 +354,7 @@ set(HDRS
     api/DepartmentsAPI.h
     api/EmployeeEnrollmentsAPI.h
     api/EnrollmentsAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/IndustriesAPI.h
     api/InvitationsAPI.h
     api/OptionsAPI.h
@@ -454,7 +454,7 @@ set(HDRS "")
 #    unit-tests/manual-DepartmentsAPI.c
 #    unit-tests/manual-EmployeeEnrollmentsAPI.c
 #    unit-tests/manual-EnrollmentsAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-IndustriesAPI.c
 #    unit-tests/manual-InvitationsAPI.c
 #    unit-tests/manual-OptionsAPI.c

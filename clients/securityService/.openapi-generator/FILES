@@ -3,8 +3,8 @@ Packing.cmake
 README.md
 api/ApplicationsAPI.c
 api/ApplicationsAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/LogsAPI.c
 api/LogsAPI.h
 api/OAuthApplicationsAPI.c
@@ -20,7 +20,7 @@ api/SecurityLogsAPI.h
 api/WebhooksAPI.c
 api/WebhooksAPI.h
 docs/ApplicationsAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/LogsAPI.md
 docs/OAuthApplicationsAPI.md
 docs/PermissionsAPI.md

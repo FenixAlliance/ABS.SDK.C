@@ -3,14 +3,14 @@ Packing.cmake
 README.md
 api/DiscountListsAPI.c
 api/DiscountListsAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/PriceListsAPI.c
 api/PriceListsAPI.h
 api/PricesAPI.c
 api/PricesAPI.h
 docs/DiscountListsAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/PriceListsAPI.md
 docs/PricesAPI.md
 docs/access_token_response.md

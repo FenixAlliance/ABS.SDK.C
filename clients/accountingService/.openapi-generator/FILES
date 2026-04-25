@@ -17,8 +17,8 @@ api/CommissionsAPI.c
 api/CommissionsAPI.h
 api/CostCentresAPI.c
 api/CostCentresAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/FinancialBooksAPI.c
 api/FinancialBooksAPI.h
 api/FiscalAuthoritiesAPI.c
@@ -71,7 +71,7 @@ docs/BillingProfilesAPI.md
 docs/BudgetsAPI.md
 docs/CommissionsAPI.md
 docs/CostCentresAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/FinancialBooksAPI.md
 docs/FiscalAuthoritiesAPI.md
 docs/FiscalAuthorityYearsAPI.md

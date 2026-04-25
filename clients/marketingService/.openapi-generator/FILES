@@ -7,8 +7,8 @@ api/EmailSignaturesAPI.c
 api/EmailSignaturesAPI.h
 api/EmailTemplatesAPI.c
 api/EmailTemplatesAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/MarketingCampaignsAPI.c
 api/MarketingCampaignsAPI.h
 api/MarketingListsAPI.c
@@ -24,7 +24,7 @@ api/TrackingPixelsAPI.h
 docs/EmailGroupsAPI.md
 docs/EmailSignaturesAPI.md
 docs/EmailTemplatesAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/MarketingCampaignsAPI.md
 docs/MarketingListsAPI.md
 docs/NewslettersAPI.md

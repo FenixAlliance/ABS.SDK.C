@@ -112,7 +112,7 @@ set(SRCS
     api/EmailGroupsAPI.c
     api/EmailSignaturesAPI.c
     api/EmailTemplatesAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/MarketingCampaignsAPI.c
     api/MarketingListsAPI.c
     api/NewslettersAPI.c
@@ -187,7 +187,7 @@ set(HDRS
     api/EmailGroupsAPI.h
     api/EmailSignaturesAPI.h
     api/EmailTemplatesAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/MarketingCampaignsAPI.h
     api/MarketingListsAPI.h
     api/NewslettersAPI.h
@@ -278,7 +278,7 @@ set(HDRS "")
 #    unit-tests/manual-EmailGroupsAPI.c
 #    unit-tests/manual-EmailSignaturesAPI.c
 #    unit-tests/manual-EmailTemplatesAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-MarketingCampaignsAPI.c
 #    unit-tests/manual-MarketingListsAPI.c
 #    unit-tests/manual-NewslettersAPI.c

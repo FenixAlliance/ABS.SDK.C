@@ -88,7 +88,7 @@ set(SRCS
     model/user_dto.c
     model/wallet_dto.c
     model/wallet_dto_envelope.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/WalletsAPI.c
 
 )
@@ -134,7 +134,7 @@ set(HDRS
     model/user_dto.h
     model/wallet_dto.h
     model/wallet_dto_envelope.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/WalletsAPI.h
 
 )
@@ -217,7 +217,7 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-WalletsAPI.c
 #)
 

@@ -1,8 +1,8 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/SupportEntitlementsAPI.c
 api/SupportEntitlementsAPI.h
 api/SupportRequestAttachmentsAPI.c
@@ -15,7 +15,7 @@ api/SupportTicketTypesAPI.c
 api/SupportTicketTypesAPI.h
 api/SupportTicketsAPI.c
 api/SupportTicketsAPI.h
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/SupportEntitlementsAPI.md
 docs/SupportRequestAttachmentsAPI.md
 docs/SupportRequestsAPI.md

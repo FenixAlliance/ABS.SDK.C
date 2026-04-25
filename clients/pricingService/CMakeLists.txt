@@ -95,7 +95,7 @@ set(SRCS
     model/two_factor_request.c
     model/two_factor_response.c
     api/DiscountListsAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/PriceListsAPI.c
     api/PricesAPI.c
 
@@ -149,7 +149,7 @@ set(HDRS
     model/two_factor_request.h
     model/two_factor_response.h
     api/DiscountListsAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/PriceListsAPI.h
     api/PricesAPI.h
 
@@ -234,7 +234,7 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-DiscountListsAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-PriceListsAPI.c
 #    unit-tests/manual-PricesAPI.c
 #)

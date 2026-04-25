@@ -91,7 +91,7 @@ set(SRCS
     model/task_type_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/ProjectsAPI.c
     api/TaskCategoriesAPI.c
     api/TaskTypesAPI.c
@@ -142,7 +142,7 @@ set(HDRS
     model/task_type_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/ProjectsAPI.h
     api/TaskCategoriesAPI.h
     api/TaskTypesAPI.h
@@ -227,7 +227,7 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-ProjectsAPI.c
 #    unit-tests/manual-TaskCategoriesAPI.c
 #    unit-tests/manual-TaskTypesAPI.c

@@ -306,7 +306,7 @@ set(SRCS
     api/BudgetsAPI.c
     api/CommissionsAPI.c
     api/CostCentresAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/FinancialBooksAPI.c
     api/FiscalAuthoritiesAPI.c
     api/FiscalAuthorityYearsAPI.c
@@ -591,7 +591,7 @@ set(HDRS
     api/BudgetsAPI.h
     api/CommissionsAPI.h
     api/CostCentresAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/FinancialBooksAPI.h
     api/FiscalAuthoritiesAPI.h
     api/FiscalAuthorityYearsAPI.h
@@ -703,7 +703,7 @@ set(HDRS "")
 #    unit-tests/manual-BudgetsAPI.c
 #    unit-tests/manual-CommissionsAPI.c
 #    unit-tests/manual-CostCentresAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-FinancialBooksAPI.c
 #    unit-tests/manual-FiscalAuthoritiesAPI.c
 #    unit-tests/manual-FiscalAuthorityYearsAPI.c
