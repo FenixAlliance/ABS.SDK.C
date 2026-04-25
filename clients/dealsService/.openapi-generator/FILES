@@ -5,13 +5,13 @@ api/DealUnitFlowsAPI.c
 api/DealUnitFlowsAPI.h
 api/DealUnitsAPI.c
 api/DealUnitsAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/SalesLiteraturesAPI.c
 api/SalesLiteraturesAPI.h
 docs/DealUnitFlowsAPI.md
 docs/DealUnitsAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/SalesLiteraturesAPI.md
 docs/access_token_response.md
 docs/contact_dto.md

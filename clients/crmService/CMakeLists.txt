@@ -96,7 +96,7 @@ set(SRCS
     model/wallet_dto.c
     model/wallet_dto_envelope.c
     api/ContactsAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/OptionsAPI.c
     api/SyncAPI.c
 
@@ -151,7 +151,7 @@ set(HDRS
     model/wallet_dto.h
     model/wallet_dto_envelope.h
     api/ContactsAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/OptionsAPI.h
     api/SyncAPI.h
 
@@ -236,7 +236,7 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-ContactsAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-OptionsAPI.c
 #    unit-tests/manual-SyncAPI.c
 #)

@@ -3,14 +3,14 @@ Packing.cmake
 README.md
 api/ContactsAPI.c
 api/ContactsAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/OptionsAPI.c
 api/OptionsAPI.h
 api/SyncAPI.c
 api/SyncAPI.h
 docs/ContactsAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/OptionsAPI.md
 docs/SyncAPI.md
 docs/access_token_response.md

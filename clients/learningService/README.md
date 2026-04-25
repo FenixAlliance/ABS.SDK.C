@@ -214,19 +214,23 @@ Category | Method | HTTP request | Description
 *CoursesAPI* | [**CoursesAPI_getStudentProfilesByCourseAsync**](docs/CoursesAPI.md#CoursesAPI_getStudentProfilesByCourseAsync) | **GET** /api/v2/LearningService/Courses/{courseId}/Students | Get student profiles by course
 *CoursesAPI* | [**CoursesAPI_getStudentProfilesByCourseCountAsync**](docs/CoursesAPI.md#CoursesAPI_getStudentProfilesByCourseCountAsync) | **GET** /api/v2/LearningService/Courses/{courseId}/Students/Count | Get student profiles by course count
 *CoursesAPI* | [**CoursesAPI_updateCourseAsync**](docs/CoursesAPI.md#CoursesAPI_updateCourseAsync) | **PUT** /api/v2/LearningService/Courses/{courseId} | Update a course
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_forgotPasswordPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_healthGet**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_healthGet) | **GET** /health | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_helloGet**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_helloGet) | **GET** /hello | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_loginPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_loginPost) | **POST** /login | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_manage2faPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_manage2faPost) | **POST** /manage/2fa | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_manageInfoGet**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_manageInfoGet) | **GET** /manage/info | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_manageInfoPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_manageInfoPost) | **POST** /manage/info | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_mapIdentityApiConfirmEmail**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_mapIdentityApiConfirmEmail) | **GET** /confirmEmail | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_refreshPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_refreshPost) | **POST** /refresh | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_registerPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_registerPost) | **POST** /register | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_resendConfirmationEmailPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_resendConfirmationEmailPost) | **POST** /resendConfirmationEmail | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_resetPasswordPost**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_resetPasswordPost) | **POST** /resetPassword | 
-*FenixAllianceABPWebAPI* | [**FenixAllianceABPWebAPI_versionGet**](docs/FenixAllianceABPWebAPI.md#FenixAllianceABPWebAPI_versionGet) | **GET** /version | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountLogoutPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountLogoutPost) | **POST** /Account/Logout | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_loginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_loginPost) | **POST** /login | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_manage2faPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_manage2faPost) | **POST** /manage/2fa | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_manageInfoGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_manageInfoGet) | **GET** /manage/info | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_manageInfoPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_manageInfoPost) | **POST** /manage/info | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_mapIdentityApiConfirmEmail**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_mapIdentityApiConfirmEmail) | **GET** /confirmEmail | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_refreshPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_refreshPost) | **POST** /refresh | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_registerPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_registerPost) | **POST** /register | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_resendConfirmationEmailPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_resendConfirmationEmailPost) | **POST** /resendConfirmationEmail | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_resetPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_resetPasswordPost) | **POST** /resetPassword | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_versionGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_versionGet) | **GET** /version | 
 *InstructorProfilesAPI* | [**InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesCountGet**](docs/InstructorProfilesAPI.md#InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesCountGet) | **GET** /api/v2/LearningService/InstructorProfiles/Count | 
 *InstructorProfilesAPI* | [**InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesGet**](docs/InstructorProfilesAPI.md#InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesGet) | **GET** /api/v2/LearningService/InstructorProfiles | 
 *InstructorProfilesAPI* | [**InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdDelete**](docs/InstructorProfilesAPI.md#InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdDelete) | **DELETE** /api/v2/LearningService/InstructorProfiles/{instructorProfileId} | 

@@ -91,7 +91,7 @@ set(SRCS
     model/two_factor_response.c
     api/CountriesAPI.c
     api/CurrenciesAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/LanguagesAPI.c
     api/TimezonesAPI.c
 
@@ -141,7 +141,7 @@ set(HDRS
     model/two_factor_response.h
     api/CountriesAPI.h
     api/CurrenciesAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/LanguagesAPI.h
     api/TimezonesAPI.h
 
@@ -227,7 +227,7 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-CountriesAPI.c
 #    unit-tests/manual-CurrenciesAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-LanguagesAPI.c
 #    unit-tests/manual-TimezonesAPI.c
 #)

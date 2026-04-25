@@ -5,8 +5,8 @@ api/ApplicationsAPI.c
 api/ApplicationsAPI.h
 api/CheckerAPI.c
 api/CheckerAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/OAuthAPI.c
 api/OAuthAPI.h
 api/ResourceAPI.c
@@ -15,7 +15,7 @@ api/UserInfoAPI.c
 api/UserInfoAPI.h
 docs/ApplicationsAPI.md
 docs/CheckerAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/OAuthAPI.md
 docs/ResourceAPI.md
 docs/UserInfoAPI.md

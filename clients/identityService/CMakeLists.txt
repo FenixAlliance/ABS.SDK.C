@@ -85,7 +85,7 @@ set(SRCS
     model/user_create_dto_envelope.c
     api/ApplicationsAPI.c
     api/CheckerAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/OAuthAPI.c
     api/ResourceAPI.c
     api/UserInfoAPI.c
@@ -130,7 +130,7 @@ set(HDRS
     model/user_create_dto_envelope.h
     api/ApplicationsAPI.h
     api/CheckerAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/OAuthAPI.h
     api/ResourceAPI.h
     api/UserInfoAPI.h
@@ -217,7 +217,7 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-ApplicationsAPI.c
 #    unit-tests/manual-CheckerAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-OAuthAPI.c
 #    unit-tests/manual-ResourceAPI.c
 #    unit-tests/manual-UserInfoAPI.c

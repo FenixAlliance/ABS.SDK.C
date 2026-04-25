@@ -207,7 +207,7 @@ set(SRCS
     api/BlogPostTagsAPI.c
     api/BlogPostsAPI.c
     api/BusinessDomainsAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/PortalsAPI.c
     api/ThemesAPI.c
     api/WebContentsAPI.c
@@ -378,7 +378,7 @@ set(HDRS
     api/BlogPostTagsAPI.h
     api/BlogPostsAPI.h
     api/BusinessDomainsAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/PortalsAPI.h
     api/ThemesAPI.h
     api/WebContentsAPI.h
@@ -472,7 +472,7 @@ set(HDRS "")
 #    unit-tests/manual-BlogPostTagsAPI.c
 #    unit-tests/manual-BlogPostsAPI.c
 #    unit-tests/manual-BusinessDomainsAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-PortalsAPI.c
 #    unit-tests/manual-ThemesAPI.c
 #    unit-tests/manual-WebContentsAPI.c

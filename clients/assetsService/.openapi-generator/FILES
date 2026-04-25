@@ -9,13 +9,13 @@ api/AssetTypesAPI.c
 api/AssetTypesAPI.h
 api/AssetsAPI.c
 api/AssetsAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 docs/AssetCategoriesAPI.md
 docs/AssetTransfersAPI.md
 docs/AssetTypesAPI.md
 docs/AssetsAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/access_token_response.md
 docs/asset_category_create_dto.md
 docs/asset_category_dto.md

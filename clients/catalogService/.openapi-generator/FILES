@@ -1,8 +1,8 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/ItemAttachmentsAPI.c
 api/ItemAttachmentsAPI.h
 api/ItemAttributesAPI.c
@@ -39,7 +39,7 @@ api/MerchantsAPI.c
 api/MerchantsAPI.h
 api/PricingRulesAPI.c
 api/PricingRulesAPI.h
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ItemAttachmentsAPI.md
 docs/ItemAttributesAPI.md
 docs/ItemBrandsAPI.md

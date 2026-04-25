@@ -149,7 +149,7 @@ set(SRCS
     api/CourseUpdatesAPI.c
     api/CourseWikisAPI.c
     api/CoursesAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/InstructorProfilesAPI.c
     api/StudentProfilesAPI.c
 
@@ -257,7 +257,7 @@ set(HDRS
     api/CourseUpdatesAPI.h
     api/CourseWikisAPI.h
     api/CoursesAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/InstructorProfilesAPI.h
     api/StudentProfilesAPI.h
 
@@ -359,7 +359,7 @@ set(HDRS "")
 #    unit-tests/manual-CourseUpdatesAPI.c
 #    unit-tests/manual-CourseWikisAPI.c
 #    unit-tests/manual-CoursesAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-InstructorProfilesAPI.c
 #    unit-tests/manual-StudentProfilesAPI.c
 #)

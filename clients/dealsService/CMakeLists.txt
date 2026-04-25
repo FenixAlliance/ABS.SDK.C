@@ -109,7 +109,7 @@ set(SRCS
     model/user_dto.c
     api/DealUnitFlowsAPI.c
     api/DealUnitsAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/SalesLiteraturesAPI.c
 
 )
@@ -176,7 +176,7 @@ set(HDRS
     model/user_dto.h
     api/DealUnitFlowsAPI.h
     api/DealUnitsAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/SalesLiteraturesAPI.h
 
 )
@@ -261,7 +261,7 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-DealUnitFlowsAPI.c
 #    unit-tests/manual-DealUnitsAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-SalesLiteraturesAPI.c
 #)
 

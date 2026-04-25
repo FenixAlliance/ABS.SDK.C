@@ -154,7 +154,7 @@ set(SRCS
     model/two_factor_request.c
     model/two_factor_response.c
     model/update_product_primary_image_async_request.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/ItemAttachmentsAPI.c
     api/ItemAttributesAPI.c
     api/ItemBrandsAPI.c
@@ -283,7 +283,7 @@ set(HDRS
     model/two_factor_request.h
     model/two_factor_response.h
     model/update_product_primary_image_async_request.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/ItemAttachmentsAPI.h
     api/ItemAttributesAPI.h
     api/ItemBrandsAPI.h
@@ -383,7 +383,7 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-ItemAttachmentsAPI.c
 #    unit-tests/manual-ItemAttributesAPI.c
 #    unit-tests/manual-ItemBrandsAPI.c

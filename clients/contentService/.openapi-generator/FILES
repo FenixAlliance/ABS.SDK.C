@@ -11,8 +11,8 @@ api/BlogPostsAPI.c
 api/BlogPostsAPI.h
 api/BusinessDomainsAPI.c
 api/BusinessDomainsAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/PortalsAPI.c
 api/PortalsAPI.h
 api/ThemesAPI.c
@@ -32,7 +32,7 @@ docs/BlogPostCategoriesAPI.md
 docs/BlogPostTagsAPI.md
 docs/BlogPostsAPI.md
 docs/BusinessDomainsAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/PortalsAPI.md
 docs/ThemesAPI.md
 docs/WebContentsAPI.md

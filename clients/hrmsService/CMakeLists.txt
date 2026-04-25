@@ -88,7 +88,7 @@ set(SRCS
     model/two_factor_response.c
     api/EmployeesAPI.c
     api/EmployersAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/GigsAPI.c
     api/JobOffersAPI.c
 
@@ -135,7 +135,7 @@ set(HDRS
     model/two_factor_response.h
     api/EmployeesAPI.h
     api/EmployersAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/GigsAPI.h
     api/JobOffersAPI.h
 
@@ -221,7 +221,7 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-EmployeesAPI.c
 #    unit-tests/manual-EmployersAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-GigsAPI.c
 #    unit-tests/manual-JobOffersAPI.c
 #)

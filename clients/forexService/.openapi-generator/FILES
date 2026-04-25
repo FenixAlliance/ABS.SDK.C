@@ -5,13 +5,13 @@ api/ExchangeAPI.c
 api/ExchangeAPI.h
 api/ExchangeVAPI.c
 api/ExchangeVAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/RatesAPI.c
 api/RatesAPI.h
 docs/ExchangeAPI.md
 docs/ExchangeVAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/RatesAPI.md
 docs/access_token_response.md
 docs/currency_id.md

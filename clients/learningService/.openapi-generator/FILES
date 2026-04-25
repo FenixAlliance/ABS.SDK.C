@@ -37,8 +37,8 @@ api/CourseWikisAPI.c
 api/CourseWikisAPI.h
 api/CoursesAPI.c
 api/CoursesAPI.h
-api/FenixAllianceABPWebAPI.c
-api/FenixAllianceABPWebAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/InstructorProfilesAPI.c
 api/InstructorProfilesAPI.h
 api/StudentProfilesAPI.c
@@ -61,7 +61,7 @@ docs/CourseUnitsAPI.md
 docs/CourseUpdatesAPI.md
 docs/CourseWikisAPI.md
 docs/CoursesAPI.md
-docs/FenixAllianceABPWebAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/InstructorProfilesAPI.md
 docs/StudentProfilesAPI.md
 docs/access_token_response.md

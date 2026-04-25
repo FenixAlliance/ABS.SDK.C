@@ -76,7 +76,7 @@ set(SRCS
     model/two_factor_response.c
     api/ExchangeAPI.c
     api/ExchangeVAPI.c
-    api/FenixAllianceABPWebAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/RatesAPI.c
 
 )
@@ -110,7 +110,7 @@ set(HDRS
     model/two_factor_response.h
     api/ExchangeAPI.h
     api/ExchangeVAPI.h
-    api/FenixAllianceABPWebAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/RatesAPI.h
 
 )
@@ -195,7 +195,7 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-ExchangeAPI.c
 #    unit-tests/manual-ExchangeVAPI.c
-#    unit-tests/manual-FenixAllianceABPWebAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-RatesAPI.c
 #)
 
