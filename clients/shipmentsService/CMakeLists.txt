@@ -55,22 +55,81 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
+    model/bill_of_lading_create_dto.c
+    model/bill_of_lading_dto.c
+    model/bill_of_lading_dto_envelope.c
+    model/bill_of_lading_dto_list_envelope.c
+    model/bill_of_lading_line_create_dto.c
+    model/bill_of_lading_line_dto.c
+    model/bill_of_lading_line_dto_envelope.c
+    model/bill_of_lading_line_dto_list_envelope.c
+    model/bill_of_lading_line_update_dto.c
+    model/bill_of_lading_update_dto.c
+    model/empty_envelope.c
     model/error_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
     model/info_request.c
     model/info_response.c
+    model/int32_envelope.c
+    model/item_shipping_policy_create_dto.c
+    model/item_shipping_policy_dto.c
+    model/item_shipping_policy_dto_envelope.c
+    model/item_shipping_policy_dto_list_envelope.c
+    model/item_shipping_policy_update_dto.c
     model/login_request.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
+    model/shipment_create_dto.c
     model/shipment_dto.c
+    model/shipment_dto_envelope.c
     model/shipment_dto_list_envelope.c
+    model/shipment_update_dto.c
+    model/shipping_class_create_dto.c
+    model/shipping_class_dto.c
+    model/shipping_class_dto_envelope.c
+    model/shipping_class_dto_list_envelope.c
+    model/shipping_class_update_dto.c
+    model/shipping_courier_create_dto.c
+    model/shipping_courier_dto.c
+    model/shipping_courier_dto_envelope.c
+    model/shipping_courier_dto_list_envelope.c
+    model/shipping_courier_update_dto.c
+    model/shipping_label_create_dto.c
+    model/shipping_label_dto.c
+    model/shipping_label_dto_envelope.c
+    model/shipping_label_dto_list_envelope.c
+    model/shipping_label_update_dto.c
+    model/shipping_method_create_dto.c
+    model/shipping_method_dto.c
+    model/shipping_method_dto_envelope.c
+    model/shipping_method_dto_list_envelope.c
+    model/shipping_method_update_dto.c
+    model/shipping_region_create_dto.c
+    model/shipping_region_dto.c
+    model/shipping_region_dto_envelope.c
+    model/shipping_region_dto_list_envelope.c
+    model/shipping_region_update_dto.c
+    model/shipping_zone_create_dto.c
+    model/shipping_zone_dto.c
+    model/shipping_zone_dto_envelope.c
+    model/shipping_zone_dto_list_envelope.c
+    model/shipping_zone_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/FenixAllianceABSWebAPI.c
+    api/BillsOfLadingAPI.c
+    api/CompletionsAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
+    api/ItemShippingPoliciesAPI.c
     api/ShipmentsAPI.c
+    api/ShippingClassesAPI.c
+    api/ShippingCouriersAPI.c
+    api/ShippingLabelsAPI.c
+    api/ShippingMethodsAPI.c
+    api/ShippingRegionsAPI.c
+    api/ShippingZonesAPI.c
 
 )
 
@@ -82,22 +141,81 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
+    model/bill_of_lading_create_dto.h
+    model/bill_of_lading_dto.h
+    model/bill_of_lading_dto_envelope.h
+    model/bill_of_lading_dto_list_envelope.h
+    model/bill_of_lading_line_create_dto.h
+    model/bill_of_lading_line_dto.h
+    model/bill_of_lading_line_dto_envelope.h
+    model/bill_of_lading_line_dto_list_envelope.h
+    model/bill_of_lading_line_update_dto.h
+    model/bill_of_lading_update_dto.h
+    model/empty_envelope.h
     model/error_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
     model/info_request.h
     model/info_response.h
+    model/int32_envelope.h
+    model/item_shipping_policy_create_dto.h
+    model/item_shipping_policy_dto.h
+    model/item_shipping_policy_dto_envelope.h
+    model/item_shipping_policy_dto_list_envelope.h
+    model/item_shipping_policy_update_dto.h
     model/login_request.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
+    model/shipment_create_dto.h
     model/shipment_dto.h
+    model/shipment_dto_envelope.h
     model/shipment_dto_list_envelope.h
+    model/shipment_update_dto.h
+    model/shipping_class_create_dto.h
+    model/shipping_class_dto.h
+    model/shipping_class_dto_envelope.h
+    model/shipping_class_dto_list_envelope.h
+    model/shipping_class_update_dto.h
+    model/shipping_courier_create_dto.h
+    model/shipping_courier_dto.h
+    model/shipping_courier_dto_envelope.h
+    model/shipping_courier_dto_list_envelope.h
+    model/shipping_courier_update_dto.h
+    model/shipping_label_create_dto.h
+    model/shipping_label_dto.h
+    model/shipping_label_dto_envelope.h
+    model/shipping_label_dto_list_envelope.h
+    model/shipping_label_update_dto.h
+    model/shipping_method_create_dto.h
+    model/shipping_method_dto.h
+    model/shipping_method_dto_envelope.h
+    model/shipping_method_dto_list_envelope.h
+    model/shipping_method_update_dto.h
+    model/shipping_region_create_dto.h
+    model/shipping_region_dto.h
+    model/shipping_region_dto_envelope.h
+    model/shipping_region_dto_list_envelope.h
+    model/shipping_region_update_dto.h
+    model/shipping_zone_create_dto.h
+    model/shipping_zone_dto.h
+    model/shipping_zone_dto_envelope.h
+    model/shipping_zone_dto_list_envelope.h
+    model/shipping_zone_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/FenixAllianceABSWebAPI.h
+    api/BillsOfLadingAPI.h
+    api/CompletionsAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
+    api/ItemShippingPoliciesAPI.h
     api/ShipmentsAPI.h
+    api/ShippingClassesAPI.h
+    api/ShippingCouriersAPI.h
+    api/ShippingLabelsAPI.h
+    api/ShippingMethodsAPI.h
+    api/ShippingRegionsAPI.h
+    api/ShippingZonesAPI.h
 
 )
 
@@ -179,8 +297,17 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-BillsOfLadingAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-ItemShippingPoliciesAPI.c
 #    unit-tests/manual-ShipmentsAPI.c
+#    unit-tests/manual-ShippingClassesAPI.c
+#    unit-tests/manual-ShippingCouriersAPI.c
+#    unit-tests/manual-ShippingLabelsAPI.c
+#    unit-tests/manual-ShippingMethodsAPI.c
+#    unit-tests/manual-ShippingRegionsAPI.c
+#    unit-tests/manual-ShippingZonesAPI.c
 #)
 
 ##set header files

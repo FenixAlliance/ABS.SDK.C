@@ -16,7 +16,7 @@
 // Counts all return policies for a specific item.
 //
 int32_envelope_t*
-ItemReturnPoliciesAPI_countItemReturnPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemReturnPoliciesAPI_countItemReturnPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Get item return policies
@@ -24,7 +24,7 @@ ItemReturnPoliciesAPI_countItemReturnPoliciesAsync(apiClient_t *apiClient, char 
 // Retrieves all return policies for a specific item.
 //
 item_return_policy_dto_list_envelope_t*
-ItemReturnPoliciesAPI_getItemReturnPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemReturnPoliciesAPI_getItemReturnPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Get item return policy by ID
@@ -32,7 +32,7 @@ ItemReturnPoliciesAPI_getItemReturnPoliciesAsync(apiClient_t *apiClient, char *i
 // Retrieves a specific return policy for an item.
 //
 item_return_policy_dto_envelope_t*
-ItemReturnPoliciesAPI_getItemReturnPolicyByIdAsync(apiClient_t *apiClient, char *itemReturnPolicyId, char *itemId, char *api_version, char *x_api_version);
+ItemReturnPoliciesAPI_getItemReturnPolicyByIdAsync(apiClient_t *apiClient, char *itemReturnPolicyId, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Relate item to return policy

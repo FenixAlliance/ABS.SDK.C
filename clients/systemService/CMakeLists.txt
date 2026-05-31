@@ -55,10 +55,14 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
+    model/additional_attribute.c
     model/boolean_envelope.c
     model/cart_dto.c
+    model/cart_dto_envelope.c
+    model/cart_dto_list_envelope.c
     model/email_dispatch_request.c
     model/empty_envelope.c
+    model/envelope.c
     model/error_envelope.c
     model/extended_tenant_dto.c
     model/extended_tenant_dto_list_envelope.c
@@ -76,6 +80,15 @@ set(SRCS
     model/info_request.c
     model/info_response.c
     model/int32_envelope.c
+    model/ip_lookup_dto.c
+    model/ip_lookup_dto_envelope.c
+    model/ip_lookup_dto_list_envelope.c
+    model/license_attributes_list_envelope.c
+    model/license_feature.c
+    model/license_key.c
+    model/license_key_request.c
+    model/license_validation_error.c
+    model/license_validation_error_list_envelope.c
     model/license_validation_request.c
     model/login_request.c
     model/module.c
@@ -91,6 +104,7 @@ set(SRCS
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
     model/social_profile_dto.c
+    model/string_envelope.c
     model/string_list_envelope.c
     model/studio_module.c
     model/studio_module_list_envelope.c
@@ -99,6 +113,8 @@ set(SRCS
     model/suite_license_dto.c
     model/suite_license_dto_envelope.c
     model/suite_license_dto_list_envelope.c
+    model/system_overview_dto.c
+    model/system_overview_dto_envelope.c
     model/tenant_create_dto.c
     model/tenant_dto.c
     model/tenant_dto_envelope.c
@@ -113,14 +129,28 @@ set(SRCS
     model/user_settings_dto.c
     model/user_update_dto.c
     model/wallet_dto.c
+    model/web_portal_create_dto.c
+    model/web_portal_dto.c
+    model/web_portal_dto_envelope.c
+    model/web_portal_dto_list_envelope.c
+    model/web_portal_update_dto.c
     api/AntiforgeryAPI.c
+    api/CartsAPI.c
+    api/CompletionsAPI.c
+    api/ContactOptionsAPI.c
     api/EmailsAPI.c
-    api/FenixAllianceABSWebAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
+    api/IPLookupsAPI.c
+    api/LicensesAPI.c
     api/LicensingAPI.c
     api/MigrationsAPI.c
     api/ModulesAPI.c
     api/OptionsAPI.c
+    api/OverviewAPI.c
+    api/PortalsAPI.c
+    api/TenantOptionsAPI.c
     api/TenantsAPI.c
+    api/UserOptionsAPI.c
     api/UsersAPI.c
 
 )
@@ -133,10 +163,14 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
+    model/additional_attribute.h
     model/boolean_envelope.h
     model/cart_dto.h
+    model/cart_dto_envelope.h
+    model/cart_dto_list_envelope.h
     model/email_dispatch_request.h
     model/empty_envelope.h
+    model/envelope.h
     model/error_envelope.h
     model/extended_tenant_dto.h
     model/extended_tenant_dto_list_envelope.h
@@ -154,6 +188,15 @@ set(HDRS
     model/info_request.h
     model/info_response.h
     model/int32_envelope.h
+    model/ip_lookup_dto.h
+    model/ip_lookup_dto_envelope.h
+    model/ip_lookup_dto_list_envelope.h
+    model/license_attributes_list_envelope.h
+    model/license_feature.h
+    model/license_key.h
+    model/license_key_request.h
+    model/license_validation_error.h
+    model/license_validation_error_list_envelope.h
     model/license_validation_request.h
     model/login_request.h
     model/module.h
@@ -169,6 +212,7 @@ set(HDRS
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
     model/social_profile_dto.h
+    model/string_envelope.h
     model/string_list_envelope.h
     model/studio_module.h
     model/studio_module_list_envelope.h
@@ -177,6 +221,8 @@ set(HDRS
     model/suite_license_dto.h
     model/suite_license_dto_envelope.h
     model/suite_license_dto_list_envelope.h
+    model/system_overview_dto.h
+    model/system_overview_dto_envelope.h
     model/tenant_create_dto.h
     model/tenant_dto.h
     model/tenant_dto_envelope.h
@@ -191,14 +237,28 @@ set(HDRS
     model/user_settings_dto.h
     model/user_update_dto.h
     model/wallet_dto.h
+    model/web_portal_create_dto.h
+    model/web_portal_dto.h
+    model/web_portal_dto_envelope.h
+    model/web_portal_dto_list_envelope.h
+    model/web_portal_update_dto.h
     api/AntiforgeryAPI.h
+    api/CartsAPI.h
+    api/CompletionsAPI.h
+    api/ContactOptionsAPI.h
     api/EmailsAPI.h
-    api/FenixAllianceABSWebAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
+    api/IPLookupsAPI.h
+    api/LicensesAPI.h
     api/LicensingAPI.h
     api/MigrationsAPI.h
     api/ModulesAPI.h
     api/OptionsAPI.h
+    api/OverviewAPI.h
+    api/PortalsAPI.h
+    api/TenantOptionsAPI.h
     api/TenantsAPI.h
+    api/UserOptionsAPI.h
     api/UsersAPI.h
 
 )
@@ -282,13 +342,22 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-AntiforgeryAPI.c
+#    unit-tests/manual-CartsAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-ContactOptionsAPI.c
 #    unit-tests/manual-EmailsAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-IPLookupsAPI.c
+#    unit-tests/manual-LicensesAPI.c
 #    unit-tests/manual-LicensingAPI.c
 #    unit-tests/manual-MigrationsAPI.c
 #    unit-tests/manual-ModulesAPI.c
 #    unit-tests/manual-OptionsAPI.c
+#    unit-tests/manual-OverviewAPI.c
+#    unit-tests/manual-PortalsAPI.c
+#    unit-tests/manual-TenantOptionsAPI.c
 #    unit-tests/manual-TenantsAPI.c
+#    unit-tests/manual-UserOptionsAPI.c
 #    unit-tests/manual-UsersAPI.c
 #)
 

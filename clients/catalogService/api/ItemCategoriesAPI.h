@@ -50,7 +50,7 @@ ItemCategoriesAPI_getItemCategoriesAsync(apiClient_t *apiClient, char *tenantId,
 // Retrieves a specific item category by its ID.
 //
 item_category_dto_envelope_t*
-ItemCategoriesAPI_getItemCategoryByIdAsync(apiClient_t *apiClient, char *itemCategoryId, char *api_version, char *x_api_version);
+ItemCategoriesAPI_getItemCategoryByIdAsync(apiClient_t *apiClient, char *itemCategoryId, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Update an item category

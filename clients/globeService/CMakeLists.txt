@@ -73,6 +73,7 @@ set(SRCS
     model/currency_dto.c
     model/currency_dto_envelope.c
     model/currency_dto_list_envelope.c
+    model/error.c
     model/error_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
@@ -80,19 +81,23 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
+    model/payment_response.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
+    model/response_status.c
     model/timezone_dto.c
     model/timezone_dto_envelope.c
     model/timezone_dto_list_envelope.c
     model/two_factor_request.c
     model/two_factor_response.c
+    api/CompletionsAPI.c
     api/CountriesAPI.c
     api/CurrenciesAPI.c
-    api/FenixAllianceABSWebAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/LanguagesAPI.c
+    api/MigrationsAPI.c
     api/TimezonesAPI.c
 
 )
@@ -123,6 +128,7 @@ set(HDRS
     model/currency_dto.h
     model/currency_dto_envelope.h
     model/currency_dto_list_envelope.h
+    model/error.h
     model/error_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
@@ -130,19 +136,23 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
+    model/payment_response.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
+    model/response_status.h
     model/timezone_dto.h
     model/timezone_dto_envelope.h
     model/timezone_dto_list_envelope.h
     model/two_factor_request.h
     model/two_factor_response.h
+    api/CompletionsAPI.h
     api/CountriesAPI.h
     api/CurrenciesAPI.h
-    api/FenixAllianceABSWebAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/LanguagesAPI.h
+    api/MigrationsAPI.h
     api/TimezonesAPI.h
 
 )
@@ -225,10 +235,12 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
+#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-CountriesAPI.c
 #    unit-tests/manual-CurrenciesAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-LanguagesAPI.c
+#    unit-tests/manual-MigrationsAPI.c
 #    unit-tests/manual-TimezonesAPI.c
 #)
 

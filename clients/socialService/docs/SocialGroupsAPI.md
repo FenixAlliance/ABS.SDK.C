@@ -1,6 +1,6 @@
 # SocialGroupsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -51,7 +51,7 @@ No authorization required
 //
 // Creates a new social group for the specified tenant.
 //
-empty_envelope_t* SocialGroupsAPI_createSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, social_group_create_dto_t *social_group_create_dto);
+empty_envelope_t* SocialGroupsAPI_createSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *api_version, char *x_api_version, social_group_create_dto_t *social_group_create_dto);
 ```
 
 ### Parameters
@@ -59,6 +59,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **social_group_create_dto** | **[social_group_create_dto_t](social_group_create_dto.md) \*** |  | [optional] 
@@ -85,7 +86,7 @@ No authorization required
 //
 // Deletes a social group for the specified tenant.
 //
-empty_envelope_t* SocialGroupsAPI_deleteSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialGroupId, char *api_version, char *x_api_version);
+empty_envelope_t* SocialGroupsAPI_deleteSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *socialGroupId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -93,6 +94,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**socialProfileId** | **char \*** |  | 
 **socialGroupId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -186,7 +188,7 @@ No authorization required
 //
 // Updates an existing social group for the specified tenant.
 //
-empty_envelope_t* SocialGroupsAPI_updateSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialGroupId, char *api_version, char *x_api_version, social_group_update_dto_t *social_group_update_dto);
+empty_envelope_t* SocialGroupsAPI_updateSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *socialGroupId, char *api_version, char *x_api_version, social_group_update_dto_t *social_group_update_dto);
 ```
 
 ### Parameters
@@ -194,6 +196,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**socialProfileId** | **char \*** |  | 
 **socialGroupId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 

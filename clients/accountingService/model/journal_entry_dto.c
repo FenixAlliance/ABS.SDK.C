@@ -16,6 +16,8 @@ journal_entry_dto_t *journal_entry_dto_create(
     double forex_rate,
     double credit,
     double debit,
+    double credit_in_usd,
+    double debit_in_usd,
     char *currency_id,
     char *tenant_id,
     char *enrollment_id,
@@ -29,7 +31,9 @@ journal_entry_dto_t *journal_entry_dto_create(
     char *invoice_code,
     char *parent_journal_entry_id,
     money_t *credit_amount,
-    money_t *debit_amount
+    money_t *debit_amount,
+    money_t *credit_amount_in_usd,
+    money_t *debit_amount_in_usd
     ) {
     journal_entry_dto_t *journal_entry_dto_local_var = malloc(sizeof(journal_entry_dto_t));
     if (!journal_entry_dto_local_var) {
@@ -45,6 +49,8 @@ journal_entry_dto_t *journal_entry_dto_create(
     journal_entry_dto_local_var->forex_rate = forex_rate;
     journal_entry_dto_local_var->credit = credit;
     journal_entry_dto_local_var->debit = debit;
+    journal_entry_dto_local_var->credit_in_usd = credit_in_usd;
+    journal_entry_dto_local_var->debit_in_usd = debit_in_usd;
     journal_entry_dto_local_var->currency_id = currency_id;
     journal_entry_dto_local_var->tenant_id = tenant_id;
     journal_entry_dto_local_var->enrollment_id = enrollment_id;
@@ -59,6 +65,8 @@ journal_entry_dto_t *journal_entry_dto_create(
     journal_entry_dto_local_var->parent_journal_entry_id = parent_journal_entry_id;
     journal_entry_dto_local_var->credit_amount = credit_amount;
     journal_entry_dto_local_var->debit_amount = debit_amount;
+    journal_entry_dto_local_var->credit_amount_in_usd = credit_amount_in_usd;
+    journal_entry_dto_local_var->debit_amount_in_usd = debit_amount_in_usd;
 
     return journal_entry_dto_local_var;
 }
@@ -145,6 +153,14 @@ void journal_entry_dto_free(journal_entry_dto_t *journal_entry_dto) {
         money_free(journal_entry_dto->debit_amount);
         journal_entry_dto->debit_amount = NULL;
     }
+    if (journal_entry_dto->credit_amount_in_usd) {
+        money_free(journal_entry_dto->credit_amount_in_usd);
+        journal_entry_dto->credit_amount_in_usd = NULL;
+    }
+    if (journal_entry_dto->debit_amount_in_usd) {
+        money_free(journal_entry_dto->debit_amount_in_usd);
+        journal_entry_dto->debit_amount_in_usd = NULL;
+    }
     free(journal_entry_dto);
 }
 
@@ -226,6 +242,22 @@ cJSON *journal_entry_dto_convertToJSON(journal_entry_dto_t *journal_entry_dto) {
     // journal_entry_dto->debit
     if(journal_entry_dto->debit) {
     if(cJSON_AddNumberToObject(item, "debit", journal_entry_dto->debit) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // journal_entry_dto->credit_in_usd
+    if(journal_entry_dto->credit_in_usd) {
+    if(cJSON_AddNumberToObject(item, "creditInUsd", journal_entry_dto->credit_in_usd) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // journal_entry_dto->debit_in_usd
+    if(journal_entry_dto->debit_in_usd) {
+    if(cJSON_AddNumberToObject(item, "debitInUsd", journal_entry_dto->debit_in_usd) == NULL) {
     goto fail; //Numeric
     }
     }
@@ -352,6 +384,32 @@ cJSON *journal_entry_dto_convertToJSON(journal_entry_dto_t *journal_entry_dto) {
     }
     }
 
+
+    // journal_entry_dto->credit_amount_in_usd
+    if(journal_entry_dto->credit_amount_in_usd) {
+    cJSON *credit_amount_in_usd_local_JSON = money_convertToJSON(journal_entry_dto->credit_amount_in_usd);
+    if(credit_amount_in_usd_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "creditAmountInUsd", credit_amount_in_usd_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // journal_entry_dto->debit_amount_in_usd
+    if(journal_entry_dto->debit_amount_in_usd) {
+    cJSON *debit_amount_in_usd_local_JSON = money_convertToJSON(journal_entry_dto->debit_amount_in_usd);
+    if(debit_amount_in_usd_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "debitAmountInUsd", debit_amount_in_usd_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -369,6 +427,12 @@ journal_entry_dto_t *journal_entry_dto_parseFromJSON(cJSON *journal_entry_dtoJSO
 
     // define the local variable for journal_entry_dto->debit_amount
     money_t *debit_amount_local_nonprim = NULL;
+
+    // define the local variable for journal_entry_dto->credit_amount_in_usd
+    money_t *credit_amount_in_usd_local_nonprim = NULL;
+
+    // define the local variable for journal_entry_dto->debit_amount_in_usd
+    money_t *debit_amount_in_usd_local_nonprim = NULL;
 
     // journal_entry_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "id");
@@ -455,6 +519,24 @@ journal_entry_dto_t *journal_entry_dto_parseFromJSON(cJSON *journal_entry_dtoJSO
     cJSON *debit = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "debit");
     if (debit) { 
     if(!cJSON_IsNumber(debit))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // journal_entry_dto->credit_in_usd
+    cJSON *credit_in_usd = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "creditInUsd");
+    if (credit_in_usd) { 
+    if(!cJSON_IsNumber(credit_in_usd))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // journal_entry_dto->debit_in_usd
+    cJSON *debit_in_usd = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "debitInUsd");
+    if (debit_in_usd) { 
+    if(!cJSON_IsNumber(debit_in_usd))
     {
     goto end; //Numeric
     }
@@ -580,6 +662,18 @@ journal_entry_dto_t *journal_entry_dto_parseFromJSON(cJSON *journal_entry_dtoJSO
     debit_amount_local_nonprim = money_parseFromJSON(debit_amount); //nonprimitive
     }
 
+    // journal_entry_dto->credit_amount_in_usd
+    cJSON *credit_amount_in_usd = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "creditAmountInUsd");
+    if (credit_amount_in_usd) { 
+    credit_amount_in_usd_local_nonprim = money_parseFromJSON(credit_amount_in_usd); //nonprimitive
+    }
+
+    // journal_entry_dto->debit_amount_in_usd
+    cJSON *debit_amount_in_usd = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "debitAmountInUsd");
+    if (debit_amount_in_usd) { 
+    debit_amount_in_usd_local_nonprim = money_parseFromJSON(debit_amount_in_usd); //nonprimitive
+    }
+
 
     journal_entry_dto_local_var = journal_entry_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -592,6 +686,8 @@ journal_entry_dto_t *journal_entry_dto_parseFromJSON(cJSON *journal_entry_dtoJSO
         forex_rate ? forex_rate->valuedouble : 0,
         credit ? credit->valuedouble : 0,
         debit ? debit->valuedouble : 0,
+        credit_in_usd ? credit_in_usd->valuedouble : 0,
+        debit_in_usd ? debit_in_usd->valuedouble : 0,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
@@ -605,7 +701,9 @@ journal_entry_dto_t *journal_entry_dto_parseFromJSON(cJSON *journal_entry_dtoJSO
         invoice_code && !cJSON_IsNull(invoice_code) ? strdup(invoice_code->valuestring) : NULL,
         parent_journal_entry_id && !cJSON_IsNull(parent_journal_entry_id) ? strdup(parent_journal_entry_id->valuestring) : NULL,
         credit_amount ? credit_amount_local_nonprim : NULL,
-        debit_amount ? debit_amount_local_nonprim : NULL
+        debit_amount ? debit_amount_local_nonprim : NULL,
+        credit_amount_in_usd ? credit_amount_in_usd_local_nonprim : NULL,
+        debit_amount_in_usd ? debit_amount_in_usd_local_nonprim : NULL
         );
 
     return journal_entry_dto_local_var;
@@ -617,6 +715,14 @@ end:
     if (debit_amount_local_nonprim) {
         money_free(debit_amount_local_nonprim);
         debit_amount_local_nonprim = NULL;
+    }
+    if (credit_amount_in_usd_local_nonprim) {
+        money_free(credit_amount_in_usd_local_nonprim);
+        credit_amount_in_usd_local_nonprim = NULL;
+    }
+    if (debit_amount_in_usd_local_nonprim) {
+        money_free(debit_amount_in_usd_local_nonprim);
+        debit_amount_in_usd_local_nonprim = NULL;
     }
     return NULL;
 

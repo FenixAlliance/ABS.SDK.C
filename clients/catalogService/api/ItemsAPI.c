@@ -17,7 +17,7 @@
 // Counts the number of tags associated with a specific stock item.
 //
 int32_envelope_t*
-ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version)
+ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -62,6 +62,18 @@ ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *itemId, char *
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -128,6 +140,18 @@ ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *itemId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4476,7 +4500,7 @@ end:
 // Retrieves a specific tag by ID for a stock item.
 //
 item_tag_dto_envelope_t*
-ItemsAPI_getStockItemTagById(apiClient_t *apiClient, char *itemId, char *itemTagId, char *api_version, char *x_api_version)
+ItemsAPI_getStockItemTagById(apiClient_t *apiClient, char *tenantId, char *itemId, char *itemTagId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -4538,6 +4562,18 @@ ItemsAPI_getStockItemTagById(apiClient_t *apiClient, char *itemId, char *itemTag
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -4605,6 +4641,18 @@ ItemsAPI_getStockItemTagById(apiClient_t *apiClient, char *itemId, char *itemTag
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4629,7 +4677,7 @@ end:
 // Retrieves all tags associated with a specific stock item.
 //
 item_tag_dto_list_envelope_t*
-ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version)
+ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -4674,6 +4722,18 @@ ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *itemId, char *ap
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -4740,6 +4800,18 @@ ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *itemId, char *ap
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -5052,7 +5124,7 @@ end:
 // Retrieves a specific type by ID for a stock item.
 //
 item_type_dto_envelope_t*
-ItemsAPI_getStockItemTypeById(apiClient_t *apiClient, char *itemId, char *itemTypeId, char *api_version, char *x_api_version)
+ItemsAPI_getStockItemTypeById(apiClient_t *apiClient, char *tenantId, char *itemId, char *itemTypeId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -5114,6 +5186,18 @@ ItemsAPI_getStockItemTypeById(apiClient_t *apiClient, char *itemId, char *itemTy
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -5181,6 +5265,18 @@ ItemsAPI_getStockItemTypeById(apiClient_t *apiClient, char *itemId, char *itemTy
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -5205,7 +5301,7 @@ end:
 // Retrieves all types associated with a specific stock item.
 //
 item_type_dto_list_envelope_t*
-ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version)
+ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -5250,6 +5346,18 @@ ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *itemId, char *a
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -5316,6 +5424,18 @@ ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *itemId, char *a
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;

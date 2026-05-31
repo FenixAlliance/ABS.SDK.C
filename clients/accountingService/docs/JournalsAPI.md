@@ -1,9 +1,11 @@
 # JournalsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**JournalsAPI_aggregateJournalEntryCreditsAsync**](JournalsAPI.md#JournalsAPI_aggregateJournalEntryCreditsAsync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Credits | Aggregate journal entry credits
+[**JournalsAPI_aggregateJournalEntryDebitsAsync**](JournalsAPI.md#JournalsAPI_aggregateJournalEntryDebitsAsync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Debits | Aggregate journal entry debits
 [**JournalsAPI_countJournalsAsync**](JournalsAPI.md#JournalsAPI_countJournalsAsync) | **GET** /api/v2/AccountingService/Journals/Count | Count journals
 [**JournalsAPI_createJournalAsync**](JournalsAPI.md#JournalsAPI_createJournalAsync) | **POST** /api/v2/AccountingService/Journals | Create journal
 [**JournalsAPI_createJournalEntryAsync**](JournalsAPI.md#JournalsAPI_createJournalEntryAsync) | **POST** /api/v2/AccountingService/Journals/{journalId}/Entries | Create journal entry
@@ -16,6 +18,76 @@ Method | HTTP request | Description
 [**JournalsAPI_updateJournalAsync**](JournalsAPI.md#JournalsAPI_updateJournalAsync) | **PUT** /api/v2/AccountingService/Journals/{journalId} | Update journal
 [**JournalsAPI_updateJournalEntryAsync**](JournalsAPI.md#JournalsAPI_updateJournalEntryAsync) | **PUT** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Update journal entry
 
+
+# **JournalsAPI_aggregateJournalEntryCreditsAsync**
+```c
+// Aggregate journal entry credits
+//
+// Returns the sum of all credit amounts for entries in the specified journal, normalized to the target currency.
+//
+money_envelope_t* JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**journalId** | **char \*** |  | 
+**currencyId** | **char \*** |  | [optional] 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[money_envelope_t](money_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JournalsAPI_aggregateJournalEntryDebitsAsync**
+```c
+// Aggregate journal entry debits
+//
+// Returns the sum of all debit amounts for entries in the specified journal, normalized to the target currency.
+//
+money_envelope_t* JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**journalId** | **char \*** |  | 
+**currencyId** | **char \*** |  | [optional] 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[money_envelope_t](money_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **JournalsAPI_countJournalsAsync**
 ```c

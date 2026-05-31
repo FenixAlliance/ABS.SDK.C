@@ -12,6 +12,171 @@
 }while(0)
 
 
+// Aggregate accounts balance
+//
+// Returns the sum of all account balances matching OData filters, normalized to the target currency using stored USD values.
+//
+money_envelope_t*
+AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId, char *currencyId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/AccountingService/Accounts/Aggregate/Balance")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/AccountingService/Accounts/Aggregate/Balance");
+
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_currencyId = NULL;
+    char * valueQuery_currencyId = NULL;
+    keyValuePair_t *keyPairQuery_currencyId = 0;
+    if (currencyId)
+    {
+        keyQuery_currencyId = strdup("currencyId");
+        valueQuery_currencyId = strdup((currencyId));
+        keyPairQuery_currencyId = keyValuePair_create(keyQuery_currencyId, valueQuery_currencyId);
+        list_addElement(localVarQueryParameters,keyPairQuery_currencyId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    //nonprimitive not container
+    cJSON *AccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    money_envelope_t *elementToReturn = money_envelope_parseFromJSON(AccountsAPIlocalVarJSON);
+    cJSON_Delete(AccountsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_currencyId){
+        free(keyQuery_currencyId);
+        keyQuery_currencyId = NULL;
+    }
+    if(valueQuery_currencyId){
+        free(valueQuery_currencyId);
+        valueQuery_currencyId = NULL;
+    }
+    if(keyPairQuery_currencyId){
+        keyValuePair_free(keyPairQuery_currencyId);
+        keyPairQuery_currencyId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Balance account
 //
 // Balance account.
@@ -1184,7 +1349,7 @@ end:
 // Create account type.
 //
 empty_envelope_t*
-AccountsAPI_createAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, account_type_create_dto_t *account_type_create_dto)
+AccountsAPI_createAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_type_create_dto_t *account_type_create_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1223,18 +1388,6 @@ AccountsAPI_createAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char 
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_accountId = NULL;
-    char * valueQuery_accountId = NULL;
-    keyValuePair_t *keyPairQuery_accountId = 0;
-    if (accountId)
-    {
-        keyQuery_accountId = strdup("accountId");
-        valueQuery_accountId = strdup((accountId));
-        keyPairQuery_accountId = keyValuePair_create(keyQuery_accountId, valueQuery_accountId);
-        list_addElement(localVarQueryParameters,keyPairQuery_accountId);
     }
 
     // query parameters
@@ -1328,18 +1481,6 @@ AccountsAPI_createAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char 
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
-    }
-    if(keyQuery_accountId){
-        free(keyQuery_accountId);
-        keyQuery_accountId = NULL;
-    }
-    if(valueQuery_accountId){
-        free(valueQuery_accountId);
-        valueQuery_accountId = NULL;
-    }
-    if(keyPairQuery_accountId){
-        keyValuePair_free(keyPairQuery_accountId);
-        keyPairQuery_accountId = NULL;
     }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
@@ -1888,7 +2029,7 @@ end:
 // Delete account type.
 //
 empty_envelope_t*
-AccountsAPI_deleteAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *accountId, char *api_version, char *x_api_version)
+AccountsAPI_deleteAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1944,18 +2085,6 @@ AccountsAPI_deleteAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char 
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_accountId = NULL;
-    char * valueQuery_accountId = NULL;
-    keyValuePair_t *keyPairQuery_accountId = 0;
-    if (accountId)
-    {
-        keyQuery_accountId = strdup("accountId");
-        valueQuery_accountId = strdup((accountId));
-        keyPairQuery_accountId = keyValuePair_create(keyQuery_accountId, valueQuery_accountId);
-        list_addElement(localVarQueryParameters,keyPairQuery_accountId);
     }
 
     // query parameters
@@ -2034,18 +2163,6 @@ AccountsAPI_deleteAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char 
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
-    }
-    if(keyQuery_accountId){
-        free(keyQuery_accountId);
-        keyQuery_accountId = NULL;
-    }
-    if(valueQuery_accountId){
-        free(valueQuery_accountId);
-        valueQuery_accountId = NULL;
-    }
-    if(keyPairQuery_accountId){
-        keyValuePair_free(keyPairQuery_accountId);
-        keyPairQuery_accountId = NULL;
     }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
@@ -3736,12 +3853,171 @@ end:
 
 }
 
+// Get account type by ID
+//
+// Get account type by ID.
+//
+account_type_dto_envelope_t*
+AccountsAPI_getAccountTypeByIdAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/AccountingService/Accounts/Types/{accountTypeId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/AccountingService/Accounts/Types/{accountTypeId}");
+
+
+    // Path Params
+    long sizeOfPathParams_accountTypeId = strlen(accountTypeId)+3 + strlen("{ accountTypeId }");
+    if(accountTypeId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_accountTypeId = malloc(sizeOfPathParams_accountTypeId);
+    sprintf(localVarToReplace_accountTypeId, "{%s}", "accountTypeId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_accountTypeId, accountTypeId);
+    if(accountTypeId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_accountTypeId = malloc(sizeOfPathParams_accountTypeId);
+    sprintf(localVarToReplace_accountTypeId, "{%s}", "accountTypeId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_accountTypeId, accountTypeId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *AccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    account_type_dto_envelope_t *elementToReturn = account_type_dto_envelope_parseFromJSON(AccountsAPIlocalVarJSON);
+    cJSON_Delete(AccountsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_accountTypeId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Get account types
 //
 // Get account types.
 //
 account_type_dto_list_envelope_t*
-AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -3780,18 +4056,6 @@ AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *a
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_accountTypeId = NULL;
-    char * valueQuery_accountTypeId = NULL;
-    keyValuePair_t *keyPairQuery_accountTypeId = 0;
-    if (accountTypeId)
-    {
-        keyQuery_accountTypeId = strdup("accountTypeId");
-        valueQuery_accountTypeId = strdup((accountTypeId));
-        keyPairQuery_accountTypeId = keyValuePair_create(keyQuery_accountTypeId, valueQuery_accountTypeId);
-        list_addElement(localVarQueryParameters,keyPairQuery_accountTypeId);
     }
 
     // query parameters
@@ -3870,18 +4134,6 @@ AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *a
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
     }
-    if(keyQuery_accountTypeId){
-        free(keyQuery_accountTypeId);
-        keyQuery_accountTypeId = NULL;
-    }
-    if(valueQuery_accountTypeId){
-        free(valueQuery_accountTypeId);
-        valueQuery_accountTypeId = NULL;
-    }
-    if(keyPairQuery_accountTypeId){
-        keyValuePair_free(keyPairQuery_accountTypeId);
-        keyPairQuery_accountTypeId = NULL;
-    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3906,7 +4158,7 @@ end:
 // Get account types count.
 //
 int32_envelope_t*
-AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -3945,18 +4197,6 @@ AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, ch
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_accountTypeId = NULL;
-    char * valueQuery_accountTypeId = NULL;
-    keyValuePair_t *keyPairQuery_accountTypeId = 0;
-    if (accountTypeId)
-    {
-        keyQuery_accountTypeId = strdup("accountTypeId");
-        valueQuery_accountTypeId = strdup((accountTypeId));
-        keyPairQuery_accountTypeId = keyValuePair_create(keyQuery_accountTypeId, valueQuery_accountTypeId);
-        list_addElement(localVarQueryParameters,keyPairQuery_accountTypeId);
     }
 
     // query parameters
@@ -4034,18 +4274,6 @@ AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, ch
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
-    }
-    if(keyQuery_accountTypeId){
-        free(keyQuery_accountTypeId);
-        keyQuery_accountTypeId = NULL;
-    }
-    if(valueQuery_accountTypeId){
-        free(valueQuery_accountTypeId);
-        valueQuery_accountTypeId = NULL;
-    }
-    if(keyPairQuery_accountTypeId){
-        keyValuePair_free(keyPairQuery_accountTypeId);
-        keyPairQuery_accountTypeId = NULL;
     }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
@@ -4329,6 +4557,123 @@ AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
     }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Get charts of accounts
+//
+// Get available charts of accounts.
+//
+chart_of_accounts_list_envelope_t*
+AccountsAPI_getChartsOfAccountsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/AccountingService/Accounts/ChartsOfAccounts")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/AccountingService/Accounts/ChartsOfAccounts");
+
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *AccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    chart_of_accounts_list_envelope_t *elementToReturn = chart_of_accounts_list_envelope_parseFromJSON(AccountsAPIlocalVarJSON);
+    cJSON_Delete(AccountsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -5169,6 +5514,163 @@ end:
 
 }
 
+// Seed chart of accounts
+//
+// Seed a chart of accounts from a file URL.
+//
+empty_envelope_t*
+AccountsAPI_seedChartOfAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, seed_chart_of_accounts_request_t *seed_chart_of_accounts_request)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/AccountingService/Accounts/ChartsOfAccounts/Seed")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/AccountingService/Accounts/ChartsOfAccounts/Seed");
+
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_seed_chart_of_accounts_request = NULL;
+    if (seed_chart_of_accounts_request != NULL)
+    {
+        //string
+        localVarSingleItemJSON_seed_chart_of_accounts_request = seed_chart_of_accounts_request_convertToJSON(seed_chart_of_accounts_request);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_seed_chart_of_accounts_request);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *AccountsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(AccountsAPIlocalVarJSON);
+    cJSON_Delete(AccountsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_seed_chart_of_accounts_request) {
+        cJSON_Delete(localVarSingleItemJSON_seed_chart_of_accounts_request);
+        localVarSingleItemJSON_seed_chart_of_accounts_request = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Update an account
 //
 // Update an account.
@@ -5745,7 +6247,7 @@ end:
 // Update account type.
 //
 empty_envelope_t*
-AccountsAPI_updateAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *accountId, char *api_version, char *x_api_version, account_type_update_dto_t *account_type_update_dto)
+AccountsAPI_updateAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, account_type_update_dto_t *account_type_update_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -5801,18 +6303,6 @@ AccountsAPI_updateAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char 
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_accountId = NULL;
-    char * valueQuery_accountId = NULL;
-    keyValuePair_t *keyPairQuery_accountId = 0;
-    if (accountId)
-    {
-        keyQuery_accountId = strdup("accountId");
-        valueQuery_accountId = strdup((accountId));
-        keyPairQuery_accountId = keyValuePair_create(keyQuery_accountId, valueQuery_accountId);
-        list_addElement(localVarQueryParameters,keyPairQuery_accountId);
     }
 
     // query parameters
@@ -5907,18 +6397,6 @@ AccountsAPI_updateAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char 
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
-    }
-    if(keyQuery_accountId){
-        free(keyQuery_accountId);
-        keyQuery_accountId = NULL;
-    }
-    if(valueQuery_accountId){
-        free(valueQuery_accountId);
-        valueQuery_accountId = NULL;
-    }
-    if(keyPairQuery_accountId){
-        keyValuePair_free(keyPairQuery_accountId);
-        keyPairQuery_accountId = NULL;
     }
     if(keyQuery_api_version){
         free(keyQuery_api_version);

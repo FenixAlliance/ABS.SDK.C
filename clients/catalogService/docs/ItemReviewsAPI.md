@@ -1,6 +1,6 @@
 # ItemReviewsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -84,7 +84,7 @@ No authorization required
 //
 // Retrieves a specific item review by its ID.
 //
-item_review_dto_envelope_t* ItemReviewsAPI_getItemReviewByIdAsync(apiClient_t *apiClient, char *itemReviewId, char *api_version, char *x_api_version);
+item_review_dto_envelope_t* ItemReviewsAPI_getItemReviewByIdAsync(apiClient_t *apiClient, char *itemReviewId, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -92,6 +92,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **itemReviewId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

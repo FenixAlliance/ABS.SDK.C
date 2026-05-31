@@ -33,7 +33,7 @@ PaymentsAPI_deletePaymentAsync(apiClient_t *apiClient, char *tenantId, char *pay
 // Retrieves a payment using the deprecated /Details route. Use GET {paymentId} instead.
 //
 payment_dto_list_envelope_t*
-PaymentsAPI_getPaymentAsync(apiClient_t *apiClient, char *paymentId);
+PaymentsAPI_getPaymentAsync(apiClient_t *apiClient, char *tenantId, char *paymentId);
 
 
 // Gets a payment by ID
@@ -41,7 +41,7 @@ PaymentsAPI_getPaymentAsync(apiClient_t *apiClient, char *paymentId);
 // Retrieves the details of a payment using its unique identifier.
 //
 payment_dto_list_envelope_t*
-PaymentsAPI_getPaymentAsyncV2(apiClient_t *apiClient, char *paymentId);
+PaymentsAPI_getPaymentAsyncV2(apiClient_t *apiClient, char *tenantId, char *paymentId);
 
 
 // Retrieves all payments

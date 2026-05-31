@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/course_certificate_template_create_dto.h"
 #include "../model/course_certificate_template_dto.h"
+#include "../model/course_certificate_template_update_dto.h"
 #include "../model/course_completion_certificate_create_dto.h"
 #include "../model/course_completion_certificate_dto.h"
 #include "../model/course_completion_certificate_update_dto.h"
@@ -69,6 +70,14 @@ list_t*
 CourseCertificatesAPI_getCourseCertificateTemplatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
+// Get certificate templates count
+//
+// Returns the count of course certificate templates for the specified tenant.
+//
+int*
+CourseCertificatesAPI_getCourseCertificateTemplatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
 // Get all course certificates
 //
 // Retrieves all course certificates for the specified tenant.
@@ -91,5 +100,13 @@ CourseCertificatesAPI_getCourseCertificatesCountAsync(apiClient_t *apiClient, ch
 //
 void
 CourseCertificatesAPI_updateCourseCertificateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateId, char *api_version, char *x_api_version, course_completion_certificate_update_dto_t *course_completion_certificate_update_dto);
+
+
+// Update a certificate template
+//
+// Updates an existing course certificate template for the specified tenant.
+//
+void
+CourseCertificatesAPI_updateCourseCertificateTemplateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateTemplateId, char *api_version, char *x_api_version, course_certificate_template_update_dto_t *course_certificate_template_update_dto);
 
 

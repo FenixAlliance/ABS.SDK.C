@@ -17,7 +17,7 @@
 // Counts all return policies for a specific item.
 //
 int32_envelope_t*
-ItemReturnPoliciesAPI_countItemReturnPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version)
+ItemReturnPoliciesAPI_countItemReturnPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -45,6 +45,18 @@ ItemReturnPoliciesAPI_countItemReturnPoliciesAsync(apiClient_t *apiClient, char 
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_itemId = NULL;
@@ -122,6 +134,18 @@ ItemReturnPoliciesAPI_countItemReturnPoliciesAsync(apiClient_t *apiClient, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_itemId){
         free(keyQuery_itemId);
         keyQuery_itemId = NULL;
@@ -158,7 +182,7 @@ end:
 // Retrieves all return policies for a specific item.
 //
 item_return_policy_dto_list_envelope_t*
-ItemReturnPoliciesAPI_getItemReturnPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version)
+ItemReturnPoliciesAPI_getItemReturnPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -186,6 +210,18 @@ ItemReturnPoliciesAPI_getItemReturnPoliciesAsync(apiClient_t *apiClient, char *i
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_itemId = NULL;
@@ -263,6 +299,18 @@ ItemReturnPoliciesAPI_getItemReturnPoliciesAsync(apiClient_t *apiClient, char *i
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_itemId){
         free(keyQuery_itemId);
         keyQuery_itemId = NULL;
@@ -299,7 +347,7 @@ end:
 // Retrieves a specific return policy for an item.
 //
 item_return_policy_dto_envelope_t*
-ItemReturnPoliciesAPI_getItemReturnPolicyByIdAsync(apiClient_t *apiClient, char *itemReturnPolicyId, char *itemId, char *api_version, char *x_api_version)
+ItemReturnPoliciesAPI_getItemReturnPolicyByIdAsync(apiClient_t *apiClient, char *itemReturnPolicyId, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -344,6 +392,18 @@ ItemReturnPoliciesAPI_getItemReturnPolicyByIdAsync(apiClient_t *apiClient, char 
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_itemId = NULL;
@@ -422,6 +482,18 @@ ItemReturnPoliciesAPI_getItemReturnPolicyByIdAsync(apiClient_t *apiClient, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_itemId){
         free(keyQuery_itemId);
         keyQuery_itemId = NULL;

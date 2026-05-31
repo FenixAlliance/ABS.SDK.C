@@ -782,7 +782,7 @@ end:
 // Updates an existing employer for the specified tenant.
 //
 empty_envelope_t*
-EmployersAPI_updateEmployerAsync(apiClient_t *apiClient, char *tenantId, char *employerId, char *api_version, char *x_api_version, object_t *body)
+EmployersAPI_updateEmployerAsync(apiClient_t *apiClient, char *tenantId, char *employerId, char *api_version, char *x_api_version, employer_profile_update_dto_t *employer_profile_update_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -853,12 +853,12 @@ EmployersAPI_updateEmployerAsync(apiClient_t *apiClient, char *tenantId, char *e
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_body = NULL;
-    if (body != NULL)
+    cJSON *localVarSingleItemJSON_employer_profile_update_dto = NULL;
+    if (employer_profile_update_dto != NULL)
     {
         //string
-        localVarSingleItemJSON_body = object_convertToJSON(body);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_body);
+        localVarSingleItemJSON_employer_profile_update_dto = employer_profile_update_dto_convertToJSON(employer_profile_update_dto);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_employer_profile_update_dto);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -920,9 +920,9 @@ EmployersAPI_updateEmployerAsync(apiClient_t *apiClient, char *tenantId, char *e
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarSingleItemJSON_body) {
-        cJSON_Delete(localVarSingleItemJSON_body);
-        localVarSingleItemJSON_body = NULL;
+    if (localVarSingleItemJSON_employer_profile_update_dto) {
+        cJSON_Delete(localVarSingleItemJSON_employer_profile_update_dto);
+        localVarSingleItemJSON_employer_profile_update_dto = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

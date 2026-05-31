@@ -1,6 +1,6 @@
 # EmailsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -46,7 +46,7 @@ No authorization required
 //
 // This action is only available for global administrators (business_owner role).
 //
-tenant_dto_list_envelope_t* EmailsAPI_adminSendBasicEmail(apiClient_t *apiClient, char *api_version, char *x_api_version, object_email_dispatch_request_t *object_email_dispatch_request);
+envelope_t* EmailsAPI_adminSendBasicEmail(apiClient_t *apiClient, char *api_version, char *x_api_version, object_email_dispatch_request_t *object_email_dispatch_request);
 ```
 
 ### Parameters
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[tenant_dto_list_envelope_t](tenant_dto_list_envelope.md) *
+[envelope_t](envelope.md) *
 
 
 ### Authorization

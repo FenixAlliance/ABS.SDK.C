@@ -100,6 +100,7 @@ order_dto_t *order_dto_create(
     char *customer_notes,
     walletsservice_order_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     double forex_rate,
+    char *forex_rates_snapshot,
     char *currency_id,
     double total_detail,
     char *total_detail_currency_id,
@@ -190,6 +191,7 @@ order_dto_t *order_dto_create(
     order_dto_local_var->customer_notes = customer_notes;
     order_dto_local_var->tax_calculation_method = tax_calculation_method;
     order_dto_local_var->forex_rate = forex_rate;
+    order_dto_local_var->forex_rates_snapshot = forex_rates_snapshot;
     order_dto_local_var->currency_id = currency_id;
     order_dto_local_var->total_detail = total_detail;
     order_dto_local_var->total_detail_currency_id = total_detail_currency_id;
@@ -350,6 +352,10 @@ void order_dto_free(order_dto_t *order_dto) {
     if (order_dto->customer_notes) {
         free(order_dto->customer_notes);
         order_dto->customer_notes = NULL;
+    }
+    if (order_dto->forex_rates_snapshot) {
+        free(order_dto->forex_rates_snapshot);
+        order_dto->forex_rates_snapshot = NULL;
     }
     if (order_dto->currency_id) {
         free(order_dto->currency_id);
@@ -650,6 +656,14 @@ cJSON *order_dto_convertToJSON(order_dto_t *order_dto) {
     if(order_dto->forex_rate) {
     if(cJSON_AddNumberToObject(item, "forexRate", order_dto->forex_rate) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // order_dto->forex_rates_snapshot
+    if(order_dto->forex_rates_snapshot) {
+    if(cJSON_AddStringToObject(item, "forexRatesSnapshot", order_dto->forex_rates_snapshot) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -1376,6 +1390,15 @@ order_dto_t *order_dto_parseFromJSON(cJSON *order_dtoJSON){
     }
     }
 
+    // order_dto->forex_rates_snapshot
+    cJSON *forex_rates_snapshot = cJSON_GetObjectItemCaseSensitive(order_dtoJSON, "forexRatesSnapshot");
+    if (forex_rates_snapshot) { 
+    if(!cJSON_IsString(forex_rates_snapshot) && !cJSON_IsNull(forex_rates_snapshot))
+    {
+    goto end; //String
+    }
+    }
+
     // order_dto->currency_id
     cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(order_dtoJSON, "currencyId");
     if (currency_id) { 
@@ -1941,6 +1964,7 @@ order_dto_t *order_dto_parseFromJSON(cJSON *order_dtoJSON){
         customer_notes && !cJSON_IsNull(customer_notes) ? strdup(customer_notes->valuestring) : NULL,
         tax_calculation_method ? tax_calculation_methodVariable : walletsservice_order_dto_TAXCALCULATIONMETHOD_NULL,
         forex_rate ? forex_rate->valuedouble : 0,
+        forex_rates_snapshot && !cJSON_IsNull(forex_rates_snapshot) ? strdup(forex_rates_snapshot->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         total_detail ? total_detail->valuedouble : 0,
         total_detail_currency_id && !cJSON_IsNull(total_detail_currency_id) ? strdup(total_detail_currency_id->valuestring) : NULL,

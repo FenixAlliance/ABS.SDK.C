@@ -1,6 +1,6 @@
 # ItemQuestionsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -84,7 +84,7 @@ No authorization required
 //
 // Retrieves a specific item question by its ID.
 //
-item_question_dto_envelope_t* ItemQuestionsAPI_getItemQuestionByIdAsync(apiClient_t *apiClient, char *itemQuestionId, char *api_version, char *x_api_version);
+item_question_dto_envelope_t* ItemQuestionsAPI_getItemQuestionByIdAsync(apiClient_t *apiClient, char *itemQuestionId, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -92,6 +92,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **itemQuestionId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -124,7 +125,7 @@ item_question_dto_list_envelope_t* ItemQuestionsAPI_getItemQuestionsAsync(apiCli
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

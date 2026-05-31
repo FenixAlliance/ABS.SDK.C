@@ -23,6 +23,7 @@ typedef struct item_attribute_option_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *description; // string
+    char *item_attribute_id; // string
     char *business_id; // string
 
 } item_attribute_option_dto_t;
@@ -32,6 +33,7 @@ item_attribute_option_dto_t *item_attribute_option_dto_create(
     char *timestamp,
     char *name,
     char *description,
+    char *item_attribute_id,
     char *business_id
 );
 

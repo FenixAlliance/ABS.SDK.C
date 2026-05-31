@@ -1,6 +1,6 @@
 # FiscalResponsibilityRecordsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,14 +18,14 @@ Method | HTTP request | Description
 //
 // Creates a new fiscal responsibility record for a fiscal responsibility.
 //
-empty_envelope_t* FiscalResponsibilityRecordsAPI_createFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_responsibility_record_create_dto_t *fiscal_responsibility_record_create_dto);
+empty_envelope_t* FiscalResponsibilityRecordsAPI_createFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_responsibility_record_create_dto_t *fiscal_responsibility_record_create_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **fiscal_responsibility_record_create_dto** | **[fiscal_responsibility_record_create_dto_t](fiscal_responsibility_record_create_dto.md) \*** |  | [optional] 
@@ -52,14 +52,14 @@ No authorization required
 //
 // Deletes a fiscal responsibility record identified by its unique identifier.
 //
-empty_envelope_t* FiscalResponsibilityRecordsAPI_deleteFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version);
+empty_envelope_t* FiscalResponsibilityRecordsAPI_deleteFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalResponsibilityRecordId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -86,14 +86,14 @@ No authorization required
 //
 // Retrieves a specific fiscal responsibility record by its unique identifier.
 //
-fiscal_responsibility_record_dto_envelope_t* FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version);
+fiscal_responsibility_record_dto_envelope_t* FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **fiscalResponsibilityId** | **char \*** |  | 
 **fiscalResponsibilityRecordId** | **char \*** |  | 
@@ -122,14 +122,14 @@ No authorization required
 //
 // Retrieves all fiscal responsibility records for the specified fiscal responsibility.
 //
-fiscal_responsibility_record_dto_list_envelope_t* FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
+fiscal_responsibility_record_dto_list_envelope_t* FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **fiscalResponsibilityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -157,14 +157,14 @@ No authorization required
 //
 // Returns the total count of fiscal responsibility records for the specified fiscal responsibility.
 //
-int32_envelope_t* FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
+int32_envelope_t* FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **fiscalResponsibilityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -192,14 +192,14 @@ No authorization required
 //
 // Updates an existing fiscal responsibility record identified by its unique identifier.
 //
-empty_envelope_t* FiscalResponsibilityRecordsAPI_updateFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, fiscal_responsibility_record_update_dto_t *fiscal_responsibility_record_update_dto);
+empty_envelope_t* FiscalResponsibilityRecordsAPI_updateFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, fiscal_responsibility_record_update_dto_t *fiscal_responsibility_record_update_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalResponsibilityRecordId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 

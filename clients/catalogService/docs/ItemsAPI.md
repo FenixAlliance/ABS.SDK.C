@@ -1,6 +1,6 @@
 # ItemsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -88,13 +88,14 @@ Method | HTTP request | Description
 //
 // Counts the number of tags associated with a specific stock item.
 //
-int32_envelope_t* ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+int32_envelope_t* ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **itemId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -1123,13 +1124,14 @@ No authorization required
 //
 // Retrieves a specific tag by ID for a stock item.
 //
-item_tag_dto_envelope_t* ItemsAPI_getStockItemTagById(apiClient_t *apiClient, char *itemId, char *itemTagId, char *api_version, char *x_api_version);
+item_tag_dto_envelope_t* ItemsAPI_getStockItemTagById(apiClient_t *apiClient, char *tenantId, char *itemId, char *itemTagId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **itemId** | **char \*** |  | 
 **itemTagId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -1157,13 +1159,14 @@ No authorization required
 //
 // Retrieves all tags associated with a specific stock item.
 //
-item_tag_dto_list_envelope_t* ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+item_tag_dto_list_envelope_t* ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **itemId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -1257,13 +1260,14 @@ No authorization required
 //
 // Retrieves a specific type by ID for a stock item.
 //
-item_type_dto_envelope_t* ItemsAPI_getStockItemTypeById(apiClient_t *apiClient, char *itemId, char *itemTypeId, char *api_version, char *x_api_version);
+item_type_dto_envelope_t* ItemsAPI_getStockItemTypeById(apiClient_t *apiClient, char *tenantId, char *itemId, char *itemTypeId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **itemId** | **char \*** |  | 
 **itemTypeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -1291,13 +1295,14 @@ No authorization required
 //
 // Retrieves all types associated with a specific stock item.
 //
-item_type_dto_list_envelope_t* ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+item_type_dto_list_envelope_t* ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **itemId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 

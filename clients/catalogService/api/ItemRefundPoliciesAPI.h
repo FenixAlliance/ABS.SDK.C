@@ -16,7 +16,7 @@
 // Counts all refund policies for a specific item.
 //
 int32_envelope_t*
-ItemRefundPoliciesAPI_countItemRefundPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemRefundPoliciesAPI_countItemRefundPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Get item refund policies
@@ -24,7 +24,7 @@ ItemRefundPoliciesAPI_countItemRefundPoliciesAsync(apiClient_t *apiClient, char 
 // Retrieves all refund policies for a specific item.
 //
 item_refund_policy_dto_list_envelope_t*
-ItemRefundPoliciesAPI_getItemRefundPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemRefundPoliciesAPI_getItemRefundPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Get item refund policy by ID
@@ -32,7 +32,7 @@ ItemRefundPoliciesAPI_getItemRefundPoliciesAsync(apiClient_t *apiClient, char *i
 // Retrieves a specific refund policy for an item.
 //
 item_refund_policy_dto_envelope_t*
-ItemRefundPoliciesAPI_getItemRefundPolicyByIdAsync(apiClient_t *apiClient, char *itemRefundPolicyId, char *itemId, char *api_version, char *x_api_version);
+ItemRefundPoliciesAPI_getItemRefundPolicyByIdAsync(apiClient_t *apiClient, char *itemRefundPolicyId, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Relate item to refund policy

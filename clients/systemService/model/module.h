@@ -54,6 +54,7 @@ typedef struct module_t {
     list_t *swagger_specs; //nonprimitive container
     char *url; // string
     list_t *assembly_paths; //primitive container
+    list_t *required_permissions; //primitive container
     int marked_for_deletion; //boolean
     char *version; // string
 
@@ -86,6 +87,7 @@ module_t *module_create(
     list_t *swagger_specs,
     char *url,
     list_t *assembly_paths,
+    list_t *required_permissions,
     int marked_for_deletion,
     char *version
 );

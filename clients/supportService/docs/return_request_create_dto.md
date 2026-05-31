@@ -1,0 +1,18 @@
+# return_request_create_dto_t
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **char \*** |  | [optional] 
+**timestamp** | **char \*** |  | [optional] 
+**title** | **char \*** |  | 
+**description** | **char \*** |  | [optional] 
+**approved** | **int** |  | [optional] 
+**approved_timestamp** | **char \*** |  | [optional] 
+**support_entitlement_id** | **char \*** |  | [optional] 
+**contact_id** | **char \*** |  | [optional] 
+**return_policy_id** | **char \*** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

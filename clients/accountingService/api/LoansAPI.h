@@ -14,6 +14,10 @@
 #include "../model/loan_create_dto.h"
 #include "../model/loan_dto_envelope.h"
 #include "../model/loan_dto_i_read_only_list_envelope.h"
+#include "../model/loan_type_create_dto.h"
+#include "../model/loan_type_dto_envelope.h"
+#include "../model/loan_type_dto_i_read_only_list_envelope.h"
+#include "../model/loan_type_update_dto.h"
 #include "../model/loan_update_dto.h"
 #include "../model/object.h"
 
@@ -34,6 +38,14 @@ empty_envelope_t*
 LoansAPI_createLoanAsync(apiClient_t *apiClient, char *tenantId, loan_create_dto_t *loan_create_dto, char *api_version, char *x_api_version);
 
 
+// Creates a loan type
+//
+// Creates a new loan type for the current tenant.
+//
+empty_envelope_t*
+LoansAPI_createLoanTypeAsync(apiClient_t *apiClient, char *tenantId, loan_type_create_dto_t *loan_type_create_dto, char *api_version, char *x_api_version);
+
+
 // Deletes a loan application
 //
 // Deletes the specified loan application.
@@ -48,6 +60,14 @@ LoansAPI_deleteLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char
 //
 empty_envelope_t*
 LoansAPI_deleteLoanAsync(apiClient_t *apiClient, char *tenantId, char *loanId, char *api_version, char *x_api_version);
+
+
+// Deletes a loan type
+//
+// Deletes the specified loan type.
+//
+empty_envelope_t*
+LoansAPI_deleteLoanTypeAsync(apiClient_t *apiClient, char *tenantId, char *loanTypeId, char *api_version, char *x_api_version);
 
 
 // Gets a loan application by ID
@@ -82,6 +102,30 @@ loan_dto_envelope_t*
 LoansAPI_getLoanDetailsAsync(apiClient_t *apiClient, char *tenantId, char *loanId, char *api_version, char *x_api_version);
 
 
+// Gets a loan type by ID
+//
+// Retrieves the details of a loan type using its unique ID.
+//
+loan_type_dto_envelope_t*
+LoansAPI_getLoanTypeByIdAsync(apiClient_t *apiClient, char *tenantId, char *loanTypeId, char *api_version, char *x_api_version);
+
+
+// Gets all loan types
+//
+// Retrieves all loan types for the current tenant with OData support.
+//
+loan_type_dto_i_read_only_list_envelope_t*
+LoansAPI_getLoanTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Counts loan types
+//
+// Gets the count of loan types for the current tenant.
+//
+int32_envelope_t*
+LoansAPI_getLoanTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
 // Gets all loans
 //
 // Retrieves all loans for the current tenant with OData support.
@@ -112,5 +156,13 @@ LoansAPI_updateLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char
 //
 empty_envelope_t*
 LoansAPI_updateLoanAsync(apiClient_t *apiClient, char *tenantId, char *loanId, loan_update_dto_t *loan_update_dto, char *api_version, char *x_api_version);
+
+
+// Updates a loan type
+//
+// Updates the specified loan type.
+//
+empty_envelope_t*
+LoansAPI_updateLoanTypeAsync(apiClient_t *apiClient, char *tenantId, char *loanTypeId, loan_type_update_dto_t *loan_type_update_dto, char *api_version, char *x_api_version);
 
 

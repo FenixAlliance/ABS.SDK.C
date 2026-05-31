@@ -1,0 +1,48 @@
+/*
+ * salary_dto_envelope.h
+ *
+ * 
+ */
+
+#ifndef _salary_dto_envelope_H_
+#define _salary_dto_envelope_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct salary_dto_envelope_t salary_dto_envelope_t;
+
+#include "salary_dto.h"
+
+
+
+typedef struct salary_dto_envelope_t {
+    int is_success; //boolean
+    char *error_message; // string
+    char *correlation_id; // string
+    char *timestamp; //date time
+    char *activity_id; // string
+    struct salary_dto_t *result; //model
+
+} salary_dto_envelope_t;
+
+salary_dto_envelope_t *salary_dto_envelope_create(
+    int is_success,
+    char *error_message,
+    char *correlation_id,
+    char *timestamp,
+    char *activity_id,
+    salary_dto_t *result
+);
+
+void salary_dto_envelope_free(salary_dto_envelope_t *salary_dto_envelope);
+
+salary_dto_envelope_t *salary_dto_envelope_parseFromJSON(cJSON *salary_dto_envelopeJSON);
+
+cJSON *salary_dto_envelope_convertToJSON(salary_dto_envelope_t *salary_dto_envelope);
+
+#endif /* _salary_dto_envelope_H_ */
+

@@ -5,7 +5,7 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
-#include "../model/authorization_result_envelope.h"
+#include "../model/auth_result_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/json_web_key_set_envelope.h"
 #include "../model/json_web_token_envelope.h"
@@ -28,7 +28,7 @@ OAuthAPI_checkPasswordSignInAsync(apiClient_t *apiClient, char *api_version, cha
 //
 // Returns the authorization result for the authenticated user, including identity and tenant context.
 //
-authorization_result_envelope_t*
+auth_result_envelope_t*
 OAuthAPI_get(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 

@@ -15,9 +15,6 @@
 
 typedef struct quote_line_dto_t quote_line_dto_t;
 
-#include "currency_id.h"
-#include "forex_rates.h"
-#include "money.h"
 
 // Enum TAXCALCULATIONMETHOD for quote_line_dto
 
@@ -41,15 +38,73 @@ typedef struct quote_line_dto_t {
     char *id; // string
     char *timestamp; //date time
     int closed; //boolean
+    char *type; // string
+    char *title; // string
+    char *user_id; // string
+    char *tenant_id; // string
+    char *description; // string
+    char *price_list_id; // string
+    char *enrollment_id; // string
+    char *individual_id; // string
+    char *organization_id; // string
+    char *receiver_tenant_id; // string
+    char *first_name; // string
+    char *last_name; // string
+    char *company_name; // string
+    char *billing_email; // string
+    char *address_line1; // string
+    char *address_line2; // string
+    char *postal_code; // string
+    char *country_id; // string
+    char *state_id; // string
+    char *city_id; // string
+    char *customer_notes; // string
+    quotesservice_quote_line_dto_TAXCALCULATIONMETHOD_e tax_calculation_method; //enum
+    quotesservice_quote_line_dto_COSTCALCULATIONMETHOD_e cost_calculation_method; //enum
+    double forex_rate; //numeric
+    char *forex_rates_snapshot; // string
+    char *currency_id; // string
+    double total_detail; //numeric
+    char *total_detail_currency_id; // string
+    double total_profit; //numeric
+    char *total_profit_currency_id; // string
+    double total_discounts; //numeric
+    char *total_discounts_currency_id; // string
+    double total_surcharges; //numeric
+    char *total_surcharges_currency_id; // string
+    double total_tax_base; //numeric
+    char *total_tax_base_currency_id; // string
+    double total_taxes; //numeric
+    char *total_taxes_currency_id; // string
+    double total_shipping_cost; //numeric
+    char *total_shipping_cost_currency_id; // string
+    double total_shipping_tax; //numeric
+    char *total_shipping_tax_currency_id; // string
+    double total_withheld_tax; //numeric
+    char *total_withheld_tax_currency_id; // string
+    double total_global_discounts; //numeric
+    char *total_global_discounts_currency_id; // string
+    double total_global_surcharges; //numeric
+    char *total_global_surcharges_currency_id; // string
+    double total; //numeric
+    char *total_currency_id; // string
+    double total_detail_in_usd; //numeric
+    double total_profit_in_usd; //numeric
+    double total_discounts_in_usd; //numeric
+    double total_surcharges_in_usd; //numeric
+    double total_tax_base_in_usd; //numeric
+    double total_taxes_in_usd; //numeric
+    double total_withheld_taxes_in_usd; //numeric
+    double total_shipping_cost_in_usd; //numeric
+    double total_shipping_taxes_in_usd; //numeric
+    double total_global_discounts_in_usd; //numeric
+    double total_global_surcharges_in_usd; //numeric
+    double total_in_usd; //numeric
     char *item_id; // string
     char *item_title; // string
     char *item_short_description; // string
     char *item_primary_image_url; // string
     char *shipping_policy_id; // string
-    char *tenant_id; // string
-    char *enrollment_id; // string
-    char *currency_id; // string
-    char *description; // string
     double quantity; //numeric
     int free; //boolean
     char *free_reason; // string
@@ -78,25 +133,9 @@ typedef struct quote_line_dto_t {
     char *price_list_item_id; // string
     char *unit_id; // string
     char *unit_group_id; // string
-    quotesservice_quote_line_dto_TAXCALCULATIONMETHOD_e tax_calculation_method; //enum
-    quotesservice_quote_line_dto_COSTCALCULATIONMETHOD_e cost_calculation_method; //enum
-    struct forex_rates_t *forex_rates; //model
-    double forex_rate; //numeric
-    double total_detail_in_usd; //numeric
-    double total_profit_in_usd; //numeric
-    double total_discounts_in_usd; //numeric
-    double total_surcharges_in_usd; //numeric
-    double total_tax_base_in_usd; //numeric
-    double total_taxes_in_usd; //numeric
-    double total_withheld_taxes_in_usd; //numeric
-    double total_shipping_cost_in_usd; //numeric
-    double total_shipping_taxes_in_usd; //numeric
     double total_warranty_cost_in_usd; //numeric
     double total_return_cost_in_usd; //numeric
     double total_refund_cost_in_usd; //numeric
-    double total_in_usd; //numeric
-    double total_global_discounts_in_usd; //numeric
-    double total_global_surcharges_in_usd; //numeric
     double custom_global_surcharges_amount; //numeric
     double custom_global_discounts_amount; //numeric
     char *return_policy_id; // string
@@ -108,43 +147,6 @@ typedef struct quote_line_dto_t {
     char *quote_item_record_id; // string
     char *business_profile_record_id; // string
     char *parent_billing_item_record_id; // string
-    struct currency_id_t *currency; //model
-    double total_detail; //numeric
-    char *total_detail_currency_id; // string
-    struct money_t *total_detail_amount; //model
-    double total_profit; //numeric
-    char *total_profit_currency_id; // string
-    struct money_t *total_profit_amount; //model
-    double total_discounts; //numeric
-    char *total_discounts_currency_id; // string
-    struct money_t *total_discounts_amount; //model
-    double total_surcharges; //numeric
-    char *total_surcharges_currency_id; // string
-    struct money_t *total_surcharges_amount; //model
-    double total_tax_base; //numeric
-    char *total_tax_base_currency_id; // string
-    struct money_t *total_tax_base_amount; //model
-    double total_taxes; //numeric
-    char *total_taxes_currency_id; // string
-    struct money_t *total_taxes_amount; //model
-    double total_shipping_cost; //numeric
-    char *total_shipping_cost_currency_id; // string
-    struct money_t *total_shipping_cost_amount; //model
-    double total_shipping_tax; //numeric
-    char *total_shipping_tax_currency_id; // string
-    struct money_t *total_shipping_tax_amount; //model
-    double total_withheld_tax; //numeric
-    char *total_withheld_tax_currency_id; // string
-    struct money_t *total_withheld_tax_amount; //model
-    double total_global_discounts; //numeric
-    char *total_global_discounts_currency_id; // string
-    struct money_t *total_global_discounts_amount; //model
-    double total_global_surcharges; //numeric
-    char *total_global_surcharges_currency_id; // string
-    struct money_t *total_global_surcharges_amount; //model
-    double total; //numeric
-    char *total_currency_id; // string
-    struct money_t *total_amount; //model
     char *quote_id; // string
 
 } quote_line_dto_t;
@@ -153,15 +155,73 @@ quote_line_dto_t *quote_line_dto_create(
     char *id,
     char *timestamp,
     int closed,
+    char *type,
+    char *title,
+    char *user_id,
+    char *tenant_id,
+    char *description,
+    char *price_list_id,
+    char *enrollment_id,
+    char *individual_id,
+    char *organization_id,
+    char *receiver_tenant_id,
+    char *first_name,
+    char *last_name,
+    char *company_name,
+    char *billing_email,
+    char *address_line1,
+    char *address_line2,
+    char *postal_code,
+    char *country_id,
+    char *state_id,
+    char *city_id,
+    char *customer_notes,
+    quotesservice_quote_line_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
+    quotesservice_quote_line_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
+    double forex_rate,
+    char *forex_rates_snapshot,
+    char *currency_id,
+    double total_detail,
+    char *total_detail_currency_id,
+    double total_profit,
+    char *total_profit_currency_id,
+    double total_discounts,
+    char *total_discounts_currency_id,
+    double total_surcharges,
+    char *total_surcharges_currency_id,
+    double total_tax_base,
+    char *total_tax_base_currency_id,
+    double total_taxes,
+    char *total_taxes_currency_id,
+    double total_shipping_cost,
+    char *total_shipping_cost_currency_id,
+    double total_shipping_tax,
+    char *total_shipping_tax_currency_id,
+    double total_withheld_tax,
+    char *total_withheld_tax_currency_id,
+    double total_global_discounts,
+    char *total_global_discounts_currency_id,
+    double total_global_surcharges,
+    char *total_global_surcharges_currency_id,
+    double total,
+    char *total_currency_id,
+    double total_detail_in_usd,
+    double total_profit_in_usd,
+    double total_discounts_in_usd,
+    double total_surcharges_in_usd,
+    double total_tax_base_in_usd,
+    double total_taxes_in_usd,
+    double total_withheld_taxes_in_usd,
+    double total_shipping_cost_in_usd,
+    double total_shipping_taxes_in_usd,
+    double total_global_discounts_in_usd,
+    double total_global_surcharges_in_usd,
+    double total_in_usd,
     char *item_id,
     char *item_title,
     char *item_short_description,
     char *item_primary_image_url,
     char *shipping_policy_id,
-    char *tenant_id,
-    char *enrollment_id,
-    char *currency_id,
-    char *description,
     double quantity,
     int free,
     char *free_reason,
@@ -190,25 +250,9 @@ quote_line_dto_t *quote_line_dto_create(
     char *price_list_item_id,
     char *unit_id,
     char *unit_group_id,
-    quotesservice_quote_line_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
-    quotesservice_quote_line_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
-    forex_rates_t *forex_rates,
-    double forex_rate,
-    double total_detail_in_usd,
-    double total_profit_in_usd,
-    double total_discounts_in_usd,
-    double total_surcharges_in_usd,
-    double total_tax_base_in_usd,
-    double total_taxes_in_usd,
-    double total_withheld_taxes_in_usd,
-    double total_shipping_cost_in_usd,
-    double total_shipping_taxes_in_usd,
     double total_warranty_cost_in_usd,
     double total_return_cost_in_usd,
     double total_refund_cost_in_usd,
-    double total_in_usd,
-    double total_global_discounts_in_usd,
-    double total_global_surcharges_in_usd,
     double custom_global_surcharges_amount,
     double custom_global_discounts_amount,
     char *return_policy_id,
@@ -220,43 +264,6 @@ quote_line_dto_t *quote_line_dto_create(
     char *quote_item_record_id,
     char *business_profile_record_id,
     char *parent_billing_item_record_id,
-    currency_id_t *currency,
-    double total_detail,
-    char *total_detail_currency_id,
-    money_t *total_detail_amount,
-    double total_profit,
-    char *total_profit_currency_id,
-    money_t *total_profit_amount,
-    double total_discounts,
-    char *total_discounts_currency_id,
-    money_t *total_discounts_amount,
-    double total_surcharges,
-    char *total_surcharges_currency_id,
-    money_t *total_surcharges_amount,
-    double total_tax_base,
-    char *total_tax_base_currency_id,
-    money_t *total_tax_base_amount,
-    double total_taxes,
-    char *total_taxes_currency_id,
-    money_t *total_taxes_amount,
-    double total_shipping_cost,
-    char *total_shipping_cost_currency_id,
-    money_t *total_shipping_cost_amount,
-    double total_shipping_tax,
-    char *total_shipping_tax_currency_id,
-    money_t *total_shipping_tax_amount,
-    double total_withheld_tax,
-    char *total_withheld_tax_currency_id,
-    money_t *total_withheld_tax_amount,
-    double total_global_discounts,
-    char *total_global_discounts_currency_id,
-    money_t *total_global_discounts_amount,
-    double total_global_surcharges,
-    char *total_global_surcharges_currency_id,
-    money_t *total_global_surcharges_amount,
-    double total,
-    char *total_currency_id,
-    money_t *total_amount,
     char *quote_id
 );
 

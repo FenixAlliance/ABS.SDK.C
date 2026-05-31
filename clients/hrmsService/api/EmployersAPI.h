@@ -8,10 +8,10 @@
 #include "../model/employer_profile_create_dto.h"
 #include "../model/employer_profile_dto_envelope.h"
 #include "../model/employer_profile_dto_list_envelope.h"
+#include "../model/employer_profile_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/object.h"
 
 
 // Create an employer
@@ -59,6 +59,6 @@ EmployersAPI_getEmployersCountAsync(apiClient_t *apiClient, char *tenantId, char
 // Updates an existing employer for the specified tenant.
 //
 empty_envelope_t*
-EmployersAPI_updateEmployerAsync(apiClient_t *apiClient, char *tenantId, char *employerId, char *api_version, char *x_api_version, object_t *body);
+EmployersAPI_updateEmployerAsync(apiClient_t *apiClient, char *tenantId, char *employerId, char *api_version, char *x_api_version, employer_profile_update_dto_t *employer_profile_update_dto);
 
 

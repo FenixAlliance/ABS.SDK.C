@@ -12,6 +12,7 @@
 #include "../model/error_envelope.h"
 #include "../model/follow_record_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/notification_dto_envelope.h"
 #include "../model/notification_dto_list_envelope.h"
 #include "../model/private_message_create_dto.h"
 #include "../model/private_message_dto_list_envelope.h"
@@ -65,7 +66,7 @@ SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileI
 // Count messages for a conversation.
 //
 int32_envelope_t*
-SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *conversationId, char *api_version, char *x_api_version);
+SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version);
 
 
 // Count Notifications
@@ -169,7 +170,15 @@ SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId,
 // Get a list of messages for a conversation.
 //
 private_message_dto_list_envelope_t*
-SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *conversationId, char *api_version, char *x_api_version);
+SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version);
+
+
+// Get Notification
+//
+// Get a notification by ID for a social profile.
+//
+notification_dto_envelope_t*
+SocialProfilesAPI_getNotificationByIdAsync(apiClient_t *apiClient, char *socialProfileId, char *notificationId, char *api_version, char *x_api_version);
 
 
 // Get Notifications

@@ -19,8 +19,8 @@ typedef struct country_state_dto_t country_state_dto_t;
 
 
 typedef struct country_state_dto_t {
-    char *timestamp; //date time
     char *id; // string
+    char *timestamp; //date time
     char *name; // string
     char *code; // string
     char *country_id; // string
@@ -28,8 +28,8 @@ typedef struct country_state_dto_t {
 } country_state_dto_t;
 
 country_state_dto_t *country_state_dto_create(
-    char *timestamp,
     char *id,
+    char *timestamp,
     char *name,
     char *code,
     char *country_id

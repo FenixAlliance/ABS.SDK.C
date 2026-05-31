@@ -44,6 +44,10 @@ typedef struct account_dto_t {
     char *account_type_id; // string
     double debits_balance; //numeric
     double credits_balance; //numeric
+    double balance_in_usd; //numeric
+    double debits_balance_in_usd; //numeric
+    double credits_balance_in_usd; //numeric
+    double forex_rate; //numeric
     char *parent_account_id; // string
     char *tenant_id; // string
     char *enrollment_id; // string
@@ -52,6 +56,9 @@ typedef struct account_dto_t {
     struct money_t *balance_amount; //model
     struct money_t *credits_balance_amount; //model
     struct money_t *debits_balance_amount; //model
+    struct money_t *balance_amount_in_usd; //model
+    struct money_t *debits_balance_amount_in_usd; //model
+    struct money_t *credits_balance_amount_in_usd; //model
 
 } account_dto_t;
 
@@ -72,6 +79,10 @@ account_dto_t *account_dto_create(
     char *account_type_id,
     double debits_balance,
     double credits_balance,
+    double balance_in_usd,
+    double debits_balance_in_usd,
+    double credits_balance_in_usd,
+    double forex_rate,
     char *parent_account_id,
     char *tenant_id,
     char *enrollment_id,
@@ -79,7 +90,10 @@ account_dto_t *account_dto_create(
     accountingservice_account_dto_ACCOUNTCATEGORY_e account_category,
     money_t *balance_amount,
     money_t *credits_balance_amount,
-    money_t *debits_balance_amount
+    money_t *debits_balance_amount,
+    money_t *balance_amount_in_usd,
+    money_t *debits_balance_amount_in_usd,
+    money_t *credits_balance_amount_in_usd
 );
 
 void account_dto_free(account_dto_t *account_dto);

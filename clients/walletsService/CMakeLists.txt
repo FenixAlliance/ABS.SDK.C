@@ -55,6 +55,11 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
+    model/bank_account_create_dto.c
+    model/bank_account_dto.c
+    model/bank_account_dto_envelope.c
+    model/bank_account_dto_list_envelope.c
+    model/bank_account_update_dto.c
     model/contact_dto.c
     model/empty_envelope.c
     model/error_envelope.c
@@ -75,8 +80,20 @@ set(SRCS
     model/login_request.c
     model/order_dto.c
     model/order_dto_list_envelope.c
+    model/payment_chargeback_dto.c
+    model/payment_chargeback_dto_list_envelope.c
+    model/payment_create_dto.c
     model/payment_dto.c
     model/payment_dto_list_envelope.c
+    model/payment_refund_dto.c
+    model/payment_refund_dto_list_envelope.c
+    model/payment_token_create_dto.c
+    model/payment_token_dto.c
+    model/payment_token_dto_envelope.c
+    model/payment_token_dto_list_envelope.c
+    model/payment_token_update_dto.c
+    model/quote_dto.c
+    model/quote_dto_list_envelope.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -88,7 +105,13 @@ set(SRCS
     model/user_dto.c
     model/wallet_dto.c
     model/wallet_dto_envelope.c
-    api/FenixAllianceABSWebAPI.c
+    model/wallet_withdraw_dto.c
+    model/wallet_withdraw_dto_list_envelope.c
+    model/wallet_withdraw_request_create_dto.c
+    model/wallet_withdraw_request_dto.c
+    model/wallet_withdraw_request_dto_list_envelope.c
+    api/CompletionsAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/WalletsAPI.c
 
 )
@@ -101,6 +124,11 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
+    model/bank_account_create_dto.h
+    model/bank_account_dto.h
+    model/bank_account_dto_envelope.h
+    model/bank_account_dto_list_envelope.h
+    model/bank_account_update_dto.h
     model/contact_dto.h
     model/empty_envelope.h
     model/error_envelope.h
@@ -121,8 +149,20 @@ set(HDRS
     model/login_request.h
     model/order_dto.h
     model/order_dto_list_envelope.h
+    model/payment_chargeback_dto.h
+    model/payment_chargeback_dto_list_envelope.h
+    model/payment_create_dto.h
     model/payment_dto.h
     model/payment_dto_list_envelope.h
+    model/payment_refund_dto.h
+    model/payment_refund_dto_list_envelope.h
+    model/payment_token_create_dto.h
+    model/payment_token_dto.h
+    model/payment_token_dto_envelope.h
+    model/payment_token_dto_list_envelope.h
+    model/payment_token_update_dto.h
+    model/quote_dto.h
+    model/quote_dto_list_envelope.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
@@ -134,7 +174,13 @@ set(HDRS
     model/user_dto.h
     model/wallet_dto.h
     model/wallet_dto_envelope.h
-    api/FenixAllianceABSWebAPI.h
+    model/wallet_withdraw_dto.h
+    model/wallet_withdraw_dto_list_envelope.h
+    model/wallet_withdraw_request_create_dto.h
+    model/wallet_withdraw_request_dto.h
+    model/wallet_withdraw_request_dto_list_envelope.h
+    api/CompletionsAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/WalletsAPI.h
 
 )
@@ -217,7 +263,8 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-WalletsAPI.c
 #)
 

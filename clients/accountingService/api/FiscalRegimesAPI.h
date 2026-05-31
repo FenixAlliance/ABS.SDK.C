@@ -19,7 +19,7 @@
 // Creates a new fiscal regime for a fiscal authority.
 //
 empty_envelope_t*
-FiscalRegimesAPI_createFiscalRegime(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_regime_create_dto_t *fiscal_regime_create_dto);
+FiscalRegimesAPI_createFiscalRegime(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_regime_create_dto_t *fiscal_regime_create_dto);
 
 
 // Delete a fiscal regime
@@ -27,7 +27,7 @@ FiscalRegimesAPI_createFiscalRegime(apiClient_t *apiClient, tenantId, char *api_
 // Deletes a fiscal regime identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalRegimesAPI_deleteFiscalRegime(apiClient_t *apiClient, tenantId, char *regimeId, char *api_version, char *x_api_version);
+FiscalRegimesAPI_deleteFiscalRegime(apiClient_t *apiClient, char *tenantId, char *regimeId, char *api_version, char *x_api_version);
 
 
 // Get fiscal regime by ID
@@ -35,7 +35,7 @@ FiscalRegimesAPI_deleteFiscalRegime(apiClient_t *apiClient, tenantId, char *regi
 // Retrieves a specific fiscal regime by its unique identifier.
 //
 fiscal_regime_dto_envelope_t*
-FiscalRegimesAPI_getFiscalRegime(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *regimeId, char *api_version, char *x_api_version);
+FiscalRegimesAPI_getFiscalRegime(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *regimeId, char *api_version, char *x_api_version);
 
 
 // Get fiscal regimes for an authority
@@ -43,7 +43,7 @@ FiscalRegimesAPI_getFiscalRegime(apiClient_t *apiClient, tenantId, char *fiscalA
 // Retrieves all fiscal regimes for the specified fiscal authority.
 //
 fiscal_regime_dto_list_envelope_t*
-FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
+FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
 
 
 // Get fiscal regimes count
@@ -51,7 +51,7 @@ FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *fiscalAuthorityI
 // Returns the total count of fiscal regimes for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
 
 
 // Update a fiscal regime
@@ -59,6 +59,6 @@ FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *fiscalAutho
 // Updates an existing fiscal regime identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalRegimesAPI_updateFiscalRegime(apiClient_t *apiClient, tenantId, char *regimeId, char *api_version, char *x_api_version, fiscal_regime_update_dto_t *fiscal_regime_update_dto);
+FiscalRegimesAPI_updateFiscalRegime(apiClient_t *apiClient, char *tenantId, char *regimeId, char *api_version, char *x_api_version, fiscal_regime_update_dto_t *fiscal_regime_update_dto);
 
 

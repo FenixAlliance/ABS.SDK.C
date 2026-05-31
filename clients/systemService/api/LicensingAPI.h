@@ -19,7 +19,7 @@
 // Retrieves all license assignments for a given license.
 //
 suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *licenseId, char *tenantId, char *api_version, char *x_api_version);
+LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
 
 
 // Retrieve license attributes
@@ -27,7 +27,7 @@ LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *licenseId,
 // Retrieves all additional attributes for a given license.
 //
 suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *licenseId, char *tenantId, char *api_version, char *x_api_version);
+LicensingAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
 
 
 // Retrieve a license by ID
@@ -35,7 +35,7 @@ LicensingAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *licenseId, 
 // Retrieves a single suite license by its unique identifier.
 //
 suite_license_dto_envelope_t*
-LicensingAPI_getLicenseByIdAsync(apiClient_t *apiClient, char *licenseId, char *api_version, char *x_api_version);
+LicensingAPI_getLicenseByIdAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
 
 
 // Retrieve license features
@@ -43,7 +43,7 @@ LicensingAPI_getLicenseByIdAsync(apiClient_t *apiClient, char *licenseId, char *
 // Retrieves all features for a given license.
 //
 suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *licenseId, char *tenantId, char *api_version, char *x_api_version);
+LicensingAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
 
 
 // Retrieve license record quota
@@ -51,7 +51,7 @@ LicensingAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *licenseId, ch
 // Retrieves the record quota for a given license.
 //
 suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseRecordsQuotaAsync(apiClient_t *apiClient, char *licenseId, char *tenantId, char *api_version, char *x_api_version);
+LicensingAPI_getLicenseRecordsQuotaAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
 
 
 // Retrieve a list of licenses

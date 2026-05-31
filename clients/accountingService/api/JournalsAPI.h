@@ -15,6 +15,23 @@
 #include "../model/journal_entry_dto_i_read_only_list_envelope.h"
 #include "../model/journal_entry_update_dto.h"
 #include "../model/journal_update_dto.h"
+#include "../model/money_envelope.h"
+
+
+// Aggregate journal entry credits
+//
+// Returns the sum of all credit amounts for entries in the specified journal, normalized to the target currency.
+//
+money_envelope_t*
+JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version);
+
+
+// Aggregate journal entry debits
+//
+// Returns the sum of all debit amounts for entries in the specified journal, normalized to the target currency.
+//
+money_envelope_t*
+JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version);
 
 
 // Count journals

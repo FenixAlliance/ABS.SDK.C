@@ -168,7 +168,21 @@ course_dto_t *course_dto_create(
     list_t *selected_warranty_policies,
     list_t *selected_shipment_policies,
     list_t *selected_attributes_options,
-    list_t *selected_selling_margin_policies
+    list_t *selected_selling_margin_policies,
+    char *code,
+    char *version,
+    char *course_category_id,
+    char *course_category_name,
+    char *instructor_profile_id,
+    char *instructor_profile_name,
+    int max_course_enrollments,
+    int total_effort_in_weeks,
+    int total_hours_per_week,
+    int total_effort_in_hours,
+    char *start_date_time,
+    char *end_date_time,
+    char *inscriptions_start_date_time,
+    char *inscriptions_end_date_time
     ) {
     course_dto_t *course_dto_local_var = malloc(sizeof(course_dto_t));
     if (!course_dto_local_var) {
@@ -337,6 +351,20 @@ course_dto_t *course_dto_create(
     course_dto_local_var->selected_shipment_policies = selected_shipment_policies;
     course_dto_local_var->selected_attributes_options = selected_attributes_options;
     course_dto_local_var->selected_selling_margin_policies = selected_selling_margin_policies;
+    course_dto_local_var->code = code;
+    course_dto_local_var->version = version;
+    course_dto_local_var->course_category_id = course_category_id;
+    course_dto_local_var->course_category_name = course_category_name;
+    course_dto_local_var->instructor_profile_id = instructor_profile_id;
+    course_dto_local_var->instructor_profile_name = instructor_profile_name;
+    course_dto_local_var->max_course_enrollments = max_course_enrollments;
+    course_dto_local_var->total_effort_in_weeks = total_effort_in_weeks;
+    course_dto_local_var->total_hours_per_week = total_hours_per_week;
+    course_dto_local_var->total_effort_in_hours = total_effort_in_hours;
+    course_dto_local_var->start_date_time = start_date_time;
+    course_dto_local_var->end_date_time = end_date_time;
+    course_dto_local_var->inscriptions_start_date_time = inscriptions_start_date_time;
+    course_dto_local_var->inscriptions_end_date_time = inscriptions_end_date_time;
 
     return course_dto_local_var;
 }
@@ -759,6 +787,46 @@ void course_dto_free(course_dto_t *course_dto) {
         }
         list_freeList(course_dto->selected_selling_margin_policies);
         course_dto->selected_selling_margin_policies = NULL;
+    }
+    if (course_dto->code) {
+        free(course_dto->code);
+        course_dto->code = NULL;
+    }
+    if (course_dto->version) {
+        free(course_dto->version);
+        course_dto->version = NULL;
+    }
+    if (course_dto->course_category_id) {
+        free(course_dto->course_category_id);
+        course_dto->course_category_id = NULL;
+    }
+    if (course_dto->course_category_name) {
+        free(course_dto->course_category_name);
+        course_dto->course_category_name = NULL;
+    }
+    if (course_dto->instructor_profile_id) {
+        free(course_dto->instructor_profile_id);
+        course_dto->instructor_profile_id = NULL;
+    }
+    if (course_dto->instructor_profile_name) {
+        free(course_dto->instructor_profile_name);
+        course_dto->instructor_profile_name = NULL;
+    }
+    if (course_dto->start_date_time) {
+        free(course_dto->start_date_time);
+        course_dto->start_date_time = NULL;
+    }
+    if (course_dto->end_date_time) {
+        free(course_dto->end_date_time);
+        course_dto->end_date_time = NULL;
+    }
+    if (course_dto->inscriptions_start_date_time) {
+        free(course_dto->inscriptions_start_date_time);
+        course_dto->inscriptions_start_date_time = NULL;
+    }
+    if (course_dto->inscriptions_end_date_time) {
+        free(course_dto->inscriptions_end_date_time);
+        course_dto->inscriptions_end_date_time = NULL;
     }
     free(course_dto);
 }
@@ -2201,6 +2269,118 @@ cJSON *course_dto_convertToJSON(course_dto_t *course_dto) {
     {
         goto fail;
     }
+    }
+    }
+
+
+    // course_dto->code
+    if(course_dto->code) {
+    if(cJSON_AddStringToObject(item, "code", course_dto->code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_dto->version
+    if(course_dto->version) {
+    if(cJSON_AddStringToObject(item, "version", course_dto->version) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_dto->course_category_id
+    if(course_dto->course_category_id) {
+    if(cJSON_AddStringToObject(item, "courseCategoryID", course_dto->course_category_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_dto->course_category_name
+    if(course_dto->course_category_name) {
+    if(cJSON_AddStringToObject(item, "courseCategoryName", course_dto->course_category_name) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_dto->instructor_profile_id
+    if(course_dto->instructor_profile_id) {
+    if(cJSON_AddStringToObject(item, "instructorProfileID", course_dto->instructor_profile_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_dto->instructor_profile_name
+    if(course_dto->instructor_profile_name) {
+    if(cJSON_AddStringToObject(item, "instructorProfileName", course_dto->instructor_profile_name) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_dto->max_course_enrollments
+    if(course_dto->max_course_enrollments) {
+    if(cJSON_AddNumberToObject(item, "maxCourseEnrollments", course_dto->max_course_enrollments) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // course_dto->total_effort_in_weeks
+    if(course_dto->total_effort_in_weeks) {
+    if(cJSON_AddNumberToObject(item, "totalEffortInWeeks", course_dto->total_effort_in_weeks) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // course_dto->total_hours_per_week
+    if(course_dto->total_hours_per_week) {
+    if(cJSON_AddNumberToObject(item, "totalHoursPerWeek", course_dto->total_hours_per_week) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // course_dto->total_effort_in_hours
+    if(course_dto->total_effort_in_hours) {
+    if(cJSON_AddNumberToObject(item, "totalEffortInHours", course_dto->total_effort_in_hours) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // course_dto->start_date_time
+    if(course_dto->start_date_time) {
+    if(cJSON_AddStringToObject(item, "startDateTime", course_dto->start_date_time) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
+
+    // course_dto->end_date_time
+    if(course_dto->end_date_time) {
+    if(cJSON_AddStringToObject(item, "endDateTime", course_dto->end_date_time) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
+
+    // course_dto->inscriptions_start_date_time
+    if(course_dto->inscriptions_start_date_time) {
+    if(cJSON_AddStringToObject(item, "inscriptionsStartDateTime", course_dto->inscriptions_start_date_time) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
+
+    // course_dto->inscriptions_end_date_time
+    if(course_dto->inscriptions_end_date_time) {
+    if(cJSON_AddStringToObject(item, "inscriptionsEndDateTime", course_dto->inscriptions_end_date_time) == NULL) {
+    goto fail; //Date-Time
     }
     }
 
@@ -3878,6 +4058,132 @@ course_dto_t *course_dto_parseFromJSON(cJSON *course_dtoJSON){
     }
     }
 
+    // course_dto->code
+    cJSON *code = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "code");
+    if (code) { 
+    if(!cJSON_IsString(code) && !cJSON_IsNull(code))
+    {
+    goto end; //String
+    }
+    }
+
+    // course_dto->version
+    cJSON *version = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "version");
+    if (version) { 
+    if(!cJSON_IsString(version) && !cJSON_IsNull(version))
+    {
+    goto end; //String
+    }
+    }
+
+    // course_dto->course_category_id
+    cJSON *course_category_id = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "courseCategoryID");
+    if (course_category_id) { 
+    if(!cJSON_IsString(course_category_id) && !cJSON_IsNull(course_category_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // course_dto->course_category_name
+    cJSON *course_category_name = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "courseCategoryName");
+    if (course_category_name) { 
+    if(!cJSON_IsString(course_category_name) && !cJSON_IsNull(course_category_name))
+    {
+    goto end; //String
+    }
+    }
+
+    // course_dto->instructor_profile_id
+    cJSON *instructor_profile_id = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "instructorProfileID");
+    if (instructor_profile_id) { 
+    if(!cJSON_IsString(instructor_profile_id) && !cJSON_IsNull(instructor_profile_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // course_dto->instructor_profile_name
+    cJSON *instructor_profile_name = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "instructorProfileName");
+    if (instructor_profile_name) { 
+    if(!cJSON_IsString(instructor_profile_name) && !cJSON_IsNull(instructor_profile_name))
+    {
+    goto end; //String
+    }
+    }
+
+    // course_dto->max_course_enrollments
+    cJSON *max_course_enrollments = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "maxCourseEnrollments");
+    if (max_course_enrollments) { 
+    if(!cJSON_IsNumber(max_course_enrollments))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // course_dto->total_effort_in_weeks
+    cJSON *total_effort_in_weeks = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "totalEffortInWeeks");
+    if (total_effort_in_weeks) { 
+    if(!cJSON_IsNumber(total_effort_in_weeks))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // course_dto->total_hours_per_week
+    cJSON *total_hours_per_week = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "totalHoursPerWeek");
+    if (total_hours_per_week) { 
+    if(!cJSON_IsNumber(total_hours_per_week))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // course_dto->total_effort_in_hours
+    cJSON *total_effort_in_hours = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "totalEffortInHours");
+    if (total_effort_in_hours) { 
+    if(!cJSON_IsNumber(total_effort_in_hours))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // course_dto->start_date_time
+    cJSON *start_date_time = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "startDateTime");
+    if (start_date_time) { 
+    if(!cJSON_IsString(start_date_time) && !cJSON_IsNull(start_date_time))
+    {
+    goto end; //DateTime
+    }
+    }
+
+    // course_dto->end_date_time
+    cJSON *end_date_time = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "endDateTime");
+    if (end_date_time) { 
+    if(!cJSON_IsString(end_date_time) && !cJSON_IsNull(end_date_time))
+    {
+    goto end; //DateTime
+    }
+    }
+
+    // course_dto->inscriptions_start_date_time
+    cJSON *inscriptions_start_date_time = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "inscriptionsStartDateTime");
+    if (inscriptions_start_date_time) { 
+    if(!cJSON_IsString(inscriptions_start_date_time) && !cJSON_IsNull(inscriptions_start_date_time))
+    {
+    goto end; //DateTime
+    }
+    }
+
+    // course_dto->inscriptions_end_date_time
+    cJSON *inscriptions_end_date_time = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "inscriptionsEndDateTime");
+    if (inscriptions_end_date_time) { 
+    if(!cJSON_IsString(inscriptions_end_date_time) && !cJSON_IsNull(inscriptions_end_date_time))
+    {
+    goto end; //DateTime
+    }
+    }
+
 
     course_dto_local_var = course_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -4042,7 +4348,21 @@ course_dto_t *course_dto_parseFromJSON(cJSON *course_dtoJSON){
         selected_warranty_policies ? selected_warranty_policiesList : NULL,
         selected_shipment_policies ? selected_shipment_policiesList : NULL,
         selected_attributes_options ? selected_attributes_optionsList : NULL,
-        selected_selling_margin_policies ? selected_selling_margin_policiesList : NULL
+        selected_selling_margin_policies ? selected_selling_margin_policiesList : NULL,
+        code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
+        version && !cJSON_IsNull(version) ? strdup(version->valuestring) : NULL,
+        course_category_id && !cJSON_IsNull(course_category_id) ? strdup(course_category_id->valuestring) : NULL,
+        course_category_name && !cJSON_IsNull(course_category_name) ? strdup(course_category_name->valuestring) : NULL,
+        instructor_profile_id && !cJSON_IsNull(instructor_profile_id) ? strdup(instructor_profile_id->valuestring) : NULL,
+        instructor_profile_name && !cJSON_IsNull(instructor_profile_name) ? strdup(instructor_profile_name->valuestring) : NULL,
+        max_course_enrollments ? max_course_enrollments->valuedouble : 0,
+        total_effort_in_weeks ? total_effort_in_weeks->valuedouble : 0,
+        total_hours_per_week ? total_hours_per_week->valuedouble : 0,
+        total_effort_in_hours ? total_effort_in_hours->valuedouble : 0,
+        start_date_time && !cJSON_IsNull(start_date_time) ? strdup(start_date_time->valuestring) : NULL,
+        end_date_time && !cJSON_IsNull(end_date_time) ? strdup(end_date_time->valuestring) : NULL,
+        inscriptions_start_date_time && !cJSON_IsNull(inscriptions_start_date_time) ? strdup(inscriptions_start_date_time->valuestring) : NULL,
+        inscriptions_end_date_time && !cJSON_IsNull(inscriptions_end_date_time) ? strdup(inscriptions_end_date_time->valuestring) : NULL
         );
 
     return course_dto_local_var;

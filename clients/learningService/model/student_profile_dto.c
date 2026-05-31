@@ -8,10 +8,15 @@
 student_profile_dto_t *student_profile_dto_create(
     char *id,
     char *timestamp,
+    char *contact_id,
+    char *tenant_id,
+    char *type,
+    char *enrollment_id,
     char *about,
     int verified,
     int submitted,
     char *avatar_url,
+    contact_dto_t *contact,
     char *qualified_name,
     char *verification_timestamp,
     char *data,
@@ -44,10 +49,15 @@ student_profile_dto_t *student_profile_dto_create(
     }
     student_profile_dto_local_var->id = id;
     student_profile_dto_local_var->timestamp = timestamp;
+    student_profile_dto_local_var->contact_id = contact_id;
+    student_profile_dto_local_var->tenant_id = tenant_id;
+    student_profile_dto_local_var->type = type;
+    student_profile_dto_local_var->enrollment_id = enrollment_id;
     student_profile_dto_local_var->about = about;
     student_profile_dto_local_var->verified = verified;
     student_profile_dto_local_var->submitted = submitted;
     student_profile_dto_local_var->avatar_url = avatar_url;
+    student_profile_dto_local_var->contact = contact;
     student_profile_dto_local_var->qualified_name = qualified_name;
     student_profile_dto_local_var->verification_timestamp = verification_timestamp;
     student_profile_dto_local_var->data = data;
@@ -91,6 +101,22 @@ void student_profile_dto_free(student_profile_dto_t *student_profile_dto) {
         free(student_profile_dto->timestamp);
         student_profile_dto->timestamp = NULL;
     }
+    if (student_profile_dto->contact_id) {
+        free(student_profile_dto->contact_id);
+        student_profile_dto->contact_id = NULL;
+    }
+    if (student_profile_dto->tenant_id) {
+        free(student_profile_dto->tenant_id);
+        student_profile_dto->tenant_id = NULL;
+    }
+    if (student_profile_dto->type) {
+        free(student_profile_dto->type);
+        student_profile_dto->type = NULL;
+    }
+    if (student_profile_dto->enrollment_id) {
+        free(student_profile_dto->enrollment_id);
+        student_profile_dto->enrollment_id = NULL;
+    }
     if (student_profile_dto->about) {
         free(student_profile_dto->about);
         student_profile_dto->about = NULL;
@@ -98,6 +124,10 @@ void student_profile_dto_free(student_profile_dto_t *student_profile_dto) {
     if (student_profile_dto->avatar_url) {
         free(student_profile_dto->avatar_url);
         student_profile_dto->avatar_url = NULL;
+    }
+    if (student_profile_dto->contact) {
+        contact_dto_free(student_profile_dto->contact);
+        student_profile_dto->contact = NULL;
     }
     if (student_profile_dto->qualified_name) {
         free(student_profile_dto->qualified_name);
@@ -221,6 +251,38 @@ cJSON *student_profile_dto_convertToJSON(student_profile_dto_t *student_profile_
     }
 
 
+    // student_profile_dto->contact_id
+    if(student_profile_dto->contact_id) {
+    if(cJSON_AddStringToObject(item, "contactId", student_profile_dto->contact_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // student_profile_dto->tenant_id
+    if(student_profile_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", student_profile_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // student_profile_dto->type
+    if(student_profile_dto->type) {
+    if(cJSON_AddStringToObject(item, "type", student_profile_dto->type) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // student_profile_dto->enrollment_id
+    if(student_profile_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", student_profile_dto->enrollment_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // student_profile_dto->about
     if(student_profile_dto->about) {
     if(cJSON_AddStringToObject(item, "about", student_profile_dto->about) == NULL) {
@@ -249,6 +311,19 @@ cJSON *student_profile_dto_convertToJSON(student_profile_dto_t *student_profile_
     if(student_profile_dto->avatar_url) {
     if(cJSON_AddStringToObject(item, "avatarUrl", student_profile_dto->avatar_url) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // student_profile_dto->contact
+    if(student_profile_dto->contact) {
+    cJSON *contact_local_JSON = contact_dto_convertToJSON(student_profile_dto->contact);
+    if(contact_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "contact", contact_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
     }
     }
 
@@ -464,6 +539,9 @@ student_profile_dto_t *student_profile_dto_parseFromJSON(cJSON *student_profile_
 
     student_profile_dto_t *student_profile_dto_local_var = NULL;
 
+    // define the local variable for student_profile_dto->contact
+    contact_dto_t *contact_local_nonprim = NULL;
+
     // student_profile_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(student_profile_dtoJSON, "id");
     if (id) { 
@@ -479,6 +557,42 @@ student_profile_dto_t *student_profile_dto_parseFromJSON(cJSON *student_profile_
     if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
     {
     goto end; //DateTime
+    }
+    }
+
+    // student_profile_dto->contact_id
+    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(student_profile_dtoJSON, "contactId");
+    if (contact_id) { 
+    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // student_profile_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(student_profile_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // student_profile_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(student_profile_dtoJSON, "type");
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
+    {
+    goto end; //String
+    }
+    }
+
+    // student_profile_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(student_profile_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
     }
     }
 
@@ -516,6 +630,12 @@ student_profile_dto_t *student_profile_dto_parseFromJSON(cJSON *student_profile_
     {
     goto end; //String
     }
+    }
+
+    // student_profile_dto->contact
+    cJSON *contact = cJSON_GetObjectItemCaseSensitive(student_profile_dtoJSON, "contact");
+    if (contact) { 
+    contact_local_nonprim = contact_dto_parseFromJSON(contact); //nonprimitive
     }
 
     // student_profile_dto->qualified_name
@@ -747,10 +867,15 @@ student_profile_dto_t *student_profile_dto_parseFromJSON(cJSON *student_profile_
     student_profile_dto_local_var = student_profile_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         about && !cJSON_IsNull(about) ? strdup(about->valuestring) : NULL,
         verified ? verified->valueint : 0,
         submitted ? submitted->valueint : 0,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,
+        contact ? contact_local_nonprim : NULL,
         qualified_name && !cJSON_IsNull(qualified_name) ? strdup(qualified_name->valuestring) : NULL,
         verification_timestamp && !cJSON_IsNull(verification_timestamp) ? strdup(verification_timestamp->valuestring) : NULL,
         data && !cJSON_IsNull(data) ? strdup(data->valuestring) : NULL,
@@ -780,6 +905,10 @@ student_profile_dto_t *student_profile_dto_parseFromJSON(cJSON *student_profile_
 
     return student_profile_dto_local_var;
 end:
+    if (contact_local_nonprim) {
+        contact_dto_free(contact_local_nonprim);
+        contact_local_nonprim = NULL;
+    }
     return NULL;
 
 }

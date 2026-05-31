@@ -77,20 +77,32 @@ set(SRCS
     model/item_attribute_dto.c
     model/item_attribute_dto_envelope.c
     model/item_attribute_dto_list_envelope.c
+    model/item_attribute_option_create_dto.c
     model/item_attribute_option_dto.c
     model/item_attribute_option_dto_envelope.c
     model/item_attribute_option_dto_list_envelope.c
+    model/item_attribute_option_update_dto.c
     model/item_attribute_update_dto.c
     model/item_brand_create_dto.c
     model/item_brand_dto.c
     model/item_brand_dto_envelope.c
     model/item_brand_dto_list_envelope.c
     model/item_brand_update_dto.c
+    model/item_bundle_create_dto.c
+    model/item_bundle_dto.c
+    model/item_bundle_dto_envelope.c
+    model/item_bundle_dto_list_envelope.c
+    model/item_bundle_update_dto.c
     model/item_category_create_dto.c
     model/item_category_dto.c
     model/item_category_dto_envelope.c
     model/item_category_dto_list_envelope.c
     model/item_category_update_dto.c
+    model/item_family_create_dto.c
+    model/item_family_dto.c
+    model/item_family_dto_envelope.c
+    model/item_family_dto_list_envelope.c
+    model/item_family_update_dto.c
     model/item_google_category_dto.c
     model/item_google_category_dto_envelope.c
     model/item_google_category_dto_list_envelope.c
@@ -142,11 +154,9 @@ set(SRCS
     model/merchant_dto_list_envelope.c
     model/money.c
     model/money_envelope.c
-    model/pricing_rule_create_dto.c
     model/pricing_rule_dto.c
     model/pricing_rule_dto_envelope.c
     model/pricing_rule_dto_list_envelope.c
-    model/pricing_rule_update_dto.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -154,11 +164,15 @@ set(SRCS
     model/two_factor_request.c
     model/two_factor_response.c
     model/update_product_primary_image_async_request.c
-    api/FenixAllianceABSWebAPI.c
+    api/CompletionsAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/ItemAttachmentsAPI.c
+    api/ItemAttributeOptionsAPI.c
     api/ItemAttributesAPI.c
     api/ItemBrandsAPI.c
+    api/ItemBundlesAPI.c
     api/ItemCategoriesAPI.c
+    api/ItemFamiliesAPI.c
     api/ItemGoogleCategoriesAPI.c
     api/ItemImagesAPI.c
     api/ItemQuestionsAPI.c
@@ -172,7 +186,6 @@ set(SRCS
     api/ItemWarrantyPoliciesAPI.c
     api/ItemsAPI.c
     api/MerchantsAPI.c
-    api/PricingRulesAPI.c
 
 )
 
@@ -206,20 +219,32 @@ set(HDRS
     model/item_attribute_dto.h
     model/item_attribute_dto_envelope.h
     model/item_attribute_dto_list_envelope.h
+    model/item_attribute_option_create_dto.h
     model/item_attribute_option_dto.h
     model/item_attribute_option_dto_envelope.h
     model/item_attribute_option_dto_list_envelope.h
+    model/item_attribute_option_update_dto.h
     model/item_attribute_update_dto.h
     model/item_brand_create_dto.h
     model/item_brand_dto.h
     model/item_brand_dto_envelope.h
     model/item_brand_dto_list_envelope.h
     model/item_brand_update_dto.h
+    model/item_bundle_create_dto.h
+    model/item_bundle_dto.h
+    model/item_bundle_dto_envelope.h
+    model/item_bundle_dto_list_envelope.h
+    model/item_bundle_update_dto.h
     model/item_category_create_dto.h
     model/item_category_dto.h
     model/item_category_dto_envelope.h
     model/item_category_dto_list_envelope.h
     model/item_category_update_dto.h
+    model/item_family_create_dto.h
+    model/item_family_dto.h
+    model/item_family_dto_envelope.h
+    model/item_family_dto_list_envelope.h
+    model/item_family_update_dto.h
     model/item_google_category_dto.h
     model/item_google_category_dto_envelope.h
     model/item_google_category_dto_list_envelope.h
@@ -271,11 +296,9 @@ set(HDRS
     model/merchant_dto_list_envelope.h
     model/money.h
     model/money_envelope.h
-    model/pricing_rule_create_dto.h
     model/pricing_rule_dto.h
     model/pricing_rule_dto_envelope.h
     model/pricing_rule_dto_list_envelope.h
-    model/pricing_rule_update_dto.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
@@ -283,11 +306,15 @@ set(HDRS
     model/two_factor_request.h
     model/two_factor_response.h
     model/update_product_primary_image_async_request.h
-    api/FenixAllianceABSWebAPI.h
+    api/CompletionsAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/ItemAttachmentsAPI.h
+    api/ItemAttributeOptionsAPI.h
     api/ItemAttributesAPI.h
     api/ItemBrandsAPI.h
+    api/ItemBundlesAPI.h
     api/ItemCategoriesAPI.h
+    api/ItemFamiliesAPI.h
     api/ItemGoogleCategoriesAPI.h
     api/ItemImagesAPI.h
     api/ItemQuestionsAPI.h
@@ -301,7 +328,6 @@ set(HDRS
     api/ItemWarrantyPoliciesAPI.h
     api/ItemsAPI.h
     api/MerchantsAPI.h
-    api/PricingRulesAPI.h
 
 )
 
@@ -383,11 +409,15 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-ItemAttachmentsAPI.c
+#    unit-tests/manual-ItemAttributeOptionsAPI.c
 #    unit-tests/manual-ItemAttributesAPI.c
 #    unit-tests/manual-ItemBrandsAPI.c
+#    unit-tests/manual-ItemBundlesAPI.c
 #    unit-tests/manual-ItemCategoriesAPI.c
+#    unit-tests/manual-ItemFamiliesAPI.c
 #    unit-tests/manual-ItemGoogleCategoriesAPI.c
 #    unit-tests/manual-ItemImagesAPI.c
 #    unit-tests/manual-ItemQuestionsAPI.c
@@ -401,7 +431,6 @@ set(HDRS "")
 #    unit-tests/manual-ItemWarrantyPoliciesAPI.c
 #    unit-tests/manual-ItemsAPI.c
 #    unit-tests/manual-MerchantsAPI.c
-#    unit-tests/manual-PricingRulesAPI.c
 #)
 
 ##set header files

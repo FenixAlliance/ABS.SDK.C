@@ -1,0 +1,48 @@
+/*
+ * single_value_node.h
+ *
+ * 
+ */
+
+#ifndef _single_value_node_H_
+#define _single_value_node_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct single_value_node_t single_value_node_t;
+
+#include "i_edm_type_reference.h"
+
+// Enum KIND for single_value_node
+
+typedef enum  { contentservice_single_value_node_KIND_NULL = 0, contentservice_single_value_node_KIND_None, contentservice_single_value_node_KIND_Constant, contentservice_single_value_node_KIND_Convert, contentservice_single_value_node_KIND_NonResourceRangeVariableReference, contentservice_single_value_node_KIND_BinaryOperator, contentservice_single_value_node_KIND_UnaryOperator, contentservice_single_value_node_KIND_SingleValuePropertyAccess, contentservice_single_value_node_KIND_CollectionPropertyAccess, contentservice_single_value_node_KIND_SingleValueFunctionCall, contentservice_single_value_node_KIND_Any, contentservice_single_value_node_KIND_CollectionNavigationNode, contentservice_single_value_node_KIND_SingleNavigationNode, contentservice_single_value_node_KIND_SingleValueOpenPropertyAccess, contentservice_single_value_node_KIND_SingleResourceCast, contentservice_single_value_node_KIND_All, contentservice_single_value_node_KIND_CollectionResourceCast, contentservice_single_value_node_KIND_ResourceRangeVariableReference, contentservice_single_value_node_KIND_SingleResourceFunctionCall, contentservice_single_value_node_KIND_CollectionFunctionCall, contentservice_single_value_node_KIND_CollectionResourceFunctionCall, contentservice_single_value_node_KIND_NamedFunctionParameter, contentservice_single_value_node_KIND_ParameterAlias, contentservice_single_value_node_KIND_EntitySet, contentservice_single_value_node_KIND_KeyLookup, contentservice_single_value_node_KIND_SearchTerm, contentservice_single_value_node_KIND_CollectionOpenPropertyAccess, contentservice_single_value_node_KIND_CollectionComplexNode, contentservice_single_value_node_KIND_SingleComplexNode, contentservice_single_value_node_KIND_Count, contentservice_single_value_node_KIND_SingleValueCast, contentservice_single_value_node_KIND_CollectionPropertyNode, contentservice_single_value_node_KIND_AggregatedCollectionPropertyNode, contentservice_single_value_node_KIND_In, contentservice_single_value_node_KIND_CollectionConstant, contentservice_single_value_node_KIND_RootPath, contentservice_single_value_node_KIND_CustomQueryOption } contentservice_single_value_node_KIND_e;
+
+char* single_value_node_kind_ToString(contentservice_single_value_node_KIND_e kind);
+
+contentservice_single_value_node_KIND_e single_value_node_kind_FromString(char* kind);
+
+
+
+typedef struct single_value_node_t {
+    struct i_edm_type_reference_t *type_reference; //model
+    contentservice_single_value_node_KIND_e kind; //enum
+
+} single_value_node_t;
+
+single_value_node_t *single_value_node_create(
+    i_edm_type_reference_t *type_reference,
+    contentservice_single_value_node_KIND_e kind
+);
+
+void single_value_node_free(single_value_node_t *single_value_node);
+
+single_value_node_t *single_value_node_parseFromJSON(cJSON *single_value_nodeJSON);
+
+cJSON *single_value_node_convertToJSON(single_value_node_t *single_value_node);
+
+#endif /* _single_value_node_H_ */
+

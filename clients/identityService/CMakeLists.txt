@@ -55,8 +55,8 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
-    model/authorization_result.c
-    model/authorization_result_envelope.c
+    model/auth_result.c
+    model/auth_result_envelope.c
     model/error_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
@@ -85,7 +85,8 @@ set(SRCS
     model/user_create_dto_envelope.c
     api/ApplicationsAPI.c
     api/CheckerAPI.c
-    api/FenixAllianceABSWebAPI.c
+    api/CompletionsAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/OAuthAPI.c
     api/ResourceAPI.c
     api/UserInfoAPI.c
@@ -100,8 +101,8 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
-    model/authorization_result.h
-    model/authorization_result_envelope.h
+    model/auth_result.h
+    model/auth_result_envelope.h
     model/error_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
@@ -130,7 +131,8 @@ set(HDRS
     model/user_create_dto_envelope.h
     api/ApplicationsAPI.h
     api/CheckerAPI.h
-    api/FenixAllianceABSWebAPI.h
+    api/CompletionsAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/OAuthAPI.h
     api/ResourceAPI.h
     api/UserInfoAPI.h
@@ -217,7 +219,8 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-ApplicationsAPI.c
 #    unit-tests/manual-CheckerAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-OAuthAPI.c
 #    unit-tests/manual-ResourceAPI.c
 #    unit-tests/manual-UserInfoAPI.c

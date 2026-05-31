@@ -1,8 +1,10 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/FenixAllianceABSWebAPI.c
-api/FenixAllianceABSWebAPI.h
+api/CompletionsAPI.c
+api/CompletionsAPI.h
+api/FenixAlliancePortalsWebsiteAPI.c
+api/FenixAlliancePortalsWebsiteAPI.h
 api/ServiceCaseTypesAPI.c
 api/ServiceCaseTypesAPI.h
 api/ServiceCasesAPI.c
@@ -15,7 +17,8 @@ api/ServiceQueuesAPI.c
 api/ServiceQueuesAPI.h
 api/ServicesAPI.c
 api/ServicesAPI.h
-docs/FenixAllianceABSWebAPI.md
+docs/CompletionsAPI.md
+docs/FenixAlliancePortalsWebsiteAPI.md
 docs/ServiceCaseTypesAPI.md
 docs/ServiceCasesAPI.md
 docs/ServiceLevelAgreementsAPI.md

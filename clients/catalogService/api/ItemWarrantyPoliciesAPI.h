@@ -16,7 +16,7 @@
 // Counts all warranty policies for a specific item.
 //
 int32_envelope_t*
-ItemWarrantyPoliciesAPI_countItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemWarrantyPoliciesAPI_countItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Get item warranty policies
@@ -24,7 +24,7 @@ ItemWarrantyPoliciesAPI_countItemWarrantyPoliciesAsync(apiClient_t *apiClient, c
 // Retrieves all warranty policies for a specific item.
 //
 item_warranty_policy_dto_list_envelope_t*
-ItemWarrantyPoliciesAPI_getItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemWarrantyPoliciesAPI_getItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Get item warranty policy by ID
@@ -32,7 +32,7 @@ ItemWarrantyPoliciesAPI_getItemWarrantyPoliciesAsync(apiClient_t *apiClient, cha
 // Retrieves a specific warranty policy for an item.
 //
 item_warranty_policy_dto_envelope_t*
-ItemWarrantyPoliciesAPI_getItemWarrantyPolicyByIdAsync(apiClient_t *apiClient, char *itemWarrantyPolicyId, char *itemId, char *api_version, char *x_api_version);
+ItemWarrantyPoliciesAPI_getItemWarrantyPolicyByIdAsync(apiClient_t *apiClient, char *itemWarrantyPolicyId, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Relate item to warranty policy

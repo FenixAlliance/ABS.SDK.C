@@ -33,7 +33,7 @@ ItemBrandsAPI_deleteItemBrandAsync(apiClient_t *apiClient, char *tenantId, char 
 // Retrieves a specific item brand by its ID.
 //
 item_brand_dto_envelope_t*
-ItemBrandsAPI_getItemBrandByIdAsync(apiClient_t *apiClient, char *itemBrandId, char *api_version, char *x_api_version);
+ItemBrandsAPI_getItemBrandByIdAsync(apiClient_t *apiClient, char *itemBrandId, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get all item brands

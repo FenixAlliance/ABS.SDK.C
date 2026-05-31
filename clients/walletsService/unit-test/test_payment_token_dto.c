@@ -1,0 +1,80 @@
+#ifndef payment_token_dto_TEST
+#define payment_token_dto_TEST
+
+// the following is to include only the main from the first c file
+#ifndef TEST_MAIN
+#define TEST_MAIN
+#define payment_token_dto_MAIN
+#endif // TEST_MAIN
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include "../external/cJSON.h"
+
+#include "../model/payment_token_dto.h"
+payment_token_dto_t* instantiate_payment_token_dto(int include_optional);
+
+
+
+payment_token_dto_t* instantiate_payment_token_dto(int include_optional) {
+  payment_token_dto_t* payment_token_dto = NULL;
+  if (include_optional) {
+    payment_token_dto = payment_token_dto_create(
+      "0",
+      "2013-10-20T19:20:30+01:00",
+      1,
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "2013-10-20T19:20:30+01:00",
+      "0",
+      "0"
+    );
+  } else {
+    payment_token_dto = payment_token_dto_create(
+      "0",
+      "2013-10-20T19:20:30+01:00",
+      1,
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "2013-10-20T19:20:30+01:00",
+      "0",
+      "0"
+    );
+  }
+
+  return payment_token_dto;
+}
+
+
+#ifdef payment_token_dto_MAIN
+
+void test_payment_token_dto(int include_optional) {
+    payment_token_dto_t* payment_token_dto_1 = instantiate_payment_token_dto(include_optional);
+
+	cJSON* jsonpayment_token_dto_1 = payment_token_dto_convertToJSON(payment_token_dto_1);
+	printf("payment_token_dto :\n%s\n", cJSON_Print(jsonpayment_token_dto_1));
+	payment_token_dto_t* payment_token_dto_2 = payment_token_dto_parseFromJSON(jsonpayment_token_dto_1);
+	cJSON* jsonpayment_token_dto_2 = payment_token_dto_convertToJSON(payment_token_dto_2);
+	printf("repeating payment_token_dto:\n%s\n", cJSON_Print(jsonpayment_token_dto_2));
+}
+
+int main() {
+  test_payment_token_dto(1);
+  test_payment_token_dto(0);
+
+  printf("Hello world \n");
+  return 0;
+}
+
+#endif // payment_token_dto_MAIN
+#endif // payment_token_dto_TEST

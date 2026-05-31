@@ -1,6 +1,6 @@
 # ItemShippingPoliciesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,13 +17,14 @@ Method | HTTP request | Description
 //
 // Counts all shipping policies for a specific item.
 //
-int32_envelope_t* ItemShippingPoliciesAPI_countItemShippingPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+int32_envelope_t* ItemShippingPoliciesAPI_countItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | [optional] 
 **itemId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -50,13 +51,14 @@ No authorization required
 //
 // Retrieves all shipping policies for a specific item.
 //
-item_shipping_policy_dto_list_envelope_t* ItemShippingPoliciesAPI_getItemShippingPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+item_shipping_policy_dto_list_envelope_t* ItemShippingPoliciesAPI_getItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | [optional] 
 **itemId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -83,7 +85,7 @@ No authorization required
 //
 // Retrieves a specific shipping policy for an item.
 //
-item_shipping_policy_dto_envelope_t* ItemShippingPoliciesAPI_getItemShippingPolicyByIdAsync(apiClient_t *apiClient, char *itemShippingPolicyId, char *itemId, char *api_version, char *x_api_version);
+item_shipping_policy_dto_envelope_t* ItemShippingPoliciesAPI_getItemShippingPolicyByIdAsync(apiClient_t *apiClient, char *itemShippingPolicyId, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -91,6 +93,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **itemShippingPolicyId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **itemId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 

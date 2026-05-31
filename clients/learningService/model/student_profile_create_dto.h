@@ -21,12 +21,10 @@ typedef struct student_profile_create_dto_t student_profile_create_dto_t;
 typedef struct student_profile_create_dto_t {
     char *id; // string
     char *timestamp; //date time
+    char *type; // string
+    char *contact_id; // string
     char *about; // string
-    int verified; //boolean
-    int submitted; //boolean
     char *avatar_url; // string
-    char *qualified_name; // string
-    char *verification_timestamp; //date time
     char *data; // string
     char *data_label; // string
     char *data1; // string
@@ -54,12 +52,10 @@ typedef struct student_profile_create_dto_t {
 student_profile_create_dto_t *student_profile_create_dto_create(
     char *id,
     char *timestamp,
+    char *type,
+    char *contact_id,
     char *about,
-    int verified,
-    int submitted,
     char *avatar_url,
-    char *qualified_name,
-    char *verification_timestamp,
     char *data,
     char *data_label,
     char *data1,

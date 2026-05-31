@@ -1,0 +1,70 @@
+#ifndef ip_lookup_dto_envelope_TEST
+#define ip_lookup_dto_envelope_TEST
+
+// the following is to include only the main from the first c file
+#ifndef TEST_MAIN
+#define TEST_MAIN
+#define ip_lookup_dto_envelope_MAIN
+#endif // TEST_MAIN
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include "../external/cJSON.h"
+
+#include "../model/ip_lookup_dto_envelope.h"
+ip_lookup_dto_envelope_t* instantiate_ip_lookup_dto_envelope(int include_optional);
+
+#include "test_ip_lookup_dto.c"
+
+
+ip_lookup_dto_envelope_t* instantiate_ip_lookup_dto_envelope(int include_optional) {
+  ip_lookup_dto_envelope_t* ip_lookup_dto_envelope = NULL;
+  if (include_optional) {
+    ip_lookup_dto_envelope = ip_lookup_dto_envelope_create(
+      1,
+      "0",
+      "0",
+      "2013-10-20T19:20:30+01:00",
+      "0",
+       // false, not to have infinite recursion
+      instantiate_ip_lookup_dto(0)
+    );
+  } else {
+    ip_lookup_dto_envelope = ip_lookup_dto_envelope_create(
+      1,
+      "0",
+      "0",
+      "2013-10-20T19:20:30+01:00",
+      "0",
+      NULL
+    );
+  }
+
+  return ip_lookup_dto_envelope;
+}
+
+
+#ifdef ip_lookup_dto_envelope_MAIN
+
+void test_ip_lookup_dto_envelope(int include_optional) {
+    ip_lookup_dto_envelope_t* ip_lookup_dto_envelope_1 = instantiate_ip_lookup_dto_envelope(include_optional);
+
+	cJSON* jsonip_lookup_dto_envelope_1 = ip_lookup_dto_envelope_convertToJSON(ip_lookup_dto_envelope_1);
+	printf("ip_lookup_dto_envelope :\n%s\n", cJSON_Print(jsonip_lookup_dto_envelope_1));
+	ip_lookup_dto_envelope_t* ip_lookup_dto_envelope_2 = ip_lookup_dto_envelope_parseFromJSON(jsonip_lookup_dto_envelope_1);
+	cJSON* jsonip_lookup_dto_envelope_2 = ip_lookup_dto_envelope_convertToJSON(ip_lookup_dto_envelope_2);
+	printf("repeating ip_lookup_dto_envelope:\n%s\n", cJSON_Print(jsonip_lookup_dto_envelope_2));
+}
+
+int main() {
+  test_ip_lookup_dto_envelope(1);
+  test_ip_lookup_dto_envelope(0);
+
+  printf("Hello world \n");
+  return 0;
+}
+
+#endif // ip_lookup_dto_envelope_MAIN
+#endif // ip_lookup_dto_envelope_TEST

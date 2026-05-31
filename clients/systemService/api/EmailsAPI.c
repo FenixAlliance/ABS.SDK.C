@@ -136,7 +136,7 @@ end:
 //
 // This action is only available for global administrators (business_owner role).
 //
-tenant_dto_list_envelope_t*
+envelope_t*
 EmailsAPI_adminSendBasicEmail(apiClient_t *apiClient, char *api_version, char *x_api_version, object_email_dispatch_request_t *object_email_dispatch_request)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -214,7 +214,7 @@ EmailsAPI_adminSendBasicEmail(apiClient_t *apiClient, char *api_version, char *x
     //}
     //nonprimitive not container
     cJSON *EmailsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    tenant_dto_list_envelope_t *elementToReturn = tenant_dto_list_envelope_parseFromJSON(EmailsAPIlocalVarJSON);
+    envelope_t *elementToReturn = envelope_parseFromJSON(EmailsAPIlocalVarJSON);
     cJSON_Delete(EmailsAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;

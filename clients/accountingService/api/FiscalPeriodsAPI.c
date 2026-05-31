@@ -17,7 +17,7 @@
 // Creates a new fiscal period associated with a fiscal year.
 //
 empty_envelope_t*
-FiscalPeriodsAPI_createFiscalPeriod(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_period_create_dto_t *fiscal_period_create_dto)
+FiscalPeriodsAPI_createFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_period_create_dto_t *fiscal_period_create_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -48,13 +48,13 @@ FiscalPeriodsAPI_createFiscalPeriod(apiClient_t *apiClient, tenantId, char *api_
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -142,6 +142,10 @@ FiscalPeriodsAPI_createFiscalPeriod(apiClient_t *apiClient, tenantId, char *api_
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -170,7 +174,7 @@ end:
 // Deletes a fiscal period identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalPeriodsAPI_deleteFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version)
+FiscalPeriodsAPI_deleteFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -218,13 +222,13 @@ FiscalPeriodsAPI_deleteFiscalPeriod(apiClient_t *apiClient, tenantId, char *fisc
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -297,6 +301,10 @@ FiscalPeriodsAPI_deleteFiscalPeriod(apiClient_t *apiClient, tenantId, char *fisc
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -325,7 +333,7 @@ end:
 // Retrieves a specific fiscal period by its unique identifier within a fiscal year.
 //
 fiscal_period_dto_envelope_t*
-FiscalPeriodsAPI_getFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *fiscalPeriodId, char *api_version, char *x_api_version)
+FiscalPeriodsAPI_getFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *fiscalPeriodId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -407,13 +415,13 @@ FiscalPeriodsAPI_getFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalA
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -488,6 +496,10 @@ FiscalPeriodsAPI_getFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalA
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -516,7 +528,7 @@ end:
 // Retrieves all fiscal periods for the specified fiscal year within a fiscal authority.
 //
 fiscal_period_dto_list_envelope_t*
-FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *authorityId, char *api_version, char *x_api_version)
+FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *authorityId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -574,13 +586,13 @@ FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, tenantId, char *fiscal
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -666,6 +678,10 @@ FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, tenantId, char *fiscal
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -706,7 +722,7 @@ end:
 // Returns the total count of fiscal periods for the specified fiscal year.
 //
 int32_envelope_t*
-FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version)
+FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -771,13 +787,13 @@ FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, tenantId, char *f
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -851,6 +867,10 @@ FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, tenantId, char *f
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -879,7 +899,7 @@ end:
 // Updates an existing fiscal period identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalPeriodsAPI_updateFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version, fiscal_period_update_dto_t *fiscal_period_update_dto)
+FiscalPeriodsAPI_updateFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version, fiscal_period_update_dto_t *fiscal_period_update_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -927,13 +947,13 @@ FiscalPeriodsAPI_updateFiscalPeriod(apiClient_t *apiClient, tenantId, char *fisc
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -1021,6 +1041,10 @@ FiscalPeriodsAPI_updateFiscalPeriod(apiClient_t *apiClient, tenantId, char *fisc
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
     }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);

@@ -13,6 +13,7 @@
 #include "../model/account_relation_dto_list_envelope.h"
 #include "../model/account_relation_update_dto.h"
 #include "../model/account_type_create_dto.h"
+#include "../model/account_type_dto_envelope.h"
 #include "../model/account_type_dto_list_envelope.h"
 #include "../model/account_type_update_dto.h"
 #include "../model/account_update_dto.h"
@@ -20,10 +21,21 @@
 #include "../model/accounting_entry_dto_envelope.h"
 #include "../model/accounting_entry_dto_list_envelope.h"
 #include "../model/accounting_entry_update_dto.h"
+#include "../model/chart_of_accounts_list_envelope.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/money_envelope.h"
 #include "../model/operation.h"
+#include "../model/seed_chart_of_accounts_request.h"
+
+
+// Aggregate accounts balance
+//
+// Returns the sum of all account balances matching OData filters, normalized to the target currency using stored USD values.
+//
+money_envelope_t*
+AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId, char *currencyId, char *api_version, char *x_api_version);
 
 
 // Balance account
@@ -87,7 +99,7 @@ AccountsAPI_createAccountRelationAsync(apiClient_t *apiClient, char *tenantId, c
 // Create account type.
 //
 empty_envelope_t*
-AccountsAPI_createAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, account_type_create_dto_t *account_type_create_dto);
+AccountsAPI_createAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_type_create_dto_t *account_type_create_dto);
 
 
 // Delete an account
@@ -119,7 +131,7 @@ AccountsAPI_deleteAccountRelationAsync(apiClient_t *apiClient, char *tenantId, c
 // Delete account type.
 //
 empty_envelope_t*
-AccountsAPI_deleteAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *accountId, char *api_version, char *x_api_version);
+AccountsAPI_deleteAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version);
 
 
 // Get account aggregate
@@ -202,12 +214,20 @@ int32_envelope_t*
 AccountsAPI_getAccountRelationsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
 
 
+// Get account type by ID
+//
+// Get account type by ID.
+//
+account_type_dto_envelope_t*
+AccountsAPI_getAccountTypeByIdAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version);
+
+
 // Get account types
 //
 // Get account types.
 //
 account_type_dto_list_envelope_t*
-AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get account types count
@@ -215,7 +235,7 @@ AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Get account types count.
 //
 int32_envelope_t*
-AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Creates a new account
@@ -232,6 +252,14 @@ AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 //
 int32_envelope_t*
 AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Get charts of accounts
+//
+// Get available charts of accounts.
+//
+chart_of_accounts_list_envelope_t*
+AccountsAPI_getChartsOfAccountsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
 
 
 // Get child accounts
@@ -274,6 +302,14 @@ empty_envelope_t*
 AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
 
 
+// Seed chart of accounts
+//
+// Seed a chart of accounts from a file URL.
+//
+empty_envelope_t*
+AccountsAPI_seedChartOfAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, seed_chart_of_accounts_request_t *seed_chart_of_accounts_request);
+
+
 // Update an account
 //
 // Update an account.
@@ -303,6 +339,6 @@ AccountsAPI_updateAccountRelationAsync(apiClient_t *apiClient, char *tenantId, c
 // Update account type.
 //
 empty_envelope_t*
-AccountsAPI_updateAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *accountId, char *api_version, char *x_api_version, account_type_update_dto_t *account_type_update_dto);
+AccountsAPI_updateAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, account_type_update_dto_t *account_type_update_dto);
 
 

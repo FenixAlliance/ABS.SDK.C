@@ -7,6 +7,7 @@
 
 country_top_level_domain_dto_t *country_top_level_domain_dto_create(
     char *id,
+    char *timestamp,
     char *domain,
     char *country_id
     ) {
@@ -15,6 +16,7 @@ country_top_level_domain_dto_t *country_top_level_domain_dto_create(
         return NULL;
     }
     country_top_level_domain_dto_local_var->id = id;
+    country_top_level_domain_dto_local_var->timestamp = timestamp;
     country_top_level_domain_dto_local_var->domain = domain;
     country_top_level_domain_dto_local_var->country_id = country_id;
 
@@ -30,6 +32,10 @@ void country_top_level_domain_dto_free(country_top_level_domain_dto_t *country_t
     if (country_top_level_domain_dto->id) {
         free(country_top_level_domain_dto->id);
         country_top_level_domain_dto->id = NULL;
+    }
+    if (country_top_level_domain_dto->timestamp) {
+        free(country_top_level_domain_dto->timestamp);
+        country_top_level_domain_dto->timestamp = NULL;
     }
     if (country_top_level_domain_dto->domain) {
         free(country_top_level_domain_dto->domain);
@@ -49,6 +55,14 @@ cJSON *country_top_level_domain_dto_convertToJSON(country_top_level_domain_dto_t
     if(country_top_level_domain_dto->id) {
     if(cJSON_AddStringToObject(item, "id", country_top_level_domain_dto->id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // country_top_level_domain_dto->timestamp
+    if(country_top_level_domain_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", country_top_level_domain_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
     }
     }
 
@@ -89,6 +103,15 @@ country_top_level_domain_dto_t *country_top_level_domain_dto_parseFromJSON(cJSON
     }
     }
 
+    // country_top_level_domain_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(country_top_level_domain_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
+
     // country_top_level_domain_dto->domain
     cJSON *domain = cJSON_GetObjectItemCaseSensitive(country_top_level_domain_dtoJSON, "domain");
     if (domain) { 
@@ -110,6 +133,7 @@ country_top_level_domain_dto_t *country_top_level_domain_dto_parseFromJSON(cJSON
 
     country_top_level_domain_dto_local_var = country_top_level_domain_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         domain && !cJSON_IsNull(domain) ? strdup(domain->valuestring) : NULL,
         country_id && !cJSON_IsNull(country_id) ? strdup(country_id->valuestring) : NULL
         );

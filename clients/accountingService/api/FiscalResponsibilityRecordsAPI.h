@@ -19,7 +19,7 @@
 // Creates a new fiscal responsibility record for a fiscal responsibility.
 //
 empty_envelope_t*
-FiscalResponsibilityRecordsAPI_createFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_responsibility_record_create_dto_t *fiscal_responsibility_record_create_dto);
+FiscalResponsibilityRecordsAPI_createFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_responsibility_record_create_dto_t *fiscal_responsibility_record_create_dto);
 
 
 // Delete a fiscal responsibility record
@@ -27,7 +27,7 @@ FiscalResponsibilityRecordsAPI_createFiscalResponsibilityRecord(apiClient_t *api
 // Deletes a fiscal responsibility record identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalResponsibilityRecordsAPI_deleteFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version);
+FiscalResponsibilityRecordsAPI_deleteFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version);
 
 
 // Get fiscal responsibility record by ID
@@ -35,7 +35,7 @@ FiscalResponsibilityRecordsAPI_deleteFiscalResponsibilityRecord(apiClient_t *api
 // Retrieves a specific fiscal responsibility record by its unique identifier.
 //
 fiscal_responsibility_record_dto_envelope_t*
-FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version);
+FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version);
 
 
 // Get fiscal responsibility records
@@ -43,7 +43,7 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord(apiClient_t *apiCli
 // Retrieves all fiscal responsibility records for the specified fiscal responsibility.
 //
 fiscal_responsibility_record_dto_list_envelope_t*
-FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
+FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
 
 
 // Get fiscal responsibility records count
@@ -51,7 +51,7 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiCl
 // Returns the total count of fiscal responsibility records for the specified fiscal responsibility.
 //
 int32_envelope_t*
-FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
+FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
 
 
 // Update a fiscal responsibility record
@@ -59,6 +59,6 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *
 // Updates an existing fiscal responsibility record identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalResponsibilityRecordsAPI_updateFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, fiscal_responsibility_record_update_dto_t *fiscal_responsibility_record_update_dto);
+FiscalResponsibilityRecordsAPI_updateFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, fiscal_responsibility_record_update_dto_t *fiscal_responsibility_record_update_dto);
 
 

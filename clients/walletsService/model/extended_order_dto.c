@@ -100,6 +100,7 @@ extended_order_dto_t *extended_order_dto_create(
     char *customer_notes,
     walletsservice_extended_order_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     double forex_rate,
+    char *forex_rates_snapshot,
     char *currency_id,
     double total_detail,
     char *total_detail_currency_id,
@@ -196,6 +197,7 @@ extended_order_dto_t *extended_order_dto_create(
     extended_order_dto_local_var->customer_notes = customer_notes;
     extended_order_dto_local_var->tax_calculation_method = tax_calculation_method;
     extended_order_dto_local_var->forex_rate = forex_rate;
+    extended_order_dto_local_var->forex_rates_snapshot = forex_rates_snapshot;
     extended_order_dto_local_var->currency_id = currency_id;
     extended_order_dto_local_var->total_detail = total_detail;
     extended_order_dto_local_var->total_detail_currency_id = total_detail_currency_id;
@@ -362,6 +364,10 @@ void extended_order_dto_free(extended_order_dto_t *extended_order_dto) {
     if (extended_order_dto->customer_notes) {
         free(extended_order_dto->customer_notes);
         extended_order_dto->customer_notes = NULL;
+    }
+    if (extended_order_dto->forex_rates_snapshot) {
+        free(extended_order_dto->forex_rates_snapshot);
+        extended_order_dto->forex_rates_snapshot = NULL;
     }
     if (extended_order_dto->currency_id) {
         free(extended_order_dto->currency_id);
@@ -686,6 +692,14 @@ cJSON *extended_order_dto_convertToJSON(extended_order_dto_t *extended_order_dto
     if(extended_order_dto->forex_rate) {
     if(cJSON_AddNumberToObject(item, "forexRate", extended_order_dto->forex_rate) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // extended_order_dto->forex_rates_snapshot
+    if(extended_order_dto->forex_rates_snapshot) {
+    if(cJSON_AddStringToObject(item, "forexRatesSnapshot", extended_order_dto->forex_rates_snapshot) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -1508,6 +1522,15 @@ extended_order_dto_t *extended_order_dto_parseFromJSON(cJSON *extended_order_dto
     }
     }
 
+    // extended_order_dto->forex_rates_snapshot
+    cJSON *forex_rates_snapshot = cJSON_GetObjectItemCaseSensitive(extended_order_dtoJSON, "forexRatesSnapshot");
+    if (forex_rates_snapshot) { 
+    if(!cJSON_IsString(forex_rates_snapshot) && !cJSON_IsNull(forex_rates_snapshot))
+    {
+    goto end; //String
+    }
+    }
+
     // extended_order_dto->currency_id
     cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(extended_order_dtoJSON, "currencyId");
     if (currency_id) { 
@@ -2109,6 +2132,7 @@ extended_order_dto_t *extended_order_dto_parseFromJSON(cJSON *extended_order_dto
         customer_notes && !cJSON_IsNull(customer_notes) ? strdup(customer_notes->valuestring) : NULL,
         tax_calculation_method ? tax_calculation_methodVariable : walletsservice_extended_order_dto_TAXCALCULATIONMETHOD_NULL,
         forex_rate ? forex_rate->valuedouble : 0,
+        forex_rates_snapshot && !cJSON_IsNull(forex_rates_snapshot) ? strdup(forex_rates_snapshot->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         total_detail ? total_detail->valuedouble : 0,
         total_detail_currency_id && !cJSON_IsNull(total_detail_currency_id) ? strdup(total_detail_currency_id->valuestring) : NULL,

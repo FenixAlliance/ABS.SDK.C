@@ -1,0 +1,45 @@
+/*
+ * i_edm_expression.h
+ *
+ * 
+ */
+
+#ifndef _i_edm_expression_H_
+#define _i_edm_expression_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct i_edm_expression_t i_edm_expression_t;
+
+
+// Enum EXPRESSIONKIND for i_edm_expression
+
+typedef enum  { contentservice_i_edm_expression_EXPRESSIONKIND_NULL = 0, contentservice_i_edm_expression_EXPRESSIONKIND_None, contentservice_i_edm_expression_EXPRESSIONKIND_BinaryConstant, contentservice_i_edm_expression_EXPRESSIONKIND_BooleanConstant, contentservice_i_edm_expression_EXPRESSIONKIND_DateTimeOffsetConstant, contentservice_i_edm_expression_EXPRESSIONKIND_DecimalConstant, contentservice_i_edm_expression_EXPRESSIONKIND_FloatingConstant, contentservice_i_edm_expression_EXPRESSIONKIND_GuidConstant, contentservice_i_edm_expression_EXPRESSIONKIND_IntegerConstant, contentservice_i_edm_expression_EXPRESSIONKIND_StringConstant, contentservice_i_edm_expression_EXPRESSIONKIND_DurationConstant, contentservice_i_edm_expression_EXPRESSIONKIND_Record, contentservice_i_edm_expression_EXPRESSIONKIND_Collection, contentservice_i_edm_expression_EXPRESSIONKIND_Path, contentservice_i_edm_expression_EXPRESSIONKIND__If, contentservice_i_edm_expression_EXPRESSIONKIND_Cast, contentservice_i_edm_expression_EXPRESSIONKIND_IsOf, contentservice_i_edm_expression_EXPRESSIONKIND_FunctionApplication, contentservice_i_edm_expression_EXPRESSIONKIND_LabeledExpressionReference, contentservice_i_edm_expression_EXPRESSIONKIND_Labeled, contentservice_i_edm_expression_EXPRESSIONKIND_PropertyPath, contentservice_i_edm_expression_EXPRESSIONKIND_NavigationPropertyPath, contentservice_i_edm_expression_EXPRESSIONKIND_DateConstant, contentservice_i_edm_expression_EXPRESSIONKIND_TimeOfDayConstant, contentservice_i_edm_expression_EXPRESSIONKIND_EnumMember, contentservice_i_edm_expression_EXPRESSIONKIND_AnnotationPath } contentservice_i_edm_expression_EXPRESSIONKIND_e;
+
+char* i_edm_expression_expression_kind_ToString(contentservice_i_edm_expression_EXPRESSIONKIND_e expression_kind);
+
+contentservice_i_edm_expression_EXPRESSIONKIND_e i_edm_expression_expression_kind_FromString(char* expression_kind);
+
+
+
+typedef struct i_edm_expression_t {
+    contentservice_i_edm_expression_EXPRESSIONKIND_e expression_kind; //enum
+
+} i_edm_expression_t;
+
+i_edm_expression_t *i_edm_expression_create(
+    contentservice_i_edm_expression_EXPRESSIONKIND_e expression_kind
+);
+
+void i_edm_expression_free(i_edm_expression_t *i_edm_expression);
+
+i_edm_expression_t *i_edm_expression_parseFromJSON(cJSON *i_edm_expressionJSON);
+
+cJSON *i_edm_expression_convertToJSON(i_edm_expression_t *i_edm_expression);
+
+#endif /* _i_edm_expression_H_ */
+

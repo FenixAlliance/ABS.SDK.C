@@ -16,7 +16,7 @@
 // Counts all tax policies for a specific item.
 //
 int32_envelope_t*
-ItemTaxPoliciesAPI_countItemTaxPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemTaxPoliciesAPI_countItemTaxPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Get item tax policies
@@ -24,7 +24,7 @@ ItemTaxPoliciesAPI_countItemTaxPoliciesAsync(apiClient_t *apiClient, char *itemI
 // Retrieves all tax policies for a specific item.
 //
 item_tax_policy_dto_list_envelope_t*
-ItemTaxPoliciesAPI_getItemTaxPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemTaxPoliciesAPI_getItemTaxPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Get item tax policy by ID
@@ -32,7 +32,7 @@ ItemTaxPoliciesAPI_getItemTaxPoliciesAsync(apiClient_t *apiClient, char *itemId,
 // Retrieves a specific tax policy for an item.
 //
 item_tax_policy_dto_envelope_t*
-ItemTaxPoliciesAPI_getItemTaxPolicyByIdAsync(apiClient_t *apiClient, char *itemTaxPolicyId, char *itemId, char *api_version, char *x_api_version);
+ItemTaxPoliciesAPI_getItemTaxPolicyByIdAsync(apiClient_t *apiClient, char *itemTaxPolicyId, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Relate item to tax policy

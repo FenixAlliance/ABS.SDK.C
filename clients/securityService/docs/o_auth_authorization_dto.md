@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
+**timestamp** | **char \*** |  | [optional] 
 **concurrency_token** | **char \*** |  | [optional] 
 **creation_date** | **char \*** |  | [optional] 
 **properties** | **char \*** |  | [optional] 

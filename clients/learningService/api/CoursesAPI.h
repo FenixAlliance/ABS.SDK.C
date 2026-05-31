@@ -82,7 +82,7 @@ CoursesAPI_getCourseAssignmentsByCourseCountAsync(apiClient_t *apiClient, char *
 // Retrieves a specific course by its ID.
 //
 course_dto_t*
-CoursesAPI_getCourseByIdAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version);
+CoursesAPI_getCourseByIdAsync(apiClient_t *apiClient, char *courseId, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get course categories by course

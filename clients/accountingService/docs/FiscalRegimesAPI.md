@@ -1,6 +1,6 @@
 # FiscalRegimesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,14 +18,14 @@ Method | HTTP request | Description
 //
 // Creates a new fiscal regime for a fiscal authority.
 //
-empty_envelope_t* FiscalRegimesAPI_createFiscalRegime(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_regime_create_dto_t *fiscal_regime_create_dto);
+empty_envelope_t* FiscalRegimesAPI_createFiscalRegime(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_regime_create_dto_t *fiscal_regime_create_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **fiscal_regime_create_dto** | **[fiscal_regime_create_dto_t](fiscal_regime_create_dto.md) \*** |  | [optional] 
@@ -52,14 +52,14 @@ No authorization required
 //
 // Deletes a fiscal regime identified by its unique identifier.
 //
-empty_envelope_t* FiscalRegimesAPI_deleteFiscalRegime(apiClient_t *apiClient, tenantId, char *regimeId, char *api_version, char *x_api_version);
+empty_envelope_t* FiscalRegimesAPI_deleteFiscalRegime(apiClient_t *apiClient, char *tenantId, char *regimeId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **regimeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -86,14 +86,14 @@ No authorization required
 //
 // Retrieves a specific fiscal regime by its unique identifier.
 //
-fiscal_regime_dto_envelope_t* FiscalRegimesAPI_getFiscalRegime(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *regimeId, char *api_version, char *x_api_version);
+fiscal_regime_dto_envelope_t* FiscalRegimesAPI_getFiscalRegime(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *regimeId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **regimeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -121,13 +121,14 @@ No authorization required
 //
 // Retrieves all fiscal regimes for the specified fiscal authority.
 //
-fiscal_regime_dto_list_envelope_t* FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
+fiscal_regime_dto_list_envelope_t* FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **authorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -155,13 +156,14 @@ No authorization required
 //
 // Returns the total count of fiscal regimes for the specified fiscal authority.
 //
-int32_envelope_t* FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+int32_envelope_t* FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -188,14 +190,14 @@ No authorization required
 //
 // Updates an existing fiscal regime identified by its unique identifier.
 //
-empty_envelope_t* FiscalRegimesAPI_updateFiscalRegime(apiClient_t *apiClient, tenantId, char *regimeId, char *api_version, char *x_api_version, fiscal_regime_update_dto_t *fiscal_regime_update_dto);
+empty_envelope_t* FiscalRegimesAPI_updateFiscalRegime(apiClient_t *apiClient, char *tenantId, char *regimeId, char *api_version, char *x_api_version, fiscal_regime_update_dto_t *fiscal_regime_update_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **regimeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 

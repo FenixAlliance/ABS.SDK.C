@@ -3,6 +3,15 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**closed** | **int** |  | [optional] 
+**title** | **char \*** |  | [optional] 
+**user_id** | **char \*** |  | [optional] 
+**price_list_id** | **char \*** |  | [optional] 
+**description** | **char \*** |  | [optional] 
+**individual_id** | **char \*** |  | [optional] 
+**payment_term_id** | **char \*** |  | [optional] 
+**organization_id** | **char \*** |  | [optional] 
+**receiver_tenant_id** | **char \*** |  | [optional] 
 **first_name** | **char \*** |  | [optional] 
 **last_name** | **char \*** |  | [optional] 
 **company_name** | **char \*** |  | [optional] 
@@ -16,6 +25,8 @@ Name | Type | Description | Notes
 **billing_location_id** | **char \*** |  | [optional] 
 **shipping_location_id** | **char \*** |  | [optional] 
 **shipping_method_id** | **char \*** |  | [optional] 
+**forex_rate** | **double** |  | [optional] 
+**currency_id** | **char \*** |  | [optional] 
 **total_detail** | **double** |  | [optional] 
 **total_detail_currency_id** | **char \*** |  | [optional] 
 **total_profit** | **double** |  | [optional] 
@@ -43,22 +54,11 @@ Name | Type | Description | Notes
 **cost_calculation_method** | **ordersservice_order_update_dto_COSTCALCULATIONMETHOD_e** |  | [optional] 
 **tax_calculation_method** | **ordersservice_order_update_dto_TAXCALCULATIONMETHOD_e** |  | [optional] 
 **cart_id** | **char \*** |  | [optional] 
-**user_id** | **char \*** |  | [optional] 
-**forex_rate** | **double** |  | [optional] 
-**currency_id** | **char \*** |  | [optional] 
-**individual_id** | **char \*** |  | [optional] 
-**organization_id** | **char \*** |  | [optional] 
 **total_amount_in_usd** | **double** |  | [optional] 
 **total_taxes_in_usd** | **double** |  | [optional] 
-**receiver_tenant_id** | **char \*** |  | [optional] 
-**closed** | **int** |  | [optional] 
-**price_list_id** | **char \*** |  | [optional] 
-**payment_term_id** | **char \*** |  | [optional] 
 **quote_status** | **char \*** |  | [optional] 
 **effective_to** | **char \*** |  | [optional] 
 **effective_from** | **char \*** |  | [optional] 
-**description** | **char \*** |  | [optional] 
-**title** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

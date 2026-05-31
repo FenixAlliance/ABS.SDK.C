@@ -7,6 +7,7 @@
 
 o_auth_authorization_dto_t *o_auth_authorization_dto_create(
     char *id,
+    char *timestamp,
     char *concurrency_token,
     char *creation_date,
     char *properties,
@@ -22,6 +23,7 @@ o_auth_authorization_dto_t *o_auth_authorization_dto_create(
         return NULL;
     }
     o_auth_authorization_dto_local_var->id = id;
+    o_auth_authorization_dto_local_var->timestamp = timestamp;
     o_auth_authorization_dto_local_var->concurrency_token = concurrency_token;
     o_auth_authorization_dto_local_var->creation_date = creation_date;
     o_auth_authorization_dto_local_var->properties = properties;
@@ -44,6 +46,10 @@ void o_auth_authorization_dto_free(o_auth_authorization_dto_t *o_auth_authorizat
     if (o_auth_authorization_dto->id) {
         free(o_auth_authorization_dto->id);
         o_auth_authorization_dto->id = NULL;
+    }
+    if (o_auth_authorization_dto->timestamp) {
+        free(o_auth_authorization_dto->timestamp);
+        o_auth_authorization_dto->timestamp = NULL;
     }
     if (o_auth_authorization_dto->concurrency_token) {
         free(o_auth_authorization_dto->concurrency_token);
@@ -87,6 +93,14 @@ cJSON *o_auth_authorization_dto_convertToJSON(o_auth_authorization_dto_t *o_auth
     if(o_auth_authorization_dto->id) {
     if(cJSON_AddStringToObject(item, "id", o_auth_authorization_dto->id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // o_auth_authorization_dto->timestamp
+    if(o_auth_authorization_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", o_auth_authorization_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
     }
     }
 
@@ -183,6 +197,15 @@ o_auth_authorization_dto_t *o_auth_authorization_dto_parseFromJSON(cJSON *o_auth
     }
     }
 
+    // o_auth_authorization_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(o_auth_authorization_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
+
     // o_auth_authorization_dto->concurrency_token
     cJSON *concurrency_token = cJSON_GetObjectItemCaseSensitive(o_auth_authorization_dtoJSON, "concurrencyToken");
     if (concurrency_token) { 
@@ -267,6 +290,7 @@ o_auth_authorization_dto_t *o_auth_authorization_dto_parseFromJSON(cJSON *o_auth
 
     o_auth_authorization_dto_local_var = o_auth_authorization_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         concurrency_token && !cJSON_IsNull(concurrency_token) ? strdup(concurrency_token->valuestring) : NULL,
         creation_date && !cJSON_IsNull(creation_date) ? strdup(creation_date->valuestring) : NULL,
         properties && !cJSON_IsNull(properties) ? strdup(properties->valuestring) : NULL,

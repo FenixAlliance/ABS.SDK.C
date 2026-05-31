@@ -20,6 +20,7 @@ typedef struct follow_record_dto_t follow_record_dto_t;
 
 typedef struct follow_record_dto_t {
     char *id; // string
+    char *timestamp; //date time
     char *type; // string
     char *follower_id; // string
     char *followed_id; // string
@@ -29,6 +30,7 @@ typedef struct follow_record_dto_t {
 
 follow_record_dto_t *follow_record_dto_create(
     char *id,
+    char *timestamp,
     char *type,
     char *follower_id,
     char *followed_id,

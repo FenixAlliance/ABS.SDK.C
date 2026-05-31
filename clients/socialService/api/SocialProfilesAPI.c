@@ -692,7 +692,7 @@ end:
 // Count messages for a conversation.
 //
 int32_envelope_t*
-SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *conversationId, char *api_version, char *x_api_version)
+SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -737,6 +737,18 @@ SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *conversationI
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_socialProfileId = NULL;
+    char * valueQuery_socialProfileId = NULL;
+    keyValuePair_t *keyPairQuery_socialProfileId = 0;
+    if (socialProfileId)
+    {
+        keyQuery_socialProfileId = strdup("socialProfileId");
+        valueQuery_socialProfileId = strdup((socialProfileId));
+        keyPairQuery_socialProfileId = keyValuePair_create(keyQuery_socialProfileId, valueQuery_socialProfileId);
+        list_addElement(localVarQueryParameters,keyPairQuery_socialProfileId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -803,6 +815,18 @@ SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *conversationI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_socialProfileId){
+        free(keyQuery_socialProfileId);
+        keyQuery_socialProfileId = NULL;
+    }
+    if(valueQuery_socialProfileId){
+        free(valueQuery_socialProfileId);
+        valueQuery_socialProfileId = NULL;
+    }
+    if(keyPairQuery_socialProfileId){
+        keyValuePair_free(keyPairQuery_socialProfileId);
+        keyPairQuery_socialProfileId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2563,7 +2587,7 @@ end:
 // Get a list of messages for a conversation.
 //
 private_message_dto_list_envelope_t*
-SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *conversationId, char *api_version, char *x_api_version)
+SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2608,6 +2632,18 @@ SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *conversationId,
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_socialProfileId = NULL;
+    char * valueQuery_socialProfileId = NULL;
+    keyValuePair_t *keyPairQuery_socialProfileId = 0;
+    if (socialProfileId)
+    {
+        keyQuery_socialProfileId = strdup("socialProfileId");
+        valueQuery_socialProfileId = strdup((socialProfileId));
+        keyPairQuery_socialProfileId = keyValuePair_create(keyQuery_socialProfileId, valueQuery_socialProfileId);
+        list_addElement(localVarQueryParameters,keyPairQuery_socialProfileId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -2665,6 +2701,171 @@ SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *conversationId,
     
     free(localVarPath);
     free(localVarToReplace_conversationId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_socialProfileId){
+        free(keyQuery_socialProfileId);
+        keyQuery_socialProfileId = NULL;
+    }
+    if(valueQuery_socialProfileId){
+        free(valueQuery_socialProfileId);
+        valueQuery_socialProfileId = NULL;
+    }
+    if(keyPairQuery_socialProfileId){
+        keyValuePair_free(keyPairQuery_socialProfileId);
+        keyPairQuery_socialProfileId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Get Notification
+//
+// Get a notification by ID for a social profile.
+//
+notification_dto_envelope_t*
+SocialProfilesAPI_getNotificationByIdAsync(apiClient_t *apiClient, char *socialProfileId, char *notificationId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications/{notificationId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications/{notificationId}");
+
+
+    // Path Params
+    long sizeOfPathParams_socialProfileId = strlen(socialProfileId)+3 + strlen(notificationId)+3 + strlen("{ socialProfileId }");
+    if(socialProfileId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_socialProfileId = malloc(sizeOfPathParams_socialProfileId);
+    sprintf(localVarToReplace_socialProfileId, "{%s}", "socialProfileId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_socialProfileId, socialProfileId);
+    if(socialProfileId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_socialProfileId = malloc(sizeOfPathParams_socialProfileId);
+    sprintf(localVarToReplace_socialProfileId, "{%s}", "socialProfileId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_socialProfileId, socialProfileId);
+
+    // Path Params
+    long sizeOfPathParams_notificationId = strlen(socialProfileId)+3 + strlen(notificationId)+3 + strlen("{ notificationId }");
+    if(notificationId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_notificationId = malloc(sizeOfPathParams_notificationId);
+    sprintf(localVarToReplace_notificationId, "{%s}", "notificationId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_notificationId, notificationId);
+    if(notificationId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_notificationId = malloc(sizeOfPathParams_notificationId);
+    sprintf(localVarToReplace_notificationId, "{%s}", "notificationId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_notificationId, notificationId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *SocialProfilesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    notification_dto_envelope_t *elementToReturn = notification_dto_envelope_parseFromJSON(SocialProfilesAPIlocalVarJSON);
+    cJSON_Delete(SocialProfilesAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_socialProfileId);
+    free(localVarToReplace_notificationId);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
         keyHeader_x_api_version = NULL;

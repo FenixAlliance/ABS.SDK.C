@@ -1,6 +1,6 @@
 # FiscalIdentificationTypesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,14 +18,14 @@ Method | HTTP request | Description
 //
 // Creates a new fiscal identification type for a fiscal authority.
 //
-empty_envelope_t* FiscalIdentificationTypesAPI_createFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_identification_type_create_dto_t *fiscal_identification_type_create_dto);
+empty_envelope_t* FiscalIdentificationTypesAPI_createFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_identification_type_create_dto_t *fiscal_identification_type_create_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **fiscal_identification_type_create_dto** | **[fiscal_identification_type_create_dto_t](fiscal_identification_type_create_dto.md) \*** |  | [optional] 
@@ -52,14 +52,14 @@ No authorization required
 //
 // Deletes a fiscal identification type identified by its unique identifier.
 //
-empty_envelope_t* FiscalIdentificationTypesAPI_deleteFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *identificationTypeId, char *api_version, char *x_api_version);
+empty_envelope_t* FiscalIdentificationTypesAPI_deleteFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *identificationTypeId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **identificationTypeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -86,14 +86,14 @@ No authorization required
 //
 // Retrieves a specific fiscal identification type by its unique identifier.
 //
-fiscal_identification_type_dto_envelope_t* FiscalIdentificationTypesAPI_getFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *identificationTypeId, char *api_version, char *x_api_version);
+fiscal_identification_type_dto_envelope_t* FiscalIdentificationTypesAPI_getFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *identificationTypeId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **identificationTypeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -121,13 +121,14 @@ No authorization required
 //
 // Retrieves all fiscal identification types for the specified fiscal authority.
 //
-fiscal_identification_type_dto_list_envelope_t* FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient, char *authorityId, char *api_version, char *x_api_version);
+fiscal_identification_type_dto_list_envelope_t* FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **authorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -154,13 +155,14 @@ No authorization required
 //
 // Returns the total count of fiscal identification types for the specified fiscal authority.
 //
-int32_envelope_t* FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiClient, char *authorityId, char *api_version, char *x_api_version);
+int32_envelope_t* FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **authorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -187,14 +189,14 @@ No authorization required
 //
 // Updates an existing fiscal identification type identified by its unique identifier.
 //
-empty_envelope_t* FiscalIdentificationTypesAPI_updateFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *identificationTypeId, char *api_version, char *x_api_version, fiscal_identification_type_update_dto_t *fiscal_identification_type_update_dto);
+empty_envelope_t* FiscalIdentificationTypesAPI_updateFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *identificationTypeId, char *api_version, char *x_api_version, fiscal_identification_type_update_dto_t *fiscal_identification_type_update_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **identificationTypeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 

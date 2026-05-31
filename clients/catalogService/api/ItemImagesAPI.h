@@ -33,7 +33,7 @@ ItemImagesAPI_deleteItemImageAsync(apiClient_t *apiClient, char *tenantId, char 
 // Retrieves a specific item image by its ID.
 //
 item_image_dto_envelope_t*
-ItemImagesAPI_getItemImageByIdAsync(apiClient_t *apiClient, char *itemImageId, char *api_version, char *x_api_version);
+ItemImagesAPI_getItemImageByIdAsync(apiClient_t *apiClient, char *itemImageId, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get all item images

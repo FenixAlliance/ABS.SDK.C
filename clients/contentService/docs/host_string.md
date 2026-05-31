@@ -1,0 +1,13 @@
+# host_string_t
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**value** | **char \*** |  | [optional] 
+**has_value** | **int** |  | [optional] [readonly] 
+**host** | **char \*** |  | [optional] [readonly] 
+**port** | **int** |  | [optional] [readonly] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -55,7 +55,7 @@
 // Counts the number of tags associated with a specific stock item.
 //
 int32_envelope_t*
-ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Count stock items by business
@@ -303,7 +303,7 @@ ItemsAPI_getStockItemShippingPolicyById(apiClient_t *apiClient, char *itemId, ch
 // Retrieves a specific tag by ID for a stock item.
 //
 item_tag_dto_envelope_t*
-ItemsAPI_getStockItemTagById(apiClient_t *apiClient, char *itemId, char *itemTagId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemTagById(apiClient_t *apiClient, char *tenantId, char *itemId, char *itemTagId, char *api_version, char *x_api_version);
 
 
 // Get tags for a stock item
@@ -311,7 +311,7 @@ ItemsAPI_getStockItemTagById(apiClient_t *apiClient, char *itemId, char *itemTag
 // Retrieves all tags associated with a specific stock item.
 //
 item_tag_dto_list_envelope_t*
-ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Get tax policies for a stock item
@@ -335,7 +335,7 @@ ItemsAPI_getStockItemTaxPolicyById(apiClient_t *apiClient, char *itemId, char *i
 // Retrieves a specific type by ID for a stock item.
 //
 item_type_dto_envelope_t*
-ItemsAPI_getStockItemTypeById(apiClient_t *apiClient, char *itemId, char *itemTypeId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemTypeById(apiClient_t *apiClient, char *tenantId, char *itemId, char *itemTypeId, char *api_version, char *x_api_version);
 
 
 // Get types for a stock item
@@ -343,7 +343,7 @@ ItemsAPI_getStockItemTypeById(apiClient_t *apiClient, char *itemId, char *itemTy
 // Retrieves all types associated with a specific stock item.
 //
 item_type_dto_list_envelope_t*
-ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 
 
 // Get warranty policies for a stock item

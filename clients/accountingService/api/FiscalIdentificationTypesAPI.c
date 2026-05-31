@@ -17,7 +17,7 @@
 // Creates a new fiscal identification type for a fiscal authority.
 //
 empty_envelope_t*
-FiscalIdentificationTypesAPI_createFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_identification_type_create_dto_t *fiscal_identification_type_create_dto)
+FiscalIdentificationTypesAPI_createFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_identification_type_create_dto_t *fiscal_identification_type_create_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -48,13 +48,13 @@ FiscalIdentificationTypesAPI_createFiscalIdentificationType(apiClient_t *apiClie
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -142,6 +142,10 @@ FiscalIdentificationTypesAPI_createFiscalIdentificationType(apiClient_t *apiClie
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -170,7 +174,7 @@ end:
 // Deletes a fiscal identification type identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalIdentificationTypesAPI_deleteFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *identificationTypeId, char *api_version, char *x_api_version)
+FiscalIdentificationTypesAPI_deleteFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *identificationTypeId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -218,13 +222,13 @@ FiscalIdentificationTypesAPI_deleteFiscalIdentificationType(apiClient_t *apiClie
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -297,6 +301,10 @@ FiscalIdentificationTypesAPI_deleteFiscalIdentificationType(apiClient_t *apiClie
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -325,7 +333,7 @@ end:
 // Retrieves a specific fiscal identification type by its unique identifier.
 //
 fiscal_identification_type_dto_envelope_t*
-FiscalIdentificationTypesAPI_getFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *identificationTypeId, char *api_version, char *x_api_version)
+FiscalIdentificationTypesAPI_getFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *identificationTypeId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -390,13 +398,13 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationType(apiClient_t *apiClient,
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -470,6 +478,10 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationType(apiClient_t *apiClient,
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -498,7 +510,7 @@ end:
 // Retrieves all fiscal identification types for the specified fiscal authority.
 //
 fiscal_identification_type_dto_list_envelope_t*
-FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient, char *authorityId, char *api_version, char *x_api_version)
+FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -543,6 +555,18 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -609,6 +633,18 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -633,7 +669,7 @@ end:
 // Returns the total count of fiscal identification types for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiClient, char *authorityId, char *api_version, char *x_api_version)
+FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -678,6 +714,18 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiC
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -744,6 +792,18 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiC
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -768,7 +828,7 @@ end:
 // Updates an existing fiscal identification type identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalIdentificationTypesAPI_updateFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *identificationTypeId, char *api_version, char *x_api_version, fiscal_identification_type_update_dto_t *fiscal_identification_type_update_dto)
+FiscalIdentificationTypesAPI_updateFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *identificationTypeId, char *api_version, char *x_api_version, fiscal_identification_type_update_dto_t *fiscal_identification_type_update_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -816,13 +876,13 @@ FiscalIdentificationTypesAPI_updateFiscalIdentificationType(apiClient_t *apiClie
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -910,6 +970,10 @@ FiscalIdentificationTypesAPI_updateFiscalIdentificationType(apiClient_t *apiClie
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
     }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);

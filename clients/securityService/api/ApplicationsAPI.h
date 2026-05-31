@@ -12,6 +12,8 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/security_permission_dto_list_envelope.h"
+#include "../model/security_role_dto_list_envelope.h"
 
 
 // Create a new business application
@@ -52,6 +54,22 @@ ApplicationsAPI_getBusinessApplicationsAsync(apiClient_t *apiClient, char *tenan
 //
 int32_envelope_t*
 ApplicationsAPI_getBusinessApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Get permissions by application
+//
+// Retrieves all security permissions granted to a specific business application.
+//
+security_permission_dto_list_envelope_t*
+ApplicationsAPI_getPermissionsByApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, char *api_version, char *x_api_version);
+
+
+// Get roles by application
+//
+// Retrieves all security roles granted to a specific business application.
+//
+security_role_dto_list_envelope_t*
+ApplicationsAPI_getRolesByApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, char *api_version, char *x_api_version);
 
 
 // Update an existing business application

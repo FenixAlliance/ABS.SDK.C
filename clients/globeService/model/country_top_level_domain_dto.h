@@ -20,6 +20,7 @@ typedef struct country_top_level_domain_dto_t country_top_level_domain_dto_t;
 
 typedef struct country_top_level_domain_dto_t {
     char *id; // string
+    char *timestamp; //date time
     char *domain; // string
     char *country_id; // string
 
@@ -27,6 +28,7 @@ typedef struct country_top_level_domain_dto_t {
 
 country_top_level_domain_dto_t *country_top_level_domain_dto_create(
     char *id,
+    char *timestamp,
     char *domain,
     char *country_id
 );

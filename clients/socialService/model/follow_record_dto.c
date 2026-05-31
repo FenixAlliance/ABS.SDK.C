@@ -7,6 +7,7 @@
 
 follow_record_dto_t *follow_record_dto_create(
     char *id,
+    char *timestamp,
     char *type,
     char *follower_id,
     char *followed_id,
@@ -17,6 +18,7 @@ follow_record_dto_t *follow_record_dto_create(
         return NULL;
     }
     follow_record_dto_local_var->id = id;
+    follow_record_dto_local_var->timestamp = timestamp;
     follow_record_dto_local_var->type = type;
     follow_record_dto_local_var->follower_id = follower_id;
     follow_record_dto_local_var->followed_id = followed_id;
@@ -34,6 +36,10 @@ void follow_record_dto_free(follow_record_dto_t *follow_record_dto) {
     if (follow_record_dto->id) {
         free(follow_record_dto->id);
         follow_record_dto->id = NULL;
+    }
+    if (follow_record_dto->timestamp) {
+        free(follow_record_dto->timestamp);
+        follow_record_dto->timestamp = NULL;
     }
     if (follow_record_dto->type) {
         free(follow_record_dto->type);
@@ -57,6 +63,14 @@ cJSON *follow_record_dto_convertToJSON(follow_record_dto_t *follow_record_dto) {
     if(follow_record_dto->id) {
     if(cJSON_AddStringToObject(item, "id", follow_record_dto->id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // follow_record_dto->timestamp
+    if(follow_record_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", follow_record_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
     }
     }
 
@@ -113,6 +127,15 @@ follow_record_dto_t *follow_record_dto_parseFromJSON(cJSON *follow_record_dtoJSO
     }
     }
 
+    // follow_record_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(follow_record_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
+
     // follow_record_dto->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(follow_record_dtoJSON, "type");
     if (type) { 
@@ -152,6 +175,7 @@ follow_record_dto_t *follow_record_dto_parseFromJSON(cJSON *follow_record_dtoJSO
 
     follow_record_dto_local_var = follow_record_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         follower_id && !cJSON_IsNull(follower_id) ? strdup(follower_id->valuestring) : NULL,
         followed_id && !cJSON_IsNull(followed_id) ? strdup(followed_id->valuestring) : NULL,

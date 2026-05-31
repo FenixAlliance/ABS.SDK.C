@@ -1,6 +1,6 @@
 # ItemWarrantyPoliciesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,13 +17,14 @@ Method | HTTP request | Description
 //
 // Counts all warranty policies for a specific item.
 //
-int32_envelope_t* ItemWarrantyPoliciesAPI_countItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+int32_envelope_t* ItemWarrantyPoliciesAPI_countItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | [optional] 
 **itemId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -50,13 +51,14 @@ No authorization required
 //
 // Retrieves all warranty policies for a specific item.
 //
-item_warranty_policy_dto_list_envelope_t* ItemWarrantyPoliciesAPI_getItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+item_warranty_policy_dto_list_envelope_t* ItemWarrantyPoliciesAPI_getItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | [optional] 
 **itemId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -83,7 +85,7 @@ No authorization required
 //
 // Retrieves a specific warranty policy for an item.
 //
-item_warranty_policy_dto_envelope_t* ItemWarrantyPoliciesAPI_getItemWarrantyPolicyByIdAsync(apiClient_t *apiClient, char *itemWarrantyPolicyId, char *itemId, char *api_version, char *x_api_version);
+item_warranty_policy_dto_envelope_t* ItemWarrantyPoliciesAPI_getItemWarrantyPolicyByIdAsync(apiClient_t *apiClient, char *itemWarrantyPolicyId, char *tenantId, char *itemId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -91,6 +93,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **itemWarrantyPolicyId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **itemId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 

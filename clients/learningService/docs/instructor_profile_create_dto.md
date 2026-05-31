@@ -5,13 +5,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
-**authorized** | **int** |  | [optional] 
+**type** | **char \*** |  | [optional] 
+**contact_id** | **char \*** |  | [optional] 
 **about** | **char \*** |  | [optional] 
-**verified** | **int** |  | [optional] 
-**submitted** | **int** |  | [optional] 
 **avatar_url** | **char \*** |  | [optional] 
-**qualified_name** | **char \*** |  | [optional] 
-**verification_timestamp** | **char \*** |  | [optional] 
 **data** | **char \*** |  | [optional] 
 **data_label** | **char \*** |  | [optional] 
 **data1** | **char \*** |  | [optional] 
@@ -32,6 +29,7 @@ Name | Type | Description | Notes
 **data8_label** | **char \*** |  | [optional] 
 **data9** | **char \*** |  | [optional] 
 **data9_label** | **char \*** |  | [optional] 
+**authorized** | **int** |  | [optional] 
 **contact_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

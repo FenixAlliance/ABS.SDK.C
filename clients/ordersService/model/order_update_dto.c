@@ -40,6 +40,15 @@ ordersservice_order_update_dto_TAXCALCULATIONMETHOD_e order_update_dto_tax_calcu
 }
 
 order_update_dto_t *order_update_dto_create(
+    int closed,
+    char *title,
+    char *user_id,
+    char *price_list_id,
+    char *description,
+    char *individual_id,
+    char *payment_term_id,
+    char *organization_id,
+    char *receiver_tenant_id,
     char *first_name,
     char *last_name,
     char *company_name,
@@ -53,6 +62,8 @@ order_update_dto_t *order_update_dto_create(
     char *billing_location_id,
     char *shipping_location_id,
     char *shipping_method_id,
+    double forex_rate,
+    char *currency_id,
     double total_detail,
     char *total_detail_currency_id,
     double total_profit,
@@ -80,27 +91,25 @@ order_update_dto_t *order_update_dto_create(
     ordersservice_order_update_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     ordersservice_order_update_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     char *cart_id,
-    char *user_id,
-    double forex_rate,
-    char *currency_id,
-    char *individual_id,
-    char *organization_id,
     double total_amount_in_usd,
     double total_taxes_in_usd,
-    char *receiver_tenant_id,
-    int closed,
-    char *price_list_id,
-    char *payment_term_id,
     char *quote_status,
     char *effective_to,
-    char *effective_from,
-    char *description,
-    char *title
+    char *effective_from
     ) {
     order_update_dto_t *order_update_dto_local_var = malloc(sizeof(order_update_dto_t));
     if (!order_update_dto_local_var) {
         return NULL;
     }
+    order_update_dto_local_var->closed = closed;
+    order_update_dto_local_var->title = title;
+    order_update_dto_local_var->user_id = user_id;
+    order_update_dto_local_var->price_list_id = price_list_id;
+    order_update_dto_local_var->description = description;
+    order_update_dto_local_var->individual_id = individual_id;
+    order_update_dto_local_var->payment_term_id = payment_term_id;
+    order_update_dto_local_var->organization_id = organization_id;
+    order_update_dto_local_var->receiver_tenant_id = receiver_tenant_id;
     order_update_dto_local_var->first_name = first_name;
     order_update_dto_local_var->last_name = last_name;
     order_update_dto_local_var->company_name = company_name;
@@ -114,6 +123,8 @@ order_update_dto_t *order_update_dto_create(
     order_update_dto_local_var->billing_location_id = billing_location_id;
     order_update_dto_local_var->shipping_location_id = shipping_location_id;
     order_update_dto_local_var->shipping_method_id = shipping_method_id;
+    order_update_dto_local_var->forex_rate = forex_rate;
+    order_update_dto_local_var->currency_id = currency_id;
     order_update_dto_local_var->total_detail = total_detail;
     order_update_dto_local_var->total_detail_currency_id = total_detail_currency_id;
     order_update_dto_local_var->total_profit = total_profit;
@@ -141,22 +152,11 @@ order_update_dto_t *order_update_dto_create(
     order_update_dto_local_var->cost_calculation_method = cost_calculation_method;
     order_update_dto_local_var->tax_calculation_method = tax_calculation_method;
     order_update_dto_local_var->cart_id = cart_id;
-    order_update_dto_local_var->user_id = user_id;
-    order_update_dto_local_var->forex_rate = forex_rate;
-    order_update_dto_local_var->currency_id = currency_id;
-    order_update_dto_local_var->individual_id = individual_id;
-    order_update_dto_local_var->organization_id = organization_id;
     order_update_dto_local_var->total_amount_in_usd = total_amount_in_usd;
     order_update_dto_local_var->total_taxes_in_usd = total_taxes_in_usd;
-    order_update_dto_local_var->receiver_tenant_id = receiver_tenant_id;
-    order_update_dto_local_var->closed = closed;
-    order_update_dto_local_var->price_list_id = price_list_id;
-    order_update_dto_local_var->payment_term_id = payment_term_id;
     order_update_dto_local_var->quote_status = quote_status;
     order_update_dto_local_var->effective_to = effective_to;
     order_update_dto_local_var->effective_from = effective_from;
-    order_update_dto_local_var->description = description;
-    order_update_dto_local_var->title = title;
 
     return order_update_dto_local_var;
 }
@@ -167,6 +167,38 @@ void order_update_dto_free(order_update_dto_t *order_update_dto) {
         return ;
     }
     listEntry_t *listEntry;
+    if (order_update_dto->title) {
+        free(order_update_dto->title);
+        order_update_dto->title = NULL;
+    }
+    if (order_update_dto->user_id) {
+        free(order_update_dto->user_id);
+        order_update_dto->user_id = NULL;
+    }
+    if (order_update_dto->price_list_id) {
+        free(order_update_dto->price_list_id);
+        order_update_dto->price_list_id = NULL;
+    }
+    if (order_update_dto->description) {
+        free(order_update_dto->description);
+        order_update_dto->description = NULL;
+    }
+    if (order_update_dto->individual_id) {
+        free(order_update_dto->individual_id);
+        order_update_dto->individual_id = NULL;
+    }
+    if (order_update_dto->payment_term_id) {
+        free(order_update_dto->payment_term_id);
+        order_update_dto->payment_term_id = NULL;
+    }
+    if (order_update_dto->organization_id) {
+        free(order_update_dto->organization_id);
+        order_update_dto->organization_id = NULL;
+    }
+    if (order_update_dto->receiver_tenant_id) {
+        free(order_update_dto->receiver_tenant_id);
+        order_update_dto->receiver_tenant_id = NULL;
+    }
     if (order_update_dto->first_name) {
         free(order_update_dto->first_name);
         order_update_dto->first_name = NULL;
@@ -218,6 +250,10 @@ void order_update_dto_free(order_update_dto_t *order_update_dto) {
     if (order_update_dto->shipping_method_id) {
         free(order_update_dto->shipping_method_id);
         order_update_dto->shipping_method_id = NULL;
+    }
+    if (order_update_dto->currency_id) {
+        free(order_update_dto->currency_id);
+        order_update_dto->currency_id = NULL;
     }
     if (order_update_dto->total_detail_currency_id) {
         free(order_update_dto->total_detail_currency_id);
@@ -271,34 +307,6 @@ void order_update_dto_free(order_update_dto_t *order_update_dto) {
         free(order_update_dto->cart_id);
         order_update_dto->cart_id = NULL;
     }
-    if (order_update_dto->user_id) {
-        free(order_update_dto->user_id);
-        order_update_dto->user_id = NULL;
-    }
-    if (order_update_dto->currency_id) {
-        free(order_update_dto->currency_id);
-        order_update_dto->currency_id = NULL;
-    }
-    if (order_update_dto->individual_id) {
-        free(order_update_dto->individual_id);
-        order_update_dto->individual_id = NULL;
-    }
-    if (order_update_dto->organization_id) {
-        free(order_update_dto->organization_id);
-        order_update_dto->organization_id = NULL;
-    }
-    if (order_update_dto->receiver_tenant_id) {
-        free(order_update_dto->receiver_tenant_id);
-        order_update_dto->receiver_tenant_id = NULL;
-    }
-    if (order_update_dto->price_list_id) {
-        free(order_update_dto->price_list_id);
-        order_update_dto->price_list_id = NULL;
-    }
-    if (order_update_dto->payment_term_id) {
-        free(order_update_dto->payment_term_id);
-        order_update_dto->payment_term_id = NULL;
-    }
     if (order_update_dto->quote_status) {
         free(order_update_dto->quote_status);
         order_update_dto->quote_status = NULL;
@@ -311,19 +319,83 @@ void order_update_dto_free(order_update_dto_t *order_update_dto) {
         free(order_update_dto->effective_from);
         order_update_dto->effective_from = NULL;
     }
-    if (order_update_dto->description) {
-        free(order_update_dto->description);
-        order_update_dto->description = NULL;
-    }
-    if (order_update_dto->title) {
-        free(order_update_dto->title);
-        order_update_dto->title = NULL;
-    }
     free(order_update_dto);
 }
 
 cJSON *order_update_dto_convertToJSON(order_update_dto_t *order_update_dto) {
     cJSON *item = cJSON_CreateObject();
+
+    // order_update_dto->closed
+    if(order_update_dto->closed) {
+    if(cJSON_AddBoolToObject(item, "closed", order_update_dto->closed) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // order_update_dto->title
+    if(order_update_dto->title) {
+    if(cJSON_AddStringToObject(item, "title", order_update_dto->title) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_update_dto->user_id
+    if(order_update_dto->user_id) {
+    if(cJSON_AddStringToObject(item, "userId", order_update_dto->user_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_update_dto->price_list_id
+    if(order_update_dto->price_list_id) {
+    if(cJSON_AddStringToObject(item, "priceListId", order_update_dto->price_list_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_update_dto->description
+    if(order_update_dto->description) {
+    if(cJSON_AddStringToObject(item, "description", order_update_dto->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_update_dto->individual_id
+    if(order_update_dto->individual_id) {
+    if(cJSON_AddStringToObject(item, "individualId", order_update_dto->individual_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_update_dto->payment_term_id
+    if(order_update_dto->payment_term_id) {
+    if(cJSON_AddStringToObject(item, "paymentTermId", order_update_dto->payment_term_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_update_dto->organization_id
+    if(order_update_dto->organization_id) {
+    if(cJSON_AddStringToObject(item, "organizationId", order_update_dto->organization_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_update_dto->receiver_tenant_id
+    if(order_update_dto->receiver_tenant_id) {
+    if(cJSON_AddStringToObject(item, "receiverTenantId", order_update_dto->receiver_tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // order_update_dto->first_name
     if(order_update_dto->first_name) {
@@ -424,6 +496,22 @@ cJSON *order_update_dto_convertToJSON(order_update_dto_t *order_update_dto) {
     // order_update_dto->shipping_method_id
     if(order_update_dto->shipping_method_id) {
     if(cJSON_AddStringToObject(item, "shippingMethodId", order_update_dto->shipping_method_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_update_dto->forex_rate
+    if(order_update_dto->forex_rate) {
+    if(cJSON_AddNumberToObject(item, "forexRate", order_update_dto->forex_rate) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // order_update_dto->currency_id
+    if(order_update_dto->currency_id) {
+    if(cJSON_AddStringToObject(item, "currencyId", order_update_dto->currency_id) == NULL) {
     goto fail; //String
     }
     }
@@ -647,46 +735,6 @@ cJSON *order_update_dto_convertToJSON(order_update_dto_t *order_update_dto) {
     }
 
 
-    // order_update_dto->user_id
-    if(order_update_dto->user_id) {
-    if(cJSON_AddStringToObject(item, "userId", order_update_dto->user_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // order_update_dto->forex_rate
-    if(order_update_dto->forex_rate) {
-    if(cJSON_AddNumberToObject(item, "forexRate", order_update_dto->forex_rate) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // order_update_dto->currency_id
-    if(order_update_dto->currency_id) {
-    if(cJSON_AddStringToObject(item, "currencyId", order_update_dto->currency_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // order_update_dto->individual_id
-    if(order_update_dto->individual_id) {
-    if(cJSON_AddStringToObject(item, "individualId", order_update_dto->individual_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // order_update_dto->organization_id
-    if(order_update_dto->organization_id) {
-    if(cJSON_AddStringToObject(item, "organizationId", order_update_dto->organization_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // order_update_dto->total_amount_in_usd
     if(order_update_dto->total_amount_in_usd) {
     if(cJSON_AddNumberToObject(item, "totalAmountInUsd", order_update_dto->total_amount_in_usd) == NULL) {
@@ -699,38 +747,6 @@ cJSON *order_update_dto_convertToJSON(order_update_dto_t *order_update_dto) {
     if(order_update_dto->total_taxes_in_usd) {
     if(cJSON_AddNumberToObject(item, "totalTaxesInUsd", order_update_dto->total_taxes_in_usd) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // order_update_dto->receiver_tenant_id
-    if(order_update_dto->receiver_tenant_id) {
-    if(cJSON_AddStringToObject(item, "receiverTenantId", order_update_dto->receiver_tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // order_update_dto->closed
-    if(order_update_dto->closed) {
-    if(cJSON_AddBoolToObject(item, "closed", order_update_dto->closed) == NULL) {
-    goto fail; //Bool
-    }
-    }
-
-
-    // order_update_dto->price_list_id
-    if(order_update_dto->price_list_id) {
-    if(cJSON_AddStringToObject(item, "priceListId", order_update_dto->price_list_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // order_update_dto->payment_term_id
-    if(order_update_dto->payment_term_id) {
-    if(cJSON_AddStringToObject(item, "paymentTermId", order_update_dto->payment_term_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -758,22 +774,6 @@ cJSON *order_update_dto_convertToJSON(order_update_dto_t *order_update_dto) {
     }
     }
 
-
-    // order_update_dto->description
-    if(order_update_dto->description) {
-    if(cJSON_AddStringToObject(item, "description", order_update_dto->description) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // order_update_dto->title
-    if(order_update_dto->title) {
-    if(cJSON_AddStringToObject(item, "title", order_update_dto->title) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -785,6 +785,87 @@ fail:
 order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
 
     order_update_dto_t *order_update_dto_local_var = NULL;
+
+    // order_update_dto->closed
+    cJSON *closed = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "closed");
+    if (closed) { 
+    if(!cJSON_IsBool(closed))
+    {
+    goto end; //Bool
+    }
+    }
+
+    // order_update_dto->title
+    cJSON *title = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "title");
+    if (title) { 
+    if(!cJSON_IsString(title) && !cJSON_IsNull(title))
+    {
+    goto end; //String
+    }
+    }
+
+    // order_update_dto->user_id
+    cJSON *user_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "userId");
+    if (user_id) { 
+    if(!cJSON_IsString(user_id) && !cJSON_IsNull(user_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // order_update_dto->price_list_id
+    cJSON *price_list_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "priceListId");
+    if (price_list_id) { 
+    if(!cJSON_IsString(price_list_id) && !cJSON_IsNull(price_list_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // order_update_dto->description
+    cJSON *description = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "description");
+    if (description) { 
+    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
+    {
+    goto end; //String
+    }
+    }
+
+    // order_update_dto->individual_id
+    cJSON *individual_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "individualId");
+    if (individual_id) { 
+    if(!cJSON_IsString(individual_id) && !cJSON_IsNull(individual_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // order_update_dto->payment_term_id
+    cJSON *payment_term_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "paymentTermId");
+    if (payment_term_id) { 
+    if(!cJSON_IsString(payment_term_id) && !cJSON_IsNull(payment_term_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // order_update_dto->organization_id
+    cJSON *organization_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "organizationId");
+    if (organization_id) { 
+    if(!cJSON_IsString(organization_id) && !cJSON_IsNull(organization_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // order_update_dto->receiver_tenant_id
+    cJSON *receiver_tenant_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "receiverTenantId");
+    if (receiver_tenant_id) { 
+    if(!cJSON_IsString(receiver_tenant_id) && !cJSON_IsNull(receiver_tenant_id))
+    {
+    goto end; //String
+    }
+    }
 
     // order_update_dto->first_name
     cJSON *first_name = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "firstName");
@@ -898,6 +979,24 @@ order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
     cJSON *shipping_method_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "shippingMethodId");
     if (shipping_method_id) { 
     if(!cJSON_IsString(shipping_method_id) && !cJSON_IsNull(shipping_method_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // order_update_dto->forex_rate
+    cJSON *forex_rate = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "forexRate");
+    if (forex_rate) { 
+    if(!cJSON_IsNumber(forex_rate))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // order_update_dto->currency_id
+    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "currencyId");
+    if (currency_id) { 
+    if(!cJSON_IsString(currency_id) && !cJSON_IsNull(currency_id))
     {
     goto end; //String
     }
@@ -1150,51 +1249,6 @@ order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
     }
     }
 
-    // order_update_dto->user_id
-    cJSON *user_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "userId");
-    if (user_id) { 
-    if(!cJSON_IsString(user_id) && !cJSON_IsNull(user_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // order_update_dto->forex_rate
-    cJSON *forex_rate = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "forexRate");
-    if (forex_rate) { 
-    if(!cJSON_IsNumber(forex_rate))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // order_update_dto->currency_id
-    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "currencyId");
-    if (currency_id) { 
-    if(!cJSON_IsString(currency_id) && !cJSON_IsNull(currency_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // order_update_dto->individual_id
-    cJSON *individual_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "individualId");
-    if (individual_id) { 
-    if(!cJSON_IsString(individual_id) && !cJSON_IsNull(individual_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // order_update_dto->organization_id
-    cJSON *organization_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "organizationId");
-    if (organization_id) { 
-    if(!cJSON_IsString(organization_id) && !cJSON_IsNull(organization_id))
-    {
-    goto end; //String
-    }
-    }
-
     // order_update_dto->total_amount_in_usd
     cJSON *total_amount_in_usd = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "totalAmountInUsd");
     if (total_amount_in_usd) { 
@@ -1210,42 +1264,6 @@ order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
     if(!cJSON_IsNumber(total_taxes_in_usd))
     {
     goto end; //Numeric
-    }
-    }
-
-    // order_update_dto->receiver_tenant_id
-    cJSON *receiver_tenant_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "receiverTenantId");
-    if (receiver_tenant_id) { 
-    if(!cJSON_IsString(receiver_tenant_id) && !cJSON_IsNull(receiver_tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // order_update_dto->closed
-    cJSON *closed = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "closed");
-    if (closed) { 
-    if(!cJSON_IsBool(closed))
-    {
-    goto end; //Bool
-    }
-    }
-
-    // order_update_dto->price_list_id
-    cJSON *price_list_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "priceListId");
-    if (price_list_id) { 
-    if(!cJSON_IsString(price_list_id) && !cJSON_IsNull(price_list_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // order_update_dto->payment_term_id
-    cJSON *payment_term_id = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "paymentTermId");
-    if (payment_term_id) { 
-    if(!cJSON_IsString(payment_term_id) && !cJSON_IsNull(payment_term_id))
-    {
-    goto end; //String
     }
     }
 
@@ -1276,26 +1294,17 @@ order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
     }
     }
 
-    // order_update_dto->description
-    cJSON *description = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "description");
-    if (description) { 
-    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
-    {
-    goto end; //String
-    }
-    }
-
-    // order_update_dto->title
-    cJSON *title = cJSON_GetObjectItemCaseSensitive(order_update_dtoJSON, "title");
-    if (title) { 
-    if(!cJSON_IsString(title) && !cJSON_IsNull(title))
-    {
-    goto end; //String
-    }
-    }
-
 
     order_update_dto_local_var = order_update_dto_create (
+        closed ? closed->valueint : 0,
+        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
+        user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL,
+        price_list_id && !cJSON_IsNull(price_list_id) ? strdup(price_list_id->valuestring) : NULL,
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        individual_id && !cJSON_IsNull(individual_id) ? strdup(individual_id->valuestring) : NULL,
+        payment_term_id && !cJSON_IsNull(payment_term_id) ? strdup(payment_term_id->valuestring) : NULL,
+        organization_id && !cJSON_IsNull(organization_id) ? strdup(organization_id->valuestring) : NULL,
+        receiver_tenant_id && !cJSON_IsNull(receiver_tenant_id) ? strdup(receiver_tenant_id->valuestring) : NULL,
         first_name && !cJSON_IsNull(first_name) ? strdup(first_name->valuestring) : NULL,
         last_name && !cJSON_IsNull(last_name) ? strdup(last_name->valuestring) : NULL,
         company_name && !cJSON_IsNull(company_name) ? strdup(company_name->valuestring) : NULL,
@@ -1309,6 +1318,8 @@ order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
         billing_location_id && !cJSON_IsNull(billing_location_id) ? strdup(billing_location_id->valuestring) : NULL,
         shipping_location_id && !cJSON_IsNull(shipping_location_id) ? strdup(shipping_location_id->valuestring) : NULL,
         shipping_method_id && !cJSON_IsNull(shipping_method_id) ? strdup(shipping_method_id->valuestring) : NULL,
+        forex_rate ? forex_rate->valuedouble : 0,
+        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         total_detail ? total_detail->valuedouble : 0,
         total_detail_currency_id && !cJSON_IsNull(total_detail_currency_id) ? strdup(total_detail_currency_id->valuestring) : NULL,
         total_profit ? total_profit->valuedouble : 0,
@@ -1336,22 +1347,11 @@ order_update_dto_t *order_update_dto_parseFromJSON(cJSON *order_update_dtoJSON){
         cost_calculation_method ? cost_calculation_methodVariable : ordersservice_order_update_dto_COSTCALCULATIONMETHOD_NULL,
         tax_calculation_method ? tax_calculation_methodVariable : ordersservice_order_update_dto_TAXCALCULATIONMETHOD_NULL,
         cart_id && !cJSON_IsNull(cart_id) ? strdup(cart_id->valuestring) : NULL,
-        user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL,
-        forex_rate ? forex_rate->valuedouble : 0,
-        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        individual_id && !cJSON_IsNull(individual_id) ? strdup(individual_id->valuestring) : NULL,
-        organization_id && !cJSON_IsNull(organization_id) ? strdup(organization_id->valuestring) : NULL,
         total_amount_in_usd ? total_amount_in_usd->valuedouble : 0,
         total_taxes_in_usd ? total_taxes_in_usd->valuedouble : 0,
-        receiver_tenant_id && !cJSON_IsNull(receiver_tenant_id) ? strdup(receiver_tenant_id->valuestring) : NULL,
-        closed ? closed->valueint : 0,
-        price_list_id && !cJSON_IsNull(price_list_id) ? strdup(price_list_id->valuestring) : NULL,
-        payment_term_id && !cJSON_IsNull(payment_term_id) ? strdup(payment_term_id->valuestring) : NULL,
         quote_status && !cJSON_IsNull(quote_status) ? strdup(quote_status->valuestring) : NULL,
         effective_to && !cJSON_IsNull(effective_to) ? strdup(effective_to->valuestring) : NULL,
-        effective_from && !cJSON_IsNull(effective_from) ? strdup(effective_from->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL
+        effective_from && !cJSON_IsNull(effective_from) ? strdup(effective_from->valuestring) : NULL
         );
 
     return order_update_dto_local_var;

@@ -7,6 +7,7 @@
 
 cart_dto_t *cart_dto_create(
     char *id,
+    char *timestamp,
     char *ip,
     char *type,
     double total,
@@ -23,6 +24,7 @@ cart_dto_t *cart_dto_create(
         return NULL;
     }
     cart_dto_local_var->id = id;
+    cart_dto_local_var->timestamp = timestamp;
     cart_dto_local_var->ip = ip;
     cart_dto_local_var->type = type;
     cart_dto_local_var->total = total;
@@ -46,6 +48,10 @@ void cart_dto_free(cart_dto_t *cart_dto) {
     if (cart_dto->id) {
         free(cart_dto->id);
         cart_dto->id = NULL;
+    }
+    if (cart_dto->timestamp) {
+        free(cart_dto->timestamp);
+        cart_dto->timestamp = NULL;
     }
     if (cart_dto->ip) {
         free(cart_dto->ip);
@@ -73,6 +79,14 @@ cJSON *cart_dto_convertToJSON(cart_dto_t *cart_dto) {
     if(cart_dto->id) {
     if(cJSON_AddStringToObject(item, "id", cart_dto->id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // cart_dto->timestamp
+    if(cart_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", cart_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
     }
     }
 
@@ -177,6 +191,15 @@ cart_dto_t *cart_dto_parseFromJSON(cJSON *cart_dtoJSON){
     }
     }
 
+    // cart_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(cart_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
+
     // cart_dto->ip
     cJSON *ip = cJSON_GetObjectItemCaseSensitive(cart_dtoJSON, "ip");
     if (ip) { 
@@ -270,6 +293,7 @@ cart_dto_t *cart_dto_parseFromJSON(cJSON *cart_dtoJSON){
 
     cart_dto_local_var = cart_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         ip && !cJSON_IsNull(ip) ? strdup(ip->valuestring) : NULL,
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         total ? total->valuedouble : 0,

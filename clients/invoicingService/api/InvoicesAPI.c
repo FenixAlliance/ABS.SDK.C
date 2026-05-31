@@ -17,7 +17,7 @@
 // Aggregates the discounts for the specified invoices.
 //
 money_envelope_t*
-InvoicesAPI_aggregateInvoiceDiscounts(apiClient_t *apiClient, list_t *request_body, char *currencyId)
+InvoicesAPI_aggregateInvoiceDiscounts(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -33,6 +33,18 @@ InvoicesAPI_aggregateInvoiceDiscounts(apiClient_t *apiClient, list_t *request_bo
 
 
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_currencyId = NULL;
@@ -125,6 +137,18 @@ InvoicesAPI_aggregateInvoiceDiscounts(apiClient_t *apiClient, list_t *request_bo
         localVar_request_body = NULL;
     }
     free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_currencyId){
         free(keyQuery_currencyId);
         keyQuery_currencyId = NULL;
@@ -149,7 +173,7 @@ end:
 // Aggregates the global surcharges for the specified invoices.
 //
 money_envelope_t*
-InvoicesAPI_aggregateInvoiceGlobalSurcharges(apiClient_t *apiClient, list_t *request_body, char *currencyId)
+InvoicesAPI_aggregateInvoiceGlobalSurcharges(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -165,6 +189,18 @@ InvoicesAPI_aggregateInvoiceGlobalSurcharges(apiClient_t *apiClient, list_t *req
 
 
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_currencyId = NULL;
@@ -257,6 +293,18 @@ InvoicesAPI_aggregateInvoiceGlobalSurcharges(apiClient_t *apiClient, list_t *req
         localVar_request_body = NULL;
     }
     free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_currencyId){
         free(keyQuery_currencyId);
         keyQuery_currencyId = NULL;
@@ -281,7 +329,7 @@ end:
 // Aggregates the tax bases for the specified invoices.
 //
 money_envelope_t*
-InvoicesAPI_aggregateInvoiceTaxBases(apiClient_t *apiClient, list_t *request_body, char *currencyId)
+InvoicesAPI_aggregateInvoiceTaxBases(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -297,6 +345,18 @@ InvoicesAPI_aggregateInvoiceTaxBases(apiClient_t *apiClient, list_t *request_bod
 
 
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_currencyId = NULL;
@@ -389,6 +449,18 @@ InvoicesAPI_aggregateInvoiceTaxBases(apiClient_t *apiClient, list_t *request_bod
         localVar_request_body = NULL;
     }
     free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_currencyId){
         free(keyQuery_currencyId);
         keyQuery_currencyId = NULL;
@@ -413,7 +485,7 @@ end:
 // Aggregates the taxes for the specified invoices.
 //
 money_envelope_t*
-InvoicesAPI_aggregateInvoiceTaxes(apiClient_t *apiClient, list_t *request_body, char *currencyId)
+InvoicesAPI_aggregateInvoiceTaxes(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -429,6 +501,18 @@ InvoicesAPI_aggregateInvoiceTaxes(apiClient_t *apiClient, list_t *request_body, 
 
 
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_currencyId = NULL;
@@ -521,6 +605,18 @@ InvoicesAPI_aggregateInvoiceTaxes(apiClient_t *apiClient, list_t *request_body, 
         localVar_request_body = NULL;
     }
     free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_currencyId){
         free(keyQuery_currencyId);
         keyQuery_currencyId = NULL;
@@ -545,7 +641,7 @@ end:
 // Aggregates the totals for the specified invoices.
 //
 money_envelope_t*
-InvoicesAPI_aggregateInvoiceTotals(apiClient_t *apiClient, list_t *request_body, char *currencyId)
+InvoicesAPI_aggregateInvoiceTotals(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -561,6 +657,18 @@ InvoicesAPI_aggregateInvoiceTotals(apiClient_t *apiClient, list_t *request_body,
 
 
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_currencyId = NULL;
@@ -653,6 +761,18 @@ InvoicesAPI_aggregateInvoiceTotals(apiClient_t *apiClient, list_t *request_body,
         localVar_request_body = NULL;
     }
     free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_currencyId){
         free(keyQuery_currencyId);
         keyQuery_currencyId = NULL;
@@ -3497,9 +3617,9 @@ end:
 // Retrieves the list of payments related to the specified invoice.
 //
 payment_dto_i_read_only_list_envelope_t*
-InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *invoiceId)
+InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *invoiceId)
 {
-    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
@@ -3530,6 +3650,18 @@ InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *invoiceId)
     localVarPath = strReplace(localVarPath, localVarToReplace_invoiceId, invoiceId);
 
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     apiClient_invoke(apiClient,
@@ -3560,13 +3692,25 @@ InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *invoiceId)
         apiClient->dataReceived = NULL;
         apiClient->dataReceivedLen = 0;
     }
-    
+    list_freeList(localVarQueryParameters);
     
     
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
     free(localVarToReplace_invoiceId);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -3579,9 +3723,9 @@ end:
 // Retrieves the total count of payments for the specified invoice.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *invoiceId)
+InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId)
 {
-    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
@@ -3612,6 +3756,18 @@ InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *invoiceId)
     localVarPath = strReplace(localVarPath, localVarToReplace_invoiceId, invoiceId);
 
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     apiClient_invoke(apiClient,
@@ -3642,13 +3798,25 @@ InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *invoiceId)
         apiClient->dataReceived = NULL;
         apiClient->dataReceivedLen = 0;
     }
-    
+    list_freeList(localVarQueryParameters);
     
     
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
     free(localVarToReplace_invoiceId);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);

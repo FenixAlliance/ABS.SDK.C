@@ -39,6 +39,10 @@ account_dto_t *account_dto_create(
     char *account_type_id,
     double debits_balance,
     double credits_balance,
+    double balance_in_usd,
+    double debits_balance_in_usd,
+    double credits_balance_in_usd,
+    double forex_rate,
     char *parent_account_id,
     char *tenant_id,
     char *enrollment_id,
@@ -46,7 +50,10 @@ account_dto_t *account_dto_create(
     accountingservice_account_dto_ACCOUNTCATEGORY_e account_category,
     money_t *balance_amount,
     money_t *credits_balance_amount,
-    money_t *debits_balance_amount
+    money_t *debits_balance_amount,
+    money_t *balance_amount_in_usd,
+    money_t *debits_balance_amount_in_usd,
+    money_t *credits_balance_amount_in_usd
     ) {
     account_dto_t *account_dto_local_var = malloc(sizeof(account_dto_t));
     if (!account_dto_local_var) {
@@ -68,6 +75,10 @@ account_dto_t *account_dto_create(
     account_dto_local_var->account_type_id = account_type_id;
     account_dto_local_var->debits_balance = debits_balance;
     account_dto_local_var->credits_balance = credits_balance;
+    account_dto_local_var->balance_in_usd = balance_in_usd;
+    account_dto_local_var->debits_balance_in_usd = debits_balance_in_usd;
+    account_dto_local_var->credits_balance_in_usd = credits_balance_in_usd;
+    account_dto_local_var->forex_rate = forex_rate;
     account_dto_local_var->parent_account_id = parent_account_id;
     account_dto_local_var->tenant_id = tenant_id;
     account_dto_local_var->enrollment_id = enrollment_id;
@@ -76,6 +87,9 @@ account_dto_t *account_dto_create(
     account_dto_local_var->balance_amount = balance_amount;
     account_dto_local_var->credits_balance_amount = credits_balance_amount;
     account_dto_local_var->debits_balance_amount = debits_balance_amount;
+    account_dto_local_var->balance_amount_in_usd = balance_amount_in_usd;
+    account_dto_local_var->debits_balance_amount_in_usd = debits_balance_amount_in_usd;
+    account_dto_local_var->credits_balance_amount_in_usd = credits_balance_amount_in_usd;
 
     return account_dto_local_var;
 }
@@ -153,6 +167,18 @@ void account_dto_free(account_dto_t *account_dto) {
     if (account_dto->debits_balance_amount) {
         money_free(account_dto->debits_balance_amount);
         account_dto->debits_balance_amount = NULL;
+    }
+    if (account_dto->balance_amount_in_usd) {
+        money_free(account_dto->balance_amount_in_usd);
+        account_dto->balance_amount_in_usd = NULL;
+    }
+    if (account_dto->debits_balance_amount_in_usd) {
+        money_free(account_dto->debits_balance_amount_in_usd);
+        account_dto->debits_balance_amount_in_usd = NULL;
+    }
+    if (account_dto->credits_balance_amount_in_usd) {
+        money_free(account_dto->credits_balance_amount_in_usd);
+        account_dto->credits_balance_amount_in_usd = NULL;
     }
     free(account_dto);
 }
@@ -288,6 +314,38 @@ cJSON *account_dto_convertToJSON(account_dto_t *account_dto) {
     }
 
 
+    // account_dto->balance_in_usd
+    if(account_dto->balance_in_usd) {
+    if(cJSON_AddNumberToObject(item, "balanceInUsd", account_dto->balance_in_usd) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // account_dto->debits_balance_in_usd
+    if(account_dto->debits_balance_in_usd) {
+    if(cJSON_AddNumberToObject(item, "debitsBalanceInUsd", account_dto->debits_balance_in_usd) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // account_dto->credits_balance_in_usd
+    if(account_dto->credits_balance_in_usd) {
+    if(cJSON_AddNumberToObject(item, "creditsBalanceInUsd", account_dto->credits_balance_in_usd) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // account_dto->forex_rate
+    if(account_dto->forex_rate) {
+    if(cJSON_AddNumberToObject(item, "forexRate", account_dto->forex_rate) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
     // account_dto->parent_account_id
     if(account_dto->parent_account_id) {
     if(cJSON_AddStringToObject(item, "parentAccountId", account_dto->parent_account_id) == NULL) {
@@ -367,6 +425,45 @@ cJSON *account_dto_convertToJSON(account_dto_t *account_dto) {
     }
     }
 
+
+    // account_dto->balance_amount_in_usd
+    if(account_dto->balance_amount_in_usd) {
+    cJSON *balance_amount_in_usd_local_JSON = money_convertToJSON(account_dto->balance_amount_in_usd);
+    if(balance_amount_in_usd_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "balanceAmountInUsd", balance_amount_in_usd_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // account_dto->debits_balance_amount_in_usd
+    if(account_dto->debits_balance_amount_in_usd) {
+    cJSON *debits_balance_amount_in_usd_local_JSON = money_convertToJSON(account_dto->debits_balance_amount_in_usd);
+    if(debits_balance_amount_in_usd_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "debitsBalanceAmountInUsd", debits_balance_amount_in_usd_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // account_dto->credits_balance_amount_in_usd
+    if(account_dto->credits_balance_amount_in_usd) {
+    cJSON *credits_balance_amount_in_usd_local_JSON = money_convertToJSON(account_dto->credits_balance_amount_in_usd);
+    if(credits_balance_amount_in_usd_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "creditsBalanceAmountInUsd", credits_balance_amount_in_usd_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -387,6 +484,15 @@ account_dto_t *account_dto_parseFromJSON(cJSON *account_dtoJSON){
 
     // define the local variable for account_dto->debits_balance_amount
     money_t *debits_balance_amount_local_nonprim = NULL;
+
+    // define the local variable for account_dto->balance_amount_in_usd
+    money_t *balance_amount_in_usd_local_nonprim = NULL;
+
+    // define the local variable for account_dto->debits_balance_amount_in_usd
+    money_t *debits_balance_amount_in_usd_local_nonprim = NULL;
+
+    // define the local variable for account_dto->credits_balance_amount_in_usd
+    money_t *credits_balance_amount_in_usd_local_nonprim = NULL;
 
     // account_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "id");
@@ -532,6 +638,42 @@ account_dto_t *account_dto_parseFromJSON(cJSON *account_dtoJSON){
     }
     }
 
+    // account_dto->balance_in_usd
+    cJSON *balance_in_usd = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "balanceInUsd");
+    if (balance_in_usd) { 
+    if(!cJSON_IsNumber(balance_in_usd))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // account_dto->debits_balance_in_usd
+    cJSON *debits_balance_in_usd = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "debitsBalanceInUsd");
+    if (debits_balance_in_usd) { 
+    if(!cJSON_IsNumber(debits_balance_in_usd))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // account_dto->credits_balance_in_usd
+    cJSON *credits_balance_in_usd = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "creditsBalanceInUsd");
+    if (credits_balance_in_usd) { 
+    if(!cJSON_IsNumber(credits_balance_in_usd))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // account_dto->forex_rate
+    cJSON *forex_rate = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "forexRate");
+    if (forex_rate) { 
+    if(!cJSON_IsNumber(forex_rate))
+    {
+    goto end; //Numeric
+    }
+    }
+
     // account_dto->parent_account_id
     cJSON *parent_account_id = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "parentAccountId");
     if (parent_account_id) { 
@@ -597,6 +739,24 @@ account_dto_t *account_dto_parseFromJSON(cJSON *account_dtoJSON){
     debits_balance_amount_local_nonprim = money_parseFromJSON(debits_balance_amount); //nonprimitive
     }
 
+    // account_dto->balance_amount_in_usd
+    cJSON *balance_amount_in_usd = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "balanceAmountInUsd");
+    if (balance_amount_in_usd) { 
+    balance_amount_in_usd_local_nonprim = money_parseFromJSON(balance_amount_in_usd); //nonprimitive
+    }
+
+    // account_dto->debits_balance_amount_in_usd
+    cJSON *debits_balance_amount_in_usd = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "debitsBalanceAmountInUsd");
+    if (debits_balance_amount_in_usd) { 
+    debits_balance_amount_in_usd_local_nonprim = money_parseFromJSON(debits_balance_amount_in_usd); //nonprimitive
+    }
+
+    // account_dto->credits_balance_amount_in_usd
+    cJSON *credits_balance_amount_in_usd = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "creditsBalanceAmountInUsd");
+    if (credits_balance_amount_in_usd) { 
+    credits_balance_amount_in_usd_local_nonprim = money_parseFromJSON(credits_balance_amount_in_usd); //nonprimitive
+    }
+
 
     account_dto_local_var = account_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -615,6 +775,10 @@ account_dto_t *account_dto_parseFromJSON(cJSON *account_dtoJSON){
         account_type_id && !cJSON_IsNull(account_type_id) ? strdup(account_type_id->valuestring) : NULL,
         debits_balance ? debits_balance->valuedouble : 0,
         credits_balance ? credits_balance->valuedouble : 0,
+        balance_in_usd ? balance_in_usd->valuedouble : 0,
+        debits_balance_in_usd ? debits_balance_in_usd->valuedouble : 0,
+        credits_balance_in_usd ? credits_balance_in_usd->valuedouble : 0,
+        forex_rate ? forex_rate->valuedouble : 0,
         parent_account_id && !cJSON_IsNull(parent_account_id) ? strdup(parent_account_id->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
@@ -622,7 +786,10 @@ account_dto_t *account_dto_parseFromJSON(cJSON *account_dtoJSON){
         account_category ? account_categoryVariable : accountingservice_account_dto_ACCOUNTCATEGORY_NULL,
         balance_amount ? balance_amount_local_nonprim : NULL,
         credits_balance_amount ? credits_balance_amount_local_nonprim : NULL,
-        debits_balance_amount ? debits_balance_amount_local_nonprim : NULL
+        debits_balance_amount ? debits_balance_amount_local_nonprim : NULL,
+        balance_amount_in_usd ? balance_amount_in_usd_local_nonprim : NULL,
+        debits_balance_amount_in_usd ? debits_balance_amount_in_usd_local_nonprim : NULL,
+        credits_balance_amount_in_usd ? credits_balance_amount_in_usd_local_nonprim : NULL
         );
 
     return account_dto_local_var;
@@ -638,6 +805,18 @@ end:
     if (debits_balance_amount_local_nonprim) {
         money_free(debits_balance_amount_local_nonprim);
         debits_balance_amount_local_nonprim = NULL;
+    }
+    if (balance_amount_in_usd_local_nonprim) {
+        money_free(balance_amount_in_usd_local_nonprim);
+        balance_amount_in_usd_local_nonprim = NULL;
+    }
+    if (debits_balance_amount_in_usd_local_nonprim) {
+        money_free(debits_balance_amount_in_usd_local_nonprim);
+        debits_balance_amount_in_usd_local_nonprim = NULL;
+    }
+    if (credits_balance_amount_in_usd_local_nonprim) {
+        money_free(credits_balance_amount_in_usd_local_nonprim);
+        credits_balance_amount_in_usd_local_nonprim = NULL;
     }
     return NULL;
 

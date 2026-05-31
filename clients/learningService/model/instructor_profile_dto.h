@@ -15,17 +15,22 @@
 
 typedef struct instructor_profile_dto_t instructor_profile_dto_t;
 
+#include "contact_dto.h"
 
 
 
 typedef struct instructor_profile_dto_t {
     char *id; // string
     char *timestamp; //date time
-    int authorized; //boolean
+    char *contact_id; // string
+    char *tenant_id; // string
+    char *type; // string
+    char *enrollment_id; // string
     char *about; // string
     int verified; //boolean
     int submitted; //boolean
     char *avatar_url; // string
+    struct contact_dto_t *contact; //model
     char *qualified_name; // string
     char *verification_timestamp; //date time
     char *data; // string
@@ -48,6 +53,7 @@ typedef struct instructor_profile_dto_t {
     char *data8_label; // string
     char *data9; // string
     char *data9_label; // string
+    int authorized; //boolean
     char *business_id; // string
     char *contact_id; // string
     char *business_profile_record_id; // string
@@ -57,11 +63,15 @@ typedef struct instructor_profile_dto_t {
 instructor_profile_dto_t *instructor_profile_dto_create(
     char *id,
     char *timestamp,
-    int authorized,
+    char *contact_id,
+    char *tenant_id,
+    char *type,
+    char *enrollment_id,
     char *about,
     int verified,
     int submitted,
     char *avatar_url,
+    contact_dto_t *contact,
     char *qualified_name,
     char *verification_timestamp,
     char *data,
@@ -84,6 +94,7 @@ instructor_profile_dto_t *instructor_profile_dto_create(
     char *data8_label,
     char *data9,
     char *data9_label,
+    int authorized,
     char *business_id,
     char *contact_id,
     char *business_profile_record_id

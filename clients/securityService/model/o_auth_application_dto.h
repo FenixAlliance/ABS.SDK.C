@@ -20,6 +20,7 @@ typedef struct o_auth_application_dto_t o_auth_application_dto_t;
 
 typedef struct o_auth_application_dto_t {
     char *id; // string
+    char *timestamp; //date time
     char *application_type; // string
     char *client_id; // string
     char *concurrency_token; // string
@@ -44,6 +45,7 @@ typedef struct o_auth_application_dto_t {
 
 o_auth_application_dto_t *o_auth_application_dto_create(
     char *id,
+    char *timestamp,
     char *application_type,
     char *client_id,
     char *concurrency_token,

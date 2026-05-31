@@ -57,20 +57,17 @@ set(SRCS
     model/access_token_response.c
     model/boolean_envelope.c
     model/contact_dto.c
-    model/currency_id.c
     model/email_dispatch_request.c
     model/empty_envelope.c
     model/error_envelope.c
     model/extended_quote_dto.c
     model/extended_quote_dto_list_envelope.c
-    model/forex_rates.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
     model/info_request.c
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/money.c
     model/quote_create_dto.c
     model/quote_dto.c
     model/quote_dto_envelope.c
@@ -91,7 +88,8 @@ set(SRCS
     model/two_factor_request.c
     model/two_factor_response.c
     model/user_dto.c
-    api/FenixAllianceABSWebAPI.c
+    api/CompletionsAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/QuotesAPI.c
 
 )
@@ -106,20 +104,17 @@ set(HDRS
     model/access_token_response.h
     model/boolean_envelope.h
     model/contact_dto.h
-    model/currency_id.h
     model/email_dispatch_request.h
     model/empty_envelope.h
     model/error_envelope.h
     model/extended_quote_dto.h
     model/extended_quote_dto_list_envelope.h
-    model/forex_rates.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
     model/info_request.h
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/money.h
     model/quote_create_dto.h
     model/quote_dto.h
     model/quote_dto_envelope.h
@@ -140,7 +135,8 @@ set(HDRS
     model/two_factor_request.h
     model/two_factor_response.h
     model/user_dto.h
-    api/FenixAllianceABSWebAPI.h
+    api/CompletionsAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/QuotesAPI.h
 
 )
@@ -223,7 +219,8 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-QuotesAPI.c
 #)
 

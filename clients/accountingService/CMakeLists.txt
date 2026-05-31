@@ -55,6 +55,7 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
+    model/account.c
     model/account_create_dto.c
     model/account_dto.c
     model/account_dto_envelope.c
@@ -70,6 +71,7 @@ set(SRCS
     model/account_relation_update_dto.c
     model/account_type_create_dto.c
     model/account_type_dto.c
+    model/account_type_dto_envelope.c
     model/account_type_dto_list_envelope.c
     model/account_type_update_dto.c
     model/account_update_dto.c
@@ -83,6 +85,10 @@ set(SRCS
     model/accounting_period_dto_envelope.c
     model/accounting_period_dto_list_envelope.c
     model/accounting_period_update_dto.c
+    model/applied_item_tax_record_create_dto.c
+    model/applied_item_tax_record_dto.c
+    model/applied_item_tax_record_dto_i_read_only_list_envelope.c
+    model/applied_item_tax_record_update_dto.c
     model/applied_tax_policy_record_create_dto.c
     model/applied_tax_policy_record_dto.c
     model/applied_tax_policy_record_dto_envelope.c
@@ -102,6 +108,8 @@ set(SRCS
     model/bank_guarantee_dto_envelope.c
     model/bank_guarantee_dto_list_envelope.c
     model/bank_guarantee_update_dto.c
+    model/bank_profile_dto.c
+    model/bank_profile_dto_list_envelope.c
     model/bank_transaction_create_dto.c
     model/bank_transaction_dto.c
     model/bank_transaction_dto_envelope.c
@@ -123,11 +131,14 @@ set(SRCS
     model/budget_dto_envelope.c
     model/budget_dto_i_read_only_list_envelope.c
     model/budget_update_dto.c
+    model/chart_of_accounts.c
+    model/chart_of_accounts_list_envelope.c
     model/commission_create_dto.c
     model/commission_dto.c
     model/commission_dto_envelope.c
     model/commission_dto_list_envelope.c
     model/commission_update_dto.c
+    model/contact_dto.c
     model/cost_centre_budget_create_dto.c
     model/cost_centre_budget_dto.c
     model/cost_centre_budget_dto_envelope.c
@@ -147,6 +158,16 @@ set(SRCS
     model/currency_id.c
     model/empty_envelope.c
     model/error_envelope.c
+    model/expense_claim_create_dto.c
+    model/expense_claim_dto.c
+    model/expense_claim_dto_envelope.c
+    model/expense_claim_dto_list_envelope.c
+    model/expense_claim_update_dto.c
+    model/expense_type_create_dto.c
+    model/expense_type_dto.c
+    model/expense_type_dto_envelope.c
+    model/expense_type_dto_list_envelope.c
+    model/expense_type_update_dto.c
     model/financial_book_create_dto.c
     model/financial_book_dto.c
     model/financial_book_dto_envelope.c
@@ -237,9 +258,15 @@ set(SRCS
     model/loan_dto.c
     model/loan_dto_envelope.c
     model/loan_dto_i_read_only_list_envelope.c
+    model/loan_type_create_dto.c
+    model/loan_type_dto.c
+    model/loan_type_dto_envelope.c
+    model/loan_type_dto_i_read_only_list_envelope.c
+    model/loan_type_update_dto.c
     model/loan_update_dto.c
     model/login_request.c
     model/money.c
+    model/money_envelope.c
     model/operation.c
     model/payment_commission_create_dto.c
     model/payment_commission_dto.c
@@ -255,6 +282,7 @@ set(SRCS
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
+    model/seed_chart_of_accounts_request.c
     model/share_class_create_dto.c
     model/share_class_dto.c
     model/share_class_dto_envelope.c
@@ -275,6 +303,11 @@ set(SRCS
     model/share_transfer_reason_dto_list_envelope.c
     model/share_transfer_reason_update_dto.c
     model/share_transfer_update_dto.c
+    model/tax_class_create_dto.c
+    model/tax_class_dto.c
+    model/tax_class_dto_envelope.c
+    model/tax_class_dto_list_envelope.c
+    model/tax_class_update_dto.c
     model/tax_policy_create_dto.c
     model/tax_policy_dto.c
     model/tax_policy_dto_envelope.c
@@ -301,12 +334,17 @@ set(SRCS
     api/AccountGroupsAPI.c
     api/AccountingPeriodsAPI.c
     api/AccountsAPI.c
+    api/BankProfilesAPI.c
     api/BankingAPI.c
+    api/BillableLineTaxesAPI.c
     api/BillingProfilesAPI.c
     api/BudgetsAPI.c
     api/CommissionsAPI.c
+    api/CompletionsAPI.c
     api/CostCentresAPI.c
-    api/FenixAllianceABSWebAPI.c
+    api/ExpenseClaimsAPI.c
+    api/ExpenseTypesAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/FinancialBooksAPI.c
     api/FiscalAuthoritiesAPI.c
     api/FiscalAuthorityYearsAPI.c
@@ -326,6 +364,7 @@ set(SRCS
     api/LoansAPI.c
     api/ReceiptsAPI.c
     api/SharesAPI.c
+    api/TaxClassesAPI.c
     api/TaxPoliciesAPI.c
     api/TaxRatesAPI.c
     api/TransactionsAPI.c
@@ -340,6 +379,7 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
+    model/account.h
     model/account_create_dto.h
     model/account_dto.h
     model/account_dto_envelope.h
@@ -355,6 +395,7 @@ set(HDRS
     model/account_relation_update_dto.h
     model/account_type_create_dto.h
     model/account_type_dto.h
+    model/account_type_dto_envelope.h
     model/account_type_dto_list_envelope.h
     model/account_type_update_dto.h
     model/account_update_dto.h
@@ -368,6 +409,10 @@ set(HDRS
     model/accounting_period_dto_envelope.h
     model/accounting_period_dto_list_envelope.h
     model/accounting_period_update_dto.h
+    model/applied_item_tax_record_create_dto.h
+    model/applied_item_tax_record_dto.h
+    model/applied_item_tax_record_dto_i_read_only_list_envelope.h
+    model/applied_item_tax_record_update_dto.h
     model/applied_tax_policy_record_create_dto.h
     model/applied_tax_policy_record_dto.h
     model/applied_tax_policy_record_dto_envelope.h
@@ -387,6 +432,8 @@ set(HDRS
     model/bank_guarantee_dto_envelope.h
     model/bank_guarantee_dto_list_envelope.h
     model/bank_guarantee_update_dto.h
+    model/bank_profile_dto.h
+    model/bank_profile_dto_list_envelope.h
     model/bank_transaction_create_dto.h
     model/bank_transaction_dto.h
     model/bank_transaction_dto_envelope.h
@@ -408,11 +455,14 @@ set(HDRS
     model/budget_dto_envelope.h
     model/budget_dto_i_read_only_list_envelope.h
     model/budget_update_dto.h
+    model/chart_of_accounts.h
+    model/chart_of_accounts_list_envelope.h
     model/commission_create_dto.h
     model/commission_dto.h
     model/commission_dto_envelope.h
     model/commission_dto_list_envelope.h
     model/commission_update_dto.h
+    model/contact_dto.h
     model/cost_centre_budget_create_dto.h
     model/cost_centre_budget_dto.h
     model/cost_centre_budget_dto_envelope.h
@@ -432,6 +482,16 @@ set(HDRS
     model/currency_id.h
     model/empty_envelope.h
     model/error_envelope.h
+    model/expense_claim_create_dto.h
+    model/expense_claim_dto.h
+    model/expense_claim_dto_envelope.h
+    model/expense_claim_dto_list_envelope.h
+    model/expense_claim_update_dto.h
+    model/expense_type_create_dto.h
+    model/expense_type_dto.h
+    model/expense_type_dto_envelope.h
+    model/expense_type_dto_list_envelope.h
+    model/expense_type_update_dto.h
     model/financial_book_create_dto.h
     model/financial_book_dto.h
     model/financial_book_dto_envelope.h
@@ -522,9 +582,15 @@ set(HDRS
     model/loan_dto.h
     model/loan_dto_envelope.h
     model/loan_dto_i_read_only_list_envelope.h
+    model/loan_type_create_dto.h
+    model/loan_type_dto.h
+    model/loan_type_dto_envelope.h
+    model/loan_type_dto_i_read_only_list_envelope.h
+    model/loan_type_update_dto.h
     model/loan_update_dto.h
     model/login_request.h
     model/money.h
+    model/money_envelope.h
     model/operation.h
     model/payment_commission_create_dto.h
     model/payment_commission_dto.h
@@ -540,6 +606,7 @@ set(HDRS
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
+    model/seed_chart_of_accounts_request.h
     model/share_class_create_dto.h
     model/share_class_dto.h
     model/share_class_dto_envelope.h
@@ -560,6 +627,11 @@ set(HDRS
     model/share_transfer_reason_dto_list_envelope.h
     model/share_transfer_reason_update_dto.h
     model/share_transfer_update_dto.h
+    model/tax_class_create_dto.h
+    model/tax_class_dto.h
+    model/tax_class_dto_envelope.h
+    model/tax_class_dto_list_envelope.h
+    model/tax_class_update_dto.h
     model/tax_policy_create_dto.h
     model/tax_policy_dto.h
     model/tax_policy_dto_envelope.h
@@ -586,12 +658,17 @@ set(HDRS
     api/AccountGroupsAPI.h
     api/AccountingPeriodsAPI.h
     api/AccountsAPI.h
+    api/BankProfilesAPI.h
     api/BankingAPI.h
+    api/BillableLineTaxesAPI.h
     api/BillingProfilesAPI.h
     api/BudgetsAPI.h
     api/CommissionsAPI.h
+    api/CompletionsAPI.h
     api/CostCentresAPI.h
-    api/FenixAllianceABSWebAPI.h
+    api/ExpenseClaimsAPI.h
+    api/ExpenseTypesAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/FinancialBooksAPI.h
     api/FiscalAuthoritiesAPI.h
     api/FiscalAuthorityYearsAPI.h
@@ -611,6 +688,7 @@ set(HDRS
     api/LoansAPI.h
     api/ReceiptsAPI.h
     api/SharesAPI.h
+    api/TaxClassesAPI.h
     api/TaxPoliciesAPI.h
     api/TaxRatesAPI.h
     api/TransactionsAPI.h
@@ -698,12 +776,17 @@ set(HDRS "")
 #    unit-tests/manual-AccountGroupsAPI.c
 #    unit-tests/manual-AccountingPeriodsAPI.c
 #    unit-tests/manual-AccountsAPI.c
+#    unit-tests/manual-BankProfilesAPI.c
 #    unit-tests/manual-BankingAPI.c
+#    unit-tests/manual-BillableLineTaxesAPI.c
 #    unit-tests/manual-BillingProfilesAPI.c
 #    unit-tests/manual-BudgetsAPI.c
 #    unit-tests/manual-CommissionsAPI.c
+#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-CostCentresAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-ExpenseClaimsAPI.c
+#    unit-tests/manual-ExpenseTypesAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-FinancialBooksAPI.c
 #    unit-tests/manual-FiscalAuthoritiesAPI.c
 #    unit-tests/manual-FiscalAuthorityYearsAPI.c
@@ -723,6 +806,7 @@ set(HDRS "")
 #    unit-tests/manual-LoansAPI.c
 #    unit-tests/manual-ReceiptsAPI.c
 #    unit-tests/manual-SharesAPI.c
+#    unit-tests/manual-TaxClassesAPI.c
 #    unit-tests/manual-TaxPoliciesAPI.c
 #    unit-tests/manual-TaxRatesAPI.c
 #    unit-tests/manual-TransactionsAPI.c

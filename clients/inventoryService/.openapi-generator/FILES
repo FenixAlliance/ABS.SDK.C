@@ -1,13 +1,17 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/FenixAllianceABSWebAPI.c
-api/FenixAllianceABSWebAPI.h
+api/CompletionsAPI.c
+api/CompletionsAPI.h
+api/FenixAlliancePortalsWebsiteAPI.c
+api/FenixAlliancePortalsWebsiteAPI.h
 api/InventoryAPI.c
 api/InventoryAPI.h
-docs/FenixAllianceABSWebAPI.md
+docs/CompletionsAPI.md
+docs/FenixAlliancePortalsWebsiteAPI.md
 docs/InventoryAPI.md
 docs/access_token_response.md
+docs/error_envelope.md
 docs/forgot_password_request.md
 docs/http_validation_problem_details.md
 docs/info_request.md
@@ -29,6 +33,8 @@ include/list.h
 libcurl.licence
 model/access_token_response.c
 model/access_token_response.h
+model/error_envelope.c
+model/error_envelope.h
 model/forgot_password_request.c
 model/forgot_password_request.h
 model/http_validation_problem_details.c
@@ -58,3 +64,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_error_envelope.c

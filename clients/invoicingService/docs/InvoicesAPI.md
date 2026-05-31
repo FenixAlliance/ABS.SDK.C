@@ -1,6 +1,6 @@
 # InvoicesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -55,13 +55,14 @@ Method | HTTP request | Description
 //
 // Aggregates the discounts for the specified invoices.
 //
-money_envelope_t* InvoicesAPI_aggregateInvoiceDiscounts(apiClient_t *apiClient, list_t *request_body, char *currencyId);
+money_envelope_t* InvoicesAPI_aggregateInvoiceDiscounts(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **request_body** | **[list_t](char.md) \*** |  | 
 **currencyId** | **char \*** |  | [optional] 
 
@@ -87,13 +88,14 @@ No authorization required
 //
 // Aggregates the global surcharges for the specified invoices.
 //
-money_envelope_t* InvoicesAPI_aggregateInvoiceGlobalSurcharges(apiClient_t *apiClient, list_t *request_body, char *currencyId);
+money_envelope_t* InvoicesAPI_aggregateInvoiceGlobalSurcharges(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **request_body** | **[list_t](char.md) \*** |  | 
 **currencyId** | **char \*** |  | [optional] 
 
@@ -119,13 +121,14 @@ No authorization required
 //
 // Aggregates the tax bases for the specified invoices.
 //
-money_envelope_t* InvoicesAPI_aggregateInvoiceTaxBases(apiClient_t *apiClient, list_t *request_body, char *currencyId);
+money_envelope_t* InvoicesAPI_aggregateInvoiceTaxBases(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **request_body** | **[list_t](char.md) \*** |  | 
 **currencyId** | **char \*** |  | [optional] 
 
@@ -151,13 +154,14 @@ No authorization required
 //
 // Aggregates the taxes for the specified invoices.
 //
-money_envelope_t* InvoicesAPI_aggregateInvoiceTaxes(apiClient_t *apiClient, list_t *request_body, char *currencyId);
+money_envelope_t* InvoicesAPI_aggregateInvoiceTaxes(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **request_body** | **[list_t](char.md) \*** |  | 
 **currencyId** | **char \*** |  | [optional] 
 
@@ -183,13 +187,14 @@ No authorization required
 //
 // Aggregates the totals for the specified invoices.
 //
-money_envelope_t* InvoicesAPI_aggregateInvoiceTotals(apiClient_t *apiClient, list_t *request_body, char *currencyId);
+money_envelope_t* InvoicesAPI_aggregateInvoiceTotals(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **request_body** | **[list_t](char.md) \*** |  | 
 **currencyId** | **char \*** |  | [optional] 
 
@@ -997,13 +1002,14 @@ No authorization required
 //
 // Retrieves the list of payments related to the specified invoice.
 //
-payment_dto_i_read_only_list_envelope_t* InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *invoiceId);
+payment_dto_i_read_only_list_envelope_t* InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *invoiceId);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
 
 ### Return type
@@ -1028,13 +1034,14 @@ No authorization required
 //
 // Retrieves the total count of payments for the specified invoice.
 //
-int32_envelope_t* InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *invoiceId);
+int32_envelope_t* InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
 
 ### Return type

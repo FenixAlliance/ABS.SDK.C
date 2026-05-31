@@ -1,6 +1,6 @@
 # PaymentsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -82,13 +82,14 @@ No authorization required
 //
 // Retrieves a payment using the deprecated /Details route. Use GET {paymentId} instead.
 //
-payment_dto_list_envelope_t* PaymentsAPI_getPaymentAsync(apiClient_t *apiClient, char *paymentId);
+payment_dto_list_envelope_t* PaymentsAPI_getPaymentAsync(apiClient_t *apiClient, char *tenantId, char *paymentId);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **paymentId** | **char \*** |  | 
 
 ### Return type
@@ -113,13 +114,14 @@ No authorization required
 //
 // Retrieves the details of a payment using its unique identifier.
 //
-payment_dto_list_envelope_t* PaymentsAPI_getPaymentAsyncV2(apiClient_t *apiClient, char *paymentId);
+payment_dto_list_envelope_t* PaymentsAPI_getPaymentAsyncV2(apiClient_t *apiClient, char *tenantId, char *paymentId);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **paymentId** | **char \*** |  | 
 
 ### Return type

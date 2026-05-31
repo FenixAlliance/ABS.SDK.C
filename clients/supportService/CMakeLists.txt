@@ -61,14 +61,53 @@ set(SRCS
     model/http_validation_problem_details.c
     model/info_request.c
     model/info_response.c
+    model/inquiry_request_create_dto.c
+    model/inquiry_request_dto.c
+    model/inquiry_request_dto_envelope.c
+    model/inquiry_request_dto_list_envelope.c
+    model/inquiry_request_update_dto.c
     model/int32_envelope.c
+    model/item_refund_policy_create_dto.c
+    model/item_refund_policy_dto.c
+    model/item_refund_policy_dto_envelope.c
+    model/item_refund_policy_dto_list_envelope.c
+    model/item_refund_policy_update_dto.c
+    model/item_return_policy_create_dto.c
+    model/item_return_policy_dto.c
+    model/item_return_policy_dto_envelope.c
+    model/item_return_policy_dto_list_envelope.c
+    model/item_return_policy_update_dto.c
+    model/item_warranty_policy_create_dto.c
+    model/item_warranty_policy_dto.c
+    model/item_warranty_policy_dto_envelope.c
+    model/item_warranty_policy_dto_list_envelope.c
+    model/item_warranty_policy_update_dto.c
+    model/knowledge_article_create_dto.c
+    model/knowledge_article_dto.c
+    model/knowledge_article_dto_envelope.c
+    model/knowledge_article_dto_list_envelope.c
+    model/knowledge_article_update_dto.c
     model/login_request.c
+    model/maintenance_visit_create_dto.c
+    model/maintenance_visit_dto.c
+    model/maintenance_visit_dto_envelope.c
+    model/maintenance_visit_dto_list_envelope.c
     model/private_message_dto.c
     model/private_message_dto_list_envelope.c
     model/refresh_request.c
+    model/refund_request_create_dto.c
+    model/refund_request_dto.c
+    model/refund_request_dto_envelope.c
+    model/refund_request_dto_list_envelope.c
+    model/refund_request_update_dto.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
+    model/return_request_create_dto.c
+    model/return_request_dto.c
+    model/return_request_dto_envelope.c
+    model/return_request_dto_list_envelope.c
+    model/return_request_update_dto.c
     model/support_entitlement_create_dto.c
     model/support_entitlement_dto.c
     model/support_entitlement_dto_envelope.c
@@ -105,13 +144,28 @@ set(SRCS
     model/support_ticket_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/FenixAllianceABSWebAPI.c
+    model/warranty_request_create_dto.c
+    model/warranty_request_dto.c
+    model/warranty_request_dto_envelope.c
+    model/warranty_request_dto_list_envelope.c
+    model/warranty_request_update_dto.c
+    api/CompletionsAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
+    api/InquiryRequestsAPI.c
+    api/KnowledgeArticlesAPI.c
+    api/MaintenanceVisitsAPI.c
+    api/RefundPoliciesAPI.c
+    api/RefundRequestsAPI.c
+    api/ReturnPoliciesAPI.c
+    api/ReturnRequestsAPI.c
     api/SupportEntitlementsAPI.c
     api/SupportRequestAttachmentsAPI.c
     api/SupportRequestsAPI.c
     api/SupportTicketPrioritiesAPI.c
     api/SupportTicketTypesAPI.c
     api/SupportTicketsAPI.c
+    api/WarrantyPoliciesAPI.c
+    api/WarrantyRequestsAPI.c
 
 )
 
@@ -129,14 +183,53 @@ set(HDRS
     model/http_validation_problem_details.h
     model/info_request.h
     model/info_response.h
+    model/inquiry_request_create_dto.h
+    model/inquiry_request_dto.h
+    model/inquiry_request_dto_envelope.h
+    model/inquiry_request_dto_list_envelope.h
+    model/inquiry_request_update_dto.h
     model/int32_envelope.h
+    model/item_refund_policy_create_dto.h
+    model/item_refund_policy_dto.h
+    model/item_refund_policy_dto_envelope.h
+    model/item_refund_policy_dto_list_envelope.h
+    model/item_refund_policy_update_dto.h
+    model/item_return_policy_create_dto.h
+    model/item_return_policy_dto.h
+    model/item_return_policy_dto_envelope.h
+    model/item_return_policy_dto_list_envelope.h
+    model/item_return_policy_update_dto.h
+    model/item_warranty_policy_create_dto.h
+    model/item_warranty_policy_dto.h
+    model/item_warranty_policy_dto_envelope.h
+    model/item_warranty_policy_dto_list_envelope.h
+    model/item_warranty_policy_update_dto.h
+    model/knowledge_article_create_dto.h
+    model/knowledge_article_dto.h
+    model/knowledge_article_dto_envelope.h
+    model/knowledge_article_dto_list_envelope.h
+    model/knowledge_article_update_dto.h
     model/login_request.h
+    model/maintenance_visit_create_dto.h
+    model/maintenance_visit_dto.h
+    model/maintenance_visit_dto_envelope.h
+    model/maintenance_visit_dto_list_envelope.h
     model/private_message_dto.h
     model/private_message_dto_list_envelope.h
     model/refresh_request.h
+    model/refund_request_create_dto.h
+    model/refund_request_dto.h
+    model/refund_request_dto_envelope.h
+    model/refund_request_dto_list_envelope.h
+    model/refund_request_update_dto.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
+    model/return_request_create_dto.h
+    model/return_request_dto.h
+    model/return_request_dto_envelope.h
+    model/return_request_dto_list_envelope.h
+    model/return_request_update_dto.h
     model/support_entitlement_create_dto.h
     model/support_entitlement_dto.h
     model/support_entitlement_dto_envelope.h
@@ -173,13 +266,28 @@ set(HDRS
     model/support_ticket_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/FenixAllianceABSWebAPI.h
+    model/warranty_request_create_dto.h
+    model/warranty_request_dto.h
+    model/warranty_request_dto_envelope.h
+    model/warranty_request_dto_list_envelope.h
+    model/warranty_request_update_dto.h
+    api/CompletionsAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
+    api/InquiryRequestsAPI.h
+    api/KnowledgeArticlesAPI.h
+    api/MaintenanceVisitsAPI.h
+    api/RefundPoliciesAPI.h
+    api/RefundRequestsAPI.h
+    api/ReturnPoliciesAPI.h
+    api/ReturnRequestsAPI.h
     api/SupportEntitlementsAPI.h
     api/SupportRequestAttachmentsAPI.h
     api/SupportRequestsAPI.h
     api/SupportTicketPrioritiesAPI.h
     api/SupportTicketTypesAPI.h
     api/SupportTicketsAPI.h
+    api/WarrantyPoliciesAPI.h
+    api/WarrantyRequestsAPI.h
 
 )
 
@@ -261,13 +369,23 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-InquiryRequestsAPI.c
+#    unit-tests/manual-KnowledgeArticlesAPI.c
+#    unit-tests/manual-MaintenanceVisitsAPI.c
+#    unit-tests/manual-RefundPoliciesAPI.c
+#    unit-tests/manual-RefundRequestsAPI.c
+#    unit-tests/manual-ReturnPoliciesAPI.c
+#    unit-tests/manual-ReturnRequestsAPI.c
 #    unit-tests/manual-SupportEntitlementsAPI.c
 #    unit-tests/manual-SupportRequestAttachmentsAPI.c
 #    unit-tests/manual-SupportRequestsAPI.c
 #    unit-tests/manual-SupportTicketPrioritiesAPI.c
 #    unit-tests/manual-SupportTicketTypesAPI.c
 #    unit-tests/manual-SupportTicketsAPI.c
+#    unit-tests/manual-WarrantyPoliciesAPI.c
+#    unit-tests/manual-WarrantyRequestsAPI.c
 #)
 
 ##set header files

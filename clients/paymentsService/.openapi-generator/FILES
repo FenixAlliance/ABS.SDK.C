@@ -1,8 +1,10 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/FenixAllianceABSWebAPI.c
-api/FenixAllianceABSWebAPI.h
+api/CompletionsAPI.c
+api/CompletionsAPI.h
+api/FenixAlliancePortalsWebsiteAPI.c
+api/FenixAlliancePortalsWebsiteAPI.h
 api/PaymentMethodsAPI.c
 api/PaymentMethodsAPI.h
 api/PaymentModesAPI.c
@@ -11,7 +13,8 @@ api/PaymentTermsAPI.c
 api/PaymentTermsAPI.h
 api/PaymentsAPI.c
 api/PaymentsAPI.h
-docs/FenixAllianceABSWebAPI.md
+docs/CompletionsAPI.md
+docs/FenixAlliancePortalsWebsiteAPI.md
 docs/PaymentMethodsAPI.md
 docs/PaymentModesAPI.md
 docs/PaymentTermsAPI.md

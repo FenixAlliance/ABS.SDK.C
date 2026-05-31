@@ -33,7 +33,7 @@ ItemTagsAPI_deleteItemTagAsync(apiClient_t *apiClient, char *tenantId, char *ite
 // Retrieves a specific item tag by its ID.
 //
 item_tag_dto_envelope_t*
-ItemTagsAPI_getItemTagByIdAsync(apiClient_t *apiClient, char *itemTagId, char *api_version, char *x_api_version);
+ItemTagsAPI_getItemTagByIdAsync(apiClient_t *apiClient, char *itemTagId, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get all item tags

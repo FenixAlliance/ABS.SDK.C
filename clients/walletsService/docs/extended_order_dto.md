@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **customer_notes** | **char \*** |  | [optional] 
 **tax_calculation_method** | **walletsservice_extended_order_dto_TAXCALCULATIONMETHOD_e** |  | [optional] 
 **forex_rate** | **double** |  | [optional] 
+**forex_rates_snapshot** | **char \*** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
 **total_detail** | **double** |  | [optional] 
 **total_detail_currency_id** | **char \*** |  | [optional] 

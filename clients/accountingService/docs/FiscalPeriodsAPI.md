@@ -1,6 +1,6 @@
 # FiscalPeriodsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,14 +18,14 @@ Method | HTTP request | Description
 //
 // Creates a new fiscal period associated with a fiscal year.
 //
-empty_envelope_t* FiscalPeriodsAPI_createFiscalPeriod(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_period_create_dto_t *fiscal_period_create_dto);
+empty_envelope_t* FiscalPeriodsAPI_createFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_period_create_dto_t *fiscal_period_create_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **fiscal_period_create_dto** | **[fiscal_period_create_dto_t](fiscal_period_create_dto.md) \*** |  | [optional] 
@@ -52,14 +52,14 @@ No authorization required
 //
 // Deletes a fiscal period identified by its unique identifier.
 //
-empty_envelope_t* FiscalPeriodsAPI_deleteFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version);
+empty_envelope_t* FiscalPeriodsAPI_deleteFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalPeriodId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -86,14 +86,14 @@ No authorization required
 //
 // Retrieves a specific fiscal period by its unique identifier within a fiscal year.
 //
-fiscal_period_dto_envelope_t* FiscalPeriodsAPI_getFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *fiscalPeriodId, char *api_version, char *x_api_version);
+fiscal_period_dto_envelope_t* FiscalPeriodsAPI_getFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *fiscalPeriodId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **fiscalYearId** | **char \*** |  | 
 **fiscalPeriodId** | **char \*** |  | 
@@ -122,14 +122,14 @@ No authorization required
 //
 // Retrieves all fiscal periods for the specified fiscal year within a fiscal authority.
 //
-fiscal_period_dto_list_envelope_t* FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *authorityId, char *api_version, char *x_api_version);
+fiscal_period_dto_list_envelope_t* FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *authorityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **fiscalYearId** | **char \*** |  | 
 **authorityId** | **char \*** |  | 
@@ -158,14 +158,14 @@ No authorization required
 //
 // Returns the total count of fiscal periods for the specified fiscal year.
 //
-int32_envelope_t* FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version);
+int32_envelope_t* FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **fiscalYearId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -193,14 +193,14 @@ No authorization required
 //
 // Updates an existing fiscal period identified by its unique identifier.
 //
-empty_envelope_t* FiscalPeriodsAPI_updateFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version, fiscal_period_update_dto_t *fiscal_period_update_dto);
+empty_envelope_t* FiscalPeriodsAPI_updateFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version, fiscal_period_update_dto_t *fiscal_period_update_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalPeriodId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 

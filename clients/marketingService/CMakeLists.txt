@@ -78,10 +78,20 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
+    model/marketing_area_create_dto.c
+    model/marketing_area_dto.c
+    model/marketing_area_dto_envelope.c
+    model/marketing_area_dto_list_envelope.c
+    model/marketing_area_update_dto.c
     model/marketing_campaign_create_dto.c
     model/marketing_campaign_dto.c
     model/marketing_campaign_dto_envelope.c
     model/marketing_campaign_update_dto.c
+    model/marketing_lead_create_dto.c
+    model/marketing_lead_dto.c
+    model/marketing_lead_dto_envelope.c
+    model/marketing_lead_dto_list_envelope.c
+    model/marketing_lead_update_dto.c
     model/marketing_list_create_dto.c
     model/marketing_list_dto.c
     model/marketing_list_dto_envelope.c
@@ -109,11 +119,14 @@ set(SRCS
     model/social_post_bucket_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
+    api/CompletionsAPI.c
     api/EmailGroupsAPI.c
     api/EmailSignaturesAPI.c
     api/EmailTemplatesAPI.c
-    api/FenixAllianceABSWebAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
+    api/MarketingAreasAPI.c
     api/MarketingCampaignsAPI.c
+    api/MarketingLeadsAPI.c
     api/MarketingListsAPI.c
     api/NewslettersAPI.c
     api/SocialMediaPostsAPI.c
@@ -153,10 +166,20 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
+    model/marketing_area_create_dto.h
+    model/marketing_area_dto.h
+    model/marketing_area_dto_envelope.h
+    model/marketing_area_dto_list_envelope.h
+    model/marketing_area_update_dto.h
     model/marketing_campaign_create_dto.h
     model/marketing_campaign_dto.h
     model/marketing_campaign_dto_envelope.h
     model/marketing_campaign_update_dto.h
+    model/marketing_lead_create_dto.h
+    model/marketing_lead_dto.h
+    model/marketing_lead_dto_envelope.h
+    model/marketing_lead_dto_list_envelope.h
+    model/marketing_lead_update_dto.h
     model/marketing_list_create_dto.h
     model/marketing_list_dto.h
     model/marketing_list_dto_envelope.h
@@ -184,11 +207,14 @@ set(HDRS
     model/social_post_bucket_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
+    api/CompletionsAPI.h
     api/EmailGroupsAPI.h
     api/EmailSignaturesAPI.h
     api/EmailTemplatesAPI.h
-    api/FenixAllianceABSWebAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
+    api/MarketingAreasAPI.h
     api/MarketingCampaignsAPI.h
+    api/MarketingLeadsAPI.h
     api/MarketingListsAPI.h
     api/NewslettersAPI.h
     api/SocialMediaPostsAPI.h
@@ -275,11 +301,14 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
+#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-EmailGroupsAPI.c
 #    unit-tests/manual-EmailSignaturesAPI.c
 #    unit-tests/manual-EmailTemplatesAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-MarketingAreasAPI.c
 #    unit-tests/manual-MarketingCampaignsAPI.c
+#    unit-tests/manual-MarketingLeadsAPI.c
 #    unit-tests/manual-MarketingListsAPI.c
 #    unit-tests/manual-NewslettersAPI.c
 #    unit-tests/manual-SocialMediaPostsAPI.c

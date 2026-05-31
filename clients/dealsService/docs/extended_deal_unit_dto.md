@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **tax_calculation_method** | **dealsservice_extended_deal_unit_dto_TAXCALCULATIONMETHOD_e** |  | [optional] 
 **cost_calculation_method** | **dealsservice_extended_deal_unit_dto_COSTCALCULATIONMETHOD_e** |  | [optional] 
 **forex_rate** | **double** |  | [optional] 
+**forex_rates_snapshot** | **char \*** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
 **total_detail** | **double** |  | [optional] 
 **total_detail_currency_id** | **char \*** |  | [optional] 

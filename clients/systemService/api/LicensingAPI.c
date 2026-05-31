@@ -17,7 +17,7 @@
 // Retrieves all license assignments for a given license.
 //
 suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *licenseId, char *tenantId, char *api_version, char *x_api_version)
+LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -211,7 +211,7 @@ end:
 // Retrieves all additional attributes for a given license.
 //
 suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *licenseId, char *tenantId, char *api_version, char *x_api_version)
+LicensingAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -405,7 +405,7 @@ end:
 // Retrieves a single suite license by its unique identifier.
 //
 suite_license_dto_envelope_t*
-LicensingAPI_getLicenseByIdAsync(apiClient_t *apiClient, char *licenseId, char *api_version, char *x_api_version)
+LicensingAPI_getLicenseByIdAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -450,6 +450,18 @@ LicensingAPI_getLicenseByIdAsync(apiClient_t *apiClient, char *licenseId, char *
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -551,6 +563,18 @@ LicensingAPI_getLicenseByIdAsync(apiClient_t *apiClient, char *licenseId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -575,7 +599,7 @@ end:
 // Retrieves all features for a given license.
 //
 suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *licenseId, char *tenantId, char *api_version, char *x_api_version)
+LicensingAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -769,7 +793,7 @@ end:
 // Retrieves the record quota for a given license.
 //
 suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseRecordsQuotaAsync(apiClient_t *apiClient, char *licenseId, char *tenantId, char *api_version, char *x_api_version)
+LicensingAPI_getLicenseRecordsQuotaAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();

@@ -1,6 +1,6 @@
 # ItemAttributesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -25,7 +25,7 @@ int32_envelope_t* ItemAttributesAPI_countItemAttributesAsync(apiClient_t *apiCli
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -118,7 +118,7 @@ No authorization required
 //
 // Retrieves a specific item attribute by its ID.
 //
-item_attribute_dto_envelope_t* ItemAttributesAPI_getItemAttributeByIdAsync(apiClient_t *apiClient, char *itemAttributeId, char *api_version, char *x_api_version);
+item_attribute_dto_envelope_t* ItemAttributesAPI_getItemAttributeByIdAsync(apiClient_t *apiClient, char *itemAttributeId, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -126,6 +126,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **itemAttributeId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -158,7 +159,7 @@ item_attribute_dto_list_envelope_t* ItemAttributesAPI_getItemAttributesAsync(api
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

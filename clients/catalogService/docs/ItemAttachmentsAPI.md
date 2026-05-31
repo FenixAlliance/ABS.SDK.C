@@ -1,6 +1,6 @@
 # ItemAttachmentsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -85,7 +85,7 @@ No authorization required
 //
 // Retrieves a specific item attachment by its ID.
 //
-item_attachment_dto_envelope_t* ItemAttachmentsAPI_getItemAttachmentByIdAsync(apiClient_t *apiClient, char *itemAttachmentId, char *api_version, char *x_api_version);
+item_attachment_dto_envelope_t* ItemAttachmentsAPI_getItemAttachmentByIdAsync(apiClient_t *apiClient, char *itemAttachmentId, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -93,6 +93,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **itemAttachmentId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -125,7 +126,7 @@ item_attachment_dto_list_envelope_t* ItemAttachmentsAPI_getItemAttachmentsAsync(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

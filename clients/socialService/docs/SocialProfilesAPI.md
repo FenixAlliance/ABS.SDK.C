@@ -1,6 +1,6 @@
 # SocialProfilesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**SocialProfilesAPI_getFollowersAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getFollowersAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Followers | Get Followers
 [**SocialProfilesAPI_getFollowsAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getFollowsAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Follows | Get Follows
 [**SocialProfilesAPI_getMessagesAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getMessagesAsync) | **GET** /api/v2/SocialService/SocialProfiles/{conversationId}/Messages | Get Messages
+[**SocialProfilesAPI_getNotificationByIdAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getNotificationByIdAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications/{notificationId} | Get Notification
 [**SocialProfilesAPI_getNotificationsAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getNotificationsAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications | Get Notifications
 [**SocialProfilesAPI_getSocialProfileAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getSocialProfileAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId} | Get Social Profile
 [**SocialProfilesAPI_getSocialProfilesAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getSocialProfilesAsync) | **GET** /api/v2/SocialService/SocialProfiles | Get Social Profiles
@@ -201,13 +202,14 @@ No authorization required
 //
 // Count messages for a conversation.
 //
-int32_envelope_t* SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *conversationId, char *api_version, char *x_api_version);
+int32_envelope_t* SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**socialProfileId** | **char \*** |  | 
 **conversationId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -636,13 +638,14 @@ No authorization required
 //
 // Get a list of messages for a conversation.
 //
-private_message_dto_list_envelope_t* SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *conversationId, char *api_version, char *x_api_version);
+private_message_dto_list_envelope_t* SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**socialProfileId** | **char \*** |  | 
 **conversationId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -650,6 +653,40 @@ Name | Type | Description  | Notes
 ### Return type
 
 [private_message_dto_list_envelope_t](private_message_dto_list_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SocialProfilesAPI_getNotificationByIdAsync**
+```c
+// Get Notification
+//
+// Get a notification by ID for a social profile.
+//
+notification_dto_envelope_t* SocialProfilesAPI_getNotificationByIdAsync(apiClient_t *apiClient, char *socialProfileId, char *notificationId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**socialProfileId** | **char \*** |  | 
+**notificationId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[notification_dto_envelope_t](notification_dto_envelope.md) *
 
 
 ### Authorization

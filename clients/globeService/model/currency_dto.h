@@ -21,6 +21,7 @@ typedef struct currency_dto_t currency_dto_t;
 
 typedef struct currency_dto_t {
     char *id; // string
+    char *timestamp; //date time
     char *code; // string
     char *name; // string
     char *symbol; // string
@@ -30,6 +31,7 @@ typedef struct currency_dto_t {
 
 currency_dto_t *currency_dto_create(
     char *id,
+    char *timestamp,
     char *code,
     char *name,
     char *symbol,

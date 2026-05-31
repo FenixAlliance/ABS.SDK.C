@@ -88,16 +88,29 @@ set(SRCS
     model/price_list_dto_envelope.c
     model/price_list_dto_list_envelope.c
     model/price_list_update_dto.c
+    model/pricing_rule_create_dto.c
+    model/pricing_rule_dto.c
+    model/pricing_rule_dto_envelope.c
+    model/pricing_rule_dto_list_envelope.c
+    model/pricing_rule_update_dto.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
+    model/rounding_policy_create_dto.c
+    model/rounding_policy_dto.c
+    model/rounding_policy_dto_envelope.c
+    model/rounding_policy_dto_list_envelope.c
+    model/rounding_policy_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
+    api/CompletionsAPI.c
     api/DiscountListsAPI.c
-    api/FenixAllianceABSWebAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/PriceListsAPI.c
     api/PricesAPI.c
+    api/PricingRulesAPI.c
+    api/RoundingPoliciesAPI.c
 
 )
 
@@ -142,16 +155,29 @@ set(HDRS
     model/price_list_dto_envelope.h
     model/price_list_dto_list_envelope.h
     model/price_list_update_dto.h
+    model/pricing_rule_create_dto.h
+    model/pricing_rule_dto.h
+    model/pricing_rule_dto_envelope.h
+    model/pricing_rule_dto_list_envelope.h
+    model/pricing_rule_update_dto.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
+    model/rounding_policy_create_dto.h
+    model/rounding_policy_dto.h
+    model/rounding_policy_dto_envelope.h
+    model/rounding_policy_dto_list_envelope.h
+    model/rounding_policy_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
+    api/CompletionsAPI.h
     api/DiscountListsAPI.h
-    api/FenixAllianceABSWebAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/PriceListsAPI.h
     api/PricesAPI.h
+    api/PricingRulesAPI.h
+    api/RoundingPoliciesAPI.h
 
 )
 
@@ -233,10 +259,13 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
+#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-DiscountListsAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-PriceListsAPI.c
 #    unit-tests/manual-PricesAPI.c
+#    unit-tests/manual-PricingRulesAPI.c
+#    unit-tests/manual-RoundingPoliciesAPI.c
 #)
 
 ##set header files

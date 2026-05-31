@@ -65,11 +65,9 @@ set(SRCS
     model/country_switch_request.c
     model/currency_dto.c
     model/currency_dto_envelope.c
-    model/currency_id.c
     model/currency_switch_request.c
     model/empty_envelope.c
     model/error_envelope.c
-    model/forex_rates.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
     model/info_request.c
@@ -83,7 +81,6 @@ set(SRCS
     model/item_to_compare_cart_record_dto_envelope.c
     model/item_to_compare_cart_record_dto_list_envelope.c
     model/login_request.c
-    model/money.c
     model/new_wish_list_request.c
     model/product_to_wish_list_request.c
     model/refresh_request.c
@@ -98,7 +95,8 @@ set(SRCS
     model/wish_list_update_dto.c
     api/CartsAPI.c
     api/CompareAPI.c
-    api/FenixAllianceABSWebAPI.c
+    api/CompletionsAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/RecordsAPI.c
     api/WishListsAPI.c
 
@@ -122,11 +120,9 @@ set(HDRS
     model/country_switch_request.h
     model/currency_dto.h
     model/currency_dto_envelope.h
-    model/currency_id.h
     model/currency_switch_request.h
     model/empty_envelope.h
     model/error_envelope.h
-    model/forex_rates.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
     model/info_request.h
@@ -140,7 +136,6 @@ set(HDRS
     model/item_to_compare_cart_record_dto_envelope.h
     model/item_to_compare_cart_record_dto_list_envelope.h
     model/login_request.h
-    model/money.h
     model/new_wish_list_request.h
     model/product_to_wish_list_request.h
     model/refresh_request.h
@@ -155,7 +150,8 @@ set(HDRS
     model/wish_list_update_dto.h
     api/CartsAPI.h
     api/CompareAPI.h
-    api/FenixAllianceABSWebAPI.h
+    api/CompletionsAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/RecordsAPI.h
     api/WishListsAPI.h
 
@@ -241,7 +237,8 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-CartsAPI.c
 #    unit-tests/manual-CompareAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-RecordsAPI.c
 #    unit-tests/manual-WishListsAPI.c
 #)

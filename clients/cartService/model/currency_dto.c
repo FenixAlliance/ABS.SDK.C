@@ -7,6 +7,7 @@
 
 currency_dto_t *currency_dto_create(
     char *id,
+    char *timestamp,
     char *code,
     char *name,
     char *symbol,
@@ -17,6 +18,7 @@ currency_dto_t *currency_dto_create(
         return NULL;
     }
     currency_dto_local_var->id = id;
+    currency_dto_local_var->timestamp = timestamp;
     currency_dto_local_var->code = code;
     currency_dto_local_var->name = name;
     currency_dto_local_var->symbol = symbol;
@@ -34,6 +36,10 @@ void currency_dto_free(currency_dto_t *currency_dto) {
     if (currency_dto->id) {
         free(currency_dto->id);
         currency_dto->id = NULL;
+    }
+    if (currency_dto->timestamp) {
+        free(currency_dto->timestamp);
+        currency_dto->timestamp = NULL;
     }
     if (currency_dto->code) {
         free(currency_dto->code);
@@ -61,6 +67,14 @@ cJSON *currency_dto_convertToJSON(currency_dto_t *currency_dto) {
     if(currency_dto->id) {
     if(cJSON_AddStringToObject(item, "id", currency_dto->id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // currency_dto->timestamp
+    if(currency_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", currency_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
     }
     }
 
@@ -125,6 +139,15 @@ currency_dto_t *currency_dto_parseFromJSON(cJSON *currency_dtoJSON){
     }
     }
 
+    // currency_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(currency_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
+    }
+    }
+
     // currency_dto->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(currency_dtoJSON, "code");
     if (code) { 
@@ -161,6 +184,7 @@ currency_dto_t *currency_dto_parseFromJSON(cJSON *currency_dtoJSON){
 
     currency_dto_local_var = currency_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         symbol && !cJSON_IsNull(symbol) ? strdup(symbol->valuestring) : NULL,

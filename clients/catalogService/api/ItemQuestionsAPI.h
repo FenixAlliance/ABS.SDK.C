@@ -33,7 +33,7 @@ ItemQuestionsAPI_deleteItemQuestionAsync(apiClient_t *apiClient, char *tenantId,
 // Retrieves a specific item question by its ID.
 //
 item_question_dto_envelope_t*
-ItemQuestionsAPI_getItemQuestionByIdAsync(apiClient_t *apiClient, char *itemQuestionId, char *api_version, char *x_api_version);
+ItemQuestionsAPI_getItemQuestionByIdAsync(apiClient_t *apiClient, char *itemQuestionId, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get all item questions

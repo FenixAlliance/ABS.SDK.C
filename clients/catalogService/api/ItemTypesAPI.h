@@ -42,7 +42,7 @@ ItemTypesAPI_deleteItemTypeAsync(apiClient_t *apiClient, char *tenantId, char *i
 // Retrieves a specific item type by its ID.
 //
 item_type_dto_envelope_t*
-ItemTypesAPI_getItemTypeByIdAsync(apiClient_t *apiClient, char *itemTypeID, char *api_version, char *x_api_version);
+ItemTypesAPI_getItemTypeByIdAsync(apiClient_t *apiClient, char *itemTypeID, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get all item types

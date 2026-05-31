@@ -25,13 +25,15 @@ accountingservice_billing_profile_dto_TAXPAYERTYPE_e billing_profile_dto_tax_pay
 billing_profile_dto_t *billing_profile_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
     char *contact_id,
+    char *tenant_id,
+    char *type,
     char *enrollment_id,
     char *about,
     int verified,
     int submitted,
     char *avatar_url,
+    contact_dto_t *contact,
     char *qualified_name,
     char *verification_timestamp,
     char *data,
@@ -84,13 +86,15 @@ billing_profile_dto_t *billing_profile_dto_create(
     }
     billing_profile_dto_local_var->id = id;
     billing_profile_dto_local_var->timestamp = timestamp;
-    billing_profile_dto_local_var->tenant_id = tenant_id;
     billing_profile_dto_local_var->contact_id = contact_id;
+    billing_profile_dto_local_var->tenant_id = tenant_id;
+    billing_profile_dto_local_var->type = type;
     billing_profile_dto_local_var->enrollment_id = enrollment_id;
     billing_profile_dto_local_var->about = about;
     billing_profile_dto_local_var->verified = verified;
     billing_profile_dto_local_var->submitted = submitted;
     billing_profile_dto_local_var->avatar_url = avatar_url;
+    billing_profile_dto_local_var->contact = contact;
     billing_profile_dto_local_var->qualified_name = qualified_name;
     billing_profile_dto_local_var->verification_timestamp = verification_timestamp;
     billing_profile_dto_local_var->data = data;
@@ -154,13 +158,17 @@ void billing_profile_dto_free(billing_profile_dto_t *billing_profile_dto) {
         free(billing_profile_dto->timestamp);
         billing_profile_dto->timestamp = NULL;
     }
+    if (billing_profile_dto->contact_id) {
+        free(billing_profile_dto->contact_id);
+        billing_profile_dto->contact_id = NULL;
+    }
     if (billing_profile_dto->tenant_id) {
         free(billing_profile_dto->tenant_id);
         billing_profile_dto->tenant_id = NULL;
     }
-    if (billing_profile_dto->contact_id) {
-        free(billing_profile_dto->contact_id);
-        billing_profile_dto->contact_id = NULL;
+    if (billing_profile_dto->type) {
+        free(billing_profile_dto->type);
+        billing_profile_dto->type = NULL;
     }
     if (billing_profile_dto->enrollment_id) {
         free(billing_profile_dto->enrollment_id);
@@ -173,6 +181,10 @@ void billing_profile_dto_free(billing_profile_dto_t *billing_profile_dto) {
     if (billing_profile_dto->avatar_url) {
         free(billing_profile_dto->avatar_url);
         billing_profile_dto->avatar_url = NULL;
+    }
+    if (billing_profile_dto->contact) {
+        contact_dto_free(billing_profile_dto->contact);
+        billing_profile_dto->contact = NULL;
     }
     if (billing_profile_dto->qualified_name) {
         free(billing_profile_dto->qualified_name);
@@ -364,6 +376,14 @@ cJSON *billing_profile_dto_convertToJSON(billing_profile_dto_t *billing_profile_
     }
 
 
+    // billing_profile_dto->contact_id
+    if(billing_profile_dto->contact_id) {
+    if(cJSON_AddStringToObject(item, "contactId", billing_profile_dto->contact_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // billing_profile_dto->tenant_id
     if(billing_profile_dto->tenant_id) {
     if(cJSON_AddStringToObject(item, "tenantId", billing_profile_dto->tenant_id) == NULL) {
@@ -372,9 +392,9 @@ cJSON *billing_profile_dto_convertToJSON(billing_profile_dto_t *billing_profile_
     }
 
 
-    // billing_profile_dto->contact_id
-    if(billing_profile_dto->contact_id) {
-    if(cJSON_AddStringToObject(item, "contactId", billing_profile_dto->contact_id) == NULL) {
+    // billing_profile_dto->type
+    if(billing_profile_dto->type) {
+    if(cJSON_AddStringToObject(item, "type", billing_profile_dto->type) == NULL) {
     goto fail; //String
     }
     }
@@ -416,6 +436,19 @@ cJSON *billing_profile_dto_convertToJSON(billing_profile_dto_t *billing_profile_
     if(billing_profile_dto->avatar_url) {
     if(cJSON_AddStringToObject(item, "avatarUrl", billing_profile_dto->avatar_url) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // billing_profile_dto->contact
+    if(billing_profile_dto->contact) {
+    cJSON *contact_local_JSON = contact_dto_convertToJSON(billing_profile_dto->contact);
+    if(contact_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "contact", contact_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
     }
     }
 
@@ -795,6 +828,9 @@ billing_profile_dto_t *billing_profile_dto_parseFromJSON(cJSON *billing_profile_
 
     billing_profile_dto_t *billing_profile_dto_local_var = NULL;
 
+    // define the local variable for billing_profile_dto->contact
+    contact_dto_t *contact_local_nonprim = NULL;
+
     // billing_profile_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(billing_profile_dtoJSON, "id");
     if (id) { 
@@ -813,6 +849,15 @@ billing_profile_dto_t *billing_profile_dto_parseFromJSON(cJSON *billing_profile_
     }
     }
 
+    // billing_profile_dto->contact_id
+    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(billing_profile_dtoJSON, "contactId");
+    if (contact_id) { 
+    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
+    {
+    goto end; //String
+    }
+    }
+
     // billing_profile_dto->tenant_id
     cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(billing_profile_dtoJSON, "tenantId");
     if (tenant_id) { 
@@ -822,10 +867,10 @@ billing_profile_dto_t *billing_profile_dto_parseFromJSON(cJSON *billing_profile_
     }
     }
 
-    // billing_profile_dto->contact_id
-    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(billing_profile_dtoJSON, "contactId");
-    if (contact_id) { 
-    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
+    // billing_profile_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(billing_profile_dtoJSON, "type");
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
     goto end; //String
     }
@@ -874,6 +919,12 @@ billing_profile_dto_t *billing_profile_dto_parseFromJSON(cJSON *billing_profile_
     {
     goto end; //String
     }
+    }
+
+    // billing_profile_dto->contact
+    cJSON *contact = cJSON_GetObjectItemCaseSensitive(billing_profile_dtoJSON, "contact");
+    if (contact) { 
+    contact_local_nonprim = contact_dto_parseFromJSON(contact); //nonprimitive
     }
 
     // billing_profile_dto->qualified_name
@@ -1296,13 +1347,15 @@ billing_profile_dto_t *billing_profile_dto_parseFromJSON(cJSON *billing_profile_
     billing_profile_dto_local_var = billing_profile_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         about && !cJSON_IsNull(about) ? strdup(about->valuestring) : NULL,
         verified ? verified->valueint : 0,
         submitted ? submitted->valueint : 0,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,
+        contact ? contact_local_nonprim : NULL,
         qualified_name && !cJSON_IsNull(qualified_name) ? strdup(qualified_name->valuestring) : NULL,
         verification_timestamp && !cJSON_IsNull(verification_timestamp) ? strdup(verification_timestamp->valuestring) : NULL,
         data && !cJSON_IsNull(data) ? strdup(data->valuestring) : NULL,
@@ -1352,6 +1405,10 @@ billing_profile_dto_t *billing_profile_dto_parseFromJSON(cJSON *billing_profile_
 
     return billing_profile_dto_local_var;
 end:
+    if (contact_local_nonprim) {
+        contact_dto_free(contact_local_nonprim);
+        contact_local_nonprim = NULL;
+    }
     return NULL;
 
 }

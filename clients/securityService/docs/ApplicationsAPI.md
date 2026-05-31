@@ -1,6 +1,6 @@
 # ApplicationsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**ApplicationsAPI_getBusinessApplicationByIdAsync**](ApplicationsAPI.md#ApplicationsAPI_getBusinessApplicationByIdAsync) | **GET** /api/v2/SecurityService/Applications/{applicationId} | Get business application by ID
 [**ApplicationsAPI_getBusinessApplicationsAsync**](ApplicationsAPI.md#ApplicationsAPI_getBusinessApplicationsAsync) | **GET** /api/v2/SecurityService/Applications | Get all business applications
 [**ApplicationsAPI_getBusinessApplicationsCountAsync**](ApplicationsAPI.md#ApplicationsAPI_getBusinessApplicationsCountAsync) | **GET** /api/v2/SecurityService/Applications/Count | Get business applications count
+[**ApplicationsAPI_getPermissionsByApplicationAsync**](ApplicationsAPI.md#ApplicationsAPI_getPermissionsByApplicationAsync) | **GET** /api/v2/SecurityService/Applications/{applicationId}/Permissions | Get permissions by application
+[**ApplicationsAPI_getRolesByApplicationAsync**](ApplicationsAPI.md#ApplicationsAPI_getRolesByApplicationAsync) | **GET** /api/v2/SecurityService/Applications/{applicationId}/Roles | Get roles by application
 [**ApplicationsAPI_updateBusinessApplicationAsync**](ApplicationsAPI.md#ApplicationsAPI_updateBusinessApplicationAsync) | **PUT** /api/v2/SecurityService/Applications/{applicationId} | Update an existing business application
 
 
@@ -167,6 +169,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ApplicationsAPI_getPermissionsByApplicationAsync**
+```c
+// Get permissions by application
+//
+// Retrieves all security permissions granted to a specific business application.
+//
+security_permission_dto_list_envelope_t* ApplicationsAPI_getPermissionsByApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**applicationId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[security_permission_dto_list_envelope_t](security_permission_dto_list_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ApplicationsAPI_getRolesByApplicationAsync**
+```c
+// Get roles by application
+//
+// Retrieves all security roles granted to a specific business application.
+//
+security_role_dto_list_envelope_t* ApplicationsAPI_getRolesByApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**applicationId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[security_role_dto_list_envelope_t](security_role_dto_list_envelope.md) *
 
 
 ### Authorization

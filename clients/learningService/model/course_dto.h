@@ -182,6 +182,20 @@ typedef struct course_dto_t {
     list_t *selected_shipment_policies; //primitive container
     list_t *selected_attributes_options; //primitive container
     list_t *selected_selling_margin_policies; //primitive container
+    char *code; // string
+    char *version; // string
+    char *course_category_id; // string
+    char *course_category_name; // string
+    char *instructor_profile_id; // string
+    char *instructor_profile_name; // string
+    int max_course_enrollments; //numeric
+    int total_effort_in_weeks; //numeric
+    int total_hours_per_week; //numeric
+    int total_effort_in_hours; //numeric
+    char *start_date_time; //date time
+    char *end_date_time; //date time
+    char *inscriptions_start_date_time; //date time
+    char *inscriptions_end_date_time; //date time
 
 } course_dto_t;
 
@@ -348,7 +362,21 @@ course_dto_t *course_dto_create(
     list_t *selected_warranty_policies,
     list_t *selected_shipment_policies,
     list_t *selected_attributes_options,
-    list_t *selected_selling_margin_policies
+    list_t *selected_selling_margin_policies,
+    char *code,
+    char *version,
+    char *course_category_id,
+    char *course_category_name,
+    char *instructor_profile_id,
+    char *instructor_profile_name,
+    int max_course_enrollments,
+    int total_effort_in_weeks,
+    int total_hours_per_week,
+    int total_effort_in_hours,
+    char *start_date_time,
+    char *end_date_time,
+    char *inscriptions_start_date_time,
+    char *inscriptions_end_date_time
 );
 
 void course_dto_free(course_dto_t *course_dto);

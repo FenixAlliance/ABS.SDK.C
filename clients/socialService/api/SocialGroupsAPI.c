@@ -158,7 +158,7 @@ end:
 // Creates a new social group for the specified tenant.
 //
 empty_envelope_t*
-SocialGroupsAPI_createSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, social_group_create_dto_t *social_group_create_dto)
+SocialGroupsAPI_createSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *api_version, char *x_api_version, social_group_create_dto_t *social_group_create_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -197,6 +197,18 @@ SocialGroupsAPI_createSocialGroupAsync(apiClient_t *apiClient, char *tenantId, c
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_socialProfileId = NULL;
+    char * valueQuery_socialProfileId = NULL;
+    keyValuePair_t *keyPairQuery_socialProfileId = 0;
+    if (socialProfileId)
+    {
+        keyQuery_socialProfileId = strdup("socialProfileId");
+        valueQuery_socialProfileId = strdup((socialProfileId));
+        keyPairQuery_socialProfileId = keyValuePair_create(keyQuery_socialProfileId, valueQuery_socialProfileId);
+        list_addElement(localVarQueryParameters,keyPairQuery_socialProfileId);
     }
 
     // query parameters
@@ -291,6 +303,18 @@ SocialGroupsAPI_createSocialGroupAsync(apiClient_t *apiClient, char *tenantId, c
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
     }
+    if(keyQuery_socialProfileId){
+        free(keyQuery_socialProfileId);
+        keyQuery_socialProfileId = NULL;
+    }
+    if(valueQuery_socialProfileId){
+        free(valueQuery_socialProfileId);
+        valueQuery_socialProfileId = NULL;
+    }
+    if(keyPairQuery_socialProfileId){
+        keyValuePair_free(keyPairQuery_socialProfileId);
+        keyPairQuery_socialProfileId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -315,7 +339,7 @@ end:
 // Deletes a social group for the specified tenant.
 //
 empty_envelope_t*
-SocialGroupsAPI_deleteSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialGroupId, char *api_version, char *x_api_version)
+SocialGroupsAPI_deleteSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *socialGroupId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -371,6 +395,18 @@ SocialGroupsAPI_deleteSocialGroupAsync(apiClient_t *apiClient, char *tenantId, c
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_socialProfileId = NULL;
+    char * valueQuery_socialProfileId = NULL;
+    keyValuePair_t *keyPairQuery_socialProfileId = 0;
+    if (socialProfileId)
+    {
+        keyQuery_socialProfileId = strdup("socialProfileId");
+        valueQuery_socialProfileId = strdup((socialProfileId));
+        keyPairQuery_socialProfileId = keyValuePair_create(keyQuery_socialProfileId, valueQuery_socialProfileId);
+        list_addElement(localVarQueryParameters,keyPairQuery_socialProfileId);
     }
 
     // query parameters
@@ -449,6 +485,18 @@ SocialGroupsAPI_deleteSocialGroupAsync(apiClient_t *apiClient, char *tenantId, c
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_socialProfileId){
+        free(keyQuery_socialProfileId);
+        keyQuery_socialProfileId = NULL;
+    }
+    if(valueQuery_socialProfileId){
+        free(valueQuery_socialProfileId);
+        valueQuery_socialProfileId = NULL;
+    }
+    if(keyPairQuery_socialProfileId){
+        keyValuePair_free(keyPairQuery_socialProfileId);
+        keyPairQuery_socialProfileId = NULL;
     }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
@@ -774,7 +822,7 @@ end:
 // Updates an existing social group for the specified tenant.
 //
 empty_envelope_t*
-SocialGroupsAPI_updateSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialGroupId, char *api_version, char *x_api_version, social_group_update_dto_t *social_group_update_dto)
+SocialGroupsAPI_updateSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *socialGroupId, char *api_version, char *x_api_version, social_group_update_dto_t *social_group_update_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -830,6 +878,18 @@ SocialGroupsAPI_updateSocialGroupAsync(apiClient_t *apiClient, char *tenantId, c
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_socialProfileId = NULL;
+    char * valueQuery_socialProfileId = NULL;
+    keyValuePair_t *keyPairQuery_socialProfileId = 0;
+    if (socialProfileId)
+    {
+        keyQuery_socialProfileId = strdup("socialProfileId");
+        valueQuery_socialProfileId = strdup((socialProfileId));
+        keyPairQuery_socialProfileId = keyValuePair_create(keyQuery_socialProfileId, valueQuery_socialProfileId);
+        list_addElement(localVarQueryParameters,keyPairQuery_socialProfileId);
     }
 
     // query parameters
@@ -924,6 +984,18 @@ SocialGroupsAPI_updateSocialGroupAsync(apiClient_t *apiClient, char *tenantId, c
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_socialProfileId){
+        free(keyQuery_socialProfileId);
+        keyQuery_socialProfileId = NULL;
+    }
+    if(valueQuery_socialProfileId){
+        free(valueQuery_socialProfileId);
+        valueQuery_socialProfileId = NULL;
+    }
+    if(keyPairQuery_socialProfileId){
+        keyValuePair_free(keyPairQuery_socialProfileId);
+        keyPairQuery_socialProfileId = NULL;
     }
     if(keyQuery_api_version){
         free(keyQuery_api_version);

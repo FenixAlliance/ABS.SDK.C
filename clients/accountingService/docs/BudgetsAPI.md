@@ -1,6 +1,6 @@
 # BudgetsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**BudgetsAPI_getBudgetAccountEntryAsync**](BudgetsAPI.md#BudgetsAPI_getBudgetAccountEntryAsync) | **GET** /api/v2/AccountingService/Budgets/{budgetId}/AccountEntries/{entryId} | Gets a budget account entry by id
 [**BudgetsAPI_getBudgetDetailsAsync**](BudgetsAPI.md#BudgetsAPI_getBudgetDetailsAsync) | **GET** /api/v2/AccountingService/Budgets/{budgetId} | Gets a budget by id
 [**BudgetsAPI_getBudgetsAsync**](BudgetsAPI.md#BudgetsAPI_getBudgetsAsync) | **GET** /api/v2/AccountingService/Budgets | Gets all budgets
+[**BudgetsAPI_getBudgetsCountAsync**](BudgetsAPI.md#BudgetsAPI_getBudgetsCountAsync) | **GET** /api/v2/AccountingService/Budgets/Count | Get the count of budgets
 [**BudgetsAPI_updateBudgetAccountEntryAsync**](BudgetsAPI.md#BudgetsAPI_updateBudgetAccountEntryAsync) | **PUT** /api/v2/AccountingService/Budgets/{budgetId}/AccountEntries/{entryId} | Updates a budget account entry
 [**BudgetsAPI_updateBudgetAsync**](BudgetsAPI.md#BudgetsAPI_updateBudgetAsync) | **PUT** /api/v2/AccountingService/Budgets/{budgetId} | Updates a budget
 
@@ -277,6 +278,39 @@ Name | Type | Description  | Notes
 ### Return type
 
 [budget_dto_i_read_only_list_envelope_t](budget_dto_i_read_only_list_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BudgetsAPI_getBudgetsCountAsync**
+```c
+// Get the count of budgets
+//
+// Get the count of budgets.
+//
+int32_envelope_t* BudgetsAPI_getBudgetsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
 
 
 ### Authorization

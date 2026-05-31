@@ -56,28 +56,44 @@ set(SRCS
     model/object.c
     model/access_token_response.c
     model/average_dto.c
+    model/average_dto_envelope.c
+    model/contact_dto.c
     model/count_dto.c
+    model/count_dto_envelope.c
     model/course_article_create_dto.c
     model/course_article_dto.c
     model/course_article_update_dto.c
+    model/course_assignment_component_create_dto.c
+    model/course_assignment_component_dto.c
+    model/course_assignment_component_update_dto.c
     model/course_assignment_create_dto.c
     model/course_assignment_dto.c
+    model/course_assignment_type_create_dto.c
+    model/course_assignment_type_dto.c
+    model/course_assignment_type_update_dto.c
     model/course_assignment_update_dto.c
     model/course_category_create_dto.c
     model/course_category_dto.c
     model/course_category_update_dto.c
     model/course_certificate_template_create_dto.c
     model/course_certificate_template_dto.c
+    model/course_certificate_template_update_dto.c
     model/course_cohort_create_dto.c
     model/course_cohort_dto.c
     model/course_cohort_update_dto.c
     model/course_completion_certificate_create_dto.c
     model/course_completion_certificate_dto.c
+    model/course_completion_certificate_dto_i_read_only_list_envelope.c
     model/course_completion_certificate_update_dto.c
+    model/course_content_group_create_dto.c
+    model/course_content_group_dto.c
+    model/course_content_group_update_dto.c
     model/course_create_dto.c
     model/course_dto.c
+    model/course_dto_i_read_only_list_envelope.c
     model/course_enrollment_create_dto.c
     model/course_enrollment_dto.c
+    model/course_enrollment_dto_i_read_only_list_envelope.c
     model/course_enrollment_update_dto.c
     model/course_file_create_dto.c
     model/course_file_dto.c
@@ -85,6 +101,9 @@ set(SRCS
     model/course_forum_create_dto.c
     model/course_forum_dto.c
     model/course_forum_update_dto.c
+    model/course_grading_rubric_create_dto.c
+    model/course_grading_rubric_dto.c
+    model/course_grading_rubric_update_dto.c
     model/course_handout_create_dto.c
     model/course_handout_dto.c
     model/course_handout_update_dto.c
@@ -103,6 +122,9 @@ set(SRCS
     model/course_section_create_dto.c
     model/course_section_dto.c
     model/course_section_update_dto.c
+    model/course_team_membership_create_dto.c
+    model/course_team_membership_dto.c
+    model/course_team_membership_update_dto.c
     model/course_unit_component_create_dto.c
     model/course_unit_component_dto.c
     model/course_unit_component_update_dto.c
@@ -120,6 +142,7 @@ set(SRCS
     model/info_response.c
     model/instructor_profile_create_dto.c
     model/instructor_profile_dto.c
+    model/instructor_profile_dto_i_read_only_list_envelope.c
     model/instructor_profile_update_dto.c
     model/login_request.c
     model/refresh_request.c
@@ -128,29 +151,37 @@ set(SRCS
     model/reset_password_request.c
     model/student_profile_create_dto.c
     model/student_profile_dto.c
+    model/student_profile_dto_i_read_only_list_envelope.c
     model/student_profile_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
+    api/CompletionsAPI.c
     api/CourseArticlesAPI.c
+    api/CourseAssignmentComponentsAPI.c
+    api/CourseAssignmentTypesAPI.c
     api/CourseAssignmentsAPI.c
     api/CourseCategoriesAPI.c
     api/CourseCertificatesAPI.c
     api/CourseCohortsAPI.c
+    api/CourseContentGroupsAPI.c
     api/CourseEnrollmentsAPI.c
     api/CourseFilesAPI.c
     api/CourseForumsAPI.c
+    api/CourseGradingRubricsAPI.c
     api/CourseHandoutsAPI.c
     api/CourseLibrariesAPI.c
     api/CoursePagesAPI.c
     api/CourseProblemSetsAPI.c
     api/CourseSectionsAPI.c
+    api/CourseTeamMembershipsAPI.c
     api/CourseUnitComponentsAPI.c
     api/CourseUnitsAPI.c
     api/CourseUpdatesAPI.c
     api/CourseWikisAPI.c
     api/CoursesAPI.c
-    api/FenixAllianceABSWebAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/InstructorProfilesAPI.c
+    api/MeAPI.c
     api/StudentProfilesAPI.c
 
 )
@@ -164,28 +195,44 @@ set(HDRS
     model/object.h
     model/access_token_response.h
     model/average_dto.h
+    model/average_dto_envelope.h
+    model/contact_dto.h
     model/count_dto.h
+    model/count_dto_envelope.h
     model/course_article_create_dto.h
     model/course_article_dto.h
     model/course_article_update_dto.h
+    model/course_assignment_component_create_dto.h
+    model/course_assignment_component_dto.h
+    model/course_assignment_component_update_dto.h
     model/course_assignment_create_dto.h
     model/course_assignment_dto.h
+    model/course_assignment_type_create_dto.h
+    model/course_assignment_type_dto.h
+    model/course_assignment_type_update_dto.h
     model/course_assignment_update_dto.h
     model/course_category_create_dto.h
     model/course_category_dto.h
     model/course_category_update_dto.h
     model/course_certificate_template_create_dto.h
     model/course_certificate_template_dto.h
+    model/course_certificate_template_update_dto.h
     model/course_cohort_create_dto.h
     model/course_cohort_dto.h
     model/course_cohort_update_dto.h
     model/course_completion_certificate_create_dto.h
     model/course_completion_certificate_dto.h
+    model/course_completion_certificate_dto_i_read_only_list_envelope.h
     model/course_completion_certificate_update_dto.h
+    model/course_content_group_create_dto.h
+    model/course_content_group_dto.h
+    model/course_content_group_update_dto.h
     model/course_create_dto.h
     model/course_dto.h
+    model/course_dto_i_read_only_list_envelope.h
     model/course_enrollment_create_dto.h
     model/course_enrollment_dto.h
+    model/course_enrollment_dto_i_read_only_list_envelope.h
     model/course_enrollment_update_dto.h
     model/course_file_create_dto.h
     model/course_file_dto.h
@@ -193,6 +240,9 @@ set(HDRS
     model/course_forum_create_dto.h
     model/course_forum_dto.h
     model/course_forum_update_dto.h
+    model/course_grading_rubric_create_dto.h
+    model/course_grading_rubric_dto.h
+    model/course_grading_rubric_update_dto.h
     model/course_handout_create_dto.h
     model/course_handout_dto.h
     model/course_handout_update_dto.h
@@ -211,6 +261,9 @@ set(HDRS
     model/course_section_create_dto.h
     model/course_section_dto.h
     model/course_section_update_dto.h
+    model/course_team_membership_create_dto.h
+    model/course_team_membership_dto.h
+    model/course_team_membership_update_dto.h
     model/course_unit_component_create_dto.h
     model/course_unit_component_dto.h
     model/course_unit_component_update_dto.h
@@ -228,6 +281,7 @@ set(HDRS
     model/info_response.h
     model/instructor_profile_create_dto.h
     model/instructor_profile_dto.h
+    model/instructor_profile_dto_i_read_only_list_envelope.h
     model/instructor_profile_update_dto.h
     model/login_request.h
     model/refresh_request.h
@@ -236,29 +290,37 @@ set(HDRS
     model/reset_password_request.h
     model/student_profile_create_dto.h
     model/student_profile_dto.h
+    model/student_profile_dto_i_read_only_list_envelope.h
     model/student_profile_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
+    api/CompletionsAPI.h
     api/CourseArticlesAPI.h
+    api/CourseAssignmentComponentsAPI.h
+    api/CourseAssignmentTypesAPI.h
     api/CourseAssignmentsAPI.h
     api/CourseCategoriesAPI.h
     api/CourseCertificatesAPI.h
     api/CourseCohortsAPI.h
+    api/CourseContentGroupsAPI.h
     api/CourseEnrollmentsAPI.h
     api/CourseFilesAPI.h
     api/CourseForumsAPI.h
+    api/CourseGradingRubricsAPI.h
     api/CourseHandoutsAPI.h
     api/CourseLibrariesAPI.h
     api/CoursePagesAPI.h
     api/CourseProblemSetsAPI.h
     api/CourseSectionsAPI.h
+    api/CourseTeamMembershipsAPI.h
     api/CourseUnitComponentsAPI.h
     api/CourseUnitsAPI.h
     api/CourseUpdatesAPI.h
     api/CourseWikisAPI.h
     api/CoursesAPI.h
-    api/FenixAllianceABSWebAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/InstructorProfilesAPI.h
+    api/MeAPI.h
     api/StudentProfilesAPI.h
 
 )
@@ -341,26 +403,33 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
+#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-CourseArticlesAPI.c
+#    unit-tests/manual-CourseAssignmentComponentsAPI.c
+#    unit-tests/manual-CourseAssignmentTypesAPI.c
 #    unit-tests/manual-CourseAssignmentsAPI.c
 #    unit-tests/manual-CourseCategoriesAPI.c
 #    unit-tests/manual-CourseCertificatesAPI.c
 #    unit-tests/manual-CourseCohortsAPI.c
+#    unit-tests/manual-CourseContentGroupsAPI.c
 #    unit-tests/manual-CourseEnrollmentsAPI.c
 #    unit-tests/manual-CourseFilesAPI.c
 #    unit-tests/manual-CourseForumsAPI.c
+#    unit-tests/manual-CourseGradingRubricsAPI.c
 #    unit-tests/manual-CourseHandoutsAPI.c
 #    unit-tests/manual-CourseLibrariesAPI.c
 #    unit-tests/manual-CoursePagesAPI.c
 #    unit-tests/manual-CourseProblemSetsAPI.c
 #    unit-tests/manual-CourseSectionsAPI.c
+#    unit-tests/manual-CourseTeamMembershipsAPI.c
 #    unit-tests/manual-CourseUnitComponentsAPI.c
 #    unit-tests/manual-CourseUnitsAPI.c
 #    unit-tests/manual-CourseUpdatesAPI.c
 #    unit-tests/manual-CourseWikisAPI.c
 #    unit-tests/manual-CoursesAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-InstructorProfilesAPI.c
+#    unit-tests/manual-MeAPI.c
 #    unit-tests/manual-StudentProfilesAPI.c
 #)
 

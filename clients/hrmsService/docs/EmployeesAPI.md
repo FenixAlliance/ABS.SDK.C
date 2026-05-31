@@ -1,6 +1,6 @@
 # EmployeesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -186,7 +186,7 @@ No authorization required
 //
 // Updates an existing employee for the specified tenant.
 //
-empty_envelope_t* EmployeesAPI_updateEmployeeAsync(apiClient_t *apiClient, char *tenantId, char *employeeId, char *api_version, char *x_api_version, object_t *body);
+empty_envelope_t* EmployeesAPI_updateEmployeeAsync(apiClient_t *apiClient, char *tenantId, char *employeeId, char *api_version, char *x_api_version, employee_profile_update_dto_t *employee_profile_update_dto);
 ```
 
 ### Parameters
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 **employeeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**body** | **[object_t](object.md) \*** |  | [optional] 
+**employee_profile_update_dto** | **[employee_profile_update_dto_t](employee_profile_update_dto.md) \*** |  | [optional] 
 
 ### Return type
 

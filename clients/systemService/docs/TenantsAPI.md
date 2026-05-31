@@ -1,11 +1,11 @@
 # TenantsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**TenantsAPI_adminPreviewTenantEmail**](TenantsAPI.md#TenantsAPI_adminPreviewTenantEmail) | **POST** /api/v2/SystemService/Tenants/{tenantId}/Emails/Preview | Preview the rendered email for a user.
-[**TenantsAPI_adminSendTenantEmail**](TenantsAPI.md#TenantsAPI_adminSendTenantEmail) | **POST** /api/v2/SystemService/Tenants/{tenantId}/Emails/Send | Send an email to a user.
+[**TenantsAPI_adminPreviewTenantEmail**](TenantsAPI.md#TenantsAPI_adminPreviewTenantEmail) | **POST** /api/v2/SystemService/Tenants/{tenantId}/Emails/Preview | Preview the rendered email for a tenant.
+[**TenantsAPI_adminSendTenantEmail**](TenantsAPI.md#TenantsAPI_adminSendTenantEmail) | **POST** /api/v2/SystemService/Tenants/{tenantId}/Emails/Send | Send an email to a tenant.
 [**TenantsAPI_createTenant**](TenantsAPI.md#TenantsAPI_createTenant) | **POST** /api/v2/SystemService/Tenants | Create a new tenant.
 [**TenantsAPI_deleteTenant**](TenantsAPI.md#TenantsAPI_deleteTenant) | **DELETE** /api/v2/SystemService/Tenants/{tenantId} | Delete a specific tenant by ID.
 [**TenantsAPI_getAllExtendedTenants**](TenantsAPI.md#TenantsAPI_getAllExtendedTenants) | **GET** /api/v2/SystemService/Tenants/Extended | Get all extended tenants available on this suite server instance.
@@ -18,9 +18,9 @@ Method | HTTP request | Description
 
 # **TenantsAPI_adminPreviewTenantEmail**
 ```c
-// Preview the rendered email for a user.
+// Preview the rendered email for a tenant.
 //
-// This action is only available for users with the 'business_owner' role (global administrators).
+// This action is only available for global administrators.
 //
 void TenantsAPI_adminPreviewTenantEmail(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, email_dispatch_request_t *email_dispatch_request);
 ```
@@ -51,9 +51,9 @@ No authorization required
 
 # **TenantsAPI_adminSendTenantEmail**
 ```c
-// Send an email to a user.
+// Send an email to a tenant.
 //
-// This action is only available for users with the 'business_owner' role (global administrators).
+// This action is only available for global administrators.
 //
 void TenantsAPI_adminSendTenantEmail(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, email_dispatch_request_t *email_dispatch_request);
 ```

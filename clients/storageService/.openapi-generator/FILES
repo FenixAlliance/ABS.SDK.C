@@ -5,8 +5,10 @@ api/AvatarsAPI.c
 api/AvatarsAPI.h
 api/BlobsAPI.c
 api/BlobsAPI.h
-api/FenixAllianceABSWebAPI.c
-api/FenixAllianceABSWebAPI.h
+api/CompletionsAPI.c
+api/CompletionsAPI.h
+api/FenixAlliancePortalsWebsiteAPI.c
+api/FenixAlliancePortalsWebsiteAPI.h
 api/FilesAPI.c
 api/FilesAPI.h
 api/RadzenEditorAPI.c
@@ -15,7 +17,8 @@ api/UploadsAPI.c
 api/UploadsAPI.h
 docs/AvatarsAPI.md
 docs/BlobsAPI.md
-docs/FenixAllianceABSWebAPI.md
+docs/CompletionsAPI.md
+docs/FenixAlliancePortalsWebsiteAPI.md
 docs/FilesAPI.md
 docs/RadzenEditorAPI.md
 docs/UploadsAPI.md

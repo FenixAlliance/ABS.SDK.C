@@ -10,6 +10,7 @@ item_attribute_option_dto_t *item_attribute_option_dto_create(
     char *timestamp,
     char *name,
     char *description,
+    char *item_attribute_id,
     char *business_id
     ) {
     item_attribute_option_dto_t *item_attribute_option_dto_local_var = malloc(sizeof(item_attribute_option_dto_t));
@@ -20,6 +21,7 @@ item_attribute_option_dto_t *item_attribute_option_dto_create(
     item_attribute_option_dto_local_var->timestamp = timestamp;
     item_attribute_option_dto_local_var->name = name;
     item_attribute_option_dto_local_var->description = description;
+    item_attribute_option_dto_local_var->item_attribute_id = item_attribute_id;
     item_attribute_option_dto_local_var->business_id = business_id;
 
     return item_attribute_option_dto_local_var;
@@ -46,6 +48,10 @@ void item_attribute_option_dto_free(item_attribute_option_dto_t *item_attribute_
     if (item_attribute_option_dto->description) {
         free(item_attribute_option_dto->description);
         item_attribute_option_dto->description = NULL;
+    }
+    if (item_attribute_option_dto->item_attribute_id) {
+        free(item_attribute_option_dto->item_attribute_id);
+        item_attribute_option_dto->item_attribute_id = NULL;
     }
     if (item_attribute_option_dto->business_id) {
         free(item_attribute_option_dto->business_id);
@@ -84,6 +90,14 @@ cJSON *item_attribute_option_dto_convertToJSON(item_attribute_option_dto_t *item
     // item_attribute_option_dto->description
     if(item_attribute_option_dto->description) {
     if(cJSON_AddStringToObject(item, "description", item_attribute_option_dto->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_attribute_option_dto->item_attribute_id
+    if(item_attribute_option_dto->item_attribute_id) {
+    if(cJSON_AddStringToObject(item, "itemAttributeId", item_attribute_option_dto->item_attribute_id) == NULL) {
     goto fail; //String
     }
     }
@@ -144,6 +158,15 @@ item_attribute_option_dto_t *item_attribute_option_dto_parseFromJSON(cJSON *item
     }
     }
 
+    // item_attribute_option_dto->item_attribute_id
+    cJSON *item_attribute_id = cJSON_GetObjectItemCaseSensitive(item_attribute_option_dtoJSON, "itemAttributeId");
+    if (item_attribute_id) { 
+    if(!cJSON_IsString(item_attribute_id) && !cJSON_IsNull(item_attribute_id))
+    {
+    goto end; //String
+    }
+    }
+
     // item_attribute_option_dto->business_id
     cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_attribute_option_dtoJSON, "businessID");
     if (business_id) { 
@@ -159,6 +182,7 @@ item_attribute_option_dto_t *item_attribute_option_dto_parseFromJSON(cJSON *item
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        item_attribute_id && !cJSON_IsNull(item_attribute_id) ? strdup(item_attribute_id->valuestring) : NULL,
         business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
         );
 

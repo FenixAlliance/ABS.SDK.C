@@ -20,6 +20,7 @@ typedef struct o_auth_authorization_dto_t o_auth_authorization_dto_t;
 
 typedef struct o_auth_authorization_dto_t {
     char *id; // string
+    char *timestamp; //date time
     char *concurrency_token; // string
     char *creation_date; //date time
     char *properties; // string
@@ -34,6 +35,7 @@ typedef struct o_auth_authorization_dto_t {
 
 o_auth_authorization_dto_t *o_auth_authorization_dto_create(
     char *id,
+    char *timestamp,
     char *concurrency_token,
     char *creation_date,
     char *properties,

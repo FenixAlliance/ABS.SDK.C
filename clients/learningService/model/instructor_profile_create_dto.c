@@ -8,13 +8,10 @@
 instructor_profile_create_dto_t *instructor_profile_create_dto_create(
     char *id,
     char *timestamp,
-    int authorized,
+    char *type,
+    char *contact_id,
     char *about,
-    int verified,
-    int submitted,
     char *avatar_url,
-    char *qualified_name,
-    char *verification_timestamp,
     char *data,
     char *data_label,
     char *data1,
@@ -35,6 +32,7 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_create(
     char *data8_label,
     char *data9,
     char *data9_label,
+    int authorized,
     char *contact_id
     ) {
     instructor_profile_create_dto_t *instructor_profile_create_dto_local_var = malloc(sizeof(instructor_profile_create_dto_t));
@@ -43,13 +41,10 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_create(
     }
     instructor_profile_create_dto_local_var->id = id;
     instructor_profile_create_dto_local_var->timestamp = timestamp;
-    instructor_profile_create_dto_local_var->authorized = authorized;
+    instructor_profile_create_dto_local_var->type = type;
+    instructor_profile_create_dto_local_var->contact_id = contact_id;
     instructor_profile_create_dto_local_var->about = about;
-    instructor_profile_create_dto_local_var->verified = verified;
-    instructor_profile_create_dto_local_var->submitted = submitted;
     instructor_profile_create_dto_local_var->avatar_url = avatar_url;
-    instructor_profile_create_dto_local_var->qualified_name = qualified_name;
-    instructor_profile_create_dto_local_var->verification_timestamp = verification_timestamp;
     instructor_profile_create_dto_local_var->data = data;
     instructor_profile_create_dto_local_var->data_label = data_label;
     instructor_profile_create_dto_local_var->data1 = data1;
@@ -70,6 +65,7 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_create(
     instructor_profile_create_dto_local_var->data8_label = data8_label;
     instructor_profile_create_dto_local_var->data9 = data9;
     instructor_profile_create_dto_local_var->data9_label = data9_label;
+    instructor_profile_create_dto_local_var->authorized = authorized;
     instructor_profile_create_dto_local_var->contact_id = contact_id;
 
     return instructor_profile_create_dto_local_var;
@@ -89,6 +85,14 @@ void instructor_profile_create_dto_free(instructor_profile_create_dto_t *instruc
         free(instructor_profile_create_dto->timestamp);
         instructor_profile_create_dto->timestamp = NULL;
     }
+    if (instructor_profile_create_dto->type) {
+        free(instructor_profile_create_dto->type);
+        instructor_profile_create_dto->type = NULL;
+    }
+    if (instructor_profile_create_dto->contact_id) {
+        free(instructor_profile_create_dto->contact_id);
+        instructor_profile_create_dto->contact_id = NULL;
+    }
     if (instructor_profile_create_dto->about) {
         free(instructor_profile_create_dto->about);
         instructor_profile_create_dto->about = NULL;
@@ -96,14 +100,6 @@ void instructor_profile_create_dto_free(instructor_profile_create_dto_t *instruc
     if (instructor_profile_create_dto->avatar_url) {
         free(instructor_profile_create_dto->avatar_url);
         instructor_profile_create_dto->avatar_url = NULL;
-    }
-    if (instructor_profile_create_dto->qualified_name) {
-        free(instructor_profile_create_dto->qualified_name);
-        instructor_profile_create_dto->qualified_name = NULL;
-    }
-    if (instructor_profile_create_dto->verification_timestamp) {
-        free(instructor_profile_create_dto->verification_timestamp);
-        instructor_profile_create_dto->verification_timestamp = NULL;
     }
     if (instructor_profile_create_dto->data) {
         free(instructor_profile_create_dto->data);
@@ -211,10 +207,18 @@ cJSON *instructor_profile_create_dto_convertToJSON(instructor_profile_create_dto
     }
 
 
-    // instructor_profile_create_dto->authorized
-    if(instructor_profile_create_dto->authorized) {
-    if(cJSON_AddBoolToObject(item, "authorized", instructor_profile_create_dto->authorized) == NULL) {
-    goto fail; //Bool
+    // instructor_profile_create_dto->type
+    if(instructor_profile_create_dto->type) {
+    if(cJSON_AddStringToObject(item, "type", instructor_profile_create_dto->type) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // instructor_profile_create_dto->contact_id
+    if(instructor_profile_create_dto->contact_id) {
+    if(cJSON_AddStringToObject(item, "contactId", instructor_profile_create_dto->contact_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -227,42 +231,10 @@ cJSON *instructor_profile_create_dto_convertToJSON(instructor_profile_create_dto
     }
 
 
-    // instructor_profile_create_dto->verified
-    if(instructor_profile_create_dto->verified) {
-    if(cJSON_AddBoolToObject(item, "verified", instructor_profile_create_dto->verified) == NULL) {
-    goto fail; //Bool
-    }
-    }
-
-
-    // instructor_profile_create_dto->submitted
-    if(instructor_profile_create_dto->submitted) {
-    if(cJSON_AddBoolToObject(item, "submitted", instructor_profile_create_dto->submitted) == NULL) {
-    goto fail; //Bool
-    }
-    }
-
-
     // instructor_profile_create_dto->avatar_url
     if(instructor_profile_create_dto->avatar_url) {
     if(cJSON_AddStringToObject(item, "avatarUrl", instructor_profile_create_dto->avatar_url) == NULL) {
     goto fail; //String
-    }
-    }
-
-
-    // instructor_profile_create_dto->qualified_name
-    if(instructor_profile_create_dto->qualified_name) {
-    if(cJSON_AddStringToObject(item, "qualifiedName", instructor_profile_create_dto->qualified_name) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // instructor_profile_create_dto->verification_timestamp
-    if(instructor_profile_create_dto->verification_timestamp) {
-    if(cJSON_AddStringToObject(item, "verificationTimestamp", instructor_profile_create_dto->verification_timestamp) == NULL) {
-    goto fail; //Date-Time
     }
     }
 
@@ -427,6 +399,14 @@ cJSON *instructor_profile_create_dto_convertToJSON(instructor_profile_create_dto
     }
 
 
+    // instructor_profile_create_dto->authorized
+    if(instructor_profile_create_dto->authorized) {
+    if(cJSON_AddBoolToObject(item, "authorized", instructor_profile_create_dto->authorized) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
     // instructor_profile_create_dto->contact_id
     if(instructor_profile_create_dto->contact_id) {
     if(cJSON_AddStringToObject(item, "contactID", instructor_profile_create_dto->contact_id) == NULL) {
@@ -464,12 +444,21 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
     }
     }
 
-    // instructor_profile_create_dto->authorized
-    cJSON *authorized = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "authorized");
-    if (authorized) { 
-    if(!cJSON_IsBool(authorized))
+    // instructor_profile_create_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "type");
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
-    goto end; //Bool
+    goto end; //String
+    }
+    }
+
+    // instructor_profile_create_dto->contact_id
+    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "contactId");
+    if (contact_id) { 
+    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
+    {
+    goto end; //String
     }
     }
 
@@ -482,48 +471,12 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
     }
     }
 
-    // instructor_profile_create_dto->verified
-    cJSON *verified = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "verified");
-    if (verified) { 
-    if(!cJSON_IsBool(verified))
-    {
-    goto end; //Bool
-    }
-    }
-
-    // instructor_profile_create_dto->submitted
-    cJSON *submitted = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "submitted");
-    if (submitted) { 
-    if(!cJSON_IsBool(submitted))
-    {
-    goto end; //Bool
-    }
-    }
-
     // instructor_profile_create_dto->avatar_url
     cJSON *avatar_url = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "avatarUrl");
     if (avatar_url) { 
     if(!cJSON_IsString(avatar_url) && !cJSON_IsNull(avatar_url))
     {
     goto end; //String
-    }
-    }
-
-    // instructor_profile_create_dto->qualified_name
-    cJSON *qualified_name = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "qualifiedName");
-    if (qualified_name) { 
-    if(!cJSON_IsString(qualified_name) && !cJSON_IsNull(qualified_name))
-    {
-    goto end; //String
-    }
-    }
-
-    // instructor_profile_create_dto->verification_timestamp
-    cJSON *verification_timestamp = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "verificationTimestamp");
-    if (verification_timestamp) { 
-    if(!cJSON_IsString(verification_timestamp) && !cJSON_IsNull(verification_timestamp))
-    {
-    goto end; //DateTime
     }
     }
 
@@ -707,6 +660,15 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
     }
     }
 
+    // instructor_profile_create_dto->authorized
+    cJSON *authorized = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "authorized");
+    if (authorized) { 
+    if(!cJSON_IsBool(authorized))
+    {
+    goto end; //Bool
+    }
+    }
+
     // instructor_profile_create_dto->contact_id
     cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "contactID");
     if (contact_id) { 
@@ -720,13 +682,10 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
     instructor_profile_create_dto_local_var = instructor_profile_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        authorized ? authorized->valueint : 0,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
+        contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
         about && !cJSON_IsNull(about) ? strdup(about->valuestring) : NULL,
-        verified ? verified->valueint : 0,
-        submitted ? submitted->valueint : 0,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,
-        qualified_name && !cJSON_IsNull(qualified_name) ? strdup(qualified_name->valuestring) : NULL,
-        verification_timestamp && !cJSON_IsNull(verification_timestamp) ? strdup(verification_timestamp->valuestring) : NULL,
         data && !cJSON_IsNull(data) ? strdup(data->valuestring) : NULL,
         data_label && !cJSON_IsNull(data_label) ? strdup(data_label->valuestring) : NULL,
         data1 && !cJSON_IsNull(data1) ? strdup(data1->valuestring) : NULL,
@@ -747,6 +706,7 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
         data8_label && !cJSON_IsNull(data8_label) ? strdup(data8_label->valuestring) : NULL,
         data9 && !cJSON_IsNull(data9) ? strdup(data9->valuestring) : NULL,
         data9_label && !cJSON_IsNull(data9_label) ? strdup(data9_label->valuestring) : NULL,
+        authorized ? authorized->valueint : 0,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL
         );
 

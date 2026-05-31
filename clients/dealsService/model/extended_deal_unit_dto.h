@@ -98,6 +98,7 @@ typedef struct extended_deal_unit_dto_t {
     dealsservice_extended_deal_unit_dto_TAXCALCULATIONMETHOD_e tax_calculation_method; //enum
     dealsservice_extended_deal_unit_dto_COSTCALCULATIONMETHOD_e cost_calculation_method; //enum
     double forex_rate; //numeric
+    char *forex_rates_snapshot; // string
     char *currency_id; // string
     double total_detail; //numeric
     char *total_detail_currency_id; // string
@@ -202,6 +203,7 @@ extended_deal_unit_dto_t *extended_deal_unit_dto_create(
     dealsservice_extended_deal_unit_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     dealsservice_extended_deal_unit_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     double forex_rate,
+    char *forex_rates_snapshot,
     char *currency_id,
     double total_detail,
     char *total_detail_currency_id,

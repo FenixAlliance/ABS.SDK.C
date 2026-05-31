@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **forex_rate** | **double** |  | [optional] 
 **credit** | **double** |  | [optional] 
 **debit** | **double** |  | [optional] 
+**credit_in_usd** | **double** |  | [optional] 
+**debit_in_usd** | **double** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
 **tenant_id** | **char \*** |  | [optional] 
 **enrollment_id** | **char \*** |  | [optional] 
@@ -27,6 +29,8 @@ Name | Type | Description | Notes
 **parent_journal_entry_id** | **char \*** |  | [optional] 
 **credit_amount** | [**money_t**](money.md) \* |  | [optional] 
 **debit_amount** | [**money_t**](money.md) \* |  | [optional] 
+**credit_amount_in_usd** | [**money_t**](money.md) \* |  | [optional] 
+**debit_amount_in_usd** | [**money_t**](money.md) \* |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

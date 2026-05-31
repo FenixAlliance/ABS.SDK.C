@@ -6,8 +6,8 @@
 
 
 country_state_dto_t *country_state_dto_create(
-    char *timestamp,
     char *id,
+    char *timestamp,
     char *name,
     char *code,
     char *country_id
@@ -16,8 +16,8 @@ country_state_dto_t *country_state_dto_create(
     if (!country_state_dto_local_var) {
         return NULL;
     }
-    country_state_dto_local_var->timestamp = timestamp;
     country_state_dto_local_var->id = id;
+    country_state_dto_local_var->timestamp = timestamp;
     country_state_dto_local_var->name = name;
     country_state_dto_local_var->code = code;
     country_state_dto_local_var->country_id = country_id;
@@ -31,13 +31,13 @@ void country_state_dto_free(country_state_dto_t *country_state_dto) {
         return ;
     }
     listEntry_t *listEntry;
-    if (country_state_dto->timestamp) {
-        free(country_state_dto->timestamp);
-        country_state_dto->timestamp = NULL;
-    }
     if (country_state_dto->id) {
         free(country_state_dto->id);
         country_state_dto->id = NULL;
+    }
+    if (country_state_dto->timestamp) {
+        free(country_state_dto->timestamp);
+        country_state_dto->timestamp = NULL;
     }
     if (country_state_dto->name) {
         free(country_state_dto->name);
@@ -57,18 +57,18 @@ void country_state_dto_free(country_state_dto_t *country_state_dto) {
 cJSON *country_state_dto_convertToJSON(country_state_dto_t *country_state_dto) {
     cJSON *item = cJSON_CreateObject();
 
-    // country_state_dto->timestamp
-    if(country_state_dto->timestamp) {
-    if(cJSON_AddStringToObject(item, "timestamp", country_state_dto->timestamp) == NULL) {
-    goto fail; //Date-Time
-    }
-    }
-
-
     // country_state_dto->id
     if(country_state_dto->id) {
     if(cJSON_AddStringToObject(item, "id", country_state_dto->id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // country_state_dto->timestamp
+    if(country_state_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", country_state_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
     }
     }
 
@@ -108,21 +108,21 @@ country_state_dto_t *country_state_dto_parseFromJSON(cJSON *country_state_dtoJSO
 
     country_state_dto_t *country_state_dto_local_var = NULL;
 
-    // country_state_dto->timestamp
-    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(country_state_dtoJSON, "timestamp");
-    if (timestamp) { 
-    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
-    {
-    goto end; //DateTime
-    }
-    }
-
     // country_state_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(country_state_dtoJSON, "id");
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
     goto end; //String
+    }
+    }
+
+    // country_state_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(country_state_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
     }
     }
 
@@ -155,8 +155,8 @@ country_state_dto_t *country_state_dto_parseFromJSON(cJSON *country_state_dtoJSO
 
 
     country_state_dto_local_var = country_state_dto_create (
-        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
         country_id && !cJSON_IsNull(country_id) ? strdup(country_id->valuestring) : NULL

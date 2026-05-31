@@ -1,6 +1,6 @@
 # FiscalEnumerationRangesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,14 +18,14 @@ Method | HTTP request | Description
 //
 // Creates a new invoice enumeration range for a fiscal authority.
 //
-empty_envelope_t* FiscalEnumerationRangesAPI_createInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, invoice_enumeration_range_create_dto_t *invoice_enumeration_range_create_dto);
+empty_envelope_t* FiscalEnumerationRangesAPI_createInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, invoice_enumeration_range_create_dto_t *invoice_enumeration_range_create_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **invoice_enumeration_range_create_dto** | **[invoice_enumeration_range_create_dto_t](invoice_enumeration_range_create_dto.md) \*** |  | [optional] 
@@ -52,14 +52,14 @@ No authorization required
 //
 // Deletes an invoice enumeration range identified by its unique identifier.
 //
-empty_envelope_t* FiscalEnumerationRangesAPI_deleteInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *enumerationRangeId, char *api_version, char *x_api_version);
+empty_envelope_t* FiscalEnumerationRangesAPI_deleteInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **enumerationRangeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -86,14 +86,14 @@ No authorization required
 //
 // Retrieves a specific invoice enumeration range by its unique identifier.
 //
-invoice_enumeration_range_dto_envelope_t* FiscalEnumerationRangesAPI_getInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *enumerationRangeId, char *api_version, char *x_api_version);
+invoice_enumeration_range_dto_envelope_t* FiscalEnumerationRangesAPI_getInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *enumerationRangeId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **enumerationRangeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -121,13 +121,14 @@ No authorization required
 //
 // Retrieves all invoice enumeration ranges for the specified fiscal authority.
 //
-invoice_enumeration_range_dto_list_envelope_t* FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
+invoice_enumeration_range_dto_list_envelope_t* FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **authorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -155,13 +156,14 @@ No authorization required
 //
 // Returns the total count of invoice enumeration ranges for the specified fiscal authority.
 //
-int32_envelope_t* FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+int32_envelope_t* FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -188,14 +190,14 @@ No authorization required
 //
 // Updates an existing invoice enumeration range identified by its unique identifier.
 //
-empty_envelope_t* FiscalEnumerationRangesAPI_updateInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto);
+empty_envelope_t* FiscalEnumerationRangesAPI_updateInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **enumerationRangeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 

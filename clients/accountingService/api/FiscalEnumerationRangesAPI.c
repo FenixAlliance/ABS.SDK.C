@@ -17,7 +17,7 @@
 // Creates a new invoice enumeration range for a fiscal authority.
 //
 empty_envelope_t*
-FiscalEnumerationRangesAPI_createInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, invoice_enumeration_range_create_dto_t *invoice_enumeration_range_create_dto)
+FiscalEnumerationRangesAPI_createInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, invoice_enumeration_range_create_dto_t *invoice_enumeration_range_create_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -48,13 +48,13 @@ FiscalEnumerationRangesAPI_createInvoiceEnumerationRange(apiClient_t *apiClient,
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -142,6 +142,10 @@ FiscalEnumerationRangesAPI_createInvoiceEnumerationRange(apiClient_t *apiClient,
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -170,7 +174,7 @@ end:
 // Deletes an invoice enumeration range identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalEnumerationRangesAPI_deleteInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *enumerationRangeId, char *api_version, char *x_api_version)
+FiscalEnumerationRangesAPI_deleteInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -218,13 +222,13 @@ FiscalEnumerationRangesAPI_deleteInvoiceEnumerationRange(apiClient_t *apiClient,
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -297,6 +301,10 @@ FiscalEnumerationRangesAPI_deleteInvoiceEnumerationRange(apiClient_t *apiClient,
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -325,7 +333,7 @@ end:
 // Retrieves a specific invoice enumeration range by its unique identifier.
 //
 invoice_enumeration_range_dto_envelope_t*
-FiscalEnumerationRangesAPI_getInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *enumerationRangeId, char *api_version, char *x_api_version)
+FiscalEnumerationRangesAPI_getInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *enumerationRangeId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -390,13 +398,13 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRange(apiClient_t *apiClient, te
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -470,6 +478,10 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRange(apiClient_t *apiClient, te
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -498,7 +510,7 @@ end:
 // Retrieves all invoice enumeration ranges for the specified fiscal authority.
 //
 invoice_enumeration_range_dto_list_envelope_t*
-FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version)
+FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -536,6 +548,18 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, c
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_fiscalAuthorityId = NULL;
@@ -614,6 +638,18 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_fiscalAuthorityId){
         free(keyQuery_fiscalAuthorityId);
         keyQuery_fiscalAuthorityId = NULL;
@@ -650,7 +686,7 @@ end:
 // Returns the total count of invoice enumeration ranges for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *fiscalAuthorityId, char *api_version, char *x_api_version)
+FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -695,6 +731,18 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClie
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -761,6 +809,18 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClie
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -785,7 +845,7 @@ end:
 // Updates an existing invoice enumeration range identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalEnumerationRangesAPI_updateInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto)
+FiscalEnumerationRangesAPI_updateInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -833,13 +893,13 @@ FiscalEnumerationRangesAPI_updateInvoiceEnumerationRange(apiClient_t *apiClient,
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -927,6 +987,10 @@ FiscalEnumerationRangesAPI_updateInvoiceEnumerationRange(apiClient_t *apiClient,
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
     }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);

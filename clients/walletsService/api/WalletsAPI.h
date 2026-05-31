@@ -5,6 +5,10 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/bank_account_create_dto.h"
+#include "../model/bank_account_dto_envelope.h"
+#include "../model/bank_account_dto_list_envelope.h"
+#include "../model/bank_account_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/extended_order_dto_list_envelope.h"
@@ -15,8 +19,27 @@
 #include "../model/location_dto_list_envelope.h"
 #include "../model/location_update_dto.h"
 #include "../model/order_dto_list_envelope.h"
+#include "../model/payment_chargeback_dto_list_envelope.h"
+#include "../model/payment_create_dto.h"
 #include "../model/payment_dto_list_envelope.h"
+#include "../model/payment_refund_dto_list_envelope.h"
+#include "../model/payment_token_create_dto.h"
+#include "../model/payment_token_dto_envelope.h"
+#include "../model/payment_token_dto_list_envelope.h"
+#include "../model/payment_token_update_dto.h"
+#include "../model/quote_dto_list_envelope.h"
 #include "../model/wallet_dto_envelope.h"
+#include "../model/wallet_withdraw_dto_list_envelope.h"
+#include "../model/wallet_withdraw_request_create_dto.h"
+#include "../model/wallet_withdraw_request_dto_list_envelope.h"
+
+
+// Create Wallet Bank Account
+//
+// Create a new bank account for a specific wallet by ID.
+//
+empty_envelope_t*
+WalletsAPI_createWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, bank_account_create_dto_t *bank_account_create_dto);
 
 
 // Create Wallet Location
@@ -27,12 +50,52 @@ empty_envelope_t*
 WalletsAPI_createWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, location_create_dto_t *location_create_dto);
 
 
+// Create Wallet Payment
+//
+// Create a new payment for a specific wallet by ID.
+//
+empty_envelope_t*
+WalletsAPI_createWalletPaymentAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_create_dto_t *payment_create_dto);
+
+
+// Create Wallet Token
+//
+// Create a new payment token for a specific wallet by ID.
+//
+empty_envelope_t*
+WalletsAPI_createWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_token_create_dto_t *payment_token_create_dto);
+
+
+// Create Wallet Withdraw Request
+//
+// Create a new withdraw request for a specific wallet by ID.
+//
+empty_envelope_t*
+WalletsAPI_createWalletWithdrawRequestAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_request_create_dto_t *wallet_withdraw_request_create_dto);
+
+
+// Delete Wallet Bank Account
+//
+// Delete a specific bank account of a specific wallet by ID.
+//
+empty_envelope_t*
+WalletsAPI_deleteWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version);
+
+
 // Delete Wallet Location
 //
 // Delete a specific location of a specific wallet by ID.
 //
 empty_envelope_t*
 WalletsAPI_deleteWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, char *api_version, char *x_api_version);
+
+
+// Delete Wallet Token
+//
+// Delete a specific payment token of a specific wallet by ID.
+//
+empty_envelope_t*
+WalletsAPI_deleteWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tokenId, char *api_version, char *x_api_version);
 
 
 // Get Incoming Payments
@@ -97,6 +160,46 @@ WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId
 //
 int32_envelope_t*
 WalletsAPI_getOutgoingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Bank Account
+//
+// Get a specific bank account of a specific wallet by ID.
+//
+bank_account_dto_envelope_t*
+WalletsAPI_getWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Bank Accounts
+//
+// Get bank accounts of a specific wallet by ID.
+//
+bank_account_dto_list_envelope_t*
+WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Bank Accounts Count
+//
+// Get bank accounts count of a specific wallet by ID.
+//
+int32_envelope_t*
+WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Chargebacks
+//
+// Get chargebacks of a specific wallet by ID.
+//
+payment_chargeback_dto_list_envelope_t*
+WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Chargebacks Count
+//
+// Get chargebacks count of a specific wallet by ID.
+//
+int32_envelope_t*
+WalletsAPI_getWalletChargebacksCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
 
 
 // Get Wallet Details
@@ -187,11 +290,115 @@ int32_envelope_t*
 WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
 
 
+// Get Wallet Quotes
+//
+// Get quotes of a specific wallet by ID.
+//
+quote_dto_list_envelope_t*
+WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Quotes Count
+//
+// Get quotes count of a specific wallet by ID.
+//
+int32_envelope_t*
+WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Refunds
+//
+// Get refunds of a specific wallet by ID.
+//
+payment_refund_dto_list_envelope_t*
+WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Refunds Count
+//
+// Get refunds count of a specific wallet by ID.
+//
+int32_envelope_t*
+WalletsAPI_getWalletRefundsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Token
+//
+// Get a specific payment token of a specific wallet by ID.
+//
+payment_token_dto_envelope_t*
+WalletsAPI_getWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tokenId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Tokens
+//
+// Get payment tokens of a specific wallet by ID.
+//
+payment_token_dto_list_envelope_t*
+WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Tokens Count
+//
+// Get payment tokens count of a specific wallet by ID.
+//
+int32_envelope_t*
+WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Withdraw Requests
+//
+// Get withdraw requests of a specific wallet by ID.
+//
+wallet_withdraw_request_dto_list_envelope_t*
+WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Withdraw Requests Count
+//
+// Get withdraw requests count of a specific wallet by ID.
+//
+int32_envelope_t*
+WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Withdraws
+//
+// Get withdraws of a specific wallet by ID.
+//
+wallet_withdraw_dto_list_envelope_t*
+WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Get Wallet Withdraws Count
+//
+// Get withdraws count of a specific wallet by ID.
+//
+int32_envelope_t*
+WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Update Wallet Bank Account
+//
+// Update a specific bank account of a specific wallet by ID.
+//
+empty_envelope_t*
+WalletsAPI_updateWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version, bank_account_update_dto_t *bank_account_update_dto);
+
+
 // Update Wallet Location
 //
 // Update a specific location of a specific wallet by ID.
 //
 empty_envelope_t*
 WalletsAPI_updateWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, char *api_version, char *x_api_version, location_update_dto_t *location_update_dto);
+
+
+// Update Wallet Token
+//
+// Update a specific payment token of a specific wallet by ID.
+//
+empty_envelope_t*
+WalletsAPI_updateWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tokenId, char *api_version, char *x_api_version, payment_token_update_dto_t *payment_token_update_dto);
 
 

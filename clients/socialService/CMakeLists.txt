@@ -70,6 +70,7 @@ set(SRCS
     model/int32_envelope.c
     model/login_request.c
     model/notification_dto.c
+    model/notification_dto_envelope.c
     model/notification_dto_list_envelope.c
     model/private_message_create_dto.c
     model/private_message_dto.c
@@ -117,7 +118,8 @@ set(SRCS
     model/social_reaction_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/FenixAllianceABSWebAPI.c
+    api/CompletionsAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/SocialFeedsAPI.c
     api/SocialGroupsAPI.c
     api/SocialPostsAPI.c
@@ -148,6 +150,7 @@ set(HDRS
     model/int32_envelope.h
     model/login_request.h
     model/notification_dto.h
+    model/notification_dto_envelope.h
     model/notification_dto_list_envelope.h
     model/private_message_create_dto.h
     model/private_message_dto.h
@@ -195,7 +198,8 @@ set(HDRS
     model/social_reaction_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/FenixAllianceABSWebAPI.h
+    api/CompletionsAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/SocialFeedsAPI.h
     api/SocialGroupsAPI.h
     api/SocialPostsAPI.h
@@ -281,7 +285,8 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-SocialFeedsAPI.c
 #    unit-tests/manual-SocialGroupsAPI.c
 #    unit-tests/manual-SocialPostsAPI.c

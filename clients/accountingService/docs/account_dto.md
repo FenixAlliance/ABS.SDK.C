@@ -19,6 +19,10 @@ Name | Type | Description | Notes
 **account_type_id** | **char \*** |  | [optional] 
 **debits_balance** | **double** |  | [optional] 
 **credits_balance** | **double** |  | [optional] 
+**balance_in_usd** | **double** |  | [optional] 
+**debits_balance_in_usd** | **double** |  | [optional] 
+**credits_balance_in_usd** | **double** |  | [optional] 
+**forex_rate** | **double** |  | [optional] 
 **parent_account_id** | **char \*** |  | [optional] 
 **tenant_id** | **char \*** |  | [optional] 
 **enrollment_id** | **char \*** |  | [optional] 
@@ -27,6 +31,9 @@ Name | Type | Description | Notes
 **balance_amount** | [**money_t**](money.md) \* |  | [optional] 
 **credits_balance_amount** | [**money_t**](money.md) \* |  | [optional] 
 **debits_balance_amount** | [**money_t**](money.md) \* |  | [optional] 
+**balance_amount_in_usd** | [**money_t**](money.md) \* |  | [optional] 
+**debits_balance_amount_in_usd** | [**money_t**](money.md) \* |  | [optional] 
+**credits_balance_amount_in_usd** | [**money_t**](money.md) \* |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

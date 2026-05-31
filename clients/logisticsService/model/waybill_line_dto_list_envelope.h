@@ -1,0 +1,48 @@
+/*
+ * waybill_line_dto_list_envelope.h
+ *
+ * 
+ */
+
+#ifndef _waybill_line_dto_list_envelope_H_
+#define _waybill_line_dto_list_envelope_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct waybill_line_dto_list_envelope_t waybill_line_dto_list_envelope_t;
+
+#include "waybill_line_dto.h"
+
+
+
+typedef struct waybill_line_dto_list_envelope_t {
+    int is_success; //boolean
+    char *error_message; // string
+    char *correlation_id; // string
+    char *timestamp; //date time
+    char *activity_id; // string
+    list_t *result; //nonprimitive container
+
+} waybill_line_dto_list_envelope_t;
+
+waybill_line_dto_list_envelope_t *waybill_line_dto_list_envelope_create(
+    int is_success,
+    char *error_message,
+    char *correlation_id,
+    char *timestamp,
+    char *activity_id,
+    list_t *result
+);
+
+void waybill_line_dto_list_envelope_free(waybill_line_dto_list_envelope_t *waybill_line_dto_list_envelope);
+
+waybill_line_dto_list_envelope_t *waybill_line_dto_list_envelope_parseFromJSON(cJSON *waybill_line_dto_list_envelopeJSON);
+
+cJSON *waybill_line_dto_list_envelope_convertToJSON(waybill_line_dto_list_envelope_t *waybill_line_dto_list_envelope);
+
+#endif /* _waybill_line_dto_list_envelope_H_ */
+

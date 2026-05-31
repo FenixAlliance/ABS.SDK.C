@@ -19,7 +19,7 @@
 // Creates a new fiscal period associated with a fiscal year.
 //
 empty_envelope_t*
-FiscalPeriodsAPI_createFiscalPeriod(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_period_create_dto_t *fiscal_period_create_dto);
+FiscalPeriodsAPI_createFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_period_create_dto_t *fiscal_period_create_dto);
 
 
 // Delete a fiscal period
@@ -27,7 +27,7 @@ FiscalPeriodsAPI_createFiscalPeriod(apiClient_t *apiClient, tenantId, char *api_
 // Deletes a fiscal period identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalPeriodsAPI_deleteFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version);
+FiscalPeriodsAPI_deleteFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version);
 
 
 // Get fiscal period by ID
@@ -35,7 +35,7 @@ FiscalPeriodsAPI_deleteFiscalPeriod(apiClient_t *apiClient, tenantId, char *fisc
 // Retrieves a specific fiscal period by its unique identifier within a fiscal year.
 //
 fiscal_period_dto_envelope_t*
-FiscalPeriodsAPI_getFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *fiscalPeriodId, char *api_version, char *x_api_version);
+FiscalPeriodsAPI_getFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *fiscalPeriodId, char *api_version, char *x_api_version);
 
 
 // Get fiscal periods for a fiscal year
@@ -43,7 +43,7 @@ FiscalPeriodsAPI_getFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalA
 // Retrieves all fiscal periods for the specified fiscal year within a fiscal authority.
 //
 fiscal_period_dto_list_envelope_t*
-FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *authorityId, char *api_version, char *x_api_version);
+FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *authorityId, char *api_version, char *x_api_version);
 
 
 // Get fiscal periods count
@@ -51,7 +51,7 @@ FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, tenantId, char *fiscal
 // Returns the total count of fiscal periods for the specified fiscal year.
 //
 int32_envelope_t*
-FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version);
+FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version);
 
 
 // Update a fiscal period
@@ -59,6 +59,6 @@ FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, tenantId, char *f
 // Updates an existing fiscal period identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalPeriodsAPI_updateFiscalPeriod(apiClient_t *apiClient, tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version, fiscal_period_update_dto_t *fiscal_period_update_dto);
+FiscalPeriodsAPI_updateFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version, fiscal_period_update_dto_t *fiscal_period_update_dto);
 
 

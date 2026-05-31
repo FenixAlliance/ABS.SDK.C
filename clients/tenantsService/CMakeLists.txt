@@ -188,10 +188,11 @@ set(SRCS
     model/wallet_dto_envelope.c
     model/web_portal_dto.c
     model/web_portal_dto_list_envelope.c
+    api/CompletionsAPI.c
     api/DepartmentsAPI.c
     api/EmployeeEnrollmentsAPI.c
     api/EnrollmentsAPI.c
-    api/FenixAllianceABSWebAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/IndustriesAPI.c
     api/InvitationsAPI.c
     api/OptionsAPI.c
@@ -351,10 +352,11 @@ set(HDRS
     model/wallet_dto_envelope.h
     model/web_portal_dto.h
     model/web_portal_dto_list_envelope.h
+    api/CompletionsAPI.h
     api/DepartmentsAPI.h
     api/EmployeeEnrollmentsAPI.h
     api/EnrollmentsAPI.h
-    api/FenixAllianceABSWebAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/IndustriesAPI.h
     api/InvitationsAPI.h
     api/OptionsAPI.h
@@ -451,10 +453,11 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
+#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-DepartmentsAPI.c
 #    unit-tests/manual-EmployeeEnrollmentsAPI.c
 #    unit-tests/manual-EnrollmentsAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-IndustriesAPI.c
 #    unit-tests/manual-InvitationsAPI.c
 #    unit-tests/manual-OptionsAPI.c

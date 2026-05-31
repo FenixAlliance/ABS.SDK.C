@@ -1,6 +1,6 @@
 # FiscalAuthorityYearsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,14 +18,14 @@ Method | HTTP request | Description
 //
 // Creates a new fiscal year associated with a fiscal authority.
 //
-empty_envelope_t* FiscalAuthorityYearsAPI_createFiscalYear(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_year_create_dto_t *fiscal_year_create_dto);
+empty_envelope_t* FiscalAuthorityYearsAPI_createFiscalYear(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_year_create_dto_t *fiscal_year_create_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **fiscal_year_create_dto** | **[fiscal_year_create_dto_t](fiscal_year_create_dto.md) \*** |  | [optional] 
@@ -52,14 +52,14 @@ No authorization required
 //
 // Deletes a fiscal year identified by its unique identifier.
 //
-empty_envelope_t* FiscalAuthorityYearsAPI_deleteFiscalYear(apiClient_t *apiClient, tenantId, char *fiscalYearId, char *api_version, char *x_api_version);
+empty_envelope_t* FiscalAuthorityYearsAPI_deleteFiscalYear(apiClient_t *apiClient, char *tenantId, char *fiscalYearId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalYearId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -86,14 +86,14 @@ No authorization required
 //
 // Retrieves a specific fiscal year by its unique identifier within a fiscal authority.
 //
-fiscal_year_dto_envelope_t* FiscalAuthorityYearsAPI_getFiscalYear(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version);
+fiscal_year_dto_envelope_t* FiscalAuthorityYearsAPI_getFiscalYear(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **fiscalYearId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -121,14 +121,14 @@ No authorization required
 //
 // Retrieves all fiscal years associated with the specified fiscal authority.
 //
-fiscal_year_dto_list_envelope_t* FiscalAuthorityYearsAPI_getFiscalYears(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
+fiscal_year_dto_list_envelope_t* FiscalAuthorityYearsAPI_getFiscalYears(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **authorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
@@ -156,14 +156,14 @@ No authorization required
 //
 // Returns the total count of fiscal years for the specified fiscal authority.
 //
-int32_envelope_t* FiscalAuthorityYearsAPI_getFiscalYearsCount(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+int32_envelope_t* FiscalAuthorityYearsAPI_getFiscalYearsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalAuthorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
@@ -190,14 +190,14 @@ No authorization required
 //
 // Updates an existing fiscal year identified by its unique identifier.
 //
-empty_envelope_t* FiscalAuthorityYearsAPI_updateFiscalYear(apiClient_t *apiClient, tenantId, char *fiscalYearId, char *api_version, char *x_api_version, fiscal_year_update_dto_t *fiscal_year_update_dto);
+empty_envelope_t* FiscalAuthorityYearsAPI_updateFiscalYear(apiClient_t *apiClient, char *tenantId, char *fiscalYearId, char *api_version, char *x_api_version, fiscal_year_update_dto_t *fiscal_year_update_dto);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** |  |  | 
+**tenantId** | **char \*** |  | 
 **fiscalYearId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 

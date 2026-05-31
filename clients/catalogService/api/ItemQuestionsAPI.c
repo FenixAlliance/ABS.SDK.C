@@ -338,7 +338,7 @@ end:
 // Retrieves a specific item question by its ID.
 //
 item_question_dto_envelope_t*
-ItemQuestionsAPI_getItemQuestionByIdAsync(apiClient_t *apiClient, char *itemQuestionId, char *api_version, char *x_api_version)
+ItemQuestionsAPI_getItemQuestionByIdAsync(apiClient_t *apiClient, char *itemQuestionId, char *tenantId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -383,6 +383,18 @@ ItemQuestionsAPI_getItemQuestionByIdAsync(apiClient_t *apiClient, char *itemQues
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_api_version = NULL;
@@ -449,6 +461,18 @@ ItemQuestionsAPI_getItemQuestionByIdAsync(apiClient_t *apiClient, char *itemQues
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;

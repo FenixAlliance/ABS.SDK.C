@@ -1,6 +1,6 @@
 # ItemBrandsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -84,7 +84,7 @@ No authorization required
 //
 // Retrieves a specific item brand by its ID.
 //
-item_brand_dto_envelope_t* ItemBrandsAPI_getItemBrandByIdAsync(apiClient_t *apiClient, char *itemBrandId, char *api_version, char *x_api_version);
+item_brand_dto_envelope_t* ItemBrandsAPI_getItemBrandByIdAsync(apiClient_t *apiClient, char *itemBrandId, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -92,6 +92,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **itemBrandId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -124,7 +125,7 @@ item_brand_dto_list_envelope_t* ItemBrandsAPI_getItemBrandsAsync(apiClient_t *ap
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** | **char \*** |  | 
+**tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

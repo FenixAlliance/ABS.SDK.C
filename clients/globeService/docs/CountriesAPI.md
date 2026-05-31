@@ -1,10 +1,15 @@
 # CountriesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CountriesAPI_countCallingCodesByCountryAsync**](CountriesAPI.md#CountriesAPI_countCallingCodesByCountryAsync) | **GET** /api/v2/GlobeService/Countries/{countryId}/CallingCodes/Count | Count calling codes for a country
+[**CountriesAPI_countCitiesByStateAsync**](CountriesAPI.md#CountriesAPI_countCitiesByStateAsync) | **GET** /api/v2/GlobeService/Countries/{countryId}/States/{countryStateId}/Cities/Count | Count cities for a state
 [**CountriesAPI_countCountries**](CountriesAPI.md#CountriesAPI_countCountries) | **GET** /api/v2/GlobeService/Countries/Count | Count countries
+[**CountriesAPI_countCountryStatesAsync**](CountriesAPI.md#CountriesAPI_countCountryStatesAsync) | **GET** /api/v2/GlobeService/Countries/{countryId}/States/Count | Count states for a country
+[**CountriesAPI_countTimezonesByCountryAsync**](CountriesAPI.md#CountriesAPI_countTimezonesByCountryAsync) | **GET** /api/v2/GlobeService/Countries/{countryId}/Timezones/Count | Count timezones for a country
+[**CountriesAPI_countTopLevelDomainsByCountryAsync**](CountriesAPI.md#CountriesAPI_countTopLevelDomainsByCountryAsync) | **GET** /api/v2/GlobeService/Countries/{countryId}/TopLevelDomains/Count | Count top-level domains for a country
 [**CountriesAPI_getAllCountries**](CountriesAPI.md#CountriesAPI_getAllCountries) | **GET** /api/v2/GlobeService/Countries | Get all countries
 [**CountriesAPI_getCallingCodesByCountryIdAsync**](CountriesAPI.md#CountriesAPI_getCallingCodesByCountryIdAsync) | **GET** /api/v2/GlobeService/Countries/{countryId}/CallingCodes | Get calling codes for a country
 [**CountriesAPI_getCitiesByCountryStateIdAsync**](CountriesAPI.md#CountriesAPI_getCitiesByCountryStateIdAsync) | **GET** /api/v2/GlobeService/Countries/{countryId}/States/{countryStateId}/Cities | Get cities for a state
@@ -16,6 +21,73 @@ Method | HTTP request | Description
 [**CountriesAPI_getTopLevelDomainsByCountryIdAsync**](CountriesAPI.md#CountriesAPI_getTopLevelDomainsByCountryIdAsync) | **GET** /api/v2/GlobeService/Countries/{countryId}/TopLevelDomains | Get top-level domains for a country
 [**CountriesAPI_searchCountriesByNameAsync**](CountriesAPI.md#CountriesAPI_searchCountriesByNameAsync) | **GET** /api/v2/GlobeService/Countries/Search | Search countries by name
 
+
+# **CountriesAPI_countCallingCodesByCountryAsync**
+```c
+// Count calling codes for a country
+//
+// Returns the total number of calling codes for the specified country, with optional OData filtering.
+//
+int32_envelope_t* CountriesAPI_countCallingCodesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**countryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CountriesAPI_countCitiesByStateAsync**
+```c
+// Count cities for a state
+//
+// Returns the total number of cities for the specified state, with optional OData filtering.
+//
+int32_envelope_t* CountriesAPI_countCitiesByStateAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**countryStateId** | **char \*** |  | 
+**countryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CountriesAPI_countCountries**
 ```c
@@ -30,6 +102,105 @@ int32_envelope_t* CountriesAPI_countCountries(apiClient_t *apiClient, char *api_
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CountriesAPI_countCountryStatesAsync**
+```c
+// Count states for a country
+//
+// Returns the total number of states or provinces for the specified country, with optional OData filtering.
+//
+int32_envelope_t* CountriesAPI_countCountryStatesAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**countryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CountriesAPI_countTimezonesByCountryAsync**
+```c
+// Count timezones for a country
+//
+// Returns the total number of timezones for the specified country, with optional OData filtering.
+//
+int32_envelope_t* CountriesAPI_countTimezonesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**countryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CountriesAPI_countTopLevelDomainsByCountryAsync**
+```c
+// Count top-level domains for a country
+//
+// Returns the total number of top-level domains for the specified country, with optional OData filtering.
+//
+int32_envelope_t* CountriesAPI_countTopLevelDomainsByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

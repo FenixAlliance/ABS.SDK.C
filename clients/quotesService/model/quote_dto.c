@@ -101,6 +101,7 @@ quote_dto_t *quote_dto_create(
     quotesservice_quote_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     quotesservice_quote_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     double forex_rate,
+    char *forex_rates_snapshot,
     char *currency_id,
     double total_detail,
     char *total_detail_currency_id,
@@ -177,6 +178,7 @@ quote_dto_t *quote_dto_create(
     quote_dto_local_var->tax_calculation_method = tax_calculation_method;
     quote_dto_local_var->cost_calculation_method = cost_calculation_method;
     quote_dto_local_var->forex_rate = forex_rate;
+    quote_dto_local_var->forex_rates_snapshot = forex_rates_snapshot;
     quote_dto_local_var->currency_id = currency_id;
     quote_dto_local_var->total_detail = total_detail;
     quote_dto_local_var->total_detail_currency_id = total_detail_currency_id;
@@ -322,6 +324,10 @@ void quote_dto_free(quote_dto_t *quote_dto) {
     if (quote_dto->customer_notes) {
         free(quote_dto->customer_notes);
         quote_dto->customer_notes = NULL;
+    }
+    if (quote_dto->forex_rates_snapshot) {
+        free(quote_dto->forex_rates_snapshot);
+        quote_dto->forex_rates_snapshot = NULL;
     }
     if (quote_dto->currency_id) {
         free(quote_dto->currency_id);
@@ -611,6 +617,14 @@ cJSON *quote_dto_convertToJSON(quote_dto_t *quote_dto) {
     if(quote_dto->forex_rate) {
     if(cJSON_AddNumberToObject(item, "forexRate", quote_dto->forex_rate) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // quote_dto->forex_rates_snapshot
+    if(quote_dto->forex_rates_snapshot) {
+    if(cJSON_AddStringToObject(item, "forexRatesSnapshot", quote_dto->forex_rates_snapshot) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -1227,6 +1241,15 @@ quote_dto_t *quote_dto_parseFromJSON(cJSON *quote_dtoJSON){
     }
     }
 
+    // quote_dto->forex_rates_snapshot
+    cJSON *forex_rates_snapshot = cJSON_GetObjectItemCaseSensitive(quote_dtoJSON, "forexRatesSnapshot");
+    if (forex_rates_snapshot) { 
+    if(!cJSON_IsString(forex_rates_snapshot) && !cJSON_IsNull(forex_rates_snapshot))
+    {
+    goto end; //String
+    }
+    }
+
     // quote_dto->currency_id
     cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(quote_dtoJSON, "currencyId");
     if (currency_id) { 
@@ -1656,6 +1679,7 @@ quote_dto_t *quote_dto_parseFromJSON(cJSON *quote_dtoJSON){
         tax_calculation_method ? tax_calculation_methodVariable : quotesservice_quote_dto_TAXCALCULATIONMETHOD_NULL,
         cost_calculation_method ? cost_calculation_methodVariable : quotesservice_quote_dto_COSTCALCULATIONMETHOD_NULL,
         forex_rate ? forex_rate->valuedouble : 0,
+        forex_rates_snapshot && !cJSON_IsNull(forex_rates_snapshot) ? strdup(forex_rates_snapshot->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         total_detail ? total_detail->valuedouble : 0,
         total_detail_currency_id && !cJSON_IsNull(total_detail_currency_id) ? strdup(total_detail_currency_id->valuestring) : NULL,

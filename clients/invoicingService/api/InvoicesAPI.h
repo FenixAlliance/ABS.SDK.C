@@ -40,7 +40,7 @@
 // Aggregates the discounts for the specified invoices.
 //
 money_envelope_t*
-InvoicesAPI_aggregateInvoiceDiscounts(apiClient_t *apiClient, list_t *request_body, char *currencyId);
+InvoicesAPI_aggregateInvoiceDiscounts(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId);
 
 
 // Aggregate invoice global surcharges.
@@ -48,7 +48,7 @@ InvoicesAPI_aggregateInvoiceDiscounts(apiClient_t *apiClient, list_t *request_bo
 // Aggregates the global surcharges for the specified invoices.
 //
 money_envelope_t*
-InvoicesAPI_aggregateInvoiceGlobalSurcharges(apiClient_t *apiClient, list_t *request_body, char *currencyId);
+InvoicesAPI_aggregateInvoiceGlobalSurcharges(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId);
 
 
 // Aggregate invoice tax bases.
@@ -56,7 +56,7 @@ InvoicesAPI_aggregateInvoiceGlobalSurcharges(apiClient_t *apiClient, list_t *req
 // Aggregates the tax bases for the specified invoices.
 //
 money_envelope_t*
-InvoicesAPI_aggregateInvoiceTaxBases(apiClient_t *apiClient, list_t *request_body, char *currencyId);
+InvoicesAPI_aggregateInvoiceTaxBases(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId);
 
 
 // Aggregate invoice taxes.
@@ -64,7 +64,7 @@ InvoicesAPI_aggregateInvoiceTaxBases(apiClient_t *apiClient, list_t *request_bod
 // Aggregates the taxes for the specified invoices.
 //
 money_envelope_t*
-InvoicesAPI_aggregateInvoiceTaxes(apiClient_t *apiClient, list_t *request_body, char *currencyId);
+InvoicesAPI_aggregateInvoiceTaxes(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId);
 
 
 // Aggregate invoice totals.
@@ -72,7 +72,7 @@ InvoicesAPI_aggregateInvoiceTaxes(apiClient_t *apiClient, list_t *request_body, 
 // Aggregates the totals for the specified invoices.
 //
 money_envelope_t*
-InvoicesAPI_aggregateInvoiceTotals(apiClient_t *apiClient, list_t *request_body, char *currencyId);
+InvoicesAPI_aggregateInvoiceTotals(apiClient_t *apiClient, char *tenantId, list_t *request_body, char *currencyId);
 
 
 // Calculate an invoice.
@@ -272,7 +272,7 @@ InvoicesAPI_getInvoiceLinesCount(apiClient_t *apiClient, char *tenantId, char *i
 // Retrieves the list of payments related to the specified invoice.
 //
 payment_dto_i_read_only_list_envelope_t*
-InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *invoiceId);
+InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *invoiceId);
 
 
 // Get the count of payments for an invoice.
@@ -280,7 +280,7 @@ InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *invoiceId);
 // Retrieves the total count of payments for the specified invoice.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *invoiceId);
+InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId);
 
 
 // Get an invoice reference by ID.

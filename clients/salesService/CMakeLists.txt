@@ -55,19 +55,51 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
+    model/empty_envelope.c
+    model/error_envelope.c
+    model/extended_sales_literature_dto.c
+    model/extended_sales_literature_dto_list_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
     model/info_request.c
     model/info_response.c
+    model/int32_envelope.c
     model/login_request.c
+    model/loyalty_program_create_dto.c
+    model/loyalty_program_dto.c
+    model/loyalty_program_dto_envelope.c
+    model/loyalty_program_dto_list_envelope.c
+    model/loyalty_program_update_dto.c
+    model/point_of_sale_create_dto.c
+    model/point_of_sale_dto.c
+    model/point_of_sale_dto_envelope.c
+    model/point_of_sale_dto_list_envelope.c
+    model/point_of_sale_update_dto.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
+    model/sales_literature_create_dto.c
+    model/sales_literature_dto.c
+    model/sales_literature_dto_envelope.c
+    model/sales_literature_dto_list_envelope.c
+    model/sales_literature_type_dto.c
+    model/sales_literature_update_dto.c
+    model/store_create_dto.c
+    model/store_dto.c
+    model/store_dto_envelope.c
+    model/store_dto_list_envelope.c
+    model/store_update_dto.c
+    model/tenant_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/FenixAllianceABSWebAPI.c
+    api/CompletionsAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
+    api/LoyaltyProgramsAPI.c
     api/MarginsAPI.c
+    api/PointOfSalesAPI.c
+    api/SalesLiteraturesAPI.c
+    api/StoresAPI.c
 
 )
 
@@ -79,19 +111,51 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
+    model/empty_envelope.h
+    model/error_envelope.h
+    model/extended_sales_literature_dto.h
+    model/extended_sales_literature_dto_list_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
     model/info_request.h
     model/info_response.h
+    model/int32_envelope.h
     model/login_request.h
+    model/loyalty_program_create_dto.h
+    model/loyalty_program_dto.h
+    model/loyalty_program_dto_envelope.h
+    model/loyalty_program_dto_list_envelope.h
+    model/loyalty_program_update_dto.h
+    model/point_of_sale_create_dto.h
+    model/point_of_sale_dto.h
+    model/point_of_sale_dto_envelope.h
+    model/point_of_sale_dto_list_envelope.h
+    model/point_of_sale_update_dto.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
+    model/sales_literature_create_dto.h
+    model/sales_literature_dto.h
+    model/sales_literature_dto_envelope.h
+    model/sales_literature_dto_list_envelope.h
+    model/sales_literature_type_dto.h
+    model/sales_literature_update_dto.h
+    model/store_create_dto.h
+    model/store_dto.h
+    model/store_dto_envelope.h
+    model/store_dto_list_envelope.h
+    model/store_update_dto.h
+    model/tenant_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/FenixAllianceABSWebAPI.h
+    api/CompletionsAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
+    api/LoyaltyProgramsAPI.h
     api/MarginsAPI.h
+    api/PointOfSalesAPI.h
+    api/SalesLiteraturesAPI.h
+    api/StoresAPI.h
 
 )
 
@@ -173,8 +237,13 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-LoyaltyProgramsAPI.c
 #    unit-tests/manual-MarginsAPI.c
+#    unit-tests/manual-PointOfSalesAPI.c
+#    unit-tests/manual-SalesLiteraturesAPI.c
+#    unit-tests/manual-StoresAPI.c
 #)
 
 ##set header files

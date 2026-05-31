@@ -15,18 +15,93 @@
 
 typedef struct employee_profile_dto_t employee_profile_dto_t;
 
+#include "contact_dto.h"
 
 
 
 typedef struct employee_profile_dto_t {
     char *id; // string
     char *timestamp; //date time
+    char *contact_id; // string
+    char *tenant_id; // string
+    char *type; // string
+    char *enrollment_id; // string
+    char *about; // string
+    int verified; //boolean
+    int submitted; //boolean
+    char *avatar_url; // string
+    struct contact_dto_t *contact; //model
+    char *qualified_name; // string
+    char *verification_timestamp; //date time
+    char *data; // string
+    char *data_label; // string
+    char *data1; // string
+    char *data1_label; // string
+    char *data2; // string
+    char *data2_label; // string
+    char *data3; // string
+    char *data3_label; // string
+    char *data4; // string
+    char *data4_label; // string
+    char *data5; // string
+    char *data5_label; // string
+    char *data6; // string
+    char *data6_label; // string
+    char *data7; // string
+    char *data7_label; // string
+    char *data8; // string
+    char *data8_label; // string
+    char *data9; // string
+    char *data9_label; // string
+    double gross_pay; //numeric
+    double net_salary; //numeric
+    char *payroll_currency; // string
+    int max_work_hours_per_day; //numeric
+    char *job_title_id; // string
+    char *employee_type_id; // string
 
 } employee_profile_dto_t;
 
 employee_profile_dto_t *employee_profile_dto_create(
     char *id,
-    char *timestamp
+    char *timestamp,
+    char *contact_id,
+    char *tenant_id,
+    char *type,
+    char *enrollment_id,
+    char *about,
+    int verified,
+    int submitted,
+    char *avatar_url,
+    contact_dto_t *contact,
+    char *qualified_name,
+    char *verification_timestamp,
+    char *data,
+    char *data_label,
+    char *data1,
+    char *data1_label,
+    char *data2,
+    char *data2_label,
+    char *data3,
+    char *data3_label,
+    char *data4,
+    char *data4_label,
+    char *data5,
+    char *data5_label,
+    char *data6,
+    char *data6_label,
+    char *data7,
+    char *data7_label,
+    char *data8,
+    char *data8_label,
+    char *data9,
+    char *data9_label,
+    double gross_pay,
+    double net_salary,
+    char *payroll_currency,
+    int max_work_hours_per_day,
+    char *job_title_id,
+    char *employee_type_id
 );
 
 void employee_profile_dto_free(employee_profile_dto_t *employee_profile_dto);

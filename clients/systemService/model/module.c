@@ -49,6 +49,7 @@ module_t *module_create(
     list_t *swagger_specs,
     char *url,
     list_t *assembly_paths,
+    list_t *required_permissions,
     int marked_for_deletion,
     char *version
     ) {
@@ -82,6 +83,7 @@ module_t *module_create(
     module_local_var->swagger_specs = swagger_specs;
     module_local_var->url = url;
     module_local_var->assembly_paths = assembly_paths;
+    module_local_var->required_permissions = required_permissions;
     module_local_var->marked_for_deletion = marked_for_deletion;
     module_local_var->version = version;
 
@@ -183,6 +185,13 @@ void module_free(module_t *module) {
         }
         list_freeList(module->assembly_paths);
         module->assembly_paths = NULL;
+    }
+    if (module->required_permissions) {
+        list_ForEach(listEntry, module->required_permissions) {
+            free(listEntry->data);
+        }
+        list_freeList(module->required_permissions);
+        module->required_permissions = NULL;
     }
     if (module->version) {
         free(module->version);
@@ -429,6 +438,23 @@ cJSON *module_convertToJSON(module_t *module) {
     }
 
 
+    // module->required_permissions
+    if(module->required_permissions) {
+    cJSON *required_permissions = cJSON_AddArrayToObject(item, "requiredPermissions");
+    if(required_permissions == NULL) {
+        goto fail; //primitive container
+    }
+
+    listEntry_t *required_permissionsListEntry;
+    list_ForEach(required_permissionsListEntry, module->required_permissions) {
+    if(cJSON_AddStringToObject(required_permissions, "", (char*)required_permissionsListEntry->data) == NULL)
+    {
+        goto fail;
+    }
+    }
+    }
+
+
     // module->marked_for_deletion
     if(module->marked_for_deletion) {
     if(cJSON_AddBoolToObject(item, "markedForDeletion", module->marked_for_deletion) == NULL) {
@@ -464,6 +490,9 @@ module_t *module_parseFromJSON(cJSON *moduleJSON){
 
     // define the local list for module->assembly_paths
     list_t *assembly_pathsList = NULL;
+
+    // define the local list for module->required_permissions
+    list_t *required_permissionsList = NULL;
 
     // module->enable
     cJSON *enable = cJSON_GetObjectItemCaseSensitive(moduleJSON, "enable");
@@ -720,6 +749,25 @@ module_t *module_parseFromJSON(cJSON *moduleJSON){
     }
     }
 
+    // module->required_permissions
+    cJSON *required_permissions = cJSON_GetObjectItemCaseSensitive(moduleJSON, "requiredPermissions");
+    if (required_permissions) { 
+    cJSON *required_permissions_local = NULL;
+    if(!cJSON_IsArray(required_permissions)) {
+        goto end;//primitive container
+    }
+    required_permissionsList = list_createList();
+
+    cJSON_ArrayForEach(required_permissions_local, required_permissions)
+    {
+        if(!cJSON_IsString(required_permissions_local))
+        {
+            goto end;
+        }
+        list_addElement(required_permissionsList , strdup(required_permissions_local->valuestring));
+    }
+    }
+
     // module->marked_for_deletion
     cJSON *marked_for_deletion = cJSON_GetObjectItemCaseSensitive(moduleJSON, "markedForDeletion");
     if (marked_for_deletion) { 
@@ -766,6 +814,7 @@ module_t *module_parseFromJSON(cJSON *moduleJSON){
         swagger_specs ? swagger_specsList : NULL,
         url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL,
         assembly_paths ? assembly_pathsList : NULL,
+        required_permissions ? required_permissionsList : NULL,
         marked_for_deletion ? marked_for_deletion->valueint : 0,
         version && !cJSON_IsNull(version) ? strdup(version->valuestring) : NULL
         );
@@ -793,6 +842,15 @@ end:
         }
         list_freeList(assembly_pathsList);
         assembly_pathsList = NULL;
+    }
+    if (required_permissionsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, required_permissionsList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(required_permissionsList);
+        required_permissionsList = NULL;
     }
     return NULL;
 

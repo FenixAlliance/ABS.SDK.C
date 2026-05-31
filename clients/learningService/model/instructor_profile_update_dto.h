@@ -19,15 +19,10 @@ typedef struct instructor_profile_update_dto_t instructor_profile_update_dto_t;
 
 
 typedef struct instructor_profile_update_dto_t {
-    char *id; // string
-    char *timestamp; //date time
-    int authorized; //boolean
+    char *type; // string
+    char *contact_id; // string
     char *about; // string
-    int verified; //boolean
-    int submitted; //boolean
     char *avatar_url; // string
-    char *qualified_name; // string
-    char *verification_timestamp; //date time
     char *data; // string
     char *data_label; // string
     char *data1; // string
@@ -48,19 +43,15 @@ typedef struct instructor_profile_update_dto_t {
     char *data8_label; // string
     char *data9; // string
     char *data9_label; // string
+    int authorized; //boolean
 
 } instructor_profile_update_dto_t;
 
 instructor_profile_update_dto_t *instructor_profile_update_dto_create(
-    char *id,
-    char *timestamp,
-    int authorized,
+    char *type,
+    char *contact_id,
     char *about,
-    int verified,
-    int submitted,
     char *avatar_url,
-    char *qualified_name,
-    char *verification_timestamp,
     char *data,
     char *data_label,
     char *data1,
@@ -80,7 +71,8 @@ instructor_profile_update_dto_t *instructor_profile_update_dto_create(
     char *data8,
     char *data8_label,
     char *data9,
-    char *data9_label
+    char *data9_label,
+    int authorized
 );
 
 void instructor_profile_update_dto_free(instructor_profile_update_dto_t *instructor_profile_update_dto);

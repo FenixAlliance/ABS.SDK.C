@@ -251,9 +251,9 @@ end:
 // Retrieves a payment using the deprecated /Details route. Use GET {paymentId} instead.
 //
 payment_dto_list_envelope_t*
-PaymentsAPI_getPaymentAsync(apiClient_t *apiClient, char *paymentId)
+PaymentsAPI_getPaymentAsync(apiClient_t *apiClient, char *tenantId, char *paymentId)
 {
-    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
@@ -284,6 +284,18 @@ PaymentsAPI_getPaymentAsync(apiClient_t *apiClient, char *paymentId)
     localVarPath = strReplace(localVarPath, localVarToReplace_paymentId, paymentId);
 
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     apiClient_invoke(apiClient,
@@ -322,13 +334,25 @@ PaymentsAPI_getPaymentAsync(apiClient_t *apiClient, char *paymentId)
         apiClient->dataReceived = NULL;
         apiClient->dataReceivedLen = 0;
     }
-    
+    list_freeList(localVarQueryParameters);
     
     
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
     free(localVarToReplace_paymentId);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -341,9 +365,9 @@ end:
 // Retrieves the details of a payment using its unique identifier.
 //
 payment_dto_list_envelope_t*
-PaymentsAPI_getPaymentAsyncV2(apiClient_t *apiClient, char *paymentId)
+PaymentsAPI_getPaymentAsyncV2(apiClient_t *apiClient, char *tenantId, char *paymentId)
 {
-    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
@@ -374,6 +398,18 @@ PaymentsAPI_getPaymentAsyncV2(apiClient_t *apiClient, char *paymentId)
     localVarPath = strReplace(localVarPath, localVarToReplace_paymentId, paymentId);
 
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     apiClient_invoke(apiClient,
@@ -412,13 +448,25 @@ PaymentsAPI_getPaymentAsyncV2(apiClient_t *apiClient, char *paymentId)
         apiClient->dataReceived = NULL;
         apiClient->dataReceivedLen = 0;
     }
-    
+    list_freeList(localVarQueryParameters);
     
     
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
     free(localVarToReplace_paymentId);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);

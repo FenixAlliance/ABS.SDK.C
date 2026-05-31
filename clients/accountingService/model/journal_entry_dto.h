@@ -30,6 +30,8 @@ typedef struct journal_entry_dto_t {
     double forex_rate; //numeric
     double credit; //numeric
     double debit; //numeric
+    double credit_in_usd; //numeric
+    double debit_in_usd; //numeric
     char *currency_id; // string
     char *tenant_id; // string
     char *enrollment_id; // string
@@ -44,6 +46,8 @@ typedef struct journal_entry_dto_t {
     char *parent_journal_entry_id; // string
     struct money_t *credit_amount; //model
     struct money_t *debit_amount; //model
+    struct money_t *credit_amount_in_usd; //model
+    struct money_t *debit_amount_in_usd; //model
 
 } journal_entry_dto_t;
 
@@ -58,6 +62,8 @@ journal_entry_dto_t *journal_entry_dto_create(
     double forex_rate,
     double credit,
     double debit,
+    double credit_in_usd,
+    double debit_in_usd,
     char *currency_id,
     char *tenant_id,
     char *enrollment_id,
@@ -71,7 +77,9 @@ journal_entry_dto_t *journal_entry_dto_create(
     char *invoice_code,
     char *parent_journal_entry_id,
     money_t *credit_amount,
-    money_t *debit_amount
+    money_t *debit_amount,
+    money_t *credit_amount_in_usd,
+    money_t *debit_amount_in_usd
 );
 
 void journal_entry_dto_free(journal_entry_dto_t *journal_entry_dto);

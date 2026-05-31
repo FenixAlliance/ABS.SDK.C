@@ -27,7 +27,7 @@ SocialGroupsAPI_countSocialGroupsAsync(apiClient_t *apiClient, char *tenantId, c
 // Creates a new social group for the specified tenant.
 //
 empty_envelope_t*
-SocialGroupsAPI_createSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, social_group_create_dto_t *social_group_create_dto);
+SocialGroupsAPI_createSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *api_version, char *x_api_version, social_group_create_dto_t *social_group_create_dto);
 
 
 // Delete a social group
@@ -35,7 +35,7 @@ SocialGroupsAPI_createSocialGroupAsync(apiClient_t *apiClient, char *tenantId, c
 // Deletes a social group for the specified tenant.
 //
 empty_envelope_t*
-SocialGroupsAPI_deleteSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialGroupId, char *api_version, char *x_api_version);
+SocialGroupsAPI_deleteSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *socialGroupId, char *api_version, char *x_api_version);
 
 
 // Get social group by ID
@@ -59,6 +59,6 @@ SocialGroupsAPI_getSocialGroupsAsync(apiClient_t *apiClient, char *tenantId, cha
 // Updates an existing social group for the specified tenant.
 //
 empty_envelope_t*
-SocialGroupsAPI_updateSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialGroupId, char *api_version, char *x_api_version, social_group_update_dto_t *social_group_update_dto);
+SocialGroupsAPI_updateSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *socialGroupId, char *api_version, char *x_api_version, social_group_update_dto_t *social_group_update_dto);
 
 

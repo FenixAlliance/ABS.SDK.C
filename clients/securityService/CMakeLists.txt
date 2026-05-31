@@ -105,7 +105,8 @@ set(SRCS
     model/webhook_request_dto.c
     model/webhook_request_dto_list_envelope.c
     api/ApplicationsAPI.c
-    api/FenixAllianceABSWebAPI.c
+    api/CompletionsAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
     api/LogsAPI.c
     api/OAuthApplicationsAPI.c
     api/PermissionsAPI.c
@@ -174,7 +175,8 @@ set(HDRS
     model/webhook_request_dto.h
     model/webhook_request_dto_list_envelope.h
     api/ApplicationsAPI.h
-    api/FenixAllianceABSWebAPI.h
+    api/CompletionsAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
     api/LogsAPI.h
     api/OAuthApplicationsAPI.h
     api/PermissionsAPI.h
@@ -264,7 +266,8 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-ApplicationsAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-CompletionsAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #    unit-tests/manual-LogsAPI.c
 #    unit-tests/manual-OAuthApplicationsAPI.c
 #    unit-tests/manual-PermissionsAPI.c

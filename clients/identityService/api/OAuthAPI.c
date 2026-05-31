@@ -133,7 +133,7 @@ end:
 //
 // Returns the authorization result for the authenticated user, including identity and tenant context.
 //
-authorization_result_envelope_t*
+auth_result_envelope_t*
 OAuthAPI_get(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -212,7 +212,7 @@ OAuthAPI_get(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_
     //}
     //nonprimitive not container
     cJSON *OAuthAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    authorization_result_envelope_t *elementToReturn = authorization_result_envelope_parseFromJSON(OAuthAPIlocalVarJSON);
+    auth_result_envelope_t *elementToReturn = auth_result_envelope_parseFromJSON(OAuthAPIlocalVarJSON);
     cJSON_Delete(OAuthAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;

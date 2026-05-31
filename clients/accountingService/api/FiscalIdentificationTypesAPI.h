@@ -19,7 +19,7 @@
 // Creates a new fiscal identification type for a fiscal authority.
 //
 empty_envelope_t*
-FiscalIdentificationTypesAPI_createFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_identification_type_create_dto_t *fiscal_identification_type_create_dto);
+FiscalIdentificationTypesAPI_createFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_identification_type_create_dto_t *fiscal_identification_type_create_dto);
 
 
 // Delete a fiscal identification type
@@ -27,7 +27,7 @@ FiscalIdentificationTypesAPI_createFiscalIdentificationType(apiClient_t *apiClie
 // Deletes a fiscal identification type identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalIdentificationTypesAPI_deleteFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *identificationTypeId, char *api_version, char *x_api_version);
+FiscalIdentificationTypesAPI_deleteFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *identificationTypeId, char *api_version, char *x_api_version);
 
 
 // Get fiscal identification type by ID
@@ -35,7 +35,7 @@ FiscalIdentificationTypesAPI_deleteFiscalIdentificationType(apiClient_t *apiClie
 // Retrieves a specific fiscal identification type by its unique identifier.
 //
 fiscal_identification_type_dto_envelope_t*
-FiscalIdentificationTypesAPI_getFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *identificationTypeId, char *api_version, char *x_api_version);
+FiscalIdentificationTypesAPI_getFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *identificationTypeId, char *api_version, char *x_api_version);
 
 
 // Get fiscal identification types for an authority
@@ -43,7 +43,7 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationType(apiClient_t *apiClient,
 // Retrieves all fiscal identification types for the specified fiscal authority.
 //
 fiscal_identification_type_dto_list_envelope_t*
-FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient, char *authorityId, char *api_version, char *x_api_version);
+FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version);
 
 
 // Get fiscal identification types count
@@ -51,7 +51,7 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient
 // Returns the total count of fiscal identification types for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiClient, char *authorityId, char *api_version, char *x_api_version);
+FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version);
 
 
 // Update a fiscal identification type
@@ -59,6 +59,6 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiC
 // Updates an existing fiscal identification type identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalIdentificationTypesAPI_updateFiscalIdentificationType(apiClient_t *apiClient, tenantId, char *identificationTypeId, char *api_version, char *x_api_version, fiscal_identification_type_update_dto_t *fiscal_identification_type_update_dto);
+FiscalIdentificationTypesAPI_updateFiscalIdentificationType(apiClient_t *apiClient, char *tenantId, char *identificationTypeId, char *api_version, char *x_api_version, fiscal_identification_type_update_dto_t *fiscal_identification_type_update_dto);
 
 

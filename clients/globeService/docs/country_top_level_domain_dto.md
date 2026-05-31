@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
+**timestamp** | **char \*** |  | [optional] 
 **domain** | **char \*** |  | [optional] 
 **country_id** | **char \*** |  | [optional] 
 

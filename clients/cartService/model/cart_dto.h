@@ -20,6 +20,7 @@ typedef struct cart_dto_t cart_dto_t;
 
 typedef struct cart_dto_t {
     char *id; // string
+    char *timestamp; //date time
     char *ip; // string
     char *type; // string
     double total; //numeric
@@ -35,6 +36,7 @@ typedef struct cart_dto_t {
 
 cart_dto_t *cart_dto_create(
     char *id,
+    char *timestamp,
     char *ip,
     char *type,
     double total,

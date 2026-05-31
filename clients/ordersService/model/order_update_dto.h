@@ -35,6 +35,15 @@ ordersservice_order_update_dto_TAXCALCULATIONMETHOD_e order_update_dto_tax_calcu
 
 
 typedef struct order_update_dto_t {
+    int closed; //boolean
+    char *title; // string
+    char *user_id; // string
+    char *price_list_id; // string
+    char *description; // string
+    char *individual_id; // string
+    char *payment_term_id; // string
+    char *organization_id; // string
+    char *receiver_tenant_id; // string
     char *first_name; // string
     char *last_name; // string
     char *company_name; // string
@@ -48,6 +57,8 @@ typedef struct order_update_dto_t {
     char *billing_location_id; // string
     char *shipping_location_id; // string
     char *shipping_method_id; // string
+    double forex_rate; //numeric
+    char *currency_id; // string
     double total_detail; //numeric
     char *total_detail_currency_id; // string
     double total_profit; //numeric
@@ -75,26 +86,24 @@ typedef struct order_update_dto_t {
     ordersservice_order_update_dto_COSTCALCULATIONMETHOD_e cost_calculation_method; //enum
     ordersservice_order_update_dto_TAXCALCULATIONMETHOD_e tax_calculation_method; //enum
     char *cart_id; // string
-    char *user_id; // string
-    double forex_rate; //numeric
-    char *currency_id; // string
-    char *individual_id; // string
-    char *organization_id; // string
     double total_amount_in_usd; //numeric
     double total_taxes_in_usd; //numeric
-    char *receiver_tenant_id; // string
-    int closed; //boolean
-    char *price_list_id; // string
-    char *payment_term_id; // string
     char *quote_status; // string
     char *effective_to; //date time
     char *effective_from; //date time
-    char *description; // string
-    char *title; // string
 
 } order_update_dto_t;
 
 order_update_dto_t *order_update_dto_create(
+    int closed,
+    char *title,
+    char *user_id,
+    char *price_list_id,
+    char *description,
+    char *individual_id,
+    char *payment_term_id,
+    char *organization_id,
+    char *receiver_tenant_id,
     char *first_name,
     char *last_name,
     char *company_name,
@@ -108,6 +117,8 @@ order_update_dto_t *order_update_dto_create(
     char *billing_location_id,
     char *shipping_location_id,
     char *shipping_method_id,
+    double forex_rate,
+    char *currency_id,
     double total_detail,
     char *total_detail_currency_id,
     double total_profit,
@@ -135,22 +146,11 @@ order_update_dto_t *order_update_dto_create(
     ordersservice_order_update_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     ordersservice_order_update_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     char *cart_id,
-    char *user_id,
-    double forex_rate,
-    char *currency_id,
-    char *individual_id,
-    char *organization_id,
     double total_amount_in_usd,
     double total_taxes_in_usd,
-    char *receiver_tenant_id,
-    int closed,
-    char *price_list_id,
-    char *payment_term_id,
     char *quote_status,
     char *effective_to,
-    char *effective_from,
-    char *description,
-    char *title
+    char *effective_from
 );
 
 void order_update_dto_free(order_update_dto_t *order_update_dto);

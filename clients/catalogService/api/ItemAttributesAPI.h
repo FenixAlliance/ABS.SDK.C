@@ -42,7 +42,7 @@ ItemAttributesAPI_deleteItemAttributeAsync(apiClient_t *apiClient, char *tenantI
 // Retrieves a specific item attribute by its ID.
 //
 item_attribute_dto_envelope_t*
-ItemAttributesAPI_getItemAttributeByIdAsync(apiClient_t *apiClient, char *itemAttributeId, char *api_version, char *x_api_version);
+ItemAttributesAPI_getItemAttributeByIdAsync(apiClient_t *apiClient, char *itemAttributeId, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get all item attributes

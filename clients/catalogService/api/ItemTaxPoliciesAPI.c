@@ -17,7 +17,7 @@
 // Counts all tax policies for a specific item.
 //
 int32_envelope_t*
-ItemTaxPoliciesAPI_countItemTaxPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version)
+ItemTaxPoliciesAPI_countItemTaxPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -45,6 +45,18 @@ ItemTaxPoliciesAPI_countItemTaxPoliciesAsync(apiClient_t *apiClient, char *itemI
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_itemId = NULL;
@@ -122,6 +134,18 @@ ItemTaxPoliciesAPI_countItemTaxPoliciesAsync(apiClient_t *apiClient, char *itemI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_itemId){
         free(keyQuery_itemId);
         keyQuery_itemId = NULL;
@@ -158,7 +182,7 @@ end:
 // Retrieves all tax policies for a specific item.
 //
 item_tax_policy_dto_list_envelope_t*
-ItemTaxPoliciesAPI_getItemTaxPoliciesAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version)
+ItemTaxPoliciesAPI_getItemTaxPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -186,6 +210,18 @@ ItemTaxPoliciesAPI_getItemTaxPoliciesAsync(apiClient_t *apiClient, char *itemId,
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_itemId = NULL;
@@ -263,6 +299,18 @@ ItemTaxPoliciesAPI_getItemTaxPoliciesAsync(apiClient_t *apiClient, char *itemId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_itemId){
         free(keyQuery_itemId);
         keyQuery_itemId = NULL;
@@ -299,7 +347,7 @@ end:
 // Retrieves a specific tax policy for an item.
 //
 item_tax_policy_dto_envelope_t*
-ItemTaxPoliciesAPI_getItemTaxPolicyByIdAsync(apiClient_t *apiClient, char *itemTaxPolicyId, char *itemId, char *api_version, char *x_api_version)
+ItemTaxPoliciesAPI_getItemTaxPolicyByIdAsync(apiClient_t *apiClient, char *itemTaxPolicyId, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -344,6 +392,18 @@ ItemTaxPoliciesAPI_getItemTaxPolicyByIdAsync(apiClient_t *apiClient, char *itemT
         list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
     }
 
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
 
     // query parameters
     char *keyQuery_itemId = NULL;
@@ -422,6 +482,18 @@ ItemTaxPoliciesAPI_getItemTaxPolicyByIdAsync(apiClient_t *apiClient, char *itemT
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
     if(keyQuery_itemId){
         free(keyQuery_itemId);
         keyQuery_itemId = NULL;

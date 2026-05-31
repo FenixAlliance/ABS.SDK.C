@@ -1,9 +1,10 @@
 # AccountsAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AccountsAPI_aggregateAccountsBalanceAsync**](AccountsAPI.md#AccountsAPI_aggregateAccountsBalanceAsync) | **GET** /api/v2/AccountingService/Accounts/Aggregate/Balance | Aggregate accounts balance
 [**AccountsAPI_balanceAccountAsync**](AccountsAPI.md#AccountsAPI_balanceAccountAsync) | **POST** /api/v2/AccountingService/Accounts/{accountId}/Balance | Balance account
 [**AccountsAPI_balanceRootAccountAsync**](AccountsAPI.md#AccountsAPI_balanceRootAccountAsync) | **POST** /api/v2/AccountingService/Accounts/Root/Balance | Balance root account
 [**AccountsAPI_createAccountAsync**](AccountsAPI.md#AccountsAPI_createAccountAsync) | **POST** /api/v2/AccountingService/Accounts | Get root accounts
@@ -26,20 +27,57 @@ Method | HTTP request | Description
 [**AccountsAPI_getAccountEntryAsync**](AccountsAPI.md#AccountsAPI_getAccountEntryAsync) | **GET** /api/v2/AccountingService/Accounts/{accountId}/Entries/{entryId} | Get account entry
 [**AccountsAPI_getAccountRelationsAsync**](AccountsAPI.md#AccountsAPI_getAccountRelationsAsync) | **GET** /api/v2/AccountingService/Accounts/Relations | Get account relations
 [**AccountsAPI_getAccountRelationsCountAsync**](AccountsAPI.md#AccountsAPI_getAccountRelationsCountAsync) | **GET** /api/v2/AccountingService/Accounts/Relations/Count | Get account relations count
+[**AccountsAPI_getAccountTypeByIdAsync**](AccountsAPI.md#AccountsAPI_getAccountTypeByIdAsync) | **GET** /api/v2/AccountingService/Accounts/Types/{accountTypeId} | Get account type by ID
 [**AccountsAPI_getAccountTypesAsync**](AccountsAPI.md#AccountsAPI_getAccountTypesAsync) | **GET** /api/v2/AccountingService/Accounts/Types | Get account types
 [**AccountsAPI_getAccountTypesCountAsync**](AccountsAPI.md#AccountsAPI_getAccountTypesCountAsync) | **GET** /api/v2/AccountingService/Accounts/Types/Count | Get account types count
 [**AccountsAPI_getAccountsAsync**](AccountsAPI.md#AccountsAPI_getAccountsAsync) | **GET** /api/v2/AccountingService/Accounts | Creates a new account
 [**AccountsAPI_getAccountsCountAsync**](AccountsAPI.md#AccountsAPI_getAccountsCountAsync) | **GET** /api/v2/AccountingService/Accounts/Count | Get the number of accounts
+[**AccountsAPI_getChartsOfAccountsAsync**](AccountsAPI.md#AccountsAPI_getChartsOfAccountsAsync) | **GET** /api/v2/AccountingService/Accounts/ChartsOfAccounts | Get charts of accounts
 [**AccountsAPI_getChildAccountsAsync**](AccountsAPI.md#AccountsAPI_getChildAccountsAsync) | **GET** /api/v2/AccountingService/Accounts/{accountId}/Children | Get child accounts
 [**AccountsAPI_getCreditAccountEntriesAsync**](AccountsAPI.md#AccountsAPI_getCreditAccountEntriesAsync) | **GET** /api/v2/AccountingService/Accounts/{accountId}/Entries/Credit | Get credit account entries
 [**AccountsAPI_getDebitAccountEntriesAsync**](AccountsAPI.md#AccountsAPI_getDebitAccountEntriesAsync) | **GET** /api/v2/AccountingService/Accounts/{accountId}/Entries/Debit | Get debit account entries
 [**AccountsAPI_getRootAccountsAsync**](AccountsAPI.md#AccountsAPI_getRootAccountsAsync) | **GET** /api/v2/AccountingService/Accounts/Root | Get root accounts
 [**AccountsAPI_patchAccountAsync**](AccountsAPI.md#AccountsAPI_patchAccountAsync) | **PATCH** /api/v2/AccountingService/Accounts/{accountId} | Patch an account
+[**AccountsAPI_seedChartOfAccountsAsync**](AccountsAPI.md#AccountsAPI_seedChartOfAccountsAsync) | **POST** /api/v2/AccountingService/Accounts/ChartsOfAccounts/Seed | Seed chart of accounts
 [**AccountsAPI_updateAccountAsync**](AccountsAPI.md#AccountsAPI_updateAccountAsync) | **PUT** /api/v2/AccountingService/Accounts/{accountId} | Update an account
 [**AccountsAPI_updateAccountEntryAsync**](AccountsAPI.md#AccountsAPI_updateAccountEntryAsync) | **PUT** /api/v2/AccountingService/Accounts/{accountId}/Entries/{entryId} | Update account entry
 [**AccountsAPI_updateAccountRelationAsync**](AccountsAPI.md#AccountsAPI_updateAccountRelationAsync) | **PUT** /api/v2/AccountingService/Accounts/Relations/{accountRelationId} | Update account relation
 [**AccountsAPI_updateAccountTypeAsync**](AccountsAPI.md#AccountsAPI_updateAccountTypeAsync) | **PUT** /api/v2/AccountingService/Accounts/Types/{accountTypeId} | Update account type
 
+
+# **AccountsAPI_aggregateAccountsBalanceAsync**
+```c
+// Aggregate accounts balance
+//
+// Returns the sum of all account balances matching OData filters, normalized to the target currency using stored USD values.
+//
+money_envelope_t* AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId, char *currencyId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**currencyId** | **char \*** |  | [optional] 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[money_envelope_t](money_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AccountsAPI_balanceAccountAsync**
 ```c
@@ -288,7 +326,7 @@ No authorization required
 //
 // Create account type.
 //
-empty_envelope_t* AccountsAPI_createAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, account_type_create_dto_t *account_type_create_dto);
+empty_envelope_t* AccountsAPI_createAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_type_create_dto_t *account_type_create_dto);
 ```
 
 ### Parameters
@@ -296,7 +334,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
-**accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **account_type_create_dto** | **[account_type_create_dto_t](account_type_create_dto.md) \*** |  | [optional] 
@@ -427,7 +464,7 @@ No authorization required
 //
 // Delete account type.
 //
-empty_envelope_t* AccountsAPI_deleteAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *accountId, char *api_version, char *x_api_version);
+empty_envelope_t* AccountsAPI_deleteAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -436,7 +473,6 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **accountTypeId** | **char \*** |  | 
-**accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -798,13 +834,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **AccountsAPI_getAccountTypesAsync**
+# **AccountsAPI_getAccountTypeByIdAsync**
 ```c
-// Get account types
+// Get account type by ID
 //
-// Get account types.
+// Get account type by ID.
 //
-account_type_dto_list_envelope_t* AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version);
+account_type_dto_envelope_t* AccountsAPI_getAccountTypeByIdAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -813,6 +849,39 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **accountTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[account_type_dto_envelope_t](account_type_dto_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AccountsAPI_getAccountTypesAsync**
+```c
+// Get account types
+//
+// Get account types.
+//
+account_type_dto_list_envelope_t* AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -838,7 +907,7 @@ No authorization required
 //
 // Get account types count.
 //
-int32_envelope_t* AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version);
+int32_envelope_t* AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -846,7 +915,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
-**accountTypeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -919,6 +987,38 @@ Name | Type | Description  | Notes
 ### Return type
 
 [int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AccountsAPI_getChartsOfAccountsAsync**
+```c
+// Get charts of accounts
+//
+// Get available charts of accounts.
+//
+chart_of_accounts_list_envelope_t* AccountsAPI_getChartsOfAccountsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[chart_of_accounts_list_envelope_t](chart_of_accounts_list_envelope.md) *
 
 
 ### Authorization
@@ -1102,6 +1202,40 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **AccountsAPI_seedChartOfAccountsAsync**
+```c
+// Seed chart of accounts
+//
+// Seed a chart of accounts from a file URL.
+//
+empty_envelope_t* AccountsAPI_seedChartOfAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, seed_chart_of_accounts_request_t *seed_chart_of_accounts_request);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**seed_chart_of_accounts_request** | **[seed_chart_of_accounts_request_t](seed_chart_of_accounts_request.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **AccountsAPI_updateAccountAsync**
 ```c
 // Update an account
@@ -1215,7 +1349,7 @@ No authorization required
 //
 // Update account type.
 //
-empty_envelope_t* AccountsAPI_updateAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *accountId, char *api_version, char *x_api_version, account_type_update_dto_t *account_type_update_dto);
+empty_envelope_t* AccountsAPI_updateAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, account_type_update_dto_t *account_type_update_dto);
 ```
 
 ### Parameters
@@ -1224,7 +1358,6 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **accountTypeId** | **char \*** |  | 
-**accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **account_type_update_dto** | **[account_type_update_dto_t](account_type_update_dto.md) \*** |  | [optional] 

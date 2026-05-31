@@ -1,0 +1,48 @@
+/*
+ * payroll_period_dto_list_envelope.h
+ *
+ * 
+ */
+
+#ifndef _payroll_period_dto_list_envelope_H_
+#define _payroll_period_dto_list_envelope_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct payroll_period_dto_list_envelope_t payroll_period_dto_list_envelope_t;
+
+#include "payroll_period_dto.h"
+
+
+
+typedef struct payroll_period_dto_list_envelope_t {
+    int is_success; //boolean
+    char *error_message; // string
+    char *correlation_id; // string
+    char *timestamp; //date time
+    char *activity_id; // string
+    list_t *result; //nonprimitive container
+
+} payroll_period_dto_list_envelope_t;
+
+payroll_period_dto_list_envelope_t *payroll_period_dto_list_envelope_create(
+    int is_success,
+    char *error_message,
+    char *correlation_id,
+    char *timestamp,
+    char *activity_id,
+    list_t *result
+);
+
+void payroll_period_dto_list_envelope_free(payroll_period_dto_list_envelope_t *payroll_period_dto_list_envelope);
+
+payroll_period_dto_list_envelope_t *payroll_period_dto_list_envelope_parseFromJSON(cJSON *payroll_period_dto_list_envelopeJSON);
+
+cJSON *payroll_period_dto_list_envelope_convertToJSON(payroll_period_dto_list_envelope_t *payroll_period_dto_list_envelope);
+
+#endif /* _payroll_period_dto_list_envelope_H_ */
+

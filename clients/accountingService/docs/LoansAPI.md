@@ -1,21 +1,27 @@
 # LoansAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**LoansAPI_createLoanApplicationAsync**](LoansAPI.md#LoansAPI_createLoanApplicationAsync) | **POST** /api/v2/AccountingService/Loans/Applications | Creates a loan application
 [**LoansAPI_createLoanAsync**](LoansAPI.md#LoansAPI_createLoanAsync) | **POST** /api/v2/AccountingService/Loans | Creates a new loan
+[**LoansAPI_createLoanTypeAsync**](LoansAPI.md#LoansAPI_createLoanTypeAsync) | **POST** /api/v2/AccountingService/Loans/Types | Creates a loan type
 [**LoansAPI_deleteLoanApplicationAsync**](LoansAPI.md#LoansAPI_deleteLoanApplicationAsync) | **DELETE** /api/v2/AccountingService/Loans/Applications/{applicationId} | Deletes a loan application
 [**LoansAPI_deleteLoanAsync**](LoansAPI.md#LoansAPI_deleteLoanAsync) | **DELETE** /api/v2/AccountingService/Loans/{loanId} | Deletes a loan
+[**LoansAPI_deleteLoanTypeAsync**](LoansAPI.md#LoansAPI_deleteLoanTypeAsync) | **DELETE** /api/v2/AccountingService/Loans/Types/{loanTypeId} | Deletes a loan type
 [**LoansAPI_getLoanApplicationDetailsAsync**](LoansAPI.md#LoansAPI_getLoanApplicationDetailsAsync) | **GET** /api/v2/AccountingService/Loans/Applications/{applicationId} | Gets a loan application by ID
 [**LoansAPI_getLoanApplicationsAsync**](LoansAPI.md#LoansAPI_getLoanApplicationsAsync) | **GET** /api/v2/AccountingService/Loans/Applications | Gets all loan applications
 [**LoansAPI_getLoanApplicationsCountAsync**](LoansAPI.md#LoansAPI_getLoanApplicationsCountAsync) | **GET** /api/v2/AccountingService/Loans/Applications/Count | Counts loan applications
 [**LoansAPI_getLoanDetailsAsync**](LoansAPI.md#LoansAPI_getLoanDetailsAsync) | **GET** /api/v2/AccountingService/Loans/{loanId} | Gets a loan by ID
+[**LoansAPI_getLoanTypeByIdAsync**](LoansAPI.md#LoansAPI_getLoanTypeByIdAsync) | **GET** /api/v2/AccountingService/Loans/Types/{loanTypeId} | Gets a loan type by ID
+[**LoansAPI_getLoanTypesAsync**](LoansAPI.md#LoansAPI_getLoanTypesAsync) | **GET** /api/v2/AccountingService/Loans/Types | Gets all loan types
+[**LoansAPI_getLoanTypesCountAsync**](LoansAPI.md#LoansAPI_getLoanTypesCountAsync) | **GET** /api/v2/AccountingService/Loans/Types/Count | Counts loan types
 [**LoansAPI_getLoansAsync**](LoansAPI.md#LoansAPI_getLoansAsync) | **GET** /api/v2/AccountingService/Loans | Gets all loans
 [**LoansAPI_getLoansCountAsync**](LoansAPI.md#LoansAPI_getLoansCountAsync) | **GET** /api/v2/AccountingService/Loans/Count | Counts loans
 [**LoansAPI_updateLoanApplicationAsync**](LoansAPI.md#LoansAPI_updateLoanApplicationAsync) | **PUT** /api/v2/AccountingService/Loans/Applications/{applicationId} | Updates a loan application
 [**LoansAPI_updateLoanAsync**](LoansAPI.md#LoansAPI_updateLoanAsync) | **PUT** /api/v2/AccountingService/Loans/{loanId} | Updates a loan
+[**LoansAPI_updateLoanTypeAsync**](LoansAPI.md#LoansAPI_updateLoanTypeAsync) | **PUT** /api/v2/AccountingService/Loans/Types/{loanTypeId} | Updates a loan type
 
 
 # **LoansAPI_createLoanApplicationAsync**
@@ -86,6 +92,40 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **LoansAPI_createLoanTypeAsync**
+```c
+// Creates a loan type
+//
+// Creates a new loan type for the current tenant.
+//
+empty_envelope_t* LoansAPI_createLoanTypeAsync(apiClient_t *apiClient, char *tenantId, loan_type_create_dto_t *loan_type_create_dto, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**loan_type_create_dto** | **[loan_type_create_dto_t](loan_type_create_dto.md) \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **LoansAPI_deleteLoanApplicationAsync**
 ```c
 // Deletes a loan application
@@ -135,6 +175,40 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **loanId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LoansAPI_deleteLoanTypeAsync**
+```c
+// Deletes a loan type
+//
+// Deletes the specified loan type.
+//
+empty_envelope_t* LoansAPI_deleteLoanTypeAsync(apiClient_t *apiClient, char *tenantId, char *loanTypeId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**loanTypeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -288,6 +362,106 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **LoansAPI_getLoanTypeByIdAsync**
+```c
+// Gets a loan type by ID
+//
+// Retrieves the details of a loan type using its unique ID.
+//
+loan_type_dto_envelope_t* LoansAPI_getLoanTypeByIdAsync(apiClient_t *apiClient, char *tenantId, char *loanTypeId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**loanTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[loan_type_dto_envelope_t](loan_type_dto_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LoansAPI_getLoanTypesAsync**
+```c
+// Gets all loan types
+//
+// Retrieves all loan types for the current tenant with OData support.
+//
+loan_type_dto_i_read_only_list_envelope_t* LoansAPI_getLoanTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[loan_type_dto_i_read_only_list_envelope_t](loan_type_dto_i_read_only_list_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LoansAPI_getLoanTypesCountAsync**
+```c
+// Counts loan types
+//
+// Gets the count of loan types for the current tenant.
+//
+int32_envelope_t* LoansAPI_getLoanTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **LoansAPI_getLoansAsync**
 ```c
 // Gets all loans
@@ -405,6 +579,41 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **loanId** | **char \*** |  | 
 **loan_update_dto** | **[loan_update_dto_t](loan_update_dto.md) \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LoansAPI_updateLoanTypeAsync**
+```c
+// Updates a loan type
+//
+// Updates the specified loan type.
+//
+empty_envelope_t* LoansAPI_updateLoanTypeAsync(apiClient_t *apiClient, char *tenantId, char *loanTypeId, loan_type_update_dto_t *loan_type_update_dto, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**loanTypeId** | **char \*** |  | 
+**loan_type_update_dto** | **[loan_type_update_dto_t](loan_type_update_dto.md) \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

@@ -34,7 +34,7 @@ ItemAttachmentsAPI_deleteItemAttachmentAsync(apiClient_t *apiClient, char *tenan
 // Retrieves a specific item attachment by its ID.
 //
 item_attachment_dto_envelope_t*
-ItemAttachmentsAPI_getItemAttachmentByIdAsync(apiClient_t *apiClient, char *itemAttachmentId, char *api_version, char *x_api_version);
+ItemAttachmentsAPI_getItemAttachmentByIdAsync(apiClient_t *apiClient, char *itemAttachmentId, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get all item attachments

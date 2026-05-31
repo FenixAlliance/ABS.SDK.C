@@ -77,6 +77,7 @@ typedef struct order_dto_t {
     char *customer_notes; // string
     walletsservice_order_dto_TAXCALCULATIONMETHOD_e tax_calculation_method; //enum
     double forex_rate; //numeric
+    char *forex_rates_snapshot; // string
     char *currency_id; // string
     double total_detail; //numeric
     char *total_detail_currency_id; // string
@@ -166,6 +167,7 @@ order_dto_t *order_dto_create(
     char *customer_notes,
     walletsservice_order_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     double forex_rate,
+    char *forex_rates_snapshot,
     char *currency_id,
     double total_detail,
     char *total_detail_currency_id,

@@ -18,12 +18,52 @@
 #include "../model/timezone_dto_list_envelope.h"
 
 
+// Count calling codes for a country
+//
+// Returns the total number of calling codes for the specified country, with optional OData filtering.
+//
+int32_envelope_t*
+CountriesAPI_countCallingCodesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+
+
+// Count cities for a state
+//
+// Returns the total number of cities for the specified state, with optional OData filtering.
+//
+int32_envelope_t*
+CountriesAPI_countCitiesByStateAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version);
+
+
 // Count countries
 //
 // Returns the total number of countries, with optional OData filtering.
 //
 int32_envelope_t*
 CountriesAPI_countCountries(apiClient_t *apiClient, char *api_version, char *x_api_version);
+
+
+// Count states for a country
+//
+// Returns the total number of states or provinces for the specified country, with optional OData filtering.
+//
+int32_envelope_t*
+CountriesAPI_countCountryStatesAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+
+
+// Count timezones for a country
+//
+// Returns the total number of timezones for the specified country, with optional OData filtering.
+//
+int32_envelope_t*
+CountriesAPI_countTimezonesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+
+
+// Count top-level domains for a country
+//
+// Returns the total number of top-level domains for the specified country, with optional OData filtering.
+//
+int32_envelope_t*
+CountriesAPI_countTopLevelDomainsByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
 
 
 // Get all countries

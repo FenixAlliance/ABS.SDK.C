@@ -19,7 +19,7 @@
 // Creates a new invoice enumeration range for a fiscal authority.
 //
 empty_envelope_t*
-FiscalEnumerationRangesAPI_createInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, invoice_enumeration_range_create_dto_t *invoice_enumeration_range_create_dto);
+FiscalEnumerationRangesAPI_createInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, invoice_enumeration_range_create_dto_t *invoice_enumeration_range_create_dto);
 
 
 // Delete an invoice enumeration range
@@ -27,7 +27,7 @@ FiscalEnumerationRangesAPI_createInvoiceEnumerationRange(apiClient_t *apiClient,
 // Deletes an invoice enumeration range identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalEnumerationRangesAPI_deleteInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *enumerationRangeId, char *api_version, char *x_api_version);
+FiscalEnumerationRangesAPI_deleteInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version);
 
 
 // Get invoice enumeration range by ID
@@ -35,7 +35,7 @@ FiscalEnumerationRangesAPI_deleteInvoiceEnumerationRange(apiClient_t *apiClient,
 // Retrieves a specific invoice enumeration range by its unique identifier.
 //
 invoice_enumeration_range_dto_envelope_t*
-FiscalEnumerationRangesAPI_getInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *enumerationRangeId, char *api_version, char *x_api_version);
+FiscalEnumerationRangesAPI_getInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *enumerationRangeId, char *api_version, char *x_api_version);
 
 
 // Get invoice enumeration ranges for an authority
@@ -43,7 +43,7 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRange(apiClient_t *apiClient, te
 // Retrieves all invoice enumeration ranges for the specified fiscal authority.
 //
 invoice_enumeration_range_dto_list_envelope_t*
-FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
+FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
 
 
 // Get invoice enumeration ranges count
@@ -51,7 +51,7 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, c
 // Returns the total count of invoice enumeration ranges for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
 
 
 // Update an invoice enumeration range
@@ -59,6 +59,6 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClie
 // Updates an existing invoice enumeration range identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalEnumerationRangesAPI_updateInvoiceEnumerationRange(apiClient_t *apiClient, tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto);
+FiscalEnumerationRangesAPI_updateInvoiceEnumerationRange(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, invoice_enumeration_range_update_dto_t *invoice_enumeration_range_update_dto);
 
 

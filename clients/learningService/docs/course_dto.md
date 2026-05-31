@@ -166,6 +166,20 @@ Name | Type | Description | Notes
 **selected_shipment_policies** | **list_t \*** |  | [optional] 
 **selected_attributes_options** | **list_t \*** |  | [optional] 
 **selected_selling_margin_policies** | **list_t \*** |  | [optional] 
+**code** | **char \*** |  | [optional] 
+**version** | **char \*** |  | [optional] 
+**course_category_id** | **char \*** |  | [optional] 
+**course_category_name** | **char \*** |  | [optional] 
+**instructor_profile_id** | **char \*** |  | [optional] 
+**instructor_profile_name** | **char \*** |  | [optional] 
+**max_course_enrollments** | **int** |  | [optional] 
+**total_effort_in_weeks** | **int** |  | [optional] 
+**total_hours_per_week** | **int** |  | [optional] 
+**total_effort_in_hours** | **int** |  | [optional] 
+**start_date_time** | **char \*** |  | [optional] 
+**end_date_time** | **char \*** |  | [optional] 
+**inscriptions_start_date_time** | **char \*** |  | [optional] 
+**inscriptions_end_date_time** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

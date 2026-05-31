@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **swagger_specs** | [**list_t**](i_swagger_spec.md) \* |  | [optional] 
 **url** | **char \*** |  | [optional] 
 **assembly_paths** | **list_t \*** |  | [optional] 
+**required_permissions** | **list_t \*** |  | [optional] [readonly] 
 **marked_for_deletion** | **int** |  | [optional] 
 **version** | **char \*** |  | [optional] 
 

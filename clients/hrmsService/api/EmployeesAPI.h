@@ -8,10 +8,10 @@
 #include "../model/employee_profile_create_dto.h"
 #include "../model/employee_profile_dto_envelope.h"
 #include "../model/employee_profile_dto_list_envelope.h"
+#include "../model/employee_profile_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/object.h"
 
 
 // Create an employee
@@ -59,6 +59,6 @@ EmployeesAPI_getEmployeesCountAsync(apiClient_t *apiClient, char *tenantId, char
 // Updates an existing employee for the specified tenant.
 //
 empty_envelope_t*
-EmployeesAPI_updateEmployeeAsync(apiClient_t *apiClient, char *tenantId, char *employeeId, char *api_version, char *x_api_version, object_t *body);
+EmployeesAPI_updateEmployeeAsync(apiClient_t *apiClient, char *tenantId, char *employeeId, char *api_version, char *x_api_version, employee_profile_update_dto_t *employee_profile_update_dto);
 
 

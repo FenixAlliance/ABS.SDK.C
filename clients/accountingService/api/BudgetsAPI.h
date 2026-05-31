@@ -15,6 +15,7 @@
 #include "../model/budget_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/int32_envelope.h"
 
 
 // Creates a budget account entry
@@ -79,6 +80,14 @@ BudgetsAPI_getBudgetDetailsAsync(apiClient_t *apiClient, char *tenantId, char *b
 //
 budget_dto_i_read_only_list_envelope_t*
 BudgetsAPI_getBudgetsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Get the count of budgets
+//
+// Get the count of budgets.
+//
+int32_envelope_t*
+BudgetsAPI_getBudgetsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Updates a budget account entry

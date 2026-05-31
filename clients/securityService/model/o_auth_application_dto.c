@@ -7,6 +7,7 @@
 
 o_auth_application_dto_t *o_auth_application_dto_create(
     char *id,
+    char *timestamp,
     char *application_type,
     char *client_id,
     char *concurrency_token,
@@ -32,6 +33,7 @@ o_auth_application_dto_t *o_auth_application_dto_create(
         return NULL;
     }
     o_auth_application_dto_local_var->id = id;
+    o_auth_application_dto_local_var->timestamp = timestamp;
     o_auth_application_dto_local_var->application_type = application_type;
     o_auth_application_dto_local_var->client_id = client_id;
     o_auth_application_dto_local_var->concurrency_token = concurrency_token;
@@ -64,6 +66,10 @@ void o_auth_application_dto_free(o_auth_application_dto_t *o_auth_application_dt
     if (o_auth_application_dto->id) {
         free(o_auth_application_dto->id);
         o_auth_application_dto->id = NULL;
+    }
+    if (o_auth_application_dto->timestamp) {
+        free(o_auth_application_dto->timestamp);
+        o_auth_application_dto->timestamp = NULL;
     }
     if (o_auth_application_dto->application_type) {
         free(o_auth_application_dto->application_type);
@@ -143,6 +149,14 @@ cJSON *o_auth_application_dto_convertToJSON(o_auth_application_dto_t *o_auth_app
     if(o_auth_application_dto->id) {
     if(cJSON_AddStringToObject(item, "id", o_auth_application_dto->id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // o_auth_application_dto->timestamp
+    if(o_auth_application_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", o_auth_application_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
     }
     }
 
@@ -316,6 +330,15 @@ o_auth_application_dto_t *o_auth_application_dto_parseFromJSON(cJSON *o_auth_app
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
     goto end; //String
+    }
+    }
+
+    // o_auth_application_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(o_auth_application_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
     }
     }
 
@@ -493,6 +516,7 @@ o_auth_application_dto_t *o_auth_application_dto_parseFromJSON(cJSON *o_auth_app
 
     o_auth_application_dto_local_var = o_auth_application_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         application_type && !cJSON_IsNull(application_type) ? strdup(application_type->valuestring) : NULL,
         client_id && !cJSON_IsNull(client_id) ? strdup(client_id->valuestring) : NULL,
         concurrency_token && !cJSON_IsNull(concurrency_token) ? strdup(concurrency_token->valuestring) : NULL,

@@ -56,7 +56,6 @@ set(SRCS
     model/object.c
     model/access_token_response.c
     model/contact_dto.c
-    model/currency_id.c
     model/deal_unit_create_dto.c
     model/deal_unit_dto.c
     model/deal_unit_dto_envelope.c
@@ -82,35 +81,25 @@ set(SRCS
     model/extended_deal_unit_dto.c
     model/extended_deal_unit_dto_envelope.c
     model/extended_deal_unit_dto_list_envelope.c
-    model/extended_sales_literature_dto.c
-    model/extended_sales_literature_dto_list_envelope.c
-    model/forex_rates.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
     model/info_request.c
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/money.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
-    model/sales_literature_create_dto.c
-    model/sales_literature_dto.c
-    model/sales_literature_dto_envelope.c
-    model/sales_literature_dto_list_envelope.c
-    model/sales_literature_type_dto.c
-    model/sales_literature_update_dto.c
     model/tenant_dto.c
     model/tenant_enrollment_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
     model/user_dto.c
+    api/CompletionsAPI.c
     api/DealUnitFlowsAPI.c
     api/DealUnitsAPI.c
-    api/FenixAllianceABSWebAPI.c
-    api/SalesLiteraturesAPI.c
+    api/FenixAlliancePortalsWebsiteAPI.c
 
 )
 
@@ -123,7 +112,6 @@ set(HDRS
     model/object.h
     model/access_token_response.h
     model/contact_dto.h
-    model/currency_id.h
     model/deal_unit_create_dto.h
     model/deal_unit_dto.h
     model/deal_unit_dto_envelope.h
@@ -149,35 +137,25 @@ set(HDRS
     model/extended_deal_unit_dto.h
     model/extended_deal_unit_dto_envelope.h
     model/extended_deal_unit_dto_list_envelope.h
-    model/extended_sales_literature_dto.h
-    model/extended_sales_literature_dto_list_envelope.h
-    model/forex_rates.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
     model/info_request.h
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/money.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
-    model/sales_literature_create_dto.h
-    model/sales_literature_dto.h
-    model/sales_literature_dto_envelope.h
-    model/sales_literature_dto_list_envelope.h
-    model/sales_literature_type_dto.h
-    model/sales_literature_update_dto.h
     model/tenant_dto.h
     model/tenant_enrollment_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
     model/user_dto.h
+    api/CompletionsAPI.h
     api/DealUnitFlowsAPI.h
     api/DealUnitsAPI.h
-    api/FenixAllianceABSWebAPI.h
-    api/SalesLiteraturesAPI.h
+    api/FenixAlliancePortalsWebsiteAPI.h
 
 )
 
@@ -259,10 +237,10 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
+#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-DealUnitFlowsAPI.c
 #    unit-tests/manual-DealUnitsAPI.c
-#    unit-tests/manual-FenixAllianceABSWebAPI.c
-#    unit-tests/manual-SalesLiteraturesAPI.c
+#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
 #)
 
 ##set header files

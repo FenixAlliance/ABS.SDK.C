@@ -17,7 +17,7 @@
 // Creates a new fiscal responsibility record for a fiscal responsibility.
 //
 empty_envelope_t*
-FiscalResponsibilityRecordsAPI_createFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *api_version, char *x_api_version, fiscal_responsibility_record_create_dto_t *fiscal_responsibility_record_create_dto)
+FiscalResponsibilityRecordsAPI_createFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_responsibility_record_create_dto_t *fiscal_responsibility_record_create_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -48,13 +48,13 @@ FiscalResponsibilityRecordsAPI_createFiscalResponsibilityRecord(apiClient_t *api
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -142,6 +142,10 @@ FiscalResponsibilityRecordsAPI_createFiscalResponsibilityRecord(apiClient_t *api
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -170,7 +174,7 @@ end:
 // Deletes a fiscal responsibility record identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalResponsibilityRecordsAPI_deleteFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version)
+FiscalResponsibilityRecordsAPI_deleteFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -218,13 +222,13 @@ FiscalResponsibilityRecordsAPI_deleteFiscalResponsibilityRecord(apiClient_t *api
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -297,6 +301,10 @@ FiscalResponsibilityRecordsAPI_deleteFiscalResponsibilityRecord(apiClient_t *api
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -325,7 +333,7 @@ end:
 // Retrieves a specific fiscal responsibility record by its unique identifier.
 //
 fiscal_responsibility_record_dto_envelope_t*
-FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version)
+FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -407,13 +415,13 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord(apiClient_t *apiCli
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -488,6 +496,10 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord(apiClient_t *apiCli
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -516,7 +528,7 @@ end:
 // Retrieves all fiscal responsibility records for the specified fiscal responsibility.
 //
 fiscal_responsibility_record_dto_list_envelope_t*
-FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version)
+FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -581,13 +593,13 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiCl
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -661,6 +673,10 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiCl
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -689,7 +705,7 @@ end:
 // Returns the total count of fiscal responsibility records for the specified fiscal responsibility.
 //
 int32_envelope_t*
-FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *apiClient, tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version)
+FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -754,13 +770,13 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -834,6 +850,10 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
     }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
@@ -862,7 +882,7 @@ end:
 // Updates an existing fiscal responsibility record identified by its unique identifier.
 //
 empty_envelope_t*
-FiscalResponsibilityRecordsAPI_updateFiscalResponsibilityRecord(apiClient_t *apiClient, tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, fiscal_responsibility_record_update_dto_t *fiscal_responsibility_record_update_dto)
+FiscalResponsibilityRecordsAPI_updateFiscalResponsibilityRecord(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, fiscal_responsibility_record_update_dto_t *fiscal_responsibility_record_update_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -910,13 +930,13 @@ FiscalResponsibilityRecordsAPI_updateFiscalResponsibilityRecord(apiClient_t *api
 
     // query parameters
     char *keyQuery_tenantId = NULL;
-     valueQuery_tenantId ;
+    char * valueQuery_tenantId = NULL;
     keyValuePair_t *keyPairQuery_tenantId = 0;
     if (tenantId)
     {
         keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = (tenantId);
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, &valueQuery_tenantId);
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
 
@@ -1004,6 +1024,10 @@ FiscalResponsibilityRecordsAPI_updateFiscalResponsibilityRecord(apiClient_t *api
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
     }
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);

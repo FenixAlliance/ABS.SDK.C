@@ -33,7 +33,7 @@ ItemReviewsAPI_deleteItemReviewAsync(apiClient_t *apiClient, char *tenantId, cha
 // Retrieves a specific item review by its ID.
 //
 item_review_dto_envelope_t*
-ItemReviewsAPI_getItemReviewByIdAsync(apiClient_t *apiClient, char *itemReviewId, char *api_version, char *x_api_version);
+ItemReviewsAPI_getItemReviewByIdAsync(apiClient_t *apiClient, char *itemReviewId, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get all item reviews

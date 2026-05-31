@@ -6,14 +6,10 @@
 
 
 student_profile_update_dto_t *student_profile_update_dto_create(
-    char *id,
-    char *timestamp,
+    char *type,
+    char *contact_id,
     char *about,
-    int verified,
-    int submitted,
     char *avatar_url,
-    char *qualified_name,
-    char *verification_timestamp,
     char *data,
     char *data_label,
     char *data1,
@@ -40,14 +36,10 @@ student_profile_update_dto_t *student_profile_update_dto_create(
     if (!student_profile_update_dto_local_var) {
         return NULL;
     }
-    student_profile_update_dto_local_var->id = id;
-    student_profile_update_dto_local_var->timestamp = timestamp;
+    student_profile_update_dto_local_var->type = type;
+    student_profile_update_dto_local_var->contact_id = contact_id;
     student_profile_update_dto_local_var->about = about;
-    student_profile_update_dto_local_var->verified = verified;
-    student_profile_update_dto_local_var->submitted = submitted;
     student_profile_update_dto_local_var->avatar_url = avatar_url;
-    student_profile_update_dto_local_var->qualified_name = qualified_name;
-    student_profile_update_dto_local_var->verification_timestamp = verification_timestamp;
     student_profile_update_dto_local_var->data = data;
     student_profile_update_dto_local_var->data_label = data_label;
     student_profile_update_dto_local_var->data1 = data1;
@@ -79,13 +71,13 @@ void student_profile_update_dto_free(student_profile_update_dto_t *student_profi
         return ;
     }
     listEntry_t *listEntry;
-    if (student_profile_update_dto->id) {
-        free(student_profile_update_dto->id);
-        student_profile_update_dto->id = NULL;
+    if (student_profile_update_dto->type) {
+        free(student_profile_update_dto->type);
+        student_profile_update_dto->type = NULL;
     }
-    if (student_profile_update_dto->timestamp) {
-        free(student_profile_update_dto->timestamp);
-        student_profile_update_dto->timestamp = NULL;
+    if (student_profile_update_dto->contact_id) {
+        free(student_profile_update_dto->contact_id);
+        student_profile_update_dto->contact_id = NULL;
     }
     if (student_profile_update_dto->about) {
         free(student_profile_update_dto->about);
@@ -94,14 +86,6 @@ void student_profile_update_dto_free(student_profile_update_dto_t *student_profi
     if (student_profile_update_dto->avatar_url) {
         free(student_profile_update_dto->avatar_url);
         student_profile_update_dto->avatar_url = NULL;
-    }
-    if (student_profile_update_dto->qualified_name) {
-        free(student_profile_update_dto->qualified_name);
-        student_profile_update_dto->qualified_name = NULL;
-    }
-    if (student_profile_update_dto->verification_timestamp) {
-        free(student_profile_update_dto->verification_timestamp);
-        student_profile_update_dto->verification_timestamp = NULL;
     }
     if (student_profile_update_dto->data) {
         free(student_profile_update_dto->data);
@@ -193,18 +177,18 @@ void student_profile_update_dto_free(student_profile_update_dto_t *student_profi
 cJSON *student_profile_update_dto_convertToJSON(student_profile_update_dto_t *student_profile_update_dto) {
     cJSON *item = cJSON_CreateObject();
 
-    // student_profile_update_dto->id
-    if(student_profile_update_dto->id) {
-    if(cJSON_AddStringToObject(item, "id", student_profile_update_dto->id) == NULL) {
+    // student_profile_update_dto->type
+    if(student_profile_update_dto->type) {
+    if(cJSON_AddStringToObject(item, "type", student_profile_update_dto->type) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // student_profile_update_dto->timestamp
-    if(student_profile_update_dto->timestamp) {
-    if(cJSON_AddStringToObject(item, "timestamp", student_profile_update_dto->timestamp) == NULL) {
-    goto fail; //Date-Time
+    // student_profile_update_dto->contact_id
+    if(student_profile_update_dto->contact_id) {
+    if(cJSON_AddStringToObject(item, "contactId", student_profile_update_dto->contact_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -217,42 +201,10 @@ cJSON *student_profile_update_dto_convertToJSON(student_profile_update_dto_t *st
     }
 
 
-    // student_profile_update_dto->verified
-    if(student_profile_update_dto->verified) {
-    if(cJSON_AddBoolToObject(item, "verified", student_profile_update_dto->verified) == NULL) {
-    goto fail; //Bool
-    }
-    }
-
-
-    // student_profile_update_dto->submitted
-    if(student_profile_update_dto->submitted) {
-    if(cJSON_AddBoolToObject(item, "submitted", student_profile_update_dto->submitted) == NULL) {
-    goto fail; //Bool
-    }
-    }
-
-
     // student_profile_update_dto->avatar_url
     if(student_profile_update_dto->avatar_url) {
     if(cJSON_AddStringToObject(item, "avatarUrl", student_profile_update_dto->avatar_url) == NULL) {
     goto fail; //String
-    }
-    }
-
-
-    // student_profile_update_dto->qualified_name
-    if(student_profile_update_dto->qualified_name) {
-    if(cJSON_AddStringToObject(item, "qualifiedName", student_profile_update_dto->qualified_name) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // student_profile_update_dto->verification_timestamp
-    if(student_profile_update_dto->verification_timestamp) {
-    if(cJSON_AddStringToObject(item, "verificationTimestamp", student_profile_update_dto->verification_timestamp) == NULL) {
-    goto fail; //Date-Time
     }
     }
 
@@ -436,21 +388,21 @@ student_profile_update_dto_t *student_profile_update_dto_parseFromJSON(cJSON *st
 
     student_profile_update_dto_t *student_profile_update_dto_local_var = NULL;
 
-    // student_profile_update_dto->id
-    cJSON *id = cJSON_GetObjectItemCaseSensitive(student_profile_update_dtoJSON, "id");
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    // student_profile_update_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(student_profile_update_dtoJSON, "type");
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
     goto end; //String
     }
     }
 
-    // student_profile_update_dto->timestamp
-    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(student_profile_update_dtoJSON, "timestamp");
-    if (timestamp) { 
-    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    // student_profile_update_dto->contact_id
+    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(student_profile_update_dtoJSON, "contactId");
+    if (contact_id) { 
+    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
     {
-    goto end; //DateTime
+    goto end; //String
     }
     }
 
@@ -463,48 +415,12 @@ student_profile_update_dto_t *student_profile_update_dto_parseFromJSON(cJSON *st
     }
     }
 
-    // student_profile_update_dto->verified
-    cJSON *verified = cJSON_GetObjectItemCaseSensitive(student_profile_update_dtoJSON, "verified");
-    if (verified) { 
-    if(!cJSON_IsBool(verified))
-    {
-    goto end; //Bool
-    }
-    }
-
-    // student_profile_update_dto->submitted
-    cJSON *submitted = cJSON_GetObjectItemCaseSensitive(student_profile_update_dtoJSON, "submitted");
-    if (submitted) { 
-    if(!cJSON_IsBool(submitted))
-    {
-    goto end; //Bool
-    }
-    }
-
     // student_profile_update_dto->avatar_url
     cJSON *avatar_url = cJSON_GetObjectItemCaseSensitive(student_profile_update_dtoJSON, "avatarUrl");
     if (avatar_url) { 
     if(!cJSON_IsString(avatar_url) && !cJSON_IsNull(avatar_url))
     {
     goto end; //String
-    }
-    }
-
-    // student_profile_update_dto->qualified_name
-    cJSON *qualified_name = cJSON_GetObjectItemCaseSensitive(student_profile_update_dtoJSON, "qualifiedName");
-    if (qualified_name) { 
-    if(!cJSON_IsString(qualified_name) && !cJSON_IsNull(qualified_name))
-    {
-    goto end; //String
-    }
-    }
-
-    // student_profile_update_dto->verification_timestamp
-    cJSON *verification_timestamp = cJSON_GetObjectItemCaseSensitive(student_profile_update_dtoJSON, "verificationTimestamp");
-    if (verification_timestamp) { 
-    if(!cJSON_IsString(verification_timestamp) && !cJSON_IsNull(verification_timestamp))
-    {
-    goto end; //DateTime
     }
     }
 
@@ -699,14 +615,10 @@ student_profile_update_dto_t *student_profile_update_dto_parseFromJSON(cJSON *st
 
 
     student_profile_update_dto_local_var = student_profile_update_dto_create (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
+        contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
         about && !cJSON_IsNull(about) ? strdup(about->valuestring) : NULL,
-        verified ? verified->valueint : 0,
-        submitted ? submitted->valueint : 0,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,
-        qualified_name && !cJSON_IsNull(qualified_name) ? strdup(qualified_name->valuestring) : NULL,
-        verification_timestamp && !cJSON_IsNull(verification_timestamp) ? strdup(verification_timestamp->valuestring) : NULL,
         data && !cJSON_IsNull(data) ? strdup(data->valuestring) : NULL,
         data_label && !cJSON_IsNull(data_label) ? strdup(data_label->valuestring) : NULL,
         data1 && !cJSON_IsNull(data1) ? strdup(data1->valuestring) : NULL,

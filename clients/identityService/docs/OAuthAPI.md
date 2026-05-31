@@ -1,6 +1,6 @@
 # OAuthAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -51,7 +51,7 @@ No authorization required
 //
 // Returns the authorization result for the authenticated user, including identity and tenant context.
 //
-authorization_result_envelope_t* OAuthAPI_get(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+auth_result_envelope_t* OAuthAPI_get(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[authorization_result_envelope_t](authorization_result_envelope.md) *
+[auth_result_envelope_t](auth_result_envelope.md) *
 
 
 ### Authorization

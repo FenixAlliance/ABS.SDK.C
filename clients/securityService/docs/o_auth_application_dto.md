@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
+**timestamp** | **char \*** |  | [optional] 
 **application_type** | **char \*** |  | [optional] 
 **client_id** | **char \*** |  | [optional] 
 **concurrency_token** | **char \*** |  | [optional] 

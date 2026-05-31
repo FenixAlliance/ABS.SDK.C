@@ -1,6 +1,6 @@
 # CourseCertificatesAPI
 
-All URIs are relative to *https://absuite.net*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,9 +11,11 @@ Method | HTTP request | Description
 [**CourseCertificatesAPI_getCourseCertificateAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_getCourseCertificateAsync) | **GET** /api/v2/LearningService/CourseCertificates/{courseCertificateId} | Get course certificate by ID
 [**CourseCertificatesAPI_getCourseCertificateTemplateAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_getCourseCertificateTemplateAsync) | **GET** /api/v2/LearningService/CourseCertificates/Template/{courseCertificateTemplateId} | Get certificate template by ID
 [**CourseCertificatesAPI_getCourseCertificateTemplatesAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_getCourseCertificateTemplatesAsync) | **GET** /api/v2/LearningService/CourseCertificates/Template | Get all certificate templates
+[**CourseCertificatesAPI_getCourseCertificateTemplatesCountAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_getCourseCertificateTemplatesCountAsync) | **GET** /api/v2/LearningService/CourseCertificates/Template/Count | Get certificate templates count
 [**CourseCertificatesAPI_getCourseCertificatesAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_getCourseCertificatesAsync) | **GET** /api/v2/LearningService/CourseCertificates | Get all course certificates
 [**CourseCertificatesAPI_getCourseCertificatesCountAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_getCourseCertificatesCountAsync) | **GET** /api/v2/LearningService/CourseCertificates/Count | Get course certificates count
 [**CourseCertificatesAPI_updateCourseCertificateAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_updateCourseCertificateAsync) | **PUT** /api/v2/LearningService/CourseCertificates/{courseCertificateId} | Update a course certificate
+[**CourseCertificatesAPI_updateCourseCertificateTemplateAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_updateCourseCertificateTemplateAsync) | **PUT** /api/v2/LearningService/CourseCertificates/Template/{courseCertificateTemplateId} | Update a certificate template
 
 
 # **CourseCertificatesAPI_createCourseCertificateAsync**
@@ -249,6 +251,40 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **CourseCertificatesAPI_getCourseCertificateTemplatesCountAsync**
+```c
+// Get certificate templates count
+//
+// Returns the count of course certificate templates for the specified tenant.
+//
+int* CourseCertificatesAPI_getCourseCertificateTemplatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+int*
+
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **CourseCertificatesAPI_getCourseCertificatesAsync**
 ```c
 // Get all course certificates
@@ -334,6 +370,40 @@ Name | Type | Description  | Notes
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **course_completion_certificate_update_dto** | **[course_completion_certificate_update_dto_t](course_completion_certificate_update_dto.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseCertificatesAPI_updateCourseCertificateTemplateAsync**
+```c
+// Update a certificate template
+//
+// Updates an existing course certificate template for the specified tenant.
+//
+void CourseCertificatesAPI_updateCourseCertificateTemplateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateTemplateId, char *api_version, char *x_api_version, course_certificate_template_update_dto_t *course_certificate_template_update_dto);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**courseCertificateTemplateId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**course_certificate_template_update_dto** | **[course_certificate_template_update_dto_t](course_certificate_template_update_dto.md) \*** |  | [optional] 
 
 ### Return type
 

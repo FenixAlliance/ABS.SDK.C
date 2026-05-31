@@ -12,9 +12,9 @@
 }while(0)
 
 
-// Preview the rendered email for a user.
+// Preview the rendered email for a tenant.
 //
-// This action is only available for users with the 'business_owner' role (global administrators).
+// This action is only available for global administrators.
 //
 void
 TenantsAPI_adminPreviewTenantEmail(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, email_dispatch_request_t *email_dispatch_request)
@@ -150,9 +150,9 @@ end:
 
 }
 
-// Send an email to a user.
+// Send an email to a tenant.
 //
-// This action is only available for users with the 'business_owner' role (global administrators).
+// This action is only available for global administrators.
 //
 void
 TenantsAPI_adminSendTenantEmail(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, email_dispatch_request_t *email_dispatch_request)
