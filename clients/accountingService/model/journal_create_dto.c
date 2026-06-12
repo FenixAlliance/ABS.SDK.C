@@ -118,7 +118,7 @@ cJSON *journal_create_dto_convertToJSON(journal_create_dto_t *journal_create_dto
 
     // journal_create_dto->parent_journal_id
     if(journal_create_dto->parent_journal_id) {
-    if(cJSON_AddStringToObject(item, "parentJournalID", journal_create_dto->parent_journal_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentJournalId", journal_create_dto->parent_journal_id) == NULL) {
     goto fail; //String
     }
     }
@@ -126,7 +126,7 @@ cJSON *journal_create_dto_convertToJSON(journal_create_dto_t *journal_create_dto
 
     // journal_create_dto->journal_type_id
     if(journal_create_dto->journal_type_id) {
-    if(cJSON_AddStringToObject(item, "journalTypeID", journal_create_dto->journal_type_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "journalTypeId", journal_create_dto->journal_type_id) == NULL) {
     goto fail; //String
     }
     }
@@ -134,7 +134,7 @@ cJSON *journal_create_dto_convertToJSON(journal_create_dto_t *journal_create_dto
 
     // journal_create_dto->ledger_id
     if(journal_create_dto->ledger_id) {
-    if(cJSON_AddStringToObject(item, "ledgerID", journal_create_dto->ledger_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "ledgerId", journal_create_dto->ledger_id) == NULL) {
     goto fail; //String
     }
     }
@@ -200,7 +200,7 @@ journal_create_dto_t *journal_create_dto_parseFromJSON(cJSON *journal_create_dto
     }
 
     // journal_create_dto->parent_journal_id
-    cJSON *parent_journal_id = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "parentJournalID");
+    cJSON *parent_journal_id = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "parentJournalId");
     if (parent_journal_id) { 
     if(!cJSON_IsString(parent_journal_id) && !cJSON_IsNull(parent_journal_id))
     {
@@ -209,7 +209,7 @@ journal_create_dto_t *journal_create_dto_parseFromJSON(cJSON *journal_create_dto
     }
 
     // journal_create_dto->journal_type_id
-    cJSON *journal_type_id = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "journalTypeID");
+    cJSON *journal_type_id = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "journalTypeId");
     if (journal_type_id) { 
     if(!cJSON_IsString(journal_type_id) && !cJSON_IsNull(journal_type_id))
     {
@@ -218,7 +218,7 @@ journal_create_dto_t *journal_create_dto_parseFromJSON(cJSON *journal_create_dto
     }
 
     // journal_create_dto->ledger_id
-    cJSON *ledger_id = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "ledgerID");
+    cJSON *ledger_id = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "ledgerId");
     if (ledger_id) { 
     if(!cJSON_IsString(ledger_id) && !cJSON_IsNull(ledger_id))
     {

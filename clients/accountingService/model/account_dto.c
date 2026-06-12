@@ -34,6 +34,7 @@ account_dto_t *account_dto_create(
     char *prefix,
     double balance,
     char *currency_id,
+    char *contact_id,
     char *account_type,
     char *qualified_name,
     char *account_type_id,
@@ -70,6 +71,7 @@ account_dto_t *account_dto_create(
     account_dto_local_var->prefix = prefix;
     account_dto_local_var->balance = balance;
     account_dto_local_var->currency_id = currency_id;
+    account_dto_local_var->contact_id = contact_id;
     account_dto_local_var->account_type = account_type;
     account_dto_local_var->qualified_name = qualified_name;
     account_dto_local_var->account_type_id = account_type_id;
@@ -131,6 +133,10 @@ void account_dto_free(account_dto_t *account_dto) {
     if (account_dto->currency_id) {
         free(account_dto->currency_id);
         account_dto->currency_id = NULL;
+    }
+    if (account_dto->contact_id) {
+        free(account_dto->contact_id);
+        account_dto->contact_id = NULL;
     }
     if (account_dto->account_type) {
         free(account_dto->account_type);
@@ -269,6 +275,14 @@ cJSON *account_dto_convertToJSON(account_dto_t *account_dto) {
     // account_dto->currency_id
     if(account_dto->currency_id) {
     if(cJSON_AddStringToObject(item, "currencyId", account_dto->currency_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // account_dto->contact_id
+    if(account_dto->contact_id) {
+    if(cJSON_AddStringToObject(item, "contactId", account_dto->contact_id) == NULL) {
     goto fail; //String
     }
     }
@@ -593,6 +607,15 @@ account_dto_t *account_dto_parseFromJSON(cJSON *account_dtoJSON){
     }
     }
 
+    // account_dto->contact_id
+    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "contactId");
+    if (contact_id) { 
+    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
+    {
+    goto end; //String
+    }
+    }
+
     // account_dto->account_type
     cJSON *account_type = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "accountType");
     if (account_type) { 
@@ -770,6 +793,7 @@ account_dto_t *account_dto_parseFromJSON(cJSON *account_dtoJSON){
         prefix && !cJSON_IsNull(prefix) ? strdup(prefix->valuestring) : NULL,
         balance ? balance->valuedouble : 0,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
+        contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
         account_type && !cJSON_IsNull(account_type) ? strdup(account_type->valuestring) : NULL,
         qualified_name && !cJSON_IsNull(qualified_name) ? strdup(qualified_name->valuestring) : NULL,
         account_type_id && !cJSON_IsNull(account_type_id) ? strdup(account_type_id->valuestring) : NULL,

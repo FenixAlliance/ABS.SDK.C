@@ -12,6 +12,7 @@
 #include "../model/invoice_enumeration_range_dto_envelope.h"
 #include "../model/invoice_enumeration_range_dto_list_envelope.h"
 #include "../model/invoice_enumeration_range_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create an invoice enumeration range
@@ -52,6 +53,14 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, c
 //
 int32_envelope_t*
 FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+
+
+// Patch an invoice enumeration range
+//
+// Partially updates an invoice enumeration range.
+//
+empty_envelope_t*
+FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an invoice enumeration range

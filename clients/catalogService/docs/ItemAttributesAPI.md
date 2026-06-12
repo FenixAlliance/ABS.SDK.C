@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ItemAttributesAPI_deleteItemAttributeAsync**](ItemAttributesAPI.md#ItemAttributesAPI_deleteItemAttributeAsync) | **DELETE** /api/v2/CatalogService/ItemAttributes/{itemAttributeId} | Delete an item attribute
 [**ItemAttributesAPI_getItemAttributeByIdAsync**](ItemAttributesAPI.md#ItemAttributesAPI_getItemAttributeByIdAsync) | **GET** /api/v2/CatalogService/ItemAttributes/{itemAttributeId} | Get item attribute by ID
 [**ItemAttributesAPI_getItemAttributesAsync**](ItemAttributesAPI.md#ItemAttributesAPI_getItemAttributesAsync) | **GET** /api/v2/CatalogService/ItemAttributes | Get all item attributes
+[**ItemAttributesAPI_patchItemAttributeAsync**](ItemAttributesAPI.md#ItemAttributesAPI_patchItemAttributeAsync) | **PATCH** /api/v2/CatalogService/ItemAttributes/{itemAttributeId} | Patch an item attribute
 [**ItemAttributesAPI_updateItemAttributeAsync**](ItemAttributesAPI.md#ItemAttributesAPI_updateItemAttributeAsync) | **PUT** /api/v2/CatalogService/ItemAttributes/{itemAttributeId} | Update an item attribute
 
 
@@ -175,6 +176,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemAttributesAPI_patchItemAttributeAsync**
+```c
+// Patch an item attribute
+//
+// Partially updates an existing item attribute for the specified tenant.
+//
+void ItemAttributesAPI_patchItemAttributeAsync(apiClient_t *apiClient, char *tenantId, char *itemAttributeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**itemAttributeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -6,11 +6,13 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
+#include "../model/error_envelope.h"
 #include "../model/fiscal_year_create_dto.h"
 #include "../model/fiscal_year_dto_envelope.h"
 #include "../model/fiscal_year_dto_i_read_only_list_envelope.h"
 #include "../model/fiscal_year_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create fiscal year
@@ -51,6 +53,14 @@ FiscalYearsAPI_getFiscalYearsAsync(apiClient_t *apiClient, char *tenantId, char 
 //
 int32_envelope_t*
 FiscalYearsAPI_getFiscalYearsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a fiscal year
+//
+// Partially updates a fiscal year.
+//
+empty_envelope_t*
+FiscalYearsAPI_patchFiscalYearAsync(apiClient_t *apiClient, char *tenantId, char *fiscalYearId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update fiscal year

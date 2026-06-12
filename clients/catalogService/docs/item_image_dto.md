@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | [optional] 
-**business_profile_record_id** | **char \*** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
+**enrollment_id** | **char \*** |  | [optional] 
 **item_id** | **char \*** |  | [optional] 
 **is_item_mozaic_bg** | **int** |  | [optional] 
 **m_d5_hash** | **char \*** |  | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **valid_response** | **int** |  | [optional] 
 **social_profile_id** | **char \*** |  | [optional] 
 **parent_file_upload_id** | **char \*** |  | [optional] 
-**account_holder_id** | **char \*** |  | [optional] 
+**user_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

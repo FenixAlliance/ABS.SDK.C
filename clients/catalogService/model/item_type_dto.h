@@ -26,7 +26,7 @@ typedef struct item_type_dto_t {
     char *description; // string
     char *image_url; // string
     char *google_category_taxonomy; // string
-    char *business_id; // string
+    char *tenant_id; // string
     char *item_category_id; // string
     char *item_google_category_id; // string
 
@@ -40,7 +40,7 @@ item_type_dto_t *item_type_dto_create(
     char *description,
     char *image_url,
     char *google_category_taxonomy,
-    char *business_id,
+    char *tenant_id,
     char *item_category_id,
     char *item_google_category_id
 );

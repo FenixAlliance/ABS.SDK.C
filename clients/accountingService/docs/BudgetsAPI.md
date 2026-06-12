@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**BudgetsAPI_getBudgetDetailsAsync**](BudgetsAPI.md#BudgetsAPI_getBudgetDetailsAsync) | **GET** /api/v2/AccountingService/Budgets/{budgetId} | Gets a budget by id
 [**BudgetsAPI_getBudgetsAsync**](BudgetsAPI.md#BudgetsAPI_getBudgetsAsync) | **GET** /api/v2/AccountingService/Budgets | Gets all budgets
 [**BudgetsAPI_getBudgetsCountAsync**](BudgetsAPI.md#BudgetsAPI_getBudgetsCountAsync) | **GET** /api/v2/AccountingService/Budgets/Count | Get the count of budgets
+[**BudgetsAPI_patchBudgetAccountEntryAsync**](BudgetsAPI.md#BudgetsAPI_patchBudgetAccountEntryAsync) | **PATCH** /api/v2/AccountingService/Budgets/{budgetId}/AccountEntries/{entryId} | Patches a budget account entry
+[**BudgetsAPI_patchBudgetAsync**](BudgetsAPI.md#BudgetsAPI_patchBudgetAsync) | **PATCH** /api/v2/AccountingService/Budgets/{budgetId} | Patches a budget
 [**BudgetsAPI_updateBudgetAccountEntryAsync**](BudgetsAPI.md#BudgetsAPI_updateBudgetAccountEntryAsync) | **PUT** /api/v2/AccountingService/Budgets/{budgetId}/AccountEntries/{entryId} | Updates a budget account entry
 [**BudgetsAPI_updateBudgetAsync**](BudgetsAPI.md#BudgetsAPI_updateBudgetAsync) | **PUT** /api/v2/AccountingService/Budgets/{budgetId} | Updates a budget
 
@@ -320,6 +322,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BudgetsAPI_patchBudgetAccountEntryAsync**
+```c
+// Patches a budget account entry
+//
+// Partially update a budget account entry using JSON Patch.
+//
+empty_envelope_t* BudgetsAPI_patchBudgetAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**budgetId** | **char \*** |  | 
+**entryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BudgetsAPI_patchBudgetAsync**
+```c
+// Patches a budget
+//
+// Partially update a budget using JSON Patch.
+//
+empty_envelope_t* BudgetsAPI_patchBudgetAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**budgetId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

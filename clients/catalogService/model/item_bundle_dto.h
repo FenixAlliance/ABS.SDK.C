@@ -25,7 +25,7 @@ typedef struct item_bundle_dto_t {
     char *code; // string
     char *description; // string
     int disabled; //boolean
-    char *business_id; // string
+    char *tenant_id; // string
 
 } item_bundle_dto_t;
 
@@ -36,7 +36,7 @@ item_bundle_dto_t *item_bundle_dto_create(
     char *code,
     char *description,
     int disabled,
-    char *business_id
+    char *tenant_id
 );
 
 void item_bundle_dto_free(item_bundle_dto_t *item_bundle_dto);

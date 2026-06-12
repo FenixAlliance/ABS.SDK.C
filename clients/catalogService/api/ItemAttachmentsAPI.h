@@ -11,6 +11,7 @@
 #include "../model/item_attachment_dto_envelope.h"
 #include "../model/item_attachment_dto_list_envelope.h"
 #include "../model/item_attachment_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a new item attachment
@@ -43,6 +44,14 @@ ItemAttachmentsAPI_getItemAttachmentByIdAsync(apiClient_t *apiClient, char *item
 //
 item_attachment_dto_list_envelope_t*
 ItemAttachmentsAPI_getItemAttachmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item attachment
+//
+// Partially updates an existing item attachment for the specified tenant using a JSON Patch document.
+//
+empty_envelope_t*
+ItemAttachmentsAPI_patchItemAttachmentAsync(apiClient_t *apiClient, char *tenantId, char *itemAttachmentId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item attachment

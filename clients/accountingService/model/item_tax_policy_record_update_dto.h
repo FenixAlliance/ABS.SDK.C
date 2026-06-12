@@ -19,8 +19,6 @@ typedef struct item_tax_policy_record_update_dto_t item_tax_policy_record_update
 
 
 typedef struct item_tax_policy_record_update_dto_t {
-    char *id; // string
-    char *timestamp; //date time
     char *tax_policy_id; // string
     char *item_price_id; // string
     char *item_id; // string
@@ -28,8 +26,6 @@ typedef struct item_tax_policy_record_update_dto_t {
 } item_tax_policy_record_update_dto_t;
 
 item_tax_policy_record_update_dto_t *item_tax_policy_record_update_dto_create(
-    char *id,
-    char *timestamp,
     char *tax_policy_id,
     char *item_price_id,
     char *item_id

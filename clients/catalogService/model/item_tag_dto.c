@@ -10,7 +10,7 @@ item_tag_dto_t *item_tag_dto_create(
     char *timestamp,
     char *title,
     char *description,
-    char *business_id
+    char *tenant_id
     ) {
     item_tag_dto_t *item_tag_dto_local_var = malloc(sizeof(item_tag_dto_t));
     if (!item_tag_dto_local_var) {
@@ -20,7 +20,7 @@ item_tag_dto_t *item_tag_dto_create(
     item_tag_dto_local_var->timestamp = timestamp;
     item_tag_dto_local_var->title = title;
     item_tag_dto_local_var->description = description;
-    item_tag_dto_local_var->business_id = business_id;
+    item_tag_dto_local_var->tenant_id = tenant_id;
 
     return item_tag_dto_local_var;
 }
@@ -47,9 +47,9 @@ void item_tag_dto_free(item_tag_dto_t *item_tag_dto) {
         free(item_tag_dto->description);
         item_tag_dto->description = NULL;
     }
-    if (item_tag_dto->business_id) {
-        free(item_tag_dto->business_id);
-        item_tag_dto->business_id = NULL;
+    if (item_tag_dto->tenant_id) {
+        free(item_tag_dto->tenant_id);
+        item_tag_dto->tenant_id = NULL;
     }
     free(item_tag_dto);
 }
@@ -89,9 +89,9 @@ cJSON *item_tag_dto_convertToJSON(item_tag_dto_t *item_tag_dto) {
     }
 
 
-    // item_tag_dto->business_id
-    if(item_tag_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", item_tag_dto->business_id) == NULL) {
+    // item_tag_dto->tenant_id
+    if(item_tag_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", item_tag_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -144,10 +144,10 @@ item_tag_dto_t *item_tag_dto_parseFromJSON(cJSON *item_tag_dtoJSON){
     }
     }
 
-    // item_tag_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_tag_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // item_tag_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(item_tag_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -159,7 +159,7 @@ item_tag_dto_t *item_tag_dto_parseFromJSON(cJSON *item_tag_dtoJSON){
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
         );
 
     return item_tag_dto_local_var;

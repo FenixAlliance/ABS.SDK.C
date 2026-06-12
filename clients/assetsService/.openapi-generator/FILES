@@ -63,6 +63,7 @@ docs/info_request.md
 docs/info_response.md
 docs/int32_envelope.md
 docs/login_request.md
+docs/operation.md
 docs/refresh_request.md
 docs/register_request.md
 docs/resend_confirmation_email_request.md
@@ -167,6 +168,8 @@ model/login_request.c
 model/login_request.h
 model/object.c
 model/object.h
+model/operation.c
+model/operation.h
 model/refresh_request.c
 model/refresh_request.h
 model/register_request.c
@@ -184,3 +187,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_operation.c

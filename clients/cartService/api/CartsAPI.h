@@ -22,6 +22,7 @@
 #include "../model/item_to_compare_cart_record_dto_envelope.h"
 #include "../model/item_to_compare_cart_record_dto_list_envelope.h"
 #include "../model/new_wish_list_request.h"
+#include "../model/operation.h"
 #include "../model/product_to_wish_list_request.h"
 #include "../model/wish_list_dto.h"
 #include "../model/wish_list_dto_envelope.h"
@@ -275,6 +276,14 @@ CartsAPI_isItemInCompareTableAsync(apiClient_t *apiClient, char *cartId, char *i
 //
 boolean_envelope_t*
 CartsAPI_isItemInWishLists(apiClient_t *apiClient, char *cartId, char *itemId, char *api_version, char *x_api_version);
+
+
+// Patch a cart
+//
+// Partially updates a cart using a JSON Patch document.
+//
+empty_envelope_t*
+CartsAPI_patchCartAsync(apiClient_t *apiClient, char *cartId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Remove a cart line

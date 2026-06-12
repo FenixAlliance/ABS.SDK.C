@@ -4,6 +4,23 @@
 #include "billing_profile_create_dto.h"
 
 
+char* billing_profile_create_dto_tax_payer_type_ToString(accountingservice_billing_profile_create_dto_TAXPAYERTYPE_e tax_payer_type) {
+    char* tax_payer_typeArray[] =  { "NULL", "Individual", "Business" };
+    return tax_payer_typeArray[tax_payer_type];
+}
+
+accountingservice_billing_profile_create_dto_TAXPAYERTYPE_e billing_profile_create_dto_tax_payer_type_FromString(char* tax_payer_type){
+    int stringToReturn = 0;
+    char *tax_payer_typeArray[] =  { "NULL", "Individual", "Business" };
+    size_t sizeofArray = sizeof(tax_payer_typeArray) / sizeof(tax_payer_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(tax_payer_type, tax_payer_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 billing_profile_create_dto_t *billing_profile_create_dto_create(
     char *id,
@@ -22,6 +39,7 @@ billing_profile_create_dto_t *billing_profile_create_dto_create(
     char *duns,
     int is_public_company,
     int is_facta_customer,
+    accountingservice_billing_profile_create_dto_TAXPAYERTYPE_e tax_payer_type,
     char *country_id,
     char *state_id,
     char *city_id,
@@ -49,6 +67,7 @@ billing_profile_create_dto_t *billing_profile_create_dto_create(
     billing_profile_create_dto_local_var->duns = duns;
     billing_profile_create_dto_local_var->is_public_company = is_public_company;
     billing_profile_create_dto_local_var->is_facta_customer = is_facta_customer;
+    billing_profile_create_dto_local_var->tax_payer_type = tax_payer_type;
     billing_profile_create_dto_local_var->country_id = country_id;
     billing_profile_create_dto_local_var->state_id = state_id;
     billing_profile_create_dto_local_var->city_id = city_id;
@@ -286,6 +305,15 @@ cJSON *billing_profile_create_dto_convertToJSON(billing_profile_create_dto_t *bi
     }
 
 
+    // billing_profile_create_dto->tax_payer_type
+    if(billing_profile_create_dto->tax_payer_type != accountingservice_billing_profile_create_dto_TAXPAYERTYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "taxPayerType", tax_payer_typebilling_profile_create_dto_ToString(billing_profile_create_dto->tax_payer_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // billing_profile_create_dto->country_id
     if (!billing_profile_create_dto->country_id) {
         goto fail;
@@ -516,6 +544,17 @@ billing_profile_create_dto_t *billing_profile_create_dto_parseFromJSON(cJSON *bi
     }
     }
 
+    // billing_profile_create_dto->tax_payer_type
+    cJSON *tax_payer_type = cJSON_GetObjectItemCaseSensitive(billing_profile_create_dtoJSON, "taxPayerType");
+    accountingservice_billing_profile_create_dto_TAXPAYERTYPE_e tax_payer_typeVariable;
+    if (tax_payer_type) { 
+    if(!cJSON_IsString(tax_payer_type))
+    {
+    goto end; //Enum
+    }
+    tax_payer_typeVariable = billing_profile_create_dto_tax_payer_type_FromString(tax_payer_type->valuestring);
+    }
+
     // billing_profile_create_dto->country_id
     cJSON *country_id = cJSON_GetObjectItemCaseSensitive(billing_profile_create_dtoJSON, "countryId");
     if (!country_id) {
@@ -606,6 +645,7 @@ billing_profile_create_dto_t *billing_profile_create_dto_parseFromJSON(cJSON *bi
         duns && !cJSON_IsNull(duns) ? strdup(duns->valuestring) : NULL,
         is_public_company ? is_public_company->valueint : 0,
         is_facta_customer ? is_facta_customer->valueint : 0,
+        tax_payer_type ? tax_payer_typeVariable : accountingservice_billing_profile_create_dto_TAXPAYERTYPE_NULL,
         strdup(country_id->valuestring),
         strdup(state_id->valuestring),
         strdup(city_id->valuestring),

@@ -22,6 +22,7 @@ typedef struct account_relation_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *account_id; // string
+    char *type; // string
     char *tenant_id; // string
     char *enrollment_id; // string
 
@@ -31,6 +32,7 @@ account_relation_dto_t *account_relation_dto_create(
     char *id,
     char *timestamp,
     char *account_id,
+    char *type,
     char *tenant_id,
     char *enrollment_id
 );

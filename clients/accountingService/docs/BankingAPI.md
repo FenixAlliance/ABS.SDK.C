@@ -24,6 +24,10 @@ Method | HTTP request | Description
 [**BankingAPI_getBankTransactionsCount**](BankingAPI.md#BankingAPI_getBankTransactionsCount) | **GET** /api/v2/AccountingService/Banking/{bankId}/Transactions/Count | Gets the current tenant bank transactions count
 [**BankingAPI_getBanks**](BankingAPI.md#BankingAPI_getBanks) | **GET** /api/v2/AccountingService/Banking | Gets the current tenant banks
 [**BankingAPI_getBanksCount**](BankingAPI.md#BankingAPI_getBanksCount) | **GET** /api/v2/AccountingService/Banking/Count | Gets the current tenant banks count
+[**BankingAPI_patchBank**](BankingAPI.md#BankingAPI_patchBank) | **PATCH** /api/v2/AccountingService/Banking/{bankId} | Patches a bank
+[**BankingAPI_patchBankAccount**](BankingAPI.md#BankingAPI_patchBankAccount) | **PATCH** /api/v2/AccountingService/Banking/{bankId}/Accounts/{accountId} | Patches a bank account
+[**BankingAPI_patchBankGuarantee**](BankingAPI.md#BankingAPI_patchBankGuarantee) | **PATCH** /api/v2/AccountingService/Banking/{bankId}/Guarantees/{guaranteeId} | Patches a bank guarantee
+[**BankingAPI_patchBankTransaction**](BankingAPI.md#BankingAPI_patchBankTransaction) | **PATCH** /api/v2/AccountingService/Banking/{bankId}/Transactions/{transactionId} | Patches a bank transaction
 [**BankingAPI_updateBank**](BankingAPI.md#BankingAPI_updateBank) | **PUT** /api/v2/AccountingService/Banking/{bankId} | Updates a bank
 [**BankingAPI_updateBankAccount**](BankingAPI.md#BankingAPI_updateBankAccount) | **PUT** /api/v2/AccountingService/Banking/{bankId}/Accounts/{accountId} | Updates a bank account
 [**BankingAPI_updateBankGuarantee**](BankingAPI.md#BankingAPI_updateBankGuarantee) | **PUT** /api/v2/AccountingService/Banking/{bankId}/Guarantees/{guaranteeId} | Updates a bank guarantee
@@ -709,6 +713,149 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BankingAPI_patchBank**
+```c
+// Patches a bank
+//
+// Partially update a bank using JSON Patch.
+//
+empty_envelope_t* BankingAPI_patchBank(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**bankId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BankingAPI_patchBankAccount**
+```c
+// Patches a bank account
+//
+// Partially update a bank account using JSON Patch.
+//
+empty_envelope_t* BankingAPI_patchBankAccount(apiClient_t *apiClient, char *tenantId, char *bankId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**bankId** | **char \*** |  | 
+**accountId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BankingAPI_patchBankGuarantee**
+```c
+// Patches a bank guarantee
+//
+// Partially update a bank guarantee using JSON Patch.
+//
+empty_envelope_t* BankingAPI_patchBankGuarantee(apiClient_t *apiClient, char *tenantId, char *bankId, char *guaranteeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**bankId** | **char \*** |  | 
+**guaranteeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BankingAPI_patchBankTransaction**
+```c
+// Patches a bank transaction
+//
+// Partially update a bank transaction using JSON Patch.
+//
+empty_envelope_t* BankingAPI_patchBankTransaction(apiClient_t *apiClient, char *tenantId, char *bankId, char *transactionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**bankId** | **char \*** |  | 
+**transactionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

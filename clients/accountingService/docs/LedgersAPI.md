@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**LedgersAPI_getLedgerDetailsAsync**](LedgersAPI.md#LedgersAPI_getLedgerDetailsAsync) | **GET** /api/v2/AccountingService/Ledgers/{ledgerId} | Gets a ledger by ID
 [**LedgersAPI_getLedgersAsync**](LedgersAPI.md#LedgersAPI_getLedgersAsync) | **GET** /api/v2/AccountingService/Ledgers | Retrieves all ledgers
 [**LedgersAPI_getLedgersCountAsync**](LedgersAPI.md#LedgersAPI_getLedgersCountAsync) | **GET** /api/v2/AccountingService/Ledgers/Count | Counts ledgers
+[**LedgersAPI_patchLedgerAsync**](LedgersAPI.md#LedgersAPI_patchLedgerAsync) | **PATCH** /api/v2/AccountingService/Ledgers/{ledgerId} | Patches a ledger
 [**LedgersAPI_updateLedgerAsync**](LedgersAPI.md#LedgersAPI_updateLedgerAsync) | **PUT** /api/v2/AccountingService/Ledgers/{ledgerId} | Updates a ledger
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LedgersAPI_patchLedgerAsync**
+```c
+// Patches a ledger
+//
+// Patches the specified ledger.
+//
+empty_envelope_t* LedgersAPI_patchLedgerAsync(apiClient_t *apiClient, char *tenantId, char *ledgerId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**ledgerId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

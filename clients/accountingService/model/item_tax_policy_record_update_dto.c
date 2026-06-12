@@ -6,8 +6,6 @@
 
 
 item_tax_policy_record_update_dto_t *item_tax_policy_record_update_dto_create(
-    char *id,
-    char *timestamp,
     char *tax_policy_id,
     char *item_price_id,
     char *item_id
@@ -16,8 +14,6 @@ item_tax_policy_record_update_dto_t *item_tax_policy_record_update_dto_create(
     if (!item_tax_policy_record_update_dto_local_var) {
         return NULL;
     }
-    item_tax_policy_record_update_dto_local_var->id = id;
-    item_tax_policy_record_update_dto_local_var->timestamp = timestamp;
     item_tax_policy_record_update_dto_local_var->tax_policy_id = tax_policy_id;
     item_tax_policy_record_update_dto_local_var->item_price_id = item_price_id;
     item_tax_policy_record_update_dto_local_var->item_id = item_id;
@@ -31,14 +27,6 @@ void item_tax_policy_record_update_dto_free(item_tax_policy_record_update_dto_t 
         return ;
     }
     listEntry_t *listEntry;
-    if (item_tax_policy_record_update_dto->id) {
-        free(item_tax_policy_record_update_dto->id);
-        item_tax_policy_record_update_dto->id = NULL;
-    }
-    if (item_tax_policy_record_update_dto->timestamp) {
-        free(item_tax_policy_record_update_dto->timestamp);
-        item_tax_policy_record_update_dto->timestamp = NULL;
-    }
     if (item_tax_policy_record_update_dto->tax_policy_id) {
         free(item_tax_policy_record_update_dto->tax_policy_id);
         item_tax_policy_record_update_dto->tax_policy_id = NULL;
@@ -56,22 +44,6 @@ void item_tax_policy_record_update_dto_free(item_tax_policy_record_update_dto_t 
 
 cJSON *item_tax_policy_record_update_dto_convertToJSON(item_tax_policy_record_update_dto_t *item_tax_policy_record_update_dto) {
     cJSON *item = cJSON_CreateObject();
-
-    // item_tax_policy_record_update_dto->id
-    if(item_tax_policy_record_update_dto->id) {
-    if(cJSON_AddStringToObject(item, "id", item_tax_policy_record_update_dto->id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // item_tax_policy_record_update_dto->timestamp
-    if(item_tax_policy_record_update_dto->timestamp) {
-    if(cJSON_AddStringToObject(item, "timestamp", item_tax_policy_record_update_dto->timestamp) == NULL) {
-    goto fail; //Date-Time
-    }
-    }
-
 
     // item_tax_policy_record_update_dto->tax_policy_id
     if(item_tax_policy_record_update_dto->tax_policy_id) {
@@ -108,24 +80,6 @@ item_tax_policy_record_update_dto_t *item_tax_policy_record_update_dto_parseFrom
 
     item_tax_policy_record_update_dto_t *item_tax_policy_record_update_dto_local_var = NULL;
 
-    // item_tax_policy_record_update_dto->id
-    cJSON *id = cJSON_GetObjectItemCaseSensitive(item_tax_policy_record_update_dtoJSON, "id");
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
-    {
-    goto end; //String
-    }
-    }
-
-    // item_tax_policy_record_update_dto->timestamp
-    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(item_tax_policy_record_update_dtoJSON, "timestamp");
-    if (timestamp) { 
-    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
-    {
-    goto end; //DateTime
-    }
-    }
-
     // item_tax_policy_record_update_dto->tax_policy_id
     cJSON *tax_policy_id = cJSON_GetObjectItemCaseSensitive(item_tax_policy_record_update_dtoJSON, "taxPolicyId");
     if (tax_policy_id) { 
@@ -155,8 +109,6 @@ item_tax_policy_record_update_dto_t *item_tax_policy_record_update_dto_parseFrom
 
 
     item_tax_policy_record_update_dto_local_var = item_tax_policy_record_update_dto_create (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         tax_policy_id && !cJSON_IsNull(tax_policy_id) ? strdup(tax_policy_id->valuestring) : NULL,
         item_price_id && !cJSON_IsNull(item_price_id) ? strdup(item_price_id->valuestring) : NULL,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL

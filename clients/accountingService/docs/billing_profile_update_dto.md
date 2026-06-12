@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **duns** | **char \*** |  | [optional] 
 **is_public_company** | **int** |  | [optional] 
 **is_facta_customer** | **int** |  | [optional] 
+**tax_payer_type** | **accountingservice_billing_profile_update_dto_TAXPAYERTYPE_e** |  | [optional] 
 **country_id** | **char \*** |  | [optional] 
 **state_id** | **char \*** |  | [optional] 
 **city_id** | **char \*** |  | [optional] 

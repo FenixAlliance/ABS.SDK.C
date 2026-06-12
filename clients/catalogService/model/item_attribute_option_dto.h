@@ -24,7 +24,7 @@ typedef struct item_attribute_option_dto_t {
     char *name; // string
     char *description; // string
     char *item_attribute_id; // string
-    char *business_id; // string
+    char *tenant_id; // string
 
 } item_attribute_option_dto_t;
 
@@ -34,7 +34,7 @@ item_attribute_option_dto_t *item_attribute_option_dto_create(
     char *name,
     char *description,
     char *item_attribute_id,
-    char *business_id
+    char *tenant_id
 );
 
 void item_attribute_option_dto_free(item_attribute_option_dto_t *item_attribute_option_dto);

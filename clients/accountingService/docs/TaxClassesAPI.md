@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**TaxClassesAPI_getTaxClass**](TaxClassesAPI.md#TaxClassesAPI_getTaxClass) | **GET** /api/v2/AccountingService/TaxClasses/{id} | Get tax class by ID
 [**TaxClassesAPI_getTaxClasses**](TaxClassesAPI.md#TaxClassesAPI_getTaxClasses) | **GET** /api/v2/AccountingService/TaxClasses | Get all tax classes for a tenant
 [**TaxClassesAPI_getTaxClassesCount**](TaxClassesAPI.md#TaxClassesAPI_getTaxClassesCount) | **GET** /api/v2/AccountingService/TaxClasses/Count | Get tax classes count
+[**TaxClassesAPI_patchTaxClass**](TaxClassesAPI.md#TaxClassesAPI_patchTaxClass) | **PATCH** /api/v2/AccountingService/TaxClasses/{id} | Patch a tax class
 [**TaxClassesAPI_updateTaxClass**](TaxClassesAPI.md#TaxClassesAPI_updateTaxClass) | **PUT** /api/v2/AccountingService/TaxClasses/{id} | Update a tax class
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TaxClassesAPI_patchTaxClass**
+```c
+// Patch a tax class
+//
+// Partially updates an existing tax class identified by its unique identifier.
+//
+empty_envelope_t* TaxClassesAPI_patchTaxClass(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**id** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

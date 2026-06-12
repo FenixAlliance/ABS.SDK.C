@@ -15,7 +15,7 @@ item_brand_dto_t *item_brand_dto_create(
     char *logo_url,
     int featured,
     int trending,
-    char *business_id
+    char *tenant_id
     ) {
     item_brand_dto_t *item_brand_dto_local_var = malloc(sizeof(item_brand_dto_t));
     if (!item_brand_dto_local_var) {
@@ -30,7 +30,7 @@ item_brand_dto_t *item_brand_dto_create(
     item_brand_dto_local_var->logo_url = logo_url;
     item_brand_dto_local_var->featured = featured;
     item_brand_dto_local_var->trending = trending;
-    item_brand_dto_local_var->business_id = business_id;
+    item_brand_dto_local_var->tenant_id = tenant_id;
 
     return item_brand_dto_local_var;
 }
@@ -69,9 +69,9 @@ void item_brand_dto_free(item_brand_dto_t *item_brand_dto) {
         free(item_brand_dto->logo_url);
         item_brand_dto->logo_url = NULL;
     }
-    if (item_brand_dto->business_id) {
-        free(item_brand_dto->business_id);
-        item_brand_dto->business_id = NULL;
+    if (item_brand_dto->tenant_id) {
+        free(item_brand_dto->tenant_id);
+        item_brand_dto->tenant_id = NULL;
     }
     free(item_brand_dto);
 }
@@ -151,9 +151,9 @@ cJSON *item_brand_dto_convertToJSON(item_brand_dto_t *item_brand_dto) {
     }
 
 
-    // item_brand_dto->business_id
-    if(item_brand_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", item_brand_dto->business_id) == NULL) {
+    // item_brand_dto->tenant_id
+    if(item_brand_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", item_brand_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -251,10 +251,10 @@ item_brand_dto_t *item_brand_dto_parseFromJSON(cJSON *item_brand_dtoJSON){
     }
     }
 
-    // item_brand_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_brand_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // item_brand_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(item_brand_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -271,7 +271,7 @@ item_brand_dto_t *item_brand_dto_parseFromJSON(cJSON *item_brand_dtoJSON){
         logo_url && !cJSON_IsNull(logo_url) ? strdup(logo_url->valuestring) : NULL,
         featured ? featured->valueint : 0,
         trending ? trending->valueint : 0,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
         );
 
     return item_brand_dto_local_var;

@@ -6,14 +6,20 @@
 
 
 asset_depreciation_record_dto_t *asset_depreciation_record_dto_create(
-    object_t *id,
+    char *id,
     char *timestamp,
-    object_t *business_id,
-    object_t *business_profile_record_id,
-    object_t *asset_id,
+    char *tenant_id,
+    char *enrollment_id,
+    char *asset_id,
     char *asset_name,
     char *asset_depreciation_policy_id,
     char *asset_depreciation_policy_name,
+    char *financial_book_id,
+    char *start_date,
+    int total_depreciations,
+    int depreciation_frequency,
+    double depreciation_rate,
+    double expected_value_aul,
     double depreciation_amount,
     double accumulated_depreciation,
     double book_value,
@@ -28,12 +34,18 @@ asset_depreciation_record_dto_t *asset_depreciation_record_dto_create(
     }
     asset_depreciation_record_dto_local_var->id = id;
     asset_depreciation_record_dto_local_var->timestamp = timestamp;
-    asset_depreciation_record_dto_local_var->business_id = business_id;
-    asset_depreciation_record_dto_local_var->business_profile_record_id = business_profile_record_id;
+    asset_depreciation_record_dto_local_var->tenant_id = tenant_id;
+    asset_depreciation_record_dto_local_var->enrollment_id = enrollment_id;
     asset_depreciation_record_dto_local_var->asset_id = asset_id;
     asset_depreciation_record_dto_local_var->asset_name = asset_name;
     asset_depreciation_record_dto_local_var->asset_depreciation_policy_id = asset_depreciation_policy_id;
     asset_depreciation_record_dto_local_var->asset_depreciation_policy_name = asset_depreciation_policy_name;
+    asset_depreciation_record_dto_local_var->financial_book_id = financial_book_id;
+    asset_depreciation_record_dto_local_var->start_date = start_date;
+    asset_depreciation_record_dto_local_var->total_depreciations = total_depreciations;
+    asset_depreciation_record_dto_local_var->depreciation_frequency = depreciation_frequency;
+    asset_depreciation_record_dto_local_var->depreciation_rate = depreciation_rate;
+    asset_depreciation_record_dto_local_var->expected_value_aul = expected_value_aul;
     asset_depreciation_record_dto_local_var->depreciation_amount = depreciation_amount;
     asset_depreciation_record_dto_local_var->accumulated_depreciation = accumulated_depreciation;
     asset_depreciation_record_dto_local_var->book_value = book_value;
@@ -52,23 +64,23 @@ void asset_depreciation_record_dto_free(asset_depreciation_record_dto_t *asset_d
     }
     listEntry_t *listEntry;
     if (asset_depreciation_record_dto->id) {
-        object_free(asset_depreciation_record_dto->id);
+        free(asset_depreciation_record_dto->id);
         asset_depreciation_record_dto->id = NULL;
     }
     if (asset_depreciation_record_dto->timestamp) {
         free(asset_depreciation_record_dto->timestamp);
         asset_depreciation_record_dto->timestamp = NULL;
     }
-    if (asset_depreciation_record_dto->business_id) {
-        object_free(asset_depreciation_record_dto->business_id);
-        asset_depreciation_record_dto->business_id = NULL;
+    if (asset_depreciation_record_dto->tenant_id) {
+        free(asset_depreciation_record_dto->tenant_id);
+        asset_depreciation_record_dto->tenant_id = NULL;
     }
-    if (asset_depreciation_record_dto->business_profile_record_id) {
-        object_free(asset_depreciation_record_dto->business_profile_record_id);
-        asset_depreciation_record_dto->business_profile_record_id = NULL;
+    if (asset_depreciation_record_dto->enrollment_id) {
+        free(asset_depreciation_record_dto->enrollment_id);
+        asset_depreciation_record_dto->enrollment_id = NULL;
     }
     if (asset_depreciation_record_dto->asset_id) {
-        object_free(asset_depreciation_record_dto->asset_id);
+        free(asset_depreciation_record_dto->asset_id);
         asset_depreciation_record_dto->asset_id = NULL;
     }
     if (asset_depreciation_record_dto->asset_name) {
@@ -82,6 +94,14 @@ void asset_depreciation_record_dto_free(asset_depreciation_record_dto_t *asset_d
     if (asset_depreciation_record_dto->asset_depreciation_policy_name) {
         free(asset_depreciation_record_dto->asset_depreciation_policy_name);
         asset_depreciation_record_dto->asset_depreciation_policy_name = NULL;
+    }
+    if (asset_depreciation_record_dto->financial_book_id) {
+        free(asset_depreciation_record_dto->financial_book_id);
+        asset_depreciation_record_dto->financial_book_id = NULL;
+    }
+    if (asset_depreciation_record_dto->start_date) {
+        free(asset_depreciation_record_dto->start_date);
+        asset_depreciation_record_dto->start_date = NULL;
     }
     if (asset_depreciation_record_dto->depreciation_date) {
         free(asset_depreciation_record_dto->depreciation_date);
@@ -99,13 +119,8 @@ cJSON *asset_depreciation_record_dto_convertToJSON(asset_depreciation_record_dto
 
     // asset_depreciation_record_dto->id
     if(asset_depreciation_record_dto->id) {
-    cJSON *id_object = object_convertToJSON(asset_depreciation_record_dto->id);
-    if(id_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "id", id_object);
-    if(item->child == NULL) {
-    goto fail;
+    if(cJSON_AddStringToObject(item, "id", asset_depreciation_record_dto->id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -118,41 +133,26 @@ cJSON *asset_depreciation_record_dto_convertToJSON(asset_depreciation_record_dto
     }
 
 
-    // asset_depreciation_record_dto->business_id
-    if(asset_depreciation_record_dto->business_id) {
-    cJSON *business_id_object = object_convertToJSON(asset_depreciation_record_dto->business_id);
-    if(business_id_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "businessId", business_id_object);
-    if(item->child == NULL) {
-    goto fail;
+    // asset_depreciation_record_dto->tenant_id
+    if(asset_depreciation_record_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", asset_depreciation_record_dto->tenant_id) == NULL) {
+    goto fail; //String
     }
     }
 
 
-    // asset_depreciation_record_dto->business_profile_record_id
-    if(asset_depreciation_record_dto->business_profile_record_id) {
-    cJSON *business_profile_record_id_object = object_convertToJSON(asset_depreciation_record_dto->business_profile_record_id);
-    if(business_profile_record_id_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "businessProfileRecordId", business_profile_record_id_object);
-    if(item->child == NULL) {
-    goto fail;
+    // asset_depreciation_record_dto->enrollment_id
+    if(asset_depreciation_record_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", asset_depreciation_record_dto->enrollment_id) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // asset_depreciation_record_dto->asset_id
     if(asset_depreciation_record_dto->asset_id) {
-    cJSON *asset_id_object = object_convertToJSON(asset_depreciation_record_dto->asset_id);
-    if(asset_id_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "assetId", asset_id_object);
-    if(item->child == NULL) {
-    goto fail;
+    if(cJSON_AddStringToObject(item, "assetId", asset_depreciation_record_dto->asset_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -177,6 +177,54 @@ cJSON *asset_depreciation_record_dto_convertToJSON(asset_depreciation_record_dto
     if(asset_depreciation_record_dto->asset_depreciation_policy_name) {
     if(cJSON_AddStringToObject(item, "assetDepreciationPolicyName", asset_depreciation_record_dto->asset_depreciation_policy_name) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // asset_depreciation_record_dto->financial_book_id
+    if(asset_depreciation_record_dto->financial_book_id) {
+    if(cJSON_AddStringToObject(item, "financialBookId", asset_depreciation_record_dto->financial_book_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // asset_depreciation_record_dto->start_date
+    if(asset_depreciation_record_dto->start_date) {
+    if(cJSON_AddStringToObject(item, "startDate", asset_depreciation_record_dto->start_date) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
+
+    // asset_depreciation_record_dto->total_depreciations
+    if(asset_depreciation_record_dto->total_depreciations) {
+    if(cJSON_AddNumberToObject(item, "totalDepreciations", asset_depreciation_record_dto->total_depreciations) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // asset_depreciation_record_dto->depreciation_frequency
+    if(asset_depreciation_record_dto->depreciation_frequency) {
+    if(cJSON_AddNumberToObject(item, "depreciationFrequency", asset_depreciation_record_dto->depreciation_frequency) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // asset_depreciation_record_dto->depreciation_rate
+    if(asset_depreciation_record_dto->depreciation_rate) {
+    if(cJSON_AddNumberToObject(item, "depreciationRate", asset_depreciation_record_dto->depreciation_rate) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // asset_depreciation_record_dto->expected_value_aul
+    if(asset_depreciation_record_dto->expected_value_aul) {
+    if(cJSON_AddNumberToObject(item, "expectedValueAUL", asset_depreciation_record_dto->expected_value_aul) == NULL) {
+    goto fail; //Numeric
     }
     }
 
@@ -250,9 +298,11 @@ asset_depreciation_record_dto_t *asset_depreciation_record_dto_parseFromJSON(cJS
 
     // asset_depreciation_record_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "id");
-    object_t *id_local_object = NULL;
     if (id) { 
-    id_local_object = object_parseFromJSON(id); //object
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
     }
 
     // asset_depreciation_record_dto->timestamp
@@ -264,25 +314,31 @@ asset_depreciation_record_dto_t *asset_depreciation_record_dto_parseFromJSON(cJS
     }
     }
 
-    // asset_depreciation_record_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "businessId");
-    object_t *business_id_local_object = NULL;
-    if (business_id) { 
-    business_id_local_object = object_parseFromJSON(business_id); //object
+    // asset_depreciation_record_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
     }
 
-    // asset_depreciation_record_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "businessProfileRecordId");
-    object_t *business_profile_record_id_local_object = NULL;
-    if (business_profile_record_id) { 
-    business_profile_record_id_local_object = object_parseFromJSON(business_profile_record_id); //object
+    // asset_depreciation_record_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
     }
 
     // asset_depreciation_record_dto->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "assetId");
-    object_t *asset_id_local_object = NULL;
     if (asset_id) { 
-    asset_id_local_object = object_parseFromJSON(asset_id); //object
+    if(!cJSON_IsString(asset_id) && !cJSON_IsNull(asset_id))
+    {
+    goto end; //String
+    }
     }
 
     // asset_depreciation_record_dto->asset_name
@@ -309,6 +365,60 @@ asset_depreciation_record_dto_t *asset_depreciation_record_dto_parseFromJSON(cJS
     if(!cJSON_IsString(asset_depreciation_policy_name) && !cJSON_IsNull(asset_depreciation_policy_name))
     {
     goto end; //String
+    }
+    }
+
+    // asset_depreciation_record_dto->financial_book_id
+    cJSON *financial_book_id = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "financialBookId");
+    if (financial_book_id) { 
+    if(!cJSON_IsString(financial_book_id) && !cJSON_IsNull(financial_book_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // asset_depreciation_record_dto->start_date
+    cJSON *start_date = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "startDate");
+    if (start_date) { 
+    if(!cJSON_IsString(start_date) && !cJSON_IsNull(start_date))
+    {
+    goto end; //DateTime
+    }
+    }
+
+    // asset_depreciation_record_dto->total_depreciations
+    cJSON *total_depreciations = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "totalDepreciations");
+    if (total_depreciations) { 
+    if(!cJSON_IsNumber(total_depreciations))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // asset_depreciation_record_dto->depreciation_frequency
+    cJSON *depreciation_frequency = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "depreciationFrequency");
+    if (depreciation_frequency) { 
+    if(!cJSON_IsNumber(depreciation_frequency))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // asset_depreciation_record_dto->depreciation_rate
+    cJSON *depreciation_rate = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "depreciationRate");
+    if (depreciation_rate) { 
+    if(!cJSON_IsNumber(depreciation_rate))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // asset_depreciation_record_dto->expected_value_aul
+    cJSON *expected_value_aul = cJSON_GetObjectItemCaseSensitive(asset_depreciation_record_dtoJSON, "expectedValueAUL");
+    if (expected_value_aul) { 
+    if(!cJSON_IsNumber(expected_value_aul))
+    {
+    goto end; //Numeric
     }
     }
 
@@ -377,14 +487,20 @@ asset_depreciation_record_dto_t *asset_depreciation_record_dto_parseFromJSON(cJS
 
 
     asset_depreciation_record_dto_local_var = asset_depreciation_record_dto_create (
-        id ? id_local_object : NULL,
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        business_id ? business_id_local_object : NULL,
-        business_profile_record_id ? business_profile_record_id_local_object : NULL,
-        asset_id ? asset_id_local_object : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
+        asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         asset_name && !cJSON_IsNull(asset_name) ? strdup(asset_name->valuestring) : NULL,
         asset_depreciation_policy_id && !cJSON_IsNull(asset_depreciation_policy_id) ? strdup(asset_depreciation_policy_id->valuestring) : NULL,
         asset_depreciation_policy_name && !cJSON_IsNull(asset_depreciation_policy_name) ? strdup(asset_depreciation_policy_name->valuestring) : NULL,
+        financial_book_id && !cJSON_IsNull(financial_book_id) ? strdup(financial_book_id->valuestring) : NULL,
+        start_date && !cJSON_IsNull(start_date) ? strdup(start_date->valuestring) : NULL,
+        total_depreciations ? total_depreciations->valuedouble : 0,
+        depreciation_frequency ? depreciation_frequency->valuedouble : 0,
+        depreciation_rate ? depreciation_rate->valuedouble : 0,
+        expected_value_aul ? expected_value_aul->valuedouble : 0,
         depreciation_amount ? depreciation_amount->valuedouble : 0,
         accumulated_depreciation ? accumulated_depreciation->valuedouble : 0,
         book_value ? book_value->valuedouble : 0,

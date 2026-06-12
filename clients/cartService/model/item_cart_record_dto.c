@@ -152,9 +152,7 @@ item_cart_record_dto_t *item_cart_record_dto_create(
     char *quote_item_record_id,
     char *business_profile_record_id,
     char *parent_billing_item_record_id,
-    char *cart_id,
-    char *item_id,
-    char *shipping_address_id
+    char *cart_id
     ) {
     item_cart_record_dto_t *item_cart_record_dto_local_var = malloc(sizeof(item_cart_record_dto_t));
     if (!item_cart_record_dto_local_var) {
@@ -273,8 +271,6 @@ item_cart_record_dto_t *item_cart_record_dto_create(
     item_cart_record_dto_local_var->business_profile_record_id = business_profile_record_id;
     item_cart_record_dto_local_var->parent_billing_item_record_id = parent_billing_item_record_id;
     item_cart_record_dto_local_var->cart_id = cart_id;
-    item_cart_record_dto_local_var->item_id = item_id;
-    item_cart_record_dto_local_var->shipping_address_id = shipping_address_id;
 
     return item_cart_record_dto_local_var;
 }
@@ -596,14 +592,6 @@ void item_cart_record_dto_free(item_cart_record_dto_t *item_cart_record_dto) {
     if (item_cart_record_dto->cart_id) {
         free(item_cart_record_dto->cart_id);
         item_cart_record_dto->cart_id = NULL;
-    }
-    if (item_cart_record_dto->item_id) {
-        free(item_cart_record_dto->item_id);
-        item_cart_record_dto->item_id = NULL;
-    }
-    if (item_cart_record_dto->shipping_address_id) {
-        free(item_cart_record_dto->shipping_address_id);
-        item_cart_record_dto->shipping_address_id = NULL;
     }
     free(item_cart_record_dto);
 }
@@ -1512,22 +1500,6 @@ cJSON *item_cart_record_dto_convertToJSON(item_cart_record_dto_t *item_cart_reco
     // item_cart_record_dto->cart_id
     if(item_cart_record_dto->cart_id) {
     if(cJSON_AddStringToObject(item, "cartId", item_cart_record_dto->cart_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // item_cart_record_dto->item_id
-    if(item_cart_record_dto->item_id) {
-    if(cJSON_AddStringToObject(item, "itemID", item_cart_record_dto->item_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // item_cart_record_dto->shipping_address_id
-    if(item_cart_record_dto->shipping_address_id) {
-    if(cJSON_AddStringToObject(item, "shippingAddressID", item_cart_record_dto->shipping_address_id) == NULL) {
     goto fail; //String
     }
     }
@@ -2565,24 +2537,6 @@ item_cart_record_dto_t *item_cart_record_dto_parseFromJSON(cJSON *item_cart_reco
     }
     }
 
-    // item_cart_record_dto->item_id
-    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_cart_record_dtoJSON, "itemID");
-    if (item_id) { 
-    if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // item_cart_record_dto->shipping_address_id
-    cJSON *shipping_address_id = cJSON_GetObjectItemCaseSensitive(item_cart_record_dtoJSON, "shippingAddressID");
-    if (shipping_address_id) { 
-    if(!cJSON_IsString(shipping_address_id) && !cJSON_IsNull(shipping_address_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     item_cart_record_dto_local_var = item_cart_record_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -2697,9 +2651,7 @@ item_cart_record_dto_t *item_cart_record_dto_parseFromJSON(cJSON *item_cart_reco
         quote_item_record_id && !cJSON_IsNull(quote_item_record_id) ? strdup(quote_item_record_id->valuestring) : NULL,
         business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
         parent_billing_item_record_id && !cJSON_IsNull(parent_billing_item_record_id) ? strdup(parent_billing_item_record_id->valuestring) : NULL,
-        cart_id && !cJSON_IsNull(cart_id) ? strdup(cart_id->valuestring) : NULL,
-        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
-        shipping_address_id && !cJSON_IsNull(shipping_address_id) ? strdup(shipping_address_id->valuestring) : NULL
+        cart_id && !cJSON_IsNull(cart_id) ? strdup(cart_id->valuestring) : NULL
         );
 
     return item_cart_record_dto_local_var;

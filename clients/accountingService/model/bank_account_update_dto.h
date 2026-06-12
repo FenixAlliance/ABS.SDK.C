@@ -24,9 +24,9 @@ typedef struct bank_account_update_dto_t {
     char *swift; // string
     char *branch_code; // string
     char *bank_account_number; // string
-    char *qualified_name; // string
     char *bank_id; // string
     char *bank_profile_id; // string
+    char *wallet_id; // string
 
 } bank_account_update_dto_t;
 
@@ -36,9 +36,9 @@ bank_account_update_dto_t *bank_account_update_dto_create(
     char *swift,
     char *branch_code,
     char *bank_account_number,
-    char *qualified_name,
     char *bank_id,
-    char *bank_profile_id
+    char *bank_profile_id,
+    char *wallet_id
 );
 
 void bank_account_update_dto_free(bank_account_update_dto_t *bank_account_update_dto);

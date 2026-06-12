@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**FiscalEnumerationRangesAPI_getInvoiceEnumerationRange**](FiscalEnumerationRangesAPI.md#FiscalEnumerationRangesAPI_getInvoiceEnumerationRange) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/EnumerationRanges/{enumerationRangeId} | Get invoice enumeration range by ID
 [**FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges**](FiscalEnumerationRangesAPI.md#FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{authorityId}/EnumerationRanges | Get invoice enumeration ranges for an authority
 [**FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount**](FiscalEnumerationRangesAPI.md#FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/EnumerationRanges/Count | Get invoice enumeration ranges count
+[**FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync**](FiscalEnumerationRangesAPI.md#FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync) | **PATCH** /api/v2/AccountingService/Fiscals/Authorities/EnumerationRanges/{enumerationRangeId} | Patch an invoice enumeration range
 [**FiscalEnumerationRangesAPI_updateInvoiceEnumerationRange**](FiscalEnumerationRangesAPI.md#FiscalEnumerationRangesAPI_updateInvoiceEnumerationRange) | **PUT** /api/v2/AccountingService/Fiscals/Authorities/EnumerationRanges/{enumerationRangeId} | Update an invoice enumeration range
 
 
@@ -180,6 +181,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync**
+```c
+// Patch an invoice enumeration range
+//
+// Partially updates an invoice enumeration range.
+//
+empty_envelope_t* FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**enumerationRangeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -12,6 +12,7 @@
 #include "../model/expense_type_dto_list_envelope.h"
 #include "../model/expense_type_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create an expense type
@@ -52,6 +53,14 @@ ExpenseTypesAPI_getExpenseTypes(apiClient_t *apiClient, char *tenantId, char *ap
 //
 int32_envelope_t*
 ExpenseTypesAPI_getExpenseTypesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an expense type
+//
+// Partially updates an existing expense type.
+//
+empty_envelope_t*
+ExpenseTypesAPI_patchExpenseType(apiClient_t *apiClient, char *tenantId, char *expenseTypeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an expense type

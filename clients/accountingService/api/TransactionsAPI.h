@@ -5,8 +5,10 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/transaction_category_create_dto.h"
 #include "../model/transaction_category_dto_envelope.h"
 #include "../model/transaction_category_dto_list_envelope.h"
@@ -95,6 +97,22 @@ TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *ap
 //
 int32_envelope_t*
 TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a transaction
+//
+// Partially updates an existing transaction identified by its unique identifier.
+//
+empty_envelope_t*
+TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *transactionId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a transaction category
+//
+// Partially updates an existing transaction category identified by its unique identifier.
+//
+empty_envelope_t*
+TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a transaction

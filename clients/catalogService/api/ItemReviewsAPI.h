@@ -10,6 +10,7 @@
 #include "../model/item_review_dto_envelope.h"
 #include "../model/item_review_dto_list_envelope.h"
 #include "../model/item_review_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a new item review
@@ -42,6 +43,14 @@ ItemReviewsAPI_getItemReviewByIdAsync(apiClient_t *apiClient, char *itemReviewId
 //
 item_review_dto_list_envelope_t*
 ItemReviewsAPI_getItemReviewsAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+
+
+// Patch an item review
+//
+// Partially updates an existing item review for the specified tenant.
+//
+void
+ItemReviewsAPI_patchItemReviewAsync(apiClient_t *apiClient, char *tenantId, char *itemReviewId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item review

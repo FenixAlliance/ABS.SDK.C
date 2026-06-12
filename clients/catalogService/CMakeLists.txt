@@ -55,6 +55,8 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
+    model/batch_stock_item_update_request.c
+    model/bulk_product.c
     model/catalog_item_create_dto.c
     model/catalog_item_dto.c
     model/catalog_item_dto_envelope.c
@@ -154,6 +156,7 @@ set(SRCS
     model/merchant_dto_list_envelope.c
     model/money.c
     model/money_envelope.c
+    model/operation.c
     model/pricing_rule_dto.c
     model/pricing_rule_dto_envelope.c
     model/pricing_rule_dto_list_envelope.c
@@ -197,6 +200,8 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
+    model/batch_stock_item_update_request.h
+    model/bulk_product.h
     model/catalog_item_create_dto.h
     model/catalog_item_dto.h
     model/catalog_item_dto_envelope.h
@@ -296,6 +301,7 @@ set(HDRS
     model/merchant_dto_list_envelope.h
     model/money.h
     model/money_envelope.h
+    model/operation.h
     model/pricing_rule_dto.h
     model/pricing_rule_dto_envelope.h
     model/pricing_rule_dto_list_envelope.h

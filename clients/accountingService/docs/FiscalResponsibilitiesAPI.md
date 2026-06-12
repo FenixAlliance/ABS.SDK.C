@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**FiscalResponsibilitiesAPI_getFiscalResponsibilities**](FiscalResponsibilitiesAPI.md#FiscalResponsibilitiesAPI_getFiscalResponsibilities) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{authorityId}/FiscalResponsibilities | Get fiscal responsibilities for an authority
 [**FiscalResponsibilitiesAPI_getFiscalResponsibilitiesCount**](FiscalResponsibilitiesAPI.md#FiscalResponsibilitiesAPI_getFiscalResponsibilitiesCount) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalResponsibilities/Count | Get fiscal responsibilities count
 [**FiscalResponsibilitiesAPI_getFiscalResponsibility**](FiscalResponsibilitiesAPI.md#FiscalResponsibilitiesAPI_getFiscalResponsibility) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalResponsibilities/{fiscalResponsibilityId} | Get fiscal responsibility by ID
+[**FiscalResponsibilitiesAPI_patchFiscalResponsibilityAsync**](FiscalResponsibilitiesAPI.md#FiscalResponsibilitiesAPI_patchFiscalResponsibilityAsync) | **PATCH** /api/v2/AccountingService/Fiscals/Authorities/FiscalResponsibilities/{fiscalResponsibilityId} | Patch a fiscal responsibility
 [**FiscalResponsibilitiesAPI_updateFiscalResponsibility**](FiscalResponsibilitiesAPI.md#FiscalResponsibilitiesAPI_updateFiscalResponsibility) | **PUT** /api/v2/AccountingService/Fiscals/Authorities/FiscalResponsibilities/{fiscalResponsibilityId} | Update a fiscal responsibility
 
 
@@ -180,6 +181,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **FiscalResponsibilitiesAPI_patchFiscalResponsibilityAsync**
+```c
+// Patch a fiscal responsibility
+//
+// Partially updates a fiscal responsibility.
+//
+empty_envelope_t* FiscalResponsibilitiesAPI_patchFiscalResponsibilityAsync(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**fiscalResponsibilityId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

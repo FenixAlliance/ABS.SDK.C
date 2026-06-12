@@ -25,7 +25,7 @@ typedef struct item_question_dto_t {
     int needs_revision; //boolean
     char *question; // string
     char *social_profile_id; // string
-    char *business_id; // string
+    char *tenant_id; // string
     char *item_id; // string
 
 } item_question_dto_t;
@@ -37,7 +37,7 @@ item_question_dto_t *item_question_dto_create(
     int needs_revision,
     char *question,
     char *social_profile_id,
-    char *business_id,
+    char *tenant_id,
     char *item_id
 );
 

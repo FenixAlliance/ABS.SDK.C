@@ -20,12 +20,14 @@ typedef struct item_family_update_dto_t item_family_update_dto_t;
 
 typedef struct item_family_update_dto_t {
     char *name; // string
+    char *code; // string
     char *description; // string
 
 } item_family_update_dto_t;
 
 item_family_update_dto_t *item_family_update_dto_create(
     char *name,
+    char *code,
     char *description
 );
 

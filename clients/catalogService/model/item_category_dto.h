@@ -30,8 +30,8 @@ typedef struct item_category_dto_t {
     int enable_for_licenses; //boolean
     int enable_for_services; //boolean
     int enable_for_subscriptions; //boolean
-    char *business_id; // string
-    char *business_profile_record_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
     char *parent_item_category_id; // string
 
 } item_category_dto_t;
@@ -48,8 +48,8 @@ item_category_dto_t *item_category_dto_create(
     int enable_for_licenses,
     int enable_for_services,
     int enable_for_subscriptions,
-    char *business_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *parent_item_category_id
 );
 

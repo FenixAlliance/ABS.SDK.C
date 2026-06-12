@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ItemFamiliesAPI_getItemFamiliesAsync**](ItemFamiliesAPI.md#ItemFamiliesAPI_getItemFamiliesAsync) | **GET** /api/v2/CatalogService/ItemFamilies | Get all item families
 [**ItemFamiliesAPI_getItemFamiliesCountAsync**](ItemFamiliesAPI.md#ItemFamiliesAPI_getItemFamiliesCountAsync) | **GET** /api/v2/CatalogService/ItemFamilies/Count | Get item families count
 [**ItemFamiliesAPI_getItemFamilyByIdAsync**](ItemFamiliesAPI.md#ItemFamiliesAPI_getItemFamilyByIdAsync) | **GET** /api/v2/CatalogService/ItemFamilies/{itemFamilyId} | Get item family by ID
+[**ItemFamiliesAPI_patchItemFamilyAsync**](ItemFamiliesAPI.md#ItemFamiliesAPI_patchItemFamilyAsync) | **PATCH** /api/v2/CatalogService/ItemFamilies/{itemFamilyId} | Patch an item family
 [**ItemFamiliesAPI_updateItemFamilyAsync**](ItemFamiliesAPI.md#ItemFamiliesAPI_updateItemFamilyAsync) | **PUT** /api/v2/CatalogService/ItemFamilies/{itemFamilyId} | Update an item family
 
 
@@ -175,6 +176,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemFamiliesAPI_patchItemFamilyAsync**
+```c
+// Patch an item family
+//
+// Partially updates an existing item family for the specified tenant using a JSON Patch document.
+//
+empty_envelope_t* ItemFamiliesAPI_patchItemFamilyAsync(apiClient_t *apiClient, char *tenantId, char *itemFamilyId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**itemFamilyId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

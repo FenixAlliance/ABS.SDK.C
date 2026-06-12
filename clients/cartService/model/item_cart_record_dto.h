@@ -148,8 +148,6 @@ typedef struct item_cart_record_dto_t {
     char *business_profile_record_id; // string
     char *parent_billing_item_record_id; // string
     char *cart_id; // string
-    char *item_id; // string
-    char *shipping_address_id; // string
 
 } item_cart_record_dto_t;
 
@@ -266,9 +264,7 @@ item_cart_record_dto_t *item_cart_record_dto_create(
     char *quote_item_record_id,
     char *business_profile_record_id,
     char *parent_billing_item_record_id,
-    char *cart_id,
-    char *item_id,
-    char *shipping_address_id
+    char *cart_id
 );
 
 void item_cart_record_dto_free(item_cart_record_dto_t *item_cart_record_dto);

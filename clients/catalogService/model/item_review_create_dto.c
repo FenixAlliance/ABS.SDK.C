@@ -77,7 +77,7 @@ cJSON *item_review_create_dto_convertToJSON(item_review_create_dto_t *item_revie
 
     // item_review_create_dto->item_id
     if(item_review_create_dto->item_id) {
-    if(cJSON_AddStringToObject(item, "itemID", item_review_create_dto->item_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemId", item_review_create_dto->item_id) == NULL) {
     goto fail; //String
     }
     }
@@ -101,7 +101,7 @@ cJSON *item_review_create_dto_convertToJSON(item_review_create_dto_t *item_revie
 
     // item_review_create_dto->social_profile_id
     if(item_review_create_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", item_review_create_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", item_review_create_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -137,7 +137,7 @@ item_review_create_dto_t *item_review_create_dto_parseFromJSON(cJSON *item_revie
     }
 
     // item_review_create_dto->item_id
-    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_review_create_dtoJSON, "itemID");
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_review_create_dtoJSON, "itemId");
     if (item_id) { 
     if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
     {
@@ -164,7 +164,7 @@ item_review_create_dto_t *item_review_create_dto_parseFromJSON(cJSON *item_revie
     }
 
     // item_review_create_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(item_review_create_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(item_review_create_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {

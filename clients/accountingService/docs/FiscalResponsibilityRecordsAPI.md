@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord**](FiscalResponsibilityRecordsAPI.md#FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalResponsibilities/{fiscalResponsibilityId}/FiscalResponsibilityRecords/{fiscalResponsibilityRecordId} | Get fiscal responsibility record by ID
 [**FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords**](FiscalResponsibilityRecordsAPI.md#FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalResponsibilities/{fiscalResponsibilityId}/FiscalResponsibilityRecords | Get fiscal responsibility records
 [**FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount**](FiscalResponsibilityRecordsAPI.md#FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalResponsibilities/{fiscalResponsibilityId}/FiscalResponsibilityRecords/Count | Get fiscal responsibility records count
+[**FiscalResponsibilityRecordsAPI_patchFiscalResponsibilityRecordAsync**](FiscalResponsibilityRecordsAPI.md#FiscalResponsibilityRecordsAPI_patchFiscalResponsibilityRecordAsync) | **PATCH** /api/v2/AccountingService/Fiscals/Authorities/FiscalResponsibilityRecords/{fiscalResponsibilityRecordId} | Patch a fiscal responsibility record
 [**FiscalResponsibilityRecordsAPI_updateFiscalResponsibilityRecord**](FiscalResponsibilityRecordsAPI.md#FiscalResponsibilityRecordsAPI_updateFiscalResponsibilityRecord) | **PUT** /api/v2/AccountingService/Fiscals/Authorities/FiscalResponsibilityRecords/{fiscalResponsibilityRecordId} | Update a fiscal responsibility record
 
 
@@ -182,6 +183,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **FiscalResponsibilityRecordsAPI_patchFiscalResponsibilityRecordAsync**
+```c
+// Patch a fiscal responsibility record
+//
+// Partially updates a fiscal responsibility record.
+//
+empty_envelope_t* FiscalResponsibilityRecordsAPI_patchFiscalResponsibilityRecordAsync(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**fiscalResponsibilityRecordId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

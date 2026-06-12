@@ -20,6 +20,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a cost centre
@@ -132,6 +133,30 @@ CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_
 //
 int32_envelope_t*
 CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a cost centre
+//
+// Partially updates an existing cost centre.
+//
+empty_envelope_t*
+CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *costCentreId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a cost centre budget
+//
+// Partially updates an existing cost centre budget.
+//
+empty_envelope_t*
+CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a cost centre group
+//
+// Partially updates an existing cost centre group.
+//
+empty_envelope_t*
+CostCentresAPI_patchCostCentreGroup(apiClient_t *apiClient, char *tenantId, char *groupId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a cost centre

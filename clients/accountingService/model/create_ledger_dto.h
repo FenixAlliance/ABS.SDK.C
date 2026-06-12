@@ -24,8 +24,6 @@ typedef struct create_ledger_dto_t {
     char *name; // string
     char *description; // string
     char *date_time; //date time
-    char *tenant_id; // string
-    char *enrollment_id; // string
     char *ledger_type_id; // string
 
 } create_ledger_dto_t;
@@ -36,8 +34,6 @@ create_ledger_dto_t *create_ledger_dto_create(
     char *name,
     char *description,
     char *date_time,
-    char *tenant_id,
-    char *enrollment_id,
     char *ledger_type_id
 );
 

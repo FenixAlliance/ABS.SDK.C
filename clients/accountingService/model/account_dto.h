@@ -39,6 +39,7 @@ typedef struct account_dto_t {
     char *prefix; // string
     double balance; //numeric
     char *currency_id; // string
+    char *contact_id; // string
     char *account_type; // string
     char *qualified_name; // string
     char *account_type_id; // string
@@ -74,6 +75,7 @@ account_dto_t *account_dto_create(
     char *prefix,
     double balance,
     char *currency_id,
+    char *contact_id,
     char *account_type,
     char *qualified_name,
     char *account_type_id,

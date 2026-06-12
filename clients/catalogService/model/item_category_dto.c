@@ -17,8 +17,8 @@ item_category_dto_t *item_category_dto_create(
     int enable_for_licenses,
     int enable_for_services,
     int enable_for_subscriptions,
-    char *business_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *parent_item_category_id
     ) {
     item_category_dto_t *item_category_dto_local_var = malloc(sizeof(item_category_dto_t));
@@ -36,8 +36,8 @@ item_category_dto_t *item_category_dto_create(
     item_category_dto_local_var->enable_for_licenses = enable_for_licenses;
     item_category_dto_local_var->enable_for_services = enable_for_services;
     item_category_dto_local_var->enable_for_subscriptions = enable_for_subscriptions;
-    item_category_dto_local_var->business_id = business_id;
-    item_category_dto_local_var->business_profile_record_id = business_profile_record_id;
+    item_category_dto_local_var->tenant_id = tenant_id;
+    item_category_dto_local_var->enrollment_id = enrollment_id;
     item_category_dto_local_var->parent_item_category_id = parent_item_category_id;
 
     return item_category_dto_local_var;
@@ -69,13 +69,13 @@ void item_category_dto_free(item_category_dto_t *item_category_dto) {
         free(item_category_dto->image_url);
         item_category_dto->image_url = NULL;
     }
-    if (item_category_dto->business_id) {
-        free(item_category_dto->business_id);
-        item_category_dto->business_id = NULL;
+    if (item_category_dto->tenant_id) {
+        free(item_category_dto->tenant_id);
+        item_category_dto->tenant_id = NULL;
     }
-    if (item_category_dto->business_profile_record_id) {
-        free(item_category_dto->business_profile_record_id);
-        item_category_dto->business_profile_record_id = NULL;
+    if (item_category_dto->enrollment_id) {
+        free(item_category_dto->enrollment_id);
+        item_category_dto->enrollment_id = NULL;
     }
     if (item_category_dto->parent_item_category_id) {
         free(item_category_dto->parent_item_category_id);
@@ -175,17 +175,17 @@ cJSON *item_category_dto_convertToJSON(item_category_dto_t *item_category_dto) {
     }
 
 
-    // item_category_dto->business_id
-    if(item_category_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", item_category_dto->business_id) == NULL) {
+    // item_category_dto->tenant_id
+    if(item_category_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", item_category_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // item_category_dto->business_profile_record_id
-    if(item_category_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", item_category_dto->business_profile_record_id) == NULL) {
+    // item_category_dto->enrollment_id
+    if(item_category_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", item_category_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -193,7 +193,7 @@ cJSON *item_category_dto_convertToJSON(item_category_dto_t *item_category_dto) {
 
     // item_category_dto->parent_item_category_id
     if(item_category_dto->parent_item_category_id) {
-    if(cJSON_AddStringToObject(item, "parentItemCategoryID", item_category_dto->parent_item_category_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentItemCategoryId", item_category_dto->parent_item_category_id) == NULL) {
     goto fail; //String
     }
     }
@@ -309,26 +309,26 @@ item_category_dto_t *item_category_dto_parseFromJSON(cJSON *item_category_dtoJSO
     }
     }
 
-    // item_category_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_category_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // item_category_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(item_category_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
-    // item_category_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(item_category_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // item_category_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(item_category_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
     }
 
     // item_category_dto->parent_item_category_id
-    cJSON *parent_item_category_id = cJSON_GetObjectItemCaseSensitive(item_category_dtoJSON, "parentItemCategoryID");
+    cJSON *parent_item_category_id = cJSON_GetObjectItemCaseSensitive(item_category_dtoJSON, "parentItemCategoryId");
     if (parent_item_category_id) { 
     if(!cJSON_IsString(parent_item_category_id) && !cJSON_IsNull(parent_item_category_id))
     {
@@ -349,8 +349,8 @@ item_category_dto_t *item_category_dto_parseFromJSON(cJSON *item_category_dtoJSO
         enable_for_licenses ? enable_for_licenses->valueint : 0,
         enable_for_services ? enable_for_services->valueint : 0,
         enable_for_subscriptions ? enable_for_subscriptions->valueint : 0,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         parent_item_category_id && !cJSON_IsNull(parent_item_category_id) ? strdup(parent_item_category_id->valuestring) : NULL
         );
 

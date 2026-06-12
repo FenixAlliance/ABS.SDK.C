@@ -22,13 +22,15 @@ typedef struct account_relation_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *account_id; // string
+    char *type; // string
 
 } account_relation_create_dto_t;
 
 account_relation_create_dto_t *account_relation_create_dto_create(
     char *id,
     char *timestamp,
-    char *account_id
+    char *account_id,
+    char *type
 );
 
 void account_relation_create_dto_free(account_relation_create_dto_t *account_relation_create_dto);

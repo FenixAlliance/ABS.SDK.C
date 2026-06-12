@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a new asset transfer
@@ -52,6 +53,14 @@ AssetTransfersAPI_getAssetTransfersAsync(apiClient_t *apiClient, char *tenantId)
 //
 int32_envelope_t*
 AssetTransfersAPI_getAssetTransfersCountAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Partially updates an existing asset transfer
+//
+// Applies a JSON Patch document to an existing asset transfer for the authenticated tenant.
+//
+empty_envelope_t*
+AssetTransfersAPI_patchAssetTransferAsync(apiClient_t *apiClient, char *tenantId, char *transferId, list_t *operation);
 
 
 // Updates an existing asset transfer

@@ -34,6 +34,7 @@ typedef struct account_update_dto_t {
     char *path; // string
     char *prefix; // string
     char *currency_id; // string
+    char *contact_id; // string
     char *account_type_id; // string
     char *parent_account_id; // string
     accountingservice_account_update_dto_ACCOUNTCATEGORY_e account_category; //enum
@@ -48,6 +49,7 @@ account_update_dto_t *account_update_dto_create(
     char *path,
     char *prefix,
     char *currency_id,
+    char *contact_id,
     char *account_type_id,
     char *parent_account_id,
     accountingservice_account_update_dto_ACCOUNTCATEGORY_e account_category

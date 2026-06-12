@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**AccountGroupsAPI_getAccountGroup**](AccountGroupsAPI.md#AccountGroupsAPI_getAccountGroup) | **GET** /api/v2/AccountingService/AccountGroups/{accountGroupId} | Gets the current tenant account group
 [**AccountGroupsAPI_getAccountGroups**](AccountGroupsAPI.md#AccountGroupsAPI_getAccountGroups) | **GET** /api/v2/AccountingService/AccountGroups | Gets the current tenant account groups
 [**AccountGroupsAPI_getAccountGroupsCountAsync**](AccountGroupsAPI.md#AccountGroupsAPI_getAccountGroupsCountAsync) | **GET** /api/v2/AccountingService/AccountGroups/Count | Gets the current tenant accounts count
+[**AccountGroupsAPI_patchAccountGroupAsync**](AccountGroupsAPI.md#AccountGroupsAPI_patchAccountGroupAsync) | **PATCH** /api/v2/AccountingService/AccountGroups/{accountGroupId} | Patch an account group
 [**AccountGroupsAPI_updateAccountGroup**](AccountGroupsAPI.md#AccountGroupsAPI_updateAccountGroup) | **PUT** /api/v2/AccountingService/AccountGroups/{accountGroupId} | Updates an existing account group
 
 
@@ -175,6 +176,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AccountGroupsAPI_patchAccountGroupAsync**
+```c
+// Patch an account group
+//
+// Partially updates an account group.
+//
+empty_envelope_t* AccountGroupsAPI_patchAccountGroupAsync(apiClient_t *apiClient, char *tenantId, char *accountGroupId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**accountGroupId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

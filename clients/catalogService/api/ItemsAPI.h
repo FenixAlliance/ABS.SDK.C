@@ -5,6 +5,8 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/batch_stock_item_update_request.h"
+#include "../model/bulk_product.h"
 #include "../model/catalog_item_create_dto.h"
 #include "../model/catalog_item_dto_envelope.h"
 #include "../model/catalog_item_dto_list_envelope.h"
@@ -46,8 +48,25 @@
 #include "../model/item_warranty_policy_dto_envelope.h"
 #include "../model/item_warranty_policy_dto_list_envelope.h"
 #include "../model/money_envelope.h"
+#include "../model/operation.h"
 #include "../model/pricing_rule_dto_envelope.h"
 #include "../model/pricing_rule_dto_list_envelope.h"
+
+
+// Bulk-update stock items
+//
+// Applies a targeted bulk operation (set flags, add/remove tax policies) to many items atomically.
+//
+void
+ItemsAPI_batchUpdateStockItems(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, batch_stock_item_update_request_t *batch_stock_item_update_request);
+
+
+// Bulk upsert stock items from rows
+//
+// Updates scalar fields of matching tenant-owned items or creates new ones, all in one transaction.
+//
+void
+ItemsAPI_bulkUpsertStockItems(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *bulk_product);
 
 
 // Count tags for a stock item
@@ -384,6 +403,22 @@ ItemsAPI_getStockItemsOdataMinPrice(apiClient_t *apiClient, char *tenantId, char
 //
 catalog_item_dto_list_envelope_t*
 ItemsAPI_getStockItemsQuery(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a stock item
+//
+// Partially updates an existing stock item for the specified tenant and item ID.
+//
+void
+ItemsAPI_patchStockItem(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Recalculate stock item prices
+//
+// Recomputes derived prices for the given tenant-owned items via the pricing service, atomically.
+//
+void
+ItemsAPI_recalculateStockItemPrices(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *request_body);
 
 
 // Relate attachment to stock item

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**FiscalAuthorityYearsAPI_getFiscalYear**](FiscalAuthorityYearsAPI.md#FiscalAuthorityYearsAPI_getFiscalYear) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalYears/{fiscalYearId} | Get fiscal year by ID for an authority
 [**FiscalAuthorityYearsAPI_getFiscalYears**](FiscalAuthorityYearsAPI.md#FiscalAuthorityYearsAPI_getFiscalYears) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{authorityId}/FiscalYears | Get fiscal years for an authority
 [**FiscalAuthorityYearsAPI_getFiscalYearsCount**](FiscalAuthorityYearsAPI.md#FiscalAuthorityYearsAPI_getFiscalYearsCount) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/FiscalYears/Count | Get fiscal years count for an authority
+[**FiscalAuthorityYearsAPI_patchFiscalAuthorityYearAsync**](FiscalAuthorityYearsAPI.md#FiscalAuthorityYearsAPI_patchFiscalAuthorityYearAsync) | **PATCH** /api/v2/AccountingService/Fiscals/Authorities/FiscalYears/{fiscalYearId} | Patch a fiscal authority year
 [**FiscalAuthorityYearsAPI_updateFiscalYear**](FiscalAuthorityYearsAPI.md#FiscalAuthorityYearsAPI_updateFiscalYear) | **PUT** /api/v2/AccountingService/Fiscals/Authorities/FiscalYears/{fiscalYearId} | Update a fiscal year
 
 
@@ -180,6 +181,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **FiscalAuthorityYearsAPI_patchFiscalAuthorityYearAsync**
+```c
+// Patch a fiscal authority year
+//
+// Partially updates a fiscal authority year.
+//
+empty_envelope_t* FiscalAuthorityYearsAPI_patchFiscalAuthorityYearAsync(apiClient_t *apiClient, char *tenantId, char *fiscalYearId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**fiscalYearId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

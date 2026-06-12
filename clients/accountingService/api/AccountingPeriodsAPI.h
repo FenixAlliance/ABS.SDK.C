@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a new accounting period
@@ -52,6 +53,14 @@ AccountingPeriodsAPI_getAccountingPeriods(apiClient_t *apiClient, char *tenantId
 //
 int32_envelope_t*
 AccountingPeriodsAPI_getAccountingPeriodsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an accounting period
+//
+// Partially updates an accounting period.
+//
+empty_envelope_t*
+AccountingPeriodsAPI_patchAccountingPeriodAsync(apiClient_t *apiClient, char *tenantId, char *accountingPeriodId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates an existing accounting period

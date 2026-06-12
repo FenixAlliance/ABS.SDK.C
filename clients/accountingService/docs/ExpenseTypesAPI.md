@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ExpenseTypesAPI_getExpenseType**](ExpenseTypesAPI.md#ExpenseTypesAPI_getExpenseType) | **GET** /api/v2/AccountingService/ExpenseTypes/{expenseTypeId} | Get an expense type by id
 [**ExpenseTypesAPI_getExpenseTypes**](ExpenseTypesAPI.md#ExpenseTypesAPI_getExpenseTypes) | **GET** /api/v2/AccountingService/ExpenseTypes | Get all expense types for a tenant
 [**ExpenseTypesAPI_getExpenseTypesCount**](ExpenseTypesAPI.md#ExpenseTypesAPI_getExpenseTypesCount) | **GET** /api/v2/AccountingService/ExpenseTypes/Count | Get the count of expense types for a tenant
+[**ExpenseTypesAPI_patchExpenseType**](ExpenseTypesAPI.md#ExpenseTypesAPI_patchExpenseType) | **PATCH** /api/v2/AccountingService/ExpenseTypes/{expenseTypeId} | Patch an expense type
 [**ExpenseTypesAPI_updateExpenseType**](ExpenseTypesAPI.md#ExpenseTypesAPI_updateExpenseType) | **PUT** /api/v2/AccountingService/ExpenseTypes/{expenseTypeId} | Update an expense type
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ExpenseTypesAPI_patchExpenseType**
+```c
+// Patch an expense type
+//
+// Partially updates an existing expense type.
+//
+empty_envelope_t* ExpenseTypesAPI_patchExpenseType(apiClient_t *apiClient, char *tenantId, char *expenseTypeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**expenseTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

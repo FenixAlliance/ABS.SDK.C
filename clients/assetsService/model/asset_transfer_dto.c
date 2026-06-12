@@ -8,8 +8,8 @@
 asset_transfer_dto_t *asset_transfer_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *asset_id,
     char *asset_name,
     int is_root_transfer,
@@ -36,8 +36,8 @@ asset_transfer_dto_t *asset_transfer_dto_create(
     }
     asset_transfer_dto_local_var->id = id;
     asset_transfer_dto_local_var->timestamp = timestamp;
-    asset_transfer_dto_local_var->business_id = business_id;
-    asset_transfer_dto_local_var->business_profile_record_id = business_profile_record_id;
+    asset_transfer_dto_local_var->tenant_id = tenant_id;
+    asset_transfer_dto_local_var->enrollment_id = enrollment_id;
     asset_transfer_dto_local_var->asset_id = asset_id;
     asset_transfer_dto_local_var->asset_name = asset_name;
     asset_transfer_dto_local_var->is_root_transfer = is_root_transfer;
@@ -75,13 +75,13 @@ void asset_transfer_dto_free(asset_transfer_dto_t *asset_transfer_dto) {
         free(asset_transfer_dto->timestamp);
         asset_transfer_dto->timestamp = NULL;
     }
-    if (asset_transfer_dto->business_id) {
-        free(asset_transfer_dto->business_id);
-        asset_transfer_dto->business_id = NULL;
+    if (asset_transfer_dto->tenant_id) {
+        free(asset_transfer_dto->tenant_id);
+        asset_transfer_dto->tenant_id = NULL;
     }
-    if (asset_transfer_dto->business_profile_record_id) {
-        free(asset_transfer_dto->business_profile_record_id);
-        asset_transfer_dto->business_profile_record_id = NULL;
+    if (asset_transfer_dto->enrollment_id) {
+        free(asset_transfer_dto->enrollment_id);
+        asset_transfer_dto->enrollment_id = NULL;
     }
     if (asset_transfer_dto->asset_id) {
         free(asset_transfer_dto->asset_id);
@@ -177,17 +177,17 @@ cJSON *asset_transfer_dto_convertToJSON(asset_transfer_dto_t *asset_transfer_dto
     }
 
 
-    // asset_transfer_dto->business_id
-    if(asset_transfer_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessId", asset_transfer_dto->business_id) == NULL) {
+    // asset_transfer_dto->tenant_id
+    if(asset_transfer_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", asset_transfer_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // asset_transfer_dto->business_profile_record_id
-    if(asset_transfer_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordId", asset_transfer_dto->business_profile_record_id) == NULL) {
+    // asset_transfer_dto->enrollment_id
+    if(asset_transfer_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", asset_transfer_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -374,19 +374,19 @@ asset_transfer_dto_t *asset_transfer_dto_parseFromJSON(cJSON *asset_transfer_dto
     }
     }
 
-    // asset_transfer_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(asset_transfer_dtoJSON, "businessId");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // asset_transfer_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(asset_transfer_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
-    // asset_transfer_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(asset_transfer_dtoJSON, "businessProfileRecordId");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // asset_transfer_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(asset_transfer_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -567,8 +567,8 @@ asset_transfer_dto_t *asset_transfer_dto_parseFromJSON(cJSON *asset_transfer_dto
     asset_transfer_dto_local_var = asset_transfer_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         asset_name && !cJSON_IsNull(asset_name) ? strdup(asset_name->valuestring) : NULL,
         is_root_transfer ? is_root_transfer->valueint : 0,

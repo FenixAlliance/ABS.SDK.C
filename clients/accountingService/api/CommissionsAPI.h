@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/payment_commission_create_dto.h"
 #include "../model/payment_commission_dto_envelope.h"
 #include "../model/payment_commission_dto_list_envelope.h"
@@ -96,6 +97,22 @@ CommissionsAPI_getPaymentCommissionsAsync(apiClient_t *apiClient, char *tenantId
 //
 int32_envelope_t*
 CommissionsAPI_getPaymentCommissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a commission
+//
+// Partially updates an existing commission.
+//
+empty_envelope_t*
+CommissionsAPI_patchCommissionAsync(apiClient_t *apiClient, char *tenantId, char *commissionId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a payment commission
+//
+// Partially updates an existing payment commission.
+//
+empty_envelope_t*
+CommissionsAPI_patchPaymentCommissionAsync(apiClient_t *apiClient, char *tenantId, char *paymentCommissionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a commission

@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tax_class_create_dto.h"
 #include "../model/tax_class_dto_envelope.h"
 #include "../model/tax_class_dto_list_envelope.h"
@@ -52,6 +53,14 @@ TaxClassesAPI_getTaxClasses(apiClient_t *apiClient, char *tenantId, char *api_ve
 //
 int32_envelope_t*
 TaxClassesAPI_getTaxClassesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a tax class
+//
+// Partially updates an existing tax class identified by its unique identifier.
+//
+empty_envelope_t*
+TaxClassesAPI_patchTaxClass(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tax class

@@ -8,8 +8,8 @@
 item_image_dto_t *item_image_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *item_id,
     int is_item_mozaic_bg,
     char *m_d5_hash,
@@ -26,7 +26,7 @@ item_image_dto_t *item_image_dto_create(
     int valid_response,
     char *social_profile_id,
     char *parent_file_upload_id,
-    char *account_holder_id
+    char *user_id
     ) {
     item_image_dto_t *item_image_dto_local_var = malloc(sizeof(item_image_dto_t));
     if (!item_image_dto_local_var) {
@@ -34,8 +34,8 @@ item_image_dto_t *item_image_dto_create(
     }
     item_image_dto_local_var->id = id;
     item_image_dto_local_var->timestamp = timestamp;
-    item_image_dto_local_var->business_id = business_id;
-    item_image_dto_local_var->business_profile_record_id = business_profile_record_id;
+    item_image_dto_local_var->tenant_id = tenant_id;
+    item_image_dto_local_var->enrollment_id = enrollment_id;
     item_image_dto_local_var->item_id = item_id;
     item_image_dto_local_var->is_item_mozaic_bg = is_item_mozaic_bg;
     item_image_dto_local_var->m_d5_hash = m_d5_hash;
@@ -52,7 +52,7 @@ item_image_dto_t *item_image_dto_create(
     item_image_dto_local_var->valid_response = valid_response;
     item_image_dto_local_var->social_profile_id = social_profile_id;
     item_image_dto_local_var->parent_file_upload_id = parent_file_upload_id;
-    item_image_dto_local_var->account_holder_id = account_holder_id;
+    item_image_dto_local_var->user_id = user_id;
 
     return item_image_dto_local_var;
 }
@@ -71,13 +71,13 @@ void item_image_dto_free(item_image_dto_t *item_image_dto) {
         free(item_image_dto->timestamp);
         item_image_dto->timestamp = NULL;
     }
-    if (item_image_dto->business_id) {
-        free(item_image_dto->business_id);
-        item_image_dto->business_id = NULL;
+    if (item_image_dto->tenant_id) {
+        free(item_image_dto->tenant_id);
+        item_image_dto->tenant_id = NULL;
     }
-    if (item_image_dto->business_profile_record_id) {
-        free(item_image_dto->business_profile_record_id);
-        item_image_dto->business_profile_record_id = NULL;
+    if (item_image_dto->enrollment_id) {
+        free(item_image_dto->enrollment_id);
+        item_image_dto->enrollment_id = NULL;
     }
     if (item_image_dto->item_id) {
         free(item_image_dto->item_id);
@@ -131,9 +131,9 @@ void item_image_dto_free(item_image_dto_t *item_image_dto) {
         free(item_image_dto->parent_file_upload_id);
         item_image_dto->parent_file_upload_id = NULL;
     }
-    if (item_image_dto->account_holder_id) {
-        free(item_image_dto->account_holder_id);
-        item_image_dto->account_holder_id = NULL;
+    if (item_image_dto->user_id) {
+        free(item_image_dto->user_id);
+        item_image_dto->user_id = NULL;
     }
     free(item_image_dto);
 }
@@ -157,17 +157,17 @@ cJSON *item_image_dto_convertToJSON(item_image_dto_t *item_image_dto) {
     }
 
 
-    // item_image_dto->business_id
-    if(item_image_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", item_image_dto->business_id) == NULL) {
+    // item_image_dto->tenant_id
+    if(item_image_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", item_image_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // item_image_dto->business_profile_record_id
-    if(item_image_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", item_image_dto->business_profile_record_id) == NULL) {
+    // item_image_dto->enrollment_id
+    if(item_image_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", item_image_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -175,7 +175,7 @@ cJSON *item_image_dto_convertToJSON(item_image_dto_t *item_image_dto) {
 
     // item_image_dto->item_id
     if(item_image_dto->item_id) {
-    if(cJSON_AddStringToObject(item, "itemID", item_image_dto->item_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemId", item_image_dto->item_id) == NULL) {
     goto fail; //String
     }
     }
@@ -287,7 +287,7 @@ cJSON *item_image_dto_convertToJSON(item_image_dto_t *item_image_dto) {
 
     // item_image_dto->social_profile_id
     if(item_image_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", item_image_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", item_image_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -295,15 +295,15 @@ cJSON *item_image_dto_convertToJSON(item_image_dto_t *item_image_dto) {
 
     // item_image_dto->parent_file_upload_id
     if(item_image_dto->parent_file_upload_id) {
-    if(cJSON_AddStringToObject(item, "parentFileUploadID", item_image_dto->parent_file_upload_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentFileUploadId", item_image_dto->parent_file_upload_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // item_image_dto->account_holder_id
-    if(item_image_dto->account_holder_id) {
-    if(cJSON_AddStringToObject(item, "accountHolderID", item_image_dto->account_holder_id) == NULL) {
+    // item_image_dto->user_id
+    if(item_image_dto->user_id) {
+    if(cJSON_AddStringToObject(item, "userId", item_image_dto->user_id) == NULL) {
     goto fail; //String
     }
     }
@@ -338,26 +338,26 @@ item_image_dto_t *item_image_dto_parseFromJSON(cJSON *item_image_dtoJSON){
     }
     }
 
-    // item_image_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // item_image_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
-    // item_image_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // item_image_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
     }
 
     // item_image_dto->item_id
-    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "itemID");
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "itemId");
     if (item_id) { 
     if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
     {
@@ -483,7 +483,7 @@ item_image_dto_t *item_image_dto_parseFromJSON(cJSON *item_image_dtoJSON){
     }
 
     // item_image_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {
@@ -492,7 +492,7 @@ item_image_dto_t *item_image_dto_parseFromJSON(cJSON *item_image_dtoJSON){
     }
 
     // item_image_dto->parent_file_upload_id
-    cJSON *parent_file_upload_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "parentFileUploadID");
+    cJSON *parent_file_upload_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "parentFileUploadId");
     if (parent_file_upload_id) { 
     if(!cJSON_IsString(parent_file_upload_id) && !cJSON_IsNull(parent_file_upload_id))
     {
@@ -500,10 +500,10 @@ item_image_dto_t *item_image_dto_parseFromJSON(cJSON *item_image_dtoJSON){
     }
     }
 
-    // item_image_dto->account_holder_id
-    cJSON *account_holder_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "accountHolderID");
-    if (account_holder_id) { 
-    if(!cJSON_IsString(account_holder_id) && !cJSON_IsNull(account_holder_id))
+    // item_image_dto->user_id
+    cJSON *user_id = cJSON_GetObjectItemCaseSensitive(item_image_dtoJSON, "userId");
+    if (user_id) { 
+    if(!cJSON_IsString(user_id) && !cJSON_IsNull(user_id))
     {
     goto end; //String
     }
@@ -513,8 +513,8 @@ item_image_dto_t *item_image_dto_parseFromJSON(cJSON *item_image_dtoJSON){
     item_image_dto_local_var = item_image_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
         is_item_mozaic_bg ? is_item_mozaic_bg->valueint : 0,
         m_d5_hash && !cJSON_IsNull(m_d5_hash) ? strdup(m_d5_hash->valuestring) : NULL,
@@ -531,7 +531,7 @@ item_image_dto_t *item_image_dto_parseFromJSON(cJSON *item_image_dtoJSON){
         valid_response ? valid_response->valueint : 0,
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL,
         parent_file_upload_id && !cJSON_IsNull(parent_file_upload_id) ? strdup(parent_file_upload_id->valuestring) : NULL,
-        account_holder_id && !cJSON_IsNull(account_holder_id) ? strdup(account_holder_id->valuestring) : NULL
+        user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL
         );
 
     return item_image_dto_local_var;

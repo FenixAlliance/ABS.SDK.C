@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**TaxRatesAPI_getTaxRate**](TaxRatesAPI.md#TaxRatesAPI_getTaxRate) | **GET** /api/v2/AccountingService/TaxRates/{id} | Get tax rate by ID
 [**TaxRatesAPI_getTaxRates**](TaxRatesAPI.md#TaxRatesAPI_getTaxRates) | **GET** /api/v2/AccountingService/TaxRates | Get all tax rates for a tenant
 [**TaxRatesAPI_getTaxRatesCount**](TaxRatesAPI.md#TaxRatesAPI_getTaxRatesCount) | **GET** /api/v2/AccountingService/TaxRates/Count | Get tax rates count
+[**TaxRatesAPI_patchTaxRate**](TaxRatesAPI.md#TaxRatesAPI_patchTaxRate) | **PATCH** /api/v2/AccountingService/TaxRates/{id} | Patch a tax rate
 [**TaxRatesAPI_updateTaxRate**](TaxRatesAPI.md#TaxRatesAPI_updateTaxRate) | **PUT** /api/v2/AccountingService/TaxRates/{id} | Update a tax rate
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TaxRatesAPI_patchTaxRate**
+```c
+// Patch a tax rate
+//
+// Partially updates an existing tax rate identified by its unique identifier.
+//
+empty_envelope_t* TaxRatesAPI_patchTaxRate(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**id** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

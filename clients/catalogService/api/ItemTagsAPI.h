@@ -10,6 +10,7 @@
 #include "../model/item_tag_dto_envelope.h"
 #include "../model/item_tag_dto_list_envelope.h"
 #include "../model/item_tag_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a new item tag
@@ -42,6 +43,14 @@ ItemTagsAPI_getItemTagByIdAsync(apiClient_t *apiClient, char *itemTagId, char *t
 //
 item_tag_dto_list_envelope_t*
 ItemTagsAPI_getItemTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item tag
+//
+// Partially updates an existing item tag for the specified tenant.
+//
+void
+ItemTagsAPI_patchItemTagAsync(apiClient_t *apiClient, char *tenantId, char *itemTagId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item tag

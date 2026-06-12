@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**JournalTypesAPI_getJournalTypeDetailsAsync**](JournalTypesAPI.md#JournalTypesAPI_getJournalTypeDetailsAsync) | **GET** /api/v2/AccountingService/JournalTypes/{journalTypeId} | Retrieves a journal type by ID
 [**JournalTypesAPI_getJournalTypesAsync**](JournalTypesAPI.md#JournalTypesAPI_getJournalTypesAsync) | **GET** /api/v2/AccountingService/JournalTypes | Retrieves all journal types
 [**JournalTypesAPI_getJournalTypesCountAsync**](JournalTypesAPI.md#JournalTypesAPI_getJournalTypesCountAsync) | **GET** /api/v2/AccountingService/JournalTypes/Count | Counts journal types
+[**JournalTypesAPI_patchJournalTypeAsync**](JournalTypesAPI.md#JournalTypesAPI_patchJournalTypeAsync) | **PATCH** /api/v2/AccountingService/JournalTypes/{journalTypeId} | Patch a journal type
 [**JournalTypesAPI_updateJournalTypeAsync**](JournalTypesAPI.md#JournalTypesAPI_updateJournalTypeAsync) | **PUT** /api/v2/AccountingService/JournalTypes/{journalTypeId} | Updates an existing journal type
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JournalTypesAPI_patchJournalTypeAsync**
+```c
+// Patch a journal type
+//
+// Partially updates a journal type.
+//
+empty_envelope_t* JournalTypesAPI_patchJournalTypeAsync(apiClient_t *apiClient, char *tenantId, char *journalTypeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**journalTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

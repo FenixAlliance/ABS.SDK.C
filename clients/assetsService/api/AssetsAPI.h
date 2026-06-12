@@ -32,6 +32,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a new asset
@@ -272,6 +273,54 @@ AssetsAPI_getAssets(apiClient_t *apiClient, char *tenantId);
 //
 int32_envelope_t*
 AssetsAPI_getAssetsCount(apiClient_t *apiClient, char *tenantId);
+
+
+// Partially updates an existing asset
+//
+// Applies a JSON Patch document to an existing asset for the authenticated tenant.
+//
+empty_envelope_t*
+AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list_t *operation);
+
+
+// Partially updates an existing asset category
+//
+// Applies a JSON Patch document to an existing asset category for the authenticated tenant.
+//
+empty_envelope_t*
+AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *operation);
+
+
+// Partially updates a depreciation record for an asset
+//
+// Applies a JSON Patch document to an existing depreciation record for the specified asset.
+//
+empty_envelope_t*
+AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, char *assetId, char *recordId, list_t *operation);
+
+
+// Partially updates a repair for an asset
+//
+// Applies a JSON Patch document to an existing repair record for the specified asset.
+//
+empty_envelope_t*
+AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId, char *repairId, list_t *operation);
+
+
+// Partially updates a transfer for an asset
+//
+// Applies a JSON Patch document to an existing transfer record for the specified asset.
+//
+empty_envelope_t*
+AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *assetId, char *transferId, list_t *operation);
+
+
+// Partially updates a value amendment for an asset
+//
+// Applies a JSON Patch document to an existing value amendment record for the specified asset.
+//
+empty_envelope_t*
+AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *assetId, char *amendId, list_t *operation);
 
 
 // Updates an existing asset

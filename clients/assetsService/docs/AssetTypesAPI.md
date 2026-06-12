@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**AssetTypesAPI_getAssetType**](AssetTypesAPI.md#AssetTypesAPI_getAssetType) | **GET** /api/v2/AssetsService/AssetTypes/{typeId} | Gets a specific asset type
 [**AssetTypesAPI_getAssetTypes**](AssetTypesAPI.md#AssetTypesAPI_getAssetTypes) | **GET** /api/v2/AssetsService/AssetTypes | Gets all asset types for the current tenant
 [**AssetTypesAPI_getAssetTypesCount**](AssetTypesAPI.md#AssetTypesAPI_getAssetTypesCount) | **GET** /api/v2/AssetsService/AssetTypes/count | Gets the count of asset types
+[**AssetTypesAPI_patchAssetType**](AssetTypesAPI.md#AssetTypesAPI_patchAssetType) | **PATCH** /api/v2/AssetsService/AssetTypes/{typeId} | Partially updates an existing asset type
 [**AssetTypesAPI_updateAssetType**](AssetTypesAPI.md#AssetTypesAPI_updateAssetType) | **PUT** /api/v2/AssetsService/AssetTypes/{typeId} | Updates an existing asset type
 
 
@@ -165,6 +166,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AssetTypesAPI_patchAssetType**
+```c
+// Partially updates an existing asset type
+//
+// Applies a JSON Patch document to an existing asset type for the authenticated tenant.
+//
+empty_envelope_t* AssetTypesAPI_patchAssetType(apiClient_t *apiClient, char *tenantId, char *_typeId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**_typeId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

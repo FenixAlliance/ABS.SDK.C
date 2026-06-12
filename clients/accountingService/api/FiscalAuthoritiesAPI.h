@@ -12,6 +12,7 @@
 #include "../model/fiscal_authority_dto_list_envelope.h"
 #include "../model/fiscal_authority_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a fiscal authority
@@ -52,6 +53,14 @@ FiscalAuthoritiesAPI_getFiscalAuthoritiesCount(apiClient_t *apiClient, char *ten
 //
 fiscal_authority_dto_envelope_t*
 FiscalAuthoritiesAPI_getFiscalAuthority(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version);
+
+
+// Patch a fiscal authority
+//
+// Partially updates a fiscal authority.
+//
+empty_envelope_t*
+FiscalAuthoritiesAPI_patchFiscalAuthorityAsync(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a fiscal authority

@@ -28,7 +28,7 @@ typedef struct item_brand_dto_t {
     char *logo_url; // string
     int featured; //boolean
     int trending; //boolean
-    char *business_id; // string
+    char *tenant_id; // string
 
 } item_brand_dto_t;
 
@@ -42,7 +42,7 @@ item_brand_dto_t *item_brand_dto_create(
     char *logo_url,
     int featured,
     int trending,
-    char *business_id
+    char *tenant_id
 );
 
 void item_brand_dto_free(item_brand_dto_t *item_brand_dto);

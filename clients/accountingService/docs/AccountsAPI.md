@@ -38,6 +38,9 @@ Method | HTTP request | Description
 [**AccountsAPI_getDebitAccountEntriesAsync**](AccountsAPI.md#AccountsAPI_getDebitAccountEntriesAsync) | **GET** /api/v2/AccountingService/Accounts/{accountId}/Entries/Debit | Get debit account entries
 [**AccountsAPI_getRootAccountsAsync**](AccountsAPI.md#AccountsAPI_getRootAccountsAsync) | **GET** /api/v2/AccountingService/Accounts/Root | Get root accounts
 [**AccountsAPI_patchAccountAsync**](AccountsAPI.md#AccountsAPI_patchAccountAsync) | **PATCH** /api/v2/AccountingService/Accounts/{accountId} | Patch an account
+[**AccountsAPI_patchAccountEntryAsync**](AccountsAPI.md#AccountsAPI_patchAccountEntryAsync) | **PATCH** /api/v2/AccountingService/Accounts/{accountId}/Entries/{entryId} | Patch account entry
+[**AccountsAPI_patchAccountRelationAsync**](AccountsAPI.md#AccountsAPI_patchAccountRelationAsync) | **PATCH** /api/v2/AccountingService/Accounts/Relations/{accountRelationId} | Patch account relation
+[**AccountsAPI_patchAccountTypeAsync**](AccountsAPI.md#AccountsAPI_patchAccountTypeAsync) | **PATCH** /api/v2/AccountingService/Accounts/Types/{accountTypeId} | Patch account type
 [**AccountsAPI_seedChartOfAccountsAsync**](AccountsAPI.md#AccountsAPI_seedChartOfAccountsAsync) | **POST** /api/v2/AccountingService/Accounts/ChartsOfAccounts/Seed | Seed chart of accounts
 [**AccountsAPI_updateAccountAsync**](AccountsAPI.md#AccountsAPI_updateAccountAsync) | **PUT** /api/v2/AccountingService/Accounts/{accountId} | Update an account
 [**AccountsAPI_updateAccountEntryAsync**](AccountsAPI.md#AccountsAPI_updateAccountEntryAsync) | **PUT** /api/v2/AccountingService/Accounts/{accountId}/Entries/{entryId} | Update account entry
@@ -1182,6 +1185,113 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **accountId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AccountsAPI_patchAccountEntryAsync**
+```c
+// Patch account entry
+//
+// Patch account entry.
+//
+empty_envelope_t* AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**accountId** | **char \*** |  | 
+**entryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AccountsAPI_patchAccountRelationAsync**
+```c
+// Patch account relation
+//
+// Patch account relation.
+//
+empty_envelope_t* AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, char *accountRelationId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**accountRelationId** | **char \*** |  | 
+**accountId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AccountsAPI_patchAccountTypeAsync**
+```c
+// Patch account type
+//
+// Patch account type.
+//
+empty_envelope_t* AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**accountTypeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **operation** | **[list_t](operation.md) \*** |  | [optional] 

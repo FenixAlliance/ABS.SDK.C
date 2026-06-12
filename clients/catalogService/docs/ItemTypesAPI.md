@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ItemTypesAPI_deleteItemTypeAsync**](ItemTypesAPI.md#ItemTypesAPI_deleteItemTypeAsync) | **DELETE** /api/v2/CatalogService/ItemTypes/{itemTypeID} | Delete an item type
 [**ItemTypesAPI_getItemTypeByIdAsync**](ItemTypesAPI.md#ItemTypesAPI_getItemTypeByIdAsync) | **GET** /api/v2/CatalogService/ItemTypes/{itemTypeID} | Get item type by ID
 [**ItemTypesAPI_getItemTypesAsync**](ItemTypesAPI.md#ItemTypesAPI_getItemTypesAsync) | **GET** /api/v2/CatalogService/ItemTypes | Get all item types
+[**ItemTypesAPI_patchItemTypeAsync**](ItemTypesAPI.md#ItemTypesAPI_patchItemTypeAsync) | **PATCH** /api/v2/CatalogService/ItemTypes/{itemTypeID} | Patch an item type
 [**ItemTypesAPI_updateItemTypeAsync**](ItemTypesAPI.md#ItemTypesAPI_updateItemTypeAsync) | **PUT** /api/v2/CatalogService/ItemTypes/{itemTypeID} | Update an item type
 
 
@@ -176,6 +177,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemTypesAPI_patchItemTypeAsync**
+```c
+// Patch an item type
+//
+// Partially updates an existing item type for the specified tenant.
+//
+void ItemTypesAPI_patchItemTypeAsync(apiClient_t *apiClient, char *tenantId, char *itemTypeID, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**itemTypeID** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

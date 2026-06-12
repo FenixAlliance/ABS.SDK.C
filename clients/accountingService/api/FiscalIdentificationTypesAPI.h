@@ -12,6 +12,7 @@
 #include "../model/fiscal_identification_type_dto_list_envelope.h"
 #include "../model/fiscal_identification_type_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a fiscal identification type
@@ -52,6 +53,14 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient
 //
 int32_envelope_t*
 FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version);
+
+
+// Patch a fiscal identification type
+//
+// Partially updates a fiscal identification type.
+//
+empty_envelope_t*
+FiscalIdentificationTypesAPI_patchFiscalIdentificationTypeAsync(apiClient_t *apiClient, char *tenantId, char *identificationTypeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a fiscal identification type

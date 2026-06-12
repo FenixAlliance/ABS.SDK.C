@@ -12,7 +12,7 @@ item_bundle_dto_t *item_bundle_dto_create(
     char *code,
     char *description,
     int disabled,
-    char *business_id
+    char *tenant_id
     ) {
     item_bundle_dto_t *item_bundle_dto_local_var = malloc(sizeof(item_bundle_dto_t));
     if (!item_bundle_dto_local_var) {
@@ -24,7 +24,7 @@ item_bundle_dto_t *item_bundle_dto_create(
     item_bundle_dto_local_var->code = code;
     item_bundle_dto_local_var->description = description;
     item_bundle_dto_local_var->disabled = disabled;
-    item_bundle_dto_local_var->business_id = business_id;
+    item_bundle_dto_local_var->tenant_id = tenant_id;
 
     return item_bundle_dto_local_var;
 }
@@ -55,9 +55,9 @@ void item_bundle_dto_free(item_bundle_dto_t *item_bundle_dto) {
         free(item_bundle_dto->description);
         item_bundle_dto->description = NULL;
     }
-    if (item_bundle_dto->business_id) {
-        free(item_bundle_dto->business_id);
-        item_bundle_dto->business_id = NULL;
+    if (item_bundle_dto->tenant_id) {
+        free(item_bundle_dto->tenant_id);
+        item_bundle_dto->tenant_id = NULL;
     }
     free(item_bundle_dto);
 }
@@ -113,9 +113,9 @@ cJSON *item_bundle_dto_convertToJSON(item_bundle_dto_t *item_bundle_dto) {
     }
 
 
-    // item_bundle_dto->business_id
-    if(item_bundle_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", item_bundle_dto->business_id) == NULL) {
+    // item_bundle_dto->tenant_id
+    if(item_bundle_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", item_bundle_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -186,10 +186,10 @@ item_bundle_dto_t *item_bundle_dto_parseFromJSON(cJSON *item_bundle_dtoJSON){
     }
     }
 
-    // item_bundle_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_bundle_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // item_bundle_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(item_bundle_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -203,7 +203,7 @@ item_bundle_dto_t *item_bundle_dto_parseFromJSON(cJSON *item_bundle_dtoJSON){
         code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         disabled ? disabled->valueint : 0,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
         );
 
     return item_bundle_dto_local_var;

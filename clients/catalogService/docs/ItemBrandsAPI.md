@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ItemBrandsAPI_deleteItemBrandAsync**](ItemBrandsAPI.md#ItemBrandsAPI_deleteItemBrandAsync) | **DELETE** /api/v2/CatalogService/ItemBrands/{itemBrandId} | Delete an item brand
 [**ItemBrandsAPI_getItemBrandByIdAsync**](ItemBrandsAPI.md#ItemBrandsAPI_getItemBrandByIdAsync) | **GET** /api/v2/CatalogService/ItemBrands/{itemBrandId} | Get item brand by ID
 [**ItemBrandsAPI_getItemBrandsAsync**](ItemBrandsAPI.md#ItemBrandsAPI_getItemBrandsAsync) | **GET** /api/v2/CatalogService/ItemBrands | Get all item brands
+[**ItemBrandsAPI_patchItemBrandAsync**](ItemBrandsAPI.md#ItemBrandsAPI_patchItemBrandAsync) | **PATCH** /api/v2/CatalogService/ItemBrands/{itemBrandId} | Patch an item brand
 [**ItemBrandsAPI_updateItemBrandAsync**](ItemBrandsAPI.md#ItemBrandsAPI_updateItemBrandAsync) | **PUT** /api/v2/CatalogService/ItemBrands/{itemBrandId} | Update an item brand
 
 
@@ -141,6 +142,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemBrandsAPI_patchItemBrandAsync**
+```c
+// Patch an item brand
+//
+// Partially updates an existing item brand for the specified tenant.
+//
+void ItemBrandsAPI_patchItemBrandAsync(apiClient_t *apiClient, char *tenantId, char *itemBrandId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**itemBrandId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

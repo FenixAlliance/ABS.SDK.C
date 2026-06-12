@@ -5,12 +5,14 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_bundle_create_dto.h"
 #include "../model/item_bundle_dto_envelope.h"
 #include "../model/item_bundle_dto_list_envelope.h"
 #include "../model/item_bundle_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a new item bundle
@@ -51,6 +53,14 @@ ItemBundlesAPI_getItemBundlesAsync(apiClient_t *apiClient, char *tenantId, char 
 //
 int32_envelope_t*
 ItemBundlesAPI_getItemBundlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item bundle
+//
+// Partially updates an existing item bundle for the specified tenant using a JSON Patch document.
+//
+empty_envelope_t*
+ItemBundlesAPI_patchItemBundleAsync(apiClient_t *apiClient, char *tenantId, char *itemBundleId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item bundle

@@ -9,8 +9,10 @@
 #include "../model/account_group_dto_envelope.h"
 #include "../model/account_group_dto_list_envelope.h"
 #include "../model/account_group_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a new account group
@@ -51,6 +53,14 @@ AccountGroupsAPI_getAccountGroups(apiClient_t *apiClient, char *tenantId, char *
 //
 int32_envelope_t*
 AccountGroupsAPI_getAccountGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an account group
+//
+// Partially updates an account group.
+//
+empty_envelope_t*
+AccountGroupsAPI_patchAccountGroupAsync(apiClient_t *apiClient, char *tenantId, char *accountGroupId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates an existing account group

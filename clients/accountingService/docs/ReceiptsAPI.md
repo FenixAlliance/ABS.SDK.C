@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ReceiptsAPI_getReceiptDetailsAsync**](ReceiptsAPI.md#ReceiptsAPI_getReceiptDetailsAsync) | **GET** /api/v2/AccountingService/Receipts/{receiptId} | Gets details of a receipt
 [**ReceiptsAPI_getReceiptsAsync**](ReceiptsAPI.md#ReceiptsAPI_getReceiptsAsync) | **GET** /api/v2/AccountingService/Receipts | Retrieves tenant receipts
 [**ReceiptsAPI_getReceiptsCountAsync**](ReceiptsAPI.md#ReceiptsAPI_getReceiptsCountAsync) | **GET** /api/v2/AccountingService/Receipts/Count | Gets count of tenant receipts
+[**ReceiptsAPI_patchReceiptAsync**](ReceiptsAPI.md#ReceiptsAPI_patchReceiptAsync) | **PATCH** /api/v2/AccountingService/Receipts/{receiptId} | Patches a receipt
 [**ReceiptsAPI_updateReceiptAsync**](ReceiptsAPI.md#ReceiptsAPI_updateReceiptAsync) | **PUT** /api/v2/AccountingService/Receipts/{receiptId} | Updates a receipt
 
 
@@ -166,6 +167,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ReceiptsAPI_patchReceiptAsync**
+```c
+// Patches a receipt
+//
+// Partially updates the specified receipt using a JSON Patch document.
+//
+empty_envelope_t* ReceiptsAPI_patchReceiptAsync(apiClient_t *apiClient, char *tenantId, char *receiptId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**receiptId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

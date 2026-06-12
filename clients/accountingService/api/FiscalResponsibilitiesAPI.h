@@ -12,6 +12,7 @@
 #include "../model/fiscal_responsibility_dto_list_envelope.h"
 #include "../model/fiscal_responsibility_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a fiscal responsibility
@@ -52,6 +53,14 @@ FiscalResponsibilitiesAPI_getFiscalResponsibilitiesCount(apiClient_t *apiClient,
 //
 fiscal_responsibility_dto_envelope_t*
 FiscalResponsibilitiesAPI_getFiscalResponsibility(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
+
+
+// Patch a fiscal responsibility
+//
+// Partially updates a fiscal responsibility.
+//
+empty_envelope_t*
+FiscalResponsibilitiesAPI_patchFiscalResponsibilityAsync(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a fiscal responsibility

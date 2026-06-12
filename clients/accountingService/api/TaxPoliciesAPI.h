@@ -16,6 +16,7 @@
 #include "../model/item_tax_policy_record_dto_envelope.h"
 #include "../model/item_tax_policy_record_dto_list_envelope.h"
 #include "../model/item_tax_policy_record_update_dto.h"
+#include "../model/operation.h"
 #include "../model/tax_policy_create_dto.h"
 #include "../model/tax_policy_dto_envelope.h"
 #include "../model/tax_policy_dto_list_envelope.h"
@@ -140,6 +141,30 @@ TaxPoliciesAPI_getTaxPoliciesCount(apiClient_t *apiClient, char *tenantId, char 
 //
 tax_policy_dto_envelope_t*
 TaxPoliciesAPI_getTaxPolicy(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version);
+
+
+// Patch an applied tax policy record
+//
+// Partially updates an existing applied tax policy record identified by its unique identifier.
+//
+empty_envelope_t*
+TaxPoliciesAPI_patchAppliedTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *appliedTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch an item tax policy record
+//
+// Partially updates an existing item tax policy record identified by its unique identifier.
+//
+empty_envelope_t*
+TaxPoliciesAPI_patchItemTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *itemTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a tax policy
+//
+// Partially updates an existing tax policy identified by its unique identifier.
+//
+empty_envelope_t*
+TaxPoliciesAPI_patchTaxPolicy(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an applied tax policy record

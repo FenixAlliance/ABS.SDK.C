@@ -9,6 +9,7 @@ account_relation_dto_t *account_relation_dto_create(
     char *id,
     char *timestamp,
     char *account_id,
+    char *type,
     char *tenant_id,
     char *enrollment_id
     ) {
@@ -19,6 +20,7 @@ account_relation_dto_t *account_relation_dto_create(
     account_relation_dto_local_var->id = id;
     account_relation_dto_local_var->timestamp = timestamp;
     account_relation_dto_local_var->account_id = account_id;
+    account_relation_dto_local_var->type = type;
     account_relation_dto_local_var->tenant_id = tenant_id;
     account_relation_dto_local_var->enrollment_id = enrollment_id;
 
@@ -42,6 +44,10 @@ void account_relation_dto_free(account_relation_dto_t *account_relation_dto) {
     if (account_relation_dto->account_id) {
         free(account_relation_dto->account_id);
         account_relation_dto->account_id = NULL;
+    }
+    if (account_relation_dto->type) {
+        free(account_relation_dto->type);
+        account_relation_dto->type = NULL;
     }
     if (account_relation_dto->tenant_id) {
         free(account_relation_dto->tenant_id);
@@ -76,6 +82,14 @@ cJSON *account_relation_dto_convertToJSON(account_relation_dto_t *account_relati
     // account_relation_dto->account_id
     if(account_relation_dto->account_id) {
     if(cJSON_AddStringToObject(item, "accountId", account_relation_dto->account_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // account_relation_dto->type
+    if(account_relation_dto->type) {
+    if(cJSON_AddStringToObject(item, "type", account_relation_dto->type) == NULL) {
     goto fail; //String
     }
     }
@@ -135,6 +149,15 @@ account_relation_dto_t *account_relation_dto_parseFromJSON(cJSON *account_relati
     }
     }
 
+    // account_relation_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(account_relation_dtoJSON, "type");
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
+    {
+    goto end; //String
+    }
+    }
+
     // account_relation_dto->tenant_id
     cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(account_relation_dtoJSON, "tenantId");
     if (tenant_id) { 
@@ -158,6 +181,7 @@ account_relation_dto_t *account_relation_dto_parseFromJSON(cJSON *account_relati
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         account_id && !cJSON_IsNull(account_id) ? strdup(account_id->valuestring) : NULL,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );

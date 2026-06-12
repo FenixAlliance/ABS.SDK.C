@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**object_t**](.md) \* |  | [optional] 
+**id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
-**business_id** | [**object_t**](.md) \* |  | [optional] 
-**business_profile_record_id** | [**object_t**](.md) \* |  | [optional] 
-**asset_id** | [**object_t**](.md) \* |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
+**enrollment_id** | **char \*** |  | [optional] 
+**asset_id** | **char \*** |  | [optional] 
 **asset_name** | **char \*** |  | [optional] 
 **repair_status** | **assetsservice_asset_repair_dto_REPAIRSTATUS_e** |  | [optional] 
 **scheduled_date** | **char \*** |  | [optional] 

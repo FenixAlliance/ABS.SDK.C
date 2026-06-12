@@ -7,6 +7,7 @@
 
 item_family_update_dto_t *item_family_update_dto_create(
     char *name,
+    char *code,
     char *description
     ) {
     item_family_update_dto_t *item_family_update_dto_local_var = malloc(sizeof(item_family_update_dto_t));
@@ -14,6 +15,7 @@ item_family_update_dto_t *item_family_update_dto_create(
         return NULL;
     }
     item_family_update_dto_local_var->name = name;
+    item_family_update_dto_local_var->code = code;
     item_family_update_dto_local_var->description = description;
 
     return item_family_update_dto_local_var;
@@ -28,6 +30,10 @@ void item_family_update_dto_free(item_family_update_dto_t *item_family_update_dt
     if (item_family_update_dto->name) {
         free(item_family_update_dto->name);
         item_family_update_dto->name = NULL;
+    }
+    if (item_family_update_dto->code) {
+        free(item_family_update_dto->code);
+        item_family_update_dto->code = NULL;
     }
     if (item_family_update_dto->description) {
         free(item_family_update_dto->description);
@@ -45,6 +51,14 @@ cJSON *item_family_update_dto_convertToJSON(item_family_update_dto_t *item_famil
     }
     if(cJSON_AddStringToObject(item, "name", item_family_update_dto->name) == NULL) {
     goto fail; //String
+    }
+
+
+    // item_family_update_dto->code
+    if(item_family_update_dto->code) {
+    if(cJSON_AddStringToObject(item, "code", item_family_update_dto->code) == NULL) {
+    goto fail; //String
+    }
     }
 
 
@@ -79,6 +93,15 @@ item_family_update_dto_t *item_family_update_dto_parseFromJSON(cJSON *item_famil
     goto end; //String
     }
 
+    // item_family_update_dto->code
+    cJSON *code = cJSON_GetObjectItemCaseSensitive(item_family_update_dtoJSON, "code");
+    if (code) { 
+    if(!cJSON_IsString(code) && !cJSON_IsNull(code))
+    {
+    goto end; //String
+    }
+    }
+
     // item_family_update_dto->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(item_family_update_dtoJSON, "description");
     if (description) { 
@@ -91,6 +114,7 @@ item_family_update_dto_t *item_family_update_dto_parseFromJSON(cJSON *item_famil
 
     item_family_update_dto_local_var = item_family_update_dto_create (
         strdup(name->valuestring),
+        code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
         );
 

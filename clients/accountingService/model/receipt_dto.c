@@ -28,7 +28,7 @@ receipt_dto_t *receipt_dto_create(
     char *payment_id,
     char *tenant_id,
     int closed,
-    char *account_holder_id,
+    char *user_id,
     char *contact_id,
     char *enrollment_id,
     accountingservice_receipt_dto_RECEIPTTYPE_e receipt_type,
@@ -44,7 +44,7 @@ receipt_dto_t *receipt_dto_create(
     receipt_dto_local_var->payment_id = payment_id;
     receipt_dto_local_var->tenant_id = tenant_id;
     receipt_dto_local_var->closed = closed;
-    receipt_dto_local_var->account_holder_id = account_holder_id;
+    receipt_dto_local_var->user_id = user_id;
     receipt_dto_local_var->contact_id = contact_id;
     receipt_dto_local_var->enrollment_id = enrollment_id;
     receipt_dto_local_var->receipt_type = receipt_type;
@@ -76,9 +76,9 @@ void receipt_dto_free(receipt_dto_t *receipt_dto) {
         free(receipt_dto->tenant_id);
         receipt_dto->tenant_id = NULL;
     }
-    if (receipt_dto->account_holder_id) {
-        free(receipt_dto->account_holder_id);
-        receipt_dto->account_holder_id = NULL;
+    if (receipt_dto->user_id) {
+        free(receipt_dto->user_id);
+        receipt_dto->user_id = NULL;
     }
     if (receipt_dto->contact_id) {
         free(receipt_dto->contact_id);
@@ -142,9 +142,9 @@ cJSON *receipt_dto_convertToJSON(receipt_dto_t *receipt_dto) {
     }
 
 
-    // receipt_dto->account_holder_id
-    if(receipt_dto->account_holder_id) {
-    if(cJSON_AddStringToObject(item, "accountHolderId", receipt_dto->account_holder_id) == NULL) {
+    // receipt_dto->user_id
+    if(receipt_dto->user_id) {
+    if(cJSON_AddStringToObject(item, "userId", receipt_dto->user_id) == NULL) {
     goto fail; //String
     }
     }
@@ -247,10 +247,10 @@ receipt_dto_t *receipt_dto_parseFromJSON(cJSON *receipt_dtoJSON){
     }
     }
 
-    // receipt_dto->account_holder_id
-    cJSON *account_holder_id = cJSON_GetObjectItemCaseSensitive(receipt_dtoJSON, "accountHolderId");
-    if (account_holder_id) { 
-    if(!cJSON_IsString(account_holder_id) && !cJSON_IsNull(account_holder_id))
+    // receipt_dto->user_id
+    cJSON *user_id = cJSON_GetObjectItemCaseSensitive(receipt_dtoJSON, "userId");
+    if (user_id) { 
+    if(!cJSON_IsString(user_id) && !cJSON_IsNull(user_id))
     {
     goto end; //String
     }
@@ -310,7 +310,7 @@ receipt_dto_t *receipt_dto_parseFromJSON(cJSON *receipt_dtoJSON){
         payment_id && !cJSON_IsNull(payment_id) ? strdup(payment_id->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         closed ? closed->valueint : 0,
-        account_holder_id && !cJSON_IsNull(account_holder_id) ? strdup(account_holder_id->valuestring) : NULL,
+        user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         receipt_type ? receipt_typeVariable : accountingservice_receipt_dto_RECEIPTTYPE_NULL,

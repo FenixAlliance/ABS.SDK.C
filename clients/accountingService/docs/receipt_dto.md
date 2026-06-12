@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **payment_id** | **char \*** |  | [optional] 
 **tenant_id** | **char \*** |  | [optional] 
 **closed** | **int** |  | [optional] 
-**account_holder_id** | **char \*** |  | [optional] 
+**user_id** | **char \*** |  | [optional] 
 **contact_id** | **char \*** |  | [optional] 
 **enrollment_id** | **char \*** |  | [optional] 
 **receipt_type** | **accountingservice_receipt_dto_RECEIPTTYPE_e** |  | [optional] 

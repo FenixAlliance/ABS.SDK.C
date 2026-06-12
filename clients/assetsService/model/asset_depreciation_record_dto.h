@@ -15,19 +15,24 @@
 
 typedef struct asset_depreciation_record_dto_t asset_depreciation_record_dto_t;
 
-#include "object.h"
 
 
 
 typedef struct asset_depreciation_record_dto_t {
-    object_t *id; //object
+    char *id; // string
     char *timestamp; //date time
-    object_t *business_id; //object
-    object_t *business_profile_record_id; //object
-    object_t *asset_id; //object
+    char *tenant_id; // string
+    char *enrollment_id; // string
+    char *asset_id; // string
     char *asset_name; // string
     char *asset_depreciation_policy_id; // string
     char *asset_depreciation_policy_name; // string
+    char *financial_book_id; // string
+    char *start_date; //date time
+    int total_depreciations; //numeric
+    int depreciation_frequency; //numeric
+    double depreciation_rate; //numeric
+    double expected_value_aul; //numeric
     double depreciation_amount; //numeric
     double accumulated_depreciation; //numeric
     double book_value; //numeric
@@ -39,14 +44,20 @@ typedef struct asset_depreciation_record_dto_t {
 } asset_depreciation_record_dto_t;
 
 asset_depreciation_record_dto_t *asset_depreciation_record_dto_create(
-    object_t *id,
+    char *id,
     char *timestamp,
-    object_t *business_id,
-    object_t *business_profile_record_id,
-    object_t *asset_id,
+    char *tenant_id,
+    char *enrollment_id,
+    char *asset_id,
     char *asset_name,
     char *asset_depreciation_policy_id,
     char *asset_depreciation_policy_name,
+    char *financial_book_id,
+    char *start_date,
+    int total_depreciations,
+    int depreciation_frequency,
+    double depreciation_rate,
+    double expected_value_aul,
     double depreciation_amount,
     double accumulated_depreciation,
     double book_value,

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**FiscalAuthoritiesAPI_getFiscalAuthorities**](FiscalAuthoritiesAPI.md#FiscalAuthoritiesAPI_getFiscalAuthorities) | **GET** /api/v2/AccountingService/Fiscals/Authorities | Get fiscal authorities
 [**FiscalAuthoritiesAPI_getFiscalAuthoritiesCount**](FiscalAuthoritiesAPI.md#FiscalAuthoritiesAPI_getFiscalAuthoritiesCount) | **GET** /api/v2/AccountingService/Fiscals/Authorities/Count | Get fiscal authorities count
 [**FiscalAuthoritiesAPI_getFiscalAuthority**](FiscalAuthoritiesAPI.md#FiscalAuthoritiesAPI_getFiscalAuthority) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{authorityId} | Get fiscal authority by ID
+[**FiscalAuthoritiesAPI_patchFiscalAuthorityAsync**](FiscalAuthoritiesAPI.md#FiscalAuthoritiesAPI_patchFiscalAuthorityAsync) | **PATCH** /api/v2/AccountingService/Fiscals/Authorities/{authorityId} | Patch a fiscal authority
 [**FiscalAuthoritiesAPI_updateFiscalAuthority**](FiscalAuthoritiesAPI.md#FiscalAuthoritiesAPI_updateFiscalAuthority) | **PUT** /api/v2/AccountingService/Fiscals/Authorities/{authorityId} | Update a fiscal authority
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **FiscalAuthoritiesAPI_patchFiscalAuthorityAsync**
+```c
+// Patch a fiscal authority
+//
+// Partially updates a fiscal authority.
+//
+empty_envelope_t* FiscalAuthoritiesAPI_patchFiscalAuthorityAsync(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**authorityId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

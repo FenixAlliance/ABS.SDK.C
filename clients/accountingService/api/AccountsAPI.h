@@ -302,6 +302,30 @@ empty_envelope_t*
 AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
 
 
+// Patch account entry
+//
+// Patch account entry.
+//
+empty_envelope_t*
+AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch account relation
+//
+// Patch account relation.
+//
+empty_envelope_t*
+AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, char *accountRelationId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch account type
+//
+// Patch account type.
+//
+empty_envelope_t*
+AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, list_t *operation);
+
+
 // Seed chart of accounts
 //
 // Seed a chart of accounts from a file URL.

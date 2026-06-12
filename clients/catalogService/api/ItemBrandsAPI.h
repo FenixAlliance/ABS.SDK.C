@@ -10,6 +10,7 @@
 #include "../model/item_brand_dto_envelope.h"
 #include "../model/item_brand_dto_list_envelope.h"
 #include "../model/item_brand_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a new item brand
@@ -42,6 +43,14 @@ ItemBrandsAPI_getItemBrandByIdAsync(apiClient_t *apiClient, char *itemBrandId, c
 //
 item_brand_dto_list_envelope_t*
 ItemBrandsAPI_getItemBrandsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item brand
+//
+// Partially updates an existing item brand for the specified tenant.
+//
+void
+ItemBrandsAPI_patchItemBrandAsync(apiClient_t *apiClient, char *tenantId, char *itemBrandId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item brand

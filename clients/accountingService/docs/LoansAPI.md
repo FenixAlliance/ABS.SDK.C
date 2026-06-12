@@ -19,6 +19,9 @@ Method | HTTP request | Description
 [**LoansAPI_getLoanTypesCountAsync**](LoansAPI.md#LoansAPI_getLoanTypesCountAsync) | **GET** /api/v2/AccountingService/Loans/Types/Count | Counts loan types
 [**LoansAPI_getLoansAsync**](LoansAPI.md#LoansAPI_getLoansAsync) | **GET** /api/v2/AccountingService/Loans | Gets all loans
 [**LoansAPI_getLoansCountAsync**](LoansAPI.md#LoansAPI_getLoansCountAsync) | **GET** /api/v2/AccountingService/Loans/Count | Counts loans
+[**LoansAPI_patchLoanApplicationAsync**](LoansAPI.md#LoansAPI_patchLoanApplicationAsync) | **PATCH** /api/v2/AccountingService/Loans/Applications/{applicationId} | Patches a loan application
+[**LoansAPI_patchLoanAsync**](LoansAPI.md#LoansAPI_patchLoanAsync) | **PATCH** /api/v2/AccountingService/Loans/{loanId} | Patches a loan
+[**LoansAPI_patchLoanTypeAsync**](LoansAPI.md#LoansAPI_patchLoanTypeAsync) | **PATCH** /api/v2/AccountingService/Loans/Types/{loanTypeId} | Patches a loan type
 [**LoansAPI_updateLoanApplicationAsync**](LoansAPI.md#LoansAPI_updateLoanApplicationAsync) | **PUT** /api/v2/AccountingService/Loans/Applications/{applicationId} | Updates a loan application
 [**LoansAPI_updateLoanAsync**](LoansAPI.md#LoansAPI_updateLoanAsync) | **PUT** /api/v2/AccountingService/Loans/{loanId} | Updates a loan
 [**LoansAPI_updateLoanTypeAsync**](LoansAPI.md#LoansAPI_updateLoanTypeAsync) | **PUT** /api/v2/AccountingService/Loans/Types/{loanTypeId} | Updates a loan type
@@ -524,6 +527,111 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LoansAPI_patchLoanApplicationAsync**
+```c
+// Patches a loan application
+//
+// Partially updates the specified loan application using a JSON Patch document.
+//
+empty_envelope_t* LoansAPI_patchLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**applicationId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LoansAPI_patchLoanAsync**
+```c
+// Patches a loan
+//
+// Partially updates the specified loan using a JSON Patch document.
+//
+empty_envelope_t* LoansAPI_patchLoanAsync(apiClient_t *apiClient, char *tenantId, char *loanId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**loanId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LoansAPI_patchLoanTypeAsync**
+```c
+// Patches a loan type
+//
+// Partially updates the specified loan type using a JSON Patch document.
+//
+empty_envelope_t* LoansAPI_patchLoanTypeAsync(apiClient_t *apiClient, char *tenantId, char *loanTypeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**loanTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

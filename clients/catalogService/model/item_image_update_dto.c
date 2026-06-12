@@ -109,7 +109,7 @@ cJSON *item_image_update_dto_convertToJSON(item_image_update_dto_t *item_image_u
     if (!item_image_update_dto->item_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "itemID", item_image_update_dto->item_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemId", item_image_update_dto->item_id) == NULL) {
     goto fail; //String
     }
 
@@ -224,7 +224,7 @@ cJSON *item_image_update_dto_convertToJSON(item_image_update_dto_t *item_image_u
 
     // item_image_update_dto->parent_file_upload_id
     if(item_image_update_dto->parent_file_upload_id) {
-    if(cJSON_AddStringToObject(item, "parentFileUploadID", item_image_update_dto->parent_file_upload_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentFileUploadId", item_image_update_dto->parent_file_upload_id) == NULL) {
     goto fail; //String
     }
     }
@@ -242,7 +242,7 @@ item_image_update_dto_t *item_image_update_dto_parseFromJSON(cJSON *item_image_u
     item_image_update_dto_t *item_image_update_dto_local_var = NULL;
 
     // item_image_update_dto->item_id
-    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_image_update_dtoJSON, "itemID");
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_image_update_dtoJSON, "itemId");
     if (!item_id) {
         goto end;
     }
@@ -383,7 +383,7 @@ item_image_update_dto_t *item_image_update_dto_parseFromJSON(cJSON *item_image_u
     }
 
     // item_image_update_dto->parent_file_upload_id
-    cJSON *parent_file_upload_id = cJSON_GetObjectItemCaseSensitive(item_image_update_dtoJSON, "parentFileUploadID");
+    cJSON *parent_file_upload_id = cJSON_GetObjectItemCaseSensitive(item_image_update_dtoJSON, "parentFileUploadId");
     if (parent_file_upload_id) { 
     if(!cJSON_IsString(parent_file_upload_id) && !cJSON_IsNull(parent_file_upload_id))
     {

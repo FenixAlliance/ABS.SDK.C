@@ -116,8 +116,6 @@ Name | Type | Description | Notes
 **business_profile_record_id** | **char \*** |  | [optional] 
 **parent_billing_item_record_id** | **char \*** |  | [optional] 
 **cart_id** | **char \*** |  | [optional] 
-**item_id** | **char \*** |  | [optional] 
-**shipping_address_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,6 +8,8 @@
 item_tax_policy_record_dto_t *item_tax_policy_record_dto_create(
     char *id,
     char *timestamp,
+    char *tenant_id,
+    char *enrollment_id,
     char *tax_policy_id,
     char *item_price_id,
     char *item_id
@@ -18,6 +20,8 @@ item_tax_policy_record_dto_t *item_tax_policy_record_dto_create(
     }
     item_tax_policy_record_dto_local_var->id = id;
     item_tax_policy_record_dto_local_var->timestamp = timestamp;
+    item_tax_policy_record_dto_local_var->tenant_id = tenant_id;
+    item_tax_policy_record_dto_local_var->enrollment_id = enrollment_id;
     item_tax_policy_record_dto_local_var->tax_policy_id = tax_policy_id;
     item_tax_policy_record_dto_local_var->item_price_id = item_price_id;
     item_tax_policy_record_dto_local_var->item_id = item_id;
@@ -38,6 +42,14 @@ void item_tax_policy_record_dto_free(item_tax_policy_record_dto_t *item_tax_poli
     if (item_tax_policy_record_dto->timestamp) {
         free(item_tax_policy_record_dto->timestamp);
         item_tax_policy_record_dto->timestamp = NULL;
+    }
+    if (item_tax_policy_record_dto->tenant_id) {
+        free(item_tax_policy_record_dto->tenant_id);
+        item_tax_policy_record_dto->tenant_id = NULL;
+    }
+    if (item_tax_policy_record_dto->enrollment_id) {
+        free(item_tax_policy_record_dto->enrollment_id);
+        item_tax_policy_record_dto->enrollment_id = NULL;
     }
     if (item_tax_policy_record_dto->tax_policy_id) {
         free(item_tax_policy_record_dto->tax_policy_id);
@@ -69,6 +81,22 @@ cJSON *item_tax_policy_record_dto_convertToJSON(item_tax_policy_record_dto_t *it
     if(item_tax_policy_record_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", item_tax_policy_record_dto->timestamp) == NULL) {
     goto fail; //Date-Time
+    }
+    }
+
+
+    // item_tax_policy_record_dto->tenant_id
+    if(item_tax_policy_record_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", item_tax_policy_record_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_tax_policy_record_dto->enrollment_id
+    if(item_tax_policy_record_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", item_tax_policy_record_dto->enrollment_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -126,6 +154,24 @@ item_tax_policy_record_dto_t *item_tax_policy_record_dto_parseFromJSON(cJSON *it
     }
     }
 
+    // item_tax_policy_record_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(item_tax_policy_record_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_tax_policy_record_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(item_tax_policy_record_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
+    }
+
     // item_tax_policy_record_dto->tax_policy_id
     cJSON *tax_policy_id = cJSON_GetObjectItemCaseSensitive(item_tax_policy_record_dtoJSON, "taxPolicyId");
     if (tax_policy_id) { 
@@ -157,6 +203,8 @@ item_tax_policy_record_dto_t *item_tax_policy_record_dto_parseFromJSON(cJSON *it
     item_tax_policy_record_dto_local_var = item_tax_policy_record_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         tax_policy_id && !cJSON_IsNull(tax_policy_id) ? strdup(tax_policy_id->valuestring) : NULL,
         item_price_id && !cJSON_IsNull(item_price_id) ? strdup(item_price_id->valuestring) : NULL,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL

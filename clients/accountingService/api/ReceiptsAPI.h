@@ -6,7 +6,9 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
+#include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/receipt_create_dto.h"
 #include "../model/receipt_dto_envelope.h"
 #include "../model/receipt_dto_i_read_only_list_envelope.h"
@@ -51,6 +53,14 @@ ReceiptsAPI_getReceiptsAsync(apiClient_t *apiClient, char *tenantId);
 //
 int32_envelope_t*
 ReceiptsAPI_getReceiptsCountAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Patches a receipt
+//
+// Partially updates the specified receipt using a JSON Patch document.
+//
+empty_envelope_t*
+ReceiptsAPI_patchReceiptAsync(apiClient_t *apiClient, char *tenantId, char *receiptId, list_t *operation);
 
 
 // Updates a receipt

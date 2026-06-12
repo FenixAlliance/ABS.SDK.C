@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**TransactionsAPI_getTransactionCategory**](TransactionsAPI.md#TransactionsAPI_getTransactionCategory) | **GET** /api/v2/AccountingService/Transactions/Categories/{categoryId} | Get transaction category by ID
 [**TransactionsAPI_getTransactions**](TransactionsAPI.md#TransactionsAPI_getTransactions) | **GET** /api/v2/AccountingService/Transactions | Get all transactions for a tenant
 [**TransactionsAPI_getTransactionsCount**](TransactionsAPI.md#TransactionsAPI_getTransactionsCount) | **GET** /api/v2/AccountingService/Transactions/Count | Get transactions count
+[**TransactionsAPI_patchTransaction**](TransactionsAPI.md#TransactionsAPI_patchTransaction) | **PATCH** /api/v2/AccountingService/Transactions/{transactionId} | Patch a transaction
+[**TransactionsAPI_patchTransactionCategory**](TransactionsAPI.md#TransactionsAPI_patchTransactionCategory) | **PATCH** /api/v2/AccountingService/Transactions/Categories/{categoryId} | Patch a transaction category
 [**TransactionsAPI_updateTransaction**](TransactionsAPI.md#TransactionsAPI_updateTransaction) | **PUT** /api/v2/AccountingService/Transactions/{transactionId} | Update a transaction
 [**TransactionsAPI_updateTransactionCategory**](TransactionsAPI.md#TransactionsAPI_updateTransactionCategory) | **PUT** /api/v2/AccountingService/Transactions/Categories/{categoryId} | Update a transaction category
 
@@ -350,6 +352,76 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TransactionsAPI_patchTransaction**
+```c
+// Patch a transaction
+//
+// Partially updates an existing transaction identified by its unique identifier.
+//
+empty_envelope_t* TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *transactionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**transactionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TransactionsAPI_patchTransactionCategory**
+```c
+// Patch a transaction category
+//
+// Partially updates an existing transaction category identified by its unique identifier.
+//
+empty_envelope_t* TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**categoryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

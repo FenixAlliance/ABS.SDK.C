@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a new asset type
@@ -52,6 +53,14 @@ AssetTypesAPI_getAssetTypes(apiClient_t *apiClient, char *tenantId);
 //
 int32_envelope_t*
 AssetTypesAPI_getAssetTypesCount(apiClient_t *apiClient, char *tenantId);
+
+
+// Partially updates an existing asset type
+//
+// Applies a JSON Patch document to an existing asset type for the authenticated tenant.
+//
+empty_envelope_t*
+AssetTypesAPI_patchAssetType(apiClient_t *apiClient, char *tenantId, char *_typeId, list_t *operation);
 
 
 // Updates an existing asset type

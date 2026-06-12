@@ -49,6 +49,7 @@ typedef struct asset_create_dto_t {
     double purchase_price; //numeric
     char *currency_id; // string
     char *item_id; // string
+    char *asset_type_id; // string
     char *asset_category_id; // string
     char *purchase_invoice_id; // string
     char *purchase_receipt_id; // string
@@ -73,6 +74,7 @@ asset_create_dto_t *asset_create_dto_create(
     double purchase_price,
     char *currency_id,
     char *item_id,
+    char *asset_type_id,
     char *asset_category_id,
     char *purchase_invoice_id,
     char *purchase_receipt_id,

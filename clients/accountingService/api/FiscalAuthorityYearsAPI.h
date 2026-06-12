@@ -12,6 +12,7 @@
 #include "../model/fiscal_year_dto_list_envelope.h"
 #include "../model/fiscal_year_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a fiscal year
@@ -52,6 +53,14 @@ FiscalAuthorityYearsAPI_getFiscalYears(apiClient_t *apiClient, char *tenantId, c
 //
 int32_envelope_t*
 FiscalAuthorityYearsAPI_getFiscalYearsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+
+
+// Patch a fiscal authority year
+//
+// Partially updates a fiscal authority year.
+//
+empty_envelope_t*
+FiscalAuthorityYearsAPI_patchFiscalAuthorityYearAsync(apiClient_t *apiClient, char *tenantId, char *fiscalYearId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a fiscal year

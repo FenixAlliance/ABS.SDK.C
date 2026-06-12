@@ -325,7 +325,3 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_business_domain_dto.c
-unit-test/test_business_domain_dto_envelope.c
-unit-test/test_business_domain_dto_list_envelope.c
-unit-test/test_operation.c

@@ -12,6 +12,7 @@
 #include "../model/financial_book_dto_list_envelope.h"
 #include "../model/financial_book_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a new financial book
@@ -52,6 +53,14 @@ FinancialBooksAPI_getFinancialBooksAsync(apiClient_t *apiClient, char *tenantId,
 //
 int32_envelope_t*
 FinancialBooksAPI_getFinancialBooksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a financial book
+//
+// Partially updates a financial book.
+//
+empty_envelope_t*
+FinancialBooksAPI_patchFinancialBookAsync(apiClient_t *apiClient, char *tenantId, char *financialBookId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates an existing financial book

@@ -141,14 +141,14 @@ cJSON *item_type_create_dto_convertToJSON(item_type_create_dto_t *item_type_crea
     if (!item_type_create_dto->item_category_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "itemCategoryID", item_type_create_dto->item_category_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemCategoryId", item_type_create_dto->item_category_id) == NULL) {
     goto fail; //String
     }
 
 
     // item_type_create_dto->item_google_category_id
     if(item_type_create_dto->item_google_category_id) {
-    if(cJSON_AddStringToObject(item, "itemGoogleCategoryID", item_type_create_dto->item_google_category_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemGoogleCategoryId", item_type_create_dto->item_google_category_id) == NULL) {
     goto fail; //String
     }
     }
@@ -229,7 +229,7 @@ item_type_create_dto_t *item_type_create_dto_parseFromJSON(cJSON *item_type_crea
     }
 
     // item_type_create_dto->item_category_id
-    cJSON *item_category_id = cJSON_GetObjectItemCaseSensitive(item_type_create_dtoJSON, "itemCategoryID");
+    cJSON *item_category_id = cJSON_GetObjectItemCaseSensitive(item_type_create_dtoJSON, "itemCategoryId");
     if (!item_category_id) {
         goto end;
     }
@@ -241,7 +241,7 @@ item_type_create_dto_t *item_type_create_dto_parseFromJSON(cJSON *item_type_crea
     }
 
     // item_type_create_dto->item_google_category_id
-    cJSON *item_google_category_id = cJSON_GetObjectItemCaseSensitive(item_type_create_dtoJSON, "itemGoogleCategoryID");
+    cJSON *item_google_category_id = cJSON_GetObjectItemCaseSensitive(item_type_create_dtoJSON, "itemGoogleCategoryId");
     if (item_google_category_id) { 
     if(!cJSON_IsString(item_google_category_id) && !cJSON_IsNull(item_google_category_id))
     {

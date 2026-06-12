@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**WishListsAPI_getCartWishListItemsAsync**](WishListsAPI.md#WishListsAPI_getCartWishListItemsAsync) | **GET** /api/v2/CartService/WishLists/{wishListId}/Records | Get wish list item records
 [**WishListsAPI_getWishListAsync**](WishListsAPI.md#WishListsAPI_getWishListAsync) | **GET** /api/v2/CartService/WishLists/{cartId} | Get wish lists for a cart
 [**WishListsAPI_isProductInWishLists**](WishListsAPI.md#WishListsAPI_isProductInWishLists) | **GET** /api/v2/CartService/WishLists/Contains | Check if a product is in any wish list
+[**WishListsAPI_patchWishList**](WishListsAPI.md#WishListsAPI_patchWishList) | **PATCH** /api/v2/CartService/WishLists/{wishListId} | Patch a wish list
 [**WishListsAPI_updateProductToWishList**](WishListsAPI.md#WishListsAPI_updateProductToWishList) | **PUT** /api/v2/CartService/WishLists/{wishListId} | Update a wish list
 [**WishListsAPI_wishListExists**](WishListsAPI.md#WishListsAPI_wishListExists) | **GET** /api/v2/CartService/WishLists/Exists | Check if a wish list exists
 [**WishListsAPI_wishListExistsHeadAsync**](WishListsAPI.md#WishListsAPI_wishListExistsHeadAsync) | **HEAD** /api/v2/CartService/WishLists/Exists | Check if a wish list exists (HEAD)
@@ -277,6 +278,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WishListsAPI_patchWishList**
+```c
+// Patch a wish list
+//
+// Partially updates the specified wish list using a JSON Patch document.
+//
+empty_envelope_t* WishListsAPI_patchWishList(apiClient_t *apiClient, char *wishListId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**wishListId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

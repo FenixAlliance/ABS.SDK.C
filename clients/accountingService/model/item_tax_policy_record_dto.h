@@ -21,6 +21,8 @@ typedef struct item_tax_policy_record_dto_t item_tax_policy_record_dto_t;
 typedef struct item_tax_policy_record_dto_t {
     char *id; // string
     char *timestamp; //date time
+    char *tenant_id; // string
+    char *enrollment_id; // string
     char *tax_policy_id; // string
     char *item_price_id; // string
     char *item_id; // string
@@ -30,6 +32,8 @@ typedef struct item_tax_policy_record_dto_t {
 item_tax_policy_record_dto_t *item_tax_policy_record_dto_create(
     char *id,
     char *timestamp,
+    char *tenant_id,
+    char *enrollment_id,
     char *tax_policy_id,
     char *item_price_id,
     char *item_id

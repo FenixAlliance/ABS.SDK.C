@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **path** | **char \*** |  | [optional] 
 **prefix** | **char \*** |  | [optional] 
 **currency_id** | **char \*** |  | 
+**contact_id** | **char \*** |  | [optional] 
 **account_type_id** | **char \*** |  | [optional] 
 **parent_account_id** | **char \*** |  | [optional] 
 **account_category** | **accountingservice_account_update_dto_ACCOUNTCATEGORY_e** |  | [optional] 

@@ -39,7 +39,7 @@ typedef struct asset_dto_t {
     char *timestamp; //date time
     char *tenant_id; // string
     char *business_name; // string
-    char *business_profile_record_id; // string
+    char *enrollment_id; // string
     char *name; // string
     char *description; // string
     assetsservice_asset_dto_ASSETCLASS_e asset_class; //enum
@@ -54,6 +54,8 @@ typedef struct asset_dto_t {
     char *currency_code; // string
     char *item_id; // string
     char *item_name; // string
+    char *asset_type_id; // string
+    char *asset_type_name; // string
     char *asset_category_id; // string
     char *asset_category_name; // string
     char *purchase_invoice_id; // string
@@ -73,7 +75,7 @@ asset_dto_t *asset_dto_create(
     char *timestamp,
     char *tenant_id,
     char *business_name,
-    char *business_profile_record_id,
+    char *enrollment_id,
     char *name,
     char *description,
     assetsservice_asset_dto_ASSETCLASS_e asset_class,
@@ -88,6 +90,8 @@ asset_dto_t *asset_dto_create(
     char *currency_code,
     char *item_id,
     char *item_name,
+    char *asset_type_id,
+    char *asset_type_name,
     char *asset_category_id,
     char *asset_category_name,
     char *purchase_invoice_id,

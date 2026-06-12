@@ -12,6 +12,7 @@
 #include "../model/fiscal_regime_dto_list_envelope.h"
 #include "../model/fiscal_regime_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a fiscal regime
@@ -52,6 +53,14 @@ FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *tenantId, char *
 //
 int32_envelope_t*
 FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+
+
+// Patch a fiscal regime
+//
+// Partially updates a fiscal regime.
+//
+empty_envelope_t*
+FiscalRegimesAPI_patchFiscalRegimeAsync(apiClient_t *apiClient, char *tenantId, char *regimeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a fiscal regime

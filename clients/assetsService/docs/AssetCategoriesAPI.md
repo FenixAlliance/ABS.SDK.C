@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**AssetCategoriesAPI_getAssetCategories**](AssetCategoriesAPI.md#AssetCategoriesAPI_getAssetCategories) | **GET** /api/v2/AssetsService/AssetCategories | Gets all asset categories for the current tenant
 [**AssetCategoriesAPI_getAssetCategoriesCount**](AssetCategoriesAPI.md#AssetCategoriesAPI_getAssetCategoriesCount) | **GET** /api/v2/AssetsService/AssetCategories/count | Gets the count of asset categories
 [**AssetCategoriesAPI_getAssetCategory**](AssetCategoriesAPI.md#AssetCategoriesAPI_getAssetCategory) | **GET** /api/v2/AssetsService/AssetCategories/{categoryId} | Gets a specific asset category
+[**AssetCategoriesAPI_patchAssetCategory**](AssetCategoriesAPI.md#AssetCategoriesAPI_patchAssetCategory) | **PATCH** /api/v2/AssetsService/AssetCategories/{categoryId} | Partially updates an existing asset category
 [**AssetCategoriesAPI_updateAssetCategory**](AssetCategoriesAPI.md#AssetCategoriesAPI_updateAssetCategory) | **PUT** /api/v2/AssetsService/AssetCategories/{categoryId} | Updates an existing asset category
 
 
@@ -165,6 +166,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AssetCategoriesAPI_patchAssetCategory**
+```c
+// Partially updates an existing asset category
+//
+// Applies a JSON Patch document to an existing asset category for the authenticated tenant.
+//
+empty_envelope_t* AssetCategoriesAPI_patchAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**categoryId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

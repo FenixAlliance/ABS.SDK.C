@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
-**asset_type** | **assetsservice_asset_update_dto_ASSETTYPE_e** |  | [optional] 
+**asset_class** | **assetsservice_asset_update_dto_ASSETCLASS_e** |  | [optional] 
 **asset_owner** | **assetsservice_asset_update_dto_ASSETOWNER_e** |  | [optional] 
 **calculate_depreciation** | **int** |  | [optional] 
 **allow_monthly_depreciation** | **int** |  | [optional] 
@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **purchase_date** | **char \*** |  | [optional] 
 **purchase_price** | **double** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
-**currency_code** | **char \*** |  | [optional] 
 **item_id** | **char \*** |  | [optional] 
+**asset_type_id** | **char \*** |  | [optional] 
 **asset_category_id** | **char \*** |  | [optional] 
 **purchase_invoice_id** | **char \*** |  | [optional] 
 **purchase_receipt_id** | **char \*** |  | [optional] 

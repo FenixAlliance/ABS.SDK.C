@@ -5,8 +5,10 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/share_class_create_dto.h"
 #include "../model/share_class_dto_envelope.h"
 #include "../model/share_class_dto_list_envelope.h"
@@ -183,6 +185,38 @@ SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_ve
 //
 int32_envelope_t*
 SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patches a share class
+//
+// Partially updates a share class using a JSON Patch document.
+//
+empty_envelope_t*
+SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareClassId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patches a share issuance
+//
+// Partially updates a share issuance using a JSON Patch document.
+//
+empty_envelope_t*
+SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issuanceId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patches a share transfer
+//
+// Partially updates a share transfer using a JSON Patch document.
+//
+empty_envelope_t*
+SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *transferId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patches a share transfer reason
+//
+// Partially updates a share transfer reason using a JSON Patch document.
+//
+empty_envelope_t*
+SharesAPI_patchShareTransferReason(apiClient_t *apiClient, char *tenantId, char *reasonId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates an existing share class

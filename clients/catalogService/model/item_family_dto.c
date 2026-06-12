@@ -11,7 +11,7 @@ item_family_dto_t *item_family_dto_create(
     char *name,
     char *code,
     char *description,
-    char *business_id
+    char *tenant_id
     ) {
     item_family_dto_t *item_family_dto_local_var = malloc(sizeof(item_family_dto_t));
     if (!item_family_dto_local_var) {
@@ -22,7 +22,7 @@ item_family_dto_t *item_family_dto_create(
     item_family_dto_local_var->name = name;
     item_family_dto_local_var->code = code;
     item_family_dto_local_var->description = description;
-    item_family_dto_local_var->business_id = business_id;
+    item_family_dto_local_var->tenant_id = tenant_id;
 
     return item_family_dto_local_var;
 }
@@ -53,9 +53,9 @@ void item_family_dto_free(item_family_dto_t *item_family_dto) {
         free(item_family_dto->description);
         item_family_dto->description = NULL;
     }
-    if (item_family_dto->business_id) {
-        free(item_family_dto->business_id);
-        item_family_dto->business_id = NULL;
+    if (item_family_dto->tenant_id) {
+        free(item_family_dto->tenant_id);
+        item_family_dto->tenant_id = NULL;
     }
     free(item_family_dto);
 }
@@ -103,9 +103,9 @@ cJSON *item_family_dto_convertToJSON(item_family_dto_t *item_family_dto) {
     }
 
 
-    // item_family_dto->business_id
-    if(item_family_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", item_family_dto->business_id) == NULL) {
+    // item_family_dto->tenant_id
+    if(item_family_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", item_family_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -167,10 +167,10 @@ item_family_dto_t *item_family_dto_parseFromJSON(cJSON *item_family_dtoJSON){
     }
     }
 
-    // item_family_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_family_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // item_family_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(item_family_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -183,7 +183,7 @@ item_family_dto_t *item_family_dto_parseFromJSON(cJSON *item_family_dtoJSON){
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
         );
 
     return item_family_dto_local_var;

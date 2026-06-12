@@ -26,8 +26,7 @@ typedef struct asset_value_amend_create_dto_t {
     double new_value; //numeric
     char *reason; // string
     char *amendment_date; //date time
-    char *approved_by; // string
-    char *approval_date; //date time
+    char *currency_id; // string
 
 } asset_value_amend_create_dto_t;
 
@@ -39,8 +38,7 @@ asset_value_amend_create_dto_t *asset_value_amend_create_dto_create(
     double new_value,
     char *reason,
     char *amendment_date,
-    char *approved_by,
-    char *approval_date
+    char *currency_id
 );
 
 void asset_value_amend_create_dto_free(asset_value_amend_create_dto_t *asset_value_amend_create_dto);

@@ -6,11 +6,13 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
+#include "../model/error_envelope.h"
 #include "../model/grant_create_dto.h"
 #include "../model/grant_dto_envelope.h"
 #include "../model/grant_dto_i_read_only_list_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/object.h"
+#include "../model/operation.h"
 
 
 // Create grant
@@ -51,6 +53,14 @@ GrantsAPI_getGrantsAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
 //
 int32_envelope_t*
 GrantsAPI_getGrantsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a grant
+//
+// Partially updates a grant.
+//
+empty_envelope_t*
+GrantsAPI_patchGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update grant

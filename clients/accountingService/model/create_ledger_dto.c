@@ -11,8 +11,6 @@ create_ledger_dto_t *create_ledger_dto_create(
     char *name,
     char *description,
     char *date_time,
-    char *tenant_id,
-    char *enrollment_id,
     char *ledger_type_id
     ) {
     create_ledger_dto_t *create_ledger_dto_local_var = malloc(sizeof(create_ledger_dto_t));
@@ -24,8 +22,6 @@ create_ledger_dto_t *create_ledger_dto_create(
     create_ledger_dto_local_var->name = name;
     create_ledger_dto_local_var->description = description;
     create_ledger_dto_local_var->date_time = date_time;
-    create_ledger_dto_local_var->tenant_id = tenant_id;
-    create_ledger_dto_local_var->enrollment_id = enrollment_id;
     create_ledger_dto_local_var->ledger_type_id = ledger_type_id;
 
     return create_ledger_dto_local_var;
@@ -56,14 +52,6 @@ void create_ledger_dto_free(create_ledger_dto_t *create_ledger_dto) {
     if (create_ledger_dto->date_time) {
         free(create_ledger_dto->date_time);
         create_ledger_dto->date_time = NULL;
-    }
-    if (create_ledger_dto->tenant_id) {
-        free(create_ledger_dto->tenant_id);
-        create_ledger_dto->tenant_id = NULL;
-    }
-    if (create_ledger_dto->enrollment_id) {
-        free(create_ledger_dto->enrollment_id);
-        create_ledger_dto->enrollment_id = NULL;
     }
     if (create_ledger_dto->ledger_type_id) {
         free(create_ledger_dto->ledger_type_id);
@@ -111,22 +99,6 @@ cJSON *create_ledger_dto_convertToJSON(create_ledger_dto_t *create_ledger_dto) {
     if(create_ledger_dto->date_time) {
     if(cJSON_AddStringToObject(item, "dateTime", create_ledger_dto->date_time) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // create_ledger_dto->tenant_id
-    if(create_ledger_dto->tenant_id) {
-    if(cJSON_AddStringToObject(item, "tenantId", create_ledger_dto->tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // create_ledger_dto->enrollment_id
-    if(create_ledger_dto->enrollment_id) {
-    if(cJSON_AddStringToObject(item, "enrollmentId", create_ledger_dto->enrollment_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -195,24 +167,6 @@ create_ledger_dto_t *create_ledger_dto_parseFromJSON(cJSON *create_ledger_dtoJSO
     }
     }
 
-    // create_ledger_dto->tenant_id
-    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(create_ledger_dtoJSON, "tenantId");
-    if (tenant_id) { 
-    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // create_ledger_dto->enrollment_id
-    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(create_ledger_dtoJSON, "enrollmentId");
-    if (enrollment_id) { 
-    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
-    {
-    goto end; //String
-    }
-    }
-
     // create_ledger_dto->ledger_type_id
     cJSON *ledger_type_id = cJSON_GetObjectItemCaseSensitive(create_ledger_dtoJSON, "ledgerTypeId");
     if (ledger_type_id) { 
@@ -229,8 +183,6 @@ create_ledger_dto_t *create_ledger_dto_parseFromJSON(cJSON *create_ledger_dtoJSO
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         date_time && !cJSON_IsNull(date_time) ? strdup(date_time->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         ledger_type_id && !cJSON_IsNull(ledger_type_id) ? strdup(ledger_type_id->valuestring) : NULL
         );
 

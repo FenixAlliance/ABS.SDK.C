@@ -21,7 +21,8 @@ typedef struct pricing_rule_dto_t pricing_rule_dto_t;
 typedef struct pricing_rule_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *business_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
     char *code; // string
     char *title; // string
     char *description; // string
@@ -49,7 +50,8 @@ typedef struct pricing_rule_dto_t {
 pricing_rule_dto_t *pricing_rule_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *code,
     char *title,
     char *description,

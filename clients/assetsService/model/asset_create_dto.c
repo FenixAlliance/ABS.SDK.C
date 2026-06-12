@@ -54,6 +54,7 @@ asset_create_dto_t *asset_create_dto_create(
     double purchase_price,
     char *currency_id,
     char *item_id,
+    char *asset_type_id,
     char *asset_category_id,
     char *purchase_invoice_id,
     char *purchase_receipt_id,
@@ -79,6 +80,7 @@ asset_create_dto_t *asset_create_dto_create(
     asset_create_dto_local_var->purchase_price = purchase_price;
     asset_create_dto_local_var->currency_id = currency_id;
     asset_create_dto_local_var->item_id = item_id;
+    asset_create_dto_local_var->asset_type_id = asset_type_id;
     asset_create_dto_local_var->asset_category_id = asset_category_id;
     asset_create_dto_local_var->purchase_invoice_id = purchase_invoice_id;
     asset_create_dto_local_var->purchase_receipt_id = purchase_receipt_id;
@@ -122,6 +124,10 @@ void asset_create_dto_free(asset_create_dto_t *asset_create_dto) {
     if (asset_create_dto->item_id) {
         free(asset_create_dto->item_id);
         asset_create_dto->item_id = NULL;
+    }
+    if (asset_create_dto->asset_type_id) {
+        free(asset_create_dto->asset_type_id);
+        asset_create_dto->asset_type_id = NULL;
     }
     if (asset_create_dto->asset_category_id) {
         free(asset_create_dto->asset_category_id);
@@ -262,6 +268,14 @@ cJSON *asset_create_dto_convertToJSON(asset_create_dto_t *asset_create_dto) {
     // asset_create_dto->item_id
     if(asset_create_dto->item_id) {
     if(cJSON_AddStringToObject(item, "itemId", asset_create_dto->item_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // asset_create_dto->asset_type_id
+    if(asset_create_dto->asset_type_id) {
+    if(cJSON_AddStringToObject(item, "assetTypeId", asset_create_dto->asset_type_id) == NULL) {
     goto fail; //String
     }
     }
@@ -456,6 +470,15 @@ asset_create_dto_t *asset_create_dto_parseFromJSON(cJSON *asset_create_dtoJSON){
     }
     }
 
+    // asset_create_dto->asset_type_id
+    cJSON *asset_type_id = cJSON_GetObjectItemCaseSensitive(asset_create_dtoJSON, "assetTypeId");
+    if (asset_type_id) { 
+    if(!cJSON_IsString(asset_type_id) && !cJSON_IsNull(asset_type_id))
+    {
+    goto end; //String
+    }
+    }
+
     // asset_create_dto->asset_category_id
     cJSON *asset_category_id = cJSON_GetObjectItemCaseSensitive(asset_create_dtoJSON, "assetCategoryId");
     if (asset_category_id) { 
@@ -526,6 +549,7 @@ asset_create_dto_t *asset_create_dto_parseFromJSON(cJSON *asset_create_dtoJSON){
         purchase_price ? purchase_price->valuedouble : 0,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
+        asset_type_id && !cJSON_IsNull(asset_type_id) ? strdup(asset_type_id->valuestring) : NULL,
         asset_category_id && !cJSON_IsNull(asset_category_id) ? strdup(asset_category_id->valuestring) : NULL,
         purchase_invoice_id && !cJSON_IsNull(purchase_invoice_id) ? strdup(purchase_invoice_id->valuestring) : NULL,
         purchase_receipt_id && !cJSON_IsNull(purchase_receipt_id) ? strdup(purchase_receipt_id->valuestring) : NULL,

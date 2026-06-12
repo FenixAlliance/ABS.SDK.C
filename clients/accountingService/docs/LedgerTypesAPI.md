@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**LedgerTypesAPI_getLedgerTypeDetailsAsync**](LedgerTypesAPI.md#LedgerTypesAPI_getLedgerTypeDetailsAsync) | **GET** /api/v2/AccountingService/LedgerTypes/{ledgerTypeId} | Gets a ledger type by ID
 [**LedgerTypesAPI_getLedgerTypesAsync**](LedgerTypesAPI.md#LedgerTypesAPI_getLedgerTypesAsync) | **GET** /api/v2/AccountingService/LedgerTypes | Retrieves all ledger types
 [**LedgerTypesAPI_getLedgerTypesCountAsync**](LedgerTypesAPI.md#LedgerTypesAPI_getLedgerTypesCountAsync) | **GET** /api/v2/AccountingService/LedgerTypes/Count | Counts ledger types
+[**LedgerTypesAPI_patchLedgerTypeAsync**](LedgerTypesAPI.md#LedgerTypesAPI_patchLedgerTypeAsync) | **PATCH** /api/v2/AccountingService/LedgerTypes/{ledgerTypeId} | Patches a ledger type
 [**LedgerTypesAPI_updateLedgerTypeAsync**](LedgerTypesAPI.md#LedgerTypesAPI_updateLedgerTypeAsync) | **PUT** /api/v2/AccountingService/LedgerTypes/{ledgerTypeId} | Updates a ledger type
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LedgerTypesAPI_patchLedgerTypeAsync**
+```c
+// Patches a ledger type
+//
+// Partially updates the specified ledger type using a JSON Patch document.
+//
+empty_envelope_t* LedgerTypesAPI_patchLedgerTypeAsync(apiClient_t *apiClient, char *tenantId, char *ledgerTypeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**ledgerTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

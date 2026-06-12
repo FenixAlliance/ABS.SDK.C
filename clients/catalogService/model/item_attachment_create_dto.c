@@ -195,7 +195,7 @@ cJSON *item_attachment_create_dto_convertToJSON(item_attachment_create_dto_t *it
 
     // item_attachment_create_dto->item_id
     if(item_attachment_create_dto->item_id) {
-    if(cJSON_AddStringToObject(item, "itemID", item_attachment_create_dto->item_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemId", item_attachment_create_dto->item_id) == NULL) {
     goto fail; //String
     }
     }
@@ -321,7 +321,7 @@ item_attachment_create_dto_t *item_attachment_create_dto_parseFromJSON(cJSON *it
     }
 
     // item_attachment_create_dto->item_id
-    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_attachment_create_dtoJSON, "itemID");
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_attachment_create_dtoJSON, "itemId");
     if (item_id) { 
     if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
     {

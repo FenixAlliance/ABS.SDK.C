@@ -141,7 +141,7 @@ cJSON *item_image_create_dto_convertToJSON(item_image_create_dto_t *item_image_c
 
     // item_image_create_dto->item_id
     if(item_image_create_dto->item_id) {
-    if(cJSON_AddStringToObject(item, "itemID", item_image_create_dto->item_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemId", item_image_create_dto->item_id) == NULL) {
     goto fail; //String
     }
     }
@@ -254,7 +254,7 @@ cJSON *item_image_create_dto_convertToJSON(item_image_create_dto_t *item_image_c
 
     // item_image_create_dto->social_profile_id
     if(item_image_create_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", item_image_create_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", item_image_create_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -262,7 +262,7 @@ cJSON *item_image_create_dto_convertToJSON(item_image_create_dto_t *item_image_c
 
     // item_image_create_dto->parent_file_upload_id
     if(item_image_create_dto->parent_file_upload_id) {
-    if(cJSON_AddStringToObject(item, "parentFileUploadID", item_image_create_dto->parent_file_upload_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentFileUploadId", item_image_create_dto->parent_file_upload_id) == NULL) {
     goto fail; //String
     }
     }
@@ -298,7 +298,7 @@ item_image_create_dto_t *item_image_create_dto_parseFromJSON(cJSON *item_image_c
     }
 
     // item_image_create_dto->item_id
-    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_image_create_dtoJSON, "itemID");
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_image_create_dtoJSON, "itemId");
     if (item_id) { 
     if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
     {
@@ -427,7 +427,7 @@ item_image_create_dto_t *item_image_create_dto_parseFromJSON(cJSON *item_image_c
     }
 
     // item_image_create_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(item_image_create_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(item_image_create_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {
@@ -436,7 +436,7 @@ item_image_create_dto_t *item_image_create_dto_parseFromJSON(cJSON *item_image_c
     }
 
     // item_image_create_dto->parent_file_upload_id
-    cJSON *parent_file_upload_id = cJSON_GetObjectItemCaseSensitive(item_image_create_dtoJSON, "parentFileUploadID");
+    cJSON *parent_file_upload_id = cJSON_GetObjectItemCaseSensitive(item_image_create_dtoJSON, "parentFileUploadId");
     if (parent_file_upload_id) { 
     if(!cJSON_IsString(parent_file_upload_id) && !cJSON_IsNull(parent_file_upload_id))
     {

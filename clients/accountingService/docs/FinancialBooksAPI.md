@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**FinancialBooksAPI_getFinancialBookDetailsAsync**](FinancialBooksAPI.md#FinancialBooksAPI_getFinancialBookDetailsAsync) | **GET** /api/v2/AccountingService/FinancialBooks/{financialBookId} | Gets the details of a specific financial book
 [**FinancialBooksAPI_getFinancialBooksAsync**](FinancialBooksAPI.md#FinancialBooksAPI_getFinancialBooksAsync) | **GET** /api/v2/AccountingService/FinancialBooks | Get all financial books for a tenant
 [**FinancialBooksAPI_getFinancialBooksCountAsync**](FinancialBooksAPI.md#FinancialBooksAPI_getFinancialBooksCountAsync) | **GET** /api/v2/AccountingService/FinancialBooks/Count | Get the count of financial books
+[**FinancialBooksAPI_patchFinancialBookAsync**](FinancialBooksAPI.md#FinancialBooksAPI_patchFinancialBookAsync) | **PATCH** /api/v2/AccountingService/FinancialBooks/{financialBookId} | Patch a financial book
 [**FinancialBooksAPI_updateFinancialBookAsync**](FinancialBooksAPI.md#FinancialBooksAPI_updateFinancialBookAsync) | **PUT** /api/v2/AccountingService/FinancialBooks/{financialBookId} | Updates an existing financial book
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **FinancialBooksAPI_patchFinancialBookAsync**
+```c
+// Patch a financial book
+//
+// Partially updates a financial book.
+//
+empty_envelope_t* FinancialBooksAPI_patchFinancialBookAsync(apiClient_t *apiClient, char *tenantId, char *financialBookId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**financialBookId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

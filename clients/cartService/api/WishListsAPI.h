@@ -8,6 +8,7 @@
 #include "../model/boolean_envelope.h"
 #include "../model/empty_envelope.h"
 #include "../model/new_wish_list_request.h"
+#include "../model/operation.h"
 #include "../model/product_to_wish_list_request.h"
 #include "../model/wish_list_dto.h"
 #include "../model/wish_list_item_record_dto.h"
@@ -76,6 +77,14 @@ WishListsAPI_getWishListAsync(apiClient_t *apiClient, char *cartId, char *api_ve
 //
 boolean_envelope_t*
 WishListsAPI_isProductInWishLists(apiClient_t *apiClient, char *cartId, char *productId, char *api_version, char *x_api_version);
+
+
+// Patch a wish list
+//
+// Partially updates the specified wish list using a JSON Patch document.
+//
+empty_envelope_t*
+WishListsAPI_patchWishList(apiClient_t *apiClient, char *wishListId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a wish list

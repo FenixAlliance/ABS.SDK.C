@@ -35,6 +35,7 @@ Method | HTTP request | Description
 [**CartsAPI_isItemAlreadyInCartAsync**](CartsAPI.md#CartsAPI_isItemAlreadyInCartAsync) | **GET** /api/v2/CartService/Carts/{cartId}/Contains/{itemId} | Assesses if an Item is already in a cart
 [**CartsAPI_isItemInCompareTableAsync**](CartsAPI.md#CartsAPI_isItemInCompareTableAsync) | **GET** /api/v2/CartService/Carts/{cartId}/Compare/Contains/{itemId} | Assesses if an Item is already in the compare table
 [**CartsAPI_isItemInWishLists**](CartsAPI.md#CartsAPI_isItemInWishLists) | **GET** /api/v2/CartService/Carts/{cartId}/WishLists/Contains/{itemId} | Assesses if an Item is already in any of the cart&#39;s wishlists
+[**CartsAPI_patchCartAsync**](CartsAPI.md#CartsAPI_patchCartAsync) | **PATCH** /api/v2/CartService/Carts/{cartId} | Patch a cart
 [**CartsAPI_removeCartLineAsync**](CartsAPI.md#CartsAPI_removeCartLineAsync) | **DELETE** /api/v2/CartService/Carts/{cartId}/Lines/{lineId} | Remove a cart line
 [**CartsAPI_removeItemFromCartAsync**](CartsAPI.md#CartsAPI_removeItemFromCartAsync) | **DELETE** /api/v2/CartService/Carts/{cartId}/Items/{itemId} | Remove an Item from a cart
 [**CartsAPI_removeItemFromCompareTableAsync**](CartsAPI.md#CartsAPI_removeItemFromCompareTableAsync) | **DELETE** /api/v2/CartService/Carts/{cartId}/Compare/{itemId} | Remove an item from the compare table
@@ -1091,6 +1092,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CartsAPI_patchCartAsync**
+```c
+// Patch a cart
+//
+// Partially updates a cart using a JSON Patch document.
+//
+empty_envelope_t* CartsAPI_patchCartAsync(apiClient_t *apiClient, char *cartId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**cartId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

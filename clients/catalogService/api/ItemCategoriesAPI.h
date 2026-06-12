@@ -11,6 +11,7 @@
 #include "../model/item_category_dto_envelope.h"
 #include "../model/item_category_dto_list_envelope.h"
 #include "../model/item_category_update_dto.h"
+#include "../model/operation.h"
 
 
 // Count item categories
@@ -51,6 +52,14 @@ ItemCategoriesAPI_getItemCategoriesAsync(apiClient_t *apiClient, char *tenantId,
 //
 item_category_dto_envelope_t*
 ItemCategoriesAPI_getItemCategoryByIdAsync(apiClient_t *apiClient, char *itemCategoryId, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item category
+//
+// Partially updates an existing item category for the specified tenant.
+//
+void
+ItemCategoriesAPI_patchItemCategoryAsync(apiClient_t *apiClient, char *tenantId, char *itemCategoryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item category

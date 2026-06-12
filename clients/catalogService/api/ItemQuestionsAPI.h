@@ -10,6 +10,7 @@
 #include "../model/item_question_dto_envelope.h"
 #include "../model/item_question_dto_list_envelope.h"
 #include "../model/item_question_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a new item question
@@ -42,6 +43,14 @@ ItemQuestionsAPI_getItemQuestionByIdAsync(apiClient_t *apiClient, char *itemQues
 //
 item_question_dto_list_envelope_t*
 ItemQuestionsAPI_getItemQuestionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item question
+//
+// Partially updates an existing item question for the specified tenant using a JSON Patch document.
+//
+void
+ItemQuestionsAPI_patchItemQuestionAsync(apiClient_t *apiClient, char *tenantId, char *itemQuestionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item question

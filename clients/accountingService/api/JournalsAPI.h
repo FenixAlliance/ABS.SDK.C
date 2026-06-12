@@ -16,6 +16,7 @@
 #include "../model/journal_entry_update_dto.h"
 #include "../model/journal_update_dto.h"
 #include "../model/money_envelope.h"
+#include "../model/operation.h"
 
 
 // Aggregate journal entry credits
@@ -104,6 +105,22 @@ JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, 
 //
 journal_dto_i_read_only_list_envelope_t*
 JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a journal
+//
+// Partially updates a journal.
+//
+empty_envelope_t*
+JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a journal entry
+//
+// Partially updates a journal entry.
+//
+empty_envelope_t*
+JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update journal

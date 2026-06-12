@@ -27,8 +27,8 @@ Name | Type | Description | Notes
 **custom_state** | **char \*** |  | [optional] 
 **custom_city** | **char \*** |  | [optional] 
 **city_id** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | 
-**business_profile_record_id** | **char \*** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
+**enrollment_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

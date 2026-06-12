@@ -15,41 +15,38 @@
 
 typedef struct asset_value_amend_dto_t asset_value_amend_dto_t;
 
-#include "object.h"
 
 
 
 typedef struct asset_value_amend_dto_t {
-    object_t *id; //object
+    char *id; // string
     char *timestamp; //date time
-    object_t *business_id; //object
-    object_t *business_profile_record_id; //object
-    object_t *asset_id; //object
+    char *tenant_id; // string
+    char *enrollment_id; // string
+    char *asset_id; // string
     char *asset_name; // string
     double previous_value; //numeric
     double new_value; //numeric
     double amendment_amount; //numeric
     char *reason; // string
     char *amendment_date; //date time
-    char *approved_by; // string
-    char *approval_date; //date time
+    char *currency_id; // string
 
 } asset_value_amend_dto_t;
 
 asset_value_amend_dto_t *asset_value_amend_dto_create(
-    object_t *id,
+    char *id,
     char *timestamp,
-    object_t *business_id,
-    object_t *business_profile_record_id,
-    object_t *asset_id,
+    char *tenant_id,
+    char *enrollment_id,
+    char *asset_id,
     char *asset_name,
     double previous_value,
     double new_value,
     double amendment_amount,
     char *reason,
     char *amendment_date,
-    char *approved_by,
-    char *approval_date
+    char *currency_id
 );
 
 void asset_value_amend_dto_free(asset_value_amend_dto_t *asset_value_amend_dto);

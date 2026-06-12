@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**AccountingPeriodsAPI_getAccountingPeriod**](AccountingPeriodsAPI.md#AccountingPeriodsAPI_getAccountingPeriod) | **GET** /api/v2/AccountingService/AccountingPeriods/{accountingPeriodId} | Gets the current tenant accounting period
 [**AccountingPeriodsAPI_getAccountingPeriods**](AccountingPeriodsAPI.md#AccountingPeriodsAPI_getAccountingPeriods) | **GET** /api/v2/AccountingService/AccountingPeriods | Get all accounting periods for a tenant
 [**AccountingPeriodsAPI_getAccountingPeriodsCountAsync**](AccountingPeriodsAPI.md#AccountingPeriodsAPI_getAccountingPeriodsCountAsync) | **GET** /api/v2/AccountingService/AccountingPeriods/Count | Gets the current tenant accounting periods count
+[**AccountingPeriodsAPI_patchAccountingPeriodAsync**](AccountingPeriodsAPI.md#AccountingPeriodsAPI_patchAccountingPeriodAsync) | **PATCH** /api/v2/AccountingService/AccountingPeriods/{accountingPeriodId} | Patch an accounting period
 [**AccountingPeriodsAPI_updateAccountingPeriod**](AccountingPeriodsAPI.md#AccountingPeriodsAPI_updateAccountingPeriod) | **PUT** /api/v2/AccountingService/AccountingPeriods/{accountingPeriodId} | Updates an existing accounting period
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AccountingPeriodsAPI_patchAccountingPeriodAsync**
+```c
+// Patch an accounting period
+//
+// Partially updates an accounting period.
+//
+empty_envelope_t* AccountingPeriodsAPI_patchAccountingPeriodAsync(apiClient_t *apiClient, char *tenantId, char *accountingPeriodId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**accountingPeriodId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -8,7 +8,8 @@
 account_relation_create_dto_t *account_relation_create_dto_create(
     char *id,
     char *timestamp,
-    char *account_id
+    char *account_id,
+    char *type
     ) {
     account_relation_create_dto_t *account_relation_create_dto_local_var = malloc(sizeof(account_relation_create_dto_t));
     if (!account_relation_create_dto_local_var) {
@@ -17,6 +18,7 @@ account_relation_create_dto_t *account_relation_create_dto_create(
     account_relation_create_dto_local_var->id = id;
     account_relation_create_dto_local_var->timestamp = timestamp;
     account_relation_create_dto_local_var->account_id = account_id;
+    account_relation_create_dto_local_var->type = type;
 
     return account_relation_create_dto_local_var;
 }
@@ -38,6 +40,10 @@ void account_relation_create_dto_free(account_relation_create_dto_t *account_rel
     if (account_relation_create_dto->account_id) {
         free(account_relation_create_dto->account_id);
         account_relation_create_dto->account_id = NULL;
+    }
+    if (account_relation_create_dto->type) {
+        free(account_relation_create_dto->type);
+        account_relation_create_dto->type = NULL;
     }
     free(account_relation_create_dto);
 }
@@ -64,6 +70,14 @@ cJSON *account_relation_create_dto_convertToJSON(account_relation_create_dto_t *
     // account_relation_create_dto->account_id
     if(account_relation_create_dto->account_id) {
     if(cJSON_AddStringToObject(item, "accountId", account_relation_create_dto->account_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // account_relation_create_dto->type
+    if(account_relation_create_dto->type) {
+    if(cJSON_AddStringToObject(item, "type", account_relation_create_dto->type) == NULL) {
     goto fail; //String
     }
     }
@@ -107,11 +121,21 @@ account_relation_create_dto_t *account_relation_create_dto_parseFromJSON(cJSON *
     }
     }
 
+    // account_relation_create_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(account_relation_create_dtoJSON, "type");
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
+    {
+    goto end; //String
+    }
+    }
+
 
     account_relation_create_dto_local_var = account_relation_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        account_id && !cJSON_IsNull(account_id) ? strdup(account_id->valuestring) : NULL
+        account_id && !cJSON_IsNull(account_id) ? strdup(account_id->valuestring) : NULL,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL
         );
 
     return account_relation_create_dto_local_var;

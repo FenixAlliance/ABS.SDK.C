@@ -20,6 +20,7 @@
 #include "../model/loan_type_update_dto.h"
 #include "../model/loan_update_dto.h"
 #include "../model/object.h"
+#include "../model/operation.h"
 
 
 // Creates a loan application
@@ -140,6 +141,30 @@ LoansAPI_getLoansAsync(apiClient_t *apiClient, char *tenantId, char *api_version
 //
 int32_envelope_t*
 LoansAPI_getLoansCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patches a loan application
+//
+// Partially updates the specified loan application using a JSON Patch document.
+//
+empty_envelope_t*
+LoansAPI_patchLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patches a loan
+//
+// Partially updates the specified loan using a JSON Patch document.
+//
+empty_envelope_t*
+LoansAPI_patchLoanAsync(apiClient_t *apiClient, char *tenantId, char *loanId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patches a loan type
+//
+// Partially updates the specified loan type using a JSON Patch document.
+//
+empty_envelope_t*
+LoansAPI_patchLoanTypeAsync(apiClient_t *apiClient, char *tenantId, char *loanTypeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates a loan application

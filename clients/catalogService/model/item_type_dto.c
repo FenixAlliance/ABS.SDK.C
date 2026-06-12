@@ -13,7 +13,7 @@ item_type_dto_t *item_type_dto_create(
     char *description,
     char *image_url,
     char *google_category_taxonomy,
-    char *business_id,
+    char *tenant_id,
     char *item_category_id,
     char *item_google_category_id
     ) {
@@ -28,7 +28,7 @@ item_type_dto_t *item_type_dto_create(
     item_type_dto_local_var->description = description;
     item_type_dto_local_var->image_url = image_url;
     item_type_dto_local_var->google_category_taxonomy = google_category_taxonomy;
-    item_type_dto_local_var->business_id = business_id;
+    item_type_dto_local_var->tenant_id = tenant_id;
     item_type_dto_local_var->item_category_id = item_category_id;
     item_type_dto_local_var->item_google_category_id = item_google_category_id;
 
@@ -69,9 +69,9 @@ void item_type_dto_free(item_type_dto_t *item_type_dto) {
         free(item_type_dto->google_category_taxonomy);
         item_type_dto->google_category_taxonomy = NULL;
     }
-    if (item_type_dto->business_id) {
-        free(item_type_dto->business_id);
-        item_type_dto->business_id = NULL;
+    if (item_type_dto->tenant_id) {
+        free(item_type_dto->tenant_id);
+        item_type_dto->tenant_id = NULL;
     }
     if (item_type_dto->item_category_id) {
         free(item_type_dto->item_category_id);
@@ -145,11 +145,11 @@ cJSON *item_type_dto_convertToJSON(item_type_dto_t *item_type_dto) {
     }
 
 
-    // item_type_dto->business_id
-    if (!item_type_dto->business_id) {
+    // item_type_dto->tenant_id
+    if (!item_type_dto->tenant_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "businessID", item_type_dto->business_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "tenantId", item_type_dto->tenant_id) == NULL) {
     goto fail; //String
     }
 
@@ -158,14 +158,14 @@ cJSON *item_type_dto_convertToJSON(item_type_dto_t *item_type_dto) {
     if (!item_type_dto->item_category_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "itemCategoryID", item_type_dto->item_category_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemCategoryId", item_type_dto->item_category_id) == NULL) {
     goto fail; //String
     }
 
 
     // item_type_dto->item_google_category_id
     if(item_type_dto->item_google_category_id) {
-    if(cJSON_AddStringToObject(item, "itemGoogleCategoryID", item_type_dto->item_google_category_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemGoogleCategoryId", item_type_dto->item_google_category_id) == NULL) {
     goto fail; //String
     }
     }
@@ -251,20 +251,20 @@ item_type_dto_t *item_type_dto_parseFromJSON(cJSON *item_type_dtoJSON){
     }
     }
 
-    // item_type_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_type_dtoJSON, "businessID");
-    if (!business_id) {
+    // item_type_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(item_type_dtoJSON, "tenantId");
+    if (!tenant_id) {
         goto end;
     }
 
     
-    if(!cJSON_IsString(business_id))
+    if(!cJSON_IsString(tenant_id))
     {
     goto end; //String
     }
 
     // item_type_dto->item_category_id
-    cJSON *item_category_id = cJSON_GetObjectItemCaseSensitive(item_type_dtoJSON, "itemCategoryID");
+    cJSON *item_category_id = cJSON_GetObjectItemCaseSensitive(item_type_dtoJSON, "itemCategoryId");
     if (!item_category_id) {
         goto end;
     }
@@ -276,7 +276,7 @@ item_type_dto_t *item_type_dto_parseFromJSON(cJSON *item_type_dtoJSON){
     }
 
     // item_type_dto->item_google_category_id
-    cJSON *item_google_category_id = cJSON_GetObjectItemCaseSensitive(item_type_dtoJSON, "itemGoogleCategoryID");
+    cJSON *item_google_category_id = cJSON_GetObjectItemCaseSensitive(item_type_dtoJSON, "itemGoogleCategoryId");
     if (item_google_category_id) { 
     if(!cJSON_IsString(item_google_category_id) && !cJSON_IsNull(item_google_category_id))
     {
@@ -293,7 +293,7 @@ item_type_dto_t *item_type_dto_parseFromJSON(cJSON *item_type_dtoJSON){
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         image_url && !cJSON_IsNull(image_url) ? strdup(image_url->valuestring) : NULL,
         google_category_taxonomy && !cJSON_IsNull(google_category_taxonomy) ? strdup(google_category_taxonomy->valuestring) : NULL,
-        strdup(business_id->valuestring),
+        strdup(tenant_id->valuestring),
         strdup(item_category_id->valuestring),
         item_google_category_id && !cJSON_IsNull(item_google_category_id) ? strdup(item_google_category_id->valuestring) : NULL
         );

@@ -34,6 +34,12 @@ Method | HTTP request | Description
 [**AssetsAPI_getAssetValueAmendsCount**](AssetsAPI.md#AssetsAPI_getAssetValueAmendsCount) | **GET** /api/v2/AssetsService/Assets/{assetId}/ValueAmends/Count | Gets count of value amendments for a specific asset
 [**AssetsAPI_getAssets**](AssetsAPI.md#AssetsAPI_getAssets) | **GET** /api/v2/AssetsService/Assets | Gets all assets for the current tenant
 [**AssetsAPI_getAssetsCount**](AssetsAPI.md#AssetsAPI_getAssetsCount) | **GET** /api/v2/AssetsService/Assets/count | Gets the count of assets
+[**AssetsAPI_patchAsset**](AssetsAPI.md#AssetsAPI_patchAsset) | **PATCH** /api/v2/AssetsService/Assets/{assetId} | Partially updates an existing asset
+[**AssetsAPI_patchAssetAssetCategory**](AssetsAPI.md#AssetsAPI_patchAssetAssetCategory) | **PATCH** /api/v2/AssetsService/Assets/Categories/{categoryId} | Partially updates an existing asset category
+[**AssetsAPI_patchAssetDepreciationRecord**](AssetsAPI.md#AssetsAPI_patchAssetDepreciationRecord) | **PATCH** /api/v2/AssetsService/Assets/{assetId}/DepreciationRecords/{recordId} | Partially updates a depreciation record for an asset
+[**AssetsAPI_patchAssetRepair**](AssetsAPI.md#AssetsAPI_patchAssetRepair) | **PATCH** /api/v2/AssetsService/Assets/{assetId}/Repairs/{repairId} | Partially updates a repair for an asset
+[**AssetsAPI_patchAssetTransfer**](AssetsAPI.md#AssetsAPI_patchAssetTransfer) | **PATCH** /api/v2/AssetsService/Assets/{assetId}/Transfers/{transferId} | Partially updates a transfer for an asset
+[**AssetsAPI_patchAssetValueAmend**](AssetsAPI.md#AssetsAPI_patchAssetValueAmend) | **PATCH** /api/v2/AssetsService/Assets/{assetId}/ValueAmends/{amendId} | Partially updates a value amendment for an asset
 [**AssetsAPI_updateAsset**](AssetsAPI.md#AssetsAPI_updateAsset) | **PUT** /api/v2/AssetsService/Assets/{assetId} | Updates an existing asset
 [**AssetsAPI_updateAssetAssetCategory**](AssetsAPI.md#AssetsAPI_updateAssetAssetCategory) | **PUT** /api/v2/AssetsService/Assets/Categories/{categoryId} | Updates an existing asset category
 [**AssetsAPI_updateAssetDepreciationRecord**](AssetsAPI.md#AssetsAPI_updateAssetDepreciationRecord) | **PUT** /api/v2/AssetsService/Assets/{assetId}/DepreciationRecords/{recordId} | Updates a depreciation record for an asset
@@ -1004,6 +1010,208 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AssetsAPI_patchAsset**
+```c
+// Partially updates an existing asset
+//
+// Applies a JSON Patch document to an existing asset for the authenticated tenant.
+//
+empty_envelope_t* AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**assetId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AssetsAPI_patchAssetAssetCategory**
+```c
+// Partially updates an existing asset category
+//
+// Applies a JSON Patch document to an existing asset category for the authenticated tenant.
+//
+empty_envelope_t* AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**categoryId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AssetsAPI_patchAssetDepreciationRecord**
+```c
+// Partially updates a depreciation record for an asset
+//
+// Applies a JSON Patch document to an existing depreciation record for the specified asset.
+//
+empty_envelope_t* AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, char *assetId, char *recordId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**assetId** | **char \*** |  | 
+**recordId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AssetsAPI_patchAssetRepair**
+```c
+// Partially updates a repair for an asset
+//
+// Applies a JSON Patch document to an existing repair record for the specified asset.
+//
+empty_envelope_t* AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId, char *repairId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**assetId** | **char \*** |  | 
+**repairId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AssetsAPI_patchAssetTransfer**
+```c
+// Partially updates a transfer for an asset
+//
+// Applies a JSON Patch document to an existing transfer record for the specified asset.
+//
+empty_envelope_t* AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *assetId, char *transferId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**assetId** | **char \*** |  | 
+**transferId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AssetsAPI_patchAssetValueAmend**
+```c
+// Partially updates a value amendment for an asset
+//
+// Applies a JSON Patch document to an existing value amendment record for the specified asset.
+//
+empty_envelope_t* AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *assetId, char *amendId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**assetId** | **char \*** |  | 
+**amendId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

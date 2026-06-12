@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**CommissionsAPI_getPaymentCommissionAsync**](CommissionsAPI.md#CommissionsAPI_getPaymentCommissionAsync) | **GET** /api/v2/AccountingService/Commissions/PaymentCommissions/{paymentCommissionId} | Get a payment commission by id
 [**CommissionsAPI_getPaymentCommissionsAsync**](CommissionsAPI.md#CommissionsAPI_getPaymentCommissionsAsync) | **GET** /api/v2/AccountingService/Commissions/PaymentCommissions | Get all payment commissions for a tenant
 [**CommissionsAPI_getPaymentCommissionsCountAsync**](CommissionsAPI.md#CommissionsAPI_getPaymentCommissionsCountAsync) | **GET** /api/v2/AccountingService/Commissions/PaymentCommissions/Count | Get the count of payment commissions for a tenant
+[**CommissionsAPI_patchCommissionAsync**](CommissionsAPI.md#CommissionsAPI_patchCommissionAsync) | **PATCH** /api/v2/AccountingService/Commissions/Commissions/{commissionId} | Patch a commission
+[**CommissionsAPI_patchPaymentCommissionAsync**](CommissionsAPI.md#CommissionsAPI_patchPaymentCommissionAsync) | **PATCH** /api/v2/AccountingService/Commissions/PaymentCommissions/{paymentCommissionId} | Patch a payment commission
 [**CommissionsAPI_updateCommissionAsync**](CommissionsAPI.md#CommissionsAPI_updateCommissionAsync) | **PUT** /api/v2/AccountingService/Commissions/Commissions/{commissionId} | Update a commission
 [**CommissionsAPI_updatePaymentCommissionAsync**](CommissionsAPI.md#CommissionsAPI_updatePaymentCommissionAsync) | **PUT** /api/v2/AccountingService/Commissions/PaymentCommissions/{paymentCommissionId} | Update a payment commission
 
@@ -350,6 +352,76 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CommissionsAPI_patchCommissionAsync**
+```c
+// Patch a commission
+//
+// Partially updates an existing commission.
+//
+empty_envelope_t* CommissionsAPI_patchCommissionAsync(apiClient_t *apiClient, char *tenantId, char *commissionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**commissionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CommissionsAPI_patchPaymentCommissionAsync**
+```c
+// Patch a payment commission
+//
+// Partially updates an existing payment commission.
+//
+empty_envelope_t* CommissionsAPI_patchPaymentCommissionAsync(apiClient_t *apiClient, char *tenantId, char *paymentCommissionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**paymentCommissionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

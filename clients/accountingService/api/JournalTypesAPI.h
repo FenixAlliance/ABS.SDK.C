@@ -6,11 +6,13 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
+#include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/journal_type_create_dto.h"
 #include "../model/journal_type_dto_envelope.h"
 #include "../model/journal_type_dto_i_read_only_list_envelope.h"
 #include "../model/journal_type_update_dto.h"
+#include "../model/operation.h"
 
 
 // Creates a new journal type
@@ -51,6 +53,14 @@ JournalTypesAPI_getJournalTypesAsync(apiClient_t *apiClient, char *tenantId, cha
 //
 int32_envelope_t*
 JournalTypesAPI_getJournalTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a journal type
+//
+// Partially updates a journal type.
+//
+empty_envelope_t*
+JournalTypesAPI_patchJournalTypeAsync(apiClient_t *apiClient, char *tenantId, char *journalTypeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates an existing journal type

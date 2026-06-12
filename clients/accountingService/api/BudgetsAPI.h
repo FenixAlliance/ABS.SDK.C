@@ -16,6 +16,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a budget account entry
@@ -88,6 +89,22 @@ BudgetsAPI_getBudgetsAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
 //
 int32_envelope_t*
 BudgetsAPI_getBudgetsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patches a budget account entry
+//
+// Partially update a budget account entry using JSON Patch.
+//
+empty_envelope_t*
+BudgetsAPI_patchBudgetAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patches a budget
+//
+// Partially update a budget using JSON Patch.
+//
+empty_envelope_t*
+BudgetsAPI_patchBudgetAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates a budget account entry

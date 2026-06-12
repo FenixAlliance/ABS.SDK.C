@@ -32,7 +32,7 @@ typedef struct receipt_dto_t {
     char *payment_id; // string
     char *tenant_id; // string
     int closed; //boolean
-    char *account_holder_id; // string
+    char *user_id; // string
     char *contact_id; // string
     char *enrollment_id; // string
     accountingservice_receipt_dto_RECEIPTTYPE_e receipt_type; //enum
@@ -47,7 +47,7 @@ receipt_dto_t *receipt_dto_create(
     char *payment_id,
     char *tenant_id,
     int closed,
-    char *account_holder_id,
+    char *user_id,
     char *contact_id,
     char *enrollment_id,
     accountingservice_receipt_dto_RECEIPTTYPE_e receipt_type,

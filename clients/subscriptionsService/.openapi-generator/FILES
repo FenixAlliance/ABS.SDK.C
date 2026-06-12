@@ -109,5 +109,3 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_empty_envelope.c
-unit-test/test_operation.c

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **prefix** | **char \*** |  | [optional] 
 **balance** | **double** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
+**contact_id** | **char \*** |  | [optional] 
 **account_type** | **char \*** |  | [optional] 
 **qualified_name** | **char \*** |  | [optional] 
 **account_type_id** | **char \*** |  | [optional] 

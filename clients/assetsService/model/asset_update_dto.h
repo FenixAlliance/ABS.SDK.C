@@ -16,13 +16,13 @@
 typedef struct asset_update_dto_t asset_update_dto_t;
 
 
-// Enum ASSETTYPE for asset_update_dto
+// Enum ASSETCLASS for asset_update_dto
 
-typedef enum  { assetsservice_asset_update_dto_ASSETTYPE_NULL = 0, assetsservice_asset_update_dto_ASSETTYPE_Fixed, assetsservice_asset_update_dto_ASSETTYPE_Stock } assetsservice_asset_update_dto_ASSETTYPE_e;
+typedef enum  { assetsservice_asset_update_dto_ASSETCLASS_NULL = 0, assetsservice_asset_update_dto_ASSETCLASS_Fixed, assetsservice_asset_update_dto_ASSETCLASS_Stock } assetsservice_asset_update_dto_ASSETCLASS_e;
 
-char* asset_update_dto_asset_type_ToString(assetsservice_asset_update_dto_ASSETTYPE_e asset_type);
+char* asset_update_dto_asset_class_ToString(assetsservice_asset_update_dto_ASSETCLASS_e asset_class);
 
-assetsservice_asset_update_dto_ASSETTYPE_e asset_update_dto_asset_type_FromString(char* asset_type);
+assetsservice_asset_update_dto_ASSETCLASS_e asset_update_dto_asset_class_FromString(char* asset_class);
 
 // Enum ASSETOWNER for asset_update_dto
 
@@ -37,7 +37,7 @@ assetsservice_asset_update_dto_ASSETOWNER_e asset_update_dto_asset_owner_FromStr
 typedef struct asset_update_dto_t {
     char *name; // string
     char *description; // string
-    assetsservice_asset_update_dto_ASSETTYPE_e asset_type; //enum
+    assetsservice_asset_update_dto_ASSETCLASS_e asset_class; //enum
     assetsservice_asset_update_dto_ASSETOWNER_e asset_owner; //enum
     int calculate_depreciation; //boolean
     int allow_monthly_depreciation; //boolean
@@ -45,8 +45,8 @@ typedef struct asset_update_dto_t {
     char *purchase_date; //date time
     double purchase_price; //numeric
     char *currency_id; // string
-    char *currency_code; // string
     char *item_id; // string
+    char *asset_type_id; // string
     char *asset_category_id; // string
     char *purchase_invoice_id; // string
     char *purchase_receipt_id; // string
@@ -59,7 +59,7 @@ typedef struct asset_update_dto_t {
 asset_update_dto_t *asset_update_dto_create(
     char *name,
     char *description,
-    assetsservice_asset_update_dto_ASSETTYPE_e asset_type,
+    assetsservice_asset_update_dto_ASSETCLASS_e asset_class,
     assetsservice_asset_update_dto_ASSETOWNER_e asset_owner,
     int calculate_depreciation,
     int allow_monthly_depreciation,
@@ -67,8 +67,8 @@ asset_update_dto_t *asset_update_dto_create(
     char *purchase_date,
     double purchase_price,
     char *currency_id,
-    char *currency_code,
     char *item_id,
+    char *asset_type_id,
     char *asset_category_id,
     char *purchase_invoice_id,
     char *purchase_receipt_id,

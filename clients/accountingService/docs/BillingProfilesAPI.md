@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**BillingProfilesAPI_getBillingProfileByIdAsync**](BillingProfilesAPI.md#BillingProfilesAPI_getBillingProfileByIdAsync) | **GET** /api/v2/AccountingService/BillingProfiles/{billingProfileId} | Gets a billing profile by id
 [**BillingProfilesAPI_getBillingProfilesAsync**](BillingProfilesAPI.md#BillingProfilesAPI_getBillingProfilesAsync) | **GET** /api/v2/AccountingService/BillingProfiles | Gets all billing profiles
 [**BillingProfilesAPI_getBillingProfilesCountAsync**](BillingProfilesAPI.md#BillingProfilesAPI_getBillingProfilesCountAsync) | **GET** /api/v2/AccountingService/BillingProfiles/Count | Gets the count of billing profiles
+[**BillingProfilesAPI_patchBillingProfileAsync**](BillingProfilesAPI.md#BillingProfilesAPI_patchBillingProfileAsync) | **PATCH** /api/v2/AccountingService/BillingProfiles/{billingProfileId} | Patch a billing profile
 [**BillingProfilesAPI_updateBillingProfileAsync**](BillingProfilesAPI.md#BillingProfilesAPI_updateBillingProfileAsync) | **PUT** /api/v2/AccountingService/BillingProfiles/{billingProfileId} | Updates an existing billing profile
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BillingProfilesAPI_patchBillingProfileAsync**
+```c
+// Patch a billing profile
+//
+// Partially updates a billing profile.
+//
+empty_envelope_t* BillingProfilesAPI_patchBillingProfileAsync(apiClient_t *apiClient, char *tenantId, char *billingProfileId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**billingProfileId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

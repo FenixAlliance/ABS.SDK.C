@@ -32,6 +32,7 @@ account_create_dto_t *account_create_dto_create(
     char *path,
     char *prefix,
     char *currency_id,
+    char *contact_id,
     char *account_type_id,
     char *parent_account_id,
     accountingservice_account_create_dto_ACCOUNTCATEGORY_e account_category
@@ -49,6 +50,7 @@ account_create_dto_t *account_create_dto_create(
     account_create_dto_local_var->path = path;
     account_create_dto_local_var->prefix = prefix;
     account_create_dto_local_var->currency_id = currency_id;
+    account_create_dto_local_var->contact_id = contact_id;
     account_create_dto_local_var->account_type_id = account_type_id;
     account_create_dto_local_var->parent_account_id = parent_account_id;
     account_create_dto_local_var->account_category = account_category;
@@ -89,6 +91,10 @@ void account_create_dto_free(account_create_dto_t *account_create_dto) {
     if (account_create_dto->currency_id) {
         free(account_create_dto->currency_id);
         account_create_dto->currency_id = NULL;
+    }
+    if (account_create_dto->contact_id) {
+        free(account_create_dto->contact_id);
+        account_create_dto->contact_id = NULL;
     }
     if (account_create_dto->account_type_id) {
         free(account_create_dto->account_type_id);
@@ -175,6 +181,14 @@ cJSON *account_create_dto_convertToJSON(account_create_dto_t *account_create_dto
     }
     if(cJSON_AddStringToObject(item, "currencyId", account_create_dto->currency_id) == NULL) {
     goto fail; //String
+    }
+
+
+    // account_create_dto->contact_id
+    if(account_create_dto->contact_id) {
+    if(cJSON_AddStringToObject(item, "contactId", account_create_dto->contact_id) == NULL) {
+    goto fail; //String
+    }
     }
 
 
@@ -302,6 +316,15 @@ account_create_dto_t *account_create_dto_parseFromJSON(cJSON *account_create_dto
     goto end; //String
     }
 
+    // account_create_dto->contact_id
+    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(account_create_dtoJSON, "contactId");
+    if (contact_id) { 
+    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
+    {
+    goto end; //String
+    }
+    }
+
     // account_create_dto->account_type_id
     cJSON *account_type_id = cJSON_GetObjectItemCaseSensitive(account_create_dtoJSON, "accountTypeId");
     if (account_type_id) { 
@@ -345,6 +368,7 @@ account_create_dto_t *account_create_dto_parseFromJSON(cJSON *account_create_dto
         path && !cJSON_IsNull(path) ? strdup(path->valuestring) : NULL,
         prefix && !cJSON_IsNull(prefix) ? strdup(prefix->valuestring) : NULL,
         strdup(currency_id->valuestring),
+        contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
         account_type_id && !cJSON_IsNull(account_type_id) ? strdup(account_type_id->valuestring) : NULL,
         parent_account_id && !cJSON_IsNull(parent_account_id) ? strdup(parent_account_id->valuestring) : NULL,
         account_categoryVariable

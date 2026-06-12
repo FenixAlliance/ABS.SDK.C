@@ -15,7 +15,6 @@
 
 typedef struct asset_repair_dto_t asset_repair_dto_t;
 
-#include "object.h"
 
 // Enum REPAIRSTATUS for asset_repair_dto
 
@@ -28,11 +27,11 @@ assetsservice_asset_repair_dto_REPAIRSTATUS_e asset_repair_dto_repair_status_Fro
 
 
 typedef struct asset_repair_dto_t {
-    object_t *id; //object
+    char *id; // string
     char *timestamp; //date time
-    object_t *business_id; //object
-    object_t *business_profile_record_id; //object
-    object_t *asset_id; //object
+    char *tenant_id; // string
+    char *enrollment_id; // string
+    char *asset_id; // string
     char *asset_name; // string
     assetsservice_asset_repair_dto_REPAIRSTATUS_e repair_status; //enum
     char *scheduled_date; //date time
@@ -49,11 +48,11 @@ typedef struct asset_repair_dto_t {
 } asset_repair_dto_t;
 
 asset_repair_dto_t *asset_repair_dto_create(
-    object_t *id,
+    char *id,
     char *timestamp,
-    object_t *business_id,
-    object_t *business_profile_record_id,
-    object_t *asset_id,
+    char *tenant_id,
+    char *enrollment_id,
+    char *asset_id,
     char *asset_name,
     assetsservice_asset_repair_dto_REPAIRSTATUS_e repair_status,
     char *scheduled_date,

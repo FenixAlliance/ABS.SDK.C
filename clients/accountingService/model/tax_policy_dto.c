@@ -367,7 +367,7 @@ cJSON *tax_policy_dto_convertToJSON(tax_policy_dto_t *tax_policy_dto) {
 
     // tax_policy_dto->fiscal_authority_id
     if(tax_policy_dto->fiscal_authority_id) {
-    if(cJSON_AddStringToObject(item, "fiscalAuthorityID", tax_policy_dto->fiscal_authority_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "fiscalAuthorityId", tax_policy_dto->fiscal_authority_id) == NULL) {
     goto fail; //String
     }
     }
@@ -637,7 +637,7 @@ tax_policy_dto_t *tax_policy_dto_parseFromJSON(cJSON *tax_policy_dtoJSON){
     }
 
     // tax_policy_dto->fiscal_authority_id
-    cJSON *fiscal_authority_id = cJSON_GetObjectItemCaseSensitive(tax_policy_dtoJSON, "fiscalAuthorityID");
+    cJSON *fiscal_authority_id = cJSON_GetObjectItemCaseSensitive(tax_policy_dtoJSON, "fiscalAuthorityId");
     if (fiscal_authority_id) { 
     if(!cJSON_IsString(fiscal_authority_id) && !cJSON_IsNull(fiscal_authority_id))
     {

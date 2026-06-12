@@ -106,7 +106,7 @@ cJSON *item_category_create_dto_convertToJSON(item_category_create_dto_t *item_c
 
     // item_category_create_dto->parent_item_category_id
     if(item_category_create_dto->parent_item_category_id) {
-    if(cJSON_AddStringToObject(item, "parentItemCategoryID", item_category_create_dto->parent_item_category_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentItemCategoryId", item_category_create_dto->parent_item_category_id) == NULL) {
     goto fail; //String
     }
     }
@@ -172,7 +172,7 @@ item_category_create_dto_t *item_category_create_dto_parseFromJSON(cJSON *item_c
     }
 
     // item_category_create_dto->parent_item_category_id
-    cJSON *parent_item_category_id = cJSON_GetObjectItemCaseSensitive(item_category_create_dtoJSON, "parentItemCategoryID");
+    cJSON *parent_item_category_id = cJSON_GetObjectItemCaseSensitive(item_category_create_dtoJSON, "parentItemCategoryId");
     if (parent_item_category_id) { 
     if(!cJSON_IsString(parent_item_category_id) && !cJSON_IsNull(parent_item_category_id))
     {

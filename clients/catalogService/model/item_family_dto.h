@@ -24,7 +24,7 @@ typedef struct item_family_dto_t {
     char *name; // string
     char *code; // string
     char *description; // string
-    char *business_id; // string
+    char *tenant_id; // string
 
 } item_family_dto_t;
 
@@ -34,7 +34,7 @@ item_family_dto_t *item_family_dto_create(
     char *name,
     char *code,
     char *description,
-    char *business_id
+    char *tenant_id
 );
 
 void item_family_dto_free(item_family_dto_t *item_family_dto);

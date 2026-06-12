@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ItemReviewsAPI_deleteItemReviewAsync**](ItemReviewsAPI.md#ItemReviewsAPI_deleteItemReviewAsync) | **DELETE** /api/v2/CatalogService/ItemReviews/{itemReviewId} | Delete an item review
 [**ItemReviewsAPI_getItemReviewByIdAsync**](ItemReviewsAPI.md#ItemReviewsAPI_getItemReviewByIdAsync) | **GET** /api/v2/CatalogService/ItemReviews/{itemReviewId} | Get item review by ID
 [**ItemReviewsAPI_getItemReviewsAsync**](ItemReviewsAPI.md#ItemReviewsAPI_getItemReviewsAsync) | **GET** /api/v2/CatalogService/ItemReviews | Get all item reviews
+[**ItemReviewsAPI_patchItemReviewAsync**](ItemReviewsAPI.md#ItemReviewsAPI_patchItemReviewAsync) | **PATCH** /api/v2/CatalogService/ItemReviews/{itemReviewId} | Patch an item review
 [**ItemReviewsAPI_updateItemReviewAsync**](ItemReviewsAPI.md#ItemReviewsAPI_updateItemReviewAsync) | **PUT** /api/v2/CatalogService/ItemReviews/{itemReviewId} | Update an item review
 
 
@@ -141,6 +142,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemReviewsAPI_patchItemReviewAsync**
+```c
+// Patch an item review
+//
+// Partially updates an existing item review for the specified tenant.
+//
+void ItemReviewsAPI_patchItemReviewAsync(apiClient_t *apiClient, char *tenantId, char *itemReviewId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**itemReviewId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

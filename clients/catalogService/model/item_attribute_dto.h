@@ -23,7 +23,7 @@ typedef struct item_attribute_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *description; // string
-    char *business_id; // string
+    char *tenant_id; // string
 
 } item_attribute_dto_t;
 
@@ -32,7 +32,7 @@ item_attribute_dto_t *item_attribute_dto_create(
     char *timestamp,
     char *name,
     char *description,
-    char *business_id
+    char *tenant_id
 );
 
 void item_attribute_dto_free(item_attribute_dto_t *item_attribute_dto);

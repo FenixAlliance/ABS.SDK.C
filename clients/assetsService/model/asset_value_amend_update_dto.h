@@ -22,17 +22,13 @@ typedef struct asset_value_amend_update_dto_t {
     double new_value; //numeric
     char *reason; // string
     char *amendment_date; //date time
-    char *approved_by; // string
-    char *approval_date; //date time
 
 } asset_value_amend_update_dto_t;
 
 asset_value_amend_update_dto_t *asset_value_amend_update_dto_create(
     double new_value,
     char *reason,
-    char *amendment_date,
-    char *approved_by,
-    char *approval_date
+    char *amendment_date
 );
 
 void asset_value_amend_update_dto_free(asset_value_amend_update_dto_t *asset_value_amend_update_dto);

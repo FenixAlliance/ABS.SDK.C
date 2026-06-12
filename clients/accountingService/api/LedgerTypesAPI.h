@@ -12,6 +12,7 @@
 #include "../model/ledger_type_dto_envelope.h"
 #include "../model/ledger_type_dto_i_read_only_list_envelope.h"
 #include "../model/ledger_type_update_dto.h"
+#include "../model/operation.h"
 
 
 // Creates a new ledger type
@@ -52,6 +53,14 @@ LedgerTypesAPI_getLedgerTypesAsync(apiClient_t *apiClient, char *tenantId, char 
 //
 int32_envelope_t*
 LedgerTypesAPI_getLedgerTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patches a ledger type
+//
+// Partially updates the specified ledger type using a JSON Patch document.
+//
+empty_envelope_t*
+LedgerTypesAPI_patchLedgerTypeAsync(apiClient_t *apiClient, char *tenantId, char *ledgerTypeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates a ledger type

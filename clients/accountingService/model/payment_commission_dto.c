@@ -229,7 +229,7 @@ cJSON *payment_commission_dto_convertToJSON(payment_commission_dto_t *payment_co
 
     // payment_commission_dto->payment_id
     if(payment_commission_dto->payment_id) {
-    if(cJSON_AddStringToObject(item, "paymentID", payment_commission_dto->payment_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "paymentId", payment_commission_dto->payment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -382,7 +382,7 @@ payment_commission_dto_t *payment_commission_dto_parseFromJSON(cJSON *payment_co
     }
 
     // payment_commission_dto->payment_id
-    cJSON *payment_id = cJSON_GetObjectItemCaseSensitive(payment_commission_dtoJSON, "paymentID");
+    cJSON *payment_id = cJSON_GetObjectItemCaseSensitive(payment_commission_dtoJSON, "paymentId");
     if (payment_id) { 
     if(!cJSON_IsString(payment_id) && !cJSON_IsNull(payment_id))
     {

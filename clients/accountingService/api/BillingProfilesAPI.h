@@ -10,7 +10,9 @@
 #include "../model/billing_profile_dto_i_read_only_list_envelope.h"
 #include "../model/billing_profile_update_dto.h"
 #include "../model/empty_envelope.h"
+#include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a new billing profile
@@ -51,6 +53,14 @@ BillingProfilesAPI_getBillingProfilesAsync(apiClient_t *apiClient, char *tenantI
 //
 int32_envelope_t*
 BillingProfilesAPI_getBillingProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a billing profile
+//
+// Partially updates a billing profile.
+//
+empty_envelope_t*
+BillingProfilesAPI_patchBillingProfileAsync(apiClient_t *apiClient, char *tenantId, char *billingProfileId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates an existing billing profile

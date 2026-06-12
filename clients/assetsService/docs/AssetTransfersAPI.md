@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**AssetTransfersAPI_getAssetTransferAsync**](AssetTransfersAPI.md#AssetTransfersAPI_getAssetTransferAsync) | **GET** /api/v2/AssetsService/AssetTransfers/{transferId} | Gets a single asset transfer by ID
 [**AssetTransfersAPI_getAssetTransfersAsync**](AssetTransfersAPI.md#AssetTransfersAPI_getAssetTransfersAsync) | **GET** /api/v2/AssetsService/AssetTransfers | Gets a list of asset transfers
 [**AssetTransfersAPI_getAssetTransfersCountAsync**](AssetTransfersAPI.md#AssetTransfersAPI_getAssetTransfersCountAsync) | **GET** /api/v2/AssetsService/AssetTransfers/Count | Gets the count of asset transfers
+[**AssetTransfersAPI_patchAssetTransferAsync**](AssetTransfersAPI.md#AssetTransfersAPI_patchAssetTransferAsync) | **PATCH** /api/v2/AssetsService/AssetTransfers/{transferId} | Partially updates an existing asset transfer
 [**AssetTransfersAPI_updateAssetTransferAsync**](AssetTransfersAPI.md#AssetTransfersAPI_updateAssetTransferAsync) | **PUT** /api/v2/AssetsService/AssetTransfers/{transferId} | Updates an existing asset transfer
 
 
@@ -166,6 +167,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AssetTransfersAPI_patchAssetTransferAsync**
+```c
+// Partially updates an existing asset transfer
+//
+// Applies a JSON Patch document to an existing asset transfer for the authenticated tenant.
+//
+empty_envelope_t* AssetTransfersAPI_patchAssetTransferAsync(apiClient_t *apiClient, char *tenantId, char *transferId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**transferId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

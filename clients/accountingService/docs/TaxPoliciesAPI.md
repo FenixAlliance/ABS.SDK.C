@@ -19,6 +19,9 @@ Method | HTTP request | Description
 [**TaxPoliciesAPI_getTaxPoliciesByAuthority**](TaxPoliciesAPI.md#TaxPoliciesAPI_getTaxPoliciesByAuthority) | **GET** /api/v2/AccountingService/TaxPolicies/ByAuthority/{authorityId} | Get tax policies by fiscal authority
 [**TaxPoliciesAPI_getTaxPoliciesCount**](TaxPoliciesAPI.md#TaxPoliciesAPI_getTaxPoliciesCount) | **GET** /api/v2/AccountingService/TaxPolicies/Count | Get tax policies count
 [**TaxPoliciesAPI_getTaxPolicy**](TaxPoliciesAPI.md#TaxPoliciesAPI_getTaxPolicy) | **GET** /api/v2/AccountingService/TaxPolicies/{id} | Get tax policy by ID
+[**TaxPoliciesAPI_patchAppliedTaxPolicyRecord**](TaxPoliciesAPI.md#TaxPoliciesAPI_patchAppliedTaxPolicyRecord) | **PATCH** /api/v2/AccountingService/TaxPolicies/{taxPolicyId}/AppliedTaxPolicyRecords/{appliedTaxPolicyRecordId} | Patch an applied tax policy record
+[**TaxPoliciesAPI_patchItemTaxPolicyRecord**](TaxPoliciesAPI.md#TaxPoliciesAPI_patchItemTaxPolicyRecord) | **PATCH** /api/v2/AccountingService/TaxPolicies/{taxPolicyId}/ItemTaxPolicyRecords/{itemTaxPolicyRecordId} | Patch an item tax policy record
+[**TaxPoliciesAPI_patchTaxPolicy**](TaxPoliciesAPI.md#TaxPoliciesAPI_patchTaxPolicy) | **PATCH** /api/v2/AccountingService/TaxPolicies/{id} | Patch a tax policy
 [**TaxPoliciesAPI_updateAppliedTaxPolicyRecord**](TaxPoliciesAPI.md#TaxPoliciesAPI_updateAppliedTaxPolicyRecord) | **PUT** /api/v2/AccountingService/TaxPolicies/{taxPolicyId}/AppliedTaxPolicyRecords/{appliedTaxPolicyRecordId} | Update an applied tax policy record
 [**TaxPoliciesAPI_updateItemTaxPolicyRecord**](TaxPoliciesAPI.md#TaxPoliciesAPI_updateItemTaxPolicyRecord) | **PUT** /api/v2/AccountingService/TaxPolicies/{taxPolicyId}/ItemTaxPolicyRecords/{itemTaxPolicyRecordId} | Update an item tax policy record
 [**TaxPoliciesAPI_updateTaxPolicy**](TaxPoliciesAPI.md#TaxPoliciesAPI_updateTaxPolicy) | **PUT** /api/v2/AccountingService/TaxPolicies/{id} | Update a tax policy
@@ -534,6 +537,113 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TaxPoliciesAPI_patchAppliedTaxPolicyRecord**
+```c
+// Patch an applied tax policy record
+//
+// Partially updates an existing applied tax policy record identified by its unique identifier.
+//
+empty_envelope_t* TaxPoliciesAPI_patchAppliedTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *appliedTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**taxPolicyId** | **char \*** |  | 
+**appliedTaxPolicyRecordId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TaxPoliciesAPI_patchItemTaxPolicyRecord**
+```c
+// Patch an item tax policy record
+//
+// Partially updates an existing item tax policy record identified by its unique identifier.
+//
+empty_envelope_t* TaxPoliciesAPI_patchItemTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *itemTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**taxPolicyId** | **char \*** |  | 
+**itemTaxPolicyRecordId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TaxPoliciesAPI_patchTaxPolicy**
+```c
+// Patch a tax policy
+//
+// Partially updates an existing tax policy identified by its unique identifier.
+//
+empty_envelope_t* TaxPoliciesAPI_patchTaxPolicy(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**id** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**InvoiceEnumerationRangesAPI_deleteInvoiceEnumerationRangeAsync**](InvoiceEnumerationRangesAPI.md#InvoiceEnumerationRangesAPI_deleteInvoiceEnumerationRangeAsync) | **DELETE** /api/v2/AccountingService/InvoiceEnumerationRanges/{rangeId} | Delete an invoice enumeration range
 [**InvoiceEnumerationRangesAPI_getInvoiceEnumerationRangeDetailsAsync**](InvoiceEnumerationRangesAPI.md#InvoiceEnumerationRangesAPI_getInvoiceEnumerationRangeDetailsAsync) | **GET** /api/v2/AccountingService/InvoiceEnumerationRanges/{rangeId} | Get invoice enumeration range by ID
 [**InvoiceEnumerationRangesAPI_getInvoiceEnumerationRangesAsync**](InvoiceEnumerationRangesAPI.md#InvoiceEnumerationRangesAPI_getInvoiceEnumerationRangesAsync) | **GET** /api/v2/AccountingService/InvoiceEnumerationRanges | Get all invoice enumeration ranges
+[**InvoiceEnumerationRangesAPI_patchInvoiceEnumerationRangeAsync**](InvoiceEnumerationRangesAPI.md#InvoiceEnumerationRangesAPI_patchInvoiceEnumerationRangeAsync) | **PATCH** /api/v2/AccountingService/InvoiceEnumerationRanges/{rangeId} | Patch an invoice enumeration range
 [**InvoiceEnumerationRangesAPI_updateInvoiceEnumerationRangeAsync**](InvoiceEnumerationRangesAPI.md#InvoiceEnumerationRangesAPI_updateInvoiceEnumerationRangeAsync) | **PUT** /api/v2/AccountingService/InvoiceEnumerationRanges/{rangeId} | Update an invoice enumeration range
 
 
@@ -142,6 +143,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InvoiceEnumerationRangesAPI_patchInvoiceEnumerationRangeAsync**
+```c
+// Patch an invoice enumeration range
+//
+// Partially updates an invoice enumeration range.
+//
+empty_envelope_t* InvoiceEnumerationRangesAPI_patchInvoiceEnumerationRangeAsync(apiClient_t *apiClient, char *tenantId, char *rangeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**rangeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

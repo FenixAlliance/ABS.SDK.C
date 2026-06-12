@@ -11,6 +11,7 @@
 #include "../model/item_attribute_dto_envelope.h"
 #include "../model/item_attribute_dto_list_envelope.h"
 #include "../model/item_attribute_update_dto.h"
+#include "../model/operation.h"
 
 
 // Count item attributes
@@ -51,6 +52,14 @@ ItemAttributesAPI_getItemAttributeByIdAsync(apiClient_t *apiClient, char *itemAt
 //
 item_attribute_dto_list_envelope_t*
 ItemAttributesAPI_getItemAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item attribute
+//
+// Partially updates an existing item attribute for the specified tenant.
+//
+void
+ItemAttributesAPI_patchItemAttributeAsync(apiClient_t *apiClient, char *tenantId, char *itemAttributeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item attribute

@@ -11,6 +11,7 @@
 #include "../model/int32_envelope.h"
 #include "../model/ledger_dto_envelope.h"
 #include "../model/ledger_dto_i_read_only_list_envelope.h"
+#include "../model/operation.h"
 #include "../model/update_ledger_dto.h"
 
 
@@ -52,6 +53,14 @@ LedgersAPI_getLedgersAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
 //
 int32_envelope_t*
 LedgersAPI_getLedgersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patches a ledger
+//
+// Patches the specified ledger.
+//
+empty_envelope_t*
+LedgersAPI_patchLedgerAsync(apiClient_t *apiClient, char *tenantId, char *ledgerId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates a ledger

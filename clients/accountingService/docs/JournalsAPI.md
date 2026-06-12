@@ -15,6 +15,8 @@ Method | HTTP request | Description
 [**JournalsAPI_getJournalEntriesAsync**](JournalsAPI.md#JournalsAPI_getJournalEntriesAsync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries | Get journal entries
 [**JournalsAPI_getJournalEntriesCountAsync**](JournalsAPI.md#JournalsAPI_getJournalEntriesCountAsync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Count | Count journal entries
 [**JournalsAPI_getJournalsAsync**](JournalsAPI.md#JournalsAPI_getJournalsAsync) | **GET** /api/v2/AccountingService/Journals | Get all journals
+[**JournalsAPI_patchJournalAsync**](JournalsAPI.md#JournalsAPI_patchJournalAsync) | **PATCH** /api/v2/AccountingService/Journals/{journalId} | Patch a journal
+[**JournalsAPI_patchJournalEntryAsync**](JournalsAPI.md#JournalsAPI_patchJournalEntryAsync) | **PATCH** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Patch a journal entry
 [**JournalsAPI_updateJournalAsync**](JournalsAPI.md#JournalsAPI_updateJournalAsync) | **PUT** /api/v2/AccountingService/Journals/{journalId} | Update journal
 [**JournalsAPI_updateJournalEntryAsync**](JournalsAPI.md#JournalsAPI_updateJournalEntryAsync) | **PUT** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Update journal entry
 
@@ -391,6 +393,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JournalsAPI_patchJournalAsync**
+```c
+// Patch a journal
+//
+// Partially updates a journal.
+//
+empty_envelope_t* JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**journalId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JournalsAPI_patchJournalEntryAsync**
+```c
+// Patch a journal entry
+//
+// Partially updates a journal entry.
+//
+empty_envelope_t* JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**journalId** | **char \*** |  | 
+**entryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

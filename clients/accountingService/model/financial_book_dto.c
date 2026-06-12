@@ -10,7 +10,7 @@ financial_book_dto_t *financial_book_dto_create(
     char *timestamp,
     char *name,
     char *description,
-    char *business_id
+    char *tenant_id
     ) {
     financial_book_dto_t *financial_book_dto_local_var = malloc(sizeof(financial_book_dto_t));
     if (!financial_book_dto_local_var) {
@@ -20,7 +20,7 @@ financial_book_dto_t *financial_book_dto_create(
     financial_book_dto_local_var->timestamp = timestamp;
     financial_book_dto_local_var->name = name;
     financial_book_dto_local_var->description = description;
-    financial_book_dto_local_var->business_id = business_id;
+    financial_book_dto_local_var->tenant_id = tenant_id;
 
     return financial_book_dto_local_var;
 }
@@ -47,9 +47,9 @@ void financial_book_dto_free(financial_book_dto_t *financial_book_dto) {
         free(financial_book_dto->description);
         financial_book_dto->description = NULL;
     }
-    if (financial_book_dto->business_id) {
-        free(financial_book_dto->business_id);
-        financial_book_dto->business_id = NULL;
+    if (financial_book_dto->tenant_id) {
+        free(financial_book_dto->tenant_id);
+        financial_book_dto->tenant_id = NULL;
     }
     free(financial_book_dto);
 }
@@ -89,9 +89,9 @@ cJSON *financial_book_dto_convertToJSON(financial_book_dto_t *financial_book_dto
     }
 
 
-    // financial_book_dto->business_id
-    if(financial_book_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", financial_book_dto->business_id) == NULL) {
+    // financial_book_dto->tenant_id
+    if(financial_book_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", financial_book_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -144,10 +144,10 @@ financial_book_dto_t *financial_book_dto_parseFromJSON(cJSON *financial_book_dto
     }
     }
 
-    // financial_book_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(financial_book_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // financial_book_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(financial_book_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -159,7 +159,7 @@ financial_book_dto_t *financial_book_dto_parseFromJSON(cJSON *financial_book_dto
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
         );
 
     return financial_book_dto_local_var;

@@ -44,7 +44,7 @@ asset_dto_t *asset_dto_create(
     char *timestamp,
     char *tenant_id,
     char *business_name,
-    char *business_profile_record_id,
+    char *enrollment_id,
     char *name,
     char *description,
     assetsservice_asset_dto_ASSETCLASS_e asset_class,
@@ -59,6 +59,8 @@ asset_dto_t *asset_dto_create(
     char *currency_code,
     char *item_id,
     char *item_name,
+    char *asset_type_id,
+    char *asset_type_name,
     char *asset_category_id,
     char *asset_category_name,
     char *purchase_invoice_id,
@@ -79,7 +81,7 @@ asset_dto_t *asset_dto_create(
     asset_dto_local_var->timestamp = timestamp;
     asset_dto_local_var->tenant_id = tenant_id;
     asset_dto_local_var->business_name = business_name;
-    asset_dto_local_var->business_profile_record_id = business_profile_record_id;
+    asset_dto_local_var->enrollment_id = enrollment_id;
     asset_dto_local_var->name = name;
     asset_dto_local_var->description = description;
     asset_dto_local_var->asset_class = asset_class;
@@ -94,6 +96,8 @@ asset_dto_t *asset_dto_create(
     asset_dto_local_var->currency_code = currency_code;
     asset_dto_local_var->item_id = item_id;
     asset_dto_local_var->item_name = item_name;
+    asset_dto_local_var->asset_type_id = asset_type_id;
+    asset_dto_local_var->asset_type_name = asset_type_name;
     asset_dto_local_var->asset_category_id = asset_category_id;
     asset_dto_local_var->asset_category_name = asset_category_name;
     asset_dto_local_var->purchase_invoice_id = purchase_invoice_id;
@@ -131,9 +135,9 @@ void asset_dto_free(asset_dto_t *asset_dto) {
         free(asset_dto->business_name);
         asset_dto->business_name = NULL;
     }
-    if (asset_dto->business_profile_record_id) {
-        free(asset_dto->business_profile_record_id);
-        asset_dto->business_profile_record_id = NULL;
+    if (asset_dto->enrollment_id) {
+        free(asset_dto->enrollment_id);
+        asset_dto->enrollment_id = NULL;
     }
     if (asset_dto->name) {
         free(asset_dto->name);
@@ -162,6 +166,14 @@ void asset_dto_free(asset_dto_t *asset_dto) {
     if (asset_dto->item_name) {
         free(asset_dto->item_name);
         asset_dto->item_name = NULL;
+    }
+    if (asset_dto->asset_type_id) {
+        free(asset_dto->asset_type_id);
+        asset_dto->asset_type_id = NULL;
+    }
+    if (asset_dto->asset_type_name) {
+        free(asset_dto->asset_type_name);
+        asset_dto->asset_type_name = NULL;
     }
     if (asset_dto->asset_category_id) {
         free(asset_dto->asset_category_id);
@@ -245,9 +257,9 @@ cJSON *asset_dto_convertToJSON(asset_dto_t *asset_dto) {
     }
 
 
-    // asset_dto->business_profile_record_id
-    if(asset_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordId", asset_dto->business_profile_record_id) == NULL) {
+    // asset_dto->enrollment_id
+    if(asset_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", asset_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -362,6 +374,22 @@ cJSON *asset_dto_convertToJSON(asset_dto_t *asset_dto) {
     // asset_dto->item_name
     if(asset_dto->item_name) {
     if(cJSON_AddStringToObject(item, "itemName", asset_dto->item_name) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // asset_dto->asset_type_id
+    if(asset_dto->asset_type_id) {
+    if(cJSON_AddStringToObject(item, "assetTypeId", asset_dto->asset_type_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // asset_dto->asset_type_name
+    if(asset_dto->asset_type_name) {
+    if(cJSON_AddStringToObject(item, "assetTypeName", asset_dto->asset_type_name) == NULL) {
     goto fail; //String
     }
     }
@@ -502,10 +530,10 @@ asset_dto_t *asset_dto_parseFromJSON(cJSON *asset_dtoJSON){
     }
     }
 
-    // asset_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(asset_dtoJSON, "businessProfileRecordId");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // asset_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(asset_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -641,6 +669,24 @@ asset_dto_t *asset_dto_parseFromJSON(cJSON *asset_dtoJSON){
     }
     }
 
+    // asset_dto->asset_type_id
+    cJSON *asset_type_id = cJSON_GetObjectItemCaseSensitive(asset_dtoJSON, "assetTypeId");
+    if (asset_type_id) { 
+    if(!cJSON_IsString(asset_type_id) && !cJSON_IsNull(asset_type_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // asset_dto->asset_type_name
+    cJSON *asset_type_name = cJSON_GetObjectItemCaseSensitive(asset_dtoJSON, "assetTypeName");
+    if (asset_type_name) { 
+    if(!cJSON_IsString(asset_type_name) && !cJSON_IsNull(asset_type_name))
+    {
+    goto end; //String
+    }
+    }
+
     // asset_dto->asset_category_id
     cJSON *asset_category_id = cJSON_GetObjectItemCaseSensitive(asset_dtoJSON, "assetCategoryId");
     if (asset_category_id) { 
@@ -746,7 +792,7 @@ asset_dto_t *asset_dto_parseFromJSON(cJSON *asset_dtoJSON){
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         business_name && !cJSON_IsNull(business_name) ? strdup(business_name->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         asset_class ? asset_classVariable : assetsservice_asset_dto_ASSETCLASS_NULL,
@@ -761,6 +807,8 @@ asset_dto_t *asset_dto_parseFromJSON(cJSON *asset_dtoJSON){
         currency_code && !cJSON_IsNull(currency_code) ? strdup(currency_code->valuestring) : NULL,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
         item_name && !cJSON_IsNull(item_name) ? strdup(item_name->valuestring) : NULL,
+        asset_type_id && !cJSON_IsNull(asset_type_id) ? strdup(asset_type_id->valuestring) : NULL,
+        asset_type_name && !cJSON_IsNull(asset_type_name) ? strdup(asset_type_name->valuestring) : NULL,
         asset_category_id && !cJSON_IsNull(asset_category_id) ? strdup(asset_category_id->valuestring) : NULL,
         asset_category_name && !cJSON_IsNull(asset_category_name) ? strdup(asset_category_name->valuestring) : NULL,
         purchase_invoice_id && !cJSON_IsNull(purchase_invoice_id) ? strdup(purchase_invoice_id->valuestring) : NULL,

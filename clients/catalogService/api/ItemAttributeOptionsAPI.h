@@ -5,12 +5,14 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_attribute_option_create_dto.h"
 #include "../model/item_attribute_option_dto_envelope.h"
 #include "../model/item_attribute_option_dto_list_envelope.h"
 #include "../model/item_attribute_option_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a new item attribute option
@@ -51,6 +53,14 @@ ItemAttributeOptionsAPI_getItemAttributeOptionsAsync(apiClient_t *apiClient, cha
 //
 int32_envelope_t*
 ItemAttributeOptionsAPI_getItemAttributeOptionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item attribute option
+//
+// Partially updates an existing item attribute option for the specified tenant using a JSON Patch document.
+//
+empty_envelope_t*
+ItemAttributeOptionsAPI_patchItemAttributeOptionAsync(apiClient_t *apiClient, char *tenantId, char *itemAttributeOptionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item attribute option

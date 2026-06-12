@@ -4,17 +4,17 @@
 #include "asset_update_dto.h"
 
 
-char* asset_update_dto_asset_type_ToString(assetsservice_asset_update_dto_ASSETTYPE_e asset_type) {
-    char* asset_typeArray[] =  { "NULL", "Fixed", "Stock" };
-    return asset_typeArray[asset_type];
+char* asset_update_dto_asset_class_ToString(assetsservice_asset_update_dto_ASSETCLASS_e asset_class) {
+    char* asset_classArray[] =  { "NULL", "Fixed", "Stock" };
+    return asset_classArray[asset_class];
 }
 
-assetsservice_asset_update_dto_ASSETTYPE_e asset_update_dto_asset_type_FromString(char* asset_type){
+assetsservice_asset_update_dto_ASSETCLASS_e asset_update_dto_asset_class_FromString(char* asset_class){
     int stringToReturn = 0;
-    char *asset_typeArray[] =  { "NULL", "Fixed", "Stock" };
-    size_t sizeofArray = sizeof(asset_typeArray) / sizeof(asset_typeArray[0]);
+    char *asset_classArray[] =  { "NULL", "Fixed", "Stock" };
+    size_t sizeofArray = sizeof(asset_classArray) / sizeof(asset_classArray[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(asset_type, asset_typeArray[stringToReturn]) == 0) {
+        if(strcmp(asset_class, asset_classArray[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -42,7 +42,7 @@ assetsservice_asset_update_dto_ASSETOWNER_e asset_update_dto_asset_owner_FromStr
 asset_update_dto_t *asset_update_dto_create(
     char *name,
     char *description,
-    assetsservice_asset_update_dto_ASSETTYPE_e asset_type,
+    assetsservice_asset_update_dto_ASSETCLASS_e asset_class,
     assetsservice_asset_update_dto_ASSETOWNER_e asset_owner,
     int calculate_depreciation,
     int allow_monthly_depreciation,
@@ -50,8 +50,8 @@ asset_update_dto_t *asset_update_dto_create(
     char *purchase_date,
     double purchase_price,
     char *currency_id,
-    char *currency_code,
     char *item_id,
+    char *asset_type_id,
     char *asset_category_id,
     char *purchase_invoice_id,
     char *purchase_receipt_id,
@@ -65,7 +65,7 @@ asset_update_dto_t *asset_update_dto_create(
     }
     asset_update_dto_local_var->name = name;
     asset_update_dto_local_var->description = description;
-    asset_update_dto_local_var->asset_type = asset_type;
+    asset_update_dto_local_var->asset_class = asset_class;
     asset_update_dto_local_var->asset_owner = asset_owner;
     asset_update_dto_local_var->calculate_depreciation = calculate_depreciation;
     asset_update_dto_local_var->allow_monthly_depreciation = allow_monthly_depreciation;
@@ -73,8 +73,8 @@ asset_update_dto_t *asset_update_dto_create(
     asset_update_dto_local_var->purchase_date = purchase_date;
     asset_update_dto_local_var->purchase_price = purchase_price;
     asset_update_dto_local_var->currency_id = currency_id;
-    asset_update_dto_local_var->currency_code = currency_code;
     asset_update_dto_local_var->item_id = item_id;
+    asset_update_dto_local_var->asset_type_id = asset_type_id;
     asset_update_dto_local_var->asset_category_id = asset_category_id;
     asset_update_dto_local_var->purchase_invoice_id = purchase_invoice_id;
     asset_update_dto_local_var->purchase_receipt_id = purchase_receipt_id;
@@ -107,13 +107,13 @@ void asset_update_dto_free(asset_update_dto_t *asset_update_dto) {
         free(asset_update_dto->currency_id);
         asset_update_dto->currency_id = NULL;
     }
-    if (asset_update_dto->currency_code) {
-        free(asset_update_dto->currency_code);
-        asset_update_dto->currency_code = NULL;
-    }
     if (asset_update_dto->item_id) {
         free(asset_update_dto->item_id);
         asset_update_dto->item_id = NULL;
+    }
+    if (asset_update_dto->asset_type_id) {
+        free(asset_update_dto->asset_type_id);
+        asset_update_dto->asset_type_id = NULL;
     }
     if (asset_update_dto->asset_category_id) {
         free(asset_update_dto->asset_category_id);
@@ -161,9 +161,9 @@ cJSON *asset_update_dto_convertToJSON(asset_update_dto_t *asset_update_dto) {
     }
 
 
-    // asset_update_dto->asset_type
-    if(asset_update_dto->asset_type != assetsservice_asset_update_dto_ASSETTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "assetType", asset_typeasset_update_dto_ToString(asset_update_dto->asset_type)) == NULL)
+    // asset_update_dto->asset_class
+    if(asset_update_dto->asset_class != assetsservice_asset_update_dto_ASSETCLASS_NULL) {
+    if(cJSON_AddStringToObject(item, "assetClass", asset_classasset_update_dto_ToString(asset_update_dto->asset_class)) == NULL)
     {
     goto fail; //Enum
     }
@@ -227,17 +227,17 @@ cJSON *asset_update_dto_convertToJSON(asset_update_dto_t *asset_update_dto) {
     }
 
 
-    // asset_update_dto->currency_code
-    if(asset_update_dto->currency_code) {
-    if(cJSON_AddStringToObject(item, "currencyCode", asset_update_dto->currency_code) == NULL) {
+    // asset_update_dto->item_id
+    if(asset_update_dto->item_id) {
+    if(cJSON_AddStringToObject(item, "itemId", asset_update_dto->item_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // asset_update_dto->item_id
-    if(asset_update_dto->item_id) {
-    if(cJSON_AddStringToObject(item, "itemId", asset_update_dto->item_id) == NULL) {
+    // asset_update_dto->asset_type_id
+    if(asset_update_dto->asset_type_id) {
+    if(cJSON_AddStringToObject(item, "assetTypeId", asset_update_dto->asset_type_id) == NULL) {
     goto fail; //String
     }
     }
@@ -320,15 +320,15 @@ asset_update_dto_t *asset_update_dto_parseFromJSON(cJSON *asset_update_dtoJSON){
     }
     }
 
-    // asset_update_dto->asset_type
-    cJSON *asset_type = cJSON_GetObjectItemCaseSensitive(asset_update_dtoJSON, "assetType");
-    assetsservice_asset_update_dto_ASSETTYPE_e asset_typeVariable;
-    if (asset_type) { 
-    if(!cJSON_IsString(asset_type))
+    // asset_update_dto->asset_class
+    cJSON *asset_class = cJSON_GetObjectItemCaseSensitive(asset_update_dtoJSON, "assetClass");
+    assetsservice_asset_update_dto_ASSETCLASS_e asset_classVariable;
+    if (asset_class) { 
+    if(!cJSON_IsString(asset_class))
     {
     goto end; //Enum
     }
-    asset_typeVariable = asset_update_dto_asset_type_FromString(asset_type->valuestring);
+    asset_classVariable = asset_update_dto_asset_class_FromString(asset_class->valuestring);
     }
 
     // asset_update_dto->asset_owner
@@ -396,19 +396,19 @@ asset_update_dto_t *asset_update_dto_parseFromJSON(cJSON *asset_update_dtoJSON){
     }
     }
 
-    // asset_update_dto->currency_code
-    cJSON *currency_code = cJSON_GetObjectItemCaseSensitive(asset_update_dtoJSON, "currencyCode");
-    if (currency_code) { 
-    if(!cJSON_IsString(currency_code) && !cJSON_IsNull(currency_code))
+    // asset_update_dto->item_id
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(asset_update_dtoJSON, "itemId");
+    if (item_id) { 
+    if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
     {
     goto end; //String
     }
     }
 
-    // asset_update_dto->item_id
-    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(asset_update_dtoJSON, "itemId");
-    if (item_id) { 
-    if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
+    // asset_update_dto->asset_type_id
+    cJSON *asset_type_id = cJSON_GetObjectItemCaseSensitive(asset_update_dtoJSON, "assetTypeId");
+    if (asset_type_id) { 
+    if(!cJSON_IsString(asset_type_id) && !cJSON_IsNull(asset_type_id))
     {
     goto end; //String
     }
@@ -472,7 +472,7 @@ asset_update_dto_t *asset_update_dto_parseFromJSON(cJSON *asset_update_dtoJSON){
     asset_update_dto_local_var = asset_update_dto_create (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        asset_type ? asset_typeVariable : assetsservice_asset_update_dto_ASSETTYPE_NULL,
+        asset_class ? asset_classVariable : assetsservice_asset_update_dto_ASSETCLASS_NULL,
         asset_owner ? asset_ownerVariable : assetsservice_asset_update_dto_ASSETOWNER_NULL,
         calculate_depreciation ? calculate_depreciation->valueint : 0,
         allow_monthly_depreciation ? allow_monthly_depreciation->valueint : 0,
@@ -480,8 +480,8 @@ asset_update_dto_t *asset_update_dto_parseFromJSON(cJSON *asset_update_dtoJSON){
         purchase_date && !cJSON_IsNull(purchase_date) ? strdup(purchase_date->valuestring) : NULL,
         purchase_price ? purchase_price->valuedouble : 0,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        currency_code && !cJSON_IsNull(currency_code) ? strdup(currency_code->valuestring) : NULL,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
+        asset_type_id && !cJSON_IsNull(asset_type_id) ? strdup(asset_type_id->valuestring) : NULL,
         asset_category_id && !cJSON_IsNull(asset_category_id) ? strdup(asset_category_id->valuestring) : NULL,
         purchase_invoice_id && !cJSON_IsNull(purchase_invoice_id) ? strdup(purchase_invoice_id->valuestring) : NULL,
         purchase_receipt_id && !cJSON_IsNull(purchase_receipt_id) ? strdup(purchase_receipt_id->valuestring) : NULL,

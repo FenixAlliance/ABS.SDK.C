@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**RecordsAPI_getItemsInCartAsync**](RecordsAPI.md#RecordsAPI_getItemsInCartAsync) | **GET** /api/v2/CartService/Records/{cartId} | Get all items in a cart
 [**RecordsAPI_increaseItemCartRecord**](RecordsAPI.md#RecordsAPI_increaseItemCartRecord) | **PUT** /api/v2/CartService/Records/{recordId}/Increase | Increase cart record quantity
 [**RecordsAPI_isItemAlreadyInCart**](RecordsAPI.md#RecordsAPI_isItemAlreadyInCart) | **GET** /api/v2/CartService/Records/IsInCart | Check if an item is in a cart
+[**RecordsAPI_patchItemCartRecord**](RecordsAPI.md#RecordsAPI_patchItemCartRecord) | **PATCH** /api/v2/CartService/Records/{recordId} | Patch a cart record
 [**RecordsAPI_removeProductFromCartByParams**](RecordsAPI.md#RecordsAPI_removeProductFromCartByParams) | **DELETE** /api/v2/CartService/Records | Remove a product from a cart
 [**RecordsAPI_removeProductFromCartByRecordId**](RecordsAPI.md#RecordsAPI_removeProductFromCartByRecordId) | **DELETE** /api/v2/CartService/Records/{recordId} | Remove a product from a cart by record ID
 [**RecordsAPI_updateItemCartRecord**](RecordsAPI.md#RecordsAPI_updateItemCartRecord) | **PUT** /api/v2/CartService/Records/{recordId} | Update a cart record
@@ -282,6 +283,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **RecordsAPI_patchItemCartRecord**
+```c
+// Patch a cart record
+//
+// Partially updates the specified item cart record using a JSON Patch document.
+//
+empty_envelope_t* RecordsAPI_patchItemCartRecord(apiClient_t *apiClient, char *recordId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**recordId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

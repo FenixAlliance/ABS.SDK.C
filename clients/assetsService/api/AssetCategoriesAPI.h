@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a new asset category
@@ -52,6 +53,14 @@ AssetCategoriesAPI_getAssetCategoriesCount(apiClient_t *apiClient, char *tenantI
 //
 asset_category_dto_envelope_t*
 AssetCategoriesAPI_getAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId);
+
+
+// Partially updates an existing asset category
+//
+// Applies a JSON Patch document to an existing asset category for the authenticated tenant.
+//
+empty_envelope_t*
+AssetCategoriesAPI_patchAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *operation);
 
 
 // Updates an existing asset category

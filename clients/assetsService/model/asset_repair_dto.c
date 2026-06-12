@@ -23,11 +23,11 @@ assetsservice_asset_repair_dto_REPAIRSTATUS_e asset_repair_dto_repair_status_Fro
 }
 
 asset_repair_dto_t *asset_repair_dto_create(
-    object_t *id,
+    char *id,
     char *timestamp,
-    object_t *business_id,
-    object_t *business_profile_record_id,
-    object_t *asset_id,
+    char *tenant_id,
+    char *enrollment_id,
+    char *asset_id,
     char *asset_name,
     assetsservice_asset_repair_dto_REPAIRSTATUS_e repair_status,
     char *scheduled_date,
@@ -47,8 +47,8 @@ asset_repair_dto_t *asset_repair_dto_create(
     }
     asset_repair_dto_local_var->id = id;
     asset_repair_dto_local_var->timestamp = timestamp;
-    asset_repair_dto_local_var->business_id = business_id;
-    asset_repair_dto_local_var->business_profile_record_id = business_profile_record_id;
+    asset_repair_dto_local_var->tenant_id = tenant_id;
+    asset_repair_dto_local_var->enrollment_id = enrollment_id;
     asset_repair_dto_local_var->asset_id = asset_id;
     asset_repair_dto_local_var->asset_name = asset_name;
     asset_repair_dto_local_var->repair_status = repair_status;
@@ -73,23 +73,23 @@ void asset_repair_dto_free(asset_repair_dto_t *asset_repair_dto) {
     }
     listEntry_t *listEntry;
     if (asset_repair_dto->id) {
-        object_free(asset_repair_dto->id);
+        free(asset_repair_dto->id);
         asset_repair_dto->id = NULL;
     }
     if (asset_repair_dto->timestamp) {
         free(asset_repair_dto->timestamp);
         asset_repair_dto->timestamp = NULL;
     }
-    if (asset_repair_dto->business_id) {
-        object_free(asset_repair_dto->business_id);
-        asset_repair_dto->business_id = NULL;
+    if (asset_repair_dto->tenant_id) {
+        free(asset_repair_dto->tenant_id);
+        asset_repair_dto->tenant_id = NULL;
     }
-    if (asset_repair_dto->business_profile_record_id) {
-        object_free(asset_repair_dto->business_profile_record_id);
-        asset_repair_dto->business_profile_record_id = NULL;
+    if (asset_repair_dto->enrollment_id) {
+        free(asset_repair_dto->enrollment_id);
+        asset_repair_dto->enrollment_id = NULL;
     }
     if (asset_repair_dto->asset_id) {
-        object_free(asset_repair_dto->asset_id);
+        free(asset_repair_dto->asset_id);
         asset_repair_dto->asset_id = NULL;
     }
     if (asset_repair_dto->asset_name) {
@@ -136,13 +136,8 @@ cJSON *asset_repair_dto_convertToJSON(asset_repair_dto_t *asset_repair_dto) {
 
     // asset_repair_dto->id
     if(asset_repair_dto->id) {
-    cJSON *id_object = object_convertToJSON(asset_repair_dto->id);
-    if(id_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "id", id_object);
-    if(item->child == NULL) {
-    goto fail;
+    if(cJSON_AddStringToObject(item, "id", asset_repair_dto->id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -155,41 +150,26 @@ cJSON *asset_repair_dto_convertToJSON(asset_repair_dto_t *asset_repair_dto) {
     }
 
 
-    // asset_repair_dto->business_id
-    if(asset_repair_dto->business_id) {
-    cJSON *business_id_object = object_convertToJSON(asset_repair_dto->business_id);
-    if(business_id_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "businessId", business_id_object);
-    if(item->child == NULL) {
-    goto fail;
+    // asset_repair_dto->tenant_id
+    if(asset_repair_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", asset_repair_dto->tenant_id) == NULL) {
+    goto fail; //String
     }
     }
 
 
-    // asset_repair_dto->business_profile_record_id
-    if(asset_repair_dto->business_profile_record_id) {
-    cJSON *business_profile_record_id_object = object_convertToJSON(asset_repair_dto->business_profile_record_id);
-    if(business_profile_record_id_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "businessProfileRecordId", business_profile_record_id_object);
-    if(item->child == NULL) {
-    goto fail;
+    // asset_repair_dto->enrollment_id
+    if(asset_repair_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", asset_repair_dto->enrollment_id) == NULL) {
+    goto fail; //String
     }
     }
 
 
     // asset_repair_dto->asset_id
     if(asset_repair_dto->asset_id) {
-    cJSON *asset_id_object = object_convertToJSON(asset_repair_dto->asset_id);
-    if(asset_id_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "assetId", asset_id_object);
-    if(item->child == NULL) {
-    goto fail;
+    if(cJSON_AddStringToObject(item, "assetId", asset_repair_dto->asset_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -304,9 +284,11 @@ asset_repair_dto_t *asset_repair_dto_parseFromJSON(cJSON *asset_repair_dtoJSON){
 
     // asset_repair_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(asset_repair_dtoJSON, "id");
-    object_t *id_local_object = NULL;
     if (id) { 
-    id_local_object = object_parseFromJSON(id); //object
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
     }
 
     // asset_repair_dto->timestamp
@@ -318,25 +300,31 @@ asset_repair_dto_t *asset_repair_dto_parseFromJSON(cJSON *asset_repair_dtoJSON){
     }
     }
 
-    // asset_repair_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(asset_repair_dtoJSON, "businessId");
-    object_t *business_id_local_object = NULL;
-    if (business_id) { 
-    business_id_local_object = object_parseFromJSON(business_id); //object
+    // asset_repair_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(asset_repair_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
     }
 
-    // asset_repair_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(asset_repair_dtoJSON, "businessProfileRecordId");
-    object_t *business_profile_record_id_local_object = NULL;
-    if (business_profile_record_id) { 
-    business_profile_record_id_local_object = object_parseFromJSON(business_profile_record_id); //object
+    // asset_repair_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(asset_repair_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
     }
 
     // asset_repair_dto->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(asset_repair_dtoJSON, "assetId");
-    object_t *asset_id_local_object = NULL;
     if (asset_id) { 
-    asset_id_local_object = object_parseFromJSON(asset_id); //object
+    if(!cJSON_IsString(asset_id) && !cJSON_IsNull(asset_id))
+    {
+    goto end; //String
+    }
     }
 
     // asset_repair_dto->asset_name
@@ -451,11 +439,11 @@ asset_repair_dto_t *asset_repair_dto_parseFromJSON(cJSON *asset_repair_dtoJSON){
 
 
     asset_repair_dto_local_var = asset_repair_dto_create (
-        id ? id_local_object : NULL,
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        business_id ? business_id_local_object : NULL,
-        business_profile_record_id ? business_profile_record_id_local_object : NULL,
-        asset_id ? asset_id_local_object : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
+        asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         asset_name && !cJSON_IsNull(asset_name) ? strdup(asset_name->valuestring) : NULL,
         repair_status ? repair_statusVariable : assetsservice_asset_repair_dto_REPAIRSTATUS_NULL,
         scheduled_date && !cJSON_IsNull(scheduled_date) ? strdup(scheduled_date->valuestring) : NULL,

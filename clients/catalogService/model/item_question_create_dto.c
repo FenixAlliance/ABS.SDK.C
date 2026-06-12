@@ -110,7 +110,7 @@ cJSON *item_question_create_dto_convertToJSON(item_question_create_dto_t *item_q
 
     // item_question_create_dto->social_profile_id
     if(item_question_create_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", item_question_create_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", item_question_create_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -120,7 +120,7 @@ cJSON *item_question_create_dto_convertToJSON(item_question_create_dto_t *item_q
     if (!item_question_create_dto->item_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "itemID", item_question_create_dto->item_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemId", item_question_create_dto->item_id) == NULL) {
     goto fail; //String
     }
 
@@ -191,7 +191,7 @@ item_question_create_dto_t *item_question_create_dto_parseFromJSON(cJSON *item_q
     }
 
     // item_question_create_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(item_question_create_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(item_question_create_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {
@@ -200,7 +200,7 @@ item_question_create_dto_t *item_question_create_dto_parseFromJSON(cJSON *item_q
     }
 
     // item_question_create_dto->item_id
-    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_question_create_dtoJSON, "itemID");
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_question_create_dtoJSON, "itemId");
     if (!item_id) {
         goto end;
     }

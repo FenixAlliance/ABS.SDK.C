@@ -43,8 +43,8 @@ typedef struct item_warranty_policy_dto_t {
     char *custom_state; // string
     char *custom_city; // string
     char *city_id; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
 
 } item_warranty_policy_dto_t;
 
@@ -73,8 +73,8 @@ item_warranty_policy_dto_t *item_warranty_policy_dto_create(
     char *custom_state,
     char *custom_city,
     char *city_id,
-    char *business_id,
-    char *business_profile_record_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void item_warranty_policy_dto_free(item_warranty_policy_dto_t *item_warranty_policy_dto);

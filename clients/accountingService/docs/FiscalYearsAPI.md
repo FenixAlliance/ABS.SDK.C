@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**FiscalYearsAPI_getFiscalYearDetailsAsync**](FiscalYearsAPI.md#FiscalYearsAPI_getFiscalYearDetailsAsync) | **GET** /api/v2/AccountingService/FiscalYears/{fiscalYearId} | Get fiscal year by ID
 [**FiscalYearsAPI_getFiscalYearsAsync**](FiscalYearsAPI.md#FiscalYearsAPI_getFiscalYearsAsync) | **GET** /api/v2/AccountingService/FiscalYears | Get all fiscal years
 [**FiscalYearsAPI_getFiscalYearsCountAsync**](FiscalYearsAPI.md#FiscalYearsAPI_getFiscalYearsCountAsync) | **GET** /api/v2/AccountingService/FiscalYears/Count | Count fiscal years
+[**FiscalYearsAPI_patchFiscalYearAsync**](FiscalYearsAPI.md#FiscalYearsAPI_patchFiscalYearAsync) | **PATCH** /api/v2/AccountingService/FiscalYears/{fiscalYearId} | Patch a fiscal year
 [**FiscalYearsAPI_updateFiscalYearAsync**](FiscalYearsAPI.md#FiscalYearsAPI_updateFiscalYearAsync) | **PUT** /api/v2/AccountingService/FiscalYears/{fiscalYearId} | Update fiscal year
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **FiscalYearsAPI_patchFiscalYearAsync**
+```c
+// Patch a fiscal year
+//
+// Partially updates a fiscal year.
+//
+empty_envelope_t* FiscalYearsAPI_patchFiscalYearAsync(apiClient_t *apiClient, char *tenantId, char *fiscalYearId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**fiscalYearId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

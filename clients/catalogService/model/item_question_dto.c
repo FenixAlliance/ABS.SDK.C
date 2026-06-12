@@ -12,7 +12,7 @@ item_question_dto_t *item_question_dto_create(
     int needs_revision,
     char *question,
     char *social_profile_id,
-    char *business_id,
+    char *tenant_id,
     char *item_id
     ) {
     item_question_dto_t *item_question_dto_local_var = malloc(sizeof(item_question_dto_t));
@@ -25,7 +25,7 @@ item_question_dto_t *item_question_dto_create(
     item_question_dto_local_var->needs_revision = needs_revision;
     item_question_dto_local_var->question = question;
     item_question_dto_local_var->social_profile_id = social_profile_id;
-    item_question_dto_local_var->business_id = business_id;
+    item_question_dto_local_var->tenant_id = tenant_id;
     item_question_dto_local_var->item_id = item_id;
 
     return item_question_dto_local_var;
@@ -57,9 +57,9 @@ void item_question_dto_free(item_question_dto_t *item_question_dto) {
         free(item_question_dto->social_profile_id);
         item_question_dto->social_profile_id = NULL;
     }
-    if (item_question_dto->business_id) {
-        free(item_question_dto->business_id);
-        item_question_dto->business_id = NULL;
+    if (item_question_dto->tenant_id) {
+        free(item_question_dto->tenant_id);
+        item_question_dto->tenant_id = NULL;
     }
     if (item_question_dto->item_id) {
         free(item_question_dto->item_id);
@@ -113,15 +113,15 @@ cJSON *item_question_dto_convertToJSON(item_question_dto_t *item_question_dto) {
 
     // item_question_dto->social_profile_id
     if(item_question_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", item_question_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", item_question_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // item_question_dto->business_id
-    if(item_question_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", item_question_dto->business_id) == NULL) {
+    // item_question_dto->tenant_id
+    if(item_question_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", item_question_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -129,7 +129,7 @@ cJSON *item_question_dto_convertToJSON(item_question_dto_t *item_question_dto) {
 
     // item_question_dto->item_id
     if(item_question_dto->item_id) {
-    if(cJSON_AddStringToObject(item, "itemID", item_question_dto->item_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "itemId", item_question_dto->item_id) == NULL) {
     goto fail; //String
     }
     }
@@ -192,7 +192,7 @@ item_question_dto_t *item_question_dto_parseFromJSON(cJSON *item_question_dtoJSO
     }
 
     // item_question_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(item_question_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(item_question_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {
@@ -200,17 +200,17 @@ item_question_dto_t *item_question_dto_parseFromJSON(cJSON *item_question_dtoJSO
     }
     }
 
-    // item_question_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_question_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // item_question_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(item_question_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
     // item_question_dto->item_id
-    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_question_dtoJSON, "itemID");
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_question_dtoJSON, "itemId");
     if (item_id) { 
     if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
     {
@@ -226,7 +226,7 @@ item_question_dto_t *item_question_dto_parseFromJSON(cJSON *item_question_dtoJSO
         needs_revision ? needs_revision->valueint : 0,
         question && !cJSON_IsNull(question) ? strdup(question->valuestring) : NULL,
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL
         );
 

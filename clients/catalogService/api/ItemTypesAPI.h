@@ -11,6 +11,7 @@
 #include "../model/item_type_dto_envelope.h"
 #include "../model/item_type_dto_list_envelope.h"
 #include "../model/item_type_update_dto.h"
+#include "../model/operation.h"
 
 
 // Count item types
@@ -51,6 +52,14 @@ ItemTypesAPI_getItemTypeByIdAsync(apiClient_t *apiClient, char *itemTypeID, char
 //
 item_type_dto_list_envelope_t*
 ItemTypesAPI_getItemTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item type
+//
+// Partially updates an existing item type for the specified tenant.
+//
+void
+ItemTypesAPI_patchItemTypeAsync(apiClient_t *apiClient, char *tenantId, char *itemTypeID, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item type

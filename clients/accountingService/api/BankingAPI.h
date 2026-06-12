@@ -21,8 +21,10 @@
 #include "../model/bank_transaction_dto_list_envelope.h"
 #include "../model/bank_transaction_update_dto.h"
 #include "../model/bank_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a new bank
@@ -183,6 +185,38 @@ BankingAPI_getBanks(apiClient_t *apiClient, char *tenantId, char *api_version, c
 //
 int32_envelope_t*
 BankingAPI_getBanksCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patches a bank
+//
+// Partially update a bank using JSON Patch.
+//
+empty_envelope_t*
+BankingAPI_patchBank(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patches a bank account
+//
+// Partially update a bank account using JSON Patch.
+//
+empty_envelope_t*
+BankingAPI_patchBankAccount(apiClient_t *apiClient, char *tenantId, char *bankId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patches a bank guarantee
+//
+// Partially update a bank guarantee using JSON Patch.
+//
+empty_envelope_t*
+BankingAPI_patchBankGuarantee(apiClient_t *apiClient, char *tenantId, char *bankId, char *guaranteeId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patches a bank transaction
+//
+// Partially update a bank transaction using JSON Patch.
+//
+empty_envelope_t*
+BankingAPI_patchBankTransaction(apiClient_t *apiClient, char *tenantId, char *bankId, char *transactionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates a bank

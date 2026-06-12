@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**FiscalIdentificationTypesAPI_getFiscalIdentificationType**](FiscalIdentificationTypesAPI.md#FiscalIdentificationTypesAPI_getFiscalIdentificationType) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{fiscalAuthorityId}/IdentificationTypes/{identificationTypeId} | Get fiscal identification type by ID
 [**FiscalIdentificationTypesAPI_getFiscalIdentificationTypes**](FiscalIdentificationTypesAPI.md#FiscalIdentificationTypesAPI_getFiscalIdentificationTypes) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{authorityId}/IdentificationTypes | Get fiscal identification types for an authority
 [**FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount**](FiscalIdentificationTypesAPI.md#FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount) | **GET** /api/v2/AccountingService/Fiscals/Authorities/{authorityId}/IdentificationTypes/Count | Get fiscal identification types count
+[**FiscalIdentificationTypesAPI_patchFiscalIdentificationTypeAsync**](FiscalIdentificationTypesAPI.md#FiscalIdentificationTypesAPI_patchFiscalIdentificationTypeAsync) | **PATCH** /api/v2/AccountingService/Fiscals/Authorities/IdentificationTypes/{identificationTypeId} | Patch a fiscal identification type
 [**FiscalIdentificationTypesAPI_updateFiscalIdentificationType**](FiscalIdentificationTypesAPI.md#FiscalIdentificationTypesAPI_updateFiscalIdentificationType) | **PUT** /api/v2/AccountingService/Fiscals/Authorities/IdentificationTypes/{identificationTypeId} | Update a fiscal identification type
 
 
@@ -179,6 +180,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **FiscalIdentificationTypesAPI_patchFiscalIdentificationTypeAsync**
+```c
+// Patch a fiscal identification type
+//
+// Partially updates a fiscal identification type.
+//
+empty_envelope_t* FiscalIdentificationTypesAPI_patchFiscalIdentificationTypeAsync(apiClient_t *apiClient, char *tenantId, char *identificationTypeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**identificationTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

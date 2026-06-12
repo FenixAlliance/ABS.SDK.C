@@ -16,6 +16,14 @@
 typedef struct billing_profile_create_dto_t billing_profile_create_dto_t;
 
 
+// Enum TAXPAYERTYPE for billing_profile_create_dto
+
+typedef enum  { accountingservice_billing_profile_create_dto_TAXPAYERTYPE_NULL = 0, accountingservice_billing_profile_create_dto_TAXPAYERTYPE_Individual, accountingservice_billing_profile_create_dto_TAXPAYERTYPE_Business } accountingservice_billing_profile_create_dto_TAXPAYERTYPE_e;
+
+char* billing_profile_create_dto_tax_payer_type_ToString(accountingservice_billing_profile_create_dto_TAXPAYERTYPE_e tax_payer_type);
+
+accountingservice_billing_profile_create_dto_TAXPAYERTYPE_e billing_profile_create_dto_tax_payer_type_FromString(char* tax_payer_type);
+
 
 
 typedef struct billing_profile_create_dto_t {
@@ -35,6 +43,7 @@ typedef struct billing_profile_create_dto_t {
     char *duns; // string
     int is_public_company; //boolean
     int is_facta_customer; //boolean
+    accountingservice_billing_profile_create_dto_TAXPAYERTYPE_e tax_payer_type; //enum
     char *country_id; // string
     char *state_id; // string
     char *city_id; // string
@@ -61,6 +70,7 @@ billing_profile_create_dto_t *billing_profile_create_dto_create(
     char *duns,
     int is_public_company,
     int is_facta_customer,
+    accountingservice_billing_profile_create_dto_TAXPAYERTYPE_e tax_payer_type,
     char *country_id,
     char *state_id,
     char *city_id,
