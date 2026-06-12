@@ -105,7 +105,7 @@ cJSON *tenant_team_contact_enrollment_dto_convertToJSON(tenant_team_contact_enro
 
     // tenant_team_contact_enrollment_dto->contact_id
     if(tenant_team_contact_enrollment_dto->contact_id) {
-    if(cJSON_AddStringToObject(item, "contactID", tenant_team_contact_enrollment_dto->contact_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "contactId", tenant_team_contact_enrollment_dto->contact_id) == NULL) {
     goto fail; //String
     }
     }
@@ -168,7 +168,7 @@ tenant_team_contact_enrollment_dto_t *tenant_team_contact_enrollment_dto_parseFr
     }
 
     // tenant_team_contact_enrollment_dto->contact_id
-    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(tenant_team_contact_enrollment_dtoJSON, "contactID");
+    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(tenant_team_contact_enrollment_dtoJSON, "contactId");
     if (contact_id) { 
     if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
     {

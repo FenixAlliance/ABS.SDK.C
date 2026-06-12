@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ServiceCaseTypesAPI_getServiceCaseTypeByIdAsync**](ServiceCaseTypesAPI.md#ServiceCaseTypesAPI_getServiceCaseTypeByIdAsync) | **GET** /api/v2/ServicesService/ServiceCaseTypes/{serviceCaseTypeId} | Get a service case type by ID
 [**ServiceCaseTypesAPI_getServiceCaseTypesAsync**](ServiceCaseTypesAPI.md#ServiceCaseTypesAPI_getServiceCaseTypesAsync) | **GET** /api/v2/ServicesService/ServiceCaseTypes | Get all service case types
 [**ServiceCaseTypesAPI_getServiceCaseTypesCountAsync**](ServiceCaseTypesAPI.md#ServiceCaseTypesAPI_getServiceCaseTypesCountAsync) | **GET** /api/v2/ServicesService/ServiceCaseTypes/Count | Get service case types count
+[**ServiceCaseTypesAPI_patchServiceCaseTypeAsync**](ServiceCaseTypesAPI.md#ServiceCaseTypesAPI_patchServiceCaseTypeAsync) | **PATCH** /api/v2/ServicesService/ServiceCaseTypes/{serviceCaseTypeId} | Patch a service case type
 [**ServiceCaseTypesAPI_updateServiceCaseTypeAsync**](ServiceCaseTypesAPI.md#ServiceCaseTypesAPI_updateServiceCaseTypeAsync) | **PUT** /api/v2/ServicesService/ServiceCaseTypes/{serviceCaseTypeId} | Update a service case type
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceCaseTypesAPI_patchServiceCaseTypeAsync**
+```c
+// Patch a service case type
+//
+// Partially updates an existing service case type using a JSON Patch document.
+//
+envelope_t* ServiceCaseTypesAPI_patchServiceCaseTypeAsync(apiClient_t *apiClient, char *tenantId, char *serviceCaseTypeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**serviceCaseTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[envelope_t](envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

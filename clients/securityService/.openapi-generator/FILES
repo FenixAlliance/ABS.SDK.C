@@ -59,6 +59,7 @@ docs/o_auth_application_update_dto.md
 docs/o_auth_authorization_dto.md
 docs/o_auth_authorization_dto_envelope.md
 docs/o_auth_authorization_dto_list_envelope.md
+docs/operation.md
 docs/refresh_request.md
 docs/register_request.md
 docs/resend_confirmation_email_request.md
@@ -147,6 +148,8 @@ model/o_auth_authorization_dto_list_envelope.c
 model/o_auth_authorization_dto_list_envelope.h
 model/object.c
 model/object.h
+model/operation.c
+model/operation.h
 model/refresh_request.c
 model/refresh_request.h
 model/register_request.c
@@ -196,3 +199,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_operation.c

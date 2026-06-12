@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**SupportEntitlementsAPI_getSupportEntitlementAsync**](SupportEntitlementsAPI.md#SupportEntitlementsAPI_getSupportEntitlementAsync) | **GET** /api/v2/SupportService/SupportEntitlements/{supportEntitlementId} | Retrieve a support entitlement by ID
 [**SupportEntitlementsAPI_getSupportEntitlementsAsync**](SupportEntitlementsAPI.md#SupportEntitlementsAPI_getSupportEntitlementsAsync) | **GET** /api/v2/SupportService/SupportEntitlements | Retrieve a list of support entitlements
 [**SupportEntitlementsAPI_getSupportEntitlementsCountAsync**](SupportEntitlementsAPI.md#SupportEntitlementsAPI_getSupportEntitlementsCountAsync) | **GET** /api/v2/SupportService/SupportEntitlements/Count | Get the count of support entitlements
+[**SupportEntitlementsAPI_patchSupportEntitlementAsync**](SupportEntitlementsAPI.md#SupportEntitlementsAPI_patchSupportEntitlementAsync) | **PATCH** /api/v2/SupportService/SupportEntitlements/{supportEntitlementId} | Patch a support entitlement
 [**SupportEntitlementsAPI_updateSupportEntitlementAsync**](SupportEntitlementsAPI.md#SupportEntitlementsAPI_updateSupportEntitlementAsync) | **PUT** /api/v2/SupportService/SupportEntitlements/{supportEntitlementId} | Update a support entitlement
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SupportEntitlementsAPI_patchSupportEntitlementAsync**
+```c
+// Patch a support entitlement
+//
+// Partially updates an existing support entitlement by its unique identifier.
+//
+empty_envelope_t* SupportEntitlementsAPI_patchSupportEntitlementAsync(apiClient_t *apiClient, char *tenantId, char *supportEntitlementId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**supportEntitlementId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

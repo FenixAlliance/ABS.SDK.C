@@ -147,7 +147,7 @@ cJSON *private_message_dto_convertToJSON(private_message_dto_t *private_message_
 
     // private_message_dto->receiver_social_profile_id
     if(private_message_dto->receiver_social_profile_id) {
-    if(cJSON_AddStringToObject(item, "receiverSocialProfileID", private_message_dto->receiver_social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "receiverSocialProfileId", private_message_dto->receiver_social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -252,7 +252,7 @@ private_message_dto_t *private_message_dto_parseFromJSON(cJSON *private_message_
     }
 
     // private_message_dto->receiver_social_profile_id
-    cJSON *receiver_social_profile_id = cJSON_GetObjectItemCaseSensitive(private_message_dtoJSON, "receiverSocialProfileID");
+    cJSON *receiver_social_profile_id = cJSON_GetObjectItemCaseSensitive(private_message_dtoJSON, "receiverSocialProfileId");
     if (receiver_social_profile_id) { 
     if(!cJSON_IsString(receiver_social_profile_id) && !cJSON_IsNull(receiver_social_profile_id))
     {

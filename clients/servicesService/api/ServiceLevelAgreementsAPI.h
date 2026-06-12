@@ -8,6 +8,7 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/service_level_agreement_create_dto.h"
 #include "../model/service_level_agreement_dto_envelope.h"
 #include "../model/service_level_agreement_dto_i_read_only_list_envelope.h"
@@ -52,6 +53,14 @@ ServiceLevelAgreementsAPI_getServiceLevelAgreementsAsync(apiClient_t *apiClient,
 //
 int32_envelope_t*
 ServiceLevelAgreementsAPI_getServiceLevelAgreementsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a service level agreement
+//
+// Partially updates an existing service level agreement using a JSON Patch document.
+//
+envelope_t*
+ServiceLevelAgreementsAPI_patchServiceLevelAgreementAsync(apiClient_t *apiClient, char *tenantId, char *serviceLevelAgreementId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a service level agreement

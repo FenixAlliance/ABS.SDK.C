@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ShippingCouriersAPI_getShippingCourierByIdAsync**](ShippingCouriersAPI.md#ShippingCouriersAPI_getShippingCourierByIdAsync) | **GET** /api/v2/ShipmentsService/ShippingCouriers/{courierId} | Get shipping courier by ID
 [**ShippingCouriersAPI_getShippingCouriersAsync**](ShippingCouriersAPI.md#ShippingCouriersAPI_getShippingCouriersAsync) | **GET** /api/v2/ShipmentsService/ShippingCouriers | Get all shipping couriers
 [**ShippingCouriersAPI_getShippingCouriersCountAsync**](ShippingCouriersAPI.md#ShippingCouriersAPI_getShippingCouriersCountAsync) | **GET** /api/v2/ShipmentsService/ShippingCouriers/Count | Get shipping couriers count
+[**ShippingCouriersAPI_patchShippingCourierAsync**](ShippingCouriersAPI.md#ShippingCouriersAPI_patchShippingCourierAsync) | **PATCH** /api/v2/ShipmentsService/ShippingCouriers/{courierId} | Patch a shipping courier
 [**ShippingCouriersAPI_updateShippingCourierAsync**](ShippingCouriersAPI.md#ShippingCouriersAPI_updateShippingCourierAsync) | **PUT** /api/v2/ShipmentsService/ShippingCouriers/{courierId} | Update a shipping courier
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ShippingCouriersAPI_patchShippingCourierAsync**
+```c
+// Patch a shipping courier
+//
+// Partially updates an existing shipping courier using JSON Patch.
+//
+empty_envelope_t* ShippingCouriersAPI_patchShippingCourierAsync(apiClient_t *apiClient, char *tenantId, char *courierId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**courierId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

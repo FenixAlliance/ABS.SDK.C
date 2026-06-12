@@ -32,8 +32,8 @@ typedef struct inquiry_request_dto_t {
     char *phone; // string
     char *message; // string
     char *tenant_id; // string
-    char *business_profile_record_id; // string
-    char *account_holder_id; // string
+    char *enrollment_id; // string
+    char *user_id; // string
     char *social_profile_id; // string
 
 } inquiry_request_dto_t;
@@ -52,8 +52,8 @@ inquiry_request_dto_t *inquiry_request_dto_create(
     char *phone,
     char *message,
     char *tenant_id,
-    char *business_profile_record_id,
-    char *account_holder_id,
+    char *enrollment_id,
+    char *user_id,
     char *social_profile_id
 );
 

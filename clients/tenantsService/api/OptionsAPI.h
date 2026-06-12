@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/option_create_dto.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
@@ -60,6 +61,14 @@ OptionsAPI_getTenantOptions(apiClient_t *apiClient, char *tenantId, char *portal
 //
 int32_envelope_t*
 OptionsAPI_getTenantOptionsCount(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant option
+//
+// Patch a tenant option
+//
+empty_envelope_t*
+OptionsAPI_patchTenantOption(apiClient_t *apiClient, char *tenantId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant option

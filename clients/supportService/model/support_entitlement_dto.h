@@ -16,6 +16,14 @@
 typedef struct support_entitlement_dto_t support_entitlement_dto_t;
 
 
+// Enum STATUS for support_entitlement_dto
+
+typedef enum  { supportservice_support_entitlement_dto_STATUS_NULL = 0, supportservice_support_entitlement_dto_STATUS_Active, supportservice_support_entitlement_dto_STATUS_GracePeriod, supportservice_support_entitlement_dto_STATUS_Disabled, supportservice_support_entitlement_dto_STATUS_Deleted } supportservice_support_entitlement_dto_STATUS_e;
+
+char* support_entitlement_dto_status_ToString(supportservice_support_entitlement_dto_STATUS_e status);
+
+supportservice_support_entitlement_dto_STATUS_e support_entitlement_dto_status_FromString(char* status);
+
 
 
 typedef struct support_entitlement_dto_t {
@@ -23,6 +31,7 @@ typedef struct support_entitlement_dto_t {
     char *timestamp; //date time
     char *title; // string
     char *description; // string
+    supportservice_support_entitlement_dto_STATUS_e status; //enum
     char *start_date_time; //date time
     char *end_date_time; //date time
     char *next_invoice_date_time; //date time
@@ -60,12 +69,12 @@ typedef struct support_entitlement_dto_t {
     char *data8_label; // string
     char *data9; // string
     char *data9_label; // string
-    char *account_holder_id; // string
+    char *user_id; // string
     char *individual_id; // string
     char *organization_id; // string
-    char *receiver_business_id; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
+    char *receiver_tenant_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
     char *payment_token_id; // string
     char *wallet_account_id; // string
     char *security_certificate_id; // string
@@ -77,6 +86,7 @@ support_entitlement_dto_t *support_entitlement_dto_create(
     char *timestamp,
     char *title,
     char *description,
+    supportservice_support_entitlement_dto_STATUS_e status,
     char *start_date_time,
     char *end_date_time,
     char *next_invoice_date_time,
@@ -114,12 +124,12 @@ support_entitlement_dto_t *support_entitlement_dto_create(
     char *data8_label,
     char *data9,
     char *data9_label,
-    char *account_holder_id,
+    char *user_id,
     char *individual_id,
     char *organization_id,
-    char *receiver_business_id,
-    char *business_id,
-    char *business_profile_record_id,
+    char *receiver_tenant_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *payment_token_id,
     char *wallet_account_id,
     char *security_certificate_id

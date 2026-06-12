@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_unit_create_dto.h"
 #include "../model/tenant_unit_dto_envelope.h"
 #include "../model/tenant_unit_dto_list_envelope.h"
@@ -52,6 +53,14 @@ UnitsAPI_getTenantUnits(apiClient_t *apiClient, char *tenantId, char *api_versio
 //
 int32_envelope_t*
 UnitsAPI_getTenantUnitsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant unit
+//
+// Patch a tenant unit
+//
+empty_envelope_t*
+UnitsAPI_patchTenantUnit(apiClient_t *apiClient, char *tenantId, char *tenantUnitId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant unit

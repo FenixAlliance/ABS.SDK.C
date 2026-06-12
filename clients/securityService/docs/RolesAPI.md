@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**RolesAPI_getRolesAsync**](RolesAPI.md#RolesAPI_getRolesAsync) | **GET** /api/v2/SecurityService/Roles | Get all roles
 [**RolesAPI_getRolesByEnrollmentAsync**](RolesAPI.md#RolesAPI_getRolesByEnrollmentAsync) | **GET** /api/v2/SecurityService/Roles/ByEnrollment/{enrollmentId} | Get roles by enrollment
 [**RolesAPI_getRolesCountAsync**](RolesAPI.md#RolesAPI_getRolesCountAsync) | **GET** /api/v2/SecurityService/Roles/Count | Get roles count
+[**RolesAPI_patchRoleAsync**](RolesAPI.md#RolesAPI_patchRoleAsync) | **PATCH** /api/v2/SecurityService/Roles/{securityRoleId} | Patch an existing role
 [**RolesAPI_revokePermissionFromRoleAsync**](RolesAPI.md#RolesAPI_revokePermissionFromRoleAsync) | **DELETE** /api/v2/SecurityService/Roles/{securityRoleId}/Permissions/{securityPermissionId} | Revoke a permission from a role
 [**RolesAPI_revokeRoleFromBusinessApplicationAsync**](RolesAPI.md#RolesAPI_revokeRoleFromBusinessApplicationAsync) | **DELETE** /api/v2/SecurityService/Roles/{securityRoleId}/Applications/{applicationId} | Revoke a role from a business application
 [**RolesAPI_revokeRoleFromEnrollmentAsync**](RolesAPI.md#RolesAPI_revokeRoleFromEnrollmentAsync) | **DELETE** /api/v2/SecurityService/Roles/{securityRoleId}/Enrollments/{enrollmentId} | Revoke a role from an enrollment
@@ -427,6 +428,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **RolesAPI_patchRoleAsync**
+```c
+// Patch an existing role
+//
+// Partially updates an existing security role using a JSON Patch document.
+//
+empty_envelope_t* RolesAPI_patchRoleAsync(apiClient_t *apiClient, char *tenantId, char *securityRoleId, list_t *operation, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**securityRoleId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

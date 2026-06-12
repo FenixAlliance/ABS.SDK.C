@@ -12,6 +12,7 @@
 #include "../model/item_return_policy_dto_envelope.h"
 #include "../model/item_return_policy_dto_list_envelope.h"
 #include "../model/item_return_policy_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a new return policy
@@ -42,6 +43,14 @@ ReturnPoliciesAPI_getReturnPoliciesCountAsync(apiClient_t *apiClient, char *tena
 //
 item_return_policy_dto_envelope_t*
 ReturnPoliciesAPI_getReturnPolicyAsync(apiClient_t *apiClient, char *tenantId, char *returnPolicyId, char *api_version, char *x_api_version);
+
+
+// Patch a return policy
+//
+// Partially updates an existing return policy by its unique identifier.
+//
+empty_envelope_t*
+ReturnPoliciesAPI_patchReturnPolicyAsync(apiClient_t *apiClient, char *tenantId, char *returnPolicyId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a return policy

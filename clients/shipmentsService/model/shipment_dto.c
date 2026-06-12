@@ -35,7 +35,7 @@ shipment_dto_t *shipment_dto_create(
     char *expected_delivery_date,
     shipmentsservice_shipment_dto_SHIPPINGTERMS_e shipping_terms,
     char *order_id,
-    char *business_id
+    char *tenant_id
     ) {
     shipment_dto_t *shipment_dto_local_var = malloc(sizeof(shipment_dto_t));
     if (!shipment_dto_local_var) {
@@ -53,7 +53,7 @@ shipment_dto_t *shipment_dto_create(
     shipment_dto_local_var->expected_delivery_date = expected_delivery_date;
     shipment_dto_local_var->shipping_terms = shipping_terms;
     shipment_dto_local_var->order_id = order_id;
-    shipment_dto_local_var->business_id = business_id;
+    shipment_dto_local_var->tenant_id = tenant_id;
 
     return shipment_dto_local_var;
 }
@@ -96,9 +96,9 @@ void shipment_dto_free(shipment_dto_t *shipment_dto) {
         free(shipment_dto->order_id);
         shipment_dto->order_id = NULL;
     }
-    if (shipment_dto->business_id) {
-        free(shipment_dto->business_id);
-        shipment_dto->business_id = NULL;
+    if (shipment_dto->tenant_id) {
+        free(shipment_dto->tenant_id);
+        shipment_dto->tenant_id = NULL;
     }
     free(shipment_dto);
 }
@@ -197,15 +197,15 @@ cJSON *shipment_dto_convertToJSON(shipment_dto_t *shipment_dto) {
 
     // shipment_dto->order_id
     if(shipment_dto->order_id) {
-    if(cJSON_AddStringToObject(item, "orderID", shipment_dto->order_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "orderId", shipment_dto->order_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // shipment_dto->business_id
-    if(shipment_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", shipment_dto->business_id) == NULL) {
+    // shipment_dto->tenant_id
+    if(shipment_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", shipment_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -324,7 +324,7 @@ shipment_dto_t *shipment_dto_parseFromJSON(cJSON *shipment_dtoJSON){
     }
 
     // shipment_dto->order_id
-    cJSON *order_id = cJSON_GetObjectItemCaseSensitive(shipment_dtoJSON, "orderID");
+    cJSON *order_id = cJSON_GetObjectItemCaseSensitive(shipment_dtoJSON, "orderId");
     if (order_id) { 
     if(!cJSON_IsString(order_id) && !cJSON_IsNull(order_id))
     {
@@ -332,10 +332,10 @@ shipment_dto_t *shipment_dto_parseFromJSON(cJSON *shipment_dtoJSON){
     }
     }
 
-    // shipment_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(shipment_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // shipment_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(shipment_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -355,7 +355,7 @@ shipment_dto_t *shipment_dto_parseFromJSON(cJSON *shipment_dtoJSON){
         expected_delivery_date && !cJSON_IsNull(expected_delivery_date) ? strdup(expected_delivery_date->valuestring) : NULL,
         shipping_terms ? shipping_termsVariable : shipmentsservice_shipment_dto_SHIPPINGTERMS_NULL,
         order_id && !cJSON_IsNull(order_id) ? strdup(order_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
         );
 
     return shipment_dto_local_var;

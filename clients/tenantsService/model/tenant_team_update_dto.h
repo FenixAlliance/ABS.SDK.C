@@ -19,8 +19,6 @@ typedef struct tenant_team_update_dto_t tenant_team_update_dto_t;
 
 
 typedef struct tenant_team_update_dto_t {
-    char *id; // string
-    char *timestamp; //date time
     char *name; // string
     char *description; // string
     char *avatar_url; // string
@@ -31,8 +29,6 @@ typedef struct tenant_team_update_dto_t {
 } tenant_team_update_dto_t;
 
 tenant_team_update_dto_t *tenant_team_update_dto_create(
-    char *id,
-    char *timestamp,
     char *name,
     char *description,
     char *avatar_url,

@@ -12,6 +12,7 @@
 #include "../model/item_warranty_policy_dto_envelope.h"
 #include "../model/item_warranty_policy_dto_list_envelope.h"
 #include "../model/item_warranty_policy_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a new warranty policy
@@ -42,6 +43,14 @@ WarrantyPoliciesAPI_getWarrantyPoliciesCountAsync(apiClient_t *apiClient, char *
 //
 item_warranty_policy_dto_envelope_t*
 WarrantyPoliciesAPI_getWarrantyPolicyAsync(apiClient_t *apiClient, char *tenantId, char *warrantyPolicyId, char *api_version, char *x_api_version);
+
+
+// Patch a warranty policy
+//
+// Partially updates an existing warranty policy by its unique identifier.
+//
+empty_envelope_t*
+WarrantyPoliciesAPI_patchWarrantyPolicyAsync(apiClient_t *apiClient, char *tenantId, char *warrantyPolicyId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a warranty policy

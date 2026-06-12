@@ -9,7 +9,8 @@ tenant_position_create_dto_t *tenant_position_create_dto_create(
     char *id,
     char *timestamp,
     char *title,
-    char *description
+    char *description,
+    char *type
     ) {
     tenant_position_create_dto_t *tenant_position_create_dto_local_var = malloc(sizeof(tenant_position_create_dto_t));
     if (!tenant_position_create_dto_local_var) {
@@ -19,6 +20,7 @@ tenant_position_create_dto_t *tenant_position_create_dto_create(
     tenant_position_create_dto_local_var->timestamp = timestamp;
     tenant_position_create_dto_local_var->title = title;
     tenant_position_create_dto_local_var->description = description;
+    tenant_position_create_dto_local_var->type = type;
 
     return tenant_position_create_dto_local_var;
 }
@@ -44,6 +46,10 @@ void tenant_position_create_dto_free(tenant_position_create_dto_t *tenant_positi
     if (tenant_position_create_dto->description) {
         free(tenant_position_create_dto->description);
         tenant_position_create_dto->description = NULL;
+    }
+    if (tenant_position_create_dto->type) {
+        free(tenant_position_create_dto->type);
+        tenant_position_create_dto->type = NULL;
     }
     free(tenant_position_create_dto);
 }
@@ -78,6 +84,14 @@ cJSON *tenant_position_create_dto_convertToJSON(tenant_position_create_dto_t *te
     // tenant_position_create_dto->description
     if(tenant_position_create_dto->description) {
     if(cJSON_AddStringToObject(item, "description", tenant_position_create_dto->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // tenant_position_create_dto->type
+    if(tenant_position_create_dto->type) {
+    if(cJSON_AddStringToObject(item, "type", tenant_position_create_dto->type) == NULL) {
     goto fail; //String
     }
     }
@@ -130,12 +144,22 @@ tenant_position_create_dto_t *tenant_position_create_dto_parseFromJSON(cJSON *te
     }
     }
 
+    // tenant_position_create_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(tenant_position_create_dtoJSON, "type");
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
+    {
+    goto end; //String
+    }
+    }
+
 
     tenant_position_create_dto_local_var = tenant_position_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL
         );
 
     return tenant_position_create_dto_local_var;

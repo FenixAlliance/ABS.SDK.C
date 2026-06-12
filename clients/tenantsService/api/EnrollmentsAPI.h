@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_enrollment_create_dto.h"
 #include "../model/tenant_enrollment_dto_envelope.h"
 #include "../model/tenant_enrollment_dto_list_envelope.h"
@@ -68,6 +69,14 @@ EnrollmentsAPI_getTenantEnrollments(apiClient_t *apiClient, char *tenantId, char
 //
 int32_envelope_t*
 EnrollmentsAPI_getTenantEnrollmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant enrollment
+//
+// Patch a tenant enrollment
+//
+empty_envelope_t*
+EnrollmentsAPI_patchTenantEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char *enrollmentId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant enrollment

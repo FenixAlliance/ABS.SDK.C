@@ -6,11 +6,13 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
+#include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/knowledge_article_create_dto.h"
 #include "../model/knowledge_article_dto_envelope.h"
 #include "../model/knowledge_article_dto_list_envelope.h"
 #include "../model/knowledge_article_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a knowledge article
@@ -41,6 +43,14 @@ KnowledgeArticlesAPI_getKnowledgeArticlesAsync(apiClient_t *apiClient, char *ten
 //
 int32_envelope_t*
 KnowledgeArticlesAPI_getKnowledgeArticlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a knowledge article
+//
+// Partially updates an existing knowledge article by its unique identifier.
+//
+empty_envelope_t*
+KnowledgeArticlesAPI_patchKnowledgeArticleAsync(apiClient_t *apiClient, char *tenantId, char *knowledgeArticleId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a knowledge article

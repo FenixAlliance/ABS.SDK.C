@@ -19,8 +19,8 @@ inquiry_request_dto_t *inquiry_request_dto_create(
     char *phone,
     char *message,
     char *tenant_id,
-    char *business_profile_record_id,
-    char *account_holder_id,
+    char *enrollment_id,
+    char *user_id,
     char *social_profile_id
     ) {
     inquiry_request_dto_t *inquiry_request_dto_local_var = malloc(sizeof(inquiry_request_dto_t));
@@ -40,8 +40,8 @@ inquiry_request_dto_t *inquiry_request_dto_create(
     inquiry_request_dto_local_var->phone = phone;
     inquiry_request_dto_local_var->message = message;
     inquiry_request_dto_local_var->tenant_id = tenant_id;
-    inquiry_request_dto_local_var->business_profile_record_id = business_profile_record_id;
-    inquiry_request_dto_local_var->account_holder_id = account_holder_id;
+    inquiry_request_dto_local_var->enrollment_id = enrollment_id;
+    inquiry_request_dto_local_var->user_id = user_id;
     inquiry_request_dto_local_var->social_profile_id = social_profile_id;
 
     return inquiry_request_dto_local_var;
@@ -105,13 +105,13 @@ void inquiry_request_dto_free(inquiry_request_dto_t *inquiry_request_dto) {
         free(inquiry_request_dto->tenant_id);
         inquiry_request_dto->tenant_id = NULL;
     }
-    if (inquiry_request_dto->business_profile_record_id) {
-        free(inquiry_request_dto->business_profile_record_id);
-        inquiry_request_dto->business_profile_record_id = NULL;
+    if (inquiry_request_dto->enrollment_id) {
+        free(inquiry_request_dto->enrollment_id);
+        inquiry_request_dto->enrollment_id = NULL;
     }
-    if (inquiry_request_dto->account_holder_id) {
-        free(inquiry_request_dto->account_holder_id);
-        inquiry_request_dto->account_holder_id = NULL;
+    if (inquiry_request_dto->user_id) {
+        free(inquiry_request_dto->user_id);
+        inquiry_request_dto->user_id = NULL;
     }
     if (inquiry_request_dto->social_profile_id) {
         free(inquiry_request_dto->social_profile_id);
@@ -227,17 +227,17 @@ cJSON *inquiry_request_dto_convertToJSON(inquiry_request_dto_t *inquiry_request_
     }
 
 
-    // inquiry_request_dto->business_profile_record_id
-    if(inquiry_request_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordId", inquiry_request_dto->business_profile_record_id) == NULL) {
+    // inquiry_request_dto->enrollment_id
+    if(inquiry_request_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", inquiry_request_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // inquiry_request_dto->account_holder_id
-    if(inquiry_request_dto->account_holder_id) {
-    if(cJSON_AddStringToObject(item, "accountHolderId", inquiry_request_dto->account_holder_id) == NULL) {
+    // inquiry_request_dto->user_id
+    if(inquiry_request_dto->user_id) {
+    if(cJSON_AddStringToObject(item, "userId", inquiry_request_dto->user_id) == NULL) {
     goto fail; //String
     }
     }
@@ -379,19 +379,19 @@ inquiry_request_dto_t *inquiry_request_dto_parseFromJSON(cJSON *inquiry_request_
     }
     }
 
-    // inquiry_request_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(inquiry_request_dtoJSON, "businessProfileRecordId");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // inquiry_request_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(inquiry_request_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
     }
 
-    // inquiry_request_dto->account_holder_id
-    cJSON *account_holder_id = cJSON_GetObjectItemCaseSensitive(inquiry_request_dtoJSON, "accountHolderId");
-    if (account_holder_id) { 
-    if(!cJSON_IsString(account_holder_id) && !cJSON_IsNull(account_holder_id))
+    // inquiry_request_dto->user_id
+    cJSON *user_id = cJSON_GetObjectItemCaseSensitive(inquiry_request_dtoJSON, "userId");
+    if (user_id) { 
+    if(!cJSON_IsString(user_id) && !cJSON_IsNull(user_id))
     {
     goto end; //String
     }
@@ -421,8 +421,8 @@ inquiry_request_dto_t *inquiry_request_dto_parseFromJSON(cJSON *inquiry_request_
         phone && !cJSON_IsNull(phone) ? strdup(phone->valuestring) : NULL,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
-        account_holder_id && !cJSON_IsNull(account_holder_id) ? strdup(account_holder_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
+        user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL,
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL
         );
 

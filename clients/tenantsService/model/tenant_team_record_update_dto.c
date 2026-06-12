@@ -35,7 +35,7 @@ cJSON *tenant_team_record_update_dto_convertToJSON(tenant_team_record_update_dto
 
     // tenant_team_record_update_dto->business_team_id
     if(tenant_team_record_update_dto->business_team_id) {
-    if(cJSON_AddStringToObject(item, "businessTeamID", tenant_team_record_update_dto->business_team_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "businessTeamId", tenant_team_record_update_dto->business_team_id) == NULL) {
     goto fail; //String
     }
     }
@@ -53,7 +53,7 @@ tenant_team_record_update_dto_t *tenant_team_record_update_dto_parseFromJSON(cJS
     tenant_team_record_update_dto_t *tenant_team_record_update_dto_local_var = NULL;
 
     // tenant_team_record_update_dto->business_team_id
-    cJSON *business_team_id = cJSON_GetObjectItemCaseSensitive(tenant_team_record_update_dtoJSON, "businessTeamID");
+    cJSON *business_team_id = cJSON_GetObjectItemCaseSensitive(tenant_team_record_update_dtoJSON, "businessTeamId");
     if (business_team_id) { 
     if(!cJSON_IsString(business_team_id) && !cJSON_IsNull(business_team_id))
     {

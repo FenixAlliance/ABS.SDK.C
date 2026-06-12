@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**BillsOfLadingAPI_getBillOfLadingLinesCountAsync**](BillsOfLadingAPI.md#BillsOfLadingAPI_getBillOfLadingLinesCountAsync) | **GET** /api/v2/ShipmentsService/BillsOfLading/{billOfLadingId}/Lines/Count | Get bill of lading lines count
 [**BillsOfLadingAPI_getBillsOfLadingAsync**](BillsOfLadingAPI.md#BillsOfLadingAPI_getBillsOfLadingAsync) | **GET** /api/v2/ShipmentsService/BillsOfLading | Get all bills of lading
 [**BillsOfLadingAPI_getBillsOfLadingCountAsync**](BillsOfLadingAPI.md#BillsOfLadingAPI_getBillsOfLadingCountAsync) | **GET** /api/v2/ShipmentsService/BillsOfLading/Count | Get bills of lading count
+[**BillsOfLadingAPI_patchBillOfLadingAsync**](BillsOfLadingAPI.md#BillsOfLadingAPI_patchBillOfLadingAsync) | **PATCH** /api/v2/ShipmentsService/BillsOfLading/{billOfLadingId} | Patch a bill of lading
+[**BillsOfLadingAPI_patchBillOfLadingLineAsync**](BillsOfLadingAPI.md#BillsOfLadingAPI_patchBillOfLadingLineAsync) | **PATCH** /api/v2/ShipmentsService/BillsOfLading/{billOfLadingId}/Lines/{lineId} | Patch a bill of lading line
 [**BillsOfLadingAPI_updateBillOfLadingAsync**](BillsOfLadingAPI.md#BillsOfLadingAPI_updateBillOfLadingAsync) | **PUT** /api/v2/ShipmentsService/BillsOfLading/{billOfLadingId} | Update a bill of lading
 [**BillsOfLadingAPI_updateBillOfLadingLineAsync**](BillsOfLadingAPI.md#BillsOfLadingAPI_updateBillOfLadingLineAsync) | **PUT** /api/v2/ShipmentsService/BillsOfLading/{billOfLadingId}/Lines/{lineId} | Update a bill of lading line
 
@@ -355,6 +357,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BillsOfLadingAPI_patchBillOfLadingAsync**
+```c
+// Patch a bill of lading
+//
+// Partially updates an existing bill of lading using JSON Patch.
+//
+empty_envelope_t* BillsOfLadingAPI_patchBillOfLadingAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**billOfLadingId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BillsOfLadingAPI_patchBillOfLadingLineAsync**
+```c
+// Patch a bill of lading line
+//
+// Partially updates an existing line on a bill of lading using JSON Patch.
+//
+empty_envelope_t* BillsOfLadingAPI_patchBillOfLadingLineAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**billOfLadingId** | **char \*** |  | 
+**lineId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

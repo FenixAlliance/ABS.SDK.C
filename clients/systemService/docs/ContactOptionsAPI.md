@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ContactOptionsAPI_getSystemContactOptionById**](ContactOptionsAPI.md#ContactOptionsAPI_getSystemContactOptionById) | **GET** /api/v2/SystemService/Contacts/{contactId}/Options/{optionId} | Retrieve a single contact option by its ID (admin)
 [**ContactOptionsAPI_getSystemContactOptions**](ContactOptionsAPI.md#ContactOptionsAPI_getSystemContactOptions) | **GET** /api/v2/SystemService/Contacts/{contactId}/Options | Retrieve a list of contact options (admin)
 [**ContactOptionsAPI_getSystemContactOptionsCount**](ContactOptionsAPI.md#ContactOptionsAPI_getSystemContactOptionsCount) | **GET** /api/v2/SystemService/Contacts/{contactId}/Options/Count | Get the count of contact options (admin)
+[**ContactOptionsAPI_patchSystemContactOption**](ContactOptionsAPI.md#ContactOptionsAPI_patchSystemContactOption) | **PATCH** /api/v2/SystemService/Contacts/{contactId}/Options/{optionId} | Partially update a contact option (admin)
 [**ContactOptionsAPI_updateSystemContactOption**](ContactOptionsAPI.md#ContactOptionsAPI_updateSystemContactOption) | **PUT** /api/v2/SystemService/Contacts/{contactId}/Options/{optionId} | Update a contact option (admin)
 
 
@@ -180,6 +181,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ContactOptionsAPI_patchSystemContactOption**
+```c
+// Partially update a contact option (admin)
+//
+// Admin endpoint to partially update an option for any contact using a JSON Patch document
+//
+empty_envelope_t* ContactOptionsAPI_patchSystemContactOption(apiClient_t *apiClient, char *contactId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**contactId** | **char \*** |  | 
+**optionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

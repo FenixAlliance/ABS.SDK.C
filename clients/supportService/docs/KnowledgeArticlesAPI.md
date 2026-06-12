@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**KnowledgeArticlesAPI_getKnowledgeArticleAsync**](KnowledgeArticlesAPI.md#KnowledgeArticlesAPI_getKnowledgeArticleAsync) | **GET** /api/v2/SupportService/KnowledgeArticles/{knowledgeArticleId} | Retrieve a knowledge article by ID
 [**KnowledgeArticlesAPI_getKnowledgeArticlesAsync**](KnowledgeArticlesAPI.md#KnowledgeArticlesAPI_getKnowledgeArticlesAsync) | **GET** /api/v2/SupportService/KnowledgeArticles | Retrieve knowledge articles
 [**KnowledgeArticlesAPI_getKnowledgeArticlesCountAsync**](KnowledgeArticlesAPI.md#KnowledgeArticlesAPI_getKnowledgeArticlesCountAsync) | **GET** /api/v2/SupportService/KnowledgeArticles/Count | Get knowledge articles count
+[**KnowledgeArticlesAPI_patchKnowledgeArticleAsync**](KnowledgeArticlesAPI.md#KnowledgeArticlesAPI_patchKnowledgeArticleAsync) | **PATCH** /api/v2/SupportService/KnowledgeArticles/{knowledgeArticleId} | Patch a knowledge article
 [**KnowledgeArticlesAPI_updateKnowledgeArticleAsync**](KnowledgeArticlesAPI.md#KnowledgeArticlesAPI_updateKnowledgeArticleAsync) | **PUT** /api/v2/SupportService/KnowledgeArticles/{knowledgeArticleId} | Update a knowledge article
 
 
@@ -166,6 +167,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **KnowledgeArticlesAPI_patchKnowledgeArticleAsync**
+```c
+// Patch a knowledge article
+//
+// Partially updates an existing knowledge article by its unique identifier.
+//
+empty_envelope_t* KnowledgeArticlesAPI_patchKnowledgeArticleAsync(apiClient_t *apiClient, char *tenantId, char *knowledgeArticleId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**knowledgeArticleId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

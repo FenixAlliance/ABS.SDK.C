@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**EnrollmentsAPI_getTenantEnrollmentById**](EnrollmentsAPI.md#EnrollmentsAPI_getTenantEnrollmentById) | **GET** /api/v2/TenantsService/Enrollments/{enrollmentId} | Retrieve a single tenant enrollment by its ID
 [**EnrollmentsAPI_getTenantEnrollments**](EnrollmentsAPI.md#EnrollmentsAPI_getTenantEnrollments) | **GET** /api/v2/TenantsService/Enrollments | Retrieve a list of tenant enrollments
 [**EnrollmentsAPI_getTenantEnrollmentsCount**](EnrollmentsAPI.md#EnrollmentsAPI_getTenantEnrollmentsCount) | **GET** /api/v2/TenantsService/Enrollments/Count | Get the count of tenant enrollments
+[**EnrollmentsAPI_patchTenantEnrollmentAsync**](EnrollmentsAPI.md#EnrollmentsAPI_patchTenantEnrollmentAsync) | **PATCH** /api/v2/TenantsService/Enrollments/{enrollmentId} | Patch a tenant enrollment
 [**EnrollmentsAPI_updateTenantEnrollment**](EnrollmentsAPI.md#EnrollmentsAPI_updateTenantEnrollment) | **PUT** /api/v2/TenantsService/Enrollments/{enrollmentId} | Update a tenant enrollment
 
 
@@ -245,6 +246,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **EnrollmentsAPI_patchTenantEnrollmentAsync**
+```c
+// Patch a tenant enrollment
+//
+// Patch a tenant enrollment
+//
+empty_envelope_t* EnrollmentsAPI_patchTenantEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char *enrollmentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**enrollmentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

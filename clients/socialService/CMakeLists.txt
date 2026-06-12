@@ -72,6 +72,7 @@ set(SRCS
     model/notification_dto.c
     model/notification_dto_envelope.c
     model/notification_dto_list_envelope.c
+    model/operation.c
     model/private_message_create_dto.c
     model/private_message_dto.c
     model/private_message_dto_list_envelope.c
@@ -152,6 +153,7 @@ set(HDRS
     model/notification_dto.h
     model/notification_dto_envelope.h
     model/notification_dto_list_envelope.h
+    model/operation.h
     model/private_message_create_dto.h
     model/private_message_dto.h
     model/private_message_dto_list_envelope.h

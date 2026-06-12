@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ServiceCasesAPI_getServiceCaseByIdAsync**](ServiceCasesAPI.md#ServiceCasesAPI_getServiceCaseByIdAsync) | **GET** /api/v2/ServicesService/ServiceCases/{serviceCaseId} | Get a service case by ID
 [**ServiceCasesAPI_getServiceCasesAsync**](ServiceCasesAPI.md#ServiceCasesAPI_getServiceCasesAsync) | **GET** /api/v2/ServicesService/ServiceCases | Get all service cases
 [**ServiceCasesAPI_getServiceCasesCountAsync**](ServiceCasesAPI.md#ServiceCasesAPI_getServiceCasesCountAsync) | **GET** /api/v2/ServicesService/ServiceCases/Count | Get service cases count
+[**ServiceCasesAPI_patchServiceCaseAsync**](ServiceCasesAPI.md#ServiceCasesAPI_patchServiceCaseAsync) | **PATCH** /api/v2/ServicesService/ServiceCases/{serviceCaseId} | Patch a service case
 [**ServiceCasesAPI_updateServiceCaseAsync**](ServiceCasesAPI.md#ServiceCasesAPI_updateServiceCaseAsync) | **PUT** /api/v2/ServicesService/ServiceCases/{serviceCaseId} | Update a service case
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceCasesAPI_patchServiceCaseAsync**
+```c
+// Patch a service case
+//
+// Partially updates an existing service case using a JSON Patch document.
+//
+envelope_t* ServiceCasesAPI_patchServiceCaseAsync(apiClient_t *apiClient, char *tenantId, char *serviceCaseId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**serviceCaseId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[envelope_t](envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

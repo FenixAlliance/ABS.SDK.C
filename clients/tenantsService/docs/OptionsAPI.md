@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**OptionsAPI_getTenantOptionByKey**](OptionsAPI.md#OptionsAPI_getTenantOptionByKey) | **GET** /api/v2/TenantsService/Options/Key/{key} | Retrieve a single tenant option by its key
 [**OptionsAPI_getTenantOptions**](OptionsAPI.md#OptionsAPI_getTenantOptions) | **GET** /api/v2/TenantsService/Options | Retrieve a list of tenant options
 [**OptionsAPI_getTenantOptionsCount**](OptionsAPI.md#OptionsAPI_getTenantOptionsCount) | **GET** /api/v2/TenantsService/Options/Count | Get the count of tenant options
+[**OptionsAPI_patchTenantOption**](OptionsAPI.md#OptionsAPI_patchTenantOption) | **PATCH** /api/v2/TenantsService/Options/{optionId} | Patch a tenant option
 [**OptionsAPI_updateTenantOption**](OptionsAPI.md#OptionsAPI_updateTenantOption) | **PUT** /api/v2/TenantsService/Options/{optionId} | Update a tenant option
 [**OptionsAPI_upsertTenantOption**](OptionsAPI.md#OptionsAPI_upsertTenantOption) | **PUT** /api/v2/TenantsService/Options/Upsert/{key} | Create or update a tenant option by key
 
@@ -217,6 +218,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **OptionsAPI_patchTenantOption**
+```c
+// Patch a tenant option
+//
+// Patch a tenant option
+//
+empty_envelope_t* OptionsAPI_patchTenantOption(apiClient_t *apiClient, char *tenantId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**optionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -3,7 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**revenue** | **char \*** |  | [optional] 
 **min_employees** | **double** |  | [optional] 
 **max_employees** | **double** |  | [optional] 
 

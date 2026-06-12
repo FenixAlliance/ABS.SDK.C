@@ -8,7 +8,6 @@
 tenant_size_create_dto_t *tenant_size_create_dto_create(
     char *id,
     char *timestamp,
-    char *name,
     int employee_low_range_value,
     int employee_high_range_value
     ) {
@@ -18,7 +17,6 @@ tenant_size_create_dto_t *tenant_size_create_dto_create(
     }
     tenant_size_create_dto_local_var->id = id;
     tenant_size_create_dto_local_var->timestamp = timestamp;
-    tenant_size_create_dto_local_var->name = name;
     tenant_size_create_dto_local_var->employee_low_range_value = employee_low_range_value;
     tenant_size_create_dto_local_var->employee_high_range_value = employee_high_range_value;
 
@@ -39,10 +37,6 @@ void tenant_size_create_dto_free(tenant_size_create_dto_t *tenant_size_create_dt
         free(tenant_size_create_dto->timestamp);
         tenant_size_create_dto->timestamp = NULL;
     }
-    if (tenant_size_create_dto->name) {
-        free(tenant_size_create_dto->name);
-        tenant_size_create_dto->name = NULL;
-    }
     free(tenant_size_create_dto);
 }
 
@@ -61,14 +55,6 @@ cJSON *tenant_size_create_dto_convertToJSON(tenant_size_create_dto_t *tenant_siz
     if(tenant_size_create_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", tenant_size_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
-    }
-    }
-
-
-    // tenant_size_create_dto->name
-    if(tenant_size_create_dto->name) {
-    if(cJSON_AddStringToObject(item, "name", tenant_size_create_dto->name) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -118,15 +104,6 @@ tenant_size_create_dto_t *tenant_size_create_dto_parseFromJSON(cJSON *tenant_siz
     }
     }
 
-    // tenant_size_create_dto->name
-    cJSON *name = cJSON_GetObjectItemCaseSensitive(tenant_size_create_dtoJSON, "name");
-    if (name) { 
-    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
-    {
-    goto end; //String
-    }
-    }
-
     // tenant_size_create_dto->employee_low_range_value
     cJSON *employee_low_range_value = cJSON_GetObjectItemCaseSensitive(tenant_size_create_dtoJSON, "employeeLowRangeValue");
     if (employee_low_range_value) { 
@@ -149,7 +126,6 @@ tenant_size_create_dto_t *tenant_size_create_dto_parseFromJSON(cJSON *tenant_siz
     tenant_size_create_dto_local_var = tenant_size_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         employee_low_range_value ? employee_low_range_value->valuedouble : 0,
         employee_high_range_value ? employee_high_range_value->valuedouble : 0
         );

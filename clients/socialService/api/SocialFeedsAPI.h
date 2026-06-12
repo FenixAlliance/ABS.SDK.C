@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/social_feed_dto_envelope.h"
 #include "../model/social_feed_dto_list_envelope.h"
 #include "../model/social_feed_post_create_dto.h"
@@ -78,6 +79,14 @@ SocialFeedsAPI_getNotificationAsync(apiClient_t *apiClient, char *socialProfileI
 //
 int32_envelope_t*
 SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+
+
+// Patch a social feed post
+//
+// Partially updates an existing post in a specific social feed using a JSON Patch document.
+//
+empty_envelope_t*
+SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *feedPostId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a social feed post

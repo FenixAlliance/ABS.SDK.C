@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_industry_create_dto.h"
 #include "../model/tenant_industry_dto_envelope.h"
 #include "../model/tenant_industry_dto_list_envelope.h"
@@ -52,6 +53,14 @@ IndustriesAPI_getTenantIndustriesCount(apiClient_t *apiClient, char *tenantId, c
 //
 tenant_industry_dto_envelope_t*
 IndustriesAPI_getTenantIndustryById(apiClient_t *apiClient, char *tenantId, char *tenantIndustryId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant industry
+//
+// Patch a tenant industry
+//
+empty_envelope_t*
+IndustriesAPI_patchTenantIndustryAsync(apiClient_t *apiClient, char *tenantId, char *tenantIndustryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant industry

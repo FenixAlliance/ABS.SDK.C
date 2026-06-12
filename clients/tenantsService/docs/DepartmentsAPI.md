@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**DepartmentsAPI_getTenantDepartmentById**](DepartmentsAPI.md#DepartmentsAPI_getTenantDepartmentById) | **GET** /api/v2/TenantsService/Departments/{tenantDepartmentId} | Retrieve a single tenant department by its ID
 [**DepartmentsAPI_getTenantDepartments**](DepartmentsAPI.md#DepartmentsAPI_getTenantDepartments) | **GET** /api/v2/TenantsService/Departments | Retrieve a list of tenant departments
 [**DepartmentsAPI_getTenantDepartmentsCount**](DepartmentsAPI.md#DepartmentsAPI_getTenantDepartmentsCount) | **GET** /api/v2/TenantsService/Departments/Count | Get the count of tenant departments
+[**DepartmentsAPI_patchTenantDepartmentAsync**](DepartmentsAPI.md#DepartmentsAPI_patchTenantDepartmentAsync) | **PATCH** /api/v2/TenantsService/Departments/{tenantDepartmentId} | Patch a tenant department
 [**DepartmentsAPI_updateTenantDepartment**](DepartmentsAPI.md#DepartmentsAPI_updateTenantDepartment) | **PUT** /api/v2/TenantsService/Departments/{tenantDepartmentId} | Update a tenant department
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DepartmentsAPI_patchTenantDepartmentAsync**
+```c
+// Patch a tenant department
+//
+// Patch a tenant department
+//
+empty_envelope_t* DepartmentsAPI_patchTenantDepartmentAsync(apiClient_t *apiClient, char *tenantId, char *tenantDepartmentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**tenantDepartmentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

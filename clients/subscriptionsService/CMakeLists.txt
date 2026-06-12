@@ -55,6 +55,7 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
+    model/empty_envelope.c
     model/envelope.c
     model/error_envelope.c
     model/forgot_password_request.c
@@ -63,6 +64,7 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
+    model/operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -94,6 +96,7 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
+    model/empty_envelope.h
     model/envelope.h
     model/error_envelope.h
     model/forgot_password_request.h
@@ -102,6 +105,7 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
+    model/operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

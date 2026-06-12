@@ -105,7 +105,7 @@ cJSON *tenant_team_project_enrollment_dto_convertToJSON(tenant_team_project_enro
 
     // tenant_team_project_enrollment_dto->project_id
     if(tenant_team_project_enrollment_dto->project_id) {
-    if(cJSON_AddStringToObject(item, "projectID", tenant_team_project_enrollment_dto->project_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "projectId", tenant_team_project_enrollment_dto->project_id) == NULL) {
     goto fail; //String
     }
     }
@@ -168,7 +168,7 @@ tenant_team_project_enrollment_dto_t *tenant_team_project_enrollment_dto_parseFr
     }
 
     // tenant_team_project_enrollment_dto->project_id
-    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(tenant_team_project_enrollment_dtoJSON, "projectID");
+    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(tenant_team_project_enrollment_dtoJSON, "projectId");
     if (project_id) { 
     if(!cJSON_IsString(project_id) && !cJSON_IsNull(project_id))
     {

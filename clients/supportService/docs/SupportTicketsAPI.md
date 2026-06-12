@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**SupportTicketsAPI_getSupportTicketConversationsAsync**](SupportTicketsAPI.md#SupportTicketsAPI_getSupportTicketConversationsAsync) | **GET** /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations | Retrieve conversations for a support ticket
 [**SupportTicketsAPI_getSupportTicketsAsync**](SupportTicketsAPI.md#SupportTicketsAPI_getSupportTicketsAsync) | **GET** /api/v2/SupportService/SupportTickets | Retrieve a list of support tickets
 [**SupportTicketsAPI_getSupportTicketsCountAsync**](SupportTicketsAPI.md#SupportTicketsAPI_getSupportTicketsCountAsync) | **GET** /api/v2/SupportService/SupportTickets/Count | Get the count of support tickets
+[**SupportTicketsAPI_patchSupportTicketAsync**](SupportTicketsAPI.md#SupportTicketsAPI_patchSupportTicketAsync) | **PATCH** /api/v2/SupportService/SupportTickets/{supportTicketId} | Patch a support ticket
 [**SupportTicketsAPI_relateSupportTicketToConversationAsync**](SupportTicketsAPI.md#SupportTicketsAPI_relateSupportTicketToConversationAsync) | **POST** /api/v2/SupportService/SupportTickets/{supportTicketId}/Conversations | Create a conversation for a support ticket
 [**SupportTicketsAPI_updateSupportTicketAsync**](SupportTicketsAPI.md#SupportTicketsAPI_updateSupportTicketAsync) | **PUT** /api/v2/SupportService/SupportTickets/{supportTicketId} | Update a support ticket
 
@@ -322,6 +323,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SupportTicketsAPI_patchSupportTicketAsync**
+```c
+// Patch a support ticket
+//
+// Partially updates an existing support ticket by its unique identifier.
+//
+empty_envelope_t* SupportTicketsAPI_patchSupportTicketAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**supportTicketId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

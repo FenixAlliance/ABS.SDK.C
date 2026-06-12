@@ -9,6 +9,7 @@
 #include "../model/error_envelope.h"
 #include "../model/extended_sales_literature_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/sales_literature_create_dto.h"
 #include "../model/sales_literature_dto_envelope.h"
 #include "../model/sales_literature_dto_list_envelope.h"
@@ -61,6 +62,14 @@ SalesLiteraturesAPI_getSalesLiteratureAsync(apiClient_t *apiClient, char *tenant
 //
 sales_literature_dto_list_envelope_t*
 SalesLiteraturesAPI_getSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Patch a sales literature
+//
+// Partially updates an existing sales literature using a JSON Patch document.
+//
+empty_envelope_t*
+SalesLiteraturesAPI_patchSalesLiteratureAsync(apiClient_t *apiClient, char *tenantId, char *salesLiteratureId, list_t *operation);
 
 
 // Update a sales literature

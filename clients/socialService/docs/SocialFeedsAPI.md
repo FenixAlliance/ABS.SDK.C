@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**SocialFeedsAPI_getFeedPostsCountAsync**](SocialFeedsAPI.md#SocialFeedsAPI_getFeedPostsCountAsync) | **GET** /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/Count | Count social feed posts
 [**SocialFeedsAPI_getNotificationAsync**](SocialFeedsAPI.md#SocialFeedsAPI_getNotificationAsync) | **GET** /api/v2/SocialService/SocialFeeds/{socialFeedId} | Get social feed by ID
 [**SocialFeedsAPI_getNotificationsCountAsync**](SocialFeedsAPI.md#SocialFeedsAPI_getNotificationsCountAsync) | **GET** /api/v2/SocialService/SocialFeeds/Count | Count social feeds
+[**SocialFeedsAPI_patchFeedPostAsync**](SocialFeedsAPI.md#SocialFeedsAPI_patchFeedPostAsync) | **PATCH** /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId} | Patch a social feed post
 [**SocialFeedsAPI_updateFeedPostAsync**](SocialFeedsAPI.md#SocialFeedsAPI_updateFeedPostAsync) | **PUT** /api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId} | Update a social feed post
 
 
@@ -284,6 +285,42 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SocialFeedsAPI_patchFeedPostAsync**
+```c
+// Patch a social feed post
+//
+// Partially updates an existing post in a specific social feed using a JSON Patch document.
+//
+empty_envelope_t* SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *feedPostId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**socialProfileId** | **char \*** |  | 
+**socialFeedId** | **char \*** |  | 
+**feedPostId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

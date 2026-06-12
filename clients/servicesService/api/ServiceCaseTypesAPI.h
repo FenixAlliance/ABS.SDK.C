@@ -8,6 +8,7 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/service_case_type_create_dto.h"
 #include "../model/service_case_type_dto_envelope.h"
 #include "../model/service_case_type_dto_i_read_only_list_envelope.h"
@@ -52,6 +53,14 @@ ServiceCaseTypesAPI_getServiceCaseTypesAsync(apiClient_t *apiClient, char *tenan
 //
 int32_envelope_t*
 ServiceCaseTypesAPI_getServiceCaseTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a service case type
+//
+// Partially updates an existing service case type using a JSON Patch document.
+//
+envelope_t*
+ServiceCaseTypesAPI_patchServiceCaseTypeAsync(apiClient_t *apiClient, char *tenantId, char *serviceCaseTypeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a service case type

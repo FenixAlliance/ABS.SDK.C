@@ -21,7 +21,6 @@ typedef struct tenant_size_create_dto_t tenant_size_create_dto_t;
 typedef struct tenant_size_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *name; // string
     int employee_low_range_value; //numeric
     int employee_high_range_value; //numeric
 
@@ -30,7 +29,6 @@ typedef struct tenant_size_create_dto_t {
 tenant_size_create_dto_t *tenant_size_create_dto_create(
     char *id,
     char *timestamp,
-    char *name,
     int employee_low_range_value,
     int employee_high_range_value
 );

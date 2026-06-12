@@ -6,11 +6,13 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
+#include "../model/error_envelope.h"
 #include "../model/inquiry_request_create_dto.h"
 #include "../model/inquiry_request_dto_envelope.h"
 #include "../model/inquiry_request_dto_list_envelope.h"
 #include "../model/inquiry_request_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create an inquiry request
@@ -41,6 +43,14 @@ InquiryRequestsAPI_getInquiryRequestsAsync(apiClient_t *apiClient, char *tenantI
 //
 int32_envelope_t*
 InquiryRequestsAPI_getInquiryRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an inquiry request
+//
+// Partially updates an existing inquiry request by its unique identifier.
+//
+empty_envelope_t*
+InquiryRequestsAPI_patchInquiryRequestAsync(apiClient_t *apiClient, char *tenantId, char *inquiryRequestId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an inquiry request

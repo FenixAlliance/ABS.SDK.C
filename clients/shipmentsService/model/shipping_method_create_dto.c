@@ -141,7 +141,7 @@ cJSON *shipping_method_create_dto_convertToJSON(shipping_method_create_dto_t *sh
 
     // shipping_method_create_dto->currency_id
     if(shipping_method_create_dto->currency_id) {
-    if(cJSON_AddStringToObject(item, "currencyID", shipping_method_create_dto->currency_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "currencyId", shipping_method_create_dto->currency_id) == NULL) {
     goto fail; //String
     }
     }
@@ -234,7 +234,7 @@ shipping_method_create_dto_t *shipping_method_create_dto_parseFromJSON(cJSON *sh
     }
 
     // shipping_method_create_dto->currency_id
-    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(shipping_method_create_dtoJSON, "currencyID");
+    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(shipping_method_create_dtoJSON, "currencyId");
     if (currency_id) { 
     if(!cJSON_IsString(currency_id) && !cJSON_IsNull(currency_id))
     {

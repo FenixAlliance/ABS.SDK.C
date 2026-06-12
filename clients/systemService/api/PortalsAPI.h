@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/web_portal_create_dto.h"
 #include "../model/web_portal_dto_envelope.h"
 #include "../model/web_portal_dto_list_envelope.h"
@@ -52,6 +53,14 @@ PortalsAPI_getSystemPortals(apiClient_t *apiClient, char *api_version, char *x_a
 //
 int32_envelope_t*
 PortalsAPI_getSystemPortalsCount(apiClient_t *apiClient, char *api_version, char *x_api_version);
+
+
+// Partially update a system portal
+//
+// Partially update an existing web portal in the system using a JSON Patch document
+//
+empty_envelope_t*
+PortalsAPI_patchSystemPortal(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a system portal

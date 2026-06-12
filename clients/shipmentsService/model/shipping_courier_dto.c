@@ -11,8 +11,8 @@ shipping_courier_dto_t *shipping_courier_dto_create(
     char *name,
     char *logo_url,
     char *country_id,
-    char *business_id,
-    char *business_profile_record_id
+    char *tenant_id,
+    char *enrollment_id
     ) {
     shipping_courier_dto_t *shipping_courier_dto_local_var = malloc(sizeof(shipping_courier_dto_t));
     if (!shipping_courier_dto_local_var) {
@@ -23,8 +23,8 @@ shipping_courier_dto_t *shipping_courier_dto_create(
     shipping_courier_dto_local_var->name = name;
     shipping_courier_dto_local_var->logo_url = logo_url;
     shipping_courier_dto_local_var->country_id = country_id;
-    shipping_courier_dto_local_var->business_id = business_id;
-    shipping_courier_dto_local_var->business_profile_record_id = business_profile_record_id;
+    shipping_courier_dto_local_var->tenant_id = tenant_id;
+    shipping_courier_dto_local_var->enrollment_id = enrollment_id;
 
     return shipping_courier_dto_local_var;
 }
@@ -55,13 +55,13 @@ void shipping_courier_dto_free(shipping_courier_dto_t *shipping_courier_dto) {
         free(shipping_courier_dto->country_id);
         shipping_courier_dto->country_id = NULL;
     }
-    if (shipping_courier_dto->business_id) {
-        free(shipping_courier_dto->business_id);
-        shipping_courier_dto->business_id = NULL;
+    if (shipping_courier_dto->tenant_id) {
+        free(shipping_courier_dto->tenant_id);
+        shipping_courier_dto->tenant_id = NULL;
     }
-    if (shipping_courier_dto->business_profile_record_id) {
-        free(shipping_courier_dto->business_profile_record_id);
-        shipping_courier_dto->business_profile_record_id = NULL;
+    if (shipping_courier_dto->enrollment_id) {
+        free(shipping_courier_dto->enrollment_id);
+        shipping_courier_dto->enrollment_id = NULL;
     }
     free(shipping_courier_dto);
 }
@@ -103,23 +103,23 @@ cJSON *shipping_courier_dto_convertToJSON(shipping_courier_dto_t *shipping_couri
 
     // shipping_courier_dto->country_id
     if(shipping_courier_dto->country_id) {
-    if(cJSON_AddStringToObject(item, "countryID", shipping_courier_dto->country_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "countryId", shipping_courier_dto->country_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // shipping_courier_dto->business_id
-    if(shipping_courier_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", shipping_courier_dto->business_id) == NULL) {
+    // shipping_courier_dto->tenant_id
+    if(shipping_courier_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", shipping_courier_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // shipping_courier_dto->business_profile_record_id
-    if(shipping_courier_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", shipping_courier_dto->business_profile_record_id) == NULL) {
+    // shipping_courier_dto->enrollment_id
+    if(shipping_courier_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", shipping_courier_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -173,7 +173,7 @@ shipping_courier_dto_t *shipping_courier_dto_parseFromJSON(cJSON *shipping_couri
     }
 
     // shipping_courier_dto->country_id
-    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(shipping_courier_dtoJSON, "countryID");
+    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(shipping_courier_dtoJSON, "countryId");
     if (country_id) { 
     if(!cJSON_IsString(country_id) && !cJSON_IsNull(country_id))
     {
@@ -181,19 +181,19 @@ shipping_courier_dto_t *shipping_courier_dto_parseFromJSON(cJSON *shipping_couri
     }
     }
 
-    // shipping_courier_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(shipping_courier_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // shipping_courier_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(shipping_courier_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
-    // shipping_courier_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(shipping_courier_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // shipping_courier_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(shipping_courier_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -206,8 +206,8 @@ shipping_courier_dto_t *shipping_courier_dto_parseFromJSON(cJSON *shipping_couri
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         logo_url && !cJSON_IsNull(logo_url) ? strdup(logo_url->valuestring) : NULL,
         country_id && !cJSON_IsNull(country_id) ? strdup(country_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return shipping_courier_dto_local_var;

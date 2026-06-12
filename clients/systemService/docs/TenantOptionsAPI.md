@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**TenantOptionsAPI_getSystemTenantOptionById**](TenantOptionsAPI.md#TenantOptionsAPI_getSystemTenantOptionById) | **GET** /api/v2/SystemService/Tenants/{tenantId}/Options/{optionId} | Retrieve a single tenant option by its ID (admin)
 [**TenantOptionsAPI_getSystemTenantOptions**](TenantOptionsAPI.md#TenantOptionsAPI_getSystemTenantOptions) | **GET** /api/v2/SystemService/Tenants/{tenantId}/Options | Retrieve a list of tenant options (admin)
 [**TenantOptionsAPI_getSystemTenantOptionsCount**](TenantOptionsAPI.md#TenantOptionsAPI_getSystemTenantOptionsCount) | **GET** /api/v2/SystemService/Tenants/{tenantId}/Options/Count | Get the count of tenant options (admin)
+[**TenantOptionsAPI_patchSystemTenantOption**](TenantOptionsAPI.md#TenantOptionsAPI_patchSystemTenantOption) | **PATCH** /api/v2/SystemService/Tenants/{tenantId}/Options/{optionId} | Partially update a tenant option (admin)
 [**TenantOptionsAPI_updateSystemTenantOption**](TenantOptionsAPI.md#TenantOptionsAPI_updateSystemTenantOption) | **PUT** /api/v2/SystemService/Tenants/{tenantId}/Options/{optionId} | Update a tenant option (admin)
 
 
@@ -180,6 +181,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TenantOptionsAPI_patchSystemTenantOption**
+```c
+// Partially update a tenant option (admin)
+//
+// Admin endpoint to partially update an option for any tenant using a JSON Patch document
+//
+empty_envelope_t* TenantOptionsAPI_patchSystemTenantOption(apiClient_t *apiClient, char *tenantId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**optionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

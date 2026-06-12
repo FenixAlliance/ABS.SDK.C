@@ -12,6 +12,7 @@
 #include "../model/item_refund_policy_dto_envelope.h"
 #include "../model/item_refund_policy_dto_list_envelope.h"
 #include "../model/item_refund_policy_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a new refund policy
@@ -42,6 +43,14 @@ RefundPoliciesAPI_getRefundPoliciesCountAsync(apiClient_t *apiClient, char *tena
 //
 item_refund_policy_dto_envelope_t*
 RefundPoliciesAPI_getRefundPolicyAsync(apiClient_t *apiClient, char *tenantId, char *refundPolicyId, char *api_version, char *x_api_version);
+
+
+// Patch a refund policy
+//
+// Partially updates an existing refund policy by its unique identifier.
+//
+empty_envelope_t*
+RefundPoliciesAPI_patchRefundPolicyAsync(apiClient_t *apiClient, char *tenantId, char *refundPolicyId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a refund policy

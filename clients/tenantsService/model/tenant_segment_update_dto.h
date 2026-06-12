@@ -19,14 +19,12 @@ typedef struct tenant_segment_update_dto_t tenant_segment_update_dto_t;
 
 
 typedef struct tenant_segment_update_dto_t {
-    char *revenue; // string
     double min_employees; //numeric
     double max_employees; //numeric
 
 } tenant_segment_update_dto_t;
 
 tenant_segment_update_dto_t *tenant_segment_update_dto_create(
-    char *revenue,
     double min_employees,
     double max_employees
 );

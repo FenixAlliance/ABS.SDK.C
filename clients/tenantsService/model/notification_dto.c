@@ -4,6 +4,23 @@
 #include "notification_dto.h"
 
 
+char* notification_dto_type_ToString(tenantsservice_notification_dto_TYPE_e type) {
+    char* typeArray[] =  { "NULL", "Event", "Alert", "Log" };
+    return typeArray[type];
+}
+
+tenantsservice_notification_dto_TYPE_e notification_dto_type_FromString(char* type){
+    int stringToReturn = 0;
+    char *typeArray[] =  { "NULL", "Event", "Alert", "Log" };
+    size_t sizeofArray = sizeof(typeArray) / sizeof(typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(type, typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 notification_dto_t *notification_dto_create(
     char *id,
@@ -11,7 +28,9 @@ notification_dto_t *notification_dto_create(
     int read,
     char *icon,
     char *message,
+    char *image_url,
     char *redirect_url,
+    tenantsservice_notification_dto_TYPE_e type,
     char *social_profile_id,
     char *read_timestamp,
     char *issued_timestamp
@@ -25,7 +44,9 @@ notification_dto_t *notification_dto_create(
     notification_dto_local_var->read = read;
     notification_dto_local_var->icon = icon;
     notification_dto_local_var->message = message;
+    notification_dto_local_var->image_url = image_url;
     notification_dto_local_var->redirect_url = redirect_url;
+    notification_dto_local_var->type = type;
     notification_dto_local_var->social_profile_id = social_profile_id;
     notification_dto_local_var->read_timestamp = read_timestamp;
     notification_dto_local_var->issued_timestamp = issued_timestamp;
@@ -54,6 +75,10 @@ void notification_dto_free(notification_dto_t *notification_dto) {
     if (notification_dto->message) {
         free(notification_dto->message);
         notification_dto->message = NULL;
+    }
+    if (notification_dto->image_url) {
+        free(notification_dto->image_url);
+        notification_dto->image_url = NULL;
     }
     if (notification_dto->redirect_url) {
         free(notification_dto->redirect_url);
@@ -117,6 +142,14 @@ cJSON *notification_dto_convertToJSON(notification_dto_t *notification_dto) {
     }
 
 
+    // notification_dto->image_url
+    if(notification_dto->image_url) {
+    if(cJSON_AddStringToObject(item, "imageUrl", notification_dto->image_url) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // notification_dto->redirect_url
     if(notification_dto->redirect_url) {
     if(cJSON_AddStringToObject(item, "redirectUrl", notification_dto->redirect_url) == NULL) {
@@ -125,9 +158,18 @@ cJSON *notification_dto_convertToJSON(notification_dto_t *notification_dto) {
     }
 
 
+    // notification_dto->type
+    if(notification_dto->type != tenantsservice_notification_dto_TYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "type", typenotification_dto_ToString(notification_dto->type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // notification_dto->social_profile_id
     if(notification_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", notification_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", notification_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -205,6 +247,15 @@ notification_dto_t *notification_dto_parseFromJSON(cJSON *notification_dtoJSON){
     }
     }
 
+    // notification_dto->image_url
+    cJSON *image_url = cJSON_GetObjectItemCaseSensitive(notification_dtoJSON, "imageUrl");
+    if (image_url) { 
+    if(!cJSON_IsString(image_url) && !cJSON_IsNull(image_url))
+    {
+    goto end; //String
+    }
+    }
+
     // notification_dto->redirect_url
     cJSON *redirect_url = cJSON_GetObjectItemCaseSensitive(notification_dtoJSON, "redirectUrl");
     if (redirect_url) { 
@@ -214,8 +265,19 @@ notification_dto_t *notification_dto_parseFromJSON(cJSON *notification_dtoJSON){
     }
     }
 
+    // notification_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(notification_dtoJSON, "type");
+    tenantsservice_notification_dto_TYPE_e typeVariable;
+    if (type) { 
+    if(!cJSON_IsString(type))
+    {
+    goto end; //Enum
+    }
+    typeVariable = notification_dto_type_FromString(type->valuestring);
+    }
+
     // notification_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(notification_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(notification_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {
@@ -248,7 +310,9 @@ notification_dto_t *notification_dto_parseFromJSON(cJSON *notification_dtoJSON){
         read ? read->valueint : 0,
         icon && !cJSON_IsNull(icon) ? strdup(icon->valuestring) : NULL,
         message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
+        image_url && !cJSON_IsNull(image_url) ? strdup(image_url->valuestring) : NULL,
         redirect_url && !cJSON_IsNull(redirect_url) ? strdup(redirect_url->valuestring) : NULL,
+        type ? typeVariable : tenantsservice_notification_dto_TYPE_NULL,
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL,
         read_timestamp && !cJSON_IsNull(read_timestamp) ? strdup(read_timestamp->valuestring) : NULL,
         issued_timestamp && !cJSON_IsNull(issued_timestamp) ? strdup(issued_timestamp->valuestring) : NULL

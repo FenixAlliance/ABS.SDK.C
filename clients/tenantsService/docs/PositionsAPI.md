@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**PositionsAPI_getTenantPositionById**](PositionsAPI.md#PositionsAPI_getTenantPositionById) | **GET** /api/v2/TenantsService/Positions/{tenantPositionId} | Retrieve a single tenant position by its ID
 [**PositionsAPI_getTenantPositions**](PositionsAPI.md#PositionsAPI_getTenantPositions) | **GET** /api/v2/TenantsService/Positions | Retrieve a list of tenant positions
 [**PositionsAPI_getTenantPositionsCount**](PositionsAPI.md#PositionsAPI_getTenantPositionsCount) | **GET** /api/v2/TenantsService/Positions/Count | Get the count of tenant positions
+[**PositionsAPI_patchTenantPosition**](PositionsAPI.md#PositionsAPI_patchTenantPosition) | **PATCH** /api/v2/TenantsService/Positions/{tenantPositionId} | Patch a tenant position
 [**PositionsAPI_updateTenantPosition**](PositionsAPI.md#PositionsAPI_updateTenantPosition) | **PUT** /api/v2/TenantsService/Positions/{tenantPositionId} | Update a tenant position
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PositionsAPI_patchTenantPosition**
+```c
+// Patch a tenant position
+//
+// Patch a tenant position
+//
+empty_envelope_t* PositionsAPI_patchTenantPosition(apiClient_t *apiClient, char *tenantId, char *tenantPositionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**tenantPositionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/support_ticket_priority_create_dto.h"
 #include "../model/support_ticket_priority_dto_envelope.h"
 #include "../model/support_ticket_priority_dto_list_envelope.h"
@@ -52,6 +53,14 @@ SupportTicketPrioritiesAPI_getSupportTicketPrioritiesCountAsync(apiClient_t *api
 //
 support_ticket_priority_dto_envelope_t*
 SupportTicketPrioritiesAPI_getSupportTicketPriorityAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketPriorityId, char *api_version, char *x_api_version);
+
+
+// Patch a support ticket priority
+//
+// Partially updates an existing support ticket priority by its unique identifier.
+//
+empty_envelope_t*
+SupportTicketPrioritiesAPI_patchSupportTicketPriorityAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketPriorityId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a support ticket priority

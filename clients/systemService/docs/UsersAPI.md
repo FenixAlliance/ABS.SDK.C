@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**UsersAPI_getUserAsync**](UsersAPI.md#UsersAPI_getUserAsync) | **GET** /api/v2/SystemService/Users/{userId} | Retrieve a user by ID
 [**UsersAPI_getUsersAsync**](UsersAPI.md#UsersAPI_getUsersAsync) | **GET** /api/v2/SystemService/Users | Retrieve a list of users
 [**UsersAPI_getUsersCountAsync**](UsersAPI.md#UsersAPI_getUsersCountAsync) | **GET** /api/v2/SystemService/Users/Count | Get the count of users
+[**UsersAPI_patchAccountHolderAsync**](UsersAPI.md#UsersAPI_patchAccountHolderAsync) | **PATCH** /api/v2/SystemService/Users/{userId} | Partially update a user
 [**UsersAPI_updateAccountHolderAsync**](UsersAPI.md#UsersAPI_updateAccountHolderAsync) | **PUT** /api/v2/SystemService/Users/{userId} | Update a user
 
 
@@ -340,6 +341,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **UsersAPI_patchAccountHolderAsync**
+```c
+// Partially update a user
+//
+// This action is only available for global administrators.
+//
+empty_envelope_t* UsersAPI_patchAccountHolderAsync(apiClient_t *apiClient, char *userId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**userId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

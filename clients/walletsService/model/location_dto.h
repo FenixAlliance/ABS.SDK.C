@@ -43,6 +43,8 @@ typedef struct location_dto_t {
     int is_default_sender_address; //boolean
     int is_default_return_address; //boolean
     int is_default_supping_location; //boolean
+    char *tenant_id; // string
+    char *enrollment_id; // string
 
 } location_dto_t;
 
@@ -70,7 +72,9 @@ location_dto_t *location_dto_create(
     int can_generate_labels,
     int is_default_sender_address,
     int is_default_return_address,
-    int is_default_supping_location
+    int is_default_supping_location,
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void location_dto_free(location_dto_t *location_dto);

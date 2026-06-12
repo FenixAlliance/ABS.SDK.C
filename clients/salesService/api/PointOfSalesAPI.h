@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/point_of_sale_create_dto.h"
 #include "../model/point_of_sale_dto_envelope.h"
 #include "../model/point_of_sale_dto_list_envelope.h"
@@ -52,6 +53,14 @@ PointOfSalesAPI_getPointOfSaleAsync(apiClient_t *apiClient, char *tenantId, char
 //
 point_of_sale_dto_list_envelope_t*
 PointOfSalesAPI_getPointOfSalesAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Patch a point of sale
+//
+// Partially updates an existing point of sale using a JSON Patch document.
+//
+empty_envelope_t*
+PointOfSalesAPI_patchPointOfSaleAsync(apiClient_t *apiClient, char *tenantId, char *pointOfSaleId, list_t *operation);
 
 
 // Update a point of sale

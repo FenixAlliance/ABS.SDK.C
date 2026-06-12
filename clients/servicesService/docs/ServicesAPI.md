@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ServicesAPI_getServiceByIdAsync**](ServicesAPI.md#ServicesAPI_getServiceByIdAsync) | **GET** /api/v2/ServicesService/Services/{serviceId} | Get a service by ID
 [**ServicesAPI_getServicesAsync**](ServicesAPI.md#ServicesAPI_getServicesAsync) | **GET** /api/v2/ServicesService/Services | Get all services
 [**ServicesAPI_getServicesCountAsync**](ServicesAPI.md#ServicesAPI_getServicesCountAsync) | **GET** /api/v2/ServicesService/Services/Count | Get services count
+[**ServicesAPI_patchServiceAsync**](ServicesAPI.md#ServicesAPI_patchServiceAsync) | **PATCH** /api/v2/ServicesService/Services/{serviceId} | Patch a service
 [**ServicesAPI_updateServiceAsync**](ServicesAPI.md#ServicesAPI_updateServiceAsync) | **PUT** /api/v2/ServicesService/Services/{serviceId} | Update a service
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServicesAPI_patchServiceAsync**
+```c
+// Patch a service
+//
+// Partially updates an existing service using a JSON Patch document.
+//
+envelope_t* ServicesAPI_patchServiceAsync(apiClient_t *apiClient, char *tenantId, char *serviceId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**serviceId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[envelope_t](envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

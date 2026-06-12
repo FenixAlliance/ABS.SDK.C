@@ -12,11 +12,11 @@ support_request_dto_t *support_request_dto_create(
     char *description,
     int approved,
     char *approved_timestamp,
-    char *business_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *support_entitlement_id,
     char *contact_id,
-    char *account_holder_id
+    char *user_id
     ) {
     support_request_dto_t *support_request_dto_local_var = malloc(sizeof(support_request_dto_t));
     if (!support_request_dto_local_var) {
@@ -28,11 +28,11 @@ support_request_dto_t *support_request_dto_create(
     support_request_dto_local_var->description = description;
     support_request_dto_local_var->approved = approved;
     support_request_dto_local_var->approved_timestamp = approved_timestamp;
-    support_request_dto_local_var->business_id = business_id;
-    support_request_dto_local_var->business_profile_record_id = business_profile_record_id;
+    support_request_dto_local_var->tenant_id = tenant_id;
+    support_request_dto_local_var->enrollment_id = enrollment_id;
     support_request_dto_local_var->support_entitlement_id = support_entitlement_id;
     support_request_dto_local_var->contact_id = contact_id;
-    support_request_dto_local_var->account_holder_id = account_holder_id;
+    support_request_dto_local_var->user_id = user_id;
 
     return support_request_dto_local_var;
 }
@@ -63,13 +63,13 @@ void support_request_dto_free(support_request_dto_t *support_request_dto) {
         free(support_request_dto->approved_timestamp);
         support_request_dto->approved_timestamp = NULL;
     }
-    if (support_request_dto->business_id) {
-        free(support_request_dto->business_id);
-        support_request_dto->business_id = NULL;
+    if (support_request_dto->tenant_id) {
+        free(support_request_dto->tenant_id);
+        support_request_dto->tenant_id = NULL;
     }
-    if (support_request_dto->business_profile_record_id) {
-        free(support_request_dto->business_profile_record_id);
-        support_request_dto->business_profile_record_id = NULL;
+    if (support_request_dto->enrollment_id) {
+        free(support_request_dto->enrollment_id);
+        support_request_dto->enrollment_id = NULL;
     }
     if (support_request_dto->support_entitlement_id) {
         free(support_request_dto->support_entitlement_id);
@@ -79,9 +79,9 @@ void support_request_dto_free(support_request_dto_t *support_request_dto) {
         free(support_request_dto->contact_id);
         support_request_dto->contact_id = NULL;
     }
-    if (support_request_dto->account_holder_id) {
-        free(support_request_dto->account_holder_id);
-        support_request_dto->account_holder_id = NULL;
+    if (support_request_dto->user_id) {
+        free(support_request_dto->user_id);
+        support_request_dto->user_id = NULL;
     }
     free(support_request_dto);
 }
@@ -137,17 +137,17 @@ cJSON *support_request_dto_convertToJSON(support_request_dto_t *support_request_
     }
 
 
-    // support_request_dto->business_id
-    if(support_request_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", support_request_dto->business_id) == NULL) {
+    // support_request_dto->tenant_id
+    if(support_request_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", support_request_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // support_request_dto->business_profile_record_id
-    if(support_request_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", support_request_dto->business_profile_record_id) == NULL) {
+    // support_request_dto->enrollment_id
+    if(support_request_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", support_request_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -155,7 +155,7 @@ cJSON *support_request_dto_convertToJSON(support_request_dto_t *support_request_
 
     // support_request_dto->support_entitlement_id
     if(support_request_dto->support_entitlement_id) {
-    if(cJSON_AddStringToObject(item, "supportEntitlementID", support_request_dto->support_entitlement_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "supportEntitlementId", support_request_dto->support_entitlement_id) == NULL) {
     goto fail; //String
     }
     }
@@ -163,15 +163,15 @@ cJSON *support_request_dto_convertToJSON(support_request_dto_t *support_request_
 
     // support_request_dto->contact_id
     if(support_request_dto->contact_id) {
-    if(cJSON_AddStringToObject(item, "contactID", support_request_dto->contact_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "contactId", support_request_dto->contact_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // support_request_dto->account_holder_id
-    if(support_request_dto->account_holder_id) {
-    if(cJSON_AddStringToObject(item, "accountHolderID", support_request_dto->account_holder_id) == NULL) {
+    // support_request_dto->user_id
+    if(support_request_dto->user_id) {
+    if(cJSON_AddStringToObject(item, "userId", support_request_dto->user_id) == NULL) {
     goto fail; //String
     }
     }
@@ -242,26 +242,26 @@ support_request_dto_t *support_request_dto_parseFromJSON(cJSON *support_request_
     }
     }
 
-    // support_request_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(support_request_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // support_request_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(support_request_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
-    // support_request_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(support_request_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // support_request_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(support_request_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
     }
 
     // support_request_dto->support_entitlement_id
-    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_request_dtoJSON, "supportEntitlementID");
+    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_request_dtoJSON, "supportEntitlementId");
     if (support_entitlement_id) { 
     if(!cJSON_IsString(support_entitlement_id) && !cJSON_IsNull(support_entitlement_id))
     {
@@ -270,7 +270,7 @@ support_request_dto_t *support_request_dto_parseFromJSON(cJSON *support_request_
     }
 
     // support_request_dto->contact_id
-    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(support_request_dtoJSON, "contactID");
+    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(support_request_dtoJSON, "contactId");
     if (contact_id) { 
     if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
     {
@@ -278,10 +278,10 @@ support_request_dto_t *support_request_dto_parseFromJSON(cJSON *support_request_
     }
     }
 
-    // support_request_dto->account_holder_id
-    cJSON *account_holder_id = cJSON_GetObjectItemCaseSensitive(support_request_dtoJSON, "accountHolderID");
-    if (account_holder_id) { 
-    if(!cJSON_IsString(account_holder_id) && !cJSON_IsNull(account_holder_id))
+    // support_request_dto->user_id
+    cJSON *user_id = cJSON_GetObjectItemCaseSensitive(support_request_dtoJSON, "userId");
+    if (user_id) { 
+    if(!cJSON_IsString(user_id) && !cJSON_IsNull(user_id))
     {
     goto end; //String
     }
@@ -295,11 +295,11 @@ support_request_dto_t *support_request_dto_parseFromJSON(cJSON *support_request_
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         approved ? approved->valueint : 0,
         approved_timestamp && !cJSON_IsNull(approved_timestamp) ? strdup(approved_timestamp->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         support_entitlement_id && !cJSON_IsNull(support_entitlement_id) ? strdup(support_entitlement_id->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
-        account_holder_id && !cJSON_IsNull(account_holder_id) ? strdup(account_holder_id->valuestring) : NULL
+        user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL
         );
 
     return support_request_dto_local_var;

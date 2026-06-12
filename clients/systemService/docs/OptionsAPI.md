@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**OptionsAPI_getSystemOptionByKey**](OptionsAPI.md#OptionsAPI_getSystemOptionByKey) | **GET** /api/v2/SystemService/Options/Key/{key} | Retrieve a single system option by its key
 [**OptionsAPI_getSystemOptions**](OptionsAPI.md#OptionsAPI_getSystemOptions) | **GET** /api/v2/SystemService/Options | Retrieve a list of system options
 [**OptionsAPI_getSystemOptionsCount**](OptionsAPI.md#OptionsAPI_getSystemOptionsCount) | **GET** /api/v2/SystemService/Options/Count | Get the count of system options
+[**OptionsAPI_patchSystemOption**](OptionsAPI.md#OptionsAPI_patchSystemOption) | **PATCH** /api/v2/SystemService/Options/{optionId} | Partially update a system option
 [**OptionsAPI_updateSystemOption**](OptionsAPI.md#OptionsAPI_updateSystemOption) | **PUT** /api/v2/SystemService/Options/{optionId} | Update a system option
 [**OptionsAPI_upsertSystemOption**](OptionsAPI.md#OptionsAPI_upsertSystemOption) | **PUT** /api/v2/SystemService/Options/Upsert/{key} | Create or update a system option by key
 
@@ -211,6 +212,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **OptionsAPI_patchSystemOption**
+```c
+// Partially update a system option
+//
+// Partially update a system option using a JSON Patch document
+//
+empty_envelope_t* OptionsAPI_patchSystemOption(apiClient_t *apiClient, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**optionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -23,7 +23,7 @@ typedef struct support_ticket_type_dto_t {
     char *timestamp; //date time
     char *title; // string
     char *description; // string
-    char *business_id; // string
+    char *tenant_id; // string
 
 } support_ticket_type_dto_t;
 
@@ -32,7 +32,7 @@ support_ticket_type_dto_t *support_ticket_type_dto_create(
     char *timestamp,
     char *title,
     char *description,
-    char *business_id
+    char *tenant_id
 );
 
 void support_ticket_type_dto_free(support_ticket_type_dto_t *support_ticket_type_dto);

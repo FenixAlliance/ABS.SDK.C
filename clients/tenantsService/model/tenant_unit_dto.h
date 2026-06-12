@@ -21,8 +21,8 @@ typedef struct tenant_unit_dto_t tenant_unit_dto_t;
 typedef struct tenant_unit_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *business_id; // string
-    char *business_profile_record_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
     char *name; // string
     char *description; // string
     int disabled; //boolean
@@ -36,8 +36,8 @@ typedef struct tenant_unit_dto_t {
 tenant_unit_dto_t *tenant_unit_dto_create(
     char *id,
     char *timestamp,
-    char *business_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *name,
     char *description,
     int disabled,

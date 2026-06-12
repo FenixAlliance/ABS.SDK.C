@@ -31,7 +31,7 @@ shipping_method_dto_t *shipping_method_dto_create(
     int taxable,
     int tax_included,
     char *currency_id,
-    char *business_id,
+    char *tenant_id,
     shipmentsservice_shipping_method_dto_SHIPPINGCLASSCALCULATIONTYPE_e shipping_class_calculation_type
     ) {
     shipping_method_dto_t *shipping_method_dto_local_var = malloc(sizeof(shipping_method_dto_t));
@@ -46,7 +46,7 @@ shipping_method_dto_t *shipping_method_dto_create(
     shipping_method_dto_local_var->taxable = taxable;
     shipping_method_dto_local_var->tax_included = tax_included;
     shipping_method_dto_local_var->currency_id = currency_id;
-    shipping_method_dto_local_var->business_id = business_id;
+    shipping_method_dto_local_var->tenant_id = tenant_id;
     shipping_method_dto_local_var->shipping_class_calculation_type = shipping_class_calculation_type;
 
     return shipping_method_dto_local_var;
@@ -78,9 +78,9 @@ void shipping_method_dto_free(shipping_method_dto_t *shipping_method_dto) {
         free(shipping_method_dto->currency_id);
         shipping_method_dto->currency_id = NULL;
     }
-    if (shipping_method_dto->business_id) {
-        free(shipping_method_dto->business_id);
-        shipping_method_dto->business_id = NULL;
+    if (shipping_method_dto->tenant_id) {
+        free(shipping_method_dto->tenant_id);
+        shipping_method_dto->tenant_id = NULL;
     }
     free(shipping_method_dto);
 }
@@ -146,15 +146,15 @@ cJSON *shipping_method_dto_convertToJSON(shipping_method_dto_t *shipping_method_
 
     // shipping_method_dto->currency_id
     if(shipping_method_dto->currency_id) {
-    if(cJSON_AddStringToObject(item, "currencyID", shipping_method_dto->currency_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "currencyId", shipping_method_dto->currency_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // shipping_method_dto->business_id
-    if(shipping_method_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", shipping_method_dto->business_id) == NULL) {
+    // shipping_method_dto->tenant_id
+    if(shipping_method_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", shipping_method_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -244,7 +244,7 @@ shipping_method_dto_t *shipping_method_dto_parseFromJSON(cJSON *shipping_method_
     }
 
     // shipping_method_dto->currency_id
-    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(shipping_method_dtoJSON, "currencyID");
+    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(shipping_method_dtoJSON, "currencyId");
     if (currency_id) { 
     if(!cJSON_IsString(currency_id) && !cJSON_IsNull(currency_id))
     {
@@ -252,10 +252,10 @@ shipping_method_dto_t *shipping_method_dto_parseFromJSON(cJSON *shipping_method_
     }
     }
 
-    // shipping_method_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(shipping_method_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // shipping_method_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(shipping_method_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -282,7 +282,7 @@ shipping_method_dto_t *shipping_method_dto_parseFromJSON(cJSON *shipping_method_
         taxable ? taxable->valueint : 0,
         tax_included ? tax_included->valueint : 0,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         shipping_class_calculation_type ? shipping_class_calculation_typeVariable : shipmentsservice_shipping_method_dto_SHIPPINGCLASSCALCULATIONTYPE_NULL
         );
 

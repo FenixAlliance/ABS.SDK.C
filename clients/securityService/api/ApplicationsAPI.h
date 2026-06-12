@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/security_permission_dto_list_envelope.h"
 #include "../model/security_role_dto_list_envelope.h"
 
@@ -70,6 +71,14 @@ ApplicationsAPI_getPermissionsByApplicationAsync(apiClient_t *apiClient, char *t
 //
 security_role_dto_list_envelope_t*
 ApplicationsAPI_getRolesByApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, char *api_version, char *x_api_version);
+
+
+// Patch an existing business application
+//
+// Partially updates an existing business application using a JSON Patch document.
+//
+empty_envelope_t*
+ApplicationsAPI_patchBusinessApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, list_t *operation, char *api_version, char *x_api_version);
 
 
 // Update an existing business application

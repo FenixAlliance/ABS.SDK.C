@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**ApplicationsAPI_getBusinessApplicationsCountAsync**](ApplicationsAPI.md#ApplicationsAPI_getBusinessApplicationsCountAsync) | **GET** /api/v2/SecurityService/Applications/Count | Get business applications count
 [**ApplicationsAPI_getPermissionsByApplicationAsync**](ApplicationsAPI.md#ApplicationsAPI_getPermissionsByApplicationAsync) | **GET** /api/v2/SecurityService/Applications/{applicationId}/Permissions | Get permissions by application
 [**ApplicationsAPI_getRolesByApplicationAsync**](ApplicationsAPI.md#ApplicationsAPI_getRolesByApplicationAsync) | **GET** /api/v2/SecurityService/Applications/{applicationId}/Roles | Get roles by application
+[**ApplicationsAPI_patchBusinessApplicationAsync**](ApplicationsAPI.md#ApplicationsAPI_patchBusinessApplicationAsync) | **PATCH** /api/v2/SecurityService/Applications/{applicationId} | Patch an existing business application
 [**ApplicationsAPI_updateBusinessApplicationAsync**](ApplicationsAPI.md#ApplicationsAPI_updateBusinessApplicationAsync) | **PUT** /api/v2/SecurityService/Applications/{applicationId} | Update an existing business application
 
 
@@ -246,6 +247,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ApplicationsAPI_patchBusinessApplicationAsync**
+```c
+// Patch an existing business application
+//
+// Partially updates an existing business application using a JSON Patch document.
+//
+empty_envelope_t* ApplicationsAPI_patchBusinessApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, list_t *operation, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**applicationId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

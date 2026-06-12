@@ -26,10 +26,10 @@ typedef struct refund_request_dto_t {
     int approved; //boolean
     char *approved_timestamp; //date time
     char *tenant_id; // string
-    char *business_profile_record_id; // string
+    char *enrollment_id; // string
     char *support_entitlement_id; // string
     char *contact_id; // string
-    char *account_holder_id; // string
+    char *user_id; // string
     char *refund_policy_id; // string
     char *payment_id; // string
 
@@ -43,10 +43,10 @@ refund_request_dto_t *refund_request_dto_create(
     int approved,
     char *approved_timestamp,
     char *tenant_id,
-    char *business_profile_record_id,
+    char *enrollment_id,
     char *support_entitlement_id,
     char *contact_id,
-    char *account_holder_id,
+    char *user_id,
     char *refund_policy_id,
     char *payment_id
 );

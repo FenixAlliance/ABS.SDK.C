@@ -10,6 +10,7 @@
 #include "../model/error_envelope.h"
 #include "../model/extended_tenant_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_create_dto.h"
 #include "../model/tenant_dto_envelope.h"
 #include "../model/tenant_dto_list_envelope.h"
@@ -86,6 +87,14 @@ TenantsAPI_getTenant(apiClient_t *apiClient, char *tenantId, char *api_version, 
 //
 int32_envelope_t*
 TenantsAPI_getTenantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version);
+
+
+// Partially update a specific tenant by ID.
+//
+// This action is only available for global administrators.
+//
+empty_envelope_t*
+TenantsAPI_patchTenant(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a specific tenant by ID.

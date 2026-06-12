@@ -104,7 +104,7 @@ cJSON *shipping_label_create_dto_convertToJSON(shipping_label_create_dto_t *ship
 
     // shipping_label_create_dto->location_id
     if(shipping_label_create_dto->location_id) {
-    if(cJSON_AddStringToObject(item, "locationID", shipping_label_create_dto->location_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "locationId", shipping_label_create_dto->location_id) == NULL) {
     goto fail; //String
     }
     }
@@ -112,7 +112,7 @@ cJSON *shipping_label_create_dto_convertToJSON(shipping_label_create_dto_t *ship
 
     // shipping_label_create_dto->shipment_id
     if(shipping_label_create_dto->shipment_id) {
-    if(cJSON_AddStringToObject(item, "shipmentID", shipping_label_create_dto->shipment_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "shipmentId", shipping_label_create_dto->shipment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -120,7 +120,7 @@ cJSON *shipping_label_create_dto_convertToJSON(shipping_label_create_dto_t *ship
 
     // shipping_label_create_dto->shipping_courier_id
     if(shipping_label_create_dto->shipping_courier_id) {
-    if(cJSON_AddStringToObject(item, "shippingCourierID", shipping_label_create_dto->shipping_courier_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "shippingCourierId", shipping_label_create_dto->shipping_courier_id) == NULL) {
     goto fail; //String
     }
     }
@@ -177,7 +177,7 @@ shipping_label_create_dto_t *shipping_label_create_dto_parseFromJSON(cJSON *ship
     }
 
     // shipping_label_create_dto->location_id
-    cJSON *location_id = cJSON_GetObjectItemCaseSensitive(shipping_label_create_dtoJSON, "locationID");
+    cJSON *location_id = cJSON_GetObjectItemCaseSensitive(shipping_label_create_dtoJSON, "locationId");
     if (location_id) { 
     if(!cJSON_IsString(location_id) && !cJSON_IsNull(location_id))
     {
@@ -186,7 +186,7 @@ shipping_label_create_dto_t *shipping_label_create_dto_parseFromJSON(cJSON *ship
     }
 
     // shipping_label_create_dto->shipment_id
-    cJSON *shipment_id = cJSON_GetObjectItemCaseSensitive(shipping_label_create_dtoJSON, "shipmentID");
+    cJSON *shipment_id = cJSON_GetObjectItemCaseSensitive(shipping_label_create_dtoJSON, "shipmentId");
     if (shipment_id) { 
     if(!cJSON_IsString(shipment_id) && !cJSON_IsNull(shipment_id))
     {
@@ -195,7 +195,7 @@ shipping_label_create_dto_t *shipping_label_create_dto_parseFromJSON(cJSON *ship
     }
 
     // shipping_label_create_dto->shipping_courier_id
-    cJSON *shipping_courier_id = cJSON_GetObjectItemCaseSensitive(shipping_label_create_dtoJSON, "shippingCourierID");
+    cJSON *shipping_courier_id = cJSON_GetObjectItemCaseSensitive(shipping_label_create_dtoJSON, "shippingCourierId");
     if (shipping_courier_id) { 
     if(!cJSON_IsString(shipping_courier_id) && !cJSON_IsNull(shipping_courier_id))
     {

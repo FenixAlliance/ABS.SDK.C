@@ -8,6 +8,7 @@
 tenant_size_dto_t *tenant_size_dto_create(
     char *id,
     char *timestamp,
+    char *tenant_id,
     char *name,
     int employee_low_range_value,
     int employee_high_range_value
@@ -18,6 +19,7 @@ tenant_size_dto_t *tenant_size_dto_create(
     }
     tenant_size_dto_local_var->id = id;
     tenant_size_dto_local_var->timestamp = timestamp;
+    tenant_size_dto_local_var->tenant_id = tenant_id;
     tenant_size_dto_local_var->name = name;
     tenant_size_dto_local_var->employee_low_range_value = employee_low_range_value;
     tenant_size_dto_local_var->employee_high_range_value = employee_high_range_value;
@@ -38,6 +40,10 @@ void tenant_size_dto_free(tenant_size_dto_t *tenant_size_dto) {
     if (tenant_size_dto->timestamp) {
         free(tenant_size_dto->timestamp);
         tenant_size_dto->timestamp = NULL;
+    }
+    if (tenant_size_dto->tenant_id) {
+        free(tenant_size_dto->tenant_id);
+        tenant_size_dto->tenant_id = NULL;
     }
     if (tenant_size_dto->name) {
         free(tenant_size_dto->name);
@@ -61,6 +67,14 @@ cJSON *tenant_size_dto_convertToJSON(tenant_size_dto_t *tenant_size_dto) {
     if(tenant_size_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", tenant_size_dto->timestamp) == NULL) {
     goto fail; //Date-Time
+    }
+    }
+
+
+    // tenant_size_dto->tenant_id
+    if(tenant_size_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", tenant_size_dto->tenant_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -118,6 +132,15 @@ tenant_size_dto_t *tenant_size_dto_parseFromJSON(cJSON *tenant_size_dtoJSON){
     }
     }
 
+    // tenant_size_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(tenant_size_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
     // tenant_size_dto->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(tenant_size_dtoJSON, "name");
     if (name) { 
@@ -149,6 +172,7 @@ tenant_size_dto_t *tenant_size_dto_parseFromJSON(cJSON *tenant_size_dtoJSON){
     tenant_size_dto_local_var = tenant_size_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         employee_low_range_value ? employee_low_range_value->valuedouble : 0,
         employee_high_range_value ? employee_high_range_value->valuedouble : 0

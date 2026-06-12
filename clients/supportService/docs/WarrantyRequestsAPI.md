@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**WarrantyRequestsAPI_getWarrantyRequestAsync**](WarrantyRequestsAPI.md#WarrantyRequestsAPI_getWarrantyRequestAsync) | **GET** /api/v2/SupportService/WarrantyRequests/{warrantyRequestId} | Retrieve a warranty request by ID
 [**WarrantyRequestsAPI_getWarrantyRequestsAsync**](WarrantyRequestsAPI.md#WarrantyRequestsAPI_getWarrantyRequestsAsync) | **GET** /api/v2/SupportService/WarrantyRequests | Retrieve warranty requests
 [**WarrantyRequestsAPI_getWarrantyRequestsCountAsync**](WarrantyRequestsAPI.md#WarrantyRequestsAPI_getWarrantyRequestsCountAsync) | **GET** /api/v2/SupportService/WarrantyRequests/Count | Get warranty requests count
+[**WarrantyRequestsAPI_patchWarrantyRequestAsync**](WarrantyRequestsAPI.md#WarrantyRequestsAPI_patchWarrantyRequestAsync) | **PATCH** /api/v2/SupportService/WarrantyRequests/{warrantyRequestId} | Patch a warranty request
 [**WarrantyRequestsAPI_updateWarrantyRequestAsync**](WarrantyRequestsAPI.md#WarrantyRequestsAPI_updateWarrantyRequestAsync) | **PUT** /api/v2/SupportService/WarrantyRequests/{warrantyRequestId} | Update a warranty request
 
 
@@ -166,6 +167,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WarrantyRequestsAPI_patchWarrantyRequestAsync**
+```c
+// Patch a warranty request
+//
+// Partially updates an existing warranty request by its unique identifier.
+//
+empty_envelope_t* WarrantyRequestsAPI_patchWarrantyRequestAsync(apiClient_t *apiClient, char *tenantId, char *warrantyRequestId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**warrantyRequestId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

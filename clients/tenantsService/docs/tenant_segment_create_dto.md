@@ -5,7 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
-**revenue** | **char \*** |  | [optional] 
 **min_employees** | **double** |  | [optional] 
 **max_employees** | **double** |  | [optional] 
 

@@ -13,9 +13,9 @@ bank_account_create_dto_t *bank_account_create_dto_create(
     char *swift,
     char *branch_code,
     char *bank_account_number,
-    char *qualified_name,
     char *bank_id,
-    char *bank_profile_id
+    char *bank_profile_id,
+    char *wallet_id
     ) {
     bank_account_create_dto_t *bank_account_create_dto_local_var = malloc(sizeof(bank_account_create_dto_t));
     if (!bank_account_create_dto_local_var) {
@@ -28,9 +28,9 @@ bank_account_create_dto_t *bank_account_create_dto_create(
     bank_account_create_dto_local_var->swift = swift;
     bank_account_create_dto_local_var->branch_code = branch_code;
     bank_account_create_dto_local_var->bank_account_number = bank_account_number;
-    bank_account_create_dto_local_var->qualified_name = qualified_name;
     bank_account_create_dto_local_var->bank_id = bank_id;
     bank_account_create_dto_local_var->bank_profile_id = bank_profile_id;
+    bank_account_create_dto_local_var->wallet_id = wallet_id;
 
     return bank_account_create_dto_local_var;
 }
@@ -69,10 +69,6 @@ void bank_account_create_dto_free(bank_account_create_dto_t *bank_account_create
         free(bank_account_create_dto->bank_account_number);
         bank_account_create_dto->bank_account_number = NULL;
     }
-    if (bank_account_create_dto->qualified_name) {
-        free(bank_account_create_dto->qualified_name);
-        bank_account_create_dto->qualified_name = NULL;
-    }
     if (bank_account_create_dto->bank_id) {
         free(bank_account_create_dto->bank_id);
         bank_account_create_dto->bank_id = NULL;
@@ -80,6 +76,10 @@ void bank_account_create_dto_free(bank_account_create_dto_t *bank_account_create
     if (bank_account_create_dto->bank_profile_id) {
         free(bank_account_create_dto->bank_profile_id);
         bank_account_create_dto->bank_profile_id = NULL;
+    }
+    if (bank_account_create_dto->wallet_id) {
+        free(bank_account_create_dto->wallet_id);
+        bank_account_create_dto->wallet_id = NULL;
     }
     free(bank_account_create_dto);
 }
@@ -143,14 +143,6 @@ cJSON *bank_account_create_dto_convertToJSON(bank_account_create_dto_t *bank_acc
     }
 
 
-    // bank_account_create_dto->qualified_name
-    if(bank_account_create_dto->qualified_name) {
-    if(cJSON_AddStringToObject(item, "qualifiedName", bank_account_create_dto->qualified_name) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // bank_account_create_dto->bank_id
     if(bank_account_create_dto->bank_id) {
     if(cJSON_AddStringToObject(item, "bankId", bank_account_create_dto->bank_id) == NULL) {
@@ -162,6 +154,14 @@ cJSON *bank_account_create_dto_convertToJSON(bank_account_create_dto_t *bank_acc
     // bank_account_create_dto->bank_profile_id
     if(bank_account_create_dto->bank_profile_id) {
     if(cJSON_AddStringToObject(item, "bankProfileId", bank_account_create_dto->bank_profile_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // bank_account_create_dto->wallet_id
+    if(bank_account_create_dto->wallet_id) {
+    if(cJSON_AddStringToObject(item, "walletId", bank_account_create_dto->wallet_id) == NULL) {
     goto fail; //String
     }
     }
@@ -241,15 +241,6 @@ bank_account_create_dto_t *bank_account_create_dto_parseFromJSON(cJSON *bank_acc
     }
     }
 
-    // bank_account_create_dto->qualified_name
-    cJSON *qualified_name = cJSON_GetObjectItemCaseSensitive(bank_account_create_dtoJSON, "qualifiedName");
-    if (qualified_name) { 
-    if(!cJSON_IsString(qualified_name) && !cJSON_IsNull(qualified_name))
-    {
-    goto end; //String
-    }
-    }
-
     // bank_account_create_dto->bank_id
     cJSON *bank_id = cJSON_GetObjectItemCaseSensitive(bank_account_create_dtoJSON, "bankId");
     if (bank_id) { 
@@ -268,6 +259,15 @@ bank_account_create_dto_t *bank_account_create_dto_parseFromJSON(cJSON *bank_acc
     }
     }
 
+    // bank_account_create_dto->wallet_id
+    cJSON *wallet_id = cJSON_GetObjectItemCaseSensitive(bank_account_create_dtoJSON, "walletId");
+    if (wallet_id) { 
+    if(!cJSON_IsString(wallet_id) && !cJSON_IsNull(wallet_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     bank_account_create_dto_local_var = bank_account_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -277,9 +277,9 @@ bank_account_create_dto_t *bank_account_create_dto_parseFromJSON(cJSON *bank_acc
         swift && !cJSON_IsNull(swift) ? strdup(swift->valuestring) : NULL,
         branch_code && !cJSON_IsNull(branch_code) ? strdup(branch_code->valuestring) : NULL,
         bank_account_number && !cJSON_IsNull(bank_account_number) ? strdup(bank_account_number->valuestring) : NULL,
-        qualified_name && !cJSON_IsNull(qualified_name) ? strdup(qualified_name->valuestring) : NULL,
         bank_id && !cJSON_IsNull(bank_id) ? strdup(bank_id->valuestring) : NULL,
-        bank_profile_id && !cJSON_IsNull(bank_profile_id) ? strdup(bank_profile_id->valuestring) : NULL
+        bank_profile_id && !cJSON_IsNull(bank_profile_id) ? strdup(bank_profile_id->valuestring) : NULL,
+        wallet_id && !cJSON_IsNull(wallet_id) ? strdup(wallet_id->valuestring) : NULL
         );
 
     return bank_account_create_dto_local_var;

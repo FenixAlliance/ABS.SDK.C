@@ -21,12 +21,14 @@ typedef struct tenant_territory_update_dto_t tenant_territory_update_dto_t;
 typedef struct tenant_territory_update_dto_t {
     char *name; // string
     char *description; // string
+    char *parent_territory_id; // string
 
 } tenant_territory_update_dto_t;
 
 tenant_territory_update_dto_t *tenant_territory_update_dto_create(
     char *name,
-    char *description
+    char *description,
+    char *parent_territory_id
 );
 
 void tenant_territory_update_dto_free(tenant_territory_update_dto_t *tenant_territory_update_dto);

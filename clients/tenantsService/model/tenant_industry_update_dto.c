@@ -49,7 +49,7 @@ cJSON *tenant_industry_update_dto_convertToJSON(tenant_industry_update_dto_t *te
 
     // tenant_industry_update_dto->parent_business_industry_id
     if(tenant_industry_update_dto->parent_business_industry_id) {
-    if(cJSON_AddStringToObject(item, "parentBusinessIndustryID", tenant_industry_update_dto->parent_business_industry_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentBusinessIndustryId", tenant_industry_update_dto->parent_business_industry_id) == NULL) {
     goto fail; //String
     }
     }
@@ -76,7 +76,7 @@ tenant_industry_update_dto_t *tenant_industry_update_dto_parseFromJSON(cJSON *te
     }
 
     // tenant_industry_update_dto->parent_business_industry_id
-    cJSON *parent_business_industry_id = cJSON_GetObjectItemCaseSensitive(tenant_industry_update_dtoJSON, "parentBusinessIndustryID");
+    cJSON *parent_business_industry_id = cJSON_GetObjectItemCaseSensitive(tenant_industry_update_dtoJSON, "parentBusinessIndustryId");
     if (parent_business_industry_id) { 
     if(!cJSON_IsString(parent_business_industry_id) && !cJSON_IsNull(parent_business_industry_id))
     {

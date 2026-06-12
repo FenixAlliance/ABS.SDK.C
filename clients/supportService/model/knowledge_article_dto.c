@@ -22,7 +22,7 @@ knowledge_article_dto_t *knowledge_article_dto_create(
     char *release_date_time,
     char *last_modification,
     char *tenant_id,
-    char *business_profile_record_id
+    char *enrollment_id
     ) {
     knowledge_article_dto_t *knowledge_article_dto_local_var = malloc(sizeof(knowledge_article_dto_t));
     if (!knowledge_article_dto_local_var) {
@@ -44,7 +44,7 @@ knowledge_article_dto_t *knowledge_article_dto_create(
     knowledge_article_dto_local_var->release_date_time = release_date_time;
     knowledge_article_dto_local_var->last_modification = last_modification;
     knowledge_article_dto_local_var->tenant_id = tenant_id;
-    knowledge_article_dto_local_var->business_profile_record_id = business_profile_record_id;
+    knowledge_article_dto_local_var->enrollment_id = enrollment_id;
 
     return knowledge_article_dto_local_var;
 }
@@ -111,9 +111,9 @@ void knowledge_article_dto_free(knowledge_article_dto_t *knowledge_article_dto) 
         free(knowledge_article_dto->tenant_id);
         knowledge_article_dto->tenant_id = NULL;
     }
-    if (knowledge_article_dto->business_profile_record_id) {
-        free(knowledge_article_dto->business_profile_record_id);
-        knowledge_article_dto->business_profile_record_id = NULL;
+    if (knowledge_article_dto->enrollment_id) {
+        free(knowledge_article_dto->enrollment_id);
+        knowledge_article_dto->enrollment_id = NULL;
     }
     free(knowledge_article_dto);
 }
@@ -249,9 +249,9 @@ cJSON *knowledge_article_dto_convertToJSON(knowledge_article_dto_t *knowledge_ar
     }
 
 
-    // knowledge_article_dto->business_profile_record_id
-    if(knowledge_article_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordId", knowledge_article_dto->business_profile_record_id) == NULL) {
+    // knowledge_article_dto->enrollment_id
+    if(knowledge_article_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", knowledge_article_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -412,10 +412,10 @@ knowledge_article_dto_t *knowledge_article_dto_parseFromJSON(cJSON *knowledge_ar
     }
     }
 
-    // knowledge_article_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(knowledge_article_dtoJSON, "businessProfileRecordId");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // knowledge_article_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(knowledge_article_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -439,7 +439,7 @@ knowledge_article_dto_t *knowledge_article_dto_parseFromJSON(cJSON *knowledge_ar
         release_date_time && !cJSON_IsNull(release_date_time) ? strdup(release_date_time->valuestring) : NULL,
         last_modification && !cJSON_IsNull(last_modification) ? strdup(last_modification->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return knowledge_article_dto_local_var;

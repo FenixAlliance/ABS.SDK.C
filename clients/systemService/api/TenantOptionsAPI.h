@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/option_create_dto.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
@@ -52,6 +53,14 @@ TenantOptionsAPI_getSystemTenantOptions(apiClient_t *apiClient, char *tenantId, 
 //
 int32_envelope_t*
 TenantOptionsAPI_getSystemTenantOptionsCount(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version);
+
+
+// Partially update a tenant option (admin)
+//
+// Admin endpoint to partially update an option for any tenant using a JSON Patch document
+//
+empty_envelope_t*
+TenantOptionsAPI_patchSystemTenantOption(apiClient_t *apiClient, char *tenantId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant option (admin)

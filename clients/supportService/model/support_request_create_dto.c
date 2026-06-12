@@ -122,7 +122,7 @@ cJSON *support_request_create_dto_convertToJSON(support_request_create_dto_t *su
 
     // support_request_create_dto->support_entitlement_id
     if(support_request_create_dto->support_entitlement_id) {
-    if(cJSON_AddStringToObject(item, "supportEntitlementID", support_request_create_dto->support_entitlement_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "supportEntitlementId", support_request_create_dto->support_entitlement_id) == NULL) {
     goto fail; //String
     }
     }
@@ -130,7 +130,7 @@ cJSON *support_request_create_dto_convertToJSON(support_request_create_dto_t *su
 
     // support_request_create_dto->contact_id
     if(support_request_create_dto->contact_id) {
-    if(cJSON_AddStringToObject(item, "contactID", support_request_create_dto->contact_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "contactId", support_request_create_dto->contact_id) == NULL) {
     goto fail; //String
     }
     }
@@ -205,7 +205,7 @@ support_request_create_dto_t *support_request_create_dto_parseFromJSON(cJSON *su
     }
 
     // support_request_create_dto->support_entitlement_id
-    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_request_create_dtoJSON, "supportEntitlementID");
+    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_request_create_dtoJSON, "supportEntitlementId");
     if (support_entitlement_id) { 
     if(!cJSON_IsString(support_entitlement_id) && !cJSON_IsNull(support_entitlement_id))
     {
@@ -214,7 +214,7 @@ support_request_create_dto_t *support_request_create_dto_parseFromJSON(cJSON *su
     }
 
     // support_request_create_dto->contact_id
-    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(support_request_create_dtoJSON, "contactID");
+    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(support_request_create_dtoJSON, "contactId");
     if (contact_id) { 
     if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
     {

@@ -107,7 +107,7 @@ cJSON *tenant_department_create_dto_convertToJSON(tenant_department_create_dto_t
 
     // tenant_department_create_dto->organization_profile_id
     if(tenant_department_create_dto->organization_profile_id) {
-    if(cJSON_AddStringToObject(item, "organizationProfileID", tenant_department_create_dto->organization_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "organizationProfileId", tenant_department_create_dto->organization_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -115,7 +115,7 @@ cJSON *tenant_department_create_dto_convertToJSON(tenant_department_create_dto_t
 
     // tenant_department_create_dto->parent_department_id
     if(tenant_department_create_dto->parent_department_id) {
-    if(cJSON_AddStringToObject(item, "parentDepartmentID", tenant_department_create_dto->parent_department_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentDepartmentId", tenant_department_create_dto->parent_department_id) == NULL) {
     goto fail; //String
     }
     }
@@ -178,7 +178,7 @@ tenant_department_create_dto_t *tenant_department_create_dto_parseFromJSON(cJSON
     }
 
     // tenant_department_create_dto->organization_profile_id
-    cJSON *organization_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_department_create_dtoJSON, "organizationProfileID");
+    cJSON *organization_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_department_create_dtoJSON, "organizationProfileId");
     if (organization_profile_id) { 
     if(!cJSON_IsString(organization_profile_id) && !cJSON_IsNull(organization_profile_id))
     {
@@ -187,7 +187,7 @@ tenant_department_create_dto_t *tenant_department_create_dto_parseFromJSON(cJSON
     }
 
     // tenant_department_create_dto->parent_department_id
-    cJSON *parent_department_id = cJSON_GetObjectItemCaseSensitive(tenant_department_create_dtoJSON, "parentDepartmentID");
+    cJSON *parent_department_id = cJSON_GetObjectItemCaseSensitive(tenant_department_create_dtoJSON, "parentDepartmentId");
     if (parent_department_id) { 
     if(!cJSON_IsString(parent_department_id) && !cJSON_IsNull(parent_department_id))
     {

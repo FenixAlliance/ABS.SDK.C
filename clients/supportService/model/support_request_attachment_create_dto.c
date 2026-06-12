@@ -209,7 +209,7 @@ cJSON *support_request_attachment_create_dto_convertToJSON(support_request_attac
 
     // support_request_attachment_create_dto->support_request_id
     if(support_request_attachment_create_dto->support_request_id) {
-    if(cJSON_AddStringToObject(item, "supportRequestID", support_request_attachment_create_dto->support_request_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "supportRequestId", support_request_attachment_create_dto->support_request_id) == NULL) {
     goto fail; //String
     }
     }
@@ -344,7 +344,7 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_p
     }
 
     // support_request_attachment_create_dto->support_request_id
-    cJSON *support_request_id = cJSON_GetObjectItemCaseSensitive(support_request_attachment_create_dtoJSON, "supportRequestID");
+    cJSON *support_request_id = cJSON_GetObjectItemCaseSensitive(support_request_attachment_create_dtoJSON, "supportRequestId");
     if (support_request_id) { 
     if(!cJSON_IsString(support_request_id) && !cJSON_IsNull(support_request_id))
     {

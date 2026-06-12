@@ -8,6 +8,7 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/service_case_create_dto.h"
 #include "../model/service_case_dto_envelope.h"
 #include "../model/service_case_dto_i_read_only_list_envelope.h"
@@ -52,6 +53,14 @@ ServiceCasesAPI_getServiceCasesAsync(apiClient_t *apiClient, char *tenantId, cha
 //
 int32_envelope_t*
 ServiceCasesAPI_getServiceCasesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a service case
+//
+// Partially updates an existing service case using a JSON Patch document.
+//
+envelope_t*
+ServiceCasesAPI_patchServiceCaseAsync(apiClient_t *apiClient, char *tenantId, char *serviceCaseId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a service case

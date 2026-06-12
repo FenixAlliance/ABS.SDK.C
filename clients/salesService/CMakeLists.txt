@@ -70,6 +70,7 @@ set(SRCS
     model/loyalty_program_dto_envelope.c
     model/loyalty_program_dto_list_envelope.c
     model/loyalty_program_update_dto.c
+    model/operation.c
     model/point_of_sale_create_dto.c
     model/point_of_sale_dto.c
     model/point_of_sale_dto_envelope.c
@@ -126,6 +127,7 @@ set(HDRS
     model/loyalty_program_dto_envelope.h
     model/loyalty_program_dto_list_envelope.h
     model/loyalty_program_update_dto.h
+    model/operation.h
     model/point_of_sale_create_dto.h
     model/point_of_sale_dto.h
     model/point_of_sale_dto_envelope.h

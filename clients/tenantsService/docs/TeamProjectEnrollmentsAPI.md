@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollmentById**](TeamProjectEnrollmentsAPI.md#TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollmentById) | **GET** /api/v2/TenantsService/TeamProjectEnrollments/{tenantTeamProjectEnrollmentId} | Retrieve a single tenant team project enrollment by its ID
 [**TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollments**](TeamProjectEnrollmentsAPI.md#TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollments) | **GET** /api/v2/TenantsService/TeamProjectEnrollments | Retrieve a list of tenant team project enrollments
 [**TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollmentsCount**](TeamProjectEnrollmentsAPI.md#TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollmentsCount) | **GET** /api/v2/TenantsService/TeamProjectEnrollments/Count | Get the count of tenant team project enrollments
+[**TeamProjectEnrollmentsAPI_patchTenantTeamProjectEnrollment**](TeamProjectEnrollmentsAPI.md#TeamProjectEnrollmentsAPI_patchTenantTeamProjectEnrollment) | **PATCH** /api/v2/TenantsService/TeamProjectEnrollments/{tenantTeamProjectEnrollmentId} | Patch a tenant team project enrollment
 [**TeamProjectEnrollmentsAPI_updateTenantTeamProjectEnrollment**](TeamProjectEnrollmentsAPI.md#TeamProjectEnrollmentsAPI_updateTenantTeamProjectEnrollment) | **PUT** /api/v2/TenantsService/TeamProjectEnrollments/{tenantTeamProjectEnrollmentId} | Update a tenant team project enrollment
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TeamProjectEnrollmentsAPI_patchTenantTeamProjectEnrollment**
+```c
+// Patch a tenant team project enrollment
+//
+// Patch a tenant team project enrollment
+//
+empty_envelope_t* TeamProjectEnrollmentsAPI_patchTenantTeamProjectEnrollment(apiClient_t *apiClient, char *tenantId, char *tenantTeamProjectEnrollmentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**tenantTeamProjectEnrollmentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

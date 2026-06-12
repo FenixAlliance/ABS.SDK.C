@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **expected_delivery_date** | **char \*** |  | [optional] 
 **shipping_terms** | **shipmentsservice_shipment_dto_SHIPPINGTERMS_e** |  | [optional] 
 **order_id** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

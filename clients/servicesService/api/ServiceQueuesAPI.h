@@ -8,6 +8,7 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/service_queue_create_dto.h"
 #include "../model/service_queue_dto_envelope.h"
 #include "../model/service_queue_dto_i_read_only_list_envelope.h"
@@ -52,6 +53,14 @@ ServiceQueuesAPI_getServiceQueuesAsync(apiClient_t *apiClient, char *tenantId, c
 //
 int32_envelope_t*
 ServiceQueuesAPI_getServiceQueuesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a service queue
+//
+// Partially updates an existing service queue using a JSON Patch document.
+//
+envelope_t*
+ServiceQueuesAPI_patchServiceQueueAsync(apiClient_t *apiClient, char *tenantId, char *serviceQueueId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a service queue

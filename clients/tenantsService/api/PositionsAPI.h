@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_position_create_dto.h"
 #include "../model/tenant_position_dto_envelope.h"
 #include "../model/tenant_position_dto_list_envelope.h"
@@ -52,6 +53,14 @@ PositionsAPI_getTenantPositions(apiClient_t *apiClient, char *tenantId, char *ap
 //
 int32_envelope_t*
 PositionsAPI_getTenantPositionsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant position
+//
+// Patch a tenant position
+//
+empty_envelope_t*
+PositionsAPI_patchTenantPosition(apiClient_t *apiClient, char *tenantId, char *tenantPositionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant position

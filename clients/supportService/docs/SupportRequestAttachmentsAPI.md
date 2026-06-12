@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**SupportRequestAttachmentsAPI_getSupportRequestAttachmentAsync**](SupportRequestAttachmentsAPI.md#SupportRequestAttachmentsAPI_getSupportRequestAttachmentAsync) | **GET** /api/v2/SupportService/SupportRequestAttachments/{supportRequestAttachmentId} | Retrieve a support request attachment by ID
 [**SupportRequestAttachmentsAPI_getSupportRequestAttachmentsAsync**](SupportRequestAttachmentsAPI.md#SupportRequestAttachmentsAPI_getSupportRequestAttachmentsAsync) | **GET** /api/v2/SupportService/SupportRequestAttachments | Retrieve a list of support request attachments
 [**SupportRequestAttachmentsAPI_getSupportRequestAttachmentsCountAsync**](SupportRequestAttachmentsAPI.md#SupportRequestAttachmentsAPI_getSupportRequestAttachmentsCountAsync) | **GET** /api/v2/SupportService/SupportRequestAttachments/Count | Get the count of support request attachments
+[**SupportRequestAttachmentsAPI_patchSupportRequestAttachmentAsync**](SupportRequestAttachmentsAPI.md#SupportRequestAttachmentsAPI_patchSupportRequestAttachmentAsync) | **PATCH** /api/v2/SupportService/SupportRequestAttachments/{supportRequestAttachmentId} | Patch a support request attachment
 [**SupportRequestAttachmentsAPI_updateSupportRequestAttachmentAsync**](SupportRequestAttachmentsAPI.md#SupportRequestAttachmentsAPI_updateSupportRequestAttachmentAsync) | **PUT** /api/v2/SupportService/SupportRequestAttachments/{supportRequestAttachmentId} | Update a support request attachment
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SupportRequestAttachmentsAPI_patchSupportRequestAttachmentAsync**
+```c
+// Patch a support request attachment
+//
+// Partially updates an existing support request attachment by its unique identifier.
+//
+empty_envelope_t* SupportRequestAttachmentsAPI_patchSupportRequestAttachmentAsync(apiClient_t *apiClient, char *tenantId, char *supportRequestAttachmentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**supportRequestAttachmentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**SupportTicketTypesAPI_getSupportTicketTypeAsync**](SupportTicketTypesAPI.md#SupportTicketTypesAPI_getSupportTicketTypeAsync) | **GET** /api/v2/SupportService/SupportTicketTypes/{supportTicketTypeId} | Retrieve a support ticket type by ID
 [**SupportTicketTypesAPI_getSupportTicketTypesAsync**](SupportTicketTypesAPI.md#SupportTicketTypesAPI_getSupportTicketTypesAsync) | **GET** /api/v2/SupportService/SupportTicketTypes | Retrieve a list of support ticket types
 [**SupportTicketTypesAPI_getSupportTicketTypesCountAsync**](SupportTicketTypesAPI.md#SupportTicketTypesAPI_getSupportTicketTypesCountAsync) | **GET** /api/v2/SupportService/SupportTicketTypes/Count | Get the count of support ticket types
+[**SupportTicketTypesAPI_patchSupportTicketTypeAsync**](SupportTicketTypesAPI.md#SupportTicketTypesAPI_patchSupportTicketTypeAsync) | **PATCH** /api/v2/SupportService/SupportTicketTypes/{supportTicketTypeId} | Patch a support ticket type
 [**SupportTicketTypesAPI_updateSupportTicketTypeAsync**](SupportTicketTypesAPI.md#SupportTicketTypesAPI_updateSupportTicketTypeAsync) | **PUT** /api/v2/SupportService/SupportTicketTypes/{supportTicketTypeId} | Update a support ticket type
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SupportTicketTypesAPI_patchSupportTicketTypeAsync**
+```c
+// Patch a support ticket type
+//
+// Partially updates an existing support ticket type by its unique identifier.
+//
+empty_envelope_t* SupportTicketTypesAPI_patchSupportTicketTypeAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketTypeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**supportTicketTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

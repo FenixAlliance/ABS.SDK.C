@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**PointOfSalesAPI_deletePointOfSaleAsync**](PointOfSalesAPI.md#PointOfSalesAPI_deletePointOfSaleAsync) | **DELETE** /api/v2/SalesService/PointOfSales/{pointOfSaleId} | Delete a point of sale
 [**PointOfSalesAPI_getPointOfSaleAsync**](PointOfSalesAPI.md#PointOfSalesAPI_getPointOfSaleAsync) | **GET** /api/v2/SalesService/PointOfSales/{pointOfSaleId} | Get point of sale by ID
 [**PointOfSalesAPI_getPointOfSalesAsync**](PointOfSalesAPI.md#PointOfSalesAPI_getPointOfSalesAsync) | **GET** /api/v2/SalesService/PointOfSales | Get point of sales
+[**PointOfSalesAPI_patchPointOfSaleAsync**](PointOfSalesAPI.md#PointOfSalesAPI_patchPointOfSaleAsync) | **PATCH** /api/v2/SalesService/PointOfSales/{pointOfSaleId} | Patch a point of sale
 [**PointOfSalesAPI_updatePointOfSaleAsync**](PointOfSalesAPI.md#PointOfSalesAPI_updatePointOfSaleAsync) | **PUT** /api/v2/SalesService/PointOfSales/{pointOfSaleId} | Update a point of sale
 
 
@@ -166,6 +167,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PointOfSalesAPI_patchPointOfSaleAsync**
+```c
+// Patch a point of sale
+//
+// Partially updates an existing point of sale using a JSON Patch document.
+//
+empty_envelope_t* PointOfSalesAPI_patchPointOfSaleAsync(apiClient_t *apiClient, char *tenantId, char *pointOfSaleId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**pointOfSaleId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -24,7 +24,7 @@ typedef struct shipping_label_dto_t {
     char *tracking_code; // string
     char *expected_delivery; //date time
     char *location_id; // string
-    char *business_id; // string
+    char *tenant_id; // string
     char *shipment_id; // string
     char *shipping_courier_id; // string
 
@@ -36,7 +36,7 @@ shipping_label_dto_t *shipping_label_dto_create(
     char *tracking_code,
     char *expected_delivery,
     char *location_id,
-    char *business_id,
+    char *tenant_id,
     char *shipment_id,
     char *shipping_courier_id
 );

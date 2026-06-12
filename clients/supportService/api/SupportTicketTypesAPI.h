@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/support_ticket_type_create_dto.h"
 #include "../model/support_ticket_type_dto_envelope.h"
 #include "../model/support_ticket_type_dto_list_envelope.h"
@@ -52,6 +53,14 @@ SupportTicketTypesAPI_getSupportTicketTypesAsync(apiClient_t *apiClient, char *t
 //
 int32_envelope_t*
 SupportTicketTypesAPI_getSupportTicketTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a support ticket type
+//
+// Partially updates an existing support ticket type by its unique identifier.
+//
+empty_envelope_t*
+SupportTicketTypesAPI_patchSupportTicketTypeAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketTypeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a support ticket type

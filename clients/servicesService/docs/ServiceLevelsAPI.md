@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**ServiceLevelsAPI_getServiceLevelByIdAsync**](ServiceLevelsAPI.md#ServiceLevelsAPI_getServiceLevelByIdAsync) | **GET** /api/v2/ServicesService/Services/{serviceId}/ServiceLevels/{serviceLevelId} | Get a service level by ID
 [**ServiceLevelsAPI_getServiceLevelsAsync**](ServiceLevelsAPI.md#ServiceLevelsAPI_getServiceLevelsAsync) | **GET** /api/v2/ServicesService/Services/{serviceId}/ServiceLevels | Get all service levels
 [**ServiceLevelsAPI_getServiceLevelsCountAsync**](ServiceLevelsAPI.md#ServiceLevelsAPI_getServiceLevelsCountAsync) | **GET** /api/v2/ServicesService/Services/{serviceId}/ServiceLevels/Count | Get service levels count
+[**ServiceLevelsAPI_patchServiceLevelAsync**](ServiceLevelsAPI.md#ServiceLevelsAPI_patchServiceLevelAsync) | **PATCH** /api/v2/ServicesService/Services/{serviceId}/ServiceLevels/{serviceLevelId} | Patch a service level
 [**ServiceLevelsAPI_updateServiceLevelAsync**](ServiceLevelsAPI.md#ServiceLevelsAPI_updateServiceLevelAsync) | **PUT** /api/v2/ServicesService/Services/{serviceId}/ServiceLevels/{serviceLevelId} | Update a service level
 
 
@@ -249,6 +250,42 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceLevelsAPI_patchServiceLevelAsync**
+```c
+// Patch a service level
+//
+// Partially updates an existing service level using a JSON Patch document.
+//
+envelope_t* ServiceLevelsAPI_patchServiceLevelAsync(apiClient_t *apiClient, char *tenantId, char *serviceId, char *serviceLevelId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**serviceId** | **char \*** |  | 
+**serviceLevelId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[envelope_t](envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

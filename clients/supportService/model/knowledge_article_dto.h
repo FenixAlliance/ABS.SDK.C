@@ -35,7 +35,7 @@ typedef struct knowledge_article_dto_t {
     char *release_date_time; //date time
     char *last_modification; //date time
     char *tenant_id; // string
-    char *business_profile_record_id; // string
+    char *enrollment_id; // string
 
 } knowledge_article_dto_t;
 
@@ -56,7 +56,7 @@ knowledge_article_dto_t *knowledge_article_dto_create(
     char *release_date_time,
     char *last_modification,
     char *tenant_id,
-    char *business_profile_record_id
+    char *enrollment_id
 );
 
 void knowledge_article_dto_free(knowledge_article_dto_t *knowledge_article_dto);

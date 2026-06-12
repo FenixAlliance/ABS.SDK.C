@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ServiceQueuesAPI_getServiceQueueByIdAsync**](ServiceQueuesAPI.md#ServiceQueuesAPI_getServiceQueueByIdAsync) | **GET** /api/v2/ServicesService/ServiceQueues/{serviceQueueId} | Get a service queue by ID
 [**ServiceQueuesAPI_getServiceQueuesAsync**](ServiceQueuesAPI.md#ServiceQueuesAPI_getServiceQueuesAsync) | **GET** /api/v2/ServicesService/ServiceQueues | Get all service queues
 [**ServiceQueuesAPI_getServiceQueuesCountAsync**](ServiceQueuesAPI.md#ServiceQueuesAPI_getServiceQueuesCountAsync) | **GET** /api/v2/ServicesService/ServiceQueues/Count | Get service queues count
+[**ServiceQueuesAPI_patchServiceQueueAsync**](ServiceQueuesAPI.md#ServiceQueuesAPI_patchServiceQueueAsync) | **PATCH** /api/v2/ServicesService/ServiceQueues/{serviceQueueId} | Patch a service queue
 [**ServiceQueuesAPI_updateServiceQueueAsync**](ServiceQueuesAPI.md#ServiceQueuesAPI_updateServiceQueueAsync) | **PUT** /api/v2/ServicesService/ServiceQueues/{serviceQueueId} | Update a service queue
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceQueuesAPI_patchServiceQueueAsync**
+```c
+// Patch a service queue
+//
+// Partially updates an existing service queue using a JSON Patch document.
+//
+envelope_t* ServiceQueuesAPI_patchServiceQueueAsync(apiClient_t *apiClient, char *tenantId, char *serviceQueueId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**serviceQueueId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[envelope_t](envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

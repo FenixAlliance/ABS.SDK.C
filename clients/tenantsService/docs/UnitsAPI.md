@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**UnitsAPI_getTenantUnitById**](UnitsAPI.md#UnitsAPI_getTenantUnitById) | **GET** /api/v2/TenantsService/Units/{tenantUnitId} | Retrieve a single tenant unit by its ID
 [**UnitsAPI_getTenantUnits**](UnitsAPI.md#UnitsAPI_getTenantUnits) | **GET** /api/v2/TenantsService/Units | Retrieve a list of tenant units
 [**UnitsAPI_getTenantUnitsCount**](UnitsAPI.md#UnitsAPI_getTenantUnitsCount) | **GET** /api/v2/TenantsService/Units/Count | Get the count of tenant units
+[**UnitsAPI_patchTenantUnit**](UnitsAPI.md#UnitsAPI_patchTenantUnit) | **PATCH** /api/v2/TenantsService/Units/{tenantUnitId} | Patch a tenant unit
 [**UnitsAPI_updateTenantUnit**](UnitsAPI.md#UnitsAPI_updateTenantUnit) | **PUT** /api/v2/TenantsService/Units/{tenantUnitId} | Update a tenant unit
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **UnitsAPI_patchTenantUnit**
+```c
+// Patch a tenant unit
+//
+// Patch a tenant unit
+//
+empty_envelope_t* UnitsAPI_patchTenantUnit(apiClient_t *apiClient, char *tenantId, char *tenantUnitId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**tenantUnitId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

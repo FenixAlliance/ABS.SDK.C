@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **approved** | **int** |  | [optional] 
 **approved_timestamp** | **char \*** |  | [optional] 
 **tenant_id** | **char \*** |  | [optional] 
-**business_profile_record_id** | **char \*** |  | [optional] 
+**enrollment_id** | **char \*** |  | [optional] 
 **support_entitlement_id** | **char \*** |  | [optional] 
 **contact_id** | **char \*** |  | [optional] 
-**account_holder_id** | **char \*** |  | [optional] 
+**user_id** | **char \*** |  | [optional] 
 **refund_policy_id** | **char \*** |  | [optional] 
 **payment_id** | **char \*** |  | [optional] 
 

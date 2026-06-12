@@ -152,7 +152,7 @@ cJSON *item_return_policy_create_dto_convertToJSON(item_return_policy_create_dto
 
     // item_return_policy_create_dto->shipping_courier_id
     if(item_return_policy_create_dto->shipping_courier_id) {
-    if(cJSON_AddStringToObject(item, "shippingCourierID", item_return_policy_create_dto->shipping_courier_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "shippingCourierId", item_return_policy_create_dto->shipping_courier_id) == NULL) {
     goto fail; //String
     }
     }
@@ -256,7 +256,7 @@ cJSON *item_return_policy_create_dto_convertToJSON(item_return_policy_create_dto
 
     // item_return_policy_create_dto->currency_id
     if(item_return_policy_create_dto->currency_id) {
-    if(cJSON_AddStringToObject(item, "currencyID", item_return_policy_create_dto->currency_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "currencyId", item_return_policy_create_dto->currency_id) == NULL) {
     goto fail; //String
     }
     }
@@ -264,7 +264,7 @@ cJSON *item_return_policy_create_dto_convertToJSON(item_return_policy_create_dto
 
     // item_return_policy_create_dto->country_id
     if(item_return_policy_create_dto->country_id) {
-    if(cJSON_AddStringToObject(item, "countryID", item_return_policy_create_dto->country_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "countryId", item_return_policy_create_dto->country_id) == NULL) {
     goto fail; //String
     }
     }
@@ -272,7 +272,7 @@ cJSON *item_return_policy_create_dto_convertToJSON(item_return_policy_create_dto
 
     // item_return_policy_create_dto->country_state_id
     if(item_return_policy_create_dto->country_state_id) {
-    if(cJSON_AddStringToObject(item, "countryStateID", item_return_policy_create_dto->country_state_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "countryStateId", item_return_policy_create_dto->country_state_id) == NULL) {
     goto fail; //String
     }
     }
@@ -296,7 +296,7 @@ cJSON *item_return_policy_create_dto_convertToJSON(item_return_policy_create_dto
 
     // item_return_policy_create_dto->city_id
     if(item_return_policy_create_dto->city_id) {
-    if(cJSON_AddStringToObject(item, "cityID", item_return_policy_create_dto->city_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "cityId", item_return_policy_create_dto->city_id) == NULL) {
     goto fail; //String
     }
     }
@@ -353,7 +353,7 @@ item_return_policy_create_dto_t *item_return_policy_create_dto_parseFromJSON(cJS
     }
 
     // item_return_policy_create_dto->shipping_courier_id
-    cJSON *shipping_courier_id = cJSON_GetObjectItemCaseSensitive(item_return_policy_create_dtoJSON, "shippingCourierID");
+    cJSON *shipping_courier_id = cJSON_GetObjectItemCaseSensitive(item_return_policy_create_dtoJSON, "shippingCourierId");
     if (shipping_courier_id) { 
     if(!cJSON_IsString(shipping_courier_id) && !cJSON_IsNull(shipping_courier_id))
     {
@@ -470,7 +470,7 @@ item_return_policy_create_dto_t *item_return_policy_create_dto_parseFromJSON(cJS
     }
 
     // item_return_policy_create_dto->currency_id
-    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(item_return_policy_create_dtoJSON, "currencyID");
+    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(item_return_policy_create_dtoJSON, "currencyId");
     if (currency_id) { 
     if(!cJSON_IsString(currency_id) && !cJSON_IsNull(currency_id))
     {
@@ -479,7 +479,7 @@ item_return_policy_create_dto_t *item_return_policy_create_dto_parseFromJSON(cJS
     }
 
     // item_return_policy_create_dto->country_id
-    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(item_return_policy_create_dtoJSON, "countryID");
+    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(item_return_policy_create_dtoJSON, "countryId");
     if (country_id) { 
     if(!cJSON_IsString(country_id) && !cJSON_IsNull(country_id))
     {
@@ -488,7 +488,7 @@ item_return_policy_create_dto_t *item_return_policy_create_dto_parseFromJSON(cJS
     }
 
     // item_return_policy_create_dto->country_state_id
-    cJSON *country_state_id = cJSON_GetObjectItemCaseSensitive(item_return_policy_create_dtoJSON, "countryStateID");
+    cJSON *country_state_id = cJSON_GetObjectItemCaseSensitive(item_return_policy_create_dtoJSON, "countryStateId");
     if (country_state_id) { 
     if(!cJSON_IsString(country_state_id) && !cJSON_IsNull(country_state_id))
     {
@@ -515,7 +515,7 @@ item_return_policy_create_dto_t *item_return_policy_create_dto_parseFromJSON(cJS
     }
 
     // item_return_policy_create_dto->city_id
-    cJSON *city_id = cJSON_GetObjectItemCaseSensitive(item_return_policy_create_dtoJSON, "cityID");
+    cJSON *city_id = cJSON_GetObjectItemCaseSensitive(item_return_policy_create_dtoJSON, "cityId");
     if (city_id) { 
     if(!cJSON_IsString(city_id) && !cJSON_IsNull(city_id))
     {

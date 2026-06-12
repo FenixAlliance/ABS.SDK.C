@@ -6,7 +6,6 @@
 
 
 tenant_segment_update_dto_t *tenant_segment_update_dto_create(
-    char *revenue,
     double min_employees,
     double max_employees
     ) {
@@ -14,7 +13,6 @@ tenant_segment_update_dto_t *tenant_segment_update_dto_create(
     if (!tenant_segment_update_dto_local_var) {
         return NULL;
     }
-    tenant_segment_update_dto_local_var->revenue = revenue;
     tenant_segment_update_dto_local_var->min_employees = min_employees;
     tenant_segment_update_dto_local_var->max_employees = max_employees;
 
@@ -27,23 +25,11 @@ void tenant_segment_update_dto_free(tenant_segment_update_dto_t *tenant_segment_
         return ;
     }
     listEntry_t *listEntry;
-    if (tenant_segment_update_dto->revenue) {
-        free(tenant_segment_update_dto->revenue);
-        tenant_segment_update_dto->revenue = NULL;
-    }
     free(tenant_segment_update_dto);
 }
 
 cJSON *tenant_segment_update_dto_convertToJSON(tenant_segment_update_dto_t *tenant_segment_update_dto) {
     cJSON *item = cJSON_CreateObject();
-
-    // tenant_segment_update_dto->revenue
-    if(tenant_segment_update_dto->revenue) {
-    if(cJSON_AddStringToObject(item, "revenue", tenant_segment_update_dto->revenue) == NULL) {
-    goto fail; //String
-    }
-    }
-
 
     // tenant_segment_update_dto->min_employees
     if(tenant_segment_update_dto->min_employees) {
@@ -72,15 +58,6 @@ tenant_segment_update_dto_t *tenant_segment_update_dto_parseFromJSON(cJSON *tena
 
     tenant_segment_update_dto_t *tenant_segment_update_dto_local_var = NULL;
 
-    // tenant_segment_update_dto->revenue
-    cJSON *revenue = cJSON_GetObjectItemCaseSensitive(tenant_segment_update_dtoJSON, "revenue");
-    if (revenue) { 
-    if(!cJSON_IsString(revenue) && !cJSON_IsNull(revenue))
-    {
-    goto end; //String
-    }
-    }
-
     // tenant_segment_update_dto->min_employees
     cJSON *min_employees = cJSON_GetObjectItemCaseSensitive(tenant_segment_update_dtoJSON, "minEmployees");
     if (min_employees) { 
@@ -101,7 +78,6 @@ tenant_segment_update_dto_t *tenant_segment_update_dto_parseFromJSON(cJSON *tena
 
 
     tenant_segment_update_dto_local_var = tenant_segment_update_dto_create (
-        revenue && !cJSON_IsNull(revenue) ? strdup(revenue->valuestring) : NULL,
         min_employees ? min_employees->valuedouble : 0,
         max_employees ? max_employees->valuedouble : 0
         );

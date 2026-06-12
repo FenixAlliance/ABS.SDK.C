@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**PortalsAPI_getSystemPortalById**](PortalsAPI.md#PortalsAPI_getSystemPortalById) | **GET** /api/v2/SystemService/Portals/{portalId} | Retrieve a single system portal by its ID
 [**PortalsAPI_getSystemPortals**](PortalsAPI.md#PortalsAPI_getSystemPortals) | **GET** /api/v2/SystemService/Portals | Retrieve a list of system portals
 [**PortalsAPI_getSystemPortalsCount**](PortalsAPI.md#PortalsAPI_getSystemPortalsCount) | **GET** /api/v2/SystemService/Portals/Count | Get the count of system portals
+[**PortalsAPI_patchSystemPortal**](PortalsAPI.md#PortalsAPI_patchSystemPortal) | **PATCH** /api/v2/SystemService/Portals/{portalId} | Partially update a system portal
 [**PortalsAPI_updateSystemPortal**](PortalsAPI.md#PortalsAPI_updateSystemPortal) | **PUT** /api/v2/SystemService/Portals/{portalId} | Update a system portal
 
 
@@ -171,6 +172,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PortalsAPI_patchSystemPortal**
+```c
+// Partially update a system portal
+//
+// Partially update an existing web portal in the system using a JSON Patch document
+//
+empty_envelope_t* PortalsAPI_patchSystemPortal(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**portalId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

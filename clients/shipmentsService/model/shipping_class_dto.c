@@ -10,7 +10,7 @@ shipping_class_dto_t *shipping_class_dto_create(
     char *timestamp,
     char *name,
     char *slug,
-    char *business_id
+    char *tenant_id
     ) {
     shipping_class_dto_t *shipping_class_dto_local_var = malloc(sizeof(shipping_class_dto_t));
     if (!shipping_class_dto_local_var) {
@@ -20,7 +20,7 @@ shipping_class_dto_t *shipping_class_dto_create(
     shipping_class_dto_local_var->timestamp = timestamp;
     shipping_class_dto_local_var->name = name;
     shipping_class_dto_local_var->slug = slug;
-    shipping_class_dto_local_var->business_id = business_id;
+    shipping_class_dto_local_var->tenant_id = tenant_id;
 
     return shipping_class_dto_local_var;
 }
@@ -47,9 +47,9 @@ void shipping_class_dto_free(shipping_class_dto_t *shipping_class_dto) {
         free(shipping_class_dto->slug);
         shipping_class_dto->slug = NULL;
     }
-    if (shipping_class_dto->business_id) {
-        free(shipping_class_dto->business_id);
-        shipping_class_dto->business_id = NULL;
+    if (shipping_class_dto->tenant_id) {
+        free(shipping_class_dto->tenant_id);
+        shipping_class_dto->tenant_id = NULL;
     }
     free(shipping_class_dto);
 }
@@ -89,9 +89,9 @@ cJSON *shipping_class_dto_convertToJSON(shipping_class_dto_t *shipping_class_dto
     }
 
 
-    // shipping_class_dto->business_id
-    if(shipping_class_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", shipping_class_dto->business_id) == NULL) {
+    // shipping_class_dto->tenant_id
+    if(shipping_class_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", shipping_class_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -144,10 +144,10 @@ shipping_class_dto_t *shipping_class_dto_parseFromJSON(cJSON *shipping_class_dto
     }
     }
 
-    // shipping_class_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(shipping_class_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // shipping_class_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(shipping_class_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -159,7 +159,7 @@ shipping_class_dto_t *shipping_class_dto_parseFromJSON(cJSON *shipping_class_dto
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         slug && !cJSON_IsNull(slug) ? strdup(slug->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
         );
 
     return shipping_class_dto_local_var;

@@ -41,7 +41,7 @@ cJSON *tenant_team_project_enrollment_update_dto_convertToJSON(tenant_team_proje
 
     // tenant_team_project_enrollment_update_dto->business_team_id
     if(tenant_team_project_enrollment_update_dto->business_team_id) {
-    if(cJSON_AddStringToObject(item, "businessTeamID", tenant_team_project_enrollment_update_dto->business_team_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "businessTeamId", tenant_team_project_enrollment_update_dto->business_team_id) == NULL) {
     goto fail; //String
     }
     }
@@ -49,7 +49,7 @@ cJSON *tenant_team_project_enrollment_update_dto_convertToJSON(tenant_team_proje
 
     // tenant_team_project_enrollment_update_dto->project_id
     if(tenant_team_project_enrollment_update_dto->project_id) {
-    if(cJSON_AddStringToObject(item, "projectID", tenant_team_project_enrollment_update_dto->project_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "projectId", tenant_team_project_enrollment_update_dto->project_id) == NULL) {
     goto fail; //String
     }
     }
@@ -67,7 +67,7 @@ tenant_team_project_enrollment_update_dto_t *tenant_team_project_enrollment_upda
     tenant_team_project_enrollment_update_dto_t *tenant_team_project_enrollment_update_dto_local_var = NULL;
 
     // tenant_team_project_enrollment_update_dto->business_team_id
-    cJSON *business_team_id = cJSON_GetObjectItemCaseSensitive(tenant_team_project_enrollment_update_dtoJSON, "businessTeamID");
+    cJSON *business_team_id = cJSON_GetObjectItemCaseSensitive(tenant_team_project_enrollment_update_dtoJSON, "businessTeamId");
     if (business_team_id) { 
     if(!cJSON_IsString(business_team_id) && !cJSON_IsNull(business_team_id))
     {
@@ -76,7 +76,7 @@ tenant_team_project_enrollment_update_dto_t *tenant_team_project_enrollment_upda
     }
 
     // tenant_team_project_enrollment_update_dto->project_id
-    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(tenant_team_project_enrollment_update_dtoJSON, "projectID");
+    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(tenant_team_project_enrollment_update_dtoJSON, "projectId");
     if (project_id) { 
     if(!cJSON_IsString(project_id) && !cJSON_IsNull(project_id))
     {

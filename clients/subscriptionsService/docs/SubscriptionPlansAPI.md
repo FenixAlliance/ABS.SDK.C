@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**SubscriptionPlansAPI_getSubscriptionPlanByIdAsync**](SubscriptionPlansAPI.md#SubscriptionPlansAPI_getSubscriptionPlanByIdAsync) | **GET** /api/v2/SubscriptionsService/SubscriptionPlans/{planId} | Get a subscription plan by ID
 [**SubscriptionPlansAPI_getSubscriptionPlansAsync**](SubscriptionPlansAPI.md#SubscriptionPlansAPI_getSubscriptionPlansAsync) | **GET** /api/v2/SubscriptionsService/SubscriptionPlans | Get all subscription plans
 [**SubscriptionPlansAPI_getSubscriptionPlansCountAsync**](SubscriptionPlansAPI.md#SubscriptionPlansAPI_getSubscriptionPlansCountAsync) | **GET** /api/v2/SubscriptionsService/SubscriptionPlans/Count | Get subscription plans count
+[**SubscriptionPlansAPI_patchSubscriptionPlanAsync**](SubscriptionPlansAPI.md#SubscriptionPlansAPI_patchSubscriptionPlanAsync) | **PATCH** /api/v2/SubscriptionsService/SubscriptionPlans/{planId} | Patch a subscription plan
 [**SubscriptionPlansAPI_updateSubscriptionPlanAsync**](SubscriptionPlansAPI.md#SubscriptionPlansAPI_updateSubscriptionPlanAsync) | **PUT** /api/v2/SubscriptionsService/SubscriptionPlans/{planId} | Update a subscription plan
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SubscriptionPlansAPI_patchSubscriptionPlanAsync**
+```c
+// Patch a subscription plan
+//
+// Patch a subscription plan
+//
+empty_envelope_t* SubscriptionPlansAPI_patchSubscriptionPlanAsync(apiClient_t *apiClient, char *tenantId, char *planId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**planId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

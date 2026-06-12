@@ -23,7 +23,7 @@ typedef struct shipping_class_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *slug; // string
-    char *business_id; // string
+    char *tenant_id; // string
 
 } shipping_class_dto_t;
 
@@ -32,7 +32,7 @@ shipping_class_dto_t *shipping_class_dto_create(
     char *timestamp,
     char *name,
     char *slug,
-    char *business_id
+    char *tenant_id
 );
 
 void shipping_class_dto_free(shipping_class_dto_t *shipping_class_dto);

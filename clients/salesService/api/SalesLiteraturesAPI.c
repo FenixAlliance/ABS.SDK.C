@@ -616,6 +616,160 @@ end:
 
 }
 
+// Patch a sales literature
+//
+// Partially updates an existing sales literature using a JSON Patch document.
+//
+empty_envelope_t*
+SalesLiteraturesAPI_patchSalesLiteratureAsync(apiClient_t *apiClient, char *tenantId, char *salesLiteratureId, list_t *operation)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/SalesService/SalesLiteratures/{salesLiteratureId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SalesService/SalesLiteratures/{salesLiteratureId}");
+
+
+    // Path Params
+    long sizeOfPathParams_salesLiteratureId = strlen(salesLiteratureId)+3 + strlen("{ salesLiteratureId }");
+    if(salesLiteratureId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_salesLiteratureId = malloc(sizeOfPathParams_salesLiteratureId);
+    sprintf(localVarToReplace_salesLiteratureId, "{%s}", "salesLiteratureId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_salesLiteratureId, salesLiteratureId);
+    if(salesLiteratureId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_salesLiteratureId = malloc(sizeOfPathParams_salesLiteratureId);
+    sprintf(localVarToReplace_salesLiteratureId, "{%s}", "salesLiteratureId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_salesLiteratureId, salesLiteratureId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","Not Found");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *SalesLiteraturesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(SalesLiteraturesAPIlocalVarJSON);
+    cJSON_Delete(SalesLiteraturesAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_salesLiteratureId);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Update a sales literature
 //
 // Updates an existing sales literature by its unique identifier.

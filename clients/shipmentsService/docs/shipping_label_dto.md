@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **tracking_code** | **char \*** |  | [optional] 
 **expected_delivery** | **char \*** |  | [optional] 
 **location_id** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
 **shipment_id** | **char \*** |  | [optional] 
 **shipping_courier_id** | **char \*** |  | [optional] 
 

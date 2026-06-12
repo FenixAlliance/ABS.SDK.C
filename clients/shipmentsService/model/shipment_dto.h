@@ -39,7 +39,7 @@ typedef struct shipment_dto_t {
     char *expected_delivery_date; //date time
     shipmentsservice_shipment_dto_SHIPPINGTERMS_e shipping_terms; //enum
     char *order_id; // string
-    char *business_id; // string
+    char *tenant_id; // string
 
 } shipment_dto_t;
 
@@ -56,7 +56,7 @@ shipment_dto_t *shipment_dto_create(
     char *expected_delivery_date,
     shipmentsservice_shipment_dto_SHIPPINGTERMS_e shipping_terms,
     char *order_id,
-    char *business_id
+    char *tenant_id
 );
 
 void shipment_dto_free(shipment_dto_t *shipment_dto);

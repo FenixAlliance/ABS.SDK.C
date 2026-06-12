@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ShippingLabelsAPI_getShippingLabelByIdAsync**](ShippingLabelsAPI.md#ShippingLabelsAPI_getShippingLabelByIdAsync) | **GET** /api/v2/ShipmentsService/ShippingLabels/{labelId} | Get shipping label by ID
 [**ShippingLabelsAPI_getShippingLabelsAsync**](ShippingLabelsAPI.md#ShippingLabelsAPI_getShippingLabelsAsync) | **GET** /api/v2/ShipmentsService/ShippingLabels | Get all shipping labels
 [**ShippingLabelsAPI_getShippingLabelsCountAsync**](ShippingLabelsAPI.md#ShippingLabelsAPI_getShippingLabelsCountAsync) | **GET** /api/v2/ShipmentsService/ShippingLabels/Count | Get shipping labels count
+[**ShippingLabelsAPI_patchShippingLabelAsync**](ShippingLabelsAPI.md#ShippingLabelsAPI_patchShippingLabelAsync) | **PATCH** /api/v2/ShipmentsService/ShippingLabels/{labelId} | Patch a shipping label
 [**ShippingLabelsAPI_updateShippingLabelAsync**](ShippingLabelsAPI.md#ShippingLabelsAPI_updateShippingLabelAsync) | **PUT** /api/v2/ShipmentsService/ShippingLabels/{labelId} | Update a shipping label
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ShippingLabelsAPI_patchShippingLabelAsync**
+```c
+// Patch a shipping label
+//
+// Partially updates an existing shipping label using JSON Patch.
+//
+empty_envelope_t* ShippingLabelsAPI_patchShippingLabelAsync(apiClient_t *apiClient, char *tenantId, char *labelId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**labelId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

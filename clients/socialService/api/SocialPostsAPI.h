@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/social_post_attachment_create_dto.h"
 #include "../model/social_post_attachment_dto_envelope.h"
 #include "../model/social_post_attachment_dto_list_envelope.h"
@@ -184,6 +185,14 @@ SocialPostsAPI_getSocialPostsAsync(apiClient_t *apiClient, char *socialProfileId
 //
 int32_envelope_t*
 SocialPostsAPI_getSocialPostsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+
+
+// Patch a social post
+//
+// Partially updates an existing social post by its ID using a JSON Patch document.
+//
+empty_envelope_t*
+SocialPostsAPI_patchSocialPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialPostId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a social post

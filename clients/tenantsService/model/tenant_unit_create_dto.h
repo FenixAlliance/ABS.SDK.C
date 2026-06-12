@@ -24,7 +24,6 @@ typedef struct tenant_unit_create_dto_t {
     char *name; // string
     char *description; // string
     int disabled; //boolean
-    char *business_unit_qualified_name; // string
     char *country_id; // string
     char *organization_profile_id; // string
     char *parent_business_unit_id; // string
@@ -37,7 +36,6 @@ tenant_unit_create_dto_t *tenant_unit_create_dto_create(
     char *name,
     char *description,
     int disabled,
-    char *business_unit_qualified_name,
     char *country_id,
     char *organization_profile_id,
     char *parent_business_unit_id

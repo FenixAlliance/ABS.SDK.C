@@ -71,7 +71,7 @@ cJSON *tenant_team_employee_enrollment_create_dto_convertToJSON(tenant_team_empl
     if (!tenant_team_employee_enrollment_create_dto->business_team_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "businessTeamID", tenant_team_employee_enrollment_create_dto->business_team_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "businessTeamId", tenant_team_employee_enrollment_create_dto->business_team_id) == NULL) {
     goto fail; //String
     }
 
@@ -80,7 +80,7 @@ cJSON *tenant_team_employee_enrollment_create_dto_convertToJSON(tenant_team_empl
     if (!tenant_team_employee_enrollment_create_dto->employee_profile_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "employeeProfileID", tenant_team_employee_enrollment_create_dto->employee_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "employeeProfileId", tenant_team_employee_enrollment_create_dto->employee_profile_id) == NULL) {
     goto fail; //String
     }
 
@@ -115,7 +115,7 @@ tenant_team_employee_enrollment_create_dto_t *tenant_team_employee_enrollment_cr
     }
 
     // tenant_team_employee_enrollment_create_dto->business_team_id
-    cJSON *business_team_id = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_create_dtoJSON, "businessTeamID");
+    cJSON *business_team_id = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_create_dtoJSON, "businessTeamId");
     if (!business_team_id) {
         goto end;
     }
@@ -127,7 +127,7 @@ tenant_team_employee_enrollment_create_dto_t *tenant_team_employee_enrollment_cr
     }
 
     // tenant_team_employee_enrollment_create_dto->employee_profile_id
-    cJSON *employee_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_create_dtoJSON, "employeeProfileID");
+    cJSON *employee_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_create_dtoJSON, "employeeProfileId");
     if (!employee_profile_id) {
         goto end;
     }

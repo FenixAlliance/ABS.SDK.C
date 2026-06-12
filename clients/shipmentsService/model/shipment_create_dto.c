@@ -143,7 +143,7 @@ cJSON *shipment_create_dto_convertToJSON(shipment_create_dto_t *shipment_create_
 
     // shipment_create_dto->order_id
     if(shipment_create_dto->order_id) {
-    if(cJSON_AddStringToObject(item, "orderID", shipment_create_dto->order_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "orderId", shipment_create_dto->order_id) == NULL) {
     goto fail; //String
     }
     }
@@ -226,7 +226,7 @@ shipment_create_dto_t *shipment_create_dto_parseFromJSON(cJSON *shipment_create_
     }
 
     // shipment_create_dto->order_id
-    cJSON *order_id = cJSON_GetObjectItemCaseSensitive(shipment_create_dtoJSON, "orderID");
+    cJSON *order_id = cJSON_GetObjectItemCaseSensitive(shipment_create_dtoJSON, "orderId");
     if (order_id) { 
     if(!cJSON_IsString(order_id) && !cJSON_IsNull(order_id))
     {

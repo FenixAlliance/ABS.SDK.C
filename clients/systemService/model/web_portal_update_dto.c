@@ -109,7 +109,7 @@ cJSON *web_portal_update_dto_convertToJSON(web_portal_update_dto_t *web_portal_u
 
     // web_portal_update_dto->website_theme_id
     if(web_portal_update_dto->website_theme_id) {
-    if(cJSON_AddStringToObject(item, "websiteThemeID", web_portal_update_dto->website_theme_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "websiteThemeId", web_portal_update_dto->website_theme_id) == NULL) {
     goto fail; //String
     }
     }
@@ -117,7 +117,7 @@ cJSON *web_portal_update_dto_convertToJSON(web_portal_update_dto_t *web_portal_u
 
     // web_portal_update_dto->business_domain_id
     if(web_portal_update_dto->business_domain_id) {
-    if(cJSON_AddStringToObject(item, "businessDomainID", web_portal_update_dto->business_domain_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "businessDomainId", web_portal_update_dto->business_domain_id) == NULL) {
     goto fail; //String
     }
     }
@@ -125,7 +125,7 @@ cJSON *web_portal_update_dto_convertToJSON(web_portal_update_dto_t *web_portal_u
 
     // web_portal_update_dto->business_portal_application_id
     if(web_portal_update_dto->business_portal_application_id) {
-    if(cJSON_AddStringToObject(item, "businessPortalApplicationID", web_portal_update_dto->business_portal_application_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "businessPortalApplicationId", web_portal_update_dto->business_portal_application_id) == NULL) {
     goto fail; //String
     }
     }
@@ -188,7 +188,7 @@ web_portal_update_dto_t *web_portal_update_dto_parseFromJSON(cJSON *web_portal_u
     }
 
     // web_portal_update_dto->website_theme_id
-    cJSON *website_theme_id = cJSON_GetObjectItemCaseSensitive(web_portal_update_dtoJSON, "websiteThemeID");
+    cJSON *website_theme_id = cJSON_GetObjectItemCaseSensitive(web_portal_update_dtoJSON, "websiteThemeId");
     if (website_theme_id) { 
     if(!cJSON_IsString(website_theme_id) && !cJSON_IsNull(website_theme_id))
     {
@@ -197,7 +197,7 @@ web_portal_update_dto_t *web_portal_update_dto_parseFromJSON(cJSON *web_portal_u
     }
 
     // web_portal_update_dto->business_domain_id
-    cJSON *business_domain_id = cJSON_GetObjectItemCaseSensitive(web_portal_update_dtoJSON, "businessDomainID");
+    cJSON *business_domain_id = cJSON_GetObjectItemCaseSensitive(web_portal_update_dtoJSON, "businessDomainId");
     if (business_domain_id) { 
     if(!cJSON_IsString(business_domain_id) && !cJSON_IsNull(business_domain_id))
     {
@@ -206,7 +206,7 @@ web_portal_update_dto_t *web_portal_update_dto_parseFromJSON(cJSON *web_portal_u
     }
 
     // web_portal_update_dto->business_portal_application_id
-    cJSON *business_portal_application_id = cJSON_GetObjectItemCaseSensitive(web_portal_update_dtoJSON, "businessPortalApplicationID");
+    cJSON *business_portal_application_id = cJSON_GetObjectItemCaseSensitive(web_portal_update_dtoJSON, "businessPortalApplicationId");
     if (business_portal_application_id) { 
     if(!cJSON_IsString(business_portal_application_id) && !cJSON_IsNull(business_portal_application_id))
     {

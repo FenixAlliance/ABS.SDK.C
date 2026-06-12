@@ -37,6 +37,7 @@ docs/login_request.md
 docs/notification_dto.md
 docs/notification_dto_envelope.md
 docs/notification_dto_list_envelope.md
+docs/operation.md
 docs/private_message_create_dto.md
 docs/private_message_dto.md
 docs/private_message_dto_list_envelope.md
@@ -129,6 +130,8 @@ model/notification_dto_list_envelope.c
 model/notification_dto_list_envelope.h
 model/object.c
 model/object.h
+model/operation.c
+model/operation.h
 model/private_message_create_dto.c
 model/private_message_create_dto.h
 model/private_message_dto.c
@@ -226,4 +229,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_notification_dto_envelope.c
+unit-test/test_operation.c

@@ -5,8 +5,10 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/shipping_method_create_dto.h"
 #include "../model/shipping_method_dto_envelope.h"
 #include "../model/shipping_method_dto_list_envelope.h"
@@ -51,6 +53,14 @@ ShippingMethodsAPI_getShippingMethodsAsync(apiClient_t *apiClient, char *tenantI
 //
 int32_envelope_t*
 ShippingMethodsAPI_getShippingMethodsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a shipping method
+//
+// Partially updates an existing shipping method using JSON Patch.
+//
+empty_envelope_t*
+ShippingMethodsAPI_patchShippingMethodAsync(apiClient_t *apiClient, char *tenantId, char *methodId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a shipping method

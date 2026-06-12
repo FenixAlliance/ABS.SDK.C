@@ -105,7 +105,7 @@ cJSON *tenant_team_create_dto_convertToJSON(tenant_team_create_dto_t *tenant_tea
 
     // tenant_team_create_dto->avatar_url
     if(tenant_team_create_dto->avatar_url) {
-    if(cJSON_AddStringToObject(item, "avatarURL", tenant_team_create_dto->avatar_url) == NULL) {
+    if(cJSON_AddStringToObject(item, "avatarUrl", tenant_team_create_dto->avatar_url) == NULL) {
     goto fail; //String
     }
     }
@@ -121,7 +121,7 @@ cJSON *tenant_team_create_dto_convertToJSON(tenant_team_create_dto_t *tenant_tea
 
     // tenant_team_create_dto->business_unit_id
     if(tenant_team_create_dto->business_unit_id) {
-    if(cJSON_AddStringToObject(item, "businessUnitID", tenant_team_create_dto->business_unit_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "businessUnitId", tenant_team_create_dto->business_unit_id) == NULL) {
     goto fail; //String
     }
     }
@@ -129,7 +129,7 @@ cJSON *tenant_team_create_dto_convertToJSON(tenant_team_create_dto_t *tenant_tea
 
     // tenant_team_create_dto->organization_profile_id
     if(tenant_team_create_dto->organization_profile_id) {
-    if(cJSON_AddStringToObject(item, "organizationProfileID", tenant_team_create_dto->organization_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "organizationProfileId", tenant_team_create_dto->organization_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -183,7 +183,7 @@ tenant_team_create_dto_t *tenant_team_create_dto_parseFromJSON(cJSON *tenant_tea
     }
 
     // tenant_team_create_dto->avatar_url
-    cJSON *avatar_url = cJSON_GetObjectItemCaseSensitive(tenant_team_create_dtoJSON, "avatarURL");
+    cJSON *avatar_url = cJSON_GetObjectItemCaseSensitive(tenant_team_create_dtoJSON, "avatarUrl");
     if (avatar_url) { 
     if(!cJSON_IsString(avatar_url) && !cJSON_IsNull(avatar_url))
     {
@@ -201,7 +201,7 @@ tenant_team_create_dto_t *tenant_team_create_dto_parseFromJSON(cJSON *tenant_tea
     }
 
     // tenant_team_create_dto->business_unit_id
-    cJSON *business_unit_id = cJSON_GetObjectItemCaseSensitive(tenant_team_create_dtoJSON, "businessUnitID");
+    cJSON *business_unit_id = cJSON_GetObjectItemCaseSensitive(tenant_team_create_dtoJSON, "businessUnitId");
     if (business_unit_id) { 
     if(!cJSON_IsString(business_unit_id) && !cJSON_IsNull(business_unit_id))
     {
@@ -210,7 +210,7 @@ tenant_team_create_dto_t *tenant_team_create_dto_parseFromJSON(cJSON *tenant_tea
     }
 
     // tenant_team_create_dto->organization_profile_id
-    cJSON *organization_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_team_create_dtoJSON, "organizationProfileID");
+    cJSON *organization_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_team_create_dtoJSON, "organizationProfileId");
     if (organization_profile_id) { 
     if(!cJSON_IsString(organization_profile_id) && !cJSON_IsNull(organization_profile_id))
     {

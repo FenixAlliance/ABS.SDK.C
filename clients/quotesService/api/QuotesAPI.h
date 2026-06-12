@@ -11,6 +11,7 @@
 #include "../model/error_envelope.h"
 #include "../model/extended_quote_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/quote_create_dto.h"
 #include "../model/quote_dto_envelope.h"
 #include "../model/quote_dto_list_envelope.h"
@@ -140,6 +141,22 @@ QuotesAPI_getQuotes(apiClient_t *apiClient, char *tenantId);
 //
 int32_envelope_t*
 QuotesAPI_getQuotesCount(apiClient_t *apiClient, char *tenantId);
+
+
+// Patch an existing quote.
+//
+// Partially updates an existing quote for the specified tenant and quote ID using a JSON Patch document.
+//
+empty_envelope_t*
+QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, list_t *operation);
+
+
+// Patch a quote line.
+//
+// Partially updates an existing quote line for the specified quote and tenant using a JSON Patch document.
+//
+empty_envelope_t*
+QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, char *quoteLineId, list_t *operation);
 
 
 // Preview the rendered email for an invoice.

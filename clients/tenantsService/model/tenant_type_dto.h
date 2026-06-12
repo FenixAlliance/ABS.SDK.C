@@ -21,6 +21,7 @@ typedef struct tenant_type_dto_t tenant_type_dto_t;
 typedef struct tenant_type_dto_t {
     char *id; // string
     char *timestamp; //date time
+    char *tenant_id; // string
     char *name; // string
     char *description; // string
 
@@ -29,6 +30,7 @@ typedef struct tenant_type_dto_t {
 tenant_type_dto_t *tenant_type_dto_create(
     char *id,
     char *timestamp,
+    char *tenant_id,
     char *name,
     char *description
 );

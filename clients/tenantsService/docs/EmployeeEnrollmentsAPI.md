@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**EmployeeEnrollmentsAPI_getTenantEmployeeEnrollmentById**](EmployeeEnrollmentsAPI.md#EmployeeEnrollmentsAPI_getTenantEmployeeEnrollmentById) | **GET** /api/v2/TenantsService/EmployeeEnrollments/{tenantEmployeeEnrollmentId} | Retrieve a single tenant employee enrollment by its ID
 [**EmployeeEnrollmentsAPI_getTenantEmployeeEnrollments**](EmployeeEnrollmentsAPI.md#EmployeeEnrollmentsAPI_getTenantEmployeeEnrollments) | **GET** /api/v2/TenantsService/EmployeeEnrollments | Retrieve a list of tenant employee enrollments
 [**EmployeeEnrollmentsAPI_getTenantEmployeeEnrollmentsCount**](EmployeeEnrollmentsAPI.md#EmployeeEnrollmentsAPI_getTenantEmployeeEnrollmentsCount) | **GET** /api/v2/TenantsService/EmployeeEnrollments/Count | Get the count of tenant employee enrollments
+[**EmployeeEnrollmentsAPI_patchTenantEmployeeEnrollmentAsync**](EmployeeEnrollmentsAPI.md#EmployeeEnrollmentsAPI_patchTenantEmployeeEnrollmentAsync) | **PATCH** /api/v2/TenantsService/EmployeeEnrollments/{tenantEmployeeEnrollmentId} | Patch a tenant employee enrollment
 [**EmployeeEnrollmentsAPI_updateTenantEmployeeEnrollment**](EmployeeEnrollmentsAPI.md#EmployeeEnrollmentsAPI_updateTenantEmployeeEnrollment) | **PUT** /api/v2/TenantsService/EmployeeEnrollments/{tenantEmployeeEnrollmentId} | Update a tenant employee enrollment
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **EmployeeEnrollmentsAPI_patchTenantEmployeeEnrollmentAsync**
+```c
+// Patch a tenant employee enrollment
+//
+// Patch a tenant employee enrollment
+//
+empty_envelope_t* EmployeeEnrollmentsAPI_patchTenantEmployeeEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char *tenantEmployeeEnrollmentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**tenantEmployeeEnrollmentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

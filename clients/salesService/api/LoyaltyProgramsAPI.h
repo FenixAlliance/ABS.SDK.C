@@ -12,6 +12,7 @@
 #include "../model/loyalty_program_dto_envelope.h"
 #include "../model/loyalty_program_dto_list_envelope.h"
 #include "../model/loyalty_program_update_dto.h"
+#include "../model/operation.h"
 
 
 // Get loyalty programs count
@@ -52,6 +53,14 @@ LoyaltyProgramsAPI_getLoyaltyProgramAsync(apiClient_t *apiClient, char *tenantId
 //
 loyalty_program_dto_list_envelope_t*
 LoyaltyProgramsAPI_getLoyaltyProgramsAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Patch a loyalty program
+//
+// Partially updates an existing loyalty program using a JSON Patch document.
+//
+empty_envelope_t*
+LoyaltyProgramsAPI_patchLoyaltyProgramAsync(apiClient_t *apiClient, char *tenantId, char *loyaltyProgramId, list_t *operation);
 
 
 // Update a loyalty program

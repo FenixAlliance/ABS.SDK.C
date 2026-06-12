@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**UserOptionsAPI_getSystemUserOptionById**](UserOptionsAPI.md#UserOptionsAPI_getSystemUserOptionById) | **GET** /api/v2/SystemService/Users/{userId}/Options/{optionId} | Retrieve a single user option by its ID (admin)
 [**UserOptionsAPI_getSystemUserOptions**](UserOptionsAPI.md#UserOptionsAPI_getSystemUserOptions) | **GET** /api/v2/SystemService/Users/{userId}/Options | Retrieve a list of user options (admin)
 [**UserOptionsAPI_getSystemUserOptionsCount**](UserOptionsAPI.md#UserOptionsAPI_getSystemUserOptionsCount) | **GET** /api/v2/SystemService/Users/{userId}/Options/Count | Get the count of user options (admin)
+[**UserOptionsAPI_patchSystemUserOption**](UserOptionsAPI.md#UserOptionsAPI_patchSystemUserOption) | **PATCH** /api/v2/SystemService/Users/{userId}/Options/{optionId} | Partially update a user option (admin)
 [**UserOptionsAPI_updateSystemUserOption**](UserOptionsAPI.md#UserOptionsAPI_updateSystemUserOption) | **PUT** /api/v2/SystemService/Users/{userId}/Options/{optionId} | Update a user option (admin)
 
 
@@ -180,6 +181,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **UserOptionsAPI_patchSystemUserOption**
+```c
+// Partially update a user option (admin)
+//
+// Admin endpoint to partially update an option for any user using a JSON Patch document
+//
+empty_envelope_t* UserOptionsAPI_patchSystemUserOption(apiClient_t *apiClient, char *userId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**userId** | **char \*** |  | 
+**optionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

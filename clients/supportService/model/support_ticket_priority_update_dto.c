@@ -7,7 +7,8 @@
 
 support_ticket_priority_update_dto_t *support_ticket_priority_update_dto_create(
     char *title,
-    char *description
+    char *description,
+    char *support_entitlement_id
     ) {
     support_ticket_priority_update_dto_t *support_ticket_priority_update_dto_local_var = malloc(sizeof(support_ticket_priority_update_dto_t));
     if (!support_ticket_priority_update_dto_local_var) {
@@ -15,6 +16,7 @@ support_ticket_priority_update_dto_t *support_ticket_priority_update_dto_create(
     }
     support_ticket_priority_update_dto_local_var->title = title;
     support_ticket_priority_update_dto_local_var->description = description;
+    support_ticket_priority_update_dto_local_var->support_entitlement_id = support_entitlement_id;
 
     return support_ticket_priority_update_dto_local_var;
 }
@@ -33,6 +35,10 @@ void support_ticket_priority_update_dto_free(support_ticket_priority_update_dto_
         free(support_ticket_priority_update_dto->description);
         support_ticket_priority_update_dto->description = NULL;
     }
+    if (support_ticket_priority_update_dto->support_entitlement_id) {
+        free(support_ticket_priority_update_dto->support_entitlement_id);
+        support_ticket_priority_update_dto->support_entitlement_id = NULL;
+    }
     free(support_ticket_priority_update_dto);
 }
 
@@ -50,6 +56,14 @@ cJSON *support_ticket_priority_update_dto_convertToJSON(support_ticket_priority_
     // support_ticket_priority_update_dto->description
     if(support_ticket_priority_update_dto->description) {
     if(cJSON_AddStringToObject(item, "description", support_ticket_priority_update_dto->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // support_ticket_priority_update_dto->support_entitlement_id
+    if(support_ticket_priority_update_dto->support_entitlement_id) {
+    if(cJSON_AddStringToObject(item, "supportEntitlementId", support_ticket_priority_update_dto->support_entitlement_id) == NULL) {
     goto fail; //String
     }
     }
@@ -84,10 +98,20 @@ support_ticket_priority_update_dto_t *support_ticket_priority_update_dto_parseFr
     }
     }
 
+    // support_ticket_priority_update_dto->support_entitlement_id
+    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_update_dtoJSON, "supportEntitlementId");
+    if (support_entitlement_id) { 
+    if(!cJSON_IsString(support_entitlement_id) && !cJSON_IsNull(support_entitlement_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     support_ticket_priority_update_dto_local_var = support_ticket_priority_update_dto_create (
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        support_entitlement_id && !cJSON_IsNull(support_entitlement_id) ? strdup(support_entitlement_id->valuestring) : NULL
         );
 
     return support_ticket_priority_update_dto_local_var;

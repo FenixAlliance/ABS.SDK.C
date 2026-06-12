@@ -8,6 +8,7 @@
 tenant_segment_dto_t *tenant_segment_dto_create(
     char *id,
     char *timestamp,
+    char *tenant_id,
     char *revenue,
     double min_employees,
     double max_employees
@@ -18,6 +19,7 @@ tenant_segment_dto_t *tenant_segment_dto_create(
     }
     tenant_segment_dto_local_var->id = id;
     tenant_segment_dto_local_var->timestamp = timestamp;
+    tenant_segment_dto_local_var->tenant_id = tenant_id;
     tenant_segment_dto_local_var->revenue = revenue;
     tenant_segment_dto_local_var->min_employees = min_employees;
     tenant_segment_dto_local_var->max_employees = max_employees;
@@ -38,6 +40,10 @@ void tenant_segment_dto_free(tenant_segment_dto_t *tenant_segment_dto) {
     if (tenant_segment_dto->timestamp) {
         free(tenant_segment_dto->timestamp);
         tenant_segment_dto->timestamp = NULL;
+    }
+    if (tenant_segment_dto->tenant_id) {
+        free(tenant_segment_dto->tenant_id);
+        tenant_segment_dto->tenant_id = NULL;
     }
     if (tenant_segment_dto->revenue) {
         free(tenant_segment_dto->revenue);
@@ -61,6 +67,14 @@ cJSON *tenant_segment_dto_convertToJSON(tenant_segment_dto_t *tenant_segment_dto
     if(tenant_segment_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", tenant_segment_dto->timestamp) == NULL) {
     goto fail; //Date-Time
+    }
+    }
+
+
+    // tenant_segment_dto->tenant_id
+    if(tenant_segment_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", tenant_segment_dto->tenant_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -118,6 +132,15 @@ tenant_segment_dto_t *tenant_segment_dto_parseFromJSON(cJSON *tenant_segment_dto
     }
     }
 
+    // tenant_segment_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(tenant_segment_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
     // tenant_segment_dto->revenue
     cJSON *revenue = cJSON_GetObjectItemCaseSensitive(tenant_segment_dtoJSON, "revenue");
     if (revenue) { 
@@ -149,6 +172,7 @@ tenant_segment_dto_t *tenant_segment_dto_parseFromJSON(cJSON *tenant_segment_dto
     tenant_segment_dto_local_var = tenant_segment_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         revenue && !cJSON_IsNull(revenue) ? strdup(revenue->valuestring) : NULL,
         min_employees ? min_employees->valuedouble : 0,
         max_employees ? max_employees->valuedouble : 0

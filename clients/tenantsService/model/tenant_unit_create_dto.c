@@ -11,7 +11,6 @@ tenant_unit_create_dto_t *tenant_unit_create_dto_create(
     char *name,
     char *description,
     int disabled,
-    char *business_unit_qualified_name,
     char *country_id,
     char *organization_profile_id,
     char *parent_business_unit_id
@@ -25,7 +24,6 @@ tenant_unit_create_dto_t *tenant_unit_create_dto_create(
     tenant_unit_create_dto_local_var->name = name;
     tenant_unit_create_dto_local_var->description = description;
     tenant_unit_create_dto_local_var->disabled = disabled;
-    tenant_unit_create_dto_local_var->business_unit_qualified_name = business_unit_qualified_name;
     tenant_unit_create_dto_local_var->country_id = country_id;
     tenant_unit_create_dto_local_var->organization_profile_id = organization_profile_id;
     tenant_unit_create_dto_local_var->parent_business_unit_id = parent_business_unit_id;
@@ -54,10 +52,6 @@ void tenant_unit_create_dto_free(tenant_unit_create_dto_t *tenant_unit_create_dt
     if (tenant_unit_create_dto->description) {
         free(tenant_unit_create_dto->description);
         tenant_unit_create_dto->description = NULL;
-    }
-    if (tenant_unit_create_dto->business_unit_qualified_name) {
-        free(tenant_unit_create_dto->business_unit_qualified_name);
-        tenant_unit_create_dto->business_unit_qualified_name = NULL;
     }
     if (tenant_unit_create_dto->country_id) {
         free(tenant_unit_create_dto->country_id);
@@ -117,17 +111,9 @@ cJSON *tenant_unit_create_dto_convertToJSON(tenant_unit_create_dto_t *tenant_uni
     }
 
 
-    // tenant_unit_create_dto->business_unit_qualified_name
-    if(tenant_unit_create_dto->business_unit_qualified_name) {
-    if(cJSON_AddStringToObject(item, "businessUnitQualifiedName", tenant_unit_create_dto->business_unit_qualified_name) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // tenant_unit_create_dto->country_id
     if(tenant_unit_create_dto->country_id) {
-    if(cJSON_AddStringToObject(item, "countryID", tenant_unit_create_dto->country_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "countryId", tenant_unit_create_dto->country_id) == NULL) {
     goto fail; //String
     }
     }
@@ -135,7 +121,7 @@ cJSON *tenant_unit_create_dto_convertToJSON(tenant_unit_create_dto_t *tenant_uni
 
     // tenant_unit_create_dto->organization_profile_id
     if(tenant_unit_create_dto->organization_profile_id) {
-    if(cJSON_AddStringToObject(item, "organizationProfileID", tenant_unit_create_dto->organization_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "organizationProfileId", tenant_unit_create_dto->organization_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -143,7 +129,7 @@ cJSON *tenant_unit_create_dto_convertToJSON(tenant_unit_create_dto_t *tenant_uni
 
     // tenant_unit_create_dto->parent_business_unit_id
     if(tenant_unit_create_dto->parent_business_unit_id) {
-    if(cJSON_AddStringToObject(item, "parentBusinessUnitID", tenant_unit_create_dto->parent_business_unit_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentBusinessUnitId", tenant_unit_create_dto->parent_business_unit_id) == NULL) {
     goto fail; //String
     }
     }
@@ -205,17 +191,8 @@ tenant_unit_create_dto_t *tenant_unit_create_dto_parseFromJSON(cJSON *tenant_uni
     }
     }
 
-    // tenant_unit_create_dto->business_unit_qualified_name
-    cJSON *business_unit_qualified_name = cJSON_GetObjectItemCaseSensitive(tenant_unit_create_dtoJSON, "businessUnitQualifiedName");
-    if (business_unit_qualified_name) { 
-    if(!cJSON_IsString(business_unit_qualified_name) && !cJSON_IsNull(business_unit_qualified_name))
-    {
-    goto end; //String
-    }
-    }
-
     // tenant_unit_create_dto->country_id
-    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(tenant_unit_create_dtoJSON, "countryID");
+    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(tenant_unit_create_dtoJSON, "countryId");
     if (country_id) { 
     if(!cJSON_IsString(country_id) && !cJSON_IsNull(country_id))
     {
@@ -224,7 +201,7 @@ tenant_unit_create_dto_t *tenant_unit_create_dto_parseFromJSON(cJSON *tenant_uni
     }
 
     // tenant_unit_create_dto->organization_profile_id
-    cJSON *organization_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_unit_create_dtoJSON, "organizationProfileID");
+    cJSON *organization_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_unit_create_dtoJSON, "organizationProfileId");
     if (organization_profile_id) { 
     if(!cJSON_IsString(organization_profile_id) && !cJSON_IsNull(organization_profile_id))
     {
@@ -233,7 +210,7 @@ tenant_unit_create_dto_t *tenant_unit_create_dto_parseFromJSON(cJSON *tenant_uni
     }
 
     // tenant_unit_create_dto->parent_business_unit_id
-    cJSON *parent_business_unit_id = cJSON_GetObjectItemCaseSensitive(tenant_unit_create_dtoJSON, "parentBusinessUnitID");
+    cJSON *parent_business_unit_id = cJSON_GetObjectItemCaseSensitive(tenant_unit_create_dtoJSON, "parentBusinessUnitId");
     if (parent_business_unit_id) { 
     if(!cJSON_IsString(parent_business_unit_id) && !cJSON_IsNull(parent_business_unit_id))
     {
@@ -248,7 +225,6 @@ tenant_unit_create_dto_t *tenant_unit_create_dto_parseFromJSON(cJSON *tenant_uni
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         disabled ? disabled->valueint : 0,
-        business_unit_qualified_name && !cJSON_IsNull(business_unit_qualified_name) ? strdup(business_unit_qualified_name->valuestring) : NULL,
         country_id && !cJSON_IsNull(country_id) ? strdup(country_id->valuestring) : NULL,
         organization_profile_id && !cJSON_IsNull(organization_profile_id) ? strdup(organization_profile_id->valuestring) : NULL,
         parent_business_unit_id && !cJSON_IsNull(parent_business_unit_id) ? strdup(parent_business_unit_id->valuestring) : NULL

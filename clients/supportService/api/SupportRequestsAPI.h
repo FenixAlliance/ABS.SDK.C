@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/support_request_attachment_create_dto.h"
 #include "../model/support_request_attachment_dto_envelope.h"
 #include "../model/support_request_attachment_dto_list_envelope.h"
@@ -88,6 +89,14 @@ SupportRequestsAPI_getSupportRequestsAsync(apiClient_t *apiClient, char *tenantI
 //
 int32_envelope_t*
 SupportRequestsAPI_getSupportRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a support request
+//
+// Partially updates an existing support request by its unique identifier.
+//
+empty_envelope_t*
+SupportRequestsAPI_patchSupportRequestAsync(apiClient_t *apiClient, char *tenantId, char *supportRequestId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Add an attachment to a support request

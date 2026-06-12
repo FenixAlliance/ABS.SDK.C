@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ItemShippingPoliciesAPI_getItemShippingPoliciesAsync**](ItemShippingPoliciesAPI.md#ItemShippingPoliciesAPI_getItemShippingPoliciesAsync) | **GET** /api/v2/ShipmentsService/ItemShippingPolicies | Get all item shipping policies
 [**ItemShippingPoliciesAPI_getItemShippingPoliciesCountAsync**](ItemShippingPoliciesAPI.md#ItemShippingPoliciesAPI_getItemShippingPoliciesCountAsync) | **GET** /api/v2/ShipmentsService/ItemShippingPolicies/Count | Get item shipping policies count
 [**ItemShippingPoliciesAPI_getItemShippingPolicyByIdAsync**](ItemShippingPoliciesAPI.md#ItemShippingPoliciesAPI_getItemShippingPolicyByIdAsync) | **GET** /api/v2/ShipmentsService/ItemShippingPolicies/{policyId} | Get item shipping policy by ID
+[**ItemShippingPoliciesAPI_patchItemShippingPolicyAsync**](ItemShippingPoliciesAPI.md#ItemShippingPoliciesAPI_patchItemShippingPolicyAsync) | **PATCH** /api/v2/ShipmentsService/ItemShippingPolicies/{policyId} | Patch an item shipping policy
 [**ItemShippingPoliciesAPI_updateItemShippingPolicyAsync**](ItemShippingPoliciesAPI.md#ItemShippingPoliciesAPI_updateItemShippingPolicyAsync) | **PUT** /api/v2/ShipmentsService/ItemShippingPolicies/{policyId} | Update an item shipping policy
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemShippingPoliciesAPI_patchItemShippingPolicyAsync**
+```c
+// Patch an item shipping policy
+//
+// Partially updates an existing item shipping policy using JSON Patch.
+//
+empty_envelope_t* ItemShippingPoliciesAPI_patchItemShippingPolicyAsync(apiClient_t *apiClient, char *tenantId, char *policyId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**policyId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

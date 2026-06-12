@@ -78,6 +78,7 @@ set(SRCS
     model/location_dto_list_envelope.c
     model/location_update_dto.c
     model/login_request.c
+    model/operation.c
     model/order_dto.c
     model/order_dto_list_envelope.c
     model/payment_chargeback_dto.c
@@ -147,6 +148,7 @@ set(HDRS
     model/location_dto_list_envelope.h
     model/location_update_dto.h
     model/login_request.h
+    model/operation.h
     model/order_dto.h
     model/order_dto_list_envelope.h
     model/payment_chargeback_dto.h

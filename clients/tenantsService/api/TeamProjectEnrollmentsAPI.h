@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_team_project_enrollment_create_dto.h"
 #include "../model/tenant_team_project_enrollment_dto_envelope.h"
 #include "../model/tenant_team_project_enrollment_dto_list_envelope.h"
@@ -52,6 +53,14 @@ TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollments(apiClient_t *apiClient
 //
 int32_envelope_t*
 TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant team project enrollment
+//
+// Patch a tenant team project enrollment
+//
+empty_envelope_t*
+TeamProjectEnrollmentsAPI_patchTenantTeamProjectEnrollment(apiClient_t *apiClient, char *tenantId, char *tenantTeamProjectEnrollmentId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant team project enrollment

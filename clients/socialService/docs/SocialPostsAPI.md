@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**SocialPostsAPI_getSocialPostReactionsCountAsync**](SocialPostsAPI.md#SocialPostsAPI_getSocialPostReactionsCountAsync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Reactions/Count | Count social post reactions
 [**SocialPostsAPI_getSocialPostsAsync**](SocialPostsAPI.md#SocialPostsAPI_getSocialPostsAsync) | **GET** /api/v2/SocialService/SocialPosts | Get social posts
 [**SocialPostsAPI_getSocialPostsCountAsync**](SocialPostsAPI.md#SocialPostsAPI_getSocialPostsCountAsync) | **GET** /api/v2/SocialService/SocialPosts/Count | Count social posts
+[**SocialPostsAPI_patchSocialPostAsync**](SocialPostsAPI.md#SocialPostsAPI_patchSocialPostAsync) | **PATCH** /api/v2/SocialService/SocialPosts/{socialPostId} | Patch a social post
 [**SocialPostsAPI_updateSocialPostAsync**](SocialPostsAPI.md#SocialPostsAPI_updateSocialPostAsync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId} | Update a social post
 [**SocialPostsAPI_updateSocialPostAttachmentAsync**](SocialPostsAPI.md#SocialPostsAPI_updateSocialPostAttachmentAsync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments/{attachmentId} | Update a social post attachment
 [**SocialPostsAPI_updateSocialPostCommentAsync**](SocialPostsAPI.md#SocialPostsAPI_updateSocialPostCommentAsync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId} | Update a social post comment
@@ -709,6 +710,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SocialPostsAPI_patchSocialPostAsync**
+```c
+// Patch a social post
+//
+// Partially updates an existing social post by its ID using a JSON Patch document.
+//
+empty_envelope_t* SocialPostsAPI_patchSocialPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialPostId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**socialProfileId** | **char \*** |  | 
+**socialPostId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

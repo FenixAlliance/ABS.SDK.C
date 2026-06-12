@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_size_create_dto.h"
 #include "../model/tenant_size_dto_envelope.h"
 #include "../model/tenant_size_dto_list_envelope.h"
@@ -52,6 +53,14 @@ SizesAPI_getTenantSizes(apiClient_t *apiClient, char *tenantId, char *api_versio
 //
 int32_envelope_t*
 SizesAPI_getTenantSizesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant size
+//
+// Patch a tenant size
+//
+empty_envelope_t*
+SizesAPI_patchTenantSize(apiClient_t *apiClient, char *tenantId, char *tenantSizeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant size

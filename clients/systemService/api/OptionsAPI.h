@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/option_create_dto.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
@@ -60,6 +61,14 @@ OptionsAPI_getSystemOptions(apiClient_t *apiClient, char *portalId, char *api_ve
 //
 int32_envelope_t*
 OptionsAPI_getSystemOptionsCount(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version);
+
+
+// Partially update a system option
+//
+// Partially update a system option using a JSON Patch document
+//
+empty_envelope_t*
+OptionsAPI_patchSystemOption(apiClient_t *apiClient, char *optionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a system option

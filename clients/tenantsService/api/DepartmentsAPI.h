@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_department_create_dto.h"
 #include "../model/tenant_department_dto_envelope.h"
 #include "../model/tenant_department_dto_list_envelope.h"
@@ -52,6 +53,14 @@ DepartmentsAPI_getTenantDepartments(apiClient_t *apiClient, char *tenantId, char
 //
 int32_envelope_t*
 DepartmentsAPI_getTenantDepartmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant department
+//
+// Patch a tenant department
+//
+empty_envelope_t*
+DepartmentsAPI_patchTenantDepartmentAsync(apiClient_t *apiClient, char *tenantId, char *tenantDepartmentId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant department

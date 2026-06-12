@@ -101,7 +101,7 @@ cJSON *support_ticket_conversation_create_dto_convertToJSON(support_ticket_conve
 
     // support_ticket_conversation_create_dto->social_profile_id
     if(support_ticket_conversation_create_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", support_ticket_conversation_create_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", support_ticket_conversation_create_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -164,7 +164,7 @@ support_ticket_conversation_create_dto_t *support_ticket_conversation_create_dto
     }
 
     // support_ticket_conversation_create_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(support_ticket_conversation_create_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(support_ticket_conversation_create_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {

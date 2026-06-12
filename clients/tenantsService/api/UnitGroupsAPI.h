@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/unit_create_dto.h"
 #include "../model/unit_dto_envelope.h"
 #include "../model/unit_dto_list_envelope.h"
@@ -96,6 +97,22 @@ UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGr
 //
 int32_envelope_t*
 UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version);
+
+
+// Patch a unit within a unit group
+//
+// Partially updates an existing unit within a specific unit group.
+//
+empty_envelope_t*
+UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *unitId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a unit group
+//
+// Partially updates an existing unit group by its unique identifier.
+//
+empty_envelope_t*
+UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a unit within a unit group

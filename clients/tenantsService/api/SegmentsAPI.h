@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_segment_create_dto.h"
 #include "../model/tenant_segment_dto_envelope.h"
 #include "../model/tenant_segment_dto_list_envelope.h"
@@ -52,6 +53,14 @@ SegmentsAPI_getTenantSegments(apiClient_t *apiClient, char *tenantId, char *api_
 //
 int32_envelope_t*
 SegmentsAPI_getTenantSegmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant segment
+//
+// Patch a tenant segment
+//
+empty_envelope_t*
+SegmentsAPI_patchTenantSegment(apiClient_t *apiClient, char *tenantId, char *tenantSegmentId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant segment

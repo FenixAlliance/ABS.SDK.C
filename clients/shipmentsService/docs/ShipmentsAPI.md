@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ShipmentsAPI_getShipmentByIdAsync**](ShipmentsAPI.md#ShipmentsAPI_getShipmentByIdAsync) | **GET** /api/v2/ShipmentsService/Shipments/{shipmentId} | Get shipment by ID
 [**ShipmentsAPI_getShipmentsAsync**](ShipmentsAPI.md#ShipmentsAPI_getShipmentsAsync) | **GET** /api/v2/ShipmentsService/Shipments | Get all shipments
 [**ShipmentsAPI_getShipmentsCountAsync**](ShipmentsAPI.md#ShipmentsAPI_getShipmentsCountAsync) | **GET** /api/v2/ShipmentsService/Shipments/Count | Get shipments count
+[**ShipmentsAPI_patchShipmentAsync**](ShipmentsAPI.md#ShipmentsAPI_patchShipmentAsync) | **PATCH** /api/v2/ShipmentsService/Shipments/{shipmentId} | Patch a shipment
 [**ShipmentsAPI_updateShipmentAsync**](ShipmentsAPI.md#ShipmentsAPI_updateShipmentAsync) | **PUT** /api/v2/ShipmentsService/Shipments/{shipmentId} | Update a shipment
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ShipmentsAPI_patchShipmentAsync**
+```c
+// Patch a shipment
+//
+// Partially updates an existing shipment using JSON Patch.
+//
+empty_envelope_t* ShipmentsAPI_patchShipmentAsync(apiClient_t *apiClient, char *tenantId, char *shipmentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**shipmentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

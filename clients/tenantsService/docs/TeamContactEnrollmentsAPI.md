@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**TeamContactEnrollmentsAPI_getTenantTeamContactEnrollmentById**](TeamContactEnrollmentsAPI.md#TeamContactEnrollmentsAPI_getTenantTeamContactEnrollmentById) | **GET** /api/v2/TenantsService/TeamContactEnrollments/{tenantTeamContactEnrollmentId} | Retrieve a single tenant team contact enrollment by its ID
 [**TeamContactEnrollmentsAPI_getTenantTeamContactEnrollments**](TeamContactEnrollmentsAPI.md#TeamContactEnrollmentsAPI_getTenantTeamContactEnrollments) | **GET** /api/v2/TenantsService/TeamContactEnrollments | Retrieve a list of tenant team contact enrollments
 [**TeamContactEnrollmentsAPI_getTenantTeamContactEnrollmentsCount**](TeamContactEnrollmentsAPI.md#TeamContactEnrollmentsAPI_getTenantTeamContactEnrollmentsCount) | **GET** /api/v2/TenantsService/TeamContactEnrollments/Count | Get the count of tenant team contact enrollments
+[**TeamContactEnrollmentsAPI_patchTenantTeamContactEnrollment**](TeamContactEnrollmentsAPI.md#TeamContactEnrollmentsAPI_patchTenantTeamContactEnrollment) | **PATCH** /api/v2/TenantsService/TeamContactEnrollments/{tenantTeamContactEnrollmentId} | Patch a tenant team contact enrollment
 [**TeamContactEnrollmentsAPI_updateTenantTeamContactEnrollment**](TeamContactEnrollmentsAPI.md#TeamContactEnrollmentsAPI_updateTenantTeamContactEnrollment) | **PUT** /api/v2/TenantsService/TeamContactEnrollments/{tenantTeamContactEnrollmentId} | Update a tenant team contact enrollment
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TeamContactEnrollmentsAPI_patchTenantTeamContactEnrollment**
+```c
+// Patch a tenant team contact enrollment
+//
+// Patch a tenant team contact enrollment
+//
+empty_envelope_t* TeamContactEnrollmentsAPI_patchTenantTeamContactEnrollment(apiClient_t *apiClient, char *tenantId, char *tenantTeamContactEnrollmentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**tenantTeamContactEnrollmentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

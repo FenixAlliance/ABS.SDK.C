@@ -13,10 +13,10 @@ warranty_request_dto_t *warranty_request_dto_create(
     int approved,
     char *approved_timestamp,
     char *tenant_id,
-    char *business_profile_record_id,
+    char *enrollment_id,
     char *support_entitlement_id,
     char *contact_id,
-    char *account_holder_id,
+    char *user_id,
     char *warranty_policy_id
     ) {
     warranty_request_dto_t *warranty_request_dto_local_var = malloc(sizeof(warranty_request_dto_t));
@@ -30,10 +30,10 @@ warranty_request_dto_t *warranty_request_dto_create(
     warranty_request_dto_local_var->approved = approved;
     warranty_request_dto_local_var->approved_timestamp = approved_timestamp;
     warranty_request_dto_local_var->tenant_id = tenant_id;
-    warranty_request_dto_local_var->business_profile_record_id = business_profile_record_id;
+    warranty_request_dto_local_var->enrollment_id = enrollment_id;
     warranty_request_dto_local_var->support_entitlement_id = support_entitlement_id;
     warranty_request_dto_local_var->contact_id = contact_id;
-    warranty_request_dto_local_var->account_holder_id = account_holder_id;
+    warranty_request_dto_local_var->user_id = user_id;
     warranty_request_dto_local_var->warranty_policy_id = warranty_policy_id;
 
     return warranty_request_dto_local_var;
@@ -69,9 +69,9 @@ void warranty_request_dto_free(warranty_request_dto_t *warranty_request_dto) {
         free(warranty_request_dto->tenant_id);
         warranty_request_dto->tenant_id = NULL;
     }
-    if (warranty_request_dto->business_profile_record_id) {
-        free(warranty_request_dto->business_profile_record_id);
-        warranty_request_dto->business_profile_record_id = NULL;
+    if (warranty_request_dto->enrollment_id) {
+        free(warranty_request_dto->enrollment_id);
+        warranty_request_dto->enrollment_id = NULL;
     }
     if (warranty_request_dto->support_entitlement_id) {
         free(warranty_request_dto->support_entitlement_id);
@@ -81,9 +81,9 @@ void warranty_request_dto_free(warranty_request_dto_t *warranty_request_dto) {
         free(warranty_request_dto->contact_id);
         warranty_request_dto->contact_id = NULL;
     }
-    if (warranty_request_dto->account_holder_id) {
-        free(warranty_request_dto->account_holder_id);
-        warranty_request_dto->account_holder_id = NULL;
+    if (warranty_request_dto->user_id) {
+        free(warranty_request_dto->user_id);
+        warranty_request_dto->user_id = NULL;
     }
     if (warranty_request_dto->warranty_policy_id) {
         free(warranty_request_dto->warranty_policy_id);
@@ -151,9 +151,9 @@ cJSON *warranty_request_dto_convertToJSON(warranty_request_dto_t *warranty_reque
     }
 
 
-    // warranty_request_dto->business_profile_record_id
-    if(warranty_request_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordId", warranty_request_dto->business_profile_record_id) == NULL) {
+    // warranty_request_dto->enrollment_id
+    if(warranty_request_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", warranty_request_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -175,9 +175,9 @@ cJSON *warranty_request_dto_convertToJSON(warranty_request_dto_t *warranty_reque
     }
 
 
-    // warranty_request_dto->account_holder_id
-    if(warranty_request_dto->account_holder_id) {
-    if(cJSON_AddStringToObject(item, "accountHolderId", warranty_request_dto->account_holder_id) == NULL) {
+    // warranty_request_dto->user_id
+    if(warranty_request_dto->user_id) {
+    if(cJSON_AddStringToObject(item, "userId", warranty_request_dto->user_id) == NULL) {
     goto fail; //String
     }
     }
@@ -265,10 +265,10 @@ warranty_request_dto_t *warranty_request_dto_parseFromJSON(cJSON *warranty_reque
     }
     }
 
-    // warranty_request_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(warranty_request_dtoJSON, "businessProfileRecordId");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // warranty_request_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(warranty_request_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -292,10 +292,10 @@ warranty_request_dto_t *warranty_request_dto_parseFromJSON(cJSON *warranty_reque
     }
     }
 
-    // warranty_request_dto->account_holder_id
-    cJSON *account_holder_id = cJSON_GetObjectItemCaseSensitive(warranty_request_dtoJSON, "accountHolderId");
-    if (account_holder_id) { 
-    if(!cJSON_IsString(account_holder_id) && !cJSON_IsNull(account_holder_id))
+    // warranty_request_dto->user_id
+    cJSON *user_id = cJSON_GetObjectItemCaseSensitive(warranty_request_dtoJSON, "userId");
+    if (user_id) { 
+    if(!cJSON_IsString(user_id) && !cJSON_IsNull(user_id))
     {
     goto end; //String
     }
@@ -319,10 +319,10 @@ warranty_request_dto_t *warranty_request_dto_parseFromJSON(cJSON *warranty_reque
         approved ? approved->valueint : 0,
         approved_timestamp && !cJSON_IsNull(approved_timestamp) ? strdup(approved_timestamp->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         support_entitlement_id && !cJSON_IsNull(support_entitlement_id) ? strdup(support_entitlement_id->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
-        account_holder_id && !cJSON_IsNull(account_holder_id) ? strdup(account_holder_id->valuestring) : NULL,
+        user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL,
         warranty_policy_id && !cJSON_IsNull(warranty_policy_id) ? strdup(warranty_policy_id->valuestring) : NULL
         );
 

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**StoresAPI_deleteStoreAsync**](StoresAPI.md#StoresAPI_deleteStoreAsync) | **DELETE** /api/v2/SalesService/Stores/{storeId} | Delete a store
 [**StoresAPI_getStoreAsync**](StoresAPI.md#StoresAPI_getStoreAsync) | **GET** /api/v2/SalesService/Stores/{storeId} | Get store by ID
 [**StoresAPI_getStoresAsync**](StoresAPI.md#StoresAPI_getStoresAsync) | **GET** /api/v2/SalesService/Stores | Get stores
+[**StoresAPI_patchStoreAsync**](StoresAPI.md#StoresAPI_patchStoreAsync) | **PATCH** /api/v2/SalesService/Stores/{storeId} | Patch a store
 [**StoresAPI_updateStoreAsync**](StoresAPI.md#StoresAPI_updateStoreAsync) | **PUT** /api/v2/SalesService/Stores/{storeId} | Update a store
 
 
@@ -166,6 +167,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **StoresAPI_patchStoreAsync**
+```c
+// Patch a store
+//
+// Partially updates an existing store using a JSON Patch document.
+//
+empty_envelope_t* StoresAPI_patchStoreAsync(apiClient_t *apiClient, char *tenantId, char *storeId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**storeId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

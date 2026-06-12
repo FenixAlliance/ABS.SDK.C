@@ -105,7 +105,7 @@ cJSON *social_group_create_dto_convertToJSON(social_group_create_dto_t *social_g
 
     // social_group_create_dto->social_profile_id
     if(social_group_create_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", social_group_create_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", social_group_create_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -168,7 +168,7 @@ social_group_create_dto_t *social_group_create_dto_parseFromJSON(cJSON *social_g
     }
 
     // social_group_create_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(social_group_create_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(social_group_create_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {

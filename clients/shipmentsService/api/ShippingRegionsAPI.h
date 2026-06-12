@@ -5,8 +5,10 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/shipping_region_create_dto.h"
 #include "../model/shipping_region_dto_envelope.h"
 #include "../model/shipping_region_dto_list_envelope.h"
@@ -51,6 +53,14 @@ ShippingRegionsAPI_getShippingRegionsAsync(apiClient_t *apiClient, char *tenantI
 //
 int32_envelope_t*
 ShippingRegionsAPI_getShippingRegionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a shipping region
+//
+// Partially updates an existing shipping region using JSON Patch.
+//
+empty_envelope_t*
+ShippingRegionsAPI_patchShippingRegionAsync(apiClient_t *apiClient, char *tenantId, char *regionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a shipping region

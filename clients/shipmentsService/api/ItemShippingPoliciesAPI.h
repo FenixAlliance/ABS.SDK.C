@@ -5,12 +5,14 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_shipping_policy_create_dto.h"
 #include "../model/item_shipping_policy_dto_envelope.h"
 #include "../model/item_shipping_policy_dto_list_envelope.h"
 #include "../model/item_shipping_policy_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create an item shipping policy
@@ -51,6 +53,14 @@ ItemShippingPoliciesAPI_getItemShippingPoliciesCountAsync(apiClient_t *apiClient
 //
 item_shipping_policy_dto_envelope_t*
 ItemShippingPoliciesAPI_getItemShippingPolicyByIdAsync(apiClient_t *apiClient, char *tenantId, char *policyId, char *api_version, char *x_api_version);
+
+
+// Patch an item shipping policy
+//
+// Partially updates an existing item shipping policy using JSON Patch.
+//
+empty_envelope_t*
+ItemShippingPoliciesAPI_patchItemShippingPolicyAsync(apiClient_t *apiClient, char *tenantId, char *policyId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item shipping policy

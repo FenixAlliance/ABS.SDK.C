@@ -5,8 +5,10 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/shipping_courier_create_dto.h"
 #include "../model/shipping_courier_dto_envelope.h"
 #include "../model/shipping_courier_dto_list_envelope.h"
@@ -51,6 +53,14 @@ ShippingCouriersAPI_getShippingCouriersAsync(apiClient_t *apiClient, char *tenan
 //
 int32_envelope_t*
 ShippingCouriersAPI_getShippingCouriersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a shipping courier
+//
+// Partially updates an existing shipping courier using JSON Patch.
+//
+empty_envelope_t*
+ShippingCouriersAPI_patchShippingCourierAsync(apiClient_t *apiClient, char *tenantId, char *courierId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a shipping courier

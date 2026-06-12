@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/option_create_dto.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
@@ -52,6 +53,14 @@ ContactOptionsAPI_getSystemContactOptions(apiClient_t *apiClient, char *contactI
 //
 int32_envelope_t*
 ContactOptionsAPI_getSystemContactOptionsCount(apiClient_t *apiClient, char *contactId, char *portalId, char *api_version, char *x_api_version);
+
+
+// Partially update a contact option (admin)
+//
+// Admin endpoint to partially update an option for any contact using a JSON Patch document
+//
+empty_envelope_t*
+ContactOptionsAPI_patchSystemContactOption(apiClient_t *apiClient, char *contactId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a contact option (admin)

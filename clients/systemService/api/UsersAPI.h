@@ -11,6 +11,7 @@
 #include "../model/extended_user_dto_envelope.h"
 #include "../model/extended_user_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/user_create_dto.h"
 #include "../model/user_dto_envelope.h"
 #include "../model/user_dto_list_envelope.h"
@@ -95,6 +96,14 @@ UsersAPI_getUsersAsync(apiClient_t *apiClient, char *api_version, char *x_api_ve
 //
 int32_envelope_t*
 UsersAPI_getUsersCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+
+
+// Partially update a user
+//
+// This action is only available for global administrators.
+//
+empty_envelope_t*
+UsersAPI_patchAccountHolderAsync(apiClient_t *apiClient, char *userId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a user

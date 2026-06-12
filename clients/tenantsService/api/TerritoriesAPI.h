@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_territory_create_dto.h"
 #include "../model/tenant_territory_dto_envelope.h"
 #include "../model/tenant_territory_dto_list_envelope.h"
@@ -52,6 +53,14 @@ TerritoriesAPI_getTenantTerritoriesCount(apiClient_t *apiClient, char *tenantId,
 //
 tenant_territory_dto_envelope_t*
 TerritoriesAPI_getTenantTerritoryById(apiClient_t *apiClient, char *tenantId, char *tenantTerritoryId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant territory
+//
+// Patch a tenant territory
+//
+empty_envelope_t*
+TerritoriesAPI_patchTenantTerritory(apiClient_t *apiClient, char *tenantId, char *tenantTerritoryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant territory

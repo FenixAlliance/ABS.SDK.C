@@ -6,7 +6,9 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
+#include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/warranty_request_create_dto.h"
 #include "../model/warranty_request_dto_envelope.h"
 #include "../model/warranty_request_dto_list_envelope.h"
@@ -41,6 +43,14 @@ WarrantyRequestsAPI_getWarrantyRequestsAsync(apiClient_t *apiClient, char *tenan
 //
 int32_envelope_t*
 WarrantyRequestsAPI_getWarrantyRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a warranty request
+//
+// Partially updates an existing warranty request by its unique identifier.
+//
+empty_envelope_t*
+WarrantyRequestsAPI_patchWarrantyRequestAsync(apiClient_t *apiClient, char *tenantId, char *warrantyRequestId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a warranty request

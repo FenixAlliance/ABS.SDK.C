@@ -7,7 +7,8 @@
 
 tenant_territory_update_dto_t *tenant_territory_update_dto_create(
     char *name,
-    char *description
+    char *description,
+    char *parent_territory_id
     ) {
     tenant_territory_update_dto_t *tenant_territory_update_dto_local_var = malloc(sizeof(tenant_territory_update_dto_t));
     if (!tenant_territory_update_dto_local_var) {
@@ -15,6 +16,7 @@ tenant_territory_update_dto_t *tenant_territory_update_dto_create(
     }
     tenant_territory_update_dto_local_var->name = name;
     tenant_territory_update_dto_local_var->description = description;
+    tenant_territory_update_dto_local_var->parent_territory_id = parent_territory_id;
 
     return tenant_territory_update_dto_local_var;
 }
@@ -33,6 +35,10 @@ void tenant_territory_update_dto_free(tenant_territory_update_dto_t *tenant_terr
         free(tenant_territory_update_dto->description);
         tenant_territory_update_dto->description = NULL;
     }
+    if (tenant_territory_update_dto->parent_territory_id) {
+        free(tenant_territory_update_dto->parent_territory_id);
+        tenant_territory_update_dto->parent_territory_id = NULL;
+    }
     free(tenant_territory_update_dto);
 }
 
@@ -50,6 +56,14 @@ cJSON *tenant_territory_update_dto_convertToJSON(tenant_territory_update_dto_t *
     // tenant_territory_update_dto->description
     if(tenant_territory_update_dto->description) {
     if(cJSON_AddStringToObject(item, "description", tenant_territory_update_dto->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // tenant_territory_update_dto->parent_territory_id
+    if(tenant_territory_update_dto->parent_territory_id) {
+    if(cJSON_AddStringToObject(item, "parentTerritoryId", tenant_territory_update_dto->parent_territory_id) == NULL) {
     goto fail; //String
     }
     }
@@ -84,10 +98,20 @@ tenant_territory_update_dto_t *tenant_territory_update_dto_parseFromJSON(cJSON *
     }
     }
 
+    // tenant_territory_update_dto->parent_territory_id
+    cJSON *parent_territory_id = cJSON_GetObjectItemCaseSensitive(tenant_territory_update_dtoJSON, "parentTerritoryId");
+    if (parent_territory_id) { 
+    if(!cJSON_IsString(parent_territory_id) && !cJSON_IsNull(parent_territory_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     tenant_territory_update_dto_local_var = tenant_territory_update_dto_create (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        parent_territory_id && !cJSON_IsNull(parent_territory_id) ? strdup(parent_territory_id->valuestring) : NULL
         );
 
     return tenant_territory_update_dto_local_var;

@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**SalesLiteraturesAPI_getExtendedSalesLiteraturesAsync**](SalesLiteraturesAPI.md#SalesLiteraturesAPI_getExtendedSalesLiteraturesAsync) | **GET** /api/v2/SalesService/SalesLiteratures/Extended | Get extended sales literatures
 [**SalesLiteraturesAPI_getSalesLiteratureAsync**](SalesLiteraturesAPI.md#SalesLiteraturesAPI_getSalesLiteratureAsync) | **GET** /api/v2/SalesService/SalesLiteratures/{salesLiteratureId} | Get sales literature by ID
 [**SalesLiteraturesAPI_getSalesLiteraturesAsync**](SalesLiteraturesAPI.md#SalesLiteraturesAPI_getSalesLiteraturesAsync) | **GET** /api/v2/SalesService/SalesLiteratures | Get sales literatures
+[**SalesLiteraturesAPI_patchSalesLiteratureAsync**](SalesLiteraturesAPI.md#SalesLiteraturesAPI_patchSalesLiteratureAsync) | **PATCH** /api/v2/SalesService/SalesLiteratures/{salesLiteratureId} | Patch a sales literature
 [**SalesLiteraturesAPI_updateSalesLiteratureAsync**](SalesLiteraturesAPI.md#SalesLiteraturesAPI_updateSalesLiteratureAsync) | **PUT** /api/v2/SalesService/SalesLiteratures/{salesLiteratureId} | Update a sales literature
 
 
@@ -198,6 +199,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SalesLiteraturesAPI_patchSalesLiteratureAsync**
+```c
+// Patch a sales literature
+//
+// Partially updates an existing sales literature using a JSON Patch document.
+//
+empty_envelope_t* SalesLiteraturesAPI_patchSalesLiteratureAsync(apiClient_t *apiClient, char *tenantId, char *salesLiteratureId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**salesLiteratureId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

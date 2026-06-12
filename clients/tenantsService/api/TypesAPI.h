@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_type_create_dto.h"
 #include "../model/tenant_type_dto_envelope.h"
 #include "../model/tenant_type_dto_list_envelope.h"
@@ -52,6 +53,14 @@ TypesAPI_getTenantTypes(apiClient_t *apiClient, char *tenantId, char *api_versio
 //
 int32_envelope_t*
 TypesAPI_getTenantTypesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant type
+//
+// Patch a tenant type
+//
+empty_envelope_t*
+TypesAPI_patchTenantType(apiClient_t *apiClient, char *tenantId, char *tenantTypeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant type

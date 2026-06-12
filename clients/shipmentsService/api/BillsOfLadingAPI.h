@@ -16,6 +16,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a bill of lading
@@ -96,6 +97,22 @@ BillsOfLadingAPI_getBillsOfLadingAsync(apiClient_t *apiClient, char *tenantId, c
 //
 int32_envelope_t*
 BillsOfLadingAPI_getBillsOfLadingCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a bill of lading
+//
+// Partially updates an existing bill of lading using JSON Patch.
+//
+empty_envelope_t*
+BillsOfLadingAPI_patchBillOfLadingAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a bill of lading line
+//
+// Partially updates an existing line on a bill of lading using JSON Patch.
+//
+empty_envelope_t*
+BillsOfLadingAPI_patchBillOfLadingLineAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a bill of lading

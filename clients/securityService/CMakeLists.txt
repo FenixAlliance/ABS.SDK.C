@@ -82,6 +82,7 @@ set(SRCS
     model/o_auth_authorization_dto.c
     model/o_auth_authorization_dto_envelope.c
     model/o_auth_authorization_dto_list_envelope.c
+    model/operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -152,6 +153,7 @@ set(HDRS
     model/o_auth_authorization_dto.h
     model/o_auth_authorization_dto_envelope.h
     model/o_auth_authorization_dto_list_envelope.h
+    model/operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

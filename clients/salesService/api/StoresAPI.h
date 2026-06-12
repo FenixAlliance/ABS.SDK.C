@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/store_create_dto.h"
 #include "../model/store_dto_envelope.h"
 #include "../model/store_dto_list_envelope.h"
@@ -52,6 +53,14 @@ StoresAPI_getStoreAsync(apiClient_t *apiClient, char *tenantId, char *storeId);
 //
 store_dto_list_envelope_t*
 StoresAPI_getStoresAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Patch a store
+//
+// Partially updates an existing store using a JSON Patch document.
+//
+empty_envelope_t*
+StoresAPI_patchStoreAsync(apiClient_t *apiClient, char *tenantId, char *storeId, list_t *operation);
 
 
 // Update a store

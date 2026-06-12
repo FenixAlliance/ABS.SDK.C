@@ -21,7 +21,6 @@ typedef struct tenant_segment_create_dto_t tenant_segment_create_dto_t;
 typedef struct tenant_segment_create_dto_t {
     char *id; // string
     char *timestamp; //date time
-    char *revenue; // string
     double min_employees; //numeric
     double max_employees; //numeric
 
@@ -30,7 +29,6 @@ typedef struct tenant_segment_create_dto_t {
 tenant_segment_create_dto_t *tenant_segment_create_dto_create(
     char *id,
     char *timestamp,
-    char *revenue,
     double min_employees,
     double max_employees
 );

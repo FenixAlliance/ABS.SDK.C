@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ShippingZonesAPI_getShippingZoneByIdAsync**](ShippingZonesAPI.md#ShippingZonesAPI_getShippingZoneByIdAsync) | **GET** /api/v2/ShipmentsService/ShippingZones/{zoneId} | Get shipping zone by ID
 [**ShippingZonesAPI_getShippingZonesAsync**](ShippingZonesAPI.md#ShippingZonesAPI_getShippingZonesAsync) | **GET** /api/v2/ShipmentsService/ShippingZones | Get all shipping zones
 [**ShippingZonesAPI_getShippingZonesCountAsync**](ShippingZonesAPI.md#ShippingZonesAPI_getShippingZonesCountAsync) | **GET** /api/v2/ShipmentsService/ShippingZones/Count | Get shipping zones count
+[**ShippingZonesAPI_patchShippingZoneAsync**](ShippingZonesAPI.md#ShippingZonesAPI_patchShippingZoneAsync) | **PATCH** /api/v2/ShipmentsService/ShippingZones/{zoneId} | Patch a shipping zone
 [**ShippingZonesAPI_updateShippingZoneAsync**](ShippingZonesAPI.md#ShippingZonesAPI_updateShippingZoneAsync) | **PUT** /api/v2/ShipmentsService/ShippingZones/{zoneId} | Update a shipping zone
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ShippingZonesAPI_patchShippingZoneAsync**
+```c
+// Patch a shipping zone
+//
+// Partially updates an existing shipping zone using JSON Patch.
+//
+empty_envelope_t* ShippingZonesAPI_patchShippingZoneAsync(apiClient_t *apiClient, char *tenantId, char *zoneId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**zoneId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

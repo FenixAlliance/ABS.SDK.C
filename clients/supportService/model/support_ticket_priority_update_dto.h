@@ -21,12 +21,14 @@ typedef struct support_ticket_priority_update_dto_t support_ticket_priority_upda
 typedef struct support_ticket_priority_update_dto_t {
     char *title; // string
     char *description; // string
+    char *support_entitlement_id; // string
 
 } support_ticket_priority_update_dto_t;
 
 support_ticket_priority_update_dto_t *support_ticket_priority_update_dto_create(
     char *title,
-    char *description
+    char *description,
+    char *support_entitlement_id
 );
 
 void support_ticket_priority_update_dto_free(support_ticket_priority_update_dto_t *support_ticket_priority_update_dto);

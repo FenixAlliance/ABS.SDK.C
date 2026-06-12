@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**MaintenanceVisitsAPI_getMaintenanceVisitAsync**](MaintenanceVisitsAPI.md#MaintenanceVisitsAPI_getMaintenanceVisitAsync) | **GET** /api/v2/SupportService/MaintenanceVisits/{maintenanceVisitId} | Retrieve a maintenance visit by ID
 [**MaintenanceVisitsAPI_getMaintenanceVisitsAsync**](MaintenanceVisitsAPI.md#MaintenanceVisitsAPI_getMaintenanceVisitsAsync) | **GET** /api/v2/SupportService/MaintenanceVisits | Retrieve maintenance visits
 [**MaintenanceVisitsAPI_getMaintenanceVisitsCountAsync**](MaintenanceVisitsAPI.md#MaintenanceVisitsAPI_getMaintenanceVisitsCountAsync) | **GET** /api/v2/SupportService/MaintenanceVisits/Count | Get maintenance visits count
+[**MaintenanceVisitsAPI_patchMaintenanceVisitAsync**](MaintenanceVisitsAPI.md#MaintenanceVisitsAPI_patchMaintenanceVisitAsync) | **PATCH** /api/v2/SupportService/MaintenanceVisits/{maintenanceVisitId} | Patch a maintenance visit
 [**MaintenanceVisitsAPI_updateMaintenanceVisitAsync**](MaintenanceVisitsAPI.md#MaintenanceVisitsAPI_updateMaintenanceVisitAsync) | **PUT** /api/v2/SupportService/MaintenanceVisits/{maintenanceVisitId} | Update a maintenance visit
 
 
@@ -166,6 +167,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **MaintenanceVisitsAPI_patchMaintenanceVisitAsync**
+```c
+// Patch a maintenance visit
+//
+// Partially updates an existing maintenance visit by its unique identifier.
+//
+empty_envelope_t* MaintenanceVisitsAPI_patchMaintenanceVisitAsync(apiClient_t *apiClient, char *tenantId, char *maintenanceVisitId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**maintenanceVisitId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

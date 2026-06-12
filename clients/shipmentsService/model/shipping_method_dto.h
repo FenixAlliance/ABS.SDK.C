@@ -35,7 +35,7 @@ typedef struct shipping_method_dto_t {
     int taxable; //boolean
     int tax_included; //boolean
     char *currency_id; // string
-    char *business_id; // string
+    char *tenant_id; // string
     shipmentsservice_shipping_method_dto_SHIPPINGCLASSCALCULATIONTYPE_e shipping_class_calculation_type; //enum
 
 } shipping_method_dto_t;
@@ -49,7 +49,7 @@ shipping_method_dto_t *shipping_method_dto_create(
     int taxable,
     int tax_included,
     char *currency_id,
-    char *business_id,
+    char *tenant_id,
     shipmentsservice_shipping_method_dto_SHIPPINGCLASSCALCULATIONTYPE_e shipping_class_calculation_type
 );
 

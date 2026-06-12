@@ -19,6 +19,8 @@ Method | HTTP request | Description
 [**QuotesAPI_getQuoteLinesCount**](QuotesAPI.md#QuotesAPI_getQuoteLinesCount) | **GET** /api/v2/QuotesService/Quotes/{quoteId}/Lines/Count | Get the count of quote lines.
 [**QuotesAPI_getQuotes**](QuotesAPI.md#QuotesAPI_getQuotes) | **GET** /api/v2/QuotesService/Quotes | Get a list of quotes.
 [**QuotesAPI_getQuotesCount**](QuotesAPI.md#QuotesAPI_getQuotesCount) | **GET** /api/v2/QuotesService/Quotes/Count | Get the count of quotes.
+[**QuotesAPI_patchQuoteAsync**](QuotesAPI.md#QuotesAPI_patchQuoteAsync) | **PATCH** /api/v2/QuotesService/Quotes/{quoteId} | Patch an existing quote.
+[**QuotesAPI_patchQuoteLineAsync**](QuotesAPI.md#QuotesAPI_patchQuoteLineAsync) | **PATCH** /api/v2/QuotesService/Quotes/{quoteId}/Lines/{quoteLineId} | Patch a quote line.
 [**QuotesAPI_previewQuoteEmailTemplate**](QuotesAPI.md#QuotesAPI_previewQuoteEmailTemplate) | **POST** /api/v2/QuotesService/Quotes/{quoteId}/Emails/Preview | Preview the rendered email for an invoice.
 [**QuotesAPI_quoteLineExists**](QuotesAPI.md#QuotesAPI_quoteLineExists) | **GET** /api/v2/QuotesService/Quotes/{quoteId}/Lines/Exists | Check if a quote line exists.
 [**QuotesAPI_reopenQuote**](QuotesAPI.md#QuotesAPI_reopenQuote) | **PUT** /api/v2/QuotesService/Quotes/{quoteId}/Reopen | Reopen a closed quote.
@@ -506,6 +508,73 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **QuotesAPI_patchQuoteAsync**
+```c
+// Patch an existing quote.
+//
+// Partially updates an existing quote for the specified tenant and quote ID using a JSON Patch document.
+//
+empty_envelope_t* QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**quoteId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **QuotesAPI_patchQuoteLineAsync**
+```c
+// Patch a quote line.
+//
+// Partially updates an existing quote line for the specified quote and tenant using a JSON Patch document.
+//
+empty_envelope_t* QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, char *quoteLineId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**quoteId** | **char \*** |  | 
+**quoteLineId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

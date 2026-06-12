@@ -26,7 +26,7 @@ typedef struct shipping_zone_dto_t {
     int everywhere; //boolean
     char *postal_codes; // string
     char *country_codes; // string
-    char *business_id; // string
+    char *tenant_id; // string
 
 } shipping_zone_dto_t;
 
@@ -38,7 +38,7 @@ shipping_zone_dto_t *shipping_zone_dto_create(
     int everywhere,
     char *postal_codes,
     char *country_codes,
-    char *business_id
+    char *tenant_id
 );
 
 void shipping_zone_dto_free(shipping_zone_dto_t *shipping_zone_dto);

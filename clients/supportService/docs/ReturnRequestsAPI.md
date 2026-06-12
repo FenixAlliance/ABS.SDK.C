@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ReturnRequestsAPI_getReturnRequestAsync**](ReturnRequestsAPI.md#ReturnRequestsAPI_getReturnRequestAsync) | **GET** /api/v2/SupportService/ReturnRequests/{returnRequestId} | Retrieve a return request by ID
 [**ReturnRequestsAPI_getReturnRequestsAsync**](ReturnRequestsAPI.md#ReturnRequestsAPI_getReturnRequestsAsync) | **GET** /api/v2/SupportService/ReturnRequests | Retrieve return requests
 [**ReturnRequestsAPI_getReturnRequestsCountAsync**](ReturnRequestsAPI.md#ReturnRequestsAPI_getReturnRequestsCountAsync) | **GET** /api/v2/SupportService/ReturnRequests/Count | Get return requests count
+[**ReturnRequestsAPI_patchReturnRequestAsync**](ReturnRequestsAPI.md#ReturnRequestsAPI_patchReturnRequestAsync) | **PATCH** /api/v2/SupportService/ReturnRequests/{returnRequestId} | Patch a return request
 [**ReturnRequestsAPI_updateReturnRequestAsync**](ReturnRequestsAPI.md#ReturnRequestsAPI_updateReturnRequestAsync) | **PUT** /api/v2/SupportService/ReturnRequests/{returnRequestId} | Update a return request
 
 
@@ -166,6 +167,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ReturnRequestsAPI_patchReturnRequestAsync**
+```c
+// Patch a return request
+//
+// Partially updates an existing return request by its unique identifier.
+//
+empty_envelope_t* ReturnRequestsAPI_patchReturnRequestAsync(apiClient_t *apiClient, char *tenantId, char *returnRequestId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**returnRequestId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

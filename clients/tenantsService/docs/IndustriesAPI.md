@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**IndustriesAPI_getTenantIndustries**](IndustriesAPI.md#IndustriesAPI_getTenantIndustries) | **GET** /api/v2/TenantsService/Industries | Retrieve a list of tenant industries
 [**IndustriesAPI_getTenantIndustriesCount**](IndustriesAPI.md#IndustriesAPI_getTenantIndustriesCount) | **GET** /api/v2/TenantsService/Industries/Count | Get the count of tenant industries
 [**IndustriesAPI_getTenantIndustryById**](IndustriesAPI.md#IndustriesAPI_getTenantIndustryById) | **GET** /api/v2/TenantsService/Industries/{tenantIndustryId} | Retrieve a single tenant industry by its ID
+[**IndustriesAPI_patchTenantIndustryAsync**](IndustriesAPI.md#IndustriesAPI_patchTenantIndustryAsync) | **PATCH** /api/v2/TenantsService/Industries/{tenantIndustryId} | Patch a tenant industry
 [**IndustriesAPI_updateTenantIndustry**](IndustriesAPI.md#IndustriesAPI_updateTenantIndustry) | **PUT** /api/v2/TenantsService/Industries/{tenantIndustryId} | Update a tenant industry
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **IndustriesAPI_patchTenantIndustryAsync**
+```c
+// Patch a tenant industry
+//
+// Patch a tenant industry
+//
+empty_envelope_t* IndustriesAPI_patchTenantIndustryAsync(apiClient_t *apiClient, char *tenantId, char *tenantIndustryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**tenantIndustryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

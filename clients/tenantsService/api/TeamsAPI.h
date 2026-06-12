@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/tenant_team_create_dto.h"
 #include "../model/tenant_team_dto_envelope.h"
 #include "../model/tenant_team_dto_list_envelope.h"
@@ -52,6 +53,14 @@ TeamsAPI_getTenantTeams(apiClient_t *apiClient, char *tenantId, char *api_versio
 //
 int32_envelope_t*
 TeamsAPI_getTenantTeamsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a tenant team
+//
+// Patch a tenant team
+//
+empty_envelope_t*
+TeamsAPI_patchTenantTeam(apiClient_t *apiClient, char *tenantId, char *tenantTeamId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a tenant team

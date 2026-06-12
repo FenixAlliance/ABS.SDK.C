@@ -13,10 +13,10 @@ refund_request_dto_t *refund_request_dto_create(
     int approved,
     char *approved_timestamp,
     char *tenant_id,
-    char *business_profile_record_id,
+    char *enrollment_id,
     char *support_entitlement_id,
     char *contact_id,
-    char *account_holder_id,
+    char *user_id,
     char *refund_policy_id,
     char *payment_id
     ) {
@@ -31,10 +31,10 @@ refund_request_dto_t *refund_request_dto_create(
     refund_request_dto_local_var->approved = approved;
     refund_request_dto_local_var->approved_timestamp = approved_timestamp;
     refund_request_dto_local_var->tenant_id = tenant_id;
-    refund_request_dto_local_var->business_profile_record_id = business_profile_record_id;
+    refund_request_dto_local_var->enrollment_id = enrollment_id;
     refund_request_dto_local_var->support_entitlement_id = support_entitlement_id;
     refund_request_dto_local_var->contact_id = contact_id;
-    refund_request_dto_local_var->account_holder_id = account_holder_id;
+    refund_request_dto_local_var->user_id = user_id;
     refund_request_dto_local_var->refund_policy_id = refund_policy_id;
     refund_request_dto_local_var->payment_id = payment_id;
 
@@ -71,9 +71,9 @@ void refund_request_dto_free(refund_request_dto_t *refund_request_dto) {
         free(refund_request_dto->tenant_id);
         refund_request_dto->tenant_id = NULL;
     }
-    if (refund_request_dto->business_profile_record_id) {
-        free(refund_request_dto->business_profile_record_id);
-        refund_request_dto->business_profile_record_id = NULL;
+    if (refund_request_dto->enrollment_id) {
+        free(refund_request_dto->enrollment_id);
+        refund_request_dto->enrollment_id = NULL;
     }
     if (refund_request_dto->support_entitlement_id) {
         free(refund_request_dto->support_entitlement_id);
@@ -83,9 +83,9 @@ void refund_request_dto_free(refund_request_dto_t *refund_request_dto) {
         free(refund_request_dto->contact_id);
         refund_request_dto->contact_id = NULL;
     }
-    if (refund_request_dto->account_holder_id) {
-        free(refund_request_dto->account_holder_id);
-        refund_request_dto->account_holder_id = NULL;
+    if (refund_request_dto->user_id) {
+        free(refund_request_dto->user_id);
+        refund_request_dto->user_id = NULL;
     }
     if (refund_request_dto->refund_policy_id) {
         free(refund_request_dto->refund_policy_id);
@@ -157,9 +157,9 @@ cJSON *refund_request_dto_convertToJSON(refund_request_dto_t *refund_request_dto
     }
 
 
-    // refund_request_dto->business_profile_record_id
-    if(refund_request_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordId", refund_request_dto->business_profile_record_id) == NULL) {
+    // refund_request_dto->enrollment_id
+    if(refund_request_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", refund_request_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -181,9 +181,9 @@ cJSON *refund_request_dto_convertToJSON(refund_request_dto_t *refund_request_dto
     }
 
 
-    // refund_request_dto->account_holder_id
-    if(refund_request_dto->account_holder_id) {
-    if(cJSON_AddStringToObject(item, "accountHolderId", refund_request_dto->account_holder_id) == NULL) {
+    // refund_request_dto->user_id
+    if(refund_request_dto->user_id) {
+    if(cJSON_AddStringToObject(item, "userId", refund_request_dto->user_id) == NULL) {
     goto fail; //String
     }
     }
@@ -279,10 +279,10 @@ refund_request_dto_t *refund_request_dto_parseFromJSON(cJSON *refund_request_dto
     }
     }
 
-    // refund_request_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(refund_request_dtoJSON, "businessProfileRecordId");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // refund_request_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(refund_request_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -306,10 +306,10 @@ refund_request_dto_t *refund_request_dto_parseFromJSON(cJSON *refund_request_dto
     }
     }
 
-    // refund_request_dto->account_holder_id
-    cJSON *account_holder_id = cJSON_GetObjectItemCaseSensitive(refund_request_dtoJSON, "accountHolderId");
-    if (account_holder_id) { 
-    if(!cJSON_IsString(account_holder_id) && !cJSON_IsNull(account_holder_id))
+    // refund_request_dto->user_id
+    cJSON *user_id = cJSON_GetObjectItemCaseSensitive(refund_request_dtoJSON, "userId");
+    if (user_id) { 
+    if(!cJSON_IsString(user_id) && !cJSON_IsNull(user_id))
     {
     goto end; //String
     }
@@ -342,10 +342,10 @@ refund_request_dto_t *refund_request_dto_parseFromJSON(cJSON *refund_request_dto
         approved ? approved->valueint : 0,
         approved_timestamp && !cJSON_IsNull(approved_timestamp) ? strdup(approved_timestamp->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         support_entitlement_id && !cJSON_IsNull(support_entitlement_id) ? strdup(support_entitlement_id->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
-        account_holder_id && !cJSON_IsNull(account_holder_id) ? strdup(account_holder_id->valuestring) : NULL,
+        user_id && !cJSON_IsNull(user_id) ? strdup(user_id->valuestring) : NULL,
         refund_policy_id && !cJSON_IsNull(refund_policy_id) ? strdup(refund_policy_id->valuestring) : NULL,
         payment_id && !cJSON_IsNull(payment_id) ? strdup(payment_id->valuestring) : NULL
         );

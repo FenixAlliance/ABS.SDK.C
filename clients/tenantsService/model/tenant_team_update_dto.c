@@ -6,8 +6,6 @@
 
 
 tenant_team_update_dto_t *tenant_team_update_dto_create(
-    char *id,
-    char *timestamp,
     char *name,
     char *description,
     char *avatar_url,
@@ -19,8 +17,6 @@ tenant_team_update_dto_t *tenant_team_update_dto_create(
     if (!tenant_team_update_dto_local_var) {
         return NULL;
     }
-    tenant_team_update_dto_local_var->id = id;
-    tenant_team_update_dto_local_var->timestamp = timestamp;
     tenant_team_update_dto_local_var->name = name;
     tenant_team_update_dto_local_var->description = description;
     tenant_team_update_dto_local_var->avatar_url = avatar_url;
@@ -37,14 +33,6 @@ void tenant_team_update_dto_free(tenant_team_update_dto_t *tenant_team_update_dt
         return ;
     }
     listEntry_t *listEntry;
-    if (tenant_team_update_dto->id) {
-        free(tenant_team_update_dto->id);
-        tenant_team_update_dto->id = NULL;
-    }
-    if (tenant_team_update_dto->timestamp) {
-        free(tenant_team_update_dto->timestamp);
-        tenant_team_update_dto->timestamp = NULL;
-    }
     if (tenant_team_update_dto->name) {
         free(tenant_team_update_dto->name);
         tenant_team_update_dto->name = NULL;
@@ -71,22 +59,6 @@ void tenant_team_update_dto_free(tenant_team_update_dto_t *tenant_team_update_dt
 cJSON *tenant_team_update_dto_convertToJSON(tenant_team_update_dto_t *tenant_team_update_dto) {
     cJSON *item = cJSON_CreateObject();
 
-    // tenant_team_update_dto->id
-    if(tenant_team_update_dto->id) {
-    if(cJSON_AddStringToObject(item, "id", tenant_team_update_dto->id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // tenant_team_update_dto->timestamp
-    if(tenant_team_update_dto->timestamp) {
-    if(cJSON_AddStringToObject(item, "timestamp", tenant_team_update_dto->timestamp) == NULL) {
-    goto fail; //Date-Time
-    }
-    }
-
-
     // tenant_team_update_dto->name
     if(tenant_team_update_dto->name) {
     if(cJSON_AddStringToObject(item, "name", tenant_team_update_dto->name) == NULL) {
@@ -105,7 +77,7 @@ cJSON *tenant_team_update_dto_convertToJSON(tenant_team_update_dto_t *tenant_tea
 
     // tenant_team_update_dto->avatar_url
     if(tenant_team_update_dto->avatar_url) {
-    if(cJSON_AddStringToObject(item, "avatarURL", tenant_team_update_dto->avatar_url) == NULL) {
+    if(cJSON_AddStringToObject(item, "avatarUrl", tenant_team_update_dto->avatar_url) == NULL) {
     goto fail; //String
     }
     }
@@ -121,7 +93,7 @@ cJSON *tenant_team_update_dto_convertToJSON(tenant_team_update_dto_t *tenant_tea
 
     // tenant_team_update_dto->business_unit_id
     if(tenant_team_update_dto->business_unit_id) {
-    if(cJSON_AddStringToObject(item, "businessUnitID", tenant_team_update_dto->business_unit_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "businessUnitId", tenant_team_update_dto->business_unit_id) == NULL) {
     goto fail; //String
     }
     }
@@ -129,7 +101,7 @@ cJSON *tenant_team_update_dto_convertToJSON(tenant_team_update_dto_t *tenant_tea
 
     // tenant_team_update_dto->organization_profile_id
     if(tenant_team_update_dto->organization_profile_id) {
-    if(cJSON_AddStringToObject(item, "organizationProfileID", tenant_team_update_dto->organization_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "organizationProfileId", tenant_team_update_dto->organization_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -145,24 +117,6 @@ fail:
 tenant_team_update_dto_t *tenant_team_update_dto_parseFromJSON(cJSON *tenant_team_update_dtoJSON){
 
     tenant_team_update_dto_t *tenant_team_update_dto_local_var = NULL;
-
-    // tenant_team_update_dto->id
-    cJSON *id = cJSON_GetObjectItemCaseSensitive(tenant_team_update_dtoJSON, "id");
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
-    {
-    goto end; //String
-    }
-    }
-
-    // tenant_team_update_dto->timestamp
-    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(tenant_team_update_dtoJSON, "timestamp");
-    if (timestamp) { 
-    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
-    {
-    goto end; //DateTime
-    }
-    }
 
     // tenant_team_update_dto->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(tenant_team_update_dtoJSON, "name");
@@ -183,7 +137,7 @@ tenant_team_update_dto_t *tenant_team_update_dto_parseFromJSON(cJSON *tenant_tea
     }
 
     // tenant_team_update_dto->avatar_url
-    cJSON *avatar_url = cJSON_GetObjectItemCaseSensitive(tenant_team_update_dtoJSON, "avatarURL");
+    cJSON *avatar_url = cJSON_GetObjectItemCaseSensitive(tenant_team_update_dtoJSON, "avatarUrl");
     if (avatar_url) { 
     if(!cJSON_IsString(avatar_url) && !cJSON_IsNull(avatar_url))
     {
@@ -201,7 +155,7 @@ tenant_team_update_dto_t *tenant_team_update_dto_parseFromJSON(cJSON *tenant_tea
     }
 
     // tenant_team_update_dto->business_unit_id
-    cJSON *business_unit_id = cJSON_GetObjectItemCaseSensitive(tenant_team_update_dtoJSON, "businessUnitID");
+    cJSON *business_unit_id = cJSON_GetObjectItemCaseSensitive(tenant_team_update_dtoJSON, "businessUnitId");
     if (business_unit_id) { 
     if(!cJSON_IsString(business_unit_id) && !cJSON_IsNull(business_unit_id))
     {
@@ -210,7 +164,7 @@ tenant_team_update_dto_t *tenant_team_update_dto_parseFromJSON(cJSON *tenant_tea
     }
 
     // tenant_team_update_dto->organization_profile_id
-    cJSON *organization_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_team_update_dtoJSON, "organizationProfileID");
+    cJSON *organization_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_team_update_dtoJSON, "organizationProfileId");
     if (organization_profile_id) { 
     if(!cJSON_IsString(organization_profile_id) && !cJSON_IsNull(organization_profile_id))
     {
@@ -220,8 +174,6 @@ tenant_team_update_dto_t *tenant_team_update_dto_parseFromJSON(cJSON *tenant_tea
 
 
     tenant_team_update_dto_local_var = tenant_team_update_dto_create (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,

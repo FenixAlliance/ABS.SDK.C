@@ -87,7 +87,7 @@ cJSON *support_request_update_dto_convertToJSON(support_request_update_dto_t *su
 
     // support_request_update_dto->support_entitlement_id
     if(support_request_update_dto->support_entitlement_id) {
-    if(cJSON_AddStringToObject(item, "supportEntitlementID", support_request_update_dto->support_entitlement_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "supportEntitlementId", support_request_update_dto->support_entitlement_id) == NULL) {
     goto fail; //String
     }
     }
@@ -141,7 +141,7 @@ support_request_update_dto_t *support_request_update_dto_parseFromJSON(cJSON *su
     }
 
     // support_request_update_dto->support_entitlement_id
-    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_request_update_dtoJSON, "supportEntitlementID");
+    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_request_update_dtoJSON, "supportEntitlementId");
     if (support_entitlement_id) { 
     if(!cJSON_IsString(support_entitlement_id) && !cJSON_IsNull(support_entitlement_id))
     {

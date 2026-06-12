@@ -41,7 +41,7 @@ cJSON *tenant_team_employee_enrollment_update_dto_convertToJSON(tenant_team_empl
 
     // tenant_team_employee_enrollment_update_dto->business_team_id
     if(tenant_team_employee_enrollment_update_dto->business_team_id) {
-    if(cJSON_AddStringToObject(item, "businessTeamID", tenant_team_employee_enrollment_update_dto->business_team_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "businessTeamId", tenant_team_employee_enrollment_update_dto->business_team_id) == NULL) {
     goto fail; //String
     }
     }
@@ -49,7 +49,7 @@ cJSON *tenant_team_employee_enrollment_update_dto_convertToJSON(tenant_team_empl
 
     // tenant_team_employee_enrollment_update_dto->employee_profile_id
     if(tenant_team_employee_enrollment_update_dto->employee_profile_id) {
-    if(cJSON_AddStringToObject(item, "employeeProfileID", tenant_team_employee_enrollment_update_dto->employee_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "employeeProfileId", tenant_team_employee_enrollment_update_dto->employee_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -67,7 +67,7 @@ tenant_team_employee_enrollment_update_dto_t *tenant_team_employee_enrollment_up
     tenant_team_employee_enrollment_update_dto_t *tenant_team_employee_enrollment_update_dto_local_var = NULL;
 
     // tenant_team_employee_enrollment_update_dto->business_team_id
-    cJSON *business_team_id = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_update_dtoJSON, "businessTeamID");
+    cJSON *business_team_id = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_update_dtoJSON, "businessTeamId");
     if (business_team_id) { 
     if(!cJSON_IsString(business_team_id) && !cJSON_IsNull(business_team_id))
     {
@@ -76,7 +76,7 @@ tenant_team_employee_enrollment_update_dto_t *tenant_team_employee_enrollment_up
     }
 
     // tenant_team_employee_enrollment_update_dto->employee_profile_id
-    cJSON *employee_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_update_dtoJSON, "employeeProfileID");
+    cJSON *employee_profile_id = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_update_dtoJSON, "employeeProfileId");
     if (employee_profile_id) { 
     if(!cJSON_IsString(employee_profile_id) && !cJSON_IsNull(employee_profile_id))
     {

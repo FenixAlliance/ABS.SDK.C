@@ -10,7 +10,7 @@ shipping_region_dto_t *shipping_region_dto_create(
     char *timestamp,
     char *name,
     char *postal_codes,
-    char *business_id
+    char *tenant_id
     ) {
     shipping_region_dto_t *shipping_region_dto_local_var = malloc(sizeof(shipping_region_dto_t));
     if (!shipping_region_dto_local_var) {
@@ -20,7 +20,7 @@ shipping_region_dto_t *shipping_region_dto_create(
     shipping_region_dto_local_var->timestamp = timestamp;
     shipping_region_dto_local_var->name = name;
     shipping_region_dto_local_var->postal_codes = postal_codes;
-    shipping_region_dto_local_var->business_id = business_id;
+    shipping_region_dto_local_var->tenant_id = tenant_id;
 
     return shipping_region_dto_local_var;
 }
@@ -47,9 +47,9 @@ void shipping_region_dto_free(shipping_region_dto_t *shipping_region_dto) {
         free(shipping_region_dto->postal_codes);
         shipping_region_dto->postal_codes = NULL;
     }
-    if (shipping_region_dto->business_id) {
-        free(shipping_region_dto->business_id);
-        shipping_region_dto->business_id = NULL;
+    if (shipping_region_dto->tenant_id) {
+        free(shipping_region_dto->tenant_id);
+        shipping_region_dto->tenant_id = NULL;
     }
     free(shipping_region_dto);
 }
@@ -89,9 +89,9 @@ cJSON *shipping_region_dto_convertToJSON(shipping_region_dto_t *shipping_region_
     }
 
 
-    // shipping_region_dto->business_id
-    if(shipping_region_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", shipping_region_dto->business_id) == NULL) {
+    // shipping_region_dto->tenant_id
+    if(shipping_region_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", shipping_region_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -144,10 +144,10 @@ shipping_region_dto_t *shipping_region_dto_parseFromJSON(cJSON *shipping_region_
     }
     }
 
-    // shipping_region_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(shipping_region_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // shipping_region_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(shipping_region_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
@@ -159,7 +159,7 @@ shipping_region_dto_t *shipping_region_dto_parseFromJSON(cJSON *shipping_region_
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         postal_codes && !cJSON_IsNull(postal_codes) ? strdup(postal_codes->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
         );
 
     return shipping_region_dto_local_var;

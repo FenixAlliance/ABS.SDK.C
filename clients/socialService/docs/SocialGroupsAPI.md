@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**SocialGroupsAPI_deleteSocialGroupAsync**](SocialGroupsAPI.md#SocialGroupsAPI_deleteSocialGroupAsync) | **DELETE** /api/v2/SocialService/SocialGroups/{socialGroupId} | Delete a social group
 [**SocialGroupsAPI_getSocialGroupByIdAsync**](SocialGroupsAPI.md#SocialGroupsAPI_getSocialGroupByIdAsync) | **GET** /api/v2/SocialService/SocialGroups/{socialGroupId} | Get social group by ID
 [**SocialGroupsAPI_getSocialGroupsAsync**](SocialGroupsAPI.md#SocialGroupsAPI_getSocialGroupsAsync) | **GET** /api/v2/SocialService/SocialGroups | Get social groups
+[**SocialGroupsAPI_patchSocialGroupAsync**](SocialGroupsAPI.md#SocialGroupsAPI_patchSocialGroupAsync) | **PATCH** /api/v2/SocialService/SocialGroups/{socialGroupId} | Patch a social group
 [**SocialGroupsAPI_updateSocialGroupAsync**](SocialGroupsAPI.md#SocialGroupsAPI_updateSocialGroupAsync) | **PUT** /api/v2/SocialService/SocialGroups/{socialGroupId} | Update a social group
 
 
@@ -178,6 +179,42 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SocialGroupsAPI_patchSocialGroupAsync**
+```c
+// Patch a social group
+//
+// Partially updates an existing social group using a JSON Patch document.
+//
+empty_envelope_t* SocialGroupsAPI_patchSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *socialGroupId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**socialProfileId** | **char \*** |  | 
+**socialGroupId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

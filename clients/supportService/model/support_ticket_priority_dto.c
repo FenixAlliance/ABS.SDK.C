@@ -10,7 +10,7 @@ support_ticket_priority_dto_t *support_ticket_priority_dto_create(
     char *timestamp,
     char *title,
     char *description,
-    char *business_id,
+    char *tenant_id,
     char *support_entitlement_id
     ) {
     support_ticket_priority_dto_t *support_ticket_priority_dto_local_var = malloc(sizeof(support_ticket_priority_dto_t));
@@ -21,7 +21,7 @@ support_ticket_priority_dto_t *support_ticket_priority_dto_create(
     support_ticket_priority_dto_local_var->timestamp = timestamp;
     support_ticket_priority_dto_local_var->title = title;
     support_ticket_priority_dto_local_var->description = description;
-    support_ticket_priority_dto_local_var->business_id = business_id;
+    support_ticket_priority_dto_local_var->tenant_id = tenant_id;
     support_ticket_priority_dto_local_var->support_entitlement_id = support_entitlement_id;
 
     return support_ticket_priority_dto_local_var;
@@ -49,9 +49,9 @@ void support_ticket_priority_dto_free(support_ticket_priority_dto_t *support_tic
         free(support_ticket_priority_dto->description);
         support_ticket_priority_dto->description = NULL;
     }
-    if (support_ticket_priority_dto->business_id) {
-        free(support_ticket_priority_dto->business_id);
-        support_ticket_priority_dto->business_id = NULL;
+    if (support_ticket_priority_dto->tenant_id) {
+        free(support_ticket_priority_dto->tenant_id);
+        support_ticket_priority_dto->tenant_id = NULL;
     }
     if (support_ticket_priority_dto->support_entitlement_id) {
         free(support_ticket_priority_dto->support_entitlement_id);
@@ -95,9 +95,9 @@ cJSON *support_ticket_priority_dto_convertToJSON(support_ticket_priority_dto_t *
     }
 
 
-    // support_ticket_priority_dto->business_id
-    if(support_ticket_priority_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", support_ticket_priority_dto->business_id) == NULL) {
+    // support_ticket_priority_dto->tenant_id
+    if(support_ticket_priority_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", support_ticket_priority_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -105,7 +105,7 @@ cJSON *support_ticket_priority_dto_convertToJSON(support_ticket_priority_dto_t *
 
     // support_ticket_priority_dto->support_entitlement_id
     if(support_ticket_priority_dto->support_entitlement_id) {
-    if(cJSON_AddStringToObject(item, "supportEntitlementID", support_ticket_priority_dto->support_entitlement_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "supportEntitlementId", support_ticket_priority_dto->support_entitlement_id) == NULL) {
     goto fail; //String
     }
     }
@@ -158,17 +158,17 @@ support_ticket_priority_dto_t *support_ticket_priority_dto_parseFromJSON(cJSON *
     }
     }
 
-    // support_ticket_priority_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // support_ticket_priority_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
     // support_ticket_priority_dto->support_entitlement_id
-    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_dtoJSON, "supportEntitlementID");
+    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_dtoJSON, "supportEntitlementId");
     if (support_entitlement_id) { 
     if(!cJSON_IsString(support_entitlement_id) && !cJSON_IsNull(support_entitlement_id))
     {
@@ -182,7 +182,7 @@ support_ticket_priority_dto_t *support_ticket_priority_dto_parseFromJSON(cJSON *
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         support_entitlement_id && !cJSON_IsNull(support_entitlement_id) ? strdup(support_entitlement_id->valuestring) : NULL
         );
 

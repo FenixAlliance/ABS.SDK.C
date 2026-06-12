@@ -9,7 +9,7 @@ maintenance_visit_dto_t *maintenance_visit_dto_create(
     char *id,
     char *timestamp,
     char *tenant_id,
-    char *business_profile_record_id
+    char *enrollment_id
     ) {
     maintenance_visit_dto_t *maintenance_visit_dto_local_var = malloc(sizeof(maintenance_visit_dto_t));
     if (!maintenance_visit_dto_local_var) {
@@ -18,7 +18,7 @@ maintenance_visit_dto_t *maintenance_visit_dto_create(
     maintenance_visit_dto_local_var->id = id;
     maintenance_visit_dto_local_var->timestamp = timestamp;
     maintenance_visit_dto_local_var->tenant_id = tenant_id;
-    maintenance_visit_dto_local_var->business_profile_record_id = business_profile_record_id;
+    maintenance_visit_dto_local_var->enrollment_id = enrollment_id;
 
     return maintenance_visit_dto_local_var;
 }
@@ -41,9 +41,9 @@ void maintenance_visit_dto_free(maintenance_visit_dto_t *maintenance_visit_dto) 
         free(maintenance_visit_dto->tenant_id);
         maintenance_visit_dto->tenant_id = NULL;
     }
-    if (maintenance_visit_dto->business_profile_record_id) {
-        free(maintenance_visit_dto->business_profile_record_id);
-        maintenance_visit_dto->business_profile_record_id = NULL;
+    if (maintenance_visit_dto->enrollment_id) {
+        free(maintenance_visit_dto->enrollment_id);
+        maintenance_visit_dto->enrollment_id = NULL;
     }
     free(maintenance_visit_dto);
 }
@@ -75,9 +75,9 @@ cJSON *maintenance_visit_dto_convertToJSON(maintenance_visit_dto_t *maintenance_
     }
 
 
-    // maintenance_visit_dto->business_profile_record_id
-    if(maintenance_visit_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordId", maintenance_visit_dto->business_profile_record_id) == NULL) {
+    // maintenance_visit_dto->enrollment_id
+    if(maintenance_visit_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", maintenance_visit_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -121,10 +121,10 @@ maintenance_visit_dto_t *maintenance_visit_dto_parseFromJSON(cJSON *maintenance_
     }
     }
 
-    // maintenance_visit_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(maintenance_visit_dtoJSON, "businessProfileRecordId");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // maintenance_visit_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(maintenance_visit_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -135,7 +135,7 @@ maintenance_visit_dto_t *maintenance_visit_dto_parseFromJSON(cJSON *maintenance_
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return maintenance_visit_dto_local_var;

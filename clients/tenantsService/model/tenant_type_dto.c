@@ -8,6 +8,7 @@
 tenant_type_dto_t *tenant_type_dto_create(
     char *id,
     char *timestamp,
+    char *tenant_id,
     char *name,
     char *description
     ) {
@@ -17,6 +18,7 @@ tenant_type_dto_t *tenant_type_dto_create(
     }
     tenant_type_dto_local_var->id = id;
     tenant_type_dto_local_var->timestamp = timestamp;
+    tenant_type_dto_local_var->tenant_id = tenant_id;
     tenant_type_dto_local_var->name = name;
     tenant_type_dto_local_var->description = description;
 
@@ -36,6 +38,10 @@ void tenant_type_dto_free(tenant_type_dto_t *tenant_type_dto) {
     if (tenant_type_dto->timestamp) {
         free(tenant_type_dto->timestamp);
         tenant_type_dto->timestamp = NULL;
+    }
+    if (tenant_type_dto->tenant_id) {
+        free(tenant_type_dto->tenant_id);
+        tenant_type_dto->tenant_id = NULL;
     }
     if (tenant_type_dto->name) {
         free(tenant_type_dto->name);
@@ -63,6 +69,14 @@ cJSON *tenant_type_dto_convertToJSON(tenant_type_dto_t *tenant_type_dto) {
     if(tenant_type_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", tenant_type_dto->timestamp) == NULL) {
     goto fail; //Date-Time
+    }
+    }
+
+
+    // tenant_type_dto->tenant_id
+    if(tenant_type_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", tenant_type_dto->tenant_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -112,6 +126,15 @@ tenant_type_dto_t *tenant_type_dto_parseFromJSON(cJSON *tenant_type_dtoJSON){
     }
     }
 
+    // tenant_type_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(tenant_type_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
     // tenant_type_dto->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(tenant_type_dtoJSON, "name");
     if (name) { 
@@ -134,6 +157,7 @@ tenant_type_dto_t *tenant_type_dto_parseFromJSON(cJSON *tenant_type_dtoJSON){
     tenant_type_dto_local_var = tenant_type_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
         );

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**TerritoriesAPI_getTenantTerritories**](TerritoriesAPI.md#TerritoriesAPI_getTenantTerritories) | **GET** /api/v2/TenantsService/Territories | Retrieve a list of tenant territories
 [**TerritoriesAPI_getTenantTerritoriesCount**](TerritoriesAPI.md#TerritoriesAPI_getTenantTerritoriesCount) | **GET** /api/v2/TenantsService/Territories/Count | Get the count of tenant territories
 [**TerritoriesAPI_getTenantTerritoryById**](TerritoriesAPI.md#TerritoriesAPI_getTenantTerritoryById) | **GET** /api/v2/TenantsService/Territories/{tenantTerritoryId} | Retrieve a single tenant territory by its ID
+[**TerritoriesAPI_patchTenantTerritory**](TerritoriesAPI.md#TerritoriesAPI_patchTenantTerritory) | **PATCH** /api/v2/TenantsService/Territories/{tenantTerritoryId} | Patch a tenant territory
 [**TerritoriesAPI_updateTenantTerritory**](TerritoriesAPI.md#TerritoriesAPI_updateTenantTerritory) | **PUT** /api/v2/TenantsService/Territories/{tenantTerritoryId} | Update a tenant territory
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TerritoriesAPI_patchTenantTerritory**
+```c
+// Patch a tenant territory
+//
+// Patch a tenant territory
+//
+empty_envelope_t* TerritoriesAPI_patchTenantTerritory(apiClient_t *apiClient, char *tenantId, char *tenantTerritoryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**tenantTerritoryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

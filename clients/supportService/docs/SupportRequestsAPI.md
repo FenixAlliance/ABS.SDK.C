@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**SupportRequestsAPI_getSupportRequestTicketsAsync**](SupportRequestsAPI.md#SupportRequestsAPI_getSupportRequestTicketsAsync) | **GET** /api/v2/SupportService/SupportRequests/{supportRequestId}/Tickets | Retrieve tickets for a support request
 [**SupportRequestsAPI_getSupportRequestsAsync**](SupportRequestsAPI.md#SupportRequestsAPI_getSupportRequestsAsync) | **GET** /api/v2/SupportService/SupportRequests | Retrieve a list of support requests
 [**SupportRequestsAPI_getSupportRequestsCountAsync**](SupportRequestsAPI.md#SupportRequestsAPI_getSupportRequestsCountAsync) | **GET** /api/v2/SupportService/SupportRequests/Count | Get the count of support requests
+[**SupportRequestsAPI_patchSupportRequestAsync**](SupportRequestsAPI.md#SupportRequestsAPI_patchSupportRequestAsync) | **PATCH** /api/v2/SupportService/SupportRequests/{supportRequestId} | Patch a support request
 [**SupportRequestsAPI_relateSupportRequestToAttachmentAsync**](SupportRequestsAPI.md#SupportRequestsAPI_relateSupportRequestToAttachmentAsync) | **POST** /api/v2/SupportService/SupportRequests/{supportRequestId}/Attachments | Add an attachment to a support request
 [**SupportRequestsAPI_updateSupportRequestAsync**](SupportRequestsAPI.md#SupportRequestsAPI_updateSupportRequestAsync) | **PUT** /api/v2/SupportService/SupportRequests/{supportRequestId} | Update a support request
 
@@ -318,6 +319,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SupportRequestsAPI_patchSupportRequestAsync**
+```c
+// Patch a support request
+//
+// Partially updates an existing support request by its unique identifier.
+//
+empty_envelope_t* SupportRequestsAPI_patchSupportRequestAsync(apiClient_t *apiClient, char *tenantId, char *supportRequestId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**supportRequestId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

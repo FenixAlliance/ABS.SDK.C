@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/option_create_dto.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
@@ -52,6 +53,14 @@ UserOptionsAPI_getSystemUserOptions(apiClient_t *apiClient, char *userId, char *
 //
 int32_envelope_t*
 UserOptionsAPI_getSystemUserOptionsCount(apiClient_t *apiClient, char *userId, char *portalId, char *api_version, char *x_api_version);
+
+
+// Partially update a user option (admin)
+//
+// Admin endpoint to partially update an option for any user using a JSON Patch document
+//
+empty_envelope_t*
+UserOptionsAPI_patchSystemUserOption(apiClient_t *apiClient, char *userId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a user option (admin)

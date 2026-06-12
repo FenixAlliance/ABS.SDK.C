@@ -91,7 +91,7 @@ cJSON *support_ticket_priority_create_dto_convertToJSON(support_ticket_priority_
 
     // support_ticket_priority_create_dto->support_entitlement_id
     if(support_ticket_priority_create_dto->support_entitlement_id) {
-    if(cJSON_AddStringToObject(item, "supportEntitlementID", support_ticket_priority_create_dto->support_entitlement_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "supportEntitlementId", support_ticket_priority_create_dto->support_entitlement_id) == NULL) {
     goto fail; //String
     }
     }
@@ -145,7 +145,7 @@ support_ticket_priority_create_dto_t *support_ticket_priority_create_dto_parseFr
     }
 
     // support_ticket_priority_create_dto->support_entitlement_id
-    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_create_dtoJSON, "supportEntitlementID");
+    cJSON *support_entitlement_id = cJSON_GetObjectItemCaseSensitive(support_ticket_priority_create_dtoJSON, "supportEntitlementId");
     if (support_entitlement_id) { 
     if(!cJSON_IsString(support_entitlement_id) && !cJSON_IsNull(support_entitlement_id))
     {

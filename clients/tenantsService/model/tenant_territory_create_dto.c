@@ -91,7 +91,7 @@ cJSON *tenant_territory_create_dto_convertToJSON(tenant_territory_create_dto_t *
 
     // tenant_territory_create_dto->parent_territory_id
     if(tenant_territory_create_dto->parent_territory_id) {
-    if(cJSON_AddStringToObject(item, "parentTerritoryID", tenant_territory_create_dto->parent_territory_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentTerritoryId", tenant_territory_create_dto->parent_territory_id) == NULL) {
     goto fail; //String
     }
     }
@@ -145,7 +145,7 @@ tenant_territory_create_dto_t *tenant_territory_create_dto_parseFromJSON(cJSON *
     }
 
     // tenant_territory_create_dto->parent_territory_id
-    cJSON *parent_territory_id = cJSON_GetObjectItemCaseSensitive(tenant_territory_create_dtoJSON, "parentTerritoryID");
+    cJSON *parent_territory_id = cJSON_GetObjectItemCaseSensitive(tenant_territory_create_dtoJSON, "parentTerritoryId");
     if (parent_territory_id) { 
     if(!cJSON_IsString(parent_territory_id) && !cJSON_IsNull(parent_territory_id))
     {

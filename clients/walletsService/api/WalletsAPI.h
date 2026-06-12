@@ -18,6 +18,7 @@
 #include "../model/location_dto_envelope.h"
 #include "../model/location_dto_list_envelope.h"
 #include "../model/location_update_dto.h"
+#include "../model/operation.h"
 #include "../model/order_dto_list_envelope.h"
 #include "../model/payment_chargeback_dto_list_envelope.h"
 #include "../model/payment_create_dto.h"
@@ -376,6 +377,22 @@ WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char 
 //
 int32_envelope_t*
 WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+
+
+// Patch Wallet Bank Account
+//
+// Partially update a specific bank account of a specific wallet by ID.
+//
+empty_envelope_t*
+WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch Wallet Token
+//
+// Partially update a specific payment token of a specific wallet by ID.
+//
+empty_envelope_t*
+WalletsAPI_patchWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tokenId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update Wallet Bank Account

@@ -24,7 +24,6 @@ typedef struct shipping_courier_create_dto_t {
     char *name; // string
     char *logo_url; // string
     char *country_id; // string
-    char *business_profile_record_id; // string
 
 } shipping_courier_create_dto_t;
 
@@ -33,8 +32,7 @@ shipping_courier_create_dto_t *shipping_courier_create_dto_create(
     char *timestamp,
     char *name,
     char *logo_url,
-    char *country_id,
-    char *business_profile_record_id
+    char *country_id
 );
 
 void shipping_courier_create_dto_free(shipping_courier_create_dto_t *shipping_courier_create_dto);

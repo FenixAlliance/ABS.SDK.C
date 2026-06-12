@@ -30,8 +30,8 @@ item_warranty_policy_dto_t *item_warranty_policy_dto_create(
     char *custom_state,
     char *custom_city,
     char *city_id,
-    char *business_id,
-    char *business_profile_record_id
+    char *tenant_id,
+    char *enrollment_id
     ) {
     item_warranty_policy_dto_t *item_warranty_policy_dto_local_var = malloc(sizeof(item_warranty_policy_dto_t));
     if (!item_warranty_policy_dto_local_var) {
@@ -61,8 +61,8 @@ item_warranty_policy_dto_t *item_warranty_policy_dto_create(
     item_warranty_policy_dto_local_var->custom_state = custom_state;
     item_warranty_policy_dto_local_var->custom_city = custom_city;
     item_warranty_policy_dto_local_var->city_id = city_id;
-    item_warranty_policy_dto_local_var->business_id = business_id;
-    item_warranty_policy_dto_local_var->business_profile_record_id = business_profile_record_id;
+    item_warranty_policy_dto_local_var->tenant_id = tenant_id;
+    item_warranty_policy_dto_local_var->enrollment_id = enrollment_id;
 
     return item_warranty_policy_dto_local_var;
 }
@@ -117,13 +117,13 @@ void item_warranty_policy_dto_free(item_warranty_policy_dto_t *item_warranty_pol
         free(item_warranty_policy_dto->city_id);
         item_warranty_policy_dto->city_id = NULL;
     }
-    if (item_warranty_policy_dto->business_id) {
-        free(item_warranty_policy_dto->business_id);
-        item_warranty_policy_dto->business_id = NULL;
+    if (item_warranty_policy_dto->tenant_id) {
+        free(item_warranty_policy_dto->tenant_id);
+        item_warranty_policy_dto->tenant_id = NULL;
     }
-    if (item_warranty_policy_dto->business_profile_record_id) {
-        free(item_warranty_policy_dto->business_profile_record_id);
-        item_warranty_policy_dto->business_profile_record_id = NULL;
+    if (item_warranty_policy_dto->enrollment_id) {
+        free(item_warranty_policy_dto->enrollment_id);
+        item_warranty_policy_dto->enrollment_id = NULL;
     }
     free(item_warranty_policy_dto);
 }
@@ -279,7 +279,7 @@ cJSON *item_warranty_policy_dto_convertToJSON(item_warranty_policy_dto_t *item_w
 
     // item_warranty_policy_dto->currency_id
     if(item_warranty_policy_dto->currency_id) {
-    if(cJSON_AddStringToObject(item, "currencyID", item_warranty_policy_dto->currency_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "currencyId", item_warranty_policy_dto->currency_id) == NULL) {
     goto fail; //String
     }
     }
@@ -287,7 +287,7 @@ cJSON *item_warranty_policy_dto_convertToJSON(item_warranty_policy_dto_t *item_w
 
     // item_warranty_policy_dto->country_id
     if(item_warranty_policy_dto->country_id) {
-    if(cJSON_AddStringToObject(item, "countryID", item_warranty_policy_dto->country_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "countryId", item_warranty_policy_dto->country_id) == NULL) {
     goto fail; //String
     }
     }
@@ -295,7 +295,7 @@ cJSON *item_warranty_policy_dto_convertToJSON(item_warranty_policy_dto_t *item_w
 
     // item_warranty_policy_dto->country_state_id
     if(item_warranty_policy_dto->country_state_id) {
-    if(cJSON_AddStringToObject(item, "countryStateID", item_warranty_policy_dto->country_state_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "countryStateId", item_warranty_policy_dto->country_state_id) == NULL) {
     goto fail; //String
     }
     }
@@ -319,24 +319,23 @@ cJSON *item_warranty_policy_dto_convertToJSON(item_warranty_policy_dto_t *item_w
 
     // item_warranty_policy_dto->city_id
     if(item_warranty_policy_dto->city_id) {
-    if(cJSON_AddStringToObject(item, "cityID", item_warranty_policy_dto->city_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "cityId", item_warranty_policy_dto->city_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // item_warranty_policy_dto->business_id
-    if (!item_warranty_policy_dto->business_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "businessID", item_warranty_policy_dto->business_id) == NULL) {
+    // item_warranty_policy_dto->tenant_id
+    if(item_warranty_policy_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", item_warranty_policy_dto->tenant_id) == NULL) {
     goto fail; //String
     }
+    }
 
 
-    // item_warranty_policy_dto->business_profile_record_id
-    if(item_warranty_policy_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", item_warranty_policy_dto->business_profile_record_id) == NULL) {
+    // item_warranty_policy_dto->enrollment_id
+    if(item_warranty_policy_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", item_warranty_policy_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -522,7 +521,7 @@ item_warranty_policy_dto_t *item_warranty_policy_dto_parseFromJSON(cJSON *item_w
     }
 
     // item_warranty_policy_dto->currency_id
-    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "currencyID");
+    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "currencyId");
     if (currency_id) { 
     if(!cJSON_IsString(currency_id) && !cJSON_IsNull(currency_id))
     {
@@ -531,7 +530,7 @@ item_warranty_policy_dto_t *item_warranty_policy_dto_parseFromJSON(cJSON *item_w
     }
 
     // item_warranty_policy_dto->country_id
-    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "countryID");
+    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "countryId");
     if (country_id) { 
     if(!cJSON_IsString(country_id) && !cJSON_IsNull(country_id))
     {
@@ -540,7 +539,7 @@ item_warranty_policy_dto_t *item_warranty_policy_dto_parseFromJSON(cJSON *item_w
     }
 
     // item_warranty_policy_dto->country_state_id
-    cJSON *country_state_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "countryStateID");
+    cJSON *country_state_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "countryStateId");
     if (country_state_id) { 
     if(!cJSON_IsString(country_state_id) && !cJSON_IsNull(country_state_id))
     {
@@ -567,7 +566,7 @@ item_warranty_policy_dto_t *item_warranty_policy_dto_parseFromJSON(cJSON *item_w
     }
 
     // item_warranty_policy_dto->city_id
-    cJSON *city_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "cityID");
+    cJSON *city_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "cityId");
     if (city_id) { 
     if(!cJSON_IsString(city_id) && !cJSON_IsNull(city_id))
     {
@@ -575,22 +574,19 @@ item_warranty_policy_dto_t *item_warranty_policy_dto_parseFromJSON(cJSON *item_w
     }
     }
 
-    // item_warranty_policy_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "businessID");
-    if (!business_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(business_id))
+    // item_warranty_policy_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
+    }
 
-    // item_warranty_policy_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // item_warranty_policy_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(item_warranty_policy_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -622,8 +618,8 @@ item_warranty_policy_dto_t *item_warranty_policy_dto_parseFromJSON(cJSON *item_w
         custom_state && !cJSON_IsNull(custom_state) ? strdup(custom_state->valuestring) : NULL,
         custom_city && !cJSON_IsNull(custom_city) ? strdup(custom_city->valuestring) : NULL,
         city_id && !cJSON_IsNull(city_id) ? strdup(city_id->valuestring) : NULL,
-        strdup(business_id->valuestring),
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return item_warranty_policy_dto_local_var;

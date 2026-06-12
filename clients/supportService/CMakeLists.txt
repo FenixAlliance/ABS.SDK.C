@@ -92,6 +92,7 @@ set(SRCS
     model/maintenance_visit_dto.c
     model/maintenance_visit_dto_envelope.c
     model/maintenance_visit_dto_list_envelope.c
+    model/operation.c
     model/private_message_dto.c
     model/private_message_dto_list_envelope.c
     model/refresh_request.c
@@ -214,6 +215,7 @@ set(HDRS
     model/maintenance_visit_dto.h
     model/maintenance_visit_dto_envelope.h
     model/maintenance_visit_dto_list_envelope.h
+    model/operation.h
     model/private_message_dto.h
     model/private_message_dto_list_envelope.h
     model/refresh_request.h

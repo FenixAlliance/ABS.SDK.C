@@ -11,8 +11,8 @@ social_group_dto_t *social_group_dto_create(
     char *name,
     char *title,
     char *avatar_url,
-    char *business_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *social_profile_id
     ) {
     social_group_dto_t *social_group_dto_local_var = malloc(sizeof(social_group_dto_t));
@@ -24,8 +24,8 @@ social_group_dto_t *social_group_dto_create(
     social_group_dto_local_var->name = name;
     social_group_dto_local_var->title = title;
     social_group_dto_local_var->avatar_url = avatar_url;
-    social_group_dto_local_var->business_id = business_id;
-    social_group_dto_local_var->business_profile_record_id = business_profile_record_id;
+    social_group_dto_local_var->tenant_id = tenant_id;
+    social_group_dto_local_var->enrollment_id = enrollment_id;
     social_group_dto_local_var->social_profile_id = social_profile_id;
 
     return social_group_dto_local_var;
@@ -57,13 +57,13 @@ void social_group_dto_free(social_group_dto_t *social_group_dto) {
         free(social_group_dto->avatar_url);
         social_group_dto->avatar_url = NULL;
     }
-    if (social_group_dto->business_id) {
-        free(social_group_dto->business_id);
-        social_group_dto->business_id = NULL;
+    if (social_group_dto->tenant_id) {
+        free(social_group_dto->tenant_id);
+        social_group_dto->tenant_id = NULL;
     }
-    if (social_group_dto->business_profile_record_id) {
-        free(social_group_dto->business_profile_record_id);
-        social_group_dto->business_profile_record_id = NULL;
+    if (social_group_dto->enrollment_id) {
+        free(social_group_dto->enrollment_id);
+        social_group_dto->enrollment_id = NULL;
     }
     if (social_group_dto->social_profile_id) {
         free(social_group_dto->social_profile_id);
@@ -115,17 +115,17 @@ cJSON *social_group_dto_convertToJSON(social_group_dto_t *social_group_dto) {
     }
 
 
-    // social_group_dto->business_id
-    if(social_group_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", social_group_dto->business_id) == NULL) {
+    // social_group_dto->tenant_id
+    if(social_group_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", social_group_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // social_group_dto->business_profile_record_id
-    if(social_group_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", social_group_dto->business_profile_record_id) == NULL) {
+    // social_group_dto->enrollment_id
+    if(social_group_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", social_group_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -133,7 +133,7 @@ cJSON *social_group_dto_convertToJSON(social_group_dto_t *social_group_dto) {
 
     // social_group_dto->social_profile_id
     if(social_group_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", social_group_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", social_group_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -195,26 +195,26 @@ social_group_dto_t *social_group_dto_parseFromJSON(cJSON *social_group_dtoJSON){
     }
     }
 
-    // social_group_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(social_group_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // social_group_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(social_group_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
-    // social_group_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(social_group_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // social_group_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(social_group_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
     }
 
     // social_group_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(social_group_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(social_group_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {
@@ -229,8 +229,8 @@ social_group_dto_t *social_group_dto_parseFromJSON(cJSON *social_group_dtoJSON){
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL
         );
 

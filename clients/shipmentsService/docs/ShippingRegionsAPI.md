@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ShippingRegionsAPI_getShippingRegionByIdAsync**](ShippingRegionsAPI.md#ShippingRegionsAPI_getShippingRegionByIdAsync) | **GET** /api/v2/ShipmentsService/ShippingRegions/{regionId} | Get shipping region by ID
 [**ShippingRegionsAPI_getShippingRegionsAsync**](ShippingRegionsAPI.md#ShippingRegionsAPI_getShippingRegionsAsync) | **GET** /api/v2/ShipmentsService/ShippingRegions | Get all shipping regions
 [**ShippingRegionsAPI_getShippingRegionsCountAsync**](ShippingRegionsAPI.md#ShippingRegionsAPI_getShippingRegionsCountAsync) | **GET** /api/v2/ShipmentsService/ShippingRegions/Count | Get shipping regions count
+[**ShippingRegionsAPI_patchShippingRegionAsync**](ShippingRegionsAPI.md#ShippingRegionsAPI_patchShippingRegionAsync) | **PATCH** /api/v2/ShipmentsService/ShippingRegions/{regionId} | Patch a shipping region
 [**ShippingRegionsAPI_updateShippingRegionAsync**](ShippingRegionsAPI.md#ShippingRegionsAPI_updateShippingRegionAsync) | **PUT** /api/v2/ShipmentsService/ShippingRegions/{regionId} | Update a shipping region
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ShippingRegionsAPI_patchShippingRegionAsync**
+```c
+// Patch a shipping region
+//
+// Partially updates an existing shipping region using JSON Patch.
+//
+empty_envelope_t* ShippingRegionsAPI_patchShippingRegionAsync(apiClient_t *apiClient, char *tenantId, char *regionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**regionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

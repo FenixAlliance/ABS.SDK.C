@@ -5,7 +5,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
+**title** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
+**support_ticket_status** | **supportservice_support_ticket_create_dto_SUPPORTTICKETSTATUS_e** |  | [optional] 
 **contact_id** | **char \*** |  | [optional] 
 **support_ticket_type_id** | **char \*** |  | [optional] 
 **support_entitlement_id** | **char \*** |  | [optional] 

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**InquiryRequestsAPI_getInquiryRequestAsync**](InquiryRequestsAPI.md#InquiryRequestsAPI_getInquiryRequestAsync) | **GET** /api/v2/SupportService/InquiryRequests/{inquiryRequestId} | Retrieve an inquiry request by ID
 [**InquiryRequestsAPI_getInquiryRequestsAsync**](InquiryRequestsAPI.md#InquiryRequestsAPI_getInquiryRequestsAsync) | **GET** /api/v2/SupportService/InquiryRequests | Retrieve inquiry requests
 [**InquiryRequestsAPI_getInquiryRequestsCountAsync**](InquiryRequestsAPI.md#InquiryRequestsAPI_getInquiryRequestsCountAsync) | **GET** /api/v2/SupportService/InquiryRequests/Count | Get inquiry requests count
+[**InquiryRequestsAPI_patchInquiryRequestAsync**](InquiryRequestsAPI.md#InquiryRequestsAPI_patchInquiryRequestAsync) | **PATCH** /api/v2/SupportService/InquiryRequests/{inquiryRequestId} | Patch an inquiry request
 [**InquiryRequestsAPI_updateInquiryRequestAsync**](InquiryRequestsAPI.md#InquiryRequestsAPI_updateInquiryRequestAsync) | **PUT** /api/v2/SupportService/InquiryRequests/{inquiryRequestId} | Update an inquiry request
 
 
@@ -166,6 +167,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InquiryRequestsAPI_patchInquiryRequestAsync**
+```c
+// Patch an inquiry request
+//
+// Partially updates an existing inquiry request by its unique identifier.
+//
+empty_envelope_t* InquiryRequestsAPI_patchInquiryRequestAsync(apiClient_t *apiClient, char *tenantId, char *inquiryRequestId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**inquiryRequestId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**PermissionsAPI_getPermissionsByEnrollmentAsync**](PermissionsAPI.md#PermissionsAPI_getPermissionsByEnrollmentAsync) | **GET** /api/v2/SecurityService/Permissions/ByEnrollment/{enrollmentId} | Get permissions by enrollment
 [**PermissionsAPI_getPermissionsCountAsync**](PermissionsAPI.md#PermissionsAPI_getPermissionsCountAsync) | **GET** /api/v2/SecurityService/Permissions/Count | Get permissions count
 [**PermissionsAPI_getRolesByPermissionAsync**](PermissionsAPI.md#PermissionsAPI_getRolesByPermissionAsync) | **GET** /api/v2/SecurityService/Permissions/{securityPermissionId}/Roles | Get roles by permission
+[**PermissionsAPI_patchPermissionAsync**](PermissionsAPI.md#PermissionsAPI_patchPermissionAsync) | **PATCH** /api/v2/SecurityService/Permissions/{securityPermissionId} | Patch an existing permission
 [**PermissionsAPI_revokePermissionFromBusinessApplicationAsync**](PermissionsAPI.md#PermissionsAPI_revokePermissionFromBusinessApplicationAsync) | **DELETE** /api/v2/SecurityService/Permissions/{securityPermissionId}/Applications/{applicationId} | Revoke a permission from a business application
 [**PermissionsAPI_revokePermissionFromEnrollmentAsync**](PermissionsAPI.md#PermissionsAPI_revokePermissionFromEnrollmentAsync) | **DELETE** /api/v2/SecurityService/Permissions/{securityPermissionId}/Enrollments/{enrollmentId} | Revoke a permission from an enrollment
 [**PermissionsAPI_revokeRoleFromPermissionAsync**](PermissionsAPI.md#PermissionsAPI_revokeRoleFromPermissionAsync) | **DELETE** /api/v2/SecurityService/Permissions/{securityPermissionId}/Roles/{securityRoleId} | Revoke a role from a permission
@@ -427,6 +428,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PermissionsAPI_patchPermissionAsync**
+```c
+// Patch an existing permission
+//
+// Partially updates an existing security permission using a JSON Patch document.
+//
+empty_envelope_t* PermissionsAPI_patchPermissionAsync(apiClient_t *apiClient, char *tenantId, char *securityPermissionId, list_t *operation, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**securityPermissionId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

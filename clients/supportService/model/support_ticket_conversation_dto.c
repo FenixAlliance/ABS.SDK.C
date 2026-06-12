@@ -83,7 +83,7 @@ cJSON *support_ticket_conversation_dto_convertToJSON(support_ticket_conversation
 
     // support_ticket_conversation_dto->support_ticket_id
     if(support_ticket_conversation_dto->support_ticket_id) {
-    if(cJSON_AddStringToObject(item, "supportTicketID", support_ticket_conversation_dto->support_ticket_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "supportTicketId", support_ticket_conversation_dto->support_ticket_id) == NULL) {
     goto fail; //String
     }
     }
@@ -115,7 +115,7 @@ cJSON *support_ticket_conversation_dto_convertToJSON(support_ticket_conversation
 
     // support_ticket_conversation_dto->social_profile_id
     if(support_ticket_conversation_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", support_ticket_conversation_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", support_ticket_conversation_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -151,7 +151,7 @@ support_ticket_conversation_dto_t *support_ticket_conversation_dto_parseFromJSON
     }
 
     // support_ticket_conversation_dto->support_ticket_id
-    cJSON *support_ticket_id = cJSON_GetObjectItemCaseSensitive(support_ticket_conversation_dtoJSON, "supportTicketID");
+    cJSON *support_ticket_id = cJSON_GetObjectItemCaseSensitive(support_ticket_conversation_dtoJSON, "supportTicketId");
     if (support_ticket_id) { 
     if(!cJSON_IsString(support_ticket_id) && !cJSON_IsNull(support_ticket_id))
     {
@@ -187,7 +187,7 @@ support_ticket_conversation_dto_t *support_ticket_conversation_dto_parseFromJSON
     }
 
     // support_ticket_conversation_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(support_ticket_conversation_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(support_ticket_conversation_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {

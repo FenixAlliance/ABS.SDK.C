@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **everywhere** | **int** |  | [optional] 
 **postal_codes** | **char \*** |  | [optional] 
 **country_codes** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -5,9 +5,11 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/subscription_create_dto.h"
 #include "../model/subscription_dto_envelope.h"
 #include "../model/subscription_dto_i_read_only_list_envelope.h"
@@ -52,6 +54,14 @@ SubscriptionsAPI_getSubscriptionsAsync(apiClient_t *apiClient, char *tenantId, c
 //
 int32_envelope_t*
 SubscriptionsAPI_getSubscriptionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a subscription
+//
+// Patch a subscription
+//
+empty_envelope_t*
+SubscriptionsAPI_patchSubscriptionAsync(apiClient_t *apiClient, char *tenantId, char *subscriptionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a subscription

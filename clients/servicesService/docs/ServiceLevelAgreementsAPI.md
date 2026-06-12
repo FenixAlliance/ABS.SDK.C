@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ServiceLevelAgreementsAPI_getServiceLevelAgreementByIdAsync**](ServiceLevelAgreementsAPI.md#ServiceLevelAgreementsAPI_getServiceLevelAgreementByIdAsync) | **GET** /api/v2/ServicesService/ServiceLevelAgreements/{serviceLevelAgreementId} | Get a service level agreement by ID
 [**ServiceLevelAgreementsAPI_getServiceLevelAgreementsAsync**](ServiceLevelAgreementsAPI.md#ServiceLevelAgreementsAPI_getServiceLevelAgreementsAsync) | **GET** /api/v2/ServicesService/ServiceLevelAgreements | Get all service level agreements
 [**ServiceLevelAgreementsAPI_getServiceLevelAgreementsCountAsync**](ServiceLevelAgreementsAPI.md#ServiceLevelAgreementsAPI_getServiceLevelAgreementsCountAsync) | **GET** /api/v2/ServicesService/ServiceLevelAgreements/Count | Get service level agreements count
+[**ServiceLevelAgreementsAPI_patchServiceLevelAgreementAsync**](ServiceLevelAgreementsAPI.md#ServiceLevelAgreementsAPI_patchServiceLevelAgreementAsync) | **PATCH** /api/v2/ServicesService/ServiceLevelAgreements/{serviceLevelAgreementId} | Patch a service level agreement
 [**ServiceLevelAgreementsAPI_updateServiceLevelAgreementAsync**](ServiceLevelAgreementsAPI.md#ServiceLevelAgreementsAPI_updateServiceLevelAgreementAsync) | **PUT** /api/v2/ServicesService/ServiceLevelAgreements/{serviceLevelAgreementId} | Update a service level agreement
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceLevelAgreementsAPI_patchServiceLevelAgreementAsync**
+```c
+// Patch a service level agreement
+//
+// Partially updates an existing service level agreement using a JSON Patch document.
+//
+envelope_t* ServiceLevelAgreementsAPI_patchServiceLevelAgreementAsync(apiClient_t *apiClient, char *tenantId, char *serviceLevelAgreementId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**serviceLevelAgreementId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[envelope_t](envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

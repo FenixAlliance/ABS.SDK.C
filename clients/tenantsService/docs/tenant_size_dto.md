@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
 **name** | **char \*** |  | [optional] 
 **employee_low_range_value** | **int** |  | [optional] 
 **employee_high_range_value** | **int** |  | [optional] 

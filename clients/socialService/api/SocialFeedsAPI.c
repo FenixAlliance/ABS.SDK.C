@@ -1300,6 +1300,227 @@ end:
 
 }
 
+// Patch a social feed post
+//
+// Partially updates an existing post in a specific social feed using a JSON Patch document.
+//
+empty_envelope_t*
+SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *feedPostId, char *api_version, char *x_api_version, list_t *operation)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SocialService/SocialFeeds/{socialFeedId}/Posts/{feedPostId}");
+
+
+    // Path Params
+    long sizeOfPathParams_socialFeedId = strlen(socialFeedId)+3 + strlen(feedPostId)+3 + strlen("{ socialFeedId }");
+    if(socialFeedId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_socialFeedId = malloc(sizeOfPathParams_socialFeedId);
+    sprintf(localVarToReplace_socialFeedId, "{%s}", "socialFeedId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_socialFeedId, socialFeedId);
+    if(socialFeedId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_socialFeedId = malloc(sizeOfPathParams_socialFeedId);
+    sprintf(localVarToReplace_socialFeedId, "{%s}", "socialFeedId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_socialFeedId, socialFeedId);
+
+    // Path Params
+    long sizeOfPathParams_feedPostId = strlen(socialFeedId)+3 + strlen(feedPostId)+3 + strlen("{ feedPostId }");
+    if(feedPostId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_feedPostId = malloc(sizeOfPathParams_feedPostId);
+    sprintf(localVarToReplace_feedPostId, "{%s}", "feedPostId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_feedPostId, feedPostId);
+    if(feedPostId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_feedPostId = malloc(sizeOfPathParams_feedPostId);
+    sprintf(localVarToReplace_feedPostId, "{%s}", "feedPostId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_feedPostId, feedPostId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_socialProfileId = NULL;
+    char * valueQuery_socialProfileId = NULL;
+    keyValuePair_t *keyPairQuery_socialProfileId = 0;
+    if (socialProfileId)
+    {
+        keyQuery_socialProfileId = strdup("socialProfileId");
+        valueQuery_socialProfileId = strdup((socialProfileId));
+        keyPairQuery_socialProfileId = keyValuePair_create(keyQuery_socialProfileId, valueQuery_socialProfileId);
+        list_addElement(localVarQueryParameters,keyPairQuery_socialProfileId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *SocialFeedsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(SocialFeedsAPIlocalVarJSON);
+    cJSON_Delete(SocialFeedsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_socialFeedId);
+    free(localVarToReplace_feedPostId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_socialProfileId){
+        free(keyQuery_socialProfileId);
+        keyQuery_socialProfileId = NULL;
+    }
+    if(valueQuery_socialProfileId){
+        free(valueQuery_socialProfileId);
+        valueQuery_socialProfileId = NULL;
+    }
+    if(keyPairQuery_socialProfileId){
+        keyValuePair_free(keyPairQuery_socialProfileId);
+        keyPairQuery_socialProfileId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Update a social feed post
 //
 // Updates an existing post in a specific social feed.

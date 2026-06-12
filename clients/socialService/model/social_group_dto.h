@@ -24,8 +24,8 @@ typedef struct social_group_dto_t {
     char *name; // string
     char *title; // string
     char *avatar_url; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
     char *social_profile_id; // string
 
 } social_group_dto_t;
@@ -36,8 +36,8 @@ social_group_dto_t *social_group_dto_create(
     char *name,
     char *title,
     char *avatar_url,
-    char *business_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *social_profile_id
 );
 

@@ -3,8 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **char \*** |  | [optional] 
-**timestamp** | **char \*** |  | [optional] 
 **name** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
 **avatar_url** | **char \*** |  | [optional] 

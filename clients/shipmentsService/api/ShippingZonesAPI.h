@@ -5,8 +5,10 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/shipping_zone_create_dto.h"
 #include "../model/shipping_zone_dto_envelope.h"
 #include "../model/shipping_zone_dto_list_envelope.h"
@@ -51,6 +53,14 @@ ShippingZonesAPI_getShippingZonesAsync(apiClient_t *apiClient, char *tenantId, c
 //
 int32_envelope_t*
 ShippingZonesAPI_getShippingZonesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a shipping zone
+//
+// Partially updates an existing shipping zone using JSON Patch.
+//
+empty_envelope_t*
+ShippingZonesAPI_patchShippingZoneAsync(apiClient_t *apiClient, char *tenantId, char *zoneId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a shipping zone

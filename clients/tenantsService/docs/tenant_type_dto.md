@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
 **name** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
 

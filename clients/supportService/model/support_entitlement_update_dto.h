@@ -59,7 +59,7 @@ typedef struct support_entitlement_update_dto_t {
     char *data9_label; // string
     char *individual_id; // string
     char *organization_id; // string
-    char *receiver_business_id; // string
+    char *receiver_tenant_id; // string
     char *payment_token_id; // string
     char *wallet_account_id; // string
     char *security_certificate_id; // string
@@ -107,7 +107,7 @@ support_entitlement_update_dto_t *support_entitlement_update_dto_create(
     char *data9_label,
     char *individual_id,
     char *organization_id,
-    char *receiver_business_id,
+    char *receiver_tenant_id,
     char *payment_token_id,
     char *wallet_account_id,
     char *security_certificate_id

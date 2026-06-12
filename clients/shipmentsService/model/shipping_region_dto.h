@@ -23,7 +23,7 @@ typedef struct shipping_region_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *postal_codes; // string
-    char *business_id; // string
+    char *tenant_id; // string
 
 } shipping_region_dto_t;
 
@@ -32,7 +32,7 @@ shipping_region_dto_t *shipping_region_dto_create(
     char *timestamp,
     char *name,
     char *postal_codes,
-    char *business_id
+    char *tenant_id
 );
 
 void shipping_region_dto_free(shipping_region_dto_t *shipping_region_dto);

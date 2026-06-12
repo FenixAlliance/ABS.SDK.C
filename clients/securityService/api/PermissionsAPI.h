@@ -9,6 +9,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/security_permission_create_dto.h"
 #include "../model/security_permission_dto_envelope.h"
 #include "../model/security_permission_dto_list_envelope.h"
@@ -111,6 +112,14 @@ PermissionsAPI_getPermissionsCountAsync(apiClient_t *apiClient, char *tenantId, 
 //
 security_role_dto_list_envelope_t*
 PermissionsAPI_getRolesByPermissionAsync(apiClient_t *apiClient, char *tenantId, char *securityPermissionId, char *api_version, char *x_api_version);
+
+
+// Patch an existing permission
+//
+// Partially updates an existing security permission using a JSON Patch document.
+//
+empty_envelope_t*
+PermissionsAPI_patchPermissionAsync(apiClient_t *apiClient, char *tenantId, char *securityPermissionId, list_t *operation, char *api_version, char *x_api_version);
 
 
 // Revoke a permission from a business application

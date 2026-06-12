@@ -57,6 +57,9 @@ set(SRCS
     model/access_token_response.c
     model/additional_attribute.c
     model/boolean_envelope.c
+    model/business_domain_dto.c
+    model/business_domain_dto_envelope.c
+    model/business_domain_dto_list_envelope.c
     model/cart_dto.c
     model/cart_dto_envelope.c
     model/cart_dto_list_envelope.c
@@ -94,6 +97,7 @@ set(SRCS
     model/module.c
     model/module_list_envelope.c
     model/object_email_dispatch_request.c
+    model/operation.c
     model/option_create_dto.c
     model/option_dto.c
     model/option_dto_envelope.c
@@ -135,6 +139,7 @@ set(SRCS
     model/web_portal_dto_list_envelope.c
     model/web_portal_update_dto.c
     api/AntiforgeryAPI.c
+    api/BusinessDomainsAPI.c
     api/CartsAPI.c
     api/CompletionsAPI.c
     api/ContactOptionsAPI.c
@@ -165,6 +170,9 @@ set(HDRS
     model/access_token_response.h
     model/additional_attribute.h
     model/boolean_envelope.h
+    model/business_domain_dto.h
+    model/business_domain_dto_envelope.h
+    model/business_domain_dto_list_envelope.h
     model/cart_dto.h
     model/cart_dto_envelope.h
     model/cart_dto_list_envelope.h
@@ -202,6 +210,7 @@ set(HDRS
     model/module.h
     model/module_list_envelope.h
     model/object_email_dispatch_request.h
+    model/operation.h
     model/option_create_dto.h
     model/option_dto.h
     model/option_dto_envelope.h
@@ -243,6 +252,7 @@ set(HDRS
     model/web_portal_dto_list_envelope.h
     model/web_portal_update_dto.h
     api/AntiforgeryAPI.h
+    api/BusinessDomainsAPI.h
     api/CartsAPI.h
     api/CompletionsAPI.h
     api/ContactOptionsAPI.h
@@ -342,6 +352,7 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-AntiforgeryAPI.c
+#    unit-tests/manual-BusinessDomainsAPI.c
 #    unit-tests/manual-CartsAPI.c
 #    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-ContactOptionsAPI.c

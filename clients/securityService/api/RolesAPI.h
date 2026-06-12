@@ -9,6 +9,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/security_permission_dto_list_envelope.h"
 #include "../model/security_role_create_dto.h"
 #include "../model/security_role_dto_envelope.h"
@@ -111,6 +112,14 @@ RolesAPI_getRolesByEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char 
 //
 int32_envelope_t*
 RolesAPI_getRolesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an existing role
+//
+// Partially updates an existing security role using a JSON Patch document.
+//
+empty_envelope_t*
+RolesAPI_patchRoleAsync(apiClient_t *apiClient, char *tenantId, char *securityRoleId, list_t *operation, char *api_version, char *x_api_version);
 
 
 // Revoke a permission from a role

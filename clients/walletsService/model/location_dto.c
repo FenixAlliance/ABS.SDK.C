@@ -29,7 +29,9 @@ location_dto_t *location_dto_create(
     int can_generate_labels,
     int is_default_sender_address,
     int is_default_return_address,
-    int is_default_supping_location
+    int is_default_supping_location,
+    char *tenant_id,
+    char *enrollment_id
     ) {
     location_dto_t *location_dto_local_var = malloc(sizeof(location_dto_t));
     if (!location_dto_local_var) {
@@ -59,6 +61,8 @@ location_dto_t *location_dto_create(
     location_dto_local_var->is_default_sender_address = is_default_sender_address;
     location_dto_local_var->is_default_return_address = is_default_return_address;
     location_dto_local_var->is_default_supping_location = is_default_supping_location;
+    location_dto_local_var->tenant_id = tenant_id;
+    location_dto_local_var->enrollment_id = enrollment_id;
 
     return location_dto_local_var;
 }
@@ -128,6 +132,14 @@ void location_dto_free(location_dto_t *location_dto) {
     if (location_dto->country_id) {
         free(location_dto->country_id);
         location_dto->country_id = NULL;
+    }
+    if (location_dto->tenant_id) {
+        free(location_dto->tenant_id);
+        location_dto->tenant_id = NULL;
+    }
+    if (location_dto->enrollment_id) {
+        free(location_dto->enrollment_id);
+        location_dto->enrollment_id = NULL;
     }
     free(location_dto);
 }
@@ -323,6 +335,22 @@ cJSON *location_dto_convertToJSON(location_dto_t *location_dto) {
     if(location_dto->is_default_supping_location) {
     if(cJSON_AddBoolToObject(item, "isDefaultSuppingLocation", location_dto->is_default_supping_location) == NULL) {
     goto fail; //Bool
+    }
+    }
+
+
+    // location_dto->tenant_id
+    if(location_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", location_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // location_dto->enrollment_id
+    if(location_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", location_dto->enrollment_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -554,6 +582,24 @@ location_dto_t *location_dto_parseFromJSON(cJSON *location_dtoJSON){
     }
     }
 
+    // location_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(location_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // location_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(location_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     location_dto_local_var = location_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -579,7 +625,9 @@ location_dto_t *location_dto_parseFromJSON(cJSON *location_dtoJSON){
         can_generate_labels ? can_generate_labels->valueint : 0,
         is_default_sender_address ? is_default_sender_address->valueint : 0,
         is_default_return_address ? is_default_return_address->valueint : 0,
-        is_default_supping_location ? is_default_supping_location->valueint : 0
+        is_default_supping_location ? is_default_supping_location->valueint : 0,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return location_dto_local_var;
