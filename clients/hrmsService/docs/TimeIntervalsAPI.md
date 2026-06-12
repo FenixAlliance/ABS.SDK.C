@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**TimeIntervalsAPI_getTimeIntervalByIdAsync**](TimeIntervalsAPI.md#TimeIntervalsAPI_getTimeIntervalByIdAsync) | **GET** /api/v2/HrmsService/TimeIntervals/{timeIntervalId} | Get time interval by ID
 [**TimeIntervalsAPI_getTimeIntervalsAsync**](TimeIntervalsAPI.md#TimeIntervalsAPI_getTimeIntervalsAsync) | **GET** /api/v2/HrmsService/TimeIntervals | Get time intervals
 [**TimeIntervalsAPI_getTimeIntervalsCountAsync**](TimeIntervalsAPI.md#TimeIntervalsAPI_getTimeIntervalsCountAsync) | **GET** /api/v2/HrmsService/TimeIntervals/Count | Count time intervals
+[**TimeIntervalsAPI_patchTimeIntervalAsync**](TimeIntervalsAPI.md#TimeIntervalsAPI_patchTimeIntervalAsync) | **PATCH** /api/v2/HrmsService/TimeIntervals/{timeIntervalId} | Patch a time interval
 [**TimeIntervalsAPI_updateTimeIntervalAsync**](TimeIntervalsAPI.md#TimeIntervalsAPI_updateTimeIntervalAsync) | **PUT** /api/v2/HrmsService/TimeIntervals/{timeIntervalId} | Update a time interval
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TimeIntervalsAPI_patchTimeIntervalAsync**
+```c
+// Patch a time interval
+//
+// Partially updates an existing time interval for the specified tenant.
+//
+empty_envelope_t* TimeIntervalsAPI_patchTimeIntervalAsync(apiClient_t *apiClient, char *tenantId, char *timeIntervalId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**timeIntervalId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

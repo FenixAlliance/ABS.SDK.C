@@ -7,7 +7,9 @@
 #include "../include/binary.h"
 #include "../model/average_dto.h"
 #include "../model/count_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 #include "../model/student_profile_create_dto.h"
 #include "../model/student_profile_dto.h"
 #include "../model/student_profile_update_dto.h"
@@ -39,6 +41,10 @@ StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdGet(apiCli
 
 count_dto_t*
 StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdHoursCompletedGet(apiClient_t *apiClient, char *tenantId, char *studentProfileId, char *api_version, char *x_api_version);
+
+
+empty_envelope_t*
+StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdPatch(apiClient_t *apiClient, char *tenantId, char *studentProfileId, char *api_version, char *x_api_version, list_t *operation);
 
 
 void

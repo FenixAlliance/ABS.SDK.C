@@ -16,6 +16,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a deal unit flow
@@ -96,6 +97,22 @@ DealUnitFlowsAPI_getDealUnitFlowsAsync(apiClient_t *apiClient, char *tenantId);
 //
 int32_envelope_t*
 DealUnitFlowsAPI_getDealUnitFlowsCountAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Patch a deal unit flow
+//
+// Partially updates an existing deal unit flow by its unique identifier using a JSON Patch document.
+//
+empty_envelope_t*
+DealUnitFlowsAPI_patchDealUnitFlowAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, list_t *operation);
+
+
+// Patch a deal unit flow stage
+//
+// Partially updates an existing stage within a specific deal unit flow using a JSON Patch document.
+//
+empty_envelope_t*
+DealUnitFlowsAPI_patchDealUnitFlowStageAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, char *dealUnitFlowStageId, list_t *operation);
 
 
 // Update a deal unit flow

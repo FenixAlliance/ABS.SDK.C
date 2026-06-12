@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseCategoriesAPI_getCourseCategoriesAsync**](CourseCategoriesAPI.md#CourseCategoriesAPI_getCourseCategoriesAsync) | **GET** /api/v2/LearningService/CourseCategories | Get all course categories
 [**CourseCategoriesAPI_getCourseCategoriesCountAsync**](CourseCategoriesAPI.md#CourseCategoriesAPI_getCourseCategoriesCountAsync) | **GET** /api/v2/LearningService/CourseCategories/Count | Get course categories count
 [**CourseCategoriesAPI_getCourseCategoryByIdAsync**](CourseCategoriesAPI.md#CourseCategoriesAPI_getCourseCategoryByIdAsync) | **GET** /api/v2/LearningService/CourseCategories/{categoryId} | Get course category by ID
+[**CourseCategoriesAPI_patchCourseCategoryAsync**](CourseCategoriesAPI.md#CourseCategoriesAPI_patchCourseCategoryAsync) | **PATCH** /api/v2/LearningService/CourseCategories/{categoryId} | Patch a course category
 [**CourseCategoriesAPI_updateCourseCategoryAsync**](CourseCategoriesAPI.md#CourseCategoriesAPI_updateCourseCategoryAsync) | **PUT** /api/v2/LearningService/CourseCategories/{categoryId} | Update a course category
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseCategoriesAPI_patchCourseCategoryAsync**
+```c
+// Patch a course category
+//
+// Partially updates a course category for the specified tenant.
+//
+empty_envelope_t* CourseCategoriesAPI_patchCourseCategoryAsync(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**categoryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

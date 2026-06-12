@@ -18,6 +18,8 @@ Method | HTTP request | Description
 [**TrucksAPI_getTruckTripsCountAsync**](TrucksAPI.md#TrucksAPI_getTruckTripsCountAsync) | **GET** /api/v2/LogisticsService/Trucks/{truckId}/Trips/Count | Get truck trips count
 [**TrucksAPI_getTrucksAsync**](TrucksAPI.md#TrucksAPI_getTrucksAsync) | **GET** /api/v2/LogisticsService/Trucks | Get all trucks
 [**TrucksAPI_getTrucksCountAsync**](TrucksAPI.md#TrucksAPI_getTrucksCountAsync) | **GET** /api/v2/LogisticsService/Trucks/Count | Get trucks count
+[**TrucksAPI_patchTruckAsync**](TrucksAPI.md#TrucksAPI_patchTruckAsync) | **PATCH** /api/v2/LogisticsService/Trucks/{truckId} | Patch a truck
+[**TrucksAPI_patchTruckTripAsync**](TrucksAPI.md#TrucksAPI_patchTruckTripAsync) | **PATCH** /api/v2/LogisticsService/Trucks/{truckId}/Trips/{tripId} | Patch a truck trip
 [**TrucksAPI_updateTruckAsync**](TrucksAPI.md#TrucksAPI_updateTruckAsync) | **PUT** /api/v2/LogisticsService/Trucks/{truckId} | Update a truck
 [**TrucksAPI_updateTruckTripAsync**](TrucksAPI.md#TrucksAPI_updateTruckTripAsync) | **PUT** /api/v2/LogisticsService/Trucks/{truckId}/Trips/{tripId} | Update a truck trip
 
@@ -499,6 +501,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TrucksAPI_patchTruckAsync**
+```c
+// Patch a truck
+//
+// Partially updates an existing truck using JSON Patch.
+//
+empty_envelope_t* TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**truckId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TrucksAPI_patchTruckTripAsync**
+```c
+// Patch a truck trip
+//
+// Partially updates an existing truck trip using JSON Patch.
+//
+empty_envelope_t* TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *tripId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**truckId** | **char \*** |  | 
+**tripId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

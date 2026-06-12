@@ -1,0 +1,571 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include "non_fungible_token_dto_o_data_query_options.h"
+
+
+
+non_fungible_token_dto_o_data_query_options_t *non_fungible_token_dto_o_data_query_options_create(
+    http_request_t *request,
+    o_data_query_context_t *context,
+    o_data_raw_query_options_t *raw_values,
+    select_expand_query_option_t *select_expand,
+    apply_query_option_t *apply,
+    compute_query_option_t *compute,
+    filter_query_option_t *filter,
+    search_query_option_t *search,
+    order_by_query_option_t *order_by,
+    skip_query_option_t *skip,
+    skip_token_query_option_t *skip_token,
+    top_query_option_t *top,
+    count_query_option_t *count,
+    object_t *validator,
+    non_fungible_token_dto_e_tag_t *if_match,
+    non_fungible_token_dto_e_tag_t *if_none_match
+    ) {
+    non_fungible_token_dto_o_data_query_options_t *non_fungible_token_dto_o_data_query_options_local_var = malloc(sizeof(non_fungible_token_dto_o_data_query_options_t));
+    if (!non_fungible_token_dto_o_data_query_options_local_var) {
+        return NULL;
+    }
+    non_fungible_token_dto_o_data_query_options_local_var->request = request;
+    non_fungible_token_dto_o_data_query_options_local_var->context = context;
+    non_fungible_token_dto_o_data_query_options_local_var->raw_values = raw_values;
+    non_fungible_token_dto_o_data_query_options_local_var->select_expand = select_expand;
+    non_fungible_token_dto_o_data_query_options_local_var->apply = apply;
+    non_fungible_token_dto_o_data_query_options_local_var->compute = compute;
+    non_fungible_token_dto_o_data_query_options_local_var->filter = filter;
+    non_fungible_token_dto_o_data_query_options_local_var->search = search;
+    non_fungible_token_dto_o_data_query_options_local_var->order_by = order_by;
+    non_fungible_token_dto_o_data_query_options_local_var->skip = skip;
+    non_fungible_token_dto_o_data_query_options_local_var->skip_token = skip_token;
+    non_fungible_token_dto_o_data_query_options_local_var->top = top;
+    non_fungible_token_dto_o_data_query_options_local_var->count = count;
+    non_fungible_token_dto_o_data_query_options_local_var->validator = validator;
+    non_fungible_token_dto_o_data_query_options_local_var->if_match = if_match;
+    non_fungible_token_dto_o_data_query_options_local_var->if_none_match = if_none_match;
+
+    return non_fungible_token_dto_o_data_query_options_local_var;
+}
+
+
+void non_fungible_token_dto_o_data_query_options_free(non_fungible_token_dto_o_data_query_options_t *non_fungible_token_dto_o_data_query_options) {
+    if(NULL == non_fungible_token_dto_o_data_query_options){
+        return ;
+    }
+    listEntry_t *listEntry;
+    if (non_fungible_token_dto_o_data_query_options->request) {
+        http_request_free(non_fungible_token_dto_o_data_query_options->request);
+        non_fungible_token_dto_o_data_query_options->request = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->context) {
+        o_data_query_context_free(non_fungible_token_dto_o_data_query_options->context);
+        non_fungible_token_dto_o_data_query_options->context = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->raw_values) {
+        o_data_raw_query_options_free(non_fungible_token_dto_o_data_query_options->raw_values);
+        non_fungible_token_dto_o_data_query_options->raw_values = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->select_expand) {
+        select_expand_query_option_free(non_fungible_token_dto_o_data_query_options->select_expand);
+        non_fungible_token_dto_o_data_query_options->select_expand = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->apply) {
+        apply_query_option_free(non_fungible_token_dto_o_data_query_options->apply);
+        non_fungible_token_dto_o_data_query_options->apply = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->compute) {
+        compute_query_option_free(non_fungible_token_dto_o_data_query_options->compute);
+        non_fungible_token_dto_o_data_query_options->compute = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->filter) {
+        filter_query_option_free(non_fungible_token_dto_o_data_query_options->filter);
+        non_fungible_token_dto_o_data_query_options->filter = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->search) {
+        search_query_option_free(non_fungible_token_dto_o_data_query_options->search);
+        non_fungible_token_dto_o_data_query_options->search = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->order_by) {
+        order_by_query_option_free(non_fungible_token_dto_o_data_query_options->order_by);
+        non_fungible_token_dto_o_data_query_options->order_by = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->skip) {
+        skip_query_option_free(non_fungible_token_dto_o_data_query_options->skip);
+        non_fungible_token_dto_o_data_query_options->skip = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->skip_token) {
+        skip_token_query_option_free(non_fungible_token_dto_o_data_query_options->skip_token);
+        non_fungible_token_dto_o_data_query_options->skip_token = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->top) {
+        top_query_option_free(non_fungible_token_dto_o_data_query_options->top);
+        non_fungible_token_dto_o_data_query_options->top = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->count) {
+        count_query_option_free(non_fungible_token_dto_o_data_query_options->count);
+        non_fungible_token_dto_o_data_query_options->count = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->validator) {
+        object_free(non_fungible_token_dto_o_data_query_options->validator);
+        non_fungible_token_dto_o_data_query_options->validator = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->if_match) {
+        non_fungible_token_dto_e_tag_free(non_fungible_token_dto_o_data_query_options->if_match);
+        non_fungible_token_dto_o_data_query_options->if_match = NULL;
+    }
+    if (non_fungible_token_dto_o_data_query_options->if_none_match) {
+        non_fungible_token_dto_e_tag_free(non_fungible_token_dto_o_data_query_options->if_none_match);
+        non_fungible_token_dto_o_data_query_options->if_none_match = NULL;
+    }
+    free(non_fungible_token_dto_o_data_query_options);
+}
+
+cJSON *non_fungible_token_dto_o_data_query_options_convertToJSON(non_fungible_token_dto_o_data_query_options_t *non_fungible_token_dto_o_data_query_options) {
+    cJSON *item = cJSON_CreateObject();
+
+    // non_fungible_token_dto_o_data_query_options->request
+    if(non_fungible_token_dto_o_data_query_options->request) {
+    cJSON *request_local_JSON = http_request_convertToJSON(non_fungible_token_dto_o_data_query_options->request);
+    if(request_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "request", request_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->context
+    if(non_fungible_token_dto_o_data_query_options->context) {
+    cJSON *context_local_JSON = o_data_query_context_convertToJSON(non_fungible_token_dto_o_data_query_options->context);
+    if(context_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "context", context_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->raw_values
+    if(non_fungible_token_dto_o_data_query_options->raw_values) {
+    cJSON *raw_values_local_JSON = o_data_raw_query_options_convertToJSON(non_fungible_token_dto_o_data_query_options->raw_values);
+    if(raw_values_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "rawValues", raw_values_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->select_expand
+    if(non_fungible_token_dto_o_data_query_options->select_expand) {
+    cJSON *select_expand_local_JSON = select_expand_query_option_convertToJSON(non_fungible_token_dto_o_data_query_options->select_expand);
+    if(select_expand_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "selectExpand", select_expand_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->apply
+    if(non_fungible_token_dto_o_data_query_options->apply) {
+    cJSON *apply_local_JSON = apply_query_option_convertToJSON(non_fungible_token_dto_o_data_query_options->apply);
+    if(apply_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "apply", apply_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->compute
+    if(non_fungible_token_dto_o_data_query_options->compute) {
+    cJSON *compute_local_JSON = compute_query_option_convertToJSON(non_fungible_token_dto_o_data_query_options->compute);
+    if(compute_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "compute", compute_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->filter
+    if(non_fungible_token_dto_o_data_query_options->filter) {
+    cJSON *filter_local_JSON = filter_query_option_convertToJSON(non_fungible_token_dto_o_data_query_options->filter);
+    if(filter_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "filter", filter_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->search
+    if(non_fungible_token_dto_o_data_query_options->search) {
+    cJSON *search_local_JSON = search_query_option_convertToJSON(non_fungible_token_dto_o_data_query_options->search);
+    if(search_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "search", search_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->order_by
+    if(non_fungible_token_dto_o_data_query_options->order_by) {
+    cJSON *order_by_local_JSON = order_by_query_option_convertToJSON(non_fungible_token_dto_o_data_query_options->order_by);
+    if(order_by_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "orderBy", order_by_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->skip
+    if(non_fungible_token_dto_o_data_query_options->skip) {
+    cJSON *skip_local_JSON = skip_query_option_convertToJSON(non_fungible_token_dto_o_data_query_options->skip);
+    if(skip_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "skip", skip_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->skip_token
+    if(non_fungible_token_dto_o_data_query_options->skip_token) {
+    cJSON *skip_token_local_JSON = skip_token_query_option_convertToJSON(non_fungible_token_dto_o_data_query_options->skip_token);
+    if(skip_token_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "skipToken", skip_token_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->top
+    if(non_fungible_token_dto_o_data_query_options->top) {
+    cJSON *top_local_JSON = top_query_option_convertToJSON(non_fungible_token_dto_o_data_query_options->top);
+    if(top_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "top", top_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->count
+    if(non_fungible_token_dto_o_data_query_options->count) {
+    cJSON *count_local_JSON = count_query_option_convertToJSON(non_fungible_token_dto_o_data_query_options->count);
+    if(count_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "count", count_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->validator
+    if(non_fungible_token_dto_o_data_query_options->validator) {
+    cJSON *validator_object = object_convertToJSON(non_fungible_token_dto_o_data_query_options->validator);
+    if(validator_object == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "validator", validator_object);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->if_match
+    if(non_fungible_token_dto_o_data_query_options->if_match) {
+    cJSON *if_match_local_JSON = non_fungible_token_dto_e_tag_convertToJSON(non_fungible_token_dto_o_data_query_options->if_match);
+    if(if_match_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "ifMatch", if_match_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // non_fungible_token_dto_o_data_query_options->if_none_match
+    if(non_fungible_token_dto_o_data_query_options->if_none_match) {
+    cJSON *if_none_match_local_JSON = non_fungible_token_dto_e_tag_convertToJSON(non_fungible_token_dto_o_data_query_options->if_none_match);
+    if(if_none_match_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "ifNoneMatch", if_none_match_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+    return item;
+fail:
+    if (item) {
+        cJSON_Delete(item);
+    }
+    return NULL;
+}
+
+non_fungible_token_dto_o_data_query_options_t *non_fungible_token_dto_o_data_query_options_parseFromJSON(cJSON *non_fungible_token_dto_o_data_query_optionsJSON){
+
+    non_fungible_token_dto_o_data_query_options_t *non_fungible_token_dto_o_data_query_options_local_var = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->request
+    http_request_t *request_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->context
+    o_data_query_context_t *context_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->raw_values
+    o_data_raw_query_options_t *raw_values_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->select_expand
+    select_expand_query_option_t *select_expand_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->apply
+    apply_query_option_t *apply_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->compute
+    compute_query_option_t *compute_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->filter
+    filter_query_option_t *filter_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->search
+    search_query_option_t *search_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->order_by
+    order_by_query_option_t *order_by_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->skip
+    skip_query_option_t *skip_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->skip_token
+    skip_token_query_option_t *skip_token_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->top
+    top_query_option_t *top_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->count
+    count_query_option_t *count_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->if_match
+    non_fungible_token_dto_e_tag_t *if_match_local_nonprim = NULL;
+
+    // define the local variable for non_fungible_token_dto_o_data_query_options->if_none_match
+    non_fungible_token_dto_e_tag_t *if_none_match_local_nonprim = NULL;
+
+    // non_fungible_token_dto_o_data_query_options->request
+    cJSON *request = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "request");
+    if (request) { 
+    request_local_nonprim = http_request_parseFromJSON(request); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->context
+    cJSON *context = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "context");
+    if (context) { 
+    context_local_nonprim = o_data_query_context_parseFromJSON(context); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->raw_values
+    cJSON *raw_values = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "rawValues");
+    if (raw_values) { 
+    raw_values_local_nonprim = o_data_raw_query_options_parseFromJSON(raw_values); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->select_expand
+    cJSON *select_expand = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "selectExpand");
+    if (select_expand) { 
+    select_expand_local_nonprim = select_expand_query_option_parseFromJSON(select_expand); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->apply
+    cJSON *apply = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "apply");
+    if (apply) { 
+    apply_local_nonprim = apply_query_option_parseFromJSON(apply); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->compute
+    cJSON *compute = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "compute");
+    if (compute) { 
+    compute_local_nonprim = compute_query_option_parseFromJSON(compute); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->filter
+    cJSON *filter = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "filter");
+    if (filter) { 
+    filter_local_nonprim = filter_query_option_parseFromJSON(filter); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->search
+    cJSON *search = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "search");
+    if (search) { 
+    search_local_nonprim = search_query_option_parseFromJSON(search); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->order_by
+    cJSON *order_by = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "orderBy");
+    if (order_by) { 
+    order_by_local_nonprim = order_by_query_option_parseFromJSON(order_by); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->skip
+    cJSON *skip = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "skip");
+    if (skip) { 
+    skip_local_nonprim = skip_query_option_parseFromJSON(skip); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->skip_token
+    cJSON *skip_token = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "skipToken");
+    if (skip_token) { 
+    skip_token_local_nonprim = skip_token_query_option_parseFromJSON(skip_token); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->top
+    cJSON *top = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "top");
+    if (top) { 
+    top_local_nonprim = top_query_option_parseFromJSON(top); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->count
+    cJSON *count = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "count");
+    if (count) { 
+    count_local_nonprim = count_query_option_parseFromJSON(count); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->validator
+    cJSON *validator = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "validator");
+    object_t *validator_local_object = NULL;
+    if (validator) { 
+    validator_local_object = object_parseFromJSON(validator); //object
+    }
+
+    // non_fungible_token_dto_o_data_query_options->if_match
+    cJSON *if_match = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "ifMatch");
+    if (if_match) { 
+    if_match_local_nonprim = non_fungible_token_dto_e_tag_parseFromJSON(if_match); //nonprimitive
+    }
+
+    // non_fungible_token_dto_o_data_query_options->if_none_match
+    cJSON *if_none_match = cJSON_GetObjectItemCaseSensitive(non_fungible_token_dto_o_data_query_optionsJSON, "ifNoneMatch");
+    if (if_none_match) { 
+    if_none_match_local_nonprim = non_fungible_token_dto_e_tag_parseFromJSON(if_none_match); //nonprimitive
+    }
+
+
+    non_fungible_token_dto_o_data_query_options_local_var = non_fungible_token_dto_o_data_query_options_create (
+        request ? request_local_nonprim : NULL,
+        context ? context_local_nonprim : NULL,
+        raw_values ? raw_values_local_nonprim : NULL,
+        select_expand ? select_expand_local_nonprim : NULL,
+        apply ? apply_local_nonprim : NULL,
+        compute ? compute_local_nonprim : NULL,
+        filter ? filter_local_nonprim : NULL,
+        search ? search_local_nonprim : NULL,
+        order_by ? order_by_local_nonprim : NULL,
+        skip ? skip_local_nonprim : NULL,
+        skip_token ? skip_token_local_nonprim : NULL,
+        top ? top_local_nonprim : NULL,
+        count ? count_local_nonprim : NULL,
+        validator ? validator_local_object : NULL,
+        if_match ? if_match_local_nonprim : NULL,
+        if_none_match ? if_none_match_local_nonprim : NULL
+        );
+
+    return non_fungible_token_dto_o_data_query_options_local_var;
+end:
+    if (request_local_nonprim) {
+        http_request_free(request_local_nonprim);
+        request_local_nonprim = NULL;
+    }
+    if (context_local_nonprim) {
+        o_data_query_context_free(context_local_nonprim);
+        context_local_nonprim = NULL;
+    }
+    if (raw_values_local_nonprim) {
+        o_data_raw_query_options_free(raw_values_local_nonprim);
+        raw_values_local_nonprim = NULL;
+    }
+    if (select_expand_local_nonprim) {
+        select_expand_query_option_free(select_expand_local_nonprim);
+        select_expand_local_nonprim = NULL;
+    }
+    if (apply_local_nonprim) {
+        apply_query_option_free(apply_local_nonprim);
+        apply_local_nonprim = NULL;
+    }
+    if (compute_local_nonprim) {
+        compute_query_option_free(compute_local_nonprim);
+        compute_local_nonprim = NULL;
+    }
+    if (filter_local_nonprim) {
+        filter_query_option_free(filter_local_nonprim);
+        filter_local_nonprim = NULL;
+    }
+    if (search_local_nonprim) {
+        search_query_option_free(search_local_nonprim);
+        search_local_nonprim = NULL;
+    }
+    if (order_by_local_nonprim) {
+        order_by_query_option_free(order_by_local_nonprim);
+        order_by_local_nonprim = NULL;
+    }
+    if (skip_local_nonprim) {
+        skip_query_option_free(skip_local_nonprim);
+        skip_local_nonprim = NULL;
+    }
+    if (skip_token_local_nonprim) {
+        skip_token_query_option_free(skip_token_local_nonprim);
+        skip_token_local_nonprim = NULL;
+    }
+    if (top_local_nonprim) {
+        top_query_option_free(top_local_nonprim);
+        top_local_nonprim = NULL;
+    }
+    if (count_local_nonprim) {
+        count_query_option_free(count_local_nonprim);
+        count_local_nonprim = NULL;
+    }
+    if (if_match_local_nonprim) {
+        non_fungible_token_dto_e_tag_free(if_match_local_nonprim);
+        if_match_local_nonprim = NULL;
+    }
+    if (if_none_match_local_nonprim) {
+        non_fungible_token_dto_e_tag_free(if_none_match_local_nonprim);
+        if_none_match_local_nonprim = NULL;
+    }
+    return NULL;
+
+}

@@ -26,6 +26,7 @@ typedef struct course_grading_rubric_dto_t {
     int enable_points; //boolean
     char *course_id; // string
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_grading_rubric_dto_t;
 
@@ -36,7 +37,8 @@ course_grading_rubric_dto_t *course_grading_rubric_dto_create(
     char *description,
     int enable_points,
     char *course_id,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_grading_rubric_dto_free(course_grading_rubric_dto_t *course_grading_rubric_dto);

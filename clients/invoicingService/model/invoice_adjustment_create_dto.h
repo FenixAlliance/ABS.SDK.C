@@ -30,6 +30,8 @@ typedef struct invoice_adjustment_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *currency_id; // string
+    int priority; //numeric
+    char *code; // string
     char *description; // string
     double surcharge_percent; //numeric
     double surcharge_amount; //numeric
@@ -45,6 +47,8 @@ invoice_adjustment_create_dto_t *invoice_adjustment_create_dto_create(
     char *id,
     char *timestamp,
     char *currency_id,
+    int priority,
+    char *code,
     char *description,
     double surcharge_percent,
     double surcharge_amount,

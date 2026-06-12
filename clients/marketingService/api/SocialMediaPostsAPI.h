@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/social_media_post_create_dto.h"
 #include "../model/social_media_post_dto_envelope.h"
 #include "../model/social_media_post_dto_list_envelope.h"
@@ -52,6 +53,14 @@ SocialMediaPostsAPI_getSocialMediaPostsCountAsync(apiClient_t *apiClient, char *
 //
 social_media_post_dto_list_envelope_t*
 SocialMediaPostsAPI_getSocialMediaPostsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a social media post
+//
+// Partially updates a social media post by its ID using JSON Patch.
+//
+empty_envelope_t*
+SocialMediaPostsAPI_patchSocialMediaPostAsync(apiClient_t *apiClient, char *tenantId, char *socialmediapostId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a social media post

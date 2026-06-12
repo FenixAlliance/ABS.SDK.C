@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**MarketingListsAPI_getMarketingListDetailsAsync**](MarketingListsAPI.md#MarketingListsAPI_getMarketingListDetailsAsync) | **GET** /api/v2/MarketingService/MarketingLists/{marketinglistId} | Get marketing list by ID
 [**MarketingListsAPI_getMarketingListODataAsync**](MarketingListsAPI.md#MarketingListsAPI_getMarketingListODataAsync) | **GET** /api/v2/MarketingService/MarketingLists | Get marketing lists
 [**MarketingListsAPI_getMarketingListsCountAsync**](MarketingListsAPI.md#MarketingListsAPI_getMarketingListsCountAsync) | **GET** /api/v2/MarketingService/MarketingLists/Count | Get marketing lists count
+[**MarketingListsAPI_patchMarketingListAsync**](MarketingListsAPI.md#MarketingListsAPI_patchMarketingListAsync) | **PATCH** /api/v2/MarketingService/MarketingLists/{marketinglistId} | Patch a marketing list
 [**MarketingListsAPI_updateMarketingListAsync**](MarketingListsAPI.md#MarketingListsAPI_updateMarketingListAsync) | **PUT** /api/v2/MarketingService/MarketingLists/{marketinglistId} | Update a marketing list
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **MarketingListsAPI_patchMarketingListAsync**
+```c
+// Patch a marketing list
+//
+// Partially updates a marketing list by its ID using JSON Patch.
+//
+empty_envelope_t* MarketingListsAPI_patchMarketingListAsync(apiClient_t *apiClient, char *tenantId, char *marketinglistId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**marketinglistId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

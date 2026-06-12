@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**WebPagesAPI_getTagsByWebPageAsync**](WebPagesAPI.md#WebPagesAPI_getTagsByWebPageAsync) | **GET** /api/v2/ContentService/WebPages/{webPageId}/Tags | Get tags by web page
 [**WebPagesAPI_getWebPageByIdAsync**](WebPagesAPI.md#WebPagesAPI_getWebPageByIdAsync) | **GET** /api/v2/ContentService/WebPages/{webPageId} | Get web page by ID
 [**WebPagesAPI_getWebPagesAsync**](WebPagesAPI.md#WebPagesAPI_getWebPagesAsync) | **GET** /api/v2/ContentService/WebPages | Get web pages
+[**WebPagesAPI_patchWebPageAsync**](WebPagesAPI.md#WebPagesAPI_patchWebPageAsync) | **PATCH** /api/v2/ContentService/WebPages/{webPageId} | Patch a web page
 [**WebPagesAPI_relateWebPageToCategoryAsync**](WebPagesAPI.md#WebPagesAPI_relateWebPageToCategoryAsync) | **POST** /api/v2/ContentService/WebPages/{webPageId}/Categories/{categoryId} | Relate web page to category
 [**WebPagesAPI_relateWebPageToTagAsync**](WebPagesAPI.md#WebPagesAPI_relateWebPageToTagAsync) | **POST** /api/v2/ContentService/WebPages/{webPageId}/Tags/{tagId} | Relate web page to tag
 [**WebPagesAPI_unrelateWebPageCategoryAsync**](WebPagesAPI.md#WebPagesAPI_unrelateWebPageCategoryAsync) | **DELETE** /api/v2/ContentService/WebPages/{webPageId}/Categories/{categoryId} | Unrelate web page from category
@@ -316,6 +317,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WebPagesAPI_patchWebPageAsync**
+```c
+// Patch a web page
+//
+// Partially updates an existing web page for the specified tenant.
+//
+void WebPagesAPI_patchWebPageAsync(apiClient_t *apiClient, char *tenantId, char *webPageId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**webPageId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

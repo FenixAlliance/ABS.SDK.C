@@ -16,6 +16,7 @@
 #include "../model/item_packing_slip_entry_dto_list_envelope.h"
 #include "../model/item_packing_slip_entry_update_dto.h"
 #include "../model/item_packing_slip_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create an item packing slip
@@ -96,6 +97,22 @@ ItemPackingSlipsAPI_getItemPackingSlipsAsync(apiClient_t *apiClient, char *tenan
 //
 int32_envelope_t*
 ItemPackingSlipsAPI_getItemPackingSlipsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item packing slip
+//
+// Applies a JSON Patch document to an item packing slip.
+//
+empty_envelope_t*
+ItemPackingSlipsAPI_patchItemPackingSlipAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a packing slip entry
+//
+// Applies a JSON Patch document to a packing slip entry.
+//
+empty_envelope_t*
+ItemPackingSlipsAPI_patchItemPackingSlipEntryAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item packing slip

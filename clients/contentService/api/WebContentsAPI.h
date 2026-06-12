@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/web_content_create_dto.h"
 #include "../model/web_content_dto_envelope.h"
 #include "../model/web_content_dto_list_envelope.h"
@@ -52,6 +53,14 @@ WebContentsAPI_getWebContentByIdAsync(apiClient_t *apiClient, char *tenantId, ch
 //
 web_content_dto_list_envelope_t*
 WebContentsAPI_getWebContentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a web content
+//
+// Partially updates an existing web content for the specified tenant.
+//
+empty_envelope_t*
+WebContentsAPI_patchWebContentAsync(apiClient_t *apiClient, char *tenantId, char *webContentId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a web content

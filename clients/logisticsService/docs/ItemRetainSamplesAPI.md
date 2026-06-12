@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ItemRetainSamplesAPI_getItemRetainSampleByIdAsync**](ItemRetainSamplesAPI.md#ItemRetainSamplesAPI_getItemRetainSampleByIdAsync) | **GET** /api/v2/LogisticsService/ItemRetainSamples/{retainSampleId} | Get item retain sample by ID
 [**ItemRetainSamplesAPI_getItemRetainSamplesAsync**](ItemRetainSamplesAPI.md#ItemRetainSamplesAPI_getItemRetainSamplesAsync) | **GET** /api/v2/LogisticsService/ItemRetainSamples | Get all item retain samples
 [**ItemRetainSamplesAPI_getItemRetainSamplesCountAsync**](ItemRetainSamplesAPI.md#ItemRetainSamplesAPI_getItemRetainSamplesCountAsync) | **GET** /api/v2/LogisticsService/ItemRetainSamples/Count | Get item retain samples count
+[**ItemRetainSamplesAPI_patchItemRetainSampleAsync**](ItemRetainSamplesAPI.md#ItemRetainSamplesAPI_patchItemRetainSampleAsync) | **PATCH** /api/v2/LogisticsService/ItemRetainSamples/{retainSampleId} | Patch an item retain sample
 [**ItemRetainSamplesAPI_updateItemRetainSampleAsync**](ItemRetainSamplesAPI.md#ItemRetainSamplesAPI_updateItemRetainSampleAsync) | **PUT** /api/v2/LogisticsService/ItemRetainSamples/{retainSampleId} | Update an item retain sample
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemRetainSamplesAPI_patchItemRetainSampleAsync**
+```c
+// Patch an item retain sample
+//
+// Applies a JSON Patch document to an item retain sample.
+//
+empty_envelope_t* ItemRetainSamplesAPI_patchItemRetainSampleAsync(apiClient_t *apiClient, char *tenantId, char *retainSampleId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**retainSampleId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

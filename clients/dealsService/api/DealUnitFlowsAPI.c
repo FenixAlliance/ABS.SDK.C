@@ -1126,6 +1126,332 @@ end:
 
 }
 
+// Patch a deal unit flow
+//
+// Partially updates an existing deal unit flow by its unique identifier using a JSON Patch document.
+//
+empty_envelope_t*
+DealUnitFlowsAPI_patchDealUnitFlowAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, list_t *operation)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/DealsService/DealUnitFlows/{dealUnitFlowId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/DealsService/DealUnitFlows/{dealUnitFlowId}");
+
+
+    // Path Params
+    long sizeOfPathParams_dealUnitFlowId = strlen(dealUnitFlowId)+3 + strlen("{ dealUnitFlowId }");
+    if(dealUnitFlowId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_dealUnitFlowId = malloc(sizeOfPathParams_dealUnitFlowId);
+    sprintf(localVarToReplace_dealUnitFlowId, "{%s}", "dealUnitFlowId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_dealUnitFlowId, dealUnitFlowId);
+    if(dealUnitFlowId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_dealUnitFlowId = malloc(sizeOfPathParams_dealUnitFlowId);
+    sprintf(localVarToReplace_dealUnitFlowId, "{%s}", "dealUnitFlowId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_dealUnitFlowId, dealUnitFlowId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","Not Found");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *DealUnitFlowsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(DealUnitFlowsAPIlocalVarJSON);
+    cJSON_Delete(DealUnitFlowsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_dealUnitFlowId);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Patch a deal unit flow stage
+//
+// Partially updates an existing stage within a specific deal unit flow using a JSON Patch document.
+//
+empty_envelope_t*
+DealUnitFlowsAPI_patchDealUnitFlowStageAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, char *dealUnitFlowStageId, list_t *operation)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/DealsService/DealUnitFlows/{dealUnitFlowId}/Stages/{dealUnitFlowStageId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/DealsService/DealUnitFlows/{dealUnitFlowId}/Stages/{dealUnitFlowStageId}");
+
+
+    // Path Params
+    long sizeOfPathParams_dealUnitFlowId = strlen(dealUnitFlowId)+3 + strlen(dealUnitFlowStageId)+3 + strlen("{ dealUnitFlowId }");
+    if(dealUnitFlowId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_dealUnitFlowId = malloc(sizeOfPathParams_dealUnitFlowId);
+    sprintf(localVarToReplace_dealUnitFlowId, "{%s}", "dealUnitFlowId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_dealUnitFlowId, dealUnitFlowId);
+    if(dealUnitFlowId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_dealUnitFlowId = malloc(sizeOfPathParams_dealUnitFlowId);
+    sprintf(localVarToReplace_dealUnitFlowId, "{%s}", "dealUnitFlowId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_dealUnitFlowId, dealUnitFlowId);
+
+    // Path Params
+    long sizeOfPathParams_dealUnitFlowStageId = strlen(dealUnitFlowId)+3 + strlen(dealUnitFlowStageId)+3 + strlen("{ dealUnitFlowStageId }");
+    if(dealUnitFlowStageId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_dealUnitFlowStageId = malloc(sizeOfPathParams_dealUnitFlowStageId);
+    sprintf(localVarToReplace_dealUnitFlowStageId, "{%s}", "dealUnitFlowStageId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_dealUnitFlowStageId, dealUnitFlowStageId);
+    if(dealUnitFlowStageId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_dealUnitFlowStageId = malloc(sizeOfPathParams_dealUnitFlowStageId);
+    sprintf(localVarToReplace_dealUnitFlowStageId, "{%s}", "dealUnitFlowStageId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_dealUnitFlowStageId, dealUnitFlowStageId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","Not Found");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *DealUnitFlowsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(DealUnitFlowsAPIlocalVarJSON);
+    cJSON_Delete(DealUnitFlowsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_dealUnitFlowId);
+    free(localVarToReplace_dealUnitFlowStageId);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Update a deal unit flow
 //
 // Updates an existing deal unit flow by its unique identifier.

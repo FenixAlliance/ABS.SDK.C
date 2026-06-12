@@ -32,6 +32,8 @@ typedef struct web_template_dto_t {
     char *razor_content; // string
     char *highlight_image; // string
     int order; //numeric
+    char *tenant_id; // string
+    char *enrollment_id; // string
 
 } web_template_dto_t;
 
@@ -48,7 +50,9 @@ web_template_dto_t *web_template_dto_create(
     char *js_content,
     char *razor_content,
     char *highlight_image,
-    int order
+    int order,
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void web_template_dto_free(web_template_dto_t *web_template_dto);

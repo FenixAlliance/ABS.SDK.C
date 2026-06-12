@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**GigsAPI_getGigByIdAsync**](GigsAPI.md#GigsAPI_getGigByIdAsync) | **GET** /api/v2/HrmsService/Gigs/{gigId} | Get gig by ID
 [**GigsAPI_getGigsAsync**](GigsAPI.md#GigsAPI_getGigsAsync) | **GET** /api/v2/HrmsService/Gigs | Get gigs
 [**GigsAPI_getGigsCountAsync**](GigsAPI.md#GigsAPI_getGigsCountAsync) | **GET** /api/v2/HrmsService/Gigs/Count | Count gigs
+[**GigsAPI_patchGigAsync**](GigsAPI.md#GigsAPI_patchGigAsync) | **PATCH** /api/v2/HrmsService/Gigs/{gigId} | Patch a gig
 [**GigsAPI_updateGigAsync**](GigsAPI.md#GigsAPI_updateGigAsync) | **PUT** /api/v2/HrmsService/Gigs/{gigId} | Update a gig
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GigsAPI_patchGigAsync**
+```c
+// Patch a gig
+//
+// Partially updates an existing gig for the specified tenant.
+//
+empty_envelope_t* GigsAPI_patchGigAsync(apiClient_t *apiClient, char *tenantId, char *gigId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**gigId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

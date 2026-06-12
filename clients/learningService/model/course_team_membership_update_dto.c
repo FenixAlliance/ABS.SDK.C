@@ -54,7 +54,7 @@ cJSON *course_team_membership_update_dto_convertToJSON(course_team_membership_up
 
     // course_team_membership_update_dto->instructor_profile_id
     if(course_team_membership_update_dto->instructor_profile_id) {
-    if(cJSON_AddStringToObject(item, "instructorProfileID", course_team_membership_update_dto->instructor_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "instructorProfileId", course_team_membership_update_dto->instructor_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -81,7 +81,7 @@ course_team_membership_update_dto_t *course_team_membership_update_dto_parseFrom
     course_team_membership_update_dto_t *course_team_membership_update_dto_local_var = NULL;
 
     // course_team_membership_update_dto->instructor_profile_id
-    cJSON *instructor_profile_id = cJSON_GetObjectItemCaseSensitive(course_team_membership_update_dtoJSON, "instructorProfileID");
+    cJSON *instructor_profile_id = cJSON_GetObjectItemCaseSensitive(course_team_membership_update_dtoJSON, "instructorProfileId");
     if (instructor_profile_id) { 
     if(!cJSON_IsString(instructor_profile_id) && !cJSON_IsNull(instructor_profile_id))
     {

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseGradingRubricsAPI_getCourseGradingRubricByIdAsync**](CourseGradingRubricsAPI.md#CourseGradingRubricsAPI_getCourseGradingRubricByIdAsync) | **GET** /api/v2/LearningService/CourseGradingRubrics/{rubricId} | Get course grading rubric by ID
 [**CourseGradingRubricsAPI_getCourseGradingRubricsAsync**](CourseGradingRubricsAPI.md#CourseGradingRubricsAPI_getCourseGradingRubricsAsync) | **GET** /api/v2/LearningService/CourseGradingRubrics | Get all course grading rubrics
 [**CourseGradingRubricsAPI_getCourseGradingRubricsCountAsync**](CourseGradingRubricsAPI.md#CourseGradingRubricsAPI_getCourseGradingRubricsCountAsync) | **GET** /api/v2/LearningService/CourseGradingRubrics/Count | Get course grading rubrics count
+[**CourseGradingRubricsAPI_patchCourseGradingRubricAsync**](CourseGradingRubricsAPI.md#CourseGradingRubricsAPI_patchCourseGradingRubricAsync) | **PATCH** /api/v2/LearningService/CourseGradingRubrics/{rubricId} | Patch a course grading rubric
 [**CourseGradingRubricsAPI_updateCourseGradingRubricAsync**](CourseGradingRubricsAPI.md#CourseGradingRubricsAPI_updateCourseGradingRubricAsync) | **PUT** /api/v2/LearningService/CourseGradingRubrics/{rubricId} | Update a course grading rubric
 
 
@@ -174,6 +175,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseGradingRubricsAPI_patchCourseGradingRubricAsync**
+```c
+// Patch a course grading rubric
+//
+// Partially updates an existing course grading rubric.
+//
+void CourseGradingRubricsAPI_patchCourseGradingRubricAsync(apiClient_t *apiClient, char *tenantId, char *rubricId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**rubricId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

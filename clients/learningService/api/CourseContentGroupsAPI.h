@@ -8,7 +8,9 @@
 #include "../model/course_content_group_create_dto.h"
 #include "../model/course_content_group_dto.h"
 #include "../model/course_content_group_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course content group
@@ -65,6 +67,14 @@ CourseContentGroupsAPI_getCourseContentGroupsByCourseCountAsync(apiClient_t *api
 //
 int*
 CourseContentGroupsAPI_getCourseContentGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course content group
+//
+// Partially updates a course content group for the specified tenant.
+//
+empty_envelope_t*
+CourseContentGroupsAPI_patchCourseContentGroupAsync(apiClient_t *apiClient, char *tenantId, char *groupId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course content group

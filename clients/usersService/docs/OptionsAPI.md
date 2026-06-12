@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**OptionsAPI_getUserOptionByKey**](OptionsAPI.md#OptionsAPI_getUserOptionByKey) | **GET** /api/v2/Me/Options/Key/{key} | Retrieve a single user option by its key
 [**OptionsAPI_getUserOptions**](OptionsAPI.md#OptionsAPI_getUserOptions) | **GET** /api/v2/Me/Options | Retrieve a list of user options
 [**OptionsAPI_getUserOptionsCount**](OptionsAPI.md#OptionsAPI_getUserOptionsCount) | **GET** /api/v2/Me/Options/Count | Get the count of user options
+[**OptionsAPI_patchUserOption**](OptionsAPI.md#OptionsAPI_patchUserOption) | **PATCH** /api/v2/Me/Options/{optionId} | Patch a user option
 [**OptionsAPI_updateUserOption**](OptionsAPI.md#OptionsAPI_updateUserOption) | **PUT** /api/v2/Me/Options/{optionId} | Update a user option
 [**OptionsAPI_upsertUserOption**](OptionsAPI.md#OptionsAPI_upsertUserOption) | **PUT** /api/v2/Me/Options/Upsert/{key} | Create or update a user option by key
 
@@ -211,6 +212,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **OptionsAPI_patchUserOption**
+```c
+// Patch a user option
+//
+// Partially updates a user option using a JSON Patch document
+//
+empty_envelope_t* OptionsAPI_patchUserOption(apiClient_t *apiClient, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**optionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

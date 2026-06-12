@@ -67,6 +67,7 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
+    model/operation.c
     model/order_create_dto.c
     model/order_dto.c
     model/order_dto_envelope.c
@@ -112,6 +113,7 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
+    model/operation.h
     model/order_create_dto.h
     model/order_dto.h
     model/order_dto_envelope.h

@@ -28,6 +28,7 @@ typedef struct course_file_dto_t {
     long file_length; //numeric
     char *course_id; // string
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_file_dto_t;
 
@@ -40,7 +41,8 @@ course_file_dto_t *course_file_dto_create(
     char *content_type,
     long file_length,
     char *course_id,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_file_dto_free(course_file_dto_t *course_file_dto);

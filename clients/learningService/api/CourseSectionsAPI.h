@@ -8,7 +8,9 @@
 #include "../model/course_section_create_dto.h"
 #include "../model/course_section_dto.h"
 #include "../model/course_section_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course section
@@ -49,6 +51,14 @@ CourseSectionsAPI_getCourseSectionsAsync(apiClient_t *apiClient, char *tenantId,
 //
 int*
 CourseSectionsAPI_getCourseSectionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course section
+//
+// Partially updates a course section for the specified tenant.
+//
+empty_envelope_t*
+CourseSectionsAPI_patchCourseSectionAsync(apiClient_t *apiClient, char *tenantId, char *sectionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course section

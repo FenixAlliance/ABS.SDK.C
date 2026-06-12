@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**SchedulesAPI_getScheduleByIdAsync**](SchedulesAPI.md#SchedulesAPI_getScheduleByIdAsync) | **GET** /api/v2/HrmsService/Schedules/{scheduleId} | Get schedule by ID
 [**SchedulesAPI_getSchedulesAsync**](SchedulesAPI.md#SchedulesAPI_getSchedulesAsync) | **GET** /api/v2/HrmsService/Schedules | Get schedules
 [**SchedulesAPI_getSchedulesCountAsync**](SchedulesAPI.md#SchedulesAPI_getSchedulesCountAsync) | **GET** /api/v2/HrmsService/Schedules/Count | Count schedules
+[**SchedulesAPI_patchScheduleAsync**](SchedulesAPI.md#SchedulesAPI_patchScheduleAsync) | **PATCH** /api/v2/HrmsService/Schedules/{scheduleId} | Patch a schedule
 [**SchedulesAPI_updateScheduleAsync**](SchedulesAPI.md#SchedulesAPI_updateScheduleAsync) | **PUT** /api/v2/HrmsService/Schedules/{scheduleId} | Update a schedule
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SchedulesAPI_patchScheduleAsync**
+```c
+// Patch a schedule
+//
+// Partially updates an existing schedule for the specified tenant.
+//
+empty_envelope_t* SchedulesAPI_patchScheduleAsync(apiClient_t *apiClient, char *tenantId, char *scheduleId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**scheduleId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

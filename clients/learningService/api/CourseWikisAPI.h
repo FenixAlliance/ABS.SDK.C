@@ -8,7 +8,9 @@
 #include "../model/course_wiki_create_dto.h"
 #include "../model/course_wiki_dto.h"
 #include "../model/course_wiki_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course wiki
@@ -49,6 +51,14 @@ CourseWikisAPI_getCourseWikisAsync(apiClient_t *apiClient, char *tenantId, char 
 //
 int*
 CourseWikisAPI_getCourseWikisCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course wiki
+//
+// Partially updates a course wiki for the specified tenant.
+//
+empty_envelope_t*
+CourseWikisAPI_patchCourseWikiAsync(apiClient_t *apiClient, char *tenantId, char *wikiId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course wiki

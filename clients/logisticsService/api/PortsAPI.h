@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/port_create_dto.h"
 #include "../model/port_dto_envelope.h"
 #include "../model/port_dto_list_envelope.h"
@@ -52,6 +53,14 @@ PortsAPI_getPortsAsync(apiClient_t *apiClient, char *tenantId, char *api_version
 //
 int32_envelope_t*
 PortsAPI_getPortsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a port
+//
+// Partially updates an existing port using JSON Patch.
+//
+empty_envelope_t*
+PortsAPI_patchPortAsync(apiClient_t *apiClient, char *tenantId, char *portId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a port

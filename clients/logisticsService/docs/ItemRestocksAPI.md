@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**ItemRestocksAPI_getItemRestockEntryByIdAsync**](ItemRestocksAPI.md#ItemRestocksAPI_getItemRestockEntryByIdAsync) | **GET** /api/v2/LogisticsService/ItemRestocks/{restockId}/Entries/{entryId} | Get restock entry by ID
 [**ItemRestocksAPI_getItemRestocksAsync**](ItemRestocksAPI.md#ItemRestocksAPI_getItemRestocksAsync) | **GET** /api/v2/LogisticsService/ItemRestocks | Get all item restocks
 [**ItemRestocksAPI_getItemRestocksCountAsync**](ItemRestocksAPI.md#ItemRestocksAPI_getItemRestocksCountAsync) | **GET** /api/v2/LogisticsService/ItemRestocks/Count | Get item restocks count
+[**ItemRestocksAPI_patchItemRestockAsync**](ItemRestocksAPI.md#ItemRestocksAPI_patchItemRestockAsync) | **PATCH** /api/v2/LogisticsService/ItemRestocks/{restockId} | Patch an item restock
+[**ItemRestocksAPI_patchItemRestockEntryAsync**](ItemRestocksAPI.md#ItemRestocksAPI_patchItemRestockEntryAsync) | **PATCH** /api/v2/LogisticsService/ItemRestocks/{restockId}/Entries/{entryId} | Patch a restock entry
 [**ItemRestocksAPI_updateItemRestockAsync**](ItemRestocksAPI.md#ItemRestocksAPI_updateItemRestockAsync) | **PUT** /api/v2/LogisticsService/ItemRestocks/{restockId} | Update an item restock
 [**ItemRestocksAPI_updateItemRestockEntryAsync**](ItemRestocksAPI.md#ItemRestocksAPI_updateItemRestockEntryAsync) | **PUT** /api/v2/LogisticsService/ItemRestocks/{restockId}/Entries/{entryId} | Update a restock entry
 
@@ -355,6 +357,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemRestocksAPI_patchItemRestockAsync**
+```c
+// Patch an item restock
+//
+// Applies a JSON Patch document to an item restock.
+//
+empty_envelope_t* ItemRestocksAPI_patchItemRestockAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**restockId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemRestocksAPI_patchItemRestockEntryAsync**
+```c
+// Patch a restock entry
+//
+// Applies a JSON Patch document to a restock entry.
+//
+empty_envelope_t* ItemRestocksAPI_patchItemRestockEntryAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**restockId** | **char \*** |  | 
+**entryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

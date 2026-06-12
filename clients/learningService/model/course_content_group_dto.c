@@ -10,7 +10,8 @@ course_content_group_dto_t *course_content_group_dto_create(
     char *timestamp,
     char *name,
     char *course_id,
-    char *business_id
+    char *tenant_id,
+    char *enrollment_id
     ) {
     course_content_group_dto_t *course_content_group_dto_local_var = malloc(sizeof(course_content_group_dto_t));
     if (!course_content_group_dto_local_var) {
@@ -20,7 +21,8 @@ course_content_group_dto_t *course_content_group_dto_create(
     course_content_group_dto_local_var->timestamp = timestamp;
     course_content_group_dto_local_var->name = name;
     course_content_group_dto_local_var->course_id = course_id;
-    course_content_group_dto_local_var->business_id = business_id;
+    course_content_group_dto_local_var->tenant_id = tenant_id;
+    course_content_group_dto_local_var->enrollment_id = enrollment_id;
 
     return course_content_group_dto_local_var;
 }
@@ -47,9 +49,13 @@ void course_content_group_dto_free(course_content_group_dto_t *course_content_gr
         free(course_content_group_dto->course_id);
         course_content_group_dto->course_id = NULL;
     }
-    if (course_content_group_dto->business_id) {
-        free(course_content_group_dto->business_id);
-        course_content_group_dto->business_id = NULL;
+    if (course_content_group_dto->tenant_id) {
+        free(course_content_group_dto->tenant_id);
+        course_content_group_dto->tenant_id = NULL;
+    }
+    if (course_content_group_dto->enrollment_id) {
+        free(course_content_group_dto->enrollment_id);
+        course_content_group_dto->enrollment_id = NULL;
     }
     free(course_content_group_dto);
 }
@@ -83,15 +89,23 @@ cJSON *course_content_group_dto_convertToJSON(course_content_group_dto_t *course
 
     // course_content_group_dto->course_id
     if(course_content_group_dto->course_id) {
-    if(cJSON_AddStringToObject(item, "courseID", course_content_group_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_content_group_dto->course_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // course_content_group_dto->business_id
-    if(course_content_group_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", course_content_group_dto->business_id) == NULL) {
+    // course_content_group_dto->tenant_id
+    if(course_content_group_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", course_content_group_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_content_group_dto->enrollment_id
+    if(course_content_group_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", course_content_group_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -136,7 +150,7 @@ course_content_group_dto_t *course_content_group_dto_parseFromJSON(cJSON *course
     }
 
     // course_content_group_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_content_group_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_content_group_dtoJSON, "courseId");
     if (course_id) { 
     if(!cJSON_IsString(course_id) && !cJSON_IsNull(course_id))
     {
@@ -144,10 +158,19 @@ course_content_group_dto_t *course_content_group_dto_parseFromJSON(cJSON *course
     }
     }
 
-    // course_content_group_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_content_group_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // course_content_group_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(course_content_group_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // course_content_group_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(course_content_group_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -159,7 +182,8 @@ course_content_group_dto_t *course_content_group_dto_parseFromJSON(cJSON *course
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         course_id && !cJSON_IsNull(course_id) ? strdup(course_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return course_content_group_dto_local_var;

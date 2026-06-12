@@ -40,6 +40,11 @@ Method | HTTP request | Description
 [**InvoicesAPI_getInvoiceReferencesCount**](InvoicesAPI.md#InvoicesAPI_getInvoiceReferencesCount) | **GET** /api/v2/InvoicingService/Invoices/{invoiceId}/References/Count | Get the count of invoice references.
 [**InvoicesAPI_getInvoices**](InvoicesAPI.md#InvoicesAPI_getInvoices) | **GET** /api/v2/InvoicingService/Invoices | Get a list of invoices.
 [**InvoicesAPI_getInvoicesCount**](InvoicesAPI.md#InvoicesAPI_getInvoicesCount) | **GET** /api/v2/InvoicingService/Invoices/Count | Get the count of invoices.
+[**InvoicesAPI_patchInvoice**](InvoicesAPI.md#InvoicesAPI_patchInvoice) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId} | Patch an invoice.
+[**InvoicesAPI_patchInvoiceAdjustment**](InvoicesAPI.md#InvoicesAPI_patchInvoiceAdjustment) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/Adjustments/{invoiceAdjustmentId} | Patch an invoice adjustment.
+[**InvoicesAPI_patchInvoiceLine**](InvoicesAPI.md#InvoicesAPI_patchInvoiceLine) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/Lines/{invoiceLineId} | Patch an invoice line.
+[**InvoicesAPI_patchInvoiceLineTax**](InvoicesAPI.md#InvoicesAPI_patchInvoiceLineTax) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/Lines/{invoiceLineId}/Taxes/{invoiceLineTaxId} | Patch a tax for an invoice line.
+[**InvoicesAPI_patchInvoiceReference**](InvoicesAPI.md#InvoicesAPI_patchInvoiceReference) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/References/{invoiceReferenceId} | Patch an invoice reference.
 [**InvoicesAPI_previewInvoiceEmail**](InvoicesAPI.md#InvoicesAPI_previewInvoiceEmail) | **POST** /api/v2/InvoicingService/Invoices/{invoiceId}/Emails/Preview | Preview the rendered email for an invoice.
 [**InvoicesAPI_sendInvoiceEmail**](InvoicesAPI.md#InvoicesAPI_sendInvoiceEmail) | **POST** /api/v2/InvoicingService/Invoices/{invoiceId}/Emails/Send | Send an invoice transactional email to recipients.
 [**InvoicesAPI_updateInvoice**](InvoicesAPI.md#InvoicesAPI_updateInvoice) | **PUT** /api/v2/InvoicingService/Invoices/{invoiceId} | Update an invoice.
@@ -1215,6 +1220,176 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InvoicesAPI_patchInvoice**
+```c
+// Patch an invoice.
+//
+// Partially updates the specified invoice for the tenant.
+//
+empty_envelope_t* InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**invoiceId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InvoicesAPI_patchInvoiceAdjustment**
+```c
+// Patch an invoice adjustment.
+//
+// Partially updates the specified adjustment for the invoice.
+//
+empty_envelope_t* InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceAdjustmentId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**invoiceId** | **char \*** |  | 
+**invoiceAdjustmentId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InvoicesAPI_patchInvoiceLine**
+```c
+// Patch an invoice line.
+//
+// Partially updates the specified invoice line.
+//
+empty_envelope_t* InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**invoiceId** | **char \*** |  | 
+**invoiceLineId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InvoicesAPI_patchInvoiceLineTax**
+```c
+// Patch a tax for an invoice line.
+//
+// Partially updates the specified tax entry for the invoice line.
+//
+empty_envelope_t* InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, char *invoiceLineTaxId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**invoiceId** | **char \*** |  | 
+**invoiceLineId** | **char \*** |  | 
+**invoiceLineTaxId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InvoicesAPI_patchInvoiceReference**
+```c
+// Patch an invoice reference.
+//
+// Partially updates the specified reference for the invoice.
+//
+empty_envelope_t* InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceReferenceId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**invoiceId** | **char \*** |  | 
+**invoiceReferenceId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

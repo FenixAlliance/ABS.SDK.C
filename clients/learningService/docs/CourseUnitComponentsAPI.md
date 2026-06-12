@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseUnitComponentsAPI_getCourseUnitComponentByIdAsync**](CourseUnitComponentsAPI.md#CourseUnitComponentsAPI_getCourseUnitComponentByIdAsync) | **GET** /api/v2/LearningService/CourseUnitComponents/{componentId} | Get course unit component by ID
 [**CourseUnitComponentsAPI_getCourseUnitComponentsAsync**](CourseUnitComponentsAPI.md#CourseUnitComponentsAPI_getCourseUnitComponentsAsync) | **GET** /api/v2/LearningService/CourseUnitComponents | Get all course unit components
 [**CourseUnitComponentsAPI_getCourseUnitComponentsCountAsync**](CourseUnitComponentsAPI.md#CourseUnitComponentsAPI_getCourseUnitComponentsCountAsync) | **GET** /api/v2/LearningService/CourseUnitComponents/Count | Get course unit components count
+[**CourseUnitComponentsAPI_patchCourseUnitComponentAsync**](CourseUnitComponentsAPI.md#CourseUnitComponentsAPI_patchCourseUnitComponentAsync) | **PATCH** /api/v2/LearningService/CourseUnitComponents/{componentId} | Patch a course unit component
 [**CourseUnitComponentsAPI_updateCourseUnitComponentAsync**](CourseUnitComponentsAPI.md#CourseUnitComponentsAPI_updateCourseUnitComponentAsync) | **PUT** /api/v2/LearningService/CourseUnitComponents/{componentId} | Update a course unit component
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseUnitComponentsAPI_patchCourseUnitComponentAsync**
+```c
+// Patch a course unit component
+//
+// Partially updates a course unit component for the specified tenant.
+//
+empty_envelope_t* CourseUnitComponentsAPI_patchCourseUnitComponentAsync(apiClient_t *apiClient, char *tenantId, char *componentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**componentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Count blog post categories
@@ -52,6 +53,14 @@ BlogPostCategoriesAPI_getBlogPostCategoriesAsync(apiClient_t *apiClient, char *t
 //
 blog_post_category_dto_envelope_t*
 BlogPostCategoriesAPI_getBlogPostCategoryByIdAsync(apiClient_t *apiClient, char *tenantId, char *blogPostCategoryId, char *api_version, char *x_api_version);
+
+
+// Patch a blog post category
+//
+// Partially updates an existing blog post category for the specified tenant.
+//
+empty_envelope_t*
+BlogPostCategoriesAPI_patchBlogPostCategoryAsync(apiClient_t *apiClient, char *tenantId, char *blogPostCategoryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a blog post category

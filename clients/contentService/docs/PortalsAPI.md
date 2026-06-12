@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**PortalsAPI_bindWebPortalDomainAsync**](PortalsAPI.md#PortalsAPI_bindWebPortalDomainAsync) | **POST** /api/v2/ContentService/Portals/{portalId}/DomainBindings/{businessDomainId} | Bind a domain to a web portal
 [**PortalsAPI_countPortalsAsync**](PortalsAPI.md#PortalsAPI_countPortalsAsync) | **GET** /api/v2/ContentService/Portals/Count | Count portals
 [**PortalsAPI_createWebPortalAsync**](PortalsAPI.md#PortalsAPI_createWebPortalAsync) | **POST** /api/v2/ContentService/Portals | Create a new web portal
 [**PortalsAPI_deleteWebPortalAsync**](PortalsAPI.md#PortalsAPI_deleteWebPortalAsync) | **DELETE** /api/v2/ContentService/Portals/{portalId} | Delete a web portal
@@ -12,13 +13,51 @@ Method | HTTP request | Description
 [**PortalsAPI_getPortalsAsync**](PortalsAPI.md#PortalsAPI_getPortalsAsync) | **GET** /api/v2/ContentService/Portals | Get portals
 [**PortalsAPI_getRootWebPortalAsync**](PortalsAPI.md#PortalsAPI_getRootWebPortalAsync) | **GET** /api/v2/ContentService/Portals/Root | Get the root portal
 [**PortalsAPI_getWebPortalByIdAsync**](PortalsAPI.md#PortalsAPI_getWebPortalByIdAsync) | **GET** /api/v2/ContentService/Portals/{portalId} | Get a web portal by its ID
+[**PortalsAPI_getWebPortalDomainBindingsAsync**](PortalsAPI.md#PortalsAPI_getWebPortalDomainBindingsAsync) | **GET** /api/v2/ContentService/Portals/{portalId}/DomainBindings | Get a web portal&#39;s bound domains
 [**PortalsAPI_getWebPortalOptionsAsync**](PortalsAPI.md#PortalsAPI_getWebPortalOptionsAsync) | **GET** /api/v2/ContentService/Portals/{portalId}/Options | Get a web portal&#39;s options by its ID
 [**PortalsAPI_getWebPortalSettingsAsync**](PortalsAPI.md#PortalsAPI_getWebPortalSettingsAsync) | **GET** /api/v2/ContentService/Portals/{portalId}/Settings | Get a web portal&#39;s settings by its ID
 [**PortalsAPI_initializeCurrentWebPortalAsync**](PortalsAPI.md#PortalsAPI_initializeCurrentWebPortalAsync) | **POST** /api/v2/ContentService/Portals/Initialize | Initialize the current portal
 [**PortalsAPI_patchWebPortalAsync**](PortalsAPI.md#PortalsAPI_patchWebPortalAsync) | **PATCH** /api/v2/ContentService/Portals/{portalId} | Partially update a web portal
 [**PortalsAPI_searchWebPortalAsync**](PortalsAPI.md#PortalsAPI_searchWebPortalAsync) | **GET** /api/v2/ContentService/Portals/Search | Search for a portal by its domain
+[**PortalsAPI_unbindWebPortalDomainAsync**](PortalsAPI.md#PortalsAPI_unbindWebPortalDomainAsync) | **DELETE** /api/v2/ContentService/Portals/{portalId}/DomainBindings/{businessDomainId} | Unbind a domain from a web portal
 [**PortalsAPI_updateWebPortalAsync**](PortalsAPI.md#PortalsAPI_updateWebPortalAsync) | **PUT** /api/v2/ContentService/Portals/{portalId} | Update an existing web portal
+[**PortalsAPI_updateWebPortalSettingsAsync**](PortalsAPI.md#PortalsAPI_updateWebPortalSettingsAsync) | **PUT** /api/v2/ContentService/Portals/{portalId}/Settings | Update a web portal&#39;s settings
 
+
+# **PortalsAPI_bindWebPortalDomainAsync**
+```c
+// Bind a domain to a web portal
+//
+// Bind a verified BusinessDomain to a web portal
+//
+empty_envelope_t* PortalsAPI_bindWebPortalDomainAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *businessDomainId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**portalId** | **char \*** |  | 
+**businessDomainId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PortalsAPI_countPortalsAsync**
 ```c
@@ -283,6 +322,40 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **PortalsAPI_getWebPortalDomainBindingsAsync**
+```c
+// Get a web portal's bound domains
+//
+// Get the BusinessDomains bound to a web portal
+//
+business_domain_dto_list_envelope_t* PortalsAPI_getWebPortalDomainBindingsAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**portalId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[business_domain_dto_list_envelope_t](business_domain_dto_list_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **PortalsAPI_getWebPortalOptionsAsync**
 ```c
 // Get a web portal's options by its ID
@@ -449,6 +522,41 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **PortalsAPI_unbindWebPortalDomainAsync**
+```c
+// Unbind a domain from a web portal
+//
+// Unbind a BusinessDomain from a web portal
+//
+empty_envelope_t* PortalsAPI_unbindWebPortalDomainAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *businessDomainId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**portalId** | **char \*** |  | 
+**businessDomainId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **PortalsAPI_updateWebPortalAsync**
 ```c
 // Update an existing web portal
@@ -467,6 +575,41 @@ Name | Type | Description  | Notes
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **web_portal_update_dto** | **[web_portal_update_dto_t](web_portal_update_dto.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PortalsAPI_updateWebPortalSettingsAsync**
+```c
+// Update a web portal's settings
+//
+// Update a web portal's settings (Options) by its ID
+//
+empty_envelope_t* PortalsAPI_updateWebPortalSettingsAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version, portal_settings_t *portal_settings);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**portalId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**portal_settings** | **[portal_settings_t](portal_settings.md) \*** |  | [optional] 
 
 ### Return type
 

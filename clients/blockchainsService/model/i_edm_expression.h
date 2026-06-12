@@ -1,0 +1,45 @@
+/*
+ * i_edm_expression.h
+ *
+ * 
+ */
+
+#ifndef _i_edm_expression_H_
+#define _i_edm_expression_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct i_edm_expression_t i_edm_expression_t;
+
+
+// Enum EXPRESSIONKIND for i_edm_expression
+
+typedef enum  { blockchainsservice_i_edm_expression_EXPRESSIONKIND_NULL = 0, blockchainsservice_i_edm_expression_EXPRESSIONKIND_None, blockchainsservice_i_edm_expression_EXPRESSIONKIND_BinaryConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_BooleanConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_DateTimeOffsetConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_DecimalConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_FloatingConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_GuidConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_IntegerConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_StringConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_DurationConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_Record, blockchainsservice_i_edm_expression_EXPRESSIONKIND_Collection, blockchainsservice_i_edm_expression_EXPRESSIONKIND_Path, blockchainsservice_i_edm_expression_EXPRESSIONKIND__If, blockchainsservice_i_edm_expression_EXPRESSIONKIND_Cast, blockchainsservice_i_edm_expression_EXPRESSIONKIND_IsOf, blockchainsservice_i_edm_expression_EXPRESSIONKIND_FunctionApplication, blockchainsservice_i_edm_expression_EXPRESSIONKIND_LabeledExpressionReference, blockchainsservice_i_edm_expression_EXPRESSIONKIND_Labeled, blockchainsservice_i_edm_expression_EXPRESSIONKIND_PropertyPath, blockchainsservice_i_edm_expression_EXPRESSIONKIND_NavigationPropertyPath, blockchainsservice_i_edm_expression_EXPRESSIONKIND_DateConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_TimeOfDayConstant, blockchainsservice_i_edm_expression_EXPRESSIONKIND_EnumMember, blockchainsservice_i_edm_expression_EXPRESSIONKIND_AnnotationPath } blockchainsservice_i_edm_expression_EXPRESSIONKIND_e;
+
+char* i_edm_expression_expression_kind_ToString(blockchainsservice_i_edm_expression_EXPRESSIONKIND_e expression_kind);
+
+blockchainsservice_i_edm_expression_EXPRESSIONKIND_e i_edm_expression_expression_kind_FromString(char* expression_kind);
+
+
+
+typedef struct i_edm_expression_t {
+    blockchainsservice_i_edm_expression_EXPRESSIONKIND_e expression_kind; //enum
+
+} i_edm_expression_t;
+
+i_edm_expression_t *i_edm_expression_create(
+    blockchainsservice_i_edm_expression_EXPRESSIONKIND_e expression_kind
+);
+
+void i_edm_expression_free(i_edm_expression_t *i_edm_expression);
+
+i_edm_expression_t *i_edm_expression_parseFromJSON(cJSON *i_edm_expressionJSON);
+
+cJSON *i_edm_expression_convertToJSON(i_edm_expression_t *i_edm_expression);
+
+#endif /* _i_edm_expression_H_ */
+

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseTeamMembershipsAPI_getCourseTeamMembershipByIdAsync**](CourseTeamMembershipsAPI.md#CourseTeamMembershipsAPI_getCourseTeamMembershipByIdAsync) | **GET** /api/v2/LearningService/CourseTeamMemberships/{membershipId} | Get course team membership by ID
 [**CourseTeamMembershipsAPI_getCourseTeamMembershipsAsync**](CourseTeamMembershipsAPI.md#CourseTeamMembershipsAPI_getCourseTeamMembershipsAsync) | **GET** /api/v2/LearningService/CourseTeamMemberships | Get all course team memberships
 [**CourseTeamMembershipsAPI_getCourseTeamMembershipsCountAsync**](CourseTeamMembershipsAPI.md#CourseTeamMembershipsAPI_getCourseTeamMembershipsCountAsync) | **GET** /api/v2/LearningService/CourseTeamMemberships/Count | Get course team memberships count
+[**CourseTeamMembershipsAPI_patchCourseTeamMembershipAsync**](CourseTeamMembershipsAPI.md#CourseTeamMembershipsAPI_patchCourseTeamMembershipAsync) | **PATCH** /api/v2/LearningService/CourseTeamMemberships/{membershipId} | Patch a course team membership
 [**CourseTeamMembershipsAPI_updateCourseTeamMembershipAsync**](CourseTeamMembershipsAPI.md#CourseTeamMembershipsAPI_updateCourseTeamMembershipAsync) | **PUT** /api/v2/LearningService/CourseTeamMemberships/{membershipId} | Update a course team membership
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseTeamMembershipsAPI_patchCourseTeamMembershipAsync**
+```c
+// Patch a course team membership
+//
+// Partially updates a course team membership for the specified tenant.
+//
+empty_envelope_t* CourseTeamMembershipsAPI_patchCourseTeamMembershipAsync(apiClient_t *apiClient, char *tenantId, char *membershipId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**membershipId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

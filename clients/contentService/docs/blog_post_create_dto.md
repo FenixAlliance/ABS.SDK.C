@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **markup** | **char \*** |  | [optional] 
 **featured_image_url** | **char \*** |  | [optional] 
 **code_type** | **contentservice_blog_post_create_dto_CODETYPE_e** |  | [optional] 
+**slug** | **char \*** |  | [optional] 
 **blog_post_category_id** | **char \*** |  | [optional] 
 **web_template_id** | **char \*** |  | [optional] 
 

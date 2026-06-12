@@ -69,7 +69,7 @@ cJSON *course_wiki_update_dto_convertToJSON(course_wiki_update_dto_t *course_wik
 
     // course_wiki_update_dto->course_unit_id
     if(course_wiki_update_dto->course_unit_id) {
-    if(cJSON_AddStringToObject(item, "courseUnitID", course_wiki_update_dto->course_unit_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseUnitId", course_wiki_update_dto->course_unit_id) == NULL) {
     goto fail; //String
     }
     }
@@ -113,7 +113,7 @@ course_wiki_update_dto_t *course_wiki_update_dto_parseFromJSON(cJSON *course_wik
     }
 
     // course_wiki_update_dto->course_unit_id
-    cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_wiki_update_dtoJSON, "courseUnitID");
+    cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_wiki_update_dtoJSON, "courseUnitId");
     if (course_unit_id) { 
     if(!cJSON_IsString(course_unit_id) && !cJSON_IsNull(course_unit_id))
     {

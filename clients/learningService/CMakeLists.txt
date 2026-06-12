@@ -135,6 +135,7 @@ set(SRCS
     model/course_wiki_create_dto.c
     model/course_wiki_dto.c
     model/course_wiki_update_dto.c
+    model/empty_envelope.c
     model/error_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
@@ -145,6 +146,7 @@ set(SRCS
     model/instructor_profile_dto_i_read_only_list_envelope.c
     model/instructor_profile_update_dto.c
     model/login_request.c
+    model/operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -274,6 +276,7 @@ set(HDRS
     model/course_wiki_create_dto.h
     model/course_wiki_dto.h
     model/course_wiki_update_dto.h
+    model/empty_envelope.h
     model/error_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
@@ -284,6 +287,7 @@ set(HDRS
     model/instructor_profile_dto_i_read_only_list_envelope.h
     model/instructor_profile_update_dto.h
     model/login_request.h
+    model/operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

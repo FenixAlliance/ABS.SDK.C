@@ -18,7 +18,9 @@ web_template_dto_t *web_template_dto_create(
     char *js_content,
     char *razor_content,
     char *highlight_image,
-    int order
+    int order,
+    char *tenant_id,
+    char *enrollment_id
     ) {
     web_template_dto_t *web_template_dto_local_var = malloc(sizeof(web_template_dto_t));
     if (!web_template_dto_local_var) {
@@ -37,6 +39,8 @@ web_template_dto_t *web_template_dto_create(
     web_template_dto_local_var->razor_content = razor_content;
     web_template_dto_local_var->highlight_image = highlight_image;
     web_template_dto_local_var->order = order;
+    web_template_dto_local_var->tenant_id = tenant_id;
+    web_template_dto_local_var->enrollment_id = enrollment_id;
 
     return web_template_dto_local_var;
 }
@@ -94,6 +98,14 @@ void web_template_dto_free(web_template_dto_t *web_template_dto) {
     if (web_template_dto->highlight_image) {
         free(web_template_dto->highlight_image);
         web_template_dto->highlight_image = NULL;
+    }
+    if (web_template_dto->tenant_id) {
+        free(web_template_dto->tenant_id);
+        web_template_dto->tenant_id = NULL;
+    }
+    if (web_template_dto->enrollment_id) {
+        free(web_template_dto->enrollment_id);
+        web_template_dto->enrollment_id = NULL;
     }
     free(web_template_dto);
 }
@@ -201,6 +213,22 @@ cJSON *web_template_dto_convertToJSON(web_template_dto_t *web_template_dto) {
     if(web_template_dto->order) {
     if(cJSON_AddNumberToObject(item, "order", web_template_dto->order) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // web_template_dto->tenant_id
+    if(web_template_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", web_template_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // web_template_dto->enrollment_id
+    if(web_template_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", web_template_dto->enrollment_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -333,6 +361,24 @@ web_template_dto_t *web_template_dto_parseFromJSON(cJSON *web_template_dtoJSON){
     }
     }
 
+    // web_template_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(web_template_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // web_template_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(web_template_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     web_template_dto_local_var = web_template_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -347,7 +393,9 @@ web_template_dto_t *web_template_dto_parseFromJSON(cJSON *web_template_dtoJSON){
         js_content && !cJSON_IsNull(js_content) ? strdup(js_content->valuestring) : NULL,
         razor_content && !cJSON_IsNull(razor_content) ? strdup(razor_content->valuestring) : NULL,
         highlight_image && !cJSON_IsNull(highlight_image) ? strdup(highlight_image->valuestring) : NULL,
-        order ? order->valuedouble : 0
+        order ? order->valuedouble : 0,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return web_template_dto_local_var;

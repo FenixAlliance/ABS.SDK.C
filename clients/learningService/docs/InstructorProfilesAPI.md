@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesGet**](InstructorProfilesAPI.md#InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesGet) | **GET** /api/v2/LearningService/InstructorProfiles | 
 [**InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdDelete**](InstructorProfilesAPI.md#InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdDelete) | **DELETE** /api/v2/LearningService/InstructorProfiles/{instructorProfileId} | 
 [**InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdGet**](InstructorProfilesAPI.md#InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdGet) | **GET** /api/v2/LearningService/InstructorProfiles/{instructorProfileId} | 
+[**InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPatch**](InstructorProfilesAPI.md#InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPatch) | **PATCH** /api/v2/LearningService/InstructorProfiles/{instructorProfileId} | 
 [**InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPut**](InstructorProfilesAPI.md#InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPut) | **PUT** /api/v2/LearningService/InstructorProfiles/{instructorProfileId} | 
 [**InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesPost**](InstructorProfilesAPI.md#InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesPost) | **POST** /api/v2/LearningService/InstructorProfiles | 
 
@@ -126,6 +127,37 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPatch**
+```c
+empty_envelope_t* InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPatch(apiClient_t *apiClient, char *tenantId, char *instructorProfileId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**instructorProfileId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

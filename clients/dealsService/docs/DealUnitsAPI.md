@@ -18,6 +18,8 @@ Method | HTTP request | Description
 [**DealUnitsAPI_getDealUnitsCountAsync**](DealUnitsAPI.md#DealUnitsAPI_getDealUnitsCountAsync) | **GET** /api/v2/DealsService/DealUnits/Count | Get deal units count
 [**DealUnitsAPI_getExtendedDealUnitAsync**](DealUnitsAPI.md#DealUnitsAPI_getExtendedDealUnitAsync) | **GET** /api/v2/DealsService/DealUnits/{dealUnitId}/Extended | Get extended deal unit by ID
 [**DealUnitsAPI_getExtendedDealUnitsAsync**](DealUnitsAPI.md#DealUnitsAPI_getExtendedDealUnitsAsync) | **GET** /api/v2/DealsService/DealUnits/Extended | Get extended deal units
+[**DealUnitsAPI_patchDealUnitAsync**](DealUnitsAPI.md#DealUnitsAPI_patchDealUnitAsync) | **PATCH** /api/v2/DealsService/DealUnits/{dealUnitId} | Patch a deal unit
+[**DealUnitsAPI_patchDealUnitLineAsync**](DealUnitsAPI.md#DealUnitsAPI_patchDealUnitLineAsync) | **PATCH** /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId} | Patch a deal unit line
 [**DealUnitsAPI_updateDealUnitAsync**](DealUnitsAPI.md#DealUnitsAPI_updateDealUnitAsync) | **PUT** /api/v2/DealsService/DealUnits/{dealUnitId} | Update a deal unit
 [**DealUnitsAPI_updateDealUnitPriceAsync**](DealUnitsAPI.md#DealUnitsAPI_updateDealUnitPriceAsync) | **PUT** /api/v2/DealsService/DealUnits/{dealUnitId}/Lines/{dealUnitLineId} | Update a deal unit line
 
@@ -468,6 +470,73 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DealUnitsAPI_patchDealUnitAsync**
+```c
+// Patch a deal unit
+//
+// Partially updates an existing deal unit by its unique identifier using a JSON Patch document.
+//
+empty_envelope_t* DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**dealUnitId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DealUnitsAPI_patchDealUnitLineAsync**
+```c
+// Patch a deal unit line
+//
+// Partially updates an existing line within a specific deal unit using a JSON Patch document.
+//
+empty_envelope_t* DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *dealUnitLineId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**dealUnitId** | **char \*** |  | 
+**dealUnitLineId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

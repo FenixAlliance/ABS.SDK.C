@@ -28,6 +28,7 @@ typedef struct course_section_dto_t {
     char *release_date_time; //date time
     int hide_from_students; //boolean
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_section_dto_t;
 
@@ -40,7 +41,8 @@ course_section_dto_t *course_section_dto_create(
     char *course_id,
     char *release_date_time,
     int hide_from_students,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_section_dto_free(course_section_dto_t *course_section_dto);

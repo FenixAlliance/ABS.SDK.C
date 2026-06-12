@@ -13,6 +13,7 @@ discount_create_dto_t *discount_create_dto_create(
     double end_quantity,
     double percent,
     double value,
+    char *item_id,
     char *discount_list_id
     ) {
     discount_create_dto_t *discount_create_dto_local_var = malloc(sizeof(discount_create_dto_t));
@@ -26,6 +27,7 @@ discount_create_dto_t *discount_create_dto_create(
     discount_create_dto_local_var->end_quantity = end_quantity;
     discount_create_dto_local_var->percent = percent;
     discount_create_dto_local_var->value = value;
+    discount_create_dto_local_var->item_id = item_id;
     discount_create_dto_local_var->discount_list_id = discount_list_id;
 
     return discount_create_dto_local_var;
@@ -48,6 +50,10 @@ void discount_create_dto_free(discount_create_dto_t *discount_create_dto) {
     if (discount_create_dto->description) {
         free(discount_create_dto->description);
         discount_create_dto->description = NULL;
+    }
+    if (discount_create_dto->item_id) {
+        free(discount_create_dto->item_id);
+        discount_create_dto->item_id = NULL;
     }
     if (discount_create_dto->discount_list_id) {
         free(discount_create_dto->discount_list_id);
@@ -111,6 +117,14 @@ cJSON *discount_create_dto_convertToJSON(discount_create_dto_t *discount_create_
     if(discount_create_dto->value) {
     if(cJSON_AddNumberToObject(item, "value", discount_create_dto->value) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // discount_create_dto->item_id
+    if(discount_create_dto->item_id) {
+    if(cJSON_AddStringToObject(item, "itemId", discount_create_dto->item_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -197,6 +211,15 @@ discount_create_dto_t *discount_create_dto_parseFromJSON(cJSON *discount_create_
     }
     }
 
+    // discount_create_dto->item_id
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(discount_create_dtoJSON, "itemId");
+    if (item_id) { 
+    if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
+    {
+    goto end; //String
+    }
+    }
+
     // discount_create_dto->discount_list_id
     cJSON *discount_list_id = cJSON_GetObjectItemCaseSensitive(discount_create_dtoJSON, "discountListId");
     if (discount_list_id) { 
@@ -215,6 +238,7 @@ discount_create_dto_t *discount_create_dto_parseFromJSON(cJSON *discount_create_
         end_quantity ? end_quantity->valuedouble : 0,
         percent ? percent->valuedouble : 0,
         value ? value->valuedouble : 0,
+        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
         discount_list_id && !cJSON_IsNull(discount_list_id) ? strdup(discount_list_id->valuestring) : NULL
         );
 

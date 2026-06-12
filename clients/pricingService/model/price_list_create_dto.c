@@ -4,17 +4,37 @@
 #include "price_list_create_dto.h"
 
 
+char* price_list_create_dto_context_ToString(pricingservice_price_list_create_dto_CONTEXT_e context) {
+    char* contextArray[] =  { "NULL", "Sales", "Purchase", "Cost" };
+    return contextArray[context];
+}
+
+pricingservice_price_list_create_dto_CONTEXT_e price_list_create_dto_context_FromString(char* context){
+    int stringToReturn = 0;
+    char *contextArray[] =  { "NULL", "Sales", "Purchase", "Cost" };
+    size_t sizeofArray = sizeof(contextArray) / sizeof(contextArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(context, contextArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 price_list_create_dto_t *price_list_create_dto_create(
     char *id,
     char *timestamp,
     char *name,
     char *description,
+    pricingservice_price_list_create_dto_CONTEXT_e context,
     char *start_date,
     char *end_date,
     char *currency_id,
     char *unit_id,
-    char *unit_group_id
+    char *unit_group_id,
+    int partner_visible,
+    int unit_of_measure_dependant
     ) {
     price_list_create_dto_t *price_list_create_dto_local_var = malloc(sizeof(price_list_create_dto_t));
     if (!price_list_create_dto_local_var) {
@@ -24,11 +44,14 @@ price_list_create_dto_t *price_list_create_dto_create(
     price_list_create_dto_local_var->timestamp = timestamp;
     price_list_create_dto_local_var->name = name;
     price_list_create_dto_local_var->description = description;
+    price_list_create_dto_local_var->context = context;
     price_list_create_dto_local_var->start_date = start_date;
     price_list_create_dto_local_var->end_date = end_date;
     price_list_create_dto_local_var->currency_id = currency_id;
     price_list_create_dto_local_var->unit_id = unit_id;
     price_list_create_dto_local_var->unit_group_id = unit_group_id;
+    price_list_create_dto_local_var->partner_visible = partner_visible;
+    price_list_create_dto_local_var->unit_of_measure_dependant = unit_of_measure_dependant;
 
     return price_list_create_dto_local_var;
 }
@@ -114,6 +137,15 @@ cJSON *price_list_create_dto_convertToJSON(price_list_create_dto_t *price_list_c
     }
 
 
+    // price_list_create_dto->context
+    if(price_list_create_dto->context != pricingservice_price_list_create_dto_CONTEXT_NULL) {
+    if(cJSON_AddStringToObject(item, "context", contextprice_list_create_dto_ToString(price_list_create_dto->context)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // price_list_create_dto->start_date
     if(price_list_create_dto->start_date) {
     if(cJSON_AddStringToObject(item, "startDate", price_list_create_dto->start_date) == NULL) {
@@ -150,6 +182,22 @@ cJSON *price_list_create_dto_convertToJSON(price_list_create_dto_t *price_list_c
     if(price_list_create_dto->unit_group_id) {
     if(cJSON_AddStringToObject(item, "unitGroupId", price_list_create_dto->unit_group_id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // price_list_create_dto->partner_visible
+    if(price_list_create_dto->partner_visible) {
+    if(cJSON_AddBoolToObject(item, "partnerVisible", price_list_create_dto->partner_visible) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // price_list_create_dto->unit_of_measure_dependant
+    if(price_list_create_dto->unit_of_measure_dependant) {
+    if(cJSON_AddBoolToObject(item, "unitOfMeasureDependant", price_list_create_dto->unit_of_measure_dependant) == NULL) {
+    goto fail; //Bool
     }
     }
 
@@ -204,6 +252,17 @@ price_list_create_dto_t *price_list_create_dto_parseFromJSON(cJSON *price_list_c
     }
     }
 
+    // price_list_create_dto->context
+    cJSON *context = cJSON_GetObjectItemCaseSensitive(price_list_create_dtoJSON, "context");
+    pricingservice_price_list_create_dto_CONTEXT_e contextVariable;
+    if (context) { 
+    if(!cJSON_IsString(context))
+    {
+    goto end; //Enum
+    }
+    contextVariable = price_list_create_dto_context_FromString(context->valuestring);
+    }
+
     // price_list_create_dto->start_date
     cJSON *start_date = cJSON_GetObjectItemCaseSensitive(price_list_create_dtoJSON, "startDate");
     if (start_date) { 
@@ -249,17 +308,38 @@ price_list_create_dto_t *price_list_create_dto_parseFromJSON(cJSON *price_list_c
     }
     }
 
+    // price_list_create_dto->partner_visible
+    cJSON *partner_visible = cJSON_GetObjectItemCaseSensitive(price_list_create_dtoJSON, "partnerVisible");
+    if (partner_visible) { 
+    if(!cJSON_IsBool(partner_visible))
+    {
+    goto end; //Bool
+    }
+    }
+
+    // price_list_create_dto->unit_of_measure_dependant
+    cJSON *unit_of_measure_dependant = cJSON_GetObjectItemCaseSensitive(price_list_create_dtoJSON, "unitOfMeasureDependant");
+    if (unit_of_measure_dependant) { 
+    if(!cJSON_IsBool(unit_of_measure_dependant))
+    {
+    goto end; //Bool
+    }
+    }
+
 
     price_list_create_dto_local_var = price_list_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         strdup(name->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        context ? contextVariable : pricingservice_price_list_create_dto_CONTEXT_NULL,
         start_date && !cJSON_IsNull(start_date) ? strdup(start_date->valuestring) : NULL,
         end_date && !cJSON_IsNull(end_date) ? strdup(end_date->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         unit_id && !cJSON_IsNull(unit_id) ? strdup(unit_id->valuestring) : NULL,
-        unit_group_id && !cJSON_IsNull(unit_group_id) ? strdup(unit_group_id->valuestring) : NULL
+        unit_group_id && !cJSON_IsNull(unit_group_id) ? strdup(unit_group_id->valuestring) : NULL,
+        partner_visible ? partner_visible->valueint : 0,
+        unit_of_measure_dependant ? unit_of_measure_dependant->valueint : 0
         );
 
     return price_list_create_dto_local_var;

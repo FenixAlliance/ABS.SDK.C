@@ -16,6 +16,7 @@
 #include "../model/item_pick_list_entry_dto_list_envelope.h"
 #include "../model/item_pick_list_entry_update_dto.h"
 #include "../model/item_pick_list_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create an item pick list
@@ -96,6 +97,22 @@ ItemPickListsAPI_getItemPickListsAsync(apiClient_t *apiClient, char *tenantId, c
 //
 int32_envelope_t*
 ItemPickListsAPI_getItemPickListsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item pick list
+//
+// Applies a JSON Patch document to an item pick list.
+//
+empty_envelope_t*
+ItemPickListsAPI_patchItemPickListAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a pick list entry
+//
+// Applies a JSON Patch document to a pick list entry.
+//
+empty_envelope_t*
+ItemPickListsAPI_patchItemPickListEntryAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item pick list

@@ -83,6 +83,7 @@ set(SRCS
     model/login_request.c
     model/money.c
     model/money_envelope.c
+    model/operation.c
     model/price_list_create_dto.c
     model/price_list_dto.c
     model/price_list_dto_envelope.c
@@ -150,6 +151,7 @@ set(HDRS
     model/login_request.h
     model/money.h
     model/money_envelope.h
+    model/operation.h
     model/price_list_create_dto.h
     model/price_list_dto.h
     model/price_list_dto_envelope.h

@@ -10,8 +10,8 @@ course_completion_certificate_dto_t *course_completion_certificate_dto_create(
     char *timestamp,
     char *student_profile_id,
     char *course_enrollment_id,
-    char *business_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *course_completion_certificate_template_id,
     char *course_id,
     char *student_name,
@@ -29,8 +29,8 @@ course_completion_certificate_dto_t *course_completion_certificate_dto_create(
     course_completion_certificate_dto_local_var->timestamp = timestamp;
     course_completion_certificate_dto_local_var->student_profile_id = student_profile_id;
     course_completion_certificate_dto_local_var->course_enrollment_id = course_enrollment_id;
-    course_completion_certificate_dto_local_var->business_id = business_id;
-    course_completion_certificate_dto_local_var->business_profile_record_id = business_profile_record_id;
+    course_completion_certificate_dto_local_var->tenant_id = tenant_id;
+    course_completion_certificate_dto_local_var->enrollment_id = enrollment_id;
     course_completion_certificate_dto_local_var->course_completion_certificate_template_id = course_completion_certificate_template_id;
     course_completion_certificate_dto_local_var->course_id = course_id;
     course_completion_certificate_dto_local_var->student_name = student_name;
@@ -65,13 +65,13 @@ void course_completion_certificate_dto_free(course_completion_certificate_dto_t 
         free(course_completion_certificate_dto->course_enrollment_id);
         course_completion_certificate_dto->course_enrollment_id = NULL;
     }
-    if (course_completion_certificate_dto->business_id) {
-        free(course_completion_certificate_dto->business_id);
-        course_completion_certificate_dto->business_id = NULL;
+    if (course_completion_certificate_dto->tenant_id) {
+        free(course_completion_certificate_dto->tenant_id);
+        course_completion_certificate_dto->tenant_id = NULL;
     }
-    if (course_completion_certificate_dto->business_profile_record_id) {
-        free(course_completion_certificate_dto->business_profile_record_id);
-        course_completion_certificate_dto->business_profile_record_id = NULL;
+    if (course_completion_certificate_dto->enrollment_id) {
+        free(course_completion_certificate_dto->enrollment_id);
+        course_completion_certificate_dto->enrollment_id = NULL;
     }
     if (course_completion_certificate_dto->course_completion_certificate_template_id) {
         free(course_completion_certificate_dto->course_completion_certificate_template_id);
@@ -125,7 +125,7 @@ cJSON *course_completion_certificate_dto_convertToJSON(course_completion_certifi
 
     // course_completion_certificate_dto->student_profile_id
     if(course_completion_certificate_dto->student_profile_id) {
-    if(cJSON_AddStringToObject(item, "studentProfileID", course_completion_certificate_dto->student_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "studentProfileId", course_completion_certificate_dto->student_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -133,23 +133,23 @@ cJSON *course_completion_certificate_dto_convertToJSON(course_completion_certifi
 
     // course_completion_certificate_dto->course_enrollment_id
     if(course_completion_certificate_dto->course_enrollment_id) {
-    if(cJSON_AddStringToObject(item, "courseEnrollmentID", course_completion_certificate_dto->course_enrollment_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseEnrollmentId", course_completion_certificate_dto->course_enrollment_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // course_completion_certificate_dto->business_id
-    if(course_completion_certificate_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", course_completion_certificate_dto->business_id) == NULL) {
+    // course_completion_certificate_dto->tenant_id
+    if(course_completion_certificate_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", course_completion_certificate_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // course_completion_certificate_dto->business_profile_record_id
-    if(course_completion_certificate_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", course_completion_certificate_dto->business_profile_record_id) == NULL) {
+    // course_completion_certificate_dto->enrollment_id
+    if(course_completion_certificate_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", course_completion_certificate_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -157,7 +157,7 @@ cJSON *course_completion_certificate_dto_convertToJSON(course_completion_certifi
 
     // course_completion_certificate_dto->course_completion_certificate_template_id
     if(course_completion_certificate_dto->course_completion_certificate_template_id) {
-    if(cJSON_AddStringToObject(item, "courseCompletionCertificateTemplateID", course_completion_certificate_dto->course_completion_certificate_template_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseCompletionCertificateTemplateId", course_completion_certificate_dto->course_completion_certificate_template_id) == NULL) {
     goto fail; //String
     }
     }
@@ -165,7 +165,7 @@ cJSON *course_completion_certificate_dto_convertToJSON(course_completion_certifi
 
     // course_completion_certificate_dto->course_id
     if(course_completion_certificate_dto->course_id) {
-    if(cJSON_AddStringToObject(item, "courseID", course_completion_certificate_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_completion_certificate_dto->course_id) == NULL) {
     goto fail; //String
     }
     }
@@ -249,7 +249,7 @@ course_completion_certificate_dto_t *course_completion_certificate_dto_parseFrom
     }
 
     // course_completion_certificate_dto->student_profile_id
-    cJSON *student_profile_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "studentProfileID");
+    cJSON *student_profile_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "studentProfileId");
     if (student_profile_id) { 
     if(!cJSON_IsString(student_profile_id) && !cJSON_IsNull(student_profile_id))
     {
@@ -258,7 +258,7 @@ course_completion_certificate_dto_t *course_completion_certificate_dto_parseFrom
     }
 
     // course_completion_certificate_dto->course_enrollment_id
-    cJSON *course_enrollment_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "courseEnrollmentID");
+    cJSON *course_enrollment_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "courseEnrollmentId");
     if (course_enrollment_id) { 
     if(!cJSON_IsString(course_enrollment_id) && !cJSON_IsNull(course_enrollment_id))
     {
@@ -266,26 +266,26 @@ course_completion_certificate_dto_t *course_completion_certificate_dto_parseFrom
     }
     }
 
-    // course_completion_certificate_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // course_completion_certificate_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
-    // course_completion_certificate_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // course_completion_certificate_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
     }
 
     // course_completion_certificate_dto->course_completion_certificate_template_id
-    cJSON *course_completion_certificate_template_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "courseCompletionCertificateTemplateID");
+    cJSON *course_completion_certificate_template_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "courseCompletionCertificateTemplateId");
     if (course_completion_certificate_template_id) { 
     if(!cJSON_IsString(course_completion_certificate_template_id) && !cJSON_IsNull(course_completion_certificate_template_id))
     {
@@ -294,7 +294,7 @@ course_completion_certificate_dto_t *course_completion_certificate_dto_parseFrom
     }
 
     // course_completion_certificate_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_dtoJSON, "courseId");
     if (course_id) { 
     if(!cJSON_IsString(course_id) && !cJSON_IsNull(course_id))
     {
@@ -362,8 +362,8 @@ course_completion_certificate_dto_t *course_completion_certificate_dto_parseFrom
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         student_profile_id && !cJSON_IsNull(student_profile_id) ? strdup(student_profile_id->valuestring) : NULL,
         course_enrollment_id && !cJSON_IsNull(course_enrollment_id) ? strdup(course_enrollment_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         course_completion_certificate_template_id && !cJSON_IsNull(course_completion_certificate_template_id) ? strdup(course_completion_certificate_template_id->valuestring) : NULL,
         course_id && !cJSON_IsNull(course_id) ? strdup(course_id->valuestring) : NULL,
         student_name && !cJSON_IsNull(student_name) ? strdup(student_name->valuestring) : NULL,

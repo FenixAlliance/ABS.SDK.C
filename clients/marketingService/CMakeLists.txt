@@ -101,6 +101,7 @@ set(SRCS
     model/newsletter_dto.c
     model/newsletter_dto_envelope.c
     model/newsletter_update_dto.c
+    model/operation.c
     model/order_dto.c
     model/order_dto_envelope.c
     model/refresh_request.c
@@ -189,6 +190,7 @@ set(HDRS
     model/newsletter_dto.h
     model/newsletter_dto_envelope.h
     model/newsletter_update_dto.h
+    model/operation.h
     model/order_dto.h
     model/order_dto_envelope.h
     model/refresh_request.h

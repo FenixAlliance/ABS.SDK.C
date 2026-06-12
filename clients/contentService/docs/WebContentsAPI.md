@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**WebContentsAPI_deleteWebContentAsync**](WebContentsAPI.md#WebContentsAPI_deleteWebContentAsync) | **DELETE** /api/v2/ContentService/WebContents/{webContentId} | Delete a web content
 [**WebContentsAPI_getWebContentByIdAsync**](WebContentsAPI.md#WebContentsAPI_getWebContentByIdAsync) | **GET** /api/v2/ContentService/WebContents/{webContentId} | Get web content by ID
 [**WebContentsAPI_getWebContentsAsync**](WebContentsAPI.md#WebContentsAPI_getWebContentsAsync) | **GET** /api/v2/ContentService/WebContents | Get web contents
+[**WebContentsAPI_patchWebContentAsync**](WebContentsAPI.md#WebContentsAPI_patchWebContentAsync) | **PATCH** /api/v2/ContentService/WebContents/{webContentId} | Patch a web content
 [**WebContentsAPI_updateWebContentAsync**](WebContentsAPI.md#WebContentsAPI_updateWebContentAsync) | **PUT** /api/v2/ContentService/WebContents/{webContentId} | Update a web content
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WebContentsAPI_patchWebContentAsync**
+```c
+// Patch a web content
+//
+// Partially updates an existing web content for the specified tenant.
+//
+empty_envelope_t* WebContentsAPI_patchWebContentAsync(apiClient_t *apiClient, char *tenantId, char *webContentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**webContentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

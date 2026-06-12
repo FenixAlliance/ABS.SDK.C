@@ -9,6 +9,7 @@
 #include "../model/course_handout_dto.h"
 #include "../model/course_handout_update_dto.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a course handout
@@ -49,6 +50,14 @@ CourseHandoutsAPI_getCourseHandoutsAsync(apiClient_t *apiClient, char *tenantId,
 //
 int*
 CourseHandoutsAPI_getCourseHandoutsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course handout
+//
+// Partially updates an existing course handout.
+//
+void
+CourseHandoutsAPI_patchCourseHandoutAsync(apiClient_t *apiClient, char *tenantId, char *handoutId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course handout

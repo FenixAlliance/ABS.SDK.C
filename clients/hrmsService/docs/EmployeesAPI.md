@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**EmployeesAPI_getEmployeeByIdAsync**](EmployeesAPI.md#EmployeesAPI_getEmployeeByIdAsync) | **GET** /api/v2/HrmsService/Employees/{employeeId} | Get employee by ID
 [**EmployeesAPI_getEmployeesAsync**](EmployeesAPI.md#EmployeesAPI_getEmployeesAsync) | **GET** /api/v2/HrmsService/Employees | Get employees
 [**EmployeesAPI_getEmployeesCountAsync**](EmployeesAPI.md#EmployeesAPI_getEmployeesCountAsync) | **GET** /api/v2/HrmsService/Employees/Count | Count employees
+[**EmployeesAPI_patchEmployeeAsync**](EmployeesAPI.md#EmployeesAPI_patchEmployeeAsync) | **PATCH** /api/v2/HrmsService/Employees/{employeeId} | Patch an employee
 [**EmployeesAPI_updateEmployeeAsync**](EmployeesAPI.md#EmployeesAPI_updateEmployeeAsync) | **PUT** /api/v2/HrmsService/Employees/{employeeId} | Update an employee
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **EmployeesAPI_patchEmployeeAsync**
+```c
+// Patch an employee
+//
+// Partially updates an existing employee for the specified tenant.
+//
+empty_envelope_t* EmployeesAPI_patchEmployeeAsync(apiClient_t *apiClient, char *tenantId, char *employeeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**employeeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

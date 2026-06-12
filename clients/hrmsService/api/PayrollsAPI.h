@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/payroll_create_dto.h"
 #include "../model/payroll_dto_envelope.h"
 #include "../model/payroll_dto_list_envelope.h"
@@ -52,6 +53,14 @@ PayrollsAPI_getPayrollsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 //
 int32_envelope_t*
 PayrollsAPI_getPayrollsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a payroll
+//
+// Partially updates an existing payroll for the specified tenant.
+//
+empty_envelope_t*
+PayrollsAPI_patchPayrollAsync(apiClient_t *apiClient, char *tenantId, char *payrollId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a payroll

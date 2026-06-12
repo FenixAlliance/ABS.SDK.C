@@ -26,8 +26,10 @@ typedef struct course_problem_set_dto_t {
     double overall_score; //numeric
     char *course_id; // string
     char *course_unit_id; // string
+    char *course_grading_rubric_id; // string
     char *release_date_time; //date time
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_problem_set_dto_t;
 
@@ -39,8 +41,10 @@ course_problem_set_dto_t *course_problem_set_dto_create(
     double overall_score,
     char *course_id,
     char *course_unit_id,
+    char *course_grading_rubric_id,
     char *release_date_time,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_problem_set_dto_free(course_problem_set_dto_t *course_problem_set_dto);

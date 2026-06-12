@@ -83,7 +83,7 @@ cJSON *course_completion_certificate_create_dto_convertToJSON(course_completion_
     if (!course_completion_certificate_create_dto->student_profile_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "studentProfileID", course_completion_certificate_create_dto->student_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "studentProfileId", course_completion_certificate_create_dto->student_profile_id) == NULL) {
     goto fail; //String
     }
 
@@ -92,14 +92,14 @@ cJSON *course_completion_certificate_create_dto_convertToJSON(course_completion_
     if (!course_completion_certificate_create_dto->course_enrollment_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "courseEnrollmentID", course_completion_certificate_create_dto->course_enrollment_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseEnrollmentId", course_completion_certificate_create_dto->course_enrollment_id) == NULL) {
     goto fail; //String
     }
 
 
     // course_completion_certificate_create_dto->course_completion_certificate_template_id
     if(course_completion_certificate_create_dto->course_completion_certificate_template_id) {
-    if(cJSON_AddStringToObject(item, "courseCompletionCertificateTemplateID", course_completion_certificate_create_dto->course_completion_certificate_template_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseCompletionCertificateTemplateId", course_completion_certificate_create_dto->course_completion_certificate_template_id) == NULL) {
     goto fail; //String
     }
     }
@@ -107,7 +107,7 @@ cJSON *course_completion_certificate_create_dto_convertToJSON(course_completion_
 
     // course_completion_certificate_create_dto->course_id
     if(course_completion_certificate_create_dto->course_id) {
-    if(cJSON_AddStringToObject(item, "courseID", course_completion_certificate_create_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_completion_certificate_create_dto->course_id) == NULL) {
     goto fail; //String
     }
     }
@@ -143,7 +143,7 @@ course_completion_certificate_create_dto_t *course_completion_certificate_create
     }
 
     // course_completion_certificate_create_dto->student_profile_id
-    cJSON *student_profile_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_create_dtoJSON, "studentProfileID");
+    cJSON *student_profile_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_create_dtoJSON, "studentProfileId");
     if (!student_profile_id) {
         goto end;
     }
@@ -155,7 +155,7 @@ course_completion_certificate_create_dto_t *course_completion_certificate_create
     }
 
     // course_completion_certificate_create_dto->course_enrollment_id
-    cJSON *course_enrollment_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_create_dtoJSON, "courseEnrollmentID");
+    cJSON *course_enrollment_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_create_dtoJSON, "courseEnrollmentId");
     if (!course_enrollment_id) {
         goto end;
     }
@@ -167,7 +167,7 @@ course_completion_certificate_create_dto_t *course_completion_certificate_create
     }
 
     // course_completion_certificate_create_dto->course_completion_certificate_template_id
-    cJSON *course_completion_certificate_template_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_create_dtoJSON, "courseCompletionCertificateTemplateID");
+    cJSON *course_completion_certificate_template_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_create_dtoJSON, "courseCompletionCertificateTemplateId");
     if (course_completion_certificate_template_id) { 
     if(!cJSON_IsString(course_completion_certificate_template_id) && !cJSON_IsNull(course_completion_certificate_template_id))
     {
@@ -176,7 +176,7 @@ course_completion_certificate_create_dto_t *course_completion_certificate_create
     }
 
     // course_completion_certificate_create_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_create_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_completion_certificate_create_dtoJSON, "courseId");
     if (course_id) { 
     if(!cJSON_IsString(course_id) && !cJSON_IsNull(course_id))
     {

@@ -22,10 +22,10 @@ typedef struct course_certificate_template_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *course_id; // string
-    char *business_id; // string
+    char *tenant_id; // string
     char *web_portal_id; // string
     char *website_theme_id; // string
-    char *business_profile_record_id; // string
+    char *enrollment_id; // string
     char *social_profile_id; // string
     char *parent_web_content_id; // string
     char *parent_web_content_version_id; // string
@@ -36,10 +36,10 @@ course_certificate_template_dto_t *course_certificate_template_dto_create(
     char *id,
     char *timestamp,
     char *course_id,
-    char *business_id,
+    char *tenant_id,
     char *web_portal_id,
     char *website_theme_id,
-    char *business_profile_record_id,
+    char *enrollment_id,
     char *social_profile_id,
     char *parent_web_content_id,
     char *parent_web_content_version_id

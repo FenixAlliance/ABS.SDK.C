@@ -102,6 +102,8 @@ typedef struct payment_dto_t {
     char *enrollment_id; // string
     char *bank_id; // string
     char *payment_token_id; // string
+    char *emisor_wallet_account_id; // string
+    char *receiver_wallet_account_id; // string
 
 } payment_dto_t;
 
@@ -164,7 +166,9 @@ payment_dto_t *payment_dto_create(
     char *bank_account_id,
     char *enrollment_id,
     char *bank_id,
-    char *payment_token_id
+    char *payment_token_id,
+    char *emisor_wallet_account_id,
+    char *receiver_wallet_account_id
 );
 
 void payment_dto_free(payment_dto_t *payment_dto);

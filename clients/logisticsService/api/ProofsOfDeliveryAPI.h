@@ -10,6 +10,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/proof_of_delivery_create_dto.h"
 #include "../model/proof_of_delivery_dto_envelope.h"
 #include "../model/proof_of_delivery_dto_list_envelope.h"
@@ -123,6 +124,22 @@ ProofsOfDeliveryAPI_getProofsOfDeliveryAsync(apiClient_t *apiClient, char *tenan
 //
 int32_envelope_t*
 ProofsOfDeliveryAPI_getProofsOfDeliveryCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a proof of delivery
+//
+// Partially updates an existing proof of delivery using JSON Patch.
+//
+empty_envelope_t*
+ProofsOfDeliveryAPI_patchProofOfDeliveryAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a proof of delivery line
+//
+// Partially updates an existing proof of delivery line using JSON Patch.
+//
+empty_envelope_t*
+ProofsOfDeliveryAPI_patchProofOfDeliveryLineAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Reject a proof of delivery

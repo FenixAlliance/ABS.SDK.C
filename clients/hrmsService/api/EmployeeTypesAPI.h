@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create an employee type
@@ -52,6 +53,14 @@ EmployeeTypesAPI_getEmployeeTypesAsync(apiClient_t *apiClient, char *tenantId, c
 //
 int32_envelope_t*
 EmployeeTypesAPI_getEmployeeTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an employee type
+//
+// Partially updates an existing employee type for the specified tenant.
+//
+empty_envelope_t*
+EmployeeTypesAPI_patchEmployeeTypeAsync(apiClient_t *apiClient, char *tenantId, char *employeeTypeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an employee type

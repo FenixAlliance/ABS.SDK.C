@@ -11,6 +11,7 @@ discount_update_dto_t *discount_update_dto_create(
     double end_quantity,
     double percent,
     double value,
+    char *item_id,
     char *discount_list_id
     ) {
     discount_update_dto_t *discount_update_dto_local_var = malloc(sizeof(discount_update_dto_t));
@@ -22,6 +23,7 @@ discount_update_dto_t *discount_update_dto_create(
     discount_update_dto_local_var->end_quantity = end_quantity;
     discount_update_dto_local_var->percent = percent;
     discount_update_dto_local_var->value = value;
+    discount_update_dto_local_var->item_id = item_id;
     discount_update_dto_local_var->discount_list_id = discount_list_id;
 
     return discount_update_dto_local_var;
@@ -36,6 +38,10 @@ void discount_update_dto_free(discount_update_dto_t *discount_update_dto) {
     if (discount_update_dto->description) {
         free(discount_update_dto->description);
         discount_update_dto->description = NULL;
+    }
+    if (discount_update_dto->item_id) {
+        free(discount_update_dto->item_id);
+        discount_update_dto->item_id = NULL;
     }
     if (discount_update_dto->discount_list_id) {
         free(discount_update_dto->discount_list_id);
@@ -83,6 +89,14 @@ cJSON *discount_update_dto_convertToJSON(discount_update_dto_t *discount_update_
     if(discount_update_dto->value) {
     if(cJSON_AddNumberToObject(item, "value", discount_update_dto->value) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // discount_update_dto->item_id
+    if(discount_update_dto->item_id) {
+    if(cJSON_AddStringToObject(item, "itemId", discount_update_dto->item_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -151,6 +165,15 @@ discount_update_dto_t *discount_update_dto_parseFromJSON(cJSON *discount_update_
     }
     }
 
+    // discount_update_dto->item_id
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(discount_update_dtoJSON, "itemId");
+    if (item_id) { 
+    if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
+    {
+    goto end; //String
+    }
+    }
+
     // discount_update_dto->discount_list_id
     cJSON *discount_list_id = cJSON_GetObjectItemCaseSensitive(discount_update_dtoJSON, "discountListId");
     if (discount_list_id) { 
@@ -167,6 +190,7 @@ discount_update_dto_t *discount_update_dto_parseFromJSON(cJSON *discount_update_
         end_quantity ? end_quantity->valuedouble : 0,
         percent ? percent->valuedouble : 0,
         value ? value->valuedouble : 0,
+        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
         discount_list_id && !cJSON_IsNull(discount_list_id) ? strdup(discount_list_id->valuestring) : NULL
         );
 

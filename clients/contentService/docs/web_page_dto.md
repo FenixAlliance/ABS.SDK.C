@@ -63,6 +63,8 @@ Name | Type | Description | Notes
 **parent_web_content_id** | **char \*** |  | [optional] 
 **parent_web_content_version_id** | **char \*** |  | [optional] 
 **web_template_id** | **char \*** |  | [optional] 
+**author_name** | **char \*** |  | [optional] 
+**author_id** | **char \*** |  | [optional] 
 **is_home_page** | **int** |  | [optional] 
 **is_store_page** | **int** |  | [optional] 
 **is_cart_page** | **int** |  | [optional] 

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseForumsAPI_getCourseForumByIdAsync**](CourseForumsAPI.md#CourseForumsAPI_getCourseForumByIdAsync) | **GET** /api/v2/LearningService/CourseForums/{forumId} | Get course forum by ID
 [**CourseForumsAPI_getCourseForumsAsync**](CourseForumsAPI.md#CourseForumsAPI_getCourseForumsAsync) | **GET** /api/v2/LearningService/CourseForums | Get all course forums
 [**CourseForumsAPI_getCourseForumsCountAsync**](CourseForumsAPI.md#CourseForumsAPI_getCourseForumsCountAsync) | **GET** /api/v2/LearningService/CourseForums/Count | Get course forums count
+[**CourseForumsAPI_patchCourseForumAsync**](CourseForumsAPI.md#CourseForumsAPI_patchCourseForumAsync) | **PATCH** /api/v2/LearningService/CourseForums/{forumId} | Patch a course forum
 [**CourseForumsAPI_updateCourseForumAsync**](CourseForumsAPI.md#CourseForumsAPI_updateCourseForumAsync) | **PUT** /api/v2/LearningService/CourseForums/{forumId} | Update a course forum
 
 
@@ -175,6 +176,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseForumsAPI_patchCourseForumAsync**
+```c
+// Patch a course forum
+//
+// Partially updates an existing course forum.
+//
+void CourseForumsAPI_patchCourseForumAsync(apiClient_t *apiClient, char *tenantId, char *forumId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**forumId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

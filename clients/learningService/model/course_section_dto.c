@@ -14,7 +14,8 @@ course_section_dto_t *course_section_dto_create(
     char *course_id,
     char *release_date_time,
     int hide_from_students,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
     ) {
     course_section_dto_t *course_section_dto_local_var = malloc(sizeof(course_section_dto_t));
     if (!course_section_dto_local_var) {
@@ -29,6 +30,7 @@ course_section_dto_t *course_section_dto_create(
     course_section_dto_local_var->release_date_time = release_date_time;
     course_section_dto_local_var->hide_from_students = hide_from_students;
     course_section_dto_local_var->tenant_id = tenant_id;
+    course_section_dto_local_var->enrollment_id = enrollment_id;
 
     return course_section_dto_local_var;
 }
@@ -70,6 +72,10 @@ void course_section_dto_free(course_section_dto_t *course_section_dto) {
     if (course_section_dto->tenant_id) {
         free(course_section_dto->tenant_id);
         course_section_dto->tenant_id = NULL;
+    }
+    if (course_section_dto->enrollment_id) {
+        free(course_section_dto->enrollment_id);
+        course_section_dto->enrollment_id = NULL;
     }
     free(course_section_dto);
 }
@@ -119,7 +125,7 @@ cJSON *course_section_dto_convertToJSON(course_section_dto_t *course_section_dto
 
     // course_section_dto->course_id
     if(course_section_dto->course_id) {
-    if(cJSON_AddStringToObject(item, "courseID", course_section_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_section_dto->course_id) == NULL) {
     goto fail; //String
     }
     }
@@ -144,6 +150,14 @@ cJSON *course_section_dto_convertToJSON(course_section_dto_t *course_section_dto
     // course_section_dto->tenant_id
     if(course_section_dto->tenant_id) {
     if(cJSON_AddStringToObject(item, "tenantId", course_section_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_section_dto->enrollment_id
+    if(course_section_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", course_section_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -206,7 +220,7 @@ course_section_dto_t *course_section_dto_parseFromJSON(cJSON *course_section_dto
     }
 
     // course_section_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_section_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_section_dtoJSON, "courseId");
     if (course_id) { 
     if(!cJSON_IsString(course_id) && !cJSON_IsNull(course_id))
     {
@@ -241,6 +255,15 @@ course_section_dto_t *course_section_dto_parseFromJSON(cJSON *course_section_dto
     }
     }
 
+    // course_section_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(course_section_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     course_section_dto_local_var = course_section_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -251,7 +274,8 @@ course_section_dto_t *course_section_dto_parseFromJSON(cJSON *course_section_dto
         course_id && !cJSON_IsNull(course_id) ? strdup(course_id->valuestring) : NULL,
         release_date_time && !cJSON_IsNull(release_date_time) ? strdup(release_date_time->valuestring) : NULL,
         hide_from_students ? hide_from_students->valueint : 0,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return course_section_dto_local_var;

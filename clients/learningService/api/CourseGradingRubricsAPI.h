@@ -9,6 +9,7 @@
 #include "../model/course_grading_rubric_dto.h"
 #include "../model/course_grading_rubric_update_dto.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a course grading rubric
@@ -49,6 +50,14 @@ CourseGradingRubricsAPI_getCourseGradingRubricsAsync(apiClient_t *apiClient, cha
 //
 int*
 CourseGradingRubricsAPI_getCourseGradingRubricsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course grading rubric
+//
+// Partially updates an existing course grading rubric.
+//
+void
+CourseGradingRubricsAPI_patchCourseGradingRubricAsync(apiClient_t *apiClient, char *tenantId, char *rubricId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course grading rubric

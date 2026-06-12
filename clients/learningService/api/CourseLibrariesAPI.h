@@ -9,6 +9,7 @@
 #include "../model/course_library_dto.h"
 #include "../model/course_library_update_dto.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a course library
@@ -49,6 +50,14 @@ CourseLibrariesAPI_getCourseLibrariesCountAsync(apiClient_t *apiClient, char *te
 //
 course_library_dto_t*
 CourseLibrariesAPI_getCourseLibraryByIdAsync(apiClient_t *apiClient, char *libraryId, char *api_version, char *x_api_version);
+
+
+// Patch a course library
+//
+// Partially updates an existing course library.
+//
+void
+CourseLibrariesAPI_patchCourseLibraryAsync(apiClient_t *apiClient, char *tenantId, char *libraryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course library

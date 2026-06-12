@@ -12,6 +12,7 @@
 #include "../model/item_retain_sample_dto_envelope.h"
 #include "../model/item_retain_sample_dto_list_envelope.h"
 #include "../model/item_retain_sample_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create an item retain sample
@@ -52,6 +53,14 @@ ItemRetainSamplesAPI_getItemRetainSamplesAsync(apiClient_t *apiClient, char *ten
 //
 int32_envelope_t*
 ItemRetainSamplesAPI_getItemRetainSamplesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item retain sample
+//
+// Applies a JSON Patch document to an item retain sample.
+//
+empty_envelope_t*
+ItemRetainSamplesAPI_patchItemRetainSampleAsync(apiClient_t *apiClient, char *tenantId, char *retainSampleId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item retain sample

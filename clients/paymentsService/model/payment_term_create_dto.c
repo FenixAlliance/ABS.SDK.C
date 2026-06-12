@@ -152,7 +152,7 @@ cJSON *payment_term_create_dto_convertToJSON(payment_term_create_dto_t *payment_
 
     // payment_term_create_dto->payment_mode_id
     if(payment_term_create_dto->payment_mode_id) {
-    if(cJSON_AddStringToObject(item, "paymentModeID", payment_term_create_dto->payment_mode_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "paymentModeId", payment_term_create_dto->payment_mode_id) == NULL) {
     goto fail; //String
     }
     }
@@ -263,7 +263,7 @@ payment_term_create_dto_t *payment_term_create_dto_parseFromJSON(cJSON *payment_
     }
 
     // payment_term_create_dto->payment_mode_id
-    cJSON *payment_mode_id = cJSON_GetObjectItemCaseSensitive(payment_term_create_dtoJSON, "paymentModeID");
+    cJSON *payment_mode_id = cJSON_GetObjectItemCaseSensitive(payment_term_create_dtoJSON, "paymentModeId");
     if (payment_mode_id) { 
     if(!cJSON_IsString(payment_mode_id) && !cJSON_IsNull(payment_mode_id))
     {

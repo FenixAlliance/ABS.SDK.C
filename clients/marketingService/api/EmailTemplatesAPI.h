@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create an email template
@@ -52,6 +53,14 @@ EmailTemplatesAPI_getEmailTemplatesCountAsync(apiClient_t *apiClient, char *tena
 //
 email_template_dto_list_envelope_t*
 EmailTemplatesAPI_getEmailTemplatesODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an email template
+//
+// Partially updates an email template by its ID using JSON Patch.
+//
+empty_envelope_t*
+EmailTemplatesAPI_patchEmailTemplateAsync(apiClient_t *apiClient, char *tenantId, char *emailTemplateId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an email template

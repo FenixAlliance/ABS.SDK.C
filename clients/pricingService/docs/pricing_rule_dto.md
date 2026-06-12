@@ -5,7 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
-**business_id** | **char \*** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
+**enrollment_id** | **char \*** |  | [optional] 
 **code** | **char \*** |  | [optional] 
 **title** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 

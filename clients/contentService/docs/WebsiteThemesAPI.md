@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**WebsiteThemesAPI_getWebsiteThemeByIdAsync**](WebsiteThemesAPI.md#WebsiteThemesAPI_getWebsiteThemeByIdAsync) | **GET** /api/v2/ContentService/WebsiteThemes/{id} | Get website theme by ID
 [**WebsiteThemesAPI_getWebsiteThemesAsync**](WebsiteThemesAPI.md#WebsiteThemesAPI_getWebsiteThemesAsync) | **GET** /api/v2/ContentService/WebsiteThemes | Get all website themes
 [**WebsiteThemesAPI_getWebsiteThemesCountAsync**](WebsiteThemesAPI.md#WebsiteThemesAPI_getWebsiteThemesCountAsync) | **GET** /api/v2/ContentService/WebsiteThemes/Count | Get website themes count
+[**WebsiteThemesAPI_patchWebsiteThemeAsync**](WebsiteThemesAPI.md#WebsiteThemesAPI_patchWebsiteThemeAsync) | **PATCH** /api/v2/ContentService/WebsiteThemes/{id} | Patch a website theme
 [**WebsiteThemesAPI_updateWebsiteThemeAsync**](WebsiteThemesAPI.md#WebsiteThemesAPI_updateWebsiteThemeAsync) | **PUT** /api/v2/ContentService/WebsiteThemes/{id} | Update a website theme
 
 
@@ -176,6 +177,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WebsiteThemesAPI_patchWebsiteThemeAsync**
+```c
+// Patch a website theme
+//
+// Partially updates an existing website theme for the specified tenant.
+//
+void WebsiteThemesAPI_patchWebsiteThemeAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**id** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

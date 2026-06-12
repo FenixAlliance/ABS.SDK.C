@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**PaymentsAPI_getPaymentAsync**](PaymentsAPI.md#PaymentsAPI_getPaymentAsync) | **GET** /api/v2/PaymentsService/Payments/{paymentId}/Details | Gets a payment by ID (deprecated)
 [**PaymentsAPI_getPaymentAsyncV2**](PaymentsAPI.md#PaymentsAPI_getPaymentAsyncV2) | **GET** /api/v2/PaymentsService/Payments/{paymentId} | Gets a payment by ID
 [**PaymentsAPI_getPaymentsAsync**](PaymentsAPI.md#PaymentsAPI_getPaymentsAsync) | **GET** /api/v2/PaymentsService/Payments | Retrieves all payments
+[**PaymentsAPI_patchPaymentAsync**](PaymentsAPI.md#PaymentsAPI_patchPaymentAsync) | **PATCH** /api/v2/PaymentsService/Payments/{paymentId} | Patch a payment
 [**PaymentsAPI_updatePaymentAsync**](PaymentsAPI.md#PaymentsAPI_updatePaymentAsync) | **PUT** /api/v2/PaymentsService/Payments/{paymentId} | Updates a payment
 
 
@@ -167,6 +168,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PaymentsAPI_patchPaymentAsync**
+```c
+// Patch a payment
+//
+// Patch a payment
+//
+empty_envelope_t* PaymentsAPI_patchPaymentAsync(apiClient_t *apiClient, char *tenantId, char *paymentId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**paymentId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

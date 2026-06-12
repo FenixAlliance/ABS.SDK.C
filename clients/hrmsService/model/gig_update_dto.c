@@ -6,29 +6,79 @@
 
 
 gig_update_dto_t *gig_update_dto_create(
+    int remote,
+    char *type,
     char *title,
     char *description,
-    double price,
-    char *currency,
+    char *expected_delivery_date,
+    char *employer_profile_id,
+    double min_budget,
+    double max_budget,
+    char *currency_id,
+    char *country_id,
+    char *country_state_id,
+    char *city_id,
     char *location,
-    char *start_date,
-    char *end_date,
-    char *category,
-    char *tags
+    char *external_url,
+    char *data,
+    char *data_label,
+    char *data1,
+    char *data1_label,
+    char *data2,
+    char *data2_label,
+    char *data3,
+    char *data3_label,
+    char *data4,
+    char *data4_label,
+    char *data5,
+    char *data5_label,
+    char *data6,
+    char *data6_label,
+    char *data7,
+    char *data7_label,
+    char *data8,
+    char *data8_label,
+    char *data9,
+    char *data9_label
     ) {
     gig_update_dto_t *gig_update_dto_local_var = malloc(sizeof(gig_update_dto_t));
     if (!gig_update_dto_local_var) {
         return NULL;
     }
+    gig_update_dto_local_var->remote = remote;
+    gig_update_dto_local_var->type = type;
     gig_update_dto_local_var->title = title;
     gig_update_dto_local_var->description = description;
-    gig_update_dto_local_var->price = price;
-    gig_update_dto_local_var->currency = currency;
+    gig_update_dto_local_var->expected_delivery_date = expected_delivery_date;
+    gig_update_dto_local_var->employer_profile_id = employer_profile_id;
+    gig_update_dto_local_var->min_budget = min_budget;
+    gig_update_dto_local_var->max_budget = max_budget;
+    gig_update_dto_local_var->currency_id = currency_id;
+    gig_update_dto_local_var->country_id = country_id;
+    gig_update_dto_local_var->country_state_id = country_state_id;
+    gig_update_dto_local_var->city_id = city_id;
     gig_update_dto_local_var->location = location;
-    gig_update_dto_local_var->start_date = start_date;
-    gig_update_dto_local_var->end_date = end_date;
-    gig_update_dto_local_var->category = category;
-    gig_update_dto_local_var->tags = tags;
+    gig_update_dto_local_var->external_url = external_url;
+    gig_update_dto_local_var->data = data;
+    gig_update_dto_local_var->data_label = data_label;
+    gig_update_dto_local_var->data1 = data1;
+    gig_update_dto_local_var->data1_label = data1_label;
+    gig_update_dto_local_var->data2 = data2;
+    gig_update_dto_local_var->data2_label = data2_label;
+    gig_update_dto_local_var->data3 = data3;
+    gig_update_dto_local_var->data3_label = data3_label;
+    gig_update_dto_local_var->data4 = data4;
+    gig_update_dto_local_var->data4_label = data4_label;
+    gig_update_dto_local_var->data5 = data5;
+    gig_update_dto_local_var->data5_label = data5_label;
+    gig_update_dto_local_var->data6 = data6;
+    gig_update_dto_local_var->data6_label = data6_label;
+    gig_update_dto_local_var->data7 = data7;
+    gig_update_dto_local_var->data7_label = data7_label;
+    gig_update_dto_local_var->data8 = data8;
+    gig_update_dto_local_var->data8_label = data8_label;
+    gig_update_dto_local_var->data9 = data9;
+    gig_update_dto_local_var->data9_label = data9_label;
 
     return gig_update_dto_local_var;
 }
@@ -39,6 +89,10 @@ void gig_update_dto_free(gig_update_dto_t *gig_update_dto) {
         return ;
     }
     listEntry_t *listEntry;
+    if (gig_update_dto->type) {
+        free(gig_update_dto->type);
+        gig_update_dto->type = NULL;
+    }
     if (gig_update_dto->title) {
         free(gig_update_dto->title);
         gig_update_dto->title = NULL;
@@ -47,35 +101,139 @@ void gig_update_dto_free(gig_update_dto_t *gig_update_dto) {
         free(gig_update_dto->description);
         gig_update_dto->description = NULL;
     }
-    if (gig_update_dto->currency) {
-        free(gig_update_dto->currency);
-        gig_update_dto->currency = NULL;
+    if (gig_update_dto->expected_delivery_date) {
+        free(gig_update_dto->expected_delivery_date);
+        gig_update_dto->expected_delivery_date = NULL;
+    }
+    if (gig_update_dto->employer_profile_id) {
+        free(gig_update_dto->employer_profile_id);
+        gig_update_dto->employer_profile_id = NULL;
+    }
+    if (gig_update_dto->currency_id) {
+        free(gig_update_dto->currency_id);
+        gig_update_dto->currency_id = NULL;
+    }
+    if (gig_update_dto->country_id) {
+        free(gig_update_dto->country_id);
+        gig_update_dto->country_id = NULL;
+    }
+    if (gig_update_dto->country_state_id) {
+        free(gig_update_dto->country_state_id);
+        gig_update_dto->country_state_id = NULL;
+    }
+    if (gig_update_dto->city_id) {
+        free(gig_update_dto->city_id);
+        gig_update_dto->city_id = NULL;
     }
     if (gig_update_dto->location) {
         free(gig_update_dto->location);
         gig_update_dto->location = NULL;
     }
-    if (gig_update_dto->start_date) {
-        free(gig_update_dto->start_date);
-        gig_update_dto->start_date = NULL;
+    if (gig_update_dto->external_url) {
+        free(gig_update_dto->external_url);
+        gig_update_dto->external_url = NULL;
     }
-    if (gig_update_dto->end_date) {
-        free(gig_update_dto->end_date);
-        gig_update_dto->end_date = NULL;
+    if (gig_update_dto->data) {
+        free(gig_update_dto->data);
+        gig_update_dto->data = NULL;
     }
-    if (gig_update_dto->category) {
-        free(gig_update_dto->category);
-        gig_update_dto->category = NULL;
+    if (gig_update_dto->data_label) {
+        free(gig_update_dto->data_label);
+        gig_update_dto->data_label = NULL;
     }
-    if (gig_update_dto->tags) {
-        free(gig_update_dto->tags);
-        gig_update_dto->tags = NULL;
+    if (gig_update_dto->data1) {
+        free(gig_update_dto->data1);
+        gig_update_dto->data1 = NULL;
+    }
+    if (gig_update_dto->data1_label) {
+        free(gig_update_dto->data1_label);
+        gig_update_dto->data1_label = NULL;
+    }
+    if (gig_update_dto->data2) {
+        free(gig_update_dto->data2);
+        gig_update_dto->data2 = NULL;
+    }
+    if (gig_update_dto->data2_label) {
+        free(gig_update_dto->data2_label);
+        gig_update_dto->data2_label = NULL;
+    }
+    if (gig_update_dto->data3) {
+        free(gig_update_dto->data3);
+        gig_update_dto->data3 = NULL;
+    }
+    if (gig_update_dto->data3_label) {
+        free(gig_update_dto->data3_label);
+        gig_update_dto->data3_label = NULL;
+    }
+    if (gig_update_dto->data4) {
+        free(gig_update_dto->data4);
+        gig_update_dto->data4 = NULL;
+    }
+    if (gig_update_dto->data4_label) {
+        free(gig_update_dto->data4_label);
+        gig_update_dto->data4_label = NULL;
+    }
+    if (gig_update_dto->data5) {
+        free(gig_update_dto->data5);
+        gig_update_dto->data5 = NULL;
+    }
+    if (gig_update_dto->data5_label) {
+        free(gig_update_dto->data5_label);
+        gig_update_dto->data5_label = NULL;
+    }
+    if (gig_update_dto->data6) {
+        free(gig_update_dto->data6);
+        gig_update_dto->data6 = NULL;
+    }
+    if (gig_update_dto->data6_label) {
+        free(gig_update_dto->data6_label);
+        gig_update_dto->data6_label = NULL;
+    }
+    if (gig_update_dto->data7) {
+        free(gig_update_dto->data7);
+        gig_update_dto->data7 = NULL;
+    }
+    if (gig_update_dto->data7_label) {
+        free(gig_update_dto->data7_label);
+        gig_update_dto->data7_label = NULL;
+    }
+    if (gig_update_dto->data8) {
+        free(gig_update_dto->data8);
+        gig_update_dto->data8 = NULL;
+    }
+    if (gig_update_dto->data8_label) {
+        free(gig_update_dto->data8_label);
+        gig_update_dto->data8_label = NULL;
+    }
+    if (gig_update_dto->data9) {
+        free(gig_update_dto->data9);
+        gig_update_dto->data9 = NULL;
+    }
+    if (gig_update_dto->data9_label) {
+        free(gig_update_dto->data9_label);
+        gig_update_dto->data9_label = NULL;
     }
     free(gig_update_dto);
 }
 
 cJSON *gig_update_dto_convertToJSON(gig_update_dto_t *gig_update_dto) {
     cJSON *item = cJSON_CreateObject();
+
+    // gig_update_dto->remote
+    if(gig_update_dto->remote) {
+    if(cJSON_AddBoolToObject(item, "remote", gig_update_dto->remote) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // gig_update_dto->type
+    if(gig_update_dto->type) {
+    if(cJSON_AddStringToObject(item, "type", gig_update_dto->type) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // gig_update_dto->title
     if(gig_update_dto->title) {
@@ -93,17 +251,65 @@ cJSON *gig_update_dto_convertToJSON(gig_update_dto_t *gig_update_dto) {
     }
 
 
-    // gig_update_dto->price
-    if(gig_update_dto->price) {
-    if(cJSON_AddNumberToObject(item, "price", gig_update_dto->price) == NULL) {
+    // gig_update_dto->expected_delivery_date
+    if(gig_update_dto->expected_delivery_date) {
+    if(cJSON_AddStringToObject(item, "expectedDeliveryDate", gig_update_dto->expected_delivery_date) == NULL) {
+    goto fail; //Date-Time
+    }
+    }
+
+
+    // gig_update_dto->employer_profile_id
+    if(gig_update_dto->employer_profile_id) {
+    if(cJSON_AddStringToObject(item, "employerProfileId", gig_update_dto->employer_profile_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->min_budget
+    if(gig_update_dto->min_budget) {
+    if(cJSON_AddNumberToObject(item, "minBudget", gig_update_dto->min_budget) == NULL) {
     goto fail; //Numeric
     }
     }
 
 
-    // gig_update_dto->currency
-    if(gig_update_dto->currency) {
-    if(cJSON_AddStringToObject(item, "currency", gig_update_dto->currency) == NULL) {
+    // gig_update_dto->max_budget
+    if(gig_update_dto->max_budget) {
+    if(cJSON_AddNumberToObject(item, "maxBudget", gig_update_dto->max_budget) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // gig_update_dto->currency_id
+    if(gig_update_dto->currency_id) {
+    if(cJSON_AddStringToObject(item, "currencyId", gig_update_dto->currency_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->country_id
+    if(gig_update_dto->country_id) {
+    if(cJSON_AddStringToObject(item, "countryId", gig_update_dto->country_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->country_state_id
+    if(gig_update_dto->country_state_id) {
+    if(cJSON_AddStringToObject(item, "countryStateId", gig_update_dto->country_state_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->city_id
+    if(gig_update_dto->city_id) {
+    if(cJSON_AddStringToObject(item, "cityId", gig_update_dto->city_id) == NULL) {
     goto fail; //String
     }
     }
@@ -117,33 +323,169 @@ cJSON *gig_update_dto_convertToJSON(gig_update_dto_t *gig_update_dto) {
     }
 
 
-    // gig_update_dto->start_date
-    if(gig_update_dto->start_date) {
-    if(cJSON_AddStringToObject(item, "startDate", gig_update_dto->start_date) == NULL) {
-    goto fail; //Date-Time
-    }
-    }
-
-
-    // gig_update_dto->end_date
-    if(gig_update_dto->end_date) {
-    if(cJSON_AddStringToObject(item, "endDate", gig_update_dto->end_date) == NULL) {
-    goto fail; //Date-Time
-    }
-    }
-
-
-    // gig_update_dto->category
-    if(gig_update_dto->category) {
-    if(cJSON_AddStringToObject(item, "category", gig_update_dto->category) == NULL) {
+    // gig_update_dto->external_url
+    if(gig_update_dto->external_url) {
+    if(cJSON_AddStringToObject(item, "externalUrl", gig_update_dto->external_url) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // gig_update_dto->tags
-    if(gig_update_dto->tags) {
-    if(cJSON_AddStringToObject(item, "tags", gig_update_dto->tags) == NULL) {
+    // gig_update_dto->data
+    if(gig_update_dto->data) {
+    if(cJSON_AddStringToObject(item, "data", gig_update_dto->data) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data_label
+    if(gig_update_dto->data_label) {
+    if(cJSON_AddStringToObject(item, "dataLabel", gig_update_dto->data_label) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data1
+    if(gig_update_dto->data1) {
+    if(cJSON_AddStringToObject(item, "data1", gig_update_dto->data1) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data1_label
+    if(gig_update_dto->data1_label) {
+    if(cJSON_AddStringToObject(item, "data1Label", gig_update_dto->data1_label) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data2
+    if(gig_update_dto->data2) {
+    if(cJSON_AddStringToObject(item, "data2", gig_update_dto->data2) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data2_label
+    if(gig_update_dto->data2_label) {
+    if(cJSON_AddStringToObject(item, "data2Label", gig_update_dto->data2_label) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data3
+    if(gig_update_dto->data3) {
+    if(cJSON_AddStringToObject(item, "data3", gig_update_dto->data3) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data3_label
+    if(gig_update_dto->data3_label) {
+    if(cJSON_AddStringToObject(item, "data3Label", gig_update_dto->data3_label) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data4
+    if(gig_update_dto->data4) {
+    if(cJSON_AddStringToObject(item, "data4", gig_update_dto->data4) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data4_label
+    if(gig_update_dto->data4_label) {
+    if(cJSON_AddStringToObject(item, "data4Label", gig_update_dto->data4_label) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data5
+    if(gig_update_dto->data5) {
+    if(cJSON_AddStringToObject(item, "data5", gig_update_dto->data5) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data5_label
+    if(gig_update_dto->data5_label) {
+    if(cJSON_AddStringToObject(item, "data5Label", gig_update_dto->data5_label) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data6
+    if(gig_update_dto->data6) {
+    if(cJSON_AddStringToObject(item, "data6", gig_update_dto->data6) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data6_label
+    if(gig_update_dto->data6_label) {
+    if(cJSON_AddStringToObject(item, "data6Label", gig_update_dto->data6_label) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data7
+    if(gig_update_dto->data7) {
+    if(cJSON_AddStringToObject(item, "data7", gig_update_dto->data7) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data7_label
+    if(gig_update_dto->data7_label) {
+    if(cJSON_AddStringToObject(item, "data7Label", gig_update_dto->data7_label) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data8
+    if(gig_update_dto->data8) {
+    if(cJSON_AddStringToObject(item, "data8", gig_update_dto->data8) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data8_label
+    if(gig_update_dto->data8_label) {
+    if(cJSON_AddStringToObject(item, "data8Label", gig_update_dto->data8_label) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data9
+    if(gig_update_dto->data9) {
+    if(cJSON_AddStringToObject(item, "data9", gig_update_dto->data9) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // gig_update_dto->data9_label
+    if(gig_update_dto->data9_label) {
+    if(cJSON_AddStringToObject(item, "data9Label", gig_update_dto->data9_label) == NULL) {
     goto fail; //String
     }
     }
@@ -159,6 +501,24 @@ fail:
 gig_update_dto_t *gig_update_dto_parseFromJSON(cJSON *gig_update_dtoJSON){
 
     gig_update_dto_t *gig_update_dto_local_var = NULL;
+
+    // gig_update_dto->remote
+    cJSON *remote = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "remote");
+    if (remote) { 
+    if(!cJSON_IsBool(remote))
+    {
+    goto end; //Bool
+    }
+    }
+
+    // gig_update_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "type");
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
+    {
+    goto end; //String
+    }
+    }
 
     // gig_update_dto->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "title");
@@ -178,19 +538,73 @@ gig_update_dto_t *gig_update_dto_parseFromJSON(cJSON *gig_update_dtoJSON){
     }
     }
 
-    // gig_update_dto->price
-    cJSON *price = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "price");
-    if (price) { 
-    if(!cJSON_IsNumber(price))
+    // gig_update_dto->expected_delivery_date
+    cJSON *expected_delivery_date = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "expectedDeliveryDate");
+    if (expected_delivery_date) { 
+    if(!cJSON_IsString(expected_delivery_date) && !cJSON_IsNull(expected_delivery_date))
+    {
+    goto end; //DateTime
+    }
+    }
+
+    // gig_update_dto->employer_profile_id
+    cJSON *employer_profile_id = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "employerProfileId");
+    if (employer_profile_id) { 
+    if(!cJSON_IsString(employer_profile_id) && !cJSON_IsNull(employer_profile_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->min_budget
+    cJSON *min_budget = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "minBudget");
+    if (min_budget) { 
+    if(!cJSON_IsNumber(min_budget))
     {
     goto end; //Numeric
     }
     }
 
-    // gig_update_dto->currency
-    cJSON *currency = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "currency");
-    if (currency) { 
-    if(!cJSON_IsString(currency) && !cJSON_IsNull(currency))
+    // gig_update_dto->max_budget
+    cJSON *max_budget = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "maxBudget");
+    if (max_budget) { 
+    if(!cJSON_IsNumber(max_budget))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // gig_update_dto->currency_id
+    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "currencyId");
+    if (currency_id) { 
+    if(!cJSON_IsString(currency_id) && !cJSON_IsNull(currency_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->country_id
+    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "countryId");
+    if (country_id) { 
+    if(!cJSON_IsString(country_id) && !cJSON_IsNull(country_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->country_state_id
+    cJSON *country_state_id = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "countryStateId");
+    if (country_state_id) { 
+    if(!cJSON_IsString(country_state_id) && !cJSON_IsNull(country_state_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->city_id
+    cJSON *city_id = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "cityId");
+    if (city_id) { 
+    if(!cJSON_IsString(city_id) && !cJSON_IsNull(city_id))
     {
     goto end; //String
     }
@@ -205,37 +619,190 @@ gig_update_dto_t *gig_update_dto_parseFromJSON(cJSON *gig_update_dtoJSON){
     }
     }
 
-    // gig_update_dto->start_date
-    cJSON *start_date = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "startDate");
-    if (start_date) { 
-    if(!cJSON_IsString(start_date) && !cJSON_IsNull(start_date))
-    {
-    goto end; //DateTime
-    }
-    }
-
-    // gig_update_dto->end_date
-    cJSON *end_date = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "endDate");
-    if (end_date) { 
-    if(!cJSON_IsString(end_date) && !cJSON_IsNull(end_date))
-    {
-    goto end; //DateTime
-    }
-    }
-
-    // gig_update_dto->category
-    cJSON *category = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "category");
-    if (category) { 
-    if(!cJSON_IsString(category) && !cJSON_IsNull(category))
+    // gig_update_dto->external_url
+    cJSON *external_url = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "externalUrl");
+    if (external_url) { 
+    if(!cJSON_IsString(external_url) && !cJSON_IsNull(external_url))
     {
     goto end; //String
     }
     }
 
-    // gig_update_dto->tags
-    cJSON *tags = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "tags");
-    if (tags) { 
-    if(!cJSON_IsString(tags) && !cJSON_IsNull(tags))
+    // gig_update_dto->data
+    cJSON *data = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data");
+    if (data) { 
+    if(!cJSON_IsString(data) && !cJSON_IsNull(data))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data_label
+    cJSON *data_label = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "dataLabel");
+    if (data_label) { 
+    if(!cJSON_IsString(data_label) && !cJSON_IsNull(data_label))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data1
+    cJSON *data1 = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data1");
+    if (data1) { 
+    if(!cJSON_IsString(data1) && !cJSON_IsNull(data1))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data1_label
+    cJSON *data1_label = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data1Label");
+    if (data1_label) { 
+    if(!cJSON_IsString(data1_label) && !cJSON_IsNull(data1_label))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data2
+    cJSON *data2 = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data2");
+    if (data2) { 
+    if(!cJSON_IsString(data2) && !cJSON_IsNull(data2))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data2_label
+    cJSON *data2_label = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data2Label");
+    if (data2_label) { 
+    if(!cJSON_IsString(data2_label) && !cJSON_IsNull(data2_label))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data3
+    cJSON *data3 = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data3");
+    if (data3) { 
+    if(!cJSON_IsString(data3) && !cJSON_IsNull(data3))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data3_label
+    cJSON *data3_label = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data3Label");
+    if (data3_label) { 
+    if(!cJSON_IsString(data3_label) && !cJSON_IsNull(data3_label))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data4
+    cJSON *data4 = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data4");
+    if (data4) { 
+    if(!cJSON_IsString(data4) && !cJSON_IsNull(data4))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data4_label
+    cJSON *data4_label = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data4Label");
+    if (data4_label) { 
+    if(!cJSON_IsString(data4_label) && !cJSON_IsNull(data4_label))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data5
+    cJSON *data5 = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data5");
+    if (data5) { 
+    if(!cJSON_IsString(data5) && !cJSON_IsNull(data5))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data5_label
+    cJSON *data5_label = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data5Label");
+    if (data5_label) { 
+    if(!cJSON_IsString(data5_label) && !cJSON_IsNull(data5_label))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data6
+    cJSON *data6 = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data6");
+    if (data6) { 
+    if(!cJSON_IsString(data6) && !cJSON_IsNull(data6))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data6_label
+    cJSON *data6_label = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data6Label");
+    if (data6_label) { 
+    if(!cJSON_IsString(data6_label) && !cJSON_IsNull(data6_label))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data7
+    cJSON *data7 = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data7");
+    if (data7) { 
+    if(!cJSON_IsString(data7) && !cJSON_IsNull(data7))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data7_label
+    cJSON *data7_label = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data7Label");
+    if (data7_label) { 
+    if(!cJSON_IsString(data7_label) && !cJSON_IsNull(data7_label))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data8
+    cJSON *data8 = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data8");
+    if (data8) { 
+    if(!cJSON_IsString(data8) && !cJSON_IsNull(data8))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data8_label
+    cJSON *data8_label = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data8Label");
+    if (data8_label) { 
+    if(!cJSON_IsString(data8_label) && !cJSON_IsNull(data8_label))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data9
+    cJSON *data9 = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data9");
+    if (data9) { 
+    if(!cJSON_IsString(data9) && !cJSON_IsNull(data9))
+    {
+    goto end; //String
+    }
+    }
+
+    // gig_update_dto->data9_label
+    cJSON *data9_label = cJSON_GetObjectItemCaseSensitive(gig_update_dtoJSON, "data9Label");
+    if (data9_label) { 
+    if(!cJSON_IsString(data9_label) && !cJSON_IsNull(data9_label))
     {
     goto end; //String
     }
@@ -243,15 +810,40 @@ gig_update_dto_t *gig_update_dto_parseFromJSON(cJSON *gig_update_dtoJSON){
 
 
     gig_update_dto_local_var = gig_update_dto_create (
+        remote ? remote->valueint : 0,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        price ? price->valuedouble : 0,
-        currency && !cJSON_IsNull(currency) ? strdup(currency->valuestring) : NULL,
+        expected_delivery_date && !cJSON_IsNull(expected_delivery_date) ? strdup(expected_delivery_date->valuestring) : NULL,
+        employer_profile_id && !cJSON_IsNull(employer_profile_id) ? strdup(employer_profile_id->valuestring) : NULL,
+        min_budget ? min_budget->valuedouble : 0,
+        max_budget ? max_budget->valuedouble : 0,
+        currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
+        country_id && !cJSON_IsNull(country_id) ? strdup(country_id->valuestring) : NULL,
+        country_state_id && !cJSON_IsNull(country_state_id) ? strdup(country_state_id->valuestring) : NULL,
+        city_id && !cJSON_IsNull(city_id) ? strdup(city_id->valuestring) : NULL,
         location && !cJSON_IsNull(location) ? strdup(location->valuestring) : NULL,
-        start_date && !cJSON_IsNull(start_date) ? strdup(start_date->valuestring) : NULL,
-        end_date && !cJSON_IsNull(end_date) ? strdup(end_date->valuestring) : NULL,
-        category && !cJSON_IsNull(category) ? strdup(category->valuestring) : NULL,
-        tags && !cJSON_IsNull(tags) ? strdup(tags->valuestring) : NULL
+        external_url && !cJSON_IsNull(external_url) ? strdup(external_url->valuestring) : NULL,
+        data && !cJSON_IsNull(data) ? strdup(data->valuestring) : NULL,
+        data_label && !cJSON_IsNull(data_label) ? strdup(data_label->valuestring) : NULL,
+        data1 && !cJSON_IsNull(data1) ? strdup(data1->valuestring) : NULL,
+        data1_label && !cJSON_IsNull(data1_label) ? strdup(data1_label->valuestring) : NULL,
+        data2 && !cJSON_IsNull(data2) ? strdup(data2->valuestring) : NULL,
+        data2_label && !cJSON_IsNull(data2_label) ? strdup(data2_label->valuestring) : NULL,
+        data3 && !cJSON_IsNull(data3) ? strdup(data3->valuestring) : NULL,
+        data3_label && !cJSON_IsNull(data3_label) ? strdup(data3_label->valuestring) : NULL,
+        data4 && !cJSON_IsNull(data4) ? strdup(data4->valuestring) : NULL,
+        data4_label && !cJSON_IsNull(data4_label) ? strdup(data4_label->valuestring) : NULL,
+        data5 && !cJSON_IsNull(data5) ? strdup(data5->valuestring) : NULL,
+        data5_label && !cJSON_IsNull(data5_label) ? strdup(data5_label->valuestring) : NULL,
+        data6 && !cJSON_IsNull(data6) ? strdup(data6->valuestring) : NULL,
+        data6_label && !cJSON_IsNull(data6_label) ? strdup(data6_label->valuestring) : NULL,
+        data7 && !cJSON_IsNull(data7) ? strdup(data7->valuestring) : NULL,
+        data7_label && !cJSON_IsNull(data7_label) ? strdup(data7_label->valuestring) : NULL,
+        data8 && !cJSON_IsNull(data8) ? strdup(data8->valuestring) : NULL,
+        data8_label && !cJSON_IsNull(data8_label) ? strdup(data8_label->valuestring) : NULL,
+        data9 && !cJSON_IsNull(data9) ? strdup(data9->valuestring) : NULL,
+        data9_label && !cJSON_IsNull(data9_label) ? strdup(data9_label->valuestring) : NULL
         );
 
     return gig_update_dto_local_var;

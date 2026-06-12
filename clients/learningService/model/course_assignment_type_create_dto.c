@@ -124,7 +124,7 @@ cJSON *course_assignment_type_create_dto_convertToJSON(course_assignment_type_cr
     if (!course_assignment_type_create_dto->course_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "courseID", course_assignment_type_create_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_assignment_type_create_dto->course_id) == NULL) {
     goto fail; //String
     }
 
@@ -207,7 +207,7 @@ course_assignment_type_create_dto_t *course_assignment_type_create_dto_parseFrom
     }
 
     // course_assignment_type_create_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_assignment_type_create_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_assignment_type_create_dtoJSON, "courseId");
     if (!course_id) {
         goto end;
     }

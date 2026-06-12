@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**WarehousesAPI_getWarehouseByIdAsync**](WarehousesAPI.md#WarehousesAPI_getWarehouseByIdAsync) | **GET** /api/v2/LogisticsService/Warehouses/{warehouseId} | Get warehouse by ID
 [**WarehousesAPI_getWarehousesAsync**](WarehousesAPI.md#WarehousesAPI_getWarehousesAsync) | **GET** /api/v2/LogisticsService/Warehouses | Get all warehouses
 [**WarehousesAPI_getWarehousesCountAsync**](WarehousesAPI.md#WarehousesAPI_getWarehousesCountAsync) | **GET** /api/v2/LogisticsService/Warehouses/Count | Get warehouses count
+[**WarehousesAPI_patchWarehouseAsync**](WarehousesAPI.md#WarehousesAPI_patchWarehouseAsync) | **PATCH** /api/v2/LogisticsService/Warehouses/{warehouseId} | Patch a warehouse
 [**WarehousesAPI_updateWarehouseAsync**](WarehousesAPI.md#WarehousesAPI_updateWarehouseAsync) | **PUT** /api/v2/LogisticsService/Warehouses/{warehouseId} | Update a warehouse
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WarehousesAPI_patchWarehouseAsync**
+```c
+// Patch a warehouse
+//
+// Partially updates an existing warehouse using JSON Patch.
+//
+empty_envelope_t* WarehousesAPI_patchWarehouseAsync(apiClient_t *apiClient, char *tenantId, char *warehouseId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**warehouseId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

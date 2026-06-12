@@ -8,7 +8,9 @@
 #include "../model/course_unit_create_dto.h"
 #include "../model/course_unit_dto.h"
 #include "../model/course_unit_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course unit
@@ -49,6 +51,14 @@ CourseUnitsAPI_getCourseUnitsAsync(apiClient_t *apiClient, char *tenantId, char 
 //
 int*
 CourseUnitsAPI_getCourseUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course unit
+//
+// Partially updates a course unit for the specified tenant.
+//
+empty_envelope_t*
+CourseUnitsAPI_patchCourseUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course unit

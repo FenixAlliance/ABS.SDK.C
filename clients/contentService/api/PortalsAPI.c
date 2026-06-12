@@ -12,6 +12,183 @@
 }while(0)
 
 
+// Bind a domain to a web portal
+//
+// Bind a verified BusinessDomain to a web portal
+//
+empty_envelope_t*
+PortalsAPI_bindWebPortalDomainAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *businessDomainId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/ContentService/Portals/{portalId}/DomainBindings/{businessDomainId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/ContentService/Portals/{portalId}/DomainBindings/{businessDomainId}");
+
+
+    // Path Params
+    long sizeOfPathParams_portalId = strlen(portalId)+3 + strlen(businessDomainId)+3 + strlen("{ portalId }");
+    if(portalId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_portalId = malloc(sizeOfPathParams_portalId);
+    sprintf(localVarToReplace_portalId, "{%s}", "portalId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_portalId, portalId);
+    if(portalId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_portalId = malloc(sizeOfPathParams_portalId);
+    sprintf(localVarToReplace_portalId, "{%s}", "portalId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_portalId, portalId);
+
+    // Path Params
+    long sizeOfPathParams_businessDomainId = strlen(portalId)+3 + strlen(businessDomainId)+3 + strlen("{ businessDomainId }");
+    if(businessDomainId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_businessDomainId = malloc(sizeOfPathParams_businessDomainId);
+    sprintf(localVarToReplace_businessDomainId, "{%s}", "businessDomainId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_businessDomainId, businessDomainId);
+    if(businessDomainId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_businessDomainId = malloc(sizeOfPathParams_businessDomainId);
+    sprintf(localVarToReplace_businessDomainId, "{%s}", "businessDomainId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_businessDomainId, businessDomainId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *PortalsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(PortalsAPIlocalVarJSON);
+    cJSON_Delete(PortalsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_portalId);
+    free(localVarToReplace_businessDomainId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Count portals
 //
 // Counts all portals for the specified tenant.
@@ -1096,6 +1273,165 @@ end:
 
 }
 
+// Get a web portal's bound domains
+//
+// Get the BusinessDomains bound to a web portal
+//
+business_domain_dto_list_envelope_t*
+PortalsAPI_getWebPortalDomainBindingsAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/ContentService/Portals/{portalId}/DomainBindings")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/ContentService/Portals/{portalId}/DomainBindings");
+
+
+    // Path Params
+    long sizeOfPathParams_portalId = strlen(portalId)+3 + strlen("{ portalId }");
+    if(portalId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_portalId = malloc(sizeOfPathParams_portalId);
+    sprintf(localVarToReplace_portalId, "{%s}", "portalId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_portalId, portalId);
+    if(portalId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_portalId = malloc(sizeOfPathParams_portalId);
+    sprintf(localVarToReplace_portalId, "{%s}", "portalId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_portalId, portalId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *PortalsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    business_domain_dto_list_envelope_t *elementToReturn = business_domain_dto_list_envelope_parseFromJSON(PortalsAPIlocalVarJSON);
+    cJSON_Delete(PortalsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_portalId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Get a web portal's options by its ID
 //
 // Get a web portal's options by its ID
@@ -1827,6 +2163,183 @@ end:
 
 }
 
+// Unbind a domain from a web portal
+//
+// Unbind a BusinessDomain from a web portal
+//
+empty_envelope_t*
+PortalsAPI_unbindWebPortalDomainAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *businessDomainId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/ContentService/Portals/{portalId}/DomainBindings/{businessDomainId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/ContentService/Portals/{portalId}/DomainBindings/{businessDomainId}");
+
+
+    // Path Params
+    long sizeOfPathParams_portalId = strlen(portalId)+3 + strlen(businessDomainId)+3 + strlen("{ portalId }");
+    if(portalId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_portalId = malloc(sizeOfPathParams_portalId);
+    sprintf(localVarToReplace_portalId, "{%s}", "portalId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_portalId, portalId);
+    if(portalId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_portalId = malloc(sizeOfPathParams_portalId);
+    sprintf(localVarToReplace_portalId, "{%s}", "portalId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_portalId, portalId);
+
+    // Path Params
+    long sizeOfPathParams_businessDomainId = strlen(portalId)+3 + strlen(businessDomainId)+3 + strlen("{ businessDomainId }");
+    if(businessDomainId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_businessDomainId = malloc(sizeOfPathParams_businessDomainId);
+    sprintf(localVarToReplace_businessDomainId, "{%s}", "businessDomainId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_businessDomainId, businessDomainId);
+    if(businessDomainId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_businessDomainId = malloc(sizeOfPathParams_businessDomainId);
+    sprintf(localVarToReplace_businessDomainId, "{%s}", "businessDomainId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_businessDomainId, businessDomainId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "DELETE");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *PortalsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(PortalsAPIlocalVarJSON);
+    cJSON_Delete(PortalsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_portalId);
+    free(localVarToReplace_businessDomainId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Update an existing web portal
 //
 // Update an existing web portal
@@ -1969,6 +2482,181 @@ PortalsAPI_updateWebPortalAsync(apiClient_t *apiClient, char *tenantId, char *po
     if (localVarSingleItemJSON_web_portal_update_dto) {
         cJSON_Delete(localVarSingleItemJSON_web_portal_update_dto);
         localVarSingleItemJSON_web_portal_update_dto = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Update a web portal's settings
+//
+// Update a web portal's settings (Options) by its ID
+//
+empty_envelope_t*
+PortalsAPI_updateWebPortalSettingsAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version, portal_settings_t *portal_settings)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/ContentService/Portals/{portalId}/Settings")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/ContentService/Portals/{portalId}/Settings");
+
+
+    // Path Params
+    long sizeOfPathParams_portalId = strlen(portalId)+3 + strlen("{ portalId }");
+    if(portalId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_portalId = malloc(sizeOfPathParams_portalId);
+    sprintf(localVarToReplace_portalId, "{%s}", "portalId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_portalId, portalId);
+    if(portalId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_portalId = malloc(sizeOfPathParams_portalId);
+    sprintf(localVarToReplace_portalId, "{%s}", "portalId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_portalId, portalId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_portal_settings = NULL;
+    if (portal_settings != NULL)
+    {
+        //string
+        localVarSingleItemJSON_portal_settings = portal_settings_convertToJSON(portal_settings);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_portal_settings);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PUT");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *PortalsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(PortalsAPIlocalVarJSON);
+    cJSON_Delete(PortalsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_portalId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_portal_settings) {
+        cJSON_Delete(localVarSingleItemJSON_portal_settings);
+        localVarSingleItemJSON_portal_settings = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

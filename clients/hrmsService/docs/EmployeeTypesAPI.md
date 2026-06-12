@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**EmployeeTypesAPI_getEmployeeTypeByIdAsync**](EmployeeTypesAPI.md#EmployeeTypesAPI_getEmployeeTypeByIdAsync) | **GET** /api/v2/HrmsService/EmployeeTypes/{employeeTypeId} | Get employee type by ID
 [**EmployeeTypesAPI_getEmployeeTypesAsync**](EmployeeTypesAPI.md#EmployeeTypesAPI_getEmployeeTypesAsync) | **GET** /api/v2/HrmsService/EmployeeTypes | Get employee types
 [**EmployeeTypesAPI_getEmployeeTypesCountAsync**](EmployeeTypesAPI.md#EmployeeTypesAPI_getEmployeeTypesCountAsync) | **GET** /api/v2/HrmsService/EmployeeTypes/Count | Count employee types
+[**EmployeeTypesAPI_patchEmployeeTypeAsync**](EmployeeTypesAPI.md#EmployeeTypesAPI_patchEmployeeTypeAsync) | **PATCH** /api/v2/HrmsService/EmployeeTypes/{employeeTypeId} | Patch an employee type
 [**EmployeeTypesAPI_updateEmployeeTypeAsync**](EmployeeTypesAPI.md#EmployeeTypesAPI_updateEmployeeTypeAsync) | **PUT** /api/v2/HrmsService/EmployeeTypes/{employeeTypeId} | Update an employee type
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **EmployeeTypesAPI_patchEmployeeTypeAsync**
+```c
+// Patch an employee type
+//
+// Partially updates an existing employee type for the specified tenant.
+//
+empty_envelope_t* EmployeeTypesAPI_patchEmployeeTypeAsync(apiClient_t *apiClient, char *tenantId, char *employeeTypeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**employeeTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

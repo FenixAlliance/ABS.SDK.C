@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**RoundingPoliciesAPI_getRoundingPoliciesAsync**](RoundingPoliciesAPI.md#RoundingPoliciesAPI_getRoundingPoliciesAsync) | **GET** /api/v2/PricingService/RoundingPolicies | Gets all rounding policies
 [**RoundingPoliciesAPI_getRoundingPoliciesCountAsync**](RoundingPoliciesAPI.md#RoundingPoliciesAPI_getRoundingPoliciesCountAsync) | **GET** /api/v2/PricingService/RoundingPolicies/Count | Counts rounding policies
 [**RoundingPoliciesAPI_getRoundingPolicyByIdAsync**](RoundingPoliciesAPI.md#RoundingPoliciesAPI_getRoundingPolicyByIdAsync) | **GET** /api/v2/PricingService/RoundingPolicies/{roundingPolicyId} | Gets a rounding policy by ID
+[**RoundingPoliciesAPI_patchRoundingPolicyAsync**](RoundingPoliciesAPI.md#RoundingPoliciesAPI_patchRoundingPolicyAsync) | **PATCH** /api/v2/PricingService/RoundingPolicies/{roundingPolicyId} | Patches a rounding policy
 [**RoundingPoliciesAPI_updateRoundingPolicyAsync**](RoundingPoliciesAPI.md#RoundingPoliciesAPI_updateRoundingPolicyAsync) | **PUT** /api/v2/PricingService/RoundingPolicies/{roundingPolicyId} | Updates a rounding policy
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **RoundingPoliciesAPI_patchRoundingPolicyAsync**
+```c
+// Patches a rounding policy
+//
+// Partially updates the specified rounding policy using a JSON Patch document.
+//
+empty_envelope_t* RoundingPoliciesAPI_patchRoundingPolicyAsync(apiClient_t *apiClient, char *tenantId, char *roundingPolicyId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**roundingPolicyId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

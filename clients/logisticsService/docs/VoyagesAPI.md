@@ -15,6 +15,8 @@ Method | HTTP request | Description
 [**VoyagesAPI_getVoyagePortCallsCountAsync**](VoyagesAPI.md#VoyagesAPI_getVoyagePortCallsCountAsync) | **GET** /api/v2/LogisticsService/Voyages/{voyageId}/PortCalls/Count | Get voyage port calls count
 [**VoyagesAPI_getVoyagesAsync**](VoyagesAPI.md#VoyagesAPI_getVoyagesAsync) | **GET** /api/v2/LogisticsService/Voyages | Get all voyages
 [**VoyagesAPI_getVoyagesCountAsync**](VoyagesAPI.md#VoyagesAPI_getVoyagesCountAsync) | **GET** /api/v2/LogisticsService/Voyages/Count | Get voyages count
+[**VoyagesAPI_patchVoyageAsync**](VoyagesAPI.md#VoyagesAPI_patchVoyageAsync) | **PATCH** /api/v2/LogisticsService/Voyages/{voyageId} | Patch a voyage
+[**VoyagesAPI_patchVoyagePortCallAsync**](VoyagesAPI.md#VoyagesAPI_patchVoyagePortCallAsync) | **PATCH** /api/v2/LogisticsService/Voyages/{voyageId}/PortCalls/{portCallId} | Patch a voyage port call
 [**VoyagesAPI_startVoyageAsync**](VoyagesAPI.md#VoyagesAPI_startVoyageAsync) | **POST** /api/v2/LogisticsService/Voyages/{voyageId}/Start | Start a voyage
 [**VoyagesAPI_updateVoyageAsync**](VoyagesAPI.md#VoyagesAPI_updateVoyageAsync) | **PUT** /api/v2/LogisticsService/Voyages/{voyageId} | Update a voyage
 [**VoyagesAPI_updateVoyagePortCallAsync**](VoyagesAPI.md#VoyagesAPI_updateVoyagePortCallAsync) | **PUT** /api/v2/LogisticsService/Voyages/{voyageId}/PortCalls/{portCallId} | Update a port call
@@ -390,6 +392,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **VoyagesAPI_patchVoyageAsync**
+```c
+// Patch a voyage
+//
+// Partially updates an existing voyage using JSON Patch.
+//
+empty_envelope_t* VoyagesAPI_patchVoyageAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**voyageId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **VoyagesAPI_patchVoyagePortCallAsync**
+```c
+// Patch a voyage port call
+//
+// Partially updates an existing voyage port call using JSON Patch.
+//
+empty_envelope_t* VoyagesAPI_patchVoyagePortCallAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *portCallId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**voyageId** | **char \*** |  | 
+**portCallId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

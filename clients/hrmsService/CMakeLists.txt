@@ -102,6 +102,7 @@ set(SRCS
     model/job_offer_dto.c
     model/job_offer_dto_envelope.c
     model/job_offer_dto_list_envelope.c
+    model/job_offer_update_dto.c
     model/job_title_create_dto.c
     model/job_title_dto.c
     model/job_title_dto_envelope.c
@@ -118,6 +119,7 @@ set(SRCS
     model/leave_type_dto_list_envelope.c
     model/leave_type_update_dto.c
     model/login_request.c
+    model/operation.c
     model/payroll_create_dto.c
     model/payroll_dto.c
     model/payroll_dto_envelope.c
@@ -249,6 +251,7 @@ set(HDRS
     model/job_offer_dto.h
     model/job_offer_dto_envelope.h
     model/job_offer_dto_list_envelope.h
+    model/job_offer_update_dto.h
     model/job_title_create_dto.h
     model/job_title_dto.h
     model/job_title_dto_envelope.h
@@ -265,6 +268,7 @@ set(HDRS
     model/leave_type_dto_list_envelope.h
     model/leave_type_update_dto.h
     model/login_request.h
+    model/operation.h
     model/payroll_create_dto.h
     model/payroll_dto.h
     model/payroll_dto_envelope.h

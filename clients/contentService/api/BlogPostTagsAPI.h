@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Count blog post tags
@@ -52,6 +53,14 @@ BlogPostTagsAPI_getBlogPostTagByIdAsync(apiClient_t *apiClient, char *tenantId, 
 //
 blog_post_tag_dto_list_envelope_t*
 BlogPostTagsAPI_getBlogPostTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a blog post tag
+//
+// Partially updates an existing blog post tag for the specified tenant.
+//
+empty_envelope_t*
+BlogPostTagsAPI_patchBlogPostTagAsync(apiClient_t *apiClient, char *tenantId, char *blogPostTagId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a blog post tag

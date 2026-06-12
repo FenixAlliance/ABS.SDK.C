@@ -4,6 +4,23 @@
 #include "price_list_dto.h"
 
 
+char* price_list_dto_context_ToString(pricingservice_price_list_dto_CONTEXT_e context) {
+    char* contextArray[] =  { "NULL", "Sales", "Purchase", "Cost" };
+    return contextArray[context];
+}
+
+pricingservice_price_list_dto_CONTEXT_e price_list_dto_context_FromString(char* context){
+    int stringToReturn = 0;
+    char *contextArray[] =  { "NULL", "Sales", "Purchase", "Cost" };
+    size_t sizeofArray = sizeof(contextArray) / sizeof(contextArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(context, contextArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 price_list_dto_t *price_list_dto_create(
     char *id,
@@ -12,6 +29,7 @@ price_list_dto_t *price_list_dto_create(
     char *start_date,
     char *end_date,
     char *description,
+    pricingservice_price_list_dto_CONTEXT_e context,
     char *currency_id,
     char *tenant_id,
     char *unit_id,
@@ -30,6 +48,7 @@ price_list_dto_t *price_list_dto_create(
     price_list_dto_local_var->start_date = start_date;
     price_list_dto_local_var->end_date = end_date;
     price_list_dto_local_var->description = description;
+    price_list_dto_local_var->context = context;
     price_list_dto_local_var->currency_id = currency_id;
     price_list_dto_local_var->tenant_id = tenant_id;
     price_list_dto_local_var->unit_id = unit_id;
@@ -141,6 +160,15 @@ cJSON *price_list_dto_convertToJSON(price_list_dto_t *price_list_dto) {
     if(price_list_dto->description) {
     if(cJSON_AddStringToObject(item, "description", price_list_dto->description) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // price_list_dto->context
+    if(price_list_dto->context != pricingservice_price_list_dto_CONTEXT_NULL) {
+    if(cJSON_AddStringToObject(item, "context", contextprice_list_dto_ToString(price_list_dto->context)) == NULL)
+    {
+    goto fail; //Enum
     }
     }
 
@@ -266,6 +294,17 @@ price_list_dto_t *price_list_dto_parseFromJSON(cJSON *price_list_dtoJSON){
     }
     }
 
+    // price_list_dto->context
+    cJSON *context = cJSON_GetObjectItemCaseSensitive(price_list_dtoJSON, "context");
+    pricingservice_price_list_dto_CONTEXT_e contextVariable;
+    if (context) { 
+    if(!cJSON_IsString(context))
+    {
+    goto end; //Enum
+    }
+    contextVariable = price_list_dto_context_FromString(context->valuestring);
+    }
+
     // price_list_dto->currency_id
     cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(price_list_dtoJSON, "currencyId");
     if (currency_id) { 
@@ -337,6 +376,7 @@ price_list_dto_t *price_list_dto_parseFromJSON(cJSON *price_list_dtoJSON){
         start_date && !cJSON_IsNull(start_date) ? strdup(start_date->valuestring) : NULL,
         end_date && !cJSON_IsNull(end_date) ? strdup(end_date->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        context ? contextVariable : pricingservice_price_list_dto_CONTEXT_NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         unit_id && !cJSON_IsNull(unit_id) ? strdup(unit_id->valuestring) : NULL,

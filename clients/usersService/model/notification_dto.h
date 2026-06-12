@@ -16,6 +16,14 @@
 typedef struct notification_dto_t notification_dto_t;
 
 
+// Enum TYPE for notification_dto
+
+typedef enum  { usersservice_notification_dto_TYPE_NULL = 0, usersservice_notification_dto_TYPE_Event, usersservice_notification_dto_TYPE_Alert, usersservice_notification_dto_TYPE_Log } usersservice_notification_dto_TYPE_e;
+
+char* notification_dto_type_ToString(usersservice_notification_dto_TYPE_e type);
+
+usersservice_notification_dto_TYPE_e notification_dto_type_FromString(char* type);
+
 
 
 typedef struct notification_dto_t {
@@ -24,7 +32,9 @@ typedef struct notification_dto_t {
     int read; //boolean
     char *icon; // string
     char *message; // string
+    char *image_url; // string
     char *redirect_url; // string
+    usersservice_notification_dto_TYPE_e type; //enum
     char *social_profile_id; // string
     char *read_timestamp; //date time
     char *issued_timestamp; //date time
@@ -37,7 +47,9 @@ notification_dto_t *notification_dto_create(
     int read,
     char *icon,
     char *message,
+    char *image_url,
     char *redirect_url,
+    usersservice_notification_dto_TYPE_e type,
     char *social_profile_id,
     char *read_timestamp,
     char *issued_timestamp

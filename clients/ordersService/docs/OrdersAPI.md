@@ -17,6 +17,8 @@ Method | HTTP request | Description
 [**OrdersAPI_getOrderLinesCount**](OrdersAPI.md#OrdersAPI_getOrderLinesCount) | **GET** /api/v2/OrdersService/Orders/{orderId}/Lines/Count | Gets the count of order lines for an order.
 [**OrdersAPI_getOrders**](OrdersAPI.md#OrdersAPI_getOrders) | **GET** /api/v2/OrdersService/Orders | Gets a list of orders for a tenant.
 [**OrdersAPI_getOrdersCount**](OrdersAPI.md#OrdersAPI_getOrdersCount) | **GET** /api/v2/OrdersService/Orders/Count | Gets the count of orders for a tenant.
+[**OrdersAPI_patchOrder**](OrdersAPI.md#OrdersAPI_patchOrder) | **PATCH** /api/v2/OrdersService/Orders/{orderId} | Partially updates an existing order.
+[**OrdersAPI_patchOrderLine**](OrdersAPI.md#OrdersAPI_patchOrderLine) | **PATCH** /api/v2/OrdersService/Orders/{orderId}/Lines/{orderLineId} | Partially updates an order line.
 [**OrdersAPI_previewOrderEmailTemplate**](OrdersAPI.md#OrdersAPI_previewOrderEmailTemplate) | **POST** /api/v2/OrdersService/Orders/{orderId}/Emails/Preview | Preview the rendered email for an Order.
 [**OrdersAPI_sendOrderEmail**](OrdersAPI.md#OrdersAPI_sendOrderEmail) | **POST** /api/v2/OrdersService/Orders/{orderId}/Emails/Send | Send a transactional email for an order.
 [**OrdersAPI_submitCart**](OrdersAPI.md#OrdersAPI_submitCart) | **POST** /api/v2/OrdersService/Orders/SubmitCart | Submits a cart and creates an order.
@@ -438,6 +440,73 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **OrdersAPI_patchOrder**
+```c
+// Partially updates an existing order.
+//
+// Applies a JSON Patch document to partially update an existing order.
+//
+empty_envelope_t* OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**orderId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **OrdersAPI_patchOrderLine**
+```c
+// Partially updates an order line.
+//
+// Applies a JSON Patch document to partially update a specific order line.
+//
+empty_envelope_t* OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, char *orderLineId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**orderId** | **char \*** |  | 
+**orderLineId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

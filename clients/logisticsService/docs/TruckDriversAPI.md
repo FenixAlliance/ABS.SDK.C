@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**TruckDriversAPI_getTruckDriverByIdAsync**](TruckDriversAPI.md#TruckDriversAPI_getTruckDriverByIdAsync) | **GET** /api/v2/LogisticsService/TruckDrivers/{driverId} | Get truck driver by ID
 [**TruckDriversAPI_getTruckDriversAsync**](TruckDriversAPI.md#TruckDriversAPI_getTruckDriversAsync) | **GET** /api/v2/LogisticsService/TruckDrivers | Get all truck drivers
 [**TruckDriversAPI_getTruckDriversCountAsync**](TruckDriversAPI.md#TruckDriversAPI_getTruckDriversCountAsync) | **GET** /api/v2/LogisticsService/TruckDrivers/Count | Get truck drivers count
+[**TruckDriversAPI_patchTruckDriverAsync**](TruckDriversAPI.md#TruckDriversAPI_patchTruckDriverAsync) | **PATCH** /api/v2/LogisticsService/TruckDrivers/{driverId} | Patch a truck driver
 [**TruckDriversAPI_updateTruckDriverAsync**](TruckDriversAPI.md#TruckDriversAPI_updateTruckDriverAsync) | **PUT** /api/v2/LogisticsService/TruckDrivers/{driverId} | Update a truck driver
 
 
@@ -246,6 +247,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TruckDriversAPI_patchTruckDriverAsync**
+```c
+// Patch a truck driver
+//
+// Partially updates an existing truck driver using JSON Patch.
+//
+empty_envelope_t* TruckDriversAPI_patchTruckDriverAsync(apiClient_t *apiClient, char *tenantId, char *driverId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**driverId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

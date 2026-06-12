@@ -28,6 +28,7 @@ typedef struct course_assignment_type_dto_t {
     int excluded; //numeric
     char *course_id; // string
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_assignment_type_dto_t;
 
@@ -40,7 +41,8 @@ course_assignment_type_dto_t *course_assignment_type_dto_create(
     int quantity,
     int excluded,
     char *course_id,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_assignment_type_dto_free(course_assignment_type_dto_t *course_assignment_type_dto);

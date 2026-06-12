@@ -51,6 +51,7 @@ docs/item_price_update_dto.md
 docs/login_request.md
 docs/money.md
 docs/money_envelope.md
+docs/operation.md
 docs/price_list_create_dto.md
 docs/price_list_dto.md
 docs/price_list_dto_envelope.md
@@ -140,6 +141,8 @@ model/money_envelope.c
 model/money_envelope.h
 model/object.c
 model/object.h
+model/operation.c
+model/operation.h
 model/price_list_create_dto.c
 model/price_list_create_dto.h
 model/price_list_dto.c
@@ -187,13 +190,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_pricing_rule_create_dto.c
-unit-test/test_pricing_rule_dto.c
-unit-test/test_pricing_rule_dto_envelope.c
-unit-test/test_pricing_rule_dto_list_envelope.c
-unit-test/test_pricing_rule_update_dto.c
-unit-test/test_rounding_policy_create_dto.c
-unit-test/test_rounding_policy_dto.c
-unit-test/test_rounding_policy_dto_envelope.c
-unit-test/test_rounding_policy_dto_list_envelope.c
-unit-test/test_rounding_policy_update_dto.c
+unit-test/test_operation.c

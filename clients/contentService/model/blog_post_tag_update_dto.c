@@ -195,7 +195,7 @@ cJSON *blog_post_tag_update_dto_convertToJSON(blog_post_tag_update_dto_t *blog_p
 
     // blog_post_tag_update_dto->web_portal_id
     if(blog_post_tag_update_dto->web_portal_id) {
-    if(cJSON_AddStringToObject(item, "webPortalID", blog_post_tag_update_dto->web_portal_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "webPortalId", blog_post_tag_update_dto->web_portal_id) == NULL) {
     goto fail; //String
     }
     }
@@ -321,7 +321,7 @@ blog_post_tag_update_dto_t *blog_post_tag_update_dto_parseFromJSON(cJSON *blog_p
     }
 
     // blog_post_tag_update_dto->web_portal_id
-    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(blog_post_tag_update_dtoJSON, "webPortalID");
+    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(blog_post_tag_update_dtoJSON, "webPortalId");
     if (web_portal_id) { 
     if(!cJSON_IsString(web_portal_id) && !cJSON_IsNull(web_portal_id))
     {

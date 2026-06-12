@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/schedule_create_dto.h"
 #include "../model/schedule_dto_envelope.h"
 #include "../model/schedule_dto_list_envelope.h"
@@ -52,6 +53,14 @@ SchedulesAPI_getSchedulesAsync(apiClient_t *apiClient, char *tenantId, char *api
 //
 int32_envelope_t*
 SchedulesAPI_getSchedulesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a schedule
+//
+// Partially updates an existing schedule for the specified tenant.
+//
+empty_envelope_t*
+SchedulesAPI_patchScheduleAsync(apiClient_t *apiClient, char *tenantId, char *scheduleId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a schedule

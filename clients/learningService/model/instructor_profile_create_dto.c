@@ -32,8 +32,7 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_create(
     char *data8_label,
     char *data9,
     char *data9_label,
-    int authorized,
-    char *contact_id
+    int authorized
     ) {
     instructor_profile_create_dto_t *instructor_profile_create_dto_local_var = malloc(sizeof(instructor_profile_create_dto_t));
     if (!instructor_profile_create_dto_local_var) {
@@ -66,7 +65,6 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_create(
     instructor_profile_create_dto_local_var->data9 = data9;
     instructor_profile_create_dto_local_var->data9_label = data9_label;
     instructor_profile_create_dto_local_var->authorized = authorized;
-    instructor_profile_create_dto_local_var->contact_id = contact_id;
 
     return instructor_profile_create_dto_local_var;
 }
@@ -180,10 +178,6 @@ void instructor_profile_create_dto_free(instructor_profile_create_dto_t *instruc
     if (instructor_profile_create_dto->data9_label) {
         free(instructor_profile_create_dto->data9_label);
         instructor_profile_create_dto->data9_label = NULL;
-    }
-    if (instructor_profile_create_dto->contact_id) {
-        free(instructor_profile_create_dto->contact_id);
-        instructor_profile_create_dto->contact_id = NULL;
     }
     free(instructor_profile_create_dto);
 }
@@ -403,14 +397,6 @@ cJSON *instructor_profile_create_dto_convertToJSON(instructor_profile_create_dto
     if(instructor_profile_create_dto->authorized) {
     if(cJSON_AddBoolToObject(item, "authorized", instructor_profile_create_dto->authorized) == NULL) {
     goto fail; //Bool
-    }
-    }
-
-
-    // instructor_profile_create_dto->contact_id
-    if(instructor_profile_create_dto->contact_id) {
-    if(cJSON_AddStringToObject(item, "contactID", instructor_profile_create_dto->contact_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -669,15 +655,6 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
     }
     }
 
-    // instructor_profile_create_dto->contact_id
-    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "contactID");
-    if (contact_id) { 
-    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     instructor_profile_create_dto_local_var = instructor_profile_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -706,8 +683,7 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
         data8_label && !cJSON_IsNull(data8_label) ? strdup(data8_label->valuestring) : NULL,
         data9 && !cJSON_IsNull(data9) ? strdup(data9->valuestring) : NULL,
         data9_label && !cJSON_IsNull(data9_label) ? strdup(data9_label->valuestring) : NULL,
-        authorized ? authorized->valueint : 0,
-        contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL
+        authorized ? authorized->valueint : 0
         );
 
     return instructor_profile_create_dto_local_var;

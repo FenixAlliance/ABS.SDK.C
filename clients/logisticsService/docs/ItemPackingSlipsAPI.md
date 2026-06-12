@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**ItemPackingSlipsAPI_getItemPackingSlipEntryByIdAsync**](ItemPackingSlipsAPI.md#ItemPackingSlipsAPI_getItemPackingSlipEntryByIdAsync) | **GET** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries/{entryId} | Get packing slip entry by ID
 [**ItemPackingSlipsAPI_getItemPackingSlipsAsync**](ItemPackingSlipsAPI.md#ItemPackingSlipsAPI_getItemPackingSlipsAsync) | **GET** /api/v2/LogisticsService/ItemPackingSlips | Get all item packing slips
 [**ItemPackingSlipsAPI_getItemPackingSlipsCountAsync**](ItemPackingSlipsAPI.md#ItemPackingSlipsAPI_getItemPackingSlipsCountAsync) | **GET** /api/v2/LogisticsService/ItemPackingSlips/Count | Get item packing slips count
+[**ItemPackingSlipsAPI_patchItemPackingSlipAsync**](ItemPackingSlipsAPI.md#ItemPackingSlipsAPI_patchItemPackingSlipAsync) | **PATCH** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId} | Patch an item packing slip
+[**ItemPackingSlipsAPI_patchItemPackingSlipEntryAsync**](ItemPackingSlipsAPI.md#ItemPackingSlipsAPI_patchItemPackingSlipEntryAsync) | **PATCH** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries/{entryId} | Patch a packing slip entry
 [**ItemPackingSlipsAPI_updateItemPackingSlipAsync**](ItemPackingSlipsAPI.md#ItemPackingSlipsAPI_updateItemPackingSlipAsync) | **PUT** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId} | Update an item packing slip
 [**ItemPackingSlipsAPI_updateItemPackingSlipEntryAsync**](ItemPackingSlipsAPI.md#ItemPackingSlipsAPI_updateItemPackingSlipEntryAsync) | **PUT** /api/v2/LogisticsService/ItemPackingSlips/{packingSlipId}/Entries/{entryId} | Update a packing slip entry
 
@@ -355,6 +357,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemPackingSlipsAPI_patchItemPackingSlipAsync**
+```c
+// Patch an item packing slip
+//
+// Applies a JSON Patch document to an item packing slip.
+//
+empty_envelope_t* ItemPackingSlipsAPI_patchItemPackingSlipAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**packingSlipId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemPackingSlipsAPI_patchItemPackingSlipEntryAsync**
+```c
+// Patch a packing slip entry
+//
+// Applies a JSON Patch document to a packing slip entry.
+//
+empty_envelope_t* ItemPackingSlipsAPI_patchItemPackingSlipEntryAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**packingSlipId** | **char \*** |  | 
+**entryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

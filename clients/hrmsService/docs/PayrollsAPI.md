@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**PayrollsAPI_getPayrollByIdAsync**](PayrollsAPI.md#PayrollsAPI_getPayrollByIdAsync) | **GET** /api/v2/HrmsService/Payrolls/{payrollId} | Get payroll by ID
 [**PayrollsAPI_getPayrollsAsync**](PayrollsAPI.md#PayrollsAPI_getPayrollsAsync) | **GET** /api/v2/HrmsService/Payrolls | Get payrolls
 [**PayrollsAPI_getPayrollsCountAsync**](PayrollsAPI.md#PayrollsAPI_getPayrollsCountAsync) | **GET** /api/v2/HrmsService/Payrolls/Count | Count payrolls
+[**PayrollsAPI_patchPayrollAsync**](PayrollsAPI.md#PayrollsAPI_patchPayrollAsync) | **PATCH** /api/v2/HrmsService/Payrolls/{payrollId} | Patch a payroll
 [**PayrollsAPI_updatePayrollAsync**](PayrollsAPI.md#PayrollsAPI_updatePayrollAsync) | **PUT** /api/v2/HrmsService/Payrolls/{payrollId} | Update a payroll
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PayrollsAPI_patchPayrollAsync**
+```c
+// Patch a payroll
+//
+// Partially updates an existing payroll for the specified tenant.
+//
+empty_envelope_t* PayrollsAPI_patchPayrollAsync(apiClient_t *apiClient, char *tenantId, char *payrollId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**payrollId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

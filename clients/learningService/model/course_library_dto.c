@@ -13,7 +13,8 @@ course_library_dto_t *course_library_dto_create(
     char *course_id,
     char *course_unit_id,
     char *release_date_time,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
     ) {
     course_library_dto_t *course_library_dto_local_var = malloc(sizeof(course_library_dto_t));
     if (!course_library_dto_local_var) {
@@ -27,6 +28,7 @@ course_library_dto_t *course_library_dto_create(
     course_library_dto_local_var->course_unit_id = course_unit_id;
     course_library_dto_local_var->release_date_time = release_date_time;
     course_library_dto_local_var->tenant_id = tenant_id;
+    course_library_dto_local_var->enrollment_id = enrollment_id;
 
     return course_library_dto_local_var;
 }
@@ -69,6 +71,10 @@ void course_library_dto_free(course_library_dto_t *course_library_dto) {
         free(course_library_dto->tenant_id);
         course_library_dto->tenant_id = NULL;
     }
+    if (course_library_dto->enrollment_id) {
+        free(course_library_dto->enrollment_id);
+        course_library_dto->enrollment_id = NULL;
+    }
     free(course_library_dto);
 }
 
@@ -109,7 +115,7 @@ cJSON *course_library_dto_convertToJSON(course_library_dto_t *course_library_dto
 
     // course_library_dto->course_id
     if(course_library_dto->course_id) {
-    if(cJSON_AddStringToObject(item, "courseID", course_library_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_library_dto->course_id) == NULL) {
     goto fail; //String
     }
     }
@@ -117,7 +123,7 @@ cJSON *course_library_dto_convertToJSON(course_library_dto_t *course_library_dto
 
     // course_library_dto->course_unit_id
     if(course_library_dto->course_unit_id) {
-    if(cJSON_AddStringToObject(item, "courseUnitID", course_library_dto->course_unit_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseUnitId", course_library_dto->course_unit_id) == NULL) {
     goto fail; //String
     }
     }
@@ -134,6 +140,14 @@ cJSON *course_library_dto_convertToJSON(course_library_dto_t *course_library_dto
     // course_library_dto->tenant_id
     if(course_library_dto->tenant_id) {
     if(cJSON_AddStringToObject(item, "tenantId", course_library_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_library_dto->enrollment_id
+    if(course_library_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", course_library_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -187,7 +201,7 @@ course_library_dto_t *course_library_dto_parseFromJSON(cJSON *course_library_dto
     }
 
     // course_library_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_library_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_library_dtoJSON, "courseId");
     if (course_id) { 
     if(!cJSON_IsString(course_id) && !cJSON_IsNull(course_id))
     {
@@ -196,7 +210,7 @@ course_library_dto_t *course_library_dto_parseFromJSON(cJSON *course_library_dto
     }
 
     // course_library_dto->course_unit_id
-    cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_library_dtoJSON, "courseUnitID");
+    cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_library_dtoJSON, "courseUnitId");
     if (course_unit_id) { 
     if(!cJSON_IsString(course_unit_id) && !cJSON_IsNull(course_unit_id))
     {
@@ -222,6 +236,15 @@ course_library_dto_t *course_library_dto_parseFromJSON(cJSON *course_library_dto
     }
     }
 
+    // course_library_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(course_library_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     course_library_dto_local_var = course_library_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -231,7 +254,8 @@ course_library_dto_t *course_library_dto_parseFromJSON(cJSON *course_library_dto
         course_id && !cJSON_IsNull(course_id) ? strdup(course_id->valuestring) : NULL,
         course_unit_id && !cJSON_IsNull(course_unit_id) ? strdup(course_unit_id->valuestring) : NULL,
         release_date_time && !cJSON_IsNull(release_date_time) ? strdup(release_date_time->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return course_library_dto_local_var;

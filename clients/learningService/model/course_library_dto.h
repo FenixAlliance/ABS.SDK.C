@@ -27,6 +27,7 @@ typedef struct course_library_dto_t {
     char *course_unit_id; // string
     char *release_date_time; //date time
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_library_dto_t;
 
@@ -38,7 +39,8 @@ course_library_dto_t *course_library_dto_create(
     char *course_id,
     char *course_unit_id,
     char *release_date_time,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_library_dto_free(course_library_dto_t *course_library_dto);

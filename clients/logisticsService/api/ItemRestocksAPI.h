@@ -16,6 +16,7 @@
 #include "../model/item_restock_entry_dto_list_envelope.h"
 #include "../model/item_restock_entry_update_dto.h"
 #include "../model/item_restock_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create an item restock
@@ -96,6 +97,22 @@ ItemRestocksAPI_getItemRestocksAsync(apiClient_t *apiClient, char *tenantId, cha
 //
 int32_envelope_t*
 ItemRestocksAPI_getItemRestocksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an item restock
+//
+// Applies a JSON Patch document to an item restock.
+//
+empty_envelope_t*
+ItemRestocksAPI_patchItemRestockAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a restock entry
+//
+// Applies a JSON Patch document to a restock entry.
+//
+empty_envelope_t*
+ItemRestocksAPI_patchItemRestockEntryAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an item restock

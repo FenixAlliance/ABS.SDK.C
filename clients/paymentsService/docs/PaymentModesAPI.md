@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**PaymentModesAPI_getPaymentModeDetailsAsync**](PaymentModesAPI.md#PaymentModesAPI_getPaymentModeDetailsAsync) | **GET** /api/v2/PaymentsService/PaymentModes/{paymentModeId} | Gets a payment mode by ID
 [**PaymentModesAPI_getPaymentModesAsync**](PaymentModesAPI.md#PaymentModesAPI_getPaymentModesAsync) | **GET** /api/v2/PaymentsService/PaymentModes | Retrieves all payment modes
 [**PaymentModesAPI_getPaymentModesCountAsync**](PaymentModesAPI.md#PaymentModesAPI_getPaymentModesCountAsync) | **GET** /api/v2/PaymentsService/PaymentModes/Count | Counts payment modes
+[**PaymentModesAPI_patchPaymentModeAsync**](PaymentModesAPI.md#PaymentModesAPI_patchPaymentModeAsync) | **PATCH** /api/v2/PaymentsService/PaymentModes/{paymentModeId} | Patch a payment mode
 [**PaymentModesAPI_updatePaymentModeAsync**](PaymentModesAPI.md#PaymentModesAPI_updatePaymentModeAsync) | **PUT** /api/v2/PaymentsService/PaymentModes/{paymentModeId} | Updates a payment mode
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PaymentModesAPI_patchPaymentModeAsync**
+```c
+// Patch a payment mode
+//
+// Patch a payment mode
+//
+empty_envelope_t* PaymentModesAPI_patchPaymentModeAsync(apiClient_t *apiClient, char *tenantId, char *paymentModeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**paymentModeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

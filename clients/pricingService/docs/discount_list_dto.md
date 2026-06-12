@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
 **name** | **char \*** |  | [optional] 
+**discount_list_type** | **pricingservice_discount_list_dto_DISCOUNTLISTTYPE_e** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
 **tenant_id** | **char \*** |  | [optional] 
 **enrollment_id** | **char \*** |  | [optional] 

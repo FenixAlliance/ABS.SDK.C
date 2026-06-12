@@ -46,7 +46,6 @@ typedef struct instructor_profile_create_dto_t {
     char *data9; // string
     char *data9_label; // string
     int authorized; //boolean
-    char *contact_id; // string
 
 } instructor_profile_create_dto_t;
 
@@ -77,8 +76,7 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_create(
     char *data8_label,
     char *data9,
     char *data9_label,
-    int authorized,
-    char *contact_id
+    int authorized
 );
 
 void instructor_profile_create_dto_free(instructor_profile_create_dto_t *instructor_profile_create_dto);

@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**DiscountListsAPI_getDiscountListEntry**](DiscountListsAPI.md#DiscountListsAPI_getDiscountListEntry) | **GET** /api/v2/PricingService/DiscountLists/{discountListId}/Discounts/{discountListEntryId} | Gets a discount list entry by ID
 [**DiscountListsAPI_getDiscountLists**](DiscountListsAPI.md#DiscountListsAPI_getDiscountLists) | **GET** /api/v2/PricingService/DiscountLists | Retrieves all discount lists
 [**DiscountListsAPI_getDiscountListsCount**](DiscountListsAPI.md#DiscountListsAPI_getDiscountListsCount) | **GET** /api/v2/PricingService/DiscountLists/Count | Counts discount lists
+[**DiscountListsAPI_patchDiscountList**](DiscountListsAPI.md#DiscountListsAPI_patchDiscountList) | **PATCH** /api/v2/PricingService/DiscountLists/{discountListId} | Patches a discount list
+[**DiscountListsAPI_patchDiscountListEntry**](DiscountListsAPI.md#DiscountListsAPI_patchDiscountListEntry) | **PATCH** /api/v2/PricingService/DiscountLists/{discountListId}/Discounts/{discountListEntryId} | Patches a discount list entry
 [**DiscountListsAPI_updateDiscountList**](DiscountListsAPI.md#DiscountListsAPI_updateDiscountList) | **PUT** /api/v2/PricingService/DiscountLists/{discountListId} | Updates a discount list
 [**DiscountListsAPI_updateDiscountListEntry**](DiscountListsAPI.md#DiscountListsAPI_updateDiscountListEntry) | **PUT** /api/v2/PricingService/DiscountLists/{discountListId}/Discounts/{discountListEntryId} | Updates a discount list entry
 
@@ -335,6 +337,73 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DiscountListsAPI_patchDiscountList**
+```c
+// Patches a discount list
+//
+// Partially updates the specified discount list using a JSON Patch document.
+//
+empty_envelope_t* DiscountListsAPI_patchDiscountList(apiClient_t *apiClient, char *tenantId, char *discountListId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**discountListId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DiscountListsAPI_patchDiscountListEntry**
+```c
+// Patches a discount list entry
+//
+// Partially updates the specified discount entry using a JSON Patch document.
+//
+empty_envelope_t* DiscountListsAPI_patchDiscountListEntry(apiClient_t *apiClient, char *tenantId, char *discountListId, char *discountListEntryId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**discountListId** | **char \*** |  | 
+**discountListEntryId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -12,6 +12,7 @@ course_wiki_dto_t *course_wiki_dto_create(
     char *description,
     char *release_date_time,
     char *tenant_id,
+    char *enrollment_id,
     char *course_id,
     char *course_unit_id
     ) {
@@ -25,6 +26,7 @@ course_wiki_dto_t *course_wiki_dto_create(
     course_wiki_dto_local_var->description = description;
     course_wiki_dto_local_var->release_date_time = release_date_time;
     course_wiki_dto_local_var->tenant_id = tenant_id;
+    course_wiki_dto_local_var->enrollment_id = enrollment_id;
     course_wiki_dto_local_var->course_id = course_id;
     course_wiki_dto_local_var->course_unit_id = course_unit_id;
 
@@ -60,6 +62,10 @@ void course_wiki_dto_free(course_wiki_dto_t *course_wiki_dto) {
     if (course_wiki_dto->tenant_id) {
         free(course_wiki_dto->tenant_id);
         course_wiki_dto->tenant_id = NULL;
+    }
+    if (course_wiki_dto->enrollment_id) {
+        free(course_wiki_dto->enrollment_id);
+        course_wiki_dto->enrollment_id = NULL;
     }
     if (course_wiki_dto->course_id) {
         free(course_wiki_dto->course_id);
@@ -123,9 +129,17 @@ cJSON *course_wiki_dto_convertToJSON(course_wiki_dto_t *course_wiki_dto) {
     }
 
 
+    // course_wiki_dto->enrollment_id
+    if(course_wiki_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", course_wiki_dto->enrollment_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // course_wiki_dto->course_id
     if(course_wiki_dto->course_id) {
-    if(cJSON_AddStringToObject(item, "courseID", course_wiki_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_wiki_dto->course_id) == NULL) {
     goto fail; //String
     }
     }
@@ -133,7 +147,7 @@ cJSON *course_wiki_dto_convertToJSON(course_wiki_dto_t *course_wiki_dto) {
 
     // course_wiki_dto->course_unit_id
     if(course_wiki_dto->course_unit_id) {
-    if(cJSON_AddStringToObject(item, "courseUnitID", course_wiki_dto->course_unit_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseUnitId", course_wiki_dto->course_unit_id) == NULL) {
     goto fail; //String
     }
     }
@@ -204,8 +218,17 @@ course_wiki_dto_t *course_wiki_dto_parseFromJSON(cJSON *course_wiki_dtoJSON){
     }
     }
 
+    // course_wiki_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(course_wiki_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
+    }
+
     // course_wiki_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_wiki_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_wiki_dtoJSON, "courseId");
     if (course_id) { 
     if(!cJSON_IsString(course_id) && !cJSON_IsNull(course_id))
     {
@@ -214,7 +237,7 @@ course_wiki_dto_t *course_wiki_dto_parseFromJSON(cJSON *course_wiki_dtoJSON){
     }
 
     // course_wiki_dto->course_unit_id
-    cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_wiki_dtoJSON, "courseUnitID");
+    cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_wiki_dtoJSON, "courseUnitId");
     if (course_unit_id) { 
     if(!cJSON_IsString(course_unit_id) && !cJSON_IsNull(course_unit_id))
     {
@@ -230,6 +253,7 @@ course_wiki_dto_t *course_wiki_dto_parseFromJSON(cJSON *course_wiki_dtoJSON){
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         release_date_time && !cJSON_IsNull(release_date_time) ? strdup(release_date_time->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         course_id && !cJSON_IsNull(course_id) ? strdup(course_id->valuestring) : NULL,
         course_unit_id && !cJSON_IsNull(course_unit_id) ? strdup(course_unit_id->valuestring) : NULL
         );

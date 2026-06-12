@@ -59,7 +59,7 @@ cJSON *course_certificate_template_update_dto_convertToJSON(course_certificate_t
 
     // course_certificate_template_update_dto->web_portal_id
     if(course_certificate_template_update_dto->web_portal_id) {
-    if(cJSON_AddStringToObject(item, "webPortalID", course_certificate_template_update_dto->web_portal_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "webPortalId", course_certificate_template_update_dto->web_portal_id) == NULL) {
     goto fail; //String
     }
     }
@@ -67,7 +67,7 @@ cJSON *course_certificate_template_update_dto_convertToJSON(course_certificate_t
 
     // course_certificate_template_update_dto->website_theme_id
     if(course_certificate_template_update_dto->website_theme_id) {
-    if(cJSON_AddStringToObject(item, "websiteThemeID", course_certificate_template_update_dto->website_theme_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "websiteThemeId", course_certificate_template_update_dto->website_theme_id) == NULL) {
     goto fail; //String
     }
     }
@@ -75,7 +75,7 @@ cJSON *course_certificate_template_update_dto_convertToJSON(course_certificate_t
 
     // course_certificate_template_update_dto->social_profile_id
     if(course_certificate_template_update_dto->social_profile_id) {
-    if(cJSON_AddStringToObject(item, "socialProfileID", course_certificate_template_update_dto->social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileId", course_certificate_template_update_dto->social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -83,7 +83,7 @@ cJSON *course_certificate_template_update_dto_convertToJSON(course_certificate_t
 
     // course_certificate_template_update_dto->parent_web_content_id
     if(course_certificate_template_update_dto->parent_web_content_id) {
-    if(cJSON_AddStringToObject(item, "parentWebContentID", course_certificate_template_update_dto->parent_web_content_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentWebContentId", course_certificate_template_update_dto->parent_web_content_id) == NULL) {
     goto fail; //String
     }
     }
@@ -91,7 +91,7 @@ cJSON *course_certificate_template_update_dto_convertToJSON(course_certificate_t
 
     // course_certificate_template_update_dto->parent_web_content_version_id
     if(course_certificate_template_update_dto->parent_web_content_version_id) {
-    if(cJSON_AddStringToObject(item, "parentWebContentVersionID", course_certificate_template_update_dto->parent_web_content_version_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentWebContentVersionId", course_certificate_template_update_dto->parent_web_content_version_id) == NULL) {
     goto fail; //String
     }
     }
@@ -109,7 +109,7 @@ course_certificate_template_update_dto_t *course_certificate_template_update_dto
     course_certificate_template_update_dto_t *course_certificate_template_update_dto_local_var = NULL;
 
     // course_certificate_template_update_dto->web_portal_id
-    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_update_dtoJSON, "webPortalID");
+    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_update_dtoJSON, "webPortalId");
     if (web_portal_id) { 
     if(!cJSON_IsString(web_portal_id) && !cJSON_IsNull(web_portal_id))
     {
@@ -118,7 +118,7 @@ course_certificate_template_update_dto_t *course_certificate_template_update_dto
     }
 
     // course_certificate_template_update_dto->website_theme_id
-    cJSON *website_theme_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_update_dtoJSON, "websiteThemeID");
+    cJSON *website_theme_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_update_dtoJSON, "websiteThemeId");
     if (website_theme_id) { 
     if(!cJSON_IsString(website_theme_id) && !cJSON_IsNull(website_theme_id))
     {
@@ -127,7 +127,7 @@ course_certificate_template_update_dto_t *course_certificate_template_update_dto
     }
 
     // course_certificate_template_update_dto->social_profile_id
-    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_update_dtoJSON, "socialProfileID");
+    cJSON *social_profile_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_update_dtoJSON, "socialProfileId");
     if (social_profile_id) { 
     if(!cJSON_IsString(social_profile_id) && !cJSON_IsNull(social_profile_id))
     {
@@ -136,7 +136,7 @@ course_certificate_template_update_dto_t *course_certificate_template_update_dto
     }
 
     // course_certificate_template_update_dto->parent_web_content_id
-    cJSON *parent_web_content_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_update_dtoJSON, "parentWebContentID");
+    cJSON *parent_web_content_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_update_dtoJSON, "parentWebContentId");
     if (parent_web_content_id) { 
     if(!cJSON_IsString(parent_web_content_id) && !cJSON_IsNull(parent_web_content_id))
     {
@@ -145,7 +145,7 @@ course_certificate_template_update_dto_t *course_certificate_template_update_dto
     }
 
     // course_certificate_template_update_dto->parent_web_content_version_id
-    cJSON *parent_web_content_version_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_update_dtoJSON, "parentWebContentVersionID");
+    cJSON *parent_web_content_version_id = cJSON_GetObjectItemCaseSensitive(course_certificate_template_update_dtoJSON, "parentWebContentVersionId");
     if (parent_web_content_version_id) { 
     if(!cJSON_IsString(parent_web_content_version_id) && !cJSON_IsNull(parent_web_content_version_id))
     {

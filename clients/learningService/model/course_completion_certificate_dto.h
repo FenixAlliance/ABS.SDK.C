@@ -23,8 +23,8 @@ typedef struct course_completion_certificate_dto_t {
     char *timestamp; //date time
     char *student_profile_id; // string
     char *course_enrollment_id; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
     char *course_completion_certificate_template_id; // string
     char *course_id; // string
     char *student_name; // string
@@ -41,8 +41,8 @@ course_completion_certificate_dto_t *course_completion_certificate_dto_create(
     char *timestamp,
     char *student_profile_id,
     char *course_enrollment_id,
-    char *business_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *course_completion_certificate_template_id,
     char *course_id,
     char *student_name,

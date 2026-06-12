@@ -36,6 +36,7 @@ typedef struct blog_post_create_dto_t {
     char *markup; // string
     char *featured_image_url; // string
     contentservice_blog_post_create_dto_CODETYPE_e code_type; //enum
+    char *slug; // string
     char *blog_post_category_id; // string
     char *web_template_id; // string
 
@@ -51,6 +52,7 @@ blog_post_create_dto_t *blog_post_create_dto_create(
     char *markup,
     char *featured_image_url,
     contentservice_blog_post_create_dto_CODETYPE_e code_type,
+    char *slug,
     char *blog_post_category_id,
     char *web_template_id
 );

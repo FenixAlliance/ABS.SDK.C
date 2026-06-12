@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseAssignmentsAPI_getCourseAssignmentByIdAsync**](CourseAssignmentsAPI.md#CourseAssignmentsAPI_getCourseAssignmentByIdAsync) | **GET** /api/v2/LearningService/CourseAssignments/{assignmentId} | Get course assignment by ID
 [**CourseAssignmentsAPI_getCourseAssignmentsAsync**](CourseAssignmentsAPI.md#CourseAssignmentsAPI_getCourseAssignmentsAsync) | **GET** /api/v2/LearningService/CourseAssignments | Get all course assignments
 [**CourseAssignmentsAPI_getCourseAssignmentsCountAsync**](CourseAssignmentsAPI.md#CourseAssignmentsAPI_getCourseAssignmentsCountAsync) | **GET** /api/v2/LearningService/CourseAssignments/Count | Get course assignments count
+[**CourseAssignmentsAPI_patchCourseAssignmentAsync**](CourseAssignmentsAPI.md#CourseAssignmentsAPI_patchCourseAssignmentAsync) | **PATCH** /api/v2/LearningService/CourseAssignments/{assignmentId} | Patch a course assignment
 [**CourseAssignmentsAPI_updateCourseAssignmentAsync**](CourseAssignmentsAPI.md#CourseAssignmentsAPI_updateCourseAssignmentAsync) | **PUT** /api/v2/LearningService/CourseAssignments/{assignmentId} | Update a course assignment
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseAssignmentsAPI_patchCourseAssignmentAsync**
+```c
+// Patch a course assignment
+//
+// Partially updates a course assignment for the specified tenant.
+//
+empty_envelope_t* CourseAssignmentsAPI_patchCourseAssignmentAsync(apiClient_t *apiClient, char *tenantId, char *assignmentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**assignmentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

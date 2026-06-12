@@ -17,6 +17,8 @@ Method | HTTP request | Description
 [**AirwayBillsAPI_markAirwayBillArrivedAsync**](AirwayBillsAPI.md#AirwayBillsAPI_markAirwayBillArrivedAsync) | **POST** /api/v2/LogisticsService/AirwayBills/{billId}/MarkArrived | Mark airway bill arrived
 [**AirwayBillsAPI_markAirwayBillDeliveredAsync**](AirwayBillsAPI.md#AirwayBillsAPI_markAirwayBillDeliveredAsync) | **POST** /api/v2/LogisticsService/AirwayBills/{billId}/MarkDelivered | Mark airway bill delivered
 [**AirwayBillsAPI_markAirwayBillInTransitAsync**](AirwayBillsAPI.md#AirwayBillsAPI_markAirwayBillInTransitAsync) | **POST** /api/v2/LogisticsService/AirwayBills/{billId}/MarkInTransit | Mark airway bill in transit
+[**AirwayBillsAPI_patchAirwayBillAsync**](AirwayBillsAPI.md#AirwayBillsAPI_patchAirwayBillAsync) | **PATCH** /api/v2/LogisticsService/AirwayBills/{billId} | Patch an airway bill
+[**AirwayBillsAPI_patchAirwayBillLineAsync**](AirwayBillsAPI.md#AirwayBillsAPI_patchAirwayBillLineAsync) | **PATCH** /api/v2/LogisticsService/AirwayBills/{billId}/Lines/{lineId} | Patch an airway bill line
 [**AirwayBillsAPI_removeAirwayBillLineAsync**](AirwayBillsAPI.md#AirwayBillsAPI_removeAirwayBillLineAsync) | **DELETE** /api/v2/LogisticsService/AirwayBills/{billId}/Lines/{lineId} | Remove an airway bill line
 [**AirwayBillsAPI_updateAirwayBillAsync**](AirwayBillsAPI.md#AirwayBillsAPI_updateAirwayBillAsync) | **PUT** /api/v2/LogisticsService/AirwayBills/{billId} | Update an airway bill
 [**AirwayBillsAPI_updateAirwayBillLineAsync**](AirwayBillsAPI.md#AirwayBillsAPI_updateAirwayBillLineAsync) | **PUT** /api/v2/LogisticsService/AirwayBills/{billId}/Lines/{lineId} | Update an airway bill line
@@ -459,6 +461,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AirwayBillsAPI_patchAirwayBillAsync**
+```c
+// Patch an airway bill
+//
+// Partially updates an existing airway bill using a JSON Patch document.
+//
+empty_envelope_t* AirwayBillsAPI_patchAirwayBillAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**billId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AirwayBillsAPI_patchAirwayBillLineAsync**
+```c
+// Patch an airway bill line
+//
+// Partially updates a line on an airway bill using a JSON Patch document.
+//
+empty_envelope_t* AirwayBillsAPI_patchAirwayBillLineAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**billId** | **char \*** |  | 
+**lineId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

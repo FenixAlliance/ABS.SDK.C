@@ -26,6 +26,7 @@ typedef struct discount_create_dto_t {
     double end_quantity; //numeric
     double percent; //numeric
     double value; //numeric
+    char *item_id; // string
     char *discount_list_id; // string
 
 } discount_create_dto_t;
@@ -38,6 +39,7 @@ discount_create_dto_t *discount_create_dto_create(
     double end_quantity,
     double percent,
     double value,
+    char *item_id,
     char *discount_list_id
 );
 

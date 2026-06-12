@@ -29,6 +29,7 @@ typedef struct course_handout_dto_t {
     char *course_id; // string
     char *course_unit_id; // string
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_handout_dto_t;
 
@@ -42,7 +43,8 @@ course_handout_dto_t *course_handout_dto_create(
     char *release_date_time,
     char *course_id,
     char *course_unit_id,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_handout_dto_free(course_handout_dto_t *course_handout_dto);

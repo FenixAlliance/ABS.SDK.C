@@ -5,16 +5,26 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/business_domain_dto_list_envelope.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/operation.h"
 #include "../model/portal_options_envelope.h"
+#include "../model/portal_settings.h"
 #include "../model/portal_settings_envelope.h"
 #include "../model/web_portal_create_dto.h"
 #include "../model/web_portal_dto_envelope.h"
 #include "../model/web_portal_dto_list_envelope.h"
 #include "../model/web_portal_update_dto.h"
+
+
+// Bind a domain to a web portal
+//
+// Bind a verified BusinessDomain to a web portal
+//
+empty_envelope_t*
+PortalsAPI_bindWebPortalDomainAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *businessDomainId, char *api_version, char *x_api_version);
 
 
 // Count portals
@@ -81,6 +91,14 @@ web_portal_dto_envelope_t*
 PortalsAPI_getWebPortalByIdAsync(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version);
 
 
+// Get a web portal's bound domains
+//
+// Get the BusinessDomains bound to a web portal
+//
+business_domain_dto_list_envelope_t*
+PortalsAPI_getWebPortalDomainBindingsAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version);
+
+
 // Get a web portal's options by its ID
 //
 // Get a web portal's options by its ID
@@ -121,11 +139,27 @@ web_portal_dto_envelope_t*
 PortalsAPI_searchWebPortalAsync(apiClient_t *apiClient, char *domain, char *api_version, char *x_api_version);
 
 
+// Unbind a domain from a web portal
+//
+// Unbind a BusinessDomain from a web portal
+//
+empty_envelope_t*
+PortalsAPI_unbindWebPortalDomainAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *businessDomainId, char *api_version, char *x_api_version);
+
+
 // Update an existing web portal
 //
 // Update an existing web portal
 //
 empty_envelope_t*
 PortalsAPI_updateWebPortalAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version, web_portal_update_dto_t *web_portal_update_dto);
+
+
+// Update a web portal's settings
+//
+// Update a web portal's settings (Options) by its ID
+//
+empty_envelope_t*
+PortalsAPI_updateWebPortalSettingsAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version, portal_settings_t *portal_settings);
 
 

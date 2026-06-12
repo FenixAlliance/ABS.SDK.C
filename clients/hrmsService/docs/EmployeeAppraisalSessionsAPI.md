@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**EmployeeAppraisalSessionsAPI_getEmployeeAppraisalSessionByIdAsync**](EmployeeAppraisalSessionsAPI.md#EmployeeAppraisalSessionsAPI_getEmployeeAppraisalSessionByIdAsync) | **GET** /api/v2/HrmsService/EmployeeAppraisalSessions/{sessionId} | Get employee appraisal session by ID
 [**EmployeeAppraisalSessionsAPI_getEmployeeAppraisalSessionsAsync**](EmployeeAppraisalSessionsAPI.md#EmployeeAppraisalSessionsAPI_getEmployeeAppraisalSessionsAsync) | **GET** /api/v2/HrmsService/EmployeeAppraisalSessions | Get employee appraisal sessions
 [**EmployeeAppraisalSessionsAPI_getEmployeeAppraisalSessionsCountAsync**](EmployeeAppraisalSessionsAPI.md#EmployeeAppraisalSessionsAPI_getEmployeeAppraisalSessionsCountAsync) | **GET** /api/v2/HrmsService/EmployeeAppraisalSessions/Count | Count employee appraisal sessions
+[**EmployeeAppraisalSessionsAPI_patchEmployeeAppraisalSessionAsync**](EmployeeAppraisalSessionsAPI.md#EmployeeAppraisalSessionsAPI_patchEmployeeAppraisalSessionAsync) | **PATCH** /api/v2/HrmsService/EmployeeAppraisalSessions/{sessionId} | Patch an employee appraisal session
 [**EmployeeAppraisalSessionsAPI_updateEmployeeAppraisalSessionAsync**](EmployeeAppraisalSessionsAPI.md#EmployeeAppraisalSessionsAPI_updateEmployeeAppraisalSessionAsync) | **PUT** /api/v2/HrmsService/EmployeeAppraisalSessions/{sessionId} | Update an employee appraisal session
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **EmployeeAppraisalSessionsAPI_patchEmployeeAppraisalSessionAsync**
+```c
+// Patch an employee appraisal session
+//
+// Partially updates an existing employee appraisal session for the specified tenant.
+//
+empty_envelope_t* EmployeeAppraisalSessionsAPI_patchEmployeeAppraisalSessionAsync(apiClient_t *apiClient, char *tenantId, char *sessionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**sessionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -16,6 +16,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Creates a new discount list
@@ -96,6 +97,22 @@ DiscountListsAPI_getDiscountLists(apiClient_t *apiClient, char *tenantId);
 //
 int32_envelope_t*
 DiscountListsAPI_getDiscountListsCount(apiClient_t *apiClient, char *tenantId);
+
+
+// Patches a discount list
+//
+// Partially updates the specified discount list using a JSON Patch document.
+//
+empty_envelope_t*
+DiscountListsAPI_patchDiscountList(apiClient_t *apiClient, char *tenantId, char *discountListId, list_t *operation);
+
+
+// Patches a discount list entry
+//
+// Partially updates the specified discount entry using a JSON Patch document.
+//
+empty_envelope_t*
+DiscountListsAPI_patchDiscountListEntry(apiClient_t *apiClient, char *tenantId, char *discountListId, char *discountListEntryId, list_t *operation);
 
 
 // Updates a discount list

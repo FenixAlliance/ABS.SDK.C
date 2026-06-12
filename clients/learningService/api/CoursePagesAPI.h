@@ -9,6 +9,7 @@
 #include "../model/course_page_dto.h"
 #include "../model/course_page_update_dto.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course page
@@ -49,6 +50,14 @@ CoursePagesAPI_getCoursePagesAsync(apiClient_t *apiClient, char *tenantId, char 
 //
 int*
 CoursePagesAPI_getCoursePagesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course page
+//
+// Partially updates an existing course page for the specified tenant.
+//
+void
+CoursePagesAPI_patchCoursePageAsync(apiClient_t *apiClient, char *tenantId, char *pageId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course page

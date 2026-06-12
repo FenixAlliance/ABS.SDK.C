@@ -13,7 +13,12 @@ Name | Type | Description | Notes
 **course_id** | **char \*** |  | [optional] 
 **course_unit_id** | **char \*** |  | [optional] 
 **course_section_id** | **char \*** |  | [optional] 
+**course_cohort_id** | **char \*** |  | [optional] 
+**course_assignment_type_id** | **char \*** |  | [optional] 
+**asign_to_all_cohorts** | **int** |  | [optional] 
+**resources** | **char \*** |  | [optional] 
 **tenant_id** | **char \*** |  | [optional] 
+**enrollment_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

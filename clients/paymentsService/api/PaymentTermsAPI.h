@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/payment_term_create_dto.h"
 #include "../model/payment_term_dto_envelope.h"
 #include "../model/payment_term_dto_i_read_only_list_envelope.h"
@@ -52,6 +53,14 @@ PaymentTermsAPI_getPaymentTermsAsync(apiClient_t *apiClient, char *tenantId, cha
 //
 int32_envelope_t*
 PaymentTermsAPI_getPaymentTermsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a payment term
+//
+// Patch a payment term
+//
+empty_envelope_t*
+PaymentTermsAPI_patchPaymentTermAsync(apiClient_t *apiClient, char *tenantId, char *paymentTermId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates a payment term

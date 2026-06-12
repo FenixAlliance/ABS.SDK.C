@@ -11,6 +11,7 @@
 #include "../model/newsletter_create_dto.h"
 #include "../model/newsletter_dto_envelope.h"
 #include "../model/newsletter_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a newsletter
@@ -51,6 +52,14 @@ NewslettersAPI_getNewsletterODataAsync(apiClient_t *apiClient, char *tenantId, c
 //
 int32_envelope_t*
 NewslettersAPI_getNewslettersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a newsletter
+//
+// Partially updates a newsletter by its ID using JSON Patch.
+//
+empty_envelope_t*
+NewslettersAPI_patchNewsletterAsync(apiClient_t *apiClient, char *tenantId, char *newsletterId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a newsletter

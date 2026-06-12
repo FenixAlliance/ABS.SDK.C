@@ -8,7 +8,9 @@
 #include "../model/course_cohort_create_dto.h"
 #include "../model/course_cohort_dto.h"
 #include "../model/course_cohort_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course cohort
@@ -49,6 +51,14 @@ CourseCohortsAPI_getCourseCohortsAsync(apiClient_t *apiClient, char *tenantId, c
 //
 int*
 CourseCohortsAPI_getCourseCohortsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course cohort
+//
+// Partially updates a course cohort for the specified tenant.
+//
+empty_envelope_t*
+CourseCohortsAPI_patchCourseCohortAsync(apiClient_t *apiClient, char *tenantId, char *cohortId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course cohort

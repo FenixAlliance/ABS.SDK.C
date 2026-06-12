@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**JobTitlesAPI_getJobTitleByIdAsync**](JobTitlesAPI.md#JobTitlesAPI_getJobTitleByIdAsync) | **GET** /api/v2/HrmsService/JobTitles/{jobTitleId} | Get job title by ID
 [**JobTitlesAPI_getJobTitlesAsync**](JobTitlesAPI.md#JobTitlesAPI_getJobTitlesAsync) | **GET** /api/v2/HrmsService/JobTitles | Get job titles
 [**JobTitlesAPI_getJobTitlesCountAsync**](JobTitlesAPI.md#JobTitlesAPI_getJobTitlesCountAsync) | **GET** /api/v2/HrmsService/JobTitles/Count | Count job titles
+[**JobTitlesAPI_patchJobTitleAsync**](JobTitlesAPI.md#JobTitlesAPI_patchJobTitleAsync) | **PATCH** /api/v2/HrmsService/JobTitles/{jobTitleId} | Patch a job title
 [**JobTitlesAPI_updateJobTitleAsync**](JobTitlesAPI.md#JobTitlesAPI_updateJobTitleAsync) | **PUT** /api/v2/HrmsService/JobTitles/{jobTitleId} | Update a job title
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JobTitlesAPI_patchJobTitleAsync**
+```c
+// Patch a job title
+//
+// Partially updates an existing job title for the specified tenant.
+//
+empty_envelope_t* JobTitlesAPI_patchJobTitleAsync(apiClient_t *apiClient, char *tenantId, char *jobTitleId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**jobTitleId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

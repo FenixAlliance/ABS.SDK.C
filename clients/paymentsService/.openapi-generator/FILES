@@ -28,6 +28,7 @@ docs/info_request.md
 docs/info_response.md
 docs/int32_envelope.md
 docs/login_request.md
+docs/operation.md
 docs/payment_create_dto.md
 docs/payment_dto.md
 docs/payment_dto_list_envelope.md
@@ -81,6 +82,8 @@ model/login_request.c
 model/login_request.h
 model/object.c
 model/object.h
+model/operation.c
+model/operation.h
 model/payment_create_dto.c
 model/payment_create_dto.h
 model/payment_dto.c
@@ -136,3 +139,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_operation.c

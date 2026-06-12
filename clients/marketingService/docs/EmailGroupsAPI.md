@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**EmailGroupsAPI_getEmailGroupDetailsAsync**](EmailGroupsAPI.md#EmailGroupsAPI_getEmailGroupDetailsAsync) | **GET** /api/v2/MarketingService/EmailGroups/{emailgroupId} | Get email group by ID
 [**EmailGroupsAPI_getEmailGroupsCountAsync**](EmailGroupsAPI.md#EmailGroupsAPI_getEmailGroupsCountAsync) | **GET** /api/v2/MarketingService/EmailGroups/Count | Get email groups count
 [**EmailGroupsAPI_getEmailGroupsODataAsync**](EmailGroupsAPI.md#EmailGroupsAPI_getEmailGroupsODataAsync) | **GET** /api/v2/MarketingService/EmailGroups | Get email groups
+[**EmailGroupsAPI_patchEmailGroupAsync**](EmailGroupsAPI.md#EmailGroupsAPI_patchEmailGroupAsync) | **PATCH** /api/v2/MarketingService/EmailGroups/{emailgroupId} | Patch an email group
 [**EmailGroupsAPI_updateEmailGroupAsync**](EmailGroupsAPI.md#EmailGroupsAPI_updateEmailGroupAsync) | **PUT** /api/v2/MarketingService/EmailGroups/{emailgroupId} | Update an email group
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **EmailGroupsAPI_patchEmailGroupAsync**
+```c
+// Patch an email group
+//
+// Partially updates an email group by its ID using JSON Patch.
+//
+empty_envelope_t* EmailGroupsAPI_patchEmailGroupAsync(apiClient_t *apiClient, char *tenantId, char *emailgroupId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**emailgroupId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

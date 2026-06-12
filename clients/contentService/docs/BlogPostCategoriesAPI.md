@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**BlogPostCategoriesAPI_deleteBlogPostCategoryAsync**](BlogPostCategoriesAPI.md#BlogPostCategoriesAPI_deleteBlogPostCategoryAsync) | **DELETE** /api/v2/ContentService/BlogPostCategories/{blogPostCategoryId} | Delete a blog post category
 [**BlogPostCategoriesAPI_getBlogPostCategoriesAsync**](BlogPostCategoriesAPI.md#BlogPostCategoriesAPI_getBlogPostCategoriesAsync) | **GET** /api/v2/ContentService/BlogPostCategories | Get blog post categories
 [**BlogPostCategoriesAPI_getBlogPostCategoryByIdAsync**](BlogPostCategoriesAPI.md#BlogPostCategoriesAPI_getBlogPostCategoryByIdAsync) | **GET** /api/v2/ContentService/BlogPostCategories/{blogPostCategoryId} | Get blog post category by ID
+[**BlogPostCategoriesAPI_patchBlogPostCategoryAsync**](BlogPostCategoriesAPI.md#BlogPostCategoriesAPI_patchBlogPostCategoryAsync) | **PATCH** /api/v2/ContentService/BlogPostCategories/{blogPostCategoryId} | Patch a blog post category
 [**BlogPostCategoriesAPI_updateBlogPostCategoryAsync**](BlogPostCategoriesAPI.md#BlogPostCategoriesAPI_updateBlogPostCategoryAsync) | **PUT** /api/v2/ContentService/BlogPostCategories/{blogPostCategoryId} | Update a blog post category
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BlogPostCategoriesAPI_patchBlogPostCategoryAsync**
+```c
+// Patch a blog post category
+//
+// Partially updates an existing blog post category for the specified tenant.
+//
+empty_envelope_t* BlogPostCategoriesAPI_patchBlogPostCategoryAsync(apiClient_t *apiClient, char *tenantId, char *blogPostCategoryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**blogPostCategoryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**ItemPickListsAPI_getItemPickListEntryByIdAsync**](ItemPickListsAPI.md#ItemPickListsAPI_getItemPickListEntryByIdAsync) | **GET** /api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries/{entryId} | Get pick list entry by ID
 [**ItemPickListsAPI_getItemPickListsAsync**](ItemPickListsAPI.md#ItemPickListsAPI_getItemPickListsAsync) | **GET** /api/v2/LogisticsService/ItemPickLists | Get all item pick lists
 [**ItemPickListsAPI_getItemPickListsCountAsync**](ItemPickListsAPI.md#ItemPickListsAPI_getItemPickListsCountAsync) | **GET** /api/v2/LogisticsService/ItemPickLists/Count | Get item pick lists count
+[**ItemPickListsAPI_patchItemPickListAsync**](ItemPickListsAPI.md#ItemPickListsAPI_patchItemPickListAsync) | **PATCH** /api/v2/LogisticsService/ItemPickLists/{pickListId} | Patch an item pick list
+[**ItemPickListsAPI_patchItemPickListEntryAsync**](ItemPickListsAPI.md#ItemPickListsAPI_patchItemPickListEntryAsync) | **PATCH** /api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries/{entryId} | Patch a pick list entry
 [**ItemPickListsAPI_updateItemPickListAsync**](ItemPickListsAPI.md#ItemPickListsAPI_updateItemPickListAsync) | **PUT** /api/v2/LogisticsService/ItemPickLists/{pickListId} | Update an item pick list
 [**ItemPickListsAPI_updateItemPickListEntryAsync**](ItemPickListsAPI.md#ItemPickListsAPI_updateItemPickListEntryAsync) | **PUT** /api/v2/LogisticsService/ItemPickLists/{pickListId}/Entries/{entryId} | Update a pick list entry
 
@@ -355,6 +357,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemPickListsAPI_patchItemPickListAsync**
+```c
+// Patch an item pick list
+//
+// Applies a JSON Patch document to an item pick list.
+//
+empty_envelope_t* ItemPickListsAPI_patchItemPickListAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**pickListId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ItemPickListsAPI_patchItemPickListEntryAsync**
+```c
+// Patch a pick list entry
+//
+// Applies a JSON Patch document to a pick list entry.
+//
+empty_envelope_t* ItemPickListsAPI_patchItemPickListEntryAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**pickListId** | **char \*** |  | 
+**entryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

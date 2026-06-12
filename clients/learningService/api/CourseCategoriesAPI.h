@@ -8,7 +8,9 @@
 #include "../model/course_category_create_dto.h"
 #include "../model/course_category_dto.h"
 #include "../model/course_category_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course category
@@ -49,6 +51,14 @@ CourseCategoriesAPI_getCourseCategoriesCountAsync(apiClient_t *apiClient, char *
 //
 course_category_dto_t*
 CourseCategoriesAPI_getCourseCategoryByIdAsync(apiClient_t *apiClient, char *categoryId, char *api_version, char *x_api_version);
+
+
+// Patch a course category
+//
+// Partially updates a course category for the specified tenant.
+//
+empty_envelope_t*
+CourseCategoriesAPI_patchCourseCategoryAsync(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course category

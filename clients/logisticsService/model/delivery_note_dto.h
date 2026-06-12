@@ -23,6 +23,9 @@ typedef struct delivery_note_dto_t {
     char *timestamp; //date time
     char *title; // string
     char *description; // string
+    char *shipment_id; // string
+    char *proof_of_delivery_id; // string
+    char *tenant_id; // string
 
 } delivery_note_dto_t;
 
@@ -30,7 +33,10 @@ delivery_note_dto_t *delivery_note_dto_create(
     char *id,
     char *timestamp,
     char *title,
-    char *description
+    char *description,
+    char *shipment_id,
+    char *proof_of_delivery_id,
+    char *tenant_id
 );
 
 void delivery_note_dto_free(delivery_note_dto_t *delivery_note_dto);

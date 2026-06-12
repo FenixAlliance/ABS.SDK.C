@@ -32,6 +32,7 @@
 #include "../model/invoice_reference_update_dto.h"
 #include "../model/invoice_update_dto.h"
 #include "../model/money_envelope.h"
+#include "../model/operation.h"
 #include "../model/payment_dto_i_read_only_list_envelope.h"
 
 
@@ -321,6 +322,46 @@ InvoicesAPI_getInvoices(apiClient_t *apiClient, char *tenantId);
 //
 int32_envelope_t*
 InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId);
+
+
+// Patch an invoice.
+//
+// Partially updates the specified invoice for the tenant.
+//
+empty_envelope_t*
+InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId, list_t *operation);
+
+
+// Patch an invoice adjustment.
+//
+// Partially updates the specified adjustment for the invoice.
+//
+empty_envelope_t*
+InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceAdjustmentId, list_t *operation);
+
+
+// Patch an invoice line.
+//
+// Partially updates the specified invoice line.
+//
+empty_envelope_t*
+InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, list_t *operation);
+
+
+// Patch a tax for an invoice line.
+//
+// Partially updates the specified tax entry for the invoice line.
+//
+empty_envelope_t*
+InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, char *invoiceLineTaxId, list_t *operation);
+
+
+// Patch an invoice reference.
+//
+// Partially updates the specified reference for the invoice.
+//
+empty_envelope_t*
+InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceReferenceId, list_t *operation);
 
 
 // Preview the rendered email for an invoice.

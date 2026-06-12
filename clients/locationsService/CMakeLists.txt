@@ -68,6 +68,7 @@ set(SRCS
     model/location_dto_i_read_only_list_envelope.c
     model/location_update_dto.c
     model/login_request.c
+    model/operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -101,6 +102,7 @@ set(HDRS
     model/location_dto_i_read_only_list_envelope.h
     model/location_update_dto.h
     model/login_request.h
+    model/operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

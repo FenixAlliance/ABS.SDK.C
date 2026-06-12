@@ -12,6 +12,7 @@
 #include "../model/gig_dto_list_envelope.h"
 #include "../model/gig_update_dto.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a gig
@@ -52,6 +53,14 @@ GigsAPI_getGigsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, 
 //
 int32_envelope_t*
 GigsAPI_getGigsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a gig
+//
+// Partially updates an existing gig for the specified tenant.
+//
+empty_envelope_t*
+GigsAPI_patchGigAsync(apiClient_t *apiClient, char *tenantId, char *gigId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a gig

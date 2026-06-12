@@ -19,16 +19,12 @@ typedef struct course_enrollment_update_dto_t course_enrollment_update_dto_t;
 
 
 typedef struct course_enrollment_update_dto_t {
-    char *id; // string
-    char *timestamp; //date time
     char *course_cohort_id; // string
     char *course_completion_certificate_id; // string
 
 } course_enrollment_update_dto_t;
 
 course_enrollment_update_dto_t *course_enrollment_update_dto_create(
-    char *id,
-    char *timestamp,
     char *course_cohort_id,
     char *course_completion_certificate_id
 );

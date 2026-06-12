@@ -87,7 +87,7 @@ cJSON *blog_post_comment_dto_convertToJSON(blog_post_comment_dto_t *blog_post_co
 
     // blog_post_comment_dto->blog_post_id
     if(blog_post_comment_dto->blog_post_id) {
-    if(cJSON_AddStringToObject(item, "blogPostID", blog_post_comment_dto->blog_post_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "blogPostId", blog_post_comment_dto->blog_post_id) == NULL) {
     goto fail; //String
     }
     }
@@ -103,7 +103,7 @@ cJSON *blog_post_comment_dto_convertToJSON(blog_post_comment_dto_t *blog_post_co
 
     // blog_post_comment_dto->owner_social_profile_id
     if(blog_post_comment_dto->owner_social_profile_id) {
-    if(cJSON_AddStringToObject(item, "ownerSocialProfileID", blog_post_comment_dto->owner_social_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "ownerSocialProfileId", blog_post_comment_dto->owner_social_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -111,7 +111,7 @@ cJSON *blog_post_comment_dto_convertToJSON(blog_post_comment_dto_t *blog_post_co
 
     // blog_post_comment_dto->social_post_id
     if(blog_post_comment_dto->social_post_id) {
-    if(cJSON_AddStringToObject(item, "socialPostID", blog_post_comment_dto->social_post_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "socialPostId", blog_post_comment_dto->social_post_id) == NULL) {
     goto fail; //String
     }
     }
@@ -119,7 +119,7 @@ cJSON *blog_post_comment_dto_convertToJSON(blog_post_comment_dto_t *blog_post_co
 
     // blog_post_comment_dto->parent_comment_id
     if(blog_post_comment_dto->parent_comment_id) {
-    if(cJSON_AddStringToObject(item, "parentCommentID", blog_post_comment_dto->parent_comment_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "parentCommentId", blog_post_comment_dto->parent_comment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -155,7 +155,7 @@ blog_post_comment_dto_t *blog_post_comment_dto_parseFromJSON(cJSON *blog_post_co
     }
 
     // blog_post_comment_dto->blog_post_id
-    cJSON *blog_post_id = cJSON_GetObjectItemCaseSensitive(blog_post_comment_dtoJSON, "blogPostID");
+    cJSON *blog_post_id = cJSON_GetObjectItemCaseSensitive(blog_post_comment_dtoJSON, "blogPostId");
     if (blog_post_id) { 
     if(!cJSON_IsString(blog_post_id) && !cJSON_IsNull(blog_post_id))
     {
@@ -173,7 +173,7 @@ blog_post_comment_dto_t *blog_post_comment_dto_parseFromJSON(cJSON *blog_post_co
     }
 
     // blog_post_comment_dto->owner_social_profile_id
-    cJSON *owner_social_profile_id = cJSON_GetObjectItemCaseSensitive(blog_post_comment_dtoJSON, "ownerSocialProfileID");
+    cJSON *owner_social_profile_id = cJSON_GetObjectItemCaseSensitive(blog_post_comment_dtoJSON, "ownerSocialProfileId");
     if (owner_social_profile_id) { 
     if(!cJSON_IsString(owner_social_profile_id) && !cJSON_IsNull(owner_social_profile_id))
     {
@@ -182,7 +182,7 @@ blog_post_comment_dto_t *blog_post_comment_dto_parseFromJSON(cJSON *blog_post_co
     }
 
     // blog_post_comment_dto->social_post_id
-    cJSON *social_post_id = cJSON_GetObjectItemCaseSensitive(blog_post_comment_dtoJSON, "socialPostID");
+    cJSON *social_post_id = cJSON_GetObjectItemCaseSensitive(blog_post_comment_dtoJSON, "socialPostId");
     if (social_post_id) { 
     if(!cJSON_IsString(social_post_id) && !cJSON_IsNull(social_post_id))
     {
@@ -191,7 +191,7 @@ blog_post_comment_dto_t *blog_post_comment_dto_parseFromJSON(cJSON *blog_post_co
     }
 
     // blog_post_comment_dto->parent_comment_id
-    cJSON *parent_comment_id = cJSON_GetObjectItemCaseSensitive(blog_post_comment_dtoJSON, "parentCommentID");
+    cJSON *parent_comment_id = cJSON_GetObjectItemCaseSensitive(blog_post_comment_dtoJSON, "parentCommentId");
     if (parent_comment_id) { 
     if(!cJSON_IsString(parent_comment_id) && !cJSON_IsNull(parent_comment_id))
     {

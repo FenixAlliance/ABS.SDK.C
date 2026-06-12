@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**EmailSignaturesAPI_getEmailSignatureDetailsAsync**](EmailSignaturesAPI.md#EmailSignaturesAPI_getEmailSignatureDetailsAsync) | **GET** /api/v2/MarketingService/EmailSignatures/{emailsignatureId} | Get email signature by ID
 [**EmailSignaturesAPI_getEmailSignaturesCountAsync**](EmailSignaturesAPI.md#EmailSignaturesAPI_getEmailSignaturesCountAsync) | **GET** /api/v2/MarketingService/EmailSignatures/Count | Get email signatures count
 [**EmailSignaturesAPI_getEmailSignaturesODataAsync**](EmailSignaturesAPI.md#EmailSignaturesAPI_getEmailSignaturesODataAsync) | **GET** /api/v2/MarketingService/EmailSignatures | Get email signatures
+[**EmailSignaturesAPI_patchEmailSignatureAsync**](EmailSignaturesAPI.md#EmailSignaturesAPI_patchEmailSignatureAsync) | **PATCH** /api/v2/MarketingService/EmailSignatures/{emailsignatureId} | Patch an email signature
 [**EmailSignaturesAPI_updateEmailSignatureAsync**](EmailSignaturesAPI.md#EmailSignaturesAPI_updateEmailSignatureAsync) | **PUT** /api/v2/MarketingService/EmailSignatures/{emailsignatureId} | Update an email signature
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **EmailSignaturesAPI_patchEmailSignatureAsync**
+```c
+// Patch an email signature
+//
+// Partially updates an email signature by its ID using JSON Patch.
+//
+empty_envelope_t* EmailSignaturesAPI_patchEmailSignatureAsync(apiClient_t *apiClient, char *tenantId, char *emailsignatureId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**emailsignatureId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/payment_method_create_dto.h"
 #include "../model/payment_method_dto_envelope.h"
 #include "../model/payment_method_dto_i_read_only_list_envelope.h"
@@ -52,6 +53,14 @@ PaymentMethodsAPI_getPaymentMethodsAsync(apiClient_t *apiClient, char *tenantId,
 //
 int32_envelope_t*
 PaymentMethodsAPI_getPaymentMethodsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a payment method
+//
+// Patch a payment method
+//
+empty_envelope_t*
+PaymentMethodsAPI_patchPaymentMethodAsync(apiClient_t *apiClient, char *tenantId, char *paymentMethodId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates a payment method

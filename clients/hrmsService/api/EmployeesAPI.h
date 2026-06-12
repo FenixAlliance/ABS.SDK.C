@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create an employee
@@ -52,6 +53,14 @@ EmployeesAPI_getEmployeesAsync(apiClient_t *apiClient, char *tenantId, char *api
 //
 int32_envelope_t*
 EmployeesAPI_getEmployeesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an employee
+//
+// Partially updates an existing employee for the specified tenant.
+//
+empty_envelope_t*
+EmployeesAPI_patchEmployeeAsync(apiClient_t *apiClient, char *tenantId, char *employeeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an employee

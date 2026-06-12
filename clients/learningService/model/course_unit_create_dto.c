@@ -126,7 +126,7 @@ cJSON *course_unit_create_dto_convertToJSON(course_unit_create_dto_t *course_uni
     if (!course_unit_create_dto->course_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "courseID", course_unit_create_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_unit_create_dto->course_id) == NULL) {
     goto fail; //String
     }
 
@@ -135,14 +135,14 @@ cJSON *course_unit_create_dto_convertToJSON(course_unit_create_dto_t *course_uni
     if (!course_unit_create_dto->course_section_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "courseSectionID", course_unit_create_dto->course_section_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseSectionId", course_unit_create_dto->course_section_id) == NULL) {
     goto fail; //String
     }
 
 
     // course_unit_create_dto->course_content_group_id
     if(course_unit_create_dto->course_content_group_id) {
-    if(cJSON_AddStringToObject(item, "courseContentGroupID", course_unit_create_dto->course_content_group_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseContentGroupId", course_unit_create_dto->course_content_group_id) == NULL) {
     goto fail; //String
     }
     }
@@ -216,7 +216,7 @@ course_unit_create_dto_t *course_unit_create_dto_parseFromJSON(cJSON *course_uni
     }
 
     // course_unit_create_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_unit_create_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_unit_create_dtoJSON, "courseId");
     if (!course_id) {
         goto end;
     }
@@ -228,7 +228,7 @@ course_unit_create_dto_t *course_unit_create_dto_parseFromJSON(cJSON *course_uni
     }
 
     // course_unit_create_dto->course_section_id
-    cJSON *course_section_id = cJSON_GetObjectItemCaseSensitive(course_unit_create_dtoJSON, "courseSectionID");
+    cJSON *course_section_id = cJSON_GetObjectItemCaseSensitive(course_unit_create_dtoJSON, "courseSectionId");
     if (!course_section_id) {
         goto end;
     }
@@ -240,7 +240,7 @@ course_unit_create_dto_t *course_unit_create_dto_parseFromJSON(cJSON *course_uni
     }
 
     // course_unit_create_dto->course_content_group_id
-    cJSON *course_content_group_id = cJSON_GetObjectItemCaseSensitive(course_unit_create_dtoJSON, "courseContentGroupID");
+    cJSON *course_content_group_id = cJSON_GetObjectItemCaseSensitive(course_unit_create_dtoJSON, "courseContentGroupId");
     if (course_content_group_id) { 
     if(!cJSON_IsString(course_content_group_id) && !cJSON_IsNull(course_content_group_id))
     {

@@ -167,7 +167,7 @@ cJSON *course_update_dto_convertToJSON(course_update_dto_t *course_update_dto) {
 
     // course_update_dto->course_category_id
     if(course_update_dto->course_category_id) {
-    if(cJSON_AddStringToObject(item, "courseCategoryID", course_update_dto->course_category_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseCategoryId", course_update_dto->course_category_id) == NULL) {
     goto fail; //String
     }
     }
@@ -175,7 +175,7 @@ cJSON *course_update_dto_convertToJSON(course_update_dto_t *course_update_dto) {
 
     // course_update_dto->instructor_profile_id
     if(course_update_dto->instructor_profile_id) {
-    if(cJSON_AddStringToObject(item, "instructorProfileID", course_update_dto->instructor_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "instructorProfileId", course_update_dto->instructor_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -183,7 +183,7 @@ cJSON *course_update_dto_convertToJSON(course_update_dto_t *course_update_dto) {
 
     // course_update_dto->currency_id
     if(course_update_dto->currency_id) {
-    if(cJSON_AddStringToObject(item, "currencyID", course_update_dto->currency_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "currencyId", course_update_dto->currency_id) == NULL) {
     goto fail; //String
     }
     }
@@ -335,7 +335,7 @@ course_update_dto_t *course_update_dto_parseFromJSON(cJSON *course_update_dtoJSO
     }
 
     // course_update_dto->course_category_id
-    cJSON *course_category_id = cJSON_GetObjectItemCaseSensitive(course_update_dtoJSON, "courseCategoryID");
+    cJSON *course_category_id = cJSON_GetObjectItemCaseSensitive(course_update_dtoJSON, "courseCategoryId");
     if (course_category_id) { 
     if(!cJSON_IsString(course_category_id) && !cJSON_IsNull(course_category_id))
     {
@@ -344,7 +344,7 @@ course_update_dto_t *course_update_dto_parseFromJSON(cJSON *course_update_dtoJSO
     }
 
     // course_update_dto->instructor_profile_id
-    cJSON *instructor_profile_id = cJSON_GetObjectItemCaseSensitive(course_update_dtoJSON, "instructorProfileID");
+    cJSON *instructor_profile_id = cJSON_GetObjectItemCaseSensitive(course_update_dtoJSON, "instructorProfileId");
     if (instructor_profile_id) { 
     if(!cJSON_IsString(instructor_profile_id) && !cJSON_IsNull(instructor_profile_id))
     {
@@ -353,7 +353,7 @@ course_update_dto_t *course_update_dto_parseFromJSON(cJSON *course_update_dtoJSO
     }
 
     // course_update_dto->currency_id
-    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(course_update_dtoJSON, "currencyID");
+    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(course_update_dtoJSON, "currencyId");
     if (currency_id) { 
     if(!cJSON_IsString(currency_id) && !cJSON_IsNull(currency_id))
     {

@@ -12,6 +12,7 @@
 #include "../model/marketing_area_dto_envelope.h"
 #include "../model/marketing_area_dto_list_envelope.h"
 #include "../model/marketing_area_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a marketing area
@@ -52,6 +53,14 @@ MarketingAreasAPI_getMarketingAreasAsync(apiClient_t *apiClient, char *tenantId,
 //
 int32_envelope_t*
 MarketingAreasAPI_getMarketingAreasCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a marketing area
+//
+// Partially updates a marketing area by its ID using JSON Patch.
+//
+empty_envelope_t*
+MarketingAreasAPI_patchMarketingAreaAsync(apiClient_t *apiClient, char *tenantId, char *marketingAreaId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a marketing area

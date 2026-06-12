@@ -8,7 +8,9 @@
 #include "../model/course_assignment_type_create_dto.h"
 #include "../model/course_assignment_type_dto.h"
 #include "../model/course_assignment_type_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a course assignment type
@@ -49,6 +51,14 @@ CourseAssignmentTypesAPI_getCourseAssignmentTypesAsync(apiClient_t *apiClient, c
 //
 int*
 CourseAssignmentTypesAPI_getCourseAssignmentTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course assignment type
+//
+// Partially updates a course assignment type for the specified tenant.
+//
+empty_envelope_t*
+CourseAssignmentTypesAPI_patchCourseAssignmentTypeAsync(apiClient_t *apiClient, char *tenantId, char *assignmentTypeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course assignment type

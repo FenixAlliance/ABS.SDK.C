@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**DealUnitFlowsAPI_getDealUnitFlowStagesCountAsync**](DealUnitFlowsAPI.md#DealUnitFlowsAPI_getDealUnitFlowStagesCountAsync) | **GET** /api/v2/DealsService/DealUnitFlows/{dealUnitFlowId}/Stages/Count | Get stages count for a deal unit flow
 [**DealUnitFlowsAPI_getDealUnitFlowsAsync**](DealUnitFlowsAPI.md#DealUnitFlowsAPI_getDealUnitFlowsAsync) | **GET** /api/v2/DealsService/DealUnitFlows | Get deal unit flows
 [**DealUnitFlowsAPI_getDealUnitFlowsCountAsync**](DealUnitFlowsAPI.md#DealUnitFlowsAPI_getDealUnitFlowsCountAsync) | **GET** /api/v2/DealsService/DealUnitFlows/Count | Get deal unit flows count
+[**DealUnitFlowsAPI_patchDealUnitFlowAsync**](DealUnitFlowsAPI.md#DealUnitFlowsAPI_patchDealUnitFlowAsync) | **PATCH** /api/v2/DealsService/DealUnitFlows/{dealUnitFlowId} | Patch a deal unit flow
+[**DealUnitFlowsAPI_patchDealUnitFlowStageAsync**](DealUnitFlowsAPI.md#DealUnitFlowsAPI_patchDealUnitFlowStageAsync) | **PATCH** /api/v2/DealsService/DealUnitFlows/{dealUnitFlowId}/Stages/{dealUnitFlowStageId} | Patch a deal unit flow stage
 [**DealUnitFlowsAPI_updateDealUnitFlowAsync**](DealUnitFlowsAPI.md#DealUnitFlowsAPI_updateDealUnitFlowAsync) | **PUT** /api/v2/DealsService/DealUnitFlows/{dealUnitFlowId} | Update a deal unit flow
 [**DealUnitFlowsAPI_updateDealUnitFlowStageAsync**](DealUnitFlowsAPI.md#DealUnitFlowsAPI_updateDealUnitFlowStageAsync) | **PUT** /api/v2/DealsService/DealUnitFlows/{dealUnitFlowId}/Stages/{dealUnitFlowStageId} | Update a deal unit flow stage
 
@@ -335,6 +337,73 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DealUnitFlowsAPI_patchDealUnitFlowAsync**
+```c
+// Patch a deal unit flow
+//
+// Partially updates an existing deal unit flow by its unique identifier using a JSON Patch document.
+//
+empty_envelope_t* DealUnitFlowsAPI_patchDealUnitFlowAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**dealUnitFlowId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DealUnitFlowsAPI_patchDealUnitFlowStageAsync**
+```c
+// Patch a deal unit flow stage
+//
+// Partially updates an existing stage within a specific deal unit flow using a JSON Patch document.
+//
+empty_envelope_t* DealUnitFlowsAPI_patchDealUnitFlowStageAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, char *dealUnitFlowStageId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**dealUnitFlowId** | **char \*** |  | 
+**dealUnitFlowStageId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

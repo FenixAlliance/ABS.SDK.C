@@ -20,8 +20,8 @@ web_page_category_dto_t *web_page_category_dto_create(
     char *image_url,
     char *image,
     char *web_portal_id,
-    char *business_id,
-    char *business_profile_record_id
+    char *tenant_id,
+    char *enrollment_id
     ) {
     web_page_category_dto_t *web_page_category_dto_local_var = malloc(sizeof(web_page_category_dto_t));
     if (!web_page_category_dto_local_var) {
@@ -41,8 +41,8 @@ web_page_category_dto_t *web_page_category_dto_create(
     web_page_category_dto_local_var->image_url = image_url;
     web_page_category_dto_local_var->image = image;
     web_page_category_dto_local_var->web_portal_id = web_portal_id;
-    web_page_category_dto_local_var->business_id = business_id;
-    web_page_category_dto_local_var->business_profile_record_id = business_profile_record_id;
+    web_page_category_dto_local_var->tenant_id = tenant_id;
+    web_page_category_dto_local_var->enrollment_id = enrollment_id;
 
     return web_page_category_dto_local_var;
 }
@@ -101,13 +101,13 @@ void web_page_category_dto_free(web_page_category_dto_t *web_page_category_dto) 
         free(web_page_category_dto->web_portal_id);
         web_page_category_dto->web_portal_id = NULL;
     }
-    if (web_page_category_dto->business_id) {
-        free(web_page_category_dto->business_id);
-        web_page_category_dto->business_id = NULL;
+    if (web_page_category_dto->tenant_id) {
+        free(web_page_category_dto->tenant_id);
+        web_page_category_dto->tenant_id = NULL;
     }
-    if (web_page_category_dto->business_profile_record_id) {
-        free(web_page_category_dto->business_profile_record_id);
-        web_page_category_dto->business_profile_record_id = NULL;
+    if (web_page_category_dto->enrollment_id) {
+        free(web_page_category_dto->enrollment_id);
+        web_page_category_dto->enrollment_id = NULL;
     }
     free(web_page_category_dto);
 }
@@ -221,23 +221,23 @@ cJSON *web_page_category_dto_convertToJSON(web_page_category_dto_t *web_page_cat
 
     // web_page_category_dto->web_portal_id
     if(web_page_category_dto->web_portal_id) {
-    if(cJSON_AddStringToObject(item, "webPortalID", web_page_category_dto->web_portal_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "webPortalId", web_page_category_dto->web_portal_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // web_page_category_dto->business_id
-    if(web_page_category_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", web_page_category_dto->business_id) == NULL) {
+    // web_page_category_dto->tenant_id
+    if(web_page_category_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", web_page_category_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // web_page_category_dto->business_profile_record_id
-    if(web_page_category_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", web_page_category_dto->business_profile_record_id) == NULL) {
+    // web_page_category_dto->enrollment_id
+    if(web_page_category_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", web_page_category_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -372,7 +372,7 @@ web_page_category_dto_t *web_page_category_dto_parseFromJSON(cJSON *web_page_cat
     }
 
     // web_page_category_dto->web_portal_id
-    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(web_page_category_dtoJSON, "webPortalID");
+    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(web_page_category_dtoJSON, "webPortalId");
     if (web_portal_id) { 
     if(!cJSON_IsString(web_portal_id) && !cJSON_IsNull(web_portal_id))
     {
@@ -380,19 +380,19 @@ web_page_category_dto_t *web_page_category_dto_parseFromJSON(cJSON *web_page_cat
     }
     }
 
-    // web_page_category_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(web_page_category_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // web_page_category_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(web_page_category_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
-    // web_page_category_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(web_page_category_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // web_page_category_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(web_page_category_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -414,8 +414,8 @@ web_page_category_dto_t *web_page_category_dto_parseFromJSON(cJSON *web_page_cat
         image_url && !cJSON_IsNull(image_url) ? strdup(image_url->valuestring) : NULL,
         image && !cJSON_IsNull(image) ? strdup(image->valuestring) : NULL,
         web_portal_id && !cJSON_IsNull(web_portal_id) ? strdup(web_portal_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return web_page_category_dto_local_var;

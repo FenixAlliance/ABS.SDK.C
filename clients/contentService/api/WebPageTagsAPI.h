@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/web_page_tag_create_dto.h"
 #include "../model/web_page_tag_dto_envelope.h"
 #include "../model/web_page_tag_dto_list_envelope.h"
@@ -52,6 +53,14 @@ WebPageTagsAPI_getWebPageTagByIdAsync(apiClient_t *apiClient, char *tenantId, ch
 //
 web_page_tag_dto_list_envelope_t*
 WebPageTagsAPI_getWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a web page tag
+//
+// Partially updates an existing web page tag for the specified tenant.
+//
+empty_envelope_t*
+WebPageTagsAPI_patchWebPageTagAsync(apiClient_t *apiClient, char *tenantId, char *webPageTagId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a web page tag

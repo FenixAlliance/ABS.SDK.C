@@ -25,6 +25,7 @@ typedef struct course_wiki_dto_t {
     char *description; // string
     char *release_date_time; //date time
     char *tenant_id; // string
+    char *enrollment_id; // string
     char *course_id; // string
     char *course_unit_id; // string
 
@@ -37,6 +38,7 @@ course_wiki_dto_t *course_wiki_dto_create(
     char *description,
     char *release_date_time,
     char *tenant_id,
+    char *enrollment_id,
     char *course_id,
     char *course_unit_id
 );

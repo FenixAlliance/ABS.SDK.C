@@ -12,6 +12,7 @@
 #include "../model/leave_application_dto_envelope.h"
 #include "../model/leave_application_dto_list_envelope.h"
 #include "../model/leave_application_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a leave application
@@ -52,6 +53,14 @@ LeaveApplicationsAPI_getLeaveApplicationsAsync(apiClient_t *apiClient, char *ten
 //
 int32_envelope_t*
 LeaveApplicationsAPI_getLeaveApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a leave application
+//
+// Partially updates an existing leave application for the specified tenant.
+//
+empty_envelope_t*
+LeaveApplicationsAPI_patchLeaveApplicationAsync(apiClient_t *apiClient, char *tenantId, char *leaveApplicationId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a leave application

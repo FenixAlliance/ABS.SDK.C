@@ -18,6 +18,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new blog post
@@ -122,6 +123,14 @@ BlogPostsAPI_getRepliesForCommentAsync(apiClient_t *apiClient, char *commentId, 
 //
 blog_post_tag_dto_list_envelope_t*
 BlogPostsAPI_getTagsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId);
+
+
+// Patch a blog post
+//
+// Partially updates an existing blog post for the specified tenant.
+//
+empty_envelope_t*
+BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *blogPostId, list_t *operation);
 
 
 // Relate an existing category to a blog post

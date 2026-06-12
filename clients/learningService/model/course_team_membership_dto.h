@@ -33,6 +33,7 @@ typedef struct course_team_membership_dto_t {
     char *instructor_profile_id; // string
     learningservice_course_team_membership_dto_COURSETEAMMEMBERSHIPTYPE_e course_team_membership_type; //enum
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_team_membership_dto_t;
 
@@ -42,7 +43,8 @@ course_team_membership_dto_t *course_team_membership_dto_create(
     char *course_id,
     char *instructor_profile_id,
     learningservice_course_team_membership_dto_COURSETEAMMEMBERSHIPTYPE_e course_team_membership_type,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_team_membership_dto_free(course_team_membership_dto_t *course_team_membership_dto);

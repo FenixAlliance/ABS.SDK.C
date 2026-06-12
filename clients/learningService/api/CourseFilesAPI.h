@@ -9,6 +9,7 @@
 #include "../model/course_file_dto.h"
 #include "../model/course_file_update_dto.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course file
@@ -49,6 +50,14 @@ CourseFilesAPI_getCourseFilesAsync(apiClient_t *apiClient, char *tenantId, char 
 //
 int*
 CourseFilesAPI_getCourseFilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course file
+//
+// Partially updates an existing course file for the specified tenant.
+//
+void
+CourseFilesAPI_patchCourseFileAsync(apiClient_t *apiClient, char *tenantId, char *fileId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course file

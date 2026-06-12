@@ -27,6 +27,7 @@ typedef struct course_page_dto_t {
     char *slug; // string
     char *course_id; // string
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_page_dto_t;
 
@@ -38,7 +39,8 @@ course_page_dto_t *course_page_dto_create(
     char *content,
     char *slug,
     char *course_id,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_page_dto_free(course_page_dto_t *course_page_dto);

@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/salary_create_dto.h"
 #include "../model/salary_dto_envelope.h"
 #include "../model/salary_dto_list_envelope.h"
@@ -52,6 +53,14 @@ SalariesAPI_getSalariesCountAsync(apiClient_t *apiClient, char *tenantId, char *
 //
 salary_dto_envelope_t*
 SalariesAPI_getSalaryByIdAsync(apiClient_t *apiClient, char *tenantId, char *salaryId, char *api_version, char *x_api_version);
+
+
+// Patch a salary
+//
+// Partially updates an existing salary for the specified tenant.
+//
+empty_envelope_t*
+SalariesAPI_patchSalaryAsync(apiClient_t *apiClient, char *tenantId, char *salaryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a salary

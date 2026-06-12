@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/training_program_event_create_dto.h"
 #include "../model/training_program_event_dto_envelope.h"
 #include "../model/training_program_event_dto_list_envelope.h"
@@ -52,6 +53,14 @@ TrainingProgramEventsAPI_getTrainingProgramEventsAsync(apiClient_t *apiClient, c
 //
 int32_envelope_t*
 TrainingProgramEventsAPI_getTrainingProgramEventsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a training program event
+//
+// Partially updates an existing training program event for the specified tenant.
+//
+empty_envelope_t*
+TrainingProgramEventsAPI_patchTrainingProgramEventAsync(apiClient_t *apiClient, char *tenantId, char *eventId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a training program event

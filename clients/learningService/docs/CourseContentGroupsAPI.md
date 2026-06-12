@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**CourseContentGroupsAPI_getCourseContentGroupsByCourseAsync**](CourseContentGroupsAPI.md#CourseContentGroupsAPI_getCourseContentGroupsByCourseAsync) | **GET** /api/v2/LearningService/Courses/{courseId}/ContentGroups | Get course content groups by course
 [**CourseContentGroupsAPI_getCourseContentGroupsByCourseCountAsync**](CourseContentGroupsAPI.md#CourseContentGroupsAPI_getCourseContentGroupsByCourseCountAsync) | **GET** /api/v2/LearningService/Courses/{courseId}/ContentGroups/Count | Get course content groups count by course
 [**CourseContentGroupsAPI_getCourseContentGroupsCountAsync**](CourseContentGroupsAPI.md#CourseContentGroupsAPI_getCourseContentGroupsCountAsync) | **GET** /api/v2/LearningService/CourseContentGroups/Count | Get course content groups count
+[**CourseContentGroupsAPI_patchCourseContentGroupAsync**](CourseContentGroupsAPI.md#CourseContentGroupsAPI_patchCourseContentGroupAsync) | **PATCH** /api/v2/LearningService/CourseContentGroups/{groupId} | Patch a course content group
 [**CourseContentGroupsAPI_updateCourseContentGroupAsync**](CourseContentGroupsAPI.md#CourseContentGroupsAPI_updateCourseContentGroupAsync) | **PUT** /api/v2/LearningService/CourseContentGroups/{groupId} | Update a course content group
 
 
@@ -243,6 +244,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseContentGroupsAPI_patchCourseContentGroupAsync**
+```c
+// Patch a course content group
+//
+// Partially updates a course content group for the specified tenant.
+//
+empty_envelope_t* CourseContentGroupsAPI_patchCourseContentGroupAsync(apiClient_t *apiClient, char *tenantId, char *groupId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**groupId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

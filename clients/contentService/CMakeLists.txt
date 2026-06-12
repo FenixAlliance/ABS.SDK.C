@@ -91,9 +91,11 @@ set(SRCS
     model/blog_post_update_dto.c
     model/branding_options.c
     model/breadcrumbs_options.c
+    model/business_domain_create_dto.c
     model/business_domain_dto.c
     model/business_domain_dto_envelope.c
     model/business_domain_dto_list_envelope.c
+    model/business_domain_update_dto.c
     model/byte_read_only_memory.c
     model/byte_read_only_span.c
     model/cancellation_token.c
@@ -182,11 +184,22 @@ set(SRCS
     model/ip_address.c
     model/key_sizes.c
     model/layout_options.c
+    model/localization_string_create_dto.c
+    model/localization_string_dto.c
+    model/localization_string_dto_envelope.c
+    model/localization_string_dto_list_envelope.c
+    model/localization_string_update_dto.c
     model/login_request.c
     model/logo.c
     model/margin.c
     model/measurement_options.c
     model/member_info.c
+    model/menu_context_create_dto.c
+    model/menu_context_dto.c
+    model/menu_context_dto_envelope.c
+    model/menu_context_dto_list_envelope.c
+    model/menu_context_item_dto.c
+    model/menu_context_update_dto.c
     model/menu_options.c
     model/method_base.c
     model/method_info.c
@@ -264,6 +277,11 @@ set(SRCS
     model/typography.c
     model/typography_options.c
     model/wait_handle.c
+    model/web_component_create_dto.c
+    model/web_component_dto.c
+    model/web_component_dto_envelope.c
+    model/web_component_dto_list_envelope.c
+    model/web_component_update_dto.c
     model/web_content_create_dto.c
     model/web_content_dto.c
     model/web_content_dto_envelope.c
@@ -311,8 +329,11 @@ set(SRCS
     api/BusinessDomainsAPI.c
     api/CompletionsAPI.c
     api/FenixAlliancePortalsWebsiteAPI.c
+    api/LocalizationStringsAPI.c
+    api/MenuContextsAPI.c
     api/PortalsAPI.c
     api/ThemesAPI.c
+    api/WebComponentsAPI.c
     api/WebContentsAPI.c
     api/WebPageCategoriesAPI.c
     api/WebPageTagsAPI.c
@@ -366,9 +387,11 @@ set(HDRS
     model/blog_post_update_dto.h
     model/branding_options.h
     model/breadcrumbs_options.h
+    model/business_domain_create_dto.h
     model/business_domain_dto.h
     model/business_domain_dto_envelope.h
     model/business_domain_dto_list_envelope.h
+    model/business_domain_update_dto.h
     model/byte_read_only_memory.h
     model/byte_read_only_span.h
     model/cancellation_token.h
@@ -457,11 +480,22 @@ set(HDRS
     model/ip_address.h
     model/key_sizes.h
     model/layout_options.h
+    model/localization_string_create_dto.h
+    model/localization_string_dto.h
+    model/localization_string_dto_envelope.h
+    model/localization_string_dto_list_envelope.h
+    model/localization_string_update_dto.h
     model/login_request.h
     model/logo.h
     model/margin.h
     model/measurement_options.h
     model/member_info.h
+    model/menu_context_create_dto.h
+    model/menu_context_dto.h
+    model/menu_context_dto_envelope.h
+    model/menu_context_dto_list_envelope.h
+    model/menu_context_item_dto.h
+    model/menu_context_update_dto.h
     model/menu_options.h
     model/method_base.h
     model/method_info.h
@@ -539,6 +573,11 @@ set(HDRS
     model/typography.h
     model/typography_options.h
     model/wait_handle.h
+    model/web_component_create_dto.h
+    model/web_component_dto.h
+    model/web_component_dto_envelope.h
+    model/web_component_dto_list_envelope.h
+    model/web_component_update_dto.h
     model/web_content_create_dto.h
     model/web_content_dto.h
     model/web_content_dto_envelope.h
@@ -586,8 +625,11 @@ set(HDRS
     api/BusinessDomainsAPI.h
     api/CompletionsAPI.h
     api/FenixAlliancePortalsWebsiteAPI.h
+    api/LocalizationStringsAPI.h
+    api/MenuContextsAPI.h
     api/PortalsAPI.h
     api/ThemesAPI.h
+    api/WebComponentsAPI.h
     api/WebContentsAPI.h
     api/WebPageCategoriesAPI.h
     api/WebPageTagsAPI.h
@@ -682,8 +724,11 @@ set(HDRS "")
 #    unit-tests/manual-BusinessDomainsAPI.c
 #    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-LocalizationStringsAPI.c
+#    unit-tests/manual-MenuContextsAPI.c
 #    unit-tests/manual-PortalsAPI.c
 #    unit-tests/manual-ThemesAPI.c
+#    unit-tests/manual-WebComponentsAPI.c
 #    unit-tests/manual-WebContentsAPI.c
 #    unit-tests/manual-WebPageCategoriesAPI.c
 #    unit-tests/manual-WebPageTagsAPI.c

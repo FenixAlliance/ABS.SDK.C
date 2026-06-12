@@ -14,7 +14,9 @@ course_unit_dto_t *course_unit_dto_create(
     char *content,
     char *course_id,
     char *course_section_id,
+    char *course_content_group_id,
     char *tenant_id,
+    char *enrollment_id,
     list_t *course_handouts,
     list_t *course_assignments,
     list_t *course_components
@@ -31,7 +33,9 @@ course_unit_dto_t *course_unit_dto_create(
     course_unit_dto_local_var->content = content;
     course_unit_dto_local_var->course_id = course_id;
     course_unit_dto_local_var->course_section_id = course_section_id;
+    course_unit_dto_local_var->course_content_group_id = course_content_group_id;
     course_unit_dto_local_var->tenant_id = tenant_id;
+    course_unit_dto_local_var->enrollment_id = enrollment_id;
     course_unit_dto_local_var->course_handouts = course_handouts;
     course_unit_dto_local_var->course_assignments = course_assignments;
     course_unit_dto_local_var->course_components = course_components;
@@ -77,9 +81,17 @@ void course_unit_dto_free(course_unit_dto_t *course_unit_dto) {
         free(course_unit_dto->course_section_id);
         course_unit_dto->course_section_id = NULL;
     }
+    if (course_unit_dto->course_content_group_id) {
+        free(course_unit_dto->course_content_group_id);
+        course_unit_dto->course_content_group_id = NULL;
+    }
     if (course_unit_dto->tenant_id) {
         free(course_unit_dto->tenant_id);
         course_unit_dto->tenant_id = NULL;
+    }
+    if (course_unit_dto->enrollment_id) {
+        free(course_unit_dto->enrollment_id);
+        course_unit_dto->enrollment_id = NULL;
     }
     if (course_unit_dto->course_handouts) {
         list_ForEach(listEntry, course_unit_dto->course_handouts) {
@@ -158,7 +170,7 @@ cJSON *course_unit_dto_convertToJSON(course_unit_dto_t *course_unit_dto) {
 
     // course_unit_dto->course_id
     if(course_unit_dto->course_id) {
-    if(cJSON_AddStringToObject(item, "courseID", course_unit_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_unit_dto->course_id) == NULL) {
     goto fail; //String
     }
     }
@@ -166,7 +178,15 @@ cJSON *course_unit_dto_convertToJSON(course_unit_dto_t *course_unit_dto) {
 
     // course_unit_dto->course_section_id
     if(course_unit_dto->course_section_id) {
-    if(cJSON_AddStringToObject(item, "courseSectionID", course_unit_dto->course_section_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseSectionId", course_unit_dto->course_section_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_unit_dto->course_content_group_id
+    if(course_unit_dto->course_content_group_id) {
+    if(cJSON_AddStringToObject(item, "courseContentGroupId", course_unit_dto->course_content_group_id) == NULL) {
     goto fail; //String
     }
     }
@@ -175,6 +195,14 @@ cJSON *course_unit_dto_convertToJSON(course_unit_dto_t *course_unit_dto) {
     // course_unit_dto->tenant_id
     if(course_unit_dto->tenant_id) {
     if(cJSON_AddStringToObject(item, "tenantId", course_unit_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_unit_dto->enrollment_id
+    if(course_unit_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", course_unit_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -315,7 +343,7 @@ course_unit_dto_t *course_unit_dto_parseFromJSON(cJSON *course_unit_dtoJSON){
     }
 
     // course_unit_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_unit_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_unit_dtoJSON, "courseId");
     if (course_id) { 
     if(!cJSON_IsString(course_id) && !cJSON_IsNull(course_id))
     {
@@ -324,9 +352,18 @@ course_unit_dto_t *course_unit_dto_parseFromJSON(cJSON *course_unit_dtoJSON){
     }
 
     // course_unit_dto->course_section_id
-    cJSON *course_section_id = cJSON_GetObjectItemCaseSensitive(course_unit_dtoJSON, "courseSectionID");
+    cJSON *course_section_id = cJSON_GetObjectItemCaseSensitive(course_unit_dtoJSON, "courseSectionId");
     if (course_section_id) { 
     if(!cJSON_IsString(course_section_id) && !cJSON_IsNull(course_section_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // course_unit_dto->course_content_group_id
+    cJSON *course_content_group_id = cJSON_GetObjectItemCaseSensitive(course_unit_dtoJSON, "courseContentGroupId");
+    if (course_content_group_id) { 
+    if(!cJSON_IsString(course_content_group_id) && !cJSON_IsNull(course_content_group_id))
     {
     goto end; //String
     }
@@ -336,6 +373,15 @@ course_unit_dto_t *course_unit_dto_parseFromJSON(cJSON *course_unit_dtoJSON){
     cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(course_unit_dtoJSON, "tenantId");
     if (tenant_id) { 
     if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // course_unit_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(course_unit_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -414,7 +460,9 @@ course_unit_dto_t *course_unit_dto_parseFromJSON(cJSON *course_unit_dtoJSON){
         content && !cJSON_IsNull(content) ? strdup(content->valuestring) : NULL,
         course_id && !cJSON_IsNull(course_id) ? strdup(course_id->valuestring) : NULL,
         course_section_id && !cJSON_IsNull(course_section_id) ? strdup(course_section_id->valuestring) : NULL,
+        course_content_group_id && !cJSON_IsNull(course_content_group_id) ? strdup(course_content_group_id->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         course_handouts ? course_handoutsList : NULL,
         course_assignments ? course_assignmentsList : NULL,
         course_components ? course_componentsList : NULL

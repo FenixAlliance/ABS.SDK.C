@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/waybill_line_create_dto.h"
 #include "../model/waybill_line_dto_list_envelope.h"
 #include "../model/waybill_line_update_dto.h"
@@ -119,6 +120,22 @@ AirwayBillsAPI_markAirwayBillDeliveredAsync(apiClient_t *apiClient, char *tenant
 //
 empty_envelope_t*
 AirwayBillsAPI_markAirwayBillInTransitAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version);
+
+
+// Patch an airway bill
+//
+// Partially updates an existing airway bill using a JSON Patch document.
+//
+empty_envelope_t*
+AirwayBillsAPI_patchAirwayBillAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch an airway bill line
+//
+// Partially updates a line on an airway bill using a JSON Patch document.
+//
+empty_envelope_t*
+AirwayBillsAPI_patchAirwayBillLineAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Remove an airway bill line

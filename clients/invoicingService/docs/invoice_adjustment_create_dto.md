@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
+**priority** | **int** |  | [optional] 
+**code** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
 **surcharge_percent** | **double** |  | [optional] 
 **surcharge_amount** | **double** |  | [optional] 

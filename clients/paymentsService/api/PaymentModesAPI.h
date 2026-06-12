@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/payment_mode_create_dto.h"
 #include "../model/payment_mode_dto_envelope.h"
 #include "../model/payment_mode_dto_i_read_only_list_envelope.h"
@@ -52,6 +53,14 @@ PaymentModesAPI_getPaymentModesAsync(apiClient_t *apiClient, char *tenantId, cha
 //
 int32_envelope_t*
 PaymentModesAPI_getPaymentModesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a payment mode
+//
+// Patch a payment mode
+//
+empty_envelope_t*
+PaymentModesAPI_patchPaymentModeAsync(apiClient_t *apiClient, char *tenantId, char *paymentModeId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates a payment mode

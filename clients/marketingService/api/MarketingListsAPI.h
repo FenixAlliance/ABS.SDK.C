@@ -12,6 +12,7 @@
 #include "../model/marketing_list_dto_envelope.h"
 #include "../model/marketing_list_dto_list_envelope.h"
 #include "../model/marketing_list_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a marketing list
@@ -52,6 +53,14 @@ MarketingListsAPI_getMarketingListODataAsync(apiClient_t *apiClient, char *tenan
 //
 int32_envelope_t*
 MarketingListsAPI_getMarketingListsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a marketing list
+//
+// Partially updates a marketing list by its ID using JSON Patch.
+//
+empty_envelope_t*
+MarketingListsAPI_patchMarketingListAsync(apiClient_t *apiClient, char *tenantId, char *marketinglistId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a marketing list

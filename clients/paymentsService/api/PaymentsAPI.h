@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 #include "../model/payment_create_dto.h"
 #include "../model/payment_dto_list_envelope.h"
 #include "../model/payment_update_dto.h"
@@ -50,6 +51,14 @@ PaymentsAPI_getPaymentAsyncV2(apiClient_t *apiClient, char *tenantId, char *paym
 //
 payment_dto_list_envelope_t*
 PaymentsAPI_getPaymentsAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Patch a payment
+//
+// Patch a payment
+//
+empty_envelope_t*
+PaymentsAPI_patchPaymentAsync(apiClient_t *apiClient, char *tenantId, char *paymentId, list_t *operation);
 
 
 // Updates a payment

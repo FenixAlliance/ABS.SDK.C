@@ -28,6 +28,8 @@ invoicingservice_invoice_adjustment_update_dto_TYPE_e invoice_adjustment_update_
 
 typedef struct invoice_adjustment_update_dto_t {
     char *currency_id; // string
+    int priority; //numeric
+    char *code; // string
     char *description; // string
     double surcharge_percent; //numeric
     double surcharge_amount; //numeric
@@ -41,6 +43,8 @@ typedef struct invoice_adjustment_update_dto_t {
 
 invoice_adjustment_update_dto_t *invoice_adjustment_update_dto_create(
     char *currency_id,
+    int priority,
+    char *code,
     char *description,
     double surcharge_percent,
     double surcharge_amount,

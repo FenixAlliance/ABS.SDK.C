@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**JobOffersAPI_getJobOfferByIdAsync**](JobOffersAPI.md#JobOffersAPI_getJobOfferByIdAsync) | **GET** /api/v2/HrmsService/JobOffers/{jobOfferId} | Get job offer by ID
 [**JobOffersAPI_getJobOffersAsync**](JobOffersAPI.md#JobOffersAPI_getJobOffersAsync) | **GET** /api/v2/HrmsService/JobOffers | Get job offers
 [**JobOffersAPI_getJobOffersCountAsync**](JobOffersAPI.md#JobOffersAPI_getJobOffersCountAsync) | **GET** /api/v2/HrmsService/JobOffers/Count | Count job offers
+[**JobOffersAPI_patchJobOfferAsync**](JobOffersAPI.md#JobOffersAPI_patchJobOfferAsync) | **PATCH** /api/v2/HrmsService/JobOffers/{jobOfferId} | Patch a job offer
 [**JobOffersAPI_updateJobOfferAsync**](JobOffersAPI.md#JobOffersAPI_updateJobOfferAsync) | **PUT** /api/v2/HrmsService/JobOffers/{jobOfferId} | Update a job offer
 
 
@@ -180,13 +181,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **JobOffersAPI_updateJobOfferAsync**
+# **JobOffersAPI_patchJobOfferAsync**
 ```c
-// Update a job offer
+// Patch a job offer
 //
-// Updates an existing job offer for the specified tenant.
+// Partially updates an existing job offer for the specified tenant.
 //
-empty_envelope_t* JobOffersAPI_updateJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, object_t *body);
+empty_envelope_t* JobOffersAPI_patchJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, list_t *operation);
 ```
 
 ### Parameters
@@ -197,7 +198,42 @@ Name | Type | Description  | Notes
 **jobOfferId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**body** | **[object_t](object.md) \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JobOffersAPI_updateJobOfferAsync**
+```c
+// Update a job offer
+//
+// Updates an existing job offer for the specified tenant.
+//
+empty_envelope_t* JobOffersAPI_updateJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, job_offer_update_dto_t *job_offer_update_dto);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**jobOfferId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**job_offer_update_dto** | **[job_offer_update_dto_t](job_offer_update_dto.md) \*** |  | [optional] 
 
 ### Return type
 

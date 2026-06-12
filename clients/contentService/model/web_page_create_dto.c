@@ -32,7 +32,9 @@ web_page_create_dto_t *web_page_create_dto_create(
     char *markup,
     char *featured_image_url,
     contentservice_web_page_create_dto_CODETYPE_e code_type,
-    char *web_template_id
+    char *slug,
+    char *web_template_id,
+    char *parent_web_content_id
     ) {
     web_page_create_dto_t *web_page_create_dto_local_var = malloc(sizeof(web_page_create_dto_t));
     if (!web_page_create_dto_local_var) {
@@ -47,7 +49,9 @@ web_page_create_dto_t *web_page_create_dto_create(
     web_page_create_dto_local_var->markup = markup;
     web_page_create_dto_local_var->featured_image_url = featured_image_url;
     web_page_create_dto_local_var->code_type = code_type;
+    web_page_create_dto_local_var->slug = slug;
     web_page_create_dto_local_var->web_template_id = web_template_id;
+    web_page_create_dto_local_var->parent_web_content_id = parent_web_content_id;
 
     return web_page_create_dto_local_var;
 }
@@ -86,9 +90,17 @@ void web_page_create_dto_free(web_page_create_dto_t *web_page_create_dto) {
         free(web_page_create_dto->featured_image_url);
         web_page_create_dto->featured_image_url = NULL;
     }
+    if (web_page_create_dto->slug) {
+        free(web_page_create_dto->slug);
+        web_page_create_dto->slug = NULL;
+    }
     if (web_page_create_dto->web_template_id) {
         free(web_page_create_dto->web_template_id);
         web_page_create_dto->web_template_id = NULL;
+    }
+    if (web_page_create_dto->parent_web_content_id) {
+        free(web_page_create_dto->parent_web_content_id);
+        web_page_create_dto->parent_web_content_id = NULL;
     }
     free(web_page_create_dto);
 }
@@ -170,9 +182,25 @@ cJSON *web_page_create_dto_convertToJSON(web_page_create_dto_t *web_page_create_
     }
 
 
+    // web_page_create_dto->slug
+    if(web_page_create_dto->slug) {
+    if(cJSON_AddStringToObject(item, "slug", web_page_create_dto->slug) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // web_page_create_dto->web_template_id
     if(web_page_create_dto->web_template_id) {
-    if(cJSON_AddStringToObject(item, "webTemplateID", web_page_create_dto->web_template_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "webTemplateId", web_page_create_dto->web_template_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // web_page_create_dto->parent_web_content_id
+    if(web_page_create_dto->parent_web_content_id) {
+    if(cJSON_AddStringToObject(item, "parentWebContentId", web_page_create_dto->parent_web_content_id) == NULL) {
     goto fail; //String
     }
     }
@@ -275,10 +303,28 @@ web_page_create_dto_t *web_page_create_dto_parseFromJSON(cJSON *web_page_create_
     code_typeVariable = web_page_create_dto_code_type_FromString(code_type->valuestring);
     }
 
+    // web_page_create_dto->slug
+    cJSON *slug = cJSON_GetObjectItemCaseSensitive(web_page_create_dtoJSON, "slug");
+    if (slug) { 
+    if(!cJSON_IsString(slug) && !cJSON_IsNull(slug))
+    {
+    goto end; //String
+    }
+    }
+
     // web_page_create_dto->web_template_id
-    cJSON *web_template_id = cJSON_GetObjectItemCaseSensitive(web_page_create_dtoJSON, "webTemplateID");
+    cJSON *web_template_id = cJSON_GetObjectItemCaseSensitive(web_page_create_dtoJSON, "webTemplateId");
     if (web_template_id) { 
     if(!cJSON_IsString(web_template_id) && !cJSON_IsNull(web_template_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // web_page_create_dto->parent_web_content_id
+    cJSON *parent_web_content_id = cJSON_GetObjectItemCaseSensitive(web_page_create_dtoJSON, "parentWebContentId");
+    if (parent_web_content_id) { 
+    if(!cJSON_IsString(parent_web_content_id) && !cJSON_IsNull(parent_web_content_id))
     {
     goto end; //String
     }
@@ -295,7 +341,9 @@ web_page_create_dto_t *web_page_create_dto_parseFromJSON(cJSON *web_page_create_
         markup && !cJSON_IsNull(markup) ? strdup(markup->valuestring) : NULL,
         featured_image_url && !cJSON_IsNull(featured_image_url) ? strdup(featured_image_url->valuestring) : NULL,
         code_type ? code_typeVariable : contentservice_web_page_create_dto_CODETYPE_NULL,
-        web_template_id && !cJSON_IsNull(web_template_id) ? strdup(web_template_id->valuestring) : NULL
+        slug && !cJSON_IsNull(slug) ? strdup(slug->valuestring) : NULL,
+        web_template_id && !cJSON_IsNull(web_template_id) ? strdup(web_template_id->valuestring) : NULL,
+        parent_web_content_id && !cJSON_IsNull(parent_web_content_id) ? strdup(parent_web_content_id->valuestring) : NULL
         );
 
     return web_page_create_dto_local_var;

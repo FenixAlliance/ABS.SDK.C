@@ -8,7 +8,9 @@
 #include "../model/course_assignment_component_create_dto.h"
 #include "../model/course_assignment_component_dto.h"
 #include "../model/course_assignment_component_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a course assignment component
@@ -49,6 +51,14 @@ CourseAssignmentComponentsAPI_getCourseAssignmentComponentsAsync(apiClient_t *ap
 //
 int*
 CourseAssignmentComponentsAPI_getCourseAssignmentComponentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course assignment component
+//
+// Partially updates a course assignment component for the specified tenant.
+//
+empty_envelope_t*
+CourseAssignmentComponentsAPI_patchCourseAssignmentComponentAsync(apiClient_t *apiClient, char *tenantId, char *componentId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course assignment component

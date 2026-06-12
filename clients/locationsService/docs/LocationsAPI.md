@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**LocationsAPI_getWalletLocationAsync**](LocationsAPI.md#LocationsAPI_getWalletLocationAsync) | **GET** /api/v2/LocationsService/Locations/wallet/{walletId}/{locationId} | Get Wallet Location
 [**LocationsAPI_getWalletLocationsAsync**](LocationsAPI.md#LocationsAPI_getWalletLocationsAsync) | **GET** /api/v2/LocationsService/Locations/wallet/{walletId} | Get Wallet Locations
 [**LocationsAPI_getWalletLocationsCountAsync**](LocationsAPI.md#LocationsAPI_getWalletLocationsCountAsync) | **GET** /api/v2/LocationsService/Locations/wallet/{walletId}/count | Get Wallet Locations Count
+[**LocationsAPI_patchLocationAsync**](LocationsAPI.md#LocationsAPI_patchLocationAsync) | **PATCH** /api/v2/LocationsService/Locations/{locationId} | Patch a location
+[**LocationsAPI_patchWalletLocationAsync**](LocationsAPI.md#LocationsAPI_patchWalletLocationAsync) | **PATCH** /api/v2/LocationsService/Locations/wallet/{walletId}/{locationId} | Patch a wallet location
 [**LocationsAPI_updateLocationAsync**](LocationsAPI.md#LocationsAPI_updateLocationAsync) | **PUT** /api/v2/LocationsService/Locations/{locationId} | Update Location
 [**LocationsAPI_updateWalletLocationAsync**](LocationsAPI.md#LocationsAPI_updateWalletLocationAsync) | **PUT** /api/v2/LocationsService/Locations/wallet/{walletId}/{locationId} | Update Wallet Location
 
@@ -330,6 +332,72 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LocationsAPI_patchLocationAsync**
+```c
+// Patch a location
+//
+// Patch a location
+//
+empty_envelope_t* LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *locationId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**locationId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LocationsAPI_patchWalletLocationAsync**
+```c
+// Patch a wallet location
+//
+// Patch a wallet location
+//
+empty_envelope_t* LocationsAPI_patchWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**walletId** | **char \*** |  | 
+**locationId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

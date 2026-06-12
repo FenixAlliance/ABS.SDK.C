@@ -209,7 +209,7 @@ cJSON *web_page_tag_create_dto_convertToJSON(web_page_tag_create_dto_t *web_page
 
     // web_page_tag_create_dto->web_portal_id
     if(web_page_tag_create_dto->web_portal_id) {
-    if(cJSON_AddStringToObject(item, "webPortalID", web_page_tag_create_dto->web_portal_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "webPortalId", web_page_tag_create_dto->web_portal_id) == NULL) {
     goto fail; //String
     }
     }
@@ -344,7 +344,7 @@ web_page_tag_create_dto_t *web_page_tag_create_dto_parseFromJSON(cJSON *web_page
     }
 
     // web_page_tag_create_dto->web_portal_id
-    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(web_page_tag_create_dtoJSON, "webPortalID");
+    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(web_page_tag_create_dtoJSON, "webPortalId");
     if (web_portal_id) { 
     if(!cJSON_IsString(web_portal_id) && !cJSON_IsNull(web_portal_id))
     {

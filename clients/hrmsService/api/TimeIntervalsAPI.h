@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/time_interval_create_dto.h"
 #include "../model/time_interval_dto_envelope.h"
 #include "../model/time_interval_dto_list_envelope.h"
@@ -52,6 +53,14 @@ TimeIntervalsAPI_getTimeIntervalsAsync(apiClient_t *apiClient, char *tenantId, c
 //
 int32_envelope_t*
 TimeIntervalsAPI_getTimeIntervalsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a time interval
+//
+// Partially updates an existing time interval for the specified tenant.
+//
+empty_envelope_t*
+TimeIntervalsAPI_patchTimeIntervalAsync(apiClient_t *apiClient, char *tenantId, char *timeIntervalId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a time interval

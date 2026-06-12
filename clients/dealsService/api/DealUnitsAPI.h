@@ -18,6 +18,7 @@
 #include "../model/extended_deal_unit_dto_envelope.h"
 #include "../model/extended_deal_unit_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Calculate a deal unit
@@ -130,6 +131,22 @@ DealUnitsAPI_getExtendedDealUnitAsync(apiClient_t *apiClient, char *tenantId, ch
 //
 extended_deal_unit_dto_list_envelope_t*
 DealUnitsAPI_getExtendedDealUnitsAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Patch a deal unit
+//
+// Partially updates an existing deal unit by its unique identifier using a JSON Patch document.
+//
+empty_envelope_t*
+DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, list_t *operation);
+
+
+// Patch a deal unit line
+//
+// Partially updates an existing line within a specific deal unit using a JSON Patch document.
+//
+empty_envelope_t*
+DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *dealUnitLineId, list_t *operation);
 
 
 // Update a deal unit

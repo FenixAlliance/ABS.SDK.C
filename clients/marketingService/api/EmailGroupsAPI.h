@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create an email group
@@ -52,6 +53,14 @@ EmailGroupsAPI_getEmailGroupsCountAsync(apiClient_t *apiClient, char *tenantId, 
 //
 email_group_dto_list_envelope_t*
 EmailGroupsAPI_getEmailGroupsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an email group
+//
+// Partially updates an email group by its ID using JSON Patch.
+//
+empty_envelope_t*
+EmailGroupsAPI_patchEmailGroupAsync(apiClient_t *apiClient, char *tenantId, char *emailgroupId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an email group

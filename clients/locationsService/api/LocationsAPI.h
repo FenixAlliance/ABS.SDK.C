@@ -12,6 +12,7 @@
 #include "../model/location_dto_envelope.h"
 #include "../model/location_dto_i_read_only_list_envelope.h"
 #include "../model/location_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create Location
@@ -92,6 +93,22 @@ LocationsAPI_getWalletLocationsAsync(apiClient_t *apiClient, char *walletId);
 //
 int32_envelope_t*
 LocationsAPI_getWalletLocationsCountAsync(apiClient_t *apiClient, char *walletId);
+
+
+// Patch a location
+//
+// Patch a location
+//
+empty_envelope_t*
+LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *locationId, list_t *operation);
+
+
+// Patch a wallet location
+//
+// Patch a wallet location
+//
+empty_envelope_t*
+LocationsAPI_patchWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, list_t *operation);
 
 
 // Update Location

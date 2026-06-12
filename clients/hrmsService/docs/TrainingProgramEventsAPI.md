@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**TrainingProgramEventsAPI_getTrainingProgramEventByIdAsync**](TrainingProgramEventsAPI.md#TrainingProgramEventsAPI_getTrainingProgramEventByIdAsync) | **GET** /api/v2/HrmsService/TrainingProgramEvents/{eventId} | Get training program event by ID
 [**TrainingProgramEventsAPI_getTrainingProgramEventsAsync**](TrainingProgramEventsAPI.md#TrainingProgramEventsAPI_getTrainingProgramEventsAsync) | **GET** /api/v2/HrmsService/TrainingProgramEvents | Get training program events
 [**TrainingProgramEventsAPI_getTrainingProgramEventsCountAsync**](TrainingProgramEventsAPI.md#TrainingProgramEventsAPI_getTrainingProgramEventsCountAsync) | **GET** /api/v2/HrmsService/TrainingProgramEvents/Count | Count training program events
+[**TrainingProgramEventsAPI_patchTrainingProgramEventAsync**](TrainingProgramEventsAPI.md#TrainingProgramEventsAPI_patchTrainingProgramEventAsync) | **PATCH** /api/v2/HrmsService/TrainingProgramEvents/{eventId} | Patch a training program event
 [**TrainingProgramEventsAPI_updateTrainingProgramEventAsync**](TrainingProgramEventsAPI.md#TrainingProgramEventsAPI_updateTrainingProgramEventAsync) | **PUT** /api/v2/HrmsService/TrainingProgramEvents/{eventId} | Update a training program event
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TrainingProgramEventsAPI_patchTrainingProgramEventAsync**
+```c
+// Patch a training program event
+//
+// Partially updates an existing training program event for the specified tenant.
+//
+empty_envelope_t* TrainingProgramEventsAPI_patchTrainingProgramEventAsync(apiClient_t *apiClient, char *tenantId, char *eventId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**eventId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**MarketingCampaignsAPI_getMarketingCampaignDetailsAsync**](MarketingCampaignsAPI.md#MarketingCampaignsAPI_getMarketingCampaignDetailsAsync) | **GET** /api/v2/MarketingService/MarketingCampaigns/{marketingcampaignId} | Get marketing campaign by ID
 [**MarketingCampaignsAPI_getMarketingCampaignODataAsync**](MarketingCampaignsAPI.md#MarketingCampaignsAPI_getMarketingCampaignODataAsync) | **GET** /api/v2/MarketingService/MarketingCampaigns | Get marketing campaigns
 [**MarketingCampaignsAPI_getMarketingCampaignsCountAsync**](MarketingCampaignsAPI.md#MarketingCampaignsAPI_getMarketingCampaignsCountAsync) | **GET** /api/v2/MarketingService/MarketingCampaigns/Count | Get marketing campaigns count
+[**MarketingCampaignsAPI_patchMarketingCampaignAsync**](MarketingCampaignsAPI.md#MarketingCampaignsAPI_patchMarketingCampaignAsync) | **PATCH** /api/v2/MarketingService/MarketingCampaigns/{marketingcampaignId} | Patch a marketing campaign
 [**MarketingCampaignsAPI_updateMarketingCampaignAsync**](MarketingCampaignsAPI.md#MarketingCampaignsAPI_updateMarketingCampaignAsync) | **PUT** /api/v2/MarketingService/MarketingCampaigns/{marketingcampaignId} | Update a marketing campaign
 
 
@@ -175,6 +176,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **MarketingCampaignsAPI_patchMarketingCampaignAsync**
+```c
+// Patch a marketing campaign
+//
+// Partially updates a marketing campaign by its ID using JSON Patch.
+//
+empty_envelope_t* MarketingCampaignsAPI_patchMarketingCampaignAsync(apiClient_t *apiClient, char *tenantId, char *marketingcampaignId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**marketingcampaignId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

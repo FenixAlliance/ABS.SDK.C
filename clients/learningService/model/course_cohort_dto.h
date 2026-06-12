@@ -28,6 +28,7 @@ typedef struct course_cohort_dto_t {
     char *expected_end_date_time; //date time
     char *course_id; // string
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_cohort_dto_t;
 
@@ -40,7 +41,8 @@ course_cohort_dto_t *course_cohort_dto_create(
     char *expected_start_date_time,
     char *expected_end_date_time,
     char *course_id,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_cohort_dto_free(course_cohort_dto_t *course_cohort_dto);

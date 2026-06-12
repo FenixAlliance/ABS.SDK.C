@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/option_create_dto.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
@@ -60,6 +61,14 @@ OptionsAPI_getUserOptions(apiClient_t *apiClient, char *portalId, char *api_vers
 //
 int32_envelope_t*
 OptionsAPI_getUserOptionsCount(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version);
+
+
+// Patch a user option
+//
+// Partially updates a user option using a JSON Patch document
+//
+empty_envelope_t*
+OptionsAPI_patchUserOption(apiClient_t *apiClient, char *optionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a user option

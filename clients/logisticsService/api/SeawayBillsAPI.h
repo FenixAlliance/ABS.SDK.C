@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/seaway_bill_create_dto.h"
 #include "../model/seaway_bill_dto_envelope.h"
 #include "../model/seaway_bill_dto_list_envelope.h"
@@ -111,6 +112,22 @@ SeawayBillsAPI_markSeawayBillArrivedAsync(apiClient_t *apiClient, char *tenantId
 //
 empty_envelope_t*
 SeawayBillsAPI_markSeawayBillInTransitAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version);
+
+
+// Patch a seaway bill
+//
+// Partially updates an existing seaway bill using a JSON Patch document.
+//
+empty_envelope_t*
+SeawayBillsAPI_patchSeawayBillAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a seaway bill line
+//
+// Partially updates a line on a seaway bill using a JSON Patch document.
+//
+empty_envelope_t*
+SeawayBillsAPI_patchSeawayBillLineAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Release a seaway bill

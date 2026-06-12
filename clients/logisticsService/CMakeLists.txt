@@ -110,6 +110,7 @@ set(SRCS
     model/item_retain_sample_dto_list_envelope.c
     model/item_retain_sample_update_dto.c
     model/login_request.c
+    model/operation.c
     model/port_create_dto.c
     model/port_dto.c
     model/port_dto_envelope.c
@@ -274,6 +275,7 @@ set(HDRS
     model/item_retain_sample_dto_list_envelope.h
     model/item_retain_sample_update_dto.h
     model/login_request.h
+    model/operation.h
     model/port_create_dto.h
     model/port_dto.h
     model/port_dto_envelope.h

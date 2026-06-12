@@ -95,6 +95,7 @@ set(SRCS
     model/login_request.c
     model/money.c
     model/money_envelope.c
+    model/operation.c
     model/payment_dto.c
     model/payment_dto_i_read_only_list_envelope.c
     model/refresh_request.c
@@ -161,6 +162,7 @@ set(HDRS
     model/login_request.h
     model/money.h
     model/money_envelope.h
+    model/operation.h
     model/payment_dto.h
     model/payment_dto_i_read_only_list_envelope.h
     model/refresh_request.h

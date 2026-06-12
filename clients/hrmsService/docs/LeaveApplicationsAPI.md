@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**LeaveApplicationsAPI_getLeaveApplicationByIdAsync**](LeaveApplicationsAPI.md#LeaveApplicationsAPI_getLeaveApplicationByIdAsync) | **GET** /api/v2/HrmsService/LeaveApplications/{leaveApplicationId} | Get leave application by ID
 [**LeaveApplicationsAPI_getLeaveApplicationsAsync**](LeaveApplicationsAPI.md#LeaveApplicationsAPI_getLeaveApplicationsAsync) | **GET** /api/v2/HrmsService/LeaveApplications | Get leave applications
 [**LeaveApplicationsAPI_getLeaveApplicationsCountAsync**](LeaveApplicationsAPI.md#LeaveApplicationsAPI_getLeaveApplicationsCountAsync) | **GET** /api/v2/HrmsService/LeaveApplications/Count | Count leave applications
+[**LeaveApplicationsAPI_patchLeaveApplicationAsync**](LeaveApplicationsAPI.md#LeaveApplicationsAPI_patchLeaveApplicationAsync) | **PATCH** /api/v2/HrmsService/LeaveApplications/{leaveApplicationId} | Patch a leave application
 [**LeaveApplicationsAPI_updateLeaveApplicationAsync**](LeaveApplicationsAPI.md#LeaveApplicationsAPI_updateLeaveApplicationAsync) | **PUT** /api/v2/HrmsService/LeaveApplications/{leaveApplicationId} | Update a leave application
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LeaveApplicationsAPI_patchLeaveApplicationAsync**
+```c
+// Patch a leave application
+//
+// Partially updates an existing leave application for the specified tenant.
+//
+empty_envelope_t* LeaveApplicationsAPI_patchLeaveApplicationAsync(apiClient_t *apiClient, char *tenantId, char *leaveApplicationId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**leaveApplicationId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

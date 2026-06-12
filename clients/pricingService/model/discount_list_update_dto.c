@@ -4,9 +4,27 @@
 #include "discount_list_update_dto.h"
 
 
+char* discount_list_update_dto_discount_list_type_ToString(pricingservice_discount_list_update_dto_DISCOUNTLISTTYPE_e discount_list_type) {
+    char* discount_list_typeArray[] =  { "NULL", "Amount", "Percentage" };
+    return discount_list_typeArray[discount_list_type];
+}
+
+pricingservice_discount_list_update_dto_DISCOUNTLISTTYPE_e discount_list_update_dto_discount_list_type_FromString(char* discount_list_type){
+    int stringToReturn = 0;
+    char *discount_list_typeArray[] =  { "NULL", "Amount", "Percentage" };
+    size_t sizeofArray = sizeof(discount_list_typeArray) / sizeof(discount_list_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(discount_list_type, discount_list_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 discount_list_update_dto_t *discount_list_update_dto_create(
     char *name,
+    pricingservice_discount_list_update_dto_DISCOUNTLISTTYPE_e discount_list_type,
     char *currency_id
     ) {
     discount_list_update_dto_t *discount_list_update_dto_local_var = malloc(sizeof(discount_list_update_dto_t));
@@ -14,6 +32,7 @@ discount_list_update_dto_t *discount_list_update_dto_create(
         return NULL;
     }
     discount_list_update_dto_local_var->name = name;
+    discount_list_update_dto_local_var->discount_list_type = discount_list_type;
     discount_list_update_dto_local_var->currency_id = currency_id;
 
     return discount_list_update_dto_local_var;
@@ -47,6 +66,15 @@ cJSON *discount_list_update_dto_convertToJSON(discount_list_update_dto_t *discou
     }
 
 
+    // discount_list_update_dto->discount_list_type
+    if(discount_list_update_dto->discount_list_type != pricingservice_discount_list_update_dto_DISCOUNTLISTTYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "discountListType", discount_list_typediscount_list_update_dto_ToString(discount_list_update_dto->discount_list_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // discount_list_update_dto->currency_id
     if(discount_list_update_dto->currency_id) {
     if(cJSON_AddStringToObject(item, "currencyId", discount_list_update_dto->currency_id) == NULL) {
@@ -75,6 +103,17 @@ discount_list_update_dto_t *discount_list_update_dto_parseFromJSON(cJSON *discou
     }
     }
 
+    // discount_list_update_dto->discount_list_type
+    cJSON *discount_list_type = cJSON_GetObjectItemCaseSensitive(discount_list_update_dtoJSON, "discountListType");
+    pricingservice_discount_list_update_dto_DISCOUNTLISTTYPE_e discount_list_typeVariable;
+    if (discount_list_type) { 
+    if(!cJSON_IsString(discount_list_type))
+    {
+    goto end; //Enum
+    }
+    discount_list_typeVariable = discount_list_update_dto_discount_list_type_FromString(discount_list_type->valuestring);
+    }
+
     // discount_list_update_dto->currency_id
     cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(discount_list_update_dtoJSON, "currencyId");
     if (currency_id) { 
@@ -87,6 +126,7 @@ discount_list_update_dto_t *discount_list_update_dto_parseFromJSON(cJSON *discou
 
     discount_list_update_dto_local_var = discount_list_update_dto_create (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        discount_list_type ? discount_list_typeVariable : pricingservice_discount_list_update_dto_DISCOUNTLISTTYPE_NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL
         );
 

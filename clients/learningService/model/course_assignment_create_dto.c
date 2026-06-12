@@ -150,14 +150,14 @@ cJSON *course_assignment_create_dto_convertToJSON(course_assignment_create_dto_t
     if (!course_assignment_create_dto->course_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "courseID", course_assignment_create_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_assignment_create_dto->course_id) == NULL) {
     goto fail; //String
     }
 
 
     // course_assignment_create_dto->course_unit_id
     if(course_assignment_create_dto->course_unit_id) {
-    if(cJSON_AddStringToObject(item, "courseUnitID", course_assignment_create_dto->course_unit_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseUnitId", course_assignment_create_dto->course_unit_id) == NULL) {
     goto fail; //String
     }
     }
@@ -165,7 +165,7 @@ cJSON *course_assignment_create_dto_convertToJSON(course_assignment_create_dto_t
 
     // course_assignment_create_dto->course_cohort_id
     if(course_assignment_create_dto->course_cohort_id) {
-    if(cJSON_AddStringToObject(item, "courseCohortID", course_assignment_create_dto->course_cohort_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseCohortId", course_assignment_create_dto->course_cohort_id) == NULL) {
     goto fail; //String
     }
     }
@@ -173,7 +173,7 @@ cJSON *course_assignment_create_dto_convertToJSON(course_assignment_create_dto_t
 
     // course_assignment_create_dto->course_assignment_type_id
     if(course_assignment_create_dto->course_assignment_type_id) {
-    if(cJSON_AddStringToObject(item, "courseAssignmentTypeID", course_assignment_create_dto->course_assignment_type_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseAssignmentTypeId", course_assignment_create_dto->course_assignment_type_id) == NULL) {
     goto fail; //String
     }
     }
@@ -272,7 +272,7 @@ course_assignment_create_dto_t *course_assignment_create_dto_parseFromJSON(cJSON
     }
 
     // course_assignment_create_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_assignment_create_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_assignment_create_dtoJSON, "courseId");
     if (!course_id) {
         goto end;
     }
@@ -284,7 +284,7 @@ course_assignment_create_dto_t *course_assignment_create_dto_parseFromJSON(cJSON
     }
 
     // course_assignment_create_dto->course_unit_id
-    cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_assignment_create_dtoJSON, "courseUnitID");
+    cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_assignment_create_dtoJSON, "courseUnitId");
     if (course_unit_id) { 
     if(!cJSON_IsString(course_unit_id) && !cJSON_IsNull(course_unit_id))
     {
@@ -293,7 +293,7 @@ course_assignment_create_dto_t *course_assignment_create_dto_parseFromJSON(cJSON
     }
 
     // course_assignment_create_dto->course_cohort_id
-    cJSON *course_cohort_id = cJSON_GetObjectItemCaseSensitive(course_assignment_create_dtoJSON, "courseCohortID");
+    cJSON *course_cohort_id = cJSON_GetObjectItemCaseSensitive(course_assignment_create_dtoJSON, "courseCohortId");
     if (course_cohort_id) { 
     if(!cJSON_IsString(course_cohort_id) && !cJSON_IsNull(course_cohort_id))
     {
@@ -302,7 +302,7 @@ course_assignment_create_dto_t *course_assignment_create_dto_parseFromJSON(cJSON
     }
 
     // course_assignment_create_dto->course_assignment_type_id
-    cJSON *course_assignment_type_id = cJSON_GetObjectItemCaseSensitive(course_assignment_create_dtoJSON, "courseAssignmentTypeID");
+    cJSON *course_assignment_type_id = cJSON_GetObjectItemCaseSensitive(course_assignment_create_dtoJSON, "courseAssignmentTypeId");
     if (course_assignment_type_id) { 
     if(!cJSON_IsString(course_assignment_type_id) && !cJSON_IsNull(course_assignment_type_id))
     {

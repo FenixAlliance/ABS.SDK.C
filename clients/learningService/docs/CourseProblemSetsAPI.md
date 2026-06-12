@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseProblemSetsAPI_getCourseProblemSetByIdAsync**](CourseProblemSetsAPI.md#CourseProblemSetsAPI_getCourseProblemSetByIdAsync) | **GET** /api/v2/LearningService/CourseProblemSets/{problemSetId} | Get course problem set by ID
 [**CourseProblemSetsAPI_getCourseProblemSetsAsync**](CourseProblemSetsAPI.md#CourseProblemSetsAPI_getCourseProblemSetsAsync) | **GET** /api/v2/LearningService/CourseProblemSets | Get all course problem sets
 [**CourseProblemSetsAPI_getCourseProblemSetsCountAsync**](CourseProblemSetsAPI.md#CourseProblemSetsAPI_getCourseProblemSetsCountAsync) | **GET** /api/v2/LearningService/CourseProblemSets/Count | Get course problem sets count
+[**CourseProblemSetsAPI_patchCourseProblemSetAsync**](CourseProblemSetsAPI.md#CourseProblemSetsAPI_patchCourseProblemSetAsync) | **PATCH** /api/v2/LearningService/CourseProblemSets/{problemSetId} | Patch a course problem set
 [**CourseProblemSetsAPI_updateCourseProblemSetAsync**](CourseProblemSetsAPI.md#CourseProblemSetsAPI_updateCourseProblemSetAsync) | **PUT** /api/v2/LearningService/CourseProblemSets/{problemSetId} | Update a course problem set
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseProblemSetsAPI_patchCourseProblemSetAsync**
+```c
+// Patch a course problem set
+//
+// Partially updates a course problem set for the specified tenant.
+//
+empty_envelope_t* CourseProblemSetsAPI_patchCourseProblemSetAsync(apiClient_t *apiClient, char *tenantId, char *problemSetId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**problemSetId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

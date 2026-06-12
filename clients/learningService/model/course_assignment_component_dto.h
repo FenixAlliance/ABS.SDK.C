@@ -28,6 +28,7 @@ typedef struct course_assignment_component_dto_t {
     char *course_assignment_id; // string
     char *course_id; // string
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_assignment_component_dto_t;
 
@@ -40,7 +41,8 @@ course_assignment_component_dto_t *course_assignment_component_dto_create(
     int order,
     char *course_assignment_id,
     char *course_id,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_assignment_component_dto_free(course_assignment_component_dto_t *course_assignment_component_dto);

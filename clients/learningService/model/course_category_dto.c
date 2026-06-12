@@ -12,7 +12,8 @@ course_category_dto_t *course_category_dto_create(
     char *description,
     char *image_url,
     int is_featured,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
     ) {
     course_category_dto_t *course_category_dto_local_var = malloc(sizeof(course_category_dto_t));
     if (!course_category_dto_local_var) {
@@ -25,6 +26,7 @@ course_category_dto_t *course_category_dto_create(
     course_category_dto_local_var->image_url = image_url;
     course_category_dto_local_var->is_featured = is_featured;
     course_category_dto_local_var->tenant_id = tenant_id;
+    course_category_dto_local_var->enrollment_id = enrollment_id;
 
     return course_category_dto_local_var;
 }
@@ -58,6 +60,10 @@ void course_category_dto_free(course_category_dto_t *course_category_dto) {
     if (course_category_dto->tenant_id) {
         free(course_category_dto->tenant_id);
         course_category_dto->tenant_id = NULL;
+    }
+    if (course_category_dto->enrollment_id) {
+        free(course_category_dto->enrollment_id);
+        course_category_dto->enrollment_id = NULL;
     }
     free(course_category_dto);
 }
@@ -116,6 +122,14 @@ cJSON *course_category_dto_convertToJSON(course_category_dto_t *course_category_
     // course_category_dto->tenant_id
     if(course_category_dto->tenant_id) {
     if(cJSON_AddStringToObject(item, "tenantId", course_category_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_category_dto->enrollment_id
+    if(course_category_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", course_category_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -195,6 +209,15 @@ course_category_dto_t *course_category_dto_parseFromJSON(cJSON *course_category_
     }
     }
 
+    // course_category_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(course_category_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     course_category_dto_local_var = course_category_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -203,7 +226,8 @@ course_category_dto_t *course_category_dto_parseFromJSON(cJSON *course_category_
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         image_url && !cJSON_IsNull(image_url) ? strdup(image_url->valuestring) : NULL,
         is_featured ? is_featured->valueint : 0,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return course_category_dto_local_var;

@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/supplier_profile_create_dto.h"
 #include "../model/supplier_profile_dto_envelope.h"
 #include "../model/supplier_profile_dto_list_envelope.h"
@@ -52,6 +53,14 @@ SupplierProfilesAPI_getSupplierProfilesAsync(apiClient_t *apiClient, char *tenan
 //
 int32_envelope_t*
 SupplierProfilesAPI_getSupplierProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a supplier profile
+//
+// Applies a JSON Patch document to a supplier profile.
+//
+empty_envelope_t*
+SupplierProfilesAPI_patchSupplierProfileAsync(apiClient_t *apiClient, char *tenantId, char *supplierProfileId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a supplier profile

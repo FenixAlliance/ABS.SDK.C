@@ -23,7 +23,8 @@ typedef struct course_content_group_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *course_id; // string
-    char *business_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_content_group_dto_t;
 
@@ -32,7 +33,8 @@ course_content_group_dto_t *course_content_group_dto_create(
     char *timestamp,
     char *name,
     char *course_id,
-    char *business_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_content_group_dto_free(course_content_group_dto_t *course_content_group_dto);

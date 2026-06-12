@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/web_page_category_create_dto.h"
 #include "../model/web_page_category_dto_list_envelope.h"
 #include "../model/web_page_create_dto.h"
@@ -87,6 +88,14 @@ WebPagesAPI_getWebPageByIdAsync(apiClient_t *apiClient, char *tenantId, char *we
 //
 web_page_dto_list_envelope_t*
 WebPagesAPI_getWebPagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a web page
+//
+// Partially updates an existing web page for the specified tenant.
+//
+void
+WebPagesAPI_patchWebPageAsync(apiClient_t *apiClient, char *tenantId, char *webPageId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Relate web page to category

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**VesselsAPI_getVesselByIdAsync**](VesselsAPI.md#VesselsAPI_getVesselByIdAsync) | **GET** /api/v2/LogisticsService/Vessels/{vesselId} | Get vessel by ID
 [**VesselsAPI_getVesselsAsync**](VesselsAPI.md#VesselsAPI_getVesselsAsync) | **GET** /api/v2/LogisticsService/Vessels | Get all vessels
 [**VesselsAPI_getVesselsCountAsync**](VesselsAPI.md#VesselsAPI_getVesselsCountAsync) | **GET** /api/v2/LogisticsService/Vessels/Count | Get vessels count
+[**VesselsAPI_patchVesselAsync**](VesselsAPI.md#VesselsAPI_patchVesselAsync) | **PATCH** /api/v2/LogisticsService/Vessels/{vesselId} | Patch a vessel
 [**VesselsAPI_updateVesselAsync**](VesselsAPI.md#VesselsAPI_updateVesselAsync) | **PUT** /api/v2/LogisticsService/Vessels/{vesselId} | Update a vessel
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **VesselsAPI_patchVesselAsync**
+```c
+// Patch a vessel
+//
+// Partially updates an existing vessel using JSON Patch.
+//
+empty_envelope_t* VesselsAPI_patchVesselAsync(apiClient_t *apiClient, char *tenantId, char *vesselId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**vesselId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

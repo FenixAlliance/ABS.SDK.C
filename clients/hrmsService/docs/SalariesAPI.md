@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**SalariesAPI_getSalariesAsync**](SalariesAPI.md#SalariesAPI_getSalariesAsync) | **GET** /api/v2/HrmsService/Salaries | Get salaries
 [**SalariesAPI_getSalariesCountAsync**](SalariesAPI.md#SalariesAPI_getSalariesCountAsync) | **GET** /api/v2/HrmsService/Salaries/Count | Count salaries
 [**SalariesAPI_getSalaryByIdAsync**](SalariesAPI.md#SalariesAPI_getSalaryByIdAsync) | **GET** /api/v2/HrmsService/Salaries/{salaryId} | Get salary by ID
+[**SalariesAPI_patchSalaryAsync**](SalariesAPI.md#SalariesAPI_patchSalaryAsync) | **PATCH** /api/v2/HrmsService/Salaries/{salaryId} | Patch a salary
 [**SalariesAPI_updateSalaryAsync**](SalariesAPI.md#SalariesAPI_updateSalaryAsync) | **PUT** /api/v2/HrmsService/Salaries/{salaryId} | Update a salary
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SalariesAPI_patchSalaryAsync**
+```c
+// Patch a salary
+//
+// Partially updates an existing salary for the specified tenant.
+//
+empty_envelope_t* SalariesAPI_patchSalaryAsync(apiClient_t *apiClient, char *tenantId, char *salaryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**salaryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

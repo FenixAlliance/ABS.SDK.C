@@ -9,6 +9,7 @@
 #include "../model/course_forum_dto.h"
 #include "../model/course_forum_update_dto.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a course forum
@@ -49,6 +50,14 @@ CourseForumsAPI_getCourseForumsAsync(apiClient_t *apiClient, char *tenantId, cha
 //
 int*
 CourseForumsAPI_getCourseForumsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course forum
+//
+// Partially updates an existing course forum.
+//
+void
+CourseForumsAPI_patchCourseForumAsync(apiClient_t *apiClient, char *tenantId, char *forumId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course forum

@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/rail_waybill_create_dto.h"
 #include "../model/rail_waybill_dto_envelope.h"
 #include "../model/rail_waybill_dto_list_envelope.h"
@@ -111,6 +112,22 @@ RailWaybillsAPI_markRailWaybillDeliveredAsync(apiClient_t *apiClient, char *tena
 //
 empty_envelope_t*
 RailWaybillsAPI_markRailWaybillInTransitAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version);
+
+
+// Patch a rail waybill
+//
+// Partially updates an existing rail waybill using a JSON Patch document.
+//
+empty_envelope_t*
+RailWaybillsAPI_patchRailWaybillAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a rail waybill line
+//
+// Partially updates a line on a rail waybill using a JSON Patch document.
+//
+empty_envelope_t*
+RailWaybillsAPI_patchRailWaybillLineAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Remove a rail waybill line

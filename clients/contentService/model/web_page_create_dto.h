@@ -36,7 +36,9 @@ typedef struct web_page_create_dto_t {
     char *markup; // string
     char *featured_image_url; // string
     contentservice_web_page_create_dto_CODETYPE_e code_type; //enum
+    char *slug; // string
     char *web_template_id; // string
+    char *parent_web_content_id; // string
 
 } web_page_create_dto_t;
 
@@ -50,7 +52,9 @@ web_page_create_dto_t *web_page_create_dto_create(
     char *markup,
     char *featured_image_url,
     contentservice_web_page_create_dto_CODETYPE_e code_type,
-    char *web_template_id
+    char *slug,
+    char *web_template_id,
+    char *parent_web_content_id
 );
 
 void web_page_create_dto_free(web_page_create_dto_t *web_page_create_dto);

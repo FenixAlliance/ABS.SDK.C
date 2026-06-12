@@ -6,11 +6,13 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
+#include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/marketing_lead_create_dto.h"
 #include "../model/marketing_lead_dto_envelope.h"
 #include "../model/marketing_lead_dto_list_envelope.h"
 #include "../model/marketing_lead_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a marketing lead
@@ -43,6 +45,14 @@ MarketingLeadsAPI_getMarketingLeadsCountAsync(apiClient_t *apiClient, char *tena
 //
 marketing_lead_dto_list_envelope_t*
 MarketingLeadsAPI_getMarketingLeadsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a marketing lead
+//
+// Partially updates a marketing lead by its ID using JSON Patch.
+//
+empty_envelope_t*
+MarketingLeadsAPI_patchMarketingLeadAsync(apiClient_t *apiClient, char *tenantId, char *marketingLeadId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a marketing lead

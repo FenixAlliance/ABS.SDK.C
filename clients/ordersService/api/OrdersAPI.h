@@ -10,6 +10,7 @@
 #include "../model/error_envelope.h"
 #include "../model/extended_order_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/order_create_dto.h"
 #include "../model/order_dto_envelope.h"
 #include "../model/order_dto_list_envelope.h"
@@ -122,6 +123,22 @@ OrdersAPI_getOrders(apiClient_t *apiClient, char *tenantId);
 //
 int32_envelope_t*
 OrdersAPI_getOrdersCount(apiClient_t *apiClient, char *tenantId);
+
+
+// Partially updates an existing order.
+//
+// Applies a JSON Patch document to partially update an existing order.
+//
+empty_envelope_t*
+OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list_t *operation);
+
+
+// Partially updates an order line.
+//
+// Applies a JSON Patch document to partially update a specific order line.
+//
+empty_envelope_t*
+OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, char *orderLineId, list_t *operation);
 
 
 // Preview the rendered email for an Order.

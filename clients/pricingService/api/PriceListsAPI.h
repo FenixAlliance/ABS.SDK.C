@@ -12,6 +12,7 @@
 #include "../model/item_price_dto_envelope.h"
 #include "../model/item_price_dto_list_envelope.h"
 #include "../model/item_price_update_dto.h"
+#include "../model/operation.h"
 #include "../model/price_list_create_dto.h"
 #include "../model/price_list_dto_envelope.h"
 #include "../model/price_list_dto_list_envelope.h"
@@ -88,6 +89,22 @@ PriceListsAPI_getPriceListsAsync(apiClient_t *apiClient, char *tenantId);
 //
 int32_envelope_t*
 PriceListsAPI_getPriceListsCountAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Patches a price list
+//
+// Partially updates the specified price list using a JSON Patch document.
+//
+empty_envelope_t*
+PriceListsAPI_patchPriceListAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, list_t *operation);
+
+
+// Patches a price list entry
+//
+// Partially updates the specified price entry in a price list using a JSON Patch document.
+//
+empty_envelope_t*
+PriceListsAPI_patchPriceListPriceAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *priceId, list_t *operation);
 
 
 // Updates a price list

@@ -1206,6 +1206,348 @@ end:
 
 }
 
+// Patches a discount list
+//
+// Partially updates the specified discount list using a JSON Patch document.
+//
+empty_envelope_t*
+DiscountListsAPI_patchDiscountList(apiClient_t *apiClient, char *tenantId, char *discountListId, list_t *operation)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/PricingService/DiscountLists/{discountListId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/PricingService/DiscountLists/{discountListId}");
+
+
+    // Path Params
+    long sizeOfPathParams_discountListId = strlen(discountListId)+3 + strlen("{ discountListId }");
+    if(discountListId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_discountListId = malloc(sizeOfPathParams_discountListId);
+    sprintf(localVarToReplace_discountListId, "{%s}", "discountListId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_discountListId, discountListId);
+    if(discountListId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_discountListId = malloc(sizeOfPathParams_discountListId);
+    sprintf(localVarToReplace_discountListId, "{%s}", "discountListId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_discountListId, discountListId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Bad Request");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    //nonprimitive not container
+    cJSON *DiscountListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(DiscountListsAPIlocalVarJSON);
+    cJSON_Delete(DiscountListsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_discountListId);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Patches a discount list entry
+//
+// Partially updates the specified discount entry using a JSON Patch document.
+//
+empty_envelope_t*
+DiscountListsAPI_patchDiscountListEntry(apiClient_t *apiClient, char *tenantId, char *discountListId, char *discountListEntryId, list_t *operation)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/PricingService/DiscountLists/{discountListId}/Discounts/{discountListEntryId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/PricingService/DiscountLists/{discountListId}/Discounts/{discountListEntryId}");
+
+
+    // Path Params
+    long sizeOfPathParams_discountListId = strlen(discountListId)+3 + strlen(discountListEntryId)+3 + strlen("{ discountListId }");
+    if(discountListId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_discountListId = malloc(sizeOfPathParams_discountListId);
+    sprintf(localVarToReplace_discountListId, "{%s}", "discountListId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_discountListId, discountListId);
+    if(discountListId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_discountListId = malloc(sizeOfPathParams_discountListId);
+    sprintf(localVarToReplace_discountListId, "{%s}", "discountListId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_discountListId, discountListId);
+
+    // Path Params
+    long sizeOfPathParams_discountListEntryId = strlen(discountListId)+3 + strlen(discountListEntryId)+3 + strlen("{ discountListEntryId }");
+    if(discountListEntryId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_discountListEntryId = malloc(sizeOfPathParams_discountListEntryId);
+    sprintf(localVarToReplace_discountListEntryId, "{%s}", "discountListEntryId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_discountListEntryId, discountListEntryId);
+    if(discountListEntryId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_discountListEntryId = malloc(sizeOfPathParams_discountListEntryId);
+    sprintf(localVarToReplace_discountListEntryId, "{%s}", "discountListEntryId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_discountListEntryId, discountListEntryId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Bad Request");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    //nonprimitive not container
+    cJSON *DiscountListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(DiscountListsAPIlocalVarJSON);
+    cJSON_Delete(DiscountListsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_discountListId);
+    free(localVarToReplace_discountListEntryId);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Updates a discount list
 //
 // Updates the specified discount list.

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseUpdatesAPI_getCourseUpdateByIdAsync**](CourseUpdatesAPI.md#CourseUpdatesAPI_getCourseUpdateByIdAsync) | **GET** /api/v2/LearningService/CourseUpdates/{updateId} | Get course update by ID
 [**CourseUpdatesAPI_getCourseUpdatesAsync**](CourseUpdatesAPI.md#CourseUpdatesAPI_getCourseUpdatesAsync) | **GET** /api/v2/LearningService/CourseUpdates | Get all course updates
 [**CourseUpdatesAPI_getCourseUpdatesCountAsync**](CourseUpdatesAPI.md#CourseUpdatesAPI_getCourseUpdatesCountAsync) | **GET** /api/v2/LearningService/CourseUpdates/Count | Get course updates count
+[**CourseUpdatesAPI_patchCourseUpdateAsync**](CourseUpdatesAPI.md#CourseUpdatesAPI_patchCourseUpdateAsync) | **PATCH** /api/v2/LearningService/CourseUpdates/{updateId} | Patch a course update
 [**CourseUpdatesAPI_updateCourseUpdateAsync**](CourseUpdatesAPI.md#CourseUpdatesAPI_updateCourseUpdateAsync) | **PUT** /api/v2/LearningService/CourseUpdates/{updateId} | Update a course update
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseUpdatesAPI_patchCourseUpdateAsync**
+```c
+// Patch a course update
+//
+// Partially updates a course update for the specified tenant.
+//
+empty_envelope_t* CourseUpdatesAPI_patchCourseUpdateAsync(apiClient_t *apiClient, char *tenantId, char *updateId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**updateId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

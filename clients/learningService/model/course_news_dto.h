@@ -26,6 +26,7 @@ typedef struct course_news_dto_t {
     char *content; // string
     char *course_id; // string
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_news_dto_t;
 
@@ -36,7 +37,8 @@ course_news_dto_t *course_news_dto_create(
     char *description,
     char *content,
     char *course_id,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_news_dto_free(course_news_dto_t *course_news_dto);

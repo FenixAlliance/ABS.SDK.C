@@ -83,6 +83,8 @@ web_page_dto_t *web_page_dto_create(
     char *parent_web_content_id,
     char *parent_web_content_version_id,
     char *web_template_id,
+    char *author_name,
+    char *author_id,
     int is_home_page,
     int is_store_page,
     int is_cart_page,
@@ -158,6 +160,8 @@ web_page_dto_t *web_page_dto_create(
     web_page_dto_local_var->parent_web_content_id = parent_web_content_id;
     web_page_dto_local_var->parent_web_content_version_id = parent_web_content_version_id;
     web_page_dto_local_var->web_template_id = web_template_id;
+    web_page_dto_local_var->author_name = author_name;
+    web_page_dto_local_var->author_id = author_id;
     web_page_dto_local_var->is_home_page = is_home_page;
     web_page_dto_local_var->is_store_page = is_store_page;
     web_page_dto_local_var->is_cart_page = is_cart_page;
@@ -357,6 +361,14 @@ void web_page_dto_free(web_page_dto_t *web_page_dto) {
     if (web_page_dto->web_template_id) {
         free(web_page_dto->web_template_id);
         web_page_dto->web_template_id = NULL;
+    }
+    if (web_page_dto->author_name) {
+        free(web_page_dto->author_name);
+        web_page_dto->author_name = NULL;
+    }
+    if (web_page_dto->author_id) {
+        free(web_page_dto->author_id);
+        web_page_dto->author_id = NULL;
     }
     free(web_page_dto);
 }
@@ -844,7 +856,23 @@ cJSON *web_page_dto_convertToJSON(web_page_dto_t *web_page_dto) {
 
     // web_page_dto->web_template_id
     if(web_page_dto->web_template_id) {
-    if(cJSON_AddStringToObject(item, "webTemplateID", web_page_dto->web_template_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "webTemplateId", web_page_dto->web_template_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // web_page_dto->author_name
+    if(web_page_dto->author_name) {
+    if(cJSON_AddStringToObject(item, "authorName", web_page_dto->author_name) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // web_page_dto->author_id
+    if(web_page_dto->author_id) {
+    if(cJSON_AddStringToObject(item, "authorId", web_page_dto->author_id) == NULL) {
     goto fail; //String
     }
     }
@@ -1475,9 +1503,27 @@ web_page_dto_t *web_page_dto_parseFromJSON(cJSON *web_page_dtoJSON){
     }
 
     // web_page_dto->web_template_id
-    cJSON *web_template_id = cJSON_GetObjectItemCaseSensitive(web_page_dtoJSON, "webTemplateID");
+    cJSON *web_template_id = cJSON_GetObjectItemCaseSensitive(web_page_dtoJSON, "webTemplateId");
     if (web_template_id) { 
     if(!cJSON_IsString(web_template_id) && !cJSON_IsNull(web_template_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // web_page_dto->author_name
+    cJSON *author_name = cJSON_GetObjectItemCaseSensitive(web_page_dtoJSON, "authorName");
+    if (author_name) { 
+    if(!cJSON_IsString(author_name) && !cJSON_IsNull(author_name))
+    {
+    goto end; //String
+    }
+    }
+
+    // web_page_dto->author_id
+    cJSON *author_id = cJSON_GetObjectItemCaseSensitive(web_page_dtoJSON, "authorId");
+    if (author_id) { 
+    if(!cJSON_IsString(author_id) && !cJSON_IsNull(author_id))
     {
     goto end; //String
     }
@@ -1635,6 +1681,8 @@ web_page_dto_t *web_page_dto_parseFromJSON(cJSON *web_page_dtoJSON){
         parent_web_content_id && !cJSON_IsNull(parent_web_content_id) ? strdup(parent_web_content_id->valuestring) : NULL,
         parent_web_content_version_id && !cJSON_IsNull(parent_web_content_version_id) ? strdup(parent_web_content_version_id->valuestring) : NULL,
         web_template_id && !cJSON_IsNull(web_template_id) ? strdup(web_template_id->valuestring) : NULL,
+        author_name && !cJSON_IsNull(author_name) ? strdup(author_name->valuestring) : NULL,
+        author_id && !cJSON_IsNull(author_id) ? strdup(author_id->valuestring) : NULL,
         is_home_page ? is_home_page->valueint : 0,
         is_store_page ? is_store_page->valueint : 0,
         is_cart_page ? is_cart_page->valueint : 0,

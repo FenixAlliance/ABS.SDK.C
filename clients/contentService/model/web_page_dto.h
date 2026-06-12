@@ -88,6 +88,8 @@ typedef struct web_page_dto_t {
     char *parent_web_content_id; // string
     char *parent_web_content_version_id; // string
     char *web_template_id; // string
+    char *author_name; // string
+    char *author_id; // string
     int is_home_page; //boolean
     int is_store_page; //boolean
     int is_cart_page; //boolean
@@ -162,6 +164,8 @@ web_page_dto_t *web_page_dto_create(
     char *parent_web_content_id,
     char *parent_web_content_version_id,
     char *web_template_id,
+    char *author_name,
+    char *author_id,
     int is_home_page,
     int is_store_page,
     int is_cart_page,

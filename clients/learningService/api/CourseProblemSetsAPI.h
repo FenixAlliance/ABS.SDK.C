@@ -8,7 +8,9 @@
 #include "../model/course_problem_set_create_dto.h"
 #include "../model/course_problem_set_dto.h"
 #include "../model/course_problem_set_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course problem set
@@ -49,6 +51,14 @@ CourseProblemSetsAPI_getCourseProblemSetsAsync(apiClient_t *apiClient, char *ten
 //
 int*
 CourseProblemSetsAPI_getCourseProblemSetsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course problem set
+//
+// Partially updates a course problem set for the specified tenant.
+//
+empty_envelope_t*
+CourseProblemSetsAPI_patchCourseProblemSetAsync(apiClient_t *apiClient, char *tenantId, char *problemSetId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course problem set

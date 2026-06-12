@@ -3,8 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **char \*** |  | [optional] 
-**timestamp** | **char \*** |  | [optional] 
 **course_cohort_id** | **char \*** |  | [optional] 
 **course_completion_certificate_id** | **char \*** |  | [optional] 
 

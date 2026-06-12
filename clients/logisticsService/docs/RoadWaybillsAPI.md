@@ -17,6 +17,8 @@ Method | HTTP request | Description
 [**RoadWaybillsAPI_issueRoadWaybillAsync**](RoadWaybillsAPI.md#RoadWaybillsAPI_issueRoadWaybillAsync) | **POST** /api/v2/LogisticsService/RoadWaybills/{waybillId}/Issue | Issue a road waybill
 [**RoadWaybillsAPI_markRoadWaybillDeliveredAsync**](RoadWaybillsAPI.md#RoadWaybillsAPI_markRoadWaybillDeliveredAsync) | **POST** /api/v2/LogisticsService/RoadWaybills/{waybillId}/MarkDelivered | Mark road waybill delivered
 [**RoadWaybillsAPI_markRoadWaybillInTransitAsync**](RoadWaybillsAPI.md#RoadWaybillsAPI_markRoadWaybillInTransitAsync) | **POST** /api/v2/LogisticsService/RoadWaybills/{waybillId}/MarkInTransit | Mark road waybill in transit
+[**RoadWaybillsAPI_patchRoadWaybillAsync**](RoadWaybillsAPI.md#RoadWaybillsAPI_patchRoadWaybillAsync) | **PATCH** /api/v2/LogisticsService/RoadWaybills/{waybillId} | Patch a road waybill
+[**RoadWaybillsAPI_patchRoadWaybillLineAsync**](RoadWaybillsAPI.md#RoadWaybillsAPI_patchRoadWaybillLineAsync) | **PATCH** /api/v2/LogisticsService/RoadWaybills/{waybillId}/Lines/{lineId} | Patch a road waybill line
 [**RoadWaybillsAPI_removeRoadWaybillLineAsync**](RoadWaybillsAPI.md#RoadWaybillsAPI_removeRoadWaybillLineAsync) | **DELETE** /api/v2/LogisticsService/RoadWaybills/{waybillId}/Lines/{lineId} | Remove a road waybill line
 [**RoadWaybillsAPI_updateRoadWaybillAsync**](RoadWaybillsAPI.md#RoadWaybillsAPI_updateRoadWaybillAsync) | **PUT** /api/v2/LogisticsService/RoadWaybills/{waybillId} | Update a road waybill
 [**RoadWaybillsAPI_updateRoadWaybillLineAsync**](RoadWaybillsAPI.md#RoadWaybillsAPI_updateRoadWaybillLineAsync) | **PUT** /api/v2/LogisticsService/RoadWaybills/{waybillId}/Lines/{lineId} | Update a road waybill line
@@ -459,6 +461,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **RoadWaybillsAPI_patchRoadWaybillAsync**
+```c
+// Patch a road waybill
+//
+// Partially updates an existing road waybill using a JSON Patch document.
+//
+empty_envelope_t* RoadWaybillsAPI_patchRoadWaybillAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**waybillId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **RoadWaybillsAPI_patchRoadWaybillLineAsync**
+```c
+// Patch a road waybill line
+//
+// Partially updates a line on a road waybill using a JSON Patch document.
+//
+empty_envelope_t* RoadWaybillsAPI_patchRoadWaybillLineAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**waybillId** | **char \*** |  | 
+**lineId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

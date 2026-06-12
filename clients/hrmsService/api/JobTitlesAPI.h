@@ -12,6 +12,7 @@
 #include "../model/job_title_dto_envelope.h"
 #include "../model/job_title_dto_list_envelope.h"
 #include "../model/job_title_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a job title
@@ -52,6 +53,14 @@ JobTitlesAPI_getJobTitlesAsync(apiClient_t *apiClient, char *tenantId, char *api
 //
 int32_envelope_t*
 JobTitlesAPI_getJobTitlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a job title
+//
+// Partially updates an existing job title for the specified tenant.
+//
+empty_envelope_t*
+JobTitlesAPI_patchJobTitleAsync(apiClient_t *apiClient, char *tenantId, char *jobTitleId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a job title

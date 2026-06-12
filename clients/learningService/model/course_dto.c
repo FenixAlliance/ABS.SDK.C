@@ -2291,7 +2291,7 @@ cJSON *course_dto_convertToJSON(course_dto_t *course_dto) {
 
     // course_dto->course_category_id
     if(course_dto->course_category_id) {
-    if(cJSON_AddStringToObject(item, "courseCategoryID", course_dto->course_category_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseCategoryId", course_dto->course_category_id) == NULL) {
     goto fail; //String
     }
     }
@@ -2307,7 +2307,7 @@ cJSON *course_dto_convertToJSON(course_dto_t *course_dto) {
 
     // course_dto->instructor_profile_id
     if(course_dto->instructor_profile_id) {
-    if(cJSON_AddStringToObject(item, "instructorProfileID", course_dto->instructor_profile_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "instructorProfileId", course_dto->instructor_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -4077,7 +4077,7 @@ course_dto_t *course_dto_parseFromJSON(cJSON *course_dtoJSON){
     }
 
     // course_dto->course_category_id
-    cJSON *course_category_id = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "courseCategoryID");
+    cJSON *course_category_id = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "courseCategoryId");
     if (course_category_id) { 
     if(!cJSON_IsString(course_category_id) && !cJSON_IsNull(course_category_id))
     {
@@ -4095,7 +4095,7 @@ course_dto_t *course_dto_parseFromJSON(cJSON *course_dtoJSON){
     }
 
     // course_dto->instructor_profile_id
-    cJSON *instructor_profile_id = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "instructorProfileID");
+    cJSON *instructor_profile_id = cJSON_GetObjectItemCaseSensitive(course_dtoJSON, "instructorProfileId");
     if (instructor_profile_id) { 
     if(!cJSON_IsString(instructor_profile_id) && !cJSON_IsNull(instructor_profile_id))
     {

@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/vessel_create_dto.h"
 #include "../model/vessel_dto_envelope.h"
 #include "../model/vessel_dto_list_envelope.h"
@@ -52,6 +53,14 @@ VesselsAPI_getVesselsAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
 //
 int32_envelope_t*
 VesselsAPI_getVesselsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a vessel
+//
+// Partially updates an existing vessel using JSON Patch.
+//
+empty_envelope_t*
+VesselsAPI_patchVesselAsync(apiClient_t *apiClient, char *tenantId, char *vesselId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a vessel

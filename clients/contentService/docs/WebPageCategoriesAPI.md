@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**WebPageCategoriesAPI_deleteWebPageCategoryAsync**](WebPageCategoriesAPI.md#WebPageCategoriesAPI_deleteWebPageCategoryAsync) | **DELETE** /api/v2/ContentService/WebPageCategories/{webPageCategoryId} | Delete a web page category
 [**WebPageCategoriesAPI_getWebPageCategoriesAsync**](WebPageCategoriesAPI.md#WebPageCategoriesAPI_getWebPageCategoriesAsync) | **GET** /api/v2/ContentService/WebPageCategories | Get web page categories
 [**WebPageCategoriesAPI_getWebPageCategoryByIdAsync**](WebPageCategoriesAPI.md#WebPageCategoriesAPI_getWebPageCategoryByIdAsync) | **GET** /api/v2/ContentService/WebPageCategories/{webPageCategoryId} | Get web page category by ID
+[**WebPageCategoriesAPI_patchWebPageCategoryAsync**](WebPageCategoriesAPI.md#WebPageCategoriesAPI_patchWebPageCategoryAsync) | **PATCH** /api/v2/ContentService/WebPageCategories/{webPageCategoryId} | Patch a web page category
 [**WebPageCategoriesAPI_updateWebPageCategoryAsync**](WebPageCategoriesAPI.md#WebPageCategoriesAPI_updateWebPageCategoryAsync) | **PUT** /api/v2/ContentService/WebPageCategories/{webPageCategoryId} | Update a web page category
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WebPageCategoriesAPI_patchWebPageCategoryAsync**
+```c
+// Patch a web page category
+//
+// Partially updates an existing web page category for the specified tenant.
+//
+empty_envelope_t* WebPageCategoriesAPI_patchWebPageCategoryAsync(apiClient_t *apiClient, char *tenantId, char *webPageCategoryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**webPageCategoryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

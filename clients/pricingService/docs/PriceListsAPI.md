@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**PriceListsAPI_getPriceListPricesAsync**](PriceListsAPI.md#PriceListsAPI_getPriceListPricesAsync) | **GET** /api/v2/PricingService/PriceLists/{priceListId}/Prices | Retrieves prices in a price list
 [**PriceListsAPI_getPriceListsAsync**](PriceListsAPI.md#PriceListsAPI_getPriceListsAsync) | **GET** /api/v2/PricingService/PriceLists | Retrieves all price lists
 [**PriceListsAPI_getPriceListsCountAsync**](PriceListsAPI.md#PriceListsAPI_getPriceListsCountAsync) | **GET** /api/v2/PricingService/PriceLists/Count | Counts price lists
+[**PriceListsAPI_patchPriceListAsync**](PriceListsAPI.md#PriceListsAPI_patchPriceListAsync) | **PATCH** /api/v2/PricingService/PriceLists/{priceListId} | Patches a price list
+[**PriceListsAPI_patchPriceListPriceAsync**](PriceListsAPI.md#PriceListsAPI_patchPriceListPriceAsync) | **PATCH** /api/v2/PricingService/PriceLists/{priceListId}/Prices/{priceId} | Patches a price list entry
 [**PriceListsAPI_updatePriceListAsync**](PriceListsAPI.md#PriceListsAPI_updatePriceListAsync) | **PUT** /api/v2/PricingService/PriceLists/{priceListId} | Updates a price list
 [**PriceListsAPI_updatePriceListPriceAsync**](PriceListsAPI.md#PriceListsAPI_updatePriceListPriceAsync) | **PUT** /api/v2/PricingService/PriceLists/{priceListId}/Prices/{priceId} | Updates a price list entry
 
@@ -303,6 +305,73 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PriceListsAPI_patchPriceListAsync**
+```c
+// Patches a price list
+//
+// Partially updates the specified price list using a JSON Patch document.
+//
+empty_envelope_t* PriceListsAPI_patchPriceListAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**priceListId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PriceListsAPI_patchPriceListPriceAsync**
+```c
+// Patches a price list entry
+//
+// Partially updates the specified price entry in a price list using a JSON Patch document.
+//
+empty_envelope_t* PriceListsAPI_patchPriceListPriceAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *priceId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**priceListId** | **char \*** |  | 
+**priceId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -1046,6 +1046,316 @@ end:
 
 }
 
+// Patch a location
+//
+// Patch a location
+//
+empty_envelope_t*
+LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *locationId, list_t *operation)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/LocationsService/Locations/{locationId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/LocationsService/Locations/{locationId}");
+
+
+    // Path Params
+    long sizeOfPathParams_locationId = strlen(locationId)+3 + strlen("{ locationId }");
+    if(locationId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_locationId = malloc(sizeOfPathParams_locationId);
+    sprintf(localVarToReplace_locationId, "{%s}", "locationId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_locationId, locationId);
+    if(locationId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_locationId = malloc(sizeOfPathParams_locationId);
+    sprintf(localVarToReplace_locationId, "{%s}", "locationId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_locationId, locationId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *LocationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(LocationsAPIlocalVarJSON);
+    cJSON_Delete(LocationsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_locationId);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Patch a wallet location
+//
+// Patch a wallet location
+//
+empty_envelope_t*
+LocationsAPI_patchWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, list_t *operation)
+{
+    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/LocationsService/Locations/wallet/{walletId}/{locationId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/LocationsService/Locations/wallet/{walletId}/{locationId}");
+
+
+    // Path Params
+    long sizeOfPathParams_walletId = strlen(walletId)+3 + strlen(locationId)+3 + strlen("{ walletId }");
+    if(walletId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_walletId = malloc(sizeOfPathParams_walletId);
+    sprintf(localVarToReplace_walletId, "{%s}", "walletId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_walletId, walletId);
+    if(walletId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_walletId = malloc(sizeOfPathParams_walletId);
+    sprintf(localVarToReplace_walletId, "{%s}", "walletId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_walletId, walletId);
+
+    // Path Params
+    long sizeOfPathParams_locationId = strlen(walletId)+3 + strlen(locationId)+3 + strlen("{ locationId }");
+    if(locationId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_locationId = malloc(sizeOfPathParams_locationId);
+    sprintf(localVarToReplace_locationId, "{%s}", "locationId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_locationId, locationId);
+    if(locationId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_locationId = malloc(sizeOfPathParams_locationId);
+    sprintf(localVarToReplace_locationId, "{%s}", "locationId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_locationId, locationId);
+
+
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *LocationsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(LocationsAPIlocalVarJSON);
+    cJSON_Delete(LocationsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_walletId);
+    free(localVarToReplace_locationId);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Update Location
 //
 // Update a specific location by ID.

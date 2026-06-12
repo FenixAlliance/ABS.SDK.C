@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/shift_create_dto.h"
 #include "../model/shift_dto_envelope.h"
 #include "../model/shift_dto_list_envelope.h"
@@ -52,6 +53,14 @@ ShiftsAPI_getShiftsAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
 //
 int32_envelope_t*
 ShiftsAPI_getShiftsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a shift
+//
+// Partially updates an existing shift for the specified tenant.
+//
+empty_envelope_t*
+ShiftsAPI_patchShiftAsync(apiClient_t *apiClient, char *tenantId, char *shiftId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a shift

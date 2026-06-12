@@ -17,6 +17,8 @@ Method | HTTP request | Description
 [**ProofsOfDeliveryAPI_getProofOfDeliveryLinesCountAsync**](ProofsOfDeliveryAPI.md#ProofsOfDeliveryAPI_getProofOfDeliveryLinesCountAsync) | **GET** /api/v2/LogisticsService/ProofsOfDelivery/{podId}/Lines/Count | Get proof of delivery lines count
 [**ProofsOfDeliveryAPI_getProofsOfDeliveryAsync**](ProofsOfDeliveryAPI.md#ProofsOfDeliveryAPI_getProofsOfDeliveryAsync) | **GET** /api/v2/LogisticsService/ProofsOfDelivery | Get all proofs of delivery
 [**ProofsOfDeliveryAPI_getProofsOfDeliveryCountAsync**](ProofsOfDeliveryAPI.md#ProofsOfDeliveryAPI_getProofsOfDeliveryCountAsync) | **GET** /api/v2/LogisticsService/ProofsOfDelivery/Count | Get proofs of delivery count
+[**ProofsOfDeliveryAPI_patchProofOfDeliveryAsync**](ProofsOfDeliveryAPI.md#ProofsOfDeliveryAPI_patchProofOfDeliveryAsync) | **PATCH** /api/v2/LogisticsService/ProofsOfDelivery/{podId} | Patch a proof of delivery
+[**ProofsOfDeliveryAPI_patchProofOfDeliveryLineAsync**](ProofsOfDeliveryAPI.md#ProofsOfDeliveryAPI_patchProofOfDeliveryLineAsync) | **PATCH** /api/v2/LogisticsService/ProofsOfDelivery/{podId}/Lines/{lineId} | Patch a proof of delivery line
 [**ProofsOfDeliveryAPI_rejectProofOfDeliveryAsync**](ProofsOfDeliveryAPI.md#ProofsOfDeliveryAPI_rejectProofOfDeliveryAsync) | **POST** /api/v2/LogisticsService/ProofsOfDelivery/{podId}/Reject | Reject a proof of delivery
 [**ProofsOfDeliveryAPI_removeProofOfDeliveryLineAsync**](ProofsOfDeliveryAPI.md#ProofsOfDeliveryAPI_removeProofOfDeliveryLineAsync) | **DELETE** /api/v2/LogisticsService/ProofsOfDelivery/{podId}/Lines/{lineId} | Remove a proof of delivery line
 [**ProofsOfDeliveryAPI_signProofOfDeliveryAsync**](ProofsOfDeliveryAPI.md#ProofsOfDeliveryAPI_signProofOfDeliveryAsync) | **POST** /api/v2/LogisticsService/ProofsOfDelivery/{podId}/Sign | Sign a proof of delivery
@@ -464,6 +466,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ProofsOfDeliveryAPI_patchProofOfDeliveryAsync**
+```c
+// Patch a proof of delivery
+//
+// Partially updates an existing proof of delivery using JSON Patch.
+//
+empty_envelope_t* ProofsOfDeliveryAPI_patchProofOfDeliveryAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**podId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ProofsOfDeliveryAPI_patchProofOfDeliveryLineAsync**
+```c
+// Patch a proof of delivery line
+//
+// Partially updates an existing proof of delivery line using JSON Patch.
+//
+empty_envelope_t* ProofsOfDeliveryAPI_patchProofOfDeliveryLineAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**podId** | **char \*** |  | 
+**lineId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

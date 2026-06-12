@@ -9,6 +9,7 @@ blog_post_category_dto_t *blog_post_category_dto_create(
     char *id,
     char *timestamp,
     char *slug,
+    char *type,
     char *title,
     char *description,
     char *seo_title,
@@ -20,8 +21,8 @@ blog_post_category_dto_t *blog_post_category_dto_create(
     char *image_url,
     char *image,
     char *web_portal_id,
-    char *business_id,
-    char *business_profile_record_id
+    char *tenant_id,
+    char *enrollment_id
     ) {
     blog_post_category_dto_t *blog_post_category_dto_local_var = malloc(sizeof(blog_post_category_dto_t));
     if (!blog_post_category_dto_local_var) {
@@ -30,6 +31,7 @@ blog_post_category_dto_t *blog_post_category_dto_create(
     blog_post_category_dto_local_var->id = id;
     blog_post_category_dto_local_var->timestamp = timestamp;
     blog_post_category_dto_local_var->slug = slug;
+    blog_post_category_dto_local_var->type = type;
     blog_post_category_dto_local_var->title = title;
     blog_post_category_dto_local_var->description = description;
     blog_post_category_dto_local_var->seo_title = seo_title;
@@ -41,8 +43,8 @@ blog_post_category_dto_t *blog_post_category_dto_create(
     blog_post_category_dto_local_var->image_url = image_url;
     blog_post_category_dto_local_var->image = image;
     blog_post_category_dto_local_var->web_portal_id = web_portal_id;
-    blog_post_category_dto_local_var->business_id = business_id;
-    blog_post_category_dto_local_var->business_profile_record_id = business_profile_record_id;
+    blog_post_category_dto_local_var->tenant_id = tenant_id;
+    blog_post_category_dto_local_var->enrollment_id = enrollment_id;
 
     return blog_post_category_dto_local_var;
 }
@@ -64,6 +66,10 @@ void blog_post_category_dto_free(blog_post_category_dto_t *blog_post_category_dt
     if (blog_post_category_dto->slug) {
         free(blog_post_category_dto->slug);
         blog_post_category_dto->slug = NULL;
+    }
+    if (blog_post_category_dto->type) {
+        free(blog_post_category_dto->type);
+        blog_post_category_dto->type = NULL;
     }
     if (blog_post_category_dto->title) {
         free(blog_post_category_dto->title);
@@ -101,13 +107,13 @@ void blog_post_category_dto_free(blog_post_category_dto_t *blog_post_category_dt
         free(blog_post_category_dto->web_portal_id);
         blog_post_category_dto->web_portal_id = NULL;
     }
-    if (blog_post_category_dto->business_id) {
-        free(blog_post_category_dto->business_id);
-        blog_post_category_dto->business_id = NULL;
+    if (blog_post_category_dto->tenant_id) {
+        free(blog_post_category_dto->tenant_id);
+        blog_post_category_dto->tenant_id = NULL;
     }
-    if (blog_post_category_dto->business_profile_record_id) {
-        free(blog_post_category_dto->business_profile_record_id);
-        blog_post_category_dto->business_profile_record_id = NULL;
+    if (blog_post_category_dto->enrollment_id) {
+        free(blog_post_category_dto->enrollment_id);
+        blog_post_category_dto->enrollment_id = NULL;
     }
     free(blog_post_category_dto);
 }
@@ -134,6 +140,14 @@ cJSON *blog_post_category_dto_convertToJSON(blog_post_category_dto_t *blog_post_
     // blog_post_category_dto->slug
     if(blog_post_category_dto->slug) {
     if(cJSON_AddStringToObject(item, "slug", blog_post_category_dto->slug) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // blog_post_category_dto->type
+    if(blog_post_category_dto->type) {
+    if(cJSON_AddStringToObject(item, "type", blog_post_category_dto->type) == NULL) {
     goto fail; //String
     }
     }
@@ -221,23 +235,23 @@ cJSON *blog_post_category_dto_convertToJSON(blog_post_category_dto_t *blog_post_
 
     // blog_post_category_dto->web_portal_id
     if(blog_post_category_dto->web_portal_id) {
-    if(cJSON_AddStringToObject(item, "webPortalID", blog_post_category_dto->web_portal_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "webPortalId", blog_post_category_dto->web_portal_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // blog_post_category_dto->business_id
-    if(blog_post_category_dto->business_id) {
-    if(cJSON_AddStringToObject(item, "businessID", blog_post_category_dto->business_id) == NULL) {
+    // blog_post_category_dto->tenant_id
+    if(blog_post_category_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", blog_post_category_dto->tenant_id) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // blog_post_category_dto->business_profile_record_id
-    if(blog_post_category_dto->business_profile_record_id) {
-    if(cJSON_AddStringToObject(item, "businessProfileRecordID", blog_post_category_dto->business_profile_record_id) == NULL) {
+    // blog_post_category_dto->enrollment_id
+    if(blog_post_category_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", blog_post_category_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -276,6 +290,15 @@ blog_post_category_dto_t *blog_post_category_dto_parseFromJSON(cJSON *blog_post_
     cJSON *slug = cJSON_GetObjectItemCaseSensitive(blog_post_category_dtoJSON, "slug");
     if (slug) { 
     if(!cJSON_IsString(slug) && !cJSON_IsNull(slug))
+    {
+    goto end; //String
+    }
+    }
+
+    // blog_post_category_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(blog_post_category_dtoJSON, "type");
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
     goto end; //String
     }
@@ -372,7 +395,7 @@ blog_post_category_dto_t *blog_post_category_dto_parseFromJSON(cJSON *blog_post_
     }
 
     // blog_post_category_dto->web_portal_id
-    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(blog_post_category_dtoJSON, "webPortalID");
+    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(blog_post_category_dtoJSON, "webPortalId");
     if (web_portal_id) { 
     if(!cJSON_IsString(web_portal_id) && !cJSON_IsNull(web_portal_id))
     {
@@ -380,19 +403,19 @@ blog_post_category_dto_t *blog_post_category_dto_parseFromJSON(cJSON *blog_post_
     }
     }
 
-    // blog_post_category_dto->business_id
-    cJSON *business_id = cJSON_GetObjectItemCaseSensitive(blog_post_category_dtoJSON, "businessID");
-    if (business_id) { 
-    if(!cJSON_IsString(business_id) && !cJSON_IsNull(business_id))
+    // blog_post_category_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(blog_post_category_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
     {
     goto end; //String
     }
     }
 
-    // blog_post_category_dto->business_profile_record_id
-    cJSON *business_profile_record_id = cJSON_GetObjectItemCaseSensitive(blog_post_category_dtoJSON, "businessProfileRecordID");
-    if (business_profile_record_id) { 
-    if(!cJSON_IsString(business_profile_record_id) && !cJSON_IsNull(business_profile_record_id))
+    // blog_post_category_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(blog_post_category_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -403,6 +426,7 @@ blog_post_category_dto_t *blog_post_category_dto_parseFromJSON(cJSON *blog_post_
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         slug && !cJSON_IsNull(slug) ? strdup(slug->valuestring) : NULL,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         seo_title && !cJSON_IsNull(seo_title) ? strdup(seo_title->valuestring) : NULL,
@@ -414,8 +438,8 @@ blog_post_category_dto_t *blog_post_category_dto_parseFromJSON(cJSON *blog_post_
         image_url && !cJSON_IsNull(image_url) ? strdup(image_url->valuestring) : NULL,
         image && !cJSON_IsNull(image) ? strdup(image->valuestring) : NULL,
         web_portal_id && !cJSON_IsNull(web_portal_id) ? strdup(web_portal_id->valuestring) : NULL,
-        business_id && !cJSON_IsNull(business_id) ? strdup(business_id->valuestring) : NULL,
-        business_profile_record_id && !cJSON_IsNull(business_profile_record_id) ? strdup(business_profile_record_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return blog_post_category_dto_local_var;

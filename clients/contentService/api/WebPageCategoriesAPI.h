@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/web_page_category_create_dto.h"
 #include "../model/web_page_category_dto_envelope.h"
 #include "../model/web_page_category_dto_list_envelope.h"
@@ -52,6 +53,14 @@ WebPageCategoriesAPI_getWebPageCategoriesAsync(apiClient_t *apiClient, char *ten
 //
 web_page_category_dto_envelope_t*
 WebPageCategoriesAPI_getWebPageCategoryByIdAsync(apiClient_t *apiClient, char *tenantId, char *webPageCategoryId, char *api_version, char *x_api_version);
+
+
+// Patch a web page category
+//
+// Partially updates an existing web page category for the specified tenant.
+//
+empty_envelope_t*
+WebPageCategoriesAPI_patchWebPageCategoryAsync(apiClient_t *apiClient, char *tenantId, char *webPageCategoryId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a web page category

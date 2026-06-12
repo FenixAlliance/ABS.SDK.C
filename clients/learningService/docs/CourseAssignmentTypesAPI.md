@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseAssignmentTypesAPI_getCourseAssignmentTypeByIdAsync**](CourseAssignmentTypesAPI.md#CourseAssignmentTypesAPI_getCourseAssignmentTypeByIdAsync) | **GET** /api/v2/LearningService/CourseAssignmentTypes/{assignmentTypeId} | Get course assignment type by ID
 [**CourseAssignmentTypesAPI_getCourseAssignmentTypesAsync**](CourseAssignmentTypesAPI.md#CourseAssignmentTypesAPI_getCourseAssignmentTypesAsync) | **GET** /api/v2/LearningService/CourseAssignmentTypes | Get all course assignment types
 [**CourseAssignmentTypesAPI_getCourseAssignmentTypesCountAsync**](CourseAssignmentTypesAPI.md#CourseAssignmentTypesAPI_getCourseAssignmentTypesCountAsync) | **GET** /api/v2/LearningService/CourseAssignmentTypes/Count | Get course assignment types count
+[**CourseAssignmentTypesAPI_patchCourseAssignmentTypeAsync**](CourseAssignmentTypesAPI.md#CourseAssignmentTypesAPI_patchCourseAssignmentTypeAsync) | **PATCH** /api/v2/LearningService/CourseAssignmentTypes/{assignmentTypeId} | Patch a course assignment type
 [**CourseAssignmentTypesAPI_updateCourseAssignmentTypeAsync**](CourseAssignmentTypesAPI.md#CourseAssignmentTypesAPI_updateCourseAssignmentTypeAsync) | **PUT** /api/v2/LearningService/CourseAssignmentTypes/{assignmentTypeId} | Update a course assignment type
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseAssignmentTypesAPI_patchCourseAssignmentTypeAsync**
+```c
+// Patch a course assignment type
+//
+// Partially updates a course assignment type for the specified tenant.
+//
+empty_envelope_t* CourseAssignmentTypesAPI_patchCourseAssignmentTypeAsync(apiClient_t *apiClient, char *tenantId, char *assignmentTypeId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**assignmentTypeId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

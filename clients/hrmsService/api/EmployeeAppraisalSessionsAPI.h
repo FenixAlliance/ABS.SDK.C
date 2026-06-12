@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create an employee appraisal session
@@ -52,6 +53,14 @@ EmployeeAppraisalSessionsAPI_getEmployeeAppraisalSessionsAsync(apiClient_t *apiC
 //
 int32_envelope_t*
 EmployeeAppraisalSessionsAPI_getEmployeeAppraisalSessionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an employee appraisal session
+//
+// Partially updates an existing employee appraisal session for the specified tenant.
+//
+empty_envelope_t*
+EmployeeAppraisalSessionsAPI_patchEmployeeAppraisalSessionAsync(apiClient_t *apiClient, char *tenantId, char *sessionId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an employee appraisal session

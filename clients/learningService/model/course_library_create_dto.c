@@ -106,14 +106,14 @@ cJSON *course_library_create_dto_convertToJSON(course_library_create_dto_t *cour
     if (!course_library_create_dto->course_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "courseID", course_library_create_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_library_create_dto->course_id) == NULL) {
     goto fail; //String
     }
 
 
     // course_library_create_dto->course_unit_id
     if(course_library_create_dto->course_unit_id) {
-    if(cJSON_AddStringToObject(item, "courseUnitID", course_library_create_dto->course_unit_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseUnitId", course_library_create_dto->course_unit_id) == NULL) {
     goto fail; //String
     }
     }
@@ -178,7 +178,7 @@ course_library_create_dto_t *course_library_create_dto_parseFromJSON(cJSON *cour
     }
 
     // course_library_create_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_library_create_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_library_create_dtoJSON, "courseId");
     if (!course_id) {
         goto end;
     }
@@ -190,7 +190,7 @@ course_library_create_dto_t *course_library_create_dto_parseFromJSON(cJSON *cour
     }
 
     // course_library_create_dto->course_unit_id
-    cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_library_create_dtoJSON, "courseUnitID");
+    cJSON *course_unit_id = cJSON_GetObjectItemCaseSensitive(course_library_create_dtoJSON, "courseUnitId");
     if (course_unit_id) { 
     if(!cJSON_IsString(course_unit_id) && !cJSON_IsNull(course_unit_id))
     {

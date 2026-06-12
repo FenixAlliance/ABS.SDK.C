@@ -27,6 +27,8 @@ Name | Type | Description | Notes
 **is_default_sender_address** | **int** |  | [optional] 
 **is_default_return_address** | **int** |  | [optional] 
 **is_default_supping_location** | **int** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
+**enrollment_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

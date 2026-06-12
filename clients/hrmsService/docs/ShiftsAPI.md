@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ShiftsAPI_getShiftByIdAsync**](ShiftsAPI.md#ShiftsAPI_getShiftByIdAsync) | **GET** /api/v2/HrmsService/Shifts/{shiftId} | Get shift by ID
 [**ShiftsAPI_getShiftsAsync**](ShiftsAPI.md#ShiftsAPI_getShiftsAsync) | **GET** /api/v2/HrmsService/Shifts | Get shifts
 [**ShiftsAPI_getShiftsCountAsync**](ShiftsAPI.md#ShiftsAPI_getShiftsCountAsync) | **GET** /api/v2/HrmsService/Shifts/Count | Count shifts
+[**ShiftsAPI_patchShiftAsync**](ShiftsAPI.md#ShiftsAPI_patchShiftAsync) | **PATCH** /api/v2/HrmsService/Shifts/{shiftId} | Patch a shift
 [**ShiftsAPI_updateShiftAsync**](ShiftsAPI.md#ShiftsAPI_updateShiftAsync) | **PUT** /api/v2/HrmsService/Shifts/{shiftId} | Update a shift
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ShiftsAPI_patchShiftAsync**
+```c
+// Patch a shift
+//
+// Partially updates an existing shift for the specified tenant.
+//
+empty_envelope_t* ShiftsAPI_patchShiftAsync(apiClient_t *apiClient, char *tenantId, char *shiftId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**shiftId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

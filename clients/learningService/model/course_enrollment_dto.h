@@ -24,7 +24,8 @@ typedef struct course_enrollment_dto_t {
     char *course_id; // string
     char *course_cohort_id; // string
     char *student_profile_id; // string
-    char *business_profile_record_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
     char *course_completion_certificate_id; // string
 
 } course_enrollment_dto_t;
@@ -35,7 +36,8 @@ course_enrollment_dto_t *course_enrollment_dto_create(
     char *course_id,
     char *course_cohort_id,
     char *student_profile_id,
-    char *business_profile_record_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *course_completion_certificate_id
 );
 

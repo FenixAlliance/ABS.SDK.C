@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CoursePagesAPI_getCoursePageByIdAsync**](CoursePagesAPI.md#CoursePagesAPI_getCoursePageByIdAsync) | **GET** /api/v2/LearningService/CoursePages/{pageId} | Get course page by ID
 [**CoursePagesAPI_getCoursePagesAsync**](CoursePagesAPI.md#CoursePagesAPI_getCoursePagesAsync) | **GET** /api/v2/LearningService/CoursePages | Get all course pages
 [**CoursePagesAPI_getCoursePagesCountAsync**](CoursePagesAPI.md#CoursePagesAPI_getCoursePagesCountAsync) | **GET** /api/v2/LearningService/CoursePages/Count | Get course pages count
+[**CoursePagesAPI_patchCoursePageAsync**](CoursePagesAPI.md#CoursePagesAPI_patchCoursePageAsync) | **PATCH** /api/v2/LearningService/CoursePages/{pageId} | Patch a course page
 [**CoursePagesAPI_updateCoursePageAsync**](CoursePagesAPI.md#CoursePagesAPI_updateCoursePageAsync) | **PUT** /api/v2/LearningService/CoursePages/{pageId} | Update a course page
 
 
@@ -174,6 +175,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CoursePagesAPI_patchCoursePageAsync**
+```c
+// Patch a course page
+//
+// Partially updates an existing course page for the specified tenant.
+//
+void CoursePagesAPI_patchCoursePageAsync(apiClient_t *apiClient, char *tenantId, char *pageId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**pageId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

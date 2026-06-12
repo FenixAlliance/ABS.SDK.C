@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/website_theme_create_dto.h"
 #include "../model/website_theme_dto.h"
 #include "../model/website_theme_dto_list_envelope.h"
@@ -52,6 +53,14 @@ WebsiteThemesAPI_getWebsiteThemesAsync(apiClient_t *apiClient, char *tenantId, w
 //
 int32_envelope_t*
 WebsiteThemesAPI_getWebsiteThemesCountAsync(apiClient_t *apiClient, char *tenantId, website_theme_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+
+
+// Patch a website theme
+//
+// Partially updates an existing website theme for the specified tenant.
+//
+void
+WebsiteThemesAPI_patchWebsiteThemeAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a website theme

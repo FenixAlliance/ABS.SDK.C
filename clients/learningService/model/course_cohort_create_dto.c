@@ -104,7 +104,7 @@ cJSON *course_cohort_create_dto_convertToJSON(course_cohort_create_dto_t *course
     if (!course_cohort_create_dto->course_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "courseID", course_cohort_create_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_cohort_create_dto->course_id) == NULL) {
     goto fail; //String
     }
 
@@ -183,7 +183,7 @@ course_cohort_create_dto_t *course_cohort_create_dto_parseFromJSON(cJSON *course
     }
 
     // course_cohort_create_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_cohort_create_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_cohort_create_dtoJSON, "courseId");
     if (!course_id) {
         goto end;
     }

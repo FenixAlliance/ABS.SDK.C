@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**BlogPostsAPI_getCommentsForBlogPostAsync**](BlogPostsAPI.md#BlogPostsAPI_getCommentsForBlogPostAsync) | **GET** /api/v2/ContentService/BlogPosts/{blogPostId}/Comments | Get comments for a blog post
 [**BlogPostsAPI_getRepliesForCommentAsync**](BlogPostsAPI.md#BlogPostsAPI_getRepliesForCommentAsync) | **GET** /api/v2/ContentService/BlogPosts/{blogPostId}/Comments/{commentId}/Replies | Get replies for a comment
 [**BlogPostsAPI_getTagsForBlogPostAsync**](BlogPostsAPI.md#BlogPostsAPI_getTagsForBlogPostAsync) | **GET** /api/v2/ContentService/BlogPosts/{blogPostId}/Tags | Get tags for a blog post
+[**BlogPostsAPI_patchBlogPostAsync**](BlogPostsAPI.md#BlogPostsAPI_patchBlogPostAsync) | **PATCH** /api/v2/ContentService/BlogPosts/{blogPostId} | Patch a blog post
 [**BlogPostsAPI_relateCategoryToBlogPostAsync**](BlogPostsAPI.md#BlogPostsAPI_relateCategoryToBlogPostAsync) | **POST** /api/v2/ContentService/BlogPosts/{blogPostId}/Categories/{categoryId} | Relate an existing category to a blog post
 [**BlogPostsAPI_relateTagToBlogPostAsync**](BlogPostsAPI.md#BlogPostsAPI_relateTagToBlogPostAsync) | **POST** /api/v2/ContentService/BlogPosts/{blogPostId}/Tags/{tagId} | Relate an existing tag to a blog post
 [**BlogPostsAPI_replyToCommentAsync**](BlogPostsAPI.md#BlogPostsAPI_replyToCommentAsync) | **POST** /api/v2/ContentService/BlogPosts/{blogPostId}/Comments/{commentId}/Reply | Reply to a blog post comment
@@ -435,6 +436,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BlogPostsAPI_patchBlogPostAsync**
+```c
+// Patch a blog post
+//
+// Partially updates an existing blog post for the specified tenant.
+//
+empty_envelope_t* BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *blogPostId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**blogPostId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -49,7 +49,7 @@ cJSON *course_content_group_update_dto_convertToJSON(course_content_group_update
 
     // course_content_group_update_dto->course_id
     if(course_content_group_update_dto->course_id) {
-    if(cJSON_AddStringToObject(item, "courseID", course_content_group_update_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_content_group_update_dto->course_id) == NULL) {
     goto fail; //String
     }
     }
@@ -76,7 +76,7 @@ course_content_group_update_dto_t *course_content_group_update_dto_parseFromJSON
     }
 
     // course_content_group_update_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_content_group_update_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_content_group_update_dtoJSON, "courseId");
     if (course_id) { 
     if(!cJSON_IsString(course_id) && !cJSON_IsNull(course_id))
     {

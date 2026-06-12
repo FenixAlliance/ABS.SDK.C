@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**PricingRulesAPI_getPricingRuleById**](PricingRulesAPI.md#PricingRulesAPI_getPricingRuleById) | **GET** /api/v2/PricingService/PricingRules/{pricingRuleId} | Get pricing rule by ID
 [**PricingRulesAPI_getPricingRules**](PricingRulesAPI.md#PricingRulesAPI_getPricingRules) | **GET** /api/v2/PricingService/PricingRules | Get all pricing rules
 [**PricingRulesAPI_getPricingRulesCountAsync**](PricingRulesAPI.md#PricingRulesAPI_getPricingRulesCountAsync) | **GET** /api/v2/PricingService/PricingRules/Count | Counts pricing rules
+[**PricingRulesAPI_patchPricingRule**](PricingRulesAPI.md#PricingRulesAPI_patchPricingRule) | **PATCH** /api/v2/PricingService/PricingRules/{pricingRuleId} | Patch a pricing rule
 [**PricingRulesAPI_updatePricingRule**](PricingRulesAPI.md#PricingRulesAPI_updatePricingRule) | **PUT** /api/v2/PricingService/PricingRules/Update | Update a pricing rule
 
 
@@ -175,6 +176,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PricingRulesAPI_patchPricingRule**
+```c
+// Patch a pricing rule
+//
+// Partially updates a pricing rule using a JSON Patch document.
+//
+void PricingRulesAPI_patchPricingRule(apiClient_t *apiClient, char *tenantId, char *pricingRuleId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**pricingRuleId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

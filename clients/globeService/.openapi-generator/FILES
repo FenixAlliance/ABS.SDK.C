@@ -151,6 +151,3 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_error.c
-unit-test/test_payment_response.c
-unit-test/test_response_status.c

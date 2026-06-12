@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **start_date** | **char \*** |  | [optional] 
 **end_date** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
+**context** | **pricingservice_price_list_dto_CONTEXT_e** |  | [optional] 
 **currency_id** | **char \*** |  | [optional] 
 **tenant_id** | **char \*** |  | [optional] 
 **unit_id** | **char \*** |  | [optional] 

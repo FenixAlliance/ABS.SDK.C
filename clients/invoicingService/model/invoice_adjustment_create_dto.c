@@ -26,6 +26,8 @@ invoice_adjustment_create_dto_t *invoice_adjustment_create_dto_create(
     char *id,
     char *timestamp,
     char *currency_id,
+    int priority,
+    char *code,
     char *description,
     double surcharge_percent,
     double surcharge_amount,
@@ -42,6 +44,8 @@ invoice_adjustment_create_dto_t *invoice_adjustment_create_dto_create(
     invoice_adjustment_create_dto_local_var->id = id;
     invoice_adjustment_create_dto_local_var->timestamp = timestamp;
     invoice_adjustment_create_dto_local_var->currency_id = currency_id;
+    invoice_adjustment_create_dto_local_var->priority = priority;
+    invoice_adjustment_create_dto_local_var->code = code;
     invoice_adjustment_create_dto_local_var->description = description;
     invoice_adjustment_create_dto_local_var->surcharge_percent = surcharge_percent;
     invoice_adjustment_create_dto_local_var->surcharge_amount = surcharge_amount;
@@ -72,6 +76,10 @@ void invoice_adjustment_create_dto_free(invoice_adjustment_create_dto_t *invoice
         free(invoice_adjustment_create_dto->currency_id);
         invoice_adjustment_create_dto->currency_id = NULL;
     }
+    if (invoice_adjustment_create_dto->code) {
+        free(invoice_adjustment_create_dto->code);
+        invoice_adjustment_create_dto->code = NULL;
+    }
     if (invoice_adjustment_create_dto->description) {
         free(invoice_adjustment_create_dto->description);
         invoice_adjustment_create_dto->description = NULL;
@@ -101,6 +109,22 @@ cJSON *invoice_adjustment_create_dto_convertToJSON(invoice_adjustment_create_dto
     // invoice_adjustment_create_dto->currency_id
     if(invoice_adjustment_create_dto->currency_id) {
     if(cJSON_AddStringToObject(item, "currencyId", invoice_adjustment_create_dto->currency_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // invoice_adjustment_create_dto->priority
+    if(invoice_adjustment_create_dto->priority) {
+    if(cJSON_AddNumberToObject(item, "priority", invoice_adjustment_create_dto->priority) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // invoice_adjustment_create_dto->code
+    if(invoice_adjustment_create_dto->code) {
+    if(cJSON_AddStringToObject(item, "code", invoice_adjustment_create_dto->code) == NULL) {
     goto fail; //String
     }
     }
@@ -209,6 +233,24 @@ invoice_adjustment_create_dto_t *invoice_adjustment_create_dto_parseFromJSON(cJS
     }
     }
 
+    // invoice_adjustment_create_dto->priority
+    cJSON *priority = cJSON_GetObjectItemCaseSensitive(invoice_adjustment_create_dtoJSON, "priority");
+    if (priority) { 
+    if(!cJSON_IsNumber(priority))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // invoice_adjustment_create_dto->code
+    cJSON *code = cJSON_GetObjectItemCaseSensitive(invoice_adjustment_create_dtoJSON, "code");
+    if (code) { 
+    if(!cJSON_IsString(code) && !cJSON_IsNull(code))
+    {
+    goto end; //String
+    }
+    }
+
     // invoice_adjustment_create_dto->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(invoice_adjustment_create_dtoJSON, "description");
     if (description) { 
@@ -288,6 +330,8 @@ invoice_adjustment_create_dto_t *invoice_adjustment_create_dto_parseFromJSON(cJS
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
+        priority ? priority->valuedouble : 0,
+        code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         surcharge_percent ? surcharge_percent->valuedouble : 0,
         surcharge_amount ? surcharge_amount->valuedouble : 0,

@@ -114,7 +114,7 @@ cJSON *course_article_create_dto_convertToJSON(course_article_create_dto_t *cour
     if (!course_article_create_dto->course_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "courseID", course_article_create_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_article_create_dto->course_id) == NULL) {
     goto fail; //String
     }
 
@@ -123,7 +123,7 @@ cJSON *course_article_create_dto_convertToJSON(course_article_create_dto_t *cour
     if (!course_article_create_dto->course_wiki_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "courseWikiID", course_article_create_dto->course_wiki_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseWikiId", course_article_create_dto->course_wiki_id) == NULL) {
     goto fail; //String
     }
 
@@ -188,7 +188,7 @@ course_article_create_dto_t *course_article_create_dto_parseFromJSON(cJSON *cour
     }
 
     // course_article_create_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_article_create_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_article_create_dtoJSON, "courseId");
     if (!course_id) {
         goto end;
     }
@@ -200,7 +200,7 @@ course_article_create_dto_t *course_article_create_dto_parseFromJSON(cJSON *cour
     }
 
     // course_article_create_dto->course_wiki_id
-    cJSON *course_wiki_id = cJSON_GetObjectItemCaseSensitive(course_article_create_dtoJSON, "courseWikiID");
+    cJSON *course_wiki_id = cJSON_GetObjectItemCaseSensitive(course_article_create_dtoJSON, "courseWikiId");
     if (!course_wiki_id) {
         goto end;
     }

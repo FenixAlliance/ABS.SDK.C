@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**WebTemplatesAPI_deleteWebTemplateAsync**](WebTemplatesAPI.md#WebTemplatesAPI_deleteWebTemplateAsync) | **DELETE** /api/v2/ContentService/WebTemplates/{webTemplateId} | Delete a web template
 [**WebTemplatesAPI_getWebTemplateByIdAsync**](WebTemplatesAPI.md#WebTemplatesAPI_getWebTemplateByIdAsync) | **GET** /api/v2/ContentService/WebTemplates/{webTemplateId} | Get web template by ID
 [**WebTemplatesAPI_getWebTemplatesAsync**](WebTemplatesAPI.md#WebTemplatesAPI_getWebTemplatesAsync) | **GET** /api/v2/ContentService/WebTemplates | Get web templates
+[**WebTemplatesAPI_patchWebTemplateAsync**](WebTemplatesAPI.md#WebTemplatesAPI_patchWebTemplateAsync) | **PATCH** /api/v2/ContentService/WebTemplates/{webTemplateId} | Patch a web template
 [**WebTemplatesAPI_updateWebTemplateAsync**](WebTemplatesAPI.md#WebTemplatesAPI_updateWebTemplateAsync) | **PUT** /api/v2/ContentService/WebTemplates/{webTemplateId} | Update a web template
 
 
@@ -174,6 +175,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WebTemplatesAPI_patchWebTemplateAsync**
+```c
+// Patch a web template
+//
+// Partially updates an existing web template for the specified tenant.
+//
+void WebTemplatesAPI_patchWebTemplateAsync(apiClient_t *apiClient, char *tenantId, char *webTemplateId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**webTemplateId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

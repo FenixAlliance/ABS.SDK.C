@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/truck_driver_create_dto.h"
 #include "../model/truck_driver_dto_envelope.h"
 #include "../model/truck_driver_dto_list_envelope.h"
@@ -68,6 +69,14 @@ TruckDriversAPI_getTruckDriversAsync(apiClient_t *apiClient, char *tenantId, cha
 //
 int32_envelope_t*
 TruckDriversAPI_getTruckDriversCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a truck driver
+//
+// Partially updates an existing truck driver using JSON Patch.
+//
+empty_envelope_t*
+TruckDriversAPI_patchTruckDriverAsync(apiClient_t *apiClient, char *tenantId, char *driverId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a truck driver

@@ -104,7 +104,7 @@ cJSON *course_grading_rubric_create_dto_convertToJSON(course_grading_rubric_crea
     if (!course_grading_rubric_create_dto->course_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "courseID", course_grading_rubric_create_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_grading_rubric_create_dto->course_id) == NULL) {
     goto fail; //String
     }
 
@@ -169,7 +169,7 @@ course_grading_rubric_create_dto_t *course_grading_rubric_create_dto_parseFromJS
     }
 
     // course_grading_rubric_create_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_grading_rubric_create_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_grading_rubric_create_dtoJSON, "courseId");
     if (!course_id) {
         goto end;
     }

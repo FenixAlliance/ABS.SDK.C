@@ -11,6 +11,7 @@
 #include "../model/marketing_campaign_create_dto.h"
 #include "../model/marketing_campaign_dto_envelope.h"
 #include "../model/marketing_campaign_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a marketing campaign
@@ -51,6 +52,14 @@ MarketingCampaignsAPI_getMarketingCampaignODataAsync(apiClient_t *apiClient, cha
 //
 int32_envelope_t*
 MarketingCampaignsAPI_getMarketingCampaignsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a marketing campaign
+//
+// Partially updates a marketing campaign by its ID using JSON Patch.
+//
+empty_envelope_t*
+MarketingCampaignsAPI_patchMarketingCampaignAsync(apiClient_t *apiClient, char *tenantId, char *marketingcampaignId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a marketing campaign

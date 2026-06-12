@@ -14,7 +14,8 @@ course_assignment_component_dto_t *course_assignment_component_dto_create(
     int order,
     char *course_assignment_id,
     char *course_id,
-    char *tenant_id
+    char *tenant_id,
+    char *enrollment_id
     ) {
     course_assignment_component_dto_t *course_assignment_component_dto_local_var = malloc(sizeof(course_assignment_component_dto_t));
     if (!course_assignment_component_dto_local_var) {
@@ -29,6 +30,7 @@ course_assignment_component_dto_t *course_assignment_component_dto_create(
     course_assignment_component_dto_local_var->course_assignment_id = course_assignment_id;
     course_assignment_component_dto_local_var->course_id = course_id;
     course_assignment_component_dto_local_var->tenant_id = tenant_id;
+    course_assignment_component_dto_local_var->enrollment_id = enrollment_id;
 
     return course_assignment_component_dto_local_var;
 }
@@ -70,6 +72,10 @@ void course_assignment_component_dto_free(course_assignment_component_dto_t *cou
     if (course_assignment_component_dto->tenant_id) {
         free(course_assignment_component_dto->tenant_id);
         course_assignment_component_dto->tenant_id = NULL;
+    }
+    if (course_assignment_component_dto->enrollment_id) {
+        free(course_assignment_component_dto->enrollment_id);
+        course_assignment_component_dto->enrollment_id = NULL;
     }
     free(course_assignment_component_dto);
 }
@@ -127,7 +133,7 @@ cJSON *course_assignment_component_dto_convertToJSON(course_assignment_component
 
     // course_assignment_component_dto->course_assignment_id
     if(course_assignment_component_dto->course_assignment_id) {
-    if(cJSON_AddStringToObject(item, "courseAssignmentID", course_assignment_component_dto->course_assignment_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseAssignmentId", course_assignment_component_dto->course_assignment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -135,7 +141,7 @@ cJSON *course_assignment_component_dto_convertToJSON(course_assignment_component
 
     // course_assignment_component_dto->course_id
     if(course_assignment_component_dto->course_id) {
-    if(cJSON_AddStringToObject(item, "courseID", course_assignment_component_dto->course_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "courseId", course_assignment_component_dto->course_id) == NULL) {
     goto fail; //String
     }
     }
@@ -144,6 +150,14 @@ cJSON *course_assignment_component_dto_convertToJSON(course_assignment_component
     // course_assignment_component_dto->tenant_id
     if(course_assignment_component_dto->tenant_id) {
     if(cJSON_AddStringToObject(item, "tenantId", course_assignment_component_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // course_assignment_component_dto->enrollment_id
+    if(course_assignment_component_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", course_assignment_component_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -215,7 +229,7 @@ course_assignment_component_dto_t *course_assignment_component_dto_parseFromJSON
     }
 
     // course_assignment_component_dto->course_assignment_id
-    cJSON *course_assignment_id = cJSON_GetObjectItemCaseSensitive(course_assignment_component_dtoJSON, "courseAssignmentID");
+    cJSON *course_assignment_id = cJSON_GetObjectItemCaseSensitive(course_assignment_component_dtoJSON, "courseAssignmentId");
     if (course_assignment_id) { 
     if(!cJSON_IsString(course_assignment_id) && !cJSON_IsNull(course_assignment_id))
     {
@@ -224,7 +238,7 @@ course_assignment_component_dto_t *course_assignment_component_dto_parseFromJSON
     }
 
     // course_assignment_component_dto->course_id
-    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_assignment_component_dtoJSON, "courseID");
+    cJSON *course_id = cJSON_GetObjectItemCaseSensitive(course_assignment_component_dtoJSON, "courseId");
     if (course_id) { 
     if(!cJSON_IsString(course_id) && !cJSON_IsNull(course_id))
     {
@@ -241,6 +255,15 @@ course_assignment_component_dto_t *course_assignment_component_dto_parseFromJSON
     }
     }
 
+    // course_assignment_component_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(course_assignment_component_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     course_assignment_component_dto_local_var = course_assignment_component_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -251,7 +274,8 @@ course_assignment_component_dto_t *course_assignment_component_dto_parseFromJSON
         order ? order->valuedouble : 0,
         course_assignment_id && !cJSON_IsNull(course_assignment_id) ? strdup(course_assignment_id->valuestring) : NULL,
         course_id && !cJSON_IsNull(course_id) ? strdup(course_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return course_assignment_component_dto_local_var;

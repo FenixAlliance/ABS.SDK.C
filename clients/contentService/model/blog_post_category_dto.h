@@ -22,6 +22,7 @@ typedef struct blog_post_category_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *slug; // string
+    char *type; // string
     char *title; // string
     char *description; // string
     char *seo_title; // string
@@ -33,8 +34,8 @@ typedef struct blog_post_category_dto_t {
     char *image_url; // string
     char *image; // string
     char *web_portal_id; // string
-    char *business_id; // string
-    char *business_profile_record_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
 
 } blog_post_category_dto_t;
 
@@ -42,6 +43,7 @@ blog_post_category_dto_t *blog_post_category_dto_create(
     char *id,
     char *timestamp,
     char *slug,
+    char *type,
     char *title,
     char *description,
     char *seo_title,
@@ -53,8 +55,8 @@ blog_post_category_dto_t *blog_post_category_dto_create(
     char *image_url,
     char *image,
     char *web_portal_id,
-    char *business_id,
-    char *business_profile_record_id
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void blog_post_category_dto_free(blog_post_category_dto_t *blog_post_category_dto);

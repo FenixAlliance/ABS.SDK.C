@@ -16,6 +16,14 @@
 typedef struct price_list_dto_t price_list_dto_t;
 
 
+// Enum CONTEXT for price_list_dto
+
+typedef enum  { pricingservice_price_list_dto_CONTEXT_NULL = 0, pricingservice_price_list_dto_CONTEXT_Sales, pricingservice_price_list_dto_CONTEXT_Purchase, pricingservice_price_list_dto_CONTEXT_Cost } pricingservice_price_list_dto_CONTEXT_e;
+
+char* price_list_dto_context_ToString(pricingservice_price_list_dto_CONTEXT_e context);
+
+pricingservice_price_list_dto_CONTEXT_e price_list_dto_context_FromString(char* context);
+
 
 
 typedef struct price_list_dto_t {
@@ -25,6 +33,7 @@ typedef struct price_list_dto_t {
     char *start_date; //date time
     char *end_date; //date time
     char *description; // string
+    pricingservice_price_list_dto_CONTEXT_e context; //enum
     char *currency_id; // string
     char *tenant_id; // string
     char *unit_id; // string
@@ -42,6 +51,7 @@ price_list_dto_t *price_list_dto_create(
     char *start_date,
     char *end_date,
     char *description,
+    pricingservice_price_list_dto_CONTEXT_e context,
     char *currency_id,
     char *tenant_id,
     char *unit_id,

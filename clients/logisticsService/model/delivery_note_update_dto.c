@@ -69,7 +69,7 @@ cJSON *delivery_note_update_dto_convertToJSON(delivery_note_update_dto_t *delive
 
     // delivery_note_update_dto->shipment_id
     if(delivery_note_update_dto->shipment_id) {
-    if(cJSON_AddStringToObject(item, "shipmentID", delivery_note_update_dto->shipment_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "shipmentId", delivery_note_update_dto->shipment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -77,7 +77,7 @@ cJSON *delivery_note_update_dto_convertToJSON(delivery_note_update_dto_t *delive
 
     // delivery_note_update_dto->proof_of_delivery_id
     if(delivery_note_update_dto->proof_of_delivery_id) {
-    if(cJSON_AddStringToObject(item, "proofOfDeliveryID", delivery_note_update_dto->proof_of_delivery_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "proofOfDeliveryId", delivery_note_update_dto->proof_of_delivery_id) == NULL) {
     goto fail; //String
     }
     }
@@ -113,7 +113,7 @@ delivery_note_update_dto_t *delivery_note_update_dto_parseFromJSON(cJSON *delive
     }
 
     // delivery_note_update_dto->shipment_id
-    cJSON *shipment_id = cJSON_GetObjectItemCaseSensitive(delivery_note_update_dtoJSON, "shipmentID");
+    cJSON *shipment_id = cJSON_GetObjectItemCaseSensitive(delivery_note_update_dtoJSON, "shipmentId");
     if (shipment_id) { 
     if(!cJSON_IsString(shipment_id) && !cJSON_IsNull(shipment_id))
     {
@@ -122,7 +122,7 @@ delivery_note_update_dto_t *delivery_note_update_dto_parseFromJSON(cJSON *delive
     }
 
     // delivery_note_update_dto->proof_of_delivery_id
-    cJSON *proof_of_delivery_id = cJSON_GetObjectItemCaseSensitive(delivery_note_update_dtoJSON, "proofOfDeliveryID");
+    cJSON *proof_of_delivery_id = cJSON_GetObjectItemCaseSensitive(delivery_note_update_dtoJSON, "proofOfDeliveryId");
     if (proof_of_delivery_id) { 
     if(!cJSON_IsString(proof_of_delivery_id) && !cJSON_IsNull(proof_of_delivery_id))
     {

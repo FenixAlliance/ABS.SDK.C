@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create an employer
@@ -52,6 +53,14 @@ EmployersAPI_getEmployersAsync(apiClient_t *apiClient, char *tenantId, char *api
 //
 int32_envelope_t*
 EmployersAPI_getEmployersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an employer
+//
+// Partially updates an existing employer for the specified tenant.
+//
+empty_envelope_t*
+EmployersAPI_patchEmployerAsync(apiClient_t *apiClient, char *tenantId, char *employerId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an employer

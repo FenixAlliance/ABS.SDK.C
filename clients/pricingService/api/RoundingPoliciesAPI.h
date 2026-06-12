@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/rounding_policy_create_dto.h"
 #include "../model/rounding_policy_dto_envelope.h"
 #include "../model/rounding_policy_dto_list_envelope.h"
@@ -52,6 +53,14 @@ RoundingPoliciesAPI_getRoundingPoliciesCountAsync(apiClient_t *apiClient, char *
 //
 rounding_policy_dto_envelope_t*
 RoundingPoliciesAPI_getRoundingPolicyByIdAsync(apiClient_t *apiClient, char *tenantId, char *roundingPolicyId, char *api_version, char *x_api_version);
+
+
+// Patches a rounding policy
+//
+// Partially updates the specified rounding policy using a JSON Patch document.
+//
+empty_envelope_t*
+RoundingPoliciesAPI_patchRoundingPolicyAsync(apiClient_t *apiClient, char *tenantId, char *roundingPolicyId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Updates a rounding policy

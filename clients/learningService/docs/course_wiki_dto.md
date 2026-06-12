@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | **char \*** |  | [optional] 
 **release_date_time** | **char \*** |  | [optional] 
 **tenant_id** | **char \*** |  | [optional] 
+**enrollment_id** | **char \*** |  | [optional] 
 **course_id** | **char \*** |  | [optional] 
 **course_unit_id** | **char \*** |  | [optional] 
 

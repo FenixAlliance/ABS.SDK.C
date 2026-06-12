@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**CourseCertificatesAPI_getCourseCertificateTemplatesCountAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_getCourseCertificateTemplatesCountAsync) | **GET** /api/v2/LearningService/CourseCertificates/Template/Count | Get certificate templates count
 [**CourseCertificatesAPI_getCourseCertificatesAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_getCourseCertificatesAsync) | **GET** /api/v2/LearningService/CourseCertificates | Get all course certificates
 [**CourseCertificatesAPI_getCourseCertificatesCountAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_getCourseCertificatesCountAsync) | **GET** /api/v2/LearningService/CourseCertificates/Count | Get course certificates count
+[**CourseCertificatesAPI_patchCourseCertificateAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_patchCourseCertificateAsync) | **PATCH** /api/v2/LearningService/CourseCertificates/{courseCertificateId} | Patch a course certificate
+[**CourseCertificatesAPI_patchCourseCertificateTemplateAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_patchCourseCertificateTemplateAsync) | **PATCH** /api/v2/LearningService/CourseCertificates/Template/{courseCertificateTemplateId} | Patch a certificate template
 [**CourseCertificatesAPI_updateCourseCertificateAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_updateCourseCertificateAsync) | **PUT** /api/v2/LearningService/CourseCertificates/{courseCertificateId} | Update a course certificate
 [**CourseCertificatesAPI_updateCourseCertificateTemplateAsync**](CourseCertificatesAPI.md#CourseCertificatesAPI_updateCourseCertificateTemplateAsync) | **PUT** /api/v2/LearningService/CourseCertificates/Template/{courseCertificateTemplateId} | Update a certificate template
 
@@ -348,6 +350,76 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseCertificatesAPI_patchCourseCertificateAsync**
+```c
+// Patch a course certificate
+//
+// Partially updates a course certificate for the specified tenant.
+//
+empty_envelope_t* CourseCertificatesAPI_patchCourseCertificateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**courseCertificateId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseCertificatesAPI_patchCourseCertificateTemplateAsync**
+```c
+// Patch a certificate template
+//
+// Partially updates a course certificate template for the specified tenant.
+//
+empty_envelope_t* CourseCertificatesAPI_patchCourseCertificateTemplateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateTemplateId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**courseCertificateTemplateId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

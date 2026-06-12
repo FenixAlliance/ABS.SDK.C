@@ -213,7 +213,7 @@ cJSON *pricing_rule_update_dto_convertToJSON(pricing_rule_update_dto_t *pricing_
 
     // pricing_rule_update_dto->currency_id
     if(pricing_rule_update_dto->currency_id) {
-    if(cJSON_AddStringToObject(item, "currencyID", pricing_rule_update_dto->currency_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "currencyId", pricing_rule_update_dto->currency_id) == NULL) {
     goto fail; //String
     }
     }
@@ -221,7 +221,7 @@ cJSON *pricing_rule_update_dto_convertToJSON(pricing_rule_update_dto_t *pricing_
 
     // pricing_rule_update_dto->country_id
     if(pricing_rule_update_dto->country_id) {
-    if(cJSON_AddStringToObject(item, "countryID", pricing_rule_update_dto->country_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "countryId", pricing_rule_update_dto->country_id) == NULL) {
     goto fail; //String
     }
     }
@@ -229,7 +229,7 @@ cJSON *pricing_rule_update_dto_convertToJSON(pricing_rule_update_dto_t *pricing_
 
     // pricing_rule_update_dto->country_state_id
     if(pricing_rule_update_dto->country_state_id) {
-    if(cJSON_AddStringToObject(item, "countryStateID", pricing_rule_update_dto->country_state_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "countryStateId", pricing_rule_update_dto->country_state_id) == NULL) {
     goto fail; //String
     }
     }
@@ -253,7 +253,7 @@ cJSON *pricing_rule_update_dto_convertToJSON(pricing_rule_update_dto_t *pricing_
 
     // pricing_rule_update_dto->city_id
     if(pricing_rule_update_dto->city_id) {
-    if(cJSON_AddStringToObject(item, "cityID", pricing_rule_update_dto->city_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "cityId", pricing_rule_update_dto->city_id) == NULL) {
     goto fail; //String
     }
     }
@@ -397,7 +397,7 @@ pricing_rule_update_dto_t *pricing_rule_update_dto_parseFromJSON(cJSON *pricing_
     }
 
     // pricing_rule_update_dto->currency_id
-    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(pricing_rule_update_dtoJSON, "currencyID");
+    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(pricing_rule_update_dtoJSON, "currencyId");
     if (currency_id) { 
     if(!cJSON_IsString(currency_id) && !cJSON_IsNull(currency_id))
     {
@@ -406,7 +406,7 @@ pricing_rule_update_dto_t *pricing_rule_update_dto_parseFromJSON(cJSON *pricing_
     }
 
     // pricing_rule_update_dto->country_id
-    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(pricing_rule_update_dtoJSON, "countryID");
+    cJSON *country_id = cJSON_GetObjectItemCaseSensitive(pricing_rule_update_dtoJSON, "countryId");
     if (country_id) { 
     if(!cJSON_IsString(country_id) && !cJSON_IsNull(country_id))
     {
@@ -415,7 +415,7 @@ pricing_rule_update_dto_t *pricing_rule_update_dto_parseFromJSON(cJSON *pricing_
     }
 
     // pricing_rule_update_dto->country_state_id
-    cJSON *country_state_id = cJSON_GetObjectItemCaseSensitive(pricing_rule_update_dtoJSON, "countryStateID");
+    cJSON *country_state_id = cJSON_GetObjectItemCaseSensitive(pricing_rule_update_dtoJSON, "countryStateId");
     if (country_state_id) { 
     if(!cJSON_IsString(country_state_id) && !cJSON_IsNull(country_state_id))
     {
@@ -442,7 +442,7 @@ pricing_rule_update_dto_t *pricing_rule_update_dto_parseFromJSON(cJSON *pricing_
     }
 
     // pricing_rule_update_dto->city_id
-    cJSON *city_id = cJSON_GetObjectItemCaseSensitive(pricing_rule_update_dtoJSON, "cityID");
+    cJSON *city_id = cJSON_GetObjectItemCaseSensitive(pricing_rule_update_dtoJSON, "cityId");
     if (city_id) { 
     if(!cJSON_IsString(city_id) && !cJSON_IsNull(city_id))
     {

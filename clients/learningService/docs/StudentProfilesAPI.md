@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdDelete**](StudentProfilesAPI.md#StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdDelete) | **DELETE** /api/v2/LearningService/StudentProfiles/{studentProfileId} | 
 [**StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdGet**](StudentProfilesAPI.md#StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdGet) | **GET** /api/v2/LearningService/StudentProfiles/{studentProfileId} | 
 [**StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdHoursCompletedGet**](StudentProfilesAPI.md#StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdHoursCompletedGet) | **GET** /api/v2/LearningService/StudentProfiles/{studentProfileId}/HoursCompleted | 
+[**StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdPatch**](StudentProfilesAPI.md#StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdPatch) | **PATCH** /api/v2/LearningService/StudentProfiles/{studentProfileId} | 
 [**StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdPut**](StudentProfilesAPI.md#StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdPut) | **PUT** /api/v2/LearningService/StudentProfiles/{studentProfileId} | 
 
 
@@ -217,6 +218,37 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdPatch**
+```c
+empty_envelope_t* StudentProfilesAPI_apiV2LearningServiceStudentProfilesStudentProfileIdPatch(apiClient_t *apiClient, char *tenantId, char *studentProfileId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**studentProfileId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

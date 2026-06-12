@@ -12,6 +12,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 
 
 // Create an email signature
@@ -52,6 +53,14 @@ EmailSignaturesAPI_getEmailSignaturesCountAsync(apiClient_t *apiClient, char *te
 //
 email_signature_dto_list_envelope_t*
 EmailSignaturesAPI_getEmailSignaturesODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch an email signature
+//
+// Partially updates an email signature by its ID using JSON Patch.
+//
+empty_envelope_t*
+EmailSignaturesAPI_patchEmailSignatureAsync(apiClient_t *apiClient, char *tenantId, char *emailsignatureId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update an email signature

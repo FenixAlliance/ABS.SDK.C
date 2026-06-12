@@ -16,6 +16,8 @@ Method | HTTP request | Description
 [**SeawayBillsAPI_issueSeawayBillAsync**](SeawayBillsAPI.md#SeawayBillsAPI_issueSeawayBillAsync) | **POST** /api/v2/LogisticsService/SeawayBills/{billId}/Issue | Issue a seaway bill
 [**SeawayBillsAPI_markSeawayBillArrivedAsync**](SeawayBillsAPI.md#SeawayBillsAPI_markSeawayBillArrivedAsync) | **POST** /api/v2/LogisticsService/SeawayBills/{billId}/MarkArrived | Mark seaway bill arrived
 [**SeawayBillsAPI_markSeawayBillInTransitAsync**](SeawayBillsAPI.md#SeawayBillsAPI_markSeawayBillInTransitAsync) | **POST** /api/v2/LogisticsService/SeawayBills/{billId}/MarkInTransit | Mark seaway bill in transit
+[**SeawayBillsAPI_patchSeawayBillAsync**](SeawayBillsAPI.md#SeawayBillsAPI_patchSeawayBillAsync) | **PATCH** /api/v2/LogisticsService/SeawayBills/{billId} | Patch a seaway bill
+[**SeawayBillsAPI_patchSeawayBillLineAsync**](SeawayBillsAPI.md#SeawayBillsAPI_patchSeawayBillLineAsync) | **PATCH** /api/v2/LogisticsService/SeawayBills/{billId}/Lines/{lineId} | Patch a seaway bill line
 [**SeawayBillsAPI_releaseSeawayBillAsync**](SeawayBillsAPI.md#SeawayBillsAPI_releaseSeawayBillAsync) | **POST** /api/v2/LogisticsService/SeawayBills/{billId}/Release | Release a seaway bill
 [**SeawayBillsAPI_removeSeawayBillLineAsync**](SeawayBillsAPI.md#SeawayBillsAPI_removeSeawayBillLineAsync) | **DELETE** /api/v2/LogisticsService/SeawayBills/{billId}/Lines/{lineId} | Remove a seaway bill line
 [**SeawayBillsAPI_updateSeawayBillAsync**](SeawayBillsAPI.md#SeawayBillsAPI_updateSeawayBillAsync) | **PUT** /api/v2/LogisticsService/SeawayBills/{billId} | Update a seaway bill
@@ -425,6 +427,77 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SeawayBillsAPI_patchSeawayBillAsync**
+```c
+// Patch a seaway bill
+//
+// Partially updates an existing seaway bill using a JSON Patch document.
+//
+empty_envelope_t* SeawayBillsAPI_patchSeawayBillAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**billId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SeawayBillsAPI_patchSeawayBillLineAsync**
+```c
+// Patch a seaway bill line
+//
+// Partially updates a line on a seaway bill using a JSON Patch document.
+//
+empty_envelope_t* SeawayBillsAPI_patchSeawayBillLineAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**billId** | **char \*** |  | 
+**lineId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/social_post_bucket_create_dto.h"
 #include "../model/social_post_bucket_dto_envelope.h"
 #include "../model/social_post_bucket_dto_list_envelope.h"
@@ -52,6 +53,14 @@ SocialPostBucketsAPI_getSocialPostBucketsCountAsync(apiClient_t *apiClient, char
 //
 social_post_bucket_dto_list_envelope_t*
 SocialPostBucketsAPI_getSocialPostBucketsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a social post bucket
+//
+// Partially updates a social post bucket by its ID using JSON Patch.
+//
+empty_envelope_t*
+SocialPostBucketsAPI_patchSocialPostBucketAsync(apiClient_t *apiClient, char *tenantId, char *socialpostbucketId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a social post bucket

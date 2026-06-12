@@ -30,7 +30,9 @@ typedef struct course_unit_dto_t {
     char *content; // string
     char *course_id; // string
     char *course_section_id; // string
+    char *course_content_group_id; // string
     char *tenant_id; // string
+    char *enrollment_id; // string
     list_t *course_handouts; //nonprimitive container
     list_t *course_assignments; //nonprimitive container
     list_t *course_components; //nonprimitive container
@@ -46,7 +48,9 @@ course_unit_dto_t *course_unit_dto_create(
     char *content,
     char *course_id,
     char *course_section_id,
+    char *course_content_group_id,
     char *tenant_id,
+    char *enrollment_id,
     list_t *course_handouts,
     list_t *course_assignments,
     list_t *course_components

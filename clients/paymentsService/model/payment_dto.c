@@ -115,7 +115,9 @@ payment_dto_t *payment_dto_create(
     char *bank_account_id,
     char *enrollment_id,
     char *bank_id,
-    char *payment_token_id
+    char *payment_token_id,
+    char *emisor_wallet_account_id,
+    char *receiver_wallet_account_id
     ) {
     payment_dto_t *payment_dto_local_var = malloc(sizeof(payment_dto_t));
     if (!payment_dto_local_var) {
@@ -180,6 +182,8 @@ payment_dto_t *payment_dto_create(
     payment_dto_local_var->enrollment_id = enrollment_id;
     payment_dto_local_var->bank_id = bank_id;
     payment_dto_local_var->payment_token_id = payment_token_id;
+    payment_dto_local_var->emisor_wallet_account_id = emisor_wallet_account_id;
+    payment_dto_local_var->receiver_wallet_account_id = receiver_wallet_account_id;
 
     return payment_dto_local_var;
 }
@@ -365,6 +369,14 @@ void payment_dto_free(payment_dto_t *payment_dto) {
     if (payment_dto->payment_token_id) {
         free(payment_dto->payment_token_id);
         payment_dto->payment_token_id = NULL;
+    }
+    if (payment_dto->emisor_wallet_account_id) {
+        free(payment_dto->emisor_wallet_account_id);
+        payment_dto->emisor_wallet_account_id = NULL;
+    }
+    if (payment_dto->receiver_wallet_account_id) {
+        free(payment_dto->receiver_wallet_account_id);
+        payment_dto->receiver_wallet_account_id = NULL;
     }
     free(payment_dto);
 }
@@ -842,6 +854,22 @@ cJSON *payment_dto_convertToJSON(payment_dto_t *payment_dto) {
     // payment_dto->payment_token_id
     if(payment_dto->payment_token_id) {
     if(cJSON_AddStringToObject(item, "paymentTokenId", payment_dto->payment_token_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // payment_dto->emisor_wallet_account_id
+    if(payment_dto->emisor_wallet_account_id) {
+    if(cJSON_AddStringToObject(item, "emisorWalletAccountId", payment_dto->emisor_wallet_account_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // payment_dto->receiver_wallet_account_id
+    if(payment_dto->receiver_wallet_account_id) {
+    if(cJSON_AddStringToObject(item, "receiverWalletAccountId", payment_dto->receiver_wallet_account_id) == NULL) {
     goto fail; //String
     }
     }
@@ -1395,6 +1423,24 @@ payment_dto_t *payment_dto_parseFromJSON(cJSON *payment_dtoJSON){
     }
     }
 
+    // payment_dto->emisor_wallet_account_id
+    cJSON *emisor_wallet_account_id = cJSON_GetObjectItemCaseSensitive(payment_dtoJSON, "emisorWalletAccountId");
+    if (emisor_wallet_account_id) { 
+    if(!cJSON_IsString(emisor_wallet_account_id) && !cJSON_IsNull(emisor_wallet_account_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // payment_dto->receiver_wallet_account_id
+    cJSON *receiver_wallet_account_id = cJSON_GetObjectItemCaseSensitive(payment_dtoJSON, "receiverWalletAccountId");
+    if (receiver_wallet_account_id) { 
+    if(!cJSON_IsString(receiver_wallet_account_id) && !cJSON_IsNull(receiver_wallet_account_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     payment_dto_local_var = payment_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -1455,7 +1501,9 @@ payment_dto_t *payment_dto_parseFromJSON(cJSON *payment_dtoJSON){
         bank_account_id && !cJSON_IsNull(bank_account_id) ? strdup(bank_account_id->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         bank_id && !cJSON_IsNull(bank_id) ? strdup(bank_id->valuestring) : NULL,
-        payment_token_id && !cJSON_IsNull(payment_token_id) ? strdup(payment_token_id->valuestring) : NULL
+        payment_token_id && !cJSON_IsNull(payment_token_id) ? strdup(payment_token_id->valuestring) : NULL,
+        emisor_wallet_account_id && !cJSON_IsNull(emisor_wallet_account_id) ? strdup(emisor_wallet_account_id->valuestring) : NULL,
+        receiver_wallet_account_id && !cJSON_IsNull(receiver_wallet_account_id) ? strdup(receiver_wallet_account_id->valuestring) : NULL
         );
 
     return payment_dto_local_var;

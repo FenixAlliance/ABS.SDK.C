@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**SocialMediaPostsAPI_getSocialMediaPostDetailsAsync**](SocialMediaPostsAPI.md#SocialMediaPostsAPI_getSocialMediaPostDetailsAsync) | **GET** /api/v2/MarketingService/SocialMediaPosts/{socialmediapostId} | Get social media post by ID
 [**SocialMediaPostsAPI_getSocialMediaPostsCountAsync**](SocialMediaPostsAPI.md#SocialMediaPostsAPI_getSocialMediaPostsCountAsync) | **GET** /api/v2/MarketingService/SocialMediaPosts/Count | Get social media posts count
 [**SocialMediaPostsAPI_getSocialMediaPostsODataAsync**](SocialMediaPostsAPI.md#SocialMediaPostsAPI_getSocialMediaPostsODataAsync) | **GET** /api/v2/MarketingService/SocialMediaPosts | Get social media posts
+[**SocialMediaPostsAPI_patchSocialMediaPostAsync**](SocialMediaPostsAPI.md#SocialMediaPostsAPI_patchSocialMediaPostAsync) | **PATCH** /api/v2/MarketingService/SocialMediaPosts/{socialmediapostId} | Patch a social media post
 [**SocialMediaPostsAPI_updateSocialMediaPostAsync**](SocialMediaPostsAPI.md#SocialMediaPostsAPI_updateSocialMediaPostAsync) | **PUT** /api/v2/MarketingService/SocialMediaPosts/{socialmediapostId} | Update a social media post
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SocialMediaPostsAPI_patchSocialMediaPostAsync**
+```c
+// Patch a social media post
+//
+// Partially updates a social media post by its ID using JSON Patch.
+//
+empty_envelope_t* SocialMediaPostsAPI_patchSocialMediaPostAsync(apiClient_t *apiClient, char *tenantId, char *socialmediapostId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**socialmediapostId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

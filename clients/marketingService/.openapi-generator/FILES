@@ -87,6 +87,7 @@ docs/newsletter_create_dto.md
 docs/newsletter_dto.md
 docs/newsletter_dto_envelope.md
 docs/newsletter_update_dto.md
+docs/operation.md
 docs/order_dto.md
 docs/order_dto_envelope.md
 docs/refresh_request.md
@@ -209,6 +210,8 @@ model/newsletter_update_dto.c
 model/newsletter_update_dto.h
 model/object.c
 model/object.h
+model/operation.c
+model/operation.h
 model/order_dto.c
 model/order_dto.h
 model/order_dto_envelope.c
@@ -250,13 +253,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_marketing_area_create_dto.c
-unit-test/test_marketing_area_dto.c
-unit-test/test_marketing_area_dto_envelope.c
-unit-test/test_marketing_area_dto_list_envelope.c
-unit-test/test_marketing_area_update_dto.c
-unit-test/test_marketing_lead_create_dto.c
-unit-test/test_marketing_lead_dto.c
-unit-test/test_marketing_lead_dto_envelope.c
-unit-test/test_marketing_lead_dto_list_envelope.c
-unit-test/test_marketing_lead_update_dto.c
+unit-test/test_operation.c

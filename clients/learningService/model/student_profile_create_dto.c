@@ -31,8 +31,7 @@ student_profile_create_dto_t *student_profile_create_dto_create(
     char *data8,
     char *data8_label,
     char *data9,
-    char *data9_label,
-    char *contact_id
+    char *data9_label
     ) {
     student_profile_create_dto_t *student_profile_create_dto_local_var = malloc(sizeof(student_profile_create_dto_t));
     if (!student_profile_create_dto_local_var) {
@@ -64,7 +63,6 @@ student_profile_create_dto_t *student_profile_create_dto_create(
     student_profile_create_dto_local_var->data8_label = data8_label;
     student_profile_create_dto_local_var->data9 = data9;
     student_profile_create_dto_local_var->data9_label = data9_label;
-    student_profile_create_dto_local_var->contact_id = contact_id;
 
     return student_profile_create_dto_local_var;
 }
@@ -178,10 +176,6 @@ void student_profile_create_dto_free(student_profile_create_dto_t *student_profi
     if (student_profile_create_dto->data9_label) {
         free(student_profile_create_dto->data9_label);
         student_profile_create_dto->data9_label = NULL;
-    }
-    if (student_profile_create_dto->contact_id) {
-        free(student_profile_create_dto->contact_id);
-        student_profile_create_dto->contact_id = NULL;
     }
     free(student_profile_create_dto);
 }
@@ -392,14 +386,6 @@ cJSON *student_profile_create_dto_convertToJSON(student_profile_create_dto_t *st
     // student_profile_create_dto->data9_label
     if(student_profile_create_dto->data9_label) {
     if(cJSON_AddStringToObject(item, "data9Label", student_profile_create_dto->data9_label) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // student_profile_create_dto->contact_id
-    if(student_profile_create_dto->contact_id) {
-    if(cJSON_AddStringToObject(item, "contactID", student_profile_create_dto->contact_id) == NULL) {
     goto fail; //String
     }
     }
@@ -650,15 +636,6 @@ student_profile_create_dto_t *student_profile_create_dto_parseFromJSON(cJSON *st
     }
     }
 
-    // student_profile_create_dto->contact_id
-    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(student_profile_create_dtoJSON, "contactID");
-    if (contact_id) { 
-    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     student_profile_create_dto_local_var = student_profile_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -686,8 +663,7 @@ student_profile_create_dto_t *student_profile_create_dto_parseFromJSON(cJSON *st
         data8 && !cJSON_IsNull(data8) ? strdup(data8->valuestring) : NULL,
         data8_label && !cJSON_IsNull(data8_label) ? strdup(data8_label->valuestring) : NULL,
         data9 && !cJSON_IsNull(data9) ? strdup(data9->valuestring) : NULL,
-        data9_label && !cJSON_IsNull(data9_label) ? strdup(data9_label->valuestring) : NULL,
-        contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL
+        data9_label && !cJSON_IsNull(data9_label) ? strdup(data9_label->valuestring) : NULL
         );
 
     return student_profile_create_dto_local_var;

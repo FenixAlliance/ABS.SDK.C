@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/road_waybill_create_dto.h"
 #include "../model/road_waybill_dto_envelope.h"
 #include "../model/road_waybill_dto_list_envelope.h"
@@ -119,6 +120,22 @@ RoadWaybillsAPI_markRoadWaybillDeliveredAsync(apiClient_t *apiClient, char *tena
 //
 empty_envelope_t*
 RoadWaybillsAPI_markRoadWaybillInTransitAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version);
+
+
+// Patch a road waybill
+//
+// Partially updates an existing road waybill using a JSON Patch document.
+//
+empty_envelope_t*
+RoadWaybillsAPI_patchRoadWaybillAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a road waybill line
+//
+// Partially updates a line on a road waybill using a JSON Patch document.
+//
+empty_envelope_t*
+RoadWaybillsAPI_patchRoadWaybillLineAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Remove a road waybill line

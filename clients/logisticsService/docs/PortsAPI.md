@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**PortsAPI_getPortByIdAsync**](PortsAPI.md#PortsAPI_getPortByIdAsync) | **GET** /api/v2/LogisticsService/Ports/{portId} | Get port by ID
 [**PortsAPI_getPortsAsync**](PortsAPI.md#PortsAPI_getPortsAsync) | **GET** /api/v2/LogisticsService/Ports | Get all ports
 [**PortsAPI_getPortsCountAsync**](PortsAPI.md#PortsAPI_getPortsCountAsync) | **GET** /api/v2/LogisticsService/Ports/Count | Get ports count
+[**PortsAPI_patchPortAsync**](PortsAPI.md#PortsAPI_patchPortAsync) | **PATCH** /api/v2/LogisticsService/Ports/{portId} | Patch a port
 [**PortsAPI_updatePortAsync**](PortsAPI.md#PortsAPI_updatePortAsync) | **PUT** /api/v2/LogisticsService/Ports/{portId} | Update a port
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PortsAPI_patchPortAsync**
+```c
+// Patch a port
+//
+// Partially updates an existing port using JSON Patch.
+//
+empty_envelope_t* PortsAPI_patchPortAsync(apiClient_t *apiClient, char *tenantId, char *portId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**portId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

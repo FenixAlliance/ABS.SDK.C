@@ -32,6 +32,7 @@ blog_post_create_dto_t *blog_post_create_dto_create(
     char *markup,
     char *featured_image_url,
     contentservice_blog_post_create_dto_CODETYPE_e code_type,
+    char *slug,
     char *blog_post_category_id,
     char *web_template_id
     ) {
@@ -48,6 +49,7 @@ blog_post_create_dto_t *blog_post_create_dto_create(
     blog_post_create_dto_local_var->markup = markup;
     blog_post_create_dto_local_var->featured_image_url = featured_image_url;
     blog_post_create_dto_local_var->code_type = code_type;
+    blog_post_create_dto_local_var->slug = slug;
     blog_post_create_dto_local_var->blog_post_category_id = blog_post_category_id;
     blog_post_create_dto_local_var->web_template_id = web_template_id;
 
@@ -87,6 +89,10 @@ void blog_post_create_dto_free(blog_post_create_dto_t *blog_post_create_dto) {
     if (blog_post_create_dto->featured_image_url) {
         free(blog_post_create_dto->featured_image_url);
         blog_post_create_dto->featured_image_url = NULL;
+    }
+    if (blog_post_create_dto->slug) {
+        free(blog_post_create_dto->slug);
+        blog_post_create_dto->slug = NULL;
     }
     if (blog_post_create_dto->blog_post_category_id) {
         free(blog_post_create_dto->blog_post_category_id);
@@ -172,6 +178,14 @@ cJSON *blog_post_create_dto_convertToJSON(blog_post_create_dto_t *blog_post_crea
     if(cJSON_AddStringToObject(item, "codeType", code_typeblog_post_create_dto_ToString(blog_post_create_dto->code_type)) == NULL)
     {
     goto fail; //Enum
+    }
+    }
+
+
+    // blog_post_create_dto->slug
+    if(blog_post_create_dto->slug) {
+    if(cJSON_AddStringToObject(item, "slug", blog_post_create_dto->slug) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -289,6 +303,15 @@ blog_post_create_dto_t *blog_post_create_dto_parseFromJSON(cJSON *blog_post_crea
     code_typeVariable = blog_post_create_dto_code_type_FromString(code_type->valuestring);
     }
 
+    // blog_post_create_dto->slug
+    cJSON *slug = cJSON_GetObjectItemCaseSensitive(blog_post_create_dtoJSON, "slug");
+    if (slug) { 
+    if(!cJSON_IsString(slug) && !cJSON_IsNull(slug))
+    {
+    goto end; //String
+    }
+    }
+
     // blog_post_create_dto->blog_post_category_id
     cJSON *blog_post_category_id = cJSON_GetObjectItemCaseSensitive(blog_post_create_dtoJSON, "blogPostCategoryId");
     if (blog_post_category_id) { 
@@ -318,6 +341,7 @@ blog_post_create_dto_t *blog_post_create_dto_parseFromJSON(cJSON *blog_post_crea
         markup && !cJSON_IsNull(markup) ? strdup(markup->valuestring) : NULL,
         featured_image_url && !cJSON_IsNull(featured_image_url) ? strdup(featured_image_url->valuestring) : NULL,
         code_type ? code_typeVariable : contentservice_blog_post_create_dto_CODETYPE_NULL,
+        slug && !cJSON_IsNull(slug) ? strdup(slug->valuestring) : NULL,
         blog_post_category_id && !cJSON_IsNull(blog_post_category_id) ? strdup(blog_post_category_id->valuestring) : NULL,
         web_template_id && !cJSON_IsNull(web_template_id) ? strdup(web_template_id->valuestring) : NULL
         );

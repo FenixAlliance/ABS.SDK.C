@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/truck_create_dto.h"
 #include "../model/truck_dto_envelope.h"
 #include "../model/truck_dto_list_envelope.h"
@@ -127,6 +128,22 @@ TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
 //
 int32_envelope_t*
 TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a truck
+//
+// Partially updates an existing truck using JSON Patch.
+//
+empty_envelope_t*
+TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a truck trip
+//
+// Partially updates an existing truck trip using JSON Patch.
+//
+empty_envelope_t*
+TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *tripId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a truck

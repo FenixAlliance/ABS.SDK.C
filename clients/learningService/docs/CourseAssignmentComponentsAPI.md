@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseAssignmentComponentsAPI_getCourseAssignmentComponentByIdAsync**](CourseAssignmentComponentsAPI.md#CourseAssignmentComponentsAPI_getCourseAssignmentComponentByIdAsync) | **GET** /api/v2/LearningService/CourseAssignmentComponents/{componentId} | Get course assignment component by ID
 [**CourseAssignmentComponentsAPI_getCourseAssignmentComponentsAsync**](CourseAssignmentComponentsAPI.md#CourseAssignmentComponentsAPI_getCourseAssignmentComponentsAsync) | **GET** /api/v2/LearningService/CourseAssignmentComponents | Get all course assignment components
 [**CourseAssignmentComponentsAPI_getCourseAssignmentComponentsCountAsync**](CourseAssignmentComponentsAPI.md#CourseAssignmentComponentsAPI_getCourseAssignmentComponentsCountAsync) | **GET** /api/v2/LearningService/CourseAssignmentComponents/Count | Get course assignment components count
+[**CourseAssignmentComponentsAPI_patchCourseAssignmentComponentAsync**](CourseAssignmentComponentsAPI.md#CourseAssignmentComponentsAPI_patchCourseAssignmentComponentAsync) | **PATCH** /api/v2/LearningService/CourseAssignmentComponents/{componentId} | Patch a course assignment component
 [**CourseAssignmentComponentsAPI_updateCourseAssignmentComponentAsync**](CourseAssignmentComponentsAPI.md#CourseAssignmentComponentsAPI_updateCourseAssignmentComponentAsync) | **PUT** /api/v2/LearningService/CourseAssignmentComponents/{componentId} | Update a course assignment component
 
 
@@ -174,6 +175,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseAssignmentComponentsAPI_patchCourseAssignmentComponentAsync**
+```c
+// Patch a course assignment component
+//
+// Partially updates a course assignment component for the specified tenant.
+//
+empty_envelope_t* CourseAssignmentComponentsAPI_patchCourseAssignmentComponentAsync(apiClient_t *apiClient, char *tenantId, char *componentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**componentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

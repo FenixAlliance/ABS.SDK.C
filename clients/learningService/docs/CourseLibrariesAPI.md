@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CourseLibrariesAPI_getCourseLibrariesAsync**](CourseLibrariesAPI.md#CourseLibrariesAPI_getCourseLibrariesAsync) | **GET** /api/v2/LearningService/CourseLibraries | Get all course libraries
 [**CourseLibrariesAPI_getCourseLibrariesCountAsync**](CourseLibrariesAPI.md#CourseLibrariesAPI_getCourseLibrariesCountAsync) | **GET** /api/v2/LearningService/CourseLibraries/Count | Get course libraries count
 [**CourseLibrariesAPI_getCourseLibraryByIdAsync**](CourseLibrariesAPI.md#CourseLibrariesAPI_getCourseLibraryByIdAsync) | **GET** /api/v2/LearningService/CourseLibraries/{libraryId} | Get course library by ID
+[**CourseLibrariesAPI_patchCourseLibraryAsync**](CourseLibrariesAPI.md#CourseLibrariesAPI_patchCourseLibraryAsync) | **PATCH** /api/v2/LearningService/CourseLibraries/{libraryId} | Patch a course library
 [**CourseLibrariesAPI_updateCourseLibraryAsync**](CourseLibrariesAPI.md#CourseLibrariesAPI_updateCourseLibraryAsync) | **PUT** /api/v2/LearningService/CourseLibraries/{libraryId} | Update a course library
 
 
@@ -175,6 +176,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseLibrariesAPI_patchCourseLibraryAsync**
+```c
+// Patch a course library
+//
+// Partially updates an existing course library.
+//
+void CourseLibrariesAPI_patchCourseLibraryAsync(apiClient_t *apiClient, char *tenantId, char *libraryId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**libraryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

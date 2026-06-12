@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**BlogPostTagsAPI_deleteBlogPostTagAsync**](BlogPostTagsAPI.md#BlogPostTagsAPI_deleteBlogPostTagAsync) | **DELETE** /api/v2/ContentService/BlogPostTags/{blogPostTagId} | Delete a blog post tag
 [**BlogPostTagsAPI_getBlogPostTagByIdAsync**](BlogPostTagsAPI.md#BlogPostTagsAPI_getBlogPostTagByIdAsync) | **GET** /api/v2/ContentService/BlogPostTags/{blogPostTagId} | Get blog post tag by ID
 [**BlogPostTagsAPI_getBlogPostTagsAsync**](BlogPostTagsAPI.md#BlogPostTagsAPI_getBlogPostTagsAsync) | **GET** /api/v2/ContentService/BlogPostTags | Get blog post tags
+[**BlogPostTagsAPI_patchBlogPostTagAsync**](BlogPostTagsAPI.md#BlogPostTagsAPI_patchBlogPostTagAsync) | **PATCH** /api/v2/ContentService/BlogPostTags/{blogPostTagId} | Patch a blog post tag
 [**BlogPostTagsAPI_updateBlogPostTagAsync**](BlogPostTagsAPI.md#BlogPostTagsAPI_updateBlogPostTagAsync) | **PUT** /api/v2/ContentService/BlogPostTags/{blogPostTagId} | Update a blog post tag
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BlogPostTagsAPI_patchBlogPostTagAsync**
+```c
+// Patch a blog post tag
+//
+// Partially updates an existing blog post tag for the specified tenant.
+//
+empty_envelope_t* BlogPostTagsAPI_patchBlogPostTagAsync(apiClient_t *apiClient, char *tenantId, char *blogPostTagId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**blogPostTagId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

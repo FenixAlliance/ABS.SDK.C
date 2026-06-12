@@ -29,7 +29,12 @@ typedef struct course_assignment_dto_t {
     char *course_id; // string
     char *course_unit_id; // string
     char *course_section_id; // string
+    char *course_cohort_id; // string
+    char *course_assignment_type_id; // string
+    int asign_to_all_cohorts; //boolean
+    char *resources; // string
     char *tenant_id; // string
+    char *enrollment_id; // string
 
 } course_assignment_dto_t;
 
@@ -44,7 +49,12 @@ course_assignment_dto_t *course_assignment_dto_create(
     char *course_id,
     char *course_unit_id,
     char *course_section_id,
-    char *tenant_id
+    char *course_cohort_id,
+    char *course_assignment_type_id,
+    int asign_to_all_cohorts,
+    char *resources,
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void course_assignment_dto_free(course_assignment_dto_t *course_assignment_dto);

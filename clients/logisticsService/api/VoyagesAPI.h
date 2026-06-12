@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/voyage_create_dto.h"
 #include "../model/voyage_dto_envelope.h"
 #include "../model/voyage_dto_list_envelope.h"
@@ -103,6 +104,22 @@ VoyagesAPI_getVoyagesAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
 //
 int32_envelope_t*
 VoyagesAPI_getVoyagesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a voyage
+//
+// Partially updates an existing voyage using JSON Patch.
+//
+empty_envelope_t*
+VoyagesAPI_patchVoyageAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a voyage port call
+//
+// Partially updates an existing voyage port call using JSON Patch.
+//
+empty_envelope_t*
+VoyagesAPI_patchVoyagePortCallAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *portCallId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Start a voyage

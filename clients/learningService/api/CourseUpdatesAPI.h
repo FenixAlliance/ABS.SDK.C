@@ -8,7 +8,9 @@
 #include "../model/course_news_create_dto.h"
 #include "../model/course_news_dto.h"
 #include "../model/course_news_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course update
@@ -49,6 +51,14 @@ CourseUpdatesAPI_getCourseUpdatesAsync(apiClient_t *apiClient, char *tenantId, c
 //
 int*
 CourseUpdatesAPI_getCourseUpdatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course update
+//
+// Partially updates a course update for the specified tenant.
+//
+empty_envelope_t*
+CourseUpdatesAPI_patchCourseUpdateAsync(apiClient_t *apiClient, char *tenantId, char *updateId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course update

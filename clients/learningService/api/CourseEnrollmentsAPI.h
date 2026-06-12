@@ -9,6 +9,7 @@
 #include "../model/course_enrollment_dto.h"
 #include "../model/course_enrollment_update_dto.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a new course enrollment
@@ -57,6 +58,14 @@ CourseEnrollmentsAPI_getEnrollmentsCountAsync(apiClient_t *apiClient, char *tena
 //
 list_t*
 CourseEnrollmentsAPI_getStudentCourseEnrollmentsAsync(apiClient_t *apiClient, char *tenantId, char *studentProfileId, char *api_version, char *x_api_version);
+
+
+// Patch a course enrollment
+//
+// Partially updates an existing course enrollment for the specified tenant.
+//
+void
+CourseEnrollmentsAPI_patchCourseEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char *courseEnrollmentId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course enrollment

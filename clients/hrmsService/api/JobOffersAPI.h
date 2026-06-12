@@ -11,7 +11,8 @@
 #include "../model/job_offer_create_dto.h"
 #include "../model/job_offer_dto_envelope.h"
 #include "../model/job_offer_dto_list_envelope.h"
-#include "../model/object.h"
+#include "../model/job_offer_update_dto.h"
+#include "../model/operation.h"
 
 
 // Create a job offer
@@ -54,11 +55,19 @@ int32_envelope_t*
 JobOffersAPI_getJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
+// Patch a job offer
+//
+// Partially updates an existing job offer for the specified tenant.
+//
+empty_envelope_t*
+JobOffersAPI_patchJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, list_t *operation);
+
+
 // Update a job offer
 //
 // Updates an existing job offer for the specified tenant.
 //
 empty_envelope_t*
-JobOffersAPI_updateJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, object_t *body);
+JobOffersAPI_updateJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, job_offer_update_dto_t *job_offer_update_dto);
 
 

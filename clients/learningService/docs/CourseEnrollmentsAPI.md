@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**CourseEnrollmentsAPI_getEnrollmentsAsync**](CourseEnrollmentsAPI.md#CourseEnrollmentsAPI_getEnrollmentsAsync) | **GET** /api/v2/LearningService/CourseEnrollments | Get all course enrollments
 [**CourseEnrollmentsAPI_getEnrollmentsCountAsync**](CourseEnrollmentsAPI.md#CourseEnrollmentsAPI_getEnrollmentsCountAsync) | **GET** /api/v2/LearningService/CourseEnrollments/Count | Get course enrollments count
 [**CourseEnrollmentsAPI_getStudentCourseEnrollmentsAsync**](CourseEnrollmentsAPI.md#CourseEnrollmentsAPI_getStudentCourseEnrollmentsAsync) | **GET** /api/v2/LearningService/CourseEnrollments/Student/{studentProfileId} | Get enrollments by student
+[**CourseEnrollmentsAPI_patchCourseEnrollmentAsync**](CourseEnrollmentsAPI.md#CourseEnrollmentsAPI_patchCourseEnrollmentAsync) | **PATCH** /api/v2/LearningService/CourseEnrollments/{courseEnrollmentId} | Patch a course enrollment
 [**CourseEnrollmentsAPI_updateCourseEnrollmentAsync**](CourseEnrollmentsAPI.md#CourseEnrollmentsAPI_updateCourseEnrollmentAsync) | **PUT** /api/v2/LearningService/CourseEnrollments/{courseEnrollmentId} | Update a course enrollment
 
 
@@ -210,6 +211,40 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CourseEnrollmentsAPI_patchCourseEnrollmentAsync**
+```c
+// Patch a course enrollment
+//
+// Partially updates an existing course enrollment for the specified tenant.
+//
+void CourseEnrollmentsAPI_patchCourseEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char *courseEnrollmentId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**courseEnrollmentId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+void
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

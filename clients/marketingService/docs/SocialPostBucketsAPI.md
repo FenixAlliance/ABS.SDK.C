@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**SocialPostBucketsAPI_getSocialPostBucketDetailsAsync**](SocialPostBucketsAPI.md#SocialPostBucketsAPI_getSocialPostBucketDetailsAsync) | **GET** /api/v2/MarketingService/SocialPostBuckets/{socialpostbucketId} | Get social post bucket by ID
 [**SocialPostBucketsAPI_getSocialPostBucketsCountAsync**](SocialPostBucketsAPI.md#SocialPostBucketsAPI_getSocialPostBucketsCountAsync) | **GET** /api/v2/MarketingService/SocialPostBuckets/Count | Get social post buckets count
 [**SocialPostBucketsAPI_getSocialPostBucketsODataAsync**](SocialPostBucketsAPI.md#SocialPostBucketsAPI_getSocialPostBucketsODataAsync) | **GET** /api/v2/MarketingService/SocialPostBuckets | Get social post buckets
+[**SocialPostBucketsAPI_patchSocialPostBucketAsync**](SocialPostBucketsAPI.md#SocialPostBucketsAPI_patchSocialPostBucketAsync) | **PATCH** /api/v2/MarketingService/SocialPostBuckets/{socialpostbucketId} | Patch a social post bucket
 [**SocialPostBucketsAPI_updateSocialPostBucketAsync**](SocialPostBucketsAPI.md#SocialPostBucketsAPI_updateSocialPostBucketAsync) | **PUT** /api/v2/MarketingService/SocialPostBuckets/{socialpostbucketId} | Update a social post bucket
 
 
@@ -176,6 +177,41 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SocialPostBucketsAPI_patchSocialPostBucketAsync**
+```c
+// Patch a social post bucket
+//
+// Partially updates a social post bucket by its ID using JSON Patch.
+//
+empty_envelope_t* SocialPostBucketsAPI_patchSocialPostBucketAsync(apiClient_t *apiClient, char *tenantId, char *socialpostbucketId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**socialpostbucketId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

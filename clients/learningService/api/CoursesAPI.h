@@ -24,8 +24,10 @@
 #include "../model/course_unit_dto.h"
 #include "../model/course_update_dto.h"
 #include "../model/course_wiki_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/instructor_profile_dto.h"
+#include "../model/operation.h"
 #include "../model/student_profile_dto.h"
 
 
@@ -347,6 +349,14 @@ CoursesAPI_getStudentProfilesByCourseAsync(apiClient_t *apiClient, char *courseI
 //
 int*
 CoursesAPI_getStudentProfilesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+
+
+// Patch a course
+//
+// Partially updates a course for the specified tenant.
+//
+empty_envelope_t*
+CoursesAPI_patchCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course

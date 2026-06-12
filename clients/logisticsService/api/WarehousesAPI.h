@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/warehouse_create_dto.h"
 #include "../model/warehouse_dto_envelope.h"
 #include "../model/warehouse_dto_list_envelope.h"
@@ -52,6 +53,14 @@ WarehousesAPI_getWarehousesAsync(apiClient_t *apiClient, char *tenantId, char *a
 //
 int32_envelope_t*
 WarehousesAPI_getWarehousesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a warehouse
+//
+// Partially updates an existing warehouse using JSON Patch.
+//
+empty_envelope_t*
+WarehousesAPI_patchWarehouseAsync(apiClient_t *apiClient, char *tenantId, char *warehouseId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a warehouse

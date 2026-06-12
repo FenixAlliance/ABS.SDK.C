@@ -8,7 +8,9 @@
 #include "../model/course_team_membership_create_dto.h"
 #include "../model/course_team_membership_dto.h"
 #include "../model/course_team_membership_update_dto.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/operation.h"
 
 
 // Create a course team membership
@@ -49,6 +51,14 @@ CourseTeamMembershipsAPI_getCourseTeamMembershipsAsync(apiClient_t *apiClient, c
 //
 int*
 CourseTeamMembershipsAPI_getCourseTeamMembershipsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Patch a course team membership
+//
+// Partially updates a course team membership for the specified tenant.
+//
+empty_envelope_t*
+CourseTeamMembershipsAPI_patchCourseTeamMembershipAsync(apiClient_t *apiClient, char *tenantId, char *membershipId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a course team membership
