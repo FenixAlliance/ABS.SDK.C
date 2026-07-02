@@ -11,7 +11,9 @@ item_restock_dto_t *item_restock_dto_create(
     char *name,
     char *description,
     char *tenant_id,
-    int entry_count
+    int entry_count,
+    char *seller_billing_profile_id,
+    char *buyer_billing_profile_id
     ) {
     item_restock_dto_t *item_restock_dto_local_var = malloc(sizeof(item_restock_dto_t));
     if (!item_restock_dto_local_var) {
@@ -23,6 +25,8 @@ item_restock_dto_t *item_restock_dto_create(
     item_restock_dto_local_var->description = description;
     item_restock_dto_local_var->tenant_id = tenant_id;
     item_restock_dto_local_var->entry_count = entry_count;
+    item_restock_dto_local_var->seller_billing_profile_id = seller_billing_profile_id;
+    item_restock_dto_local_var->buyer_billing_profile_id = buyer_billing_profile_id;
 
     return item_restock_dto_local_var;
 }
@@ -52,6 +56,14 @@ void item_restock_dto_free(item_restock_dto_t *item_restock_dto) {
     if (item_restock_dto->tenant_id) {
         free(item_restock_dto->tenant_id);
         item_restock_dto->tenant_id = NULL;
+    }
+    if (item_restock_dto->seller_billing_profile_id) {
+        free(item_restock_dto->seller_billing_profile_id);
+        item_restock_dto->seller_billing_profile_id = NULL;
+    }
+    if (item_restock_dto->buyer_billing_profile_id) {
+        free(item_restock_dto->buyer_billing_profile_id);
+        item_restock_dto->buyer_billing_profile_id = NULL;
     }
     free(item_restock_dto);
 }
@@ -103,6 +115,22 @@ cJSON *item_restock_dto_convertToJSON(item_restock_dto_t *item_restock_dto) {
     if(item_restock_dto->entry_count) {
     if(cJSON_AddNumberToObject(item, "entryCount", item_restock_dto->entry_count) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // item_restock_dto->seller_billing_profile_id
+    if(item_restock_dto->seller_billing_profile_id) {
+    if(cJSON_AddStringToObject(item, "sellerBillingProfileId", item_restock_dto->seller_billing_profile_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_restock_dto->buyer_billing_profile_id
+    if(item_restock_dto->buyer_billing_profile_id) {
+    if(cJSON_AddStringToObject(item, "buyerBillingProfileId", item_restock_dto->buyer_billing_profile_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -172,6 +200,24 @@ item_restock_dto_t *item_restock_dto_parseFromJSON(cJSON *item_restock_dtoJSON){
     }
     }
 
+    // item_restock_dto->seller_billing_profile_id
+    cJSON *seller_billing_profile_id = cJSON_GetObjectItemCaseSensitive(item_restock_dtoJSON, "sellerBillingProfileId");
+    if (seller_billing_profile_id) { 
+    if(!cJSON_IsString(seller_billing_profile_id) && !cJSON_IsNull(seller_billing_profile_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_restock_dto->buyer_billing_profile_id
+    cJSON *buyer_billing_profile_id = cJSON_GetObjectItemCaseSensitive(item_restock_dtoJSON, "buyerBillingProfileId");
+    if (buyer_billing_profile_id) { 
+    if(!cJSON_IsString(buyer_billing_profile_id) && !cJSON_IsNull(buyer_billing_profile_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     item_restock_dto_local_var = item_restock_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -179,7 +225,9 @@ item_restock_dto_t *item_restock_dto_parseFromJSON(cJSON *item_restock_dtoJSON){
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
-        entry_count ? entry_count->valuedouble : 0
+        entry_count ? entry_count->valuedouble : 0,
+        seller_billing_profile_id && !cJSON_IsNull(seller_billing_profile_id) ? strdup(seller_billing_profile_id->valuestring) : NULL,
+        buyer_billing_profile_id && !cJSON_IsNull(buyer_billing_profile_id) ? strdup(buyer_billing_profile_id->valuestring) : NULL
         );
 
     return item_restock_dto_local_var;

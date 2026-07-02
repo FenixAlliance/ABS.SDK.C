@@ -35,6 +35,11 @@ billing_profile_create_dto_t *billing_profile_create_dto_create(
     char *postal_code,
     char *business_name,
     char *commercial_name,
+    char *verification_digit,
+    char *economic_activity_code,
+    char *economic_activity_scheme,
+    int is_primary,
+    char *establishment_code,
     char *ticker,
     char *duns,
     int is_public_company,
@@ -63,6 +68,11 @@ billing_profile_create_dto_t *billing_profile_create_dto_create(
     billing_profile_create_dto_local_var->postal_code = postal_code;
     billing_profile_create_dto_local_var->business_name = business_name;
     billing_profile_create_dto_local_var->commercial_name = commercial_name;
+    billing_profile_create_dto_local_var->verification_digit = verification_digit;
+    billing_profile_create_dto_local_var->economic_activity_code = economic_activity_code;
+    billing_profile_create_dto_local_var->economic_activity_scheme = economic_activity_scheme;
+    billing_profile_create_dto_local_var->is_primary = is_primary;
+    billing_profile_create_dto_local_var->establishment_code = establishment_code;
     billing_profile_create_dto_local_var->ticker = ticker;
     billing_profile_create_dto_local_var->duns = duns;
     billing_profile_create_dto_local_var->is_public_company = is_public_company;
@@ -131,6 +141,22 @@ void billing_profile_create_dto_free(billing_profile_create_dto_t *billing_profi
     if (billing_profile_create_dto->commercial_name) {
         free(billing_profile_create_dto->commercial_name);
         billing_profile_create_dto->commercial_name = NULL;
+    }
+    if (billing_profile_create_dto->verification_digit) {
+        free(billing_profile_create_dto->verification_digit);
+        billing_profile_create_dto->verification_digit = NULL;
+    }
+    if (billing_profile_create_dto->economic_activity_code) {
+        free(billing_profile_create_dto->economic_activity_code);
+        billing_profile_create_dto->economic_activity_code = NULL;
+    }
+    if (billing_profile_create_dto->economic_activity_scheme) {
+        free(billing_profile_create_dto->economic_activity_scheme);
+        billing_profile_create_dto->economic_activity_scheme = NULL;
+    }
+    if (billing_profile_create_dto->establishment_code) {
+        free(billing_profile_create_dto->establishment_code);
+        billing_profile_create_dto->establishment_code = NULL;
     }
     if (billing_profile_create_dto->ticker) {
         free(billing_profile_create_dto->ticker);
@@ -270,6 +296,46 @@ cJSON *billing_profile_create_dto_convertToJSON(billing_profile_create_dto_t *bi
     }
     if(cJSON_AddStringToObject(item, "commercialName", billing_profile_create_dto->commercial_name) == NULL) {
     goto fail; //String
+    }
+
+
+    // billing_profile_create_dto->verification_digit
+    if(billing_profile_create_dto->verification_digit) {
+    if(cJSON_AddStringToObject(item, "verificationDigit", billing_profile_create_dto->verification_digit) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // billing_profile_create_dto->economic_activity_code
+    if(billing_profile_create_dto->economic_activity_code) {
+    if(cJSON_AddStringToObject(item, "economicActivityCode", billing_profile_create_dto->economic_activity_code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // billing_profile_create_dto->economic_activity_scheme
+    if(billing_profile_create_dto->economic_activity_scheme) {
+    if(cJSON_AddStringToObject(item, "economicActivityScheme", billing_profile_create_dto->economic_activity_scheme) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // billing_profile_create_dto->is_primary
+    if(billing_profile_create_dto->is_primary) {
+    if(cJSON_AddBoolToObject(item, "isPrimary", billing_profile_create_dto->is_primary) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // billing_profile_create_dto->establishment_code
+    if(billing_profile_create_dto->establishment_code) {
+    if(cJSON_AddStringToObject(item, "establishmentCode", billing_profile_create_dto->establishment_code) == NULL) {
+    goto fail; //String
+    }
     }
 
 
@@ -508,6 +574,51 @@ billing_profile_create_dto_t *billing_profile_create_dto_parseFromJSON(cJSON *bi
     goto end; //String
     }
 
+    // billing_profile_create_dto->verification_digit
+    cJSON *verification_digit = cJSON_GetObjectItemCaseSensitive(billing_profile_create_dtoJSON, "verificationDigit");
+    if (verification_digit) { 
+    if(!cJSON_IsString(verification_digit) && !cJSON_IsNull(verification_digit))
+    {
+    goto end; //String
+    }
+    }
+
+    // billing_profile_create_dto->economic_activity_code
+    cJSON *economic_activity_code = cJSON_GetObjectItemCaseSensitive(billing_profile_create_dtoJSON, "economicActivityCode");
+    if (economic_activity_code) { 
+    if(!cJSON_IsString(economic_activity_code) && !cJSON_IsNull(economic_activity_code))
+    {
+    goto end; //String
+    }
+    }
+
+    // billing_profile_create_dto->economic_activity_scheme
+    cJSON *economic_activity_scheme = cJSON_GetObjectItemCaseSensitive(billing_profile_create_dtoJSON, "economicActivityScheme");
+    if (economic_activity_scheme) { 
+    if(!cJSON_IsString(economic_activity_scheme) && !cJSON_IsNull(economic_activity_scheme))
+    {
+    goto end; //String
+    }
+    }
+
+    // billing_profile_create_dto->is_primary
+    cJSON *is_primary = cJSON_GetObjectItemCaseSensitive(billing_profile_create_dtoJSON, "isPrimary");
+    if (is_primary) { 
+    if(!cJSON_IsBool(is_primary))
+    {
+    goto end; //Bool
+    }
+    }
+
+    // billing_profile_create_dto->establishment_code
+    cJSON *establishment_code = cJSON_GetObjectItemCaseSensitive(billing_profile_create_dtoJSON, "establishmentCode");
+    if (establishment_code) { 
+    if(!cJSON_IsString(establishment_code) && !cJSON_IsNull(establishment_code))
+    {
+    goto end; //String
+    }
+    }
+
     // billing_profile_create_dto->ticker
     cJSON *ticker = cJSON_GetObjectItemCaseSensitive(billing_profile_create_dtoJSON, "ticker");
     if (ticker) { 
@@ -641,6 +752,11 @@ billing_profile_create_dto_t *billing_profile_create_dto_parseFromJSON(cJSON *bi
         strdup(postal_code->valuestring),
         strdup(business_name->valuestring),
         strdup(commercial_name->valuestring),
+        verification_digit && !cJSON_IsNull(verification_digit) ? strdup(verification_digit->valuestring) : NULL,
+        economic_activity_code && !cJSON_IsNull(economic_activity_code) ? strdup(economic_activity_code->valuestring) : NULL,
+        economic_activity_scheme && !cJSON_IsNull(economic_activity_scheme) ? strdup(economic_activity_scheme->valuestring) : NULL,
+        is_primary ? is_primary->valueint : 0,
+        establishment_code && !cJSON_IsNull(establishment_code) ? strdup(establishment_code->valuestring) : NULL,
         ticker && !cJSON_IsNull(ticker) ? strdup(ticker->valuestring) : NULL,
         duns && !cJSON_IsNull(duns) ? strdup(duns->valuestring) : NULL,
         is_public_company ? is_public_company->valueint : 0,

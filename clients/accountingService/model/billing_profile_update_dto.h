@@ -37,6 +37,11 @@ typedef struct billing_profile_update_dto_t {
     char *postal_code; // string
     char *business_name; // string
     char *commercial_name; // string
+    char *verification_digit; // string
+    char *economic_activity_code; // string
+    char *economic_activity_scheme; // string
+    int is_primary; //boolean
+    char *establishment_code; // string
     char *ticker; // string
     char *duns; // string
     int is_public_company; //boolean
@@ -62,6 +67,11 @@ billing_profile_update_dto_t *billing_profile_update_dto_create(
     char *postal_code,
     char *business_name,
     char *commercial_name,
+    char *verification_digit,
+    char *economic_activity_code,
+    char *economic_activity_scheme,
+    int is_primary,
+    char *establishment_code,
     char *ticker,
     char *duns,
     int is_public_company,

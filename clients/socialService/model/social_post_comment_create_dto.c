@@ -4,11 +4,30 @@
 #include "social_post_comment_create_dto.h"
 
 
+char* social_post_comment_create_dto_body_format_ToString(socialservice_social_post_comment_create_dto_BODYFORMAT_e body_format) {
+    char* body_formatArray[] =  { "NULL", "PlainText", "Html" };
+    return body_formatArray[body_format];
+}
+
+socialservice_social_post_comment_create_dto_BODYFORMAT_e social_post_comment_create_dto_body_format_FromString(char* body_format){
+    int stringToReturn = 0;
+    char *body_formatArray[] =  { "NULL", "PlainText", "Html" };
+    size_t sizeofArray = sizeof(body_formatArray) / sizeof(body_formatArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(body_format, body_formatArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 social_post_comment_create_dto_t *social_post_comment_create_dto_create(
     char *id,
     char *timestamp,
     char *message,
+    char *body_html,
+    socialservice_social_post_comment_create_dto_BODYFORMAT_e body_format,
     char *parent_comment_id,
     char *social_profile_id,
     char *social_feed_post_id,
@@ -21,6 +40,8 @@ social_post_comment_create_dto_t *social_post_comment_create_dto_create(
     social_post_comment_create_dto_local_var->id = id;
     social_post_comment_create_dto_local_var->timestamp = timestamp;
     social_post_comment_create_dto_local_var->message = message;
+    social_post_comment_create_dto_local_var->body_html = body_html;
+    social_post_comment_create_dto_local_var->body_format = body_format;
     social_post_comment_create_dto_local_var->parent_comment_id = parent_comment_id;
     social_post_comment_create_dto_local_var->social_profile_id = social_profile_id;
     social_post_comment_create_dto_local_var->social_feed_post_id = social_feed_post_id;
@@ -46,6 +67,10 @@ void social_post_comment_create_dto_free(social_post_comment_create_dto_t *socia
     if (social_post_comment_create_dto->message) {
         free(social_post_comment_create_dto->message);
         social_post_comment_create_dto->message = NULL;
+    }
+    if (social_post_comment_create_dto->body_html) {
+        free(social_post_comment_create_dto->body_html);
+        social_post_comment_create_dto->body_html = NULL;
     }
     if (social_post_comment_create_dto->parent_comment_id) {
         free(social_post_comment_create_dto->parent_comment_id);
@@ -91,6 +116,23 @@ cJSON *social_post_comment_create_dto_convertToJSON(social_post_comment_create_d
     }
     if(cJSON_AddStringToObject(item, "message", social_post_comment_create_dto->message) == NULL) {
     goto fail; //String
+    }
+
+
+    // social_post_comment_create_dto->body_html
+    if(social_post_comment_create_dto->body_html) {
+    if(cJSON_AddStringToObject(item, "bodyHtml", social_post_comment_create_dto->body_html) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // social_post_comment_create_dto->body_format
+    if(social_post_comment_create_dto->body_format != socialservice_social_post_comment_create_dto_BODYFORMAT_NULL) {
+    if(cJSON_AddStringToObject(item, "bodyFormat", body_formatsocial_post_comment_create_dto_ToString(social_post_comment_create_dto->body_format)) == NULL)
+    {
+    goto fail; //Enum
+    }
     }
 
 
@@ -167,6 +209,26 @@ social_post_comment_create_dto_t *social_post_comment_create_dto_parseFromJSON(c
     goto end; //String
     }
 
+    // social_post_comment_create_dto->body_html
+    cJSON *body_html = cJSON_GetObjectItemCaseSensitive(social_post_comment_create_dtoJSON, "bodyHtml");
+    if (body_html) { 
+    if(!cJSON_IsString(body_html) && !cJSON_IsNull(body_html))
+    {
+    goto end; //String
+    }
+    }
+
+    // social_post_comment_create_dto->body_format
+    cJSON *body_format = cJSON_GetObjectItemCaseSensitive(social_post_comment_create_dtoJSON, "bodyFormat");
+    socialservice_social_post_comment_create_dto_BODYFORMAT_e body_formatVariable;
+    if (body_format) { 
+    if(!cJSON_IsString(body_format))
+    {
+    goto end; //Enum
+    }
+    body_formatVariable = social_post_comment_create_dto_body_format_FromString(body_format->valuestring);
+    }
+
     // social_post_comment_create_dto->parent_comment_id
     cJSON *parent_comment_id = cJSON_GetObjectItemCaseSensitive(social_post_comment_create_dtoJSON, "parentCommentId");
     if (parent_comment_id) { 
@@ -208,6 +270,8 @@ social_post_comment_create_dto_t *social_post_comment_create_dto_parseFromJSON(c
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         strdup(message->valuestring),
+        body_html && !cJSON_IsNull(body_html) ? strdup(body_html->valuestring) : NULL,
+        body_format ? body_formatVariable : socialservice_social_post_comment_create_dto_BODYFORMAT_NULL,
         parent_comment_id && !cJSON_IsNull(parent_comment_id) ? strdup(parent_comment_id->valuestring) : NULL,
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL,
         social_feed_post_id && !cJSON_IsNull(social_feed_post_id) ? strdup(social_feed_post_id->valuestring) : NULL,

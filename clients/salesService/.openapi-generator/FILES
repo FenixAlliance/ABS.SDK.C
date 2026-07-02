@@ -1,10 +1,8 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/CompletionsAPI.c
-api/CompletionsAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/LoyaltyProgramsAPI.c
 api/LoyaltyProgramsAPI.h
 api/MarginsAPI.c
@@ -15,8 +13,7 @@ api/SalesLiteraturesAPI.c
 api/SalesLiteraturesAPI.h
 api/StoresAPI.c
 api/StoresAPI.h
-docs/CompletionsAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/LoyaltyProgramsAPI.md
 docs/MarginsAPI.md
 docs/PointOfSalesAPI.md

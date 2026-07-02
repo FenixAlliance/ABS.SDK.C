@@ -4,11 +4,29 @@
 #include "tenant_dto.h"
 
 
+char* tenant_dto_kind_ToString(walletsservice_tenant_dto_KIND_e kind) {
+    char* kindArray[] =  { "NULL", "Organization", "Individual" };
+    return kindArray[kind];
+}
+
+walletsservice_tenant_dto_KIND_e tenant_dto_kind_FromString(char* kind){
+    int stringToReturn = 0;
+    char *kindArray[] =  { "NULL", "Organization", "Individual" };
+    size_t sizeofArray = sizeof(kindArray) / sizeof(kindArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(kind, kindArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 tenant_dto_t *tenant_dto_create(
     char *id,
     char *timestamp,
     char *qualified_name,
+    walletsservice_tenant_dto_KIND_e kind,
     char *tax_id,
     char *about,
     char *wallet_id,
@@ -52,6 +70,7 @@ tenant_dto_t *tenant_dto_create(
     tenant_dto_local_var->id = id;
     tenant_dto_local_var->timestamp = timestamp;
     tenant_dto_local_var->qualified_name = qualified_name;
+    tenant_dto_local_var->kind = kind;
     tenant_dto_local_var->tax_id = tax_id;
     tenant_dto_local_var->about = about;
     tenant_dto_local_var->wallet_id = wallet_id;
@@ -271,6 +290,15 @@ cJSON *tenant_dto_convertToJSON(tenant_dto_t *tenant_dto) {
     if(tenant_dto->qualified_name) {
     if(cJSON_AddStringToObject(item, "qualifiedName", tenant_dto->qualified_name) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // tenant_dto->kind
+    if(tenant_dto->kind != walletsservice_tenant_dto_KIND_NULL) {
+    if(cJSON_AddStringToObject(item, "kind", kindtenant_dto_ToString(tenant_dto->kind)) == NULL)
+    {
+    goto fail; //Enum
     }
     }
 
@@ -593,6 +621,17 @@ tenant_dto_t *tenant_dto_parseFromJSON(cJSON *tenant_dtoJSON){
     }
     }
 
+    // tenant_dto->kind
+    cJSON *kind = cJSON_GetObjectItemCaseSensitive(tenant_dtoJSON, "kind");
+    walletsservice_tenant_dto_KIND_e kindVariable;
+    if (kind) { 
+    if(!cJSON_IsString(kind))
+    {
+    goto end; //Enum
+    }
+    kindVariable = tenant_dto_kind_FromString(kind->valuestring);
+    }
+
     // tenant_dto->tax_id
     cJSON *tax_id = cJSON_GetObjectItemCaseSensitive(tenant_dtoJSON, "taxId");
     if (tax_id) { 
@@ -913,6 +952,7 @@ tenant_dto_t *tenant_dto_parseFromJSON(cJSON *tenant_dtoJSON){
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         qualified_name && !cJSON_IsNull(qualified_name) ? strdup(qualified_name->valuestring) : NULL,
+        kind ? kindVariable : walletsservice_tenant_dto_KIND_NULL,
         tax_id && !cJSON_IsNull(tax_id) ? strdup(tax_id->valuestring) : NULL,
         about && !cJSON_IsNull(about) ? strdup(about->valuestring) : NULL,
         wallet_id && !cJSON_IsNull(wallet_id) ? strdup(wallet_id->valuestring) : NULL,

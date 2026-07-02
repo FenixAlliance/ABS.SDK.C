@@ -4,10 +4,28 @@
 #include "job_offer_dto.h"
 
 
+char* job_offer_dto_status_ToString(hrmsservice_job_offer_dto_STATUS_e status) {
+    char* statusArray[] =  { "NULL", "Draft", "Published", "Closed", "Filled" };
+    return statusArray[status];
+}
+
+hrmsservice_job_offer_dto_STATUS_e job_offer_dto_status_FromString(char* status){
+    int stringToReturn = 0;
+    char *statusArray[] =  { "NULL", "Draft", "Published", "Closed", "Filled" };
+    size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(status, statusArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 job_offer_dto_t *job_offer_dto_create(
     char *id,
     char *timestamp,
+    hrmsservice_job_offer_dto_STATUS_e status,
     int remote,
     char *expected_hire_date,
     char *title,
@@ -65,6 +83,7 @@ job_offer_dto_t *job_offer_dto_create(
     }
     job_offer_dto_local_var->id = id;
     job_offer_dto_local_var->timestamp = timestamp;
+    job_offer_dto_local_var->status = status;
     job_offer_dto_local_var->remote = remote;
     job_offer_dto_local_var->expected_hire_date = expected_hire_date;
     job_offer_dto_local_var->title = title;
@@ -311,6 +330,15 @@ cJSON *job_offer_dto_convertToJSON(job_offer_dto_t *job_offer_dto) {
     if(job_offer_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", job_offer_dto->timestamp) == NULL) {
     goto fail; //Date-Time
+    }
+    }
+
+
+    // job_offer_dto->status
+    if(job_offer_dto->status != hrmsservice_job_offer_dto_STATUS_NULL) {
+    if(cJSON_AddStringToObject(item, "status", statusjob_offer_dto_ToString(job_offer_dto->status)) == NULL)
+    {
+    goto fail; //Enum
     }
     }
 
@@ -742,6 +770,17 @@ job_offer_dto_t *job_offer_dto_parseFromJSON(cJSON *job_offer_dtoJSON){
     {
     goto end; //DateTime
     }
+    }
+
+    // job_offer_dto->status
+    cJSON *status = cJSON_GetObjectItemCaseSensitive(job_offer_dtoJSON, "status");
+    hrmsservice_job_offer_dto_STATUS_e statusVariable;
+    if (status) { 
+    if(!cJSON_IsString(status))
+    {
+    goto end; //Enum
+    }
+    statusVariable = job_offer_dto_status_FromString(status->valuestring);
     }
 
     // job_offer_dto->remote
@@ -1198,6 +1237,7 @@ job_offer_dto_t *job_offer_dto_parseFromJSON(cJSON *job_offer_dtoJSON){
     job_offer_dto_local_var = job_offer_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        status ? statusVariable : hrmsservice_job_offer_dto_STATUS_NULL,
         remote ? remote->valueint : 0,
         expected_hire_date && !cJSON_IsNull(expected_hire_date) ? strdup(expected_hire_date->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,

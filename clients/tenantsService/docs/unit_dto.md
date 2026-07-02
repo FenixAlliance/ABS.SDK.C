@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
 **name** | **char \*** |  | [optional] 
+**un_ece_code** | **char \*** |  | [optional] 
 **unit_group_id** | **char \*** |  | [optional] 
 **base_unit_amount** | **double** |  | [optional] 
 **base_unit_id** | **char \*** |  | [optional] 

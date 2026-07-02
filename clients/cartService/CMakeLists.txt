@@ -96,8 +96,7 @@ set(SRCS
     model/wish_list_update_dto.c
     api/CartsAPI.c
     api/CompareAPI.c
-    api/CompletionsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/RecordsAPI.c
     api/WishListsAPI.c
 
@@ -152,8 +151,7 @@ set(HDRS
     model/wish_list_update_dto.h
     api/CartsAPI.h
     api/CompareAPI.h
-    api/CompletionsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/RecordsAPI.h
     api/WishListsAPI.h
 
@@ -239,8 +237,7 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-CartsAPI.c
 #    unit-tests/manual-CompareAPI.c
-#    unit-tests/manual-CompletionsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-RecordsAPI.c
 #    unit-tests/manual-WishListsAPI.c
 #)

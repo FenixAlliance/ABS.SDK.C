@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
+**kind** | **tenantsservice_tenant_create_dto_KIND_e** |  | [optional] 
 **name** | **char \*** |  | 
 **legal_name** | **char \*** |  | [optional] 
 **email** | **char \*** |  | 

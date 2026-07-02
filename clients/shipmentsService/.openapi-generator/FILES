@@ -3,10 +3,8 @@ Packing.cmake
 README.md
 api/BillsOfLadingAPI.c
 api/BillsOfLadingAPI.h
-api/CompletionsAPI.c
-api/CompletionsAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/ItemShippingPoliciesAPI.c
 api/ItemShippingPoliciesAPI.h
 api/ShipmentsAPI.c
@@ -24,8 +22,7 @@ api/ShippingRegionsAPI.h
 api/ShippingZonesAPI.c
 api/ShippingZonesAPI.h
 docs/BillsOfLadingAPI.md
-docs/CompletionsAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ItemShippingPoliciesAPI.md
 docs/ShipmentsAPI.md
 docs/ShippingClassesAPI.md

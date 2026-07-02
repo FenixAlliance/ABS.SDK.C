@@ -55,7 +55,6 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
-    model/additional_attribute.c
     model/boolean_envelope.c
     model/business_domain_dto.c
     model/business_domain_dto_envelope.c
@@ -86,12 +85,6 @@ set(SRCS
     model/ip_lookup_dto.c
     model/ip_lookup_dto_envelope.c
     model/ip_lookup_dto_list_envelope.c
-    model/license_attributes_list_envelope.c
-    model/license_feature.c
-    model/license_key.c
-    model/license_key_request.c
-    model/license_validation_error.c
-    model/license_validation_error_list_envelope.c
     model/license_validation_request.c
     model/login_request.c
     model/module.c
@@ -108,7 +101,6 @@ set(SRCS
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
     model/social_profile_dto.c
-    model/string_envelope.c
     model/string_list_envelope.c
     model/studio_module.c
     model/studio_module_list_envelope.c
@@ -141,12 +133,10 @@ set(SRCS
     api/AntiforgeryAPI.c
     api/BusinessDomainsAPI.c
     api/CartsAPI.c
-    api/CompletionsAPI.c
     api/ContactOptionsAPI.c
     api/EmailsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/IPLookupsAPI.c
-    api/LicensesAPI.c
     api/LicensingAPI.c
     api/MigrationsAPI.c
     api/ModulesAPI.c
@@ -168,7 +158,6 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
-    model/additional_attribute.h
     model/boolean_envelope.h
     model/business_domain_dto.h
     model/business_domain_dto_envelope.h
@@ -199,12 +188,6 @@ set(HDRS
     model/ip_lookup_dto.h
     model/ip_lookup_dto_envelope.h
     model/ip_lookup_dto_list_envelope.h
-    model/license_attributes_list_envelope.h
-    model/license_feature.h
-    model/license_key.h
-    model/license_key_request.h
-    model/license_validation_error.h
-    model/license_validation_error_list_envelope.h
     model/license_validation_request.h
     model/login_request.h
     model/module.h
@@ -221,7 +204,6 @@ set(HDRS
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
     model/social_profile_dto.h
-    model/string_envelope.h
     model/string_list_envelope.h
     model/studio_module.h
     model/studio_module_list_envelope.h
@@ -254,12 +236,10 @@ set(HDRS
     api/AntiforgeryAPI.h
     api/BusinessDomainsAPI.h
     api/CartsAPI.h
-    api/CompletionsAPI.h
     api/ContactOptionsAPI.h
     api/EmailsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/IPLookupsAPI.h
-    api/LicensesAPI.h
     api/LicensingAPI.h
     api/MigrationsAPI.h
     api/ModulesAPI.h
@@ -354,12 +334,10 @@ set(HDRS "")
 #    unit-tests/manual-AntiforgeryAPI.c
 #    unit-tests/manual-BusinessDomainsAPI.c
 #    unit-tests/manual-CartsAPI.c
-#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-ContactOptionsAPI.c
 #    unit-tests/manual-EmailsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-IPLookupsAPI.c
-#    unit-tests/manual-LicensesAPI.c
 #    unit-tests/manual-LicensingAPI.c
 #    unit-tests/manual-MigrationsAPI.c
 #    unit-tests/manual-ModulesAPI.c

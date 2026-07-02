@@ -41,13 +41,6 @@ UnitGroupsAPI_createUnitAsync(apiClient_t *apiClient, char *tenantId, char *unit
     sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
 
 
 
@@ -373,23 +366,9 @@ UnitGroupsAPI_deleteUnitAsync(apiClient_t *apiClient, char *tenantId, char *unit
     sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
 
     // Path Params
     long sizeOfPathParams_unitId = strlen(unitGroupId)+3 + strlen(unitId)+3 + strlen("{ unitId }");
-    if(unitId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitId = malloc(sizeOfPathParams_unitId);
-    sprintf(localVarToReplace_unitId, "{%s}", "unitId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitId, unitId);
     if(unitId == NULL) {
         goto end;
     }
@@ -550,13 +529,6 @@ UnitGroupsAPI_deleteUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char 
     sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
 
 
 
@@ -709,23 +681,9 @@ UnitGroupsAPI_getUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitGro
     sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
 
     // Path Params
     long sizeOfPathParams_unitId = strlen(unitGroupId)+3 + strlen(unitId)+3 + strlen("{ unitId }");
-    if(unitId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitId = malloc(sizeOfPathParams_unitId);
-    sprintf(localVarToReplace_unitId, "{%s}", "unitId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitId, unitId);
     if(unitId == NULL) {
         goto end;
     }
@@ -879,13 +837,6 @@ UnitGroupsAPI_getUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *un
 
     // Path Params
     long sizeOfPathParams_unitGroupId = strlen(unitGroupId)+3 + strlen("{ unitGroupId }");
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
     if(unitGroupId == NULL) {
         goto end;
     }
@@ -1327,13 +1278,6 @@ UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGr
     sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
 
 
 
@@ -1479,13 +1423,6 @@ UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *u
 
     // Path Params
     long sizeOfPathParams_unitGroupId = strlen(unitGroupId)+3 + strlen("{ unitGroupId }");
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
     if(unitGroupId == NULL) {
         goto end;
     }
@@ -1645,23 +1582,9 @@ UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitG
     sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
 
     // Path Params
     long sizeOfPathParams_unitId = strlen(unitGroupId)+3 + strlen(unitId)+3 + strlen("{ unitId }");
-    if(unitId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitId = malloc(sizeOfPathParams_unitId);
-    sprintf(localVarToReplace_unitId, "{%s}", "unitId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitId, unitId);
     if(unitId == NULL) {
         goto end;
     }
@@ -1866,13 +1789,6 @@ UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *
     sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
 
 
 
@@ -2069,23 +1985,9 @@ UnitGroupsAPI_updateUnitAsync(apiClient_t *apiClient, char *tenantId, char *unit
     sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
 
     // Path Params
     long sizeOfPathParams_unitId = strlen(unitGroupId)+3 + strlen(unitId)+3 + strlen("{ unitId }");
-    if(unitId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitId = malloc(sizeOfPathParams_unitId);
-    sprintf(localVarToReplace_unitId, "{%s}", "unitId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitId, unitId);
     if(unitId == NULL) {
         goto end;
     }
@@ -2255,13 +2157,6 @@ UnitGroupsAPI_updateUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char 
 
     // Path Params
     long sizeOfPathParams_unitGroupId = strlen(unitGroupId)+3 + strlen("{ unitGroupId }");
-    if(unitGroupId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_unitGroupId = malloc(sizeOfPathParams_unitGroupId);
-    sprintf(localVarToReplace_unitGroupId, "{%s}", "unitGroupId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_unitGroupId, unitGroupId);
     if(unitGroupId == NULL) {
         goto end;
     }

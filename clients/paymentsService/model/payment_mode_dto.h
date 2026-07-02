@@ -23,6 +23,7 @@ typedef struct payment_mode_dto_t {
     char *timestamp; //date time
     char *name; // string
     char *description; // string
+    char *payment_means_code; // string
     char *tenant_id; // string
     char *enrollment_id; // string
 
@@ -33,6 +34,7 @@ payment_mode_dto_t *payment_mode_dto_create(
     char *timestamp,
     char *name,
     char *description,
+    char *payment_means_code,
     char *tenant_id,
     char *enrollment_id
 );

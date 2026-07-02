@@ -16,11 +16,20 @@
 typedef struct job_offer_dto_t job_offer_dto_t;
 
 
+// Enum STATUS for job_offer_dto
+
+typedef enum  { hrmsservice_job_offer_dto_STATUS_NULL = 0, hrmsservice_job_offer_dto_STATUS_Draft, hrmsservice_job_offer_dto_STATUS_Published, hrmsservice_job_offer_dto_STATUS_Closed, hrmsservice_job_offer_dto_STATUS_Filled } hrmsservice_job_offer_dto_STATUS_e;
+
+char* job_offer_dto_status_ToString(hrmsservice_job_offer_dto_STATUS_e status);
+
+hrmsservice_job_offer_dto_STATUS_e job_offer_dto_status_FromString(char* status);
+
 
 
 typedef struct job_offer_dto_t {
     char *id; // string
     char *timestamp; //date time
+    hrmsservice_job_offer_dto_STATUS_e status; //enum
     int remote; //boolean
     char *expected_hire_date; //date time
     char *title; // string
@@ -77,6 +86,7 @@ typedef struct job_offer_dto_t {
 job_offer_dto_t *job_offer_dto_create(
     char *id,
     char *timestamp,
+    hrmsservice_job_offer_dto_STATUS_e status,
     int remote,
     char *expected_hire_date,
     char *title,

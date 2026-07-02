@@ -45,6 +45,8 @@ typedef struct tax_policy_create_dto_t {
     int zero; //boolean
     int reduced; //boolean
     int withholding; //boolean
+    char *tax_scheme_code; // string
+    char *tax_category_code; // string
     char *fiscal_authority_id; // string
 
 } tax_policy_create_dto_t;
@@ -76,6 +78,8 @@ tax_policy_create_dto_t *tax_policy_create_dto_create(
     int zero,
     int reduced,
     int withholding,
+    char *tax_scheme_code,
+    char *tax_category_code,
     char *fiscal_authority_id
 );
 

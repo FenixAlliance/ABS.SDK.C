@@ -1,6 +1,6 @@
 # InvoicesAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -40,6 +40,8 @@ Method | HTTP request | Description
 [**InvoicesAPI_getInvoiceReferencesCount**](InvoicesAPI.md#InvoicesAPI_getInvoiceReferencesCount) | **GET** /api/v2/InvoicingService/Invoices/{invoiceId}/References/Count | Get the count of invoice references.
 [**InvoicesAPI_getInvoices**](InvoicesAPI.md#InvoicesAPI_getInvoices) | **GET** /api/v2/InvoicingService/Invoices | Get a list of invoices.
 [**InvoicesAPI_getInvoicesCount**](InvoicesAPI.md#InvoicesAPI_getInvoicesCount) | **GET** /api/v2/InvoicingService/Invoices/Count | Get the count of invoices.
+[**InvoicesAPI_getPurchaseInvoicesSum**](InvoicesAPI.md#InvoicesAPI_getPurchaseInvoicesSum) | **GET** /api/v2/InvoicingService/Invoices/PurchaseInvoices/Sum | Sum tenant purchase-invoice totals.
+[**InvoicesAPI_getSalesInvoicesSum**](InvoicesAPI.md#InvoicesAPI_getSalesInvoicesSum) | **GET** /api/v2/InvoicingService/Invoices/SalesInvoices/Sum | Sum tenant sales-invoice totals.
 [**InvoicesAPI_patchInvoice**](InvoicesAPI.md#InvoicesAPI_patchInvoice) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId} | Patch an invoice.
 [**InvoicesAPI_patchInvoiceAdjustment**](InvoicesAPI.md#InvoicesAPI_patchInvoiceAdjustment) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/Adjustments/{invoiceAdjustmentId} | Patch an invoice adjustment.
 [**InvoicesAPI_patchInvoiceLine**](InvoicesAPI.md#InvoicesAPI_patchInvoiceLine) | **PATCH** /api/v2/InvoicingService/Invoices/{invoiceId}/Lines/{invoiceLineId} | Patch an invoice line.
@@ -1211,6 +1213,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InvoicesAPI_getPurchaseInvoicesSum**
+```c
+// Sum tenant purchase-invoice totals.
+//
+// Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseInvoice, filtered by the supplied OData date range.
+//
+decimal_envelope_t* InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+
+### Return type
+
+[decimal_envelope_t](decimal_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **InvoicesAPI_getSalesInvoicesSum**
+```c
+// Sum tenant sales-invoice totals.
+//
+// Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvoice, filtered by the supplied OData date range.
+//
+decimal_envelope_t* InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+
+### Return type
+
+[decimal_envelope_t](decimal_envelope.md) *
 
 
 ### Authorization

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **timestamp** | **char \*** |  | [optional] 
 **type** | **char \*** |  | [optional] 
 **contact_id** | **char \*** |  | [optional] 
+**contact** | [**contact_create_dto_t**](contact_create_dto.md) \* |  | [optional] 
 **about** | **char \*** |  | [optional] 
 **avatar_url** | **char \*** |  | [optional] 
 **data** | **char \*** |  | [optional] 

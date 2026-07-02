@@ -16,11 +16,20 @@
 typedef struct tenant_create_dto_t tenant_create_dto_t;
 
 
+// Enum KIND for tenant_create_dto
+
+typedef enum  { systemservice_tenant_create_dto_KIND_NULL = 0, systemservice_tenant_create_dto_KIND_Organization, systemservice_tenant_create_dto_KIND_Individual } systemservice_tenant_create_dto_KIND_e;
+
+char* tenant_create_dto_kind_ToString(systemservice_tenant_create_dto_KIND_e kind);
+
+systemservice_tenant_create_dto_KIND_e tenant_create_dto_kind_FromString(char* kind);
+
 
 
 typedef struct tenant_create_dto_t {
     char *id; // string
     char *timestamp; //date time
+    systemservice_tenant_create_dto_KIND_e kind; //enum
     char *name; // string
     char *legal_name; // string
     char *email; // string
@@ -48,6 +57,7 @@ typedef struct tenant_create_dto_t {
 tenant_create_dto_t *tenant_create_dto_create(
     char *id,
     char *timestamp,
+    systemservice_tenant_create_dto_KIND_e kind,
     char *name,
     char *legal_name,
     char *email,

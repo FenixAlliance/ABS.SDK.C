@@ -22,6 +22,7 @@ typedef struct unit_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *name; // string
+    char *un_ece_code; // string
     char *unit_group_id; // string
     double base_unit_amount; //numeric
     char *base_unit_id; // string
@@ -34,6 +35,7 @@ unit_dto_t *unit_dto_create(
     char *id,
     char *timestamp,
     char *name,
+    char *un_ece_code,
     char *unit_group_id,
     double base_unit_amount,
     char *base_unit_id,

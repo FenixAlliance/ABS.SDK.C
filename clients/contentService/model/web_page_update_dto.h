@@ -81,6 +81,7 @@ typedef struct web_page_update_dto_t {
     int cornerstone_content; //boolean
     int is_essential_content; //boolean
     int allow_search_engine_indexing; //boolean
+    char *web_portal_id; // string
     char *web_template_id; // string
     char *parent_web_content_id; // string
     int is_home_page; //boolean
@@ -151,6 +152,7 @@ web_page_update_dto_t *web_page_update_dto_create(
     int cornerstone_content,
     int is_essential_content,
     int allow_search_engine_indexing,
+    char *web_portal_id,
     char *web_template_id,
     char *parent_web_content_id,
     int is_home_page,

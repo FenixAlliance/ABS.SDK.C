@@ -25,6 +25,8 @@ typedef struct item_restock_dto_t {
     char *description; // string
     char *tenant_id; // string
     int entry_count; //numeric
+    char *seller_billing_profile_id; // string
+    char *buyer_billing_profile_id; // string
 
 } item_restock_dto_t;
 
@@ -34,7 +36,9 @@ item_restock_dto_t *item_restock_dto_create(
     char *name,
     char *description,
     char *tenant_id,
-    int entry_count
+    int entry_count,
+    char *seller_billing_profile_id,
+    char *buyer_billing_profile_id
 );
 
 void item_restock_dto_free(item_restock_dto_t *item_restock_dto);

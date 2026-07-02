@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **timestamp** | **char \*** |  | [optional] 
 **name** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
+**payment_means_code** | **char \*** |  | [optional] 
 **tenant_id** | **char \*** |  | [optional] 
 **enrollment_id** | **char \*** |  | [optional] 
 

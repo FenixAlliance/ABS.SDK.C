@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **valid_response** | **int** |  | [optional] 
 **parent_file_upload_id** | **char \*** |  | [optional] 
 **file_path** | **char \*** |  | [optional] 
+**public_access_type** | **supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_e** |  | [optional] 
 **metadata** | **char \*** |  | [optional] 
 **support_request_id** | **char \*** |  | [optional] 
 

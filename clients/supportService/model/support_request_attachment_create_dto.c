@@ -4,6 +4,23 @@
 #include "support_request_attachment_create_dto.h"
 
 
+char* support_request_attachment_create_dto_public_access_type_ToString(supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type) {
+    char* public_access_typeArray[] =  { "NULL", "false", "Container", "Blob", "Unknown" };
+    return public_access_typeArray[public_access_type];
+}
+
+supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_e support_request_attachment_create_dto_public_access_type_FromString(char* public_access_type){
+    int stringToReturn = 0;
+    char *public_access_typeArray[] =  { "NULL", "false", "Container", "Blob", "Unknown" };
+    size_t sizeofArray = sizeof(public_access_typeArray) / sizeof(public_access_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(public_access_type, public_access_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 support_request_attachment_create_dto_t *support_request_attachment_create_dto_create(
     char *id,
@@ -18,6 +35,7 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_c
     int valid_response,
     char *parent_file_upload_id,
     char *file_path,
+    supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type,
     char *metadata,
     char *support_request_id
     ) {
@@ -37,6 +55,7 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_c
     support_request_attachment_create_dto_local_var->valid_response = valid_response;
     support_request_attachment_create_dto_local_var->parent_file_upload_id = parent_file_upload_id;
     support_request_attachment_create_dto_local_var->file_path = file_path;
+    support_request_attachment_create_dto_local_var->public_access_type = public_access_type;
     support_request_attachment_create_dto_local_var->metadata = metadata;
     support_request_attachment_create_dto_local_var->support_request_id = support_request_id;
 
@@ -199,6 +218,15 @@ cJSON *support_request_attachment_create_dto_convertToJSON(support_request_attac
     }
 
 
+    // support_request_attachment_create_dto->public_access_type
+    if(support_request_attachment_create_dto->public_access_type != supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "publicAccessType", public_access_typesupport_request_attachment_create_dto_ToString(support_request_attachment_create_dto->public_access_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // support_request_attachment_create_dto->metadata
     if(support_request_attachment_create_dto->metadata) {
     if(cJSON_AddStringToObject(item, "metadata", support_request_attachment_create_dto->metadata) == NULL) {
@@ -334,6 +362,17 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_p
     }
     }
 
+    // support_request_attachment_create_dto->public_access_type
+    cJSON *public_access_type = cJSON_GetObjectItemCaseSensitive(support_request_attachment_create_dtoJSON, "publicAccessType");
+    supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_e public_access_typeVariable;
+    if (public_access_type) { 
+    if(!cJSON_IsString(public_access_type))
+    {
+    goto end; //Enum
+    }
+    public_access_typeVariable = support_request_attachment_create_dto_public_access_type_FromString(public_access_type->valuestring);
+    }
+
     // support_request_attachment_create_dto->metadata
     cJSON *metadata = cJSON_GetObjectItemCaseSensitive(support_request_attachment_create_dtoJSON, "metadata");
     if (metadata) { 
@@ -366,6 +405,7 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_p
         valid_response ? valid_response->valueint : 0,
         parent_file_upload_id && !cJSON_IsNull(parent_file_upload_id) ? strdup(parent_file_upload_id->valuestring) : NULL,
         file_path && !cJSON_IsNull(file_path) ? strdup(file_path->valuestring) : NULL,
+        public_access_type ? public_access_typeVariable : supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_NULL,
         metadata && !cJSON_IsNull(metadata) ? strdup(metadata->valuestring) : NULL,
         support_request_id && !cJSON_IsNull(support_request_id) ? strdup(support_request_id->valuestring) : NULL
         );

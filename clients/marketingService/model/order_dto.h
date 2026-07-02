@@ -124,6 +124,8 @@ typedef struct order_dto_t {
     char *billing_location_id; // string
     char *shipping_location_id; // string
     char *qualified_identifier; // string
+    char *seller_billing_profile_id; // string
+    char *buyer_billing_profile_id; // string
     marketingservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method; //enum
     marketingservice_order_dto_FREIGHTTERMS_e freight_terms; //enum
     marketingservice_order_dto_ORDERSTATUS_e order_status; //enum
@@ -214,6 +216,8 @@ order_dto_t *order_dto_create(
     char *billing_location_id,
     char *shipping_location_id,
     char *qualified_identifier,
+    char *seller_billing_profile_id,
+    char *buyer_billing_profile_id,
     marketingservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     marketingservice_order_dto_FREIGHTTERMS_e freight_terms,
     marketingservice_order_dto_ORDERSTATUS_e order_status,

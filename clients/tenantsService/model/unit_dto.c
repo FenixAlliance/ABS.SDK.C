@@ -9,6 +9,7 @@ unit_dto_t *unit_dto_create(
     char *id,
     char *timestamp,
     char *name,
+    char *un_ece_code,
     char *unit_group_id,
     double base_unit_amount,
     char *base_unit_id,
@@ -22,6 +23,7 @@ unit_dto_t *unit_dto_create(
     unit_dto_local_var->id = id;
     unit_dto_local_var->timestamp = timestamp;
     unit_dto_local_var->name = name;
+    unit_dto_local_var->un_ece_code = un_ece_code;
     unit_dto_local_var->unit_group_id = unit_group_id;
     unit_dto_local_var->base_unit_amount = base_unit_amount;
     unit_dto_local_var->base_unit_id = base_unit_id;
@@ -48,6 +50,10 @@ void unit_dto_free(unit_dto_t *unit_dto) {
     if (unit_dto->name) {
         free(unit_dto->name);
         unit_dto->name = NULL;
+    }
+    if (unit_dto->un_ece_code) {
+        free(unit_dto->un_ece_code);
+        unit_dto->un_ece_code = NULL;
     }
     if (unit_dto->unit_group_id) {
         free(unit_dto->unit_group_id);
@@ -90,6 +96,14 @@ cJSON *unit_dto_convertToJSON(unit_dto_t *unit_dto) {
     // unit_dto->name
     if(unit_dto->name) {
     if(cJSON_AddStringToObject(item, "name", unit_dto->name) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // unit_dto->un_ece_code
+    if(unit_dto->un_ece_code) {
+    if(cJSON_AddStringToObject(item, "unECECode", unit_dto->un_ece_code) == NULL) {
     goto fail; //String
     }
     }
@@ -173,6 +187,15 @@ unit_dto_t *unit_dto_parseFromJSON(cJSON *unit_dtoJSON){
     }
     }
 
+    // unit_dto->un_ece_code
+    cJSON *un_ece_code = cJSON_GetObjectItemCaseSensitive(unit_dtoJSON, "unECECode");
+    if (un_ece_code) { 
+    if(!cJSON_IsString(un_ece_code) && !cJSON_IsNull(un_ece_code))
+    {
+    goto end; //String
+    }
+    }
+
     // unit_dto->unit_group_id
     cJSON *unit_group_id = cJSON_GetObjectItemCaseSensitive(unit_dtoJSON, "unitGroupId");
     if (unit_group_id) { 
@@ -223,6 +246,7 @@ unit_dto_t *unit_dto_parseFromJSON(cJSON *unit_dtoJSON){
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        un_ece_code && !cJSON_IsNull(un_ece_code) ? strdup(un_ece_code->valuestring) : NULL,
         unit_group_id && !cJSON_IsNull(unit_group_id) ? strdup(unit_group_id->valuestring) : NULL,
         base_unit_amount ? base_unit_amount->valuedouble : 0,
         base_unit_id && !cJSON_IsNull(base_unit_id) ? strdup(base_unit_id->valuestring) : NULL,

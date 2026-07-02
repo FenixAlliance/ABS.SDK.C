@@ -55,7 +55,6 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
-    model/error_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
     model/info_request.c
@@ -67,8 +66,7 @@ set(SRCS
     model/reset_password_request.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/CompletionsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
 
 )
 
@@ -80,7 +78,6 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
-    model/error_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
     model/info_request.h
@@ -92,8 +89,7 @@ set(HDRS
     model/reset_password_request.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/CompletionsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
 
 )
 
@@ -175,8 +171,7 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-CompletionsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #)
 
 ##set header files

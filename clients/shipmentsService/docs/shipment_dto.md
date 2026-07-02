@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **shipping_terms** | **shipmentsservice_shipment_dto_SHIPPINGTERMS_e** |  | [optional] 
 **order_id** | **char \*** |  | [optional] 
 **tenant_id** | **char \*** |  | [optional] 
+**seller_billing_profile_id** | **char \*** |  | [optional] 
+**buyer_billing_profile_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

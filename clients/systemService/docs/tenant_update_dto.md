@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**kind** | **systemservice_tenant_update_dto_KIND_e** |  | [optional] 
 **name** | **char \*** |  | 
 **legal_name** | **char \*** |  | [optional] 
 **email** | **char \*** |  | 

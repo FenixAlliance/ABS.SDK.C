@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
+**status** | **hrmsservice_job_offer_dto_STATUS_e** |  | [optional] 
 **remote** | **int** |  | [optional] 
 **expected_hire_date** | **char \*** |  | [optional] 
 **title** | **char \*** |  | [optional] 

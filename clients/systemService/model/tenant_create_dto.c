@@ -4,10 +4,28 @@
 #include "tenant_create_dto.h"
 
 
+char* tenant_create_dto_kind_ToString(systemservice_tenant_create_dto_KIND_e kind) {
+    char* kindArray[] =  { "NULL", "Organization", "Individual" };
+    return kindArray[kind];
+}
+
+systemservice_tenant_create_dto_KIND_e tenant_create_dto_kind_FromString(char* kind){
+    int stringToReturn = 0;
+    char *kindArray[] =  { "NULL", "Organization", "Individual" };
+    size_t sizeofArray = sizeof(kindArray) / sizeof(kindArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(kind, kindArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 tenant_create_dto_t *tenant_create_dto_create(
     char *id,
     char *timestamp,
+    systemservice_tenant_create_dto_KIND_e kind,
     char *name,
     char *legal_name,
     char *email,
@@ -36,6 +54,7 @@ tenant_create_dto_t *tenant_create_dto_create(
     }
     tenant_create_dto_local_var->id = id;
     tenant_create_dto_local_var->timestamp = timestamp;
+    tenant_create_dto_local_var->kind = kind;
     tenant_create_dto_local_var->name = name;
     tenant_create_dto_local_var->legal_name = legal_name;
     tenant_create_dto_local_var->email = email;
@@ -177,6 +196,15 @@ cJSON *tenant_create_dto_convertToJSON(tenant_create_dto_t *tenant_create_dto) {
     if(tenant_create_dto->timestamp) {
     if(cJSON_AddStringToObject(item, "timestamp", tenant_create_dto->timestamp) == NULL) {
     goto fail; //Date-Time
+    }
+    }
+
+
+    // tenant_create_dto->kind
+    if(tenant_create_dto->kind != systemservice_tenant_create_dto_KIND_NULL) {
+    if(cJSON_AddStringToObject(item, "kind", kindtenant_create_dto_ToString(tenant_create_dto->kind)) == NULL)
+    {
+    goto fail; //Enum
     }
     }
 
@@ -380,6 +408,17 @@ tenant_create_dto_t *tenant_create_dto_parseFromJSON(cJSON *tenant_create_dtoJSO
     {
     goto end; //DateTime
     }
+    }
+
+    // tenant_create_dto->kind
+    cJSON *kind = cJSON_GetObjectItemCaseSensitive(tenant_create_dtoJSON, "kind");
+    systemservice_tenant_create_dto_KIND_e kindVariable;
+    if (kind) { 
+    if(!cJSON_IsString(kind))
+    {
+    goto end; //Enum
+    }
+    kindVariable = tenant_create_dto_kind_FromString(kind->valuestring);
     }
 
     // tenant_create_dto->name
@@ -587,6 +626,7 @@ tenant_create_dto_t *tenant_create_dto_parseFromJSON(cJSON *tenant_create_dtoJSO
     tenant_create_dto_local_var = tenant_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        kind ? kindVariable : systemservice_tenant_create_dto_KIND_NULL,
         strdup(name->valuestring),
         legal_name && !cJSON_IsNull(legal_name) ? strdup(legal_name->valuestring) : NULL,
         strdup(email->valuestring),

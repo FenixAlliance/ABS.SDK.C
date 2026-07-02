@@ -1,6 +1,6 @@
 # SharesAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**SharesAPI_getShareIssuance**](SharesAPI.md#SharesAPI_getShareIssuance) | **GET** /api/v2/AccountingService/Shares/Issuances/{issuanceId} | Gets a share issuance by id
 [**SharesAPI_getShareIssuances**](SharesAPI.md#SharesAPI_getShareIssuances) | **GET** /api/v2/AccountingService/Shares/Issuances | Gets the current tenant share issuances
 [**SharesAPI_getShareIssuancesCount**](SharesAPI.md#SharesAPI_getShareIssuancesCount) | **GET** /api/v2/AccountingService/Shares/Issuances/Count | Gets the current tenant share issuances count
+[**SharesAPI_getShareIssuancesSum**](SharesAPI.md#SharesAPI_getShareIssuancesSum) | **GET** /api/v2/AccountingService/Shares/Issuances/Sum | Sum tenant share issuance quantities
 [**SharesAPI_getShareTransfer**](SharesAPI.md#SharesAPI_getShareTransfer) | **GET** /api/v2/AccountingService/Shares/Transfers/{transferId} | Gets a share transfer by id
 [**SharesAPI_getShareTransferReason**](SharesAPI.md#SharesAPI_getShareTransferReason) | **GET** /api/v2/AccountingService/Shares/TransferReasons/{reasonId} | Gets a share transfer reason by id
 [**SharesAPI_getShareTransferReasons**](SharesAPI.md#SharesAPI_getShareTransferReasons) | **GET** /api/v2/AccountingService/Shares/TransferReasons | Gets the current tenant share transfer reasons
@@ -489,6 +490,39 @@ Name | Type | Description  | Notes
 ### Return type
 
 [int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SharesAPI_getShareIssuancesSum**
+```c
+// Sum tenant share issuance quantities
+//
+// Returns SUM(ShareIssuance.Quantity) for the tenant, filtered by the supplied OData date range.
+//
+decimal_envelope_t* SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[decimal_envelope_t](decimal_envelope.md) *
 
 
 ### Authorization

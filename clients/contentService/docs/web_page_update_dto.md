@@ -57,6 +57,7 @@ Name | Type | Description | Notes
 **cornerstone_content** | **int** |  | [optional] 
 **is_essential_content** | **int** |  | [optional] 
 **allow_search_engine_indexing** | **int** |  | [optional] 
+**web_portal_id** | **char \*** |  | [optional] 
 **web_template_id** | **char \*** |  | [optional] 
 **parent_web_content_id** | **char \*** |  | [optional] 
 **is_home_page** | **int** |  | [optional] 

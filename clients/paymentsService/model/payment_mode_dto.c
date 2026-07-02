@@ -10,6 +10,7 @@ payment_mode_dto_t *payment_mode_dto_create(
     char *timestamp,
     char *name,
     char *description,
+    char *payment_means_code,
     char *tenant_id,
     char *enrollment_id
     ) {
@@ -21,6 +22,7 @@ payment_mode_dto_t *payment_mode_dto_create(
     payment_mode_dto_local_var->timestamp = timestamp;
     payment_mode_dto_local_var->name = name;
     payment_mode_dto_local_var->description = description;
+    payment_mode_dto_local_var->payment_means_code = payment_means_code;
     payment_mode_dto_local_var->tenant_id = tenant_id;
     payment_mode_dto_local_var->enrollment_id = enrollment_id;
 
@@ -48,6 +50,10 @@ void payment_mode_dto_free(payment_mode_dto_t *payment_mode_dto) {
     if (payment_mode_dto->description) {
         free(payment_mode_dto->description);
         payment_mode_dto->description = NULL;
+    }
+    if (payment_mode_dto->payment_means_code) {
+        free(payment_mode_dto->payment_means_code);
+        payment_mode_dto->payment_means_code = NULL;
     }
     if (payment_mode_dto->tenant_id) {
         free(payment_mode_dto->tenant_id);
@@ -90,6 +96,14 @@ cJSON *payment_mode_dto_convertToJSON(payment_mode_dto_t *payment_mode_dto) {
     // payment_mode_dto->description
     if(payment_mode_dto->description) {
     if(cJSON_AddStringToObject(item, "description", payment_mode_dto->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // payment_mode_dto->payment_means_code
+    if(payment_mode_dto->payment_means_code) {
+    if(cJSON_AddStringToObject(item, "paymentMeansCode", payment_mode_dto->payment_means_code) == NULL) {
     goto fail; //String
     }
     }
@@ -158,6 +172,15 @@ payment_mode_dto_t *payment_mode_dto_parseFromJSON(cJSON *payment_mode_dtoJSON){
     }
     }
 
+    // payment_mode_dto->payment_means_code
+    cJSON *payment_means_code = cJSON_GetObjectItemCaseSensitive(payment_mode_dtoJSON, "paymentMeansCode");
+    if (payment_means_code) { 
+    if(!cJSON_IsString(payment_means_code) && !cJSON_IsNull(payment_means_code))
+    {
+    goto end; //String
+    }
+    }
+
     // payment_mode_dto->tenant_id
     cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(payment_mode_dtoJSON, "tenantId");
     if (tenant_id) { 
@@ -182,6 +205,7 @@ payment_mode_dto_t *payment_mode_dto_parseFromJSON(cJSON *payment_mode_dtoJSON){
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        payment_means_code && !cJSON_IsNull(payment_means_code) ? strdup(payment_means_code->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );

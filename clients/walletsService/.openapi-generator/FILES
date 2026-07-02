@@ -1,14 +1,11 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/CompletionsAPI.c
-api/CompletionsAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/WalletsAPI.c
 api/WalletsAPI.h
-docs/CompletionsAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/WalletsAPI.md
 docs/access_token_response.md
 docs/bank_account_create_dto.md

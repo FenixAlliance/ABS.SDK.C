@@ -10,6 +10,7 @@ employee_profile_create_dto_t *employee_profile_create_dto_create(
     char *timestamp,
     char *type,
     char *contact_id,
+    contact_create_dto_t *contact,
     char *about,
     char *avatar_url,
     char *data,
@@ -47,6 +48,7 @@ employee_profile_create_dto_t *employee_profile_create_dto_create(
     employee_profile_create_dto_local_var->timestamp = timestamp;
     employee_profile_create_dto_local_var->type = type;
     employee_profile_create_dto_local_var->contact_id = contact_id;
+    employee_profile_create_dto_local_var->contact = contact;
     employee_profile_create_dto_local_var->about = about;
     employee_profile_create_dto_local_var->avatar_url = avatar_url;
     employee_profile_create_dto_local_var->data = data;
@@ -100,6 +102,10 @@ void employee_profile_create_dto_free(employee_profile_create_dto_t *employee_pr
     if (employee_profile_create_dto->contact_id) {
         free(employee_profile_create_dto->contact_id);
         employee_profile_create_dto->contact_id = NULL;
+    }
+    if (employee_profile_create_dto->contact) {
+        contact_create_dto_free(employee_profile_create_dto->contact);
+        employee_profile_create_dto->contact = NULL;
     }
     if (employee_profile_create_dto->about) {
         free(employee_profile_create_dto->about);
@@ -235,6 +241,19 @@ cJSON *employee_profile_create_dto_convertToJSON(employee_profile_create_dto_t *
     if(employee_profile_create_dto->contact_id) {
     if(cJSON_AddStringToObject(item, "contactId", employee_profile_create_dto->contact_id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // employee_profile_create_dto->contact
+    if(employee_profile_create_dto->contact) {
+    cJSON *contact_local_JSON = contact_create_dto_convertToJSON(employee_profile_create_dto->contact);
+    if(contact_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "contact", contact_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
     }
     }
 
@@ -474,6 +493,9 @@ employee_profile_create_dto_t *employee_profile_create_dto_parseFromJSON(cJSON *
 
     employee_profile_create_dto_t *employee_profile_create_dto_local_var = NULL;
 
+    // define the local variable for employee_profile_create_dto->contact
+    contact_create_dto_t *contact_local_nonprim = NULL;
+
     // employee_profile_create_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(employee_profile_create_dtoJSON, "id");
     if (id) { 
@@ -508,6 +530,12 @@ employee_profile_create_dto_t *employee_profile_create_dto_parseFromJSON(cJSON *
     {
     goto end; //String
     }
+    }
+
+    // employee_profile_create_dto->contact
+    cJSON *contact = cJSON_GetObjectItemCaseSensitive(employee_profile_create_dtoJSON, "contact");
+    if (contact) { 
+    contact_local_nonprim = contact_create_dto_parseFromJSON(contact); //nonprimitive
     }
 
     // employee_profile_create_dto->about
@@ -768,6 +796,7 @@ employee_profile_create_dto_t *employee_profile_create_dto_parseFromJSON(cJSON *
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
+        contact ? contact_local_nonprim : NULL,
         about && !cJSON_IsNull(about) ? strdup(about->valuestring) : NULL,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,
         data && !cJSON_IsNull(data) ? strdup(data->valuestring) : NULL,
@@ -800,6 +829,10 @@ employee_profile_create_dto_t *employee_profile_create_dto_parseFromJSON(cJSON *
 
     return employee_profile_create_dto_local_var;
 end:
+    if (contact_local_nonprim) {
+        contact_create_dto_free(contact_local_nonprim);
+        contact_local_nonprim = NULL;
+    }
     return NULL;
 
 }

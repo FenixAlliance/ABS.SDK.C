@@ -1,10 +1,8 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/CompletionsAPI.c
-api/CompletionsAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/InquiryRequestsAPI.c
 api/InquiryRequestsAPI.h
 api/KnowledgeArticlesAPI.c
@@ -35,8 +33,7 @@ api/WarrantyPoliciesAPI.c
 api/WarrantyPoliciesAPI.h
 api/WarrantyRequestsAPI.c
 api/WarrantyRequestsAPI.h
-docs/CompletionsAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/InquiryRequestsAPI.md
 docs/KnowledgeArticlesAPI.md
 docs/MaintenanceVisitsAPI.md

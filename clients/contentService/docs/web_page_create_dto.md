@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **featured_image_url** | **char \*** |  | [optional] 
 **code_type** | **contentservice_web_page_create_dto_CODETYPE_e** |  | [optional] 
 **slug** | **char \*** |  | [optional] 
+**web_portal_id** | **char \*** |  | [optional] 
 **web_template_id** | **char \*** |  | [optional] 
 **parent_web_content_id** | **char \*** |  | [optional] 
 

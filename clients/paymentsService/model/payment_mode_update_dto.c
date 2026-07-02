@@ -7,7 +7,8 @@
 
 payment_mode_update_dto_t *payment_mode_update_dto_create(
     char *name,
-    char *description
+    char *description,
+    char *payment_means_code
     ) {
     payment_mode_update_dto_t *payment_mode_update_dto_local_var = malloc(sizeof(payment_mode_update_dto_t));
     if (!payment_mode_update_dto_local_var) {
@@ -15,6 +16,7 @@ payment_mode_update_dto_t *payment_mode_update_dto_create(
     }
     payment_mode_update_dto_local_var->name = name;
     payment_mode_update_dto_local_var->description = description;
+    payment_mode_update_dto_local_var->payment_means_code = payment_means_code;
 
     return payment_mode_update_dto_local_var;
 }
@@ -33,6 +35,10 @@ void payment_mode_update_dto_free(payment_mode_update_dto_t *payment_mode_update
         free(payment_mode_update_dto->description);
         payment_mode_update_dto->description = NULL;
     }
+    if (payment_mode_update_dto->payment_means_code) {
+        free(payment_mode_update_dto->payment_means_code);
+        payment_mode_update_dto->payment_means_code = NULL;
+    }
     free(payment_mode_update_dto);
 }
 
@@ -50,6 +56,14 @@ cJSON *payment_mode_update_dto_convertToJSON(payment_mode_update_dto_t *payment_
     // payment_mode_update_dto->description
     if(payment_mode_update_dto->description) {
     if(cJSON_AddStringToObject(item, "description", payment_mode_update_dto->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // payment_mode_update_dto->payment_means_code
+    if(payment_mode_update_dto->payment_means_code) {
+    if(cJSON_AddStringToObject(item, "paymentMeansCode", payment_mode_update_dto->payment_means_code) == NULL) {
     goto fail; //String
     }
     }
@@ -84,10 +98,20 @@ payment_mode_update_dto_t *payment_mode_update_dto_parseFromJSON(cJSON *payment_
     }
     }
 
+    // payment_mode_update_dto->payment_means_code
+    cJSON *payment_means_code = cJSON_GetObjectItemCaseSensitive(payment_mode_update_dtoJSON, "paymentMeansCode");
+    if (payment_means_code) { 
+    if(!cJSON_IsString(payment_means_code) && !cJSON_IsNull(payment_means_code))
+    {
+    goto end; //String
+    }
+    }
+
 
     payment_mode_update_dto_local_var = payment_mode_update_dto_create (
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
-        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        payment_means_code && !cJSON_IsNull(payment_means_code) ? strdup(payment_means_code->valuestring) : NULL
         );
 
     return payment_mode_update_dto_local_var;

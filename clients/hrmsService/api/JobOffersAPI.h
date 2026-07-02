@@ -15,6 +15,14 @@
 #include "../model/operation.h"
 
 
+// Close a job offer
+//
+// Closes the job offer without a hire and removes it from the public board (raises JobOfferClosed).
+//
+empty_envelope_t*
+JobOffersAPI_closeJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version);
+
+
 // Create a job offer
 //
 // Creates a new job offer for the specified tenant.
@@ -29,6 +37,14 @@ JobOffersAPI_createJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *a
 //
 empty_envelope_t*
 JobOffersAPI_deleteJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version);
+
+
+// Mark a job offer filled
+//
+// Marks the offer filled — converted to a hire — and removes it from the public board (raises JobOfferFilled).
+//
+empty_envelope_t*
+JobOffersAPI_fillJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version);
 
 
 // Get job offer by ID
@@ -55,12 +71,44 @@ int32_envelope_t*
 JobOffersAPI_getJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
+// Get public job offer by ID
+//
+// Retrieves a published job offer by its identifier for the Talent Portal. Anonymous; optionally scoped to a tenant.
+//
+job_offer_dto_envelope_t*
+JobOffersAPI_getPublicJobOfferByIdAsync(apiClient_t *apiClient, char *jobOfferId, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Get public job offers
+//
+// Retrieves published job offers for the Talent Portal. Anonymous; optionally scoped to a single tenant.
+//
+job_offer_dto_list_envelope_t*
+JobOffersAPI_getPublicJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Count public job offers
+//
+// Counts published job offers for the Talent Portal. Anonymous; optionally scoped to a single tenant.
+//
+int32_envelope_t*
+JobOffersAPI_getPublicJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
 // Patch a job offer
 //
 // Partially updates an existing job offer for the specified tenant.
 //
 empty_envelope_t*
 JobOffersAPI_patchJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Publish a job offer
+//
+// Publishes the job offer to the public Talent Portal (raises JobOfferPublished).
+//
+empty_envelope_t*
+JobOffersAPI_publishJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version);
 
 
 // Update a job offer

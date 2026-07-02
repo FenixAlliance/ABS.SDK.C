@@ -121,8 +121,7 @@ set(SRCS
     model/two_factor_request.c
     model/two_factor_response.c
     api/BillsOfLadingAPI.c
-    api/CompletionsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/ItemShippingPoliciesAPI.c
     api/ShipmentsAPI.c
     api/ShippingClassesAPI.c
@@ -208,8 +207,7 @@ set(HDRS
     model/two_factor_request.h
     model/two_factor_response.h
     api/BillsOfLadingAPI.h
-    api/CompletionsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/ItemShippingPoliciesAPI.h
     api/ShipmentsAPI.h
     api/ShippingClassesAPI.h
@@ -300,8 +298,7 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-BillsOfLadingAPI.c
-#    unit-tests/manual-CompletionsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-ItemShippingPoliciesAPI.c
 #    unit-tests/manual-ShipmentsAPI.c
 #    unit-tests/manual-ShippingClassesAPI.c

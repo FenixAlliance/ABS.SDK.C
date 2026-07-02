@@ -1,10 +1,8 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/CompletionsAPI.c
-api/CompletionsAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/ItemAttachmentsAPI.c
 api/ItemAttachmentsAPI.h
 api/ItemAttributeOptionsAPI.c
@@ -45,8 +43,7 @@ api/ItemsAPI.c
 api/ItemsAPI.h
 api/MerchantsAPI.c
 api/MerchantsAPI.h
-docs/CompletionsAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ItemAttachmentsAPI.md
 docs/ItemAttributeOptionsAPI.md
 docs/ItemAttributesAPI.md
@@ -421,6 +418,3 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_batch_stock_item_update_request.c
-unit-test/test_bulk_product.c
-unit-test/test_operation.c

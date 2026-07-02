@@ -59,6 +59,16 @@ set(SRCS
     model/conversation_create_dto.c
     model/conversation_dto.c
     model/conversation_dto_list_envelope.c
+    model/curriculum_create_dto.c
+    model/curriculum_dto.c
+    model/curriculum_dto_envelope.c
+    model/curriculum_dto_list_envelope.c
+    model/curriculum_experience_create_dto.c
+    model/curriculum_experience_dto.c
+    model/curriculum_experience_dto_envelope.c
+    model/curriculum_experience_dto_list_envelope.c
+    model/curriculum_experience_update_dto.c
+    model/curriculum_update_dto.c
     model/empty_envelope.c
     model/error_envelope.c
     model/follow_record_dto.c
@@ -81,6 +91,11 @@ set(SRCS
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
+    model/skill_create_dto.c
+    model/skill_dto.c
+    model/skill_dto_envelope.c
+    model/skill_dto_list_envelope.c
+    model/skill_update_dto.c
     model/social_feed_dto.c
     model/social_feed_dto_envelope.c
     model/social_feed_dto_list_envelope.c
@@ -119,8 +134,10 @@ set(SRCS
     model/social_reaction_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/CompletionsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/CurriculumExperiencesAPI.c
+    api/CurriculumsAPI.c
+    api/FenixAllianceABSWebAPI.c
+    api/SkillsAPI.c
     api/SocialFeedsAPI.c
     api/SocialGroupsAPI.c
     api/SocialPostsAPI.c
@@ -140,6 +157,16 @@ set(HDRS
     model/conversation_create_dto.h
     model/conversation_dto.h
     model/conversation_dto_list_envelope.h
+    model/curriculum_create_dto.h
+    model/curriculum_dto.h
+    model/curriculum_dto_envelope.h
+    model/curriculum_dto_list_envelope.h
+    model/curriculum_experience_create_dto.h
+    model/curriculum_experience_dto.h
+    model/curriculum_experience_dto_envelope.h
+    model/curriculum_experience_dto_list_envelope.h
+    model/curriculum_experience_update_dto.h
+    model/curriculum_update_dto.h
     model/empty_envelope.h
     model/error_envelope.h
     model/follow_record_dto.h
@@ -162,6 +189,11 @@ set(HDRS
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
+    model/skill_create_dto.h
+    model/skill_dto.h
+    model/skill_dto_envelope.h
+    model/skill_dto_list_envelope.h
+    model/skill_update_dto.h
     model/social_feed_dto.h
     model/social_feed_dto_envelope.h
     model/social_feed_dto_list_envelope.h
@@ -200,8 +232,10 @@ set(HDRS
     model/social_reaction_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/CompletionsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/CurriculumExperiencesAPI.h
+    api/CurriculumsAPI.h
+    api/FenixAllianceABSWebAPI.h
+    api/SkillsAPI.h
     api/SocialFeedsAPI.h
     api/SocialGroupsAPI.h
     api/SocialPostsAPI.h
@@ -287,8 +321,10 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-CompletionsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-CurriculumExperiencesAPI.c
+#    unit-tests/manual-CurriculumsAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-SkillsAPI.c
 #    unit-tests/manual-SocialFeedsAPI.c
 #    unit-tests/manual-SocialGroupsAPI.c
 #    unit-tests/manual-SocialPostsAPI.c

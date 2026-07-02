@@ -1,17 +1,15 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/CompletionsAPI.c
-api/CompletionsAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/InvoicesAPI.c
 api/InvoicesAPI.h
-docs/CompletionsAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/InvoicesAPI.md
 docs/access_token_response.md
 docs/currency_id.md
+docs/decimal_envelope.md
 docs/email_dispatch_request.md
 docs/empty_envelope.md
 docs/envelope.md
@@ -76,6 +74,8 @@ model/access_token_response.c
 model/access_token_response.h
 model/currency_id.c
 model/currency_id.h
+model/decimal_envelope.c
+model/decimal_envelope.h
 model/email_dispatch_request.c
 model/email_dispatch_request.h
 model/empty_envelope.c
@@ -187,3 +187,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_decimal_envelope.c

@@ -156,6 +156,7 @@ set(SRCS
     model/cost_centre_update_dto.c
     model/create_ledger_dto.c
     model/currency_id.c
+    model/decimal_envelope.c
     model/empty_envelope.c
     model/error_envelope.c
     model/expense_claim_create_dto.c
@@ -332,6 +333,7 @@ set(SRCS
     model/two_factor_response.c
     model/update_ledger_dto.c
     api/AccountGroupsAPI.c
+    api/AccountingEntriesAPI.c
     api/AccountingPeriodsAPI.c
     api/AccountsAPI.c
     api/BankProfilesAPI.c
@@ -340,11 +342,10 @@ set(SRCS
     api/BillingProfilesAPI.c
     api/BudgetsAPI.c
     api/CommissionsAPI.c
-    api/CompletionsAPI.c
     api/CostCentresAPI.c
     api/ExpenseClaimsAPI.c
     api/ExpenseTypesAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/FinancialBooksAPI.c
     api/FiscalAuthoritiesAPI.c
     api/FiscalAuthorityYearsAPI.c
@@ -357,6 +358,7 @@ set(SRCS
     api/FiscalYearsAPI.c
     api/GrantsAPI.c
     api/InvoiceEnumerationRangesAPI.c
+    api/JournalEntriesAPI.c
     api/JournalTypesAPI.c
     api/JournalsAPI.c
     api/LedgerTypesAPI.c
@@ -480,6 +482,7 @@ set(HDRS
     model/cost_centre_update_dto.h
     model/create_ledger_dto.h
     model/currency_id.h
+    model/decimal_envelope.h
     model/empty_envelope.h
     model/error_envelope.h
     model/expense_claim_create_dto.h
@@ -656,6 +659,7 @@ set(HDRS
     model/two_factor_response.h
     model/update_ledger_dto.h
     api/AccountGroupsAPI.h
+    api/AccountingEntriesAPI.h
     api/AccountingPeriodsAPI.h
     api/AccountsAPI.h
     api/BankProfilesAPI.h
@@ -664,11 +668,10 @@ set(HDRS
     api/BillingProfilesAPI.h
     api/BudgetsAPI.h
     api/CommissionsAPI.h
-    api/CompletionsAPI.h
     api/CostCentresAPI.h
     api/ExpenseClaimsAPI.h
     api/ExpenseTypesAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/FinancialBooksAPI.h
     api/FiscalAuthoritiesAPI.h
     api/FiscalAuthorityYearsAPI.h
@@ -681,6 +684,7 @@ set(HDRS
     api/FiscalYearsAPI.h
     api/GrantsAPI.h
     api/InvoiceEnumerationRangesAPI.h
+    api/JournalEntriesAPI.h
     api/JournalTypesAPI.h
     api/JournalsAPI.h
     api/LedgerTypesAPI.h
@@ -774,6 +778,7 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-AccountGroupsAPI.c
+#    unit-tests/manual-AccountingEntriesAPI.c
 #    unit-tests/manual-AccountingPeriodsAPI.c
 #    unit-tests/manual-AccountsAPI.c
 #    unit-tests/manual-BankProfilesAPI.c
@@ -782,11 +787,10 @@ set(HDRS "")
 #    unit-tests/manual-BillingProfilesAPI.c
 #    unit-tests/manual-BudgetsAPI.c
 #    unit-tests/manual-CommissionsAPI.c
-#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-CostCentresAPI.c
 #    unit-tests/manual-ExpenseClaimsAPI.c
 #    unit-tests/manual-ExpenseTypesAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-FinancialBooksAPI.c
 #    unit-tests/manual-FiscalAuthoritiesAPI.c
 #    unit-tests/manual-FiscalAuthorityYearsAPI.c
@@ -799,6 +803,7 @@ set(HDRS "")
 #    unit-tests/manual-FiscalYearsAPI.c
 #    unit-tests/manual-GrantsAPI.c
 #    unit-tests/manual-InvoiceEnumerationRangesAPI.c
+#    unit-tests/manual-JournalEntriesAPI.c
 #    unit-tests/manual-JournalTypesAPI.c
 #    unit-tests/manual-JournalsAPI.c
 #    unit-tests/manual-LedgerTypesAPI.c

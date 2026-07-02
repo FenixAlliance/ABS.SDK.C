@@ -40,6 +40,8 @@ typedef struct shipment_dto_t {
     shipmentsservice_shipment_dto_SHIPPINGTERMS_e shipping_terms; //enum
     char *order_id; // string
     char *tenant_id; // string
+    char *seller_billing_profile_id; // string
+    char *buyer_billing_profile_id; // string
 
 } shipment_dto_t;
 
@@ -56,7 +58,9 @@ shipment_dto_t *shipment_dto_create(
     char *expected_delivery_date,
     shipmentsservice_shipment_dto_SHIPPINGTERMS_e shipping_terms,
     char *order_id,
-    char *tenant_id
+    char *tenant_id,
+    char *seller_billing_profile_id,
+    char *buyer_billing_profile_id
 );
 
 void shipment_dto_free(shipment_dto_t *shipment_dto);

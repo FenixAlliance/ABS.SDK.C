@@ -147,6 +147,8 @@ order_dto_t *order_dto_create(
     char *billing_location_id,
     char *shipping_location_id,
     char *qualified_identifier,
+    char *seller_billing_profile_id,
+    char *buyer_billing_profile_id,
     marketingservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     marketingservice_order_dto_FREIGHTTERMS_e freight_terms,
     marketingservice_order_dto_ORDERSTATUS_e order_status,
@@ -238,6 +240,8 @@ order_dto_t *order_dto_create(
     order_dto_local_var->billing_location_id = billing_location_id;
     order_dto_local_var->shipping_location_id = shipping_location_id;
     order_dto_local_var->qualified_identifier = qualified_identifier;
+    order_dto_local_var->seller_billing_profile_id = seller_billing_profile_id;
+    order_dto_local_var->buyer_billing_profile_id = buyer_billing_profile_id;
     order_dto_local_var->cost_calculation_method = cost_calculation_method;
     order_dto_local_var->freight_terms = freight_terms;
     order_dto_local_var->order_status = order_status;
@@ -440,6 +444,14 @@ void order_dto_free(order_dto_t *order_dto) {
     if (order_dto->qualified_identifier) {
         free(order_dto->qualified_identifier);
         order_dto->qualified_identifier = NULL;
+    }
+    if (order_dto->seller_billing_profile_id) {
+        free(order_dto->seller_billing_profile_id);
+        order_dto->seller_billing_profile_id = NULL;
+    }
+    if (order_dto->buyer_billing_profile_id) {
+        free(order_dto->buyer_billing_profile_id);
+        order_dto->buyer_billing_profile_id = NULL;
     }
     if (order_dto->requested_delivery_date) {
         free(order_dto->requested_delivery_date);
@@ -1031,6 +1043,22 @@ cJSON *order_dto_convertToJSON(order_dto_t *order_dto) {
     // order_dto->qualified_identifier
     if(order_dto->qualified_identifier) {
     if(cJSON_AddStringToObject(item, "qualifiedIdentifier", order_dto->qualified_identifier) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_dto->seller_billing_profile_id
+    if(order_dto->seller_billing_profile_id) {
+    if(cJSON_AddStringToObject(item, "sellerBillingProfileId", order_dto->seller_billing_profile_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_dto->buyer_billing_profile_id
+    if(order_dto->buyer_billing_profile_id) {
+    if(cJSON_AddStringToObject(item, "buyerBillingProfileId", order_dto->buyer_billing_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -1813,6 +1841,24 @@ order_dto_t *order_dto_parseFromJSON(cJSON *order_dtoJSON){
     }
     }
 
+    // order_dto->seller_billing_profile_id
+    cJSON *seller_billing_profile_id = cJSON_GetObjectItemCaseSensitive(order_dtoJSON, "sellerBillingProfileId");
+    if (seller_billing_profile_id) { 
+    if(!cJSON_IsString(seller_billing_profile_id) && !cJSON_IsNull(seller_billing_profile_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // order_dto->buyer_billing_profile_id
+    cJSON *buyer_billing_profile_id = cJSON_GetObjectItemCaseSensitive(order_dtoJSON, "buyerBillingProfileId");
+    if (buyer_billing_profile_id) { 
+    if(!cJSON_IsString(buyer_billing_profile_id) && !cJSON_IsNull(buyer_billing_profile_id))
+    {
+    goto end; //String
+    }
+    }
+
     // order_dto->cost_calculation_method
     cJSON *cost_calculation_method = cJSON_GetObjectItemCaseSensitive(order_dtoJSON, "costCalculationMethod");
     marketingservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_methodVariable;
@@ -2011,6 +2057,8 @@ order_dto_t *order_dto_parseFromJSON(cJSON *order_dtoJSON){
         billing_location_id && !cJSON_IsNull(billing_location_id) ? strdup(billing_location_id->valuestring) : NULL,
         shipping_location_id && !cJSON_IsNull(shipping_location_id) ? strdup(shipping_location_id->valuestring) : NULL,
         qualified_identifier && !cJSON_IsNull(qualified_identifier) ? strdup(qualified_identifier->valuestring) : NULL,
+        seller_billing_profile_id && !cJSON_IsNull(seller_billing_profile_id) ? strdup(seller_billing_profile_id->valuestring) : NULL,
+        buyer_billing_profile_id && !cJSON_IsNull(buyer_billing_profile_id) ? strdup(buyer_billing_profile_id->valuestring) : NULL,
         cost_calculation_method ? cost_calculation_methodVariable : marketingservice_order_dto_COSTCALCULATIONMETHOD_NULL,
         freight_terms ? freight_termsVariable : marketingservice_order_dto_FREIGHTTERMS_NULL,
         order_status ? order_statusVariable : marketingservice_order_dto_ORDERSTATUS_NULL,

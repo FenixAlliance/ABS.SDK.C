@@ -75,6 +75,14 @@ item_price_dto_list_envelope_t*
 PriceListsAPI_getPriceListPricesAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *itemId);
 
 
+// Counts prices in a price list
+//
+// Gets the count of price entries for a specific price list.
+//
+int32_envelope_t*
+PriceListsAPI_getPriceListPricesCountAsync(apiClient_t *apiClient, char *tenantId, char *priceListId);
+
+
 // Retrieves all price lists
 //
 // Gets all price lists for the current tenant with OData support.

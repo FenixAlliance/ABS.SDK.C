@@ -16,9 +16,18 @@
 typedef struct tenant_update_dto_t tenant_update_dto_t;
 
 
+// Enum KIND for tenant_update_dto
+
+typedef enum  { systemservice_tenant_update_dto_KIND_NULL = 0, systemservice_tenant_update_dto_KIND_Organization, systemservice_tenant_update_dto_KIND_Individual } systemservice_tenant_update_dto_KIND_e;
+
+char* tenant_update_dto_kind_ToString(systemservice_tenant_update_dto_KIND_e kind);
+
+systemservice_tenant_update_dto_KIND_e tenant_update_dto_kind_FromString(char* kind);
+
 
 
 typedef struct tenant_update_dto_t {
+    systemservice_tenant_update_dto_KIND_e kind; //enum
     char *name; // string
     char *legal_name; // string
     char *email; // string
@@ -49,6 +58,7 @@ typedef struct tenant_update_dto_t {
 } tenant_update_dto_t;
 
 tenant_update_dto_t *tenant_update_dto_create(
+    systemservice_tenant_update_dto_KIND_e kind,
     char *name,
     char *legal_name,
     char *email,

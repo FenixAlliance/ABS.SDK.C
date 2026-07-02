@@ -60,6 +60,7 @@ set(SRCS
     model/airway_bill_dto_envelope.c
     model/airway_bill_dto_list_envelope.c
     model/airway_bill_update_dto.c
+    model/contact_create_dto.c
     model/contact_dto.c
     model/delivery_note_create_dto.c
     model/delivery_note_dto.c
@@ -191,9 +192,8 @@ set(SRCS
     model/waybill_line_dto_list_envelope.c
     model/waybill_line_update_dto.c
     api/AirwayBillsAPI.c
-    api/CompletionsAPI.c
     api/DeliveryNotesAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/ItemPackingSlipsAPI.c
     api/ItemPickListsAPI.c
     api/ItemRestocksAPI.c
@@ -225,6 +225,7 @@ set(HDRS
     model/airway_bill_dto_envelope.h
     model/airway_bill_dto_list_envelope.h
     model/airway_bill_update_dto.h
+    model/contact_create_dto.h
     model/contact_dto.h
     model/delivery_note_create_dto.h
     model/delivery_note_dto.h
@@ -356,9 +357,8 @@ set(HDRS
     model/waybill_line_dto_list_envelope.h
     model/waybill_line_update_dto.h
     api/AirwayBillsAPI.h
-    api/CompletionsAPI.h
     api/DeliveryNotesAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/ItemPackingSlipsAPI.h
     api/ItemPickListsAPI.h
     api/ItemRestocksAPI.h
@@ -456,9 +456,8 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-AirwayBillsAPI.c
-#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-DeliveryNotesAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-ItemPackingSlipsAPI.c
 #    unit-tests/manual-ItemPickListsAPI.c
 #    unit-tests/manual-ItemRestocksAPI.c

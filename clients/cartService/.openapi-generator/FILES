@@ -5,18 +5,15 @@ api/CartsAPI.c
 api/CartsAPI.h
 api/CompareAPI.c
 api/CompareAPI.h
-api/CompletionsAPI.c
-api/CompletionsAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/RecordsAPI.c
 api/RecordsAPI.h
 api/WishListsAPI.c
 api/WishListsAPI.h
 docs/CartsAPI.md
 docs/CompareAPI.md
-docs/CompletionsAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/RecordsAPI.md
 docs/WishListsAPI.md
 docs/access_token_response.md
@@ -154,4 +151,3 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_operation.c

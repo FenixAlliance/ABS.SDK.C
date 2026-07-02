@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **timestamp** | **char \*** |  | [optional] 
 **name** | **char \*** |  | 
 **description** | **char \*** |  | [optional] 
+**payment_means_code** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -10,6 +10,7 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_create(
     char *timestamp,
     char *type,
     char *contact_id,
+    contact_create_dto_t *contact,
     char *about,
     char *avatar_url,
     char *data,
@@ -42,6 +43,7 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_create(
     instructor_profile_create_dto_local_var->timestamp = timestamp;
     instructor_profile_create_dto_local_var->type = type;
     instructor_profile_create_dto_local_var->contact_id = contact_id;
+    instructor_profile_create_dto_local_var->contact = contact;
     instructor_profile_create_dto_local_var->about = about;
     instructor_profile_create_dto_local_var->avatar_url = avatar_url;
     instructor_profile_create_dto_local_var->data = data;
@@ -90,6 +92,10 @@ void instructor_profile_create_dto_free(instructor_profile_create_dto_t *instruc
     if (instructor_profile_create_dto->contact_id) {
         free(instructor_profile_create_dto->contact_id);
         instructor_profile_create_dto->contact_id = NULL;
+    }
+    if (instructor_profile_create_dto->contact) {
+        contact_create_dto_free(instructor_profile_create_dto->contact);
+        instructor_profile_create_dto->contact = NULL;
     }
     if (instructor_profile_create_dto->about) {
         free(instructor_profile_create_dto->about);
@@ -213,6 +219,19 @@ cJSON *instructor_profile_create_dto_convertToJSON(instructor_profile_create_dto
     if(instructor_profile_create_dto->contact_id) {
     if(cJSON_AddStringToObject(item, "contactId", instructor_profile_create_dto->contact_id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // instructor_profile_create_dto->contact
+    if(instructor_profile_create_dto->contact) {
+    cJSON *contact_local_JSON = contact_create_dto_convertToJSON(instructor_profile_create_dto->contact);
+    if(contact_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "contact", contact_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
     }
     }
 
@@ -412,6 +431,9 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
 
     instructor_profile_create_dto_t *instructor_profile_create_dto_local_var = NULL;
 
+    // define the local variable for instructor_profile_create_dto->contact
+    contact_create_dto_t *contact_local_nonprim = NULL;
+
     // instructor_profile_create_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "id");
     if (id) { 
@@ -446,6 +468,12 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
     {
     goto end; //String
     }
+    }
+
+    // instructor_profile_create_dto->contact
+    cJSON *contact = cJSON_GetObjectItemCaseSensitive(instructor_profile_create_dtoJSON, "contact");
+    if (contact) { 
+    contact_local_nonprim = contact_create_dto_parseFromJSON(contact); //nonprimitive
     }
 
     // instructor_profile_create_dto->about
@@ -661,6 +689,7 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
+        contact ? contact_local_nonprim : NULL,
         about && !cJSON_IsNull(about) ? strdup(about->valuestring) : NULL,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,
         data && !cJSON_IsNull(data) ? strdup(data->valuestring) : NULL,
@@ -688,6 +717,10 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_parseFromJSON(cJS
 
     return instructor_profile_create_dto_local_var;
 end:
+    if (contact_local_nonprim) {
+        contact_create_dto_free(contact_local_nonprim);
+        contact_local_nonprim = NULL;
+    }
     return NULL;
 
 }

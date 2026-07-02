@@ -16,6 +16,14 @@
 typedef struct social_post_attachment_create_dto_t social_post_attachment_create_dto_t;
 
 
+// Enum PUBLICACCESSTYPE for social_post_attachment_create_dto
+
+typedef enum  { socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_NULL = 0, socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE__false, socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_Container, socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_Blob, socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_Unknown } socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_e;
+
+char* social_post_attachment_create_dto_public_access_type_ToString(socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type);
+
+socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_e social_post_attachment_create_dto_public_access_type_FromString(char* public_access_type);
+
 
 
 typedef struct social_post_attachment_create_dto_t {
@@ -31,6 +39,7 @@ typedef struct social_post_attachment_create_dto_t {
     int valid_response; //boolean
     char *parent_file_upload_id; // string
     char *file_path; // string
+    socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type; //enum
     char *social_post_id; // string
 
 } social_post_attachment_create_dto_t;
@@ -48,6 +57,7 @@ social_post_attachment_create_dto_t *social_post_attachment_create_dto_create(
     int valid_response,
     char *parent_file_upload_id,
     char *file_path,
+    socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type,
     char *social_post_id
 );
 

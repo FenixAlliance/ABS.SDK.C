@@ -4344,6 +4344,198 @@ end:
 
 }
 
+// Sum tenant purchase-invoice totals.
+//
+// Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseInvoice, filtered by the supplied OData date range.
+//
+decimal_envelope_t*
+InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/InvoicingService/Invoices/PurchaseInvoices/Sum")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/InvoicingService/Invoices/PurchaseInvoices/Sum");
+
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *InvoicesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    decimal_envelope_t *elementToReturn = decimal_envelope_parseFromJSON(InvoicesAPIlocalVarJSON);
+    cJSON_Delete(InvoicesAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Sum tenant sales-invoice totals.
+//
+// Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvoice, filtered by the supplied OData date range.
+//
+decimal_envelope_t*
+InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/InvoicingService/Invoices/SalesInvoices/Sum")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/InvoicingService/Invoices/SalesInvoices/Sum");
+
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *InvoicesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    decimal_envelope_t *elementToReturn = decimal_envelope_parseFromJSON(InvoicesAPIlocalVarJSON);
+    cJSON_Delete(InvoicesAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Patch an invoice.
 //
 // Partially updates the specified invoice for the tenant.

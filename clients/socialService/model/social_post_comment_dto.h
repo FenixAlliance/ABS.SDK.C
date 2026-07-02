@@ -16,6 +16,14 @@
 typedef struct social_post_comment_dto_t social_post_comment_dto_t;
 
 
+// Enum BODYFORMAT for social_post_comment_dto
+
+typedef enum  { socialservice_social_post_comment_dto_BODYFORMAT_NULL = 0, socialservice_social_post_comment_dto_BODYFORMAT_PlainText, socialservice_social_post_comment_dto_BODYFORMAT_Html } socialservice_social_post_comment_dto_BODYFORMAT_e;
+
+char* social_post_comment_dto_body_format_ToString(socialservice_social_post_comment_dto_BODYFORMAT_e body_format);
+
+socialservice_social_post_comment_dto_BODYFORMAT_e social_post_comment_dto_body_format_FromString(char* body_format);
+
 
 
 typedef struct social_post_comment_dto_t {
@@ -27,6 +35,8 @@ typedef struct social_post_comment_dto_t {
     char *social_feed_post_id; // string
     char *social_profile_name; // string
     char *social_profile_avatar_url; // string
+    char *body_html; // string
+    socialservice_social_post_comment_dto_BODYFORMAT_e body_format; //enum
     char *social_post_id; // string
 
 } social_post_comment_dto_t;
@@ -40,6 +50,8 @@ social_post_comment_dto_t *social_post_comment_dto_create(
     char *social_feed_post_id,
     char *social_profile_name,
     char *social_profile_avatar_url,
+    char *body_html,
+    socialservice_social_post_comment_dto_BODYFORMAT_e body_format,
     char *social_post_id
 );
 

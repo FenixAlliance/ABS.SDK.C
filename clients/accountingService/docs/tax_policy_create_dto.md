@@ -29,6 +29,8 @@ Name | Type | Description | Notes
 **zero** | **int** |  | [optional] 
 **reduced** | **int** |  | [optional] 
 **withholding** | **int** |  | [optional] 
+**tax_scheme_code** | **char \*** |  | [optional] 
+**tax_category_code** | **char \*** |  | [optional] 
 **fiscal_authority_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

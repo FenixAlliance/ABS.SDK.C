@@ -35,7 +35,9 @@ shipment_dto_t *shipment_dto_create(
     char *expected_delivery_date,
     shipmentsservice_shipment_dto_SHIPPINGTERMS_e shipping_terms,
     char *order_id,
-    char *tenant_id
+    char *tenant_id,
+    char *seller_billing_profile_id,
+    char *buyer_billing_profile_id
     ) {
     shipment_dto_t *shipment_dto_local_var = malloc(sizeof(shipment_dto_t));
     if (!shipment_dto_local_var) {
@@ -54,6 +56,8 @@ shipment_dto_t *shipment_dto_create(
     shipment_dto_local_var->shipping_terms = shipping_terms;
     shipment_dto_local_var->order_id = order_id;
     shipment_dto_local_var->tenant_id = tenant_id;
+    shipment_dto_local_var->seller_billing_profile_id = seller_billing_profile_id;
+    shipment_dto_local_var->buyer_billing_profile_id = buyer_billing_profile_id;
 
     return shipment_dto_local_var;
 }
@@ -99,6 +103,14 @@ void shipment_dto_free(shipment_dto_t *shipment_dto) {
     if (shipment_dto->tenant_id) {
         free(shipment_dto->tenant_id);
         shipment_dto->tenant_id = NULL;
+    }
+    if (shipment_dto->seller_billing_profile_id) {
+        free(shipment_dto->seller_billing_profile_id);
+        shipment_dto->seller_billing_profile_id = NULL;
+    }
+    if (shipment_dto->buyer_billing_profile_id) {
+        free(shipment_dto->buyer_billing_profile_id);
+        shipment_dto->buyer_billing_profile_id = NULL;
     }
     free(shipment_dto);
 }
@@ -206,6 +218,22 @@ cJSON *shipment_dto_convertToJSON(shipment_dto_t *shipment_dto) {
     // shipment_dto->tenant_id
     if(shipment_dto->tenant_id) {
     if(cJSON_AddStringToObject(item, "tenantId", shipment_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // shipment_dto->seller_billing_profile_id
+    if(shipment_dto->seller_billing_profile_id) {
+    if(cJSON_AddStringToObject(item, "sellerBillingProfileId", shipment_dto->seller_billing_profile_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // shipment_dto->buyer_billing_profile_id
+    if(shipment_dto->buyer_billing_profile_id) {
+    if(cJSON_AddStringToObject(item, "buyerBillingProfileId", shipment_dto->buyer_billing_profile_id) == NULL) {
     goto fail; //String
     }
     }
@@ -341,6 +369,24 @@ shipment_dto_t *shipment_dto_parseFromJSON(cJSON *shipment_dtoJSON){
     }
     }
 
+    // shipment_dto->seller_billing_profile_id
+    cJSON *seller_billing_profile_id = cJSON_GetObjectItemCaseSensitive(shipment_dtoJSON, "sellerBillingProfileId");
+    if (seller_billing_profile_id) { 
+    if(!cJSON_IsString(seller_billing_profile_id) && !cJSON_IsNull(seller_billing_profile_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // shipment_dto->buyer_billing_profile_id
+    cJSON *buyer_billing_profile_id = cJSON_GetObjectItemCaseSensitive(shipment_dtoJSON, "buyerBillingProfileId");
+    if (buyer_billing_profile_id) { 
+    if(!cJSON_IsString(buyer_billing_profile_id) && !cJSON_IsNull(buyer_billing_profile_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     shipment_dto_local_var = shipment_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -355,7 +401,9 @@ shipment_dto_t *shipment_dto_parseFromJSON(cJSON *shipment_dtoJSON){
         expected_delivery_date && !cJSON_IsNull(expected_delivery_date) ? strdup(expected_delivery_date->valuestring) : NULL,
         shipping_terms ? shipping_termsVariable : shipmentsservice_shipment_dto_SHIPPINGTERMS_NULL,
         order_id && !cJSON_IsNull(order_id) ? strdup(order_id->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        seller_billing_profile_id && !cJSON_IsNull(seller_billing_profile_id) ? strdup(seller_billing_profile_id->valuestring) : NULL,
+        buyer_billing_profile_id && !cJSON_IsNull(buyer_billing_profile_id) ? strdup(buyer_billing_profile_id->valuestring) : NULL
         );
 
     return shipment_dto_local_var;

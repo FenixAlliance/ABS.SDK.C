@@ -3,6 +3,8 @@ Packing.cmake
 README.md
 api/AccountGroupsAPI.c
 api/AccountGroupsAPI.h
+api/AccountingEntriesAPI.c
+api/AccountingEntriesAPI.h
 api/AccountingPeriodsAPI.c
 api/AccountingPeriodsAPI.h
 api/AccountsAPI.c
@@ -19,16 +21,14 @@ api/BudgetsAPI.c
 api/BudgetsAPI.h
 api/CommissionsAPI.c
 api/CommissionsAPI.h
-api/CompletionsAPI.c
-api/CompletionsAPI.h
 api/CostCentresAPI.c
 api/CostCentresAPI.h
 api/ExpenseClaimsAPI.c
 api/ExpenseClaimsAPI.h
 api/ExpenseTypesAPI.c
 api/ExpenseTypesAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/FinancialBooksAPI.c
 api/FinancialBooksAPI.h
 api/FiscalAuthoritiesAPI.c
@@ -53,6 +53,8 @@ api/GrantsAPI.c
 api/GrantsAPI.h
 api/InvoiceEnumerationRangesAPI.c
 api/InvoiceEnumerationRangesAPI.h
+api/JournalEntriesAPI.c
+api/JournalEntriesAPI.h
 api/JournalTypesAPI.c
 api/JournalTypesAPI.h
 api/JournalsAPI.c
@@ -76,6 +78,7 @@ api/TaxRatesAPI.h
 api/TransactionsAPI.c
 api/TransactionsAPI.h
 docs/AccountGroupsAPI.md
+docs/AccountingEntriesAPI.md
 docs/AccountingPeriodsAPI.md
 docs/AccountsAPI.md
 docs/BankProfilesAPI.md
@@ -84,11 +87,10 @@ docs/BillableLineTaxesAPI.md
 docs/BillingProfilesAPI.md
 docs/BudgetsAPI.md
 docs/CommissionsAPI.md
-docs/CompletionsAPI.md
 docs/CostCentresAPI.md
 docs/ExpenseClaimsAPI.md
 docs/ExpenseTypesAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/FinancialBooksAPI.md
 docs/FiscalAuthoritiesAPI.md
 docs/FiscalAuthorityYearsAPI.md
@@ -101,6 +103,7 @@ docs/FiscalResponsibilityRecordsAPI.md
 docs/FiscalYearsAPI.md
 docs/GrantsAPI.md
 docs/InvoiceEnumerationRangesAPI.md
+docs/JournalEntriesAPI.md
 docs/JournalTypesAPI.md
 docs/JournalsAPI.md
 docs/LedgerTypesAPI.md
@@ -214,6 +217,7 @@ docs/cost_centre_group_update_dto.md
 docs/cost_centre_update_dto.md
 docs/create_ledger_dto.md
 docs/currency_id.md
+docs/decimal_envelope.md
 docs/empty_envelope.md
 docs/error_envelope.md
 docs/expense_claim_create_dto.md
@@ -601,6 +605,8 @@ model/create_ledger_dto.c
 model/create_ledger_dto.h
 model/currency_id.c
 model/currency_id.h
+model/decimal_envelope.c
+model/decimal_envelope.h
 model/empty_envelope.c
 model/empty_envelope.h
 model/error_envelope.c
@@ -958,3 +964,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_decimal_envelope.c

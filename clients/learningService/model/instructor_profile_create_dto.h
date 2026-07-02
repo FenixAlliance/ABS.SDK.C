@@ -15,6 +15,7 @@
 
 typedef struct instructor_profile_create_dto_t instructor_profile_create_dto_t;
 
+#include "contact_create_dto.h"
 
 
 
@@ -23,6 +24,7 @@ typedef struct instructor_profile_create_dto_t {
     char *timestamp; //date time
     char *type; // string
     char *contact_id; // string
+    struct contact_create_dto_t *contact; //model
     char *about; // string
     char *avatar_url; // string
     char *data; // string
@@ -54,6 +56,7 @@ instructor_profile_create_dto_t *instructor_profile_create_dto_create(
     char *timestamp,
     char *type,
     char *contact_id,
+    contact_create_dto_t *contact,
     char *about,
     char *avatar_url,
     char *data,

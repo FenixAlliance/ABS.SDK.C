@@ -1,8 +1,6 @@
 CMakeLists.txt
 Packing.cmake
 README.md
-api/CompletionsAPI.c
-api/CompletionsAPI.h
 api/CourseArticlesAPI.c
 api/CourseArticlesAPI.h
 api/CourseAssignmentComponentsAPI.c
@@ -49,15 +47,14 @@ api/CourseWikisAPI.c
 api/CourseWikisAPI.h
 api/CoursesAPI.c
 api/CoursesAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/InstructorProfilesAPI.c
 api/InstructorProfilesAPI.h
 api/MeAPI.c
 api/MeAPI.h
 api/StudentProfilesAPI.c
 api/StudentProfilesAPI.h
-docs/CompletionsAPI.md
 docs/CourseArticlesAPI.md
 docs/CourseAssignmentComponentsAPI.md
 docs/CourseAssignmentTypesAPI.md
@@ -81,13 +78,14 @@ docs/CourseUnitsAPI.md
 docs/CourseUpdatesAPI.md
 docs/CourseWikisAPI.md
 docs/CoursesAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/InstructorProfilesAPI.md
 docs/MeAPI.md
 docs/StudentProfilesAPI.md
 docs/access_token_response.md
 docs/average_dto.md
 docs/average_dto_envelope.md
+docs/contact_create_dto.md
 docs/contact_dto.md
 docs/count_dto.md
 docs/count_dto_envelope.md
@@ -202,6 +200,8 @@ model/average_dto.c
 model/average_dto.h
 model/average_dto_envelope.c
 model/average_dto_envelope.h
+model/contact_create_dto.c
+model/contact_create_dto.h
 model/contact_dto.c
 model/contact_dto.h
 model/count_dto.c
@@ -409,3 +409,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_contact_create_dto.c

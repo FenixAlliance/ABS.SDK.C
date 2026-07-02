@@ -15,6 +15,11 @@ Name | Type | Description | Notes
 **postal_code** | **char \*** |  | 
 **business_name** | **char \*** |  | 
 **commercial_name** | **char \*** |  | 
+**verification_digit** | **char \*** |  | [optional] 
+**economic_activity_code** | **char \*** |  | [optional] 
+**economic_activity_scheme** | **char \*** |  | [optional] 
+**is_primary** | **int** |  | [optional] 
+**establishment_code** | **char \*** |  | [optional] 
 **ticker** | **char \*** |  | [optional] 
 **duns** | **char \*** |  | [optional] 
 **is_public_company** | **int** |  | [optional] 

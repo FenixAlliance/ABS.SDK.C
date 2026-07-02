@@ -120,15 +120,15 @@ set(SRCS
     model/social_post_bucket_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/CompletionsAPI.c
     api/EmailGroupsAPI.c
     api/EmailSignaturesAPI.c
     api/EmailTemplatesAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/MarketingAreasAPI.c
     api/MarketingCampaignsAPI.c
     api/MarketingLeadsAPI.c
     api/MarketingListsAPI.c
+    api/NewsletterSubscriptionsAPI.c
     api/NewslettersAPI.c
     api/SocialMediaPostsAPI.c
     api/SocialPostBucketsAPI.c
@@ -209,15 +209,15 @@ set(HDRS
     model/social_post_bucket_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/CompletionsAPI.h
     api/EmailGroupsAPI.h
     api/EmailSignaturesAPI.h
     api/EmailTemplatesAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/MarketingAreasAPI.h
     api/MarketingCampaignsAPI.h
     api/MarketingLeadsAPI.h
     api/MarketingListsAPI.h
+    api/NewsletterSubscriptionsAPI.h
     api/NewslettersAPI.h
     api/SocialMediaPostsAPI.h
     api/SocialPostBucketsAPI.h
@@ -303,15 +303,15 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-EmailGroupsAPI.c
 #    unit-tests/manual-EmailSignaturesAPI.c
 #    unit-tests/manual-EmailTemplatesAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-MarketingAreasAPI.c
 #    unit-tests/manual-MarketingCampaignsAPI.c
 #    unit-tests/manual-MarketingLeadsAPI.c
 #    unit-tests/manual-MarketingListsAPI.c
+#    unit-tests/manual-NewsletterSubscriptionsAPI.c
 #    unit-tests/manual-NewslettersAPI.c
 #    unit-tests/manual-SocialMediaPostsAPI.c
 #    unit-tests/manual-SocialPostBucketsAPI.c

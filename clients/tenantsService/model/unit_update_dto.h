@@ -22,13 +22,15 @@ typedef struct unit_update_dto_t {
     char *name; // string
     double base_unit_amount; //numeric
     char *base_unit_id; // string
+    char *un_ece_code; // string
 
 } unit_update_dto_t;
 
 unit_update_dto_t *unit_update_dto_create(
     char *name,
     double base_unit_amount,
-    char *base_unit_id
+    char *base_unit_id,
+    char *un_ece_code
 );
 
 void unit_update_dto_free(unit_update_dto_t *unit_update_dto);

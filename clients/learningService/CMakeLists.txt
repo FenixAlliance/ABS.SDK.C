@@ -57,6 +57,7 @@ set(SRCS
     model/access_token_response.c
     model/average_dto.c
     model/average_dto_envelope.c
+    model/contact_create_dto.c
     model/contact_dto.c
     model/count_dto.c
     model/count_dto_envelope.c
@@ -157,7 +158,6 @@ set(SRCS
     model/student_profile_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/CompletionsAPI.c
     api/CourseArticlesAPI.c
     api/CourseAssignmentComponentsAPI.c
     api/CourseAssignmentTypesAPI.c
@@ -181,7 +181,7 @@ set(SRCS
     api/CourseUpdatesAPI.c
     api/CourseWikisAPI.c
     api/CoursesAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/InstructorProfilesAPI.c
     api/MeAPI.c
     api/StudentProfilesAPI.c
@@ -198,6 +198,7 @@ set(HDRS
     model/access_token_response.h
     model/average_dto.h
     model/average_dto_envelope.h
+    model/contact_create_dto.h
     model/contact_dto.h
     model/count_dto.h
     model/count_dto_envelope.h
@@ -298,7 +299,6 @@ set(HDRS
     model/student_profile_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/CompletionsAPI.h
     api/CourseArticlesAPI.h
     api/CourseAssignmentComponentsAPI.h
     api/CourseAssignmentTypesAPI.h
@@ -322,7 +322,7 @@ set(HDRS
     api/CourseUpdatesAPI.h
     api/CourseWikisAPI.h
     api/CoursesAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/InstructorProfilesAPI.h
     api/MeAPI.h
     api/StudentProfilesAPI.h
@@ -407,7 +407,6 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-CourseArticlesAPI.c
 #    unit-tests/manual-CourseAssignmentComponentsAPI.c
 #    unit-tests/manual-CourseAssignmentTypesAPI.c
@@ -431,7 +430,7 @@ set(HDRS "")
 #    unit-tests/manual-CourseUpdatesAPI.c
 #    unit-tests/manual-CourseWikisAPI.c
 #    unit-tests/manual-CoursesAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-InstructorProfilesAPI.c
 #    unit-tests/manual-MeAPI.c
 #    unit-tests/manual-StudentProfilesAPI.c

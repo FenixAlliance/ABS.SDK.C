@@ -5,6 +5,7 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/decimal_envelope.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
@@ -137,6 +138,14 @@ SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_ve
 //
 int32_envelope_t*
 SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
+// Sum tenant share issuance quantities
+//
+// Returns SUM(ShareIssuance.Quantity) for the tenant, filtered by the supplied OData date range.
+//
+decimal_envelope_t*
+SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Gets a share transfer by id

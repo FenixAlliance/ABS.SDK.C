@@ -4,6 +4,23 @@
 #include "social_post_attachment_create_dto.h"
 
 
+char* social_post_attachment_create_dto_public_access_type_ToString(socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type) {
+    char* public_access_typeArray[] =  { "NULL", "false", "Container", "Blob", "Unknown" };
+    return public_access_typeArray[public_access_type];
+}
+
+socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_e social_post_attachment_create_dto_public_access_type_FromString(char* public_access_type){
+    int stringToReturn = 0;
+    char *public_access_typeArray[] =  { "NULL", "false", "Container", "Blob", "Unknown" };
+    size_t sizeofArray = sizeof(public_access_typeArray) / sizeof(public_access_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(public_access_type, public_access_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 social_post_attachment_create_dto_t *social_post_attachment_create_dto_create(
     char *id,
@@ -18,6 +35,7 @@ social_post_attachment_create_dto_t *social_post_attachment_create_dto_create(
     int valid_response,
     char *parent_file_upload_id,
     char *file_path,
+    socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type,
     char *social_post_id
     ) {
     social_post_attachment_create_dto_t *social_post_attachment_create_dto_local_var = malloc(sizeof(social_post_attachment_create_dto_t));
@@ -36,6 +54,7 @@ social_post_attachment_create_dto_t *social_post_attachment_create_dto_create(
     social_post_attachment_create_dto_local_var->valid_response = valid_response;
     social_post_attachment_create_dto_local_var->parent_file_upload_id = parent_file_upload_id;
     social_post_attachment_create_dto_local_var->file_path = file_path;
+    social_post_attachment_create_dto_local_var->public_access_type = public_access_type;
     social_post_attachment_create_dto_local_var->social_post_id = social_post_id;
 
     return social_post_attachment_create_dto_local_var;
@@ -193,6 +212,15 @@ cJSON *social_post_attachment_create_dto_convertToJSON(social_post_attachment_cr
     }
 
 
+    // social_post_attachment_create_dto->public_access_type
+    if(social_post_attachment_create_dto->public_access_type != socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "publicAccessType", public_access_typesocial_post_attachment_create_dto_ToString(social_post_attachment_create_dto->public_access_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // social_post_attachment_create_dto->social_post_id
     if(social_post_attachment_create_dto->social_post_id) {
     if(cJSON_AddStringToObject(item, "socialPostId", social_post_attachment_create_dto->social_post_id) == NULL) {
@@ -320,6 +348,17 @@ social_post_attachment_create_dto_t *social_post_attachment_create_dto_parseFrom
     }
     }
 
+    // social_post_attachment_create_dto->public_access_type
+    cJSON *public_access_type = cJSON_GetObjectItemCaseSensitive(social_post_attachment_create_dtoJSON, "publicAccessType");
+    socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_e public_access_typeVariable;
+    if (public_access_type) { 
+    if(!cJSON_IsString(public_access_type))
+    {
+    goto end; //Enum
+    }
+    public_access_typeVariable = social_post_attachment_create_dto_public_access_type_FromString(public_access_type->valuestring);
+    }
+
     // social_post_attachment_create_dto->social_post_id
     cJSON *social_post_id = cJSON_GetObjectItemCaseSensitive(social_post_attachment_create_dtoJSON, "socialPostId");
     if (social_post_id) { 
@@ -343,6 +382,7 @@ social_post_attachment_create_dto_t *social_post_attachment_create_dto_parseFrom
         valid_response ? valid_response->valueint : 0,
         parent_file_upload_id && !cJSON_IsNull(parent_file_upload_id) ? strdup(parent_file_upload_id->valuestring) : NULL,
         file_path && !cJSON_IsNull(file_path) ? strdup(file_path->valuestring) : NULL,
+        public_access_type ? public_access_typeVariable : socialservice_social_post_attachment_create_dto_PUBLICACCESSTYPE_NULL,
         social_post_id && !cJSON_IsNull(social_post_id) ? strdup(social_post_id->valuestring) : NULL
         );
 

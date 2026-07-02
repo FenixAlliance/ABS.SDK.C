@@ -34,6 +34,8 @@ tax_policy_dto_t *tax_policy_dto_create(
     int zero,
     int reduced,
     int withholding,
+    char *tax_scheme_code,
+    char *tax_category_code,
     char *fiscal_authority_id
     ) {
     tax_policy_dto_t *tax_policy_dto_local_var = malloc(sizeof(tax_policy_dto_t));
@@ -68,6 +70,8 @@ tax_policy_dto_t *tax_policy_dto_create(
     tax_policy_dto_local_var->zero = zero;
     tax_policy_dto_local_var->reduced = reduced;
     tax_policy_dto_local_var->withholding = withholding;
+    tax_policy_dto_local_var->tax_scheme_code = tax_scheme_code;
+    tax_policy_dto_local_var->tax_category_code = tax_category_code;
     tax_policy_dto_local_var->fiscal_authority_id = fiscal_authority_id;
 
     return tax_policy_dto_local_var;
@@ -130,6 +134,14 @@ void tax_policy_dto_free(tax_policy_dto_t *tax_policy_dto) {
     if (tax_policy_dto->tenant_id) {
         free(tax_policy_dto->tenant_id);
         tax_policy_dto->tenant_id = NULL;
+    }
+    if (tax_policy_dto->tax_scheme_code) {
+        free(tax_policy_dto->tax_scheme_code);
+        tax_policy_dto->tax_scheme_code = NULL;
+    }
+    if (tax_policy_dto->tax_category_code) {
+        free(tax_policy_dto->tax_category_code);
+        tax_policy_dto->tax_category_code = NULL;
     }
     if (tax_policy_dto->fiscal_authority_id) {
         free(tax_policy_dto->fiscal_authority_id);
@@ -361,6 +373,22 @@ cJSON *tax_policy_dto_convertToJSON(tax_policy_dto_t *tax_policy_dto) {
     if(tax_policy_dto->withholding) {
     if(cJSON_AddBoolToObject(item, "withholding", tax_policy_dto->withholding) == NULL) {
     goto fail; //Bool
+    }
+    }
+
+
+    // tax_policy_dto->tax_scheme_code
+    if(tax_policy_dto->tax_scheme_code) {
+    if(cJSON_AddStringToObject(item, "taxSchemeCode", tax_policy_dto->tax_scheme_code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // tax_policy_dto->tax_category_code
+    if(tax_policy_dto->tax_category_code) {
+    if(cJSON_AddStringToObject(item, "taxCategoryCode", tax_policy_dto->tax_category_code) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -636,6 +664,24 @@ tax_policy_dto_t *tax_policy_dto_parseFromJSON(cJSON *tax_policy_dtoJSON){
     }
     }
 
+    // tax_policy_dto->tax_scheme_code
+    cJSON *tax_scheme_code = cJSON_GetObjectItemCaseSensitive(tax_policy_dtoJSON, "taxSchemeCode");
+    if (tax_scheme_code) { 
+    if(!cJSON_IsString(tax_scheme_code) && !cJSON_IsNull(tax_scheme_code))
+    {
+    goto end; //String
+    }
+    }
+
+    // tax_policy_dto->tax_category_code
+    cJSON *tax_category_code = cJSON_GetObjectItemCaseSensitive(tax_policy_dtoJSON, "taxCategoryCode");
+    if (tax_category_code) { 
+    if(!cJSON_IsString(tax_category_code) && !cJSON_IsNull(tax_category_code))
+    {
+    goto end; //String
+    }
+    }
+
     // tax_policy_dto->fiscal_authority_id
     cJSON *fiscal_authority_id = cJSON_GetObjectItemCaseSensitive(tax_policy_dtoJSON, "fiscalAuthorityId");
     if (fiscal_authority_id) { 
@@ -675,6 +721,8 @@ tax_policy_dto_t *tax_policy_dto_parseFromJSON(cJSON *tax_policy_dtoJSON){
         zero ? zero->valueint : 0,
         reduced ? reduced->valueint : 0,
         withholding ? withholding->valueint : 0,
+        tax_scheme_code && !cJSON_IsNull(tax_scheme_code) ? strdup(tax_scheme_code->valuestring) : NULL,
+        tax_category_code && !cJSON_IsNull(tax_category_code) ? strdup(tax_category_code->valuestring) : NULL,
         fiscal_authority_id && !cJSON_IsNull(fiscal_authority_id) ? strdup(fiscal_authority_id->valuestring) : NULL
         );
 

@@ -856,6 +856,116 @@ end:
 
 }
 
+// Counts prices in a price list
+//
+// Gets the count of price entries for a specific price list.
+//
+int32_envelope_t*
+PriceListsAPI_getPriceListPricesCountAsync(apiClient_t *apiClient, char *tenantId, char *priceListId)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/PricingService/PriceLists/{priceListId}/Prices/Count")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/PricingService/PriceLists/{priceListId}/Prices/Count");
+
+
+    // Path Params
+    long sizeOfPathParams_priceListId = strlen(priceListId)+3 + strlen("{ priceListId }");
+    if(priceListId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_priceListId = malloc(sizeOfPathParams_priceListId);
+    sprintf(localVarToReplace_priceListId, "{%s}", "priceListId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_priceListId, priceListId);
+    if(priceListId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_priceListId = malloc(sizeOfPathParams_priceListId);
+    sprintf(localVarToReplace_priceListId, "{%s}", "priceListId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_priceListId, priceListId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","Not Found");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *PriceListsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    int32_envelope_t *elementToReturn = int32_envelope_parseFromJSON(PriceListsAPIlocalVarJSON);
+    cJSON_Delete(PriceListsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_priceListId);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Retrieves all price lists
 //
 // Gets all price lists for the current tenant with OData support.

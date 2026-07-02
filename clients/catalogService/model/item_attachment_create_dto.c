@@ -4,6 +4,23 @@
 #include "item_attachment_create_dto.h"
 
 
+char* item_attachment_create_dto_public_access_type_ToString(catalogservice_item_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type) {
+    char* public_access_typeArray[] =  { "NULL", "false", "Container", "Blob", "Unknown" };
+    return public_access_typeArray[public_access_type];
+}
+
+catalogservice_item_attachment_create_dto_PUBLICACCESSTYPE_e item_attachment_create_dto_public_access_type_FromString(char* public_access_type){
+    int stringToReturn = 0;
+    char *public_access_typeArray[] =  { "NULL", "false", "Container", "Blob", "Unknown" };
+    size_t sizeofArray = sizeof(public_access_typeArray) / sizeof(public_access_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(public_access_type, public_access_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 item_attachment_create_dto_t *item_attachment_create_dto_create(
     char *id,
@@ -18,6 +35,7 @@ item_attachment_create_dto_t *item_attachment_create_dto_create(
     int valid_response,
     char *parent_file_upload_id,
     char *file_path,
+    catalogservice_item_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type,
     char *item_id
     ) {
     item_attachment_create_dto_t *item_attachment_create_dto_local_var = malloc(sizeof(item_attachment_create_dto_t));
@@ -36,6 +54,7 @@ item_attachment_create_dto_t *item_attachment_create_dto_create(
     item_attachment_create_dto_local_var->valid_response = valid_response;
     item_attachment_create_dto_local_var->parent_file_upload_id = parent_file_upload_id;
     item_attachment_create_dto_local_var->file_path = file_path;
+    item_attachment_create_dto_local_var->public_access_type = public_access_type;
     item_attachment_create_dto_local_var->item_id = item_id;
 
     return item_attachment_create_dto_local_var;
@@ -193,6 +212,15 @@ cJSON *item_attachment_create_dto_convertToJSON(item_attachment_create_dto_t *it
     }
 
 
+    // item_attachment_create_dto->public_access_type
+    if(item_attachment_create_dto->public_access_type != catalogservice_item_attachment_create_dto_PUBLICACCESSTYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "publicAccessType", public_access_typeitem_attachment_create_dto_ToString(item_attachment_create_dto->public_access_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // item_attachment_create_dto->item_id
     if(item_attachment_create_dto->item_id) {
     if(cJSON_AddStringToObject(item, "itemId", item_attachment_create_dto->item_id) == NULL) {
@@ -320,6 +348,17 @@ item_attachment_create_dto_t *item_attachment_create_dto_parseFromJSON(cJSON *it
     }
     }
 
+    // item_attachment_create_dto->public_access_type
+    cJSON *public_access_type = cJSON_GetObjectItemCaseSensitive(item_attachment_create_dtoJSON, "publicAccessType");
+    catalogservice_item_attachment_create_dto_PUBLICACCESSTYPE_e public_access_typeVariable;
+    if (public_access_type) { 
+    if(!cJSON_IsString(public_access_type))
+    {
+    goto end; //Enum
+    }
+    public_access_typeVariable = item_attachment_create_dto_public_access_type_FromString(public_access_type->valuestring);
+    }
+
     // item_attachment_create_dto->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_attachment_create_dtoJSON, "itemId");
     if (item_id) { 
@@ -343,6 +382,7 @@ item_attachment_create_dto_t *item_attachment_create_dto_parseFromJSON(cJSON *it
         valid_response ? valid_response->valueint : 0,
         parent_file_upload_id && !cJSON_IsNull(parent_file_upload_id) ? strdup(parent_file_upload_id->valuestring) : NULL,
         file_path && !cJSON_IsNull(file_path) ? strdup(file_path->valuestring) : NULL,
+        public_access_type ? public_access_typeVariable : catalogservice_item_attachment_create_dto_PUBLICACCESSTYPE_NULL,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL
         );
 

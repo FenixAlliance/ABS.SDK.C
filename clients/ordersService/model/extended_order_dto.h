@@ -128,6 +128,8 @@ typedef struct extended_order_dto_t {
     char *billing_location_id; // string
     char *shipping_location_id; // string
     char *qualified_identifier; // string
+    char *seller_billing_profile_id; // string
+    char *buyer_billing_profile_id; // string
     ordersservice_extended_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method; //enum
     ordersservice_extended_order_dto_FREIGHTTERMS_e freight_terms; //enum
     ordersservice_extended_order_dto_ORDERSTATUS_e order_status; //enum
@@ -224,6 +226,8 @@ extended_order_dto_t *extended_order_dto_create(
     char *billing_location_id,
     char *shipping_location_id,
     char *qualified_identifier,
+    char *seller_billing_profile_id,
+    char *buyer_billing_profile_id,
     ordersservice_extended_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     ordersservice_extended_order_dto_FREIGHTTERMS_e freight_terms,
     ordersservice_extended_order_dto_ORDERSTATUS_e order_status,

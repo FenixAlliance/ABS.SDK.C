@@ -77,6 +77,7 @@ web_page_update_dto_t *web_page_update_dto_create(
     int cornerstone_content,
     int is_essential_content,
     int allow_search_engine_indexing,
+    char *web_portal_id,
     char *web_template_id,
     char *parent_web_content_id,
     int is_home_page,
@@ -148,6 +149,7 @@ web_page_update_dto_t *web_page_update_dto_create(
     web_page_update_dto_local_var->cornerstone_content = cornerstone_content;
     web_page_update_dto_local_var->is_essential_content = is_essential_content;
     web_page_update_dto_local_var->allow_search_engine_indexing = allow_search_engine_indexing;
+    web_page_update_dto_local_var->web_portal_id = web_portal_id;
     web_page_update_dto_local_var->web_template_id = web_template_id;
     web_page_update_dto_local_var->parent_web_content_id = parent_web_content_id;
     web_page_update_dto_local_var->is_home_page = is_home_page;
@@ -305,6 +307,10 @@ void web_page_update_dto_free(web_page_update_dto_t *web_page_update_dto) {
     if (web_page_update_dto->c_sharp_generated_code) {
         free(web_page_update_dto->c_sharp_generated_code);
         web_page_update_dto->c_sharp_generated_code = NULL;
+    }
+    if (web_page_update_dto->web_portal_id) {
+        free(web_page_update_dto->web_portal_id);
+        web_page_update_dto->web_portal_id = NULL;
     }
     if (web_page_update_dto->web_template_id) {
         free(web_page_update_dto->web_template_id);
@@ -749,6 +755,14 @@ cJSON *web_page_update_dto_convertToJSON(web_page_update_dto_t *web_page_update_
     if(web_page_update_dto->allow_search_engine_indexing) {
     if(cJSON_AddBoolToObject(item, "allowSearchEngineIndexing", web_page_update_dto->allow_search_engine_indexing) == NULL) {
     goto fail; //Bool
+    }
+    }
+
+
+    // web_page_update_dto->web_portal_id
+    if(web_page_update_dto->web_portal_id) {
+    if(cJSON_AddStringToObject(item, "webPortalId", web_page_update_dto->web_portal_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -1348,6 +1362,15 @@ web_page_update_dto_t *web_page_update_dto_parseFromJSON(cJSON *web_page_update_
     }
     }
 
+    // web_page_update_dto->web_portal_id
+    cJSON *web_portal_id = cJSON_GetObjectItemCaseSensitive(web_page_update_dtoJSON, "webPortalId");
+    if (web_portal_id) { 
+    if(!cJSON_IsString(web_portal_id) && !cJSON_IsNull(web_portal_id))
+    {
+    goto end; //String
+    }
+    }
+
     // web_page_update_dto->web_template_id
     cJSON *web_template_id = cJSON_GetObjectItemCaseSensitive(web_page_update_dtoJSON, "webTemplateId");
     if (web_template_id) { 
@@ -1512,6 +1535,7 @@ web_page_update_dto_t *web_page_update_dto_parseFromJSON(cJSON *web_page_update_
         cornerstone_content ? cornerstone_content->valueint : 0,
         is_essential_content ? is_essential_content->valueint : 0,
         allow_search_engine_indexing ? allow_search_engine_indexing->valueint : 0,
+        web_portal_id && !cJSON_IsNull(web_portal_id) ? strdup(web_portal_id->valuestring) : NULL,
         web_template_id && !cJSON_IsNull(web_template_id) ? strdup(web_template_id->valuestring) : NULL,
         parent_web_content_id && !cJSON_IsNull(parent_web_content_id) ? strdup(parent_web_content_id->valuestring) : NULL,
         is_home_page ? is_home_page->valueint : 0,

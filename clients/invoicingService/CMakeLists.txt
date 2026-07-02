@@ -56,6 +56,7 @@ set(SRCS
     model/object.c
     model/access_token_response.c
     model/currency_id.c
+    model/decimal_envelope.c
     model/email_dispatch_request.c
     model/empty_envelope.c
     model/envelope.c
@@ -108,8 +109,7 @@ set(SRCS
     model/tenant_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
-    api/CompletionsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/InvoicesAPI.c
 
 )
@@ -123,6 +123,7 @@ set(HDRS
     model/object.h
     model/access_token_response.h
     model/currency_id.h
+    model/decimal_envelope.h
     model/email_dispatch_request.h
     model/empty_envelope.h
     model/envelope.h
@@ -175,8 +176,7 @@ set(HDRS
     model/tenant_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
-    api/CompletionsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/InvoicesAPI.h
 
 )
@@ -259,8 +259,7 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-CompletionsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-InvoicesAPI.c
 #)
 

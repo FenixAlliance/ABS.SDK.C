@@ -4,8 +4,26 @@
 #include "tenant_update_dto.h"
 
 
+char* tenant_update_dto_kind_ToString(systemservice_tenant_update_dto_KIND_e kind) {
+    char* kindArray[] =  { "NULL", "Organization", "Individual" };
+    return kindArray[kind];
+}
+
+systemservice_tenant_update_dto_KIND_e tenant_update_dto_kind_FromString(char* kind){
+    int stringToReturn = 0;
+    char *kindArray[] =  { "NULL", "Organization", "Individual" };
+    size_t sizeofArray = sizeof(kindArray) / sizeof(kindArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(kind, kindArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 tenant_update_dto_t *tenant_update_dto_create(
+    systemservice_tenant_update_dto_KIND_e kind,
     char *name,
     char *legal_name,
     char *email,
@@ -37,6 +55,7 @@ tenant_update_dto_t *tenant_update_dto_create(
     if (!tenant_update_dto_local_var) {
         return NULL;
     }
+    tenant_update_dto_local_var->kind = kind;
     tenant_update_dto_local_var->name = name;
     tenant_update_dto_local_var->legal_name = legal_name;
     tenant_update_dto_local_var->email = email;
@@ -182,6 +201,15 @@ void tenant_update_dto_free(tenant_update_dto_t *tenant_update_dto) {
 
 cJSON *tenant_update_dto_convertToJSON(tenant_update_dto_t *tenant_update_dto) {
     cJSON *item = cJSON_CreateObject();
+
+    // tenant_update_dto->kind
+    if(tenant_update_dto->kind != systemservice_tenant_update_dto_KIND_NULL) {
+    if(cJSON_AddStringToObject(item, "kind", kindtenant_update_dto_ToString(tenant_update_dto->kind)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
 
     // tenant_update_dto->name
     if (!tenant_update_dto->name) {
@@ -405,6 +433,17 @@ fail:
 tenant_update_dto_t *tenant_update_dto_parseFromJSON(cJSON *tenant_update_dtoJSON){
 
     tenant_update_dto_t *tenant_update_dto_local_var = NULL;
+
+    // tenant_update_dto->kind
+    cJSON *kind = cJSON_GetObjectItemCaseSensitive(tenant_update_dtoJSON, "kind");
+    systemservice_tenant_update_dto_KIND_e kindVariable;
+    if (kind) { 
+    if(!cJSON_IsString(kind))
+    {
+    goto end; //Enum
+    }
+    kindVariable = tenant_update_dto_kind_FromString(kind->valuestring);
+    }
 
     // tenant_update_dto->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(tenant_update_dtoJSON, "name");
@@ -654,6 +693,7 @@ tenant_update_dto_t *tenant_update_dto_parseFromJSON(cJSON *tenant_update_dtoJSO
 
 
     tenant_update_dto_local_var = tenant_update_dto_create (
+        kind ? kindVariable : systemservice_tenant_update_dto_KIND_NULL,
         strdup(name->valuestring),
         legal_name && !cJSON_IsNull(legal_name) ? strdup(legal_name->valuestring) : NULL,
         strdup(email->valuestring),

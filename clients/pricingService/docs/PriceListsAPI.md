@@ -1,6 +1,6 @@
 # PriceListsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**PriceListsAPI_getPriceListAsync**](PriceListsAPI.md#PriceListsAPI_getPriceListAsync) | **GET** /api/v2/PricingService/PriceLists/{priceListId} | Gets a price list by ID
 [**PriceListsAPI_getPriceListPriceAsync**](PriceListsAPI.md#PriceListsAPI_getPriceListPriceAsync) | **GET** /api/v2/PricingService/PriceLists/{priceListId}/Prices/{priceId} | Gets a price list entry by ID
 [**PriceListsAPI_getPriceListPricesAsync**](PriceListsAPI.md#PriceListsAPI_getPriceListPricesAsync) | **GET** /api/v2/PricingService/PriceLists/{priceListId}/Prices | Retrieves prices in a price list
+[**PriceListsAPI_getPriceListPricesCountAsync**](PriceListsAPI.md#PriceListsAPI_getPriceListPricesCountAsync) | **GET** /api/v2/PricingService/PriceLists/{priceListId}/Prices/Count | Counts prices in a price list
 [**PriceListsAPI_getPriceListsAsync**](PriceListsAPI.md#PriceListsAPI_getPriceListsAsync) | **GET** /api/v2/PricingService/PriceLists | Retrieves all price lists
 [**PriceListsAPI_getPriceListsCountAsync**](PriceListsAPI.md#PriceListsAPI_getPriceListsCountAsync) | **GET** /api/v2/PricingService/PriceLists/Count | Counts price lists
 [**PriceListsAPI_patchPriceListAsync**](PriceListsAPI.md#PriceListsAPI_patchPriceListAsync) | **PATCH** /api/v2/PricingService/PriceLists/{priceListId} | Patches a price list
@@ -234,6 +235,38 @@ Name | Type | Description  | Notes
 ### Return type
 
 [item_price_dto_list_envelope_t](item_price_dto_list_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PriceListsAPI_getPriceListPricesCountAsync**
+```c
+// Counts prices in a price list
+//
+// Gets the count of price entries for a specific price list.
+//
+int32_envelope_t* PriceListsAPI_getPriceListPricesCountAsync(apiClient_t *apiClient, char *tenantId, char *priceListId);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**priceListId** | **char \*** |  | 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
 
 
 ### Authorization

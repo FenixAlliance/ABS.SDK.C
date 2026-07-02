@@ -185,8 +185,7 @@ set(SRCS
     model/x509_certificate2.c
     model/x509_extension.c
     api/BlockchainsAPI.c
-    api/CompletionsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/NonFungibleTokensAPI.c
 
 )
@@ -329,8 +328,7 @@ set(HDRS
     model/x509_certificate2.h
     model/x509_extension.h
     api/BlockchainsAPI.h
-    api/CompletionsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/NonFungibleTokensAPI.h
 
 )
@@ -414,8 +412,7 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-BlockchainsAPI.c
-#    unit-tests/manual-CompletionsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-NonFungibleTokensAPI.c
 #)
 

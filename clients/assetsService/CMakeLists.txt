@@ -109,8 +109,7 @@ set(SRCS
     api/AssetTransfersAPI.c
     api/AssetTypesAPI.c
     api/AssetsAPI.c
-    api/CompletionsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
 
 )
 
@@ -176,8 +175,7 @@ set(HDRS
     api/AssetTransfersAPI.h
     api/AssetTypesAPI.h
     api/AssetsAPI.h
-    api/CompletionsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
 
 )
 
@@ -263,8 +261,7 @@ set(HDRS "")
 #    unit-tests/manual-AssetTransfersAPI.c
 #    unit-tests/manual-AssetTypesAPI.c
 #    unit-tests/manual-AssetsAPI.c
-#    unit-tests/manual-CompletionsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #)
 
 ##set header files

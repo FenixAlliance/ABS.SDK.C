@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **valid_response** | **int** |  | [optional] 
 **parent_file_upload_id** | **char \*** |  | [optional] 
 **file_path** | **char \*** |  | [optional] 
+**public_access_type** | **catalogservice_item_attachment_create_dto_PUBLICACCESSTYPE_e** |  | [optional] 
 **item_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

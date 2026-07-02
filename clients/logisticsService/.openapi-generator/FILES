@@ -3,12 +3,10 @@ Packing.cmake
 README.md
 api/AirwayBillsAPI.c
 api/AirwayBillsAPI.h
-api/CompletionsAPI.c
-api/CompletionsAPI.h
 api/DeliveryNotesAPI.c
 api/DeliveryNotesAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/ItemPackingSlipsAPI.c
 api/ItemPackingSlipsAPI.h
 api/ItemPickListsAPI.c
@@ -40,9 +38,8 @@ api/VoyagesAPI.h
 api/WarehousesAPI.c
 api/WarehousesAPI.h
 docs/AirwayBillsAPI.md
-docs/CompletionsAPI.md
 docs/DeliveryNotesAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/ItemPackingSlipsAPI.md
 docs/ItemPickListsAPI.md
 docs/ItemRestocksAPI.md
@@ -64,6 +61,7 @@ docs/airway_bill_dto.md
 docs/airway_bill_dto_envelope.md
 docs/airway_bill_dto_list_envelope.md
 docs/airway_bill_update_dto.md
+docs/contact_create_dto.md
 docs/contact_dto.md
 docs/delivery_note_create_dto.md
 docs/delivery_note_dto.md
@@ -214,6 +212,8 @@ model/airway_bill_dto_list_envelope.c
 model/airway_bill_dto_list_envelope.h
 model/airway_bill_update_dto.c
 model/airway_bill_update_dto.h
+model/contact_create_dto.c
+model/contact_create_dto.h
 model/contact_dto.c
 model/contact_dto.h
 model/delivery_note_create_dto.c
@@ -481,3 +481,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_contact_create_dto.c

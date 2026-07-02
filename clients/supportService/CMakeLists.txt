@@ -150,8 +150,7 @@ set(SRCS
     model/warranty_request_dto_envelope.c
     model/warranty_request_dto_list_envelope.c
     model/warranty_request_update_dto.c
-    api/CompletionsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/InquiryRequestsAPI.c
     api/KnowledgeArticlesAPI.c
     api/MaintenanceVisitsAPI.c
@@ -273,8 +272,7 @@ set(HDRS
     model/warranty_request_dto_envelope.h
     model/warranty_request_dto_list_envelope.h
     model/warranty_request_update_dto.h
-    api/CompletionsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/InquiryRequestsAPI.h
     api/KnowledgeArticlesAPI.h
     api/MaintenanceVisitsAPI.h
@@ -371,8 +369,7 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-CompletionsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-InquiryRequestsAPI.c
 #    unit-tests/manual-KnowledgeArticlesAPI.c
 #    unit-tests/manual-MaintenanceVisitsAPI.c

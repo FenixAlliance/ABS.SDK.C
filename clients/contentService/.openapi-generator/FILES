@@ -11,10 +11,8 @@ api/BlogPostsAPI.c
 api/BlogPostsAPI.h
 api/BusinessDomainsAPI.c
 api/BusinessDomainsAPI.h
-api/CompletionsAPI.c
-api/CompletionsAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/LocalizationStringsAPI.c
 api/LocalizationStringsAPI.h
 api/MenuContextsAPI.c
@@ -42,8 +40,7 @@ docs/BlogPostCategoriesAPI.md
 docs/BlogPostTagsAPI.md
 docs/BlogPostsAPI.md
 docs/BusinessDomainsAPI.md
-docs/CompletionsAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/LocalizationStringsAPI.md
 docs/MenuContextsAPI.md
 docs/PortalsAPI.md

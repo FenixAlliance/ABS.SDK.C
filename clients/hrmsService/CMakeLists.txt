@@ -65,6 +65,7 @@ set(SRCS
     model/appraisal_workflow_dto_envelope.c
     model/appraisal_workflow_dto_list_envelope.c
     model/appraisal_workflow_update_dto.c
+    model/contact_create_dto.c
     model/contact_dto.c
     model/employee_appraisal_session_create_dto.c
     model/employee_appraisal_session_dto.c
@@ -89,6 +90,11 @@ set(SRCS
     model/empty_envelope.c
     model/error_envelope.c
     model/forgot_password_request.c
+    model/gig_application_create_dto.c
+    model/gig_application_dto.c
+    model/gig_application_dto_envelope.c
+    model/gig_application_dto_list_envelope.c
+    model/gig_application_update_dto.c
     model/gig_create_dto.c
     model/gig_dto.c
     model/gig_dto_envelope.c
@@ -98,10 +104,30 @@ set(SRCS
     model/info_request.c
     model/info_response.c
     model/int32_envelope.c
+    model/job_applicant_profile_create_dto.c
+    model/job_applicant_profile_dto.c
+    model/job_applicant_profile_dto_envelope.c
+    model/job_applicant_profile_dto_list_envelope.c
+    model/job_applicant_profile_update_dto.c
+    model/job_field_create_dto.c
+    model/job_field_dto.c
+    model/job_field_dto_envelope.c
+    model/job_field_dto_list_envelope.c
+    model/job_field_update_dto.c
+    model/job_offer_application_create_dto.c
+    model/job_offer_application_dto.c
+    model/job_offer_application_dto_envelope.c
+    model/job_offer_application_dto_list_envelope.c
+    model/job_offer_application_update_dto.c
     model/job_offer_create_dto.c
     model/job_offer_dto.c
     model/job_offer_dto_envelope.c
     model/job_offer_dto_list_envelope.c
+    model/job_offer_field_record_create_dto.c
+    model/job_offer_field_record_dto.c
+    model/job_offer_field_record_dto_envelope.c
+    model/job_offer_field_record_dto_list_envelope.c
+    model/job_offer_field_record_update_dto.c
     model/job_offer_update_dto.c
     model/job_title_create_dto.c
     model/job_title_dto.c
@@ -132,6 +158,11 @@ set(SRCS
     model/payroll_update_dto.c
     model/refresh_request.c
     model/register_request.c
+    model/required_skill_record_create_dto.c
+    model/required_skill_record_dto.c
+    model/required_skill_record_dto_envelope.c
+    model/required_skill_record_dto_list_envelope.c
+    model/required_skill_record_update_dto.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
     model/salary_create_dto.c
@@ -173,19 +204,24 @@ set(SRCS
     model/two_factor_response.c
     api/AppraisalStagesAPI.c
     api/AppraisalWorkflowsAPI.c
-    api/CompletionsAPI.c
     api/EmployeeAppraisalSessionsAPI.c
     api/EmployeeTypesAPI.c
     api/EmployeesAPI.c
     api/EmployersAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
+    api/GigApplicationsAPI.c
     api/GigsAPI.c
+    api/JobApplicantsAPI.c
+    api/JobApplicationsAPI.c
+    api/JobFieldsAPI.c
+    api/JobOfferFieldsAPI.c
     api/JobOffersAPI.c
     api/JobTitlesAPI.c
     api/LeaveApplicationsAPI.c
     api/LeaveTypesAPI.c
     api/PayrollPeriodsAPI.c
     api/PayrollsAPI.c
+    api/RequiredSkillsAPI.c
     api/SalariesAPI.c
     api/SchedulesAPI.c
     api/ShiftsAPI.c
@@ -214,6 +250,7 @@ set(HDRS
     model/appraisal_workflow_dto_envelope.h
     model/appraisal_workflow_dto_list_envelope.h
     model/appraisal_workflow_update_dto.h
+    model/contact_create_dto.h
     model/contact_dto.h
     model/employee_appraisal_session_create_dto.h
     model/employee_appraisal_session_dto.h
@@ -238,6 +275,11 @@ set(HDRS
     model/empty_envelope.h
     model/error_envelope.h
     model/forgot_password_request.h
+    model/gig_application_create_dto.h
+    model/gig_application_dto.h
+    model/gig_application_dto_envelope.h
+    model/gig_application_dto_list_envelope.h
+    model/gig_application_update_dto.h
     model/gig_create_dto.h
     model/gig_dto.h
     model/gig_dto_envelope.h
@@ -247,10 +289,30 @@ set(HDRS
     model/info_request.h
     model/info_response.h
     model/int32_envelope.h
+    model/job_applicant_profile_create_dto.h
+    model/job_applicant_profile_dto.h
+    model/job_applicant_profile_dto_envelope.h
+    model/job_applicant_profile_dto_list_envelope.h
+    model/job_applicant_profile_update_dto.h
+    model/job_field_create_dto.h
+    model/job_field_dto.h
+    model/job_field_dto_envelope.h
+    model/job_field_dto_list_envelope.h
+    model/job_field_update_dto.h
+    model/job_offer_application_create_dto.h
+    model/job_offer_application_dto.h
+    model/job_offer_application_dto_envelope.h
+    model/job_offer_application_dto_list_envelope.h
+    model/job_offer_application_update_dto.h
     model/job_offer_create_dto.h
     model/job_offer_dto.h
     model/job_offer_dto_envelope.h
     model/job_offer_dto_list_envelope.h
+    model/job_offer_field_record_create_dto.h
+    model/job_offer_field_record_dto.h
+    model/job_offer_field_record_dto_envelope.h
+    model/job_offer_field_record_dto_list_envelope.h
+    model/job_offer_field_record_update_dto.h
     model/job_offer_update_dto.h
     model/job_title_create_dto.h
     model/job_title_dto.h
@@ -281,6 +343,11 @@ set(HDRS
     model/payroll_update_dto.h
     model/refresh_request.h
     model/register_request.h
+    model/required_skill_record_create_dto.h
+    model/required_skill_record_dto.h
+    model/required_skill_record_dto_envelope.h
+    model/required_skill_record_dto_list_envelope.h
+    model/required_skill_record_update_dto.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
     model/salary_create_dto.h
@@ -322,19 +389,24 @@ set(HDRS
     model/two_factor_response.h
     api/AppraisalStagesAPI.h
     api/AppraisalWorkflowsAPI.h
-    api/CompletionsAPI.h
     api/EmployeeAppraisalSessionsAPI.h
     api/EmployeeTypesAPI.h
     api/EmployeesAPI.h
     api/EmployersAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
+    api/GigApplicationsAPI.h
     api/GigsAPI.h
+    api/JobApplicantsAPI.h
+    api/JobApplicationsAPI.h
+    api/JobFieldsAPI.h
+    api/JobOfferFieldsAPI.h
     api/JobOffersAPI.h
     api/JobTitlesAPI.h
     api/LeaveApplicationsAPI.h
     api/LeaveTypesAPI.h
     api/PayrollPeriodsAPI.h
     api/PayrollsAPI.h
+    api/RequiredSkillsAPI.h
     api/SalariesAPI.h
     api/SchedulesAPI.h
     api/ShiftsAPI.h
@@ -425,19 +497,24 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-AppraisalStagesAPI.c
 #    unit-tests/manual-AppraisalWorkflowsAPI.c
-#    unit-tests/manual-CompletionsAPI.c
 #    unit-tests/manual-EmployeeAppraisalSessionsAPI.c
 #    unit-tests/manual-EmployeeTypesAPI.c
 #    unit-tests/manual-EmployeesAPI.c
 #    unit-tests/manual-EmployersAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-GigApplicationsAPI.c
 #    unit-tests/manual-GigsAPI.c
+#    unit-tests/manual-JobApplicantsAPI.c
+#    unit-tests/manual-JobApplicationsAPI.c
+#    unit-tests/manual-JobFieldsAPI.c
+#    unit-tests/manual-JobOfferFieldsAPI.c
 #    unit-tests/manual-JobOffersAPI.c
 #    unit-tests/manual-JobTitlesAPI.c
 #    unit-tests/manual-LeaveApplicationsAPI.c
 #    unit-tests/manual-LeaveTypesAPI.c
 #    unit-tests/manual-PayrollPeriodsAPI.c
 #    unit-tests/manual-PayrollsAPI.c
+#    unit-tests/manual-RequiredSkillsAPI.c
 #    unit-tests/manual-SalariesAPI.c
 #    unit-tests/manual-SchedulesAPI.c
 #    unit-tests/manual-ShiftsAPI.c

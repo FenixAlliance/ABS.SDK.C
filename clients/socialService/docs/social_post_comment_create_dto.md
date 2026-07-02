@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
 **message** | **char \*** |  | 
+**body_html** | **char \*** |  | [optional] 
+**body_format** | **socialservice_social_post_comment_create_dto_BODYFORMAT_e** |  | [optional] 
 **parent_comment_id** | **char \*** |  | [optional] 
 **social_profile_id** | **char \*** |  | [optional] 
 **social_feed_post_id** | **char \*** |  | [optional] 

@@ -16,6 +16,14 @@
 typedef struct support_request_attachment_create_dto_t support_request_attachment_create_dto_t;
 
 
+// Enum PUBLICACCESSTYPE for support_request_attachment_create_dto
+
+typedef enum  { supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_NULL = 0, supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE__false, supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_Container, supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_Blob, supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_Unknown } supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_e;
+
+char* support_request_attachment_create_dto_public_access_type_ToString(supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type);
+
+supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_e support_request_attachment_create_dto_public_access_type_FromString(char* public_access_type);
+
 
 
 typedef struct support_request_attachment_create_dto_t {
@@ -31,6 +39,7 @@ typedef struct support_request_attachment_create_dto_t {
     int valid_response; //boolean
     char *parent_file_upload_id; // string
     char *file_path; // string
+    supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type; //enum
     char *metadata; // string
     char *support_request_id; // string
 
@@ -49,6 +58,7 @@ support_request_attachment_create_dto_t *support_request_attachment_create_dto_c
     int valid_response,
     char *parent_file_upload_id,
     char *file_path,
+    supportservice_support_request_attachment_create_dto_PUBLICACCESSTYPE_e public_access_type,
     char *metadata,
     char *support_request_id
 );

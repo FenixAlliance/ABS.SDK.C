@@ -76,6 +76,8 @@ Name | Type | Description | Notes
 **billing_location_id** | **char \*** |  | [optional] 
 **shipping_location_id** | **char \*** |  | [optional] 
 **qualified_identifier** | **char \*** |  | [optional] 
+**seller_billing_profile_id** | **char \*** |  | [optional] 
+**buyer_billing_profile_id** | **char \*** |  | [optional] 
 **cost_calculation_method** | **ordersservice_extended_order_dto_COSTCALCULATIONMETHOD_e** |  | [optional] 
 **freight_terms** | **ordersservice_extended_order_dto_FREIGHTTERMS_e** |  | [optional] 
 **order_status** | **ordersservice_extended_order_dto_ORDERSTATUS_e** |  | [optional] 

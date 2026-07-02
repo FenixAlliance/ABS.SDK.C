@@ -12,6 +12,165 @@
 }while(0)
 
 
+// Close a job offer
+//
+// Closes the job offer without a hire and removes it from the public board (raises JobOfferClosed).
+//
+empty_envelope_t*
+JobOffersAPI_closeJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/HrmsService/JobOffers/{jobOfferId}/Close")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/HrmsService/JobOffers/{jobOfferId}/Close");
+
+
+    // Path Params
+    long sizeOfPathParams_jobOfferId = strlen(jobOfferId)+3 + strlen("{ jobOfferId }");
+    if(jobOfferId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_jobOfferId = malloc(sizeOfPathParams_jobOfferId);
+    sprintf(localVarToReplace_jobOfferId, "{%s}", "jobOfferId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_jobOfferId, jobOfferId);
+    if(jobOfferId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_jobOfferId = malloc(sizeOfPathParams_jobOfferId);
+    sprintf(localVarToReplace_jobOfferId, "{%s}", "jobOfferId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_jobOfferId, jobOfferId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Bad Request");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *JobOffersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(JobOffersAPIlocalVarJSON);
+    cJSON_Delete(JobOffersAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_jobOfferId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Create a job offer
 //
 // Creates a new job offer for the specified tenant.
@@ -266,6 +425,165 @@ JobOffersAPI_deleteJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *j
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Bad Request");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *JobOffersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(JobOffersAPIlocalVarJSON);
+    cJSON_Delete(JobOffersAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_jobOfferId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Mark a job offer filled
+//
+// Marks the offer filled — converted to a hire — and removes it from the public board (raises JobOfferFilled).
+//
+empty_envelope_t*
+JobOffersAPI_fillJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/HrmsService/JobOffers/{jobOfferId}/Fill")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/HrmsService/JobOffers/{jobOfferId}/Fill");
+
+
+    // Path Params
+    long sizeOfPathParams_jobOfferId = strlen(jobOfferId)+3 + strlen("{ jobOfferId }");
+    if(jobOfferId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_jobOfferId = malloc(sizeOfPathParams_jobOfferId);
+    sprintf(localVarToReplace_jobOfferId, "{%s}", "jobOfferId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_jobOfferId, jobOfferId);
+    if(jobOfferId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_jobOfferId = malloc(sizeOfPathParams_jobOfferId);
+    sprintf(localVarToReplace_jobOfferId, "{%s}", "jobOfferId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_jobOfferId, jobOfferId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {
@@ -777,6 +1095,435 @@ end:
 
 }
 
+// Get public job offer by ID
+//
+// Retrieves a published job offer by its identifier for the Talent Portal. Anonymous; optionally scoped to a tenant.
+//
+job_offer_dto_envelope_t*
+JobOffersAPI_getPublicJobOfferByIdAsync(apiClient_t *apiClient, char *jobOfferId, char *tenantId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/HrmsService/JobOffers/Public/{jobOfferId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/HrmsService/JobOffers/Public/{jobOfferId}");
+
+
+    // Path Params
+    long sizeOfPathParams_jobOfferId = strlen(jobOfferId)+3 + strlen("{ jobOfferId }");
+    if(jobOfferId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_jobOfferId = malloc(sizeOfPathParams_jobOfferId);
+    sprintf(localVarToReplace_jobOfferId, "{%s}", "jobOfferId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_jobOfferId, jobOfferId);
+    if(jobOfferId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_jobOfferId = malloc(sizeOfPathParams_jobOfferId);
+    sprintf(localVarToReplace_jobOfferId, "{%s}", "jobOfferId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_jobOfferId, jobOfferId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Bad Request");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *JobOffersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    job_offer_dto_envelope_t *elementToReturn = job_offer_dto_envelope_parseFromJSON(JobOffersAPIlocalVarJSON);
+    cJSON_Delete(JobOffersAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_jobOfferId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Get public job offers
+//
+// Retrieves published job offers for the Talent Portal. Anonymous; optionally scoped to a single tenant.
+//
+job_offer_dto_list_envelope_t*
+JobOffersAPI_getPublicJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/HrmsService/JobOffers/Public")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/HrmsService/JobOffers/Public");
+
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Bad Request");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *JobOffersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    job_offer_dto_list_envelope_t *elementToReturn = job_offer_dto_list_envelope_parseFromJSON(JobOffersAPIlocalVarJSON);
+    cJSON_Delete(JobOffersAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Count public job offers
+//
+// Counts published job offers for the Talent Portal. Anonymous; optionally scoped to a single tenant.
+//
+int32_envelope_t*
+JobOffersAPI_getPublicJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/HrmsService/JobOffers/Public/Count")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/HrmsService/JobOffers/Public/Count");
+
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Bad Request");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *JobOffersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    int32_envelope_t *elementToReturn = int32_envelope_parseFromJSON(JobOffersAPIlocalVarJSON);
+    cJSON_Delete(JobOffersAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Patch a job offer
 //
 // Partially updates an existing job offer for the specified tenant.
@@ -953,6 +1700,165 @@ JobOffersAPI_patchJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jo
         localVar_operation = NULL;
     }
     free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Publish a job offer
+//
+// Publishes the job offer to the public Talent Portal (raises JobOfferPublished).
+//
+empty_envelope_t*
+JobOffersAPI_publishJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/HrmsService/JobOffers/{jobOfferId}/Publish")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/HrmsService/JobOffers/{jobOfferId}/Publish");
+
+
+    // Path Params
+    long sizeOfPathParams_jobOfferId = strlen(jobOfferId)+3 + strlen("{ jobOfferId }");
+    if(jobOfferId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_jobOfferId = malloc(sizeOfPathParams_jobOfferId);
+    sprintf(localVarToReplace_jobOfferId, "{%s}", "jobOfferId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_jobOfferId, jobOfferId);
+    if(jobOfferId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_jobOfferId = malloc(sizeOfPathParams_jobOfferId);
+    sprintf(localVarToReplace_jobOfferId, "{%s}", "jobOfferId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_jobOfferId, jobOfferId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Bad Request");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *JobOffersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(JobOffersAPIlocalVarJSON);
+    cJSON_Delete(JobOffersAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_jobOfferId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;

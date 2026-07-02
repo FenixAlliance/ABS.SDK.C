@@ -4,6 +4,23 @@
 #include "social_post_comment_dto.h"
 
 
+char* social_post_comment_dto_body_format_ToString(socialservice_social_post_comment_dto_BODYFORMAT_e body_format) {
+    char* body_formatArray[] =  { "NULL", "PlainText", "Html" };
+    return body_formatArray[body_format];
+}
+
+socialservice_social_post_comment_dto_BODYFORMAT_e social_post_comment_dto_body_format_FromString(char* body_format){
+    int stringToReturn = 0;
+    char *body_formatArray[] =  { "NULL", "PlainText", "Html" };
+    size_t sizeofArray = sizeof(body_formatArray) / sizeof(body_formatArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(body_format, body_formatArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 social_post_comment_dto_t *social_post_comment_dto_create(
     char *id,
@@ -14,6 +31,8 @@ social_post_comment_dto_t *social_post_comment_dto_create(
     char *social_feed_post_id,
     char *social_profile_name,
     char *social_profile_avatar_url,
+    char *body_html,
+    socialservice_social_post_comment_dto_BODYFORMAT_e body_format,
     char *social_post_id
     ) {
     social_post_comment_dto_t *social_post_comment_dto_local_var = malloc(sizeof(social_post_comment_dto_t));
@@ -28,6 +47,8 @@ social_post_comment_dto_t *social_post_comment_dto_create(
     social_post_comment_dto_local_var->social_feed_post_id = social_feed_post_id;
     social_post_comment_dto_local_var->social_profile_name = social_profile_name;
     social_post_comment_dto_local_var->social_profile_avatar_url = social_profile_avatar_url;
+    social_post_comment_dto_local_var->body_html = body_html;
+    social_post_comment_dto_local_var->body_format = body_format;
     social_post_comment_dto_local_var->social_post_id = social_post_id;
 
     return social_post_comment_dto_local_var;
@@ -70,6 +91,10 @@ void social_post_comment_dto_free(social_post_comment_dto_t *social_post_comment
     if (social_post_comment_dto->social_profile_avatar_url) {
         free(social_post_comment_dto->social_profile_avatar_url);
         social_post_comment_dto->social_profile_avatar_url = NULL;
+    }
+    if (social_post_comment_dto->body_html) {
+        free(social_post_comment_dto->body_html);
+        social_post_comment_dto->body_html = NULL;
     }
     if (social_post_comment_dto->social_post_id) {
         free(social_post_comment_dto->social_post_id);
@@ -141,6 +166,23 @@ cJSON *social_post_comment_dto_convertToJSON(social_post_comment_dto_t *social_p
     if(social_post_comment_dto->social_profile_avatar_url) {
     if(cJSON_AddStringToObject(item, "socialProfileAvatarUrl", social_post_comment_dto->social_profile_avatar_url) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // social_post_comment_dto->body_html
+    if(social_post_comment_dto->body_html) {
+    if(cJSON_AddStringToObject(item, "bodyHtml", social_post_comment_dto->body_html) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // social_post_comment_dto->body_format
+    if(social_post_comment_dto->body_format != socialservice_social_post_comment_dto_BODYFORMAT_NULL) {
+    if(cJSON_AddStringToObject(item, "bodyFormat", body_formatsocial_post_comment_dto_ToString(social_post_comment_dto->body_format)) == NULL)
+    {
+    goto fail; //Enum
     }
     }
 
@@ -236,6 +278,26 @@ social_post_comment_dto_t *social_post_comment_dto_parseFromJSON(cJSON *social_p
     }
     }
 
+    // social_post_comment_dto->body_html
+    cJSON *body_html = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "bodyHtml");
+    if (body_html) { 
+    if(!cJSON_IsString(body_html) && !cJSON_IsNull(body_html))
+    {
+    goto end; //String
+    }
+    }
+
+    // social_post_comment_dto->body_format
+    cJSON *body_format = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "bodyFormat");
+    socialservice_social_post_comment_dto_BODYFORMAT_e body_formatVariable;
+    if (body_format) { 
+    if(!cJSON_IsString(body_format))
+    {
+    goto end; //Enum
+    }
+    body_formatVariable = social_post_comment_dto_body_format_FromString(body_format->valuestring);
+    }
+
     // social_post_comment_dto->social_post_id
     cJSON *social_post_id = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "socialPostId");
     if (social_post_id) { 
@@ -255,6 +317,8 @@ social_post_comment_dto_t *social_post_comment_dto_parseFromJSON(cJSON *social_p
         social_feed_post_id && !cJSON_IsNull(social_feed_post_id) ? strdup(social_feed_post_id->valuestring) : NULL,
         social_profile_name && !cJSON_IsNull(social_profile_name) ? strdup(social_profile_name->valuestring) : NULL,
         social_profile_avatar_url && !cJSON_IsNull(social_profile_avatar_url) ? strdup(social_profile_avatar_url->valuestring) : NULL,
+        body_html && !cJSON_IsNull(body_html) ? strdup(body_html->valuestring) : NULL,
+        body_format ? body_formatVariable : socialservice_social_post_comment_dto_BODYFORMAT_NULL,
         social_post_id && !cJSON_IsNull(social_post_id) ? strdup(social_post_id->valuestring) : NULL
         );
 

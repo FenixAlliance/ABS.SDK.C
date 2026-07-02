@@ -10,7 +10,8 @@ unit_create_dto_t *unit_create_dto_create(
     char *timestamp,
     char *name,
     double base_unit_amount,
-    char *base_unit_id
+    char *base_unit_id,
+    char *un_ece_code
     ) {
     unit_create_dto_t *unit_create_dto_local_var = malloc(sizeof(unit_create_dto_t));
     if (!unit_create_dto_local_var) {
@@ -21,6 +22,7 @@ unit_create_dto_t *unit_create_dto_create(
     unit_create_dto_local_var->name = name;
     unit_create_dto_local_var->base_unit_amount = base_unit_amount;
     unit_create_dto_local_var->base_unit_id = base_unit_id;
+    unit_create_dto_local_var->un_ece_code = un_ece_code;
 
     return unit_create_dto_local_var;
 }
@@ -46,6 +48,10 @@ void unit_create_dto_free(unit_create_dto_t *unit_create_dto) {
     if (unit_create_dto->base_unit_id) {
         free(unit_create_dto->base_unit_id);
         unit_create_dto->base_unit_id = NULL;
+    }
+    if (unit_create_dto->un_ece_code) {
+        free(unit_create_dto->un_ece_code);
+        unit_create_dto->un_ece_code = NULL;
     }
     free(unit_create_dto);
 }
@@ -89,6 +95,14 @@ cJSON *unit_create_dto_convertToJSON(unit_create_dto_t *unit_create_dto) {
     // unit_create_dto->base_unit_id
     if(unit_create_dto->base_unit_id) {
     if(cJSON_AddStringToObject(item, "baseUnitId", unit_create_dto->base_unit_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // unit_create_dto->un_ece_code
+    if(unit_create_dto->un_ece_code) {
+    if(cJSON_AddStringToObject(item, "unECECode", unit_create_dto->un_ece_code) == NULL) {
     goto fail; //String
     }
     }
@@ -153,13 +167,23 @@ unit_create_dto_t *unit_create_dto_parseFromJSON(cJSON *unit_create_dtoJSON){
     }
     }
 
+    // unit_create_dto->un_ece_code
+    cJSON *un_ece_code = cJSON_GetObjectItemCaseSensitive(unit_create_dtoJSON, "unECECode");
+    if (un_ece_code) { 
+    if(!cJSON_IsString(un_ece_code) && !cJSON_IsNull(un_ece_code))
+    {
+    goto end; //String
+    }
+    }
+
 
     unit_create_dto_local_var = unit_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         strdup(name->valuestring),
         base_unit_amount ? base_unit_amount->valuedouble : 0,
-        base_unit_id && !cJSON_IsNull(base_unit_id) ? strdup(base_unit_id->valuestring) : NULL
+        base_unit_id && !cJSON_IsNull(base_unit_id) ? strdup(base_unit_id->valuestring) : NULL,
+        un_ece_code && !cJSON_IsNull(un_ece_code) ? strdup(un_ece_code->valuestring) : NULL
         );
 
     return unit_create_dto_local_var;

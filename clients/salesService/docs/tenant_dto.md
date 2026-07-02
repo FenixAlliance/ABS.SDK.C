@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] 
 **qualified_name** | **char \*** |  | [optional] [readonly] 
+**kind** | **salesservice_tenant_dto_KIND_e** |  | [optional] 
 **tax_id** | **char \*** |  | [optional] 
 **about** | **char \*** |  | [optional] 
 **wallet_id** | **char \*** |  | [optional] 

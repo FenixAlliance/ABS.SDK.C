@@ -21,12 +21,14 @@ typedef struct payment_mode_update_dto_t payment_mode_update_dto_t;
 typedef struct payment_mode_update_dto_t {
     char *name; // string
     char *description; // string
+    char *payment_means_code; // string
 
 } payment_mode_update_dto_t;
 
 payment_mode_update_dto_t *payment_mode_update_dto_create(
     char *name,
-    char *description
+    char *description,
+    char *payment_means_code
 );
 
 void payment_mode_update_dto_free(payment_mode_update_dto_t *payment_mode_update_dto);

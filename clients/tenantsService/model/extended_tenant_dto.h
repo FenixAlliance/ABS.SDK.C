@@ -19,12 +19,21 @@ typedef struct extended_tenant_dto_t extended_tenant_dto_t;
 #include "social_profile_dto.h"
 #include "wallet_dto.h"
 
+// Enum KIND for extended_tenant_dto
+
+typedef enum  { tenantsservice_extended_tenant_dto_KIND_NULL = 0, tenantsservice_extended_tenant_dto_KIND_Organization, tenantsservice_extended_tenant_dto_KIND_Individual } tenantsservice_extended_tenant_dto_KIND_e;
+
+char* extended_tenant_dto_kind_ToString(tenantsservice_extended_tenant_dto_KIND_e kind);
+
+tenantsservice_extended_tenant_dto_KIND_e extended_tenant_dto_kind_FromString(char* kind);
+
 
 
 typedef struct extended_tenant_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *qualified_name; // string
+    tenantsservice_extended_tenant_dto_KIND_e kind; //enum
     char *tax_id; // string
     char *about; // string
     char *wallet_id; // string
@@ -70,6 +79,7 @@ extended_tenant_dto_t *extended_tenant_dto_create(
     char *id,
     char *timestamp,
     char *qualified_name,
+    tenantsservice_extended_tenant_dto_KIND_e kind,
     char *tax_id,
     char *about,
     char *wallet_id,

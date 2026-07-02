@@ -111,8 +111,7 @@ set(SRCS
     model/wallet_withdraw_request_create_dto.c
     model/wallet_withdraw_request_dto.c
     model/wallet_withdraw_request_dto_list_envelope.c
-    api/CompletionsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/WalletsAPI.c
 
 )
@@ -181,8 +180,7 @@ set(HDRS
     model/wallet_withdraw_request_create_dto.h
     model/wallet_withdraw_request_dto.h
     model/wallet_withdraw_request_dto_list_envelope.h
-    api/CompletionsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/WalletsAPI.h
 
 )
@@ -265,8 +263,7 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-CompletionsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-WalletsAPI.c
 #)
 
