@@ -24,6 +24,8 @@ typedef struct project_period_dto_t {
     char *period_start_date; //date time
     char *period_end_date; //date time
     char *project_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
 
 } project_period_dto_t;
 
@@ -32,7 +34,9 @@ project_period_dto_t *project_period_dto_create(
     char *timestamp,
     char *period_start_date,
     char *period_end_date,
-    char *project_id
+    char *project_id,
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void project_period_dto_free(project_period_dto_t *project_period_dto);

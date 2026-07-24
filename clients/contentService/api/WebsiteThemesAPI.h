@@ -11,7 +11,6 @@
 #include "../model/website_theme_create_dto.h"
 #include "../model/website_theme_dto.h"
 #include "../model/website_theme_dto_list_envelope.h"
-#include "../model/website_theme_dto_o_data_query_options.h"
 #include "../model/website_theme_update_dto.h"
 
 
@@ -44,7 +43,7 @@ WebsiteThemesAPI_getWebsiteThemeByIdAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves all website themes for the specified tenant.
 //
 website_theme_dto_list_envelope_t*
-WebsiteThemesAPI_getWebsiteThemesAsync(apiClient_t *apiClient, char *tenantId, website_theme_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+WebsiteThemesAPI_getWebsiteThemesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get website themes count
@@ -52,7 +51,7 @@ WebsiteThemesAPI_getWebsiteThemesAsync(apiClient_t *apiClient, char *tenantId, w
 // Returns the count of website themes for the specified tenant.
 //
 int32_envelope_t*
-WebsiteThemesAPI_getWebsiteThemesCountAsync(apiClient_t *apiClient, char *tenantId, website_theme_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+WebsiteThemesAPI_getWebsiteThemesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Patch a website theme

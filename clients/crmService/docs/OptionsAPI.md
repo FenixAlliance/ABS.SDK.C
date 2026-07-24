@@ -10,6 +10,8 @@ Method | HTTP request | Description
 [**OptionsAPI_getContactOptionByKey**](OptionsAPI.md#OptionsAPI_getContactOptionByKey) | **GET** /api/v2/CrmService/Contacts/{contactId}/Options/Key/{key} | Retrieve a single contact option by its key
 [**OptionsAPI_getContactOptions**](OptionsAPI.md#OptionsAPI_getContactOptions) | **GET** /api/v2/CrmService/Contacts/{contactId}/Options | Retrieve a list of contact options
 [**OptionsAPI_getContactOptionsCount**](OptionsAPI.md#OptionsAPI_getContactOptionsCount) | **GET** /api/v2/CrmService/Contacts/{contactId}/Options/Count | Get the count of contact options
+[**OptionsAPI_patchContactOptionAsync**](OptionsAPI.md#OptionsAPI_patchContactOptionAsync) | **PATCH** /api/v2/CrmService/Contacts/{contactId}/Options/{optionId} | Patch a contact option
+[**OptionsAPI_patchContactOptionByKeyAsync**](OptionsAPI.md#OptionsAPI_patchContactOptionByKeyAsync) | **PATCH** /api/v2/CrmService/Contacts/{contactId}/Options/Key/{key} | Patch a contact option by key
 [**OptionsAPI_updateContactOption**](OptionsAPI.md#OptionsAPI_updateContactOption) | **PUT** /api/v2/CrmService/Contacts/{contactId}/Options/{optionId} | Update a contact option
 [**OptionsAPI_upsertContactOption**](OptionsAPI.md#OptionsAPI_upsertContactOption) | **PUT** /api/v2/CrmService/Contacts/{contactId}/Options/Upsert/{key} | Create or update a contact option by key
 
@@ -223,6 +225,78 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **OptionsAPI_patchContactOptionAsync**
+```c
+// Patch a contact option
+//
+// Patch a contact option
+//
+empty_envelope_t* OptionsAPI_patchContactOptionAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**contactId** | **char \*** |  | 
+**optionId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **OptionsAPI_patchContactOptionByKeyAsync**
+```c
+// Patch a contact option by key
+//
+// Patch a contact option by key
+//
+empty_envelope_t* OptionsAPI_patchContactOptionByKeyAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *key, char *api_version, char *x_api_version, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**contactId** | **char \*** |  | 
+**key** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -119,7 +119,7 @@ cJSON *project_task_create_dto_convertToJSON(project_task_create_dto_t *project_
 
     // project_task_create_dto->project_id
     if(project_task_create_dto->project_id) {
-    if(cJSON_AddStringToObject(item, "projectID", project_task_create_dto->project_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "projectId", project_task_create_dto->project_id) == NULL) {
     goto fail; //String
     }
     }
@@ -191,7 +191,7 @@ project_task_create_dto_t *project_task_create_dto_parseFromJSON(cJSON *project_
     }
 
     // project_task_create_dto->project_id
-    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(project_task_create_dtoJSON, "projectID");
+    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(project_task_create_dtoJSON, "projectId");
     if (project_id) { 
     if(!cJSON_IsString(project_id) && !cJSON_IsNull(project_id))
     {

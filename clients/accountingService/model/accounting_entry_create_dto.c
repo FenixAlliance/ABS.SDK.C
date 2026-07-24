@@ -4,17 +4,17 @@
 #include "accounting_entry_create_dto.h"
 
 
-char* accounting_entry_create_dto_accounting_entry_type_ToString(accountingservice_accounting_entry_create_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type) {
-    char* accounting_entry_typeArray[] =  { "NULL", "None", "Debit", "Credit" };
-    return accounting_entry_typeArray[accounting_entry_type];
+char* accounting_entry_create_dto_direction_ToString(accountingservice_accounting_entry_create_dto_DIRECTION_e direction) {
+    char* directionArray[] =  { "NULL", "Debit", "Credit" };
+    return directionArray[direction];
 }
 
-accountingservice_accounting_entry_create_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_create_dto_accounting_entry_type_FromString(char* accounting_entry_type){
+accountingservice_accounting_entry_create_dto_DIRECTION_e accounting_entry_create_dto_direction_FromString(char* direction){
     int stringToReturn = 0;
-    char *accounting_entry_typeArray[] =  { "NULL", "None", "Debit", "Credit" };
-    size_t sizeofArray = sizeof(accounting_entry_typeArray) / sizeof(accounting_entry_typeArray[0]);
+    char *directionArray[] =  { "NULL", "Debit", "Credit" };
+    size_t sizeofArray = sizeof(directionArray) / sizeof(directionArray[0]);
     while(stringToReturn < sizeofArray) {
-        if(strcmp(accounting_entry_type, accounting_entry_typeArray[stringToReturn]) == 0) {
+        if(strcmp(direction, directionArray[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -25,14 +25,12 @@ accountingservice_accounting_entry_create_dto_ACCOUNTINGENTRYTYPE_e accounting_e
 accounting_entry_create_dto_t *accounting_entry_create_dto_create(
     char *id,
     char *timestamp,
-    char *description,
-    char *date,
-    double amount,
-    char *currency_id,
-    char *debit_account_id,
-    char *credit_account_id,
     char *journal_entry_id,
-    accountingservice_accounting_entry_create_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type
+    char *account_id,
+    accountingservice_accounting_entry_create_dto_DIRECTION_e direction,
+    double transaction_amount,
+    char *transaction_currency_id,
+    char *description
     ) {
     accounting_entry_create_dto_t *accounting_entry_create_dto_local_var = malloc(sizeof(accounting_entry_create_dto_t));
     if (!accounting_entry_create_dto_local_var) {
@@ -40,14 +38,12 @@ accounting_entry_create_dto_t *accounting_entry_create_dto_create(
     }
     accounting_entry_create_dto_local_var->id = id;
     accounting_entry_create_dto_local_var->timestamp = timestamp;
-    accounting_entry_create_dto_local_var->description = description;
-    accounting_entry_create_dto_local_var->date = date;
-    accounting_entry_create_dto_local_var->amount = amount;
-    accounting_entry_create_dto_local_var->currency_id = currency_id;
-    accounting_entry_create_dto_local_var->debit_account_id = debit_account_id;
-    accounting_entry_create_dto_local_var->credit_account_id = credit_account_id;
     accounting_entry_create_dto_local_var->journal_entry_id = journal_entry_id;
-    accounting_entry_create_dto_local_var->accounting_entry_type = accounting_entry_type;
+    accounting_entry_create_dto_local_var->account_id = account_id;
+    accounting_entry_create_dto_local_var->direction = direction;
+    accounting_entry_create_dto_local_var->transaction_amount = transaction_amount;
+    accounting_entry_create_dto_local_var->transaction_currency_id = transaction_currency_id;
+    accounting_entry_create_dto_local_var->description = description;
 
     return accounting_entry_create_dto_local_var;
 }
@@ -66,29 +62,21 @@ void accounting_entry_create_dto_free(accounting_entry_create_dto_t *accounting_
         free(accounting_entry_create_dto->timestamp);
         accounting_entry_create_dto->timestamp = NULL;
     }
-    if (accounting_entry_create_dto->description) {
-        free(accounting_entry_create_dto->description);
-        accounting_entry_create_dto->description = NULL;
-    }
-    if (accounting_entry_create_dto->date) {
-        free(accounting_entry_create_dto->date);
-        accounting_entry_create_dto->date = NULL;
-    }
-    if (accounting_entry_create_dto->currency_id) {
-        free(accounting_entry_create_dto->currency_id);
-        accounting_entry_create_dto->currency_id = NULL;
-    }
-    if (accounting_entry_create_dto->debit_account_id) {
-        free(accounting_entry_create_dto->debit_account_id);
-        accounting_entry_create_dto->debit_account_id = NULL;
-    }
-    if (accounting_entry_create_dto->credit_account_id) {
-        free(accounting_entry_create_dto->credit_account_id);
-        accounting_entry_create_dto->credit_account_id = NULL;
-    }
     if (accounting_entry_create_dto->journal_entry_id) {
         free(accounting_entry_create_dto->journal_entry_id);
         accounting_entry_create_dto->journal_entry_id = NULL;
+    }
+    if (accounting_entry_create_dto->account_id) {
+        free(accounting_entry_create_dto->account_id);
+        accounting_entry_create_dto->account_id = NULL;
+    }
+    if (accounting_entry_create_dto->transaction_currency_id) {
+        free(accounting_entry_create_dto->transaction_currency_id);
+        accounting_entry_create_dto->transaction_currency_id = NULL;
+    }
+    if (accounting_entry_create_dto->description) {
+        free(accounting_entry_create_dto->description);
+        accounting_entry_create_dto->description = NULL;
     }
     free(accounting_entry_create_dto);
 }
@@ -112,70 +100,57 @@ cJSON *accounting_entry_create_dto_convertToJSON(accounting_entry_create_dto_t *
     }
 
 
+    // accounting_entry_create_dto->journal_entry_id
+    if (!accounting_entry_create_dto->journal_entry_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "journalEntryId", accounting_entry_create_dto->journal_entry_id) == NULL) {
+    goto fail; //String
+    }
+
+
+    // accounting_entry_create_dto->account_id
+    if (!accounting_entry_create_dto->account_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "accountId", accounting_entry_create_dto->account_id) == NULL) {
+    goto fail; //String
+    }
+
+
+    // accounting_entry_create_dto->direction
+    if (accountingservice_accounting_entry_create_dto_DIRECTION_NULL == accounting_entry_create_dto->direction) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "direction", directionaccounting_entry_create_dto_ToString(accounting_entry_create_dto->direction)) == NULL)
+    {
+    goto fail; //Enum
+    }
+
+
+    // accounting_entry_create_dto->transaction_amount
+    if(accounting_entry_create_dto->transaction_amount) {
+    if(cJSON_AddNumberToObject(item, "transactionAmount", accounting_entry_create_dto->transaction_amount) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // accounting_entry_create_dto->transaction_currency_id
+    if (!accounting_entry_create_dto->transaction_currency_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "transactionCurrencyId", accounting_entry_create_dto->transaction_currency_id) == NULL) {
+    goto fail; //String
+    }
+
+
     // accounting_entry_create_dto->description
     if (!accounting_entry_create_dto->description) {
         goto fail;
     }
     if(cJSON_AddStringToObject(item, "description", accounting_entry_create_dto->description) == NULL) {
     goto fail; //String
-    }
-
-
-    // accounting_entry_create_dto->date
-    if(accounting_entry_create_dto->date) {
-    if(cJSON_AddStringToObject(item, "date", accounting_entry_create_dto->date) == NULL) {
-    goto fail; //Date-Time
-    }
-    }
-
-
-    // accounting_entry_create_dto->amount
-    if(accounting_entry_create_dto->amount) {
-    if(cJSON_AddNumberToObject(item, "amount", accounting_entry_create_dto->amount) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // accounting_entry_create_dto->currency_id
-    if (!accounting_entry_create_dto->currency_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "currencyId", accounting_entry_create_dto->currency_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // accounting_entry_create_dto->debit_account_id
-    if(accounting_entry_create_dto->debit_account_id) {
-    if(cJSON_AddStringToObject(item, "debitAccountId", accounting_entry_create_dto->debit_account_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // accounting_entry_create_dto->credit_account_id
-    if(accounting_entry_create_dto->credit_account_id) {
-    if(cJSON_AddStringToObject(item, "creditAccountId", accounting_entry_create_dto->credit_account_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // accounting_entry_create_dto->journal_entry_id
-    if(accounting_entry_create_dto->journal_entry_id) {
-    if(cJSON_AddStringToObject(item, "journalEntryId", accounting_entry_create_dto->journal_entry_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // accounting_entry_create_dto->accounting_entry_type
-    if(accounting_entry_create_dto->accounting_entry_type != accountingservice_accounting_entry_create_dto_ACCOUNTINGENTRYTYPE_NULL) {
-    if(cJSON_AddStringToObject(item, "accountingEntryType", accounting_entry_typeaccounting_entry_create_dto_ToString(accounting_entry_create_dto->accounting_entry_type)) == NULL)
-    {
-    goto fail; //Enum
-    }
     }
 
     return item;
@@ -208,6 +183,65 @@ accounting_entry_create_dto_t *accounting_entry_create_dto_parseFromJSON(cJSON *
     }
     }
 
+    // accounting_entry_create_dto->journal_entry_id
+    cJSON *journal_entry_id = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "journalEntryId");
+    if (!journal_entry_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(journal_entry_id))
+    {
+    goto end; //String
+    }
+
+    // accounting_entry_create_dto->account_id
+    cJSON *account_id = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "accountId");
+    if (!account_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(account_id))
+    {
+    goto end; //String
+    }
+
+    // accounting_entry_create_dto->direction
+    cJSON *direction = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "direction");
+    if (!direction) {
+        goto end;
+    }
+
+    accountingservice_accounting_entry_create_dto_DIRECTION_e directionVariable;
+    
+    if(!cJSON_IsString(direction))
+    {
+    goto end; //Enum
+    }
+    directionVariable = accounting_entry_create_dto_direction_FromString(direction->valuestring);
+
+    // accounting_entry_create_dto->transaction_amount
+    cJSON *transaction_amount = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "transactionAmount");
+    if (transaction_amount) { 
+    if(!cJSON_IsNumber(transaction_amount))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // accounting_entry_create_dto->transaction_currency_id
+    cJSON *transaction_currency_id = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "transactionCurrencyId");
+    if (!transaction_currency_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(transaction_currency_id))
+    {
+    goto end; //String
+    }
+
     // accounting_entry_create_dto->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "description");
     if (!description) {
@@ -220,86 +254,16 @@ accounting_entry_create_dto_t *accounting_entry_create_dto_parseFromJSON(cJSON *
     goto end; //String
     }
 
-    // accounting_entry_create_dto->date
-    cJSON *date = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "date");
-    if (date) { 
-    if(!cJSON_IsString(date) && !cJSON_IsNull(date))
-    {
-    goto end; //DateTime
-    }
-    }
-
-    // accounting_entry_create_dto->amount
-    cJSON *amount = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "amount");
-    if (amount) { 
-    if(!cJSON_IsNumber(amount))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // accounting_entry_create_dto->currency_id
-    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "currencyId");
-    if (!currency_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(currency_id))
-    {
-    goto end; //String
-    }
-
-    // accounting_entry_create_dto->debit_account_id
-    cJSON *debit_account_id = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "debitAccountId");
-    if (debit_account_id) { 
-    if(!cJSON_IsString(debit_account_id) && !cJSON_IsNull(debit_account_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // accounting_entry_create_dto->credit_account_id
-    cJSON *credit_account_id = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "creditAccountId");
-    if (credit_account_id) { 
-    if(!cJSON_IsString(credit_account_id) && !cJSON_IsNull(credit_account_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // accounting_entry_create_dto->journal_entry_id
-    cJSON *journal_entry_id = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "journalEntryId");
-    if (journal_entry_id) { 
-    if(!cJSON_IsString(journal_entry_id) && !cJSON_IsNull(journal_entry_id))
-    {
-    goto end; //String
-    }
-    }
-
-    // accounting_entry_create_dto->accounting_entry_type
-    cJSON *accounting_entry_type = cJSON_GetObjectItemCaseSensitive(accounting_entry_create_dtoJSON, "accountingEntryType");
-    accountingservice_accounting_entry_create_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_typeVariable;
-    if (accounting_entry_type) { 
-    if(!cJSON_IsString(accounting_entry_type))
-    {
-    goto end; //Enum
-    }
-    accounting_entry_typeVariable = accounting_entry_create_dto_accounting_entry_type_FromString(accounting_entry_type->valuestring);
-    }
-
 
     accounting_entry_create_dto_local_var = accounting_entry_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        strdup(description->valuestring),
-        date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,
-        amount ? amount->valuedouble : 0,
-        strdup(currency_id->valuestring),
-        debit_account_id && !cJSON_IsNull(debit_account_id) ? strdup(debit_account_id->valuestring) : NULL,
-        credit_account_id && !cJSON_IsNull(credit_account_id) ? strdup(credit_account_id->valuestring) : NULL,
-        journal_entry_id && !cJSON_IsNull(journal_entry_id) ? strdup(journal_entry_id->valuestring) : NULL,
-        accounting_entry_type ? accounting_entry_typeVariable : accountingservice_accounting_entry_create_dto_ACCOUNTINGENTRYTYPE_NULL
+        strdup(journal_entry_id->valuestring),
+        strdup(account_id->valuestring),
+        directionVariable,
+        transaction_amount ? transaction_amount->valuedouble : 0,
+        strdup(transaction_currency_id->valuestring),
+        strdup(description->valuestring)
         );
 
     return accounting_entry_create_dto_local_var;

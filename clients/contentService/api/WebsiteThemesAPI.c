@@ -502,7 +502,7 @@ end:
 // Retrieves all website themes for the specified tenant.
 //
 website_theme_dto_list_envelope_t*
-WebsiteThemesAPI_getWebsiteThemesAsync(apiClient_t *apiClient, char *tenantId, website_theme_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version)
+WebsiteThemesAPI_getWebsiteThemesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -541,18 +541,6 @@ WebsiteThemesAPI_getWebsiteThemesAsync(apiClient_t *apiClient, char *tenantId, w
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_oDataQueryOptions = NULL;
-    website_theme_dto_o_data_query_options_t * valueQuery_oDataQueryOptions ;
-    keyValuePair_t *keyPairQuery_oDataQueryOptions = 0;
-    if (oDataQueryOptions)
-    {
-        keyQuery_oDataQueryOptions = strdup("oDataQueryOptions");
-        valueQuery_oDataQueryOptions = (oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = keyValuePair_create(keyQuery_oDataQueryOptions, &valueQuery_oDataQueryOptions);
-        list_addElement(localVarQueryParameters,keyPairQuery_oDataQueryOptions);
     }
 
     // query parameters
@@ -627,14 +615,6 @@ WebsiteThemesAPI_getWebsiteThemesAsync(apiClient_t *apiClient, char *tenantId, w
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
     }
-    if(keyQuery_oDataQueryOptions){
-        free(keyQuery_oDataQueryOptions);
-        keyQuery_oDataQueryOptions = NULL;
-    }
-    if(keyPairQuery_oDataQueryOptions){
-        keyValuePair_free(keyPairQuery_oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = NULL;
-    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -659,7 +639,7 @@ end:
 // Returns the count of website themes for the specified tenant.
 //
 int32_envelope_t*
-WebsiteThemesAPI_getWebsiteThemesCountAsync(apiClient_t *apiClient, char *tenantId, website_theme_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version)
+WebsiteThemesAPI_getWebsiteThemesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -698,18 +678,6 @@ WebsiteThemesAPI_getWebsiteThemesCountAsync(apiClient_t *apiClient, char *tenant
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_oDataQueryOptions = NULL;
-    website_theme_dto_o_data_query_options_t * valueQuery_oDataQueryOptions ;
-    keyValuePair_t *keyPairQuery_oDataQueryOptions = 0;
-    if (oDataQueryOptions)
-    {
-        keyQuery_oDataQueryOptions = strdup("oDataQueryOptions");
-        valueQuery_oDataQueryOptions = (oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = keyValuePair_create(keyQuery_oDataQueryOptions, &valueQuery_oDataQueryOptions);
-        list_addElement(localVarQueryParameters,keyPairQuery_oDataQueryOptions);
     }
 
     // query parameters
@@ -783,14 +751,6 @@ WebsiteThemesAPI_getWebsiteThemesCountAsync(apiClient_t *apiClient, char *tenant
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
-    }
-    if(keyQuery_oDataQueryOptions){
-        free(keyQuery_oDataQueryOptions);
-        keyQuery_oDataQueryOptions = NULL;
-    }
-    if(keyPairQuery_oDataQueryOptions){
-        keyValuePair_free(keyPairQuery_oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = NULL;
     }
     if(keyQuery_api_version){
         free(keyQuery_api_version);

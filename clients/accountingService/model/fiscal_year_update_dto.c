@@ -60,10 +60,11 @@ cJSON *fiscal_year_update_dto_convertToJSON(fiscal_year_update_dto_t *fiscal_yea
     cJSON *item = cJSON_CreateObject();
 
     // fiscal_year_update_dto->name
-    if(fiscal_year_update_dto->name) {
+    if (!fiscal_year_update_dto->name) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "name", fiscal_year_update_dto->name) == NULL) {
     goto fail; //String
-    }
     }
 
 
@@ -100,10 +101,11 @@ cJSON *fiscal_year_update_dto_convertToJSON(fiscal_year_update_dto_t *fiscal_yea
 
 
     // fiscal_year_update_dto->fiscal_authority_id
-    if(fiscal_year_update_dto->fiscal_authority_id) {
+    if (!fiscal_year_update_dto->fiscal_authority_id) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "fiscalAuthorityId", fiscal_year_update_dto->fiscal_authority_id) == NULL) {
     goto fail; //String
-    }
     }
 
     return item;
@@ -120,11 +122,14 @@ fiscal_year_update_dto_t *fiscal_year_update_dto_parseFromJSON(cJSON *fiscal_yea
 
     // fiscal_year_update_dto->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(fiscal_year_update_dtoJSON, "name");
-    if (name) { 
-    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
+    if (!name) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(name))
     {
     goto end; //String
-    }
     }
 
     // fiscal_year_update_dto->description
@@ -165,21 +170,24 @@ fiscal_year_update_dto_t *fiscal_year_update_dto_parseFromJSON(cJSON *fiscal_yea
 
     // fiscal_year_update_dto->fiscal_authority_id
     cJSON *fiscal_authority_id = cJSON_GetObjectItemCaseSensitive(fiscal_year_update_dtoJSON, "fiscalAuthorityId");
-    if (fiscal_authority_id) { 
-    if(!cJSON_IsString(fiscal_authority_id) && !cJSON_IsNull(fiscal_authority_id))
+    if (!fiscal_authority_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(fiscal_authority_id))
     {
     goto end; //String
-    }
     }
 
 
     fiscal_year_update_dto_local_var = fiscal_year_update_dto_create (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        strdup(name->valuestring),
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         closed ? closed->valueint : 0,
         end_date && !cJSON_IsNull(end_date) ? strdup(end_date->valuestring) : NULL,
         start_date && !cJSON_IsNull(start_date) ? strdup(start_date->valuestring) : NULL,
-        fiscal_authority_id && !cJSON_IsNull(fiscal_authority_id) ? strdup(fiscal_authority_id->valuestring) : NULL
+        strdup(fiscal_authority_id->valuestring)
         );
 
     return fiscal_year_update_dto_local_var;

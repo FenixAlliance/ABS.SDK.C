@@ -11,6 +11,110 @@
     snprintf(dst, 256, "%ld", (long int)(src));\
 }while(0)
 
+// Functions for enum PUBLICACCESSTYPE for UploadsAPI_saveFileAsync
+
+static char* saveFileAsync_PUBLICACCESSTYPE_ToString(storageservice_saveFileAsync_publicAccessType_e PUBLICACCESSTYPE){
+    char *PUBLICACCESSTYPEArray[] =  { "NULL", "false", "Container", "Blob", "Unknown" };
+    return PUBLICACCESSTYPEArray[PUBLICACCESSTYPE];
+}
+
+static storageservice_saveFileAsync_publicAccessType_e saveFileAsync_PUBLICACCESSTYPE_FromString(char* PUBLICACCESSTYPE){
+    int stringToReturn = 0;
+    char *PUBLICACCESSTYPEArray[] =  { "NULL", "false", "Container", "Blob", "Unknown" };
+    size_t sizeofArray = sizeof(PUBLICACCESSTYPEArray) / sizeof(PUBLICACCESSTYPEArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(PUBLICACCESSTYPE, PUBLICACCESSTYPEArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+
+/*
+// Function saveFileAsync_PUBLICACCESSTYPE_convertToJSON is not currently used,
+// since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
+//
+static cJSON *saveFileAsync_PUBLICACCESSTYPE_convertToJSON(storageservice_saveFileAsync_publicAccessType_e PUBLICACCESSTYPE) {
+    cJSON *item = cJSON_CreateObject();
+    if(cJSON_AddStringToObject(item, "publicAccessType", saveFileAsync_PUBLICACCESSTYPE_ToString(PUBLICACCESSTYPE)) == NULL) {
+        goto fail;
+    }
+    return item;
+    fail:
+    cJSON_Delete(item);
+    return NULL;
+}
+
+// Function saveFileAsync_PUBLICACCESSTYPE_parseFromJSON is not currently used,
+// since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
+//
+static storageservice_saveFileAsync_publicAccessType_e saveFileAsync_PUBLICACCESSTYPE_parseFromJSON(cJSON* PUBLICACCESSTYPEJSON) {
+    storageservice_saveFileAsync_publicAccessType_e PUBLICACCESSTYPEVariable = 0;
+    cJSON *PUBLICACCESSTYPEVar = cJSON_GetObjectItemCaseSensitive(PUBLICACCESSTYPEJSON, "publicAccessType");
+    if(!cJSON_IsString(PUBLICACCESSTYPEVar) || (PUBLICACCESSTYPEVar->valuestring == NULL))
+    {
+        goto end;
+    }
+    PUBLICACCESSTYPEVariable = saveFileAsync_PUBLICACCESSTYPE_FromString(PUBLICACCESSTYPEVar->valuestring);
+    return PUBLICACCESSTYPEVariable;
+end:
+    return 0;
+}
+*/
+
+// Functions for enum PURPOSE for UploadsAPI_saveFileAsync
+
+static char* saveFileAsync_PURPOSE_ToString(storageservice_saveFileAsync_purpose_e PURPOSE){
+    char *PURPOSEArray[] =  { "NULL", "Unknown", "IdentityAvatar", "IdentityBanner", "ProfileAsset", "EngagementInline", "EngagementAttachment", "MessageAttachment", "SocialPost", "RecordAttachment", "AiGenerated", "SystemArtifact", "Temporary" };
+    return PURPOSEArray[PURPOSE];
+}
+
+static storageservice_saveFileAsync_purpose_e saveFileAsync_PURPOSE_FromString(char* PURPOSE){
+    int stringToReturn = 0;
+    char *PURPOSEArray[] =  { "NULL", "Unknown", "IdentityAvatar", "IdentityBanner", "ProfileAsset", "EngagementInline", "EngagementAttachment", "MessageAttachment", "SocialPost", "RecordAttachment", "AiGenerated", "SystemArtifact", "Temporary" };
+    size_t sizeofArray = sizeof(PURPOSEArray) / sizeof(PURPOSEArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(PURPOSE, PURPOSEArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+
+/*
+// Function saveFileAsync_PURPOSE_convertToJSON is not currently used,
+// since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
+//
+static cJSON *saveFileAsync_PURPOSE_convertToJSON(storageservice_saveFileAsync_purpose_e PURPOSE) {
+    cJSON *item = cJSON_CreateObject();
+    if(cJSON_AddStringToObject(item, "purpose", saveFileAsync_PURPOSE_ToString(PURPOSE)) == NULL) {
+        goto fail;
+    }
+    return item;
+    fail:
+    cJSON_Delete(item);
+    return NULL;
+}
+
+// Function saveFileAsync_PURPOSE_parseFromJSON is not currently used,
+// since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
+//
+static storageservice_saveFileAsync_purpose_e saveFileAsync_PURPOSE_parseFromJSON(cJSON* PURPOSEJSON) {
+    storageservice_saveFileAsync_purpose_e PURPOSEVariable = 0;
+    cJSON *PURPOSEVar = cJSON_GetObjectItemCaseSensitive(PURPOSEJSON, "purpose");
+    if(!cJSON_IsString(PURPOSEVar) || (PURPOSEVar->valuestring == NULL))
+    {
+        goto end;
+    }
+    PURPOSEVariable = saveFileAsync_PURPOSE_FromString(PURPOSEVar->valuestring);
+    return PURPOSEVariable;
+end:
+    return 0;
+}
+*/
+
 // Functions for enum APPFILESOURCE for UploadsAPI_saveFileAsync
 
 static char* saveFileAsync_APPFILESOURCE_ToString(storageservice_saveFileAsync_appFile.source_e APPFILESOURCE){
@@ -66,10 +170,10 @@ end:
 
 // Upload a file
 //
-// Uploads a file to tenant or user storage.
+// Uploads a file to tenant or user storage, scanned and catalogued through the storage spine.
 //
 empty_envelope_t*
-UploadsAPI_saveFileAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, char *notes, char *title, char *author, int *isFolder, char *fileName, char *abstract, char *keyWords, int *validResponse, char *parentFileUploadId, char *filePath, char *appFile.content, char *appFile.sha256, char appFile.createdAtUtc, char *appFile.userId.value, char *appFile.tenantId.value, char *appFile.enrollmentId.value, storageservice_saveFileAsync_appFile.source_e appFile.source, long appFile.length, char *appFile.name, char *appFile.fileName, char appFile.lastModified, long appFile.size, char *appFile.contentType, char *appFile.contentDisposition, list_t* appFile.headers, char *id, char timestamp)
+UploadsAPI_saveFileAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, binary_t* file, char *notes, char *title, char *author, int *isFolder, char *fileName, char *abstract, char *keyWords, int *validResponse, char *parentFileUploadId, char *filePath, storageservice_saveFileAsync_publicAccessType_e publicAccessType, storageservice_saveFileAsync_purpose_e purpose, char *socialProfileId.value, char *appFile.content, char *appFile.sha256, char appFile.createdAtUtc, char *appFile.userId.value, char *appFile.tenantId.value, char *appFile.enrollmentId.value, storageservice_saveFileAsync_appFile.source_e appFile.source, long appFile.length, char *appFile.name, char *appFile.fileName, char appFile.lastModified, long appFile.size, char *appFile.contentType, char *appFile.contentDisposition, list_t* appFile.headers, char *id, char timestamp)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -120,6 +224,18 @@ UploadsAPI_saveFileAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
         valueQuery_api_version = strdup((api_version));
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+
+    // form parameters
+    char *keyForm_file = NULL;
+    binary_t* valueForm_file = 0;
+    keyValuePair_t *keyPairForm_file = 0;
+    if (file != NULL)
+    {
+        keyForm_file = strdup("file");
+        valueForm_file = file;
+        keyPairForm_file = keyValuePair_create(keyForm_file, &valueForm_file);
+        list_addElement(localVarFormParameters,keyPairForm_file); //file adding
     }
 
     // form parameters
@@ -242,6 +358,42 @@ UploadsAPI_saveFileAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
         valueForm_filePath = strdup((filePath));
         keyPairForm_filePath = keyValuePair_create(keyForm_filePath,valueForm_filePath);
         list_addElement(localVarFormParameters,keyPairForm_filePath);
+    }
+
+    // form parameters
+    char *keyForm_publicAccessType = NULL;
+    storageservice_saveFileAsync_publicAccessType_e valueForm_publicAccessType = 0;
+    keyValuePair_t *keyPairForm_publicAccessType = 0;
+    if (publicAccessType != NULL)
+    {
+        keyForm_publicAccessType = strdup("publicAccessType");
+        valueForm_publicAccessType = (publicAccessType);
+        keyPairForm_publicAccessType = keyValuePair_create(keyForm_publicAccessType,(void *)valueForm_publicAccessType);
+        list_addElement(localVarFormParameters,keyPairForm_publicAccessType);
+    }
+
+    // form parameters
+    char *keyForm_purpose = NULL;
+    storageservice_saveFileAsync_purpose_e valueForm_purpose = 0;
+    keyValuePair_t *keyPairForm_purpose = 0;
+    if (purpose != NULL)
+    {
+        keyForm_purpose = strdup("purpose");
+        valueForm_purpose = (purpose);
+        keyPairForm_purpose = keyValuePair_create(keyForm_purpose,(void *)valueForm_purpose);
+        list_addElement(localVarFormParameters,keyPairForm_purpose);
+    }
+
+    // form parameters
+    char *keyForm_socialProfileId.value = NULL;
+    char * valueForm_socialProfileId.value = 0;
+    keyValuePair_t *keyPairForm_socialProfileId.value = 0;
+    if (socialProfileId.value != NULL)
+    {
+        keyForm_socialProfileId.value = strdup("socialProfileId.value");
+        valueForm_socialProfileId.value = strdup((socialProfileId.value));
+        keyPairForm_socialProfileId.value = keyValuePair_create(keyForm_socialProfileId.value,valueForm_socialProfileId.value);
+        list_addElement(localVarFormParameters,keyPairForm_socialProfileId.value);
     }
 
     // form parameters
@@ -525,6 +677,13 @@ UploadsAPI_saveFileAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
         keyValuePair_free(keyPairQuery_api_version);
         keyPairQuery_api_version = NULL;
     }
+    if (keyForm_file) {
+        free(keyForm_file);
+        keyForm_file = NULL;
+    }
+//    free(fileVar_file->data);
+//    free(fileVar_file);
+    free(keyPairForm_file);
     if (keyForm_notes) {
         free(keyForm_notes);
         keyForm_notes = NULL;
@@ -607,6 +766,33 @@ UploadsAPI_saveFileAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
         valueForm_filePath = NULL;
     }
     free(keyPairForm_filePath);
+    if (keyForm_publicAccessType) {
+        free(keyForm_publicAccessType);
+        keyForm_publicAccessType = NULL;
+    }
+    if (valueForm_publicAccessType) {
+        free(valueForm_publicAccessType);
+        valueForm_publicAccessType = NULL;
+    }
+    free(keyPairForm_publicAccessType);
+    if (keyForm_purpose) {
+        free(keyForm_purpose);
+        keyForm_purpose = NULL;
+    }
+    if (valueForm_purpose) {
+        free(valueForm_purpose);
+        valueForm_purpose = NULL;
+    }
+    free(keyPairForm_purpose);
+    if (keyForm_socialProfileId.value) {
+        free(keyForm_socialProfileId.value);
+        keyForm_socialProfileId.value = NULL;
+    }
+    if (valueForm_socialProfileId.value) {
+        free(valueForm_socialProfileId.value);
+        valueForm_socialProfileId.value = NULL;
+    }
+    free(keyPairForm_socialProfileId.value);
     if (keyForm_appFile.content) {
         free(keyForm_appFile.content);
         keyForm_appFile.content = NULL;

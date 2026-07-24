@@ -16,37 +16,33 @@
 typedef struct accounting_entry_update_dto_t accounting_entry_update_dto_t;
 
 
-// Enum ACCOUNTINGENTRYTYPE for accounting_entry_update_dto
+// Enum DIRECTION for accounting_entry_update_dto
 
-typedef enum  { accountingservice_accounting_entry_update_dto_ACCOUNTINGENTRYTYPE_NULL = 0, accountingservice_accounting_entry_update_dto_ACCOUNTINGENTRYTYPE_None, accountingservice_accounting_entry_update_dto_ACCOUNTINGENTRYTYPE_Debit, accountingservice_accounting_entry_update_dto_ACCOUNTINGENTRYTYPE_Credit } accountingservice_accounting_entry_update_dto_ACCOUNTINGENTRYTYPE_e;
+typedef enum  { accountingservice_accounting_entry_update_dto_DIRECTION_NULL = 0, accountingservice_accounting_entry_update_dto_DIRECTION_Debit, accountingservice_accounting_entry_update_dto_DIRECTION_Credit } accountingservice_accounting_entry_update_dto_DIRECTION_e;
 
-char* accounting_entry_update_dto_accounting_entry_type_ToString(accountingservice_accounting_entry_update_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type);
+char* accounting_entry_update_dto_direction_ToString(accountingservice_accounting_entry_update_dto_DIRECTION_e direction);
 
-accountingservice_accounting_entry_update_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_update_dto_accounting_entry_type_FromString(char* accounting_entry_type);
+accountingservice_accounting_entry_update_dto_DIRECTION_e accounting_entry_update_dto_direction_FromString(char* direction);
 
 
 
 typedef struct accounting_entry_update_dto_t {
-    char *description; // string
-    double amount; //numeric
-    char *date; //date time
-    char *currency_id; // string
-    char *debit_account_id; // string
-    char *credit_account_id; // string
     char *journal_entry_id; // string
-    accountingservice_accounting_entry_update_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type; //enum
+    char *account_id; // string
+    accountingservice_accounting_entry_update_dto_DIRECTION_e direction; //enum
+    double transaction_amount; //numeric
+    char *transaction_currency_id; // string
+    char *description; // string
 
 } accounting_entry_update_dto_t;
 
 accounting_entry_update_dto_t *accounting_entry_update_dto_create(
-    char *description,
-    double amount,
-    char *date,
-    char *currency_id,
-    char *debit_account_id,
-    char *credit_account_id,
     char *journal_entry_id,
-    accountingservice_accounting_entry_update_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type
+    char *account_id,
+    accountingservice_accounting_entry_update_dto_DIRECTION_e direction,
+    double transaction_amount,
+    char *transaction_currency_id,
+    char *description
 );
 
 void accounting_entry_update_dto_free(accounting_entry_update_dto_t *accounting_entry_update_dto);

@@ -12,12 +12,12 @@
 }while(0)
 
 
-// Retrieve license assignments
+// Retrieve license attributes
 //
-// Retrieves all license assignments for a given license.
+// Retrieves all additional attributes for a given license.
 //
 suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
+LicensingAPI_getAttributesForLicenseAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -27,9 +27,9 @@ LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *tenantId, 
     char      *localVarBodyParameters = NULL;
 
     // create the path
-    long sizeOfPath = strlen("/api/v2/SystemService/Licensing/Licenses/{licenseId}/Assignments")+1;
+    long sizeOfPath = strlen("/api/v2/SystemService/Licensing/Licenses/{licenseId}/Attributes")+1;
     char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Licensing/Licenses/{licenseId}/Assignments");
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Licensing/Licenses/{licenseId}/Attributes");
 
 
     // Path Params
@@ -206,12 +206,12 @@ end:
 
 }
 
-// Retrieve license attributes
+// Retrieve license features
 //
-// Retrieves all additional attributes for a given license.
+// Retrieves all features for a given license.
 //
 suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
+LicensingAPI_getFeaturesForLicenseAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -221,9 +221,203 @@ LicensingAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *tenantId, c
     char      *localVarBodyParameters = NULL;
 
     // create the path
-    long sizeOfPath = strlen("/api/v2/SystemService/Licensing/Licenses/{licenseId}/Attributes")+1;
+    long sizeOfPath = strlen("/api/v2/SystemService/Licensing/Licenses/{licenseId}/Features")+1;
     char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Licensing/Licenses/{licenseId}/Attributes");
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Licensing/Licenses/{licenseId}/Features");
+
+
+    // Path Params
+    long sizeOfPathParams_licenseId = strlen(licenseId)+3 + strlen("{ licenseId }");
+    if(licenseId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_licenseId = malloc(sizeOfPathParams_licenseId);
+    sprintf(localVarToReplace_licenseId, "{%s}", "licenseId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_licenseId, licenseId);
+    if(licenseId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_licenseId = malloc(sizeOfPathParams_licenseId);
+    sprintf(localVarToReplace_licenseId, "{%s}", "licenseId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_licenseId, licenseId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=full"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=none"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.streaming=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.streaming=false"); //produces
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.streaming=true;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.streaming=true;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.streaming=false;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;odata.streaming=false;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/json;IEEE754Compatible=false"); //produces
+    list_addElement(localVarHeaderType,"application/json;IEEE754Compatible=true"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarHeaderType,"text/plain"); //produces
+    list_addElement(localVarHeaderType,"application/octet-stream"); //produces
+    list_addElement(localVarHeaderType,"text/json"); //produces
+    list_addElement(localVarHeaderType,"text/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *LicensingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    suite_license_assignment_dto_list_envelope_t *elementToReturn = suite_license_assignment_dto_list_envelope_parseFromJSON(LicensingAPIlocalVarJSON);
+    cJSON_Delete(LicensingAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_licenseId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Retrieve license assignments
+//
+// Retrieves all license assignments for a given license.
+//
+suite_license_assignment_dto_list_envelope_t*
+LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/SystemService/Licensing/Licenses/{licenseId}/Assignments")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Licensing/Licenses/{licenseId}/Assignments");
 
 
     // Path Params
@@ -536,200 +730,6 @@ LicensingAPI_getLicenseByIdAsync(apiClient_t *apiClient, char *tenantId, char *l
     //nonprimitive not container
     cJSON *LicensingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     suite_license_dto_envelope_t *elementToReturn = suite_license_dto_envelope_parseFromJSON(LicensingAPIlocalVarJSON);
-    cJSON_Delete(LicensingAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
-    }
-
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    list_freeList(localVarQueryParameters);
-    list_freeList(localVarHeaderParameters);
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    free(localVarToReplace_licenseId);
-    if (keyHeader_x_api_version) {
-        free(keyHeader_x_api_version);
-        keyHeader_x_api_version = NULL;
-    }
-    if (valueHeader_x_api_version) {
-        free(valueHeader_x_api_version);
-        valueHeader_x_api_version = NULL;
-    }
-    free(keyPairHeader_x_api_version);
-    if(keyQuery_tenantId){
-        free(keyQuery_tenantId);
-        keyQuery_tenantId = NULL;
-    }
-    if(valueQuery_tenantId){
-        free(valueQuery_tenantId);
-        valueQuery_tenantId = NULL;
-    }
-    if(keyPairQuery_tenantId){
-        keyValuePair_free(keyPairQuery_tenantId);
-        keyPairQuery_tenantId = NULL;
-    }
-    if(keyQuery_api_version){
-        free(keyQuery_api_version);
-        keyQuery_api_version = NULL;
-    }
-    if(valueQuery_api_version){
-        free(valueQuery_api_version);
-        valueQuery_api_version = NULL;
-    }
-    if(keyPairQuery_api_version){
-        keyValuePair_free(keyPairQuery_api_version);
-        keyPairQuery_api_version = NULL;
-    }
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Retrieve license features
-//
-// Retrieves all features for a given license.
-//
-suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version)
-{
-    list_t    *localVarQueryParameters = list_createList();
-    list_t    *localVarHeaderParameters = list_createList();
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-
-    // create the path
-    long sizeOfPath = strlen("/api/v2/SystemService/Licensing/Licenses/{licenseId}/Features")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Licensing/Licenses/{licenseId}/Features");
-
-
-    // Path Params
-    long sizeOfPathParams_licenseId = strlen(licenseId)+3 + strlen("{ licenseId }");
-    if(licenseId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_licenseId = malloc(sizeOfPathParams_licenseId);
-    sprintf(localVarToReplace_licenseId, "{%s}", "licenseId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_licenseId, licenseId);
-    if(licenseId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_licenseId = malloc(sizeOfPathParams_licenseId);
-    sprintf(localVarToReplace_licenseId, "{%s}", "licenseId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_licenseId, licenseId);
-
-
-
-    // header parameters
-    char *keyHeader_x_api_version = NULL;
-    char * valueHeader_x_api_version = 0;
-    keyValuePair_t *keyPairHeader_x_api_version = 0;
-    if (x_api_version) {
-        keyHeader_x_api_version = strdup("x-api-version");
-        valueHeader_x_api_version = strdup((x_api_version));
-        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
-        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
-    }
-
-
-    // query parameters
-    char *keyQuery_tenantId = NULL;
-    char * valueQuery_tenantId = NULL;
-    keyValuePair_t *keyPairQuery_tenantId = 0;
-    if (tenantId)
-    {
-        keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = strdup((tenantId));
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
-        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_api_version = NULL;
-    char * valueQuery_api_version = NULL;
-    keyValuePair_t *keyPairQuery_api_version = 0;
-    if (api_version)
-    {
-        keyQuery_api_version = strdup("api-version");
-        valueQuery_api_version = strdup((api_version));
-        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
-        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
-    }
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=full"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=none"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.streaming=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.streaming=false"); //produces
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=minimal;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=full;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.metadata=none;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.streaming=true;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.streaming=true;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.streaming=false;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;odata.streaming=false;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/json;IEEE754Compatible=false"); //produces
-    list_addElement(localVarHeaderType,"application/json;IEEE754Compatible=true"); //produces
-    list_addElement(localVarHeaderType,"application/xml"); //produces
-    list_addElement(localVarHeaderType,"text/plain"); //produces
-    list_addElement(localVarHeaderType,"application/octet-stream"); //produces
-    list_addElement(localVarHeaderType,"text/json"); //produces
-    list_addElement(localVarHeaderType,"text/xml"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    "GET");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","OK");
-    //}
-    //nonprimitive not container
-    cJSON *LicensingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    suite_license_assignment_dto_list_envelope_t *elementToReturn = suite_license_assignment_dto_list_envelope_parseFromJSON(LicensingAPIlocalVarJSON);
     cJSON_Delete(LicensingAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;

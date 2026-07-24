@@ -846,7 +846,7 @@ end:
 // Get blocks for a blockchain
 //
 blockchain_block_dto_list_envelope_t*
-BlockchainsAPI_getBlockchainBlocksAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, blockchain_block_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version)
+BlockchainsAPI_getBlockchainBlocksAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -902,18 +902,6 @@ BlockchainsAPI_getBlockchainBlocksAsync(apiClient_t *apiClient, char *tenantId, 
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_oDataQueryOptions = NULL;
-    blockchain_block_dto_o_data_query_options_t * valueQuery_oDataQueryOptions ;
-    keyValuePair_t *keyPairQuery_oDataQueryOptions = 0;
-    if (oDataQueryOptions)
-    {
-        keyQuery_oDataQueryOptions = strdup("oDataQueryOptions");
-        valueQuery_oDataQueryOptions = (oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = keyValuePair_create(keyQuery_oDataQueryOptions, &valueQuery_oDataQueryOptions);
-        list_addElement(localVarQueryParameters,keyPairQuery_oDataQueryOptions);
     }
 
     // query parameters
@@ -985,14 +973,6 @@ BlockchainsAPI_getBlockchainBlocksAsync(apiClient_t *apiClient, char *tenantId, 
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
     }
-    if(keyQuery_oDataQueryOptions){
-        free(keyQuery_oDataQueryOptions);
-        keyQuery_oDataQueryOptions = NULL;
-    }
-    if(keyPairQuery_oDataQueryOptions){
-        keyValuePair_free(keyPairQuery_oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = NULL;
-    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1015,7 +995,7 @@ end:
 // Get block count for a blockchain
 //
 int32_envelope_t*
-BlockchainsAPI_getBlockchainBlocksCountAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, blockchain_block_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version)
+BlockchainsAPI_getBlockchainBlocksCountAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1071,18 +1051,6 @@ BlockchainsAPI_getBlockchainBlocksCountAsync(apiClient_t *apiClient, char *tenan
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_oDataQueryOptions = NULL;
-    blockchain_block_dto_o_data_query_options_t * valueQuery_oDataQueryOptions ;
-    keyValuePair_t *keyPairQuery_oDataQueryOptions = 0;
-    if (oDataQueryOptions)
-    {
-        keyQuery_oDataQueryOptions = strdup("oDataQueryOptions");
-        valueQuery_oDataQueryOptions = (oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = keyValuePair_create(keyQuery_oDataQueryOptions, &valueQuery_oDataQueryOptions);
-        list_addElement(localVarQueryParameters,keyPairQuery_oDataQueryOptions);
     }
 
     // query parameters
@@ -1153,14 +1121,6 @@ BlockchainsAPI_getBlockchainBlocksCountAsync(apiClient_t *apiClient, char *tenan
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
-    }
-    if(keyQuery_oDataQueryOptions){
-        free(keyQuery_oDataQueryOptions);
-        keyQuery_oDataQueryOptions = NULL;
-    }
-    if(keyPairQuery_oDataQueryOptions){
-        keyValuePair_free(keyPairQuery_oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = NULL;
     }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
@@ -1345,7 +1305,7 @@ end:
 // Retrieves all blockchains for the specified tenant.
 //
 blockchain_dto_list_envelope_t*
-BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, blockchain_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version)
+BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1384,18 +1344,6 @@ BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, block
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_oDataQueryOptions = NULL;
-    blockchain_dto_o_data_query_options_t * valueQuery_oDataQueryOptions ;
-    keyValuePair_t *keyPairQuery_oDataQueryOptions = 0;
-    if (oDataQueryOptions)
-    {
-        keyQuery_oDataQueryOptions = strdup("oDataQueryOptions");
-        valueQuery_oDataQueryOptions = (oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = keyValuePair_create(keyQuery_oDataQueryOptions, &valueQuery_oDataQueryOptions);
-        list_addElement(localVarQueryParameters,keyPairQuery_oDataQueryOptions);
     }
 
     // query parameters
@@ -1470,14 +1418,6 @@ BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, block
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
     }
-    if(keyQuery_oDataQueryOptions){
-        free(keyQuery_oDataQueryOptions);
-        keyQuery_oDataQueryOptions = NULL;
-    }
-    if(keyPairQuery_oDataQueryOptions){
-        keyValuePair_free(keyPairQuery_oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = NULL;
-    }
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1502,7 +1442,7 @@ end:
 // Returns the count of blockchains for the specified tenant.
 //
 int32_envelope_t*
-BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, blockchain_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version)
+BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1541,18 +1481,6 @@ BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, 
         valueQuery_tenantId = strdup((tenantId));
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-
-    // query parameters
-    char *keyQuery_oDataQueryOptions = NULL;
-    blockchain_dto_o_data_query_options_t * valueQuery_oDataQueryOptions ;
-    keyValuePair_t *keyPairQuery_oDataQueryOptions = 0;
-    if (oDataQueryOptions)
-    {
-        keyQuery_oDataQueryOptions = strdup("oDataQueryOptions");
-        valueQuery_oDataQueryOptions = (oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = keyValuePair_create(keyQuery_oDataQueryOptions, &valueQuery_oDataQueryOptions);
-        list_addElement(localVarQueryParameters,keyPairQuery_oDataQueryOptions);
     }
 
     // query parameters
@@ -1626,14 +1554,6 @@ BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, 
     if(keyPairQuery_tenantId){
         keyValuePair_free(keyPairQuery_tenantId);
         keyPairQuery_tenantId = NULL;
-    }
-    if(keyQuery_oDataQueryOptions){
-        free(keyQuery_oDataQueryOptions);
-        keyQuery_oDataQueryOptions = NULL;
-    }
-    if(keyPairQuery_oDataQueryOptions){
-        keyValuePair_free(keyPairQuery_oDataQueryOptions);
-        keyPairQuery_oDataQueryOptions = NULL;
     }
     if(keyQuery_api_version){
         free(keyQuery_api_version);

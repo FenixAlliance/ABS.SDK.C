@@ -42,8 +42,6 @@ typedef struct contact_update_dto_t {
     char *job_title; // string
     char *country_id; // string
     char *parent_contact_id; // string
-    char *address_line1; // string
-    char *address_line2; // string
     char *postal_code; // string
     char *state_id; // string
     char *city_id; // string
@@ -88,8 +86,6 @@ contact_update_dto_t *contact_update_dto_create(
     char *job_title,
     char *country_id,
     char *parent_contact_id,
-    char *address_line1,
-    char *address_line2,
     char *postal_code,
     char *state_id,
     char *city_id,

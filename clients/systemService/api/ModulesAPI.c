@@ -153,7 +153,7 @@ end:
 
 // Get all modules available to a tenant user.
 //
-module_list_envelope_t*
+suite_module_list_envelope_t*
 ModulesAPI_getAvailableModules(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -232,7 +232,7 @@ ModulesAPI_getAvailableModules(apiClient_t *apiClient, char *tenantId, char *api
     //}
     //nonprimitive not container
     cJSON *ModulesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    module_list_envelope_t *elementToReturn = module_list_envelope_parseFromJSON(ModulesAPIlocalVarJSON);
+    suite_module_list_envelope_t *elementToReturn = suite_module_list_envelope_parseFromJSON(ModulesAPIlocalVarJSON);
     cJSON_Delete(ModulesAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;

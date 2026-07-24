@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**TaskTypesAPI_createTaskTypeAsync**](TaskTypesAPI.md#TaskTypesAPI_createTaskTypeAsync) | **POST** /api/v2/ProjectsService/TaskTypes | Creates a new task type
 [**TaskTypesAPI_deleteTaskTypeAsync**](TaskTypesAPI.md#TaskTypesAPI_deleteTaskTypeAsync) | **DELETE** /api/v2/ProjectsService/TaskTypes/{taskTypeId} | Deletes a task type
 [**TaskTypesAPI_getTaskTypeByIdAsync**](TaskTypesAPI.md#TaskTypesAPI_getTaskTypeByIdAsync) | **GET** /api/v2/ProjectsService/TaskTypes/{taskTypeId} | Gets a task type by ID
+[**TaskTypesAPI_patchTaskTypeAsync**](TaskTypesAPI.md#TaskTypesAPI_patchTaskTypeAsync) | **PATCH** /api/v2/ProjectsService/TaskTypes/{taskTypeId} | Patches a task type
 [**TaskTypesAPI_updateTaskTypeAsync**](TaskTypesAPI.md#TaskTypesAPI_updateTaskTypeAsync) | **PUT** /api/v2/ProjectsService/TaskTypes/{taskTypeId} | Updates a task type
 
 
@@ -102,6 +103,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TaskTypesAPI_patchTaskTypeAsync**
+```c
+// Patches a task type
+//
+// Partially updates the specified task type.
+//
+empty_envelope_t* TaskTypesAPI_patchTaskTypeAsync(apiClient_t *apiClient, char *taskTypeId, char *tenantId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**taskTypeId** | **char \*** |  | 
+**tenantId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

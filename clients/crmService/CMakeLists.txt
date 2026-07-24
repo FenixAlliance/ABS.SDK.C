@@ -61,9 +61,31 @@ set(SRCS
     model/contact_dto.c
     model/contact_dto_envelope.c
     model/contact_dto_list_envelope.c
+    model/contact_email_create_dto.c
+    model/contact_email_dto.c
+    model/contact_email_dto_list_envelope.c
+    model/contact_email_update_dto.c
+    model/contact_profile_create_dto.c
     model/contact_profile_dto.c
     model/contact_profile_dto_list_envelope.c
+    model/contact_profile_update_dto.c
+    model/contact_relation_create_dto.c
+    model/contact_relation_dto.c
+    model/contact_relation_dto_list_envelope.c
+    model/contact_relation_type_create_dto.c
+    model/contact_relation_type_dto.c
+    model/contact_relation_type_dto_list_envelope.c
+    model/contact_relation_type_update_dto.c
+    model/contact_relation_update_dto.c
+    model/contact_source_create_dto.c
+    model/contact_source_dto.c
+    model/contact_source_dto_list_envelope.c
+    model/contact_source_update_dto.c
     model/contact_update_dto.c
+    model/contacts_group_create_dto.c
+    model/contacts_group_dto.c
+    model/contacts_group_dto_list_envelope.c
+    model/contacts_group_update_dto.c
     model/email_dispatch_request.c
     model/empty_envelope.c
     model/envelope.c
@@ -95,6 +117,11 @@ set(SRCS
     model/update_contact_avatar_async_request.c
     model/wallet_dto.c
     model/wallet_dto_envelope.c
+    api/ContactGroupsAPI.c
+    api/ContactProfilesAPI.c
+    api/ContactRelationTypesAPI.c
+    api/ContactRelationsAPI.c
+    api/ContactSourcesAPI.c
     api/ContactsAPI.c
     api/FenixAllianceABSWebAPI.c
     api/OptionsAPI.c
@@ -116,9 +143,31 @@ set(HDRS
     model/contact_dto.h
     model/contact_dto_envelope.h
     model/contact_dto_list_envelope.h
+    model/contact_email_create_dto.h
+    model/contact_email_dto.h
+    model/contact_email_dto_list_envelope.h
+    model/contact_email_update_dto.h
+    model/contact_profile_create_dto.h
     model/contact_profile_dto.h
     model/contact_profile_dto_list_envelope.h
+    model/contact_profile_update_dto.h
+    model/contact_relation_create_dto.h
+    model/contact_relation_dto.h
+    model/contact_relation_dto_list_envelope.h
+    model/contact_relation_type_create_dto.h
+    model/contact_relation_type_dto.h
+    model/contact_relation_type_dto_list_envelope.h
+    model/contact_relation_type_update_dto.h
+    model/contact_relation_update_dto.h
+    model/contact_source_create_dto.h
+    model/contact_source_dto.h
+    model/contact_source_dto_list_envelope.h
+    model/contact_source_update_dto.h
     model/contact_update_dto.h
+    model/contacts_group_create_dto.h
+    model/contacts_group_dto.h
+    model/contacts_group_dto_list_envelope.h
+    model/contacts_group_update_dto.h
     model/email_dispatch_request.h
     model/empty_envelope.h
     model/envelope.h
@@ -150,6 +199,11 @@ set(HDRS
     model/update_contact_avatar_async_request.h
     model/wallet_dto.h
     model/wallet_dto_envelope.h
+    api/ContactGroupsAPI.h
+    api/ContactProfilesAPI.h
+    api/ContactRelationTypesAPI.h
+    api/ContactRelationsAPI.h
+    api/ContactSourcesAPI.h
     api/ContactsAPI.h
     api/FenixAllianceABSWebAPI.h
     api/OptionsAPI.h
@@ -235,6 +289,11 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
+#    unit-tests/manual-ContactGroupsAPI.c
+#    unit-tests/manual-ContactProfilesAPI.c
+#    unit-tests/manual-ContactRelationTypesAPI.c
+#    unit-tests/manual-ContactRelationsAPI.c
+#    unit-tests/manual-ContactSourcesAPI.c
 #    unit-tests/manual-ContactsAPI.c
 #    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-OptionsAPI.c

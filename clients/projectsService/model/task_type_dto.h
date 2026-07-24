@@ -25,6 +25,8 @@ typedef struct task_type_dto_t {
     char *task_category_id; // string
     int display_in_time_tracker; //boolean
     int requires_description; //boolean
+    char *tenant_id; // string
+    char *enrollment_id; // string
 
 } task_type_dto_t;
 
@@ -34,7 +36,9 @@ task_type_dto_t *task_type_dto_create(
     char *title,
     char *task_category_id,
     int display_in_time_tracker,
-    int requires_description
+    int requires_description,
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void task_type_dto_free(task_type_dto_t *task_type_dto);

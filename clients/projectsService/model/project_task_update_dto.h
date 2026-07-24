@@ -19,12 +19,16 @@ typedef struct project_task_update_dto_t project_task_update_dto_t;
 
 
 typedef struct project_task_update_dto_t {
+    char *title; // string
+    char *description; // string
     char *start_date; //date time
     char *due_line; //date time
 
 } project_task_update_dto_t;
 
 project_task_update_dto_t *project_task_update_dto_create(
+    char *title,
+    char *description,
     char *start_date,
     char *due_line
 );

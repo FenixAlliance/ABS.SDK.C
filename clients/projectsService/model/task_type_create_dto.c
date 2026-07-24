@@ -81,7 +81,7 @@ cJSON *task_type_create_dto_convertToJSON(task_type_create_dto_t *task_type_crea
 
     // task_type_create_dto->task_category_id
     if(task_type_create_dto->task_category_id) {
-    if(cJSON_AddStringToObject(item, "taskCategoryID", task_type_create_dto->task_category_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "taskCategoryId", task_type_create_dto->task_category_id) == NULL) {
     goto fail; //String
     }
     }
@@ -142,7 +142,7 @@ task_type_create_dto_t *task_type_create_dto_parseFromJSON(cJSON *task_type_crea
     }
 
     // task_type_create_dto->task_category_id
-    cJSON *task_category_id = cJSON_GetObjectItemCaseSensitive(task_type_create_dtoJSON, "taskCategoryID");
+    cJSON *task_category_id = cJSON_GetObjectItemCaseSensitive(task_type_create_dtoJSON, "taskCategoryId");
     if (task_category_id) { 
     if(!cJSON_IsString(task_category_id) && !cJSON_IsNull(task_category_id))
     {

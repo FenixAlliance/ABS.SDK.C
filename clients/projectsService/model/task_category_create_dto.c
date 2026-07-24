@@ -8,7 +8,8 @@
 task_category_create_dto_t *task_category_create_dto_create(
     char *id,
     char *timestamp,
-    char *title
+    char *title,
+    char *project_id
     ) {
     task_category_create_dto_t *task_category_create_dto_local_var = malloc(sizeof(task_category_create_dto_t));
     if (!task_category_create_dto_local_var) {
@@ -17,6 +18,7 @@ task_category_create_dto_t *task_category_create_dto_create(
     task_category_create_dto_local_var->id = id;
     task_category_create_dto_local_var->timestamp = timestamp;
     task_category_create_dto_local_var->title = title;
+    task_category_create_dto_local_var->project_id = project_id;
 
     return task_category_create_dto_local_var;
 }
@@ -38,6 +40,10 @@ void task_category_create_dto_free(task_category_create_dto_t *task_category_cre
     if (task_category_create_dto->title) {
         free(task_category_create_dto->title);
         task_category_create_dto->title = NULL;
+    }
+    if (task_category_create_dto->project_id) {
+        free(task_category_create_dto->project_id);
+        task_category_create_dto->project_id = NULL;
     }
     free(task_category_create_dto);
 }
@@ -64,6 +70,14 @@ cJSON *task_category_create_dto_convertToJSON(task_category_create_dto_t *task_c
     // task_category_create_dto->title
     if(task_category_create_dto->title) {
     if(cJSON_AddStringToObject(item, "title", task_category_create_dto->title) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // task_category_create_dto->project_id
+    if(task_category_create_dto->project_id) {
+    if(cJSON_AddStringToObject(item, "projectId", task_category_create_dto->project_id) == NULL) {
     goto fail; //String
     }
     }
@@ -107,11 +121,21 @@ task_category_create_dto_t *task_category_create_dto_parseFromJSON(cJSON *task_c
     }
     }
 
+    // task_category_create_dto->project_id
+    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(task_category_create_dtoJSON, "projectId");
+    if (project_id) { 
+    if(!cJSON_IsString(project_id) && !cJSON_IsNull(project_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     task_category_create_dto_local_var = task_category_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL
+        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
+        project_id && !cJSON_IsNull(project_id) ? strdup(project_id->valuestring) : NULL
         );
 
     return task_category_create_dto_local_var;

@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
-**currencyId** | **char \*** |  | [optional] 
+**currencyId** | **char \*** |  | [optional] [default to &#39;USD.USA&#39;]
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
-**currencyId** | **char \*** |  | [optional] 
+**currencyId** | **char \*** |  | [optional] [default to &#39;USD.USA&#39;]
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **account_dto** | **[list_t](account_dto.md) \*** |  | [optional] 

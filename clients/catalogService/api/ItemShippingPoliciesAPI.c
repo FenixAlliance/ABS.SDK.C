@@ -182,7 +182,7 @@ end:
 // Retrieves all shipping policies for a specific item.
 //
 item_shipping_policy_dto_list_envelope_t*
-ItemShippingPoliciesAPI_getItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version)
+ItemShippingPoliciesAPI_getCatalogItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -347,7 +347,7 @@ end:
 // Retrieves a specific shipping policy for an item.
 //
 item_shipping_policy_dto_envelope_t*
-ItemShippingPoliciesAPI_getItemShippingPolicyByIdAsync(apiClient_t *apiClient, char *itemShippingPolicyId, char *tenantId, char *itemId, char *api_version, char *x_api_version)
+ItemShippingPoliciesAPI_getCatalogItemShippingPolicyByIdAsync(apiClient_t *apiClient, char *itemShippingPolicyId, char *tenantId, char *itemId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();

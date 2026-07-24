@@ -6,35 +6,23 @@
 
 
 journal_entry_update_dto_t *journal_entry_update_dto_create(
-    int group,
-    int opening,
+    char *fiscal_period_id,
+    char *transaction_currency_id,
     char *description,
-    char *date,
-    double debit,
-    double credit,
-    char *journal_id,
-    char *currency_id,
-    char *invoice_code,
-    char *debit_account_id,
-    char *credit_account_id,
-    char *parent_journal_entry_id
+    char *source_document_type,
+    char *source_document_id,
+    int is_opening_balance
     ) {
     journal_entry_update_dto_t *journal_entry_update_dto_local_var = malloc(sizeof(journal_entry_update_dto_t));
     if (!journal_entry_update_dto_local_var) {
         return NULL;
     }
-    journal_entry_update_dto_local_var->group = group;
-    journal_entry_update_dto_local_var->opening = opening;
+    journal_entry_update_dto_local_var->fiscal_period_id = fiscal_period_id;
+    journal_entry_update_dto_local_var->transaction_currency_id = transaction_currency_id;
     journal_entry_update_dto_local_var->description = description;
-    journal_entry_update_dto_local_var->date = date;
-    journal_entry_update_dto_local_var->debit = debit;
-    journal_entry_update_dto_local_var->credit = credit;
-    journal_entry_update_dto_local_var->journal_id = journal_id;
-    journal_entry_update_dto_local_var->currency_id = currency_id;
-    journal_entry_update_dto_local_var->invoice_code = invoice_code;
-    journal_entry_update_dto_local_var->debit_account_id = debit_account_id;
-    journal_entry_update_dto_local_var->credit_account_id = credit_account_id;
-    journal_entry_update_dto_local_var->parent_journal_entry_id = parent_journal_entry_id;
+    journal_entry_update_dto_local_var->source_document_type = source_document_type;
+    journal_entry_update_dto_local_var->source_document_id = source_document_id;
+    journal_entry_update_dto_local_var->is_opening_balance = is_opening_balance;
 
     return journal_entry_update_dto_local_var;
 }
@@ -45,37 +33,25 @@ void journal_entry_update_dto_free(journal_entry_update_dto_t *journal_entry_upd
         return ;
     }
     listEntry_t *listEntry;
+    if (journal_entry_update_dto->fiscal_period_id) {
+        free(journal_entry_update_dto->fiscal_period_id);
+        journal_entry_update_dto->fiscal_period_id = NULL;
+    }
+    if (journal_entry_update_dto->transaction_currency_id) {
+        free(journal_entry_update_dto->transaction_currency_id);
+        journal_entry_update_dto->transaction_currency_id = NULL;
+    }
     if (journal_entry_update_dto->description) {
         free(journal_entry_update_dto->description);
         journal_entry_update_dto->description = NULL;
     }
-    if (journal_entry_update_dto->date) {
-        free(journal_entry_update_dto->date);
-        journal_entry_update_dto->date = NULL;
+    if (journal_entry_update_dto->source_document_type) {
+        free(journal_entry_update_dto->source_document_type);
+        journal_entry_update_dto->source_document_type = NULL;
     }
-    if (journal_entry_update_dto->journal_id) {
-        free(journal_entry_update_dto->journal_id);
-        journal_entry_update_dto->journal_id = NULL;
-    }
-    if (journal_entry_update_dto->currency_id) {
-        free(journal_entry_update_dto->currency_id);
-        journal_entry_update_dto->currency_id = NULL;
-    }
-    if (journal_entry_update_dto->invoice_code) {
-        free(journal_entry_update_dto->invoice_code);
-        journal_entry_update_dto->invoice_code = NULL;
-    }
-    if (journal_entry_update_dto->debit_account_id) {
-        free(journal_entry_update_dto->debit_account_id);
-        journal_entry_update_dto->debit_account_id = NULL;
-    }
-    if (journal_entry_update_dto->credit_account_id) {
-        free(journal_entry_update_dto->credit_account_id);
-        journal_entry_update_dto->credit_account_id = NULL;
-    }
-    if (journal_entry_update_dto->parent_journal_entry_id) {
-        free(journal_entry_update_dto->parent_journal_entry_id);
-        journal_entry_update_dto->parent_journal_entry_id = NULL;
+    if (journal_entry_update_dto->source_document_id) {
+        free(journal_entry_update_dto->source_document_id);
+        journal_entry_update_dto->source_document_id = NULL;
     }
     free(journal_entry_update_dto);
 }
@@ -83,19 +59,21 @@ void journal_entry_update_dto_free(journal_entry_update_dto_t *journal_entry_upd
 cJSON *journal_entry_update_dto_convertToJSON(journal_entry_update_dto_t *journal_entry_update_dto) {
     cJSON *item = cJSON_CreateObject();
 
-    // journal_entry_update_dto->group
-    if(journal_entry_update_dto->group) {
-    if(cJSON_AddBoolToObject(item, "group", journal_entry_update_dto->group) == NULL) {
-    goto fail; //Bool
+    // journal_entry_update_dto->fiscal_period_id
+    if (!journal_entry_update_dto->fiscal_period_id) {
+        goto fail;
     }
+    if(cJSON_AddStringToObject(item, "fiscalPeriodId", journal_entry_update_dto->fiscal_period_id) == NULL) {
+    goto fail; //String
     }
 
 
-    // journal_entry_update_dto->opening
-    if(journal_entry_update_dto->opening) {
-    if(cJSON_AddBoolToObject(item, "opening", journal_entry_update_dto->opening) == NULL) {
-    goto fail; //Bool
+    // journal_entry_update_dto->transaction_currency_id
+    if (!journal_entry_update_dto->transaction_currency_id) {
+        goto fail;
     }
+    if(cJSON_AddStringToObject(item, "transactionCurrencyId", journal_entry_update_dto->transaction_currency_id) == NULL) {
+    goto fail; //String
     }
 
 
@@ -108,79 +86,26 @@ cJSON *journal_entry_update_dto_convertToJSON(journal_entry_update_dto_t *journa
     }
 
 
-    // journal_entry_update_dto->date
-    if (!journal_entry_update_dto->date) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "date", journal_entry_update_dto->date) == NULL) {
-    goto fail; //Date-Time
-    }
-
-
-    // journal_entry_update_dto->debit
-    if(journal_entry_update_dto->debit) {
-    if(cJSON_AddNumberToObject(item, "debit", journal_entry_update_dto->debit) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // journal_entry_update_dto->credit
-    if(journal_entry_update_dto->credit) {
-    if(cJSON_AddNumberToObject(item, "credit", journal_entry_update_dto->credit) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // journal_entry_update_dto->journal_id
-    if (!journal_entry_update_dto->journal_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "journalId", journal_entry_update_dto->journal_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // journal_entry_update_dto->currency_id
-    if (!journal_entry_update_dto->currency_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "currencyId", journal_entry_update_dto->currency_id) == NULL) {
-    goto fail; //String
-    }
-
-
-    // journal_entry_update_dto->invoice_code
-    if(journal_entry_update_dto->invoice_code) {
-    if(cJSON_AddStringToObject(item, "invoiceCode", journal_entry_update_dto->invoice_code) == NULL) {
+    // journal_entry_update_dto->source_document_type
+    if(journal_entry_update_dto->source_document_type) {
+    if(cJSON_AddStringToObject(item, "sourceDocumentType", journal_entry_update_dto->source_document_type) == NULL) {
     goto fail; //String
     }
     }
 
 
-    // journal_entry_update_dto->debit_account_id
-    if (!journal_entry_update_dto->debit_account_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "debitAccountId", journal_entry_update_dto->debit_account_id) == NULL) {
+    // journal_entry_update_dto->source_document_id
+    if(journal_entry_update_dto->source_document_id) {
+    if(cJSON_AddStringToObject(item, "sourceDocumentId", journal_entry_update_dto->source_document_id) == NULL) {
     goto fail; //String
     }
-
-
-    // journal_entry_update_dto->credit_account_id
-    if (!journal_entry_update_dto->credit_account_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "creditAccountId", journal_entry_update_dto->credit_account_id) == NULL) {
-    goto fail; //String
     }
 
 
-    // journal_entry_update_dto->parent_journal_entry_id
-    if(journal_entry_update_dto->parent_journal_entry_id) {
-    if(cJSON_AddStringToObject(item, "parentJournalEntryId", journal_entry_update_dto->parent_journal_entry_id) == NULL) {
-    goto fail; //String
+    // journal_entry_update_dto->is_opening_balance
+    if(journal_entry_update_dto->is_opening_balance) {
+    if(cJSON_AddBoolToObject(item, "isOpeningBalance", journal_entry_update_dto->is_opening_balance) == NULL) {
+    goto fail; //Bool
     }
     }
 
@@ -196,22 +121,28 @@ journal_entry_update_dto_t *journal_entry_update_dto_parseFromJSON(cJSON *journa
 
     journal_entry_update_dto_t *journal_entry_update_dto_local_var = NULL;
 
-    // journal_entry_update_dto->group
-    cJSON *group = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "group");
-    if (group) { 
-    if(!cJSON_IsBool(group))
-    {
-    goto end; //Bool
-    }
+    // journal_entry_update_dto->fiscal_period_id
+    cJSON *fiscal_period_id = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "fiscalPeriodId");
+    if (!fiscal_period_id) {
+        goto end;
     }
 
-    // journal_entry_update_dto->opening
-    cJSON *opening = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "opening");
-    if (opening) { 
-    if(!cJSON_IsBool(opening))
+    
+    if(!cJSON_IsString(fiscal_period_id))
     {
-    goto end; //Bool
+    goto end; //String
     }
+
+    // journal_entry_update_dto->transaction_currency_id
+    cJSON *transaction_currency_id = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "transactionCurrencyId");
+    if (!transaction_currency_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(transaction_currency_id))
+    {
+    goto end; //String
     }
 
     // journal_entry_update_dto->description
@@ -226,116 +157,41 @@ journal_entry_update_dto_t *journal_entry_update_dto_parseFromJSON(cJSON *journa
     goto end; //String
     }
 
-    // journal_entry_update_dto->date
-    cJSON *date = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "date");
-    if (!date) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(date) && !cJSON_IsNull(date))
-    {
-    goto end; //DateTime
-    }
-
-    // journal_entry_update_dto->debit
-    cJSON *debit = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "debit");
-    if (debit) { 
-    if(!cJSON_IsNumber(debit))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // journal_entry_update_dto->credit
-    cJSON *credit = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "credit");
-    if (credit) { 
-    if(!cJSON_IsNumber(credit))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // journal_entry_update_dto->journal_id
-    cJSON *journal_id = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "journalId");
-    if (!journal_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(journal_id))
-    {
-    goto end; //String
-    }
-
-    // journal_entry_update_dto->currency_id
-    cJSON *currency_id = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "currencyId");
-    if (!currency_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(currency_id))
-    {
-    goto end; //String
-    }
-
-    // journal_entry_update_dto->invoice_code
-    cJSON *invoice_code = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "invoiceCode");
-    if (invoice_code) { 
-    if(!cJSON_IsString(invoice_code) && !cJSON_IsNull(invoice_code))
+    // journal_entry_update_dto->source_document_type
+    cJSON *source_document_type = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "sourceDocumentType");
+    if (source_document_type) { 
+    if(!cJSON_IsString(source_document_type) && !cJSON_IsNull(source_document_type))
     {
     goto end; //String
     }
     }
 
-    // journal_entry_update_dto->debit_account_id
-    cJSON *debit_account_id = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "debitAccountId");
-    if (!debit_account_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(debit_account_id))
+    // journal_entry_update_dto->source_document_id
+    cJSON *source_document_id = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "sourceDocumentId");
+    if (source_document_id) { 
+    if(!cJSON_IsString(source_document_id) && !cJSON_IsNull(source_document_id))
     {
     goto end; //String
     }
-
-    // journal_entry_update_dto->credit_account_id
-    cJSON *credit_account_id = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "creditAccountId");
-    if (!credit_account_id) {
-        goto end;
     }
 
-    
-    if(!cJSON_IsString(credit_account_id))
+    // journal_entry_update_dto->is_opening_balance
+    cJSON *is_opening_balance = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "isOpeningBalance");
+    if (is_opening_balance) { 
+    if(!cJSON_IsBool(is_opening_balance))
     {
-    goto end; //String
-    }
-
-    // journal_entry_update_dto->parent_journal_entry_id
-    cJSON *parent_journal_entry_id = cJSON_GetObjectItemCaseSensitive(journal_entry_update_dtoJSON, "parentJournalEntryId");
-    if (parent_journal_entry_id) { 
-    if(!cJSON_IsString(parent_journal_entry_id) && !cJSON_IsNull(parent_journal_entry_id))
-    {
-    goto end; //String
+    goto end; //Bool
     }
     }
 
 
     journal_entry_update_dto_local_var = journal_entry_update_dto_create (
-        group ? group->valueint : 0,
-        opening ? opening->valueint : 0,
+        strdup(fiscal_period_id->valuestring),
+        strdup(transaction_currency_id->valuestring),
         strdup(description->valuestring),
-        strdup(date->valuestring),
-        debit ? debit->valuedouble : 0,
-        credit ? credit->valuedouble : 0,
-        strdup(journal_id->valuestring),
-        strdup(currency_id->valuestring),
-        invoice_code && !cJSON_IsNull(invoice_code) ? strdup(invoice_code->valuestring) : NULL,
-        strdup(debit_account_id->valuestring),
-        strdup(credit_account_id->valuestring),
-        parent_journal_entry_id && !cJSON_IsNull(parent_journal_entry_id) ? strdup(parent_journal_entry_id->valuestring) : NULL
+        source_document_type && !cJSON_IsNull(source_document_type) ? strdup(source_document_type->valuestring) : NULL,
+        source_document_id && !cJSON_IsNull(source_document_id) ? strdup(source_document_id->valuestring) : NULL,
+        is_opening_balance ? is_opening_balance->valueint : 0
         );
 
     return journal_entry_update_dto_local_var;

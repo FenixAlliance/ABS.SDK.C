@@ -70,6 +70,7 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
+*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -83,18 +84,21 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_resendConfirmationEmailPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_resendConfirmationEmailPost) | **POST** /resendConfirmationEmail | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_resetPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_resetPasswordPost) | **POST** /resetPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_versionGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_versionGet) | **GET** /version | 
+*WalletsAPI* | [**WalletsAPI_createLocationForWalletAsync**](docs/WalletsAPI.md#WalletsAPI_createLocationForWalletAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Locations | Create Wallet Location
 *WalletsAPI* | [**WalletsAPI_createWalletBankAccountAsync**](docs/WalletsAPI.md#WalletsAPI_createWalletBankAccountAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts | Create Wallet Bank Account
-*WalletsAPI* | [**WalletsAPI_createWalletLocationAsync**](docs/WalletsAPI.md#WalletsAPI_createWalletLocationAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Locations | Create Wallet Location
 *WalletsAPI* | [**WalletsAPI_createWalletPaymentAsync**](docs/WalletsAPI.md#WalletsAPI_createWalletPaymentAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Payments | Create Wallet Payment
 *WalletsAPI* | [**WalletsAPI_createWalletTokenAsync**](docs/WalletsAPI.md#WalletsAPI_createWalletTokenAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Tokens | Create Wallet Token
 *WalletsAPI* | [**WalletsAPI_createWalletWithdrawRequestAsync**](docs/WalletsAPI.md#WalletsAPI_createWalletWithdrawRequestAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Withdraws | Create Wallet Withdraw Request
+*WalletsAPI* | [**WalletsAPI_deleteLocationForWalletAsync**](docs/WalletsAPI.md#WalletsAPI_deleteLocationForWalletAsync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Delete Wallet Location
 *WalletsAPI* | [**WalletsAPI_deleteWalletBankAccountAsync**](docs/WalletsAPI.md#WalletsAPI_deleteWalletBankAccountAsync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Delete Wallet Bank Account
-*WalletsAPI* | [**WalletsAPI_deleteWalletLocationAsync**](docs/WalletsAPI.md#WalletsAPI_deleteWalletLocationAsync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Delete Wallet Location
 *WalletsAPI* | [**WalletsAPI_deleteWalletTokenAsync**](docs/WalletsAPI.md#WalletsAPI_deleteWalletTokenAsync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Delete Wallet Token
 *WalletsAPI* | [**WalletsAPI_getIncomingPaymentsAsync**](docs/WalletsAPI.md#WalletsAPI_getIncomingPaymentsAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Incoming | Get Incoming Payments
 *WalletsAPI* | [**WalletsAPI_getIncomingPaymentsCountAsync**](docs/WalletsAPI.md#WalletsAPI_getIncomingPaymentsCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Incoming/Count | Get Incoming Payments Count
 *WalletsAPI* | [**WalletsAPI_getIncomingWalletInvoicesAsync**](docs/WalletsAPI.md#WalletsAPI_getIncomingWalletInvoicesAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Incoming | Get Incoming Wallet Invoices
 *WalletsAPI* | [**WalletsAPI_getIncomingWalletInvoicesCountAsync**](docs/WalletsAPI.md#WalletsAPI_getIncomingWalletInvoicesCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Incoming/Count | Get Incoming Wallet Invoices Count
+*WalletsAPI* | [**WalletsAPI_getLocationForWalletAsync**](docs/WalletsAPI.md#WalletsAPI_getLocationForWalletAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Get Wallet Location
+*WalletsAPI* | [**WalletsAPI_getLocationsForWalletAsync**](docs/WalletsAPI.md#WalletsAPI_getLocationsForWalletAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations | Get Wallet Locations
+*WalletsAPI* | [**WalletsAPI_getLocationsForWalletCountAsync**](docs/WalletsAPI.md#WalletsAPI_getLocationsForWalletCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/Count | Get Wallet Locations Count
 *WalletsAPI* | [**WalletsAPI_getOutgoingPaymentsAsync**](docs/WalletsAPI.md#WalletsAPI_getOutgoingPaymentsAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Outgoing | Get Outgoing Payments
 *WalletsAPI* | [**WalletsAPI_getOutgoingPaymentsCountAsync**](docs/WalletsAPI.md#WalletsAPI_getOutgoingPaymentsCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Outgoing/Count | Get Outgoing Payments Count
 *WalletsAPI* | [**WalletsAPI_getOutgoingWalletInvoicesAsync**](docs/WalletsAPI.md#WalletsAPI_getOutgoingWalletInvoicesAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Outgoing | Get Outgoing Wallet Invoices
@@ -108,9 +112,6 @@ Category | Method | HTTP request | Description
 *WalletsAPI* | [**WalletsAPI_getWalletExtendedOrdersAsync**](docs/WalletsAPI.md#WalletsAPI_getWalletExtendedOrdersAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Orders/Extended | Get Wallet Extended Orders
 *WalletsAPI* | [**WalletsAPI_getWalletInvoicesAsync**](docs/WalletsAPI.md#WalletsAPI_getWalletInvoicesAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices | Get Wallet Invoices
 *WalletsAPI* | [**WalletsAPI_getWalletInvoicesCountAsync**](docs/WalletsAPI.md#WalletsAPI_getWalletInvoicesCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Count | Get Wallet Invoices Count
-*WalletsAPI* | [**WalletsAPI_getWalletLocationAsync**](docs/WalletsAPI.md#WalletsAPI_getWalletLocationAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Get Wallet Location
-*WalletsAPI* | [**WalletsAPI_getWalletLocationsAsync**](docs/WalletsAPI.md#WalletsAPI_getWalletLocationsAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations | Get Wallet Locations
-*WalletsAPI* | [**WalletsAPI_getWalletLocationsCountAsync**](docs/WalletsAPI.md#WalletsAPI_getWalletLocationsCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/Count | Get Wallet Locations Count
 *WalletsAPI* | [**WalletsAPI_getWalletOrdersAsync**](docs/WalletsAPI.md#WalletsAPI_getWalletOrdersAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Orders | Get Wallet Orders
 *WalletsAPI* | [**WalletsAPI_getWalletOrdersCountAsync**](docs/WalletsAPI.md#WalletsAPI_getWalletOrdersCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Orders/Count | Get Wallet Orders Count
 *WalletsAPI* | [**WalletsAPI_getWalletPaymentsAsync**](docs/WalletsAPI.md#WalletsAPI_getWalletPaymentsAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments | Get Wallet Payments
@@ -128,8 +129,8 @@ Category | Method | HTTP request | Description
 *WalletsAPI* | [**WalletsAPI_getWalletWithdrawsCountAsync**](docs/WalletsAPI.md#WalletsAPI_getWalletWithdrawsCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Withdraws/Count | Get Wallet Withdraws Count
 *WalletsAPI* | [**WalletsAPI_patchWalletBankAccountAsync**](docs/WalletsAPI.md#WalletsAPI_patchWalletBankAccountAsync) | **PATCH** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Patch Wallet Bank Account
 *WalletsAPI* | [**WalletsAPI_patchWalletTokenAsync**](docs/WalletsAPI.md#WalletsAPI_patchWalletTokenAsync) | **PATCH** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Patch Wallet Token
+*WalletsAPI* | [**WalletsAPI_updateLocationForWalletAsync**](docs/WalletsAPI.md#WalletsAPI_updateLocationForWalletAsync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Update Wallet Location
 *WalletsAPI* | [**WalletsAPI_updateWalletBankAccountAsync**](docs/WalletsAPI.md#WalletsAPI_updateWalletBankAccountAsync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Update Wallet Bank Account
-*WalletsAPI* | [**WalletsAPI_updateWalletLocationAsync**](docs/WalletsAPI.md#WalletsAPI_updateWalletLocationAsync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Update Wallet Location
 *WalletsAPI* | [**WalletsAPI_updateWalletTokenAsync**](docs/WalletsAPI.md#WalletsAPI_updateWalletTokenAsync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Update Wallet Token
 
 

@@ -70,6 +70,14 @@ suite_license_feature_dto_list_envelope_t*
 TenantsAPI_getAccessibleFeaturesAsync(apiClient_t *apiClient, char *tenantId, char *enrollmentId, char *api_version, char *x_api_version);
 
 
+// Get a tenant's default cart
+//
+// Get a tenant's default cart
+//
+cart_dto_envelope_t*
+TenantsAPI_getCartForTenantAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
 // Get the user's current default tenant
 //
 // Get the user's current default tenant
@@ -140,14 +148,6 @@ TenantsAPI_getTenantAsync(apiClient_t *apiClient, char *tenantId, char *api_vers
 //
 empty_envelope_t*
 TenantsAPI_getTenantAvatarAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
-
-
-// Get a tenant's default cart
-//
-// Get a tenant's default cart
-//
-cart_dto_envelope_t*
-TenantsAPI_getTenantCartAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get a specific tenant enrollment
@@ -278,20 +278,20 @@ empty_envelope_t*
 TenantsAPI_selectTenantAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
-// Update a tenant's avatar
-//
-// Update a tenant's avatar
-//
-empty_envelope_t*
-TenantsAPI_updateAvatarAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, binary_t* avatar);
-
-
 // Update a tenant's profile
 //
 // Update a tenant's profile
 //
 empty_envelope_t*
 TenantsAPI_updateTenantAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_update_dto_t *tenant_update_dto);
+
+
+// Update a tenant's avatar
+//
+// Update a tenant's avatar
+//
+empty_envelope_t*
+TenantsAPI_updateTenantAvatarAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, binary_t* avatar);
 
 
 // Validate the access to a specific feature for a specific enrollment

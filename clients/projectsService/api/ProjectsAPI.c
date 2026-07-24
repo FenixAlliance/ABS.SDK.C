@@ -259,7 +259,7 @@ end:
 // Creates a new task for the specified project.
 //
 empty_envelope_t*
-ProjectsAPI_createProjectTaskAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_task_create_dto_t *project_task_create_dto)
+ProjectsAPI_createTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_task_create_dto_t *project_task_create_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -635,7 +635,7 @@ end:
 // Deletes the specified task from a project.
 //
 empty_envelope_t*
-ProjectsAPI_deleteProjectTaskAsync(apiClient_t *apiClient, char *tenantId, char *projectId, char *projectTaskId)
+ProjectsAPI_deleteTaskForProjectAsync(apiClient_t *apiClient, char *tenantId, char *projectId, char *projectTaskId)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1218,348 +1218,6 @@ end:
 
 }
 
-// Retrieves project tasks
-//
-// Gets all tasks for a specific project with OData support.
-//
-project_task_dto_list_envelope_t*
-ProjectsAPI_getProjectTasksAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
-{
-    list_t    *localVarQueryParameters = list_createList();
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-
-    // create the path
-    long sizeOfPath = strlen("/api/v2/ProjectsService/Projects/{projectId}/Tasks")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/api/v2/ProjectsService/Projects/{projectId}/Tasks");
-
-
-    // Path Params
-    long sizeOfPathParams_projectId = strlen(projectId)+3 + strlen("{ projectId }");
-    if(projectId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
-    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
-    if(projectId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
-    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
-
-
-
-    // query parameters
-    char *keyQuery_tenantId = NULL;
-    char * valueQuery_tenantId = NULL;
-    keyValuePair_t *keyPairQuery_tenantId = 0;
-    if (tenantId)
-    {
-        keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = strdup((tenantId));
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
-        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    list_addElement(localVarHeaderType,"application/xml"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    "GET");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","OK");
-    //}
-    //nonprimitive not container
-    cJSON *ProjectsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    project_task_dto_list_envelope_t *elementToReturn = project_task_dto_list_envelope_parseFromJSON(ProjectsAPIlocalVarJSON);
-    cJSON_Delete(ProjectsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
-    }
-
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    list_freeList(localVarQueryParameters);
-    
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    free(localVarToReplace_projectId);
-    if(keyQuery_tenantId){
-        free(keyQuery_tenantId);
-        keyQuery_tenantId = NULL;
-    }
-    if(valueQuery_tenantId){
-        free(valueQuery_tenantId);
-        valueQuery_tenantId = NULL;
-    }
-    if(keyPairQuery_tenantId){
-        keyValuePair_free(keyPairQuery_tenantId);
-        keyPairQuery_tenantId = NULL;
-    }
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Counts project tasks
-//
-// Gets the count of tasks for a specific project.
-//
-int32_envelope_t*
-ProjectsAPI_getProjectTasksCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
-{
-    list_t    *localVarQueryParameters = list_createList();
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-
-    // create the path
-    long sizeOfPath = strlen("/api/v2/ProjectsService/Projects/{projectId}/Tasks/Count")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/api/v2/ProjectsService/Projects/{projectId}/Tasks/Count");
-
-
-    // Path Params
-    long sizeOfPathParams_projectId = strlen(projectId)+3 + strlen("{ projectId }");
-    if(projectId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
-    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
-    if(projectId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
-    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
-
-
-
-    // query parameters
-    char *keyQuery_tenantId = NULL;
-    char * valueQuery_tenantId = NULL;
-    keyValuePair_t *keyPairQuery_tenantId = 0;
-    if (tenantId)
-    {
-        keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = strdup((tenantId));
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
-        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    list_addElement(localVarHeaderType,"application/xml"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    "GET");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","OK");
-    //}
-    //nonprimitive not container
-    cJSON *ProjectsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    int32_envelope_t *elementToReturn = int32_envelope_parseFromJSON(ProjectsAPIlocalVarJSON);
-    cJSON_Delete(ProjectsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
-    }
-
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    list_freeList(localVarQueryParameters);
-    
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    free(localVarToReplace_projectId);
-    if(keyQuery_tenantId){
-        free(keyQuery_tenantId);
-        keyQuery_tenantId = NULL;
-    }
-    if(valueQuery_tenantId){
-        free(valueQuery_tenantId);
-        valueQuery_tenantId = NULL;
-    }
-    if(keyPairQuery_tenantId){
-        keyValuePair_free(keyPairQuery_tenantId);
-        keyPairQuery_tenantId = NULL;
-    }
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Retrieves project time logs
-//
-// Gets all time log entries for a specific project with OData support.
-//
-project_time_log_dto_list_envelope_t*
-ProjectsAPI_getProjectTimeLogsAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
-{
-    list_t    *localVarQueryParameters = list_createList();
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-
-    // create the path
-    long sizeOfPath = strlen("/api/v2/ProjectsService/Projects/{projectId}/TimeLogs")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/api/v2/ProjectsService/Projects/{projectId}/TimeLogs");
-
-
-    // Path Params
-    long sizeOfPathParams_projectId = strlen(projectId)+3 + strlen("{ projectId }");
-    if(projectId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
-    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
-    if(projectId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
-    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
-
-
-
-    // query parameters
-    char *keyQuery_tenantId = NULL;
-    char * valueQuery_tenantId = NULL;
-    keyValuePair_t *keyPairQuery_tenantId = 0;
-    if (tenantId)
-    {
-        keyQuery_tenantId = strdup("tenantId");
-        valueQuery_tenantId = strdup((tenantId));
-        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
-        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
-    }
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    list_addElement(localVarHeaderType,"application/xml"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    "GET");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","OK");
-    //}
-    //nonprimitive not container
-    cJSON *ProjectsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    project_time_log_dto_list_envelope_t *elementToReturn = project_time_log_dto_list_envelope_parseFromJSON(ProjectsAPIlocalVarJSON);
-    cJSON_Delete(ProjectsAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
-    }
-
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    list_freeList(localVarQueryParameters);
-    
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    free(localVarToReplace_projectId);
-    if(keyQuery_tenantId){
-        free(keyQuery_tenantId);
-        keyQuery_tenantId = NULL;
-    }
-    if(valueQuery_tenantId){
-        free(valueQuery_tenantId);
-        valueQuery_tenantId = NULL;
-    }
-    if(keyPairQuery_tenantId){
-        keyValuePair_free(keyPairQuery_tenantId);
-        keyPairQuery_tenantId = NULL;
-    }
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
 // Counts project time logs
 //
 // Gets the count of time log entries for a specific project.
@@ -1866,6 +1524,858 @@ end:
 
 }
 
+// Retrieves project tasks
+//
+// Gets all tasks for a specific project with OData support.
+//
+project_task_dto_list_envelope_t*
+ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/ProjectsService/Projects/{projectId}/Tasks")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/ProjectsService/Projects/{projectId}/Tasks");
+
+
+    // Path Params
+    long sizeOfPathParams_projectId = strlen(projectId)+3 + strlen("{ projectId }");
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *ProjectsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    project_task_dto_list_envelope_t *elementToReturn = project_task_dto_list_envelope_parseFromJSON(ProjectsAPIlocalVarJSON);
+    cJSON_Delete(ProjectsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_projectId);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Counts project tasks
+//
+// Gets the count of tasks for a specific project.
+//
+int32_envelope_t*
+ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/ProjectsService/Projects/{projectId}/Tasks/Count")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/ProjectsService/Projects/{projectId}/Tasks/Count");
+
+
+    // Path Params
+    long sizeOfPathParams_projectId = strlen(projectId)+3 + strlen("{ projectId }");
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *ProjectsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    int32_envelope_t *elementToReturn = int32_envelope_parseFromJSON(ProjectsAPIlocalVarJSON);
+    cJSON_Delete(ProjectsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_projectId);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Retrieves project time logs
+//
+// Gets all time log entries for a specific project with OData support.
+//
+project_time_log_dto_list_envelope_t*
+ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/ProjectsService/Projects/{projectId}/TimeLogs")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/ProjectsService/Projects/{projectId}/TimeLogs");
+
+
+    // Path Params
+    long sizeOfPathParams_projectId = strlen(projectId)+3 + strlen("{ projectId }");
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *ProjectsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    project_time_log_dto_list_envelope_t *elementToReturn = project_time_log_dto_list_envelope_parseFromJSON(ProjectsAPIlocalVarJSON);
+    cJSON_Delete(ProjectsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_projectId);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Patches a project
+//
+// Partially updates the specified project.
+//
+empty_envelope_t*
+ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, list_t *operation)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/ProjectsService/Projects/{projectId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/ProjectsService/Projects/{projectId}");
+
+
+    // Path Params
+    long sizeOfPathParams_projectId = strlen(projectId)+3 + strlen("{ projectId }");
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *ProjectsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(ProjectsAPIlocalVarJSON);
+    cJSON_Delete(ProjectsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_projectId);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Patches a project period
+//
+// Partially updates the specified period for a project.
+//
+empty_envelope_t*
+ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, char *projectPeriodId, char *tenantId, list_t *operation)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/ProjectsService/Projects/{projectId}/Periods/{projectPeriodId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/ProjectsService/Projects/{projectId}/Periods/{projectPeriodId}");
+
+
+    // Path Params
+    long sizeOfPathParams_projectId = strlen(projectId)+3 + strlen(projectPeriodId)+3 + strlen("{ projectId }");
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+
+    // Path Params
+    long sizeOfPathParams_projectPeriodId = strlen(projectId)+3 + strlen(projectPeriodId)+3 + strlen("{ projectPeriodId }");
+    if(projectPeriodId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectPeriodId = malloc(sizeOfPathParams_projectPeriodId);
+    sprintf(localVarToReplace_projectPeriodId, "{%s}", "projectPeriodId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectPeriodId, projectPeriodId);
+    if(projectPeriodId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectPeriodId = malloc(sizeOfPathParams_projectPeriodId);
+    sprintf(localVarToReplace_projectPeriodId, "{%s}", "projectPeriodId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectPeriodId, projectPeriodId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *ProjectsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(ProjectsAPIlocalVarJSON);
+    cJSON_Delete(ProjectsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_projectId);
+    free(localVarToReplace_projectPeriodId);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Patches a project task
+//
+// Partially updates the specified task in a project.
+//
+empty_envelope_t*
+ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, list_t *operation)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId}")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/ProjectsService/Projects/{projectId}/Tasks/{projectTaskId}");
+
+
+    // Path Params
+    long sizeOfPathParams_projectId = strlen(projectId)+3 + strlen(projectTaskId)+3 + strlen("{ projectId }");
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+    if(projectId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectId = malloc(sizeOfPathParams_projectId);
+    sprintf(localVarToReplace_projectId, "{%s}", "projectId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectId, projectId);
+
+    // Path Params
+    long sizeOfPathParams_projectTaskId = strlen(projectId)+3 + strlen(projectTaskId)+3 + strlen("{ projectTaskId }");
+    if(projectTaskId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectTaskId = malloc(sizeOfPathParams_projectTaskId);
+    sprintf(localVarToReplace_projectTaskId, "{%s}", "projectTaskId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectTaskId, projectTaskId);
+    if(projectTaskId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_projectTaskId = malloc(sizeOfPathParams_projectTaskId);
+    sprintf(localVarToReplace_projectTaskId, "{%s}", "projectTaskId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_projectTaskId, projectTaskId);
+
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_operation = NULL;
+    cJSON *localVarItemJSON_operation = NULL;
+    cJSON *localVarSingleItemJSON_operation = NULL;
+    if (operation != NULL)
+    {
+        localVarItemJSON_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
+        if (localVarSingleItemJSON_operation == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *operationBodyListEntry;
+    list_ForEach(operationBodyListEntry, operation)
+    {
+        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
+        if(localVar_operation == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *ProjectsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(ProjectsAPIlocalVarJSON);
+    cJSON_Delete(ProjectsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_projectId);
+    free(localVarToReplace_projectTaskId);
+    if (localVarItemJSON_operation) {
+        cJSON_Delete(localVarItemJSON_operation);
+        localVarItemJSON_operation = NULL;
+    }
+    if (localVarSingleItemJSON_operation) {
+        cJSON_Delete(localVarSingleItemJSON_operation);
+        localVarSingleItemJSON_operation = NULL;
+    }
+    if (localVar_operation) {
+        cJSON_Delete(localVar_operation);
+        localVar_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Updates a project
 //
 // Updates the specified project.
@@ -2149,7 +2659,7 @@ end:
 // Updates the specified task in a project.
 //
 empty_envelope_t*
-ProjectsAPI_updateProjectTaskAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, project_task_update_dto_t *project_task_update_dto)
+ProjectsAPI_updateTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, project_task_update_dto_t *project_task_update_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;

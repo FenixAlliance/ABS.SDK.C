@@ -4,23 +4,23 @@ All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**LicensingAPI_getAttributesForLicenseAsync**](LicensingAPI.md#LicensingAPI_getAttributesForLicenseAsync) | **GET** /api/v2/SystemService/Licensing/Licenses/{licenseId}/Attributes | Retrieve license attributes
+[**LicensingAPI_getFeaturesForLicenseAsync**](LicensingAPI.md#LicensingAPI_getFeaturesForLicenseAsync) | **GET** /api/v2/SystemService/Licensing/Licenses/{licenseId}/Features | Retrieve license features
 [**LicensingAPI_getLicenseAssignmentsAsync**](LicensingAPI.md#LicensingAPI_getLicenseAssignmentsAsync) | **GET** /api/v2/SystemService/Licensing/Licenses/{licenseId}/Assignments | Retrieve license assignments
-[**LicensingAPI_getLicenseAttributesAsync**](LicensingAPI.md#LicensingAPI_getLicenseAttributesAsync) | **GET** /api/v2/SystemService/Licensing/Licenses/{licenseId}/Attributes | Retrieve license attributes
 [**LicensingAPI_getLicenseByIdAsync**](LicensingAPI.md#LicensingAPI_getLicenseByIdAsync) | **GET** /api/v2/SystemService/Licensing/Licenses/{licenseId} | Retrieve a license by ID
-[**LicensingAPI_getLicenseFeaturesAsync**](LicensingAPI.md#LicensingAPI_getLicenseFeaturesAsync) | **GET** /api/v2/SystemService/Licensing/Licenses/{licenseId}/Features | Retrieve license features
 [**LicensingAPI_getLicenseRecordsQuotaAsync**](LicensingAPI.md#LicensingAPI_getLicenseRecordsQuotaAsync) | **GET** /api/v2/SystemService/Licensing/Licenses/{licenseId}/Quota | Retrieve license record quota
 [**LicensingAPI_getLicensesAsync**](LicensingAPI.md#LicensingAPI_getLicensesAsync) | **GET** /api/v2/SystemService/Licensing/Licenses | Retrieve a list of licenses
 [**LicensingAPI_redeemLicenseAsync**](LicensingAPI.md#LicensingAPI_redeemLicenseAsync) | **POST** /api/v2/SystemService/Licensing/Licenses/Redeem | Redeem a license
 [**LicensingAPI_validateLicenseAsync**](LicensingAPI.md#LicensingAPI_validateLicenseAsync) | **POST** /api/v2/SystemService/Licensing/Licenses/Validate | Validate a license
 
 
-# **LicensingAPI_getLicenseAssignmentsAsync**
+# **LicensingAPI_getAttributesForLicenseAsync**
 ```c
-// Retrieve license assignments
+// Retrieve license attributes
 //
-// Retrieves all license assignments for a given license.
+// Retrieves all additional attributes for a given license.
 //
-suite_license_assignment_dto_list_envelope_t* LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
+suite_license_assignment_dto_list_envelope_t* LicensingAPI_getAttributesForLicenseAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -48,13 +48,47 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **LicensingAPI_getLicenseAttributesAsync**
+# **LicensingAPI_getFeaturesForLicenseAsync**
 ```c
-// Retrieve license attributes
+// Retrieve license features
 //
-// Retrieves all additional attributes for a given license.
+// Retrieves all features for a given license.
 //
-suite_license_assignment_dto_list_envelope_t* LicensingAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
+suite_license_assignment_dto_list_envelope_t* LicensingAPI_getFeaturesForLicenseAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**licenseId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[suite_license_assignment_dto_list_envelope_t](suite_license_assignment_dto_list_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json;odata.metadata=minimal;odata.streaming=true, application/json;odata.metadata=minimal;odata.streaming=false, application/json;odata.metadata=minimal, application/json;odata.metadata=full;odata.streaming=true, application/json;odata.metadata=full;odata.streaming=false, application/json;odata.metadata=full, application/json;odata.metadata=none;odata.streaming=true, application/json;odata.metadata=none;odata.streaming=false, application/json;odata.metadata=none, application/json;odata.streaming=true, application/json;odata.streaming=false, application/json, application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false, application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true, application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false, application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true, application/json;odata.metadata=minimal;IEEE754Compatible=false, application/json;odata.metadata=minimal;IEEE754Compatible=true, application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false, application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true, application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false, application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true, application/json;odata.metadata=full;IEEE754Compatible=false, application/json;odata.metadata=full;IEEE754Compatible=true, application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false, application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true, application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true, application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false, application/json;odata.metadata=none;IEEE754Compatible=false, application/json;odata.metadata=none;IEEE754Compatible=true, application/json;odata.streaming=true;IEEE754Compatible=false, application/json;odata.streaming=true;IEEE754Compatible=true, application/json;odata.streaming=false;IEEE754Compatible=false, application/json;odata.streaming=false;IEEE754Compatible=true, application/json;IEEE754Compatible=false, application/json;IEEE754Compatible=true, application/xml, text/plain, application/octet-stream, text/json, text/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **LicensingAPI_getLicenseAssignmentsAsync**
+```c
+// Retrieve license assignments
+//
+// Retrieves all license assignments for a given license.
+//
+suite_license_assignment_dto_list_envelope_t* LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -103,40 +137,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [suite_license_dto_envelope_t](suite_license_dto_envelope.md) *
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json;odata.metadata=minimal;odata.streaming=true, application/json;odata.metadata=minimal;odata.streaming=false, application/json;odata.metadata=minimal, application/json;odata.metadata=full;odata.streaming=true, application/json;odata.metadata=full;odata.streaming=false, application/json;odata.metadata=full, application/json;odata.metadata=none;odata.streaming=true, application/json;odata.metadata=none;odata.streaming=false, application/json;odata.metadata=none, application/json;odata.streaming=true, application/json;odata.streaming=false, application/json, application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false, application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true, application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false, application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true, application/json;odata.metadata=minimal;IEEE754Compatible=false, application/json;odata.metadata=minimal;IEEE754Compatible=true, application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false, application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true, application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false, application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true, application/json;odata.metadata=full;IEEE754Compatible=false, application/json;odata.metadata=full;IEEE754Compatible=true, application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false, application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true, application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true, application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false, application/json;odata.metadata=none;IEEE754Compatible=false, application/json;odata.metadata=none;IEEE754Compatible=true, application/json;odata.streaming=true;IEEE754Compatible=false, application/json;odata.streaming=true;IEEE754Compatible=true, application/json;odata.streaming=false;IEEE754Compatible=false, application/json;odata.streaming=false;IEEE754Compatible=true, application/json;IEEE754Compatible=false, application/json;IEEE754Compatible=true, application/xml, text/plain, application/octet-stream, text/json, text/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **LicensingAPI_getLicenseFeaturesAsync**
-```c
-// Retrieve license features
-//
-// Retrieves all features for a given license.
-//
-suite_license_assignment_dto_list_envelope_t* LicensingAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
-```
-
-### Parameters
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** | **char \*** |  | 
-**licenseId** | **char \*** |  | 
-**api_version** | **char \*** |  | [optional] 
-**x_api_version** | **char \*** |  | [optional] 
-
-### Return type
-
-[suite_license_assignment_dto_list_envelope_t](suite_license_assignment_dto_list_envelope.md) *
 
 
 ### Authorization

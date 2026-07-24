@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **task_category_id** | **char \*** |  | [optional] 
 **display_in_time_tracker** | **int** |  | [optional] 
 **requires_description** | **int** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
+**enrollment_id** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

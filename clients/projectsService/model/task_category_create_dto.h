@@ -22,13 +22,15 @@ typedef struct task_category_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *title; // string
+    char *project_id; // string
 
 } task_category_create_dto_t;
 
 task_category_create_dto_t *task_category_create_dto_create(
     char *id,
     char *timestamp,
-    char *title
+    char *title,
+    char *project_id
 );
 
 void task_category_create_dto_free(task_category_create_dto_t *task_category_create_dto);

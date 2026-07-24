@@ -10,7 +10,9 @@ project_period_dto_t *project_period_dto_create(
     char *timestamp,
     char *period_start_date,
     char *period_end_date,
-    char *project_id
+    char *project_id,
+    char *tenant_id,
+    char *enrollment_id
     ) {
     project_period_dto_t *project_period_dto_local_var = malloc(sizeof(project_period_dto_t));
     if (!project_period_dto_local_var) {
@@ -21,6 +23,8 @@ project_period_dto_t *project_period_dto_create(
     project_period_dto_local_var->period_start_date = period_start_date;
     project_period_dto_local_var->period_end_date = period_end_date;
     project_period_dto_local_var->project_id = project_id;
+    project_period_dto_local_var->tenant_id = tenant_id;
+    project_period_dto_local_var->enrollment_id = enrollment_id;
 
     return project_period_dto_local_var;
 }
@@ -50,6 +54,14 @@ void project_period_dto_free(project_period_dto_t *project_period_dto) {
     if (project_period_dto->project_id) {
         free(project_period_dto->project_id);
         project_period_dto->project_id = NULL;
+    }
+    if (project_period_dto->tenant_id) {
+        free(project_period_dto->tenant_id);
+        project_period_dto->tenant_id = NULL;
+    }
+    if (project_period_dto->enrollment_id) {
+        free(project_period_dto->enrollment_id);
+        project_period_dto->enrollment_id = NULL;
     }
     free(project_period_dto);
 }
@@ -91,7 +103,23 @@ cJSON *project_period_dto_convertToJSON(project_period_dto_t *project_period_dto
 
     // project_period_dto->project_id
     if(project_period_dto->project_id) {
-    if(cJSON_AddStringToObject(item, "projectID", project_period_dto->project_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "projectId", project_period_dto->project_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // project_period_dto->tenant_id
+    if(project_period_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", project_period_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // project_period_dto->enrollment_id
+    if(project_period_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", project_period_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -145,9 +173,27 @@ project_period_dto_t *project_period_dto_parseFromJSON(cJSON *project_period_dto
     }
 
     // project_period_dto->project_id
-    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(project_period_dtoJSON, "projectID");
+    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(project_period_dtoJSON, "projectId");
     if (project_id) { 
     if(!cJSON_IsString(project_id) && !cJSON_IsNull(project_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // project_period_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(project_period_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // project_period_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(project_period_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
     {
     goto end; //String
     }
@@ -159,7 +205,9 @@ project_period_dto_t *project_period_dto_parseFromJSON(cJSON *project_period_dto
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         period_start_date && !cJSON_IsNull(period_start_date) ? strdup(period_start_date->valuestring) : NULL,
         period_end_date && !cJSON_IsNull(period_end_date) ? strdup(period_end_date->valuestring) : NULL,
-        project_id && !cJSON_IsNull(project_id) ? strdup(project_id->valuestring) : NULL
+        project_id && !cJSON_IsNull(project_id) ? strdup(project_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return project_period_dto_local_var;

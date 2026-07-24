@@ -20,6 +20,7 @@ typedef struct task_type_update_dto_t task_type_update_dto_t;
 
 typedef struct task_type_update_dto_t {
     char *title; // string
+    char *task_category_id; // string
     int display_in_time_tracker; //boolean
     int requires_description; //boolean
 
@@ -27,6 +28,7 @@ typedef struct task_type_update_dto_t {
 
 task_type_update_dto_t *task_type_update_dto_create(
     char *title,
+    char *task_category_id,
     int display_in_time_tracker,
     int requires_description
 );

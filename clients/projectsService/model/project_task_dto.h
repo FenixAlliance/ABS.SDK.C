@@ -21,20 +21,28 @@ typedef struct project_task_dto_t project_task_dto_t;
 typedef struct project_task_dto_t {
     char *id; // string
     char *timestamp; //date time
+    char *title; // string
+    char *description; // string
     char *start_date; //date time
     char *due_line; //date time
     char *project_id; // string
     char *project_task_bucket_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
 
 } project_task_dto_t;
 
 project_task_dto_t *project_task_dto_create(
     char *id,
     char *timestamp,
+    char *title,
+    char *description,
     char *start_date,
     char *due_line,
     char *project_id,
-    char *project_task_bucket_id
+    char *project_task_bucket_id,
+    char *tenant_id,
+    char *enrollment_id
 );
 
 void project_task_dto_free(project_task_dto_t *project_task_dto);

@@ -5,6 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
+**individual_id** | **char \*** |  | [optional] 
+**organization_id** | **char \*** |  | [optional] 
 **project_start_date** | **char \*** |  | [optional] 
 **project_end_date** | **char \*** |  | [optional] 
 

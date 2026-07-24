@@ -1,0 +1,47 @@
+/*
+ * signed_document_attachment_update_dto.h
+ *
+ * 
+ */
+
+#ifndef _signed_document_attachment_update_dto_H_
+#define _signed_document_attachment_update_dto_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct signed_document_attachment_update_dto_t signed_document_attachment_update_dto_t;
+
+
+// Enum ATTACHMENTROLE for signed_document_attachment_update_dto
+
+typedef enum  { trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_NULL = 0, trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_Unknown, trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_Source, trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_SupportingEvidence, trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_AuthorityResponse, trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_HumanReadablePdf, trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_XmlPayload, trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_ValidationReport, trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_Other } trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_e;
+
+char* signed_document_attachment_update_dto_attachment_role_ToString(trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_e attachment_role);
+
+trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_e signed_document_attachment_update_dto_attachment_role_FromString(char* attachment_role);
+
+
+
+typedef struct signed_document_attachment_update_dto_t {
+    char *title; // string
+    trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_e attachment_role; //enum
+
+} signed_document_attachment_update_dto_t;
+
+signed_document_attachment_update_dto_t *signed_document_attachment_update_dto_create(
+    char *title,
+    trustservice_signed_document_attachment_update_dto_ATTACHMENTROLE_e attachment_role
+);
+
+void signed_document_attachment_update_dto_free(signed_document_attachment_update_dto_t *signed_document_attachment_update_dto);
+
+signed_document_attachment_update_dto_t *signed_document_attachment_update_dto_parseFromJSON(cJSON *signed_document_attachment_update_dtoJSON);
+
+cJSON *signed_document_attachment_update_dto_convertToJSON(signed_document_attachment_update_dto_t *signed_document_attachment_update_dto);
+
+#endif /* _signed_document_attachment_update_dto_H_ */
+

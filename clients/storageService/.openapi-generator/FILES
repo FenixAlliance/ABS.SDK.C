@@ -5,10 +5,10 @@ api/AvatarsAPI.c
 api/AvatarsAPI.h
 api/BlobsAPI.c
 api/BlobsAPI.h
-api/CompletionsAPI.c
-api/CompletionsAPI.h
-api/FenixAlliancePortalsWebsiteAPI.c
-api/FenixAlliancePortalsWebsiteAPI.h
+api/EditorAssetsAPI.c
+api/EditorAssetsAPI.h
+api/FenixAllianceABSWebAPI.c
+api/FenixAllianceABSWebAPI.h
 api/FilesAPI.c
 api/FilesAPI.h
 api/RadzenEditorAPI.c
@@ -17,8 +17,8 @@ api/UploadsAPI.c
 api/UploadsAPI.h
 docs/AvatarsAPI.md
 docs/BlobsAPI.md
-docs/CompletionsAPI.md
-docs/FenixAlliancePortalsWebsiteAPI.md
+docs/EditorAssetsAPI.md
+docs/FenixAllianceABSWebAPI.md
 docs/FilesAPI.md
 docs/RadzenEditorAPI.md
 docs/UploadsAPI.md
@@ -34,6 +34,7 @@ docs/http_validation_problem_details.md
 docs/info_request.md
 docs/info_response.md
 docs/login_request.md
+docs/problem_details.md
 docs/refresh_request.md
 docs/register_request.md
 docs/resend_confirmation_email_request.md
@@ -74,6 +75,8 @@ model/login_request.c
 model/login_request.h
 model/object.c
 model/object.h
+model/problem_details.c
+model/problem_details.h
 model/refresh_request.c
 model/refresh_request.h
 model/register_request.c
@@ -91,3 +94,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_problem_details.c

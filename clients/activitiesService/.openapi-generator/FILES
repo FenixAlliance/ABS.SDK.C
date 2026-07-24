@@ -3,12 +3,9 @@ Packing.cmake
 README.md
 api/ActivityFeedsAPI.c
 api/ActivityFeedsAPI.h
-api/ActivityRecordsAPI.c
-api/ActivityRecordsAPI.h
 api/FenixAllianceABSWebAPI.c
 api/FenixAllianceABSWebAPI.h
 docs/ActivityFeedsAPI.md
-docs/ActivityRecordsAPI.md
 docs/FenixAllianceABSWebAPI.md
 docs/access_token_response.md
 docs/activity_feed_dto.md

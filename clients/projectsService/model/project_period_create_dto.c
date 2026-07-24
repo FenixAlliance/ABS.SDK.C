@@ -91,7 +91,7 @@ cJSON *project_period_create_dto_convertToJSON(project_period_create_dto_t *proj
 
     // project_period_create_dto->project_id
     if(project_period_create_dto->project_id) {
-    if(cJSON_AddStringToObject(item, "projectID", project_period_create_dto->project_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "projectId", project_period_create_dto->project_id) == NULL) {
     goto fail; //String
     }
     }
@@ -145,7 +145,7 @@ project_period_create_dto_t *project_period_create_dto_parseFromJSON(cJSON *proj
     }
 
     // project_period_create_dto->project_id
-    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(project_period_create_dtoJSON, "projectID");
+    cJSON *project_id = cJSON_GetObjectItemCaseSensitive(project_period_create_dtoJSON, "projectId");
     if (project_id) { 
     if(!cJSON_IsString(project_id) && !cJSON_IsNull(project_id))
     {

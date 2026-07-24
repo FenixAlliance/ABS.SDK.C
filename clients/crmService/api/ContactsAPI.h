@@ -10,13 +10,19 @@
 #include "../model/contact_dto.h"
 #include "../model/contact_dto_envelope.h"
 #include "../model/contact_dto_list_envelope.h"
+#include "../model/contact_email_create_dto.h"
+#include "../model/contact_email_dto_list_envelope.h"
+#include "../model/contact_email_update_dto.h"
+#include "../model/contact_profile_create_dto.h"
 #include "../model/contact_profile_dto_list_envelope.h"
+#include "../model/contact_profile_update_dto.h"
 #include "../model/contact_update_dto.h"
 #include "../model/email_dispatch_request.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/extended_contact_dto_envelope.h"
 #include "../model/extended_contact_dto_list_envelope.h"
+#include "../model/int32_envelope.h"
 #include "../model/operation.h"
 #include "../model/social_profile_dto_envelope.h"
 #include "../model/wallet_dto_envelope.h"
@@ -30,12 +36,44 @@ empty_envelope_t*
 ContactsAPI_createContactAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_create_dto_t *contact_create_dto);
 
 
+// Add an email address to a contact
+//
+// Creates a new email address for the specified contact.
+//
+void
+ContactsAPI_createContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_email_create_dto_t *contact_email_create_dto);
+
+
+// Create a contact profile
+//
+// Creates a new profile for the specified contact.
+//
+void
+ContactsAPI_createProfileForContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_profile_create_dto_t *contact_profile_create_dto);
+
+
 // Delete a contact
 //
 // Delete a contact
 //
 empty_envelope_t*
 ContactsAPI_deleteContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+
+
+// Delete a contact email address
+//
+// Deletes an email address from the specified contact.
+//
+void
+ContactsAPI_deleteContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *emailId, char *api_version, char *x_api_version);
+
+
+// Delete a contact profile
+//
+// Deletes a profile for the specified contact.
+//
+void
+ContactsAPI_deleteProfileForContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *profileId, char *api_version, char *x_api_version);
 
 
 // Get a Contact of type Individual by ID
@@ -110,12 +148,20 @@ cart_dto_envelope_t*
 ContactsAPI_getContactCartAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
 
 
-// Get a contact's social profiles
+// Get a contact's email addresses
 //
-// Get a contact's social profiles
+// Get all email addresses for the specified contact.
 //
-contact_profile_dto_list_envelope_t*
-ContactsAPI_getContactProfilesAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+contact_email_dto_list_envelope_t*
+ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+
+
+// Get contact email addresses count
+//
+// Returns the count of email addresses for the specified contact.
+//
+int32_envelope_t*
+ContactsAPI_getContactEmailsCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
 
 
 // Get a contact's social profile
@@ -214,12 +260,36 @@ contact_dto_list_envelope_t*
 ContactsAPI_getOrganizationRelatedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
 
 
+// Get a contact's social profiles
+//
+// Get a contact's social profiles
+//
+contact_profile_dto_list_envelope_t*
+ContactsAPI_getProfilesForContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+
+
+// Get contact profiles count
+//
+// Returns the count of profiles for the specified contact.
+//
+int32_envelope_t*
+ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+
+
 // Patch a contact
 //
 // Patch a contact
 //
 empty_envelope_t*
 ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a contact email address
+//
+// Partially updates an existing email address for the specified contact.
+//
+void
+ContactsAPI_patchContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *emailId, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Preview the rendered email for a contact.
@@ -254,6 +324,22 @@ empty_envelope_t*
 ContactsAPI_updateContactAvatarAsync(apiClient_t *apiClient, char *contactId, char *tenantId, char *api_version, char *x_api_version, binary_t* avatar);
 
 
+// Update a contact email address
+//
+// Updates an existing email address for the specified contact.
+//
+void
+ContactsAPI_updateContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *emailId, char *api_version, char *x_api_version, contact_email_update_dto_t *contact_email_update_dto);
+
+
+// Update a contact profile
+//
+// Updates an existing profile for the specified contact.
+//
+void
+ContactsAPI_updateProfileForContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *profileId, char *api_version, char *x_api_version, contact_profile_update_dto_t *contact_profile_update_dto);
+
+
 // Upsert a tenant onto another tenant's contact list
 //
 // Upsert a tenant onto another tenant's contact list
@@ -268,5 +354,13 @@ ContactsAPI_upsertTenantOntoAnotherTenantContactListAsync(apiClient_t *apiClient
 //
 contact_dto_envelope_t*
 ContactsAPI_upsertUserOntoAnotherTenantContactListAsync(apiClient_t *apiClient, char *tenantId, char *relatedUserId, char *api_version, char *x_api_version);
+
+
+// Verify a contact email address
+//
+// Marks an email address as verified on the specified contact.
+//
+void
+ContactsAPI_verifyContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *emailId, char *api_version, char *x_api_version);
 
 

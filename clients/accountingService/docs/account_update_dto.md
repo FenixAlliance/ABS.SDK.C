@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **account_type_id** | **char \*** |  | [optional] 
 **parent_account_id** | **char \*** |  | [optional] 
 **account_category** | **accountingservice_account_update_dto_ACCOUNTCATEGORY_e** |  | [optional] 
+**is_contra** | **int** |  | [optional] 
+**is_monetary** | **int** |  | [optional] 
+**income_statement_sub_type** | **accountingservice_account_update_dto_INCOMESTATEMENTSUBTYPE_e** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

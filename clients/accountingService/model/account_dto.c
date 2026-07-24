@@ -21,6 +21,40 @@ accountingservice_account_dto_ACCOUNTCATEGORY_e account_dto_account_category_Fro
     }
     return 0;
 }
+char* account_dto_income_statement_sub_type_ToString(accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_type) {
+    char* income_statement_sub_typeArray[] =  { "NULL", "OperatingRevenue", "Gain", "OperatingExpense", "Loss" };
+    return income_statement_sub_typeArray[income_statement_sub_type];
+}
+
+accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_e account_dto_income_statement_sub_type_FromString(char* income_statement_sub_type){
+    int stringToReturn = 0;
+    char *income_statement_sub_typeArray[] =  { "NULL", "OperatingRevenue", "Gain", "OperatingExpense", "Loss" };
+    size_t sizeofArray = sizeof(income_statement_sub_typeArray) / sizeof(income_statement_sub_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(income_statement_sub_type, income_statement_sub_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+char* account_dto_normal_balance_ToString(accountingservice_account_dto_NORMALBALANCE_e normal_balance) {
+    char* normal_balanceArray[] =  { "NULL", "Debit", "Credit" };
+    return normal_balanceArray[normal_balance];
+}
+
+accountingservice_account_dto_NORMALBALANCE_e account_dto_normal_balance_FromString(char* normal_balance){
+    int stringToReturn = 0;
+    char *normal_balanceArray[] =  { "NULL", "Debit", "Credit" };
+    size_t sizeofArray = sizeof(normal_balanceArray) / sizeof(normal_balanceArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(normal_balance, normal_balanceArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 account_dto_t *account_dto_create(
     char *id,
@@ -49,6 +83,10 @@ account_dto_t *account_dto_create(
     char *enrollment_id,
     int children_accounts_count,
     accountingservice_account_dto_ACCOUNTCATEGORY_e account_category,
+    int is_contra,
+    int is_monetary,
+    accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_type,
+    accountingservice_account_dto_NORMALBALANCE_e normal_balance,
     money_t *balance_amount,
     money_t *credits_balance_amount,
     money_t *debits_balance_amount,
@@ -86,6 +124,10 @@ account_dto_t *account_dto_create(
     account_dto_local_var->enrollment_id = enrollment_id;
     account_dto_local_var->children_accounts_count = children_accounts_count;
     account_dto_local_var->account_category = account_category;
+    account_dto_local_var->is_contra = is_contra;
+    account_dto_local_var->is_monetary = is_monetary;
+    account_dto_local_var->income_statement_sub_type = income_statement_sub_type;
+    account_dto_local_var->normal_balance = normal_balance;
     account_dto_local_var->balance_amount = balance_amount;
     account_dto_local_var->credits_balance_amount = credits_balance_amount;
     account_dto_local_var->debits_balance_amount = debits_balance_amount;
@@ -395,6 +437,40 @@ cJSON *account_dto_convertToJSON(account_dto_t *account_dto) {
     // account_dto->account_category
     if(account_dto->account_category != accountingservice_account_dto_ACCOUNTCATEGORY_NULL) {
     if(cJSON_AddStringToObject(item, "accountCategory", account_categoryaccount_dto_ToString(account_dto->account_category)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
+    // account_dto->is_contra
+    if(account_dto->is_contra) {
+    if(cJSON_AddBoolToObject(item, "isContra", account_dto->is_contra) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // account_dto->is_monetary
+    if(account_dto->is_monetary) {
+    if(cJSON_AddBoolToObject(item, "isMonetary", account_dto->is_monetary) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // account_dto->income_statement_sub_type
+    if(account_dto->income_statement_sub_type != accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "incomeStatementSubType", income_statement_sub_typeaccount_dto_ToString(account_dto->income_statement_sub_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
+    // account_dto->normal_balance
+    if(account_dto->normal_balance != accountingservice_account_dto_NORMALBALANCE_NULL) {
+    if(cJSON_AddStringToObject(item, "normalBalance", normal_balanceaccount_dto_ToString(account_dto->normal_balance)) == NULL)
     {
     goto fail; //Enum
     }
@@ -744,6 +820,46 @@ account_dto_t *account_dto_parseFromJSON(cJSON *account_dtoJSON){
     account_categoryVariable = account_dto_account_category_FromString(account_category->valuestring);
     }
 
+    // account_dto->is_contra
+    cJSON *is_contra = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "isContra");
+    if (is_contra) { 
+    if(!cJSON_IsBool(is_contra))
+    {
+    goto end; //Bool
+    }
+    }
+
+    // account_dto->is_monetary
+    cJSON *is_monetary = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "isMonetary");
+    if (is_monetary) { 
+    if(!cJSON_IsBool(is_monetary))
+    {
+    goto end; //Bool
+    }
+    }
+
+    // account_dto->income_statement_sub_type
+    cJSON *income_statement_sub_type = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "incomeStatementSubType");
+    accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_typeVariable;
+    if (income_statement_sub_type) { 
+    if(!cJSON_IsString(income_statement_sub_type))
+    {
+    goto end; //Enum
+    }
+    income_statement_sub_typeVariable = account_dto_income_statement_sub_type_FromString(income_statement_sub_type->valuestring);
+    }
+
+    // account_dto->normal_balance
+    cJSON *normal_balance = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "normalBalance");
+    accountingservice_account_dto_NORMALBALANCE_e normal_balanceVariable;
+    if (normal_balance) { 
+    if(!cJSON_IsString(normal_balance))
+    {
+    goto end; //Enum
+    }
+    normal_balanceVariable = account_dto_normal_balance_FromString(normal_balance->valuestring);
+    }
+
     // account_dto->balance_amount
     cJSON *balance_amount = cJSON_GetObjectItemCaseSensitive(account_dtoJSON, "balanceAmount");
     if (balance_amount) { 
@@ -808,6 +924,10 @@ account_dto_t *account_dto_parseFromJSON(cJSON *account_dtoJSON){
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         children_accounts_count ? children_accounts_count->valuedouble : 0,
         account_category ? account_categoryVariable : accountingservice_account_dto_ACCOUNTCATEGORY_NULL,
+        is_contra ? is_contra->valueint : 0,
+        is_monetary ? is_monetary->valueint : 0,
+        income_statement_sub_type ? income_statement_sub_typeVariable : accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_NULL,
+        normal_balance ? normal_balanceVariable : accountingservice_account_dto_NORMALBALANCE_NULL,
         balance_amount ? balance_amount_local_nonprim : NULL,
         credits_balance_amount ? credits_balance_amount_local_nonprim : NULL,
         debits_balance_amount ? debits_balance_amount_local_nonprim : NULL,

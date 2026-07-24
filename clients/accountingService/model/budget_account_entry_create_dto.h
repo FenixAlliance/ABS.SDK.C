@@ -16,27 +16,16 @@
 typedef struct budget_account_entry_create_dto_t budget_account_entry_create_dto_t;
 
 
-// Enum ACCOUNTINGENTRYTYPE for budget_account_entry_create_dto
-
-typedef enum  { accountingservice_budget_account_entry_create_dto_ACCOUNTINGENTRYTYPE_NULL = 0, accountingservice_budget_account_entry_create_dto_ACCOUNTINGENTRYTYPE_None, accountingservice_budget_account_entry_create_dto_ACCOUNTINGENTRYTYPE_Debit, accountingservice_budget_account_entry_create_dto_ACCOUNTINGENTRYTYPE_Credit } accountingservice_budget_account_entry_create_dto_ACCOUNTINGENTRYTYPE_e;
-
-char* budget_account_entry_create_dto_accounting_entry_type_ToString(accountingservice_budget_account_entry_create_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type);
-
-accountingservice_budget_account_entry_create_dto_ACCOUNTINGENTRYTYPE_e budget_account_entry_create_dto_accounting_entry_type_FromString(char* accounting_entry_type);
-
 
 
 typedef struct budget_account_entry_create_dto_t {
     char *id; // string
     char *timestamp; //date time
     char *description; // string
-    char *date; //date time
-    double amount; //numeric
+    double planned_amount; //numeric
     char *currency_id; // string
     char *debit_account_id; // string
     char *credit_account_id; // string
-    char *journal_entry_id; // string
-    accountingservice_budget_account_entry_create_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type; //enum
     char *budget_id; // string
 
 } budget_account_entry_create_dto_t;
@@ -45,13 +34,10 @@ budget_account_entry_create_dto_t *budget_account_entry_create_dto_create(
     char *id,
     char *timestamp,
     char *description,
-    char *date,
-    double amount,
+    double planned_amount,
     char *currency_id,
     char *debit_account_id,
     char *credit_account_id,
-    char *journal_entry_id,
-    accountingservice_budget_account_entry_create_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type,
     char *budget_id
 );
 

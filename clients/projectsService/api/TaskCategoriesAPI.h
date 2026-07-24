@@ -5,8 +5,10 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/task_category_create_dto.h"
 #include "../model/task_category_dto.h"
 #include "../model/task_category_dto_list_envelope.h"
@@ -59,6 +61,14 @@ TaskCategoriesAPI_getTaskCategoryTaskTypesAsync(apiClient_t *apiClient, char *ta
 //
 task_category_dto_list_envelope_t*
 TaskCategoriesAPI_getTenantTaskCategoriesAsync(apiClient_t *apiClient, char *tenantId);
+
+
+// Patches a task category
+//
+// Partially updates the specified task category.
+//
+empty_envelope_t*
+TaskCategoriesAPI_patchTaskCategoryAsync(apiClient_t *apiClient, char *taskCategoryId, char *tenantId, list_t *operation);
 
 
 // Updates a task category

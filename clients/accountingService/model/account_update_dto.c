@@ -21,6 +21,23 @@ accountingservice_account_update_dto_ACCOUNTCATEGORY_e account_update_dto_accoun
     }
     return 0;
 }
+char* account_update_dto_income_statement_sub_type_ToString(accountingservice_account_update_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_type) {
+    char* income_statement_sub_typeArray[] =  { "NULL", "OperatingRevenue", "Gain", "OperatingExpense", "Loss" };
+    return income_statement_sub_typeArray[income_statement_sub_type];
+}
+
+accountingservice_account_update_dto_INCOMESTATEMENTSUBTYPE_e account_update_dto_income_statement_sub_type_FromString(char* income_statement_sub_type){
+    int stringToReturn = 0;
+    char *income_statement_sub_typeArray[] =  { "NULL", "OperatingRevenue", "Gain", "OperatingExpense", "Loss" };
+    size_t sizeofArray = sizeof(income_statement_sub_typeArray) / sizeof(income_statement_sub_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(income_statement_sub_type, income_statement_sub_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 account_update_dto_t *account_update_dto_create(
     int group,
@@ -33,7 +50,10 @@ account_update_dto_t *account_update_dto_create(
     char *contact_id,
     char *account_type_id,
     char *parent_account_id,
-    accountingservice_account_update_dto_ACCOUNTCATEGORY_e account_category
+    accountingservice_account_update_dto_ACCOUNTCATEGORY_e account_category,
+    int is_contra,
+    int is_monetary,
+    accountingservice_account_update_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_type
     ) {
     account_update_dto_t *account_update_dto_local_var = malloc(sizeof(account_update_dto_t));
     if (!account_update_dto_local_var) {
@@ -50,6 +70,9 @@ account_update_dto_t *account_update_dto_create(
     account_update_dto_local_var->account_type_id = account_type_id;
     account_update_dto_local_var->parent_account_id = parent_account_id;
     account_update_dto_local_var->account_category = account_category;
+    account_update_dto_local_var->is_contra = is_contra;
+    account_update_dto_local_var->is_monetary = is_monetary;
+    account_update_dto_local_var->income_statement_sub_type = income_statement_sub_type;
 
     return account_update_dto_local_var;
 }
@@ -188,6 +211,31 @@ cJSON *account_update_dto_convertToJSON(account_update_dto_t *account_update_dto
     }
     }
 
+
+    // account_update_dto->is_contra
+    if(account_update_dto->is_contra) {
+    if(cJSON_AddBoolToObject(item, "isContra", account_update_dto->is_contra) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // account_update_dto->is_monetary
+    if(account_update_dto->is_monetary) {
+    if(cJSON_AddBoolToObject(item, "isMonetary", account_update_dto->is_monetary) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // account_update_dto->income_statement_sub_type
+    if(account_update_dto->income_statement_sub_type != accountingservice_account_update_dto_INCOMESTATEMENTSUBTYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "incomeStatementSubType", income_statement_sub_typeaccount_update_dto_ToString(account_update_dto->income_statement_sub_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -307,6 +355,35 @@ account_update_dto_t *account_update_dto_parseFromJSON(cJSON *account_update_dto
     account_categoryVariable = account_update_dto_account_category_FromString(account_category->valuestring);
     }
 
+    // account_update_dto->is_contra
+    cJSON *is_contra = cJSON_GetObjectItemCaseSensitive(account_update_dtoJSON, "isContra");
+    if (is_contra) { 
+    if(!cJSON_IsBool(is_contra))
+    {
+    goto end; //Bool
+    }
+    }
+
+    // account_update_dto->is_monetary
+    cJSON *is_monetary = cJSON_GetObjectItemCaseSensitive(account_update_dtoJSON, "isMonetary");
+    if (is_monetary) { 
+    if(!cJSON_IsBool(is_monetary))
+    {
+    goto end; //Bool
+    }
+    }
+
+    // account_update_dto->income_statement_sub_type
+    cJSON *income_statement_sub_type = cJSON_GetObjectItemCaseSensitive(account_update_dtoJSON, "incomeStatementSubType");
+    accountingservice_account_update_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_typeVariable;
+    if (income_statement_sub_type) { 
+    if(!cJSON_IsString(income_statement_sub_type))
+    {
+    goto end; //Enum
+    }
+    income_statement_sub_typeVariable = account_update_dto_income_statement_sub_type_FromString(income_statement_sub_type->valuestring);
+    }
+
 
     account_update_dto_local_var = account_update_dto_create (
         group ? group->valueint : 0,
@@ -319,7 +396,10 @@ account_update_dto_t *account_update_dto_parseFromJSON(cJSON *account_update_dto
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
         account_type_id && !cJSON_IsNull(account_type_id) ? strdup(account_type_id->valuestring) : NULL,
         parent_account_id && !cJSON_IsNull(parent_account_id) ? strdup(parent_account_id->valuestring) : NULL,
-        account_category ? account_categoryVariable : accountingservice_account_update_dto_ACCOUNTCATEGORY_NULL
+        account_category ? account_categoryVariable : accountingservice_account_update_dto_ACCOUNTCATEGORY_NULL,
+        is_contra ? is_contra->valueint : 0,
+        is_monetary ? is_monetary->valueint : 0,
+        income_statement_sub_type ? income_statement_sub_typeVariable : accountingservice_account_update_dto_INCOMESTATEMENTSUBTYPE_NULL
         );
 
     return account_update_dto_local_var;

@@ -12,11 +12,13 @@
 #include "../model/journal_dto_envelope.h"
 #include "../model/journal_dto_i_read_only_list_envelope.h"
 #include "../model/journal_entry_create_dto.h"
+#include "../model/journal_entry_dto_envelope.h"
 #include "../model/journal_entry_dto_i_read_only_list_envelope.h"
 #include "../model/journal_entry_update_dto.h"
 #include "../model/journal_update_dto.h"
 #include "../model/money_envelope.h"
 #include "../model/operation.h"
+#include "../model/reverse_journal_entry_request.h"
 
 
 // Aggregate journal entry credits
@@ -99,6 +101,14 @@ int32_envelope_t*
 JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version);
 
 
+// Get journal entry by ID
+//
+// Retrieves a single journal entry WITH its hydrated posting lines — each line's account, direction, description and currency facets (transaction / functional / account / USD).
+//
+journal_entry_dto_envelope_t*
+JournalsAPI_getJournalEntryDetailsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version);
+
+
 // Get all journals
 //
 // Retrieves all journals for the specified tenant.
@@ -121,6 +131,22 @@ JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *jour
 //
 empty_envelope_t*
 JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Post a draft journal entry
+//
+// Posts a DRAFT journal entry into its own open fiscal period. Enforces the balanced-entry invariant and the open-period gate, then seals the entry (immutable — correct via reversal, never edit/delete). An unbalanced draft or a closed period is rejected. Requires the journals_post permission.
+//
+empty_envelope_t*
+JournalsAPI_postJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version);
+
+
+// Reverse a posted journal entry
+//
+// Reverses a POSTED journal entry by writing a balanced compensating counter-entry into the supplied open fiscal period and marking the original Reversed — one atomic operation (append-only audit trail). Requires the journals_reverse permission.
+//
+empty_envelope_t*
+JournalsAPI_reverseJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, reverse_journal_entry_request_t *reverse_journal_entry_request);
 
 
 // Update journal

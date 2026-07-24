@@ -11,7 +11,6 @@
 #include "../model/non_fungible_token_create_dto.h"
 #include "../model/non_fungible_token_dto.h"
 #include "../model/non_fungible_token_dto_list_envelope.h"
-#include "../model/non_fungible_token_dto_o_data_query_options.h"
 #include "../model/non_fungible_token_update_dto.h"
 #include "../model/operation.h"
 
@@ -45,7 +44,7 @@ NonFungibleTokensAPI_getNonFungibleTokenByIdAsync(apiClient_t *apiClient, char *
 // Retrieves all NFTs for the specified tenant.
 //
 non_fungible_token_dto_list_envelope_t*
-NonFungibleTokensAPI_getNonFungibleTokensAsync(apiClient_t *apiClient, char *tenantId, non_fungible_token_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+NonFungibleTokensAPI_getNonFungibleTokensAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Get NFTs count
@@ -53,7 +52,7 @@ NonFungibleTokensAPI_getNonFungibleTokensAsync(apiClient_t *apiClient, char *ten
 // Returns the count of NFTs for the specified tenant.
 //
 int32_envelope_t*
-NonFungibleTokensAPI_getNonFungibleTokensCountAsync(apiClient_t *apiClient, char *tenantId, non_fungible_token_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+NonFungibleTokensAPI_getNonFungibleTokensCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
 // Patch a non-fungible token

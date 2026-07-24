@@ -23,6 +23,10 @@ typedef struct project_dto_t {
     char *timestamp; //date time
     char *title; // string
     char *description; // string
+    char *individual_id; // string
+    char *organization_id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
     char *project_start_date; //date time
     char *project_end_date; //date time
 
@@ -33,6 +37,10 @@ project_dto_t *project_dto_create(
     char *timestamp,
     char *title,
     char *description,
+    char *individual_id,
+    char *organization_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *project_start_date,
     char *project_end_date
 );

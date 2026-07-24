@@ -66,6 +66,7 @@ set(SRCS
     model/info_request.c
     model/info_response.c
     model/login_request.c
+    model/problem_details.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -74,8 +75,8 @@ set(SRCS
     model/two_factor_response.c
     api/AvatarsAPI.c
     api/BlobsAPI.c
-    api/CompletionsAPI.c
-    api/FenixAlliancePortalsWebsiteAPI.c
+    api/EditorAssetsAPI.c
+    api/FenixAllianceABSWebAPI.c
     api/FilesAPI.c
     api/RadzenEditorAPI.c
     api/UploadsAPI.c
@@ -101,6 +102,7 @@ set(HDRS
     model/info_request.h
     model/info_response.h
     model/login_request.h
+    model/problem_details.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
@@ -109,8 +111,8 @@ set(HDRS
     model/two_factor_response.h
     api/AvatarsAPI.h
     api/BlobsAPI.h
-    api/CompletionsAPI.h
-    api/FenixAlliancePortalsWebsiteAPI.h
+    api/EditorAssetsAPI.h
+    api/FenixAllianceABSWebAPI.h
     api/FilesAPI.h
     api/RadzenEditorAPI.h
     api/UploadsAPI.h
@@ -197,8 +199,8 @@ set(HDRS "")
 #set(SRCS
 #    unit-tests/manual-AvatarsAPI.c
 #    unit-tests/manual-BlobsAPI.c
-#    unit-tests/manual-CompletionsAPI.c
-#    unit-tests/manual-FenixAlliancePortalsWebsiteAPI.c
+#    unit-tests/manual-EditorAssetsAPI.c
+#    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-FilesAPI.c
 #    unit-tests/manual-RadzenEditorAPI.c
 #    unit-tests/manual-UploadsAPI.c

@@ -21,6 +21,8 @@ typedef struct project_update_dto_t project_update_dto_t;
 typedef struct project_update_dto_t {
     char *title; // string
     char *description; // string
+    char *individual_id; // string
+    char *organization_id; // string
     char *project_start_date; //date time
     char *project_end_date; //date time
 
@@ -29,6 +31,8 @@ typedef struct project_update_dto_t {
 project_update_dto_t *project_update_dto_create(
     char *title,
     char *description,
+    char *individual_id,
+    char *organization_id,
     char *project_start_date,
     char *project_end_date
 );

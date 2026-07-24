@@ -15,6 +15,14 @@
 #include "../model/operation.h"
 
 
+// Close a fiscal period
+//
+// Closes a fiscal period so no further journal entries can post into it. Rejects closing a locked (hard-sealed) period.
+//
+empty_envelope_t*
+FiscalPeriodsAPI_closeFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version);
+
+
 // Create a fiscal period
 //
 // Creates a new fiscal period associated with a fiscal year.
@@ -53,6 +61,14 @@ FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, char *tenantId, char *
 //
 int32_envelope_t*
 FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version);
+
+
+// Open a fiscal period
+//
+// Opens a closed fiscal period so journal entries can post into it. Rejects reopening a locked or an already-open period.
+//
+empty_envelope_t*
+FiscalPeriodsAPI_openFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version);
 
 
 // Patch a fiscal period

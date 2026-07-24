@@ -17,61 +17,37 @@ typedef struct budget_account_entry_dto_t budget_account_entry_dto_t;
 
 #include "money.h"
 
-// Enum ACCOUNTINGENTRYTYPE for budget_account_entry_dto
-
-typedef enum  { accountingservice_budget_account_entry_dto_ACCOUNTINGENTRYTYPE_NULL = 0, accountingservice_budget_account_entry_dto_ACCOUNTINGENTRYTYPE_None, accountingservice_budget_account_entry_dto_ACCOUNTINGENTRYTYPE_Debit, accountingservice_budget_account_entry_dto_ACCOUNTINGENTRYTYPE_Credit } accountingservice_budget_account_entry_dto_ACCOUNTINGENTRYTYPE_e;
-
-char* budget_account_entry_dto_accounting_entry_type_ToString(accountingservice_budget_account_entry_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type);
-
-accountingservice_budget_account_entry_dto_ACCOUNTINGENTRYTYPE_e budget_account_entry_dto_accounting_entry_type_FromString(char* accounting_entry_type);
-
 
 
 typedef struct budget_account_entry_dto_t {
     char *id; // string
     char *timestamp; //date time
-    double debit; //numeric
-    double credit; //numeric
-    char *description; // string
-    double forex_rate; //numeric
-    char *account_id; // string
     char *tenant_id; // string
-    char *date; //date time
     char *enrollment_id; // string
+    char *description; // string
+    double planned_amount; //numeric
     char *currency_id; // string
     char *debit_account_id; // string
     char *credit_account_id; // string
-    char *journal_entry_id; // string
-    char *debit_account_name; // string
-    char *credit_account_name; // string
-    accountingservice_budget_account_entry_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type; //enum
-    struct money_t *debit_amount; //model
-    struct money_t *credit_amount; //model
     char *budget_id; // string
+    char *date; //date time
+    struct money_t *planned_amount_money; //model
 
 } budget_account_entry_dto_t;
 
 budget_account_entry_dto_t *budget_account_entry_dto_create(
     char *id,
     char *timestamp,
-    double debit,
-    double credit,
-    char *description,
-    double forex_rate,
-    char *account_id,
     char *tenant_id,
-    char *date,
     char *enrollment_id,
+    char *description,
+    double planned_amount,
     char *currency_id,
     char *debit_account_id,
     char *credit_account_id,
-    char *journal_entry_id,
-    char *debit_account_name,
-    char *credit_account_name,
-    accountingservice_budget_account_entry_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type,
-    money_t *debit_amount,
-    money_t *credit_amount,
-    char *budget_id
+    char *budget_id,
+    char *date,
+    money_t *planned_amount_money
 );
 
 void budget_account_entry_dto_free(budget_account_entry_dto_t *budget_account_entry_dto);

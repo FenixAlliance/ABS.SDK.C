@@ -7,6 +7,7 @@
 
 task_type_update_dto_t *task_type_update_dto_create(
     char *title,
+    char *task_category_id,
     int display_in_time_tracker,
     int requires_description
     ) {
@@ -15,6 +16,7 @@ task_type_update_dto_t *task_type_update_dto_create(
         return NULL;
     }
     task_type_update_dto_local_var->title = title;
+    task_type_update_dto_local_var->task_category_id = task_category_id;
     task_type_update_dto_local_var->display_in_time_tracker = display_in_time_tracker;
     task_type_update_dto_local_var->requires_description = requires_description;
 
@@ -31,6 +33,10 @@ void task_type_update_dto_free(task_type_update_dto_t *task_type_update_dto) {
         free(task_type_update_dto->title);
         task_type_update_dto->title = NULL;
     }
+    if (task_type_update_dto->task_category_id) {
+        free(task_type_update_dto->task_category_id);
+        task_type_update_dto->task_category_id = NULL;
+    }
     free(task_type_update_dto);
 }
 
@@ -40,6 +46,14 @@ cJSON *task_type_update_dto_convertToJSON(task_type_update_dto_t *task_type_upda
     // task_type_update_dto->title
     if(task_type_update_dto->title) {
     if(cJSON_AddStringToObject(item, "title", task_type_update_dto->title) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // task_type_update_dto->task_category_id
+    if(task_type_update_dto->task_category_id) {
+    if(cJSON_AddStringToObject(item, "taskCategoryId", task_type_update_dto->task_category_id) == NULL) {
     goto fail; //String
     }
     }
@@ -81,6 +95,15 @@ task_type_update_dto_t *task_type_update_dto_parseFromJSON(cJSON *task_type_upda
     }
     }
 
+    // task_type_update_dto->task_category_id
+    cJSON *task_category_id = cJSON_GetObjectItemCaseSensitive(task_type_update_dtoJSON, "taskCategoryId");
+    if (task_category_id) { 
+    if(!cJSON_IsString(task_category_id) && !cJSON_IsNull(task_category_id))
+    {
+    goto end; //String
+    }
+    }
+
     // task_type_update_dto->display_in_time_tracker
     cJSON *display_in_time_tracker = cJSON_GetObjectItemCaseSensitive(task_type_update_dtoJSON, "displayInTimeTracker");
     if (display_in_time_tracker) { 
@@ -102,6 +125,7 @@ task_type_update_dto_t *task_type_update_dto_parseFromJSON(cJSON *task_type_upda
 
     task_type_update_dto_local_var = task_type_update_dto_create (
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
+        task_category_id && !cJSON_IsNull(task_category_id) ? strdup(task_category_id->valuestring) : NULL,
         display_in_time_tracker ? display_in_time_tracker->valueint : 0,
         requires_description ? requires_description->valueint : 0
         );

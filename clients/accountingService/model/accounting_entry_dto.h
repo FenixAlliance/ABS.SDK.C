@@ -17,59 +17,69 @@ typedef struct accounting_entry_dto_t accounting_entry_dto_t;
 
 #include "money.h"
 
-// Enum ACCOUNTINGENTRYTYPE for accounting_entry_dto
+// Enum DIRECTION for accounting_entry_dto
 
-typedef enum  { accountingservice_accounting_entry_dto_ACCOUNTINGENTRYTYPE_NULL = 0, accountingservice_accounting_entry_dto_ACCOUNTINGENTRYTYPE_None, accountingservice_accounting_entry_dto_ACCOUNTINGENTRYTYPE_Debit, accountingservice_accounting_entry_dto_ACCOUNTINGENTRYTYPE_Credit } accountingservice_accounting_entry_dto_ACCOUNTINGENTRYTYPE_e;
+typedef enum  { accountingservice_accounting_entry_dto_DIRECTION_NULL = 0, accountingservice_accounting_entry_dto_DIRECTION_Debit, accountingservice_accounting_entry_dto_DIRECTION_Credit } accountingservice_accounting_entry_dto_DIRECTION_e;
 
-char* accounting_entry_dto_accounting_entry_type_ToString(accountingservice_accounting_entry_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type);
+char* accounting_entry_dto_direction_ToString(accountingservice_accounting_entry_dto_DIRECTION_e direction);
 
-accountingservice_accounting_entry_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_dto_accounting_entry_type_FromString(char* accounting_entry_type);
+accountingservice_accounting_entry_dto_DIRECTION_e accounting_entry_dto_direction_FromString(char* direction);
 
 
 
 typedef struct accounting_entry_dto_t {
     char *id; // string
+    char *tenant_id; // string
+    char *enrollment_id; // string
+    char *journal_entry_id; // string
+    char *account_id; // string
+    char *account_name; // string
+    accountingservice_accounting_entry_dto_DIRECTION_e direction; //enum
+    char *description; // string
+    double transaction_amount; //numeric
+    char *transaction_currency_id; // string
+    double functional_amount; //numeric
+    char *functional_currency_id; // string
+    double account_amount; //numeric
+    char *account_currency_id; // string
+    double reporting_amount_in_usd; //numeric
+    double forex_rate; //numeric
+    char *forex_rates_snapshot; // string
+    char *cost_centre_id; // string
+    char *project_id; // string
     char *timestamp; //date time
     double debit; //numeric
     double credit; //numeric
-    char *description; // string
-    double forex_rate; //numeric
-    char *account_id; // string
-    char *tenant_id; // string
-    char *date; //date time
-    char *enrollment_id; // string
-    char *currency_id; // string
-    char *debit_account_id; // string
-    char *credit_account_id; // string
-    char *journal_entry_id; // string
-    char *debit_account_name; // string
-    char *credit_account_name; // string
-    accountingservice_accounting_entry_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type; //enum
-    struct money_t *debit_amount; //model
-    struct money_t *credit_amount; //model
+    struct money_t *amount; //model
+    struct money_t *amount_in_usd; //model
 
 } accounting_entry_dto_t;
 
 accounting_entry_dto_t *accounting_entry_dto_create(
     char *id,
+    char *tenant_id,
+    char *enrollment_id,
+    char *journal_entry_id,
+    char *account_id,
+    char *account_name,
+    accountingservice_accounting_entry_dto_DIRECTION_e direction,
+    char *description,
+    double transaction_amount,
+    char *transaction_currency_id,
+    double functional_amount,
+    char *functional_currency_id,
+    double account_amount,
+    char *account_currency_id,
+    double reporting_amount_in_usd,
+    double forex_rate,
+    char *forex_rates_snapshot,
+    char *cost_centre_id,
+    char *project_id,
     char *timestamp,
     double debit,
     double credit,
-    char *description,
-    double forex_rate,
-    char *account_id,
-    char *tenant_id,
-    char *date,
-    char *enrollment_id,
-    char *currency_id,
-    char *debit_account_id,
-    char *credit_account_id,
-    char *journal_entry_id,
-    char *debit_account_name,
-    char *credit_account_name,
-    accountingservice_accounting_entry_dto_ACCOUNTINGENTRYTYPE_e accounting_entry_type,
-    money_t *debit_amount,
-    money_t *credit_amount
+    money_t *amount,
+    money_t *amount_in_usd
 );
 
 void accounting_entry_dto_free(accounting_entry_dto_t *accounting_entry_dto);

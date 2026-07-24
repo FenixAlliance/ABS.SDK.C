@@ -5,7 +5,6 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
-#include "../model/decimal_envelope.h"
 #include "../model/email_dispatch_request.h"
 #include "../model/empty_envelope.h"
 #include "../model/envelope.h"
@@ -329,7 +328,7 @@ InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId);
 //
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseInvoice, filtered by the supplied OData date range.
 //
-decimal_envelope_t*
+money_envelope_t*
 InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId);
 
 
@@ -337,7 +336,7 @@ InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId);
 //
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvoice, filtered by the supplied OData date range.
 //
-decimal_envelope_t*
+money_envelope_t*
 InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId);
 
 

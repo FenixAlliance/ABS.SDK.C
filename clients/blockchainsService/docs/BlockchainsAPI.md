@@ -187,7 +187,7 @@ No authorization required
 ```c
 // Get blocks for a blockchain
 //
-blockchain_block_dto_list_envelope_t* BlockchainsAPI_getBlockchainBlocksAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, blockchain_block_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+blockchain_block_dto_list_envelope_t* BlockchainsAPI_getBlockchainBlocksAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -196,7 +196,6 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **blockchainId** | **char \*** |  | 
-**oDataQueryOptions** | **[blockchain_block_dto_o_data_query_options_t](.md) \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -220,7 +219,7 @@ No authorization required
 ```c
 // Get block count for a blockchain
 //
-int32_envelope_t* BlockchainsAPI_getBlockchainBlocksCountAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, blockchain_block_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+int32_envelope_t* BlockchainsAPI_getBlockchainBlocksCountAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -229,7 +228,6 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **blockchainId** | **char \*** |  | 
-**oDataQueryOptions** | **[blockchain_block_dto_o_data_query_options_t](.md) \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -289,7 +287,7 @@ No authorization required
 //
 // Retrieves all blockchains for the specified tenant.
 //
-blockchain_dto_list_envelope_t* BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, blockchain_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+blockchain_dto_list_envelope_t* BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -297,7 +295,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
-**oDataQueryOptions** | **[blockchain_dto_o_data_query_options_t](.md) \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -323,7 +320,7 @@ No authorization required
 //
 // Returns the count of blockchains for the specified tenant.
 //
-int32_envelope_t* BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, blockchain_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+int32_envelope_t* BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -331,7 +328,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
-**oDataQueryOptions** | **[blockchain_dto_o_data_query_options_t](.md) \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

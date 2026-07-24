@@ -5,13 +5,13 @@
 
 
 char* ledger_type_create_dto_ledger_class_ToString(accountingservice_ledger_type_create_dto_LEDGERCLASS_e ledger_class) {
-    char* ledger_classArray[] =  { "NULL", "Assets", "Equity", "Gains", "Losses", "Revenue", "Expenses", "Liabilities" };
+    char* ledger_classArray[] =  { "NULL", "Assets", "Equity", "Revenue", "Expense", "Liabilities" };
     return ledger_classArray[ledger_class];
 }
 
 accountingservice_ledger_type_create_dto_LEDGERCLASS_e ledger_type_create_dto_ledger_class_FromString(char* ledger_class){
     int stringToReturn = 0;
-    char *ledger_classArray[] =  { "NULL", "Assets", "Equity", "Gains", "Losses", "Revenue", "Expenses", "Liabilities" };
+    char *ledger_classArray[] =  { "NULL", "Assets", "Equity", "Revenue", "Expense", "Liabilities" };
     size_t sizeofArray = sizeof(ledger_classArray) / sizeof(ledger_classArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(ledger_class, ledger_classArray[stringToReturn]) == 0) {

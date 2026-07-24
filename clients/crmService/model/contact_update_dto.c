@@ -38,8 +38,6 @@ contact_update_dto_t *contact_update_dto_create(
     char *job_title,
     char *country_id,
     char *parent_contact_id,
-    char *address_line1,
-    char *address_line2,
     char *postal_code,
     char *state_id,
     char *city_id,
@@ -85,8 +83,6 @@ contact_update_dto_t *contact_update_dto_create(
     contact_update_dto_local_var->job_title = job_title;
     contact_update_dto_local_var->country_id = country_id;
     contact_update_dto_local_var->parent_contact_id = parent_contact_id;
-    contact_update_dto_local_var->address_line1 = address_line1;
-    contact_update_dto_local_var->address_line2 = address_line2;
     contact_update_dto_local_var->postal_code = postal_code;
     contact_update_dto_local_var->state_id = state_id;
     contact_update_dto_local_var->city_id = city_id;
@@ -177,14 +173,6 @@ void contact_update_dto_free(contact_update_dto_t *contact_update_dto) {
     if (contact_update_dto->parent_contact_id) {
         free(contact_update_dto->parent_contact_id);
         contact_update_dto->parent_contact_id = NULL;
-    }
-    if (contact_update_dto->address_line1) {
-        free(contact_update_dto->address_line1);
-        contact_update_dto->address_line1 = NULL;
-    }
-    if (contact_update_dto->address_line2) {
-        free(contact_update_dto->address_line2);
-        contact_update_dto->address_line2 = NULL;
     }
     if (contact_update_dto->postal_code) {
         free(contact_update_dto->postal_code);
@@ -411,22 +399,6 @@ cJSON *contact_update_dto_convertToJSON(contact_update_dto_t *contact_update_dto
     // contact_update_dto->parent_contact_id
     if(contact_update_dto->parent_contact_id) {
     if(cJSON_AddStringToObject(item, "parentContactId", contact_update_dto->parent_contact_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // contact_update_dto->address_line1
-    if(contact_update_dto->address_line1) {
-    if(cJSON_AddStringToObject(item, "addressLine1", contact_update_dto->address_line1) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // contact_update_dto->address_line2
-    if(contact_update_dto->address_line2) {
-    if(cJSON_AddStringToObject(item, "addressLine2", contact_update_dto->address_line2) == NULL) {
     goto fail; //String
     }
     }
@@ -789,24 +761,6 @@ contact_update_dto_t *contact_update_dto_parseFromJSON(cJSON *contact_update_dto
     }
     }
 
-    // contact_update_dto->address_line1
-    cJSON *address_line1 = cJSON_GetObjectItemCaseSensitive(contact_update_dtoJSON, "addressLine1");
-    if (address_line1) { 
-    if(!cJSON_IsString(address_line1) && !cJSON_IsNull(address_line1))
-    {
-    goto end; //String
-    }
-    }
-
-    // contact_update_dto->address_line2
-    cJSON *address_line2 = cJSON_GetObjectItemCaseSensitive(contact_update_dtoJSON, "addressLine2");
-    if (address_line2) { 
-    if(!cJSON_IsString(address_line2) && !cJSON_IsNull(address_line2))
-    {
-    goto end; //String
-    }
-    }
-
     // contact_update_dto->postal_code
     cJSON *postal_code = cJSON_GetObjectItemCaseSensitive(contact_update_dtoJSON, "postalCode");
     if (postal_code) { 
@@ -1049,8 +1003,6 @@ contact_update_dto_t *contact_update_dto_parseFromJSON(cJSON *contact_update_dto
         job_title && !cJSON_IsNull(job_title) ? strdup(job_title->valuestring) : NULL,
         country_id && !cJSON_IsNull(country_id) ? strdup(country_id->valuestring) : NULL,
         parent_contact_id && !cJSON_IsNull(parent_contact_id) ? strdup(parent_contact_id->valuestring) : NULL,
-        address_line1 && !cJSON_IsNull(address_line1) ? strdup(address_line1->valuestring) : NULL,
-        address_line2 && !cJSON_IsNull(address_line2) ? strdup(address_line2->valuestring) : NULL,
         postal_code && !cJSON_IsNull(postal_code) ? strdup(postal_code->valuestring) : NULL,
         state_id && !cJSON_IsNull(state_id) ? strdup(state_id->valuestring) : NULL,
         city_id && !cJSON_IsNull(city_id) ? strdup(city_id->valuestring) : NULL,

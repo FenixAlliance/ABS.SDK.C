@@ -4,18 +4,21 @@ All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**WalletsAPI_createLocationForWalletAsync**](WalletsAPI.md#WalletsAPI_createLocationForWalletAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Locations | Create Wallet Location
 [**WalletsAPI_createWalletBankAccountAsync**](WalletsAPI.md#WalletsAPI_createWalletBankAccountAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts | Create Wallet Bank Account
-[**WalletsAPI_createWalletLocationAsync**](WalletsAPI.md#WalletsAPI_createWalletLocationAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Locations | Create Wallet Location
 [**WalletsAPI_createWalletPaymentAsync**](WalletsAPI.md#WalletsAPI_createWalletPaymentAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Payments | Create Wallet Payment
 [**WalletsAPI_createWalletTokenAsync**](WalletsAPI.md#WalletsAPI_createWalletTokenAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Tokens | Create Wallet Token
 [**WalletsAPI_createWalletWithdrawRequestAsync**](WalletsAPI.md#WalletsAPI_createWalletWithdrawRequestAsync) | **POST** /api/v2/WalletsService/Wallets/{walletId}/Withdraws | Create Wallet Withdraw Request
+[**WalletsAPI_deleteLocationForWalletAsync**](WalletsAPI.md#WalletsAPI_deleteLocationForWalletAsync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Delete Wallet Location
 [**WalletsAPI_deleteWalletBankAccountAsync**](WalletsAPI.md#WalletsAPI_deleteWalletBankAccountAsync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Delete Wallet Bank Account
-[**WalletsAPI_deleteWalletLocationAsync**](WalletsAPI.md#WalletsAPI_deleteWalletLocationAsync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Delete Wallet Location
 [**WalletsAPI_deleteWalletTokenAsync**](WalletsAPI.md#WalletsAPI_deleteWalletTokenAsync) | **DELETE** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Delete Wallet Token
 [**WalletsAPI_getIncomingPaymentsAsync**](WalletsAPI.md#WalletsAPI_getIncomingPaymentsAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Incoming | Get Incoming Payments
 [**WalletsAPI_getIncomingPaymentsCountAsync**](WalletsAPI.md#WalletsAPI_getIncomingPaymentsCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Incoming/Count | Get Incoming Payments Count
 [**WalletsAPI_getIncomingWalletInvoicesAsync**](WalletsAPI.md#WalletsAPI_getIncomingWalletInvoicesAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Incoming | Get Incoming Wallet Invoices
 [**WalletsAPI_getIncomingWalletInvoicesCountAsync**](WalletsAPI.md#WalletsAPI_getIncomingWalletInvoicesCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Incoming/Count | Get Incoming Wallet Invoices Count
+[**WalletsAPI_getLocationForWalletAsync**](WalletsAPI.md#WalletsAPI_getLocationForWalletAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Get Wallet Location
+[**WalletsAPI_getLocationsForWalletAsync**](WalletsAPI.md#WalletsAPI_getLocationsForWalletAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations | Get Wallet Locations
+[**WalletsAPI_getLocationsForWalletCountAsync**](WalletsAPI.md#WalletsAPI_getLocationsForWalletCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/Count | Get Wallet Locations Count
 [**WalletsAPI_getOutgoingPaymentsAsync**](WalletsAPI.md#WalletsAPI_getOutgoingPaymentsAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Outgoing | Get Outgoing Payments
 [**WalletsAPI_getOutgoingPaymentsCountAsync**](WalletsAPI.md#WalletsAPI_getOutgoingPaymentsCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments/Outgoing/Count | Get Outgoing Payments Count
 [**WalletsAPI_getOutgoingWalletInvoicesAsync**](WalletsAPI.md#WalletsAPI_getOutgoingWalletInvoicesAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Outgoing | Get Outgoing Wallet Invoices
@@ -29,9 +32,6 @@ Method | HTTP request | Description
 [**WalletsAPI_getWalletExtendedOrdersAsync**](WalletsAPI.md#WalletsAPI_getWalletExtendedOrdersAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Orders/Extended | Get Wallet Extended Orders
 [**WalletsAPI_getWalletInvoicesAsync**](WalletsAPI.md#WalletsAPI_getWalletInvoicesAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices | Get Wallet Invoices
 [**WalletsAPI_getWalletInvoicesCountAsync**](WalletsAPI.md#WalletsAPI_getWalletInvoicesCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Invoices/Count | Get Wallet Invoices Count
-[**WalletsAPI_getWalletLocationAsync**](WalletsAPI.md#WalletsAPI_getWalletLocationAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Get Wallet Location
-[**WalletsAPI_getWalletLocationsAsync**](WalletsAPI.md#WalletsAPI_getWalletLocationsAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations | Get Wallet Locations
-[**WalletsAPI_getWalletLocationsCountAsync**](WalletsAPI.md#WalletsAPI_getWalletLocationsCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Locations/Count | Get Wallet Locations Count
 [**WalletsAPI_getWalletOrdersAsync**](WalletsAPI.md#WalletsAPI_getWalletOrdersAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Orders | Get Wallet Orders
 [**WalletsAPI_getWalletOrdersCountAsync**](WalletsAPI.md#WalletsAPI_getWalletOrdersCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Orders/Count | Get Wallet Orders Count
 [**WalletsAPI_getWalletPaymentsAsync**](WalletsAPI.md#WalletsAPI_getWalletPaymentsAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Payments | Get Wallet Payments
@@ -49,10 +49,44 @@ Method | HTTP request | Description
 [**WalletsAPI_getWalletWithdrawsCountAsync**](WalletsAPI.md#WalletsAPI_getWalletWithdrawsCountAsync) | **GET** /api/v2/WalletsService/Wallets/{walletId}/Withdraws/Count | Get Wallet Withdraws Count
 [**WalletsAPI_patchWalletBankAccountAsync**](WalletsAPI.md#WalletsAPI_patchWalletBankAccountAsync) | **PATCH** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Patch Wallet Bank Account
 [**WalletsAPI_patchWalletTokenAsync**](WalletsAPI.md#WalletsAPI_patchWalletTokenAsync) | **PATCH** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Patch Wallet Token
+[**WalletsAPI_updateLocationForWalletAsync**](WalletsAPI.md#WalletsAPI_updateLocationForWalletAsync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Update Wallet Location
 [**WalletsAPI_updateWalletBankAccountAsync**](WalletsAPI.md#WalletsAPI_updateWalletBankAccountAsync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/BankAccounts/{bankAccountId} | Update Wallet Bank Account
-[**WalletsAPI_updateWalletLocationAsync**](WalletsAPI.md#WalletsAPI_updateWalletLocationAsync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Locations/{locationId} | Update Wallet Location
 [**WalletsAPI_updateWalletTokenAsync**](WalletsAPI.md#WalletsAPI_updateWalletTokenAsync) | **PUT** /api/v2/WalletsService/Wallets/{walletId}/Tokens/{tokenId} | Update Wallet Token
 
+
+# **WalletsAPI_createLocationForWalletAsync**
+```c
+// Create Wallet Location
+//
+// Create a new location for a specific wallet by ID.
+//
+empty_envelope_t* WalletsAPI_createLocationForWalletAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, location_create_dto_t *location_create_dto);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**walletId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**location_create_dto** | **[location_create_dto_t](location_create_dto.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **WalletsAPI_createWalletBankAccountAsync**
 ```c
@@ -71,40 +105,6 @@ Name | Type | Description  | Notes
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **bank_account_create_dto** | **[bank_account_create_dto_t](bank_account_create_dto.md) \*** |  | [optional] 
-
-### Return type
-
-[empty_envelope_t](empty_envelope.md) *
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **WalletsAPI_createWalletLocationAsync**
-```c
-// Create Wallet Location
-//
-// Create a new location for a specific wallet by ID.
-//
-empty_envelope_t* WalletsAPI_createWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, location_create_dto_t *location_create_dto);
-```
-
-### Parameters
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration |
-**walletId** | **char \*** |  | 
-**api_version** | **char \*** |  | [optional] 
-**x_api_version** | **char \*** |  | [optional] 
-**location_create_dto** | **[location_create_dto_t](location_create_dto.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -224,13 +224,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **WalletsAPI_deleteWalletBankAccountAsync**
+# **WalletsAPI_deleteLocationForWalletAsync**
 ```c
-// Delete Wallet Bank Account
+// Delete Wallet Location
 //
-// Delete a specific bank account of a specific wallet by ID.
+// Delete a specific location of a specific wallet by ID.
 //
-empty_envelope_t* WalletsAPI_deleteWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version);
+empty_envelope_t* WalletsAPI_deleteLocationForWalletAsync(apiClient_t *apiClient, char *walletId, char *locationId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **walletId** | **char \*** |  | 
-**bankAccountId** | **char \*** |  | 
+**locationId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -258,13 +258,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **WalletsAPI_deleteWalletLocationAsync**
+# **WalletsAPI_deleteWalletBankAccountAsync**
 ```c
-// Delete Wallet Location
+// Delete Wallet Bank Account
 //
-// Delete a specific location of a specific wallet by ID.
+// Delete a specific bank account of a specific wallet by ID.
 //
-empty_envelope_t* WalletsAPI_deleteWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, char *api_version, char *x_api_version);
+empty_envelope_t* WalletsAPI_deleteWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **walletId** | **char \*** |  | 
-**locationId** | **char \*** |  | 
+**bankAccountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -432,6 +432,106 @@ No authorization required
 // Get incoming invoices count of a specific wallet by ID.
 //
 int32_envelope_t* WalletsAPI_getIncomingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**walletId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WalletsAPI_getLocationForWalletAsync**
+```c
+// Get Wallet Location
+//
+// Get a specific location of a specific wallet by ID.
+//
+location_dto_envelope_t* WalletsAPI_getLocationForWalletAsync(apiClient_t *apiClient, char *walletId, char *locationId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**walletId** | **char \*** |  | 
+**locationId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[location_dto_envelope_t](location_dto_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WalletsAPI_getLocationsForWalletAsync**
+```c
+// Get Wallet Locations
+//
+// Get locations of a specific wallet by ID.
+//
+location_dto_list_envelope_t* WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**walletId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[location_dto_list_envelope_t](location_dto_list_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **WalletsAPI_getLocationsForWalletCountAsync**
+```c
+// Get Wallet Locations Count
+//
+// Get locations count of a specific wallet by ID.
+//
+int32_envelope_t* WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -862,106 +962,6 @@ No authorization required
 // Get invoices count of a specific wallet by ID.
 //
 int32_envelope_t* WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
-```
-
-### Parameters
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration |
-**walletId** | **char \*** |  | 
-**api_version** | **char \*** |  | [optional] 
-**x_api_version** | **char \*** |  | [optional] 
-
-### Return type
-
-[int32_envelope_t](int32_envelope.md) *
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **WalletsAPI_getWalletLocationAsync**
-```c
-// Get Wallet Location
-//
-// Get a specific location of a specific wallet by ID.
-//
-location_dto_envelope_t* WalletsAPI_getWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, char *api_version, char *x_api_version);
-```
-
-### Parameters
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration |
-**walletId** | **char \*** |  | 
-**locationId** | **char \*** |  | 
-**api_version** | **char \*** |  | [optional] 
-**x_api_version** | **char \*** |  | [optional] 
-
-### Return type
-
-[location_dto_envelope_t](location_dto_envelope.md) *
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **WalletsAPI_getWalletLocationsAsync**
-```c
-// Get Wallet Locations
-//
-// Get locations of a specific wallet by ID.
-//
-location_dto_list_envelope_t* WalletsAPI_getWalletLocationsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
-```
-
-### Parameters
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration |
-**walletId** | **char \*** |  | 
-**api_version** | **char \*** |  | [optional] 
-**x_api_version** | **char \*** |  | [optional] 
-
-### Return type
-
-[location_dto_list_envelope_t](location_dto_list_envelope.md) *
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **WalletsAPI_getWalletLocationsCountAsync**
-```c
-// Get Wallet Locations Count
-//
-// Get locations count of a specific wallet by ID.
-//
-int32_envelope_t* WalletsAPI_getWalletLocationsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -1554,6 +1554,41 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **WalletsAPI_updateLocationForWalletAsync**
+```c
+// Update Wallet Location
+//
+// Update a specific location of a specific wallet by ID.
+//
+empty_envelope_t* WalletsAPI_updateLocationForWalletAsync(apiClient_t *apiClient, char *walletId, char *locationId, char *api_version, char *x_api_version, location_update_dto_t *location_update_dto);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**walletId** | **char \*** |  | 
+**locationId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**location_update_dto** | **[location_update_dto_t](location_update_dto.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **WalletsAPI_updateWalletBankAccountAsync**
 ```c
 // Update Wallet Bank Account
@@ -1572,41 +1607,6 @@ Name | Type | Description  | Notes
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **bank_account_update_dto** | **[bank_account_update_dto_t](bank_account_update_dto.md) \*** |  | [optional] 
-
-### Return type
-
-[empty_envelope_t](empty_envelope.md) *
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **WalletsAPI_updateWalletLocationAsync**
-```c
-// Update Wallet Location
-//
-// Update a specific location of a specific wallet by ID.
-//
-empty_envelope_t* WalletsAPI_updateWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, char *api_version, char *x_api_version, location_update_dto_t *location_update_dto);
-```
-
-### Parameters
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration |
-**walletId** | **char \*** |  | 
-**locationId** | **char \*** |  | 
-**api_version** | **char \*** |  | [optional] 
-**x_api_version** | **char \*** |  | [optional] 
-**location_update_dto** | **[location_update_dto_t](location_update_dto.md) \*** |  | [optional] 
 
 ### Return type
 

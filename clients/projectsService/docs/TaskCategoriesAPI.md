@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**TaskCategoriesAPI_getTaskCategoryByIdAsync**](TaskCategoriesAPI.md#TaskCategoriesAPI_getTaskCategoryByIdAsync) | **GET** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | Gets a task category by ID
 [**TaskCategoriesAPI_getTaskCategoryTaskTypesAsync**](TaskCategoriesAPI.md#TaskCategoriesAPI_getTaskCategoryTaskTypesAsync) | **GET** /api/v2/ProjectsService/TaskCategories/{taskCategoryId}/Types | Retrieves task types for a category
 [**TaskCategoriesAPI_getTenantTaskCategoriesAsync**](TaskCategoriesAPI.md#TaskCategoriesAPI_getTenantTaskCategoriesAsync) | **GET** /api/v2/ProjectsService/TaskCategories | Retrieves all task categories
+[**TaskCategoriesAPI_patchTaskCategoryAsync**](TaskCategoriesAPI.md#TaskCategoriesAPI_patchTaskCategoryAsync) | **PATCH** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | Patches a task category
 [**TaskCategoriesAPI_updateTaskCategoryAsync**](TaskCategoriesAPI.md#TaskCategoriesAPI_updateTaskCategoryAsync) | **PUT** /api/v2/ProjectsService/TaskCategories/{taskCategoryId} | Updates a task category
 
 
@@ -199,6 +200,39 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TaskCategoriesAPI_patchTaskCategoryAsync**
+```c
+// Patches a task category
+//
+// Partially updates the specified task category.
+//
+empty_envelope_t* TaskCategoriesAPI_patchTaskCategoryAsync(apiClient_t *apiClient, char *taskCategoryId, char *tenantId, list_t *operation);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**taskCategoryId** | **char \*** |  | 
+**tenantId** | **char \*** |  | 
+**operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

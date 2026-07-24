@@ -20,11 +20,13 @@ typedef struct task_category_update_dto_t task_category_update_dto_t;
 
 typedef struct task_category_update_dto_t {
     char *title; // string
+    char *project_id; // string
 
 } task_category_update_dto_t;
 
 task_category_update_dto_t *task_category_update_dto_create(
-    char *title
+    char *title,
+    char *project_id
 );
 
 void task_category_update_dto_free(task_category_update_dto_t *task_category_update_dto);

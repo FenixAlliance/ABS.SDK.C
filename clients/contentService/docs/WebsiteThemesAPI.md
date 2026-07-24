@@ -119,7 +119,7 @@ No authorization required
 //
 // Retrieves all website themes for the specified tenant.
 //
-website_theme_dto_list_envelope_t* WebsiteThemesAPI_getWebsiteThemesAsync(apiClient_t *apiClient, char *tenantId, website_theme_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+website_theme_dto_list_envelope_t* WebsiteThemesAPI_getWebsiteThemesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -127,7 +127,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
-**oDataQueryOptions** | **[website_theme_dto_o_data_query_options_t](.md) \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -153,7 +152,7 @@ No authorization required
 //
 // Returns the count of website themes for the specified tenant.
 //
-int32_envelope_t* WebsiteThemesAPI_getWebsiteThemesCountAsync(apiClient_t *apiClient, char *tenantId, website_theme_dto_o_data_query_options_t *oDataQueryOptions, char *api_version, char *x_api_version);
+int32_envelope_t* WebsiteThemesAPI_getWebsiteThemesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -161,7 +160,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
-**oDataQueryOptions** | **[website_theme_dto_o_data_query_options_t](.md) \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

@@ -13,6 +13,6 @@
 // Triggers an update of the base web content themes.
 //
 void
-ThemesAPI_getLatestCurrencyRatesModelAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+ThemesAPI_updateThemesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
 
 

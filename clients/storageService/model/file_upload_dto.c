@@ -4,6 +4,57 @@
 #include "file_upload_dto.h"
 
 
+char* file_upload_dto_scan_status_ToString(storageservice_file_upload_dto_SCANSTATUS_e scan_status) {
+    char* scan_statusArray[] =  { "NULL", "NotRequired", "Pending", "Clean", "Infected", "Failed", "Quarantined" };
+    return scan_statusArray[scan_status];
+}
+
+storageservice_file_upload_dto_SCANSTATUS_e file_upload_dto_scan_status_FromString(char* scan_status){
+    int stringToReturn = 0;
+    char *scan_statusArray[] =  { "NULL", "NotRequired", "Pending", "Clean", "Infected", "Failed", "Quarantined" };
+    size_t sizeofArray = sizeof(scan_statusArray) / sizeof(scan_statusArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(scan_status, scan_statusArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+char* file_upload_dto_thumbnail_status_ToString(storageservice_file_upload_dto_THUMBNAILSTATUS_e thumbnail_status) {
+    char* thumbnail_statusArray[] =  { "NULL", "NotRequired", "Pending", "Ready", "Failed", "Unsupported" };
+    return thumbnail_statusArray[thumbnail_status];
+}
+
+storageservice_file_upload_dto_THUMBNAILSTATUS_e file_upload_dto_thumbnail_status_FromString(char* thumbnail_status){
+    int stringToReturn = 0;
+    char *thumbnail_statusArray[] =  { "NULL", "NotRequired", "Pending", "Ready", "Failed", "Unsupported" };
+    size_t sizeofArray = sizeof(thumbnail_statusArray) / sizeof(thumbnail_statusArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(thumbnail_status, thumbnail_statusArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+char* file_upload_dto_public_access_type_ToString(storageservice_file_upload_dto_PUBLICACCESSTYPE_e public_access_type) {
+    char* public_access_typeArray[] =  { "NULL", "false", "Container", "Blob", "Unknown" };
+    return public_access_typeArray[public_access_type];
+}
+
+storageservice_file_upload_dto_PUBLICACCESSTYPE_e file_upload_dto_public_access_type_FromString(char* public_access_type){
+    int stringToReturn = 0;
+    char *public_access_typeArray[] =  { "NULL", "false", "Container", "Blob", "Unknown" };
+    size_t sizeofArray = sizeof(public_access_typeArray) / sizeof(public_access_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(public_access_type, public_access_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 file_upload_dto_t *file_upload_dto_create(
     char *id,
@@ -15,6 +66,8 @@ file_upload_dto_t *file_upload_dto_create(
     char *hash,
     char *file_url,
     char *file_path,
+    char *storage_key,
+    char *storage_provider_key,
     char *file_name,
     char *abstract,
     char *key_words,
@@ -27,7 +80,15 @@ file_upload_dto_t *file_upload_dto_create(
     char *tenant_id,
     char *enrollment_id,
     char *social_profile_id,
-    char *folder_path
+    char *folder_path,
+    storageservice_file_upload_dto_SCANSTATUS_e scan_status,
+    storageservice_file_upload_dto_THUMBNAILSTATUS_e thumbnail_status,
+    int has_thumbnail,
+    char *thumbnail_storage_key,
+    char *thumbnail_content_type,
+    int thumbnail_width,
+    int thumbnail_height,
+    storageservice_file_upload_dto_PUBLICACCESSTYPE_e public_access_type
     ) {
     file_upload_dto_t *file_upload_dto_local_var = malloc(sizeof(file_upload_dto_t));
     if (!file_upload_dto_local_var) {
@@ -42,6 +103,8 @@ file_upload_dto_t *file_upload_dto_create(
     file_upload_dto_local_var->hash = hash;
     file_upload_dto_local_var->file_url = file_url;
     file_upload_dto_local_var->file_path = file_path;
+    file_upload_dto_local_var->storage_key = storage_key;
+    file_upload_dto_local_var->storage_provider_key = storage_provider_key;
     file_upload_dto_local_var->file_name = file_name;
     file_upload_dto_local_var->abstract = abstract;
     file_upload_dto_local_var->key_words = key_words;
@@ -55,6 +118,14 @@ file_upload_dto_t *file_upload_dto_create(
     file_upload_dto_local_var->enrollment_id = enrollment_id;
     file_upload_dto_local_var->social_profile_id = social_profile_id;
     file_upload_dto_local_var->folder_path = folder_path;
+    file_upload_dto_local_var->scan_status = scan_status;
+    file_upload_dto_local_var->thumbnail_status = thumbnail_status;
+    file_upload_dto_local_var->has_thumbnail = has_thumbnail;
+    file_upload_dto_local_var->thumbnail_storage_key = thumbnail_storage_key;
+    file_upload_dto_local_var->thumbnail_content_type = thumbnail_content_type;
+    file_upload_dto_local_var->thumbnail_width = thumbnail_width;
+    file_upload_dto_local_var->thumbnail_height = thumbnail_height;
+    file_upload_dto_local_var->public_access_type = public_access_type;
 
     return file_upload_dto_local_var;
 }
@@ -96,6 +167,14 @@ void file_upload_dto_free(file_upload_dto_t *file_upload_dto) {
     if (file_upload_dto->file_path) {
         free(file_upload_dto->file_path);
         file_upload_dto->file_path = NULL;
+    }
+    if (file_upload_dto->storage_key) {
+        free(file_upload_dto->storage_key);
+        file_upload_dto->storage_key = NULL;
+    }
+    if (file_upload_dto->storage_provider_key) {
+        free(file_upload_dto->storage_provider_key);
+        file_upload_dto->storage_provider_key = NULL;
     }
     if (file_upload_dto->file_name) {
         free(file_upload_dto->file_name);
@@ -140,6 +219,14 @@ void file_upload_dto_free(file_upload_dto_t *file_upload_dto) {
     if (file_upload_dto->folder_path) {
         free(file_upload_dto->folder_path);
         file_upload_dto->folder_path = NULL;
+    }
+    if (file_upload_dto->thumbnail_storage_key) {
+        free(file_upload_dto->thumbnail_storage_key);
+        file_upload_dto->thumbnail_storage_key = NULL;
+    }
+    if (file_upload_dto->thumbnail_content_type) {
+        free(file_upload_dto->thumbnail_content_type);
+        file_upload_dto->thumbnail_content_type = NULL;
     }
     free(file_upload_dto);
 }
@@ -214,6 +301,22 @@ cJSON *file_upload_dto_convertToJSON(file_upload_dto_t *file_upload_dto) {
     // file_upload_dto->file_path
     if(file_upload_dto->file_path) {
     if(cJSON_AddStringToObject(item, "filePath", file_upload_dto->file_path) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // file_upload_dto->storage_key
+    if(file_upload_dto->storage_key) {
+    if(cJSON_AddStringToObject(item, "storageKey", file_upload_dto->storage_key) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // file_upload_dto->storage_provider_key
+    if(file_upload_dto->storage_provider_key) {
+    if(cJSON_AddStringToObject(item, "storageProviderKey", file_upload_dto->storage_provider_key) == NULL) {
     goto fail; //String
     }
     }
@@ -322,6 +425,73 @@ cJSON *file_upload_dto_convertToJSON(file_upload_dto_t *file_upload_dto) {
     }
     }
 
+
+    // file_upload_dto->scan_status
+    if(file_upload_dto->scan_status != storageservice_file_upload_dto_SCANSTATUS_NULL) {
+    if(cJSON_AddStringToObject(item, "scanStatus", scan_statusfile_upload_dto_ToString(file_upload_dto->scan_status)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
+    // file_upload_dto->thumbnail_status
+    if(file_upload_dto->thumbnail_status != storageservice_file_upload_dto_THUMBNAILSTATUS_NULL) {
+    if(cJSON_AddStringToObject(item, "thumbnailStatus", thumbnail_statusfile_upload_dto_ToString(file_upload_dto->thumbnail_status)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
+    // file_upload_dto->has_thumbnail
+    if(file_upload_dto->has_thumbnail) {
+    if(cJSON_AddBoolToObject(item, "hasThumbnail", file_upload_dto->has_thumbnail) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // file_upload_dto->thumbnail_storage_key
+    if(file_upload_dto->thumbnail_storage_key) {
+    if(cJSON_AddStringToObject(item, "thumbnailStorageKey", file_upload_dto->thumbnail_storage_key) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // file_upload_dto->thumbnail_content_type
+    if(file_upload_dto->thumbnail_content_type) {
+    if(cJSON_AddStringToObject(item, "thumbnailContentType", file_upload_dto->thumbnail_content_type) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // file_upload_dto->thumbnail_width
+    if(file_upload_dto->thumbnail_width) {
+    if(cJSON_AddNumberToObject(item, "thumbnailWidth", file_upload_dto->thumbnail_width) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // file_upload_dto->thumbnail_height
+    if(file_upload_dto->thumbnail_height) {
+    if(cJSON_AddNumberToObject(item, "thumbnailHeight", file_upload_dto->thumbnail_height) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // file_upload_dto->public_access_type
+    if(file_upload_dto->public_access_type != storageservice_file_upload_dto_PUBLICACCESSTYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "publicAccessType", public_access_typefile_upload_dto_ToString(file_upload_dto->public_access_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -410,6 +580,24 @@ file_upload_dto_t *file_upload_dto_parseFromJSON(cJSON *file_upload_dtoJSON){
     cJSON *file_path = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "filePath");
     if (file_path) { 
     if(!cJSON_IsString(file_path) && !cJSON_IsNull(file_path))
+    {
+    goto end; //String
+    }
+    }
+
+    // file_upload_dto->storage_key
+    cJSON *storage_key = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "storageKey");
+    if (storage_key) { 
+    if(!cJSON_IsString(storage_key) && !cJSON_IsNull(storage_key))
+    {
+    goto end; //String
+    }
+    }
+
+    // file_upload_dto->storage_provider_key
+    cJSON *storage_provider_key = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "storageProviderKey");
+    if (storage_provider_key) { 
+    if(!cJSON_IsString(storage_provider_key) && !cJSON_IsNull(storage_provider_key))
     {
     goto end; //String
     }
@@ -532,6 +720,84 @@ file_upload_dto_t *file_upload_dto_parseFromJSON(cJSON *file_upload_dtoJSON){
     }
     }
 
+    // file_upload_dto->scan_status
+    cJSON *scan_status = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "scanStatus");
+    storageservice_file_upload_dto_SCANSTATUS_e scan_statusVariable;
+    if (scan_status) { 
+    if(!cJSON_IsString(scan_status))
+    {
+    goto end; //Enum
+    }
+    scan_statusVariable = file_upload_dto_scan_status_FromString(scan_status->valuestring);
+    }
+
+    // file_upload_dto->thumbnail_status
+    cJSON *thumbnail_status = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "thumbnailStatus");
+    storageservice_file_upload_dto_THUMBNAILSTATUS_e thumbnail_statusVariable;
+    if (thumbnail_status) { 
+    if(!cJSON_IsString(thumbnail_status))
+    {
+    goto end; //Enum
+    }
+    thumbnail_statusVariable = file_upload_dto_thumbnail_status_FromString(thumbnail_status->valuestring);
+    }
+
+    // file_upload_dto->has_thumbnail
+    cJSON *has_thumbnail = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "hasThumbnail");
+    if (has_thumbnail) { 
+    if(!cJSON_IsBool(has_thumbnail))
+    {
+    goto end; //Bool
+    }
+    }
+
+    // file_upload_dto->thumbnail_storage_key
+    cJSON *thumbnail_storage_key = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "thumbnailStorageKey");
+    if (thumbnail_storage_key) { 
+    if(!cJSON_IsString(thumbnail_storage_key) && !cJSON_IsNull(thumbnail_storage_key))
+    {
+    goto end; //String
+    }
+    }
+
+    // file_upload_dto->thumbnail_content_type
+    cJSON *thumbnail_content_type = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "thumbnailContentType");
+    if (thumbnail_content_type) { 
+    if(!cJSON_IsString(thumbnail_content_type) && !cJSON_IsNull(thumbnail_content_type))
+    {
+    goto end; //String
+    }
+    }
+
+    // file_upload_dto->thumbnail_width
+    cJSON *thumbnail_width = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "thumbnailWidth");
+    if (thumbnail_width) { 
+    if(!cJSON_IsNumber(thumbnail_width))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // file_upload_dto->thumbnail_height
+    cJSON *thumbnail_height = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "thumbnailHeight");
+    if (thumbnail_height) { 
+    if(!cJSON_IsNumber(thumbnail_height))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // file_upload_dto->public_access_type
+    cJSON *public_access_type = cJSON_GetObjectItemCaseSensitive(file_upload_dtoJSON, "publicAccessType");
+    storageservice_file_upload_dto_PUBLICACCESSTYPE_e public_access_typeVariable;
+    if (public_access_type) { 
+    if(!cJSON_IsString(public_access_type))
+    {
+    goto end; //Enum
+    }
+    public_access_typeVariable = file_upload_dto_public_access_type_FromString(public_access_type->valuestring);
+    }
+
 
     file_upload_dto_local_var = file_upload_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -543,6 +809,8 @@ file_upload_dto_t *file_upload_dto_parseFromJSON(cJSON *file_upload_dtoJSON){
         hash && !cJSON_IsNull(hash) ? strdup(hash->valuestring) : NULL,
         file_url && !cJSON_IsNull(file_url) ? strdup(file_url->valuestring) : NULL,
         file_path && !cJSON_IsNull(file_path) ? strdup(file_path->valuestring) : NULL,
+        storage_key && !cJSON_IsNull(storage_key) ? strdup(storage_key->valuestring) : NULL,
+        storage_provider_key && !cJSON_IsNull(storage_provider_key) ? strdup(storage_provider_key->valuestring) : NULL,
         file_name && !cJSON_IsNull(file_name) ? strdup(file_name->valuestring) : NULL,
         abstract && !cJSON_IsNull(abstract) ? strdup(abstract->valuestring) : NULL,
         key_words && !cJSON_IsNull(key_words) ? strdup(key_words->valuestring) : NULL,
@@ -555,7 +823,15 @@ file_upload_dto_t *file_upload_dto_parseFromJSON(cJSON *file_upload_dtoJSON){
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL,
-        folder_path && !cJSON_IsNull(folder_path) ? strdup(folder_path->valuestring) : NULL
+        folder_path && !cJSON_IsNull(folder_path) ? strdup(folder_path->valuestring) : NULL,
+        scan_status ? scan_statusVariable : storageservice_file_upload_dto_SCANSTATUS_NULL,
+        thumbnail_status ? thumbnail_statusVariable : storageservice_file_upload_dto_THUMBNAILSTATUS_NULL,
+        has_thumbnail ? has_thumbnail->valueint : 0,
+        thumbnail_storage_key && !cJSON_IsNull(thumbnail_storage_key) ? strdup(thumbnail_storage_key->valuestring) : NULL,
+        thumbnail_content_type && !cJSON_IsNull(thumbnail_content_type) ? strdup(thumbnail_content_type->valuestring) : NULL,
+        thumbnail_width ? thumbnail_width->valuedouble : 0,
+        thumbnail_height ? thumbnail_height->valuedouble : 0,
+        public_access_type ? public_access_typeVariable : storageservice_file_upload_dto_PUBLICACCESSTYPE_NULL
         );
 
     return file_upload_dto_local_var;

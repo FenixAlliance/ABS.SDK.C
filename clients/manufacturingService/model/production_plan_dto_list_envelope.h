@@ -1,0 +1,48 @@
+/*
+ * production_plan_dto_list_envelope.h
+ *
+ * 
+ */
+
+#ifndef _production_plan_dto_list_envelope_H_
+#define _production_plan_dto_list_envelope_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct production_plan_dto_list_envelope_t production_plan_dto_list_envelope_t;
+
+#include "production_plan_dto.h"
+
+
+
+typedef struct production_plan_dto_list_envelope_t {
+    int is_success; //boolean
+    char *error_message; // string
+    char *correlation_id; // string
+    char *timestamp; //date time
+    char *activity_id; // string
+    list_t *result; //nonprimitive container
+
+} production_plan_dto_list_envelope_t;
+
+production_plan_dto_list_envelope_t *production_plan_dto_list_envelope_create(
+    int is_success,
+    char *error_message,
+    char *correlation_id,
+    char *timestamp,
+    char *activity_id,
+    list_t *result
+);
+
+void production_plan_dto_list_envelope_free(production_plan_dto_list_envelope_t *production_plan_dto_list_envelope);
+
+production_plan_dto_list_envelope_t *production_plan_dto_list_envelope_parseFromJSON(cJSON *production_plan_dto_list_envelopeJSON);
+
+cJSON *production_plan_dto_list_envelope_convertToJSON(production_plan_dto_list_envelope_t *production_plan_dto_list_envelope);
+
+#endif /* _production_plan_dto_list_envelope_H_ */
+

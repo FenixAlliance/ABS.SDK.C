@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**TenantsAPI_deSelectTenantAsync**](TenantsAPI.md#TenantsAPI_deSelectTenantAsync) | **POST** /api/v2/TenantsService/Tenants/Deselect | Deselect the user&#39;s default tenant
 [**TenantsAPI_deleteTenantAsync**](TenantsAPI.md#TenantsAPI_deleteTenantAsync) | **DELETE** /api/v2/TenantsService/Tenants | Delete a tenant
 [**TenantsAPI_getAccessibleFeaturesAsync**](TenantsAPI.md#TenantsAPI_getAccessibleFeaturesAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/Features | Get the list of features accessible to a specific enrollment
+[**TenantsAPI_getCartForTenantAsync**](TenantsAPI.md#TenantsAPI_getCartForTenantAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Cart | Get a tenant&#39;s default cart
 [**TenantsAPI_getCurrentTenantAsync**](TenantsAPI.md#TenantsAPI_getCurrentTenantAsync) | **GET** /api/v2/TenantsService/Tenants/Current | Get the user&#39;s current default tenant
 [**TenantsAPI_getEnrollmentLicenseByIdAsync**](TenantsAPI.md#TenantsAPI_getEnrollmentLicenseByIdAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/Licenses/{licenseId} | Get a specific license for an enrollment
 [**TenantsAPI_getEnrollmentLicensesAsync**](TenantsAPI.md#TenantsAPI_getEnrollmentLicensesAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/Licenses | Get the list of licenses available to a specific enrollment
@@ -18,7 +19,6 @@ Method | HTTP request | Description
 [**TenantsAPI_getRootTenantAsync**](TenantsAPI.md#TenantsAPI_getRootTenantAsync) | **GET** /api/v2/TenantsService/Tenants/Root | Get the root tenant of the platform
 [**TenantsAPI_getTenantAsync**](TenantsAPI.md#TenantsAPI_getTenantAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId} | Get a specific tenant by ID
 [**TenantsAPI_getTenantAvatarAsync**](TenantsAPI.md#TenantsAPI_getTenantAvatarAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Avatar | Get a tenant&#39;s avatar
-[**TenantsAPI_getTenantCartAsync**](TenantsAPI.md#TenantsAPI_getTenantCartAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Cart | Get a tenant&#39;s default cart
 [**TenantsAPI_getTenantEnrollmentAsync**](TenantsAPI.md#TenantsAPI_getTenantEnrollmentAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId} | Get a specific tenant enrollment
 [**TenantsAPI_getTenantEnrollmentsAsync**](TenantsAPI.md#TenantsAPI_getTenantEnrollmentsAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments | Get the list of user enrollments for a tenant
 [**TenantsAPI_getTenantInvitationsAsync**](TenantsAPI.md#TenantsAPI_getTenantInvitationsAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Invitations | Get the list of invitations issued by a tenant
@@ -35,8 +35,8 @@ Method | HTTP request | Description
 [**TenantsAPI_patchTenantAsync**](TenantsAPI.md#TenantsAPI_patchTenantAsync) | **PATCH** /api/v2/TenantsService/Tenants/{tenantId} | Patch a tenant&#39;s profile
 [**TenantsAPI_revokeLicenseAsync**](TenantsAPI.md#TenantsAPI_revokeLicenseAsync) | **DELETE** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/Licenses/{licenseId} | Revoke a license from a specific enrollment
 [**TenantsAPI_selectTenantAsync**](TenantsAPI.md#TenantsAPI_selectTenantAsync) | **POST** /api/v2/TenantsService/Tenants/{tenantId}/Select | Select a business tenant as the user&#39;s default tenant
-[**TenantsAPI_updateAvatarAsync**](TenantsAPI.md#TenantsAPI_updateAvatarAsync) | **POST** /api/v2/TenantsService/Tenants/{tenantId}/Avatar | Update a tenant&#39;s avatar
 [**TenantsAPI_updateTenantAsync**](TenantsAPI.md#TenantsAPI_updateTenantAsync) | **PUT** /api/v2/TenantsService/Tenants/{tenantId} | Update a tenant&#39;s profile
+[**TenantsAPI_updateTenantAvatarAsync**](TenantsAPI.md#TenantsAPI_updateTenantAvatarAsync) | **POST** /api/v2/TenantsService/Tenants/{tenantId}/Avatar | Update a tenant&#39;s avatar
 [**TenantsAPI_validateEnrollmentFeatureAccess**](TenantsAPI.md#TenantsAPI_validateEnrollmentFeatureAccess) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/HasAccess | Validate the access to a specific feature for a specific enrollment
 [**TenantsAPI_validateEnrollmentPermissionsAsync**](TenantsAPI.md#TenantsAPI_validateEnrollmentPermissionsAsync) | **GET** /api/v2/TenantsService/Tenants/{tenantId}/Enrollments/{enrollmentId}/Permissions/Validate | Validate the existence of a list of roles and permissions for a specific enrollment
 
@@ -195,6 +195,39 @@ Name | Type | Description  | Notes
 ### Return type
 
 [suite_license_feature_dto_list_envelope_t](suite_license_feature_dto_list_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TenantsAPI_getCartForTenantAsync**
+```c
+// Get a tenant's default cart
+//
+// Get a tenant's default cart
+//
+cart_dto_envelope_t* TenantsAPI_getCartForTenantAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[cart_dto_envelope_t](cart_dto_envelope.md) *
 
 
 ### Authorization
@@ -496,39 +529,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [empty_envelope_t](empty_envelope.md) *
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **TenantsAPI_getTenantCartAsync**
-```c
-// Get a tenant's default cart
-//
-// Get a tenant's default cart
-//
-cart_dto_envelope_t* TenantsAPI_getTenantCartAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
-```
-
-### Parameters
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** | **char \*** |  | 
-**api_version** | **char \*** |  | [optional] 
-**x_api_version** | **char \*** |  | [optional] 
-
-### Return type
-
-[cart_dto_envelope_t](cart_dto_envelope.md) *
 
 
 ### Authorization
@@ -1074,40 +1074,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **TenantsAPI_updateAvatarAsync**
-```c
-// Update a tenant's avatar
-//
-// Update a tenant's avatar
-//
-empty_envelope_t* TenantsAPI_updateAvatarAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, binary_t* avatar);
-```
-
-### Parameters
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration |
-**tenantId** | **char \*** |  | 
-**api_version** | **char \*** |  | [optional] 
-**x_api_version** | **char \*** |  | [optional] 
-**avatar** | **binary_t*** |  | [optional] 
-
-### Return type
-
-[empty_envelope_t](empty_envelope.md) *
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data, application/json, application/xml
- - **Accept**: image/png, application/json, application/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **TenantsAPI_updateTenantAsync**
 ```c
 // Update a tenant's profile
@@ -1139,6 +1105,40 @@ No authorization required
 
  - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TenantsAPI_updateTenantAvatarAsync**
+```c
+// Update a tenant's avatar
+//
+// Update a tenant's avatar
+//
+empty_envelope_t* TenantsAPI_updateTenantAvatarAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, binary_t* avatar);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**avatar** | **binary_t*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data, application/json, application/xml
+ - **Accept**: image/png, application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -10,6 +10,10 @@ project_dto_t *project_dto_create(
     char *timestamp,
     char *title,
     char *description,
+    char *individual_id,
+    char *organization_id,
+    char *tenant_id,
+    char *enrollment_id,
     char *project_start_date,
     char *project_end_date
     ) {
@@ -21,6 +25,10 @@ project_dto_t *project_dto_create(
     project_dto_local_var->timestamp = timestamp;
     project_dto_local_var->title = title;
     project_dto_local_var->description = description;
+    project_dto_local_var->individual_id = individual_id;
+    project_dto_local_var->organization_id = organization_id;
+    project_dto_local_var->tenant_id = tenant_id;
+    project_dto_local_var->enrollment_id = enrollment_id;
     project_dto_local_var->project_start_date = project_start_date;
     project_dto_local_var->project_end_date = project_end_date;
 
@@ -48,6 +56,22 @@ void project_dto_free(project_dto_t *project_dto) {
     if (project_dto->description) {
         free(project_dto->description);
         project_dto->description = NULL;
+    }
+    if (project_dto->individual_id) {
+        free(project_dto->individual_id);
+        project_dto->individual_id = NULL;
+    }
+    if (project_dto->organization_id) {
+        free(project_dto->organization_id);
+        project_dto->organization_id = NULL;
+    }
+    if (project_dto->tenant_id) {
+        free(project_dto->tenant_id);
+        project_dto->tenant_id = NULL;
+    }
+    if (project_dto->enrollment_id) {
+        free(project_dto->enrollment_id);
+        project_dto->enrollment_id = NULL;
     }
     if (project_dto->project_start_date) {
         free(project_dto->project_start_date);
@@ -90,6 +114,38 @@ cJSON *project_dto_convertToJSON(project_dto_t *project_dto) {
     // project_dto->description
     if(project_dto->description) {
     if(cJSON_AddStringToObject(item, "description", project_dto->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // project_dto->individual_id
+    if(project_dto->individual_id) {
+    if(cJSON_AddStringToObject(item, "individualId", project_dto->individual_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // project_dto->organization_id
+    if(project_dto->organization_id) {
+    if(cJSON_AddStringToObject(item, "organizationId", project_dto->organization_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // project_dto->tenant_id
+    if(project_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", project_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // project_dto->enrollment_id
+    if(project_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", project_dto->enrollment_id) == NULL) {
     goto fail; //String
     }
     }
@@ -158,6 +214,42 @@ project_dto_t *project_dto_parseFromJSON(cJSON *project_dtoJSON){
     }
     }
 
+    // project_dto->individual_id
+    cJSON *individual_id = cJSON_GetObjectItemCaseSensitive(project_dtoJSON, "individualId");
+    if (individual_id) { 
+    if(!cJSON_IsString(individual_id) && !cJSON_IsNull(individual_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // project_dto->organization_id
+    cJSON *organization_id = cJSON_GetObjectItemCaseSensitive(project_dtoJSON, "organizationId");
+    if (organization_id) { 
+    if(!cJSON_IsString(organization_id) && !cJSON_IsNull(organization_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // project_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(project_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // project_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(project_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
+    }
+
     // project_dto->project_start_date
     cJSON *project_start_date = cJSON_GetObjectItemCaseSensitive(project_dtoJSON, "projectStartDate");
     if (project_start_date) { 
@@ -182,6 +274,10 @@ project_dto_t *project_dto_parseFromJSON(cJSON *project_dtoJSON){
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        individual_id && !cJSON_IsNull(individual_id) ? strdup(individual_id->valuestring) : NULL,
+        organization_id && !cJSON_IsNull(organization_id) ? strdup(organization_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         project_start_date && !cJSON_IsNull(project_start_date) ? strdup(project_start_date->valuestring) : NULL,
         project_end_date && !cJSON_IsNull(project_end_date) ? strdup(project_end_date->valuestring) : NULL
         );

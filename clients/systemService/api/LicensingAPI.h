@@ -14,6 +14,22 @@
 #include "../model/suite_license_dto_list_envelope.h"
 
 
+// Retrieve license attributes
+//
+// Retrieves all additional attributes for a given license.
+//
+suite_license_assignment_dto_list_envelope_t*
+LicensingAPI_getAttributesForLicenseAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
+
+
+// Retrieve license features
+//
+// Retrieves all features for a given license.
+//
+suite_license_assignment_dto_list_envelope_t*
+LicensingAPI_getFeaturesForLicenseAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
+
+
 // Retrieve license assignments
 //
 // Retrieves all license assignments for a given license.
@@ -22,28 +38,12 @@ suite_license_assignment_dto_list_envelope_t*
 LicensingAPI_getLicenseAssignmentsAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
 
 
-// Retrieve license attributes
-//
-// Retrieves all additional attributes for a given license.
-//
-suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
-
-
 // Retrieve a license by ID
 //
 // Retrieves a single suite license by its unique identifier.
 //
 suite_license_dto_envelope_t*
 LicensingAPI_getLicenseByIdAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
-
-
-// Retrieve license features
-//
-// Retrieves all features for a given license.
-//
-suite_license_assignment_dto_list_envelope_t*
-LicensingAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *tenantId, char *licenseId, char *api_version, char *x_api_version);
 
 
 // Retrieve license record quota

@@ -1232,7 +1232,7 @@ No authorization required
 //
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseInvoice, filtered by the supplied OData date range.
 //
-decimal_envelope_t* InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId);
+money_envelope_t* InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId);
 ```
 
 ### Parameters
@@ -1243,7 +1243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[decimal_envelope_t](decimal_envelope.md) *
+[money_envelope_t](money_envelope.md) *
 
 
 ### Authorization
@@ -1263,7 +1263,7 @@ No authorization required
 //
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvoice, filtered by the supplied OData date range.
 //
-decimal_envelope_t* InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId);
+money_envelope_t* InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId);
 ```
 
 ### Parameters
@@ -1274,7 +1274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[decimal_envelope_t](decimal_envelope.md) *
+[money_envelope_t](money_envelope.md) *
 
 
 ### Authorization

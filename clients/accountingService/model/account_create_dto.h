@@ -24,6 +24,14 @@ char* account_create_dto_account_category_ToString(accountingservice_account_cre
 
 accountingservice_account_create_dto_ACCOUNTCATEGORY_e account_create_dto_account_category_FromString(char* account_category);
 
+// Enum INCOMESTATEMENTSUBTYPE for account_create_dto
+
+typedef enum  { accountingservice_account_create_dto_INCOMESTATEMENTSUBTYPE_NULL = 0, accountingservice_account_create_dto_INCOMESTATEMENTSUBTYPE_OperatingRevenue, accountingservice_account_create_dto_INCOMESTATEMENTSUBTYPE_Gain, accountingservice_account_create_dto_INCOMESTATEMENTSUBTYPE_OperatingExpense, accountingservice_account_create_dto_INCOMESTATEMENTSUBTYPE_Loss } accountingservice_account_create_dto_INCOMESTATEMENTSUBTYPE_e;
+
+char* account_create_dto_income_statement_sub_type_ToString(accountingservice_account_create_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_type);
+
+accountingservice_account_create_dto_INCOMESTATEMENTSUBTYPE_e account_create_dto_income_statement_sub_type_FromString(char* income_statement_sub_type);
+
 
 
 typedef struct account_create_dto_t {
@@ -40,6 +48,9 @@ typedef struct account_create_dto_t {
     char *account_type_id; // string
     char *parent_account_id; // string
     accountingservice_account_create_dto_ACCOUNTCATEGORY_e account_category; //enum
+    int is_contra; //boolean
+    int is_monetary; //boolean
+    accountingservice_account_create_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_type; //enum
 
 } account_create_dto_t;
 
@@ -56,7 +67,10 @@ account_create_dto_t *account_create_dto_create(
     char *contact_id,
     char *account_type_id,
     char *parent_account_id,
-    accountingservice_account_create_dto_ACCOUNTCATEGORY_e account_category
+    accountingservice_account_create_dto_ACCOUNTCATEGORY_e account_category,
+    int is_contra,
+    int is_monetary,
+    accountingservice_account_create_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_type
 );
 
 void account_create_dto_free(account_create_dto_t *account_create_dto);

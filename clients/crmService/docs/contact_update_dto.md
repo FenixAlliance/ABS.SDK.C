@@ -18,8 +18,6 @@ Name | Type | Description | Notes
 **job_title** | **char \*** |  | [optional] 
 **country_id** | **char \*** |  | [optional] 
 **parent_contact_id** | **char \*** |  | [optional] 
-**address_line1** | **char \*** |  | [optional] 
-**address_line2** | **char \*** |  | [optional] 
 **postal_code** | **char \*** |  | [optional] 
 **state_id** | **char \*** |  | [optional] 
 **city_id** | **char \*** |  | [optional] 

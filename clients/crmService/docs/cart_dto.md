@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **char \*** |  | [optional] 
+**timestamp** | **char \*** |  | [optional] 
 **ip** | **char \*** |  | [optional] 
 **type** | **char \*** |  | [optional] 
 **total** | **double** |  | [optional] 

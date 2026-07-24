@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**ActivityFeedsAPI_getActivityFeedAsync**](ActivityFeedsAPI.md#ActivityFeedsAPI_getActivityFeedAsync) | **GET** /api/v2/ActivitiesService/ActivityFeeds/{activityFeedId} | Get activity feed by ID
 [**ActivityFeedsAPI_getActivityFeedsAsync**](ActivityFeedsAPI.md#ActivityFeedsAPI_getActivityFeedsAsync) | **GET** /api/v2/ActivitiesService/ActivityFeeds | Get activity feeds
 [**ActivityFeedsAPI_getActivityFeedsCountAsync**](ActivityFeedsAPI.md#ActivityFeedsAPI_getActivityFeedsCountAsync) | **GET** /api/v2/ActivitiesService/ActivityFeeds/Count | Count activity feeds
+[**ActivityFeedsAPI_getActivityRecordsCountAsync**](ActivityFeedsAPI.md#ActivityFeedsAPI_getActivityRecordsCountAsync) | **GET** /api/v2/ActivitiesService/Activities/Count | Count activity records
 [**ActivityFeedsAPI_getActivityTypeByIdAsync**](ActivityFeedsAPI.md#ActivityFeedsAPI_getActivityTypeByIdAsync) | **GET** /api/v2/ActivitiesService/ActivityTypes/{activityTypeId} | Get Activity Type
 [**ActivityFeedsAPI_getActivityTypesAsync**](ActivityFeedsAPI.md#ActivityFeedsAPI_getActivityTypesAsync) | **GET** /api/v2/ActivitiesService/ActivityTypes | Get Activity Types
 [**ActivityFeedsAPI_patchActivityAsync**](ActivityFeedsAPI.md#ActivityFeedsAPI_patchActivityAsync) | **PATCH** /api/v2/ActivitiesService/ActivityFeeds/{activityFeedId}/Activities/{activityId} | Patch an activity
@@ -371,6 +372,39 @@ No authorization required
 // Returns the count of activity feeds for the specified tenant.
 //
 int32_envelope_t* ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ActivityFeedsAPI_getActivityRecordsCountAsync**
+```c
+// Count activity records
+//
+// Returns the tenant-wide count of activity records across all feeds owned by the tenant.
+//
+int32_envelope_t* ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters

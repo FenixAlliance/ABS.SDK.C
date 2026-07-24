@@ -56,6 +56,11 @@ set(SRCS
     model/object.c
     model/access_token_response.c
     model/boolean_envelope.c
+    model/business_relationship_create_dto.c
+    model/business_relationship_dto.c
+    model/business_relationship_dto_envelope.c
+    model/business_relationship_dto_list_envelope.c
+    model/business_relationship_update_dto.c
     model/cart_dto.c
     model/cart_dto_envelope.c
     model/empty_envelope.c
@@ -181,7 +186,7 @@ set(SRCS
     model/unit_group_dto_list_envelope.c
     model/unit_group_update_dto.c
     model/unit_update_dto.c
-    model/update_avatar_async_request.c
+    model/update_tenant_avatar_async_request.c
     model/user_dto.c
     model/user_dto_list_envelope.c
     model/wallet_dto.c
@@ -220,6 +225,11 @@ set(HDRS
     model/object.h
     model/access_token_response.h
     model/boolean_envelope.h
+    model/business_relationship_create_dto.h
+    model/business_relationship_dto.h
+    model/business_relationship_dto_envelope.h
+    model/business_relationship_dto_list_envelope.h
+    model/business_relationship_update_dto.h
     model/cart_dto.h
     model/cart_dto_envelope.h
     model/empty_envelope.h
@@ -345,7 +355,7 @@ set(HDRS
     model/unit_group_dto_list_envelope.h
     model/unit_group_update_dto.h
     model/unit_update_dto.h
-    model/update_avatar_async_request.h
+    model/update_tenant_avatar_async_request.h
     model/user_dto.h
     model/user_dto_list_envelope.h
     model/wallet_dto.h

@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/option_create_dto.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
@@ -60,6 +61,22 @@ OptionsAPI_getContactOptions(apiClient_t *apiClient, char *tenantId, char *conta
 //
 int32_envelope_t*
 OptionsAPI_getContactOptionsCount(apiClient_t *apiClient, char *tenantId, char *contactId, char *portalId, char *api_version, char *x_api_version);
+
+
+// Patch a contact option
+//
+// Patch a contact option
+//
+empty_envelope_t*
+OptionsAPI_patchContactOptionAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+
+
+// Patch a contact option by key
+//
+// Patch a contact option by key
+//
+empty_envelope_t*
+OptionsAPI_patchContactOptionByKeyAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *key, char *api_version, char *x_api_version, list_t *operation);
 
 
 // Update a contact option

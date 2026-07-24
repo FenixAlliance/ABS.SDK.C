@@ -100,6 +100,11 @@ set(SRCS
     model/newsletter_create_dto.c
     model/newsletter_dto.c
     model/newsletter_dto_envelope.c
+    model/newsletter_subscription_create_dto.c
+    model/newsletter_subscription_dto.c
+    model/newsletter_subscription_dto_envelope.c
+    model/newsletter_subscription_dto_list_envelope.c
+    model/newsletter_subscription_update_dto.c
     model/newsletter_update_dto.c
     model/operation.c
     model/order_dto.c
@@ -189,6 +194,11 @@ set(HDRS
     model/newsletter_create_dto.h
     model/newsletter_dto.h
     model/newsletter_dto_envelope.h
+    model/newsletter_subscription_create_dto.h
+    model/newsletter_subscription_dto.h
+    model/newsletter_subscription_dto_envelope.h
+    model/newsletter_subscription_dto_list_envelope.h
+    model/newsletter_subscription_update_dto.h
     model/newsletter_update_dto.h
     model/operation.h
     model/order_dto.h

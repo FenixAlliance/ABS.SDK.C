@@ -3,10 +3,10 @@ Packing.cmake
 README.md
 api/AccountGroupsAPI.c
 api/AccountGroupsAPI.h
-api/AccountingEntriesAPI.c
-api/AccountingEntriesAPI.h
 api/AccountingPeriodsAPI.c
 api/AccountingPeriodsAPI.h
+api/AccountingSummaryAPI.c
+api/AccountingSummaryAPI.h
 api/AccountsAPI.c
 api/AccountsAPI.h
 api/BankProfilesAPI.c
@@ -53,8 +53,6 @@ api/GrantsAPI.c
 api/GrantsAPI.h
 api/InvoiceEnumerationRangesAPI.c
 api/InvoiceEnumerationRangesAPI.h
-api/JournalEntriesAPI.c
-api/JournalEntriesAPI.h
 api/JournalTypesAPI.c
 api/JournalTypesAPI.h
 api/JournalsAPI.c
@@ -67,6 +65,8 @@ api/LoansAPI.c
 api/LoansAPI.h
 api/ReceiptsAPI.c
 api/ReceiptsAPI.h
+api/ReportsAPI.c
+api/ReportsAPI.h
 api/SharesAPI.c
 api/SharesAPI.h
 api/TaxClassesAPI.c
@@ -78,8 +78,8 @@ api/TaxRatesAPI.h
 api/TransactionsAPI.c
 api/TransactionsAPI.h
 docs/AccountGroupsAPI.md
-docs/AccountingEntriesAPI.md
 docs/AccountingPeriodsAPI.md
+docs/AccountingSummaryAPI.md
 docs/AccountsAPI.md
 docs/BankProfilesAPI.md
 docs/BankingAPI.md
@@ -103,13 +103,13 @@ docs/FiscalResponsibilityRecordsAPI.md
 docs/FiscalYearsAPI.md
 docs/GrantsAPI.md
 docs/InvoiceEnumerationRangesAPI.md
-docs/JournalEntriesAPI.md
 docs/JournalTypesAPI.md
 docs/JournalsAPI.md
 docs/LedgerTypesAPI.md
 docs/LedgersAPI.md
 docs/LoansAPI.md
 docs/ReceiptsAPI.md
+docs/ReportsAPI.md
 docs/SharesAPI.md
 docs/TaxClassesAPI.md
 docs/TaxPoliciesAPI.md
@@ -296,6 +296,7 @@ docs/journal_dto_envelope.md
 docs/journal_dto_i_read_only_list_envelope.md
 docs/journal_entry_create_dto.md
 docs/journal_entry_dto.md
+docs/journal_entry_dto_envelope.md
 docs/journal_entry_dto_i_read_only_list_envelope.md
 docs/journal_entry_update_dto.md
 docs/journal_type_create_dto.md
@@ -344,6 +345,7 @@ docs/refresh_request.md
 docs/register_request.md
 docs/resend_confirmation_email_request.md
 docs/reset_password_request.md
+docs/reverse_journal_entry_request.md
 docs/seed_chart_of_accounts_request.md
 docs/share_class_create_dto.md
 docs/share_class_dto.md
@@ -390,6 +392,9 @@ docs/transaction_dto.md
 docs/transaction_dto_envelope.md
 docs/transaction_dto_list_envelope.md
 docs/transaction_update_dto.md
+docs/trial_balance_dto.md
+docs/trial_balance_dto_envelope.md
+docs/trial_balance_row_dto.md
 docs/two_factor_request.md
 docs/two_factor_response.md
 docs/update_ledger_dto.md
@@ -763,6 +768,8 @@ model/journal_entry_create_dto.c
 model/journal_entry_create_dto.h
 model/journal_entry_dto.c
 model/journal_entry_dto.h
+model/journal_entry_dto_envelope.c
+model/journal_entry_dto_envelope.h
 model/journal_entry_dto_i_read_only_list_envelope.c
 model/journal_entry_dto_i_read_only_list_envelope.h
 model/journal_entry_update_dto.c
@@ -861,6 +868,8 @@ model/resend_confirmation_email_request.c
 model/resend_confirmation_email_request.h
 model/reset_password_request.c
 model/reset_password_request.h
+model/reverse_journal_entry_request.c
+model/reverse_journal_entry_request.h
 model/seed_chart_of_accounts_request.c
 model/seed_chart_of_accounts_request.h
 model/share_class_create_dto.c
@@ -953,6 +962,12 @@ model/transaction_dto_list_envelope.c
 model/transaction_dto_list_envelope.h
 model/transaction_update_dto.c
 model/transaction_update_dto.h
+model/trial_balance_dto.c
+model/trial_balance_dto.h
+model/trial_balance_dto_envelope.c
+model/trial_balance_dto_envelope.h
+model/trial_balance_row_dto.c
+model/trial_balance_row_dto.h
 model/two_factor_request.c
 model/two_factor_request.h
 model/two_factor_response.c
@@ -964,4 +979,8 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_decimal_envelope.c
+unit-test/test_journal_entry_dto_envelope.c
+unit-test/test_reverse_journal_entry_request.c
+unit-test/test_trial_balance_dto.c
+unit-test/test_trial_balance_dto_envelope.c
+unit-test/test_trial_balance_row_dto.c

@@ -85,7 +85,6 @@ set(SRCS
     model/two_factor_request.c
     model/two_factor_response.c
     api/ActivityFeedsAPI.c
-    api/ActivityRecordsAPI.c
     api/FenixAllianceABSWebAPI.c
 
 )
@@ -128,7 +127,6 @@ set(HDRS
     model/two_factor_request.h
     model/two_factor_response.h
     api/ActivityFeedsAPI.h
-    api/ActivityRecordsAPI.h
     api/FenixAllianceABSWebAPI.h
 
 )
@@ -212,7 +210,6 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-ActivityFeedsAPI.c
-#    unit-tests/manual-ActivityRecordsAPI.c
 #    unit-tests/manual-FenixAllianceABSWebAPI.c
 #)
 

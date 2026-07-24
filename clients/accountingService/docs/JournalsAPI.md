@@ -14,9 +14,12 @@ Method | HTTP request | Description
 [**JournalsAPI_getJournalDetailsAsync**](JournalsAPI.md#JournalsAPI_getJournalDetailsAsync) | **GET** /api/v2/AccountingService/Journals/{journalId} | Get journal by ID
 [**JournalsAPI_getJournalEntriesAsync**](JournalsAPI.md#JournalsAPI_getJournalEntriesAsync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries | Get journal entries
 [**JournalsAPI_getJournalEntriesCountAsync**](JournalsAPI.md#JournalsAPI_getJournalEntriesCountAsync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Count | Count journal entries
+[**JournalsAPI_getJournalEntryDetailsAsync**](JournalsAPI.md#JournalsAPI_getJournalEntryDetailsAsync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Get journal entry by ID
 [**JournalsAPI_getJournalsAsync**](JournalsAPI.md#JournalsAPI_getJournalsAsync) | **GET** /api/v2/AccountingService/Journals | Get all journals
 [**JournalsAPI_patchJournalAsync**](JournalsAPI.md#JournalsAPI_patchJournalAsync) | **PATCH** /api/v2/AccountingService/Journals/{journalId} | Patch a journal
 [**JournalsAPI_patchJournalEntryAsync**](JournalsAPI.md#JournalsAPI_patchJournalEntryAsync) | **PATCH** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Patch a journal entry
+[**JournalsAPI_postJournalEntryAsync**](JournalsAPI.md#JournalsAPI_postJournalEntryAsync) | **POST** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}/Post | Post a draft journal entry
+[**JournalsAPI_reverseJournalEntryAsync**](JournalsAPI.md#JournalsAPI_reverseJournalEntryAsync) | **POST** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId}/Reverse | Reverse a posted journal entry
 [**JournalsAPI_updateJournalAsync**](JournalsAPI.md#JournalsAPI_updateJournalAsync) | **PUT** /api/v2/AccountingService/Journals/{journalId} | Update journal
 [**JournalsAPI_updateJournalEntryAsync**](JournalsAPI.md#JournalsAPI_updateJournalEntryAsync) | **PUT** /api/v2/AccountingService/Journals/{journalId}/Entries/{entryId} | Update journal entry
 
@@ -36,7 +39,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **journalId** | **char \*** |  | 
-**currencyId** | **char \*** |  | [optional] 
+**currencyId** | **char \*** |  | [optional] [default to &#39;USD.USA&#39;]
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -71,7 +74,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **journalId** | **char \*** |  | 
-**currencyId** | **char \*** |  | [optional] 
+**currencyId** | **char \*** |  | [optional] [default to &#39;USD.USA&#39;]
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
@@ -364,6 +367,41 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **JournalsAPI_getJournalEntryDetailsAsync**
+```c
+// Get journal entry by ID
+//
+// Retrieves a single journal entry WITH its hydrated posting lines — each line's account, direction, description and currency facets (transaction / functional / account / USD).
+//
+journal_entry_dto_envelope_t* JournalsAPI_getJournalEntryDetailsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**journalId** | **char \*** |  | 
+**entryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[journal_entry_dto_envelope_t](journal_entry_dto_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **JournalsAPI_getJournalsAsync**
 ```c
 // Get all journals
@@ -451,6 +489,77 @@ Name | Type | Description  | Notes
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 **operation** | **[list_t](operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JournalsAPI_postJournalEntryAsync**
+```c
+// Post a draft journal entry
+//
+// Posts a DRAFT journal entry into its own open fiscal period. Enforces the balanced-entry invariant and the open-period gate, then seals the entry (immutable — correct via reversal, never edit/delete). An unbalanced draft or a closed period is rejected. Requires the journals_post permission.
+//
+empty_envelope_t* JournalsAPI_postJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**journalId** | **char \*** |  | 
+**entryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JournalsAPI_reverseJournalEntryAsync**
+```c
+// Reverse a posted journal entry
+//
+// Reverses a POSTED journal entry by writing a balanced compensating counter-entry into the supplied open fiscal period and marking the original Reversed — one atomic operation (append-only audit trail). Requires the journals_reverse permission.
+//
+empty_envelope_t* JournalsAPI_reverseJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, reverse_journal_entry_request_t *reverse_journal_entry_request);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**journalId** | **char \*** |  | 
+**entryId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**reverse_journal_entry_request** | **[reverse_journal_entry_request_t](reverse_journal_entry_request.md) \*** |  | [optional] 
 
 ### Return type
 

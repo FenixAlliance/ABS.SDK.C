@@ -6,6 +6,8 @@
 
 
 project_task_update_dto_t *project_task_update_dto_create(
+    char *title,
+    char *description,
     char *start_date,
     char *due_line
     ) {
@@ -13,6 +15,8 @@ project_task_update_dto_t *project_task_update_dto_create(
     if (!project_task_update_dto_local_var) {
         return NULL;
     }
+    project_task_update_dto_local_var->title = title;
+    project_task_update_dto_local_var->description = description;
     project_task_update_dto_local_var->start_date = start_date;
     project_task_update_dto_local_var->due_line = due_line;
 
@@ -25,6 +29,14 @@ void project_task_update_dto_free(project_task_update_dto_t *project_task_update
         return ;
     }
     listEntry_t *listEntry;
+    if (project_task_update_dto->title) {
+        free(project_task_update_dto->title);
+        project_task_update_dto->title = NULL;
+    }
+    if (project_task_update_dto->description) {
+        free(project_task_update_dto->description);
+        project_task_update_dto->description = NULL;
+    }
     if (project_task_update_dto->start_date) {
         free(project_task_update_dto->start_date);
         project_task_update_dto->start_date = NULL;
@@ -38,6 +50,22 @@ void project_task_update_dto_free(project_task_update_dto_t *project_task_update
 
 cJSON *project_task_update_dto_convertToJSON(project_task_update_dto_t *project_task_update_dto) {
     cJSON *item = cJSON_CreateObject();
+
+    // project_task_update_dto->title
+    if(project_task_update_dto->title) {
+    if(cJSON_AddStringToObject(item, "title", project_task_update_dto->title) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // project_task_update_dto->description
+    if(project_task_update_dto->description) {
+    if(cJSON_AddStringToObject(item, "description", project_task_update_dto->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // project_task_update_dto->start_date
     if(project_task_update_dto->start_date) {
@@ -66,6 +94,24 @@ project_task_update_dto_t *project_task_update_dto_parseFromJSON(cJSON *project_
 
     project_task_update_dto_t *project_task_update_dto_local_var = NULL;
 
+    // project_task_update_dto->title
+    cJSON *title = cJSON_GetObjectItemCaseSensitive(project_task_update_dtoJSON, "title");
+    if (title) { 
+    if(!cJSON_IsString(title) && !cJSON_IsNull(title))
+    {
+    goto end; //String
+    }
+    }
+
+    // project_task_update_dto->description
+    cJSON *description = cJSON_GetObjectItemCaseSensitive(project_task_update_dtoJSON, "description");
+    if (description) { 
+    if(!cJSON_IsString(description) && !cJSON_IsNull(description))
+    {
+    goto end; //String
+    }
+    }
+
     // project_task_update_dto->start_date
     cJSON *start_date = cJSON_GetObjectItemCaseSensitive(project_task_update_dtoJSON, "startDate");
     if (start_date) { 
@@ -86,6 +132,8 @@ project_task_update_dto_t *project_task_update_dto_parseFromJSON(cJSON *project_
 
 
     project_task_update_dto_local_var = project_task_update_dto_create (
+        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
+        description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
         start_date && !cJSON_IsNull(start_date) ? strdup(start_date->valuestring) : NULL,
         due_line && !cJSON_IsNull(due_line) ? strdup(due_line->valuestring) : NULL
         );

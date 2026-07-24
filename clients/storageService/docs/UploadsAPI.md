@@ -1,6 +1,6 @@
 # UploadsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,9 +11,9 @@ Method | HTTP request | Description
 ```c
 // Upload a file
 //
-// Uploads a file to tenant or user storage.
+// Uploads a file to tenant or user storage, scanned and catalogued through the storage spine.
 //
-empty_envelope_t* UploadsAPI_saveFileAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, char *notes, char *title, char *author, int *isFolder, char *fileName, char *abstract, char *keyWords, int *validResponse, char *parentFileUploadId, char *filePath, char *appFile.content, char *appFile.sha256, char appFile.createdAtUtc, char *appFile.userId.value, char *appFile.tenantId.value, char *appFile.enrollmentId.value, storageservice_saveFileAsync_appFile.source_e appFile.source, long appFile.length, char *appFile.name, char *appFile.fileName, char appFile.lastModified, long appFile.size, char *appFile.contentType, char *appFile.contentDisposition, list_t* appFile.headers, char *id, char timestamp);
+empty_envelope_t* UploadsAPI_saveFileAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, binary_t* file, char *notes, char *title, char *author, int *isFolder, char *fileName, char *abstract, char *keyWords, int *validResponse, char *parentFileUploadId, char *filePath, storageservice_saveFileAsync_publicAccessType_e publicAccessType, storageservice_saveFileAsync_purpose_e purpose, char *socialProfileId.value, char *appFile.content, char *appFile.sha256, char appFile.createdAtUtc, char *appFile.userId.value, char *appFile.tenantId.value, char *appFile.enrollmentId.value, storageservice_saveFileAsync_appFile.source_e appFile.source, long appFile.length, char *appFile.name, char *appFile.fileName, char appFile.lastModified, long appFile.size, char *appFile.contentType, char *appFile.contentDisposition, list_t* appFile.headers, char *id, char timestamp);
 ```
 
 ### Parameters
@@ -23,6 +23,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**file** | **binary_t*** |  | [optional] 
 **notes** | **char \*** |  | [optional] 
 **title** | **char \*** |  | [optional] 
 **author** | **char \*** |  | [optional] 
@@ -33,6 +34,9 @@ Name | Type | Description  | Notes
 **validResponse** | **int \*** |  | [optional] 
 **parentFileUploadId** | **char \*** |  | [optional] 
 **filePath** | **char \*** |  | [optional] 
+**publicAccessType** | **storageservice_saveFileAsync_publicAccessType_e** |  | [optional] 
+**purpose** | **storageservice_saveFileAsync_purpose_e** |  | [optional] 
+**socialProfileId.value** | **char \*** |  | [optional] 
 **appFile.content** | **char \*** |  | [optional] 
 **appFile.sha256** | **char \*** |  | [optional] 
 **appFile.createdAtUtc** | **char** |  | [optional] 

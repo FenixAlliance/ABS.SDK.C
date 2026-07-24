@@ -52,10 +52,11 @@ cJSON *fiscal_period_update_dto_convertToJSON(fiscal_period_update_dto_t *fiscal
     cJSON *item = cJSON_CreateObject();
 
     // fiscal_period_update_dto->name
-    if(fiscal_period_update_dto->name) {
+    if (!fiscal_period_update_dto->name) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "name", fiscal_period_update_dto->name) == NULL) {
     goto fail; //String
-    }
     }
 
 
@@ -76,10 +77,11 @@ cJSON *fiscal_period_update_dto_convertToJSON(fiscal_period_update_dto_t *fiscal
 
 
     // fiscal_period_update_dto->fiscal_year_id
-    if(fiscal_period_update_dto->fiscal_year_id) {
+    if (!fiscal_period_update_dto->fiscal_year_id) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "fiscalYearId", fiscal_period_update_dto->fiscal_year_id) == NULL) {
     goto fail; //String
-    }
     }
 
     return item;
@@ -96,11 +98,14 @@ fiscal_period_update_dto_t *fiscal_period_update_dto_parseFromJSON(cJSON *fiscal
 
     // fiscal_period_update_dto->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(fiscal_period_update_dtoJSON, "name");
-    if (name) { 
-    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
+    if (!name) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(name))
     {
     goto end; //String
-    }
     }
 
     // fiscal_period_update_dto->from_date
@@ -123,19 +128,22 @@ fiscal_period_update_dto_t *fiscal_period_update_dto_parseFromJSON(cJSON *fiscal
 
     // fiscal_period_update_dto->fiscal_year_id
     cJSON *fiscal_year_id = cJSON_GetObjectItemCaseSensitive(fiscal_period_update_dtoJSON, "fiscalYearId");
-    if (fiscal_year_id) { 
-    if(!cJSON_IsString(fiscal_year_id) && !cJSON_IsNull(fiscal_year_id))
+    if (!fiscal_year_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(fiscal_year_id))
     {
     goto end; //String
-    }
     }
 
 
     fiscal_period_update_dto_local_var = fiscal_period_update_dto_create (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        strdup(name->valuestring),
         from_date && !cJSON_IsNull(from_date) ? strdup(from_date->valuestring) : NULL,
         to_date && !cJSON_IsNull(to_date) ? strdup(to_date->valuestring) : NULL,
-        fiscal_year_id && !cJSON_IsNull(fiscal_year_id) ? strdup(fiscal_year_id->valuestring) : NULL
+        strdup(fiscal_year_id->valuestring)
         );
 
     return fiscal_period_update_dto_local_var;

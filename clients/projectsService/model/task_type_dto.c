@@ -11,7 +11,9 @@ task_type_dto_t *task_type_dto_create(
     char *title,
     char *task_category_id,
     int display_in_time_tracker,
-    int requires_description
+    int requires_description,
+    char *tenant_id,
+    char *enrollment_id
     ) {
     task_type_dto_t *task_type_dto_local_var = malloc(sizeof(task_type_dto_t));
     if (!task_type_dto_local_var) {
@@ -23,6 +25,8 @@ task_type_dto_t *task_type_dto_create(
     task_type_dto_local_var->task_category_id = task_category_id;
     task_type_dto_local_var->display_in_time_tracker = display_in_time_tracker;
     task_type_dto_local_var->requires_description = requires_description;
+    task_type_dto_local_var->tenant_id = tenant_id;
+    task_type_dto_local_var->enrollment_id = enrollment_id;
 
     return task_type_dto_local_var;
 }
@@ -48,6 +52,14 @@ void task_type_dto_free(task_type_dto_t *task_type_dto) {
     if (task_type_dto->task_category_id) {
         free(task_type_dto->task_category_id);
         task_type_dto->task_category_id = NULL;
+    }
+    if (task_type_dto->tenant_id) {
+        free(task_type_dto->tenant_id);
+        task_type_dto->tenant_id = NULL;
+    }
+    if (task_type_dto->enrollment_id) {
+        free(task_type_dto->enrollment_id);
+        task_type_dto->enrollment_id = NULL;
     }
     free(task_type_dto);
 }
@@ -81,7 +93,7 @@ cJSON *task_type_dto_convertToJSON(task_type_dto_t *task_type_dto) {
 
     // task_type_dto->task_category_id
     if(task_type_dto->task_category_id) {
-    if(cJSON_AddStringToObject(item, "taskCategoryID", task_type_dto->task_category_id) == NULL) {
+    if(cJSON_AddStringToObject(item, "taskCategoryId", task_type_dto->task_category_id) == NULL) {
     goto fail; //String
     }
     }
@@ -99,6 +111,22 @@ cJSON *task_type_dto_convertToJSON(task_type_dto_t *task_type_dto) {
     if(task_type_dto->requires_description) {
     if(cJSON_AddBoolToObject(item, "requiresDescription", task_type_dto->requires_description) == NULL) {
     goto fail; //Bool
+    }
+    }
+
+
+    // task_type_dto->tenant_id
+    if(task_type_dto->tenant_id) {
+    if(cJSON_AddStringToObject(item, "tenantId", task_type_dto->tenant_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // task_type_dto->enrollment_id
+    if(task_type_dto->enrollment_id) {
+    if(cJSON_AddStringToObject(item, "enrollmentId", task_type_dto->enrollment_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -142,7 +170,7 @@ task_type_dto_t *task_type_dto_parseFromJSON(cJSON *task_type_dtoJSON){
     }
 
     // task_type_dto->task_category_id
-    cJSON *task_category_id = cJSON_GetObjectItemCaseSensitive(task_type_dtoJSON, "taskCategoryID");
+    cJSON *task_category_id = cJSON_GetObjectItemCaseSensitive(task_type_dtoJSON, "taskCategoryId");
     if (task_category_id) { 
     if(!cJSON_IsString(task_category_id) && !cJSON_IsNull(task_category_id))
     {
@@ -168,6 +196,24 @@ task_type_dto_t *task_type_dto_parseFromJSON(cJSON *task_type_dtoJSON){
     }
     }
 
+    // task_type_dto->tenant_id
+    cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(task_type_dtoJSON, "tenantId");
+    if (tenant_id) { 
+    if(!cJSON_IsString(tenant_id) && !cJSON_IsNull(tenant_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // task_type_dto->enrollment_id
+    cJSON *enrollment_id = cJSON_GetObjectItemCaseSensitive(task_type_dtoJSON, "enrollmentId");
+    if (enrollment_id) { 
+    if(!cJSON_IsString(enrollment_id) && !cJSON_IsNull(enrollment_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     task_type_dto_local_var = task_type_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -175,7 +221,9 @@ task_type_dto_t *task_type_dto_parseFromJSON(cJSON *task_type_dtoJSON){
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         task_category_id && !cJSON_IsNull(task_category_id) ? strdup(task_category_id->valuestring) : NULL,
         display_in_time_tracker ? display_in_time_tracker->valueint : 0,
-        requires_description ? requires_description->valueint : 0
+        requires_description ? requires_description->valueint : 0,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL
         );
 
     return task_type_dto_local_var;

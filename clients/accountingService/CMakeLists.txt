@@ -235,6 +235,7 @@ set(SRCS
     model/journal_dto_i_read_only_list_envelope.c
     model/journal_entry_create_dto.c
     model/journal_entry_dto.c
+    model/journal_entry_dto_envelope.c
     model/journal_entry_dto_i_read_only_list_envelope.c
     model/journal_entry_update_dto.c
     model/journal_type_create_dto.c
@@ -283,6 +284,7 @@ set(SRCS
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
+    model/reverse_journal_entry_request.c
     model/seed_chart_of_accounts_request.c
     model/share_class_create_dto.c
     model/share_class_dto.c
@@ -329,12 +331,15 @@ set(SRCS
     model/transaction_dto_envelope.c
     model/transaction_dto_list_envelope.c
     model/transaction_update_dto.c
+    model/trial_balance_dto.c
+    model/trial_balance_dto_envelope.c
+    model/trial_balance_row_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
     model/update_ledger_dto.c
     api/AccountGroupsAPI.c
-    api/AccountingEntriesAPI.c
     api/AccountingPeriodsAPI.c
+    api/AccountingSummaryAPI.c
     api/AccountsAPI.c
     api/BankProfilesAPI.c
     api/BankingAPI.c
@@ -358,13 +363,13 @@ set(SRCS
     api/FiscalYearsAPI.c
     api/GrantsAPI.c
     api/InvoiceEnumerationRangesAPI.c
-    api/JournalEntriesAPI.c
     api/JournalTypesAPI.c
     api/JournalsAPI.c
     api/LedgerTypesAPI.c
     api/LedgersAPI.c
     api/LoansAPI.c
     api/ReceiptsAPI.c
+    api/ReportsAPI.c
     api/SharesAPI.c
     api/TaxClassesAPI.c
     api/TaxPoliciesAPI.c
@@ -561,6 +566,7 @@ set(HDRS
     model/journal_dto_i_read_only_list_envelope.h
     model/journal_entry_create_dto.h
     model/journal_entry_dto.h
+    model/journal_entry_dto_envelope.h
     model/journal_entry_dto_i_read_only_list_envelope.h
     model/journal_entry_update_dto.h
     model/journal_type_create_dto.h
@@ -609,6 +615,7 @@ set(HDRS
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
+    model/reverse_journal_entry_request.h
     model/seed_chart_of_accounts_request.h
     model/share_class_create_dto.h
     model/share_class_dto.h
@@ -655,12 +662,15 @@ set(HDRS
     model/transaction_dto_envelope.h
     model/transaction_dto_list_envelope.h
     model/transaction_update_dto.h
+    model/trial_balance_dto.h
+    model/trial_balance_dto_envelope.h
+    model/trial_balance_row_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
     model/update_ledger_dto.h
     api/AccountGroupsAPI.h
-    api/AccountingEntriesAPI.h
     api/AccountingPeriodsAPI.h
+    api/AccountingSummaryAPI.h
     api/AccountsAPI.h
     api/BankProfilesAPI.h
     api/BankingAPI.h
@@ -684,13 +694,13 @@ set(HDRS
     api/FiscalYearsAPI.h
     api/GrantsAPI.h
     api/InvoiceEnumerationRangesAPI.h
-    api/JournalEntriesAPI.h
     api/JournalTypesAPI.h
     api/JournalsAPI.h
     api/LedgerTypesAPI.h
     api/LedgersAPI.h
     api/LoansAPI.h
     api/ReceiptsAPI.h
+    api/ReportsAPI.h
     api/SharesAPI.h
     api/TaxClassesAPI.h
     api/TaxPoliciesAPI.h
@@ -778,8 +788,8 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-AccountGroupsAPI.c
-#    unit-tests/manual-AccountingEntriesAPI.c
 #    unit-tests/manual-AccountingPeriodsAPI.c
+#    unit-tests/manual-AccountingSummaryAPI.c
 #    unit-tests/manual-AccountsAPI.c
 #    unit-tests/manual-BankProfilesAPI.c
 #    unit-tests/manual-BankingAPI.c
@@ -803,13 +813,13 @@ set(HDRS "")
 #    unit-tests/manual-FiscalYearsAPI.c
 #    unit-tests/manual-GrantsAPI.c
 #    unit-tests/manual-InvoiceEnumerationRangesAPI.c
-#    unit-tests/manual-JournalEntriesAPI.c
 #    unit-tests/manual-JournalTypesAPI.c
 #    unit-tests/manual-JournalsAPI.c
 #    unit-tests/manual-LedgerTypesAPI.c
 #    unit-tests/manual-LedgersAPI.c
 #    unit-tests/manual-LoansAPI.c
 #    unit-tests/manual-ReceiptsAPI.c
+#    unit-tests/manual-ReportsAPI.c
 #    unit-tests/manual-SharesAPI.c
 #    unit-tests/manual-TaxClassesAPI.c
 #    unit-tests/manual-TaxPoliciesAPI.c

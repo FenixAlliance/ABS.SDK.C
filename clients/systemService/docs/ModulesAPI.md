@@ -43,7 +43,7 @@ No authorization required
 ```c
 // Get all modules available to a tenant user.
 //
-module_list_envelope_t* ModulesAPI_getAvailableModules(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+suite_module_list_envelope_t* ModulesAPI_getAvailableModules(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[module_list_envelope_t](module_list_envelope.md) *
+[suite_module_list_envelope_t](suite_module_list_envelope.md) *
 
 
 ### Authorization

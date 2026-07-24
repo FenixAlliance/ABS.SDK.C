@@ -8,13 +8,15 @@
 contact_profile_dto_t *contact_profile_dto_create(
     char *id,
     char *timestamp,
-    char *tenant_id,
     char *contact_id,
+    char *tenant_id,
+    char *type,
     char *enrollment_id,
     char *about,
     int verified,
     int submitted,
     char *avatar_url,
+    contact_dto_t *contact,
     char *qualified_name,
     char *verification_timestamp,
     char *data,
@@ -44,13 +46,15 @@ contact_profile_dto_t *contact_profile_dto_create(
     }
     contact_profile_dto_local_var->id = id;
     contact_profile_dto_local_var->timestamp = timestamp;
-    contact_profile_dto_local_var->tenant_id = tenant_id;
     contact_profile_dto_local_var->contact_id = contact_id;
+    contact_profile_dto_local_var->tenant_id = tenant_id;
+    contact_profile_dto_local_var->type = type;
     contact_profile_dto_local_var->enrollment_id = enrollment_id;
     contact_profile_dto_local_var->about = about;
     contact_profile_dto_local_var->verified = verified;
     contact_profile_dto_local_var->submitted = submitted;
     contact_profile_dto_local_var->avatar_url = avatar_url;
+    contact_profile_dto_local_var->contact = contact;
     contact_profile_dto_local_var->qualified_name = qualified_name;
     contact_profile_dto_local_var->verification_timestamp = verification_timestamp;
     contact_profile_dto_local_var->data = data;
@@ -91,13 +95,17 @@ void contact_profile_dto_free(contact_profile_dto_t *contact_profile_dto) {
         free(contact_profile_dto->timestamp);
         contact_profile_dto->timestamp = NULL;
     }
+    if (contact_profile_dto->contact_id) {
+        free(contact_profile_dto->contact_id);
+        contact_profile_dto->contact_id = NULL;
+    }
     if (contact_profile_dto->tenant_id) {
         free(contact_profile_dto->tenant_id);
         contact_profile_dto->tenant_id = NULL;
     }
-    if (contact_profile_dto->contact_id) {
-        free(contact_profile_dto->contact_id);
-        contact_profile_dto->contact_id = NULL;
+    if (contact_profile_dto->type) {
+        free(contact_profile_dto->type);
+        contact_profile_dto->type = NULL;
     }
     if (contact_profile_dto->enrollment_id) {
         free(contact_profile_dto->enrollment_id);
@@ -110,6 +118,10 @@ void contact_profile_dto_free(contact_profile_dto_t *contact_profile_dto) {
     if (contact_profile_dto->avatar_url) {
         free(contact_profile_dto->avatar_url);
         contact_profile_dto->avatar_url = NULL;
+    }
+    if (contact_profile_dto->contact) {
+        contact_dto_free(contact_profile_dto->contact);
+        contact_profile_dto->contact = NULL;
     }
     if (contact_profile_dto->qualified_name) {
         free(contact_profile_dto->qualified_name);
@@ -221,6 +233,14 @@ cJSON *contact_profile_dto_convertToJSON(contact_profile_dto_t *contact_profile_
     }
 
 
+    // contact_profile_dto->contact_id
+    if(contact_profile_dto->contact_id) {
+    if(cJSON_AddStringToObject(item, "contactId", contact_profile_dto->contact_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // contact_profile_dto->tenant_id
     if(contact_profile_dto->tenant_id) {
     if(cJSON_AddStringToObject(item, "tenantId", contact_profile_dto->tenant_id) == NULL) {
@@ -229,9 +249,9 @@ cJSON *contact_profile_dto_convertToJSON(contact_profile_dto_t *contact_profile_
     }
 
 
-    // contact_profile_dto->contact_id
-    if(contact_profile_dto->contact_id) {
-    if(cJSON_AddStringToObject(item, "contactId", contact_profile_dto->contact_id) == NULL) {
+    // contact_profile_dto->type
+    if(contact_profile_dto->type) {
+    if(cJSON_AddStringToObject(item, "type", contact_profile_dto->type) == NULL) {
     goto fail; //String
     }
     }
@@ -273,6 +293,19 @@ cJSON *contact_profile_dto_convertToJSON(contact_profile_dto_t *contact_profile_
     if(contact_profile_dto->avatar_url) {
     if(cJSON_AddStringToObject(item, "avatarUrl", contact_profile_dto->avatar_url) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // contact_profile_dto->contact
+    if(contact_profile_dto->contact) {
+    cJSON *contact_local_JSON = contact_dto_convertToJSON(contact_profile_dto->contact);
+    if(contact_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "contact", contact_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
     }
     }
 
@@ -464,6 +497,9 @@ contact_profile_dto_t *contact_profile_dto_parseFromJSON(cJSON *contact_profile_
 
     contact_profile_dto_t *contact_profile_dto_local_var = NULL;
 
+    // define the local variable for contact_profile_dto->contact
+    contact_dto_t *contact_local_nonprim = NULL;
+
     // contact_profile_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(contact_profile_dtoJSON, "id");
     if (id) { 
@@ -482,6 +518,15 @@ contact_profile_dto_t *contact_profile_dto_parseFromJSON(cJSON *contact_profile_
     }
     }
 
+    // contact_profile_dto->contact_id
+    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(contact_profile_dtoJSON, "contactId");
+    if (contact_id) { 
+    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
+    {
+    goto end; //String
+    }
+    }
+
     // contact_profile_dto->tenant_id
     cJSON *tenant_id = cJSON_GetObjectItemCaseSensitive(contact_profile_dtoJSON, "tenantId");
     if (tenant_id) { 
@@ -491,10 +536,10 @@ contact_profile_dto_t *contact_profile_dto_parseFromJSON(cJSON *contact_profile_
     }
     }
 
-    // contact_profile_dto->contact_id
-    cJSON *contact_id = cJSON_GetObjectItemCaseSensitive(contact_profile_dtoJSON, "contactId");
-    if (contact_id) { 
-    if(!cJSON_IsString(contact_id) && !cJSON_IsNull(contact_id))
+    // contact_profile_dto->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(contact_profile_dtoJSON, "type");
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
     goto end; //String
     }
@@ -543,6 +588,12 @@ contact_profile_dto_t *contact_profile_dto_parseFromJSON(cJSON *contact_profile_
     {
     goto end; //String
     }
+    }
+
+    // contact_profile_dto->contact
+    cJSON *contact = cJSON_GetObjectItemCaseSensitive(contact_profile_dtoJSON, "contact");
+    if (contact) { 
+    contact_local_nonprim = contact_dto_parseFromJSON(contact); //nonprimitive
     }
 
     // contact_profile_dto->qualified_name
@@ -747,13 +798,15 @@ contact_profile_dto_t *contact_profile_dto_parseFromJSON(cJSON *contact_profile_
     contact_profile_dto_local_var = contact_profile_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
+        tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         about && !cJSON_IsNull(about) ? strdup(about->valuestring) : NULL,
         verified ? verified->valueint : 0,
         submitted ? submitted->valueint : 0,
         avatar_url && !cJSON_IsNull(avatar_url) ? strdup(avatar_url->valuestring) : NULL,
+        contact ? contact_local_nonprim : NULL,
         qualified_name && !cJSON_IsNull(qualified_name) ? strdup(qualified_name->valuestring) : NULL,
         verification_timestamp && !cJSON_IsNull(verification_timestamp) ? strdup(verification_timestamp->valuestring) : NULL,
         data && !cJSON_IsNull(data) ? strdup(data->valuestring) : NULL,
@@ -780,6 +833,10 @@ contact_profile_dto_t *contact_profile_dto_parseFromJSON(cJSON *contact_profile_
 
     return contact_profile_dto_local_var;
 end:
+    if (contact_local_nonprim) {
+        contact_dto_free(contact_local_nonprim);
+        contact_local_nonprim = NULL;
+    }
     return NULL;
 
 }

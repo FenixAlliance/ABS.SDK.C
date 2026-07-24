@@ -4348,7 +4348,7 @@ end:
 //
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseInvoice, filtered by the supplied OData date range.
 //
-decimal_envelope_t*
+money_envelope_t*
 InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -4403,7 +4403,7 @@ InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId)
     //}
     //nonprimitive not container
     cJSON *InvoicesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    decimal_envelope_t *elementToReturn = decimal_envelope_parseFromJSON(InvoicesAPIlocalVarJSON);
+    money_envelope_t *elementToReturn = money_envelope_parseFromJSON(InvoicesAPIlocalVarJSON);
     cJSON_Delete(InvoicesAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;
@@ -4444,7 +4444,7 @@ end:
 //
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvoice, filtered by the supplied OData date range.
 //
-decimal_envelope_t*
+money_envelope_t*
 InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -4499,7 +4499,7 @@ InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId)
     //}
     //nonprimitive not container
     cJSON *InvoicesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    decimal_envelope_t *elementToReturn = decimal_envelope_parseFromJSON(InvoicesAPIlocalVarJSON);
+    money_envelope_t *elementToReturn = money_envelope_parseFromJSON(InvoicesAPIlocalVarJSON);
     cJSON_Delete(InvoicesAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;

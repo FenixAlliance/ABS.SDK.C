@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**title** | **char \*** |  | [optional] 
+**description** | **char \*** |  | [optional] 
 **start_date** | **char \*** |  | [optional] 
 **due_line** | **char \*** |  | [optional] 
 

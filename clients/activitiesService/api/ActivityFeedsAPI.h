@@ -110,6 +110,14 @@ int32_envelope_t*
 ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 
 
+// Count activity records
+//
+// Returns the tenant-wide count of activity records across all feeds owned by the tenant.
+//
+int32_envelope_t*
+ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+
+
 // Get Activity Type
 //
 // Get an activity type by ID.

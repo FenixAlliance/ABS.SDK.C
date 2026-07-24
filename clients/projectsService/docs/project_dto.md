@@ -7,6 +7,10 @@ Name | Type | Description | Notes
 **timestamp** | **char \*** |  | [optional] 
 **title** | **char \*** |  | [optional] 
 **description** | **char \*** |  | [optional] 
+**individual_id** | **char \*** |  | [optional] 
+**organization_id** | **char \*** |  | [optional] 
+**tenant_id** | **char \*** |  | [optional] 
+**enrollment_id** | **char \*** |  | [optional] 
 **project_start_date** | **char \*** |  | [optional] 
 **project_end_date** | **char \*** |  | [optional] 
 

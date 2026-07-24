@@ -8,6 +8,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/operation.h"
 #include "../model/project_create_dto.h"
 #include "../model/project_dto_envelope.h"
 #include "../model/project_dto_list_envelope.h"
@@ -43,7 +44,7 @@ ProjectsAPI_createProjectPeriodAsync(apiClient_t *apiClient, char *projectId, ch
 // Creates a new task for the specified project.
 //
 empty_envelope_t*
-ProjectsAPI_createProjectTaskAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_task_create_dto_t *project_task_create_dto);
+ProjectsAPI_createTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_task_create_dto_t *project_task_create_dto);
 
 
 // Deletes a project
@@ -67,7 +68,7 @@ ProjectsAPI_deleteProjectPeriodAsync(apiClient_t *apiClient, char *projectId, ch
 // Deletes the specified task from a project.
 //
 empty_envelope_t*
-ProjectsAPI_deleteProjectTaskAsync(apiClient_t *apiClient, char *tenantId, char *projectId, char *projectTaskId);
+ProjectsAPI_deleteTaskForProjectAsync(apiClient_t *apiClient, char *tenantId, char *projectId, char *projectTaskId);
 
 
 // Gets a project by ID
@@ -102,30 +103,6 @@ int32_envelope_t*
 ProjectsAPI_getProjectTaskCategoriesCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
 
 
-// Retrieves project tasks
-//
-// Gets all tasks for a specific project with OData support.
-//
-project_task_dto_list_envelope_t*
-ProjectsAPI_getProjectTasksAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
-
-
-// Counts project tasks
-//
-// Gets the count of tasks for a specific project.
-//
-int32_envelope_t*
-ProjectsAPI_getProjectTasksCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
-
-
-// Retrieves project time logs
-//
-// Gets all time log entries for a specific project with OData support.
-//
-project_time_log_dto_list_envelope_t*
-ProjectsAPI_getProjectTimeLogsAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
-
-
 // Counts project time logs
 //
 // Gets the count of time log entries for a specific project.
@@ -150,6 +127,54 @@ int32_envelope_t*
 ProjectsAPI_getProjectsCountByTenantIdAsync(apiClient_t *apiClient, char *tenantId);
 
 
+// Retrieves project tasks
+//
+// Gets all tasks for a specific project with OData support.
+//
+project_task_dto_list_envelope_t*
+ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+
+
+// Counts project tasks
+//
+// Gets the count of tasks for a specific project.
+//
+int32_envelope_t*
+ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+
+
+// Retrieves project time logs
+//
+// Gets all time log entries for a specific project with OData support.
+//
+project_time_log_dto_list_envelope_t*
+ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+
+
+// Patches a project
+//
+// Partially updates the specified project.
+//
+empty_envelope_t*
+ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, list_t *operation);
+
+
+// Patches a project period
+//
+// Partially updates the specified period for a project.
+//
+empty_envelope_t*
+ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, char *projectPeriodId, char *tenantId, list_t *operation);
+
+
+// Patches a project task
+//
+// Partially updates the specified task in a project.
+//
+empty_envelope_t*
+ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, list_t *operation);
+
+
 // Updates a project
 //
 // Updates the specified project.
@@ -171,6 +196,6 @@ ProjectsAPI_updateProjectPeriodAsync(apiClient_t *apiClient, char *projectId, ch
 // Updates the specified task in a project.
 //
 empty_envelope_t*
-ProjectsAPI_updateProjectTaskAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, project_task_update_dto_t *project_task_update_dto);
+ProjectsAPI_updateTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, project_task_update_dto_t *project_task_update_dto);
 
 

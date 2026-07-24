@@ -63,20 +63,28 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
+    model/operation.c
     model/project_create_dto.c
     model/project_dto.c
     model/project_dto_envelope.c
     model/project_dto_list_envelope.c
+    model/project_hours_approval_approver_update_dto.c
+    model/project_hours_approval_create_dto.c
+    model/project_hours_approval_status_update_dto.c
     model/project_period_create_dto.c
     model/project_period_dto.c
     model/project_period_dto_list_envelope.c
     model/project_period_update_dto.c
     model/project_task_create_dto.c
     model/project_task_dto.c
+    model/project_task_dto_envelope.c
     model/project_task_dto_list_envelope.c
     model/project_task_update_dto.c
+    model/project_time_log_create_dto.c
     model/project_time_log_dto.c
+    model/project_time_log_dto_envelope.c
     model/project_time_log_dto_list_envelope.c
+    model/project_time_log_update_dto.c
     model/project_update_dto.c
     model/refresh_request.c
     model/register_request.c
@@ -92,9 +100,12 @@ set(SRCS
     model/two_factor_request.c
     model/two_factor_response.c
     api/FenixAllianceABSWebAPI.c
+    api/ProjectTasksAPI.c
     api/ProjectsAPI.c
     api/TaskCategoriesAPI.c
     api/TaskTypesAPI.c
+    api/TimeLogApprovalsAPI.c
+    api/TimeLogsAPI.c
 
 )
 
@@ -114,20 +125,28 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
+    model/operation.h
     model/project_create_dto.h
     model/project_dto.h
     model/project_dto_envelope.h
     model/project_dto_list_envelope.h
+    model/project_hours_approval_approver_update_dto.h
+    model/project_hours_approval_create_dto.h
+    model/project_hours_approval_status_update_dto.h
     model/project_period_create_dto.h
     model/project_period_dto.h
     model/project_period_dto_list_envelope.h
     model/project_period_update_dto.h
     model/project_task_create_dto.h
     model/project_task_dto.h
+    model/project_task_dto_envelope.h
     model/project_task_dto_list_envelope.h
     model/project_task_update_dto.h
+    model/project_time_log_create_dto.h
     model/project_time_log_dto.h
+    model/project_time_log_dto_envelope.h
     model/project_time_log_dto_list_envelope.h
+    model/project_time_log_update_dto.h
     model/project_update_dto.h
     model/refresh_request.h
     model/register_request.h
@@ -143,9 +162,12 @@ set(HDRS
     model/two_factor_request.h
     model/two_factor_response.h
     api/FenixAllianceABSWebAPI.h
+    api/ProjectTasksAPI.h
     api/ProjectsAPI.h
     api/TaskCategoriesAPI.h
     api/TaskTypesAPI.h
+    api/TimeLogApprovalsAPI.h
+    api/TimeLogsAPI.h
 
 )
 
@@ -228,9 +250,12 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-FenixAllianceABSWebAPI.c
+#    unit-tests/manual-ProjectTasksAPI.c
 #    unit-tests/manual-ProjectsAPI.c
 #    unit-tests/manual-TaskCategoriesAPI.c
 #    unit-tests/manual-TaskTypesAPI.c
+#    unit-tests/manual-TimeLogApprovalsAPI.c
+#    unit-tests/manual-TimeLogsAPI.c
 #)
 
 ##set header files

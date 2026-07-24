@@ -4,16 +4,16 @@ All URIs are relative to *https://absuite.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ThemesAPI_getLatestCurrencyRatesModelAsync**](ThemesAPI.md#ThemesAPI_getLatestCurrencyRatesModelAsync) | **GET** /api/v2/ContentService/Themes/Update | Update base web content themes
+[**ThemesAPI_updateThemesAsync**](ThemesAPI.md#ThemesAPI_updateThemesAsync) | **GET** /api/v2/ContentService/Themes/Update | Update base web content themes
 
 
-# **ThemesAPI_getLatestCurrencyRatesModelAsync**
+# **ThemesAPI_updateThemesAsync**
 ```c
 // Update base web content themes
 //
 // Triggers an update of the base web content themes.
 //
-void ThemesAPI_getLatestCurrencyRatesModelAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+void ThemesAPI_updateThemesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
 ```
 
 ### Parameters

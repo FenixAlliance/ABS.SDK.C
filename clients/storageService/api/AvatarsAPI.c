@@ -88,14 +88,6 @@ AvatarsAPI_getAvatar(apiClient_t *apiClient, char *socialProfileId, char *api_ve
     //if (apiClient->response_code == 200) {
     //    printf("%s\n","OK");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
     //nonprimitive not container
     cJSON *AvatarsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(AvatarsAPIlocalVarJSON);
@@ -221,14 +213,6 @@ AvatarsAPI_getContactAvatar(apiClient_t *apiClient, char *contactId, char *api_v
     //if (apiClient->response_code == 200) {
     //    printf("%s\n","OK");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
     //nonprimitive not container
     cJSON *AvatarsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(AvatarsAPIlocalVarJSON);
@@ -336,14 +320,6 @@ AvatarsAPI_getCurrentUserAvatar(apiClient_t *apiClient, char *api_version, char 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
     //    printf("%s\n","OK");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
     //}
     //nonprimitive not container
     cJSON *AvatarsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
@@ -469,14 +445,6 @@ AvatarsAPI_getTenantAvatar(apiClient_t *apiClient, char *tenantId, char *api_ver
     //if (apiClient->response_code == 200) {
     //    printf("%s\n","OK");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
     //nonprimitive not container
     cJSON *AvatarsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(AvatarsAPIlocalVarJSON);
@@ -601,14 +569,6 @@ AvatarsAPI_getUserAvatar(apiClient_t *apiClient, char *userId, char *api_version
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
     //    printf("%s\n","OK");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 403) {
-    //    printf("%s\n","Forbidden");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
     //}
     //nonprimitive not container
     cJSON *AvatarsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);

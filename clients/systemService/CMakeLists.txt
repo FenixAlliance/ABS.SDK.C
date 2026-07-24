@@ -73,10 +73,10 @@ set(SRCS
     model/extended_user_dto_list_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
-    model/i_swagger_contact.c
-    model/i_swagger_endpoint.c
-    model/i_swagger_license.c
-    model/i_swagger_spec.c
+    model/i_open_api_contact.c
+    model/i_open_api_definition_spec.c
+    model/i_open_api_endpoint.c
+    model/i_open_api_license.c
     model/i_validation_failure.c
     model/i_validation_failure_list_envelope.c
     model/info_request.c
@@ -87,8 +87,6 @@ set(SRCS
     model/ip_lookup_dto_list_envelope.c
     model/license_validation_request.c
     model/login_request.c
-    model/module.c
-    model/module_list_envelope.c
     model/object_email_dispatch_request.c
     model/operation.c
     model/option_create_dto.c
@@ -109,6 +107,8 @@ set(SRCS
     model/suite_license_dto.c
     model/suite_license_dto_envelope.c
     model/suite_license_dto_list_envelope.c
+    model/suite_module.c
+    model/suite_module_list_envelope.c
     model/system_overview_dto.c
     model/system_overview_dto_envelope.c
     model/tenant_create_dto.c
@@ -176,10 +176,10 @@ set(HDRS
     model/extended_user_dto_list_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
-    model/i_swagger_contact.h
-    model/i_swagger_endpoint.h
-    model/i_swagger_license.h
-    model/i_swagger_spec.h
+    model/i_open_api_contact.h
+    model/i_open_api_definition_spec.h
+    model/i_open_api_endpoint.h
+    model/i_open_api_license.h
     model/i_validation_failure.h
     model/i_validation_failure_list_envelope.h
     model/info_request.h
@@ -190,8 +190,6 @@ set(HDRS
     model/ip_lookup_dto_list_envelope.h
     model/license_validation_request.h
     model/login_request.h
-    model/module.h
-    model/module_list_envelope.h
     model/object_email_dispatch_request.h
     model/operation.h
     model/option_create_dto.h
@@ -212,6 +210,8 @@ set(HDRS
     model/suite_license_dto.h
     model/suite_license_dto_envelope.h
     model/suite_license_dto_list_envelope.h
+    model/suite_module.h
+    model/suite_module_list_envelope.h
     model/system_overview_dto.h
     model/system_overview_dto_envelope.h
     model/tenant_create_dto.h

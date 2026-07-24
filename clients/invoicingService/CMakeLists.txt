@@ -56,7 +56,6 @@ set(SRCS
     model/object.c
     model/access_token_response.c
     model/currency_id.c
-    model/decimal_envelope.c
     model/email_dispatch_request.c
     model/empty_envelope.c
     model/envelope.c
@@ -123,7 +122,6 @@ set(HDRS
     model/object.h
     model/access_token_response.h
     model/currency_id.h
-    model/decimal_envelope.h
     model/email_dispatch_request.h
     model/empty_envelope.h
     model/envelope.h

@@ -25,6 +25,22 @@ char* account_dto_account_category_ToString(accountingservice_account_dto_ACCOUN
 
 accountingservice_account_dto_ACCOUNTCATEGORY_e account_dto_account_category_FromString(char* account_category);
 
+// Enum INCOMESTATEMENTSUBTYPE for account_dto
+
+typedef enum  { accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_NULL = 0, accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_OperatingRevenue, accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_Gain, accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_OperatingExpense, accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_Loss } accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_e;
+
+char* account_dto_income_statement_sub_type_ToString(accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_type);
+
+accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_e account_dto_income_statement_sub_type_FromString(char* income_statement_sub_type);
+
+// Enum NORMALBALANCE for account_dto
+
+typedef enum  { accountingservice_account_dto_NORMALBALANCE_NULL = 0, accountingservice_account_dto_NORMALBALANCE_Debit, accountingservice_account_dto_NORMALBALANCE_Credit } accountingservice_account_dto_NORMALBALANCE_e;
+
+char* account_dto_normal_balance_ToString(accountingservice_account_dto_NORMALBALANCE_e normal_balance);
+
+accountingservice_account_dto_NORMALBALANCE_e account_dto_normal_balance_FromString(char* normal_balance);
+
 
 
 typedef struct account_dto_t {
@@ -54,6 +70,10 @@ typedef struct account_dto_t {
     char *enrollment_id; // string
     int children_accounts_count; //numeric
     accountingservice_account_dto_ACCOUNTCATEGORY_e account_category; //enum
+    int is_contra; //boolean
+    int is_monetary; //boolean
+    accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_type; //enum
+    accountingservice_account_dto_NORMALBALANCE_e normal_balance; //enum
     struct money_t *balance_amount; //model
     struct money_t *credits_balance_amount; //model
     struct money_t *debits_balance_amount; //model
@@ -90,6 +110,10 @@ account_dto_t *account_dto_create(
     char *enrollment_id,
     int children_accounts_count,
     accountingservice_account_dto_ACCOUNTCATEGORY_e account_category,
+    int is_contra,
+    int is_monetary,
+    accountingservice_account_dto_INCOMESTATEMENTSUBTYPE_e income_statement_sub_type,
+    accountingservice_account_dto_NORMALBALANCE_e normal_balance,
     money_t *balance_amount,
     money_t *credits_balance_amount,
     money_t *debits_balance_amount,

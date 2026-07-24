@@ -19,34 +19,22 @@ typedef struct journal_entry_update_dto_t journal_entry_update_dto_t;
 
 
 typedef struct journal_entry_update_dto_t {
-    int group; //boolean
-    int opening; //boolean
+    char *fiscal_period_id; // string
+    char *transaction_currency_id; // string
     char *description; // string
-    char *date; //date time
-    double debit; //numeric
-    double credit; //numeric
-    char *journal_id; // string
-    char *currency_id; // string
-    char *invoice_code; // string
-    char *debit_account_id; // string
-    char *credit_account_id; // string
-    char *parent_journal_entry_id; // string
+    char *source_document_type; // string
+    char *source_document_id; // string
+    int is_opening_balance; //boolean
 
 } journal_entry_update_dto_t;
 
 journal_entry_update_dto_t *journal_entry_update_dto_create(
-    int group,
-    int opening,
+    char *fiscal_period_id,
+    char *transaction_currency_id,
     char *description,
-    char *date,
-    double debit,
-    double credit,
-    char *journal_id,
-    char *currency_id,
-    char *invoice_code,
-    char *debit_account_id,
-    char *credit_account_id,
-    char *parent_journal_entry_id
+    char *source_document_type,
+    char *source_document_id,
+    int is_opening_balance
 );
 
 void journal_entry_update_dto_free(journal_entry_update_dto_t *journal_entry_update_dto);

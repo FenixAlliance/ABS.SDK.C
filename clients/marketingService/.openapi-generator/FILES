@@ -86,6 +86,11 @@ docs/marketing_list_update_dto.md
 docs/newsletter_create_dto.md
 docs/newsletter_dto.md
 docs/newsletter_dto_envelope.md
+docs/newsletter_subscription_create_dto.md
+docs/newsletter_subscription_dto.md
+docs/newsletter_subscription_dto_envelope.md
+docs/newsletter_subscription_dto_list_envelope.md
+docs/newsletter_subscription_update_dto.md
 docs/newsletter_update_dto.md
 docs/operation.md
 docs/order_dto.md
@@ -206,6 +211,16 @@ model/newsletter_dto.c
 model/newsletter_dto.h
 model/newsletter_dto_envelope.c
 model/newsletter_dto_envelope.h
+model/newsletter_subscription_create_dto.c
+model/newsletter_subscription_create_dto.h
+model/newsletter_subscription_dto.c
+model/newsletter_subscription_dto.h
+model/newsletter_subscription_dto_envelope.c
+model/newsletter_subscription_dto_envelope.h
+model/newsletter_subscription_dto_list_envelope.c
+model/newsletter_subscription_dto_list_envelope.h
+model/newsletter_subscription_update_dto.c
+model/newsletter_subscription_update_dto.h
 model/newsletter_update_dto.c
 model/newsletter_update_dto.h
 model/object.c
@@ -253,3 +268,8 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_newsletter_subscription_create_dto.c
+unit-test/test_newsletter_subscription_dto.c
+unit-test/test_newsletter_subscription_dto_envelope.c
+unit-test/test_newsletter_subscription_dto_list_envelope.c
+unit-test/test_newsletter_subscription_update_dto.c
