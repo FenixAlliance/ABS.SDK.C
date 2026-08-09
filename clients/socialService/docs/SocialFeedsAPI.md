@@ -22,7 +22,7 @@ Method | HTTP request | Description
 //
 // Creates a new post in a specific social feed.
 //
-social_feed_post_dto_envelope_t* SocialFeedsAPI_createFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version, social_feed_post_create_dto_t *social_feed_post_create_dto);
+string_envelope_t* SocialFeedsAPI_createFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version, social_feed_post_create_dto_t *social_feed_post_create_dto);
 ```
 
 ### Parameters
@@ -37,7 +37,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[social_feed_post_dto_envelope_t](social_feed_post_dto_envelope.md) *
+[string_envelope_t](string_envelope.md) *
 
 
 ### Authorization
@@ -92,7 +92,7 @@ No authorization required
 //
 // Retrieves a list of social feeds for the specified social profile.
 //
-social_feed_dto_list_envelope_t* SocialFeedsAPI_getFeedNotifications(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+social_feed_dto_list_envelope_t* SocialFeedsAPI_getFeedNotifications(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_feed_dto_collection_query_parameters_t *social_feed_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -102,6 +102,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**social_feed_dto_collection_query_parameters** | **[social_feed_dto_collection_query_parameters_t](social_feed_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -114,7 +115,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -160,7 +161,7 @@ No authorization required
 //
 // Retrieves a list of posts for a specific social feed.
 //
-social_feed_post_dto_list_envelope_t* SocialFeedsAPI_getFeedPostsAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version);
+social_feed_post_dto_list_envelope_t* SocialFeedsAPI_getFeedPostsAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version, social_feed_post_dto_collection_query_parameters_t *social_feed_post_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -171,6 +172,7 @@ Name | Type | Description  | Notes
 **socialFeedId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**social_feed_post_dto_collection_query_parameters** | **[social_feed_post_dto_collection_query_parameters_t](social_feed_post_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -183,7 +185,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -194,7 +196,7 @@ No authorization required
 //
 // Returns the count of posts for a specific social feed.
 //
-int32_envelope_t* SocialFeedsAPI_getFeedPostsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version);
+int32_envelope_t* SocialFeedsAPI_getFeedPostsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version, social_feed_post_dto_collection_query_parameters_t *social_feed_post_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -205,6 +207,7 @@ Name | Type | Description  | Notes
 **socialFeedId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**social_feed_post_dto_collection_query_parameters** | **[social_feed_post_dto_collection_query_parameters_t](social_feed_post_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -217,7 +220,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -262,7 +265,7 @@ No authorization required
 //
 // Returns the count of social feeds for the specified social profile.
 //
-int32_envelope_t* SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+int32_envelope_t* SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_feed_dto_collection_query_parameters_t *social_feed_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -272,6 +275,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**social_feed_dto_collection_query_parameters** | **[social_feed_dto_collection_query_parameters_t](social_feed_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -284,7 +288,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -295,7 +299,7 @@ No authorization required
 //
 // Partially updates an existing post in a specific social feed using a JSON Patch document.
 //
-empty_envelope_t* SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *feedPostId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *feedPostId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -307,7 +311,7 @@ Name | Type | Description  | Notes
 **feedPostId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

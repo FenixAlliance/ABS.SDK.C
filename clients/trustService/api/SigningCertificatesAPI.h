@@ -8,9 +8,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/signing_certificate_create_dto.h"
 #include "../model/signing_certificate_dto.h"
+#include "../model/signing_certificate_dto_collection_query_parameters.h"
 #include "../model/signing_certificate_dto_list_envelope.h"
 #include "../model/signing_certificate_update_dto.h"
 
@@ -44,7 +45,7 @@ SigningCertificatesAPI_getSigningCertificateByIdAsync(apiClient_t *apiClient, ch
 // Retrieves all signing certificates for the specified tenant.
 //
 signing_certificate_dto_list_envelope_t*
-SigningCertificatesAPI_getSigningCertificatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningCertificatesAPI_getSigningCertificatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_certificate_dto_collection_query_parameters_t *signing_certificate_dto_collection_query_parameters);
 
 
 // Get signing certificates count
@@ -52,7 +53,7 @@ SigningCertificatesAPI_getSigningCertificatesAsync(apiClient_t *apiClient, char 
 // Returns the count of signing certificates for the specified tenant.
 //
 int32_envelope_t*
-SigningCertificatesAPI_getSigningCertificatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningCertificatesAPI_getSigningCertificatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_certificate_dto_collection_query_parameters_t *signing_certificate_dto_collection_query_parameters);
 
 
 // Import a PFX/P12 signing certificate into custody
@@ -68,7 +69,7 @@ SigningCertificatesAPI_importSigningCertificateAsync(apiClient_t *apiClient, cha
 // Patch a signing certificate
 //
 empty_envelope_t*
-SigningCertificatesAPI_patchSigningCertificateAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+SigningCertificatesAPI_patchSigningCertificateAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a signing certificate

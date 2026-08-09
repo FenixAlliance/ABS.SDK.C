@@ -6,6 +6,7 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/delivery_note_create_dto.h"
+#include "../model/delivery_note_dto_collection_query_parameters.h"
 #include "../model/delivery_note_dto_envelope.h"
 #include "../model/delivery_note_dto_list_envelope.h"
 #include "../model/delivery_note_update_dto.h"
@@ -43,7 +44,7 @@ DeliveryNotesAPI_getDeliveryNoteByIdAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves all delivery notes for the specified tenant.
 //
 delivery_note_dto_list_envelope_t*
-DeliveryNotesAPI_getDeliveryNotesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+DeliveryNotesAPI_getDeliveryNotesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, delivery_note_dto_collection_query_parameters_t *delivery_note_dto_collection_query_parameters);
 
 
 // Get delivery notes count
@@ -51,7 +52,7 @@ DeliveryNotesAPI_getDeliveryNotesAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of delivery notes.
 //
 int32_envelope_t*
-DeliveryNotesAPI_getDeliveryNotesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+DeliveryNotesAPI_getDeliveryNotesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, delivery_note_dto_collection_query_parameters_t *delivery_note_dto_collection_query_parameters);
 
 
 // Update a delivery note

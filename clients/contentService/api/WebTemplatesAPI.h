@@ -7,8 +7,9 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/web_template_create_dto.h"
+#include "../model/web_template_dto_collection_query_parameters.h"
 #include "../model/web_template_dto_envelope.h"
 #include "../model/web_template_dto_list_envelope.h"
 #include "../model/web_template_update_dto.h"
@@ -19,7 +20,7 @@
 // Counts all web templates for the specified tenant.
 //
 int32_envelope_t*
-WebTemplatesAPI_countWebTemplatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebTemplatesAPI_countWebTemplatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_template_dto_collection_query_parameters_t *web_template_dto_collection_query_parameters);
 
 
 // Create a web template
@@ -51,7 +52,7 @@ WebTemplatesAPI_getWebTemplateByIdAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all web templates for the specified tenant.
 //
 web_template_dto_list_envelope_t*
-WebTemplatesAPI_getWebTemplatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebTemplatesAPI_getWebTemplatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_template_dto_collection_query_parameters_t *web_template_dto_collection_query_parameters);
 
 
 // Patch a web template
@@ -59,7 +60,7 @@ WebTemplatesAPI_getWebTemplatesAsync(apiClient_t *apiClient, char *tenantId, cha
 // Partially updates an existing web template for the specified tenant.
 //
 void
-WebTemplatesAPI_patchWebTemplateAsync(apiClient_t *apiClient, char *tenantId, char *webTemplateId, char *api_version, char *x_api_version, list_t *operation);
+WebTemplatesAPI_patchWebTemplateAsync(apiClient_t *apiClient, char *tenantId, char *webTemplateId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a web template

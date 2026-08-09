@@ -24,6 +24,14 @@ char* social_reaction_dto_reaction_ToString(socialservice_social_reaction_dto_RE
 
 socialservice_social_reaction_dto_REACTION_e social_reaction_dto_reaction_FromString(char* reaction);
 
+// Enum SOCIALPROFILETYPE for social_reaction_dto
+
+typedef enum  { socialservice_social_reaction_dto_SOCIALPROFILETYPE_NULL = 0, socialservice_social_reaction_dto_SOCIALPROFILETYPE_User, socialservice_social_reaction_dto_SOCIALPROFILETYPE_Tenant, socialservice_social_reaction_dto_SOCIALPROFILETYPE_Contact } socialservice_social_reaction_dto_SOCIALPROFILETYPE_e;
+
+char* social_reaction_dto_social_profile_type_ToString(socialservice_social_reaction_dto_SOCIALPROFILETYPE_e social_profile_type);
+
+socialservice_social_reaction_dto_SOCIALPROFILETYPE_e social_reaction_dto_social_profile_type_FromString(char* social_profile_type);
+
 
 
 typedef struct social_reaction_dto_t {
@@ -34,6 +42,7 @@ typedef struct social_reaction_dto_t {
     char *social_profile_id; // string
     char *social_profile_name; // string
     char *social_profile_avatar_url; // string
+    socialservice_social_reaction_dto_SOCIALPROFILETYPE_e social_profile_type; //enum
 
 } social_reaction_dto_t;
 
@@ -44,7 +53,8 @@ social_reaction_dto_t *social_reaction_dto_create(
     char *reaction_value,
     char *social_profile_id,
     char *social_profile_name,
-    char *social_profile_avatar_url
+    char *social_profile_avatar_url,
+    socialservice_social_reaction_dto_SOCIALPROFILETYPE_e social_profile_type
 );
 
 void social_reaction_dto_free(social_reaction_dto_t *social_reaction_dto);

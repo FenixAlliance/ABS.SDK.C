@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_warranty_policy_create_dto.h"
+#include "../model/item_warranty_policy_dto_collection_query_parameters.h"
 #include "../model/item_warranty_policy_dto_envelope.h"
 #include "../model/item_warranty_policy_dto_list_envelope.h"
 #include "../model/item_warranty_policy_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new warranty policy
@@ -30,13 +31,13 @@ WarrantyPoliciesAPI_deleteWarrantyPolicyAsync(apiClient_t *apiClient, char *tena
 // Retrieve a list of warranty policies
 //
 item_warranty_policy_dto_list_envelope_t*
-WarrantyPoliciesAPI_getWarrantyPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WarrantyPoliciesAPI_getWarrantyPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_warranty_policy_dto_collection_query_parameters_t *item_warranty_policy_dto_collection_query_parameters);
 
 
 // Get the count of warranty policies
 //
 int32_envelope_t*
-WarrantyPoliciesAPI_getWarrantyPoliciesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WarrantyPoliciesAPI_getWarrantyPoliciesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_warranty_policy_dto_collection_query_parameters_t *item_warranty_policy_dto_collection_query_parameters);
 
 
 // Retrieve a warranty policy by ID
@@ -50,7 +51,7 @@ WarrantyPoliciesAPI_getWarrantyPolicyAsync(apiClient_t *apiClient, char *tenantI
 // Partially updates an existing warranty policy by its unique identifier.
 //
 empty_envelope_t*
-WarrantyPoliciesAPI_patchWarrantyPolicyAsync(apiClient_t *apiClient, char *tenantId, char *warrantyPolicyId, char *api_version, char *x_api_version, list_t *operation);
+WarrantyPoliciesAPI_patchWarrantyPolicyAsync(apiClient_t *apiClient, char *tenantId, char *warrantyPolicyId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a warranty policy

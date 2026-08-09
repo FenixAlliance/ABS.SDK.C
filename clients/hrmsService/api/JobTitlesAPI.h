@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/job_title_create_dto.h"
+#include "../model/job_title_dto_collection_query_parameters.h"
 #include "../model/job_title_dto_envelope.h"
 #include "../model/job_title_dto_list_envelope.h"
 #include "../model/job_title_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a job title
@@ -44,7 +45,7 @@ JobTitlesAPI_getJobTitleByIdAsync(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves job titles for the specified tenant.
 //
 job_title_dto_list_envelope_t*
-JobTitlesAPI_getJobTitlesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JobTitlesAPI_getJobTitlesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_title_dto_collection_query_parameters_t *job_title_dto_collection_query_parameters);
 
 
 // Count job titles
@@ -52,7 +53,7 @@ JobTitlesAPI_getJobTitlesAsync(apiClient_t *apiClient, char *tenantId, char *api
 // Counts job titles for the specified tenant.
 //
 int32_envelope_t*
-JobTitlesAPI_getJobTitlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JobTitlesAPI_getJobTitlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_title_dto_collection_query_parameters_t *job_title_dto_collection_query_parameters);
 
 
 // Patch a job title
@@ -60,7 +61,7 @@ JobTitlesAPI_getJobTitlesCountAsync(apiClient_t *apiClient, char *tenantId, char
 // Partially updates an existing job title for the specified tenant.
 //
 empty_envelope_t*
-JobTitlesAPI_patchJobTitleAsync(apiClient_t *apiClient, char *tenantId, char *jobTitleId, char *api_version, char *x_api_version, list_t *operation);
+JobTitlesAPI_patchJobTitleAsync(apiClient_t *apiClient, char *tenantId, char *jobTitleId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a job title

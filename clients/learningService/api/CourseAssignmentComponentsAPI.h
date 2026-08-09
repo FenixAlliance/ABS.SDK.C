@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_assignment_component_create_dto.h"
 #include "../model/course_assignment_component_dto.h"
+#include "../model/course_assignment_component_dto_collection_query_parameters.h"
 #include "../model/course_assignment_component_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a course assignment component
@@ -42,7 +43,7 @@ CourseAssignmentComponentsAPI_getCourseAssignmentComponentByIdAsync(apiClient_t 
 // Retrieves all course assignment components for the specified tenant.
 //
 list_t*
-CourseAssignmentComponentsAPI_getCourseAssignmentComponentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseAssignmentComponentsAPI_getCourseAssignmentComponentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_assignment_component_dto_collection_query_parameters_t *course_assignment_component_dto_collection_query_parameters);
 
 
 // Get course assignment components count
@@ -50,7 +51,7 @@ CourseAssignmentComponentsAPI_getCourseAssignmentComponentsAsync(apiClient_t *ap
 // Returns the count of course assignment components for the specified tenant.
 //
 int*
-CourseAssignmentComponentsAPI_getCourseAssignmentComponentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseAssignmentComponentsAPI_getCourseAssignmentComponentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_assignment_component_dto_collection_query_parameters_t *course_assignment_component_dto_collection_query_parameters);
 
 
 // Patch a course assignment component
@@ -58,7 +59,7 @@ CourseAssignmentComponentsAPI_getCourseAssignmentComponentsCountAsync(apiClient_
 // Partially updates a course assignment component for the specified tenant.
 //
 empty_envelope_t*
-CourseAssignmentComponentsAPI_patchCourseAssignmentComponentAsync(apiClient_t *apiClient, char *tenantId, char *componentId, char *api_version, char *x_api_version, list_t *operation);
+CourseAssignmentComponentsAPI_patchCourseAssignmentComponentAsync(apiClient_t *apiClient, char *tenantId, char *componentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course assignment component

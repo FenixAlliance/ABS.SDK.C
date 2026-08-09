@@ -8,9 +8,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/signing_profile_graphical_representation_create_dto.h"
 #include "../model/signing_profile_graphical_representation_dto.h"
+#include "../model/signing_profile_graphical_representation_dto_collection_query_parameters.h"
 #include "../model/signing_profile_graphical_representation_dto_list_envelope.h"
 #include "../model/signing_profile_graphical_representation_update_dto.h"
 
@@ -44,7 +45,7 @@ SigningProfileGraphicalRepresentationsAPI_getSigningProfileGraphicalRepresentati
 // Retrieves all reusable signature representations for the specified tenant.
 //
 signing_profile_graphical_representation_dto_list_envelope_t*
-SigningProfileGraphicalRepresentationsAPI_getSigningProfileGraphicalRepresentationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningProfileGraphicalRepresentationsAPI_getSigningProfileGraphicalRepresentationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_profile_graphical_representation_dto_collection_query_parameters_t *signing_profile_graphical_representation_dto_collection_query_parameters);
 
 
 // Get signature representations count
@@ -52,7 +53,7 @@ SigningProfileGraphicalRepresentationsAPI_getSigningProfileGraphicalRepresentati
 // Returns the count of signature representations for the specified tenant.
 //
 int32_envelope_t*
-SigningProfileGraphicalRepresentationsAPI_getSigningProfileGraphicalRepresentationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningProfileGraphicalRepresentationsAPI_getSigningProfileGraphicalRepresentationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_profile_graphical_representation_dto_collection_query_parameters_t *signing_profile_graphical_representation_dto_collection_query_parameters);
 
 
 // Patch a signature representation
@@ -60,7 +61,7 @@ SigningProfileGraphicalRepresentationsAPI_getSigningProfileGraphicalRepresentati
 // Patch a signature representation
 //
 empty_envelope_t*
-SigningProfileGraphicalRepresentationsAPI_patchSigningProfileGraphicalRepresentationAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+SigningProfileGraphicalRepresentationsAPI_patchSigningProfileGraphicalRepresentationAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a signature representation

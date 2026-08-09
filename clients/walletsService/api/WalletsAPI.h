@@ -6,32 +6,44 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/bank_account_create_dto.h"
+#include "../model/bank_account_dto_collection_query_parameters.h"
 #include "../model/bank_account_dto_envelope.h"
 #include "../model/bank_account_dto_list_envelope.h"
 #include "../model/bank_account_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/extended_order_dto_collection_query_parameters.h"
 #include "../model/extended_order_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/invoice_dto_collection_query_parameters.h"
 #include "../model/invoice_dto_list_envelope.h"
 #include "../model/location_create_dto.h"
+#include "../model/location_dto_collection_query_parameters.h"
 #include "../model/location_dto_envelope.h"
 #include "../model/location_dto_list_envelope.h"
 #include "../model/location_update_dto.h"
-#include "../model/operation.h"
+#include "../model/order_dto_collection_query_parameters.h"
 #include "../model/order_dto_list_envelope.h"
+#include "../model/patch_operation.h"
+#include "../model/payment_chargeback_dto_collection_query_parameters.h"
 #include "../model/payment_chargeback_dto_list_envelope.h"
 #include "../model/payment_create_dto.h"
+#include "../model/payment_dto_collection_query_parameters.h"
 #include "../model/payment_dto_list_envelope.h"
+#include "../model/payment_refund_dto_collection_query_parameters.h"
 #include "../model/payment_refund_dto_list_envelope.h"
 #include "../model/payment_token_create_dto.h"
+#include "../model/payment_token_dto_collection_query_parameters.h"
 #include "../model/payment_token_dto_envelope.h"
 #include "../model/payment_token_dto_list_envelope.h"
 #include "../model/payment_token_update_dto.h"
+#include "../model/quote_dto_collection_query_parameters.h"
 #include "../model/quote_dto_list_envelope.h"
 #include "../model/wallet_dto_envelope.h"
+#include "../model/wallet_withdraw_dto_collection_query_parameters.h"
 #include "../model/wallet_withdraw_dto_list_envelope.h"
 #include "../model/wallet_withdraw_request_create_dto.h"
+#include "../model/wallet_withdraw_request_dto_collection_query_parameters.h"
 #include "../model/wallet_withdraw_request_dto_list_envelope.h"
 
 
@@ -104,7 +116,7 @@ WalletsAPI_deleteWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *
 // Get incoming payments of a specific wallet by ID.
 //
 payment_dto_list_envelope_t*
-WalletsAPI_getIncomingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getIncomingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 
 
 // Get Incoming Payments Count
@@ -112,7 +124,7 @@ WalletsAPI_getIncomingPaymentsAsync(apiClient_t *apiClient, char *walletId, char
 // Get incoming payments count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getIncomingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getIncomingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 
 
 // Get Incoming Wallet Invoices
@@ -120,7 +132,7 @@ WalletsAPI_getIncomingPaymentsCountAsync(apiClient_t *apiClient, char *walletId,
 // Get incoming invoices of a specific wallet by ID.
 //
 invoice_dto_list_envelope_t*
-WalletsAPI_getIncomingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getIncomingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 
 
 // Get Incoming Wallet Invoices Count
@@ -128,7 +140,7 @@ WalletsAPI_getIncomingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId
 // Get incoming invoices count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getIncomingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getIncomingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 
 
 // Get Wallet Location
@@ -144,7 +156,7 @@ WalletsAPI_getLocationForWalletAsync(apiClient_t *apiClient, char *walletId, cha
 // Get locations of a specific wallet by ID.
 //
 location_dto_list_envelope_t*
-WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters);
 
 
 // Get Wallet Locations Count
@@ -152,7 +164,7 @@ WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, ch
 // Get locations count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters);
 
 
 // Get Outgoing Payments
@@ -160,7 +172,7 @@ WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletI
 // Get outgoing payments of a specific wallet by ID.
 //
 payment_dto_list_envelope_t*
-WalletsAPI_getOutgoingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getOutgoingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 
 
 // Get Outgoing Payments Count
@@ -168,7 +180,7 @@ WalletsAPI_getOutgoingPaymentsAsync(apiClient_t *apiClient, char *walletId, char
 // Get outgoing payments count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getOutgoingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getOutgoingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 
 
 // Get Outgoing Wallet Invoices
@@ -176,7 +188,7 @@ WalletsAPI_getOutgoingPaymentsCountAsync(apiClient_t *apiClient, char *walletId,
 // Get outgoing invoices of a specific wallet by ID.
 //
 invoice_dto_list_envelope_t*
-WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 
 
 // Get Outgoing Wallet Invoices Count
@@ -184,7 +196,7 @@ WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId
 // Get outgoing invoices count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getOutgoingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getOutgoingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 
 
 // Get Wallet Bank Account
@@ -200,7 +212,7 @@ WalletsAPI_getWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, cha
 // Get bank accounts of a specific wallet by ID.
 //
 bank_account_dto_list_envelope_t*
-WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, bank_account_dto_collection_query_parameters_t *bank_account_dto_collection_query_parameters);
 
 
 // Get Wallet Bank Accounts Count
@@ -208,7 +220,7 @@ WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, ch
 // Get bank accounts count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, bank_account_dto_collection_query_parameters_t *bank_account_dto_collection_query_parameters);
 
 
 // Get Wallet Chargebacks
@@ -216,7 +228,7 @@ WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletI
 // Get chargebacks of a specific wallet by ID.
 //
 payment_chargeback_dto_list_envelope_t*
-WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_chargeback_dto_collection_query_parameters_t *payment_chargeback_dto_collection_query_parameters);
 
 
 // Get Wallet Chargebacks Count
@@ -224,7 +236,7 @@ WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, cha
 // Get chargebacks count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletChargebacksCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletChargebacksCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_chargeback_dto_collection_query_parameters_t *payment_chargeback_dto_collection_query_parameters);
 
 
 // Get Wallet Details
@@ -240,7 +252,7 @@ WalletsAPI_getWalletDetailsAsync(apiClient_t *apiClient, char *walletId, char *a
 // Get extended orders of a specific wallet by ID.
 //
 extended_order_dto_list_envelope_t*
-WalletsAPI_getWalletExtendedOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletExtendedOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, extended_order_dto_collection_query_parameters_t *extended_order_dto_collection_query_parameters);
 
 
 // Get Wallet Invoices
@@ -248,7 +260,7 @@ WalletsAPI_getWalletExtendedOrdersAsync(apiClient_t *apiClient, char *walletId, 
 // Get invoices of a specific wallet by ID.
 //
 invoice_dto_list_envelope_t*
-WalletsAPI_getWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 
 
 // Get Wallet Invoices Count
@@ -256,7 +268,7 @@ WalletsAPI_getWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *
 // Get invoices count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 
 
 // Get Wallet Orders
@@ -264,7 +276,7 @@ WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, c
 // Get orders of a specific wallet by ID.
 //
 order_dto_list_envelope_t*
-WalletsAPI_getWalletOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters);
 
 
 // Get Wallet Orders Count
@@ -272,7 +284,7 @@ WalletsAPI_getWalletOrdersAsync(apiClient_t *apiClient, char *walletId, char *ap
 // Get orders count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletOrdersCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletOrdersCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters);
 
 
 // Get Wallet Payments
@@ -280,7 +292,7 @@ WalletsAPI_getWalletOrdersCountAsync(apiClient_t *apiClient, char *walletId, cha
 // Get payments of a specific wallet by ID.
 //
 payment_dto_list_envelope_t*
-WalletsAPI_getWalletPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 
 
 // Get Wallet Payments Count
@@ -288,7 +300,7 @@ WalletsAPI_getWalletPaymentsAsync(apiClient_t *apiClient, char *walletId, char *
 // Get payments count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 
 
 // Get Wallet Quotes
@@ -296,7 +308,7 @@ WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, c
 // Get quotes of a specific wallet by ID.
 //
 quote_dto_list_envelope_t*
-WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters);
 
 
 // Get Wallet Quotes Count
@@ -304,7 +316,7 @@ WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *ap
 // Get quotes count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters);
 
 
 // Get Wallet Refunds
@@ -312,7 +324,7 @@ WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, cha
 // Get refunds of a specific wallet by ID.
 //
 payment_refund_dto_list_envelope_t*
-WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_refund_dto_collection_query_parameters_t *payment_refund_dto_collection_query_parameters);
 
 
 // Get Wallet Refunds Count
@@ -320,7 +332,7 @@ WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *a
 // Get refunds count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletRefundsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletRefundsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_refund_dto_collection_query_parameters_t *payment_refund_dto_collection_query_parameters);
 
 
 // Get Wallet Token
@@ -336,7 +348,7 @@ WalletsAPI_getWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tok
 // Get payment tokens of a specific wallet by ID.
 //
 payment_token_dto_list_envelope_t*
-WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_token_dto_collection_query_parameters_t *payment_token_dto_collection_query_parameters);
 
 
 // Get Wallet Tokens Count
@@ -344,7 +356,7 @@ WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *ap
 // Get payment tokens count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_token_dto_collection_query_parameters_t *payment_token_dto_collection_query_parameters);
 
 
 // Get Wallet Withdraw Requests
@@ -352,7 +364,7 @@ WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, cha
 // Get withdraw requests of a specific wallet by ID.
 //
 wallet_withdraw_request_dto_list_envelope_t*
-WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_request_dto_collection_query_parameters_t *wallet_withdraw_request_dto_collection_query_parameters);
 
 
 // Get Wallet Withdraw Requests Count
@@ -360,7 +372,7 @@ WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId
 // Get withdraw requests count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_request_dto_collection_query_parameters_t *wallet_withdraw_request_dto_collection_query_parameters);
 
 
 // Get Wallet Withdraws
@@ -368,7 +380,7 @@ WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *wal
 // Get withdraws of a specific wallet by ID.
 //
 wallet_withdraw_dto_list_envelope_t*
-WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_dto_collection_query_parameters_t *wallet_withdraw_dto_collection_query_parameters);
 
 
 // Get Wallet Withdraws Count
@@ -376,7 +388,7 @@ WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char 
 // Get withdraws count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_dto_collection_query_parameters_t *wallet_withdraw_dto_collection_query_parameters);
 
 
 // Patch Wallet Bank Account
@@ -384,7 +396,7 @@ WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, 
 // Partially update a specific bank account of a specific wallet by ID.
 //
 empty_envelope_t*
-WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version, list_t *operation);
+WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch Wallet Token
@@ -392,7 +404,7 @@ WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, c
 // Partially update a specific payment token of a specific wallet by ID.
 //
 empty_envelope_t*
-WalletsAPI_patchWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tokenId, char *api_version, char *x_api_version, list_t *operation);
+WalletsAPI_patchWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tokenId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update Wallet Location

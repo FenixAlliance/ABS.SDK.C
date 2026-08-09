@@ -17,13 +17,13 @@
 // Returns the total number of calling codes for the specified country, with optional OData filtering.
 //
 int32_envelope_t*
-CountriesAPI_countCallingCodesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_countCallingCodesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_calling_code_dto_collection_query_parameters_t *country_calling_code_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -67,7 +67,17 @@ CountriesAPI_countCallingCodesByCountryAsync(apiClient_t *apiClient, char *count
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters = NULL;
+    if (country_calling_code_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters = country_calling_code_dto_collection_query_parameters_convertToJSON(country_calling_code_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -108,7 +118,7 @@ CountriesAPI_countCallingCodesByCountryAsync(apiClient_t *apiClient, char *count
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryId);
     if (keyHeader_x_api_version) {
@@ -120,6 +130,11 @@ CountriesAPI_countCallingCodesByCountryAsync(apiClient_t *apiClient, char *count
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters);
+        localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -144,13 +159,13 @@ end:
 // Returns the total number of cities for the specified state, with optional OData filtering.
 //
 int32_envelope_t*
-CountriesAPI_countCitiesByStateAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_countCitiesByStateAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version, city_dto_collection_query_parameters_t *city_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -204,7 +219,17 @@ CountriesAPI_countCitiesByStateAsync(apiClient_t *apiClient, char *countryStateI
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_city_dto_collection_query_parameters = NULL;
+    if (city_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_city_dto_collection_query_parameters = city_dto_collection_query_parameters_convertToJSON(city_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_city_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -245,7 +270,7 @@ CountriesAPI_countCitiesByStateAsync(apiClient_t *apiClient, char *countryStateI
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryStateId);
     free(localVarToReplace_countryId);
@@ -258,6 +283,11 @@ CountriesAPI_countCitiesByStateAsync(apiClient_t *apiClient, char *countryStateI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_city_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_city_dto_collection_query_parameters);
+        localVarSingleItemJSON_city_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -282,13 +312,13 @@ end:
 // Returns the total number of countries, with optional OData filtering.
 //
 int32_envelope_t*
-CountriesAPI_countCountries(apiClient_t *apiClient, char *api_version, char *x_api_version)
+CountriesAPI_countCountries(apiClient_t *apiClient, char *api_version, char *x_api_version, country_dto_collection_query_parameters_t *country_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -322,7 +352,17 @@ CountriesAPI_countCountries(apiClient_t *apiClient, char *api_version, char *x_a
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_country_dto_collection_query_parameters = NULL;
+    if (country_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_country_dto_collection_query_parameters = country_dto_collection_query_parameters_convertToJSON(country_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_country_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -363,7 +403,7 @@ CountriesAPI_countCountries(apiClient_t *apiClient, char *api_version, char *x_a
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -374,6 +414,11 @@ CountriesAPI_countCountries(apiClient_t *apiClient, char *api_version, char *x_a
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_country_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_country_dto_collection_query_parameters);
+        localVarSingleItemJSON_country_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -398,13 +443,13 @@ end:
 // Returns the total number of states or provinces for the specified country, with optional OData filtering.
 //
 int32_envelope_t*
-CountriesAPI_countCountryStatesAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_countCountryStatesAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_state_dto_collection_query_parameters_t *country_state_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -448,7 +493,17 @@ CountriesAPI_countCountryStatesAsync(apiClient_t *apiClient, char *countryId, ch
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_country_state_dto_collection_query_parameters = NULL;
+    if (country_state_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_country_state_dto_collection_query_parameters = country_state_dto_collection_query_parameters_convertToJSON(country_state_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_country_state_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -489,7 +544,7 @@ CountriesAPI_countCountryStatesAsync(apiClient_t *apiClient, char *countryId, ch
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryId);
     if (keyHeader_x_api_version) {
@@ -501,6 +556,11 @@ CountriesAPI_countCountryStatesAsync(apiClient_t *apiClient, char *countryId, ch
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_country_state_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_country_state_dto_collection_query_parameters);
+        localVarSingleItemJSON_country_state_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -525,13 +585,13 @@ end:
 // Returns the total number of timezones for the specified country, with optional OData filtering.
 //
 int32_envelope_t*
-CountriesAPI_countTimezonesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_countTimezonesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, timezone_dto_collection_query_parameters_t *timezone_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -575,7 +635,17 @@ CountriesAPI_countTimezonesByCountryAsync(apiClient_t *apiClient, char *countryI
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_timezone_dto_collection_query_parameters = NULL;
+    if (timezone_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_timezone_dto_collection_query_parameters = timezone_dto_collection_query_parameters_convertToJSON(timezone_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_timezone_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -616,7 +686,7 @@ CountriesAPI_countTimezonesByCountryAsync(apiClient_t *apiClient, char *countryI
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryId);
     if (keyHeader_x_api_version) {
@@ -628,6 +698,11 @@ CountriesAPI_countTimezonesByCountryAsync(apiClient_t *apiClient, char *countryI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_timezone_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_timezone_dto_collection_query_parameters);
+        localVarSingleItemJSON_timezone_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -652,13 +727,13 @@ end:
 // Returns the total number of top-level domains for the specified country, with optional OData filtering.
 //
 int32_envelope_t*
-CountriesAPI_countTopLevelDomainsByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_countTopLevelDomainsByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_top_level_domain_dto_collection_query_parameters_t *country_top_level_domain_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -702,7 +777,17 @@ CountriesAPI_countTopLevelDomainsByCountryAsync(apiClient_t *apiClient, char *co
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters = NULL;
+    if (country_top_level_domain_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters = country_top_level_domain_dto_collection_query_parameters_convertToJSON(country_top_level_domain_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -743,7 +828,7 @@ CountriesAPI_countTopLevelDomainsByCountryAsync(apiClient_t *apiClient, char *co
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryId);
     if (keyHeader_x_api_version) {
@@ -755,6 +840,11 @@ CountriesAPI_countTopLevelDomainsByCountryAsync(apiClient_t *apiClient, char *co
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters);
+        localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -779,13 +869,13 @@ end:
 // Retrieves a list of all countries with optional OData pagination and filtering.
 //
 country_dto_list_envelope_t*
-CountriesAPI_getAllCountries(apiClient_t *apiClient, char *api_version, char *x_api_version)
+CountriesAPI_getAllCountries(apiClient_t *apiClient, char *api_version, char *x_api_version, country_dto_collection_query_parameters_t *country_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -819,7 +909,17 @@ CountriesAPI_getAllCountries(apiClient_t *apiClient, char *api_version, char *x_
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_country_dto_collection_query_parameters = NULL;
+    if (country_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_country_dto_collection_query_parameters = country_dto_collection_query_parameters_convertToJSON(country_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_country_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -860,7 +960,7 @@ CountriesAPI_getAllCountries(apiClient_t *apiClient, char *api_version, char *x_
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -871,6 +971,11 @@ CountriesAPI_getAllCountries(apiClient_t *apiClient, char *api_version, char *x_
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_country_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_country_dto_collection_query_parameters);
+        localVarSingleItemJSON_country_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -895,13 +1000,13 @@ end:
 // Retrieves the list of international telephone calling codes associated with the specified country.
 //
 country_calling_code_dto_list_envelope_t*
-CountriesAPI_getCallingCodesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_getCallingCodesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_calling_code_dto_collection_query_parameters_t *country_calling_code_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -945,7 +1050,17 @@ CountriesAPI_getCallingCodesByCountryIdAsync(apiClient_t *apiClient, char *count
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters = NULL;
+    if (country_calling_code_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters = country_calling_code_dto_collection_query_parameters_convertToJSON(country_calling_code_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -986,7 +1101,7 @@ CountriesAPI_getCallingCodesByCountryIdAsync(apiClient_t *apiClient, char *count
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryId);
     if (keyHeader_x_api_version) {
@@ -998,6 +1113,11 @@ CountriesAPI_getCallingCodesByCountryIdAsync(apiClient_t *apiClient, char *count
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters);
+        localVarSingleItemJSON_country_calling_code_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1022,13 +1142,13 @@ end:
 // Retrieves the list of cities belonging to the specified state or province.
 //
 city_dto_list_envelope_t*
-CountriesAPI_getCitiesByCountryStateIdAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_getCitiesByCountryStateIdAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version, city_dto_collection_query_parameters_t *city_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1082,7 +1202,17 @@ CountriesAPI_getCitiesByCountryStateIdAsync(apiClient_t *apiClient, char *countr
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_city_dto_collection_query_parameters = NULL;
+    if (city_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_city_dto_collection_query_parameters = city_dto_collection_query_parameters_convertToJSON(city_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_city_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1123,7 +1253,7 @@ CountriesAPI_getCitiesByCountryStateIdAsync(apiClient_t *apiClient, char *countr
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryStateId);
     free(localVarToReplace_countryId);
@@ -1136,6 +1266,11 @@ CountriesAPI_getCitiesByCountryStateIdAsync(apiClient_t *apiClient, char *countr
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_city_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_city_dto_collection_query_parameters);
+        localVarSingleItemJSON_city_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1287,13 +1422,13 @@ end:
 // Retrieves a single state or province by its unique identifier within a country.
 //
 country_state_dto_envelope_t*
-CountriesAPI_getCountryStateByIdAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_getCountryStateByIdAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version, country_state_dto_collection_query_parameters_t *country_state_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1347,7 +1482,17 @@ CountriesAPI_getCountryStateByIdAsync(apiClient_t *apiClient, char *countryState
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_country_state_dto_collection_query_parameters = NULL;
+    if (country_state_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_country_state_dto_collection_query_parameters = country_state_dto_collection_query_parameters_convertToJSON(country_state_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_country_state_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1388,7 +1533,7 @@ CountriesAPI_getCountryStateByIdAsync(apiClient_t *apiClient, char *countryState
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryStateId);
     free(localVarToReplace_countryId);
@@ -1401,6 +1546,11 @@ CountriesAPI_getCountryStateByIdAsync(apiClient_t *apiClient, char *countryState
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_country_state_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_country_state_dto_collection_query_parameters);
+        localVarSingleItemJSON_country_state_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1425,13 +1575,13 @@ end:
 // Retrieves the list of states or provinces belonging to the specified country.
 //
 country_state_dto_list_envelope_t*
-CountriesAPI_getCountryStatesAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_getCountryStatesAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_state_dto_collection_query_parameters_t *country_state_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1475,7 +1625,17 @@ CountriesAPI_getCountryStatesAsync(apiClient_t *apiClient, char *countryId, char
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_country_state_dto_collection_query_parameters = NULL;
+    if (country_state_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_country_state_dto_collection_query_parameters = country_state_dto_collection_query_parameters_convertToJSON(country_state_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_country_state_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1516,7 +1676,7 @@ CountriesAPI_getCountryStatesAsync(apiClient_t *apiClient, char *countryId, char
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryId);
     if (keyHeader_x_api_version) {
@@ -1528,6 +1688,11 @@ CountriesAPI_getCountryStatesAsync(apiClient_t *apiClient, char *countryId, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_country_state_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_country_state_dto_collection_query_parameters);
+        localVarSingleItemJSON_country_state_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1552,13 +1717,13 @@ end:
 // Retrieves the list of enabled currencies for the specified country.
 //
 currency_dto_list_envelope_t*
-CountriesAPI_getEnabledCurrenciesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_getEnabledCurrenciesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, currency_dto_collection_query_parameters_t *currency_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1602,7 +1767,17 @@ CountriesAPI_getEnabledCurrenciesByCountryIdAsync(apiClient_t *apiClient, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_currency_dto_collection_query_parameters = NULL;
+    if (currency_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_currency_dto_collection_query_parameters = currency_dto_collection_query_parameters_convertToJSON(currency_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_currency_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1643,7 +1818,7 @@ CountriesAPI_getEnabledCurrenciesByCountryIdAsync(apiClient_t *apiClient, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryId);
     if (keyHeader_x_api_version) {
@@ -1655,6 +1830,11 @@ CountriesAPI_getEnabledCurrenciesByCountryIdAsync(apiClient_t *apiClient, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_currency_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_currency_dto_collection_query_parameters);
+        localVarSingleItemJSON_currency_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1679,13 +1859,13 @@ end:
 // Retrieves the list of timezones associated with the specified country.
 //
 timezone_dto_list_envelope_t*
-CountriesAPI_getTimeZonesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_getTimeZonesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, timezone_dto_collection_query_parameters_t *timezone_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1729,7 +1909,17 @@ CountriesAPI_getTimeZonesByCountryIdAsync(apiClient_t *apiClient, char *countryI
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_timezone_dto_collection_query_parameters = NULL;
+    if (timezone_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_timezone_dto_collection_query_parameters = timezone_dto_collection_query_parameters_convertToJSON(timezone_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_timezone_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1770,7 +1960,7 @@ CountriesAPI_getTimeZonesByCountryIdAsync(apiClient_t *apiClient, char *countryI
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryId);
     if (keyHeader_x_api_version) {
@@ -1782,6 +1972,11 @@ CountriesAPI_getTimeZonesByCountryIdAsync(apiClient_t *apiClient, char *countryI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_timezone_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_timezone_dto_collection_query_parameters);
+        localVarSingleItemJSON_timezone_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1806,13 +2001,13 @@ end:
 // Retrieves the list of internet top-level domains (TLDs) associated with the specified country.
 //
 country_top_level_domain_dto_list_envelope_t*
-CountriesAPI_getTopLevelDomainsByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version)
+CountriesAPI_getTopLevelDomainsByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_top_level_domain_dto_collection_query_parameters_t *country_top_level_domain_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1856,7 +2051,17 @@ CountriesAPI_getTopLevelDomainsByCountryIdAsync(apiClient_t *apiClient, char *co
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters = NULL;
+    if (country_top_level_domain_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters = country_top_level_domain_dto_collection_query_parameters_convertToJSON(country_top_level_domain_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1897,7 +2102,7 @@ CountriesAPI_getTopLevelDomainsByCountryIdAsync(apiClient_t *apiClient, char *co
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_countryId);
     if (keyHeader_x_api_version) {
@@ -1909,6 +2114,11 @@ CountriesAPI_getTopLevelDomainsByCountryIdAsync(apiClient_t *apiClient, char *co
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters);
+        localVarSingleItemJSON_country_top_level_domain_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;

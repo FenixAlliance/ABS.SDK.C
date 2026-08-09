@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **parent_journal_id** | **char \*** |  | [optional] 
 **journal_type_id** | **char \*** |  | [optional] 
 **ledger_id** | **char \*** |  | [optional] 
+**financial_book_id** | **char \*** |  | [optional] 
+**code** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

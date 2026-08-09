@@ -24,6 +24,9 @@ typedef struct item_tax_policy_record_dto_envelope_t {
     char *error_message; // string
     char *correlation_id; // string
     char *timestamp; //date time
+    int http_status; //numeric
+    char *error_code; // string
+    list_t* validation_details; //map
     char *activity_id; // string
     struct item_tax_policy_record_dto_t *result; //model
 
@@ -34,6 +37,9 @@ item_tax_policy_record_dto_envelope_t *item_tax_policy_record_dto_envelope_creat
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     item_tax_policy_record_dto_t *result
 );

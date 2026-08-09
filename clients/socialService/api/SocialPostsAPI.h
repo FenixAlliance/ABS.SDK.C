@@ -8,23 +8,39 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
+#include "../model/social_comment_reaction_dto_collection_query_parameters.h"
+#include "../model/social_comment_reaction_dto_envelope.h"
+#include "../model/social_comment_reaction_dto_list_envelope.h"
 #include "../model/social_post_attachment_create_dto.h"
+#include "../model/social_post_attachment_dto_collection_query_parameters.h"
 #include "../model/social_post_attachment_dto_envelope.h"
 #include "../model/social_post_attachment_dto_list_envelope.h"
 #include "../model/social_post_attachment_update_dto.h"
 #include "../model/social_post_comment_create_dto.h"
+#include "../model/social_post_comment_dto_collection_query_parameters.h"
 #include "../model/social_post_comment_dto_envelope.h"
 #include "../model/social_post_comment_dto_list_envelope.h"
 #include "../model/social_post_comment_update_dto.h"
 #include "../model/social_post_create_dto.h"
+#include "../model/social_post_dto_collection_query_parameters.h"
 #include "../model/social_post_dto_envelope.h"
 #include "../model/social_post_dto_list_envelope.h"
+#include "../model/social_post_reaction_dto_collection_query_parameters.h"
+#include "../model/social_post_reaction_dto_envelope.h"
 #include "../model/social_post_update_dto.h"
 #include "../model/social_reaction_create_dto.h"
 #include "../model/social_reaction_dto_envelope.h"
 #include "../model/social_reaction_dto_list_envelope.h"
 #include "../model/social_reaction_update_dto.h"
+
+
+// Create a social comment reaction
+//
+// Creates a new reaction on a specific social comment.
+//
+social_comment_reaction_dto_envelope_t*
+SocialPostsAPI_createSocialCommentReactionAsync(apiClient_t *apiClient, char *socialPostId, char *commentId, char *socialProfileId, char *api_version, char *x_api_version, social_reaction_create_dto_t *social_reaction_create_dto);
 
 
 // Create a social post
@@ -55,8 +71,16 @@ SocialPostsAPI_createSocialPostCommentAsync(apiClient_t *apiClient, char *social
 //
 // Creates a new reaction on a specific social post.
 //
-social_reaction_dto_envelope_t*
+social_post_reaction_dto_envelope_t*
 SocialPostsAPI_createSocialPostReactionAsync(apiClient_t *apiClient, char *socialPostId, char *socialProfileId, char *api_version, char *x_api_version, social_reaction_create_dto_t *social_reaction_create_dto);
+
+
+// Delete a social comment reaction
+//
+// Deletes a reaction from a specific social comment.
+//
+empty_envelope_t*
+SocialPostsAPI_deleteSocialCommentReactionAsync(apiClient_t *apiClient, char *socialPostId, char *commentId, char *reactionId, char *socialProfileId, char *api_version, char *x_api_version);
 
 
 // Delete a social post
@@ -91,6 +115,30 @@ empty_envelope_t*
 SocialPostsAPI_deleteSocialPostReactionAsync(apiClient_t *apiClient, char *socialProfileId, char *socialPostId, char *reactionId, char *api_version, char *x_api_version);
 
 
+// Get social comment reaction by ID
+//
+// Retrieves a specific reaction from a social comment by its ID.
+//
+social_comment_reaction_dto_envelope_t*
+SocialPostsAPI_getSocialCommentReactionAsync(apiClient_t *apiClient, char *socialPostId, char *commentId, char *reactionId, char *api_version, char *x_api_version);
+
+
+// Get social comment reactions
+//
+// Retrieves a list of reactions for a specific social comment.
+//
+social_comment_reaction_dto_list_envelope_t*
+SocialPostsAPI_getSocialCommentReactionsAsync(apiClient_t *apiClient, char *socialPostId, char *commentId, char *socialProfileId, char *api_version, char *x_api_version, social_comment_reaction_dto_collection_query_parameters_t *social_comment_reaction_dto_collection_query_parameters);
+
+
+// Count social comment reactions
+//
+// Returns the count of reactions for a specific social comment.
+//
+int32_envelope_t*
+SocialPostsAPI_getSocialCommentReactionsCountAsync(apiClient_t *apiClient, char *socialPostId, char *commentId, char *socialProfileId, char *api_version, char *x_api_version, social_comment_reaction_dto_collection_query_parameters_t *social_comment_reaction_dto_collection_query_parameters);
+
+
 // Get social post by ID
 //
 // Retrieves a specific social post by its ID.
@@ -112,7 +160,7 @@ SocialPostsAPI_getSocialPostAttachmentAsync(apiClient_t *apiClient, char *social
 // Retrieves a list of attachments for a specific social post.
 //
 social_post_attachment_dto_list_envelope_t*
-SocialPostsAPI_getSocialPostAttachmentsAsync(apiClient_t *apiClient, char *socialPostId, char *api_version, char *x_api_version);
+SocialPostsAPI_getSocialPostAttachmentsAsync(apiClient_t *apiClient, char *socialPostId, char *api_version, char *x_api_version, social_post_attachment_dto_collection_query_parameters_t *social_post_attachment_dto_collection_query_parameters);
 
 
 // Count social post attachments
@@ -120,7 +168,7 @@ SocialPostsAPI_getSocialPostAttachmentsAsync(apiClient_t *apiClient, char *socia
 // Returns the count of attachments for a specific social post.
 //
 int32_envelope_t*
-SocialPostsAPI_getSocialPostAttachmentsCountAsync(apiClient_t *apiClient, char *socialPostId, char *api_version, char *x_api_version);
+SocialPostsAPI_getSocialPostAttachmentsCountAsync(apiClient_t *apiClient, char *socialPostId, char *api_version, char *x_api_version, social_post_attachment_dto_collection_query_parameters_t *social_post_attachment_dto_collection_query_parameters);
 
 
 // Get social post comment by ID
@@ -136,7 +184,7 @@ SocialPostsAPI_getSocialPostCommentAsync(apiClient_t *apiClient, char *socialPro
 // Retrieves a list of comments for a specific social post.
 //
 social_post_comment_dto_list_envelope_t*
-SocialPostsAPI_getSocialPostCommentsAsync(apiClient_t *apiClient, char *socialProfileId, char *socialPostId, char *api_version, char *x_api_version);
+SocialPostsAPI_getSocialPostCommentsAsync(apiClient_t *apiClient, char *socialProfileId, char *socialPostId, char *parentCommentId, char *api_version, char *x_api_version, social_post_comment_dto_collection_query_parameters_t *social_post_comment_dto_collection_query_parameters);
 
 
 // Count social post comments
@@ -144,7 +192,7 @@ SocialPostsAPI_getSocialPostCommentsAsync(apiClient_t *apiClient, char *socialPr
 // Returns the count of comments for a specific social post.
 //
 int32_envelope_t*
-SocialPostsAPI_getSocialPostCommentsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *socialPostId, char *api_version, char *x_api_version);
+SocialPostsAPI_getSocialPostCommentsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *socialPostId, char *parentCommentId, char *api_version, char *x_api_version, social_post_comment_dto_collection_query_parameters_t *social_post_comment_dto_collection_query_parameters);
 
 
 // Get social post reaction by ID
@@ -160,7 +208,7 @@ SocialPostsAPI_getSocialPostReactionAsync(apiClient_t *apiClient, char *socialPo
 // Retrieves a list of reactions for a specific social post.
 //
 social_reaction_dto_list_envelope_t*
-SocialPostsAPI_getSocialPostReactionsAsync(apiClient_t *apiClient, char *socialPostId, char *socialProfileId, char *api_version, char *x_api_version);
+SocialPostsAPI_getSocialPostReactionsAsync(apiClient_t *apiClient, char *socialPostId, char *socialProfileId, char *api_version, char *x_api_version, social_post_reaction_dto_collection_query_parameters_t *social_post_reaction_dto_collection_query_parameters);
 
 
 // Count social post reactions
@@ -168,7 +216,7 @@ SocialPostsAPI_getSocialPostReactionsAsync(apiClient_t *apiClient, char *socialP
 // Returns the count of reactions for a specific social post.
 //
 int32_envelope_t*
-SocialPostsAPI_getSocialPostReactionsCountAsync(apiClient_t *apiClient, char *socialPostId, char *socialProfileId, char *api_version, char *x_api_version);
+SocialPostsAPI_getSocialPostReactionsCountAsync(apiClient_t *apiClient, char *socialPostId, char *socialProfileId, char *api_version, char *x_api_version, social_post_reaction_dto_collection_query_parameters_t *social_post_reaction_dto_collection_query_parameters);
 
 
 // Get social posts
@@ -176,7 +224,7 @@ SocialPostsAPI_getSocialPostReactionsCountAsync(apiClient_t *apiClient, char *so
 // Retrieves a list of social posts for the specified social profile.
 //
 social_post_dto_list_envelope_t*
-SocialPostsAPI_getSocialPostsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialPostsAPI_getSocialPostsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_post_dto_collection_query_parameters_t *social_post_dto_collection_query_parameters);
 
 
 // Count social posts
@@ -184,7 +232,7 @@ SocialPostsAPI_getSocialPostsAsync(apiClient_t *apiClient, char *socialProfileId
 // Returns the count of social posts for the specified social profile.
 //
 int32_envelope_t*
-SocialPostsAPI_getSocialPostsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialPostsAPI_getSocialPostsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_post_dto_collection_query_parameters_t *social_post_dto_collection_query_parameters);
 
 
 // Patch a social post
@@ -192,7 +240,15 @@ SocialPostsAPI_getSocialPostsCountAsync(apiClient_t *apiClient, char *socialProf
 // Partially updates an existing social post by its ID using a JSON Patch document.
 //
 empty_envelope_t*
-SocialPostsAPI_patchSocialPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialPostId, char *api_version, char *x_api_version, list_t *operation);
+SocialPostsAPI_patchSocialPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialPostId, char *api_version, char *x_api_version, list_t *patch_operation);
+
+
+// Update a social comment reaction
+//
+// Updates an existing reaction on a specific social comment.
+//
+social_comment_reaction_dto_envelope_t*
+SocialPostsAPI_updateSocialCommentReactionAsync(apiClient_t *apiClient, char *socialPostId, char *commentId, char *reactionId, char *socialProfileId, char *api_version, char *x_api_version, social_reaction_update_dto_t *social_reaction_update_dto);
 
 
 // Update a social post
@@ -223,7 +279,15 @@ SocialPostsAPI_updateSocialPostCommentAsync(apiClient_t *apiClient, char *social
 //
 // Updates an existing reaction on a specific social post.
 //
-empty_envelope_t*
+social_post_reaction_dto_envelope_t*
 SocialPostsAPI_updateSocialPostReactionAsync(apiClient_t *apiClient, char *socialProfileId, char *socialPostId, char *reactionId, char *api_version, char *x_api_version, social_reaction_update_dto_t *social_reaction_update_dto);
+
+
+// Upload a social post image attachment
+//
+// Uploads an image and attaches it to a social post, storing the bytes through the storage spine.
+//
+social_post_attachment_dto_envelope_t*
+SocialPostsAPI_uploadSocialPostImageAttachmentAsync(apiClient_t *apiClient, char *socialPostId, char *socialProfileId, char *api_version, char *x_api_version, binary_t* file);
 
 

@@ -24,6 +24,9 @@ typedef struct subscription_dto_i_read_only_list_envelope_t {
     char *error_message; // string
     char *correlation_id; // string
     char *timestamp; //date time
+    int http_status; //numeric
+    char *error_code; // string
+    list_t* validation_details; //map
     char *activity_id; // string
     list_t *result; //nonprimitive container
 
@@ -34,6 +37,9 @@ subscription_dto_i_read_only_list_envelope_t *subscription_dto_i_read_only_list_
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     list_t *result
 );

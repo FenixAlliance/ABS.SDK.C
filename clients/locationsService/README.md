@@ -70,7 +70,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -112,11 +111,12 @@ Category | Method | HTTP request | Description
  - [int32_envelope_t](docs/int32_envelope.md)
  - [location_create_dto_t](docs/location_create_dto.md)
  - [location_dto_t](docs/location_dto.md)
+ - [location_dto_collection_query_parameters_t](docs/location_dto_collection_query_parameters.md)
  - [location_dto_envelope_t](docs/location_dto_envelope.md)
  - [location_dto_i_read_only_list_envelope_t](docs/location_dto_i_read_only_list_envelope.md)
  - [location_update_dto_t](docs/location_update_dto.md)
  - [login_request_t](docs/login_request.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [refresh_request_t](docs/refresh_request.md)
  - [register_request_t](docs/register_request.md)
  - [resend_confirmation_email_request_t](docs/resend_confirmation_email_request.md)

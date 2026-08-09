@@ -15,7 +15,9 @@ journal_dto_t *journal_dto_create(
     char *enrollment_id,
     char *fiscal_year_id,
     char *journal_type_id,
-    char *parent_journal_id
+    char *parent_journal_id,
+    char *financial_book_id,
+    char *code
     ) {
     journal_dto_t *journal_dto_local_var = malloc(sizeof(journal_dto_t));
     if (!journal_dto_local_var) {
@@ -31,6 +33,8 @@ journal_dto_t *journal_dto_create(
     journal_dto_local_var->fiscal_year_id = fiscal_year_id;
     journal_dto_local_var->journal_type_id = journal_type_id;
     journal_dto_local_var->parent_journal_id = parent_journal_id;
+    journal_dto_local_var->financial_book_id = financial_book_id;
+    journal_dto_local_var->code = code;
 
     return journal_dto_local_var;
 }
@@ -80,6 +84,14 @@ void journal_dto_free(journal_dto_t *journal_dto) {
     if (journal_dto->parent_journal_id) {
         free(journal_dto->parent_journal_id);
         journal_dto->parent_journal_id = NULL;
+    }
+    if (journal_dto->financial_book_id) {
+        free(journal_dto->financial_book_id);
+        journal_dto->financial_book_id = NULL;
+    }
+    if (journal_dto->code) {
+        free(journal_dto->code);
+        journal_dto->code = NULL;
     }
     free(journal_dto);
 }
@@ -162,6 +174,22 @@ cJSON *journal_dto_convertToJSON(journal_dto_t *journal_dto) {
     // journal_dto->parent_journal_id
     if(journal_dto->parent_journal_id) {
     if(cJSON_AddStringToObject(item, "parentJournalId", journal_dto->parent_journal_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // journal_dto->financial_book_id
+    if(journal_dto->financial_book_id) {
+    if(cJSON_AddStringToObject(item, "financialBookId", journal_dto->financial_book_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // journal_dto->code
+    if(journal_dto->code) {
+    if(cJSON_AddStringToObject(item, "code", journal_dto->code) == NULL) {
     goto fail; //String
     }
     }
@@ -268,6 +296,24 @@ journal_dto_t *journal_dto_parseFromJSON(cJSON *journal_dtoJSON){
     }
     }
 
+    // journal_dto->financial_book_id
+    cJSON *financial_book_id = cJSON_GetObjectItemCaseSensitive(journal_dtoJSON, "financialBookId");
+    if (financial_book_id) { 
+    if(!cJSON_IsString(financial_book_id) && !cJSON_IsNull(financial_book_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // journal_dto->code
+    cJSON *code = cJSON_GetObjectItemCaseSensitive(journal_dtoJSON, "code");
+    if (code) { 
+    if(!cJSON_IsString(code) && !cJSON_IsNull(code))
+    {
+    goto end; //String
+    }
+    }
+
 
     journal_dto_local_var = journal_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -279,7 +325,9 @@ journal_dto_t *journal_dto_parseFromJSON(cJSON *journal_dtoJSON){
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         fiscal_year_id && !cJSON_IsNull(fiscal_year_id) ? strdup(fiscal_year_id->valuestring) : NULL,
         journal_type_id && !cJSON_IsNull(journal_type_id) ? strdup(journal_type_id->valuestring) : NULL,
-        parent_journal_id && !cJSON_IsNull(parent_journal_id) ? strdup(parent_journal_id->valuestring) : NULL
+        parent_journal_id && !cJSON_IsNull(parent_journal_id) ? strdup(parent_journal_id->valuestring) : NULL,
+        financial_book_id && !cJSON_IsNull(financial_book_id) ? strdup(financial_book_id->valuestring) : NULL,
+        code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL
         );
 
     return journal_dto_local_var;

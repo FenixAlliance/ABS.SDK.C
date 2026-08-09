@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/asset_transfer_create_dto.h"
+#include "../model/asset_transfer_dto_collection_query_parameters.h"
 #include "../model/asset_transfer_dto_envelope.h"
 #include "../model/asset_transfer_dto_list_envelope.h"
 #include "../model/asset_transfer_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new asset transfer
@@ -44,7 +45,7 @@ AssetTransfersAPI_getAssetTransferAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all asset transfers for the authenticated tenant.
 //
 asset_transfer_dto_list_envelope_t*
-AssetTransfersAPI_getAssetTransfersAsync(apiClient_t *apiClient, char *tenantId);
+AssetTransfersAPI_getAssetTransfersAsync(apiClient_t *apiClient, char *tenantId, asset_transfer_dto_collection_query_parameters_t *asset_transfer_dto_collection_query_parameters);
 
 
 // Gets the count of asset transfers
@@ -52,7 +53,7 @@ AssetTransfersAPI_getAssetTransfersAsync(apiClient_t *apiClient, char *tenantId)
 // Returns the total number of asset transfers for the authenticated tenant.
 //
 int32_envelope_t*
-AssetTransfersAPI_getAssetTransfersCountAsync(apiClient_t *apiClient, char *tenantId);
+AssetTransfersAPI_getAssetTransfersCountAsync(apiClient_t *apiClient, char *tenantId, asset_transfer_dto_collection_query_parameters_t *asset_transfer_dto_collection_query_parameters);
 
 
 // Partially updates an existing asset transfer
@@ -60,7 +61,7 @@ AssetTransfersAPI_getAssetTransfersCountAsync(apiClient_t *apiClient, char *tena
 // Applies a JSON Patch document to an existing asset transfer for the authenticated tenant.
 //
 empty_envelope_t*
-AssetTransfersAPI_patchAssetTransferAsync(apiClient_t *apiClient, char *tenantId, char *transferId, list_t *operation);
+AssetTransfersAPI_patchAssetTransferAsync(apiClient_t *apiClient, char *tenantId, char *transferId, list_t *patch_operation);
 
 
 // Updates an existing asset transfer

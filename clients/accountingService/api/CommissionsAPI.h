@@ -6,14 +6,16 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/commission_create_dto.h"
+#include "../model/commission_dto_collection_query_parameters.h"
 #include "../model/commission_dto_envelope.h"
 #include "../model/commission_dto_list_envelope.h"
 #include "../model/commission_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/payment_commission_create_dto.h"
+#include "../model/payment_commission_dto_collection_query_parameters.h"
 #include "../model/payment_commission_dto_envelope.h"
 #include "../model/payment_commission_dto_list_envelope.h"
 #include "../model/payment_commission_update_dto.h"
@@ -64,7 +66,7 @@ CommissionsAPI_getCommissionAsync(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves all commissions for the specified tenant using OData query options.
 //
 commission_dto_list_envelope_t*
-CommissionsAPI_getCommissionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CommissionsAPI_getCommissionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, commission_dto_collection_query_parameters_t *commission_dto_collection_query_parameters);
 
 
 // Get the count of commissions for a tenant
@@ -72,7 +74,7 @@ CommissionsAPI_getCommissionsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Retrieves the count of commissions for the specified tenant using OData query options.
 //
 int32_envelope_t*
-CommissionsAPI_getCommissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CommissionsAPI_getCommissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, commission_dto_collection_query_parameters_t *commission_dto_collection_query_parameters);
 
 
 // Get a payment commission by id
@@ -88,7 +90,7 @@ CommissionsAPI_getPaymentCommissionAsync(apiClient_t *apiClient, char *tenantId,
 // Retrieves all payment commissions for the specified tenant using OData query options.
 //
 payment_commission_dto_list_envelope_t*
-CommissionsAPI_getPaymentCommissionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CommissionsAPI_getPaymentCommissionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payment_commission_dto_collection_query_parameters_t *payment_commission_dto_collection_query_parameters);
 
 
 // Get the count of payment commissions for a tenant
@@ -96,7 +98,7 @@ CommissionsAPI_getPaymentCommissionsAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves the count of payment commissions for the specified tenant using OData query options.
 //
 int32_envelope_t*
-CommissionsAPI_getPaymentCommissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CommissionsAPI_getPaymentCommissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payment_commission_dto_collection_query_parameters_t *payment_commission_dto_collection_query_parameters);
 
 
 // Patch a commission
@@ -104,7 +106,7 @@ CommissionsAPI_getPaymentCommissionsCountAsync(apiClient_t *apiClient, char *ten
 // Partially updates an existing commission.
 //
 empty_envelope_t*
-CommissionsAPI_patchCommissionAsync(apiClient_t *apiClient, char *tenantId, char *commissionId, char *api_version, char *x_api_version, list_t *operation);
+CommissionsAPI_patchCommissionAsync(apiClient_t *apiClient, char *tenantId, char *commissionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a payment commission
@@ -112,7 +114,7 @@ CommissionsAPI_patchCommissionAsync(apiClient_t *apiClient, char *tenantId, char
 // Partially updates an existing payment commission.
 //
 empty_envelope_t*
-CommissionsAPI_patchPaymentCommissionAsync(apiClient_t *apiClient, char *tenantId, char *paymentCommissionId, char *api_version, char *x_api_version, list_t *operation);
+CommissionsAPI_patchPaymentCommissionAsync(apiClient_t *apiClient, char *tenantId, char *paymentCommissionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a commission

@@ -855,13 +855,13 @@ end:
 // Retrieves all blog posts, optionally filtered by tenant using OData query options.
 //
 blog_post_dto_list_envelope_t*
-BlogPostsAPI_getBlogPostsAsync(apiClient_t *apiClient, char *tenantId)
+BlogPostsAPI_getBlogPostsAsync(apiClient_t *apiClient, char *tenantId, blog_post_dto_collection_query_parameters_t *blog_post_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -883,8 +883,19 @@ BlogPostsAPI_getBlogPostsAsync(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_blog_post_dto_collection_query_parameters = NULL;
+    if (blog_post_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_blog_post_dto_collection_query_parameters = blog_post_dto_collection_query_parameters_convertToJSON(blog_post_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_blog_post_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -925,8 +936,13 @@ BlogPostsAPI_getBlogPostsAsync(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_blog_post_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_blog_post_dto_collection_query_parameters);
+        localVarSingleItemJSON_blog_post_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -951,13 +967,13 @@ end:
 // Returns the total count of blog posts, optionally filtered by tenant using OData query options.
 //
 int32_envelope_t*
-BlogPostsAPI_getBlogPostsCountAsync(apiClient_t *apiClient, char *tenantId)
+BlogPostsAPI_getBlogPostsCountAsync(apiClient_t *apiClient, char *tenantId, blog_post_dto_collection_query_parameters_t *blog_post_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -979,8 +995,19 @@ BlogPostsAPI_getBlogPostsCountAsync(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_blog_post_dto_collection_query_parameters = NULL;
+    if (blog_post_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_blog_post_dto_collection_query_parameters = blog_post_dto_collection_query_parameters_convertToJSON(blog_post_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_blog_post_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1021,8 +1048,13 @@ BlogPostsAPI_getBlogPostsCountAsync(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_blog_post_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_blog_post_dto_collection_query_parameters);
+        localVarSingleItemJSON_blog_post_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1047,13 +1079,13 @@ end:
 // Retrieves all categories related to a specific blog post.
 //
 blog_post_category_dto_list_envelope_t*
-BlogPostsAPI_getCategoriesForBlogPostAsync(apiClient_t *apiClient, char *blogPostId)
+BlogPostsAPI_getCategoriesForBlogPostAsync(apiClient_t *apiClient, char *blogPostId, blog_post_category_dto_collection_query_parameters_t *blog_post_category_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1080,8 +1112,19 @@ BlogPostsAPI_getCategoriesForBlogPostAsync(apiClient_t *apiClient, char *blogPos
     localVarPath = strReplace(localVarPath, localVarToReplace_blogPostId, blogPostId);
 
 
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_blog_post_category_dto_collection_query_parameters = NULL;
+    if (blog_post_category_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_blog_post_category_dto_collection_query_parameters = blog_post_category_dto_collection_query_parameters_convertToJSON(blog_post_category_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_blog_post_category_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1122,9 +1165,14 @@ BlogPostsAPI_getCategoriesForBlogPostAsync(apiClient_t *apiClient, char *blogPos
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_blogPostId);
+    if (localVarSingleItemJSON_blog_post_category_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_blog_post_category_dto_collection_query_parameters);
+        localVarSingleItemJSON_blog_post_category_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     return elementToReturn;
 end:
     free(localVarPath);
@@ -1137,13 +1185,13 @@ end:
 // Retrieves all comments for a specific blog post.
 //
 blog_post_comment_dto_list_envelope_t*
-BlogPostsAPI_getCommentsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId)
+BlogPostsAPI_getCommentsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId, blog_post_comment_dto_collection_query_parameters_t *blog_post_comment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1170,8 +1218,19 @@ BlogPostsAPI_getCommentsForBlogPostAsync(apiClient_t *apiClient, char *blogPostI
     localVarPath = strReplace(localVarPath, localVarToReplace_blogPostId, blogPostId);
 
 
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters = NULL;
+    if (blog_post_comment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters = blog_post_comment_dto_collection_query_parameters_convertToJSON(blog_post_comment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1212,9 +1271,14 @@ BlogPostsAPI_getCommentsForBlogPostAsync(apiClient_t *apiClient, char *blogPostI
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_blogPostId);
+    if (localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters);
+        localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     return elementToReturn;
 end:
     free(localVarPath);
@@ -1227,13 +1291,13 @@ end:
 // Retrieves all replies for a specific blog post comment.
 //
 blog_post_comment_dto_list_envelope_t*
-BlogPostsAPI_getRepliesForCommentAsync(apiClient_t *apiClient, char *commentId, char *blogPostId)
+BlogPostsAPI_getRepliesForCommentAsync(apiClient_t *apiClient, char *commentId, char *blogPostId, blog_post_comment_dto_collection_query_parameters_t *blog_post_comment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1270,8 +1334,19 @@ BlogPostsAPI_getRepliesForCommentAsync(apiClient_t *apiClient, char *commentId, 
     localVarPath = strReplace(localVarPath, localVarToReplace_blogPostId, blogPostId);
 
 
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters = NULL;
+    if (blog_post_comment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters = blog_post_comment_dto_collection_query_parameters_convertToJSON(blog_post_comment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1312,10 +1387,15 @@ BlogPostsAPI_getRepliesForCommentAsync(apiClient_t *apiClient, char *commentId, 
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_commentId);
     free(localVarToReplace_blogPostId);
+    if (localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters);
+        localVarSingleItemJSON_blog_post_comment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     return elementToReturn;
 end:
     free(localVarPath);
@@ -1328,13 +1408,13 @@ end:
 // Retrieves all tags related to a specific blog post.
 //
 blog_post_tag_dto_list_envelope_t*
-BlogPostsAPI_getTagsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId)
+BlogPostsAPI_getTagsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId, blog_post_tag_dto_collection_query_parameters_t *blog_post_tag_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1361,8 +1441,19 @@ BlogPostsAPI_getTagsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId)
     localVarPath = strReplace(localVarPath, localVarToReplace_blogPostId, blogPostId);
 
 
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_blog_post_tag_dto_collection_query_parameters = NULL;
+    if (blog_post_tag_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_blog_post_tag_dto_collection_query_parameters = blog_post_tag_dto_collection_query_parameters_convertToJSON(blog_post_tag_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_blog_post_tag_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1403,9 +1494,14 @@ BlogPostsAPI_getTagsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_blogPostId);
+    if (localVarSingleItemJSON_blog_post_tag_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_blog_post_tag_dto_collection_query_parameters);
+        localVarSingleItemJSON_blog_post_tag_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     return elementToReturn;
 end:
     free(localVarPath);
@@ -1418,7 +1514,7 @@ end:
 // Partially updates an existing blog post for the specified tenant.
 //
 empty_envelope_t*
-BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *blogPostId, list_t *operation)
+BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *blogPostId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1466,14 +1562,14 @@ BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *bl
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1481,16 +1577,16 @@ BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *bl
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1539,17 +1635,17 @@ BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *bl
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_blogPostId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

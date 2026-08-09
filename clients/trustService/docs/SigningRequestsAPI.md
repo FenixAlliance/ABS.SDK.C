@@ -247,7 +247,7 @@ No authorization required
 ```c
 // Get all signing requests
 //
-signing_request_dto_list_envelope_t* SigningRequestsAPI_getSigningRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+signing_request_dto_list_envelope_t* SigningRequestsAPI_getSigningRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_request_dto_collection_query_parameters_t *signing_request_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -257,6 +257,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**signing_request_dto_collection_query_parameters** | **[signing_request_dto_collection_query_parameters_t](signing_request_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -269,7 +270,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -278,7 +279,7 @@ No authorization required
 ```c
 // Get signing requests count
 //
-int32_envelope_t* SigningRequestsAPI_getSigningRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* SigningRequestsAPI_getSigningRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_request_dto_collection_query_parameters_t *signing_request_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -288,6 +289,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**signing_request_dto_collection_query_parameters** | **[signing_request_dto_collection_query_parameters_t](signing_request_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -300,7 +302,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

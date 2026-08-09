@@ -9,14 +9,16 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_packing_slip_create_dto.h"
+#include "../model/item_packing_slip_dto_collection_query_parameters.h"
 #include "../model/item_packing_slip_dto_envelope.h"
 #include "../model/item_packing_slip_dto_list_envelope.h"
 #include "../model/item_packing_slip_entry_create_dto.h"
+#include "../model/item_packing_slip_entry_dto_collection_query_parameters.h"
 #include "../model/item_packing_slip_entry_dto_envelope.h"
 #include "../model/item_packing_slip_entry_dto_list_envelope.h"
 #include "../model/item_packing_slip_entry_update_dto.h"
 #include "../model/item_packing_slip_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an item packing slip
@@ -64,7 +66,7 @@ ItemPackingSlipsAPI_getItemPackingSlipByIdAsync(apiClient_t *apiClient, char *te
 // Retrieves all entries for the specified packing slip.
 //
 item_packing_slip_entry_dto_list_envelope_t*
-ItemPackingSlipsAPI_getItemPackingSlipEntriesAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *api_version, char *x_api_version);
+ItemPackingSlipsAPI_getItemPackingSlipEntriesAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *api_version, char *x_api_version, item_packing_slip_entry_dto_collection_query_parameters_t *item_packing_slip_entry_dto_collection_query_parameters);
 
 
 // Get packing slip entries count
@@ -72,7 +74,7 @@ ItemPackingSlipsAPI_getItemPackingSlipEntriesAsync(apiClient_t *apiClient, char 
 // Returns the count of packing slip entries.
 //
 int32_envelope_t*
-ItemPackingSlipsAPI_getItemPackingSlipEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *api_version, char *x_api_version);
+ItemPackingSlipsAPI_getItemPackingSlipEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *api_version, char *x_api_version, item_packing_slip_entry_dto_collection_query_parameters_t *item_packing_slip_entry_dto_collection_query_parameters);
 
 
 // Get packing slip entry by ID
@@ -88,7 +90,7 @@ ItemPackingSlipsAPI_getItemPackingSlipEntryByIdAsync(apiClient_t *apiClient, cha
 // Retrieves all item packing slips for the specified tenant.
 //
 item_packing_slip_dto_list_envelope_t*
-ItemPackingSlipsAPI_getItemPackingSlipsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemPackingSlipsAPI_getItemPackingSlipsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_packing_slip_dto_collection_query_parameters_t *item_packing_slip_dto_collection_query_parameters);
 
 
 // Get item packing slips count
@@ -96,7 +98,7 @@ ItemPackingSlipsAPI_getItemPackingSlipsAsync(apiClient_t *apiClient, char *tenan
 // Returns the count of item packing slips.
 //
 int32_envelope_t*
-ItemPackingSlipsAPI_getItemPackingSlipsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemPackingSlipsAPI_getItemPackingSlipsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_packing_slip_dto_collection_query_parameters_t *item_packing_slip_dto_collection_query_parameters);
 
 
 // Patch an item packing slip
@@ -104,7 +106,7 @@ ItemPackingSlipsAPI_getItemPackingSlipsCountAsync(apiClient_t *apiClient, char *
 // Applies a JSON Patch document to an item packing slip.
 //
 empty_envelope_t*
-ItemPackingSlipsAPI_patchItemPackingSlipAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *api_version, char *x_api_version, list_t *operation);
+ItemPackingSlipsAPI_patchItemPackingSlipAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a packing slip entry
@@ -112,7 +114,7 @@ ItemPackingSlipsAPI_patchItemPackingSlipAsync(apiClient_t *apiClient, char *tena
 // Applies a JSON Patch document to a packing slip entry.
 //
 empty_envelope_t*
-ItemPackingSlipsAPI_patchItemPackingSlipEntryAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+ItemPackingSlipsAPI_patchItemPackingSlipEntryAsync(apiClient_t *apiClient, char *tenantId, char *packingSlipId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item packing slip

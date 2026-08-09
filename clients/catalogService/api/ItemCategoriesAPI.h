@@ -8,10 +8,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_category_create_dto.h"
+#include "../model/item_category_dto_collection_query_parameters.h"
 #include "../model/item_category_dto_envelope.h"
 #include "../model/item_category_dto_list_envelope.h"
 #include "../model/item_category_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Count item categories
@@ -19,7 +20,7 @@
 // Counts all item categories for the specified tenant.
 //
 int32_envelope_t*
-ItemCategoriesAPI_countItemCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemCategoriesAPI_countItemCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_category_dto_collection_query_parameters_t *item_category_dto_collection_query_parameters);
 
 
 // Create a new item category
@@ -43,7 +44,7 @@ ItemCategoriesAPI_deleteItemCategoryAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves all item categories for the specified tenant using OData query options.
 //
 item_category_dto_list_envelope_t*
-ItemCategoriesAPI_getItemCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemCategoriesAPI_getItemCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_category_dto_collection_query_parameters_t *item_category_dto_collection_query_parameters);
 
 
 // Get item category by ID
@@ -59,7 +60,7 @@ ItemCategoriesAPI_getItemCategoryByIdAsync(apiClient_t *apiClient, char *itemCat
 // Partially updates an existing item category for the specified tenant.
 //
 void
-ItemCategoriesAPI_patchItemCategoryAsync(apiClient_t *apiClient, char *tenantId, char *itemCategoryId, char *api_version, char *x_api_version, list_t *operation);
+ItemCategoriesAPI_patchItemCategoryAsync(apiClient_t *apiClient, char *tenantId, char *itemCategoryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item category

@@ -120,7 +120,7 @@ No authorization required
 //
 // Retrieves all course enrollments for the specified tenant.
 //
-list_t* CourseEnrollmentsAPI_getEnrollmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+list_t* CourseEnrollmentsAPI_getEnrollmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_enrollment_dto_collection_query_parameters_t *course_enrollment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -130,6 +130,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_enrollment_dto_collection_query_parameters** | **[course_enrollment_dto_collection_query_parameters_t](course_enrollment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -142,7 +143,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -153,7 +154,7 @@ No authorization required
 //
 // Returns the count of course enrollments for the specified tenant.
 //
-int* CourseEnrollmentsAPI_getEnrollmentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int* CourseEnrollmentsAPI_getEnrollmentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_enrollment_dto_collection_query_parameters_t *course_enrollment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_enrollment_dto_collection_query_parameters** | **[course_enrollment_dto_collection_query_parameters_t](course_enrollment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -176,7 +178,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -187,7 +189,7 @@ No authorization required
 //
 // Retrieves all enrollments for a specific student.
 //
-list_t* CourseEnrollmentsAPI_getStudentCourseEnrollmentsAsync(apiClient_t *apiClient, char *tenantId, char *studentProfileId, char *api_version, char *x_api_version);
+list_t* CourseEnrollmentsAPI_getStudentCourseEnrollmentsAsync(apiClient_t *apiClient, char *tenantId, char *studentProfileId, char *api_version, char *x_api_version, course_enrollment_dto_collection_query_parameters_t *course_enrollment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -198,6 +200,7 @@ Name | Type | Description  | Notes
 **studentProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_enrollment_dto_collection_query_parameters** | **[course_enrollment_dto_collection_query_parameters_t](course_enrollment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -210,7 +213,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -221,7 +224,7 @@ No authorization required
 //
 // Partially updates an existing course enrollment for the specified tenant.
 //
-void CourseEnrollmentsAPI_patchCourseEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char *courseEnrollmentId, char *api_version, char *x_api_version, list_t *operation);
+void CourseEnrollmentsAPI_patchCourseEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char *courseEnrollmentId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -232,7 +235,7 @@ Name | Type | Description  | Notes
 **courseEnrollmentId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

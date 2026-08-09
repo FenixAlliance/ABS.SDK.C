@@ -11,10 +11,13 @@ Method | HTTP request | Description
 [**UsersAPI_getExtendedAccountHolderAsync**](UsersAPI.md#UsersAPI_getExtendedAccountHolderAsync) | **GET** /api/v2/SystemService/Users/{userId}/Extended | Retrieve an extended user by ID
 [**UsersAPI_getExtendedUsersAsync**](UsersAPI.md#UsersAPI_getExtendedUsersAsync) | **GET** /api/v2/SystemService/Users/Extended | Retrieve a list of extended users
 [**UsersAPI_getExtendedUsersCountAsync**](UsersAPI.md#UsersAPI_getExtendedUsersCountAsync) | **GET** /api/v2/SystemService/Users/Extended/Count | Get the count of extended users
+[**UsersAPI_getUserAdminDetailAsync**](UsersAPI.md#UsersAPI_getUserAdminDetailAsync) | **GET** /api/v2/SystemService/Users/{userId}/AdminDetail | Retrieve the admin detail aggregate for a user
 [**UsersAPI_getUserAsync**](UsersAPI.md#UsersAPI_getUserAsync) | **GET** /api/v2/SystemService/Users/{userId} | Retrieve a user by ID
 [**UsersAPI_getUsersAsync**](UsersAPI.md#UsersAPI_getUsersAsync) | **GET** /api/v2/SystemService/Users | Retrieve a list of users
 [**UsersAPI_getUsersCountAsync**](UsersAPI.md#UsersAPI_getUsersCountAsync) | **GET** /api/v2/SystemService/Users/Count | Get the count of users
 [**UsersAPI_patchAccountHolderAsync**](UsersAPI.md#UsersAPI_patchAccountHolderAsync) | **PATCH** /api/v2/SystemService/Users/{userId} | Partially update a user
+[**UsersAPI_setUserPasswordAsync**](UsersAPI.md#UsersAPI_setUserPasswordAsync) | **POST** /api/v2/SystemService/Users/{userId}/Password | Set a user&#39;s password
+[**UsersAPI_updateAccountHolderAdminProfileAsync**](UsersAPI.md#UsersAPI_updateAccountHolderAdminProfileAsync) | **PUT** /api/v2/SystemService/Users/{userId}/AdminProfile | Update a user&#39;s admin-managed profile
 [**UsersAPI_updateAccountHolderAsync**](UsersAPI.md#UsersAPI_updateAccountHolderAsync) | **PUT** /api/v2/SystemService/Users/{userId} | Update a user
 
 
@@ -190,7 +193,7 @@ No authorization required
 //
 // This action is only available for global administrators.
 //
-extended_user_dto_list_envelope_t* UsersAPI_getExtendedUsersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+extended_user_dto_list_envelope_t* UsersAPI_getExtendedUsersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, extended_user_dto_collection_query_parameters_t *extended_user_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -199,6 +202,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**extended_user_dto_collection_query_parameters** | **[extended_user_dto_collection_query_parameters_t](extended_user_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -211,7 +215,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -222,7 +226,7 @@ No authorization required
 //
 // This action is only available for global administrators.
 //
-int32_envelope_t* UsersAPI_getExtendedUsersCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* UsersAPI_getExtendedUsersCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, extended_user_dto_collection_query_parameters_t *extended_user_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -231,10 +235,45 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**extended_user_dto_collection_query_parameters** | **[extended_user_dto_collection_query_parameters_t](extended_user_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
 [int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **UsersAPI_getUserAdminDetailAsync**
+```c
+// Retrieve the admin detail aggregate for a user
+//
+// Returns the user's orders, external logins, and — for the supplied tenant — the enrollment with its granted roles/permissions and the tenant role/permission catalogs. Global administrators only.
+//
+user_admin_detail_dto_envelope_t* UsersAPI_getUserAdminDetailAsync(apiClient_t *apiClient, char *userId, char *tenantId, char *api_version, char *x_api_version);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**userId** | **char \*** |  | 
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+
+### Return type
+
+[user_admin_detail_dto_envelope_t](user_admin_detail_dto_envelope.md) *
 
 
 ### Authorization
@@ -287,7 +326,7 @@ No authorization required
 //
 // This action is only available for global administrators.
 //
-user_dto_list_envelope_t* UsersAPI_getUsersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+user_dto_list_envelope_t* UsersAPI_getUsersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, user_dto_collection_query_parameters_t *user_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -296,6 +335,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**user_dto_collection_query_parameters** | **[user_dto_collection_query_parameters_t](user_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -308,7 +348,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -319,7 +359,7 @@ No authorization required
 //
 // This action is only available for global administrators.
 //
-int32_envelope_t* UsersAPI_getUsersCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* UsersAPI_getUsersCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, user_dto_collection_query_parameters_t *user_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -328,6 +368,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**user_dto_collection_query_parameters** | **[user_dto_collection_query_parameters_t](user_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -340,7 +381,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -351,7 +392,7 @@ No authorization required
 //
 // This action is only available for global administrators.
 //
-empty_envelope_t* UsersAPI_patchAccountHolderAsync(apiClient_t *apiClient, char *userId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* UsersAPI_patchAccountHolderAsync(apiClient_t *apiClient, char *userId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -361,7 +402,75 @@ Name | Type | Description  | Notes
 **userId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **UsersAPI_setUserPasswordAsync**
+```c
+// Set a user's password
+//
+// Replaces the user's password with the supplied value. Global administrators only.
+//
+empty_envelope_t* UsersAPI_setUserPasswordAsync(apiClient_t *apiClient, char *userId, char *api_version, char *x_api_version, set_user_password_dto_t *set_user_password_dto);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**userId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**set_user_password_dto** | **[set_user_password_dto_t](set_user_password_dto.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **UsersAPI_updateAccountHolderAdminProfileAsync**
+```c
+// Update a user's admin-managed profile
+//
+// Updates the identity fields (email/username, re-normalized by Identity) and display fields a global administrator may change on a user, and toggles two-factor and lockout. Normalized email/username and the access-failed count are never accepted. This action is only available for global administrators.
+//
+empty_envelope_t* UsersAPI_updateAccountHolderAdminProfileAsync(apiClient_t *apiClient, char *userId, char *api_version, char *x_api_version, user_admin_update_dto_t *user_admin_update_dto);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**userId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**user_admin_update_dto** | **[user_admin_update_dto_t](user_admin_update_dto.md) \*** |  | [optional] 
 
 ### Return type
 

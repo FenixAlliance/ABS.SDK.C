@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/merchant_dto_collection_query_parameters.h"
 #include "../model/merchant_dto_envelope.h"
 #include "../model/merchant_dto_list_envelope.h"
 
@@ -24,7 +25,7 @@ MerchantsAPI_getMerchantById(apiClient_t *apiClient, char *merchantId, char *api
 // Retrieves all merchants, optionally filtered by OData query options.
 //
 merchant_dto_list_envelope_t*
-MerchantsAPI_getMerchants(apiClient_t *apiClient, char *api_version, char *x_api_version);
+MerchantsAPI_getMerchants(apiClient_t *apiClient, char *api_version, char *x_api_version, merchant_dto_collection_query_parameters_t *merchant_dto_collection_query_parameters);
 
 
 // Count merchants
@@ -32,6 +33,6 @@ MerchantsAPI_getMerchants(apiClient_t *apiClient, char *api_version, char *x_api
 // Counts the number of merchants, optionally filtered by OData query options.
 //
 int32_envelope_t*
-MerchantsAPI_getMerchantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version);
+MerchantsAPI_getMerchantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, merchant_dto_collection_query_parameters_t *merchant_dto_collection_query_parameters);
 
 

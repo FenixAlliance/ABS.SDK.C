@@ -287,13 +287,13 @@ end:
 // Retrieve all registered business domains across every tenant (global administrators only).
 //
 business_domain_dto_list_envelope_t*
-BusinessDomainsAPI_getSystemBusinessDomains(apiClient_t *apiClient, char *api_version, char *x_api_version)
+BusinessDomainsAPI_getSystemBusinessDomains(apiClient_t *apiClient, char *api_version, char *x_api_version, business_domain_dto_collection_query_parameters_t *business_domain_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -327,8 +327,19 @@ BusinessDomainsAPI_getSystemBusinessDomains(apiClient_t *apiClient, char *api_ve
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_business_domain_dto_collection_query_parameters = NULL;
+    if (business_domain_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_business_domain_dto_collection_query_parameters = business_domain_dto_collection_query_parameters_convertToJSON(business_domain_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_business_domain_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -369,7 +380,7 @@ BusinessDomainsAPI_getSystemBusinessDomains(apiClient_t *apiClient, char *api_ve
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -380,6 +391,11 @@ BusinessDomainsAPI_getSystemBusinessDomains(apiClient_t *apiClient, char *api_ve
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_business_domain_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_business_domain_dto_collection_query_parameters);
+        localVarSingleItemJSON_business_domain_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -404,13 +420,13 @@ end:
 // Get the count of all registered business domains across every tenant.
 //
 int32_envelope_t*
-BusinessDomainsAPI_getSystemBusinessDomainsCount(apiClient_t *apiClient, char *api_version, char *x_api_version)
+BusinessDomainsAPI_getSystemBusinessDomainsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, business_domain_dto_collection_query_parameters_t *business_domain_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -444,8 +460,19 @@ BusinessDomainsAPI_getSystemBusinessDomainsCount(apiClient_t *apiClient, char *a
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_business_domain_dto_collection_query_parameters = NULL;
+    if (business_domain_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_business_domain_dto_collection_query_parameters = business_domain_dto_collection_query_parameters_convertToJSON(business_domain_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_business_domain_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -486,7 +513,7 @@ BusinessDomainsAPI_getSystemBusinessDomainsCount(apiClient_t *apiClient, char *a
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -497,6 +524,11 @@ BusinessDomainsAPI_getSystemBusinessDomainsCount(apiClient_t *apiClient, char *a
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_business_domain_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_business_domain_dto_collection_query_parameters);
+        localVarSingleItemJSON_business_domain_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;

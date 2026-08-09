@@ -8,6 +8,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/signing_log_dto.h"
+#include "../model/signing_log_dto_collection_query_parameters.h"
 #include "../model/signing_log_dto_list_envelope.h"
 
 
@@ -24,7 +25,7 @@ SigningLogsAPI_getSigningLogByIdAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves all signing logs for the specified tenant.
 //
 signing_log_dto_list_envelope_t*
-SigningLogsAPI_getSigningLogsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningLogsAPI_getSigningLogsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_log_dto_collection_query_parameters_t *signing_log_dto_collection_query_parameters);
 
 
 // Get signing logs count
@@ -32,6 +33,6 @@ SigningLogsAPI_getSigningLogsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the count of signing logs for the specified tenant.
 //
 int32_envelope_t*
-SigningLogsAPI_getSigningLogsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningLogsAPI_getSigningLogsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_log_dto_collection_query_parameters_t *signing_log_dto_collection_query_parameters);
 
 

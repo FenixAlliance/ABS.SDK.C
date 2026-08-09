@@ -2379,13 +2379,13 @@ end:
 // Retrieves a list of extended invoice details for the specified tenant.
 //
 extended_invoice_dto_list_envelope_t*
-InvoicesAPI_getExtendedInvoices(apiClient_t *apiClient, char *tenantId)
+InvoicesAPI_getExtendedInvoices(apiClient_t *apiClient, char *tenantId, extended_invoice_dto_collection_query_parameters_t *extended_invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2407,8 +2407,19 @@ InvoicesAPI_getExtendedInvoices(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters = NULL;
+    if (extended_invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters = extended_invoice_dto_collection_query_parameters_convertToJSON(extended_invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2445,8 +2456,13 @@ InvoicesAPI_getExtendedInvoices(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2471,13 +2487,13 @@ end:
 // Retrieves the total count of extended invoices for the specified tenant.
 //
 int32_envelope_t*
-InvoicesAPI_getExtendedInvoicesCount(apiClient_t *apiClient, char *tenantId)
+InvoicesAPI_getExtendedInvoicesCount(apiClient_t *apiClient, char *tenantId, extended_invoice_dto_collection_query_parameters_t *extended_invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2499,8 +2515,19 @@ InvoicesAPI_getExtendedInvoicesCount(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters = NULL;
+    if (extended_invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters = extended_invoice_dto_collection_query_parameters_convertToJSON(extended_invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2537,8 +2564,13 @@ InvoicesAPI_getExtendedInvoicesCount(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2797,13 +2829,13 @@ end:
 // Retrieves the adjustments for the specified invoice.
 //
 invoice_adjustment_dto_i_read_only_list_envelope_t*
-InvoicesAPI_getInvoiceAdjustments(apiClient_t *apiClient, char *tenantId, char *invoiceId)
+InvoicesAPI_getInvoiceAdjustments(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_adjustment_dto_collection_query_parameters_t *invoice_adjustment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2842,8 +2874,19 @@ InvoicesAPI_getInvoiceAdjustments(apiClient_t *apiClient, char *tenantId, char *
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters = NULL;
+    if (invoice_adjustment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters = invoice_adjustment_dto_collection_query_parameters_convertToJSON(invoice_adjustment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2876,9 +2919,14 @@ InvoicesAPI_getInvoiceAdjustments(apiClient_t *apiClient, char *tenantId, char *
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
+    if (localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2903,13 +2951,13 @@ end:
 // Retrieves the total count of adjustments for the specified invoice.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoiceAdjustmentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId)
+InvoicesAPI_getInvoiceAdjustmentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_adjustment_dto_collection_query_parameters_t *invoice_adjustment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2948,8 +2996,19 @@ InvoicesAPI_getInvoiceAdjustmentsCount(apiClient_t *apiClient, char *tenantId, c
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters = NULL;
+    if (invoice_adjustment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters = invoice_adjustment_dto_collection_query_parameters_convertToJSON(invoice_adjustment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2982,9 +3041,14 @@ InvoicesAPI_getInvoiceAdjustmentsCount(apiClient_t *apiClient, char *tenantId, c
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
+    if (localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_adjustment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3133,13 +3197,13 @@ end:
 // Retrieves the taxes applied to the specified invoice line.
 //
 invoice_line_applied_tax_dto_i_read_only_list_envelope_t*
-InvoicesAPI_getInvoiceLineTaxes(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId)
+InvoicesAPI_getInvoiceLineTaxes(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, invoice_line_applied_tax_dto_collection_query_parameters_t *invoice_line_applied_tax_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3195,8 +3259,19 @@ InvoicesAPI_getInvoiceLineTaxes(apiClient_t *apiClient, char *tenantId, char *in
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters = NULL;
+    if (invoice_line_applied_tax_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters = invoice_line_applied_tax_dto_collection_query_parameters_convertToJSON(invoice_line_applied_tax_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3229,10 +3304,15 @@ InvoicesAPI_getInvoiceLineTaxes(apiClient_t *apiClient, char *tenantId, char *in
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
     free(localVarToReplace_invoiceLineId);
+    if (localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3257,13 +3337,13 @@ end:
 // Retrieves the total count of taxes applied to the specified invoice line.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoiceLineTaxesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId)
+InvoicesAPI_getInvoiceLineTaxesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, invoice_line_applied_tax_dto_collection_query_parameters_t *invoice_line_applied_tax_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3319,8 +3399,19 @@ InvoicesAPI_getInvoiceLineTaxesCount(apiClient_t *apiClient, char *tenantId, cha
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters = NULL;
+    if (invoice_line_applied_tax_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters = invoice_line_applied_tax_dto_collection_query_parameters_convertToJSON(invoice_line_applied_tax_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3353,10 +3444,15 @@ InvoicesAPI_getInvoiceLineTaxesCount(apiClient_t *apiClient, char *tenantId, cha
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
     free(localVarToReplace_invoiceLineId);
+    if (localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_line_applied_tax_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3381,13 +3477,13 @@ end:
 // Retrieves the invoice lines for the specified invoice.
 //
 invoice_line_dto_list_envelope_t*
-InvoicesAPI_getInvoiceLines(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *itemId)
+InvoicesAPI_getInvoiceLines(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *itemId, invoice_line_dto_collection_query_parameters_t *invoice_line_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3438,8 +3534,19 @@ InvoicesAPI_getInvoiceLines(apiClient_t *apiClient, char *tenantId, char *invoic
         keyPairQuery_itemId = keyValuePair_create(keyQuery_itemId, valueQuery_itemId);
         list_addElement(localVarQueryParameters,keyPairQuery_itemId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_line_dto_collection_query_parameters = NULL;
+    if (invoice_line_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_line_dto_collection_query_parameters = invoice_line_dto_collection_query_parameters_convertToJSON(invoice_line_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_line_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3472,9 +3579,14 @@ InvoicesAPI_getInvoiceLines(apiClient_t *apiClient, char *tenantId, char *invoic
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
+    if (localVarSingleItemJSON_invoice_line_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_line_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_line_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3511,13 +3623,13 @@ end:
 // Retrieves the total count of invoice lines for the specified invoice.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoiceLinesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId)
+InvoicesAPI_getInvoiceLinesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_line_dto_collection_query_parameters_t *invoice_line_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3556,8 +3668,19 @@ InvoicesAPI_getInvoiceLinesCount(apiClient_t *apiClient, char *tenantId, char *i
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_line_dto_collection_query_parameters = NULL;
+    if (invoice_line_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_line_dto_collection_query_parameters = invoice_line_dto_collection_query_parameters_convertToJSON(invoice_line_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_line_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3590,9 +3713,14 @@ InvoicesAPI_getInvoiceLinesCount(apiClient_t *apiClient, char *tenantId, char *i
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
+    if (localVarSingleItemJSON_invoice_line_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_line_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_line_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3617,13 +3745,13 @@ end:
 // Retrieves the list of payments related to the specified invoice.
 //
 payment_dto_i_read_only_list_envelope_t*
-InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *invoiceId)
+InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *invoiceId, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3662,8 +3790,19 @@ InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *inv
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    if (payment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = payment_dto_collection_query_parameters_convertToJSON(payment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3696,9 +3835,14 @@ InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *inv
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
+    if (localVarSingleItemJSON_payment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3723,13 +3867,13 @@ end:
 // Retrieves the total count of payments for the specified invoice.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId)
+InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3768,8 +3912,19 @@ InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    if (payment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = payment_dto_collection_query_parameters_convertToJSON(payment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3802,9 +3957,14 @@ InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
+    if (localVarSingleItemJSON_payment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3953,13 +4113,13 @@ end:
 // Retrieves the references for the specified invoice.
 //
 invoice_reference_dto_i_read_only_list_envelope_t*
-InvoicesAPI_getInvoiceReferences(apiClient_t *apiClient, char *tenantId, char *invoiceId)
+InvoicesAPI_getInvoiceReferences(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_reference_dto_collection_query_parameters_t *invoice_reference_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3998,8 +4158,19 @@ InvoicesAPI_getInvoiceReferences(apiClient_t *apiClient, char *tenantId, char *i
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters = NULL;
+    if (invoice_reference_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters = invoice_reference_dto_collection_query_parameters_convertToJSON(invoice_reference_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4032,9 +4203,14 @@ InvoicesAPI_getInvoiceReferences(apiClient_t *apiClient, char *tenantId, char *i
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
+    if (localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4059,13 +4235,13 @@ end:
 // Retrieves the total count of references for the specified invoice.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoiceReferencesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId)
+InvoicesAPI_getInvoiceReferencesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_reference_dto_collection_query_parameters_t *invoice_reference_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4104,8 +4280,19 @@ InvoicesAPI_getInvoiceReferencesCount(apiClient_t *apiClient, char *tenantId, ch
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters = NULL;
+    if (invoice_reference_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters = invoice_reference_dto_collection_query_parameters_convertToJSON(invoice_reference_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4138,9 +4325,14 @@ InvoicesAPI_getInvoiceReferencesCount(apiClient_t *apiClient, char *tenantId, ch
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
+    if (localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_reference_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4165,13 +4357,13 @@ end:
 // Retrieves a list of invoices for the specified tenant.
 //
 invoice_dto_list_envelope_t*
-InvoicesAPI_getInvoices(apiClient_t *apiClient, char *tenantId)
+InvoicesAPI_getInvoices(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4193,8 +4385,19 @@ InvoicesAPI_getInvoices(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    if (invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = invoice_dto_collection_query_parameters_convertToJSON(invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4231,8 +4434,13 @@ InvoicesAPI_getInvoices(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4257,13 +4465,13 @@ end:
 // Retrieves the total count of invoices for the specified tenant.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId)
+InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4285,8 +4493,19 @@ InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    if (invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = invoice_dto_collection_query_parameters_convertToJSON(invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4323,8 +4542,13 @@ InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4349,13 +4573,13 @@ end:
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseInvoice, filtered by the supplied OData date range.
 //
 money_envelope_t*
-InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId)
+InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4377,8 +4601,19 @@ InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    if (invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = invoice_dto_collection_query_parameters_convertToJSON(invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4419,8 +4654,13 @@ InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4445,13 +4685,13 @@ end:
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvoice, filtered by the supplied OData date range.
 //
 money_envelope_t*
-InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId)
+InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4473,8 +4713,19 @@ InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    if (invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = invoice_dto_collection_query_parameters_convertToJSON(invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4515,8 +4766,13 @@ InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4541,7 +4797,7 @@ end:
 // Partially updates the specified invoice for the tenant.
 //
 empty_envelope_t*
-InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId, list_t *operation)
+InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -4589,14 +4845,14 @@ InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -4604,16 +4860,16 @@ InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -4658,17 +4914,17 @@ InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_invoiceId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -4695,7 +4951,7 @@ end:
 // Partially updates the specified adjustment for the invoice.
 //
 empty_envelope_t*
-InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceAdjustmentId, list_t *operation)
+InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceAdjustmentId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -4760,14 +5016,14 @@ InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char 
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -4775,16 +5031,16 @@ InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char 
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -4830,17 +5086,17 @@ InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char 
     free(localVarPath);
     free(localVarToReplace_invoiceId);
     free(localVarToReplace_invoiceAdjustmentId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -4867,7 +5123,7 @@ end:
 // Partially updates the specified invoice line.
 //
 empty_envelope_t*
-InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, list_t *operation)
+InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -4932,14 +5188,14 @@ InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoi
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -4947,16 +5203,16 @@ InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoi
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -5002,17 +5258,17 @@ InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoi
     free(localVarPath);
     free(localVarToReplace_invoiceId);
     free(localVarToReplace_invoiceLineId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -5039,7 +5295,7 @@ end:
 // Partially updates the specified tax entry for the invoice line.
 //
 empty_envelope_t*
-InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, char *invoiceLineTaxId, list_t *operation)
+InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, char *invoiceLineTaxId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -5121,14 +5377,14 @@ InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *in
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -5136,16 +5392,16 @@ InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *in
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -5188,17 +5444,17 @@ InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *in
     free(localVarToReplace_invoiceId);
     free(localVarToReplace_invoiceLineId);
     free(localVarToReplace_invoiceLineTaxId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -5225,7 +5481,7 @@ end:
 // Partially updates the specified reference for the invoice.
 //
 empty_envelope_t*
-InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceReferenceId, list_t *operation)
+InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceReferenceId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -5290,14 +5546,14 @@ InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -5305,16 +5561,16 @@ InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -5356,17 +5612,17 @@ InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *
     free(localVarPath);
     free(localVarToReplace_invoiceId);
     free(localVarToReplace_invoiceReferenceId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

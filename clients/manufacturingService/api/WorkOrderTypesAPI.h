@@ -8,9 +8,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/work_order_type_create_dto.h"
 #include "../model/work_order_type_dto.h"
+#include "../model/work_order_type_dto_collection_query_parameters.h"
 #include "../model/work_order_type_dto_list_envelope.h"
 #include "../model/work_order_type_update_dto.h"
 
@@ -44,7 +45,7 @@ WorkOrderTypesAPI_getWorkOrderTypeByIdAsync(apiClient_t *apiClient, char *tenant
 // Retrieves all work order types for the specified tenant.
 //
 work_order_type_dto_list_envelope_t*
-WorkOrderTypesAPI_getWorkOrderTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WorkOrderTypesAPI_getWorkOrderTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, work_order_type_dto_collection_query_parameters_t *work_order_type_dto_collection_query_parameters);
 
 
 // Get work order types count
@@ -52,7 +53,7 @@ WorkOrderTypesAPI_getWorkOrderTypesAsync(apiClient_t *apiClient, char *tenantId,
 // Returns the count of work order types for the specified tenant.
 //
 int32_envelope_t*
-WorkOrderTypesAPI_getWorkOrderTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WorkOrderTypesAPI_getWorkOrderTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, work_order_type_dto_collection_query_parameters_t *work_order_type_dto_collection_query_parameters);
 
 
 // Patch a work order type
@@ -60,7 +61,7 @@ WorkOrderTypesAPI_getWorkOrderTypesCountAsync(apiClient_t *apiClient, char *tena
 // Patch a work order type
 //
 empty_envelope_t*
-WorkOrderTypesAPI_patchWorkOrderTypeAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+WorkOrderTypesAPI_patchWorkOrderTypeAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a work order type

@@ -57,10 +57,12 @@ set(SRCS
     model/access_token_response.c
     model/blockchain_block_create_dto.c
     model/blockchain_block_dto.c
+    model/blockchain_block_dto_collection_query_parameters.c
     model/blockchain_block_dto_list_envelope.c
     model/blockchain_block_update_dto.c
     model/blockchain_create_dto.c
     model/blockchain_dto.c
+    model/blockchain_dto_collection_query_parameters.c
     model/blockchain_dto_list_envelope.c
     model/blockchain_update_dto.c
     model/empty_envelope.c
@@ -73,9 +75,10 @@ set(SRCS
     model/login_request.c
     model/non_fungible_token_create_dto.c
     model/non_fungible_token_dto.c
+    model/non_fungible_token_dto_collection_query_parameters.c
     model/non_fungible_token_dto_list_envelope.c
     model/non_fungible_token_update_dto.c
-    model/operation.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -98,10 +101,12 @@ set(HDRS
     model/access_token_response.h
     model/blockchain_block_create_dto.h
     model/blockchain_block_dto.h
+    model/blockchain_block_dto_collection_query_parameters.h
     model/blockchain_block_dto_list_envelope.h
     model/blockchain_block_update_dto.h
     model/blockchain_create_dto.h
     model/blockchain_dto.h
+    model/blockchain_dto_collection_query_parameters.h
     model/blockchain_dto_list_envelope.h
     model/blockchain_update_dto.h
     model/empty_envelope.h
@@ -114,9 +119,10 @@ set(HDRS
     model/login_request.h
     model/non_fungible_token_create_dto.h
     model/non_fungible_token_dto.h
+    model/non_fungible_token_dto_collection_query_parameters.h
     model/non_fungible_token_dto_list_envelope.h
     model/non_fungible_token_update_dto.h
-    model/operation.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

@@ -8,7 +8,6 @@ Method | HTTP request | Description
 [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-[**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 [**FenixAllianceABSWebAPI_forgotPasswordPost**](FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 [**FenixAllianceABSWebAPI_healthGet**](FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 [**FenixAllianceABSWebAPI_helloGet**](FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -124,32 +123,6 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data, application/x-www-form-urlencoded
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**
-```c
-void FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost(apiClient_t *apiClient, char *agentId);
-```
-
-### Parameters
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**apiClient** | **apiClient_t \*** | context containing the client configuration |
-**agentId** | **char \*** |  | 
-
-### Return type
-
-void
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

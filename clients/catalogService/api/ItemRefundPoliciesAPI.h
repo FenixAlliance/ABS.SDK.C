@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/item_refund_policy_dto_collection_query_parameters.h"
 #include "../model/item_refund_policy_dto_envelope.h"
 #include "../model/item_refund_policy_dto_list_envelope.h"
 
@@ -16,7 +17,7 @@
 // Counts all refund policies for a specific item.
 //
 int32_envelope_t*
-ItemRefundPoliciesAPI_countItemRefundPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemRefundPoliciesAPI_countItemRefundPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_refund_policy_dto_collection_query_parameters_t *item_refund_policy_dto_collection_query_parameters);
 
 
 // Get item refund policies
@@ -24,7 +25,7 @@ ItemRefundPoliciesAPI_countItemRefundPoliciesAsync(apiClient_t *apiClient, char 
 // Retrieves all refund policies for a specific item.
 //
 item_refund_policy_dto_list_envelope_t*
-ItemRefundPoliciesAPI_getItemRefundPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemRefundPoliciesAPI_getItemRefundPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_refund_policy_dto_collection_query_parameters_t *item_refund_policy_dto_collection_query_parameters);
 
 
 // Get item refund policy by ID

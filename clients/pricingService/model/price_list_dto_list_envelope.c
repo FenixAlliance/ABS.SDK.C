@@ -10,6 +10,9 @@ price_list_dto_list_envelope_t *price_list_dto_list_envelope_create(
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     list_t *result
     ) {
@@ -21,6 +24,9 @@ price_list_dto_list_envelope_t *price_list_dto_list_envelope_create(
     price_list_dto_list_envelope_local_var->error_message = error_message;
     price_list_dto_list_envelope_local_var->correlation_id = correlation_id;
     price_list_dto_list_envelope_local_var->timestamp = timestamp;
+    price_list_dto_list_envelope_local_var->http_status = http_status;
+    price_list_dto_list_envelope_local_var->error_code = error_code;
+    price_list_dto_list_envelope_local_var->validation_details = validation_details;
     price_list_dto_list_envelope_local_var->activity_id = activity_id;
     price_list_dto_list_envelope_local_var->result = result;
 
@@ -44,6 +50,20 @@ void price_list_dto_list_envelope_free(price_list_dto_list_envelope_t *price_lis
     if (price_list_dto_list_envelope->timestamp) {
         free(price_list_dto_list_envelope->timestamp);
         price_list_dto_list_envelope->timestamp = NULL;
+    }
+    if (price_list_dto_list_envelope->error_code) {
+        free(price_list_dto_list_envelope->error_code);
+        price_list_dto_list_envelope->error_code = NULL;
+    }
+    if (price_list_dto_list_envelope->validation_details) {
+        list_ForEach(listEntry, price_list_dto_list_envelope->validation_details) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free (localKeyValue->key);
+            free (localKeyValue->value);
+            keyValuePair_free(localKeyValue);
+        }
+        list_freeList(price_list_dto_list_envelope->validation_details);
+        price_list_dto_list_envelope->validation_details = NULL;
     }
     if (price_list_dto_list_envelope->activity_id) {
         free(price_list_dto_list_envelope->activity_id);
@@ -94,6 +114,38 @@ cJSON *price_list_dto_list_envelope_convertToJSON(price_list_dto_list_envelope_t
     }
 
 
+    // price_list_dto_list_envelope->http_status
+    if(price_list_dto_list_envelope->http_status) {
+    if(cJSON_AddNumberToObject(item, "httpStatus", price_list_dto_list_envelope->http_status) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // price_list_dto_list_envelope->error_code
+    if(price_list_dto_list_envelope->error_code) {
+    if(cJSON_AddStringToObject(item, "errorCode", price_list_dto_list_envelope->error_code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // price_list_dto_list_envelope->validation_details
+    if(price_list_dto_list_envelope->validation_details) {
+    cJSON *validation_details = cJSON_AddObjectToObject(item, "validationDetails");
+    if(validation_details == NULL) {
+        goto fail; //primitive map container
+    }
+    cJSON *localMapObject = validation_details;
+    listEntry_t *validation_detailsListEntry;
+    if (price_list_dto_list_envelope->validation_details) {
+    list_ForEach(validation_detailsListEntry, price_list_dto_list_envelope->validation_details) {
+        keyValuePair_t *localKeyValue = (keyValuePair_t*)validation_detailsListEntry->data;
+    }
+    }
+    }
+
+
     // price_list_dto_list_envelope->activity_id
     if(price_list_dto_list_envelope->activity_id) {
     if(cJSON_AddStringToObject(item, "activityId", price_list_dto_list_envelope->activity_id) == NULL) {
@@ -132,6 +184,9 @@ fail:
 price_list_dto_list_envelope_t *price_list_dto_list_envelope_parseFromJSON(cJSON *price_list_dto_list_envelopeJSON){
 
     price_list_dto_list_envelope_t *price_list_dto_list_envelope_local_var = NULL;
+
+    // define the local map for price_list_dto_list_envelope->validation_details
+    list_t *validation_detailsList = NULL;
 
     // define the local list for price_list_dto_list_envelope->result
     list_t *resultList = NULL;
@@ -172,6 +227,44 @@ price_list_dto_list_envelope_t *price_list_dto_list_envelope_parseFromJSON(cJSON
     }
     }
 
+    // price_list_dto_list_envelope->http_status
+    cJSON *http_status = cJSON_GetObjectItemCaseSensitive(price_list_dto_list_envelopeJSON, "httpStatus");
+    if (http_status) { 
+    if(!cJSON_IsNumber(http_status))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // price_list_dto_list_envelope->error_code
+    cJSON *error_code = cJSON_GetObjectItemCaseSensitive(price_list_dto_list_envelopeJSON, "errorCode");
+    if (error_code) { 
+    if(!cJSON_IsString(error_code) && !cJSON_IsNull(error_code))
+    {
+    goto end; //String
+    }
+    }
+
+    // price_list_dto_list_envelope->validation_details
+    cJSON *validation_details = cJSON_GetObjectItemCaseSensitive(price_list_dto_list_envelopeJSON, "validationDetails");
+    if (validation_details) { 
+    cJSON *validation_details_local_map = NULL;
+    if(!cJSON_IsObject(validation_details) && !cJSON_IsNull(validation_details))
+    {
+        goto end;//primitive map container
+    }
+    if(cJSON_IsObject(validation_details))
+    {
+        validation_detailsList = list_createList();
+        keyValuePair_t *localMapKeyPair;
+        cJSON_ArrayForEach(validation_details_local_map, validation_details)
+        {
+            cJSON *localMapObject = validation_details_local_map;
+            list_addElement(validation_detailsList , localMapKeyPair);
+        }
+    }
+    }
+
     // price_list_dto_list_envelope->activity_id
     cJSON *activity_id = cJSON_GetObjectItemCaseSensitive(price_list_dto_list_envelopeJSON, "activityId");
     if (activity_id) { 
@@ -208,12 +301,27 @@ price_list_dto_list_envelope_t *price_list_dto_list_envelope_parseFromJSON(cJSON
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL,
         correlation_id && !cJSON_IsNull(correlation_id) ? strdup(correlation_id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        http_status ? http_status->valuedouble : 0,
+        error_code && !cJSON_IsNull(error_code) ? strdup(error_code->valuestring) : NULL,
+        validation_details ? validation_detailsList : NULL,
         activity_id && !cJSON_IsNull(activity_id) ? strdup(activity_id->valuestring) : NULL,
         result ? resultList : NULL
         );
 
     return price_list_dto_list_envelope_local_var;
 end:
+    if (validation_detailsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, validation_detailsList) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free(localKeyValue->key);
+            localKeyValue->key = NULL;
+            keyValuePair_free(localKeyValue);
+            localKeyValue = NULL;
+        }
+        list_freeList(validation_detailsList);
+        validation_detailsList = NULL;
+    }
     if (resultList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, resultList) {

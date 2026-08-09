@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/support_entitlement_create_dto.h"
+#include "../model/support_entitlement_dto_collection_query_parameters.h"
 #include "../model/support_entitlement_dto_envelope.h"
 #include "../model/support_entitlement_dto_list_envelope.h"
 #include "../model/support_entitlement_update_dto.h"
@@ -44,7 +45,7 @@ SupportEntitlementsAPI_getSupportEntitlementAsync(apiClient_t *apiClient, char *
 // Retrieves a list of support entitlements for the specified tenant with OData query support.
 //
 support_entitlement_dto_list_envelope_t*
-SupportEntitlementsAPI_getSupportEntitlementsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportEntitlementsAPI_getSupportEntitlementsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_entitlement_dto_collection_query_parameters_t *support_entitlement_dto_collection_query_parameters);
 
 
 // Get the count of support entitlements
@@ -52,7 +53,7 @@ SupportEntitlementsAPI_getSupportEntitlementsAsync(apiClient_t *apiClient, char 
 // Returns the total count of support entitlements for the specified tenant with OData query support.
 //
 int32_envelope_t*
-SupportEntitlementsAPI_getSupportEntitlementsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportEntitlementsAPI_getSupportEntitlementsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_entitlement_dto_collection_query_parameters_t *support_entitlement_dto_collection_query_parameters);
 
 
 // Patch a support entitlement
@@ -60,7 +61,7 @@ SupportEntitlementsAPI_getSupportEntitlementsCountAsync(apiClient_t *apiClient, 
 // Partially updates an existing support entitlement by its unique identifier.
 //
 empty_envelope_t*
-SupportEntitlementsAPI_patchSupportEntitlementAsync(apiClient_t *apiClient, char *tenantId, char *supportEntitlementId, char *api_version, char *x_api_version, list_t *operation);
+SupportEntitlementsAPI_patchSupportEntitlementAsync(apiClient_t *apiClient, char *tenantId, char *supportEntitlementId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a support entitlement

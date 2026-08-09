@@ -947,13 +947,13 @@ end:
 // Retrieves a list of extended quotes for the specified tenant, supporting OData query options.
 //
 extended_quote_dto_list_envelope_t*
-QuotesAPI_getExtendedQuotes(apiClient_t *apiClient, char *tenantId)
+QuotesAPI_getExtendedQuotes(apiClient_t *apiClient, char *tenantId, extended_quote_dto_collection_query_parameters_t *extended_quote_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -975,8 +975,19 @@ QuotesAPI_getExtendedQuotes(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_quote_dto_collection_query_parameters = NULL;
+    if (extended_quote_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_quote_dto_collection_query_parameters = extended_quote_dto_collection_query_parameters_convertToJSON(extended_quote_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_quote_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1013,8 +1024,13 @@ QuotesAPI_getExtendedQuotes(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_extended_quote_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_quote_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_quote_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1277,13 +1293,13 @@ end:
 // Retrieves all quote lines for the specified quote and tenant.
 //
 quote_line_dto_list_envelope_t*
-QuotesAPI_getQuoteLines(apiClient_t *apiClient, char *tenantId, char *quoteId, char *itemId)
+QuotesAPI_getQuoteLines(apiClient_t *apiClient, char *tenantId, char *quoteId, char *itemId, quote_line_dto_collection_query_parameters_t *quote_line_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1334,8 +1350,19 @@ QuotesAPI_getQuoteLines(apiClient_t *apiClient, char *tenantId, char *quoteId, c
         keyPairQuery_itemId = keyValuePair_create(keyQuery_itemId, valueQuery_itemId);
         list_addElement(localVarQueryParameters,keyPairQuery_itemId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_quote_line_dto_collection_query_parameters = NULL;
+    if (quote_line_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_quote_line_dto_collection_query_parameters = quote_line_dto_collection_query_parameters_convertToJSON(quote_line_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_quote_line_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1372,9 +1399,14 @@ QuotesAPI_getQuoteLines(apiClient_t *apiClient, char *tenantId, char *quoteId, c
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_quoteId);
+    if (localVarSingleItemJSON_quote_line_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_quote_line_dto_collection_query_parameters);
+        localVarSingleItemJSON_quote_line_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1411,13 +1443,13 @@ end:
 // Retrieves the total count of quote lines for the specified quote and tenant.
 //
 int32_envelope_t*
-QuotesAPI_getQuoteLinesCount(apiClient_t *apiClient, char *tenantId, char *quoteId)
+QuotesAPI_getQuoteLinesCount(apiClient_t *apiClient, char *tenantId, char *quoteId, quote_line_dto_collection_query_parameters_t *quote_line_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1456,8 +1488,19 @@ QuotesAPI_getQuoteLinesCount(apiClient_t *apiClient, char *tenantId, char *quote
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_quote_line_dto_collection_query_parameters = NULL;
+    if (quote_line_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_quote_line_dto_collection_query_parameters = quote_line_dto_collection_query_parameters_convertToJSON(quote_line_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_quote_line_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1494,9 +1537,14 @@ QuotesAPI_getQuoteLinesCount(apiClient_t *apiClient, char *tenantId, char *quote
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_quoteId);
+    if (localVarSingleItemJSON_quote_line_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_quote_line_dto_collection_query_parameters);
+        localVarSingleItemJSON_quote_line_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1521,13 +1569,13 @@ end:
 // Retrieves a list of quotes for the specified tenant, supporting OData query options.
 //
 quote_dto_list_envelope_t*
-QuotesAPI_getQuotes(apiClient_t *apiClient, char *tenantId)
+QuotesAPI_getQuotes(apiClient_t *apiClient, char *tenantId, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1549,8 +1597,19 @@ QuotesAPI_getQuotes(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_quote_dto_collection_query_parameters = NULL;
+    if (quote_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_quote_dto_collection_query_parameters = quote_dto_collection_query_parameters_convertToJSON(quote_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_quote_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1587,8 +1646,13 @@ QuotesAPI_getQuotes(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_quote_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_quote_dto_collection_query_parameters);
+        localVarSingleItemJSON_quote_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1613,13 +1677,13 @@ end:
 // Retrieves the total count of quotes for the specified tenant, supporting OData query options.
 //
 int32_envelope_t*
-QuotesAPI_getQuotesCount(apiClient_t *apiClient, char *tenantId)
+QuotesAPI_getQuotesCount(apiClient_t *apiClient, char *tenantId, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1641,8 +1705,19 @@ QuotesAPI_getQuotesCount(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_quote_dto_collection_query_parameters = NULL;
+    if (quote_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_quote_dto_collection_query_parameters = quote_dto_collection_query_parameters_convertToJSON(quote_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_quote_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1679,8 +1754,13 @@ QuotesAPI_getQuotesCount(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_quote_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_quote_dto_collection_query_parameters);
+        localVarSingleItemJSON_quote_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1705,7 +1785,7 @@ end:
 // Partially updates an existing quote for the specified tenant and quote ID using a JSON Patch document.
 //
 empty_envelope_t*
-QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, list_t *operation)
+QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1753,14 +1833,14 @@ QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId,
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1768,16 +1848,16 @@ QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId,
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1830,17 +1910,17 @@ QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId,
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_quoteId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -1867,7 +1947,7 @@ end:
 // Partially updates an existing quote line for the specified quote and tenant using a JSON Patch document.
 //
 empty_envelope_t*
-QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, char *quoteLineId, list_t *operation)
+QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, char *quoteLineId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1932,14 +2012,14 @@ QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quot
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1947,16 +2027,16 @@ QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quot
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2010,17 +2090,17 @@ QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quot
     free(localVarPath);
     free(localVarToReplace_quoteId);
     free(localVarToReplace_quoteLineId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

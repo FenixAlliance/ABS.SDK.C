@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/shipping_label_create_dto.h"
+#include "../model/shipping_label_dto_collection_query_parameters.h"
 #include "../model/shipping_label_dto_envelope.h"
 #include "../model/shipping_label_dto_list_envelope.h"
 #include "../model/shipping_label_update_dto.h"
@@ -44,7 +45,7 @@ ShippingLabelsAPI_getShippingLabelByIdAsync(apiClient_t *apiClient, char *tenant
 // Retrieves all shipping labels for the specified tenant.
 //
 shipping_label_dto_list_envelope_t*
-ShippingLabelsAPI_getShippingLabelsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShippingLabelsAPI_getShippingLabelsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shipping_label_dto_collection_query_parameters_t *shipping_label_dto_collection_query_parameters);
 
 
 // Get shipping labels count
@@ -52,7 +53,7 @@ ShippingLabelsAPI_getShippingLabelsAsync(apiClient_t *apiClient, char *tenantId,
 // Returns the count of shipping labels.
 //
 int32_envelope_t*
-ShippingLabelsAPI_getShippingLabelsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShippingLabelsAPI_getShippingLabelsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shipping_label_dto_collection_query_parameters_t *shipping_label_dto_collection_query_parameters);
 
 
 // Patch a shipping label
@@ -60,7 +61,7 @@ ShippingLabelsAPI_getShippingLabelsCountAsync(apiClient_t *apiClient, char *tena
 // Partially updates an existing shipping label using JSON Patch.
 //
 empty_envelope_t*
-ShippingLabelsAPI_patchShippingLabelAsync(apiClient_t *apiClient, char *tenantId, char *labelId, char *api_version, char *x_api_version, list_t *operation);
+ShippingLabelsAPI_patchShippingLabelAsync(apiClient_t *apiClient, char *tenantId, char *labelId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a shipping label

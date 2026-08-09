@@ -502,13 +502,13 @@ end:
 // Retrieves the license instances owned by the specified tenant, filtered via OData query options.
 //
 license_dto_list_envelope_t*
-LicensesAPI_getLicensesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+LicensesAPI_getLicensesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, license_dto_collection_query_parameters_t *license_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -554,8 +554,19 @@ LicensesAPI_getLicensesAsync(apiClient_t *apiClient, char *tenantId, char *api_v
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_license_dto_collection_query_parameters = NULL;
+    if (license_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_license_dto_collection_query_parameters = license_dto_collection_query_parameters_convertToJSON(license_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_license_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -592,7 +603,7 @@ LicensesAPI_getLicensesAsync(apiClient_t *apiClient, char *tenantId, char *api_v
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -603,6 +614,11 @@ LicensesAPI_getLicensesAsync(apiClient_t *apiClient, char *tenantId, char *api_v
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_license_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_license_dto_collection_query_parameters);
+        localVarSingleItemJSON_license_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -639,13 +655,13 @@ end:
 // Returns the count of license instances owned by the specified tenant.
 //
 int32_envelope_t*
-LicensesAPI_getLicensesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+LicensesAPI_getLicensesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, license_dto_collection_query_parameters_t *license_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -691,8 +707,19 @@ LicensesAPI_getLicensesCountAsync(apiClient_t *apiClient, char *tenantId, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_license_dto_collection_query_parameters = NULL;
+    if (license_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_license_dto_collection_query_parameters = license_dto_collection_query_parameters_convertToJSON(license_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_license_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -729,7 +756,7 @@ LicensesAPI_getLicensesCountAsync(apiClient_t *apiClient, char *tenantId, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -740,6 +767,11 @@ LicensesAPI_getLicensesCountAsync(apiClient_t *apiClient, char *tenantId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_license_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_license_dto_collection_query_parameters);
+        localVarSingleItemJSON_license_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;

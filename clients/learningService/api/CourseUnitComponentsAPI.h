@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_unit_component_create_dto.h"
 #include "../model/course_unit_component_dto.h"
+#include "../model/course_unit_component_dto_collection_query_parameters.h"
 #include "../model/course_unit_component_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new course unit component
@@ -42,7 +43,7 @@ CourseUnitComponentsAPI_getCourseUnitComponentByIdAsync(apiClient_t *apiClient, 
 // Retrieves all course unit components for the specified tenant.
 //
 list_t*
-CourseUnitComponentsAPI_getCourseUnitComponentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseUnitComponentsAPI_getCourseUnitComponentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_unit_component_dto_collection_query_parameters_t *course_unit_component_dto_collection_query_parameters);
 
 
 // Get course unit components count
@@ -50,7 +51,7 @@ CourseUnitComponentsAPI_getCourseUnitComponentsAsync(apiClient_t *apiClient, cha
 // Returns the count of course unit components for the specified tenant.
 //
 int*
-CourseUnitComponentsAPI_getCourseUnitComponentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseUnitComponentsAPI_getCourseUnitComponentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_unit_component_dto_collection_query_parameters_t *course_unit_component_dto_collection_query_parameters);
 
 
 // Patch a course unit component
@@ -58,7 +59,7 @@ CourseUnitComponentsAPI_getCourseUnitComponentsCountAsync(apiClient_t *apiClient
 // Partially updates a course unit component for the specified tenant.
 //
 empty_envelope_t*
-CourseUnitComponentsAPI_patchCourseUnitComponentAsync(apiClient_t *apiClient, char *tenantId, char *componentId, char *api_version, char *x_api_version, list_t *operation);
+CourseUnitComponentsAPI_patchCourseUnitComponentAsync(apiClient_t *apiClient, char *tenantId, char *componentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course unit component

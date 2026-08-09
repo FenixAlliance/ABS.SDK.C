@@ -58,6 +58,7 @@ set(SRCS
     model/empty_envelope.c
     model/error_envelope.c
     model/extended_sales_literature_dto.c
+    model/extended_sales_literature_dto_collection_query_parameters.c
     model/extended_sales_literature_dto_list_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
@@ -67,12 +68,14 @@ set(SRCS
     model/login_request.c
     model/loyalty_program_create_dto.c
     model/loyalty_program_dto.c
+    model/loyalty_program_dto_collection_query_parameters.c
     model/loyalty_program_dto_envelope.c
     model/loyalty_program_dto_list_envelope.c
     model/loyalty_program_update_dto.c
-    model/operation.c
+    model/patch_operation.c
     model/point_of_sale_create_dto.c
     model/point_of_sale_dto.c
+    model/point_of_sale_dto_collection_query_parameters.c
     model/point_of_sale_dto_envelope.c
     model/point_of_sale_dto_list_envelope.c
     model/point_of_sale_update_dto.c
@@ -82,12 +85,14 @@ set(SRCS
     model/reset_password_request.c
     model/sales_literature_create_dto.c
     model/sales_literature_dto.c
+    model/sales_literature_dto_collection_query_parameters.c
     model/sales_literature_dto_envelope.c
     model/sales_literature_dto_list_envelope.c
     model/sales_literature_type_dto.c
     model/sales_literature_update_dto.c
     model/store_create_dto.c
     model/store_dto.c
+    model/store_dto_collection_query_parameters.c
     model/store_dto_envelope.c
     model/store_dto_list_envelope.c
     model/store_update_dto.c
@@ -114,6 +119,7 @@ set(HDRS
     model/empty_envelope.h
     model/error_envelope.h
     model/extended_sales_literature_dto.h
+    model/extended_sales_literature_dto_collection_query_parameters.h
     model/extended_sales_literature_dto_list_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
@@ -123,12 +129,14 @@ set(HDRS
     model/login_request.h
     model/loyalty_program_create_dto.h
     model/loyalty_program_dto.h
+    model/loyalty_program_dto_collection_query_parameters.h
     model/loyalty_program_dto_envelope.h
     model/loyalty_program_dto_list_envelope.h
     model/loyalty_program_update_dto.h
-    model/operation.h
+    model/patch_operation.h
     model/point_of_sale_create_dto.h
     model/point_of_sale_dto.h
+    model/point_of_sale_dto_collection_query_parameters.h
     model/point_of_sale_dto_envelope.h
     model/point_of_sale_dto_list_envelope.h
     model/point_of_sale_update_dto.h
@@ -138,12 +146,14 @@ set(HDRS
     model/reset_password_request.h
     model/sales_literature_create_dto.h
     model/sales_literature_dto.h
+    model/sales_literature_dto_collection_query_parameters.h
     model/sales_literature_dto_envelope.h
     model/sales_literature_dto_list_envelope.h
     model/sales_literature_type_dto.h
     model/sales_literature_update_dto.h
     model/store_create_dto.h
     model/store_dto.h
+    model/store_dto_collection_query_parameters.h
     model/store_dto_envelope.h
     model/store_dto_list_envelope.h
     model/store_update_dto.h

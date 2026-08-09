@@ -27,7 +27,7 @@ Method | HTTP request | Description
 //
 // Counts all web pages for the specified tenant.
 //
-int32_envelope_t* WebPagesAPI_countWebPagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* WebPagesAPI_countWebPagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_page_dto_collection_query_parameters_t *web_page_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -37,6 +37,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**web_page_dto_collection_query_parameters** | **[web_page_dto_collection_query_parameters_t](web_page_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -49,7 +50,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -194,7 +195,7 @@ No authorization required
 //
 // Retrieves all categories related to a specific web page.
 //
-web_page_category_dto_list_envelope_t* WebPagesAPI_getCategoriesByWebPageAsync(apiClient_t *apiClient, char *webPageId, char *api_version, char *x_api_version);
+web_page_category_dto_list_envelope_t* WebPagesAPI_getCategoriesByWebPageAsync(apiClient_t *apiClient, char *webPageId, char *api_version, char *x_api_version, web_page_category_dto_collection_query_parameters_t *web_page_category_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -204,6 +205,7 @@ Name | Type | Description  | Notes
 **webPageId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**web_page_category_dto_collection_query_parameters** | **[web_page_category_dto_collection_query_parameters_t](web_page_category_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -216,7 +218,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -227,7 +229,7 @@ No authorization required
 //
 // Retrieves all tags related to a specific web page.
 //
-web_page_tag_dto_list_envelope_t* WebPagesAPI_getTagsByWebPageAsync(apiClient_t *apiClient, char *webPageId, char *api_version, char *x_api_version);
+web_page_tag_dto_list_envelope_t* WebPagesAPI_getTagsByWebPageAsync(apiClient_t *apiClient, char *webPageId, char *api_version, char *x_api_version, web_page_tag_dto_collection_query_parameters_t *web_page_tag_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -237,6 +239,7 @@ Name | Type | Description  | Notes
 **webPageId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**web_page_tag_dto_collection_query_parameters** | **[web_page_tag_dto_collection_query_parameters_t](web_page_tag_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -249,7 +252,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -294,7 +297,7 @@ No authorization required
 //
 // Retrieves all web pages for the specified tenant.
 //
-web_page_dto_list_envelope_t* WebPagesAPI_getWebPagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+web_page_dto_list_envelope_t* WebPagesAPI_getWebPagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_page_dto_collection_query_parameters_t *web_page_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -304,6 +307,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**web_page_dto_collection_query_parameters** | **[web_page_dto_collection_query_parameters_t](web_page_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -316,7 +320,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -327,7 +331,7 @@ No authorization required
 //
 // Partially updates an existing web page for the specified tenant.
 //
-void WebPagesAPI_patchWebPageAsync(apiClient_t *apiClient, char *tenantId, char *webPageId, char *api_version, char *x_api_version, list_t *operation);
+void WebPagesAPI_patchWebPageAsync(apiClient_t *apiClient, char *tenantId, char *webPageId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -338,7 +342,7 @@ Name | Type | Description  | Notes
 **webPageId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

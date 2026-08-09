@@ -500,13 +500,13 @@ end:
 // Retrieves appraisal workflows for the specified tenant.
 //
 appraisal_workflow_dto_list_envelope_t*
-AppraisalWorkflowsAPI_getAppraisalWorkflowsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AppraisalWorkflowsAPI_getAppraisalWorkflowsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, appraisal_workflow_dto_collection_query_parameters_t *appraisal_workflow_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -552,8 +552,19 @@ AppraisalWorkflowsAPI_getAppraisalWorkflowsAsync(apiClient_t *apiClient, char *t
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters = NULL;
+    if (appraisal_workflow_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters = appraisal_workflow_dto_collection_query_parameters_convertToJSON(appraisal_workflow_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -594,7 +605,7 @@ AppraisalWorkflowsAPI_getAppraisalWorkflowsAsync(apiClient_t *apiClient, char *t
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -605,6 +616,11 @@ AppraisalWorkflowsAPI_getAppraisalWorkflowsAsync(apiClient_t *apiClient, char *t
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters);
+        localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -641,13 +657,13 @@ end:
 // Counts appraisal workflows for the specified tenant.
 //
 int32_envelope_t*
-AppraisalWorkflowsAPI_getAppraisalWorkflowsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AppraisalWorkflowsAPI_getAppraisalWorkflowsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, appraisal_workflow_dto_collection_query_parameters_t *appraisal_workflow_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -693,8 +709,19 @@ AppraisalWorkflowsAPI_getAppraisalWorkflowsCountAsync(apiClient_t *apiClient, ch
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters = NULL;
+    if (appraisal_workflow_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters = appraisal_workflow_dto_collection_query_parameters_convertToJSON(appraisal_workflow_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -735,7 +762,7 @@ AppraisalWorkflowsAPI_getAppraisalWorkflowsCountAsync(apiClient_t *apiClient, ch
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -746,6 +773,11 @@ AppraisalWorkflowsAPI_getAppraisalWorkflowsCountAsync(apiClient_t *apiClient, ch
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters);
+        localVarSingleItemJSON_appraisal_workflow_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;

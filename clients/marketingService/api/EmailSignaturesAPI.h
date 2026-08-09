@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/email_signature_create_dto.h"
+#include "../model/email_signature_dto_collection_query_parameters.h"
 #include "../model/email_signature_dto_envelope.h"
 #include "../model/email_signature_dto_list_envelope.h"
 #include "../model/email_signature_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an email signature
@@ -44,7 +45,7 @@ EmailSignaturesAPI_getEmailSignatureDetailsAsync(apiClient_t *apiClient, char *t
 // Returns the count of email signatures for the specified tenant using OData query options.
 //
 int32_envelope_t*
-EmailSignaturesAPI_getEmailSignaturesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EmailSignaturesAPI_getEmailSignaturesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, email_signature_dto_collection_query_parameters_t *email_signature_dto_collection_query_parameters);
 
 
 // Get email signatures
@@ -52,7 +53,7 @@ EmailSignaturesAPI_getEmailSignaturesCountAsync(apiClient_t *apiClient, char *te
 // Retrieves a collection of email signatures for the specified tenant using OData query options.
 //
 email_signature_dto_list_envelope_t*
-EmailSignaturesAPI_getEmailSignaturesODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EmailSignaturesAPI_getEmailSignaturesODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, email_signature_dto_collection_query_parameters_t *email_signature_dto_collection_query_parameters);
 
 
 // Patch an email signature
@@ -60,7 +61,7 @@ EmailSignaturesAPI_getEmailSignaturesODataAsync(apiClient_t *apiClient, char *te
 // Partially updates an email signature by its ID using JSON Patch.
 //
 empty_envelope_t*
-EmailSignaturesAPI_patchEmailSignatureAsync(apiClient_t *apiClient, char *tenantId, char *emailsignatureId, char *api_version, char *x_api_version, list_t *operation);
+EmailSignaturesAPI_patchEmailSignatureAsync(apiClient_t *apiClient, char *tenantId, char *emailsignatureId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an email signature

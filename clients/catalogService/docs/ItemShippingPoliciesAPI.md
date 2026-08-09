@@ -17,7 +17,7 @@ Method | HTTP request | Description
 //
 // Counts all shipping policies for a specific item.
 //
-int32_envelope_t* ItemShippingPoliciesAPI_countItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+int32_envelope_t* ItemShippingPoliciesAPI_countItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_shipping_policy_dto_collection_query_parameters_t *item_shipping_policy_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -28,6 +28,7 @@ Name | Type | Description  | Notes
 **itemId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**item_shipping_policy_dto_collection_query_parameters** | **[item_shipping_policy_dto_collection_query_parameters_t](item_shipping_policy_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -40,7 +41,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -51,7 +52,7 @@ No authorization required
 //
 // Retrieves all shipping policies for a specific item.
 //
-item_shipping_policy_dto_list_envelope_t* ItemShippingPoliciesAPI_getCatalogItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+item_shipping_policy_dto_list_envelope_t* ItemShippingPoliciesAPI_getCatalogItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_shipping_policy_dto_collection_query_parameters_t *item_shipping_policy_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -62,6 +63,7 @@ Name | Type | Description  | Notes
 **itemId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**item_shipping_policy_dto_collection_query_parameters** | **[item_shipping_policy_dto_collection_query_parameters_t](item_shipping_policy_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -74,7 +76,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -36,10 +36,6 @@ FenixAllianceABSWebAPI_accountPerformExternalLoginPost(apiClient_t *apiClient, c
 
 
 void
-FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost(apiClient_t *apiClient, char *agentId);
-
-
-void
 FenixAllianceABSWebAPI_forgotPasswordPost(apiClient_t *apiClient, forgot_password_request_t *forgot_password_request);
 
 

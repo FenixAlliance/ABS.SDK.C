@@ -727,13 +727,13 @@ end:
 // Retrieves a list of extended order details for the specified tenant.
 //
 extended_order_dto_list_envelope_t*
-OrdersAPI_getExtendedOrders(apiClient_t *apiClient, char *tenantId)
+OrdersAPI_getExtendedOrders(apiClient_t *apiClient, char *tenantId, extended_order_dto_collection_query_parameters_t *extended_order_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -755,8 +755,19 @@ OrdersAPI_getExtendedOrders(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_order_dto_collection_query_parameters = NULL;
+    if (extended_order_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_order_dto_collection_query_parameters = extended_order_dto_collection_query_parameters_convertToJSON(extended_order_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_order_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -793,8 +804,13 @@ OrdersAPI_getExtendedOrders(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_extended_order_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_order_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_order_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1057,13 +1073,13 @@ end:
 // Retrieves the lines (items) for the specified order.
 //
 order_line_dto_list_envelope_t*
-OrdersAPI_getOrderLines(apiClient_t *apiClient, char *tenantId, char *orderId, char *itemId)
+OrdersAPI_getOrderLines(apiClient_t *apiClient, char *tenantId, char *orderId, char *itemId, order_line_dto_collection_query_parameters_t *order_line_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1114,8 +1130,19 @@ OrdersAPI_getOrderLines(apiClient_t *apiClient, char *tenantId, char *orderId, c
         keyPairQuery_itemId = keyValuePair_create(keyQuery_itemId, valueQuery_itemId);
         list_addElement(localVarQueryParameters,keyPairQuery_itemId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_order_line_dto_collection_query_parameters = NULL;
+    if (order_line_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_order_line_dto_collection_query_parameters = order_line_dto_collection_query_parameters_convertToJSON(order_line_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_order_line_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1152,9 +1179,14 @@ OrdersAPI_getOrderLines(apiClient_t *apiClient, char *tenantId, char *orderId, c
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_orderId);
+    if (localVarSingleItemJSON_order_line_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_order_line_dto_collection_query_parameters);
+        localVarSingleItemJSON_order_line_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1191,13 +1223,13 @@ end:
 // Retrieves the total number of lines for the specified order.
 //
 int32_envelope_t*
-OrdersAPI_getOrderLinesCount(apiClient_t *apiClient, char *tenantId, char *orderId)
+OrdersAPI_getOrderLinesCount(apiClient_t *apiClient, char *tenantId, char *orderId, order_line_dto_collection_query_parameters_t *order_line_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1236,8 +1268,19 @@ OrdersAPI_getOrderLinesCount(apiClient_t *apiClient, char *tenantId, char *order
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_order_line_dto_collection_query_parameters = NULL;
+    if (order_line_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_order_line_dto_collection_query_parameters = order_line_dto_collection_query_parameters_convertToJSON(order_line_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_order_line_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1274,9 +1317,14 @@ OrdersAPI_getOrderLinesCount(apiClient_t *apiClient, char *tenantId, char *order
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_orderId);
+    if (localVarSingleItemJSON_order_line_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_order_line_dto_collection_query_parameters);
+        localVarSingleItemJSON_order_line_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1301,13 +1349,13 @@ end:
 // Retrieves a list of orders for the specified tenant.
 //
 order_dto_list_envelope_t*
-OrdersAPI_getOrders(apiClient_t *apiClient, char *tenantId)
+OrdersAPI_getOrders(apiClient_t *apiClient, char *tenantId, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1329,8 +1377,19 @@ OrdersAPI_getOrders(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_order_dto_collection_query_parameters = NULL;
+    if (order_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_order_dto_collection_query_parameters = order_dto_collection_query_parameters_convertToJSON(order_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_order_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1367,8 +1426,13 @@ OrdersAPI_getOrders(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_order_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_order_dto_collection_query_parameters);
+        localVarSingleItemJSON_order_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1393,13 +1457,13 @@ end:
 // Retrieves the total number of orders for the specified tenant.
 //
 int32_envelope_t*
-OrdersAPI_getOrdersCount(apiClient_t *apiClient, char *tenantId)
+OrdersAPI_getOrdersCount(apiClient_t *apiClient, char *tenantId, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1421,8 +1485,19 @@ OrdersAPI_getOrdersCount(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_order_dto_collection_query_parameters = NULL;
+    if (order_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_order_dto_collection_query_parameters = order_dto_collection_query_parameters_convertToJSON(order_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_order_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1459,8 +1534,13 @@ OrdersAPI_getOrdersCount(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_order_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_order_dto_collection_query_parameters);
+        localVarSingleItemJSON_order_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1485,7 +1565,7 @@ end:
 // Applies a JSON Patch document to partially update an existing order.
 //
 empty_envelope_t*
-OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list_t *operation)
+OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1533,14 +1613,14 @@ OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1548,16 +1628,16 @@ OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1602,17 +1682,17 @@ OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_orderId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -1639,7 +1719,7 @@ end:
 // Applies a JSON Patch document to partially update a specific order line.
 //
 empty_envelope_t*
-OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, char *orderLineId, list_t *operation)
+OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, char *orderLineId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1704,14 +1784,14 @@ OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, 
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1719,16 +1799,16 @@ OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, 
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1774,17 +1854,17 @@ OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, 
     free(localVarPath);
     free(localVarToReplace_orderId);
     free(localVarToReplace_orderLineId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

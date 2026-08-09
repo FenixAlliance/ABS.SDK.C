@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/salary_create_dto.h"
+#include "../model/salary_dto_collection_query_parameters.h"
 #include "../model/salary_dto_envelope.h"
 #include "../model/salary_dto_list_envelope.h"
 #include "../model/salary_update_dto.h"
@@ -36,7 +37,7 @@ SalariesAPI_deleteSalaryAsync(apiClient_t *apiClient, char *tenantId, char *sala
 // Retrieves salaries for the specified tenant.
 //
 salary_dto_list_envelope_t*
-SalariesAPI_getSalariesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SalariesAPI_getSalariesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, salary_dto_collection_query_parameters_t *salary_dto_collection_query_parameters);
 
 
 // Count salaries
@@ -44,7 +45,7 @@ SalariesAPI_getSalariesAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 // Counts salaries for the specified tenant.
 //
 int32_envelope_t*
-SalariesAPI_getSalariesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SalariesAPI_getSalariesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, salary_dto_collection_query_parameters_t *salary_dto_collection_query_parameters);
 
 
 // Get salary by ID
@@ -60,7 +61,7 @@ SalariesAPI_getSalaryByIdAsync(apiClient_t *apiClient, char *tenantId, char *sal
 // Partially updates an existing salary for the specified tenant.
 //
 empty_envelope_t*
-SalariesAPI_patchSalaryAsync(apiClient_t *apiClient, char *tenantId, char *salaryId, char *api_version, char *x_api_version, list_t *operation);
+SalariesAPI_patchSalaryAsync(apiClient_t *apiClient, char *tenantId, char *salaryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a salary

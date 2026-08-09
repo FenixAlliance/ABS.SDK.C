@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **error_message** | **char \*** |  | [optional] 
 **correlation_id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] [readonly] 
+**http_status** | **int** |  | [optional] 
+**error_code** | **char \*** |  | [optional] 
+**validation_details** | **list_t*** |  | [optional] 
 **activity_id** | **char \*** |  | [optional] [readonly] 
 **result** | [**system_overview_dto_t**](system_overview_dto.md) \* |  | [optional] 
 

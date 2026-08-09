@@ -58,28 +58,34 @@ set(SRCS
     model/advanced_options.c
     model/alliance_business_suite_integration_options.c
     model/apple_icons.c
+    model/auth_result.c
     model/azure_app_insight_integration_options.c
     model/azure_storage_integration_options.c
     model/background.c
     model/background_options.c
     model/blog_author_dto.c
+    model/blog_author_dto_collection_query_parameters.c
     model/blog_author_dto_envelope.c
     model/blog_author_dto_list_envelope.c
     model/blog_options.c
     model/blog_post_category_create_dto.c
     model/blog_post_category_dto.c
+    model/blog_post_category_dto_collection_query_parameters.c
     model/blog_post_category_dto_envelope.c
     model/blog_post_category_dto_list_envelope.c
     model/blog_post_category_update_dto.c
     model/blog_post_comment_create_dto.c
     model/blog_post_comment_dto.c
+    model/blog_post_comment_dto_collection_query_parameters.c
     model/blog_post_comment_dto_list_envelope.c
     model/blog_post_create_dto.c
     model/blog_post_dto.c
+    model/blog_post_dto_collection_query_parameters.c
     model/blog_post_dto_envelope.c
     model/blog_post_dto_list_envelope.c
     model/blog_post_tag_create_dto.c
     model/blog_post_tag_dto.c
+    model/blog_post_tag_dto_collection_query_parameters.c
     model/blog_post_tag_dto_envelope.c
     model/blog_post_tag_dto_list_envelope.c
     model/blog_post_tag_update_dto.c
@@ -88,16 +94,23 @@ set(SRCS
     model/breadcrumbs_options.c
     model/business_domain_create_dto.c
     model/business_domain_dto.c
+    model/business_domain_dto_collection_query_parameters.c
     model/business_domain_dto_envelope.c
     model/business_domain_dto_list_envelope.c
     model/business_domain_update_dto.c
+    model/cart_dto.c
     model/cart_options.c
     model/color_options.c
     model/color_scheme.c
+    model/contact_dto.c
     model/contact_options.c
     model/contact_point.c
+    model/country_dto.c
     model/coupons_options.c
     model/creator.c
+    model/crm_context.c
+    model/currency_dto.c
+    model/currency_id.c
     model/custom_font.c
     model/dashboard_options.c
     model/downloadables_options.c
@@ -106,10 +119,18 @@ set(SRCS
     model/emails_options.c
     model/empty_envelope.c
     model/error_envelope.c
+    model/execution_context.c
+    model/execution_context_envelope.c
+    model/execution_provenance.c
+    model/extended_invite_dto.c
+    model/extended_tenant_dto.c
+    model/extended_tenant_enrollment_dto.c
+    model/extended_user_dto.c
     model/facebook_integration_options.c
     model/favicons.c
     model/fenix_alliance_integrations_options.c
     model/footer_options.c
+    model/forex_rates_dto.c
     model/forgot_password_request.c
     model/forum_options.c
     model/free_geo_ip_integration_options.c
@@ -133,6 +154,7 @@ set(SRCS
     model/layout_options.c
     model/localization_string_create_dto.c
     model/localization_string_dto.c
+    model/localization_string_dto_collection_query_parameters.c
     model/localization_string_dto_envelope.c
     model/localization_string_dto_list_envelope.c
     model/localization_string_update_dto.c
@@ -142,6 +164,7 @@ set(SRCS
     model/measurement_options.c
     model/menu_context_create_dto.c
     model/menu_context_dto.c
+    model/menu_context_dto_collection_query_parameters.c
     model/menu_context_dto_envelope.c
     model/menu_context_dto_list_envelope.c
     model/menu_context_item_dto.c
@@ -149,11 +172,12 @@ set(SRCS
     model/menu_options.c
     model/microsoft_azure_integration_options.c
     model/microsoft_integrations_options.c
+    model/money.c
     model/ms_app_tile.c
     model/open_exchange_rates_integrations_options.c
-    model/operation.c
     model/organization.c
     model/padding.c
+    model/patch_operation.c
     model/payment_method.c
     model/payment_options.c
     model/portal_options.c
@@ -174,54 +198,69 @@ set(SRCS
     model/services_options.c
     model/sliding_bar_options.c
     model/social_media_options.c
+    model/social_profile_dto.c
     model/store_data_retention_policy.c
     model/store_options.c
     model/studio_options.c
     model/subscriptions_options.c
+    model/suite_license_feature_dto.c
     model/tax_calculation_options.c
+    model/tenant_dto.c
+    model/tenant_enrollment_dto.c
     model/theming_options.c
     model/title_bar_options.c
     model/two_factor_request.c
     model/two_factor_response.c
     model/typography.c
     model/typography_options.c
+    model/user_dto.c
+    model/user_settings_dto.c
+    model/wallet_dto.c
     model/web_component_create_dto.c
     model/web_component_dto.c
+    model/web_component_dto_collection_query_parameters.c
     model/web_component_dto_envelope.c
     model/web_component_dto_list_envelope.c
     model/web_component_update_dto.c
     model/web_content_create_dto.c
     model/web_content_dto.c
+    model/web_content_dto_collection_query_parameters.c
     model/web_content_dto_envelope.c
     model/web_content_dto_list_envelope.c
     model/web_content_update_dto.c
     model/web_page_category_create_dto.c
     model/web_page_category_dto.c
+    model/web_page_category_dto_collection_query_parameters.c
     model/web_page_category_dto_envelope.c
     model/web_page_category_dto_list_envelope.c
     model/web_page_category_update_dto.c
     model/web_page_create_dto.c
     model/web_page_dto.c
+    model/web_page_dto_collection_query_parameters.c
     model/web_page_dto_envelope.c
     model/web_page_dto_list_envelope.c
     model/web_page_tag_create_dto.c
     model/web_page_tag_dto.c
+    model/web_page_tag_dto_collection_query_parameters.c
     model/web_page_tag_dto_envelope.c
     model/web_page_tag_dto_list_envelope.c
     model/web_page_tag_update_dto.c
     model/web_page_update_dto.c
     model/web_portal_create_dto.c
     model/web_portal_dto.c
+    model/web_portal_dto_collection_query_parameters.c
     model/web_portal_dto_envelope.c
     model/web_portal_dto_list_envelope.c
     model/web_portal_update_dto.c
     model/web_template_create_dto.c
     model/web_template_dto.c
+    model/web_template_dto_collection_query_parameters.c
     model/web_template_dto_envelope.c
     model/web_template_dto_list_envelope.c
     model/web_template_update_dto.c
     model/website_theme_create_dto.c
     model/website_theme_dto.c
+    model/website_theme_dto_collection_query_parameters.c
     model/website_theme_dto_list_envelope.c
     model/website_theme_update_dto.c
     api/BlogPostAuthorsAPI.c
@@ -255,28 +294,34 @@ set(HDRS
     model/advanced_options.h
     model/alliance_business_suite_integration_options.h
     model/apple_icons.h
+    model/auth_result.h
     model/azure_app_insight_integration_options.h
     model/azure_storage_integration_options.h
     model/background.h
     model/background_options.h
     model/blog_author_dto.h
+    model/blog_author_dto_collection_query_parameters.h
     model/blog_author_dto_envelope.h
     model/blog_author_dto_list_envelope.h
     model/blog_options.h
     model/blog_post_category_create_dto.h
     model/blog_post_category_dto.h
+    model/blog_post_category_dto_collection_query_parameters.h
     model/blog_post_category_dto_envelope.h
     model/blog_post_category_dto_list_envelope.h
     model/blog_post_category_update_dto.h
     model/blog_post_comment_create_dto.h
     model/blog_post_comment_dto.h
+    model/blog_post_comment_dto_collection_query_parameters.h
     model/blog_post_comment_dto_list_envelope.h
     model/blog_post_create_dto.h
     model/blog_post_dto.h
+    model/blog_post_dto_collection_query_parameters.h
     model/blog_post_dto_envelope.h
     model/blog_post_dto_list_envelope.h
     model/blog_post_tag_create_dto.h
     model/blog_post_tag_dto.h
+    model/blog_post_tag_dto_collection_query_parameters.h
     model/blog_post_tag_dto_envelope.h
     model/blog_post_tag_dto_list_envelope.h
     model/blog_post_tag_update_dto.h
@@ -285,16 +330,23 @@ set(HDRS
     model/breadcrumbs_options.h
     model/business_domain_create_dto.h
     model/business_domain_dto.h
+    model/business_domain_dto_collection_query_parameters.h
     model/business_domain_dto_envelope.h
     model/business_domain_dto_list_envelope.h
     model/business_domain_update_dto.h
+    model/cart_dto.h
     model/cart_options.h
     model/color_options.h
     model/color_scheme.h
+    model/contact_dto.h
     model/contact_options.h
     model/contact_point.h
+    model/country_dto.h
     model/coupons_options.h
     model/creator.h
+    model/crm_context.h
+    model/currency_dto.h
+    model/currency_id.h
     model/custom_font.h
     model/dashboard_options.h
     model/downloadables_options.h
@@ -303,10 +355,18 @@ set(HDRS
     model/emails_options.h
     model/empty_envelope.h
     model/error_envelope.h
+    model/execution_context.h
+    model/execution_context_envelope.h
+    model/execution_provenance.h
+    model/extended_invite_dto.h
+    model/extended_tenant_dto.h
+    model/extended_tenant_enrollment_dto.h
+    model/extended_user_dto.h
     model/facebook_integration_options.h
     model/favicons.h
     model/fenix_alliance_integrations_options.h
     model/footer_options.h
+    model/forex_rates_dto.h
     model/forgot_password_request.h
     model/forum_options.h
     model/free_geo_ip_integration_options.h
@@ -330,6 +390,7 @@ set(HDRS
     model/layout_options.h
     model/localization_string_create_dto.h
     model/localization_string_dto.h
+    model/localization_string_dto_collection_query_parameters.h
     model/localization_string_dto_envelope.h
     model/localization_string_dto_list_envelope.h
     model/localization_string_update_dto.h
@@ -339,6 +400,7 @@ set(HDRS
     model/measurement_options.h
     model/menu_context_create_dto.h
     model/menu_context_dto.h
+    model/menu_context_dto_collection_query_parameters.h
     model/menu_context_dto_envelope.h
     model/menu_context_dto_list_envelope.h
     model/menu_context_item_dto.h
@@ -346,11 +408,12 @@ set(HDRS
     model/menu_options.h
     model/microsoft_azure_integration_options.h
     model/microsoft_integrations_options.h
+    model/money.h
     model/ms_app_tile.h
     model/open_exchange_rates_integrations_options.h
-    model/operation.h
     model/organization.h
     model/padding.h
+    model/patch_operation.h
     model/payment_method.h
     model/payment_options.h
     model/portal_options.h
@@ -371,54 +434,69 @@ set(HDRS
     model/services_options.h
     model/sliding_bar_options.h
     model/social_media_options.h
+    model/social_profile_dto.h
     model/store_data_retention_policy.h
     model/store_options.h
     model/studio_options.h
     model/subscriptions_options.h
+    model/suite_license_feature_dto.h
     model/tax_calculation_options.h
+    model/tenant_dto.h
+    model/tenant_enrollment_dto.h
     model/theming_options.h
     model/title_bar_options.h
     model/two_factor_request.h
     model/two_factor_response.h
     model/typography.h
     model/typography_options.h
+    model/user_dto.h
+    model/user_settings_dto.h
+    model/wallet_dto.h
     model/web_component_create_dto.h
     model/web_component_dto.h
+    model/web_component_dto_collection_query_parameters.h
     model/web_component_dto_envelope.h
     model/web_component_dto_list_envelope.h
     model/web_component_update_dto.h
     model/web_content_create_dto.h
     model/web_content_dto.h
+    model/web_content_dto_collection_query_parameters.h
     model/web_content_dto_envelope.h
     model/web_content_dto_list_envelope.h
     model/web_content_update_dto.h
     model/web_page_category_create_dto.h
     model/web_page_category_dto.h
+    model/web_page_category_dto_collection_query_parameters.h
     model/web_page_category_dto_envelope.h
     model/web_page_category_dto_list_envelope.h
     model/web_page_category_update_dto.h
     model/web_page_create_dto.h
     model/web_page_dto.h
+    model/web_page_dto_collection_query_parameters.h
     model/web_page_dto_envelope.h
     model/web_page_dto_list_envelope.h
     model/web_page_tag_create_dto.h
     model/web_page_tag_dto.h
+    model/web_page_tag_dto_collection_query_parameters.h
     model/web_page_tag_dto_envelope.h
     model/web_page_tag_dto_list_envelope.h
     model/web_page_tag_update_dto.h
     model/web_page_update_dto.h
     model/web_portal_create_dto.h
     model/web_portal_dto.h
+    model/web_portal_dto_collection_query_parameters.h
     model/web_portal_dto_envelope.h
     model/web_portal_dto_list_envelope.h
     model/web_portal_update_dto.h
     model/web_template_create_dto.h
     model/web_template_dto.h
+    model/web_template_dto_collection_query_parameters.h
     model/web_template_dto_envelope.h
     model/web_template_dto_list_envelope.h
     model/web_template_update_dto.h
     model/website_theme_create_dto.h
     model/website_theme_dto.h
+    model/website_theme_dto_collection_query_parameters.h
     model/website_theme_dto_list_envelope.h
     model/website_theme_update_dto.h
     api/BlogPostAuthorsAPI.h

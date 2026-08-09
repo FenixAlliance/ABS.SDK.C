@@ -122,7 +122,7 @@ No authorization required
 //
 // Retrieves all fiscal regimes for the specified fiscal authority.
 //
-fiscal_regime_dto_list_envelope_t* FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
+fiscal_regime_dto_list_envelope_t* FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version, fiscal_regime_dto_collection_query_parameters_t *fiscal_regime_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -134,6 +134,7 @@ Name | Type | Description  | Notes
 **authorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**fiscal_regime_dto_collection_query_parameters** | **[fiscal_regime_dto_collection_query_parameters_t](fiscal_regime_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -146,7 +147,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -157,7 +158,7 @@ No authorization required
 //
 // Returns the total count of fiscal regimes for the specified fiscal authority.
 //
-int32_envelope_t* FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+int32_envelope_t* FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version, fiscal_regime_dto_collection_query_parameters_t *fiscal_regime_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -168,6 +169,7 @@ Name | Type | Description  | Notes
 **fiscalAuthorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**fiscal_regime_dto_collection_query_parameters** | **[fiscal_regime_dto_collection_query_parameters_t](fiscal_regime_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -180,7 +182,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -191,7 +193,7 @@ No authorization required
 //
 // Partially updates a fiscal regime.
 //
-empty_envelope_t* FiscalRegimesAPI_patchFiscalRegimeAsync(apiClient_t *apiClient, char *tenantId, char *regimeId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* FiscalRegimesAPI_patchFiscalRegimeAsync(apiClient_t *apiClient, char *tenantId, char *regimeId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -202,7 +204,7 @@ Name | Type | Description  | Notes
 **regimeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

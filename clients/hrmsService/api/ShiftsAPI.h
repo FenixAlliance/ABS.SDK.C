@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/shift_create_dto.h"
+#include "../model/shift_dto_collection_query_parameters.h"
 #include "../model/shift_dto_envelope.h"
 #include "../model/shift_dto_list_envelope.h"
 #include "../model/shift_update_dto.h"
@@ -44,7 +45,7 @@ ShiftsAPI_getShiftByIdAsync(apiClient_t *apiClient, char *tenantId, char *shiftI
 // Retrieves shifts for the specified tenant.
 //
 shift_dto_list_envelope_t*
-ShiftsAPI_getShiftsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShiftsAPI_getShiftsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shift_dto_collection_query_parameters_t *shift_dto_collection_query_parameters);
 
 
 // Count shifts
@@ -52,7 +53,7 @@ ShiftsAPI_getShiftsAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
 // Counts shifts for the specified tenant.
 //
 int32_envelope_t*
-ShiftsAPI_getShiftsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShiftsAPI_getShiftsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shift_dto_collection_query_parameters_t *shift_dto_collection_query_parameters);
 
 
 // Patch a shift
@@ -60,7 +61,7 @@ ShiftsAPI_getShiftsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_
 // Partially updates an existing shift for the specified tenant.
 //
 empty_envelope_t*
-ShiftsAPI_patchShiftAsync(apiClient_t *apiClient, char *tenantId, char *shiftId, char *api_version, char *x_api_version, list_t *operation);
+ShiftsAPI_patchShiftAsync(apiClient_t *apiClient, char *tenantId, char *shiftId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a shift

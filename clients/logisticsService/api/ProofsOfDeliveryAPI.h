@@ -10,11 +10,13 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/proof_of_delivery_create_dto.h"
+#include "../model/proof_of_delivery_dto_collection_query_parameters.h"
 #include "../model/proof_of_delivery_dto_envelope.h"
 #include "../model/proof_of_delivery_dto_list_envelope.h"
 #include "../model/proof_of_delivery_line_create_dto.h"
+#include "../model/proof_of_delivery_line_dto_collection_query_parameters.h"
 #include "../model/proof_of_delivery_line_dto_list_envelope.h"
 #include "../model/proof_of_delivery_line_update_dto.h"
 #include "../model/proof_of_delivery_update_dto.h"
@@ -99,7 +101,7 @@ ProofsOfDeliveryAPI_getProofOfDeliveryDeliveryNotesCountAsync(apiClient_t *apiCl
 // Retrieves all lines for a specific proof of delivery.
 //
 proof_of_delivery_line_dto_list_envelope_t*
-ProofsOfDeliveryAPI_getProofOfDeliveryLinesAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version);
+ProofsOfDeliveryAPI_getProofOfDeliveryLinesAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version, proof_of_delivery_line_dto_collection_query_parameters_t *proof_of_delivery_line_dto_collection_query_parameters);
 
 
 // Get proof of delivery lines count
@@ -107,7 +109,7 @@ ProofsOfDeliveryAPI_getProofOfDeliveryLinesAsync(apiClient_t *apiClient, char *t
 // Returns the count of lines for a specific proof of delivery.
 //
 int32_envelope_t*
-ProofsOfDeliveryAPI_getProofOfDeliveryLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version);
+ProofsOfDeliveryAPI_getProofOfDeliveryLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version, proof_of_delivery_line_dto_collection_query_parameters_t *proof_of_delivery_line_dto_collection_query_parameters);
 
 
 // Get all proofs of delivery
@@ -115,7 +117,7 @@ ProofsOfDeliveryAPI_getProofOfDeliveryLinesCountAsync(apiClient_t *apiClient, ch
 // Retrieves all proofs of delivery for the specified tenant.
 //
 proof_of_delivery_dto_list_envelope_t*
-ProofsOfDeliveryAPI_getProofsOfDeliveryAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ProofsOfDeliveryAPI_getProofsOfDeliveryAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, proof_of_delivery_dto_collection_query_parameters_t *proof_of_delivery_dto_collection_query_parameters);
 
 
 // Get proofs of delivery count
@@ -123,7 +125,7 @@ ProofsOfDeliveryAPI_getProofsOfDeliveryAsync(apiClient_t *apiClient, char *tenan
 // Returns the count of proofs of delivery for the specified tenant.
 //
 int32_envelope_t*
-ProofsOfDeliveryAPI_getProofsOfDeliveryCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ProofsOfDeliveryAPI_getProofsOfDeliveryCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, proof_of_delivery_dto_collection_query_parameters_t *proof_of_delivery_dto_collection_query_parameters);
 
 
 // Patch a proof of delivery
@@ -131,7 +133,7 @@ ProofsOfDeliveryAPI_getProofsOfDeliveryCountAsync(apiClient_t *apiClient, char *
 // Partially updates an existing proof of delivery using JSON Patch.
 //
 empty_envelope_t*
-ProofsOfDeliveryAPI_patchProofOfDeliveryAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version, list_t *operation);
+ProofsOfDeliveryAPI_patchProofOfDeliveryAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a proof of delivery line
@@ -139,7 +141,7 @@ ProofsOfDeliveryAPI_patchProofOfDeliveryAsync(apiClient_t *apiClient, char *tena
 // Partially updates an existing proof of delivery line using JSON Patch.
 //
 empty_envelope_t*
-ProofsOfDeliveryAPI_patchProofOfDeliveryLineAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+ProofsOfDeliveryAPI_patchProofOfDeliveryLineAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *lineId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Reject a proof of delivery

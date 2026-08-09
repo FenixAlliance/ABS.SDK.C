@@ -8,6 +8,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/signature_dto.h"
+#include "../model/signature_dto_collection_query_parameters.h"
 #include "../model/signature_dto_list_envelope.h"
 
 
@@ -24,7 +25,7 @@ SignaturesAPI_getSignatureByIdAsync(apiClient_t *apiClient, char *tenantId, char
 // Retrieves all signatures for the specified tenant.
 //
 signature_dto_list_envelope_t*
-SignaturesAPI_getSignaturesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SignaturesAPI_getSignaturesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signature_dto_collection_query_parameters_t *signature_dto_collection_query_parameters);
 
 
 // Get signatures count
@@ -32,6 +33,6 @@ SignaturesAPI_getSignaturesAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Returns the count of signatures for the specified tenant.
 //
 int32_envelope_t*
-SignaturesAPI_getSignaturesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SignaturesAPI_getSignaturesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signature_dto_collection_query_parameters_t *signature_dto_collection_query_parameters);
 
 

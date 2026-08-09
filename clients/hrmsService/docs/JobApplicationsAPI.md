@@ -157,7 +157,7 @@ No authorization required
 //
 // Retrieves applications submitted against the tenant's job offers. Filter with `$filter=JobOfferId eq '...'` or `JobApplicantProfileId eq '...'`.
 //
-job_offer_application_dto_list_envelope_t* JobApplicationsAPI_getJobApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+job_offer_application_dto_list_envelope_t* JobApplicationsAPI_getJobApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_offer_application_dto_collection_query_parameters_t *job_offer_application_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -167,6 +167,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**job_offer_application_dto_collection_query_parameters** | **[job_offer_application_dto_collection_query_parameters_t](job_offer_application_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -179,7 +180,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -190,7 +191,7 @@ No authorization required
 //
 // Counts applications submitted against the tenant's job offers.
 //
-int32_envelope_t* JobApplicationsAPI_getJobApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* JobApplicationsAPI_getJobApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_offer_application_dto_collection_query_parameters_t *job_offer_application_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -200,6 +201,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**job_offer_application_dto_collection_query_parameters** | **[job_offer_application_dto_collection_query_parameters_t](job_offer_application_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -212,7 +214,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -223,7 +225,7 @@ No authorization required
 //
 // Partially updates an existing application submitted against one of the tenant's job offers.
 //
-empty_envelope_t* JobApplicationsAPI_patchJobApplicationAsync(apiClient_t *apiClient, char *tenantId, char *jobApplicationId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* JobApplicationsAPI_patchJobApplicationAsync(apiClient_t *apiClient, char *tenantId, char *jobApplicationId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -234,7 +236,7 @@ Name | Type | Description  | Notes
 **jobApplicationId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

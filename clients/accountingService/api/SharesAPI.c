@@ -1480,13 +1480,13 @@ end:
 // Get the currently acting tenant share classes.
 //
 share_class_dto_list_envelope_t*
-SharesAPI_getShareClasses(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SharesAPI_getShareClasses(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_class_dto_collection_query_parameters_t *share_class_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1532,8 +1532,19 @@ SharesAPI_getShareClasses(apiClient_t *apiClient, char *tenantId, char *api_vers
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_share_class_dto_collection_query_parameters = NULL;
+    if (share_class_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_share_class_dto_collection_query_parameters = share_class_dto_collection_query_parameters_convertToJSON(share_class_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_share_class_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1574,7 +1585,7 @@ SharesAPI_getShareClasses(apiClient_t *apiClient, char *tenantId, char *api_vers
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1585,6 +1596,11 @@ SharesAPI_getShareClasses(apiClient_t *apiClient, char *tenantId, char *api_vers
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_share_class_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_share_class_dto_collection_query_parameters);
+        localVarSingleItemJSON_share_class_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1621,13 +1637,13 @@ end:
 // Get the currently acting tenant share classes count.
 //
 int32_envelope_t*
-SharesAPI_getShareClassesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SharesAPI_getShareClassesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_class_dto_collection_query_parameters_t *share_class_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1673,8 +1689,19 @@ SharesAPI_getShareClassesCount(apiClient_t *apiClient, char *tenantId, char *api
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_share_class_dto_collection_query_parameters = NULL;
+    if (share_class_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_share_class_dto_collection_query_parameters = share_class_dto_collection_query_parameters_convertToJSON(share_class_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_share_class_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1715,7 +1742,7 @@ SharesAPI_getShareClassesCount(apiClient_t *apiClient, char *tenantId, char *api
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1726,6 +1753,11 @@ SharesAPI_getShareClassesCount(apiClient_t *apiClient, char *tenantId, char *api
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_share_class_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_share_class_dto_collection_query_parameters);
+        localVarSingleItemJSON_share_class_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1925,13 +1957,13 @@ end:
 // Get the currently acting tenant share issuances.
 //
 share_issuance_dto_list_envelope_t*
-SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_issuance_dto_collection_query_parameters_t *share_issuance_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1977,8 +2009,19 @@ SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_ve
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_share_issuance_dto_collection_query_parameters = NULL;
+    if (share_issuance_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_share_issuance_dto_collection_query_parameters = share_issuance_dto_collection_query_parameters_convertToJSON(share_issuance_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_share_issuance_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2019,7 +2062,7 @@ SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_ve
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -2030,6 +2073,11 @@ SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_ve
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_share_issuance_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_share_issuance_dto_collection_query_parameters);
+        localVarSingleItemJSON_share_issuance_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2066,13 +2114,13 @@ end:
 // Get the currently acting tenant share issuances count.
 //
 int32_envelope_t*
-SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_issuance_dto_collection_query_parameters_t *share_issuance_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2118,8 +2166,19 @@ SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *a
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_share_issuance_dto_collection_query_parameters = NULL;
+    if (share_issuance_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_share_issuance_dto_collection_query_parameters = share_issuance_dto_collection_query_parameters_convertToJSON(share_issuance_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_share_issuance_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2160,7 +2219,7 @@ SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *a
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -2171,6 +2230,11 @@ SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *a
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_share_issuance_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_share_issuance_dto_collection_query_parameters);
+        localVarSingleItemJSON_share_issuance_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2207,13 +2271,13 @@ end:
 // Returns SUM(ShareIssuance.Quantity) for the tenant, filtered by the supplied OData date range.
 //
 decimal_envelope_t*
-SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_issuance_dto_collection_query_parameters_t *share_issuance_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2259,8 +2323,19 @@ SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_share_issuance_dto_collection_query_parameters = NULL;
+    if (share_issuance_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_share_issuance_dto_collection_query_parameters = share_issuance_dto_collection_query_parameters_convertToJSON(share_issuance_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_share_issuance_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2301,7 +2376,7 @@ SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -2312,6 +2387,11 @@ SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_share_issuance_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_share_issuance_dto_collection_query_parameters);
+        localVarSingleItemJSON_share_issuance_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2674,13 +2754,13 @@ end:
 // Get the currently acting tenant share transfer reasons.
 //
 share_transfer_reason_dto_list_envelope_t*
-SharesAPI_getShareTransferReasons(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SharesAPI_getShareTransferReasons(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_reason_dto_collection_query_parameters_t *share_transfer_reason_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2726,8 +2806,19 @@ SharesAPI_getShareTransferReasons(apiClient_t *apiClient, char *tenantId, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters = NULL;
+    if (share_transfer_reason_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters = share_transfer_reason_dto_collection_query_parameters_convertToJSON(share_transfer_reason_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2768,7 +2859,7 @@ SharesAPI_getShareTransferReasons(apiClient_t *apiClient, char *tenantId, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -2779,6 +2870,11 @@ SharesAPI_getShareTransferReasons(apiClient_t *apiClient, char *tenantId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters);
+        localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2815,13 +2911,13 @@ end:
 // Get the currently acting tenant share transfer reasons count.
 //
 int32_envelope_t*
-SharesAPI_getShareTransferReasonsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SharesAPI_getShareTransferReasonsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_reason_dto_collection_query_parameters_t *share_transfer_reason_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2867,8 +2963,19 @@ SharesAPI_getShareTransferReasonsCount(apiClient_t *apiClient, char *tenantId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters = NULL;
+    if (share_transfer_reason_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters = share_transfer_reason_dto_collection_query_parameters_convertToJSON(share_transfer_reason_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2909,7 +3016,7 @@ SharesAPI_getShareTransferReasonsCount(apiClient_t *apiClient, char *tenantId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -2920,6 +3027,11 @@ SharesAPI_getShareTransferReasonsCount(apiClient_t *apiClient, char *tenantId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters);
+        localVarSingleItemJSON_share_transfer_reason_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2956,13 +3068,13 @@ end:
 // Get the currently acting tenant share transfers.
 //
 share_transfer_dto_list_envelope_t*
-SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_dto_collection_query_parameters_t *share_transfer_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3008,8 +3120,19 @@ SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_ve
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_share_transfer_dto_collection_query_parameters = NULL;
+    if (share_transfer_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_share_transfer_dto_collection_query_parameters = share_transfer_dto_collection_query_parameters_convertToJSON(share_transfer_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_share_transfer_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3050,7 +3173,7 @@ SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_ve
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -3061,6 +3184,11 @@ SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_ve
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_share_transfer_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_share_transfer_dto_collection_query_parameters);
+        localVarSingleItemJSON_share_transfer_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3097,13 +3225,13 @@ end:
 // Get the currently acting tenant share transfers count.
 //
 int32_envelope_t*
-SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_dto_collection_query_parameters_t *share_transfer_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3149,8 +3277,19 @@ SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *a
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_share_transfer_dto_collection_query_parameters = NULL;
+    if (share_transfer_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_share_transfer_dto_collection_query_parameters = share_transfer_dto_collection_query_parameters_convertToJSON(share_transfer_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_share_transfer_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3191,7 +3330,7 @@ SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *a
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -3202,6 +3341,11 @@ SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *a
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_share_transfer_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_share_transfer_dto_collection_query_parameters);
+        localVarSingleItemJSON_share_transfer_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3238,7 +3382,7 @@ end:
 // Partially updates a share class using a JSON Patch document.
 //
 empty_envelope_t*
-SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareClassId, char *api_version, char *x_api_version, list_t *operation)
+SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareClassId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -3310,14 +3454,14 @@ SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareCla
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -3325,16 +3469,16 @@ SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareCla
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -3392,17 +3536,17 @@ SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareCla
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -3441,7 +3585,7 @@ end:
 // Partially updates a share issuance using a JSON Patch document.
 //
 empty_envelope_t*
-SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issuanceId, char *api_version, char *x_api_version, list_t *operation)
+SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issuanceId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -3513,14 +3657,14 @@ SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issua
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -3528,16 +3672,16 @@ SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issua
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -3595,17 +3739,17 @@ SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issua
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -3644,7 +3788,7 @@ end:
 // Partially updates a share transfer using a JSON Patch document.
 //
 empty_envelope_t*
-SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *transferId, char *api_version, char *x_api_version, list_t *operation)
+SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *transferId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -3716,14 +3860,14 @@ SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *trans
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -3731,16 +3875,16 @@ SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *trans
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -3798,17 +3942,17 @@ SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *trans
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -3847,7 +3991,7 @@ end:
 // Partially updates a share transfer reason using a JSON Patch document.
 //
 empty_envelope_t*
-SharesAPI_patchShareTransferReason(apiClient_t *apiClient, char *tenantId, char *reasonId, char *api_version, char *x_api_version, list_t *operation)
+SharesAPI_patchShareTransferReason(apiClient_t *apiClient, char *tenantId, char *reasonId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -3919,14 +4063,14 @@ SharesAPI_patchShareTransferReason(apiClient_t *apiClient, char *tenantId, char 
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -3934,16 +4078,16 @@ SharesAPI_patchShareTransferReason(apiClient_t *apiClient, char *tenantId, char 
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -4001,17 +4145,17 @@ SharesAPI_patchShareTransferReason(apiClient_t *apiClient, char *tenantId, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

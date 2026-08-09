@@ -7,9 +7,10 @@
 #include "../include/binary.h"
 #include "../model/course_page_create_dto.h"
 #include "../model/course_page_dto.h"
+#include "../model/course_page_dto_collection_query_parameters.h"
 #include "../model/course_page_update_dto.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new course page
@@ -41,7 +42,7 @@ CoursePagesAPI_getCoursePageByIdAsync(apiClient_t *apiClient, char *pageId, char
 // Retrieves all course pages for the specified tenant.
 //
 list_t*
-CoursePagesAPI_getCoursePagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CoursePagesAPI_getCoursePagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_page_dto_collection_query_parameters_t *course_page_dto_collection_query_parameters);
 
 
 // Get course pages count
@@ -49,7 +50,7 @@ CoursePagesAPI_getCoursePagesAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the count of course pages for the specified tenant.
 //
 int*
-CoursePagesAPI_getCoursePagesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CoursePagesAPI_getCoursePagesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_page_dto_collection_query_parameters_t *course_page_dto_collection_query_parameters);
 
 
 // Patch a course page
@@ -57,7 +58,7 @@ CoursePagesAPI_getCoursePagesCountAsync(apiClient_t *apiClient, char *tenantId, 
 // Partially updates an existing course page for the specified tenant.
 //
 void
-CoursePagesAPI_patchCoursePageAsync(apiClient_t *apiClient, char *tenantId, char *pageId, char *api_version, char *x_api_version, list_t *operation);
+CoursePagesAPI_patchCoursePageAsync(apiClient_t *apiClient, char *tenantId, char *pageId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course page

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 //
 // Returns the total count of loyalty programs for the specified tenant with OData filter support.
 //
-int32_envelope_t* LoyaltyProgramsAPI_countLoyaltyProgramsAsync(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* LoyaltyProgramsAPI_countLoyaltyProgramsAsync(apiClient_t *apiClient, char *tenantId, loyalty_program_dto_collection_query_parameters_t *loyalty_program_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -27,6 +27,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**loyalty_program_dto_collection_query_parameters** | **[loyalty_program_dto_collection_query_parameters_t](loyalty_program_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -39,7 +40,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -146,7 +147,7 @@ No authorization required
 //
 // Retrieves a list of loyalty programs for the specified tenant with OData query support.
 //
-loyalty_program_dto_list_envelope_t* LoyaltyProgramsAPI_getLoyaltyProgramsAsync(apiClient_t *apiClient, char *tenantId);
+loyalty_program_dto_list_envelope_t* LoyaltyProgramsAPI_getLoyaltyProgramsAsync(apiClient_t *apiClient, char *tenantId, loyalty_program_dto_collection_query_parameters_t *loyalty_program_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -154,6 +155,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**loyalty_program_dto_collection_query_parameters** | **[loyalty_program_dto_collection_query_parameters_t](loyalty_program_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -166,7 +168,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -177,7 +179,7 @@ No authorization required
 //
 // Partially updates an existing loyalty program using a JSON Patch document.
 //
-empty_envelope_t* LoyaltyProgramsAPI_patchLoyaltyProgramAsync(apiClient_t *apiClient, char *tenantId, char *loyaltyProgramId, list_t *operation);
+empty_envelope_t* LoyaltyProgramsAPI_patchLoyaltyProgramAsync(apiClient_t *apiClient, char *tenantId, char *loyaltyProgramId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -186,7 +188,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **loyaltyProgramId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

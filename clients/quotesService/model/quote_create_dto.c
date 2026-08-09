@@ -66,6 +66,7 @@ quote_create_dto_t *quote_create_dto_create(
     char *individual_id,
     char *payment_term_id,
     char *organization_id,
+    char *receiver_tenant_id,
     char *first_name,
     char *last_name,
     char *company_name,
@@ -106,7 +107,6 @@ quote_create_dto_t *quote_create_dto_create(
     quotesservice_quote_create_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     char *cart_id,
     char *deal_unit_id,
-    char *receiver_tenant_id,
     char *effective_to,
     char *effective_from,
     quotesservice_quote_create_dto_QUOTESTATUS_e quote_status,
@@ -125,6 +125,7 @@ quote_create_dto_t *quote_create_dto_create(
     quote_create_dto_local_var->individual_id = individual_id;
     quote_create_dto_local_var->payment_term_id = payment_term_id;
     quote_create_dto_local_var->organization_id = organization_id;
+    quote_create_dto_local_var->receiver_tenant_id = receiver_tenant_id;
     quote_create_dto_local_var->first_name = first_name;
     quote_create_dto_local_var->last_name = last_name;
     quote_create_dto_local_var->company_name = company_name;
@@ -165,7 +166,6 @@ quote_create_dto_t *quote_create_dto_create(
     quote_create_dto_local_var->tax_calculation_method = tax_calculation_method;
     quote_create_dto_local_var->cart_id = cart_id;
     quote_create_dto_local_var->deal_unit_id = deal_unit_id;
-    quote_create_dto_local_var->receiver_tenant_id = receiver_tenant_id;
     quote_create_dto_local_var->effective_to = effective_to;
     quote_create_dto_local_var->effective_from = effective_from;
     quote_create_dto_local_var->quote_status = quote_status;
@@ -211,6 +211,10 @@ void quote_create_dto_free(quote_create_dto_t *quote_create_dto) {
     if (quote_create_dto->organization_id) {
         free(quote_create_dto->organization_id);
         quote_create_dto->organization_id = NULL;
+    }
+    if (quote_create_dto->receiver_tenant_id) {
+        free(quote_create_dto->receiver_tenant_id);
+        quote_create_dto->receiver_tenant_id = NULL;
     }
     if (quote_create_dto->first_name) {
         free(quote_create_dto->first_name);
@@ -312,10 +316,6 @@ void quote_create_dto_free(quote_create_dto_t *quote_create_dto) {
         free(quote_create_dto->deal_unit_id);
         quote_create_dto->deal_unit_id = NULL;
     }
-    if (quote_create_dto->receiver_tenant_id) {
-        free(quote_create_dto->receiver_tenant_id);
-        quote_create_dto->receiver_tenant_id = NULL;
-    }
     if (quote_create_dto->effective_to) {
         free(quote_create_dto->effective_to);
         quote_create_dto->effective_to = NULL;
@@ -404,6 +404,14 @@ cJSON *quote_create_dto_convertToJSON(quote_create_dto_t *quote_create_dto) {
     // quote_create_dto->organization_id
     if(quote_create_dto->organization_id) {
     if(cJSON_AddStringToObject(item, "organizationId", quote_create_dto->organization_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // quote_create_dto->receiver_tenant_id
+    if(quote_create_dto->receiver_tenant_id) {
+    if(cJSON_AddStringToObject(item, "receiverTenantId", quote_create_dto->receiver_tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -731,14 +739,6 @@ cJSON *quote_create_dto_convertToJSON(quote_create_dto_t *quote_create_dto) {
     }
 
 
-    // quote_create_dto->receiver_tenant_id
-    if(quote_create_dto->receiver_tenant_id) {
-    if(cJSON_AddStringToObject(item, "receiverTenantId", quote_create_dto->receiver_tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // quote_create_dto->effective_to
     if(quote_create_dto->effective_to) {
     if(cJSON_AddStringToObject(item, "effectiveTo", quote_create_dto->effective_to) == NULL) {
@@ -874,6 +874,15 @@ quote_create_dto_t *quote_create_dto_parseFromJSON(cJSON *quote_create_dtoJSON){
     cJSON *organization_id = cJSON_GetObjectItemCaseSensitive(quote_create_dtoJSON, "organizationId");
     if (organization_id) { 
     if(!cJSON_IsString(organization_id) && !cJSON_IsNull(organization_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // quote_create_dto->receiver_tenant_id
+    cJSON *receiver_tenant_id = cJSON_GetObjectItemCaseSensitive(quote_create_dtoJSON, "receiverTenantId");
+    if (receiver_tenant_id) { 
+    if(!cJSON_IsString(receiver_tenant_id) && !cJSON_IsNull(receiver_tenant_id))
     {
     goto end; //String
     }
@@ -1243,15 +1252,6 @@ quote_create_dto_t *quote_create_dto_parseFromJSON(cJSON *quote_create_dtoJSON){
     }
     }
 
-    // quote_create_dto->receiver_tenant_id
-    cJSON *receiver_tenant_id = cJSON_GetObjectItemCaseSensitive(quote_create_dtoJSON, "receiverTenantId");
-    if (receiver_tenant_id) { 
-    if(!cJSON_IsString(receiver_tenant_id) && !cJSON_IsNull(receiver_tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // quote_create_dto->effective_to
     cJSON *effective_to = cJSON_GetObjectItemCaseSensitive(quote_create_dtoJSON, "effectiveTo");
     if (effective_to) { 
@@ -1313,6 +1313,7 @@ quote_create_dto_t *quote_create_dto_parseFromJSON(cJSON *quote_create_dtoJSON){
         individual_id && !cJSON_IsNull(individual_id) ? strdup(individual_id->valuestring) : NULL,
         payment_term_id && !cJSON_IsNull(payment_term_id) ? strdup(payment_term_id->valuestring) : NULL,
         organization_id && !cJSON_IsNull(organization_id) ? strdup(organization_id->valuestring) : NULL,
+        receiver_tenant_id && !cJSON_IsNull(receiver_tenant_id) ? strdup(receiver_tenant_id->valuestring) : NULL,
         first_name && !cJSON_IsNull(first_name) ? strdup(first_name->valuestring) : NULL,
         last_name && !cJSON_IsNull(last_name) ? strdup(last_name->valuestring) : NULL,
         company_name && !cJSON_IsNull(company_name) ? strdup(company_name->valuestring) : NULL,
@@ -1353,7 +1354,6 @@ quote_create_dto_t *quote_create_dto_parseFromJSON(cJSON *quote_create_dtoJSON){
         tax_calculation_method ? tax_calculation_methodVariable : quotesservice_quote_create_dto_TAXCALCULATIONMETHOD_NULL,
         cart_id && !cJSON_IsNull(cart_id) ? strdup(cart_id->valuestring) : NULL,
         deal_unit_id && !cJSON_IsNull(deal_unit_id) ? strdup(deal_unit_id->valuestring) : NULL,
-        receiver_tenant_id && !cJSON_IsNull(receiver_tenant_id) ? strdup(receiver_tenant_id->valuestring) : NULL,
         effective_to && !cJSON_IsNull(effective_to) ? strdup(effective_to->valuestring) : NULL,
         effective_from && !cJSON_IsNull(effective_from) ? strdup(effective_from->valuestring) : NULL,
         quote_status ? quote_statusVariable : quotesservice_quote_create_dto_QUOTESTATUS_NULL,

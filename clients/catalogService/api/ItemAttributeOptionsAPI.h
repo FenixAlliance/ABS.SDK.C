@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_attribute_option_create_dto.h"
+#include "../model/item_attribute_option_dto_collection_query_parameters.h"
 #include "../model/item_attribute_option_dto_envelope.h"
 #include "../model/item_attribute_option_dto_list_envelope.h"
 #include "../model/item_attribute_option_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new item attribute option
@@ -44,7 +45,7 @@ ItemAttributeOptionsAPI_getItemAttributeOptionByIdAsync(apiClient_t *apiClient, 
 // Retrieves all item attribute options for the specified tenant using OData query options.
 //
 item_attribute_option_dto_list_envelope_t*
-ItemAttributeOptionsAPI_getItemAttributeOptionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemAttributeOptionsAPI_getItemAttributeOptionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_attribute_option_dto_collection_query_parameters_t *item_attribute_option_dto_collection_query_parameters);
 
 
 // Get item attribute options count
@@ -52,7 +53,7 @@ ItemAttributeOptionsAPI_getItemAttributeOptionsAsync(apiClient_t *apiClient, cha
 // Returns the count of item attribute options for the specified tenant.
 //
 int32_envelope_t*
-ItemAttributeOptionsAPI_getItemAttributeOptionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemAttributeOptionsAPI_getItemAttributeOptionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_attribute_option_dto_collection_query_parameters_t *item_attribute_option_dto_collection_query_parameters);
 
 
 // Patch an item attribute option
@@ -60,7 +61,7 @@ ItemAttributeOptionsAPI_getItemAttributeOptionsCountAsync(apiClient_t *apiClient
 // Partially updates an existing item attribute option for the specified tenant using a JSON Patch document.
 //
 empty_envelope_t*
-ItemAttributeOptionsAPI_patchItemAttributeOptionAsync(apiClient_t *apiClient, char *tenantId, char *itemAttributeOptionId, char *api_version, char *x_api_version, list_t *operation);
+ItemAttributeOptionsAPI_patchItemAttributeOptionAsync(apiClient_t *apiClient, char *tenantId, char *itemAttributeOptionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item attribute option

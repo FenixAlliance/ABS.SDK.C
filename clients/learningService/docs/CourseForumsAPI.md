@@ -119,7 +119,7 @@ No authorization required
 //
 // Retrieves all course forums for the specified tenant.
 //
-list_t* CourseForumsAPI_getCourseForumsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+list_t* CourseForumsAPI_getCourseForumsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_forum_dto_collection_query_parameters_t *course_forum_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -129,6 +129,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_forum_dto_collection_query_parameters** | **[course_forum_dto_collection_query_parameters_t](course_forum_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -141,7 +142,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -152,7 +153,7 @@ No authorization required
 //
 // Returns the count of course forums for the specified tenant.
 //
-int* CourseForumsAPI_getCourseForumsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int* CourseForumsAPI_getCourseForumsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_forum_dto_collection_query_parameters_t *course_forum_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -162,6 +163,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_forum_dto_collection_query_parameters** | **[course_forum_dto_collection_query_parameters_t](course_forum_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -175,7 +177,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -186,7 +188,7 @@ No authorization required
 //
 // Partially updates an existing course forum.
 //
-void CourseForumsAPI_patchCourseForumAsync(apiClient_t *apiClient, char *tenantId, char *forumId, char *api_version, char *x_api_version, list_t *operation);
+void CourseForumsAPI_patchCourseForumAsync(apiClient_t *apiClient, char *tenantId, char *forumId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -197,7 +199,7 @@ Name | Type | Description  | Notes
 **forumId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

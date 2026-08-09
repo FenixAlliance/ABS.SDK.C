@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/item_image_create_dto.h"
+#include "../model/item_image_dto_collection_query_parameters.h"
 #include "../model/item_image_dto_envelope.h"
 #include "../model/item_image_dto_list_envelope.h"
 #include "../model/item_image_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new item image
@@ -42,7 +43,7 @@ ItemImagesAPI_getItemImageByIdAsync(apiClient_t *apiClient, char *itemImageId, c
 // Retrieves all item images for the specified tenant using OData query options.
 //
 item_image_dto_list_envelope_t*
-ItemImagesAPI_getItemImagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemImagesAPI_getItemImagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_image_dto_collection_query_parameters_t *item_image_dto_collection_query_parameters);
 
 
 // Patch an item image
@@ -50,7 +51,7 @@ ItemImagesAPI_getItemImagesAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Partially updates an existing item image for the specified tenant using a JSON Patch document.
 //
 void
-ItemImagesAPI_patchItemImageAsync(apiClient_t *apiClient, char *tenantId, char *itemImageId, char *api_version, char *x_api_version, list_t *operation);
+ItemImagesAPI_patchItemImageAsync(apiClient_t *apiClient, char *tenantId, char *itemImageId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item image

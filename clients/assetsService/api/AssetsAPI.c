@@ -1645,13 +1645,13 @@ end:
 // Retrieves all asset categories for the authenticated tenant.
 //
 asset_category_dto_list_envelope_t*
-AssetsAPI_getAssetAssetCategories(apiClient_t *apiClient, char *tenantId)
+AssetsAPI_getAssetAssetCategories(apiClient_t *apiClient, char *tenantId, asset_category_dto_collection_query_parameters_t *asset_category_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1673,8 +1673,19 @@ AssetsAPI_getAssetAssetCategories(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_category_dto_collection_query_parameters = NULL;
+    if (asset_category_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_category_dto_collection_query_parameters = asset_category_dto_collection_query_parameters_convertToJSON(asset_category_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_category_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1715,8 +1726,13 @@ AssetsAPI_getAssetAssetCategories(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_asset_category_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_category_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_category_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1741,13 +1757,13 @@ end:
 // Returns the total number of asset categories for the authenticated tenant.
 //
 int32_envelope_t*
-AssetsAPI_getAssetAssetCategoriesCount(apiClient_t *apiClient, char *tenantId)
+AssetsAPI_getAssetAssetCategoriesCount(apiClient_t *apiClient, char *tenantId, asset_category_dto_collection_query_parameters_t *asset_category_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1769,8 +1785,19 @@ AssetsAPI_getAssetAssetCategoriesCount(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_category_dto_collection_query_parameters = NULL;
+    if (asset_category_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_category_dto_collection_query_parameters = asset_category_dto_collection_query_parameters_convertToJSON(asset_category_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_category_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1811,8 +1838,13 @@ AssetsAPI_getAssetAssetCategoriesCount(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_asset_category_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_category_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_category_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2087,13 +2119,13 @@ end:
 // Retrieves all depreciation records for the specified asset.
 //
 asset_depreciation_record_dto_list_envelope_t*
-AssetsAPI_getAssetDepreciationRecords(apiClient_t *apiClient, char *tenantId, char *assetId)
+AssetsAPI_getAssetDepreciationRecords(apiClient_t *apiClient, char *tenantId, char *assetId, asset_depreciation_record_dto_collection_query_parameters_t *asset_depreciation_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2132,8 +2164,19 @@ AssetsAPI_getAssetDepreciationRecords(apiClient_t *apiClient, char *tenantId, ch
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters = NULL;
+    if (asset_depreciation_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters = asset_depreciation_record_dto_collection_query_parameters_convertToJSON(asset_depreciation_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2174,9 +2217,14 @@ AssetsAPI_getAssetDepreciationRecords(apiClient_t *apiClient, char *tenantId, ch
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_assetId);
+    if (localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2201,13 +2249,13 @@ end:
 // Returns the total number of depreciation records for the specified asset.
 //
 int32_envelope_t*
-AssetsAPI_getAssetDepreciationRecordsCount(apiClient_t *apiClient, char *tenantId, char *assetId)
+AssetsAPI_getAssetDepreciationRecordsCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_depreciation_record_dto_collection_query_parameters_t *asset_depreciation_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2246,8 +2294,19 @@ AssetsAPI_getAssetDepreciationRecordsCount(apiClient_t *apiClient, char *tenantI
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters = NULL;
+    if (asset_depreciation_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters = asset_depreciation_record_dto_collection_query_parameters_convertToJSON(asset_depreciation_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2288,9 +2347,14 @@ AssetsAPI_getAssetDepreciationRecordsCount(apiClient_t *apiClient, char *tenantI
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_assetId);
+    if (localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_depreciation_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2447,13 +2511,13 @@ end:
 // Retrieves all repair records for the specified asset.
 //
 asset_repair_dto_list_envelope_t*
-AssetsAPI_getAssetRepairs(apiClient_t *apiClient, char *tenantId, char *assetId)
+AssetsAPI_getAssetRepairs(apiClient_t *apiClient, char *tenantId, char *assetId, asset_repair_dto_collection_query_parameters_t *asset_repair_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2492,8 +2556,19 @@ AssetsAPI_getAssetRepairs(apiClient_t *apiClient, char *tenantId, char *assetId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_repair_dto_collection_query_parameters = NULL;
+    if (asset_repair_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_repair_dto_collection_query_parameters = asset_repair_dto_collection_query_parameters_convertToJSON(asset_repair_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_repair_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2534,9 +2609,14 @@ AssetsAPI_getAssetRepairs(apiClient_t *apiClient, char *tenantId, char *assetId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_assetId);
+    if (localVarSingleItemJSON_asset_repair_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_repair_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_repair_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2561,13 +2641,13 @@ end:
 // Returns the total number of repair records for the specified asset.
 //
 int32_envelope_t*
-AssetsAPI_getAssetRepairsCount(apiClient_t *apiClient, char *tenantId, char *assetId)
+AssetsAPI_getAssetRepairsCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_repair_dto_collection_query_parameters_t *asset_repair_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2606,8 +2686,19 @@ AssetsAPI_getAssetRepairsCount(apiClient_t *apiClient, char *tenantId, char *ass
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_repair_dto_collection_query_parameters = NULL;
+    if (asset_repair_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_repair_dto_collection_query_parameters = asset_repair_dto_collection_query_parameters_convertToJSON(asset_repair_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_repair_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2648,9 +2739,14 @@ AssetsAPI_getAssetRepairsCount(apiClient_t *apiClient, char *tenantId, char *ass
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_assetId);
+    if (localVarSingleItemJSON_asset_repair_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_repair_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_repair_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2807,13 +2903,13 @@ end:
 // Retrieves all transfer records for the specified asset.
 //
 asset_transfer_dto_list_envelope_t*
-AssetsAPI_getAssetTransfers(apiClient_t *apiClient, char *tenantId, char *assetId)
+AssetsAPI_getAssetTransfers(apiClient_t *apiClient, char *tenantId, char *assetId, asset_transfer_dto_collection_query_parameters_t *asset_transfer_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2852,8 +2948,19 @@ AssetsAPI_getAssetTransfers(apiClient_t *apiClient, char *tenantId, char *assetI
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters = NULL;
+    if (asset_transfer_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters = asset_transfer_dto_collection_query_parameters_convertToJSON(asset_transfer_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2894,9 +3001,14 @@ AssetsAPI_getAssetTransfers(apiClient_t *apiClient, char *tenantId, char *assetI
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_assetId);
+    if (localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2921,13 +3033,13 @@ end:
 // Returns the total number of transfer records for the specified asset.
 //
 int32_envelope_t*
-AssetsAPI_getAssetTransfersCount(apiClient_t *apiClient, char *tenantId, char *assetId)
+AssetsAPI_getAssetTransfersCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_transfer_dto_collection_query_parameters_t *asset_transfer_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2966,8 +3078,19 @@ AssetsAPI_getAssetTransfersCount(apiClient_t *apiClient, char *tenantId, char *a
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters = NULL;
+    if (asset_transfer_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters = asset_transfer_dto_collection_query_parameters_convertToJSON(asset_transfer_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3008,9 +3131,14 @@ AssetsAPI_getAssetTransfersCount(apiClient_t *apiClient, char *tenantId, char *a
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_assetId);
+    if (localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_transfer_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3167,13 +3295,13 @@ end:
 // Retrieves all value amendment records for the specified asset.
 //
 asset_value_amend_dto_list_envelope_t*
-AssetsAPI_getAssetValueAmends(apiClient_t *apiClient, char *tenantId, char *assetId)
+AssetsAPI_getAssetValueAmends(apiClient_t *apiClient, char *tenantId, char *assetId, asset_value_amend_dto_collection_query_parameters_t *asset_value_amend_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3212,8 +3340,19 @@ AssetsAPI_getAssetValueAmends(apiClient_t *apiClient, char *tenantId, char *asse
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters = NULL;
+    if (asset_value_amend_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters = asset_value_amend_dto_collection_query_parameters_convertToJSON(asset_value_amend_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3254,9 +3393,14 @@ AssetsAPI_getAssetValueAmends(apiClient_t *apiClient, char *tenantId, char *asse
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_assetId);
+    if (localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3281,13 +3425,13 @@ end:
 // Returns the total number of value amendment records for the specified asset.
 //
 int32_envelope_t*
-AssetsAPI_getAssetValueAmendsCount(apiClient_t *apiClient, char *tenantId, char *assetId)
+AssetsAPI_getAssetValueAmendsCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_value_amend_dto_collection_query_parameters_t *asset_value_amend_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3326,8 +3470,19 @@ AssetsAPI_getAssetValueAmendsCount(apiClient_t *apiClient, char *tenantId, char 
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters = NULL;
+    if (asset_value_amend_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters = asset_value_amend_dto_collection_query_parameters_convertToJSON(asset_value_amend_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3368,9 +3523,14 @@ AssetsAPI_getAssetValueAmendsCount(apiClient_t *apiClient, char *tenantId, char 
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_assetId);
+    if (localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_value_amend_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3395,13 +3555,13 @@ end:
 // Retrieves all assets for the authenticated tenant with optional filtering.
 //
 asset_dto_list_envelope_t*
-AssetsAPI_getAssets(apiClient_t *apiClient, char *tenantId)
+AssetsAPI_getAssets(apiClient_t *apiClient, char *tenantId, asset_dto_collection_query_parameters_t *asset_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3423,8 +3583,19 @@ AssetsAPI_getAssets(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_dto_collection_query_parameters = NULL;
+    if (asset_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_dto_collection_query_parameters = asset_dto_collection_query_parameters_convertToJSON(asset_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3465,8 +3636,13 @@ AssetsAPI_getAssets(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_asset_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3491,13 +3667,13 @@ end:
 // Returns the total number of assets for the authenticated tenant.
 //
 int32_envelope_t*
-AssetsAPI_getAssetsCount(apiClient_t *apiClient, char *tenantId)
+AssetsAPI_getAssetsCount(apiClient_t *apiClient, char *tenantId, asset_dto_collection_query_parameters_t *asset_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3519,8 +3695,19 @@ AssetsAPI_getAssetsCount(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_asset_dto_collection_query_parameters = NULL;
+    if (asset_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_asset_dto_collection_query_parameters = asset_dto_collection_query_parameters_convertToJSON(asset_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_asset_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3561,8 +3748,13 @@ AssetsAPI_getAssetsCount(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_asset_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_asset_dto_collection_query_parameters);
+        localVarSingleItemJSON_asset_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3587,7 +3779,7 @@ end:
 // Applies a JSON Patch document to an existing asset for the authenticated tenant.
 //
 empty_envelope_t*
-AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list_t *operation)
+AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -3635,14 +3827,14 @@ AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -3650,16 +3842,16 @@ AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -3716,17 +3908,17 @@ AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_assetId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -3753,7 +3945,7 @@ end:
 // Applies a JSON Patch document to an existing asset category for the authenticated tenant.
 //
 empty_envelope_t*
-AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *operation)
+AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -3801,14 +3993,14 @@ AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -3816,16 +4008,16 @@ AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -3882,17 +4074,17 @@ AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_categoryId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -3919,7 +4111,7 @@ end:
 // Applies a JSON Patch document to an existing depreciation record for the specified asset.
 //
 empty_envelope_t*
-AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, char *assetId, char *recordId, list_t *operation)
+AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, char *assetId, char *recordId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -3984,14 +4176,14 @@ AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, c
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -3999,16 +4191,16 @@ AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, c
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -4066,17 +4258,17 @@ AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, c
     free(localVarPath);
     free(localVarToReplace_assetId);
     free(localVarToReplace_recordId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -4103,7 +4295,7 @@ end:
 // Applies a JSON Patch document to an existing repair record for the specified asset.
 //
 empty_envelope_t*
-AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId, char *repairId, list_t *operation)
+AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId, char *repairId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -4168,14 +4360,14 @@ AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -4183,16 +4375,16 @@ AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -4250,17 +4442,17 @@ AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId
     free(localVarPath);
     free(localVarToReplace_assetId);
     free(localVarToReplace_repairId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -4287,7 +4479,7 @@ end:
 // Applies a JSON Patch document to an existing transfer record for the specified asset.
 //
 empty_envelope_t*
-AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *assetId, char *transferId, list_t *operation)
+AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *assetId, char *transferId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -4352,14 +4544,14 @@ AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *asset
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -4367,16 +4559,16 @@ AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *asset
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -4434,17 +4626,17 @@ AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *asset
     free(localVarPath);
     free(localVarToReplace_assetId);
     free(localVarToReplace_transferId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -4471,7 +4663,7 @@ end:
 // Applies a JSON Patch document to an existing value amendment record for the specified asset.
 //
 empty_envelope_t*
-AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *assetId, char *amendId, list_t *operation)
+AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *assetId, char *amendId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -4536,14 +4728,14 @@ AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *ass
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -4551,16 +4743,16 @@ AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *ass
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -4618,17 +4810,17 @@ AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *ass
     free(localVarPath);
     free(localVarToReplace_assetId);
     free(localVarToReplace_amendId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

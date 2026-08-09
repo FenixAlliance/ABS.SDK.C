@@ -187,7 +187,7 @@ No authorization required
 ```c
 // Get blocks for a blockchain
 //
-blockchain_block_dto_list_envelope_t* BlockchainsAPI_getBlockchainBlocksAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version);
+blockchain_block_dto_list_envelope_t* BlockchainsAPI_getBlockchainBlocksAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version, blockchain_block_dto_collection_query_parameters_t *blockchain_block_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -198,6 +198,7 @@ Name | Type | Description  | Notes
 **blockchainId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**blockchain_block_dto_collection_query_parameters** | **[blockchain_block_dto_collection_query_parameters_t](blockchain_block_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -210,7 +211,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -219,7 +220,7 @@ No authorization required
 ```c
 // Get block count for a blockchain
 //
-int32_envelope_t* BlockchainsAPI_getBlockchainBlocksCountAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version);
+int32_envelope_t* BlockchainsAPI_getBlockchainBlocksCountAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version, blockchain_block_dto_collection_query_parameters_t *blockchain_block_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -230,6 +231,7 @@ Name | Type | Description  | Notes
 **blockchainId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**blockchain_block_dto_collection_query_parameters** | **[blockchain_block_dto_collection_query_parameters_t](blockchain_block_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -242,7 +244,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -287,7 +289,7 @@ No authorization required
 //
 // Retrieves all blockchains for the specified tenant.
 //
-blockchain_dto_list_envelope_t* BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+blockchain_dto_list_envelope_t* BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, blockchain_dto_collection_query_parameters_t *blockchain_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -297,6 +299,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**blockchain_dto_collection_query_parameters** | **[blockchain_dto_collection_query_parameters_t](blockchain_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -309,7 +312,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -320,7 +323,7 @@ No authorization required
 //
 // Returns the count of blockchains for the specified tenant.
 //
-int32_envelope_t* BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, blockchain_dto_collection_query_parameters_t *blockchain_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -330,6 +333,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**blockchain_dto_collection_query_parameters** | **[blockchain_dto_collection_query_parameters_t](blockchain_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -342,7 +346,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -353,7 +357,7 @@ No authorization required
 //
 // Patch a blockchain
 //
-empty_envelope_t* BlockchainsAPI_patchBlockchainAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BlockchainsAPI_patchBlockchainAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -364,7 +368,7 @@ Name | Type | Description  | Notes
 **id** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -388,7 +392,7 @@ No authorization required
 //
 // Patch a blockchain block
 //
-empty_envelope_t* BlockchainsAPI_patchBlockchainBlockAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *blockId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BlockchainsAPI_patchBlockchainBlockAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *blockId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -400,7 +404,7 @@ Name | Type | Description  | Notes
 **blockId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/schedule_create_dto.h"
+#include "../model/schedule_dto_collection_query_parameters.h"
 #include "../model/schedule_dto_envelope.h"
 #include "../model/schedule_dto_list_envelope.h"
 #include "../model/schedule_update_dto.h"
@@ -44,7 +45,7 @@ SchedulesAPI_getScheduleByIdAsync(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves schedules for the specified tenant.
 //
 schedule_dto_list_envelope_t*
-SchedulesAPI_getSchedulesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SchedulesAPI_getSchedulesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, schedule_dto_collection_query_parameters_t *schedule_dto_collection_query_parameters);
 
 
 // Count schedules
@@ -52,7 +53,7 @@ SchedulesAPI_getSchedulesAsync(apiClient_t *apiClient, char *tenantId, char *api
 // Counts schedules for the specified tenant.
 //
 int32_envelope_t*
-SchedulesAPI_getSchedulesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SchedulesAPI_getSchedulesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, schedule_dto_collection_query_parameters_t *schedule_dto_collection_query_parameters);
 
 
 // Patch a schedule
@@ -60,7 +61,7 @@ SchedulesAPI_getSchedulesCountAsync(apiClient_t *apiClient, char *tenantId, char
 // Partially updates an existing schedule for the specified tenant.
 //
 empty_envelope_t*
-SchedulesAPI_patchScheduleAsync(apiClient_t *apiClient, char *tenantId, char *scheduleId, char *api_version, char *x_api_version, list_t *operation);
+SchedulesAPI_patchScheduleAsync(apiClient_t *apiClient, char *tenantId, char *scheduleId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a schedule

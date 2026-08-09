@@ -133,7 +133,7 @@ No authorization required
 
 # **InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPatch**
 ```c
-empty_envelope_t* InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPatch(apiClient_t *apiClient, char *tenantId, char *instructorProfileId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPatch(apiClient_t *apiClient, char *tenantId, char *instructorProfileId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 **instructorProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 //
 // Counts all web page tags for the specified tenant.
 //
-int32_envelope_t* WebPageTagsAPI_countWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* WebPageTagsAPI_countWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_page_tag_dto_collection_query_parameters_t *web_page_tag_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -29,6 +29,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**web_page_tag_dto_collection_query_parameters** | **[web_page_tag_dto_collection_query_parameters_t](web_page_tag_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -41,7 +42,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -154,7 +155,7 @@ No authorization required
 //
 // Retrieves all web page tags for the specified tenant.
 //
-web_page_tag_dto_list_envelope_t* WebPageTagsAPI_getWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+web_page_tag_dto_list_envelope_t* WebPageTagsAPI_getWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_page_tag_dto_collection_query_parameters_t *web_page_tag_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -164,6 +165,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**web_page_tag_dto_collection_query_parameters** | **[web_page_tag_dto_collection_query_parameters_t](web_page_tag_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -176,7 +178,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -187,7 +189,7 @@ No authorization required
 //
 // Partially updates an existing web page tag for the specified tenant.
 //
-empty_envelope_t* WebPageTagsAPI_patchWebPageTagAsync(apiClient_t *apiClient, char *tenantId, char *webPageTagId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* WebPageTagsAPI_patchWebPageTagAsync(apiClient_t *apiClient, char *tenantId, char *webPageTagId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -198,7 +200,7 @@ Name | Type | Description  | Notes
 **webPageTagId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

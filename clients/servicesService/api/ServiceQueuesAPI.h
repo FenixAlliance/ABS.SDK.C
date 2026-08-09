@@ -8,8 +8,9 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/service_queue_create_dto.h"
+#include "../model/service_queue_dto_collection_query_parameters.h"
 #include "../model/service_queue_dto_envelope.h"
 #include "../model/service_queue_dto_i_read_only_list_envelope.h"
 #include "../model/service_queue_update_dto.h"
@@ -44,7 +45,7 @@ ServiceQueuesAPI_getServiceQueueByIdAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves all service queues for the specified tenant.
 //
 service_queue_dto_i_read_only_list_envelope_t*
-ServiceQueuesAPI_getServiceQueuesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServiceQueuesAPI_getServiceQueuesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_queue_dto_collection_query_parameters_t *service_queue_dto_collection_query_parameters);
 
 
 // Get service queues count
@@ -52,7 +53,7 @@ ServiceQueuesAPI_getServiceQueuesAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of service queues for the specified tenant.
 //
 int32_envelope_t*
-ServiceQueuesAPI_getServiceQueuesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServiceQueuesAPI_getServiceQueuesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_queue_dto_collection_query_parameters_t *service_queue_dto_collection_query_parameters);
 
 
 // Patch a service queue
@@ -60,7 +61,7 @@ ServiceQueuesAPI_getServiceQueuesCountAsync(apiClient_t *apiClient, char *tenant
 // Partially updates an existing service queue using a JSON Patch document.
 //
 envelope_t*
-ServiceQueuesAPI_patchServiceQueueAsync(apiClient_t *apiClient, char *tenantId, char *serviceQueueId, char *api_version, char *x_api_version, list_t *operation);
+ServiceQueuesAPI_patchServiceQueueAsync(apiClient_t *apiClient, char *tenantId, char *serviceQueueId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a service queue

@@ -1590,13 +1590,13 @@ end:
 }
 
 file_upload_dto_envelope_t*
-FilesAPI_getFilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+FilesAPI_getFilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, int *top, int *skip, int *count, char *filter, char *orderBy, char *search, char *select, char *expand, int *isEmpty)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
-    list_t    *localVarFormParameters = NULL;
+    list_t    *localVarFormParameters = list_createList();
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1642,8 +1642,121 @@ FilesAPI_getFilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // form parameters
+    char *keyForm_top = NULL;
+    int valueForm_top = 0;
+    keyValuePair_t *keyPairForm_top = 0;
+    if (top != NULL)
+    {
+        keyForm_top = strdup("top");
+        valueForm_top = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueForm_top, MAX_NUMBER_LENGTH, "%d", *top);
+        keyPairForm_top = keyValuePair_create(keyForm_top,&valueForm_top);
+        list_addElement(localVarFormParameters,keyPairForm_top);
+    }
+
+    // form parameters
+    char *keyForm_skip = NULL;
+    int valueForm_skip = 0;
+    keyValuePair_t *keyPairForm_skip = 0;
+    if (skip != NULL)
+    {
+        keyForm_skip = strdup("skip");
+        valueForm_skip = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueForm_skip, MAX_NUMBER_LENGTH, "%d", *skip);
+        keyPairForm_skip = keyValuePair_create(keyForm_skip,&valueForm_skip);
+        list_addElement(localVarFormParameters,keyPairForm_skip);
+    }
+
+    // form parameters
+    char *keyForm_count = NULL;
+    int valueForm_count = 0;
+    keyValuePair_t *keyPairForm_count = 0;
+    if (count != NULL)
+    {
+        keyForm_count = strdup("count");
+        valueForm_count = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueForm_count, MAX_NUMBER_LENGTH, "%d", *count);
+        keyPairForm_count = keyValuePair_create(keyForm_count,&valueForm_count);
+        list_addElement(localVarFormParameters,keyPairForm_count);
+    }
+
+    // form parameters
+    char *keyForm_filter = NULL;
+    char * valueForm_filter = 0;
+    keyValuePair_t *keyPairForm_filter = 0;
+    if (filter != NULL)
+    {
+        keyForm_filter = strdup("filter");
+        valueForm_filter = strdup((filter));
+        keyPairForm_filter = keyValuePair_create(keyForm_filter,valueForm_filter);
+        list_addElement(localVarFormParameters,keyPairForm_filter);
+    }
+
+    // form parameters
+    char *keyForm_orderBy = NULL;
+    char * valueForm_orderBy = 0;
+    keyValuePair_t *keyPairForm_orderBy = 0;
+    if (orderBy != NULL)
+    {
+        keyForm_orderBy = strdup("orderBy");
+        valueForm_orderBy = strdup((orderBy));
+        keyPairForm_orderBy = keyValuePair_create(keyForm_orderBy,valueForm_orderBy);
+        list_addElement(localVarFormParameters,keyPairForm_orderBy);
+    }
+
+    // form parameters
+    char *keyForm_search = NULL;
+    char * valueForm_search = 0;
+    keyValuePair_t *keyPairForm_search = 0;
+    if (search != NULL)
+    {
+        keyForm_search = strdup("search");
+        valueForm_search = strdup((search));
+        keyPairForm_search = keyValuePair_create(keyForm_search,valueForm_search);
+        list_addElement(localVarFormParameters,keyPairForm_search);
+    }
+
+    // form parameters
+    char *keyForm_select = NULL;
+    char * valueForm_select = 0;
+    keyValuePair_t *keyPairForm_select = 0;
+    if (select != NULL)
+    {
+        keyForm_select = strdup("select");
+        valueForm_select = strdup((select));
+        keyPairForm_select = keyValuePair_create(keyForm_select,valueForm_select);
+        list_addElement(localVarFormParameters,keyPairForm_select);
+    }
+
+    // form parameters
+    char *keyForm_expand = NULL;
+    char * valueForm_expand = 0;
+    keyValuePair_t *keyPairForm_expand = 0;
+    if (expand != NULL)
+    {
+        keyForm_expand = strdup("expand");
+        valueForm_expand = strdup((expand));
+        keyPairForm_expand = keyValuePair_create(keyForm_expand,valueForm_expand);
+        list_addElement(localVarFormParameters,keyPairForm_expand);
+    }
+
+    // form parameters
+    char *keyForm_isEmpty = NULL;
+    int valueForm_isEmpty = 0;
+    keyValuePair_t *keyPairForm_isEmpty = 0;
+    if (isEmpty != NULL)
+    {
+        keyForm_isEmpty = strdup("isEmpty");
+        valueForm_isEmpty = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueForm_isEmpty, MAX_NUMBER_LENGTH, "%d", *isEmpty);
+        keyPairForm_isEmpty = keyValuePair_create(keyForm_isEmpty,&valueForm_isEmpty);
+        list_addElement(localVarFormParameters,keyPairForm_isEmpty);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"image/png"); //produces
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1682,9 +1795,9 @@ FilesAPI_getFilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version
     }
     list_freeList(localVarQueryParameters);
     list_freeList(localVarHeaderParameters);
-    
+    list_freeList(localVarFormParameters);
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1719,6 +1832,71 @@ FilesAPI_getFilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version
         keyValuePair_free(keyPairQuery_api_version);
         keyPairQuery_api_version = NULL;
     }
+    if (keyForm_top) {
+        free(keyForm_top);
+        keyForm_top = NULL;
+    }
+    free(keyPairForm_top);
+    if (keyForm_skip) {
+        free(keyForm_skip);
+        keyForm_skip = NULL;
+    }
+    free(keyPairForm_skip);
+    if (keyForm_count) {
+        free(keyForm_count);
+        keyForm_count = NULL;
+    }
+    free(keyPairForm_count);
+    if (keyForm_filter) {
+        free(keyForm_filter);
+        keyForm_filter = NULL;
+    }
+    if (valueForm_filter) {
+        free(valueForm_filter);
+        valueForm_filter = NULL;
+    }
+    free(keyPairForm_filter);
+    if (keyForm_orderBy) {
+        free(keyForm_orderBy);
+        keyForm_orderBy = NULL;
+    }
+    if (valueForm_orderBy) {
+        free(valueForm_orderBy);
+        valueForm_orderBy = NULL;
+    }
+    free(keyPairForm_orderBy);
+    if (keyForm_search) {
+        free(keyForm_search);
+        keyForm_search = NULL;
+    }
+    if (valueForm_search) {
+        free(valueForm_search);
+        valueForm_search = NULL;
+    }
+    free(keyPairForm_search);
+    if (keyForm_select) {
+        free(keyForm_select);
+        keyForm_select = NULL;
+    }
+    if (valueForm_select) {
+        free(valueForm_select);
+        valueForm_select = NULL;
+    }
+    free(keyPairForm_select);
+    if (keyForm_expand) {
+        free(keyForm_expand);
+        keyForm_expand = NULL;
+    }
+    if (valueForm_expand) {
+        free(valueForm_expand);
+        valueForm_expand = NULL;
+    }
+    free(keyPairForm_expand);
+    if (keyForm_isEmpty) {
+        free(keyForm_isEmpty);
+        keyForm_isEmpty = NULL;
+    }
+    free(keyPairForm_isEmpty);
     return elementToReturn;
 end:
     free(localVarPath);
@@ -1727,13 +1905,13 @@ end:
 }
 
 long*
-FilesAPI_getFilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+FilesAPI_getFilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, int *top, int *skip, int *count, char *filter, char *orderBy, char *search, char *select, char *expand, int *isEmpty)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
-    list_t    *localVarFormParameters = NULL;
+    list_t    *localVarFormParameters = list_createList();
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1779,8 +1957,121 @@ FilesAPI_getFilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_ve
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // form parameters
+    char *keyForm_top = NULL;
+    int valueForm_top = 0;
+    keyValuePair_t *keyPairForm_top = 0;
+    if (top != NULL)
+    {
+        keyForm_top = strdup("top");
+        valueForm_top = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueForm_top, MAX_NUMBER_LENGTH, "%d", *top);
+        keyPairForm_top = keyValuePair_create(keyForm_top,&valueForm_top);
+        list_addElement(localVarFormParameters,keyPairForm_top);
+    }
+
+    // form parameters
+    char *keyForm_skip = NULL;
+    int valueForm_skip = 0;
+    keyValuePair_t *keyPairForm_skip = 0;
+    if (skip != NULL)
+    {
+        keyForm_skip = strdup("skip");
+        valueForm_skip = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueForm_skip, MAX_NUMBER_LENGTH, "%d", *skip);
+        keyPairForm_skip = keyValuePair_create(keyForm_skip,&valueForm_skip);
+        list_addElement(localVarFormParameters,keyPairForm_skip);
+    }
+
+    // form parameters
+    char *keyForm_count = NULL;
+    int valueForm_count = 0;
+    keyValuePair_t *keyPairForm_count = 0;
+    if (count != NULL)
+    {
+        keyForm_count = strdup("count");
+        valueForm_count = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueForm_count, MAX_NUMBER_LENGTH, "%d", *count);
+        keyPairForm_count = keyValuePair_create(keyForm_count,&valueForm_count);
+        list_addElement(localVarFormParameters,keyPairForm_count);
+    }
+
+    // form parameters
+    char *keyForm_filter = NULL;
+    char * valueForm_filter = 0;
+    keyValuePair_t *keyPairForm_filter = 0;
+    if (filter != NULL)
+    {
+        keyForm_filter = strdup("filter");
+        valueForm_filter = strdup((filter));
+        keyPairForm_filter = keyValuePair_create(keyForm_filter,valueForm_filter);
+        list_addElement(localVarFormParameters,keyPairForm_filter);
+    }
+
+    // form parameters
+    char *keyForm_orderBy = NULL;
+    char * valueForm_orderBy = 0;
+    keyValuePair_t *keyPairForm_orderBy = 0;
+    if (orderBy != NULL)
+    {
+        keyForm_orderBy = strdup("orderBy");
+        valueForm_orderBy = strdup((orderBy));
+        keyPairForm_orderBy = keyValuePair_create(keyForm_orderBy,valueForm_orderBy);
+        list_addElement(localVarFormParameters,keyPairForm_orderBy);
+    }
+
+    // form parameters
+    char *keyForm_search = NULL;
+    char * valueForm_search = 0;
+    keyValuePair_t *keyPairForm_search = 0;
+    if (search != NULL)
+    {
+        keyForm_search = strdup("search");
+        valueForm_search = strdup((search));
+        keyPairForm_search = keyValuePair_create(keyForm_search,valueForm_search);
+        list_addElement(localVarFormParameters,keyPairForm_search);
+    }
+
+    // form parameters
+    char *keyForm_select = NULL;
+    char * valueForm_select = 0;
+    keyValuePair_t *keyPairForm_select = 0;
+    if (select != NULL)
+    {
+        keyForm_select = strdup("select");
+        valueForm_select = strdup((select));
+        keyPairForm_select = keyValuePair_create(keyForm_select,valueForm_select);
+        list_addElement(localVarFormParameters,keyPairForm_select);
+    }
+
+    // form parameters
+    char *keyForm_expand = NULL;
+    char * valueForm_expand = 0;
+    keyValuePair_t *keyPairForm_expand = 0;
+    if (expand != NULL)
+    {
+        keyForm_expand = strdup("expand");
+        valueForm_expand = strdup((expand));
+        keyPairForm_expand = keyValuePair_create(keyForm_expand,valueForm_expand);
+        list_addElement(localVarFormParameters,keyPairForm_expand);
+    }
+
+    // form parameters
+    char *keyForm_isEmpty = NULL;
+    int valueForm_isEmpty = 0;
+    keyValuePair_t *keyPairForm_isEmpty = 0;
+    if (isEmpty != NULL)
+    {
+        keyForm_isEmpty = strdup("isEmpty");
+        valueForm_isEmpty = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueForm_isEmpty, MAX_NUMBER_LENGTH, "%d", *isEmpty);
+        keyPairForm_isEmpty = keyValuePair_create(keyForm_isEmpty,&valueForm_isEmpty);
+        list_addElement(localVarFormParameters,keyPairForm_isEmpty);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"image/png"); //produces
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1813,9 +2104,9 @@ FilesAPI_getFilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_ve
     }
     list_freeList(localVarQueryParameters);
     list_freeList(localVarHeaderParameters);
-    
+    list_freeList(localVarFormParameters);
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1850,6 +2141,71 @@ FilesAPI_getFilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_ve
         keyValuePair_free(keyPairQuery_api_version);
         keyPairQuery_api_version = NULL;
     }
+    if (keyForm_top) {
+        free(keyForm_top);
+        keyForm_top = NULL;
+    }
+    free(keyPairForm_top);
+    if (keyForm_skip) {
+        free(keyForm_skip);
+        keyForm_skip = NULL;
+    }
+    free(keyPairForm_skip);
+    if (keyForm_count) {
+        free(keyForm_count);
+        keyForm_count = NULL;
+    }
+    free(keyPairForm_count);
+    if (keyForm_filter) {
+        free(keyForm_filter);
+        keyForm_filter = NULL;
+    }
+    if (valueForm_filter) {
+        free(valueForm_filter);
+        valueForm_filter = NULL;
+    }
+    free(keyPairForm_filter);
+    if (keyForm_orderBy) {
+        free(keyForm_orderBy);
+        keyForm_orderBy = NULL;
+    }
+    if (valueForm_orderBy) {
+        free(valueForm_orderBy);
+        valueForm_orderBy = NULL;
+    }
+    free(keyPairForm_orderBy);
+    if (keyForm_search) {
+        free(keyForm_search);
+        keyForm_search = NULL;
+    }
+    if (valueForm_search) {
+        free(valueForm_search);
+        valueForm_search = NULL;
+    }
+    free(keyPairForm_search);
+    if (keyForm_select) {
+        free(keyForm_select);
+        keyForm_select = NULL;
+    }
+    if (valueForm_select) {
+        free(valueForm_select);
+        valueForm_select = NULL;
+    }
+    free(keyPairForm_select);
+    if (keyForm_expand) {
+        free(keyForm_expand);
+        keyForm_expand = NULL;
+    }
+    if (valueForm_expand) {
+        free(valueForm_expand);
+        valueForm_expand = NULL;
+    }
+    free(keyPairForm_expand);
+    if (keyForm_isEmpty) {
+        free(keyForm_isEmpty);
+        keyForm_isEmpty = NULL;
+    }
+    free(keyPairForm_isEmpty);
     return elementToReturn;
 end:
     free(localVarPath);

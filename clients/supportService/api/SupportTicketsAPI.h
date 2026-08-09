@@ -8,12 +8,14 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/private_message_dto_list_envelope.h"
 #include "../model/support_ticket_conversation_create_dto.h"
+#include "../model/support_ticket_conversation_dto_collection_query_parameters.h"
 #include "../model/support_ticket_conversation_dto_envelope.h"
 #include "../model/support_ticket_conversation_dto_list_envelope.h"
 #include "../model/support_ticket_create_dto.h"
+#include "../model/support_ticket_dto_collection_query_parameters.h"
 #include "../model/support_ticket_dto_envelope.h"
 #include "../model/support_ticket_dto_list_envelope.h"
 #include "../model/support_ticket_update_dto.h"
@@ -72,7 +74,7 @@ SupportTicketsAPI_getSupportTicketConversationMessagesAsync(apiClient_t *apiClie
 // Retrieves the list of conversations associated with a specific support ticket.
 //
 support_ticket_conversation_dto_list_envelope_t*
-SupportTicketsAPI_getSupportTicketConversationsAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketId, char *api_version, char *x_api_version);
+SupportTicketsAPI_getSupportTicketConversationsAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketId, char *api_version, char *x_api_version, support_ticket_conversation_dto_collection_query_parameters_t *support_ticket_conversation_dto_collection_query_parameters);
 
 
 // Retrieve a list of support tickets
@@ -80,7 +82,7 @@ SupportTicketsAPI_getSupportTicketConversationsAsync(apiClient_t *apiClient, cha
 // Retrieves a list of support tickets for the specified tenant with OData query support.
 //
 support_ticket_dto_list_envelope_t*
-SupportTicketsAPI_getSupportTicketsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportTicketsAPI_getSupportTicketsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_ticket_dto_collection_query_parameters_t *support_ticket_dto_collection_query_parameters);
 
 
 // Get the count of support tickets
@@ -88,7 +90,7 @@ SupportTicketsAPI_getSupportTicketsAsync(apiClient_t *apiClient, char *tenantId,
 // Returns the total count of support tickets for the specified tenant with OData query support.
 //
 int32_envelope_t*
-SupportTicketsAPI_getSupportTicketsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportTicketsAPI_getSupportTicketsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_ticket_dto_collection_query_parameters_t *support_ticket_dto_collection_query_parameters);
 
 
 // Patch a support ticket
@@ -96,7 +98,7 @@ SupportTicketsAPI_getSupportTicketsCountAsync(apiClient_t *apiClient, char *tena
 // Partially updates an existing support ticket by its unique identifier.
 //
 empty_envelope_t*
-SupportTicketsAPI_patchSupportTicketAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketId, char *api_version, char *x_api_version, list_t *operation);
+SupportTicketsAPI_patchSupportTicketAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Create a conversation for a support ticket

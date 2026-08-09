@@ -9,6 +9,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/leave_type_create_dto.h"
+#include "../model/leave_type_dto_collection_query_parameters.h"
 #include "../model/leave_type_dto_envelope.h"
 #include "../model/leave_type_dto_list_envelope.h"
 #include "../model/leave_type_update_dto.h"
@@ -43,7 +44,7 @@ LeaveTypesAPI_getLeaveTypeByIdAsync(apiClient_t *apiClient, char *tenantId, char
 // Retrieves leave types for the specified tenant.
 //
 leave_type_dto_list_envelope_t*
-LeaveTypesAPI_getLeaveTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LeaveTypesAPI_getLeaveTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, leave_type_dto_collection_query_parameters_t *leave_type_dto_collection_query_parameters);
 
 
 // Count leave types
@@ -51,7 +52,7 @@ LeaveTypesAPI_getLeaveTypesAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Counts leave types for the specified tenant.
 //
 int32_envelope_t*
-LeaveTypesAPI_getLeaveTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LeaveTypesAPI_getLeaveTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, leave_type_dto_collection_query_parameters_t *leave_type_dto_collection_query_parameters);
 
 
 // Update a leave type

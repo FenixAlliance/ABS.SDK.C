@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/curriculum_create_dto.h"
+#include "../model/curriculum_dto_collection_query_parameters.h"
 #include "../model/curriculum_dto_envelope.h"
 #include "../model/curriculum_dto_list_envelope.h"
 #include "../model/curriculum_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a curriculum
@@ -44,7 +45,7 @@ CurriculumsAPI_getCurriculumAsync(apiClient_t *apiClient, char *socialProfileId,
 // Retrieves the curricula (CVs) authored on the specified social profile.
 //
 curriculum_dto_list_envelope_t*
-CurriculumsAPI_getCurriculumsAsync(apiClient_t *apiClient, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version);
+CurriculumsAPI_getCurriculumsAsync(apiClient_t *apiClient, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version, curriculum_dto_collection_query_parameters_t *curriculum_dto_collection_query_parameters);
 
 
 // Count curricula
@@ -52,7 +53,7 @@ CurriculumsAPI_getCurriculumsAsync(apiClient_t *apiClient, char *socialProfileId
 // Returns the count of curricula authored on the specified social profile.
 //
 int32_envelope_t*
-CurriculumsAPI_getCurriculumsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version);
+CurriculumsAPI_getCurriculumsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version, curriculum_dto_collection_query_parameters_t *curriculum_dto_collection_query_parameters);
 
 
 // Patch a curriculum
@@ -60,7 +61,7 @@ CurriculumsAPI_getCurriculumsCountAsync(apiClient_t *apiClient, char *socialProf
 // Partially updates an existing curriculum authored on the specified social profile.
 //
 empty_envelope_t*
-CurriculumsAPI_patchCurriculumAsync(apiClient_t *apiClient, char *socialProfileId, char *curriculumId, char *tenantId, char *api_version, char *x_api_version, list_t *operation);
+CurriculumsAPI_patchCurriculumAsync(apiClient_t *apiClient, char *socialProfileId, char *curriculumId, char *tenantId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a curriculum

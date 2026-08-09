@@ -24,6 +24,9 @@ typedef struct expense_claim_dto_envelope_t {
     char *error_message; // string
     char *correlation_id; // string
     char *timestamp; //date time
+    int http_status; //numeric
+    char *error_code; // string
+    list_t* validation_details; //map
     char *activity_id; // string
     struct expense_claim_dto_t *result; //model
 
@@ -34,6 +37,9 @@ expense_claim_dto_envelope_t *expense_claim_dto_envelope_create(
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     expense_claim_dto_t *result
 );

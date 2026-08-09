@@ -13,7 +13,7 @@
 #include "../model/course_completion_certificate_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a course certificate
@@ -101,7 +101,7 @@ CourseCertificatesAPI_getCourseCertificatesCountAsync(apiClient_t *apiClient, ch
 // Partially updates a course certificate for the specified tenant.
 //
 empty_envelope_t*
-CourseCertificatesAPI_patchCourseCertificateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateId, char *api_version, char *x_api_version, list_t *operation);
+CourseCertificatesAPI_patchCourseCertificateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a certificate template
@@ -109,7 +109,7 @@ CourseCertificatesAPI_patchCourseCertificateAsync(apiClient_t *apiClient, char *
 // Partially updates a course certificate template for the specified tenant.
 //
 empty_envelope_t*
-CourseCertificatesAPI_patchCourseCertificateTemplateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateTemplateId, char *api_version, char *x_api_version, list_t *operation);
+CourseCertificatesAPI_patchCourseCertificateTemplateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateTemplateId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course certificate

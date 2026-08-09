@@ -9,6 +9,7 @@
 #include "../model/int32_envelope.h"
 #include "../model/license_create_dto.h"
 #include "../model/license_dto.h"
+#include "../model/license_dto_collection_query_parameters.h"
 #include "../model/license_dto_list_envelope.h"
 #include "../model/license_update_dto.h"
 
@@ -42,7 +43,7 @@ LicensesAPI_getLicenseByIdAsync(apiClient_t *apiClient, char *tenantId, char *li
 // Retrieves the license instances owned by the specified tenant, filtered via OData query options.
 //
 license_dto_list_envelope_t*
-LicensesAPI_getLicensesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LicensesAPI_getLicensesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, license_dto_collection_query_parameters_t *license_dto_collection_query_parameters);
 
 
 // Get licenses count
@@ -50,7 +51,7 @@ LicensesAPI_getLicensesAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 // Returns the count of license instances owned by the specified tenant.
 //
 int32_envelope_t*
-LicensesAPI_getLicensesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LicensesAPI_getLicensesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, license_dto_collection_query_parameters_t *license_dto_collection_query_parameters);
 
 
 // Update a license

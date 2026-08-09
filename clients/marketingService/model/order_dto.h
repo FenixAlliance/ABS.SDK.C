@@ -76,6 +76,7 @@ typedef struct order_dto_t {
     char *city_id; // string
     char *customer_notes; // string
     marketingservice_order_dto_TAXCALCULATIONMETHOD_e tax_calculation_method; //enum
+    marketingservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method; //enum
     double forex_rate; //numeric
     char *forex_rates_snapshot; // string
     char *currency_id; // string
@@ -126,7 +127,6 @@ typedef struct order_dto_t {
     char *qualified_identifier; // string
     char *seller_billing_profile_id; // string
     char *buyer_billing_profile_id; // string
-    marketingservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method; //enum
     marketingservice_order_dto_FREIGHTTERMS_e freight_terms; //enum
     marketingservice_order_dto_ORDERSTATUS_e order_status; //enum
     char *requested_delivery_date; //date time
@@ -168,6 +168,7 @@ order_dto_t *order_dto_create(
     char *city_id,
     char *customer_notes,
     marketingservice_order_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
+    marketingservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     double forex_rate,
     char *forex_rates_snapshot,
     char *currency_id,
@@ -218,7 +219,6 @@ order_dto_t *order_dto_create(
     char *qualified_identifier,
     char *seller_billing_profile_id,
     char *buyer_billing_profile_id,
-    marketingservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     marketingservice_order_dto_FREIGHTTERMS_e freight_terms,
     marketingservice_order_dto_ORDERSTATUS_e order_status,
     char *requested_delivery_date,

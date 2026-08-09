@@ -8,10 +8,11 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/item_attachment_create_dto.h"
+#include "../model/item_attachment_dto_collection_query_parameters.h"
 #include "../model/item_attachment_dto_envelope.h"
 #include "../model/item_attachment_dto_list_envelope.h"
 #include "../model/item_attachment_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new item attachment
@@ -43,7 +44,7 @@ ItemAttachmentsAPI_getItemAttachmentByIdAsync(apiClient_t *apiClient, char *item
 // Retrieves all item attachments for the specified tenant using OData query options.
 //
 item_attachment_dto_list_envelope_t*
-ItemAttachmentsAPI_getItemAttachmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemAttachmentsAPI_getItemAttachmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_attachment_dto_collection_query_parameters_t *item_attachment_dto_collection_query_parameters);
 
 
 // Patch an item attachment
@@ -51,7 +52,7 @@ ItemAttachmentsAPI_getItemAttachmentsAsync(apiClient_t *apiClient, char *tenantI
 // Partially updates an existing item attachment for the specified tenant using a JSON Patch document.
 //
 empty_envelope_t*
-ItemAttachmentsAPI_patchItemAttachmentAsync(apiClient_t *apiClient, char *tenantId, char *itemAttachmentId, char *api_version, char *x_api_version, list_t *operation);
+ItemAttachmentsAPI_patchItemAttachmentAsync(apiClient_t *apiClient, char *tenantId, char *itemAttachmentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item attachment

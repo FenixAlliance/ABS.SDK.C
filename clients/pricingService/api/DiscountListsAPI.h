@@ -6,9 +6,11 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/discount_create_dto.h"
+#include "../model/discount_dto_collection_query_parameters.h"
 #include "../model/discount_dto_envelope.h"
 #include "../model/discount_dto_list_envelope.h"
 #include "../model/discount_list_create_dto.h"
+#include "../model/discount_list_dto_collection_query_parameters.h"
 #include "../model/discount_list_dto_envelope.h"
 #include "../model/discount_list_dto_list_envelope.h"
 #include "../model/discount_list_update_dto.h"
@@ -16,7 +18,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new discount list
@@ -64,7 +66,7 @@ DiscountListsAPI_getDiscountList(apiClient_t *apiClient, char *tenantId, char *d
 // Gets all discount entries for a specific discount list with OData support.
 //
 discount_dto_list_envelope_t*
-DiscountListsAPI_getDiscountListEntries(apiClient_t *apiClient, char *tenantId, char *discountListId);
+DiscountListsAPI_getDiscountListEntries(apiClient_t *apiClient, char *tenantId, char *discountListId, discount_dto_collection_query_parameters_t *discount_dto_collection_query_parameters);
 
 
 // Counts discounts in a discount list
@@ -72,7 +74,7 @@ DiscountListsAPI_getDiscountListEntries(apiClient_t *apiClient, char *tenantId, 
 // Gets the count of discount entries for a specific discount list.
 //
 int32_envelope_t*
-DiscountListsAPI_getDiscountListEntriesCount(apiClient_t *apiClient, char *tenantId, char *discountListId);
+DiscountListsAPI_getDiscountListEntriesCount(apiClient_t *apiClient, char *tenantId, char *discountListId, discount_dto_collection_query_parameters_t *discount_dto_collection_query_parameters);
 
 
 // Gets a discount list entry by ID
@@ -88,7 +90,7 @@ DiscountListsAPI_getDiscountListEntry(apiClient_t *apiClient, char *tenantId, ch
 // Gets all discount lists for the current tenant with OData support.
 //
 discount_list_dto_list_envelope_t*
-DiscountListsAPI_getDiscountLists(apiClient_t *apiClient, char *tenantId);
+DiscountListsAPI_getDiscountLists(apiClient_t *apiClient, char *tenantId, discount_list_dto_collection_query_parameters_t *discount_list_dto_collection_query_parameters);
 
 
 // Counts discount lists
@@ -96,7 +98,7 @@ DiscountListsAPI_getDiscountLists(apiClient_t *apiClient, char *tenantId);
 // Gets the count of discount lists for the current tenant.
 //
 int32_envelope_t*
-DiscountListsAPI_getDiscountListsCount(apiClient_t *apiClient, char *tenantId);
+DiscountListsAPI_getDiscountListsCount(apiClient_t *apiClient, char *tenantId, discount_list_dto_collection_query_parameters_t *discount_list_dto_collection_query_parameters);
 
 
 // Patches a discount list
@@ -104,7 +106,7 @@ DiscountListsAPI_getDiscountListsCount(apiClient_t *apiClient, char *tenantId);
 // Partially updates the specified discount list using a JSON Patch document.
 //
 empty_envelope_t*
-DiscountListsAPI_patchDiscountList(apiClient_t *apiClient, char *tenantId, char *discountListId, list_t *operation);
+DiscountListsAPI_patchDiscountList(apiClient_t *apiClient, char *tenantId, char *discountListId, list_t *patch_operation);
 
 
 // Patches a discount list entry
@@ -112,7 +114,7 @@ DiscountListsAPI_patchDiscountList(apiClient_t *apiClient, char *tenantId, char 
 // Partially updates the specified discount entry using a JSON Patch document.
 //
 empty_envelope_t*
-DiscountListsAPI_patchDiscountListEntry(apiClient_t *apiClient, char *tenantId, char *discountListId, char *discountListEntryId, list_t *operation);
+DiscountListsAPI_patchDiscountListEntry(apiClient_t *apiClient, char *tenantId, char *discountListId, char *discountListEntryId, list_t *patch_operation);
 
 
 // Updates a discount list

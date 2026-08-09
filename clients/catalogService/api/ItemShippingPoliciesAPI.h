@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/item_shipping_policy_dto_collection_query_parameters.h"
 #include "../model/item_shipping_policy_dto_envelope.h"
 #include "../model/item_shipping_policy_dto_list_envelope.h"
 
@@ -16,7 +17,7 @@
 // Counts all shipping policies for a specific item.
 //
 int32_envelope_t*
-ItemShippingPoliciesAPI_countItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemShippingPoliciesAPI_countItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_shipping_policy_dto_collection_query_parameters_t *item_shipping_policy_dto_collection_query_parameters);
 
 
 // Get item shipping policies
@@ -24,7 +25,7 @@ ItemShippingPoliciesAPI_countItemShippingPoliciesAsync(apiClient_t *apiClient, c
 // Retrieves all shipping policies for a specific item.
 //
 item_shipping_policy_dto_list_envelope_t*
-ItemShippingPoliciesAPI_getCatalogItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemShippingPoliciesAPI_getCatalogItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_shipping_policy_dto_collection_query_parameters_t *item_shipping_policy_dto_collection_query_parameters);
 
 
 // Get item shipping policy by ID

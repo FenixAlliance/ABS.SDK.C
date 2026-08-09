@@ -58,6 +58,7 @@ set(SRCS
     model/boolean_envelope.c
     model/business_relationship_create_dto.c
     model/business_relationship_dto.c
+    model/business_relationship_dto_collection_query_parameters.c
     model/business_relationship_dto_envelope.c
     model/business_relationship_dto_list_envelope.c
     model/business_relationship_update_dto.c
@@ -68,6 +69,7 @@ set(SRCS
     model/extended_tenant_dto.c
     model/extended_tenant_dto_envelope.c
     model/extended_tenant_enrollment_dto.c
+    model/extended_tenant_enrollment_dto_collection_query_parameters.c
     model/extended_tenant_enrollment_dto_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
@@ -76,13 +78,15 @@ set(SRCS
     model/int32_envelope.c
     model/login_request.c
     model/notification_dto.c
+    model/notification_dto_collection_query_parameters.c
     model/notification_dto_list_envelope.c
-    model/operation.c
     model/option_create_dto.c
     model/option_dto.c
+    model/option_dto_collection_query_parameters.c
     model/option_dto_envelope.c
     model/option_dto_list_envelope.c
     model/option_update_dto.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -99,6 +103,7 @@ set(SRCS
     model/tenant_create_dto.c
     model/tenant_department_create_dto.c
     model/tenant_department_dto.c
+    model/tenant_department_dto_collection_query_parameters.c
     model/tenant_department_dto_envelope.c
     model/tenant_department_dto_list_envelope.c
     model/tenant_department_update_dto.c
@@ -106,70 +111,84 @@ set(SRCS
     model/tenant_dto_envelope.c
     model/tenant_enrollment_create_dto.c
     model/tenant_enrollment_dto.c
+    model/tenant_enrollment_dto_collection_query_parameters.c
     model/tenant_enrollment_dto_envelope.c
     model/tenant_enrollment_dto_list_envelope.c
     model/tenant_enrollment_update_dto.c
     model/tenant_industry_create_dto.c
     model/tenant_industry_dto.c
+    model/tenant_industry_dto_collection_query_parameters.c
     model/tenant_industry_dto_envelope.c
     model/tenant_industry_dto_list_envelope.c
     model/tenant_industry_update_dto.c
     model/tenant_invitation_create_dto.c
     model/tenant_invitation_dto.c
+    model/tenant_invitation_dto_collection_query_parameters.c
     model/tenant_invitation_dto_envelope.c
     model/tenant_invitation_dto_list_envelope.c
     model/tenant_position_create_dto.c
     model/tenant_position_dto.c
+    model/tenant_position_dto_collection_query_parameters.c
     model/tenant_position_dto_envelope.c
     model/tenant_position_dto_list_envelope.c
     model/tenant_position_update_dto.c
     model/tenant_segment_create_dto.c
     model/tenant_segment_dto.c
+    model/tenant_segment_dto_collection_query_parameters.c
     model/tenant_segment_dto_envelope.c
     model/tenant_segment_dto_list_envelope.c
     model/tenant_segment_update_dto.c
     model/tenant_size_create_dto.c
     model/tenant_size_dto.c
+    model/tenant_size_dto_collection_query_parameters.c
     model/tenant_size_dto_envelope.c
     model/tenant_size_dto_list_envelope.c
     model/tenant_size_update_dto.c
     model/tenant_team_contact_enrollment_create_dto.c
     model/tenant_team_contact_enrollment_dto.c
+    model/tenant_team_contact_enrollment_dto_collection_query_parameters.c
     model/tenant_team_contact_enrollment_dto_envelope.c
     model/tenant_team_contact_enrollment_dto_list_envelope.c
     model/tenant_team_contact_enrollment_update_dto.c
     model/tenant_team_create_dto.c
     model/tenant_team_dto.c
+    model/tenant_team_dto_collection_query_parameters.c
     model/tenant_team_dto_envelope.c
     model/tenant_team_dto_list_envelope.c
     model/tenant_team_employee_enrollment_create_dto.c
     model/tenant_team_employee_enrollment_dto.c
+    model/tenant_team_employee_enrollment_dto_collection_query_parameters.c
     model/tenant_team_employee_enrollment_dto_envelope.c
     model/tenant_team_employee_enrollment_dto_list_envelope.c
     model/tenant_team_employee_enrollment_update_dto.c
     model/tenant_team_project_enrollment_create_dto.c
     model/tenant_team_project_enrollment_dto.c
+    model/tenant_team_project_enrollment_dto_collection_query_parameters.c
     model/tenant_team_project_enrollment_dto_envelope.c
     model/tenant_team_project_enrollment_dto_list_envelope.c
     model/tenant_team_project_enrollment_update_dto.c
     model/tenant_team_record_create_dto.c
     model/tenant_team_record_dto.c
+    model/tenant_team_record_dto_collection_query_parameters.c
     model/tenant_team_record_dto_envelope.c
     model/tenant_team_record_dto_list_envelope.c
     model/tenant_team_record_update_dto.c
     model/tenant_team_update_dto.c
     model/tenant_territory_create_dto.c
     model/tenant_territory_dto.c
+    model/tenant_territory_dto_collection_query_parameters.c
     model/tenant_territory_dto_envelope.c
     model/tenant_territory_dto_list_envelope.c
     model/tenant_territory_update_dto.c
     model/tenant_type_create_dto.c
     model/tenant_type_dto.c
+    model/tenant_type_dto_collection_query_parameters.c
     model/tenant_type_dto_envelope.c
     model/tenant_type_dto_list_envelope.c
     model/tenant_type_update_dto.c
     model/tenant_unit_create_dto.c
     model/tenant_unit_dto.c
+    model/tenant_unit_dto_collection_query_parameters.c
     model/tenant_unit_dto_envelope.c
     model/tenant_unit_dto_list_envelope.c
     model/tenant_unit_update_dto.c
@@ -178,10 +197,12 @@ set(SRCS
     model/two_factor_response.c
     model/unit_create_dto.c
     model/unit_dto.c
+    model/unit_dto_collection_query_parameters.c
     model/unit_dto_envelope.c
     model/unit_dto_list_envelope.c
     model/unit_group_create_dto.c
     model/unit_group_dto.c
+    model/unit_group_dto_collection_query_parameters.c
     model/unit_group_dto_envelope.c
     model/unit_group_dto_list_envelope.c
     model/unit_group_update_dto.c
@@ -227,6 +248,7 @@ set(HDRS
     model/boolean_envelope.h
     model/business_relationship_create_dto.h
     model/business_relationship_dto.h
+    model/business_relationship_dto_collection_query_parameters.h
     model/business_relationship_dto_envelope.h
     model/business_relationship_dto_list_envelope.h
     model/business_relationship_update_dto.h
@@ -237,6 +259,7 @@ set(HDRS
     model/extended_tenant_dto.h
     model/extended_tenant_dto_envelope.h
     model/extended_tenant_enrollment_dto.h
+    model/extended_tenant_enrollment_dto_collection_query_parameters.h
     model/extended_tenant_enrollment_dto_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
@@ -245,13 +268,15 @@ set(HDRS
     model/int32_envelope.h
     model/login_request.h
     model/notification_dto.h
+    model/notification_dto_collection_query_parameters.h
     model/notification_dto_list_envelope.h
-    model/operation.h
     model/option_create_dto.h
     model/option_dto.h
+    model/option_dto_collection_query_parameters.h
     model/option_dto_envelope.h
     model/option_dto_list_envelope.h
     model/option_update_dto.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
@@ -268,6 +293,7 @@ set(HDRS
     model/tenant_create_dto.h
     model/tenant_department_create_dto.h
     model/tenant_department_dto.h
+    model/tenant_department_dto_collection_query_parameters.h
     model/tenant_department_dto_envelope.h
     model/tenant_department_dto_list_envelope.h
     model/tenant_department_update_dto.h
@@ -275,70 +301,84 @@ set(HDRS
     model/tenant_dto_envelope.h
     model/tenant_enrollment_create_dto.h
     model/tenant_enrollment_dto.h
+    model/tenant_enrollment_dto_collection_query_parameters.h
     model/tenant_enrollment_dto_envelope.h
     model/tenant_enrollment_dto_list_envelope.h
     model/tenant_enrollment_update_dto.h
     model/tenant_industry_create_dto.h
     model/tenant_industry_dto.h
+    model/tenant_industry_dto_collection_query_parameters.h
     model/tenant_industry_dto_envelope.h
     model/tenant_industry_dto_list_envelope.h
     model/tenant_industry_update_dto.h
     model/tenant_invitation_create_dto.h
     model/tenant_invitation_dto.h
+    model/tenant_invitation_dto_collection_query_parameters.h
     model/tenant_invitation_dto_envelope.h
     model/tenant_invitation_dto_list_envelope.h
     model/tenant_position_create_dto.h
     model/tenant_position_dto.h
+    model/tenant_position_dto_collection_query_parameters.h
     model/tenant_position_dto_envelope.h
     model/tenant_position_dto_list_envelope.h
     model/tenant_position_update_dto.h
     model/tenant_segment_create_dto.h
     model/tenant_segment_dto.h
+    model/tenant_segment_dto_collection_query_parameters.h
     model/tenant_segment_dto_envelope.h
     model/tenant_segment_dto_list_envelope.h
     model/tenant_segment_update_dto.h
     model/tenant_size_create_dto.h
     model/tenant_size_dto.h
+    model/tenant_size_dto_collection_query_parameters.h
     model/tenant_size_dto_envelope.h
     model/tenant_size_dto_list_envelope.h
     model/tenant_size_update_dto.h
     model/tenant_team_contact_enrollment_create_dto.h
     model/tenant_team_contact_enrollment_dto.h
+    model/tenant_team_contact_enrollment_dto_collection_query_parameters.h
     model/tenant_team_contact_enrollment_dto_envelope.h
     model/tenant_team_contact_enrollment_dto_list_envelope.h
     model/tenant_team_contact_enrollment_update_dto.h
     model/tenant_team_create_dto.h
     model/tenant_team_dto.h
+    model/tenant_team_dto_collection_query_parameters.h
     model/tenant_team_dto_envelope.h
     model/tenant_team_dto_list_envelope.h
     model/tenant_team_employee_enrollment_create_dto.h
     model/tenant_team_employee_enrollment_dto.h
+    model/tenant_team_employee_enrollment_dto_collection_query_parameters.h
     model/tenant_team_employee_enrollment_dto_envelope.h
     model/tenant_team_employee_enrollment_dto_list_envelope.h
     model/tenant_team_employee_enrollment_update_dto.h
     model/tenant_team_project_enrollment_create_dto.h
     model/tenant_team_project_enrollment_dto.h
+    model/tenant_team_project_enrollment_dto_collection_query_parameters.h
     model/tenant_team_project_enrollment_dto_envelope.h
     model/tenant_team_project_enrollment_dto_list_envelope.h
     model/tenant_team_project_enrollment_update_dto.h
     model/tenant_team_record_create_dto.h
     model/tenant_team_record_dto.h
+    model/tenant_team_record_dto_collection_query_parameters.h
     model/tenant_team_record_dto_envelope.h
     model/tenant_team_record_dto_list_envelope.h
     model/tenant_team_record_update_dto.h
     model/tenant_team_update_dto.h
     model/tenant_territory_create_dto.h
     model/tenant_territory_dto.h
+    model/tenant_territory_dto_collection_query_parameters.h
     model/tenant_territory_dto_envelope.h
     model/tenant_territory_dto_list_envelope.h
     model/tenant_territory_update_dto.h
     model/tenant_type_create_dto.h
     model/tenant_type_dto.h
+    model/tenant_type_dto_collection_query_parameters.h
     model/tenant_type_dto_envelope.h
     model/tenant_type_dto_list_envelope.h
     model/tenant_type_update_dto.h
     model/tenant_unit_create_dto.h
     model/tenant_unit_dto.h
+    model/tenant_unit_dto_collection_query_parameters.h
     model/tenant_unit_dto_envelope.h
     model/tenant_unit_dto_list_envelope.h
     model/tenant_unit_update_dto.h
@@ -347,10 +387,12 @@ set(HDRS
     model/two_factor_response.h
     model/unit_create_dto.h
     model/unit_dto.h
+    model/unit_dto_collection_query_parameters.h
     model/unit_dto_envelope.h
     model/unit_dto_list_envelope.h
     model/unit_group_create_dto.h
     model/unit_group_dto.h
+    model/unit_group_dto_collection_query_parameters.h
     model/unit_group_dto_envelope.h
     model/unit_group_dto_list_envelope.h
     model/unit_group_update_dto.h

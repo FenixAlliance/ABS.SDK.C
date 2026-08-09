@@ -27,6 +27,8 @@ typedef struct journal_create_dto_t {
     char *parent_journal_id; // string
     char *journal_type_id; // string
     char *ledger_id; // string
+    char *financial_book_id; // string
+    char *code; // string
 
 } journal_create_dto_t;
 
@@ -38,7 +40,9 @@ journal_create_dto_t *journal_create_dto_create(
     char *date_time,
     char *parent_journal_id,
     char *journal_type_id,
-    char *ledger_id
+    char *ledger_id,
+    char *financial_book_id,
+    char *code
 );
 
 void journal_create_dto_free(journal_create_dto_t *journal_create_dto);

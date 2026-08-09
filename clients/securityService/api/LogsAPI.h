@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/log_dto_collection_query_parameters.h"
 #include "../model/log_dto_list_envelope.h"
 
 
@@ -15,7 +16,7 @@
 // Retrieves logs for the specified tenant.
 //
 log_dto_list_envelope_t*
-LogsAPI_getLogsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LogsAPI_getLogsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, log_dto_collection_query_parameters_t *log_dto_collection_query_parameters);
 
 
 // Get tenant logs count
@@ -23,6 +24,6 @@ LogsAPI_getLogsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, 
 // Retrieves the count of logs for the specified tenant.
 //
 int32_envelope_t*
-LogsAPI_getLogsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LogsAPI_getLogsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, log_dto_collection_query_parameters_t *log_dto_collection_query_parameters);
 
 

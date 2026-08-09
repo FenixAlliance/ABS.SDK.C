@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/social_media_post_create_dto.h"
+#include "../model/social_media_post_dto_collection_query_parameters.h"
 #include "../model/social_media_post_dto_envelope.h"
 #include "../model/social_media_post_dto_list_envelope.h"
 #include "../model/social_media_post_update_dto.h"
@@ -44,7 +45,7 @@ SocialMediaPostsAPI_getSocialMediaPostDetailsAsync(apiClient_t *apiClient, char 
 // Returns the count of social media posts for the specified tenant using OData query options.
 //
 int32_envelope_t*
-SocialMediaPostsAPI_getSocialMediaPostsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SocialMediaPostsAPI_getSocialMediaPostsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, social_media_post_dto_collection_query_parameters_t *social_media_post_dto_collection_query_parameters);
 
 
 // Get social media posts
@@ -52,7 +53,7 @@ SocialMediaPostsAPI_getSocialMediaPostsCountAsync(apiClient_t *apiClient, char *
 // Retrieves a collection of social media posts for the specified tenant using OData query options.
 //
 social_media_post_dto_list_envelope_t*
-SocialMediaPostsAPI_getSocialMediaPostsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SocialMediaPostsAPI_getSocialMediaPostsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, social_media_post_dto_collection_query_parameters_t *social_media_post_dto_collection_query_parameters);
 
 
 // Patch a social media post
@@ -60,7 +61,7 @@ SocialMediaPostsAPI_getSocialMediaPostsODataAsync(apiClient_t *apiClient, char *
 // Partially updates a social media post by its ID using JSON Patch.
 //
 empty_envelope_t*
-SocialMediaPostsAPI_patchSocialMediaPostAsync(apiClient_t *apiClient, char *tenantId, char *socialmediapostId, char *api_version, char *x_api_version, list_t *operation);
+SocialMediaPostsAPI_patchSocialMediaPostAsync(apiClient_t *apiClient, char *tenantId, char *socialmediapostId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a social media post

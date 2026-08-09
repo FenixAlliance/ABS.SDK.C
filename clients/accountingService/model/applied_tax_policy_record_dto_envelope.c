@@ -10,6 +10,9 @@ applied_tax_policy_record_dto_envelope_t *applied_tax_policy_record_dto_envelope
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     applied_tax_policy_record_dto_t *result
     ) {
@@ -21,6 +24,9 @@ applied_tax_policy_record_dto_envelope_t *applied_tax_policy_record_dto_envelope
     applied_tax_policy_record_dto_envelope_local_var->error_message = error_message;
     applied_tax_policy_record_dto_envelope_local_var->correlation_id = correlation_id;
     applied_tax_policy_record_dto_envelope_local_var->timestamp = timestamp;
+    applied_tax_policy_record_dto_envelope_local_var->http_status = http_status;
+    applied_tax_policy_record_dto_envelope_local_var->error_code = error_code;
+    applied_tax_policy_record_dto_envelope_local_var->validation_details = validation_details;
     applied_tax_policy_record_dto_envelope_local_var->activity_id = activity_id;
     applied_tax_policy_record_dto_envelope_local_var->result = result;
 
@@ -44,6 +50,20 @@ void applied_tax_policy_record_dto_envelope_free(applied_tax_policy_record_dto_e
     if (applied_tax_policy_record_dto_envelope->timestamp) {
         free(applied_tax_policy_record_dto_envelope->timestamp);
         applied_tax_policy_record_dto_envelope->timestamp = NULL;
+    }
+    if (applied_tax_policy_record_dto_envelope->error_code) {
+        free(applied_tax_policy_record_dto_envelope->error_code);
+        applied_tax_policy_record_dto_envelope->error_code = NULL;
+    }
+    if (applied_tax_policy_record_dto_envelope->validation_details) {
+        list_ForEach(listEntry, applied_tax_policy_record_dto_envelope->validation_details) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free (localKeyValue->key);
+            free (localKeyValue->value);
+            keyValuePair_free(localKeyValue);
+        }
+        list_freeList(applied_tax_policy_record_dto_envelope->validation_details);
+        applied_tax_policy_record_dto_envelope->validation_details = NULL;
     }
     if (applied_tax_policy_record_dto_envelope->activity_id) {
         free(applied_tax_policy_record_dto_envelope->activity_id);
@@ -91,6 +111,38 @@ cJSON *applied_tax_policy_record_dto_envelope_convertToJSON(applied_tax_policy_r
     }
 
 
+    // applied_tax_policy_record_dto_envelope->http_status
+    if(applied_tax_policy_record_dto_envelope->http_status) {
+    if(cJSON_AddNumberToObject(item, "httpStatus", applied_tax_policy_record_dto_envelope->http_status) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // applied_tax_policy_record_dto_envelope->error_code
+    if(applied_tax_policy_record_dto_envelope->error_code) {
+    if(cJSON_AddStringToObject(item, "errorCode", applied_tax_policy_record_dto_envelope->error_code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // applied_tax_policy_record_dto_envelope->validation_details
+    if(applied_tax_policy_record_dto_envelope->validation_details) {
+    cJSON *validation_details = cJSON_AddObjectToObject(item, "validationDetails");
+    if(validation_details == NULL) {
+        goto fail; //primitive map container
+    }
+    cJSON *localMapObject = validation_details;
+    listEntry_t *validation_detailsListEntry;
+    if (applied_tax_policy_record_dto_envelope->validation_details) {
+    list_ForEach(validation_detailsListEntry, applied_tax_policy_record_dto_envelope->validation_details) {
+        keyValuePair_t *localKeyValue = (keyValuePair_t*)validation_detailsListEntry->data;
+    }
+    }
+    }
+
+
     // applied_tax_policy_record_dto_envelope->activity_id
     if(applied_tax_policy_record_dto_envelope->activity_id) {
     if(cJSON_AddStringToObject(item, "activityId", applied_tax_policy_record_dto_envelope->activity_id) == NULL) {
@@ -122,6 +174,9 @@ fail:
 applied_tax_policy_record_dto_envelope_t *applied_tax_policy_record_dto_envelope_parseFromJSON(cJSON *applied_tax_policy_record_dto_envelopeJSON){
 
     applied_tax_policy_record_dto_envelope_t *applied_tax_policy_record_dto_envelope_local_var = NULL;
+
+    // define the local map for applied_tax_policy_record_dto_envelope->validation_details
+    list_t *validation_detailsList = NULL;
 
     // define the local variable for applied_tax_policy_record_dto_envelope->result
     applied_tax_policy_record_dto_t *result_local_nonprim = NULL;
@@ -162,6 +217,44 @@ applied_tax_policy_record_dto_envelope_t *applied_tax_policy_record_dto_envelope
     }
     }
 
+    // applied_tax_policy_record_dto_envelope->http_status
+    cJSON *http_status = cJSON_GetObjectItemCaseSensitive(applied_tax_policy_record_dto_envelopeJSON, "httpStatus");
+    if (http_status) { 
+    if(!cJSON_IsNumber(http_status))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // applied_tax_policy_record_dto_envelope->error_code
+    cJSON *error_code = cJSON_GetObjectItemCaseSensitive(applied_tax_policy_record_dto_envelopeJSON, "errorCode");
+    if (error_code) { 
+    if(!cJSON_IsString(error_code) && !cJSON_IsNull(error_code))
+    {
+    goto end; //String
+    }
+    }
+
+    // applied_tax_policy_record_dto_envelope->validation_details
+    cJSON *validation_details = cJSON_GetObjectItemCaseSensitive(applied_tax_policy_record_dto_envelopeJSON, "validationDetails");
+    if (validation_details) { 
+    cJSON *validation_details_local_map = NULL;
+    if(!cJSON_IsObject(validation_details) && !cJSON_IsNull(validation_details))
+    {
+        goto end;//primitive map container
+    }
+    if(cJSON_IsObject(validation_details))
+    {
+        validation_detailsList = list_createList();
+        keyValuePair_t *localMapKeyPair;
+        cJSON_ArrayForEach(validation_details_local_map, validation_details)
+        {
+            cJSON *localMapObject = validation_details_local_map;
+            list_addElement(validation_detailsList , localMapKeyPair);
+        }
+    }
+    }
+
     // applied_tax_policy_record_dto_envelope->activity_id
     cJSON *activity_id = cJSON_GetObjectItemCaseSensitive(applied_tax_policy_record_dto_envelopeJSON, "activityId");
     if (activity_id) { 
@@ -183,12 +276,27 @@ applied_tax_policy_record_dto_envelope_t *applied_tax_policy_record_dto_envelope
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL,
         correlation_id && !cJSON_IsNull(correlation_id) ? strdup(correlation_id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        http_status ? http_status->valuedouble : 0,
+        error_code && !cJSON_IsNull(error_code) ? strdup(error_code->valuestring) : NULL,
+        validation_details ? validation_detailsList : NULL,
         activity_id && !cJSON_IsNull(activity_id) ? strdup(activity_id->valuestring) : NULL,
         result ? result_local_nonprim : NULL
         );
 
     return applied_tax_policy_record_dto_envelope_local_var;
 end:
+    if (validation_detailsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, validation_detailsList) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free(localKeyValue->key);
+            localKeyValue->key = NULL;
+            keyValuePair_free(localKeyValue);
+            localKeyValue = NULL;
+        }
+        list_freeList(validation_detailsList);
+        validation_detailsList = NULL;
+    }
     if (result_local_nonprim) {
         applied_tax_policy_record_dto_free(result_local_nonprim);
         result_local_nonprim = NULL;

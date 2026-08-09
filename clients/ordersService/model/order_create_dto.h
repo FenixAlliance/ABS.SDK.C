@@ -69,6 +69,7 @@ typedef struct order_create_dto_t {
     char *individual_id; // string
     char *payment_term_id; // string
     char *organization_id; // string
+    char *receiver_tenant_id; // string
     char *first_name; // string
     char *last_name; // string
     char *company_name; // string
@@ -117,7 +118,6 @@ typedef struct order_create_dto_t {
     ordersservice_order_create_dto_ORDERSTATUS_e order_status; //enum
     ordersservice_order_create_dto_QUOTESTATUS_e quote_status; //enum
     ordersservice_order_create_dto_FREIGHTTERMS_e freight_terms; //enum
-    char *receiver_tenant_id; // string
     char *shipping_location_id; // string
     char *qualified_identifier; // string
     double total_taxes_in_usd; //numeric
@@ -142,6 +142,7 @@ order_create_dto_t *order_create_dto_create(
     char *individual_id,
     char *payment_term_id,
     char *organization_id,
+    char *receiver_tenant_id,
     char *first_name,
     char *last_name,
     char *company_name,
@@ -190,7 +191,6 @@ order_create_dto_t *order_create_dto_create(
     ordersservice_order_create_dto_ORDERSTATUS_e order_status,
     ordersservice_order_create_dto_QUOTESTATUS_e quote_status,
     ordersservice_order_create_dto_FREIGHTTERMS_e freight_terms,
-    char *receiver_tenant_id,
     char *shipping_location_id,
     char *qualified_identifier,
     double total_taxes_in_usd,

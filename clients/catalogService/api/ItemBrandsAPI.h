@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/item_brand_create_dto.h"
+#include "../model/item_brand_dto_collection_query_parameters.h"
 #include "../model/item_brand_dto_envelope.h"
 #include "../model/item_brand_dto_list_envelope.h"
 #include "../model/item_brand_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new item brand
@@ -42,7 +43,7 @@ ItemBrandsAPI_getItemBrandByIdAsync(apiClient_t *apiClient, char *itemBrandId, c
 // Retrieves all item brands for the specified tenant using OData query options.
 //
 item_brand_dto_list_envelope_t*
-ItemBrandsAPI_getItemBrandsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemBrandsAPI_getItemBrandsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_brand_dto_collection_query_parameters_t *item_brand_dto_collection_query_parameters);
 
 
 // Patch an item brand
@@ -50,7 +51,7 @@ ItemBrandsAPI_getItemBrandsAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Partially updates an existing item brand for the specified tenant.
 //
 void
-ItemBrandsAPI_patchItemBrandAsync(apiClient_t *apiClient, char *tenantId, char *itemBrandId, char *api_version, char *x_api_version, list_t *operation);
+ItemBrandsAPI_patchItemBrandAsync(apiClient_t *apiClient, char *tenantId, char *itemBrandId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item brand

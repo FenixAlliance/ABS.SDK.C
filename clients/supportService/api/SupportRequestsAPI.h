@@ -8,14 +8,17 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/support_request_attachment_create_dto.h"
+#include "../model/support_request_attachment_dto_collection_query_parameters.h"
 #include "../model/support_request_attachment_dto_envelope.h"
 #include "../model/support_request_attachment_dto_list_envelope.h"
 #include "../model/support_request_create_dto.h"
+#include "../model/support_request_dto_collection_query_parameters.h"
 #include "../model/support_request_dto_envelope.h"
 #include "../model/support_request_dto_list_envelope.h"
 #include "../model/support_request_update_dto.h"
+#include "../model/support_ticket_dto_collection_query_parameters.h"
 #include "../model/support_ticket_dto_list_envelope.h"
 
 
@@ -56,7 +59,7 @@ SupportRequestsAPI_getSupportRequestAttachmentByRequest(apiClient_t *apiClient, 
 // Retrieves the list of attachments associated with a specific support request.
 //
 support_request_attachment_dto_list_envelope_t*
-SupportRequestsAPI_getSupportRequestAttachmentsByRequest(apiClient_t *apiClient, char *tenantId, char *supportRequestId, char *api_version, char *x_api_version);
+SupportRequestsAPI_getSupportRequestAttachmentsByRequest(apiClient_t *apiClient, char *tenantId, char *supportRequestId, char *api_version, char *x_api_version, support_request_attachment_dto_collection_query_parameters_t *support_request_attachment_dto_collection_query_parameters);
 
 
 // Get the count of attachments for a support request
@@ -64,7 +67,7 @@ SupportRequestsAPI_getSupportRequestAttachmentsByRequest(apiClient_t *apiClient,
 // Returns the total count of attachments for a specific support request.
 //
 int32_envelope_t*
-SupportRequestsAPI_getSupportRequestAttachmentsCountByRequest(apiClient_t *apiClient, char *tenantId, char *supportRequestId, char *api_version, char *x_api_version);
+SupportRequestsAPI_getSupportRequestAttachmentsCountByRequest(apiClient_t *apiClient, char *tenantId, char *supportRequestId, char *api_version, char *x_api_version, support_request_attachment_dto_collection_query_parameters_t *support_request_attachment_dto_collection_query_parameters);
 
 
 // Retrieve tickets for a support request
@@ -72,7 +75,7 @@ SupportRequestsAPI_getSupportRequestAttachmentsCountByRequest(apiClient_t *apiCl
 // Retrieves the list of support tickets associated with a specific support request.
 //
 support_ticket_dto_list_envelope_t*
-SupportRequestsAPI_getSupportRequestTicketsAsync(apiClient_t *apiClient, char *tenantId, char *supportRequestId, char *api_version, char *x_api_version);
+SupportRequestsAPI_getSupportRequestTicketsAsync(apiClient_t *apiClient, char *tenantId, char *supportRequestId, char *api_version, char *x_api_version, support_ticket_dto_collection_query_parameters_t *support_ticket_dto_collection_query_parameters);
 
 
 // Retrieve a list of support requests
@@ -80,7 +83,7 @@ SupportRequestsAPI_getSupportRequestTicketsAsync(apiClient_t *apiClient, char *t
 // Retrieves a list of support requests for the specified tenant with OData query support.
 //
 support_request_dto_list_envelope_t*
-SupportRequestsAPI_getSupportRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportRequestsAPI_getSupportRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_request_dto_collection_query_parameters_t *support_request_dto_collection_query_parameters);
 
 
 // Get the count of support requests
@@ -88,7 +91,7 @@ SupportRequestsAPI_getSupportRequestsAsync(apiClient_t *apiClient, char *tenantI
 // Returns the total count of support requests for the specified tenant with OData query support.
 //
 int32_envelope_t*
-SupportRequestsAPI_getSupportRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportRequestsAPI_getSupportRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_request_dto_collection_query_parameters_t *support_request_dto_collection_query_parameters);
 
 
 // Patch a support request
@@ -96,7 +99,7 @@ SupportRequestsAPI_getSupportRequestsCountAsync(apiClient_t *apiClient, char *te
 // Partially updates an existing support request by its unique identifier.
 //
 empty_envelope_t*
-SupportRequestsAPI_patchSupportRequestAsync(apiClient_t *apiClient, char *tenantId, char *supportRequestId, char *api_version, char *x_api_version, list_t *operation);
+SupportRequestsAPI_patchSupportRequestAsync(apiClient_t *apiClient, char *tenantId, char *supportRequestId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Add an attachment to a support request

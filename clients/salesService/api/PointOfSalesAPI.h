@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/point_of_sale_create_dto.h"
+#include "../model/point_of_sale_dto_collection_query_parameters.h"
 #include "../model/point_of_sale_dto_envelope.h"
 #include "../model/point_of_sale_dto_list_envelope.h"
 #include "../model/point_of_sale_update_dto.h"
@@ -20,7 +21,7 @@
 // Returns the total count of point of sales for the specified tenant with OData filter support.
 //
 int32_envelope_t*
-PointOfSalesAPI_countPointOfSalesAsync(apiClient_t *apiClient, char *tenantId);
+PointOfSalesAPI_countPointOfSalesAsync(apiClient_t *apiClient, char *tenantId, point_of_sale_dto_collection_query_parameters_t *point_of_sale_dto_collection_query_parameters);
 
 
 // Create a point of sale
@@ -52,7 +53,7 @@ PointOfSalesAPI_getPointOfSaleAsync(apiClient_t *apiClient, char *tenantId, char
 // Retrieves a list of point of sales for the specified tenant with OData query support.
 //
 point_of_sale_dto_list_envelope_t*
-PointOfSalesAPI_getPointOfSalesAsync(apiClient_t *apiClient, char *tenantId);
+PointOfSalesAPI_getPointOfSalesAsync(apiClient_t *apiClient, char *tenantId, point_of_sale_dto_collection_query_parameters_t *point_of_sale_dto_collection_query_parameters);
 
 
 // Patch a point of sale
@@ -60,7 +61,7 @@ PointOfSalesAPI_getPointOfSalesAsync(apiClient_t *apiClient, char *tenantId);
 // Partially updates an existing point of sale using a JSON Patch document.
 //
 empty_envelope_t*
-PointOfSalesAPI_patchPointOfSaleAsync(apiClient_t *apiClient, char *tenantId, char *pointOfSaleId, list_t *operation);
+PointOfSalesAPI_patchPointOfSaleAsync(apiClient_t *apiClient, char *tenantId, char *pointOfSaleId, list_t *patch_operation);
 
 
 // Update a point of sale

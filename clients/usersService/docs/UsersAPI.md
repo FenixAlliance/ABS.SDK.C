@@ -37,7 +37,7 @@ Method | HTTP request | Description
 //
 // Count the social profiles that follow the current user
 //
-int32_envelope_t* UsersAPI_countCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* UsersAPI_countCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -46,6 +46,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**follow_record_dto_collection_query_parameters** | **[follow_record_dto_collection_query_parameters_t](follow_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -58,7 +59,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -69,7 +70,7 @@ No authorization required
 //
 // Count the social profiles that the current user follows
 //
-int32_envelope_t* UsersAPI_countCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* UsersAPI_countCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -78,6 +79,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**follow_record_dto_collection_query_parameters** | **[follow_record_dto_collection_query_parameters_t](follow_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -90,7 +92,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -101,7 +103,7 @@ No authorization required
 //
 // Count the notifications for the current user
 //
-int32_envelope_t* UsersAPI_countCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* UsersAPI_countCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -110,6 +112,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**notification_dto_collection_query_parameters** | **[notification_dto_collection_query_parameters_t](notification_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -122,7 +125,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -133,7 +136,7 @@ No authorization required
 //
 // Count the tenants that the current user is enrolled in
 //
-int32_envelope_t* UsersAPI_countCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* UsersAPI_countCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, tenant_dto_collection_query_parameters_t *tenant_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -142,6 +145,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**tenant_dto_collection_query_parameters** | **[tenant_dto_collection_query_parameters_t](tenant_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -154,7 +158,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -165,7 +169,7 @@ No authorization required
 //
 // Get the list of addresses for the current user
 //
-address_dto_list_envelope_t* UsersAPI_getCurrentUserAddressesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+address_dto_list_envelope_t* UsersAPI_getCurrentUserAddressesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, address_dto_collection_query_parameters_t *address_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -174,6 +178,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**address_dto_collection_query_parameters** | **[address_dto_collection_query_parameters_t](address_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -186,7 +191,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -358,7 +363,7 @@ No authorization required
 //
 // Get the social profiles that follow the current user
 //
-follow_record_dto_list_envelope_t* UsersAPI_getCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+follow_record_dto_list_envelope_t* UsersAPI_getCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -367,6 +372,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**follow_record_dto_collection_query_parameters** | **[follow_record_dto_collection_query_parameters_t](follow_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -379,7 +385,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -390,7 +396,7 @@ No authorization required
 //
 // Get the social profiles that the current user follows
 //
-follow_record_dto_list_envelope_t* UsersAPI_getCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+follow_record_dto_list_envelope_t* UsersAPI_getCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -399,6 +405,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**follow_record_dto_collection_query_parameters** | **[follow_record_dto_collection_query_parameters_t](follow_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -411,7 +418,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -454,7 +461,7 @@ No authorization required
 //
 // Get the list of notifications for the current user
 //
-notification_dto_list_envelope_t* UsersAPI_getCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+notification_dto_list_envelope_t* UsersAPI_getCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -463,6 +470,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**notification_dto_collection_query_parameters** | **[notification_dto_collection_query_parameters_t](notification_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -475,7 +483,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -550,7 +558,7 @@ No authorization required
 //
 // Get the tenants that the current user is enrolled in
 //
-tenant_dto_list_envelope_t* UsersAPI_getCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+tenant_dto_list_envelope_t* UsersAPI_getCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, tenant_dto_collection_query_parameters_t *tenant_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -559,6 +567,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**tenant_dto_collection_query_parameters** | **[tenant_dto_collection_query_parameters_t](tenant_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -571,7 +580,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml, multipart/form-data
  - **Accept**: application/json, application/xml, multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -711,7 +720,7 @@ No authorization required
 //
 // Partially update the current user's profile
 //
-empty_envelope_t* UsersAPI_patchCurrentUserAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* UsersAPI_patchCurrentUserAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -720,7 +729,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

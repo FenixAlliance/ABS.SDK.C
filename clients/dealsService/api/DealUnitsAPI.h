@@ -6,19 +6,22 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/deal_unit_create_dto.h"
+#include "../model/deal_unit_dto_collection_query_parameters.h"
 #include "../model/deal_unit_dto_envelope.h"
 #include "../model/deal_unit_dto_list_envelope.h"
 #include "../model/deal_unit_line_create_dto.h"
+#include "../model/deal_unit_line_dto_collection_query_parameters.h"
 #include "../model/deal_unit_line_dto_envelope.h"
 #include "../model/deal_unit_line_dto_list_envelope.h"
 #include "../model/deal_unit_line_update_dto.h"
 #include "../model/deal_unit_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/extended_deal_unit_dto_collection_query_parameters.h"
 #include "../model/extended_deal_unit_dto_envelope.h"
 #include "../model/extended_deal_unit_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Calculate a deal unit
@@ -82,7 +85,7 @@ DealUnitsAPI_getDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *deal
 // Retrieves a list of lines for a specific deal unit with OData query support.
 //
 deal_unit_line_dto_list_envelope_t*
-DealUnitsAPI_getDealUnitLinesAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *itemId);
+DealUnitsAPI_getDealUnitLinesAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *itemId, deal_unit_line_dto_collection_query_parameters_t *deal_unit_line_dto_collection_query_parameters);
 
 
 // Get deal unit lines count
@@ -90,7 +93,7 @@ DealUnitsAPI_getDealUnitLinesAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the total count of lines for a specific deal unit with OData filter support.
 //
 int32_envelope_t*
-DealUnitsAPI_getDealUnitLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId);
+DealUnitsAPI_getDealUnitLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, deal_unit_line_dto_collection_query_parameters_t *deal_unit_line_dto_collection_query_parameters);
 
 
 // Get a deal unit line by ID
@@ -106,7 +109,7 @@ DealUnitsAPI_getDealUnitPriceAsync(apiClient_t *apiClient, char *tenantId, char 
 // Retrieves a list of deal units for the specified tenant with OData query support.
 //
 deal_unit_dto_list_envelope_t*
-DealUnitsAPI_getDealUnitsAsync(apiClient_t *apiClient, char *tenantId);
+DealUnitsAPI_getDealUnitsAsync(apiClient_t *apiClient, char *tenantId, deal_unit_dto_collection_query_parameters_t *deal_unit_dto_collection_query_parameters);
 
 
 // Get deal units count
@@ -114,7 +117,7 @@ DealUnitsAPI_getDealUnitsAsync(apiClient_t *apiClient, char *tenantId);
 // Returns the total count of deal units for the specified tenant with OData filter support.
 //
 int32_envelope_t*
-DealUnitsAPI_getDealUnitsCountAsync(apiClient_t *apiClient, char *tenantId);
+DealUnitsAPI_getDealUnitsCountAsync(apiClient_t *apiClient, char *tenantId, deal_unit_dto_collection_query_parameters_t *deal_unit_dto_collection_query_parameters);
 
 
 // Get extended deal unit by ID
@@ -130,7 +133,7 @@ DealUnitsAPI_getExtendedDealUnitAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves a list of deal units with extended details for the specified tenant with OData query support.
 //
 extended_deal_unit_dto_list_envelope_t*
-DealUnitsAPI_getExtendedDealUnitsAsync(apiClient_t *apiClient, char *tenantId);
+DealUnitsAPI_getExtendedDealUnitsAsync(apiClient_t *apiClient, char *tenantId, extended_deal_unit_dto_collection_query_parameters_t *extended_deal_unit_dto_collection_query_parameters);
 
 
 // Patch a deal unit
@@ -138,7 +141,7 @@ DealUnitsAPI_getExtendedDealUnitsAsync(apiClient_t *apiClient, char *tenantId);
 // Partially updates an existing deal unit by its unique identifier using a JSON Patch document.
 //
 empty_envelope_t*
-DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, list_t *operation);
+DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, list_t *patch_operation);
 
 
 // Patch a deal unit line
@@ -146,7 +149,7 @@ DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *de
 // Partially updates an existing line within a specific deal unit using a JSON Patch document.
 //
 empty_envelope_t*
-DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *dealUnitLineId, list_t *operation);
+DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *dealUnitLineId, list_t *patch_operation);
 
 
 // Update a deal unit

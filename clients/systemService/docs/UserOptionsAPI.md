@@ -123,7 +123,7 @@ No authorization required
 //
 // Admin endpoint to retrieve options for any user
 //
-option_dto_list_envelope_t* UserOptionsAPI_getSystemUserOptions(apiClient_t *apiClient, char *userId, char *portalId, char *api_version, char *x_api_version);
+option_dto_list_envelope_t* UserOptionsAPI_getSystemUserOptions(apiClient_t *apiClient, char *userId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -134,6 +134,7 @@ Name | Type | Description  | Notes
 **portalId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**option_dto_collection_query_parameters** | **[option_dto_collection_query_parameters_t](option_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -146,7 +147,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -157,7 +158,7 @@ No authorization required
 //
 // Admin endpoint to get the count of options for any user
 //
-int32_envelope_t* UserOptionsAPI_getSystemUserOptionsCount(apiClient_t *apiClient, char *userId, char *portalId, char *api_version, char *x_api_version);
+int32_envelope_t* UserOptionsAPI_getSystemUserOptionsCount(apiClient_t *apiClient, char *userId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -168,6 +169,7 @@ Name | Type | Description  | Notes
 **portalId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**option_dto_collection_query_parameters** | **[option_dto_collection_query_parameters_t](option_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -180,7 +182,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -191,7 +193,7 @@ No authorization required
 //
 // Admin endpoint to partially update an option for any user using a JSON Patch document
 //
-empty_envelope_t* UserOptionsAPI_patchSystemUserOption(apiClient_t *apiClient, char *userId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* UserOptionsAPI_patchSystemUserOption(apiClient_t *apiClient, char *userId, char *optionId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -202,7 +204,7 @@ Name | Type | Description  | Notes
 **optionId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

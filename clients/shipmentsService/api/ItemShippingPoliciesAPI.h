@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_shipping_policy_create_dto.h"
+#include "../model/item_shipping_policy_dto_collection_query_parameters.h"
 #include "../model/item_shipping_policy_dto_envelope.h"
 #include "../model/item_shipping_policy_dto_list_envelope.h"
 #include "../model/item_shipping_policy_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an item shipping policy
@@ -36,7 +37,7 @@ ItemShippingPoliciesAPI_deleteItemShippingPolicyAsync(apiClient_t *apiClient, ch
 // Retrieves all item shipping policies for the specified tenant.
 //
 item_shipping_policy_dto_list_envelope_t*
-ItemShippingPoliciesAPI_getItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemShippingPoliciesAPI_getItemShippingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_shipping_policy_dto_collection_query_parameters_t *item_shipping_policy_dto_collection_query_parameters);
 
 
 // Get item shipping policies count
@@ -44,7 +45,7 @@ ItemShippingPoliciesAPI_getItemShippingPoliciesAsync(apiClient_t *apiClient, cha
 // Returns the count of item shipping policies.
 //
 int32_envelope_t*
-ItemShippingPoliciesAPI_getItemShippingPoliciesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemShippingPoliciesAPI_getItemShippingPoliciesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_shipping_policy_dto_collection_query_parameters_t *item_shipping_policy_dto_collection_query_parameters);
 
 
 // Get item shipping policy by ID
@@ -60,7 +61,7 @@ ItemShippingPoliciesAPI_getItemShippingPolicyByIdAsync(apiClient_t *apiClient, c
 // Partially updates an existing item shipping policy using JSON Patch.
 //
 empty_envelope_t*
-ItemShippingPoliciesAPI_patchItemShippingPolicyAsync(apiClient_t *apiClient, char *tenantId, char *policyId, char *api_version, char *x_api_version, list_t *operation);
+ItemShippingPoliciesAPI_patchItemShippingPolicyAsync(apiClient_t *apiClient, char *tenantId, char *policyId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item shipping policy

@@ -5,8 +5,10 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/blog_author_dto_collection_query_parameters.h"
 #include "../model/blog_author_dto_envelope.h"
 #include "../model/blog_author_dto_list_envelope.h"
+#include "../model/blog_post_dto_collection_query_parameters.h"
 #include "../model/blog_post_dto_list_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
@@ -17,7 +19,7 @@
 // Returns the count of blog posts written by a specific author.
 //
 int32_envelope_t*
-BlogPostAuthorsAPI_countBlogPostsByAuthorAsync(apiClient_t *apiClient, char *authorId, char *api_version, char *x_api_version);
+BlogPostAuthorsAPI_countBlogPostsByAuthorAsync(apiClient_t *apiClient, char *authorId, char *api_version, char *x_api_version, blog_post_dto_collection_query_parameters_t *blog_post_dto_collection_query_parameters);
 
 
 // Get blog author by ID
@@ -33,7 +35,7 @@ BlogPostAuthorsAPI_getBlogAuthorByIdAsync(apiClient_t *apiClient, char *authorId
 // Retrieves all blog authors, optionally filtered by tenant.
 //
 blog_author_dto_list_envelope_t*
-BlogPostAuthorsAPI_getBlogAuthorsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BlogPostAuthorsAPI_getBlogAuthorsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, blog_author_dto_collection_query_parameters_t *blog_author_dto_collection_query_parameters);
 
 
 // Get blog posts by author
@@ -41,6 +43,6 @@ BlogPostAuthorsAPI_getBlogAuthorsAsync(apiClient_t *apiClient, char *tenantId, c
 // Retrieves all blog posts written by a specific author.
 //
 blog_post_dto_list_envelope_t*
-BlogPostAuthorsAPI_getBlogPostsByAuthorAsync(apiClient_t *apiClient, char *authorId, char *api_version, char *x_api_version);
+BlogPostAuthorsAPI_getBlogPostsByAuthorAsync(apiClient_t *apiClient, char *authorId, char *api_version, char *x_api_version, blog_post_dto_collection_query_parameters_t *blog_post_dto_collection_query_parameters);
 
 

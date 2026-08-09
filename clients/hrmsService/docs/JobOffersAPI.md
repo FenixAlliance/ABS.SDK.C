@@ -195,7 +195,7 @@ No authorization required
 //
 // Retrieves job offers for the specified tenant.
 //
-job_offer_dto_list_envelope_t* JobOffersAPI_getJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+job_offer_dto_list_envelope_t* JobOffersAPI_getJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_offer_dto_collection_query_parameters_t *job_offer_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -205,6 +205,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**job_offer_dto_collection_query_parameters** | **[job_offer_dto_collection_query_parameters_t](job_offer_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -217,7 +218,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -228,7 +229,7 @@ No authorization required
 //
 // Counts job offers for the specified tenant.
 //
-int32_envelope_t* JobOffersAPI_getJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* JobOffersAPI_getJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_offer_dto_collection_query_parameters_t *job_offer_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -238,6 +239,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**job_offer_dto_collection_query_parameters** | **[job_offer_dto_collection_query_parameters_t](job_offer_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -250,7 +252,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -295,7 +297,7 @@ No authorization required
 //
 // Retrieves published job offers for the Talent Portal. Anonymous; optionally scoped to a single tenant.
 //
-job_offer_dto_list_envelope_t* JobOffersAPI_getPublicJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+job_offer_dto_list_envelope_t* JobOffersAPI_getPublicJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_offer_dto_collection_query_parameters_t *job_offer_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -305,6 +307,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**job_offer_dto_collection_query_parameters** | **[job_offer_dto_collection_query_parameters_t](job_offer_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -317,7 +320,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -328,7 +331,7 @@ No authorization required
 //
 // Counts published job offers for the Talent Portal. Anonymous; optionally scoped to a single tenant.
 //
-int32_envelope_t* JobOffersAPI_getPublicJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* JobOffersAPI_getPublicJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_offer_dto_collection_query_parameters_t *job_offer_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -338,6 +341,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**job_offer_dto_collection_query_parameters** | **[job_offer_dto_collection_query_parameters_t](job_offer_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -350,7 +354,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -361,7 +365,7 @@ No authorization required
 //
 // Partially updates an existing job offer for the specified tenant.
 //
-empty_envelope_t* JobOffersAPI_patchJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* JobOffersAPI_patchJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -372,7 +376,7 @@ Name | Type | Description  | Notes
 **jobOfferId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

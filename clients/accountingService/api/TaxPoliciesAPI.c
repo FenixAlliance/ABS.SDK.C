@@ -1214,13 +1214,13 @@ end:
 // Retrieves all applied tax policy records for the specified tax policy.
 //
 applied_tax_policy_record_dto_list_envelope_t*
-TaxPoliciesAPI_getAppliedTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version)
+TaxPoliciesAPI_getAppliedTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version, applied_tax_policy_record_dto_collection_query_parameters_t *applied_tax_policy_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1283,8 +1283,19 @@ TaxPoliciesAPI_getAppliedTaxPolicyRecords(apiClient_t *apiClient, char *tenantId
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters = NULL;
+    if (applied_tax_policy_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters = applied_tax_policy_record_dto_collection_query_parameters_convertToJSON(applied_tax_policy_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1325,7 +1336,7 @@ TaxPoliciesAPI_getAppliedTaxPolicyRecords(apiClient_t *apiClient, char *tenantId
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_taxPolicyId);
     if (keyHeader_x_api_version) {
@@ -1337,6 +1348,11 @@ TaxPoliciesAPI_getAppliedTaxPolicyRecords(apiClient_t *apiClient, char *tenantId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1373,13 +1389,13 @@ end:
 // Returns the total count of applied tax policy records for the specified tax policy.
 //
 int32_envelope_t*
-TaxPoliciesAPI_getAppliedTaxPolicyRecordsCount(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version)
+TaxPoliciesAPI_getAppliedTaxPolicyRecordsCount(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version, applied_tax_policy_record_dto_collection_query_parameters_t *applied_tax_policy_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1442,8 +1458,19 @@ TaxPoliciesAPI_getAppliedTaxPolicyRecordsCount(apiClient_t *apiClient, char *ten
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters = NULL;
+    if (applied_tax_policy_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters = applied_tax_policy_record_dto_collection_query_parameters_convertToJSON(applied_tax_policy_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1484,7 +1511,7 @@ TaxPoliciesAPI_getAppliedTaxPolicyRecordsCount(apiClient_t *apiClient, char *ten
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_taxPolicyId);
     if (keyHeader_x_api_version) {
@@ -1496,6 +1523,11 @@ TaxPoliciesAPI_getAppliedTaxPolicyRecordsCount(apiClient_t *apiClient, char *ten
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_applied_tax_policy_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1709,13 +1741,13 @@ end:
 // Retrieves all item tax policy records for the specified tax policy.
 //
 item_tax_policy_record_dto_list_envelope_t*
-TaxPoliciesAPI_getItemTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version)
+TaxPoliciesAPI_getItemTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version, item_tax_policy_record_dto_collection_query_parameters_t *item_tax_policy_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1778,8 +1810,19 @@ TaxPoliciesAPI_getItemTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_item_tax_policy_record_dto_collection_query_parameters = NULL;
+    if (item_tax_policy_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_item_tax_policy_record_dto_collection_query_parameters = item_tax_policy_record_dto_collection_query_parameters_convertToJSON(item_tax_policy_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_item_tax_policy_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1820,7 +1863,7 @@ TaxPoliciesAPI_getItemTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_taxPolicyId);
     if (keyHeader_x_api_version) {
@@ -1832,6 +1875,11 @@ TaxPoliciesAPI_getItemTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_item_tax_policy_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_item_tax_policy_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_item_tax_policy_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1868,13 +1916,13 @@ end:
 // Retrieves all tax policies for the specified tenant using OData query options.
 //
 tax_policy_dto_list_envelope_t*
-TaxPoliciesAPI_getTaxPolicies(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+TaxPoliciesAPI_getTaxPolicies(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tax_policy_dto_collection_query_parameters_t *tax_policy_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1920,8 +1968,19 @@ TaxPoliciesAPI_getTaxPolicies(apiClient_t *apiClient, char *tenantId, char *api_
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_tax_policy_dto_collection_query_parameters = NULL;
+    if (tax_policy_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_tax_policy_dto_collection_query_parameters = tax_policy_dto_collection_query_parameters_convertToJSON(tax_policy_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_tax_policy_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1962,7 +2021,7 @@ TaxPoliciesAPI_getTaxPolicies(apiClient_t *apiClient, char *tenantId, char *api_
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1973,6 +2032,11 @@ TaxPoliciesAPI_getTaxPolicies(apiClient_t *apiClient, char *tenantId, char *api_
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_tax_policy_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_tax_policy_dto_collection_query_parameters);
+        localVarSingleItemJSON_tax_policy_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2009,13 +2073,13 @@ end:
 // Retrieves all tax policies associated with the specified fiscal authority.
 //
 tax_policy_dto_list_envelope_t*
-TaxPoliciesAPI_getTaxPoliciesByAuthority(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version)
+TaxPoliciesAPI_getTaxPoliciesByAuthority(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version, tax_policy_dto_collection_query_parameters_t *tax_policy_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2078,8 +2142,19 @@ TaxPoliciesAPI_getTaxPoliciesByAuthority(apiClient_t *apiClient, char *tenantId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_tax_policy_dto_collection_query_parameters = NULL;
+    if (tax_policy_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_tax_policy_dto_collection_query_parameters = tax_policy_dto_collection_query_parameters_convertToJSON(tax_policy_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_tax_policy_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2120,7 +2195,7 @@ TaxPoliciesAPI_getTaxPoliciesByAuthority(apiClient_t *apiClient, char *tenantId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_authorityId);
     if (keyHeader_x_api_version) {
@@ -2132,6 +2207,11 @@ TaxPoliciesAPI_getTaxPoliciesByAuthority(apiClient_t *apiClient, char *tenantId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_tax_policy_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_tax_policy_dto_collection_query_parameters);
+        localVarSingleItemJSON_tax_policy_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2168,13 +2248,13 @@ end:
 // Returns the count of tax policies for the specified tenant.
 //
 int32_envelope_t*
-TaxPoliciesAPI_getTaxPoliciesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+TaxPoliciesAPI_getTaxPoliciesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tax_policy_dto_collection_query_parameters_t *tax_policy_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2220,8 +2300,19 @@ TaxPoliciesAPI_getTaxPoliciesCount(apiClient_t *apiClient, char *tenantId, char 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_tax_policy_dto_collection_query_parameters = NULL;
+    if (tax_policy_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_tax_policy_dto_collection_query_parameters = tax_policy_dto_collection_query_parameters_convertToJSON(tax_policy_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_tax_policy_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2262,7 +2353,7 @@ TaxPoliciesAPI_getTaxPoliciesCount(apiClient_t *apiClient, char *tenantId, char 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -2273,6 +2364,11 @@ TaxPoliciesAPI_getTaxPoliciesCount(apiClient_t *apiClient, char *tenantId, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_tax_policy_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_tax_policy_dto_collection_query_parameters);
+        localVarSingleItemJSON_tax_policy_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2468,7 +2564,7 @@ end:
 // Partially updates an existing applied tax policy record identified by its unique identifier.
 //
 empty_envelope_t*
-TaxPoliciesAPI_patchAppliedTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *appliedTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *operation)
+TaxPoliciesAPI_patchAppliedTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *appliedTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2557,14 +2653,14 @@ TaxPoliciesAPI_patchAppliedTaxPolicyRecord(apiClient_t *apiClient, char *tenantI
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2572,16 +2668,16 @@ TaxPoliciesAPI_patchAppliedTaxPolicyRecord(apiClient_t *apiClient, char *tenantI
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2640,17 +2736,17 @@ TaxPoliciesAPI_patchAppliedTaxPolicyRecord(apiClient_t *apiClient, char *tenantI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -2689,7 +2785,7 @@ end:
 // Partially updates an existing item tax policy record identified by its unique identifier.
 //
 empty_envelope_t*
-TaxPoliciesAPI_patchItemTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *itemTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *operation)
+TaxPoliciesAPI_patchItemTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *itemTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2778,14 +2874,14 @@ TaxPoliciesAPI_patchItemTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, 
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2793,16 +2889,16 @@ TaxPoliciesAPI_patchItemTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, 
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2861,17 +2957,17 @@ TaxPoliciesAPI_patchItemTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -2910,7 +3006,7 @@ end:
 // Partially updates an existing tax policy identified by its unique identifier.
 //
 empty_envelope_t*
-TaxPoliciesAPI_patchTaxPolicy(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation)
+TaxPoliciesAPI_patchTaxPolicy(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2982,14 +3078,14 @@ TaxPoliciesAPI_patchTaxPolicy(apiClient_t *apiClient, char *tenantId, char *id, 
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2997,16 +3093,16 @@ TaxPoliciesAPI_patchTaxPolicy(apiClient_t *apiClient, char *tenantId, char *id, 
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -3064,17 +3160,17 @@ TaxPoliciesAPI_patchTaxPolicy(apiClient_t *apiClient, char *tenantId, char *id, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

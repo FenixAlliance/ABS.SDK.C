@@ -28,7 +28,7 @@ Method | HTTP request | Description
 //
 // Returns the total number of calling codes for the specified country, with optional OData filtering.
 //
-int32_envelope_t* CountriesAPI_countCallingCodesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+int32_envelope_t* CountriesAPI_countCallingCodesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_calling_code_dto_collection_query_parameters_t *country_calling_code_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -38,6 +38,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**country_calling_code_dto_collection_query_parameters** | **[country_calling_code_dto_collection_query_parameters_t](country_calling_code_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -50,7 +51,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -61,7 +62,7 @@ No authorization required
 //
 // Returns the total number of cities for the specified state, with optional OData filtering.
 //
-int32_envelope_t* CountriesAPI_countCitiesByStateAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version);
+int32_envelope_t* CountriesAPI_countCitiesByStateAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version, city_dto_collection_query_parameters_t *city_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -72,6 +73,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**city_dto_collection_query_parameters** | **[city_dto_collection_query_parameters_t](city_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -84,7 +86,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -95,7 +97,7 @@ No authorization required
 //
 // Returns the total number of countries, with optional OData filtering.
 //
-int32_envelope_t* CountriesAPI_countCountries(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* CountriesAPI_countCountries(apiClient_t *apiClient, char *api_version, char *x_api_version, country_dto_collection_query_parameters_t *country_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -104,6 +106,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**country_dto_collection_query_parameters** | **[country_dto_collection_query_parameters_t](country_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -116,7 +119,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -127,7 +130,7 @@ No authorization required
 //
 // Returns the total number of states or provinces for the specified country, with optional OData filtering.
 //
-int32_envelope_t* CountriesAPI_countCountryStatesAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+int32_envelope_t* CountriesAPI_countCountryStatesAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_state_dto_collection_query_parameters_t *country_state_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -137,6 +140,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**country_state_dto_collection_query_parameters** | **[country_state_dto_collection_query_parameters_t](country_state_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -149,7 +153,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -160,7 +164,7 @@ No authorization required
 //
 // Returns the total number of timezones for the specified country, with optional OData filtering.
 //
-int32_envelope_t* CountriesAPI_countTimezonesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+int32_envelope_t* CountriesAPI_countTimezonesByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, timezone_dto_collection_query_parameters_t *timezone_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -170,6 +174,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**timezone_dto_collection_query_parameters** | **[timezone_dto_collection_query_parameters_t](timezone_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -182,7 +187,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -193,7 +198,7 @@ No authorization required
 //
 // Returns the total number of top-level domains for the specified country, with optional OData filtering.
 //
-int32_envelope_t* CountriesAPI_countTopLevelDomainsByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+int32_envelope_t* CountriesAPI_countTopLevelDomainsByCountryAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_top_level_domain_dto_collection_query_parameters_t *country_top_level_domain_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -203,6 +208,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**country_top_level_domain_dto_collection_query_parameters** | **[country_top_level_domain_dto_collection_query_parameters_t](country_top_level_domain_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -215,7 +221,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -226,7 +232,7 @@ No authorization required
 //
 // Retrieves a list of all countries with optional OData pagination and filtering.
 //
-country_dto_list_envelope_t* CountriesAPI_getAllCountries(apiClient_t *apiClient, char *api_version, char *x_api_version);
+country_dto_list_envelope_t* CountriesAPI_getAllCountries(apiClient_t *apiClient, char *api_version, char *x_api_version, country_dto_collection_query_parameters_t *country_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -235,6 +241,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**country_dto_collection_query_parameters** | **[country_dto_collection_query_parameters_t](country_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -247,7 +254,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -258,7 +265,7 @@ No authorization required
 //
 // Retrieves the list of international telephone calling codes associated with the specified country.
 //
-country_calling_code_dto_list_envelope_t* CountriesAPI_getCallingCodesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+country_calling_code_dto_list_envelope_t* CountriesAPI_getCallingCodesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_calling_code_dto_collection_query_parameters_t *country_calling_code_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -268,6 +275,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**country_calling_code_dto_collection_query_parameters** | **[country_calling_code_dto_collection_query_parameters_t](country_calling_code_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -280,7 +288,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -291,7 +299,7 @@ No authorization required
 //
 // Retrieves the list of cities belonging to the specified state or province.
 //
-city_dto_list_envelope_t* CountriesAPI_getCitiesByCountryStateIdAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version);
+city_dto_list_envelope_t* CountriesAPI_getCitiesByCountryStateIdAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version, city_dto_collection_query_parameters_t *city_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -302,6 +310,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**city_dto_collection_query_parameters** | **[city_dto_collection_query_parameters_t](city_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -314,7 +323,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -358,7 +367,7 @@ No authorization required
 //
 // Retrieves a single state or province by its unique identifier within a country.
 //
-country_state_dto_envelope_t* CountriesAPI_getCountryStateByIdAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version);
+country_state_dto_envelope_t* CountriesAPI_getCountryStateByIdAsync(apiClient_t *apiClient, char *countryStateId, char *countryId, char *api_version, char *x_api_version, country_state_dto_collection_query_parameters_t *country_state_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -369,6 +378,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**country_state_dto_collection_query_parameters** | **[country_state_dto_collection_query_parameters_t](country_state_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -381,7 +391,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -392,7 +402,7 @@ No authorization required
 //
 // Retrieves the list of states or provinces belonging to the specified country.
 //
-country_state_dto_list_envelope_t* CountriesAPI_getCountryStatesAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+country_state_dto_list_envelope_t* CountriesAPI_getCountryStatesAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_state_dto_collection_query_parameters_t *country_state_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -402,6 +412,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**country_state_dto_collection_query_parameters** | **[country_state_dto_collection_query_parameters_t](country_state_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -414,7 +425,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -425,7 +436,7 @@ No authorization required
 //
 // Retrieves the list of enabled currencies for the specified country.
 //
-currency_dto_list_envelope_t* CountriesAPI_getEnabledCurrenciesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+currency_dto_list_envelope_t* CountriesAPI_getEnabledCurrenciesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, currency_dto_collection_query_parameters_t *currency_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -435,6 +446,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**currency_dto_collection_query_parameters** | **[currency_dto_collection_query_parameters_t](currency_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -447,7 +459,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -458,7 +470,7 @@ No authorization required
 //
 // Retrieves the list of timezones associated with the specified country.
 //
-timezone_dto_list_envelope_t* CountriesAPI_getTimeZonesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+timezone_dto_list_envelope_t* CountriesAPI_getTimeZonesByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, timezone_dto_collection_query_parameters_t *timezone_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -468,6 +480,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**timezone_dto_collection_query_parameters** | **[timezone_dto_collection_query_parameters_t](timezone_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -480,7 +493,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -491,7 +504,7 @@ No authorization required
 //
 // Retrieves the list of internet top-level domains (TLDs) associated with the specified country.
 //
-country_top_level_domain_dto_list_envelope_t* CountriesAPI_getTopLevelDomainsByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version);
+country_top_level_domain_dto_list_envelope_t* CountriesAPI_getTopLevelDomainsByCountryIdAsync(apiClient_t *apiClient, char *countryId, char *api_version, char *x_api_version, country_top_level_domain_dto_collection_query_parameters_t *country_top_level_domain_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -501,6 +514,7 @@ Name | Type | Description  | Notes
 **countryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**country_top_level_domain_dto_collection_query_parameters** | **[country_top_level_domain_dto_collection_query_parameters_t](country_top_level_domain_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -513,7 +527,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

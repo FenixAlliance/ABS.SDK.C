@@ -9,6 +9,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/payroll_period_create_dto.h"
+#include "../model/payroll_period_dto_collection_query_parameters.h"
 #include "../model/payroll_period_dto_envelope.h"
 #include "../model/payroll_period_dto_list_envelope.h"
 #include "../model/payroll_period_update_dto.h"
@@ -43,7 +44,7 @@ PayrollPeriodsAPI_getPayrollPeriodByIdAsync(apiClient_t *apiClient, char *tenant
 // Retrieves payroll periods for the specified tenant.
 //
 payroll_period_dto_list_envelope_t*
-PayrollPeriodsAPI_getPayrollPeriodsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PayrollPeriodsAPI_getPayrollPeriodsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payroll_period_dto_collection_query_parameters_t *payroll_period_dto_collection_query_parameters);
 
 
 // Count payroll periods
@@ -51,7 +52,7 @@ PayrollPeriodsAPI_getPayrollPeriodsAsync(apiClient_t *apiClient, char *tenantId,
 // Counts payroll periods for the specified tenant.
 //
 int32_envelope_t*
-PayrollPeriodsAPI_getPayrollPeriodsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PayrollPeriodsAPI_getPayrollPeriodsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payroll_period_dto_collection_query_parameters_t *payroll_period_dto_collection_query_parameters);
 
 
 // Update a payroll period

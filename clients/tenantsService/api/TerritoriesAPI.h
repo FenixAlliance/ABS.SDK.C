@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_territory_create_dto.h"
+#include "../model/tenant_territory_dto_collection_query_parameters.h"
 #include "../model/tenant_territory_dto_envelope.h"
 #include "../model/tenant_territory_dto_list_envelope.h"
 #include "../model/tenant_territory_update_dto.h"
@@ -36,7 +37,7 @@ TerritoriesAPI_deleteTenantTerritory(apiClient_t *apiClient, char *tenantId, cha
 // Retrieve a list of tenant territories
 //
 tenant_territory_dto_list_envelope_t*
-TerritoriesAPI_getTenantTerritories(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TerritoriesAPI_getTenantTerritories(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_territory_dto_collection_query_parameters_t *tenant_territory_dto_collection_query_parameters);
 
 
 // Get the count of tenant territories
@@ -44,7 +45,7 @@ TerritoriesAPI_getTenantTerritories(apiClient_t *apiClient, char *tenantId, char
 // Get the count of tenant territories
 //
 int32_envelope_t*
-TerritoriesAPI_getTenantTerritoriesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TerritoriesAPI_getTenantTerritoriesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_territory_dto_collection_query_parameters_t *tenant_territory_dto_collection_query_parameters);
 
 
 // Retrieve a single tenant territory by its ID
@@ -60,7 +61,7 @@ TerritoriesAPI_getTenantTerritoryById(apiClient_t *apiClient, char *tenantId, ch
 // Patch a tenant territory
 //
 empty_envelope_t*
-TerritoriesAPI_patchTenantTerritory(apiClient_t *apiClient, char *tenantId, char *tenantTerritoryId, char *api_version, char *x_api_version, list_t *operation);
+TerritoriesAPI_patchTenantTerritory(apiClient_t *apiClient, char *tenantId, char *tenantTerritoryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant territory

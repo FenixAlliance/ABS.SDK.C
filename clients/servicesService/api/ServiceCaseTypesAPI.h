@@ -8,8 +8,9 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/service_case_type_create_dto.h"
+#include "../model/service_case_type_dto_collection_query_parameters.h"
 #include "../model/service_case_type_dto_envelope.h"
 #include "../model/service_case_type_dto_i_read_only_list_envelope.h"
 #include "../model/service_case_type_update_dto.h"
@@ -44,7 +45,7 @@ ServiceCaseTypesAPI_getServiceCaseTypeByIdAsync(apiClient_t *apiClient, char *te
 // Retrieves all service case types for the specified tenant.
 //
 service_case_type_dto_i_read_only_list_envelope_t*
-ServiceCaseTypesAPI_getServiceCaseTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServiceCaseTypesAPI_getServiceCaseTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_case_type_dto_collection_query_parameters_t *service_case_type_dto_collection_query_parameters);
 
 
 // Get service case types count
@@ -52,7 +53,7 @@ ServiceCaseTypesAPI_getServiceCaseTypesAsync(apiClient_t *apiClient, char *tenan
 // Returns the count of service case types for the specified tenant.
 //
 int32_envelope_t*
-ServiceCaseTypesAPI_getServiceCaseTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServiceCaseTypesAPI_getServiceCaseTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_case_type_dto_collection_query_parameters_t *service_case_type_dto_collection_query_parameters);
 
 
 // Patch a service case type
@@ -60,7 +61,7 @@ ServiceCaseTypesAPI_getServiceCaseTypesCountAsync(apiClient_t *apiClient, char *
 // Partially updates an existing service case type using a JSON Patch document.
 //
 envelope_t*
-ServiceCaseTypesAPI_patchServiceCaseTypeAsync(apiClient_t *apiClient, char *tenantId, char *serviceCaseTypeId, char *api_version, char *x_api_version, list_t *operation);
+ServiceCaseTypesAPI_patchServiceCaseTypeAsync(apiClient_t *apiClient, char *tenantId, char *serviceCaseTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a service case type

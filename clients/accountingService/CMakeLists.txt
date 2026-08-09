@@ -58,76 +58,93 @@ set(SRCS
     model/account.c
     model/account_create_dto.c
     model/account_dto.c
+    model/account_dto_collection_query_parameters.c
     model/account_dto_envelope.c
     model/account_dto_list_envelope.c
     model/account_group_create_dto.c
     model/account_group_dto.c
+    model/account_group_dto_collection_query_parameters.c
     model/account_group_dto_envelope.c
     model/account_group_dto_list_envelope.c
     model/account_group_update_dto.c
     model/account_relation_create_dto.c
     model/account_relation_dto.c
+    model/account_relation_dto_collection_query_parameters.c
     model/account_relation_dto_list_envelope.c
     model/account_relation_update_dto.c
     model/account_type_create_dto.c
     model/account_type_dto.c
+    model/account_type_dto_collection_query_parameters.c
     model/account_type_dto_envelope.c
     model/account_type_dto_list_envelope.c
     model/account_type_update_dto.c
     model/account_update_dto.c
     model/accounting_entry_create_dto.c
     model/accounting_entry_dto.c
+    model/accounting_entry_dto_collection_query_parameters.c
     model/accounting_entry_dto_envelope.c
     model/accounting_entry_dto_list_envelope.c
     model/accounting_entry_update_dto.c
     model/accounting_period_create_dto.c
     model/accounting_period_dto.c
+    model/accounting_period_dto_collection_query_parameters.c
     model/accounting_period_dto_envelope.c
     model/accounting_period_dto_list_envelope.c
     model/accounting_period_update_dto.c
     model/applied_item_tax_record_create_dto.c
     model/applied_item_tax_record_dto.c
+    model/applied_item_tax_record_dto_collection_query_parameters.c
     model/applied_item_tax_record_dto_i_read_only_list_envelope.c
     model/applied_item_tax_record_update_dto.c
     model/applied_tax_policy_record_create_dto.c
     model/applied_tax_policy_record_dto.c
+    model/applied_tax_policy_record_dto_collection_query_parameters.c
     model/applied_tax_policy_record_dto_envelope.c
     model/applied_tax_policy_record_dto_list_envelope.c
     model/applied_tax_policy_record_update_dto.c
+    model/assign_journal_to_book_request.c
     model/bank_account_create_dto.c
     model/bank_account_dto.c
+    model/bank_account_dto_collection_query_parameters.c
     model/bank_account_dto_envelope.c
     model/bank_account_dto_list_envelope.c
     model/bank_account_update_dto.c
     model/bank_create_dto.c
     model/bank_dto.c
+    model/bank_dto_collection_query_parameters.c
     model/bank_dto_envelope.c
     model/bank_dto_list_envelope.c
     model/bank_guarantee_create_dto.c
     model/bank_guarantee_dto.c
+    model/bank_guarantee_dto_collection_query_parameters.c
     model/bank_guarantee_dto_envelope.c
     model/bank_guarantee_dto_list_envelope.c
     model/bank_guarantee_update_dto.c
     model/bank_profile_dto.c
+    model/bank_profile_dto_collection_query_parameters.c
     model/bank_profile_dto_list_envelope.c
     model/bank_transaction_create_dto.c
     model/bank_transaction_dto.c
+    model/bank_transaction_dto_collection_query_parameters.c
     model/bank_transaction_dto_envelope.c
     model/bank_transaction_dto_list_envelope.c
     model/bank_transaction_update_dto.c
     model/bank_update_dto.c
     model/billing_profile_create_dto.c
     model/billing_profile_dto.c
+    model/billing_profile_dto_collection_query_parameters.c
     model/billing_profile_dto_envelope.c
     model/billing_profile_dto_i_read_only_list_envelope.c
     model/billing_profile_update_dto.c
     model/budget_account_entry_create_dto.c
     model/budget_account_entry_dto.c
+    model/budget_account_entry_dto_collection_query_parameters.c
     model/budget_account_entry_dto_envelope.c
     model/budget_account_entry_dto_i_read_only_list_envelope.c
     model/budget_account_entry_update_dto.c
     model/budget_create_dto.c
     model/budget_dto.c
+    model/budget_dto_collection_query_parameters.c
     model/budget_dto_envelope.c
     model/budget_dto_i_read_only_list_envelope.c
     model/budget_update_dto.c
@@ -135,21 +152,25 @@ set(SRCS
     model/chart_of_accounts_list_envelope.c
     model/commission_create_dto.c
     model/commission_dto.c
+    model/commission_dto_collection_query_parameters.c
     model/commission_dto_envelope.c
     model/commission_dto_list_envelope.c
     model/commission_update_dto.c
     model/contact_dto.c
     model/cost_centre_budget_create_dto.c
     model/cost_centre_budget_dto.c
+    model/cost_centre_budget_dto_collection_query_parameters.c
     model/cost_centre_budget_dto_envelope.c
     model/cost_centre_budget_dto_list_envelope.c
     model/cost_centre_budget_update_dto.c
     model/cost_centre_create_dto.c
     model/cost_centre_dto.c
+    model/cost_centre_dto_collection_query_parameters.c
     model/cost_centre_dto_envelope.c
     model/cost_centre_dto_list_envelope.c
     model/cost_centre_group_create_dto.c
     model/cost_centre_group_dto.c
+    model/cost_centre_group_dto_collection_query_parameters.c
     model/cost_centre_group_dto_envelope.c
     model/cost_centre_group_dto_list_envelope.c
     model/cost_centre_group_update_dto.c
@@ -161,51 +182,61 @@ set(SRCS
     model/error_envelope.c
     model/expense_claim_create_dto.c
     model/expense_claim_dto.c
+    model/expense_claim_dto_collection_query_parameters.c
     model/expense_claim_dto_envelope.c
     model/expense_claim_dto_list_envelope.c
     model/expense_claim_update_dto.c
     model/expense_type_create_dto.c
     model/expense_type_dto.c
+    model/expense_type_dto_collection_query_parameters.c
     model/expense_type_dto_envelope.c
     model/expense_type_dto_list_envelope.c
     model/expense_type_update_dto.c
     model/financial_book_create_dto.c
     model/financial_book_dto.c
+    model/financial_book_dto_collection_query_parameters.c
     model/financial_book_dto_envelope.c
     model/financial_book_dto_list_envelope.c
     model/financial_book_update_dto.c
     model/fiscal_authority_create_dto.c
     model/fiscal_authority_dto.c
+    model/fiscal_authority_dto_collection_query_parameters.c
     model/fiscal_authority_dto_envelope.c
     model/fiscal_authority_dto_list_envelope.c
     model/fiscal_authority_update_dto.c
     model/fiscal_identification_type_create_dto.c
     model/fiscal_identification_type_dto.c
+    model/fiscal_identification_type_dto_collection_query_parameters.c
     model/fiscal_identification_type_dto_envelope.c
     model/fiscal_identification_type_dto_list_envelope.c
     model/fiscal_identification_type_update_dto.c
     model/fiscal_period_create_dto.c
     model/fiscal_period_dto.c
+    model/fiscal_period_dto_collection_query_parameters.c
     model/fiscal_period_dto_envelope.c
     model/fiscal_period_dto_list_envelope.c
     model/fiscal_period_update_dto.c
     model/fiscal_regime_create_dto.c
     model/fiscal_regime_dto.c
+    model/fiscal_regime_dto_collection_query_parameters.c
     model/fiscal_regime_dto_envelope.c
     model/fiscal_regime_dto_list_envelope.c
     model/fiscal_regime_update_dto.c
     model/fiscal_responsibility_create_dto.c
     model/fiscal_responsibility_dto.c
+    model/fiscal_responsibility_dto_collection_query_parameters.c
     model/fiscal_responsibility_dto_envelope.c
     model/fiscal_responsibility_dto_list_envelope.c
     model/fiscal_responsibility_record_create_dto.c
     model/fiscal_responsibility_record_dto.c
+    model/fiscal_responsibility_record_dto_collection_query_parameters.c
     model/fiscal_responsibility_record_dto_envelope.c
     model/fiscal_responsibility_record_dto_list_envelope.c
     model/fiscal_responsibility_record_update_dto.c
     model/fiscal_responsibility_update_dto.c
     model/fiscal_year_create_dto.c
     model/fiscal_year_dto.c
+    model/fiscal_year_dto_collection_query_parameters.c
     model/fiscal_year_dto_envelope.c
     model/fiscal_year_dto_i_read_only_list_envelope.c
     model/fiscal_year_dto_list_envelope.c
@@ -213,6 +244,7 @@ set(SRCS
     model/forgot_password_request.c
     model/grant_create_dto.c
     model/grant_dto.c
+    model/grant_dto_collection_query_parameters.c
     model/grant_dto_envelope.c
     model/grant_dto_i_read_only_list_envelope.c
     model/http_validation_problem_details.c
@@ -221,47 +253,57 @@ set(SRCS
     model/int32_envelope.c
     model/invoice_enumeration_range_create_dto.c
     model/invoice_enumeration_range_dto.c
+    model/invoice_enumeration_range_dto_collection_query_parameters.c
     model/invoice_enumeration_range_dto_envelope.c
     model/invoice_enumeration_range_dto_list_envelope.c
     model/invoice_enumeration_range_update_dto.c
     model/item_tax_policy_record_create_dto.c
     model/item_tax_policy_record_dto.c
+    model/item_tax_policy_record_dto_collection_query_parameters.c
     model/item_tax_policy_record_dto_envelope.c
     model/item_tax_policy_record_dto_list_envelope.c
     model/item_tax_policy_record_update_dto.c
     model/journal_create_dto.c
     model/journal_dto.c
+    model/journal_dto_collection_query_parameters.c
     model/journal_dto_envelope.c
     model/journal_dto_i_read_only_list_envelope.c
     model/journal_entry_create_dto.c
     model/journal_entry_dto.c
+    model/journal_entry_dto_collection_query_parameters.c
     model/journal_entry_dto_envelope.c
     model/journal_entry_dto_i_read_only_list_envelope.c
     model/journal_entry_update_dto.c
     model/journal_type_create_dto.c
     model/journal_type_dto.c
+    model/journal_type_dto_collection_query_parameters.c
     model/journal_type_dto_envelope.c
     model/journal_type_dto_i_read_only_list_envelope.c
     model/journal_type_update_dto.c
     model/journal_update_dto.c
     model/ledger_dto.c
+    model/ledger_dto_collection_query_parameters.c
     model/ledger_dto_envelope.c
     model/ledger_dto_i_read_only_list_envelope.c
     model/ledger_type_create_dto.c
     model/ledger_type_dto.c
+    model/ledger_type_dto_collection_query_parameters.c
     model/ledger_type_dto_envelope.c
     model/ledger_type_dto_i_read_only_list_envelope.c
     model/ledger_type_update_dto.c
     model/loan_application_create_dto.c
     model/loan_application_dto.c
+    model/loan_application_dto_collection_query_parameters.c
     model/loan_application_dto_envelope.c
     model/loan_application_dto_i_read_only_list_envelope.c
     model/loan_create_dto.c
     model/loan_dto.c
+    model/loan_dto_collection_query_parameters.c
     model/loan_dto_envelope.c
     model/loan_dto_i_read_only_list_envelope.c
     model/loan_type_create_dto.c
     model/loan_type_dto.c
+    model/loan_type_dto_collection_query_parameters.c
     model/loan_type_dto_envelope.c
     model/loan_type_dto_i_read_only_list_envelope.c
     model/loan_type_update_dto.c
@@ -269,14 +311,20 @@ set(SRCS
     model/login_request.c
     model/money.c
     model/money_envelope.c
-    model/operation.c
+    model/patch_operation.c
     model/payment_commission_create_dto.c
     model/payment_commission_dto.c
+    model/payment_commission_dto_collection_query_parameters.c
     model/payment_commission_dto_envelope.c
     model/payment_commission_dto_list_envelope.c
     model/payment_commission_update_dto.c
+    model/posting_book_result_dto.c
+    model/posting_execution_dto.c
+    model/posting_execution_dto_collection_query_parameters.c
+    model/posting_execution_dto_i_read_only_list_envelope.c
     model/receipt_create_dto.c
     model/receipt_dto.c
+    model/receipt_dto_collection_query_parameters.c
     model/receipt_dto_envelope.c
     model/receipt_dto_i_read_only_list_envelope.c
     model/receipt_update_dto.c
@@ -288,46 +336,55 @@ set(SRCS
     model/seed_chart_of_accounts_request.c
     model/share_class_create_dto.c
     model/share_class_dto.c
+    model/share_class_dto_collection_query_parameters.c
     model/share_class_dto_envelope.c
     model/share_class_dto_list_envelope.c
     model/share_class_update_dto.c
     model/share_issuance_create_dto.c
     model/share_issuance_dto.c
+    model/share_issuance_dto_collection_query_parameters.c
     model/share_issuance_dto_envelope.c
     model/share_issuance_dto_list_envelope.c
     model/share_issuance_update_dto.c
     model/share_transfer_create_dto.c
     model/share_transfer_dto.c
+    model/share_transfer_dto_collection_query_parameters.c
     model/share_transfer_dto_envelope.c
     model/share_transfer_dto_list_envelope.c
     model/share_transfer_reason_create_dto.c
     model/share_transfer_reason_dto.c
+    model/share_transfer_reason_dto_collection_query_parameters.c
     model/share_transfer_reason_dto_envelope.c
     model/share_transfer_reason_dto_list_envelope.c
     model/share_transfer_reason_update_dto.c
     model/share_transfer_update_dto.c
     model/tax_class_create_dto.c
     model/tax_class_dto.c
+    model/tax_class_dto_collection_query_parameters.c
     model/tax_class_dto_envelope.c
     model/tax_class_dto_list_envelope.c
     model/tax_class_update_dto.c
     model/tax_policy_create_dto.c
     model/tax_policy_dto.c
+    model/tax_policy_dto_collection_query_parameters.c
     model/tax_policy_dto_envelope.c
     model/tax_policy_dto_list_envelope.c
     model/tax_policy_update_dto.c
     model/tax_rate_create_dto.c
     model/tax_rate_dto.c
+    model/tax_rate_dto_collection_query_parameters.c
     model/tax_rate_dto_envelope.c
     model/tax_rate_dto_list_envelope.c
     model/tax_rate_update_dto.c
     model/transaction_category_create_dto.c
     model/transaction_category_dto.c
+    model/transaction_category_dto_collection_query_parameters.c
     model/transaction_category_dto_envelope.c
     model/transaction_category_dto_list_envelope.c
     model/transaction_category_update_dto.c
     model/transaction_create_dto.c
     model/transaction_dto.c
+    model/transaction_dto_collection_query_parameters.c
     model/transaction_dto_envelope.c
     model/transaction_dto_list_envelope.c
     model/transaction_update_dto.c
@@ -368,6 +425,7 @@ set(SRCS
     api/LedgerTypesAPI.c
     api/LedgersAPI.c
     api/LoansAPI.c
+    api/PostingExecutionsAPI.c
     api/ReceiptsAPI.c
     api/ReportsAPI.c
     api/SharesAPI.c
@@ -389,76 +447,93 @@ set(HDRS
     model/account.h
     model/account_create_dto.h
     model/account_dto.h
+    model/account_dto_collection_query_parameters.h
     model/account_dto_envelope.h
     model/account_dto_list_envelope.h
     model/account_group_create_dto.h
     model/account_group_dto.h
+    model/account_group_dto_collection_query_parameters.h
     model/account_group_dto_envelope.h
     model/account_group_dto_list_envelope.h
     model/account_group_update_dto.h
     model/account_relation_create_dto.h
     model/account_relation_dto.h
+    model/account_relation_dto_collection_query_parameters.h
     model/account_relation_dto_list_envelope.h
     model/account_relation_update_dto.h
     model/account_type_create_dto.h
     model/account_type_dto.h
+    model/account_type_dto_collection_query_parameters.h
     model/account_type_dto_envelope.h
     model/account_type_dto_list_envelope.h
     model/account_type_update_dto.h
     model/account_update_dto.h
     model/accounting_entry_create_dto.h
     model/accounting_entry_dto.h
+    model/accounting_entry_dto_collection_query_parameters.h
     model/accounting_entry_dto_envelope.h
     model/accounting_entry_dto_list_envelope.h
     model/accounting_entry_update_dto.h
     model/accounting_period_create_dto.h
     model/accounting_period_dto.h
+    model/accounting_period_dto_collection_query_parameters.h
     model/accounting_period_dto_envelope.h
     model/accounting_period_dto_list_envelope.h
     model/accounting_period_update_dto.h
     model/applied_item_tax_record_create_dto.h
     model/applied_item_tax_record_dto.h
+    model/applied_item_tax_record_dto_collection_query_parameters.h
     model/applied_item_tax_record_dto_i_read_only_list_envelope.h
     model/applied_item_tax_record_update_dto.h
     model/applied_tax_policy_record_create_dto.h
     model/applied_tax_policy_record_dto.h
+    model/applied_tax_policy_record_dto_collection_query_parameters.h
     model/applied_tax_policy_record_dto_envelope.h
     model/applied_tax_policy_record_dto_list_envelope.h
     model/applied_tax_policy_record_update_dto.h
+    model/assign_journal_to_book_request.h
     model/bank_account_create_dto.h
     model/bank_account_dto.h
+    model/bank_account_dto_collection_query_parameters.h
     model/bank_account_dto_envelope.h
     model/bank_account_dto_list_envelope.h
     model/bank_account_update_dto.h
     model/bank_create_dto.h
     model/bank_dto.h
+    model/bank_dto_collection_query_parameters.h
     model/bank_dto_envelope.h
     model/bank_dto_list_envelope.h
     model/bank_guarantee_create_dto.h
     model/bank_guarantee_dto.h
+    model/bank_guarantee_dto_collection_query_parameters.h
     model/bank_guarantee_dto_envelope.h
     model/bank_guarantee_dto_list_envelope.h
     model/bank_guarantee_update_dto.h
     model/bank_profile_dto.h
+    model/bank_profile_dto_collection_query_parameters.h
     model/bank_profile_dto_list_envelope.h
     model/bank_transaction_create_dto.h
     model/bank_transaction_dto.h
+    model/bank_transaction_dto_collection_query_parameters.h
     model/bank_transaction_dto_envelope.h
     model/bank_transaction_dto_list_envelope.h
     model/bank_transaction_update_dto.h
     model/bank_update_dto.h
     model/billing_profile_create_dto.h
     model/billing_profile_dto.h
+    model/billing_profile_dto_collection_query_parameters.h
     model/billing_profile_dto_envelope.h
     model/billing_profile_dto_i_read_only_list_envelope.h
     model/billing_profile_update_dto.h
     model/budget_account_entry_create_dto.h
     model/budget_account_entry_dto.h
+    model/budget_account_entry_dto_collection_query_parameters.h
     model/budget_account_entry_dto_envelope.h
     model/budget_account_entry_dto_i_read_only_list_envelope.h
     model/budget_account_entry_update_dto.h
     model/budget_create_dto.h
     model/budget_dto.h
+    model/budget_dto_collection_query_parameters.h
     model/budget_dto_envelope.h
     model/budget_dto_i_read_only_list_envelope.h
     model/budget_update_dto.h
@@ -466,21 +541,25 @@ set(HDRS
     model/chart_of_accounts_list_envelope.h
     model/commission_create_dto.h
     model/commission_dto.h
+    model/commission_dto_collection_query_parameters.h
     model/commission_dto_envelope.h
     model/commission_dto_list_envelope.h
     model/commission_update_dto.h
     model/contact_dto.h
     model/cost_centre_budget_create_dto.h
     model/cost_centre_budget_dto.h
+    model/cost_centre_budget_dto_collection_query_parameters.h
     model/cost_centre_budget_dto_envelope.h
     model/cost_centre_budget_dto_list_envelope.h
     model/cost_centre_budget_update_dto.h
     model/cost_centre_create_dto.h
     model/cost_centre_dto.h
+    model/cost_centre_dto_collection_query_parameters.h
     model/cost_centre_dto_envelope.h
     model/cost_centre_dto_list_envelope.h
     model/cost_centre_group_create_dto.h
     model/cost_centre_group_dto.h
+    model/cost_centre_group_dto_collection_query_parameters.h
     model/cost_centre_group_dto_envelope.h
     model/cost_centre_group_dto_list_envelope.h
     model/cost_centre_group_update_dto.h
@@ -492,51 +571,61 @@ set(HDRS
     model/error_envelope.h
     model/expense_claim_create_dto.h
     model/expense_claim_dto.h
+    model/expense_claim_dto_collection_query_parameters.h
     model/expense_claim_dto_envelope.h
     model/expense_claim_dto_list_envelope.h
     model/expense_claim_update_dto.h
     model/expense_type_create_dto.h
     model/expense_type_dto.h
+    model/expense_type_dto_collection_query_parameters.h
     model/expense_type_dto_envelope.h
     model/expense_type_dto_list_envelope.h
     model/expense_type_update_dto.h
     model/financial_book_create_dto.h
     model/financial_book_dto.h
+    model/financial_book_dto_collection_query_parameters.h
     model/financial_book_dto_envelope.h
     model/financial_book_dto_list_envelope.h
     model/financial_book_update_dto.h
     model/fiscal_authority_create_dto.h
     model/fiscal_authority_dto.h
+    model/fiscal_authority_dto_collection_query_parameters.h
     model/fiscal_authority_dto_envelope.h
     model/fiscal_authority_dto_list_envelope.h
     model/fiscal_authority_update_dto.h
     model/fiscal_identification_type_create_dto.h
     model/fiscal_identification_type_dto.h
+    model/fiscal_identification_type_dto_collection_query_parameters.h
     model/fiscal_identification_type_dto_envelope.h
     model/fiscal_identification_type_dto_list_envelope.h
     model/fiscal_identification_type_update_dto.h
     model/fiscal_period_create_dto.h
     model/fiscal_period_dto.h
+    model/fiscal_period_dto_collection_query_parameters.h
     model/fiscal_period_dto_envelope.h
     model/fiscal_period_dto_list_envelope.h
     model/fiscal_period_update_dto.h
     model/fiscal_regime_create_dto.h
     model/fiscal_regime_dto.h
+    model/fiscal_regime_dto_collection_query_parameters.h
     model/fiscal_regime_dto_envelope.h
     model/fiscal_regime_dto_list_envelope.h
     model/fiscal_regime_update_dto.h
     model/fiscal_responsibility_create_dto.h
     model/fiscal_responsibility_dto.h
+    model/fiscal_responsibility_dto_collection_query_parameters.h
     model/fiscal_responsibility_dto_envelope.h
     model/fiscal_responsibility_dto_list_envelope.h
     model/fiscal_responsibility_record_create_dto.h
     model/fiscal_responsibility_record_dto.h
+    model/fiscal_responsibility_record_dto_collection_query_parameters.h
     model/fiscal_responsibility_record_dto_envelope.h
     model/fiscal_responsibility_record_dto_list_envelope.h
     model/fiscal_responsibility_record_update_dto.h
     model/fiscal_responsibility_update_dto.h
     model/fiscal_year_create_dto.h
     model/fiscal_year_dto.h
+    model/fiscal_year_dto_collection_query_parameters.h
     model/fiscal_year_dto_envelope.h
     model/fiscal_year_dto_i_read_only_list_envelope.h
     model/fiscal_year_dto_list_envelope.h
@@ -544,6 +633,7 @@ set(HDRS
     model/forgot_password_request.h
     model/grant_create_dto.h
     model/grant_dto.h
+    model/grant_dto_collection_query_parameters.h
     model/grant_dto_envelope.h
     model/grant_dto_i_read_only_list_envelope.h
     model/http_validation_problem_details.h
@@ -552,47 +642,57 @@ set(HDRS
     model/int32_envelope.h
     model/invoice_enumeration_range_create_dto.h
     model/invoice_enumeration_range_dto.h
+    model/invoice_enumeration_range_dto_collection_query_parameters.h
     model/invoice_enumeration_range_dto_envelope.h
     model/invoice_enumeration_range_dto_list_envelope.h
     model/invoice_enumeration_range_update_dto.h
     model/item_tax_policy_record_create_dto.h
     model/item_tax_policy_record_dto.h
+    model/item_tax_policy_record_dto_collection_query_parameters.h
     model/item_tax_policy_record_dto_envelope.h
     model/item_tax_policy_record_dto_list_envelope.h
     model/item_tax_policy_record_update_dto.h
     model/journal_create_dto.h
     model/journal_dto.h
+    model/journal_dto_collection_query_parameters.h
     model/journal_dto_envelope.h
     model/journal_dto_i_read_only_list_envelope.h
     model/journal_entry_create_dto.h
     model/journal_entry_dto.h
+    model/journal_entry_dto_collection_query_parameters.h
     model/journal_entry_dto_envelope.h
     model/journal_entry_dto_i_read_only_list_envelope.h
     model/journal_entry_update_dto.h
     model/journal_type_create_dto.h
     model/journal_type_dto.h
+    model/journal_type_dto_collection_query_parameters.h
     model/journal_type_dto_envelope.h
     model/journal_type_dto_i_read_only_list_envelope.h
     model/journal_type_update_dto.h
     model/journal_update_dto.h
     model/ledger_dto.h
+    model/ledger_dto_collection_query_parameters.h
     model/ledger_dto_envelope.h
     model/ledger_dto_i_read_only_list_envelope.h
     model/ledger_type_create_dto.h
     model/ledger_type_dto.h
+    model/ledger_type_dto_collection_query_parameters.h
     model/ledger_type_dto_envelope.h
     model/ledger_type_dto_i_read_only_list_envelope.h
     model/ledger_type_update_dto.h
     model/loan_application_create_dto.h
     model/loan_application_dto.h
+    model/loan_application_dto_collection_query_parameters.h
     model/loan_application_dto_envelope.h
     model/loan_application_dto_i_read_only_list_envelope.h
     model/loan_create_dto.h
     model/loan_dto.h
+    model/loan_dto_collection_query_parameters.h
     model/loan_dto_envelope.h
     model/loan_dto_i_read_only_list_envelope.h
     model/loan_type_create_dto.h
     model/loan_type_dto.h
+    model/loan_type_dto_collection_query_parameters.h
     model/loan_type_dto_envelope.h
     model/loan_type_dto_i_read_only_list_envelope.h
     model/loan_type_update_dto.h
@@ -600,14 +700,20 @@ set(HDRS
     model/login_request.h
     model/money.h
     model/money_envelope.h
-    model/operation.h
+    model/patch_operation.h
     model/payment_commission_create_dto.h
     model/payment_commission_dto.h
+    model/payment_commission_dto_collection_query_parameters.h
     model/payment_commission_dto_envelope.h
     model/payment_commission_dto_list_envelope.h
     model/payment_commission_update_dto.h
+    model/posting_book_result_dto.h
+    model/posting_execution_dto.h
+    model/posting_execution_dto_collection_query_parameters.h
+    model/posting_execution_dto_i_read_only_list_envelope.h
     model/receipt_create_dto.h
     model/receipt_dto.h
+    model/receipt_dto_collection_query_parameters.h
     model/receipt_dto_envelope.h
     model/receipt_dto_i_read_only_list_envelope.h
     model/receipt_update_dto.h
@@ -619,46 +725,55 @@ set(HDRS
     model/seed_chart_of_accounts_request.h
     model/share_class_create_dto.h
     model/share_class_dto.h
+    model/share_class_dto_collection_query_parameters.h
     model/share_class_dto_envelope.h
     model/share_class_dto_list_envelope.h
     model/share_class_update_dto.h
     model/share_issuance_create_dto.h
     model/share_issuance_dto.h
+    model/share_issuance_dto_collection_query_parameters.h
     model/share_issuance_dto_envelope.h
     model/share_issuance_dto_list_envelope.h
     model/share_issuance_update_dto.h
     model/share_transfer_create_dto.h
     model/share_transfer_dto.h
+    model/share_transfer_dto_collection_query_parameters.h
     model/share_transfer_dto_envelope.h
     model/share_transfer_dto_list_envelope.h
     model/share_transfer_reason_create_dto.h
     model/share_transfer_reason_dto.h
+    model/share_transfer_reason_dto_collection_query_parameters.h
     model/share_transfer_reason_dto_envelope.h
     model/share_transfer_reason_dto_list_envelope.h
     model/share_transfer_reason_update_dto.h
     model/share_transfer_update_dto.h
     model/tax_class_create_dto.h
     model/tax_class_dto.h
+    model/tax_class_dto_collection_query_parameters.h
     model/tax_class_dto_envelope.h
     model/tax_class_dto_list_envelope.h
     model/tax_class_update_dto.h
     model/tax_policy_create_dto.h
     model/tax_policy_dto.h
+    model/tax_policy_dto_collection_query_parameters.h
     model/tax_policy_dto_envelope.h
     model/tax_policy_dto_list_envelope.h
     model/tax_policy_update_dto.h
     model/tax_rate_create_dto.h
     model/tax_rate_dto.h
+    model/tax_rate_dto_collection_query_parameters.h
     model/tax_rate_dto_envelope.h
     model/tax_rate_dto_list_envelope.h
     model/tax_rate_update_dto.h
     model/transaction_category_create_dto.h
     model/transaction_category_dto.h
+    model/transaction_category_dto_collection_query_parameters.h
     model/transaction_category_dto_envelope.h
     model/transaction_category_dto_list_envelope.h
     model/transaction_category_update_dto.h
     model/transaction_create_dto.h
     model/transaction_dto.h
+    model/transaction_dto_collection_query_parameters.h
     model/transaction_dto_envelope.h
     model/transaction_dto_list_envelope.h
     model/transaction_update_dto.h
@@ -699,6 +814,7 @@ set(HDRS
     api/LedgerTypesAPI.h
     api/LedgersAPI.h
     api/LoansAPI.h
+    api/PostingExecutionsAPI.h
     api/ReceiptsAPI.h
     api/ReportsAPI.h
     api/SharesAPI.h
@@ -818,6 +934,7 @@ set(HDRS "")
 #    unit-tests/manual-LedgerTypesAPI.c
 #    unit-tests/manual-LedgersAPI.c
 #    unit-tests/manual-LoansAPI.c
+#    unit-tests/manual-PostingExecutionsAPI.c
 #    unit-tests/manual-ReceiptsAPI.c
 #    unit-tests/manual-ReportsAPI.c
 #    unit-tests/manual-SharesAPI.c

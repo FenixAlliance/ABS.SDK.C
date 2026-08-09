@@ -12,8 +12,9 @@
 #include "../model/extended_tenant_dto_envelope.h"
 #include "../model/extended_tenant_enrollment_dto_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/notification_dto_collection_query_parameters.h"
 #include "../model/notification_dto_list_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/social_profile_dto_envelope.h"
 #include "../model/string_list_envelope.h"
 #include "../model/suite_license_assignment_dto_list_envelope.h"
@@ -187,7 +188,7 @@ TenantsAPI_getTenantLicensesAsync(apiClient_t *apiClient, char *tenantId, char *
 // Get the list of notifications for a tenant
 //
 notification_dto_list_envelope_t*
-TenantsAPI_getTenantNotificationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TenantsAPI_getTenantNotificationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters);
 
 
 // Get the count of notifications for a tenant
@@ -195,7 +196,7 @@ TenantsAPI_getTenantNotificationsAsync(apiClient_t *apiClient, char *tenantId, c
 // Get the count of notifications for a tenant
 //
 int32_envelope_t*
-TenantsAPI_getTenantNotificationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TenantsAPI_getTenantNotificationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters);
 
 
 // Get the list of invitations issued by a tenant that are pending
@@ -259,7 +260,7 @@ TenantsAPI_getTenantWebPortalsAsync(apiClient_t *apiClient, char *tenantId, char
 // Patch a tenant's profile
 //
 empty_envelope_t*
-TenantsAPI_patchTenantAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *operation);
+TenantsAPI_patchTenantAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Revoke a license from a specific enrollment

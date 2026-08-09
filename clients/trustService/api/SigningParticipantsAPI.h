@@ -9,6 +9,7 @@
 #include "../model/int32_envelope.h"
 #include "../model/record_signing_participant_outcome_dto.h"
 #include "../model/signing_participant_dto.h"
+#include "../model/signing_participant_dto_collection_query_parameters.h"
 #include "../model/signing_participant_dto_list_envelope.h"
 
 
@@ -21,13 +22,13 @@ SigningParticipantsAPI_getSigningParticipantByIdAsync(apiClient_t *apiClient, ch
 // Get all signing participants
 //
 signing_participant_dto_list_envelope_t*
-SigningParticipantsAPI_getSigningParticipantsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningParticipantsAPI_getSigningParticipantsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_participant_dto_collection_query_parameters_t *signing_participant_dto_collection_query_parameters);
 
 
 // Get signing participants count
 //
 int32_envelope_t*
-SigningParticipantsAPI_getSigningParticipantsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningParticipantsAPI_getSigningParticipantsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_participant_dto_collection_query_parameters_t *signing_participant_dto_collection_query_parameters);
 
 
 // Mark a participant as having viewed the request

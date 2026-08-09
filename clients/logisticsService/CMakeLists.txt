@@ -57,6 +57,7 @@ set(SRCS
     model/access_token_response.c
     model/airway_bill_create_dto.c
     model/airway_bill_dto.c
+    model/airway_bill_dto_collection_query_parameters.c
     model/airway_bill_dto_envelope.c
     model/airway_bill_dto_list_envelope.c
     model/airway_bill_update_dto.c
@@ -64,6 +65,7 @@ set(SRCS
     model/contact_dto.c
     model/delivery_note_create_dto.c
     model/delivery_note_dto.c
+    model/delivery_note_dto_collection_query_parameters.c
     model/delivery_note_dto_envelope.c
     model/delivery_note_dto_list_envelope.c
     model/delivery_note_update_dto.c
@@ -77,57 +79,68 @@ set(SRCS
     model/int32_envelope.c
     model/item_packing_slip_create_dto.c
     model/item_packing_slip_dto.c
+    model/item_packing_slip_dto_collection_query_parameters.c
     model/item_packing_slip_dto_envelope.c
     model/item_packing_slip_dto_list_envelope.c
     model/item_packing_slip_entry_create_dto.c
     model/item_packing_slip_entry_dto.c
+    model/item_packing_slip_entry_dto_collection_query_parameters.c
     model/item_packing_slip_entry_dto_envelope.c
     model/item_packing_slip_entry_dto_list_envelope.c
     model/item_packing_slip_entry_update_dto.c
     model/item_packing_slip_update_dto.c
     model/item_pick_list_create_dto.c
     model/item_pick_list_dto.c
+    model/item_pick_list_dto_collection_query_parameters.c
     model/item_pick_list_dto_envelope.c
     model/item_pick_list_dto_list_envelope.c
     model/item_pick_list_entry_create_dto.c
     model/item_pick_list_entry_dto.c
+    model/item_pick_list_entry_dto_collection_query_parameters.c
     model/item_pick_list_entry_dto_envelope.c
     model/item_pick_list_entry_dto_list_envelope.c
     model/item_pick_list_entry_update_dto.c
     model/item_pick_list_update_dto.c
     model/item_restock_create_dto.c
     model/item_restock_dto.c
+    model/item_restock_dto_collection_query_parameters.c
     model/item_restock_dto_envelope.c
     model/item_restock_dto_list_envelope.c
     model/item_restock_entry_create_dto.c
     model/item_restock_entry_dto.c
+    model/item_restock_entry_dto_collection_query_parameters.c
     model/item_restock_entry_dto_envelope.c
     model/item_restock_entry_dto_list_envelope.c
     model/item_restock_entry_update_dto.c
     model/item_restock_update_dto.c
     model/item_retain_sample_create_dto.c
     model/item_retain_sample_dto.c
+    model/item_retain_sample_dto_collection_query_parameters.c
     model/item_retain_sample_dto_envelope.c
     model/item_retain_sample_dto_list_envelope.c
     model/item_retain_sample_update_dto.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/port_create_dto.c
     model/port_dto.c
+    model/port_dto_collection_query_parameters.c
     model/port_dto_envelope.c
     model/port_dto_list_envelope.c
     model/port_update_dto.c
     model/proof_of_delivery_create_dto.c
     model/proof_of_delivery_dto.c
+    model/proof_of_delivery_dto_collection_query_parameters.c
     model/proof_of_delivery_dto_envelope.c
     model/proof_of_delivery_dto_list_envelope.c
     model/proof_of_delivery_line_create_dto.c
     model/proof_of_delivery_line_dto.c
+    model/proof_of_delivery_line_dto_collection_query_parameters.c
     model/proof_of_delivery_line_dto_list_envelope.c
     model/proof_of_delivery_line_update_dto.c
     model/proof_of_delivery_update_dto.c
     model/rail_waybill_create_dto.c
     model/rail_waybill_dto.c
+    model/rail_waybill_dto_collection_query_parameters.c
     model/rail_waybill_dto_envelope.c
     model/rail_waybill_dto_list_envelope.c
     model/rail_waybill_update_dto.c
@@ -138,31 +151,37 @@ set(SRCS
     model/reset_password_request.c
     model/road_waybill_create_dto.c
     model/road_waybill_dto.c
+    model/road_waybill_dto_collection_query_parameters.c
     model/road_waybill_dto_envelope.c
     model/road_waybill_dto_list_envelope.c
     model/road_waybill_update_dto.c
     model/seaway_bill_create_dto.c
     model/seaway_bill_dto.c
+    model/seaway_bill_dto_collection_query_parameters.c
     model/seaway_bill_dto_envelope.c
     model/seaway_bill_dto_list_envelope.c
     model/seaway_bill_update_dto.c
     model/sign_proof_of_delivery_request.c
     model/supplier_profile_create_dto.c
     model/supplier_profile_dto.c
+    model/supplier_profile_dto_collection_query_parameters.c
     model/supplier_profile_dto_envelope.c
     model/supplier_profile_dto_list_envelope.c
     model/supplier_profile_update_dto.c
     model/truck_create_dto.c
     model/truck_driver_create_dto.c
     model/truck_driver_dto.c
+    model/truck_driver_dto_collection_query_parameters.c
     model/truck_driver_dto_envelope.c
     model/truck_driver_dto_list_envelope.c
     model/truck_driver_update_dto.c
     model/truck_dto.c
+    model/truck_dto_collection_query_parameters.c
     model/truck_dto_envelope.c
     model/truck_dto_list_envelope.c
     model/truck_trip_create_dto.c
     model/truck_trip_dto.c
+    model/truck_trip_dto_collection_query_parameters.c
     model/truck_trip_dto_list_envelope.c
     model/truck_trip_update_dto.c
     model/truck_update_dto.c
@@ -170,25 +189,30 @@ set(SRCS
     model/two_factor_response.c
     model/vessel_create_dto.c
     model/vessel_dto.c
+    model/vessel_dto_collection_query_parameters.c
     model/vessel_dto_envelope.c
     model/vessel_dto_list_envelope.c
     model/vessel_update_dto.c
     model/voyage_create_dto.c
     model/voyage_dto.c
+    model/voyage_dto_collection_query_parameters.c
     model/voyage_dto_envelope.c
     model/voyage_dto_list_envelope.c
     model/voyage_port_call_create_dto.c
     model/voyage_port_call_dto.c
+    model/voyage_port_call_dto_collection_query_parameters.c
     model/voyage_port_call_dto_list_envelope.c
     model/voyage_port_call_update_dto.c
     model/voyage_update_dto.c
     model/warehouse_create_dto.c
     model/warehouse_dto.c
+    model/warehouse_dto_collection_query_parameters.c
     model/warehouse_dto_envelope.c
     model/warehouse_dto_list_envelope.c
     model/warehouse_update_dto.c
     model/waybill_line_create_dto.c
     model/waybill_line_dto.c
+    model/waybill_line_dto_collection_query_parameters.c
     model/waybill_line_dto_list_envelope.c
     model/waybill_line_update_dto.c
     api/AirwayBillsAPI.c
@@ -222,6 +246,7 @@ set(HDRS
     model/access_token_response.h
     model/airway_bill_create_dto.h
     model/airway_bill_dto.h
+    model/airway_bill_dto_collection_query_parameters.h
     model/airway_bill_dto_envelope.h
     model/airway_bill_dto_list_envelope.h
     model/airway_bill_update_dto.h
@@ -229,6 +254,7 @@ set(HDRS
     model/contact_dto.h
     model/delivery_note_create_dto.h
     model/delivery_note_dto.h
+    model/delivery_note_dto_collection_query_parameters.h
     model/delivery_note_dto_envelope.h
     model/delivery_note_dto_list_envelope.h
     model/delivery_note_update_dto.h
@@ -242,57 +268,68 @@ set(HDRS
     model/int32_envelope.h
     model/item_packing_slip_create_dto.h
     model/item_packing_slip_dto.h
+    model/item_packing_slip_dto_collection_query_parameters.h
     model/item_packing_slip_dto_envelope.h
     model/item_packing_slip_dto_list_envelope.h
     model/item_packing_slip_entry_create_dto.h
     model/item_packing_slip_entry_dto.h
+    model/item_packing_slip_entry_dto_collection_query_parameters.h
     model/item_packing_slip_entry_dto_envelope.h
     model/item_packing_slip_entry_dto_list_envelope.h
     model/item_packing_slip_entry_update_dto.h
     model/item_packing_slip_update_dto.h
     model/item_pick_list_create_dto.h
     model/item_pick_list_dto.h
+    model/item_pick_list_dto_collection_query_parameters.h
     model/item_pick_list_dto_envelope.h
     model/item_pick_list_dto_list_envelope.h
     model/item_pick_list_entry_create_dto.h
     model/item_pick_list_entry_dto.h
+    model/item_pick_list_entry_dto_collection_query_parameters.h
     model/item_pick_list_entry_dto_envelope.h
     model/item_pick_list_entry_dto_list_envelope.h
     model/item_pick_list_entry_update_dto.h
     model/item_pick_list_update_dto.h
     model/item_restock_create_dto.h
     model/item_restock_dto.h
+    model/item_restock_dto_collection_query_parameters.h
     model/item_restock_dto_envelope.h
     model/item_restock_dto_list_envelope.h
     model/item_restock_entry_create_dto.h
     model/item_restock_entry_dto.h
+    model/item_restock_entry_dto_collection_query_parameters.h
     model/item_restock_entry_dto_envelope.h
     model/item_restock_entry_dto_list_envelope.h
     model/item_restock_entry_update_dto.h
     model/item_restock_update_dto.h
     model/item_retain_sample_create_dto.h
     model/item_retain_sample_dto.h
+    model/item_retain_sample_dto_collection_query_parameters.h
     model/item_retain_sample_dto_envelope.h
     model/item_retain_sample_dto_list_envelope.h
     model/item_retain_sample_update_dto.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/port_create_dto.h
     model/port_dto.h
+    model/port_dto_collection_query_parameters.h
     model/port_dto_envelope.h
     model/port_dto_list_envelope.h
     model/port_update_dto.h
     model/proof_of_delivery_create_dto.h
     model/proof_of_delivery_dto.h
+    model/proof_of_delivery_dto_collection_query_parameters.h
     model/proof_of_delivery_dto_envelope.h
     model/proof_of_delivery_dto_list_envelope.h
     model/proof_of_delivery_line_create_dto.h
     model/proof_of_delivery_line_dto.h
+    model/proof_of_delivery_line_dto_collection_query_parameters.h
     model/proof_of_delivery_line_dto_list_envelope.h
     model/proof_of_delivery_line_update_dto.h
     model/proof_of_delivery_update_dto.h
     model/rail_waybill_create_dto.h
     model/rail_waybill_dto.h
+    model/rail_waybill_dto_collection_query_parameters.h
     model/rail_waybill_dto_envelope.h
     model/rail_waybill_dto_list_envelope.h
     model/rail_waybill_update_dto.h
@@ -303,31 +340,37 @@ set(HDRS
     model/reset_password_request.h
     model/road_waybill_create_dto.h
     model/road_waybill_dto.h
+    model/road_waybill_dto_collection_query_parameters.h
     model/road_waybill_dto_envelope.h
     model/road_waybill_dto_list_envelope.h
     model/road_waybill_update_dto.h
     model/seaway_bill_create_dto.h
     model/seaway_bill_dto.h
+    model/seaway_bill_dto_collection_query_parameters.h
     model/seaway_bill_dto_envelope.h
     model/seaway_bill_dto_list_envelope.h
     model/seaway_bill_update_dto.h
     model/sign_proof_of_delivery_request.h
     model/supplier_profile_create_dto.h
     model/supplier_profile_dto.h
+    model/supplier_profile_dto_collection_query_parameters.h
     model/supplier_profile_dto_envelope.h
     model/supplier_profile_dto_list_envelope.h
     model/supplier_profile_update_dto.h
     model/truck_create_dto.h
     model/truck_driver_create_dto.h
     model/truck_driver_dto.h
+    model/truck_driver_dto_collection_query_parameters.h
     model/truck_driver_dto_envelope.h
     model/truck_driver_dto_list_envelope.h
     model/truck_driver_update_dto.h
     model/truck_dto.h
+    model/truck_dto_collection_query_parameters.h
     model/truck_dto_envelope.h
     model/truck_dto_list_envelope.h
     model/truck_trip_create_dto.h
     model/truck_trip_dto.h
+    model/truck_trip_dto_collection_query_parameters.h
     model/truck_trip_dto_list_envelope.h
     model/truck_trip_update_dto.h
     model/truck_update_dto.h
@@ -335,25 +378,30 @@ set(HDRS
     model/two_factor_response.h
     model/vessel_create_dto.h
     model/vessel_dto.h
+    model/vessel_dto_collection_query_parameters.h
     model/vessel_dto_envelope.h
     model/vessel_dto_list_envelope.h
     model/vessel_update_dto.h
     model/voyage_create_dto.h
     model/voyage_dto.h
+    model/voyage_dto_collection_query_parameters.h
     model/voyage_dto_envelope.h
     model/voyage_dto_list_envelope.h
     model/voyage_port_call_create_dto.h
     model/voyage_port_call_dto.h
+    model/voyage_port_call_dto_collection_query_parameters.h
     model/voyage_port_call_dto_list_envelope.h
     model/voyage_port_call_update_dto.h
     model/voyage_update_dto.h
     model/warehouse_create_dto.h
     model/warehouse_dto.h
+    model/warehouse_dto_collection_query_parameters.h
     model/warehouse_dto_envelope.h
     model/warehouse_dto_list_envelope.h
     model/warehouse_update_dto.h
     model/waybill_line_create_dto.h
     model/waybill_line_dto.h
+    model/waybill_line_dto_collection_query_parameters.h
     model/waybill_line_dto_list_envelope.h
     model/waybill_line_update_dto.h
     api/AirwayBillsAPI.h

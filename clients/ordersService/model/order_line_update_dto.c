@@ -123,7 +123,6 @@ order_line_update_dto_t *order_line_update_dto_create(
     char *price_list_item_id,
     char *unit_id,
     char *unit_group_id,
-    char *forex_rates_snapshot,
     double total_base_amount_in_usd,
     double total_profit_in_usd,
     double total_detail_amount_in_usd,
@@ -239,7 +238,6 @@ order_line_update_dto_t *order_line_update_dto_create(
     order_line_update_dto_local_var->price_list_item_id = price_list_item_id;
     order_line_update_dto_local_var->unit_id = unit_id;
     order_line_update_dto_local_var->unit_group_id = unit_group_id;
-    order_line_update_dto_local_var->forex_rates_snapshot = forex_rates_snapshot;
     order_line_update_dto_local_var->total_base_amount_in_usd = total_base_amount_in_usd;
     order_line_update_dto_local_var->total_profit_in_usd = total_profit_in_usd;
     order_line_update_dto_local_var->total_detail_amount_in_usd = total_detail_amount_in_usd;
@@ -536,10 +534,6 @@ void order_line_update_dto_free(order_line_update_dto_t *order_line_update_dto) 
     if (order_line_update_dto->unit_group_id) {
         free(order_line_update_dto->unit_group_id);
         order_line_update_dto->unit_group_id = NULL;
-    }
-    if (order_line_update_dto->forex_rates_snapshot) {
-        free(order_line_update_dto->forex_rates_snapshot);
-        order_line_update_dto->forex_rates_snapshot = NULL;
     }
     if (order_line_update_dto->custom_global_surcharges_amount_currency_id) {
         free(order_line_update_dto->custom_global_surcharges_amount_currency_id);
@@ -1244,14 +1238,6 @@ cJSON *order_line_update_dto_convertToJSON(order_line_update_dto_t *order_line_u
     // order_line_update_dto->unit_group_id
     if(order_line_update_dto->unit_group_id) {
     if(cJSON_AddStringToObject(item, "unitGroupId", order_line_update_dto->unit_group_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // order_line_update_dto->forex_rates_snapshot
-    if(order_line_update_dto->forex_rates_snapshot) {
-    if(cJSON_AddStringToObject(item, "forexRatesSnapshot", order_line_update_dto->forex_rates_snapshot) == NULL) {
     goto fail; //String
     }
     }
@@ -2235,15 +2221,6 @@ order_line_update_dto_t *order_line_update_dto_parseFromJSON(cJSON *order_line_u
     }
     }
 
-    // order_line_update_dto->forex_rates_snapshot
-    cJSON *forex_rates_snapshot = cJSON_GetObjectItemCaseSensitive(order_line_update_dtoJSON, "forexRatesSnapshot");
-    if (forex_rates_snapshot) { 
-    if(!cJSON_IsString(forex_rates_snapshot) && !cJSON_IsNull(forex_rates_snapshot))
-    {
-    goto end; //String
-    }
-    }
-
     // order_line_update_dto->total_base_amount_in_usd
     cJSON *total_base_amount_in_usd = cJSON_GetObjectItemCaseSensitive(order_line_update_dtoJSON, "totalBaseAmountInUsd");
     if (total_base_amount_in_usd) { 
@@ -2572,7 +2549,6 @@ order_line_update_dto_t *order_line_update_dto_parseFromJSON(cJSON *order_line_u
         price_list_item_id && !cJSON_IsNull(price_list_item_id) ? strdup(price_list_item_id->valuestring) : NULL,
         unit_id && !cJSON_IsNull(unit_id) ? strdup(unit_id->valuestring) : NULL,
         unit_group_id && !cJSON_IsNull(unit_group_id) ? strdup(unit_group_id->valuestring) : NULL,
-        forex_rates_snapshot && !cJSON_IsNull(forex_rates_snapshot) ? strdup(forex_rates_snapshot->valuestring) : NULL,
         total_base_amount_in_usd ? total_base_amount_in_usd->valuedouble : 0,
         total_profit_in_usd ? total_profit_in_usd->valuedouble : 0,
         total_detail_amount_in_usd ? total_detail_amount_in_usd->valuedouble : 0,

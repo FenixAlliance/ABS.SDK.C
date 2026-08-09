@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_bundle_create_dto.h"
+#include "../model/item_bundle_dto_collection_query_parameters.h"
 #include "../model/item_bundle_dto_envelope.h"
 #include "../model/item_bundle_dto_list_envelope.h"
 #include "../model/item_bundle_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new item bundle
@@ -44,7 +45,7 @@ ItemBundlesAPI_getItemBundleByIdAsync(apiClient_t *apiClient, char *itemBundleId
 // Retrieves all item bundles for the specified tenant using OData query options.
 //
 item_bundle_dto_list_envelope_t*
-ItemBundlesAPI_getItemBundlesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemBundlesAPI_getItemBundlesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_bundle_dto_collection_query_parameters_t *item_bundle_dto_collection_query_parameters);
 
 
 // Get item bundles count
@@ -52,7 +53,7 @@ ItemBundlesAPI_getItemBundlesAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the count of item bundles for the specified tenant.
 //
 int32_envelope_t*
-ItemBundlesAPI_getItemBundlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemBundlesAPI_getItemBundlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_bundle_dto_collection_query_parameters_t *item_bundle_dto_collection_query_parameters);
 
 
 // Patch an item bundle
@@ -60,7 +61,7 @@ ItemBundlesAPI_getItemBundlesCountAsync(apiClient_t *apiClient, char *tenantId, 
 // Partially updates an existing item bundle for the specified tenant using a JSON Patch document.
 //
 empty_envelope_t*
-ItemBundlesAPI_patchItemBundleAsync(apiClient_t *apiClient, char *tenantId, char *itemBundleId, char *api_version, char *x_api_version, list_t *operation);
+ItemBundlesAPI_patchItemBundleAsync(apiClient_t *apiClient, char *tenantId, char *itemBundleId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item bundle

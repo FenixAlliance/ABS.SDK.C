@@ -76,7 +76,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -108,6 +107,7 @@ Category | Method | HTTP request | Description
  - [auth_result_t](docs/auth_result.md)
  - [auth_result_envelope_t](docs/auth_result_envelope.md)
  - [error_envelope_t](docs/error_envelope.md)
+ - [execution_provenance_t](docs/execution_provenance.md)
  - [forgot_password_request_t](docs/forgot_password_request.md)
  - [http_validation_problem_details_t](docs/http_validation_problem_details.md)
  - [info_request_t](docs/info_request.md)

@@ -120,7 +120,7 @@ No authorization required
 //
 // Retrieves a collection of newsletter subscriptions for the specified tenant using OData query options.
 //
-newsletter_subscription_dto_list_envelope_t* NewsletterSubscriptionsAPI_getNewsletterSubscriptionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+newsletter_subscription_dto_list_envelope_t* NewsletterSubscriptionsAPI_getNewsletterSubscriptionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, newsletter_subscription_dto_collection_query_parameters_t *newsletter_subscription_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -130,6 +130,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**newsletter_subscription_dto_collection_query_parameters** | **[newsletter_subscription_dto_collection_query_parameters_t](newsletter_subscription_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -142,7 +143,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -153,7 +154,7 @@ No authorization required
 //
 // Returns the count of newsletter subscriptions for the specified tenant using OData query options.
 //
-int32_envelope_t* NewsletterSubscriptionsAPI_getNewsletterSubscriptionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* NewsletterSubscriptionsAPI_getNewsletterSubscriptionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, newsletter_subscription_dto_collection_query_parameters_t *newsletter_subscription_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**newsletter_subscription_dto_collection_query_parameters** | **[newsletter_subscription_dto_collection_query_parameters_t](newsletter_subscription_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -175,7 +177,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

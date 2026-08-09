@@ -1,0 +1,61 @@
+/*
+ * social_post_reaction_facepile_dto.h
+ *
+ * 
+ */
+
+#ifndef _social_post_reaction_facepile_dto_H_
+#define _social_post_reaction_facepile_dto_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct social_post_reaction_facepile_dto_t social_post_reaction_facepile_dto_t;
+
+
+// Enum SOCIALPROFILETYPE for social_post_reaction_facepile_dto
+
+typedef enum  { socialservice_social_post_reaction_facepile_dto_SOCIALPROFILETYPE_NULL = 0, socialservice_social_post_reaction_facepile_dto_SOCIALPROFILETYPE_User, socialservice_social_post_reaction_facepile_dto_SOCIALPROFILETYPE_Tenant, socialservice_social_post_reaction_facepile_dto_SOCIALPROFILETYPE_Contact } socialservice_social_post_reaction_facepile_dto_SOCIALPROFILETYPE_e;
+
+char* social_post_reaction_facepile_dto_social_profile_type_ToString(socialservice_social_post_reaction_facepile_dto_SOCIALPROFILETYPE_e social_profile_type);
+
+socialservice_social_post_reaction_facepile_dto_SOCIALPROFILETYPE_e social_post_reaction_facepile_dto_social_profile_type_FromString(char* social_profile_type);
+
+// Enum REACTION for social_post_reaction_facepile_dto
+
+typedef enum  { socialservice_social_post_reaction_facepile_dto_REACTION_NULL = 0, socialservice_social_post_reaction_facepile_dto_REACTION_Like, socialservice_social_post_reaction_facepile_dto_REACTION_Happy, socialservice_social_post_reaction_facepile_dto_REACTION_HaHa, socialservice_social_post_reaction_facepile_dto_REACTION_Love, socialservice_social_post_reaction_facepile_dto_REACTION_Sad, socialservice_social_post_reaction_facepile_dto_REACTION_Angry, socialservice_social_post_reaction_facepile_dto_REACTION_Wow, socialservice_social_post_reaction_facepile_dto_REACTION_Afraid } socialservice_social_post_reaction_facepile_dto_REACTION_e;
+
+char* social_post_reaction_facepile_dto_reaction_ToString(socialservice_social_post_reaction_facepile_dto_REACTION_e reaction);
+
+socialservice_social_post_reaction_facepile_dto_REACTION_e social_post_reaction_facepile_dto_reaction_FromString(char* reaction);
+
+
+
+typedef struct social_post_reaction_facepile_dto_t {
+    char *social_profile_id; // string
+    char *social_profile_name; // string
+    char *social_profile_avatar_url; // string
+    socialservice_social_post_reaction_facepile_dto_SOCIALPROFILETYPE_e social_profile_type; //enum
+    socialservice_social_post_reaction_facepile_dto_REACTION_e reaction; //enum
+
+} social_post_reaction_facepile_dto_t;
+
+social_post_reaction_facepile_dto_t *social_post_reaction_facepile_dto_create(
+    char *social_profile_id,
+    char *social_profile_name,
+    char *social_profile_avatar_url,
+    socialservice_social_post_reaction_facepile_dto_SOCIALPROFILETYPE_e social_profile_type,
+    socialservice_social_post_reaction_facepile_dto_REACTION_e reaction
+);
+
+void social_post_reaction_facepile_dto_free(social_post_reaction_facepile_dto_t *social_post_reaction_facepile_dto);
+
+social_post_reaction_facepile_dto_t *social_post_reaction_facepile_dto_parseFromJSON(cJSON *social_post_reaction_facepile_dtoJSON);
+
+cJSON *social_post_reaction_facepile_dto_convertToJSON(social_post_reaction_facepile_dto_t *social_post_reaction_facepile_dto);
+
+#endif /* _social_post_reaction_facepile_dto_H_ */
+

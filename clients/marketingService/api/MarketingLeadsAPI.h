@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/marketing_lead_create_dto.h"
+#include "../model/marketing_lead_dto_collection_query_parameters.h"
 #include "../model/marketing_lead_dto_envelope.h"
 #include "../model/marketing_lead_dto_list_envelope.h"
 #include "../model/marketing_lead_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a marketing lead
@@ -36,7 +37,7 @@ MarketingLeadsAPI_getMarketingLeadDetailsAsync(apiClient_t *apiClient, char *ten
 // Get marketing leads count
 //
 int32_envelope_t*
-MarketingLeadsAPI_getMarketingLeadsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MarketingLeadsAPI_getMarketingLeadsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_lead_dto_collection_query_parameters_t *marketing_lead_dto_collection_query_parameters);
 
 
 // Get marketing leads
@@ -44,7 +45,7 @@ MarketingLeadsAPI_getMarketingLeadsCountAsync(apiClient_t *apiClient, char *tena
 // Retrieves a collection of marketing leads for the specified tenant using OData query options.
 //
 marketing_lead_dto_list_envelope_t*
-MarketingLeadsAPI_getMarketingLeadsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MarketingLeadsAPI_getMarketingLeadsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_lead_dto_collection_query_parameters_t *marketing_lead_dto_collection_query_parameters);
 
 
 // Patch a marketing lead
@@ -52,7 +53,7 @@ MarketingLeadsAPI_getMarketingLeadsODataAsync(apiClient_t *apiClient, char *tena
 // Partially updates a marketing lead by its ID using JSON Patch.
 //
 empty_envelope_t*
-MarketingLeadsAPI_patchMarketingLeadAsync(apiClient_t *apiClient, char *tenantId, char *marketingLeadId, char *api_version, char *x_api_version, list_t *operation);
+MarketingLeadsAPI_patchMarketingLeadAsync(apiClient_t *apiClient, char *tenantId, char *marketingLeadId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a marketing lead

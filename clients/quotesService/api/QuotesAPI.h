@@ -9,13 +9,16 @@
 #include "../model/email_dispatch_request.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/extended_quote_dto_collection_query_parameters.h"
 #include "../model/extended_quote_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/quote_create_dto.h"
+#include "../model/quote_dto_collection_query_parameters.h"
 #include "../model/quote_dto_envelope.h"
 #include "../model/quote_dto_list_envelope.h"
 #include "../model/quote_line_create_dto.h"
+#include "../model/quote_line_dto_collection_query_parameters.h"
 #include "../model/quote_line_dto_envelope.h"
 #include "../model/quote_line_dto_list_envelope.h"
 #include "../model/quote_line_update_dto.h"
@@ -92,7 +95,7 @@ QuotesAPI_deleteQuoteLine(apiClient_t *apiClient, char *tenantId, char *quoteId,
 // Retrieves a list of extended quotes for the specified tenant, supporting OData query options.
 //
 extended_quote_dto_list_envelope_t*
-QuotesAPI_getExtendedQuotes(apiClient_t *apiClient, char *tenantId);
+QuotesAPI_getExtendedQuotes(apiClient_t *apiClient, char *tenantId, extended_quote_dto_collection_query_parameters_t *extended_quote_dto_collection_query_parameters);
 
 
 // Get a quote by ID.
@@ -116,7 +119,7 @@ QuotesAPI_getQuoteLine(apiClient_t *apiClient, char *tenantId, char *quoteId, ch
 // Retrieves all quote lines for the specified quote and tenant.
 //
 quote_line_dto_list_envelope_t*
-QuotesAPI_getQuoteLines(apiClient_t *apiClient, char *tenantId, char *quoteId, char *itemId);
+QuotesAPI_getQuoteLines(apiClient_t *apiClient, char *tenantId, char *quoteId, char *itemId, quote_line_dto_collection_query_parameters_t *quote_line_dto_collection_query_parameters);
 
 
 // Get the count of quote lines.
@@ -124,7 +127,7 @@ QuotesAPI_getQuoteLines(apiClient_t *apiClient, char *tenantId, char *quoteId, c
 // Retrieves the total count of quote lines for the specified quote and tenant.
 //
 int32_envelope_t*
-QuotesAPI_getQuoteLinesCount(apiClient_t *apiClient, char *tenantId, char *quoteId);
+QuotesAPI_getQuoteLinesCount(apiClient_t *apiClient, char *tenantId, char *quoteId, quote_line_dto_collection_query_parameters_t *quote_line_dto_collection_query_parameters);
 
 
 // Get a list of quotes.
@@ -132,7 +135,7 @@ QuotesAPI_getQuoteLinesCount(apiClient_t *apiClient, char *tenantId, char *quote
 // Retrieves a list of quotes for the specified tenant, supporting OData query options.
 //
 quote_dto_list_envelope_t*
-QuotesAPI_getQuotes(apiClient_t *apiClient, char *tenantId);
+QuotesAPI_getQuotes(apiClient_t *apiClient, char *tenantId, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters);
 
 
 // Get the count of quotes.
@@ -140,7 +143,7 @@ QuotesAPI_getQuotes(apiClient_t *apiClient, char *tenantId);
 // Retrieves the total count of quotes for the specified tenant, supporting OData query options.
 //
 int32_envelope_t*
-QuotesAPI_getQuotesCount(apiClient_t *apiClient, char *tenantId);
+QuotesAPI_getQuotesCount(apiClient_t *apiClient, char *tenantId, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters);
 
 
 // Patch an existing quote.
@@ -148,7 +151,7 @@ QuotesAPI_getQuotesCount(apiClient_t *apiClient, char *tenantId);
 // Partially updates an existing quote for the specified tenant and quote ID using a JSON Patch document.
 //
 empty_envelope_t*
-QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, list_t *operation);
+QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, list_t *patch_operation);
 
 
 // Patch a quote line.
@@ -156,7 +159,7 @@ QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId,
 // Partially updates an existing quote line for the specified quote and tenant using a JSON Patch document.
 //
 empty_envelope_t*
-QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, char *quoteLineId, list_t *operation);
+QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, char *quoteLineId, list_t *patch_operation);
 
 
 // Preview the rendered email for an invoice.

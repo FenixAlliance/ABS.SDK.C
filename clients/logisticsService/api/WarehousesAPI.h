@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/warehouse_create_dto.h"
+#include "../model/warehouse_dto_collection_query_parameters.h"
 #include "../model/warehouse_dto_envelope.h"
 #include "../model/warehouse_dto_list_envelope.h"
 #include "../model/warehouse_update_dto.h"
@@ -44,7 +45,7 @@ WarehousesAPI_getWarehouseByIdAsync(apiClient_t *apiClient, char *tenantId, char
 // Retrieves all warehouses for the specified tenant.
 //
 warehouse_dto_list_envelope_t*
-WarehousesAPI_getWarehousesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WarehousesAPI_getWarehousesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, warehouse_dto_collection_query_parameters_t *warehouse_dto_collection_query_parameters);
 
 
 // Get warehouses count
@@ -52,7 +53,7 @@ WarehousesAPI_getWarehousesAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Returns the count of warehouses.
 //
 int32_envelope_t*
-WarehousesAPI_getWarehousesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WarehousesAPI_getWarehousesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, warehouse_dto_collection_query_parameters_t *warehouse_dto_collection_query_parameters);
 
 
 // Patch a warehouse
@@ -60,7 +61,7 @@ WarehousesAPI_getWarehousesCountAsync(apiClient_t *apiClient, char *tenantId, ch
 // Partially updates an existing warehouse using JSON Patch.
 //
 empty_envelope_t*
-WarehousesAPI_patchWarehouseAsync(apiClient_t *apiClient, char *tenantId, char *warehouseId, char *api_version, char *x_api_version, list_t *operation);
+WarehousesAPI_patchWarehouseAsync(apiClient_t *apiClient, char *tenantId, char *warehouseId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a warehouse

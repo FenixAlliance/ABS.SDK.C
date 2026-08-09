@@ -17,13 +17,13 @@
 // Returns the sum of all account balances matching OData filters, normalized to the target currency using stored USD values.
 //
 money_envelope_t*
-AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId, char *currencyId, char *api_version, char *x_api_version)
+AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId, char *currencyId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -81,8 +81,19 @@ AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_account_dto_collection_query_parameters = NULL;
+    if (account_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_account_dto_collection_query_parameters = account_dto_collection_query_parameters_convertToJSON(account_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_account_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -123,7 +134,7 @@ AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -134,6 +145,11 @@ AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_account_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_account_dto_collection_query_parameters);
+        localVarSingleItemJSON_account_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2397,13 +2413,13 @@ end:
 // Get account credits.
 //
 accounting_entry_dto_list_envelope_t*
-AccountsAPI_getAccountCreditsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountCreditsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2466,8 +2482,19 @@ AccountsAPI_getAccountCreditsAsync(apiClient_t *apiClient, char *tenantId, char 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    if (accounting_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = accounting_entry_dto_collection_query_parameters_convertToJSON(accounting_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2508,7 +2535,7 @@ AccountsAPI_getAccountCreditsAsync(apiClient_t *apiClient, char *tenantId, char 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_accountId);
     if (keyHeader_x_api_version) {
@@ -2520,6 +2547,11 @@ AccountsAPI_getAccountCreditsAsync(apiClient_t *apiClient, char *tenantId, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2556,13 +2588,13 @@ end:
 // Get account credits count.
 //
 int32_envelope_t*
-AccountsAPI_getAccountCreditsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountCreditsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2625,8 +2657,19 @@ AccountsAPI_getAccountCreditsCountAsync(apiClient_t *apiClient, char *tenantId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    if (accounting_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = accounting_entry_dto_collection_query_parameters_convertToJSON(accounting_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2667,7 +2710,7 @@ AccountsAPI_getAccountCreditsCountAsync(apiClient_t *apiClient, char *tenantId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_accountId);
     if (keyHeader_x_api_version) {
@@ -2679,6 +2722,11 @@ AccountsAPI_getAccountCreditsCountAsync(apiClient_t *apiClient, char *tenantId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2715,13 +2763,13 @@ end:
 // Get account debits.
 //
 accounting_entry_dto_list_envelope_t*
-AccountsAPI_getAccountDebitsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountDebitsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2784,8 +2832,19 @@ AccountsAPI_getAccountDebitsAsync(apiClient_t *apiClient, char *tenantId, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    if (accounting_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = accounting_entry_dto_collection_query_parameters_convertToJSON(accounting_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2826,7 +2885,7 @@ AccountsAPI_getAccountDebitsAsync(apiClient_t *apiClient, char *tenantId, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_accountId);
     if (keyHeader_x_api_version) {
@@ -2838,6 +2897,11 @@ AccountsAPI_getAccountDebitsAsync(apiClient_t *apiClient, char *tenantId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2874,13 +2938,13 @@ end:
 // Get account debits count.
 //
 int32_envelope_t*
-AccountsAPI_getAccountDebitsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountDebitsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2943,8 +3007,19 @@ AccountsAPI_getAccountDebitsCountAsync(apiClient_t *apiClient, char *tenantId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    if (accounting_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = accounting_entry_dto_collection_query_parameters_convertToJSON(accounting_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2985,7 +3060,7 @@ AccountsAPI_getAccountDebitsCountAsync(apiClient_t *apiClient, char *tenantId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_accountId);
     if (keyHeader_x_api_version) {
@@ -2997,6 +3072,11 @@ AccountsAPI_getAccountDebitsCountAsync(apiClient_t *apiClient, char *tenantId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3192,13 +3272,13 @@ end:
 // Get account entries.
 //
 accounting_entry_dto_list_envelope_t*
-AccountsAPI_getAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3261,8 +3341,19 @@ AccountsAPI_getAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    if (accounting_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = accounting_entry_dto_collection_query_parameters_convertToJSON(accounting_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3303,7 +3394,7 @@ AccountsAPI_getAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_accountId);
     if (keyHeader_x_api_version) {
@@ -3315,6 +3406,11 @@ AccountsAPI_getAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3528,13 +3624,13 @@ end:
 // Get account relations.
 //
 account_relation_dto_list_envelope_t*
-AccountsAPI_getAccountRelationsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountRelationsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, account_relation_dto_collection_query_parameters_t *account_relation_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3592,8 +3688,19 @@ AccountsAPI_getAccountRelationsAsync(apiClient_t *apiClient, char *tenantId, cha
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_account_relation_dto_collection_query_parameters = NULL;
+    if (account_relation_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_account_relation_dto_collection_query_parameters = account_relation_dto_collection_query_parameters_convertToJSON(account_relation_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_account_relation_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3634,7 +3741,7 @@ AccountsAPI_getAccountRelationsAsync(apiClient_t *apiClient, char *tenantId, cha
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -3645,6 +3752,11 @@ AccountsAPI_getAccountRelationsAsync(apiClient_t *apiClient, char *tenantId, cha
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_account_relation_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_account_relation_dto_collection_query_parameters);
+        localVarSingleItemJSON_account_relation_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3693,13 +3805,13 @@ end:
 // Get account relations count.
 //
 int32_envelope_t*
-AccountsAPI_getAccountRelationsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountRelationsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, account_relation_dto_collection_query_parameters_t *account_relation_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3757,8 +3869,19 @@ AccountsAPI_getAccountRelationsCountAsync(apiClient_t *apiClient, char *tenantId
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_account_relation_dto_collection_query_parameters = NULL;
+    if (account_relation_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_account_relation_dto_collection_query_parameters = account_relation_dto_collection_query_parameters_convertToJSON(account_relation_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_account_relation_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3799,7 +3922,7 @@ AccountsAPI_getAccountRelationsCountAsync(apiClient_t *apiClient, char *tenantId
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -3810,6 +3933,11 @@ AccountsAPI_getAccountRelationsCountAsync(apiClient_t *apiClient, char *tenantId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_account_relation_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_account_relation_dto_collection_query_parameters);
+        localVarSingleItemJSON_account_relation_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4017,13 +4145,13 @@ end:
 // Get account types.
 //
 account_type_dto_list_envelope_t*
-AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_type_dto_collection_query_parameters_t *account_type_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4069,8 +4197,19 @@ AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *a
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_account_type_dto_collection_query_parameters = NULL;
+    if (account_type_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_account_type_dto_collection_query_parameters = account_type_dto_collection_query_parameters_convertToJSON(account_type_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_account_type_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4111,7 +4250,7 @@ AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *a
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -4122,6 +4261,11 @@ AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *a
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_account_type_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_account_type_dto_collection_query_parameters);
+        localVarSingleItemJSON_account_type_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4158,13 +4302,13 @@ end:
 // Get account types count.
 //
 int32_envelope_t*
-AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_type_dto_collection_query_parameters_t *account_type_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4210,8 +4354,19 @@ AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, ch
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_account_type_dto_collection_query_parameters = NULL;
+    if (account_type_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_account_type_dto_collection_query_parameters = account_type_dto_collection_query_parameters_convertToJSON(account_type_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_account_type_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4252,7 +4407,7 @@ AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, ch
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -4263,6 +4418,11 @@ AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, ch
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_account_type_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_account_type_dto_collection_query_parameters);
+        localVarSingleItemJSON_account_type_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4299,13 +4459,13 @@ end:
 // Creates a new account.
 //
 account_dto_list_envelope_t*
-AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4351,8 +4511,19 @@ AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_account_dto_collection_query_parameters = NULL;
+    if (account_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_account_dto_collection_query_parameters = account_dto_collection_query_parameters_convertToJSON(account_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_account_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4393,7 +4564,7 @@ AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -4404,6 +4575,11 @@ AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_account_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_account_dto_collection_query_parameters);
+        localVarSingleItemJSON_account_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4440,13 +4616,13 @@ end:
 // Get the number of accounts.
 //
 int32_envelope_t*
-AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4492,8 +4668,19 @@ AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_account_dto_collection_query_parameters = NULL;
+    if (account_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_account_dto_collection_query_parameters = account_dto_collection_query_parameters_convertToJSON(account_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_account_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4534,7 +4721,7 @@ AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -4545,6 +4732,11 @@ AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_account_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_account_dto_collection_query_parameters);
+        localVarSingleItemJSON_account_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4857,13 +5049,13 @@ end:
 // Get credit account entries.
 //
 accounting_entry_dto_list_envelope_t*
-AccountsAPI_getCreditAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version)
+AccountsAPI_getCreditAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4926,8 +5118,19 @@ AccountsAPI_getCreditAccountEntriesAsync(apiClient_t *apiClient, char *tenantId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    if (accounting_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = accounting_entry_dto_collection_query_parameters_convertToJSON(accounting_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4968,7 +5171,7 @@ AccountsAPI_getCreditAccountEntriesAsync(apiClient_t *apiClient, char *tenantId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_accountId);
     if (keyHeader_x_api_version) {
@@ -4980,6 +5183,11 @@ AccountsAPI_getCreditAccountEntriesAsync(apiClient_t *apiClient, char *tenantId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -5016,13 +5224,13 @@ end:
 // Get debit account entries.
 //
 accounting_entry_dto_list_envelope_t*
-AccountsAPI_getDebitAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version)
+AccountsAPI_getDebitAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -5085,8 +5293,19 @@ AccountsAPI_getDebitAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    if (accounting_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = accounting_entry_dto_collection_query_parameters_convertToJSON(accounting_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -5127,7 +5346,7 @@ AccountsAPI_getDebitAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_accountId);
     if (keyHeader_x_api_version) {
@@ -5139,6 +5358,11 @@ AccountsAPI_getDebitAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -5175,13 +5399,13 @@ end:
 // Get root accounts.
 //
 account_dto_list_envelope_t*
-AccountsAPI_getRootAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AccountsAPI_getRootAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -5227,8 +5451,19 @@ AccountsAPI_getRootAccountsAsync(apiClient_t *apiClient, char *tenantId, char *a
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_account_dto_collection_query_parameters = NULL;
+    if (account_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_account_dto_collection_query_parameters = account_dto_collection_query_parameters_convertToJSON(account_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_account_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -5269,7 +5504,7 @@ AccountsAPI_getRootAccountsAsync(apiClient_t *apiClient, char *tenantId, char *a
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -5280,6 +5515,11 @@ AccountsAPI_getRootAccountsAsync(apiClient_t *apiClient, char *tenantId, char *a
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_account_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_account_dto_collection_query_parameters);
+        localVarSingleItemJSON_account_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -5316,7 +5556,7 @@ end:
 // Patch an account.
 //
 empty_envelope_t*
-AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, list_t *operation)
+AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -5388,14 +5628,14 @@ AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *acco
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -5403,16 +5643,16 @@ AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *acco
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -5470,17 +5710,17 @@ AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *acco
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -5519,7 +5759,7 @@ end:
 // Patch account entry.
 //
 empty_envelope_t*
-AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *entryId, char *api_version, char *x_api_version, list_t *operation)
+AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -5608,14 +5848,14 @@ AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char 
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -5623,16 +5863,16 @@ AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char 
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -5691,17 +5931,17 @@ AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -5740,7 +5980,7 @@ end:
 // Patch account relation.
 //
 empty_envelope_t*
-AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, char *accountRelationId, char *accountId, char *api_version, char *x_api_version, list_t *operation)
+AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, char *accountRelationId, char *accountId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -5824,14 +6064,14 @@ AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, ch
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -5839,16 +6079,16 @@ AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, ch
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -5906,17 +6146,17 @@ AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, ch
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -5967,7 +6207,7 @@ end:
 // Patch account type.
 //
 empty_envelope_t*
-AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, list_t *operation)
+AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -6039,14 +6279,14 @@ AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -6054,16 +6294,16 @@ AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -6121,17 +6361,17 @@ AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

@@ -7,9 +7,10 @@
 #include "../include/binary.h"
 #include "../model/course_library_create_dto.h"
 #include "../model/course_library_dto.h"
+#include "../model/course_library_dto_collection_query_parameters.h"
 #include "../model/course_library_update_dto.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a course library
@@ -33,7 +34,7 @@ CourseLibrariesAPI_deleteCourseLibraryAsync(apiClient_t *apiClient, char *tenant
 // Retrieves all course libraries for the specified tenant.
 //
 list_t*
-CourseLibrariesAPI_getCourseLibrariesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseLibrariesAPI_getCourseLibrariesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_library_dto_collection_query_parameters_t *course_library_dto_collection_query_parameters);
 
 
 // Get course libraries count
@@ -41,7 +42,7 @@ CourseLibrariesAPI_getCourseLibrariesAsync(apiClient_t *apiClient, char *tenantI
 // Returns the count of course libraries for the specified tenant.
 //
 int*
-CourseLibrariesAPI_getCourseLibrariesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseLibrariesAPI_getCourseLibrariesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_library_dto_collection_query_parameters_t *course_library_dto_collection_query_parameters);
 
 
 // Get course library by ID
@@ -57,7 +58,7 @@ CourseLibrariesAPI_getCourseLibraryByIdAsync(apiClient_t *apiClient, char *libra
 // Partially updates an existing course library.
 //
 void
-CourseLibrariesAPI_patchCourseLibraryAsync(apiClient_t *apiClient, char *tenantId, char *libraryId, char *api_version, char *x_api_version, list_t *operation);
+CourseLibrariesAPI_patchCourseLibraryAsync(apiClient_t *apiClient, char *tenantId, char *libraryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course library

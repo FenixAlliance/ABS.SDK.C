@@ -17,13 +17,13 @@
 // Returns SUM(AccountingEntry.Credit) for the tenant, filtered by the supplied OData date range.
 //
 decimal_envelope_t*
-AccountingSummaryAPI_getCreditsSumAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AccountingSummaryAPI_getCreditsSumAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -69,8 +69,19 @@ AccountingSummaryAPI_getCreditsSumAsync(apiClient_t *apiClient, char *tenantId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    if (accounting_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = accounting_entry_dto_collection_query_parameters_convertToJSON(accounting_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -111,7 +122,7 @@ AccountingSummaryAPI_getCreditsSumAsync(apiClient_t *apiClient, char *tenantId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -122,6 +133,11 @@ AccountingSummaryAPI_getCreditsSumAsync(apiClient_t *apiClient, char *tenantId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -158,13 +174,13 @@ end:
 // Returns SUM(AccountingEntry.Debit) for the tenant, filtered by the supplied OData date range.
 //
 decimal_envelope_t*
-AccountingSummaryAPI_getDebitsSumAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AccountingSummaryAPI_getDebitsSumAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -210,8 +226,19 @@ AccountingSummaryAPI_getDebitsSumAsync(apiClient_t *apiClient, char *tenantId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    if (accounting_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = accounting_entry_dto_collection_query_parameters_convertToJSON(accounting_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -252,7 +279,7 @@ AccountingSummaryAPI_getDebitsSumAsync(apiClient_t *apiClient, char *tenantId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -263,6 +290,11 @@ AccountingSummaryAPI_getDebitsSumAsync(apiClient_t *apiClient, char *tenantId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_accounting_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -299,13 +331,13 @@ end:
 // Returns SUM(JournalEntry.Debit) for Debit-direction journal entries in the tenant, filtered by the supplied OData date range.
 //
 money_envelope_t*
-AccountingSummaryAPI_getExpensesSumAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AccountingSummaryAPI_getExpensesSumAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -351,8 +383,19 @@ AccountingSummaryAPI_getExpensesSumAsync(apiClient_t *apiClient, char *tenantId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    if (journal_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = journal_entry_dto_collection_query_parameters_convertToJSON(journal_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -393,7 +436,7 @@ AccountingSummaryAPI_getExpensesSumAsync(apiClient_t *apiClient, char *tenantId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -404,6 +447,11 @@ AccountingSummaryAPI_getExpensesSumAsync(apiClient_t *apiClient, char *tenantId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_journal_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -440,13 +488,13 @@ end:
 // Returns SUM(JournalEntry.Credit) for Credit-direction journal entries in the tenant, filtered by the supplied OData date range.
 //
 money_envelope_t*
-AccountingSummaryAPI_getIncomesSumAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+AccountingSummaryAPI_getIncomesSumAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -492,8 +540,19 @@ AccountingSummaryAPI_getIncomesSumAsync(apiClient_t *apiClient, char *tenantId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    if (journal_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = journal_entry_dto_collection_query_parameters_convertToJSON(journal_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -534,7 +593,7 @@ AccountingSummaryAPI_getIncomesSumAsync(apiClient_t *apiClient, char *tenantId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -545,6 +604,11 @@ AccountingSummaryAPI_getIncomesSumAsync(apiClient_t *apiClient, char *tenantId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_journal_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;

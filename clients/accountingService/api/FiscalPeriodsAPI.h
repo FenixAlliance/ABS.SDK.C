@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/fiscal_period_create_dto.h"
+#include "../model/fiscal_period_dto_collection_query_parameters.h"
 #include "../model/fiscal_period_dto_envelope.h"
 #include "../model/fiscal_period_dto_list_envelope.h"
 #include "../model/fiscal_period_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Close a fiscal period
@@ -52,7 +53,7 @@ FiscalPeriodsAPI_getFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *f
 // Retrieves all fiscal periods for the specified fiscal year within a fiscal authority.
 //
 fiscal_period_dto_list_envelope_t*
-FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *authorityId, char *api_version, char *x_api_version);
+FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *authorityId, char *api_version, char *x_api_version, fiscal_period_dto_collection_query_parameters_t *fiscal_period_dto_collection_query_parameters);
 
 
 // Get fiscal periods count
@@ -60,7 +61,7 @@ FiscalPeriodsAPI_getFiscalPeriods(apiClient_t *apiClient, char *tenantId, char *
 // Returns the total count of fiscal periods for the specified fiscal year.
 //
 int32_envelope_t*
-FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version);
+FiscalPeriodsAPI_getFiscalPeriodsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalYearId, char *api_version, char *x_api_version, fiscal_period_dto_collection_query_parameters_t *fiscal_period_dto_collection_query_parameters);
 
 
 // Open a fiscal period
@@ -76,7 +77,7 @@ FiscalPeriodsAPI_openFiscalPeriod(apiClient_t *apiClient, char *tenantId, char *
 // Partially updates a fiscal period.
 //
 empty_envelope_t*
-FiscalPeriodsAPI_patchFiscalPeriodAsync(apiClient_t *apiClient, char *tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version, list_t *operation);
+FiscalPeriodsAPI_patchFiscalPeriodAsync(apiClient_t *apiClient, char *tenantId, char *fiscalPeriodId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a fiscal period

@@ -9,9 +9,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/security_permission_dto_list_envelope.h"
 #include "../model/security_role_create_dto.h"
+#include "../model/security_role_dto_collection_query_parameters.h"
 #include "../model/security_role_dto_envelope.h"
 #include "../model/security_role_dto_list_envelope.h"
 #include "../model/security_role_update_dto.h"
@@ -95,7 +96,7 @@ RolesAPI_getRolePermissionsAsync(apiClient_t *apiClient, char *tenantId, char *s
 // Retrieves all security roles for the specified tenant.
 //
 security_role_dto_list_envelope_t*
-RolesAPI_getRolesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+RolesAPI_getRolesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, security_role_dto_collection_query_parameters_t *security_role_dto_collection_query_parameters);
 
 
 // Get roles by enrollment
@@ -111,7 +112,7 @@ RolesAPI_getRolesByEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char 
 // Retrieves the count of security roles for the specified tenant.
 //
 int32_envelope_t*
-RolesAPI_getRolesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+RolesAPI_getRolesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, security_role_dto_collection_query_parameters_t *security_role_dto_collection_query_parameters);
 
 
 // Patch an existing role
@@ -119,7 +120,7 @@ RolesAPI_getRolesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_ve
 // Partially updates an existing security role using a JSON Patch document.
 //
 empty_envelope_t*
-RolesAPI_patchRoleAsync(apiClient_t *apiClient, char *tenantId, char *securityRoleId, list_t *operation, char *api_version, char *x_api_version);
+RolesAPI_patchRoleAsync(apiClient_t *apiClient, char *tenantId, char *securityRoleId, list_t *patch_operation, char *api_version, char *x_api_version);
 
 
 // Revoke a permission from a role

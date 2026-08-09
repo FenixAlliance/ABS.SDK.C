@@ -6,9 +6,11 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/bill_of_lading_create_dto.h"
+#include "../model/bill_of_lading_dto_collection_query_parameters.h"
 #include "../model/bill_of_lading_dto_envelope.h"
 #include "../model/bill_of_lading_dto_list_envelope.h"
 #include "../model/bill_of_lading_line_create_dto.h"
+#include "../model/bill_of_lading_line_dto_collection_query_parameters.h"
 #include "../model/bill_of_lading_line_dto_envelope.h"
 #include "../model/bill_of_lading_line_dto_list_envelope.h"
 #include "../model/bill_of_lading_line_update_dto.h"
@@ -16,7 +18,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a bill of lading
@@ -72,7 +74,7 @@ BillsOfLadingAPI_getBillOfLadingLineByIdAsync(apiClient_t *apiClient, char *tena
 // Retrieves all lines for a specific bill of lading.
 //
 bill_of_lading_line_dto_list_envelope_t*
-BillsOfLadingAPI_getBillOfLadingLinesAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version);
+BillsOfLadingAPI_getBillOfLadingLinesAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version, bill_of_lading_line_dto_collection_query_parameters_t *bill_of_lading_line_dto_collection_query_parameters);
 
 
 // Get bill of lading lines count
@@ -80,7 +82,7 @@ BillsOfLadingAPI_getBillOfLadingLinesAsync(apiClient_t *apiClient, char *tenantI
 // Returns the count of lines for a specific bill of lading.
 //
 int32_envelope_t*
-BillsOfLadingAPI_getBillOfLadingLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version);
+BillsOfLadingAPI_getBillOfLadingLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version, bill_of_lading_line_dto_collection_query_parameters_t *bill_of_lading_line_dto_collection_query_parameters);
 
 
 // Get all bills of lading
@@ -88,7 +90,7 @@ BillsOfLadingAPI_getBillOfLadingLinesCountAsync(apiClient_t *apiClient, char *te
 // Retrieves all bills of lading for the specified tenant.
 //
 bill_of_lading_dto_list_envelope_t*
-BillsOfLadingAPI_getBillsOfLadingAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BillsOfLadingAPI_getBillsOfLadingAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bill_of_lading_dto_collection_query_parameters_t *bill_of_lading_dto_collection_query_parameters);
 
 
 // Get bills of lading count
@@ -96,7 +98,7 @@ BillsOfLadingAPI_getBillsOfLadingAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of bills of lading for the specified tenant.
 //
 int32_envelope_t*
-BillsOfLadingAPI_getBillsOfLadingCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BillsOfLadingAPI_getBillsOfLadingCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bill_of_lading_dto_collection_query_parameters_t *bill_of_lading_dto_collection_query_parameters);
 
 
 // Patch a bill of lading
@@ -104,7 +106,7 @@ BillsOfLadingAPI_getBillsOfLadingCountAsync(apiClient_t *apiClient, char *tenant
 // Partially updates an existing bill of lading using JSON Patch.
 //
 empty_envelope_t*
-BillsOfLadingAPI_patchBillOfLadingAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version, list_t *operation);
+BillsOfLadingAPI_patchBillOfLadingAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a bill of lading line
@@ -112,7 +114,7 @@ BillsOfLadingAPI_patchBillOfLadingAsync(apiClient_t *apiClient, char *tenantId, 
 // Partially updates an existing line on a bill of lading using JSON Patch.
 //
 empty_envelope_t*
-BillsOfLadingAPI_patchBillOfLadingLineAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+BillsOfLadingAPI_patchBillOfLadingLineAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *lineId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a bill of lading

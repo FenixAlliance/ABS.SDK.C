@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_problem_set_create_dto.h"
 #include "../model/course_problem_set_dto.h"
+#include "../model/course_problem_set_dto_collection_query_parameters.h"
 #include "../model/course_problem_set_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new course problem set
@@ -42,7 +43,7 @@ CourseProblemSetsAPI_getCourseProblemSetByIdAsync(apiClient_t *apiClient, char *
 // Retrieves all course problem sets for the specified tenant.
 //
 list_t*
-CourseProblemSetsAPI_getCourseProblemSetsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseProblemSetsAPI_getCourseProblemSetsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_problem_set_dto_collection_query_parameters_t *course_problem_set_dto_collection_query_parameters);
 
 
 // Get course problem sets count
@@ -50,7 +51,7 @@ CourseProblemSetsAPI_getCourseProblemSetsAsync(apiClient_t *apiClient, char *ten
 // Returns the count of course problem sets for the specified tenant.
 //
 int*
-CourseProblemSetsAPI_getCourseProblemSetsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseProblemSetsAPI_getCourseProblemSetsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_problem_set_dto_collection_query_parameters_t *course_problem_set_dto_collection_query_parameters);
 
 
 // Patch a course problem set
@@ -58,7 +59,7 @@ CourseProblemSetsAPI_getCourseProblemSetsCountAsync(apiClient_t *apiClient, char
 // Partially updates a course problem set for the specified tenant.
 //
 empty_envelope_t*
-CourseProblemSetsAPI_patchCourseProblemSetAsync(apiClient_t *apiClient, char *tenantId, char *problemSetId, char *api_version, char *x_api_version, list_t *operation);
+CourseProblemSetsAPI_patchCourseProblemSetAsync(apiClient_t *apiClient, char *tenantId, char *problemSetId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course problem set

@@ -64,13 +64,14 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
     model/subscription_create_dto.c
     model/subscription_dto.c
+    model/subscription_dto_collection_query_parameters.c
     model/subscription_dto_envelope.c
     model/subscription_dto_i_read_only_list_envelope.c
     model/subscription_plan_create_dto.c
@@ -104,13 +105,14 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
     model/subscription_create_dto.h
     model/subscription_dto.h
+    model/subscription_dto_collection_query_parameters.h
     model/subscription_dto_envelope.h
     model/subscription_dto_i_read_only_list_envelope.h
     model/subscription_plan_create_dto.h

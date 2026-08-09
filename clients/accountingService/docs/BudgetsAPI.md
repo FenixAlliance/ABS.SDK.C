@@ -163,7 +163,7 @@ No authorization required
 //
 // Get all budget account entries
 //
-budget_account_entry_dto_i_read_only_list_envelope_t* BudgetsAPI_getBudgetAccountEntriesCollectionAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version);
+budget_account_entry_dto_i_read_only_list_envelope_t* BudgetsAPI_getBudgetAccountEntriesCollectionAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, budget_account_entry_dto_collection_query_parameters_t *budget_account_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -174,6 +174,7 @@ Name | Type | Description  | Notes
 **budgetId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**budget_account_entry_dto_collection_query_parameters** | **[budget_account_entry_dto_collection_query_parameters_t](budget_account_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -186,7 +187,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -266,7 +267,7 @@ No authorization required
 //
 // Get all budgets
 //
-budget_dto_i_read_only_list_envelope_t* BudgetsAPI_getBudgetsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+budget_dto_i_read_only_list_envelope_t* BudgetsAPI_getBudgetsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, budget_dto_collection_query_parameters_t *budget_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -276,6 +277,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**budget_dto_collection_query_parameters** | **[budget_dto_collection_query_parameters_t](budget_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -288,7 +290,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -299,7 +301,7 @@ No authorization required
 //
 // Get the count of budgets.
 //
-int32_envelope_t* BudgetsAPI_getBudgetsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* BudgetsAPI_getBudgetsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, budget_dto_collection_query_parameters_t *budget_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -309,6 +311,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**budget_dto_collection_query_parameters** | **[budget_dto_collection_query_parameters_t](budget_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -321,7 +324,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -332,7 +335,7 @@ No authorization required
 //
 // Partially update a budget account entry using JSON Patch.
 //
-empty_envelope_t* BudgetsAPI_patchBudgetAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BudgetsAPI_patchBudgetAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -344,7 +347,7 @@ Name | Type | Description  | Notes
 **entryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -368,7 +371,7 @@ No authorization required
 //
 // Partially update a budget using JSON Patch.
 //
-empty_envelope_t* BudgetsAPI_patchBudgetAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BudgetsAPI_patchBudgetAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -379,7 +382,7 @@ Name | Type | Description  | Notes
 **budgetId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

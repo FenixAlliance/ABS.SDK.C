@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/job_field_create_dto.h"
+#include "../model/job_field_dto_collection_query_parameters.h"
 #include "../model/job_field_dto_envelope.h"
 #include "../model/job_field_dto_list_envelope.h"
 #include "../model/job_field_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a job field
@@ -44,7 +45,7 @@ JobFieldsAPI_getJobFieldByIdAsync(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves job field (role domain) taxonomy entries for the specified tenant.
 //
 job_field_dto_list_envelope_t*
-JobFieldsAPI_getJobFieldsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JobFieldsAPI_getJobFieldsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_field_dto_collection_query_parameters_t *job_field_dto_collection_query_parameters);
 
 
 // Count job fields
@@ -52,7 +53,7 @@ JobFieldsAPI_getJobFieldsAsync(apiClient_t *apiClient, char *tenantId, char *api
 // Counts job field taxonomy entries for the specified tenant.
 //
 int32_envelope_t*
-JobFieldsAPI_getJobFieldsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JobFieldsAPI_getJobFieldsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_field_dto_collection_query_parameters_t *job_field_dto_collection_query_parameters);
 
 
 // Patch a job field
@@ -60,7 +61,7 @@ JobFieldsAPI_getJobFieldsCountAsync(apiClient_t *apiClient, char *tenantId, char
 // Partially updates an existing job field for the specified tenant.
 //
 empty_envelope_t*
-JobFieldsAPI_patchJobFieldAsync(apiClient_t *apiClient, char *tenantId, char *jobFieldId, char *api_version, char *x_api_version, list_t *operation);
+JobFieldsAPI_patchJobFieldAsync(apiClient_t *apiClient, char *tenantId, char *jobFieldId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a job field

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 //
 // Returns the count of blog posts written by a specific author.
 //
-int32_envelope_t* BlogPostAuthorsAPI_countBlogPostsByAuthorAsync(apiClient_t *apiClient, char *authorId, char *api_version, char *x_api_version);
+int32_envelope_t* BlogPostAuthorsAPI_countBlogPostsByAuthorAsync(apiClient_t *apiClient, char *authorId, char *api_version, char *x_api_version, blog_post_dto_collection_query_parameters_t *blog_post_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -26,6 +26,7 @@ Name | Type | Description  | Notes
 **authorId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**blog_post_dto_collection_query_parameters** | **[blog_post_dto_collection_query_parameters_t](blog_post_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -38,7 +39,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -82,7 +83,7 @@ No authorization required
 //
 // Retrieves all blog authors, optionally filtered by tenant.
 //
-blog_author_dto_list_envelope_t* BlogPostAuthorsAPI_getBlogAuthorsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+blog_author_dto_list_envelope_t* BlogPostAuthorsAPI_getBlogAuthorsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, blog_author_dto_collection_query_parameters_t *blog_author_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -92,6 +93,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**blog_author_dto_collection_query_parameters** | **[blog_author_dto_collection_query_parameters_t](blog_author_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -104,7 +106,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -115,7 +117,7 @@ No authorization required
 //
 // Retrieves all blog posts written by a specific author.
 //
-blog_post_dto_list_envelope_t* BlogPostAuthorsAPI_getBlogPostsByAuthorAsync(apiClient_t *apiClient, char *authorId, char *api_version, char *x_api_version);
+blog_post_dto_list_envelope_t* BlogPostAuthorsAPI_getBlogPostsByAuthorAsync(apiClient_t *apiClient, char *authorId, char *api_version, char *x_api_version, blog_post_dto_collection_query_parameters_t *blog_post_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -125,6 +127,7 @@ Name | Type | Description  | Notes
 **authorId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**blog_post_dto_collection_query_parameters** | **[blog_post_dto_collection_query_parameters_t](blog_post_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -137,7 +140,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 //
 // Counts all item attributes for the specified tenant.
 //
-int32_envelope_t* ItemAttributesAPI_countItemAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* ItemAttributesAPI_countItemAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_attribute_dto_collection_query_parameters_t *item_attribute_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -29,6 +29,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**item_attribute_dto_collection_query_parameters** | **[item_attribute_dto_collection_query_parameters_t](item_attribute_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -41,7 +42,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -153,7 +154,7 @@ No authorization required
 //
 // Retrieves all item attributes for the specified tenant using OData query options.
 //
-item_attribute_dto_list_envelope_t* ItemAttributesAPI_getItemAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+item_attribute_dto_list_envelope_t* ItemAttributesAPI_getItemAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_attribute_dto_collection_query_parameters_t *item_attribute_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**item_attribute_dto_collection_query_parameters** | **[item_attribute_dto_collection_query_parameters_t](item_attribute_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -175,7 +177,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -186,7 +188,7 @@ No authorization required
 //
 // Partially updates an existing item attribute for the specified tenant.
 //
-void ItemAttributesAPI_patchItemAttributeAsync(apiClient_t *apiClient, char *tenantId, char *itemAttributeId, char *api_version, char *x_api_version, list_t *operation);
+void ItemAttributesAPI_patchItemAttributeAsync(apiClient_t *apiClient, char *tenantId, char *itemAttributeId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -197,7 +199,7 @@ Name | Type | Description  | Notes
 **itemAttributeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

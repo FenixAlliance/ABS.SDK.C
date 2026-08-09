@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/web_page_tag_create_dto.h"
+#include "../model/web_page_tag_dto_collection_query_parameters.h"
 #include "../model/web_page_tag_dto_envelope.h"
 #include "../model/web_page_tag_dto_list_envelope.h"
 #include "../model/web_page_tag_update_dto.h"
@@ -20,7 +21,7 @@
 // Counts all web page tags for the specified tenant.
 //
 int32_envelope_t*
-WebPageTagsAPI_countWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebPageTagsAPI_countWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_page_tag_dto_collection_query_parameters_t *web_page_tag_dto_collection_query_parameters);
 
 
 // Create a web page tag
@@ -52,7 +53,7 @@ WebPageTagsAPI_getWebPageTagByIdAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves all web page tags for the specified tenant.
 //
 web_page_tag_dto_list_envelope_t*
-WebPageTagsAPI_getWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebPageTagsAPI_getWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_page_tag_dto_collection_query_parameters_t *web_page_tag_dto_collection_query_parameters);
 
 
 // Patch a web page tag
@@ -60,7 +61,7 @@ WebPageTagsAPI_getWebPageTagsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Partially updates an existing web page tag for the specified tenant.
 //
 empty_envelope_t*
-WebPageTagsAPI_patchWebPageTagAsync(apiClient_t *apiClient, char *tenantId, char *webPageTagId, char *api_version, char *x_api_version, list_t *operation);
+WebPageTagsAPI_patchWebPageTagAsync(apiClient_t *apiClient, char *tenantId, char *webPageTagId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a web page tag

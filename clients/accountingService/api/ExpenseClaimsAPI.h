@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/expense_claim_create_dto.h"
+#include "../model/expense_claim_dto_collection_query_parameters.h"
 #include "../model/expense_claim_dto_envelope.h"
 #include "../model/expense_claim_dto_list_envelope.h"
 #include "../model/expense_claim_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an expense claim
@@ -44,7 +45,7 @@ ExpenseClaimsAPI_getExpenseClaim(apiClient_t *apiClient, char *tenantId, char *e
 // Retrieves all expense claims for the specified tenant using OData query options.
 //
 expense_claim_dto_list_envelope_t*
-ExpenseClaimsAPI_getExpenseClaims(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ExpenseClaimsAPI_getExpenseClaims(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, expense_claim_dto_collection_query_parameters_t *expense_claim_dto_collection_query_parameters);
 
 
 // Get the count of expense claims for a tenant
@@ -52,7 +53,7 @@ ExpenseClaimsAPI_getExpenseClaims(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves the count of expense claims for the specified tenant using OData query options.
 //
 int32_envelope_t*
-ExpenseClaimsAPI_getExpenseClaimsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ExpenseClaimsAPI_getExpenseClaimsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, expense_claim_dto_collection_query_parameters_t *expense_claim_dto_collection_query_parameters);
 
 
 // Patch an expense claim
@@ -60,7 +61,7 @@ ExpenseClaimsAPI_getExpenseClaimsCount(apiClient_t *apiClient, char *tenantId, c
 // Partially updates an existing expense claim.
 //
 empty_envelope_t*
-ExpenseClaimsAPI_patchExpenseClaim(apiClient_t *apiClient, char *tenantId, char *expenseClaimId, char *api_version, char *x_api_version, list_t *operation);
+ExpenseClaimsAPI_patchExpenseClaim(apiClient_t *apiClient, char *tenantId, char *expenseClaimId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an expense claim

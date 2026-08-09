@@ -7,12 +7,13 @@
 #include "../include/binary.h"
 #include "../model/contact_relation_create_dto.h"
 #include "../model/contact_relation_dto.h"
+#include "../model/contact_relation_dto_collection_query_parameters.h"
 #include "../model/contact_relation_dto_list_envelope.h"
 #include "../model/contact_relation_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new contact relation
@@ -44,7 +45,7 @@ ContactRelationsAPI_getContactRelationByIdAsync(apiClient_t *apiClient, char *te
 // Retrieves all contact relations for the specified tenant.
 //
 contact_relation_dto_list_envelope_t*
-ContactRelationsAPI_getContactRelationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactRelationsAPI_getContactRelationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_relation_dto_collection_query_parameters_t *contact_relation_dto_collection_query_parameters);
 
 
 // Get contact relations count
@@ -52,7 +53,7 @@ ContactRelationsAPI_getContactRelationsAsync(apiClient_t *apiClient, char *tenan
 // Returns the count of contact relations for the specified tenant.
 //
 int32_envelope_t*
-ContactRelationsAPI_getContactRelationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactRelationsAPI_getContactRelationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_relation_dto_collection_query_parameters_t *contact_relation_dto_collection_query_parameters);
 
 
 // Patch a contact relation
@@ -60,7 +61,7 @@ ContactRelationsAPI_getContactRelationsCountAsync(apiClient_t *apiClient, char *
 // Patch a contact relation
 //
 empty_envelope_t*
-ContactRelationsAPI_patchContactRelationAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+ContactRelationsAPI_patchContactRelationAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a contact relation

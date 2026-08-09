@@ -88,7 +88,7 @@ No authorization required
 //
 // Retrieves the taxes applied to the specified billable line.
 //
-applied_item_tax_record_dto_i_read_only_list_envelope_t* BillableLineTaxesAPI_getBillableLineTaxes(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *api_version, char *x_api_version);
+applied_item_tax_record_dto_i_read_only_list_envelope_t* BillableLineTaxesAPI_getBillableLineTaxes(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *api_version, char *x_api_version, applied_item_tax_record_dto_collection_query_parameters_t *applied_item_tax_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -99,6 +99,7 @@ Name | Type | Description  | Notes
 **billableLineId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**applied_item_tax_record_dto_collection_query_parameters** | **[applied_item_tax_record_dto_collection_query_parameters_t](applied_item_tax_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -111,7 +112,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -122,7 +123,7 @@ No authorization required
 //
 // Retrieves the total count of taxes applied to the specified billable line.
 //
-int32_envelope_t* BillableLineTaxesAPI_getBillableLineTaxesCount(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *api_version, char *x_api_version);
+int32_envelope_t* BillableLineTaxesAPI_getBillableLineTaxesCount(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *api_version, char *x_api_version, applied_item_tax_record_dto_collection_query_parameters_t *applied_item_tax_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -133,6 +134,7 @@ Name | Type | Description  | Notes
 **billableLineId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**applied_item_tax_record_dto_collection_query_parameters** | **[applied_item_tax_record_dto_collection_query_parameters_t](applied_item_tax_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -145,7 +147,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -156,7 +158,7 @@ No authorization required
 //
 // Partially updates a billable line tax.
 //
-empty_envelope_t* BillableLineTaxesAPI_patchBillableLineTaxAsync(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *taxId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BillableLineTaxesAPI_patchBillableLineTaxAsync(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *taxId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -168,7 +170,7 @@ Name | Type | Description  | Notes
 **taxId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

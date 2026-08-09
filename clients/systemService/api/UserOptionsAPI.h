@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
 #include "../model/option_create_dto.h"
+#include "../model/option_dto_collection_query_parameters.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
 #include "../model/option_update_dto.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new user option (admin)
@@ -44,7 +45,7 @@ UserOptionsAPI_getSystemUserOptionById(apiClient_t *apiClient, char *userId, cha
 // Admin endpoint to retrieve options for any user
 //
 option_dto_list_envelope_t*
-UserOptionsAPI_getSystemUserOptions(apiClient_t *apiClient, char *userId, char *portalId, char *api_version, char *x_api_version);
+UserOptionsAPI_getSystemUserOptions(apiClient_t *apiClient, char *userId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Get the count of user options (admin)
@@ -52,7 +53,7 @@ UserOptionsAPI_getSystemUserOptions(apiClient_t *apiClient, char *userId, char *
 // Admin endpoint to get the count of options for any user
 //
 int32_envelope_t*
-UserOptionsAPI_getSystemUserOptionsCount(apiClient_t *apiClient, char *userId, char *portalId, char *api_version, char *x_api_version);
+UserOptionsAPI_getSystemUserOptionsCount(apiClient_t *apiClient, char *userId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Partially update a user option (admin)
@@ -60,7 +61,7 @@ UserOptionsAPI_getSystemUserOptionsCount(apiClient_t *apiClient, char *userId, c
 // Admin endpoint to partially update an option for any user using a JSON Patch document
 //
 empty_envelope_t*
-UserOptionsAPI_patchSystemUserOption(apiClient_t *apiClient, char *userId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+UserOptionsAPI_patchSystemUserOption(apiClient_t *apiClient, char *userId, char *optionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a user option (admin)

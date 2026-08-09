@@ -6,19 +6,23 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/blog_post_category_create_dto.h"
+#include "../model/blog_post_category_dto_collection_query_parameters.h"
 #include "../model/blog_post_category_dto_list_envelope.h"
 #include "../model/blog_post_comment_create_dto.h"
+#include "../model/blog_post_comment_dto_collection_query_parameters.h"
 #include "../model/blog_post_comment_dto_list_envelope.h"
 #include "../model/blog_post_create_dto.h"
+#include "../model/blog_post_dto_collection_query_parameters.h"
 #include "../model/blog_post_dto_envelope.h"
 #include "../model/blog_post_dto_list_envelope.h"
 #include "../model/blog_post_tag_create_dto.h"
+#include "../model/blog_post_tag_dto_collection_query_parameters.h"
 #include "../model/blog_post_tag_dto_list_envelope.h"
 #include "../model/blog_post_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new blog post
@@ -82,7 +86,7 @@ BlogPostsAPI_getBlogPostByIdAsync(apiClient_t *apiClient, char *blogPostId);
 // Retrieves all blog posts, optionally filtered by tenant using OData query options.
 //
 blog_post_dto_list_envelope_t*
-BlogPostsAPI_getBlogPostsAsync(apiClient_t *apiClient, char *tenantId);
+BlogPostsAPI_getBlogPostsAsync(apiClient_t *apiClient, char *tenantId, blog_post_dto_collection_query_parameters_t *blog_post_dto_collection_query_parameters);
 
 
 // Get the count of blog posts
@@ -90,7 +94,7 @@ BlogPostsAPI_getBlogPostsAsync(apiClient_t *apiClient, char *tenantId);
 // Returns the total count of blog posts, optionally filtered by tenant using OData query options.
 //
 int32_envelope_t*
-BlogPostsAPI_getBlogPostsCountAsync(apiClient_t *apiClient, char *tenantId);
+BlogPostsAPI_getBlogPostsCountAsync(apiClient_t *apiClient, char *tenantId, blog_post_dto_collection_query_parameters_t *blog_post_dto_collection_query_parameters);
 
 
 // Get categories for a blog post
@@ -98,7 +102,7 @@ BlogPostsAPI_getBlogPostsCountAsync(apiClient_t *apiClient, char *tenantId);
 // Retrieves all categories related to a specific blog post.
 //
 blog_post_category_dto_list_envelope_t*
-BlogPostsAPI_getCategoriesForBlogPostAsync(apiClient_t *apiClient, char *blogPostId);
+BlogPostsAPI_getCategoriesForBlogPostAsync(apiClient_t *apiClient, char *blogPostId, blog_post_category_dto_collection_query_parameters_t *blog_post_category_dto_collection_query_parameters);
 
 
 // Get comments for a blog post
@@ -106,7 +110,7 @@ BlogPostsAPI_getCategoriesForBlogPostAsync(apiClient_t *apiClient, char *blogPos
 // Retrieves all comments for a specific blog post.
 //
 blog_post_comment_dto_list_envelope_t*
-BlogPostsAPI_getCommentsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId);
+BlogPostsAPI_getCommentsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId, blog_post_comment_dto_collection_query_parameters_t *blog_post_comment_dto_collection_query_parameters);
 
 
 // Get replies for a comment
@@ -114,7 +118,7 @@ BlogPostsAPI_getCommentsForBlogPostAsync(apiClient_t *apiClient, char *blogPostI
 // Retrieves all replies for a specific blog post comment.
 //
 blog_post_comment_dto_list_envelope_t*
-BlogPostsAPI_getRepliesForCommentAsync(apiClient_t *apiClient, char *commentId, char *blogPostId);
+BlogPostsAPI_getRepliesForCommentAsync(apiClient_t *apiClient, char *commentId, char *blogPostId, blog_post_comment_dto_collection_query_parameters_t *blog_post_comment_dto_collection_query_parameters);
 
 
 // Get tags for a blog post
@@ -122,7 +126,7 @@ BlogPostsAPI_getRepliesForCommentAsync(apiClient_t *apiClient, char *commentId, 
 // Retrieves all tags related to a specific blog post.
 //
 blog_post_tag_dto_list_envelope_t*
-BlogPostsAPI_getTagsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId);
+BlogPostsAPI_getTagsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId, blog_post_tag_dto_collection_query_parameters_t *blog_post_tag_dto_collection_query_parameters);
 
 
 // Patch a blog post
@@ -130,7 +134,7 @@ BlogPostsAPI_getTagsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId);
 // Partially updates an existing blog post for the specified tenant.
 //
 empty_envelope_t*
-BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *blogPostId, list_t *operation);
+BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *blogPostId, list_t *patch_operation);
 
 
 // Relate an existing category to a blog post

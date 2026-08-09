@@ -5,6 +5,7 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/business_domain_dto_collection_query_parameters.h"
 #include "../model/business_domain_dto_envelope.h"
 #include "../model/business_domain_dto_list_envelope.h"
 #include "../model/empty_envelope.h"
@@ -33,7 +34,7 @@ BusinessDomainsAPI_getSystemBusinessDomainById(apiClient_t *apiClient, char *bus
 // Retrieve all registered business domains across every tenant (global administrators only).
 //
 business_domain_dto_list_envelope_t*
-BusinessDomainsAPI_getSystemBusinessDomains(apiClient_t *apiClient, char *api_version, char *x_api_version);
+BusinessDomainsAPI_getSystemBusinessDomains(apiClient_t *apiClient, char *api_version, char *x_api_version, business_domain_dto_collection_query_parameters_t *business_domain_dto_collection_query_parameters);
 
 
 // Get the count of all business domains in the system
@@ -41,7 +42,7 @@ BusinessDomainsAPI_getSystemBusinessDomains(apiClient_t *apiClient, char *api_ve
 // Get the count of all registered business domains across every tenant.
 //
 int32_envelope_t*
-BusinessDomainsAPI_getSystemBusinessDomainsCount(apiClient_t *apiClient, char *api_version, char *x_api_version);
+BusinessDomainsAPI_getSystemBusinessDomainsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, business_domain_dto_collection_query_parameters_t *business_domain_dto_collection_query_parameters);
 
 
 // Verify a business domain

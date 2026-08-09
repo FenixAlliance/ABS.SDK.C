@@ -10,6 +10,9 @@ trial_balance_dto_envelope_t *trial_balance_dto_envelope_create(
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     trial_balance_dto_t *result
     ) {
@@ -21,6 +24,9 @@ trial_balance_dto_envelope_t *trial_balance_dto_envelope_create(
     trial_balance_dto_envelope_local_var->error_message = error_message;
     trial_balance_dto_envelope_local_var->correlation_id = correlation_id;
     trial_balance_dto_envelope_local_var->timestamp = timestamp;
+    trial_balance_dto_envelope_local_var->http_status = http_status;
+    trial_balance_dto_envelope_local_var->error_code = error_code;
+    trial_balance_dto_envelope_local_var->validation_details = validation_details;
     trial_balance_dto_envelope_local_var->activity_id = activity_id;
     trial_balance_dto_envelope_local_var->result = result;
 
@@ -44,6 +50,20 @@ void trial_balance_dto_envelope_free(trial_balance_dto_envelope_t *trial_balance
     if (trial_balance_dto_envelope->timestamp) {
         free(trial_balance_dto_envelope->timestamp);
         trial_balance_dto_envelope->timestamp = NULL;
+    }
+    if (trial_balance_dto_envelope->error_code) {
+        free(trial_balance_dto_envelope->error_code);
+        trial_balance_dto_envelope->error_code = NULL;
+    }
+    if (trial_balance_dto_envelope->validation_details) {
+        list_ForEach(listEntry, trial_balance_dto_envelope->validation_details) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free (localKeyValue->key);
+            free (localKeyValue->value);
+            keyValuePair_free(localKeyValue);
+        }
+        list_freeList(trial_balance_dto_envelope->validation_details);
+        trial_balance_dto_envelope->validation_details = NULL;
     }
     if (trial_balance_dto_envelope->activity_id) {
         free(trial_balance_dto_envelope->activity_id);
@@ -91,6 +111,38 @@ cJSON *trial_balance_dto_envelope_convertToJSON(trial_balance_dto_envelope_t *tr
     }
 
 
+    // trial_balance_dto_envelope->http_status
+    if(trial_balance_dto_envelope->http_status) {
+    if(cJSON_AddNumberToObject(item, "httpStatus", trial_balance_dto_envelope->http_status) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // trial_balance_dto_envelope->error_code
+    if(trial_balance_dto_envelope->error_code) {
+    if(cJSON_AddStringToObject(item, "errorCode", trial_balance_dto_envelope->error_code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // trial_balance_dto_envelope->validation_details
+    if(trial_balance_dto_envelope->validation_details) {
+    cJSON *validation_details = cJSON_AddObjectToObject(item, "validationDetails");
+    if(validation_details == NULL) {
+        goto fail; //primitive map container
+    }
+    cJSON *localMapObject = validation_details;
+    listEntry_t *validation_detailsListEntry;
+    if (trial_balance_dto_envelope->validation_details) {
+    list_ForEach(validation_detailsListEntry, trial_balance_dto_envelope->validation_details) {
+        keyValuePair_t *localKeyValue = (keyValuePair_t*)validation_detailsListEntry->data;
+    }
+    }
+    }
+
+
     // trial_balance_dto_envelope->activity_id
     if(trial_balance_dto_envelope->activity_id) {
     if(cJSON_AddStringToObject(item, "activityId", trial_balance_dto_envelope->activity_id) == NULL) {
@@ -122,6 +174,9 @@ fail:
 trial_balance_dto_envelope_t *trial_balance_dto_envelope_parseFromJSON(cJSON *trial_balance_dto_envelopeJSON){
 
     trial_balance_dto_envelope_t *trial_balance_dto_envelope_local_var = NULL;
+
+    // define the local map for trial_balance_dto_envelope->validation_details
+    list_t *validation_detailsList = NULL;
 
     // define the local variable for trial_balance_dto_envelope->result
     trial_balance_dto_t *result_local_nonprim = NULL;
@@ -162,6 +217,44 @@ trial_balance_dto_envelope_t *trial_balance_dto_envelope_parseFromJSON(cJSON *tr
     }
     }
 
+    // trial_balance_dto_envelope->http_status
+    cJSON *http_status = cJSON_GetObjectItemCaseSensitive(trial_balance_dto_envelopeJSON, "httpStatus");
+    if (http_status) { 
+    if(!cJSON_IsNumber(http_status))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // trial_balance_dto_envelope->error_code
+    cJSON *error_code = cJSON_GetObjectItemCaseSensitive(trial_balance_dto_envelopeJSON, "errorCode");
+    if (error_code) { 
+    if(!cJSON_IsString(error_code) && !cJSON_IsNull(error_code))
+    {
+    goto end; //String
+    }
+    }
+
+    // trial_balance_dto_envelope->validation_details
+    cJSON *validation_details = cJSON_GetObjectItemCaseSensitive(trial_balance_dto_envelopeJSON, "validationDetails");
+    if (validation_details) { 
+    cJSON *validation_details_local_map = NULL;
+    if(!cJSON_IsObject(validation_details) && !cJSON_IsNull(validation_details))
+    {
+        goto end;//primitive map container
+    }
+    if(cJSON_IsObject(validation_details))
+    {
+        validation_detailsList = list_createList();
+        keyValuePair_t *localMapKeyPair;
+        cJSON_ArrayForEach(validation_details_local_map, validation_details)
+        {
+            cJSON *localMapObject = validation_details_local_map;
+            list_addElement(validation_detailsList , localMapKeyPair);
+        }
+    }
+    }
+
     // trial_balance_dto_envelope->activity_id
     cJSON *activity_id = cJSON_GetObjectItemCaseSensitive(trial_balance_dto_envelopeJSON, "activityId");
     if (activity_id) { 
@@ -183,12 +276,27 @@ trial_balance_dto_envelope_t *trial_balance_dto_envelope_parseFromJSON(cJSON *tr
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL,
         correlation_id && !cJSON_IsNull(correlation_id) ? strdup(correlation_id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        http_status ? http_status->valuedouble : 0,
+        error_code && !cJSON_IsNull(error_code) ? strdup(error_code->valuestring) : NULL,
+        validation_details ? validation_detailsList : NULL,
         activity_id && !cJSON_IsNull(activity_id) ? strdup(activity_id->valuestring) : NULL,
         result ? result_local_nonprim : NULL
         );
 
     return trial_balance_dto_envelope_local_var;
 end:
+    if (validation_detailsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, validation_detailsList) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free(localKeyValue->key);
+            localKeyValue->key = NULL;
+            keyValuePair_free(localKeyValue);
+            localKeyValue = NULL;
+        }
+        list_freeList(validation_detailsList);
+        validation_detailsList = NULL;
+    }
     if (result_local_nonprim) {
         trial_balance_dto_free(result_local_nonprim);
         result_local_nonprim = NULL;

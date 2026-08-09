@@ -9,6 +9,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/newsletter_subscription_create_dto.h"
+#include "../model/newsletter_subscription_dto_collection_query_parameters.h"
 #include "../model/newsletter_subscription_dto_envelope.h"
 #include "../model/newsletter_subscription_dto_list_envelope.h"
 #include "../model/newsletter_subscription_update_dto.h"
@@ -43,7 +44,7 @@ NewsletterSubscriptionsAPI_getNewsletterSubscriptionByIdAsync(apiClient_t *apiCl
 // Retrieves a collection of newsletter subscriptions for the specified tenant using OData query options.
 //
 newsletter_subscription_dto_list_envelope_t*
-NewsletterSubscriptionsAPI_getNewsletterSubscriptionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+NewsletterSubscriptionsAPI_getNewsletterSubscriptionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, newsletter_subscription_dto_collection_query_parameters_t *newsletter_subscription_dto_collection_query_parameters);
 
 
 // Get newsletter subscriptions count
@@ -51,7 +52,7 @@ NewsletterSubscriptionsAPI_getNewsletterSubscriptionsAsync(apiClient_t *apiClien
 // Returns the count of newsletter subscriptions for the specified tenant using OData query options.
 //
 int32_envelope_t*
-NewsletterSubscriptionsAPI_getNewsletterSubscriptionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+NewsletterSubscriptionsAPI_getNewsletterSubscriptionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, newsletter_subscription_dto_collection_query_parameters_t *newsletter_subscription_dto_collection_query_parameters);
 
 
 // Update a newsletter subscription

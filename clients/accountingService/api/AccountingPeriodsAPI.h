@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/accounting_period_create_dto.h"
+#include "../model/accounting_period_dto_collection_query_parameters.h"
 #include "../model/accounting_period_dto_envelope.h"
 #include "../model/accounting_period_dto_list_envelope.h"
 #include "../model/accounting_period_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new accounting period
@@ -44,7 +45,7 @@ AccountingPeriodsAPI_getAccountingPeriod(apiClient_t *apiClient, char *tenantId,
 // Retrieves all accounting periods for the specified tenant using OData query options.
 //
 accounting_period_dto_list_envelope_t*
-AccountingPeriodsAPI_getAccountingPeriods(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AccountingPeriodsAPI_getAccountingPeriods(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, accounting_period_dto_collection_query_parameters_t *accounting_period_dto_collection_query_parameters);
 
 
 // Gets the current tenant accounting periods count
@@ -52,7 +53,7 @@ AccountingPeriodsAPI_getAccountingPeriods(apiClient_t *apiClient, char *tenantId
 // Get the currently acting tenant accounting periods count.
 //
 int32_envelope_t*
-AccountingPeriodsAPI_getAccountingPeriodsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AccountingPeriodsAPI_getAccountingPeriodsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, accounting_period_dto_collection_query_parameters_t *accounting_period_dto_collection_query_parameters);
 
 
 // Patch an accounting period
@@ -60,7 +61,7 @@ AccountingPeriodsAPI_getAccountingPeriodsCountAsync(apiClient_t *apiClient, char
 // Partially updates an accounting period.
 //
 empty_envelope_t*
-AccountingPeriodsAPI_patchAccountingPeriodAsync(apiClient_t *apiClient, char *tenantId, char *accountingPeriodId, char *api_version, char *x_api_version, list_t *operation);
+AccountingPeriodsAPI_patchAccountingPeriodAsync(apiClient_t *apiClient, char *tenantId, char *accountingPeriodId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates an existing accounting period

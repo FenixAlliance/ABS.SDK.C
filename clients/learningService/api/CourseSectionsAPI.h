@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_section_create_dto.h"
 #include "../model/course_section_dto.h"
+#include "../model/course_section_dto_collection_query_parameters.h"
 #include "../model/course_section_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new course section
@@ -42,7 +43,7 @@ CourseSectionsAPI_getCourseSectionByIdAsync(apiClient_t *apiClient, char *sectio
 // Retrieves all course sections for the specified tenant.
 //
 list_t*
-CourseSectionsAPI_getCourseSectionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseSectionsAPI_getCourseSectionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_section_dto_collection_query_parameters_t *course_section_dto_collection_query_parameters);
 
 
 // Get course sections count
@@ -50,7 +51,7 @@ CourseSectionsAPI_getCourseSectionsAsync(apiClient_t *apiClient, char *tenantId,
 // Returns the count of course sections for the specified tenant.
 //
 int*
-CourseSectionsAPI_getCourseSectionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseSectionsAPI_getCourseSectionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_section_dto_collection_query_parameters_t *course_section_dto_collection_query_parameters);
 
 
 // Patch a course section
@@ -58,7 +59,7 @@ CourseSectionsAPI_getCourseSectionsCountAsync(apiClient_t *apiClient, char *tena
 // Partially updates a course section for the specified tenant.
 //
 empty_envelope_t*
-CourseSectionsAPI_patchCourseSectionAsync(apiClient_t *apiClient, char *tenantId, char *sectionId, char *api_version, char *x_api_version, list_t *operation);
+CourseSectionsAPI_patchCourseSectionAsync(apiClient_t *apiClient, char *tenantId, char *sectionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course section

@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/timezone_dto_collection_query_parameters.h"
 #include "../model/timezone_dto_envelope.h"
 #include "../model/timezone_dto_list_envelope.h"
 
@@ -16,7 +17,7 @@
 // Returns the total number of supported timezones, with optional OData filtering.
 //
 int32_envelope_t*
-TimezonesAPI_countTimezonesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+TimezonesAPI_countTimezonesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, timezone_dto_collection_query_parameters_t *timezone_dto_collection_query_parameters);
 
 
 // Get timezone by ID
@@ -32,6 +33,6 @@ TimezonesAPI_getTimeZoneByIdAsync(apiClient_t *apiClient, char *timeZoneId, char
 // Retrieves the list of all supported timezones with optional OData pagination and filtering.
 //
 timezone_dto_list_envelope_t*
-TimezonesAPI_getTimeZonesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+TimezonesAPI_getTimeZonesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, timezone_dto_collection_query_parameters_t *timezone_dto_collection_query_parameters);
 
 

@@ -6,6 +6,7 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/business_relationship_create_dto.h"
+#include "../model/business_relationship_dto_collection_query_parameters.h"
 #include "../model/business_relationship_dto_envelope.h"
 #include "../model/business_relationship_dto_list_envelope.h"
 #include "../model/business_relationship_update_dto.h"
@@ -43,7 +44,7 @@ BusinessRelationshipsAPI_getBusinessRelationshipByIdAsync(apiClient_t *apiClient
 // Retrieves the child business relationships owned by the specified parent tenant using OData query options.
 //
 business_relationship_dto_list_envelope_t*
-BusinessRelationshipsAPI_getBusinessRelationshipsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BusinessRelationshipsAPI_getBusinessRelationshipsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, business_relationship_dto_collection_query_parameters_t *business_relationship_dto_collection_query_parameters);
 
 
 // Get business relationships count
@@ -51,7 +52,7 @@ BusinessRelationshipsAPI_getBusinessRelationshipsAsync(apiClient_t *apiClient, c
 // Returns the count of child business relationships owned by the specified parent tenant.
 //
 int32_envelope_t*
-BusinessRelationshipsAPI_getBusinessRelationshipsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BusinessRelationshipsAPI_getBusinessRelationshipsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, business_relationship_dto_collection_query_parameters_t *business_relationship_dto_collection_query_parameters);
 
 
 // Update a business relationship

@@ -113,7 +113,7 @@ No authorization required
 //
 // Partially updates the specified task type.
 //
-empty_envelope_t* TaskTypesAPI_patchTaskTypeAsync(apiClient_t *apiClient, char *taskTypeId, char *tenantId, list_t *operation);
+empty_envelope_t* TaskTypesAPI_patchTaskTypeAsync(apiClient_t *apiClient, char *taskTypeId, char *tenantId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **taskTypeId** | **char \*** |  | 
 **tenantId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

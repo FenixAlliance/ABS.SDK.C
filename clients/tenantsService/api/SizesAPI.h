@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_size_create_dto.h"
+#include "../model/tenant_size_dto_collection_query_parameters.h"
 #include "../model/tenant_size_dto_envelope.h"
 #include "../model/tenant_size_dto_list_envelope.h"
 #include "../model/tenant_size_update_dto.h"
@@ -44,7 +45,7 @@ SizesAPI_getTenantSizeById(apiClient_t *apiClient, char *tenantId, char *tenantS
 // Retrieve a list of tenant sizes
 //
 tenant_size_dto_list_envelope_t*
-SizesAPI_getTenantSizes(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SizesAPI_getTenantSizes(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_size_dto_collection_query_parameters_t *tenant_size_dto_collection_query_parameters);
 
 
 // Get the count of tenant sizes
@@ -52,7 +53,7 @@ SizesAPI_getTenantSizes(apiClient_t *apiClient, char *tenantId, char *api_versio
 // Get the count of tenant sizes
 //
 int32_envelope_t*
-SizesAPI_getTenantSizesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SizesAPI_getTenantSizesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_size_dto_collection_query_parameters_t *tenant_size_dto_collection_query_parameters);
 
 
 // Patch a tenant size
@@ -60,7 +61,7 @@ SizesAPI_getTenantSizesCount(apiClient_t *apiClient, char *tenantId, char *api_v
 // Patch a tenant size
 //
 empty_envelope_t*
-SizesAPI_patchTenantSize(apiClient_t *apiClient, char *tenantId, char *tenantSizeId, char *api_version, char *x_api_version, list_t *operation);
+SizesAPI_patchTenantSize(apiClient_t *apiClient, char *tenantId, char *tenantSizeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant size

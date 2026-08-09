@@ -8,9 +8,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/workstation_create_dto.h"
 #include "../model/workstation_dto.h"
+#include "../model/workstation_dto_collection_query_parameters.h"
 #include "../model/workstation_dto_list_envelope.h"
 #include "../model/workstation_update_dto.h"
 
@@ -44,7 +45,7 @@ WorkstationsAPI_getWorkstationByIdAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all workstations for the specified tenant.
 //
 workstation_dto_list_envelope_t*
-WorkstationsAPI_getWorkstationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WorkstationsAPI_getWorkstationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, workstation_dto_collection_query_parameters_t *workstation_dto_collection_query_parameters);
 
 
 // Get workstations count
@@ -52,7 +53,7 @@ WorkstationsAPI_getWorkstationsAsync(apiClient_t *apiClient, char *tenantId, cha
 // Returns the count of workstations for the specified tenant.
 //
 int32_envelope_t*
-WorkstationsAPI_getWorkstationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WorkstationsAPI_getWorkstationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, workstation_dto_collection_query_parameters_t *workstation_dto_collection_query_parameters);
 
 
 // Patch a workstation
@@ -60,7 +61,7 @@ WorkstationsAPI_getWorkstationsCountAsync(apiClient_t *apiClient, char *tenantId
 // Patch a workstation
 //
 empty_envelope_t*
-WorkstationsAPI_patchWorkstationAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+WorkstationsAPI_patchWorkstationAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a workstation

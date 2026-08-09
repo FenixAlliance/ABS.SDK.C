@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_segment_create_dto.h"
+#include "../model/tenant_segment_dto_collection_query_parameters.h"
 #include "../model/tenant_segment_dto_envelope.h"
 #include "../model/tenant_segment_dto_list_envelope.h"
 #include "../model/tenant_segment_update_dto.h"
@@ -44,7 +45,7 @@ SegmentsAPI_getTenantSegmentById(apiClient_t *apiClient, char *tenantId, char *t
 // Retrieve a list of tenant segments
 //
 tenant_segment_dto_list_envelope_t*
-SegmentsAPI_getTenantSegments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SegmentsAPI_getTenantSegments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_segment_dto_collection_query_parameters_t *tenant_segment_dto_collection_query_parameters);
 
 
 // Get the count of tenant segments
@@ -52,7 +53,7 @@ SegmentsAPI_getTenantSegments(apiClient_t *apiClient, char *tenantId, char *api_
 // Get the count of tenant segments
 //
 int32_envelope_t*
-SegmentsAPI_getTenantSegmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SegmentsAPI_getTenantSegmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_segment_dto_collection_query_parameters_t *tenant_segment_dto_collection_query_parameters);
 
 
 // Patch a tenant segment
@@ -60,7 +61,7 @@ SegmentsAPI_getTenantSegmentsCount(apiClient_t *apiClient, char *tenantId, char 
 // Patch a tenant segment
 //
 empty_envelope_t*
-SegmentsAPI_patchTenantSegment(apiClient_t *apiClient, char *tenantId, char *tenantSegmentId, char *api_version, char *x_api_version, list_t *operation);
+SegmentsAPI_patchTenantSegment(apiClient_t *apiClient, char *tenantId, char *tenantSegmentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant segment

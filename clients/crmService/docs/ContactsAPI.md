@@ -292,7 +292,7 @@ No authorization required
 //
 // Get all contacts of type individual
 //
-contact_dto_list_envelope_t* ContactsAPI_getBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+contact_dto_list_envelope_t* ContactsAPI_getBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -302,6 +302,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**contact_dto_collection_query_parameters** | **[contact_dto_collection_query_parameters_t](contact_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -314,7 +315,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -325,7 +326,7 @@ No authorization required
 //
 // Get all contacts of type individual count
 //
-contact_dto_list_envelope_t* ContactsAPI_getBusinessOwnedIndividualsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+contact_dto_list_envelope_t* ContactsAPI_getBusinessOwnedIndividualsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -335,6 +336,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**contact_dto_collection_query_parameters** | **[contact_dto_collection_query_parameters_t](contact_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -347,7 +349,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -392,7 +394,7 @@ No authorization required
 //
 // Get all contacts of type organization
 //
-list_t* ContactsAPI_getBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+list_t* ContactsAPI_getBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -402,6 +404,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**contact_dto_collection_query_parameters** | **[contact_dto_collection_query_parameters_t](contact_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -414,7 +417,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -425,7 +428,7 @@ No authorization required
 //
 // Get all contacts of type organization count
 //
-contact_dto_list_envelope_t* ContactsAPI_getBusinessOwnedOrganizationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+contact_dto_list_envelope_t* ContactsAPI_getBusinessOwnedOrganizationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -435,6 +438,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**contact_dto_collection_query_parameters** | **[contact_dto_collection_query_parameters_t](contact_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -447,7 +451,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -560,7 +564,7 @@ No authorization required
 //
 // Get all email addresses for the specified contact.
 //
-contact_email_dto_list_envelope_t* ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+contact_email_dto_list_envelope_t* ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_email_dto_collection_query_parameters_t *contact_email_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -571,6 +575,7 @@ Name | Type | Description  | Notes
 **contactId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**contact_email_dto_collection_query_parameters** | **[contact_email_dto_collection_query_parameters_t](contact_email_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -583,7 +588,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -594,7 +599,7 @@ No authorization required
 //
 // Returns the count of email addresses for the specified contact.
 //
-int32_envelope_t* ContactsAPI_getContactEmailsCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+int32_envelope_t* ContactsAPI_getContactEmailsCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_email_dto_collection_query_parameters_t *contact_email_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -605,6 +610,7 @@ Name | Type | Description  | Notes
 **contactId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**contact_email_dto_collection_query_parameters** | **[contact_email_dto_collection_query_parameters_t](contact_email_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -617,7 +623,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -696,7 +702,7 @@ No authorization required
 //
 // Get all business owned contacts
 //
-contact_dto_list_envelope_t* ContactsAPI_getContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+contact_dto_list_envelope_t* ContactsAPI_getContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -706,6 +712,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**contact_dto_collection_query_parameters** | **[contact_dto_collection_query_parameters_t](contact_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -718,7 +725,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -729,7 +736,7 @@ No authorization required
 //
 // Get all business owned contacts count
 //
-contact_dto_list_envelope_t* ContactsAPI_getContactsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+contact_dto_list_envelope_t* ContactsAPI_getContactsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -739,6 +746,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**contact_dto_collection_query_parameters** | **[contact_dto_collection_query_parameters_t](contact_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -751,7 +759,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -762,7 +770,7 @@ No authorization required
 //
 // Get all contacts of type individual
 //
-extended_contact_dto_list_envelope_t* ContactsAPI_getExtendedBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+extended_contact_dto_list_envelope_t* ContactsAPI_getExtendedBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_contact_dto_collection_query_parameters_t *extended_contact_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -772,6 +780,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**extended_contact_dto_collection_query_parameters** | **[extended_contact_dto_collection_query_parameters_t](extended_contact_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -784,7 +793,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -795,7 +804,7 @@ No authorization required
 //
 // Get all contacts of type organization
 //
-extended_contact_dto_list_envelope_t* ContactsAPI_getExtendedBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+extended_contact_dto_list_envelope_t* ContactsAPI_getExtendedBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_contact_dto_collection_query_parameters_t *extended_contact_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -805,6 +814,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**extended_contact_dto_collection_query_parameters** | **[extended_contact_dto_collection_query_parameters_t](extended_contact_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -817,7 +827,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -862,7 +872,7 @@ No authorization required
 //
 // Get all business owned contacts
 //
-extended_contact_dto_list_envelope_t* ContactsAPI_getExtendedContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+extended_contact_dto_list_envelope_t* ContactsAPI_getExtendedContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_contact_dto_collection_query_parameters_t *extended_contact_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -872,6 +882,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**extended_contact_dto_collection_query_parameters** | **[extended_contact_dto_collection_query_parameters_t](extended_contact_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -884,7 +895,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1065,7 +1076,7 @@ No authorization required
 //
 // Returns the count of profiles for the specified contact.
 //
-int32_envelope_t* ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+int32_envelope_t* ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_profile_dto_collection_query_parameters_t *contact_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1076,6 +1087,7 @@ Name | Type | Description  | Notes
 **contactId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**contact_profile_dto_collection_query_parameters** | **[contact_profile_dto_collection_query_parameters_t](contact_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1088,7 +1100,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1099,7 +1111,7 @@ No authorization required
 //
 // Patch a contact
 //
-empty_envelope_t* ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1110,7 +1122,7 @@ Name | Type | Description  | Notes
 **contactId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1134,7 +1146,7 @@ No authorization required
 //
 // Partially updates an existing email address for the specified contact.
 //
-void ContactsAPI_patchContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *emailId, char *api_version, char *x_api_version, list_t *operation);
+void ContactsAPI_patchContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *emailId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1146,7 +1158,7 @@ Name | Type | Description  | Notes
 **emailId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

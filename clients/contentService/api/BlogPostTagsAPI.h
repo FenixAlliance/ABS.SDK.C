@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/blog_post_tag_create_dto.h"
+#include "../model/blog_post_tag_dto_collection_query_parameters.h"
 #include "../model/blog_post_tag_dto_envelope.h"
 #include "../model/blog_post_tag_dto_list_envelope.h"
 #include "../model/blog_post_tag_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Count blog post tags
@@ -20,7 +21,7 @@
 // Counts all blog post tags for the specified tenant.
 //
 int32_envelope_t*
-BlogPostTagsAPI_countBlogPostTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BlogPostTagsAPI_countBlogPostTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, blog_post_tag_dto_collection_query_parameters_t *blog_post_tag_dto_collection_query_parameters);
 
 
 // Create a blog post tag
@@ -52,7 +53,7 @@ BlogPostTagsAPI_getBlogPostTagByIdAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all blog post tags for the specified tenant.
 //
 blog_post_tag_dto_list_envelope_t*
-BlogPostTagsAPI_getBlogPostTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BlogPostTagsAPI_getBlogPostTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, blog_post_tag_dto_collection_query_parameters_t *blog_post_tag_dto_collection_query_parameters);
 
 
 // Patch a blog post tag
@@ -60,7 +61,7 @@ BlogPostTagsAPI_getBlogPostTagsAsync(apiClient_t *apiClient, char *tenantId, cha
 // Partially updates an existing blog post tag for the specified tenant.
 //
 empty_envelope_t*
-BlogPostTagsAPI_patchBlogPostTagAsync(apiClient_t *apiClient, char *tenantId, char *blogPostTagId, char *api_version, char *x_api_version, list_t *operation);
+BlogPostTagsAPI_patchBlogPostTagAsync(apiClient_t *apiClient, char *tenantId, char *blogPostTagId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a blog post tag

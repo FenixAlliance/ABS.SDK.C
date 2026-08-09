@@ -10,6 +10,9 @@ portal_options_envelope_t *portal_options_envelope_create(
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     portal_options_t *result
     ) {
@@ -21,6 +24,9 @@ portal_options_envelope_t *portal_options_envelope_create(
     portal_options_envelope_local_var->error_message = error_message;
     portal_options_envelope_local_var->correlation_id = correlation_id;
     portal_options_envelope_local_var->timestamp = timestamp;
+    portal_options_envelope_local_var->http_status = http_status;
+    portal_options_envelope_local_var->error_code = error_code;
+    portal_options_envelope_local_var->validation_details = validation_details;
     portal_options_envelope_local_var->activity_id = activity_id;
     portal_options_envelope_local_var->result = result;
 
@@ -44,6 +50,20 @@ void portal_options_envelope_free(portal_options_envelope_t *portal_options_enve
     if (portal_options_envelope->timestamp) {
         free(portal_options_envelope->timestamp);
         portal_options_envelope->timestamp = NULL;
+    }
+    if (portal_options_envelope->error_code) {
+        free(portal_options_envelope->error_code);
+        portal_options_envelope->error_code = NULL;
+    }
+    if (portal_options_envelope->validation_details) {
+        list_ForEach(listEntry, portal_options_envelope->validation_details) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free (localKeyValue->key);
+            free (localKeyValue->value);
+            keyValuePair_free(localKeyValue);
+        }
+        list_freeList(portal_options_envelope->validation_details);
+        portal_options_envelope->validation_details = NULL;
     }
     if (portal_options_envelope->activity_id) {
         free(portal_options_envelope->activity_id);
@@ -91,6 +111,38 @@ cJSON *portal_options_envelope_convertToJSON(portal_options_envelope_t *portal_o
     }
 
 
+    // portal_options_envelope->http_status
+    if(portal_options_envelope->http_status) {
+    if(cJSON_AddNumberToObject(item, "httpStatus", portal_options_envelope->http_status) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // portal_options_envelope->error_code
+    if(portal_options_envelope->error_code) {
+    if(cJSON_AddStringToObject(item, "errorCode", portal_options_envelope->error_code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // portal_options_envelope->validation_details
+    if(portal_options_envelope->validation_details) {
+    cJSON *validation_details = cJSON_AddObjectToObject(item, "validationDetails");
+    if(validation_details == NULL) {
+        goto fail; //primitive map container
+    }
+    cJSON *localMapObject = validation_details;
+    listEntry_t *validation_detailsListEntry;
+    if (portal_options_envelope->validation_details) {
+    list_ForEach(validation_detailsListEntry, portal_options_envelope->validation_details) {
+        keyValuePair_t *localKeyValue = (keyValuePair_t*)validation_detailsListEntry->data;
+    }
+    }
+    }
+
+
     // portal_options_envelope->activity_id
     if(portal_options_envelope->activity_id) {
     if(cJSON_AddStringToObject(item, "activityId", portal_options_envelope->activity_id) == NULL) {
@@ -122,6 +174,9 @@ fail:
 portal_options_envelope_t *portal_options_envelope_parseFromJSON(cJSON *portal_options_envelopeJSON){
 
     portal_options_envelope_t *portal_options_envelope_local_var = NULL;
+
+    // define the local map for portal_options_envelope->validation_details
+    list_t *validation_detailsList = NULL;
 
     // define the local variable for portal_options_envelope->result
     portal_options_t *result_local_nonprim = NULL;
@@ -162,6 +217,44 @@ portal_options_envelope_t *portal_options_envelope_parseFromJSON(cJSON *portal_o
     }
     }
 
+    // portal_options_envelope->http_status
+    cJSON *http_status = cJSON_GetObjectItemCaseSensitive(portal_options_envelopeJSON, "httpStatus");
+    if (http_status) { 
+    if(!cJSON_IsNumber(http_status))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // portal_options_envelope->error_code
+    cJSON *error_code = cJSON_GetObjectItemCaseSensitive(portal_options_envelopeJSON, "errorCode");
+    if (error_code) { 
+    if(!cJSON_IsString(error_code) && !cJSON_IsNull(error_code))
+    {
+    goto end; //String
+    }
+    }
+
+    // portal_options_envelope->validation_details
+    cJSON *validation_details = cJSON_GetObjectItemCaseSensitive(portal_options_envelopeJSON, "validationDetails");
+    if (validation_details) { 
+    cJSON *validation_details_local_map = NULL;
+    if(!cJSON_IsObject(validation_details) && !cJSON_IsNull(validation_details))
+    {
+        goto end;//primitive map container
+    }
+    if(cJSON_IsObject(validation_details))
+    {
+        validation_detailsList = list_createList();
+        keyValuePair_t *localMapKeyPair;
+        cJSON_ArrayForEach(validation_details_local_map, validation_details)
+        {
+            cJSON *localMapObject = validation_details_local_map;
+            list_addElement(validation_detailsList , localMapKeyPair);
+        }
+    }
+    }
+
     // portal_options_envelope->activity_id
     cJSON *activity_id = cJSON_GetObjectItemCaseSensitive(portal_options_envelopeJSON, "activityId");
     if (activity_id) { 
@@ -183,12 +276,27 @@ portal_options_envelope_t *portal_options_envelope_parseFromJSON(cJSON *portal_o
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL,
         correlation_id && !cJSON_IsNull(correlation_id) ? strdup(correlation_id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        http_status ? http_status->valuedouble : 0,
+        error_code && !cJSON_IsNull(error_code) ? strdup(error_code->valuestring) : NULL,
+        validation_details ? validation_detailsList : NULL,
         activity_id && !cJSON_IsNull(activity_id) ? strdup(activity_id->valuestring) : NULL,
         result ? result_local_nonprim : NULL
         );
 
     return portal_options_envelope_local_var;
 end:
+    if (validation_detailsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, validation_detailsList) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free(localKeyValue->key);
+            localKeyValue->key = NULL;
+            keyValuePair_free(localKeyValue);
+            localKeyValue = NULL;
+        }
+        list_freeList(validation_detailsList);
+        validation_detailsList = NULL;
+    }
     if (result_local_nonprim) {
         portal_options_free(result_local_nonprim);
         result_local_nonprim = NULL;

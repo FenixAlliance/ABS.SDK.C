@@ -59,6 +59,7 @@ set(SRCS
     model/bulk_product.c
     model/catalog_item_create_dto.c
     model/catalog_item_dto.c
+    model/catalog_item_dto_collection_query_parameters.c
     model/catalog_item_dto_envelope.c
     model/catalog_item_dto_list_envelope.c
     model/catalog_item_update_dto.c
@@ -72,91 +73,110 @@ set(SRCS
     model/int32_envelope.c
     model/item_attachment_create_dto.c
     model/item_attachment_dto.c
+    model/item_attachment_dto_collection_query_parameters.c
     model/item_attachment_dto_envelope.c
     model/item_attachment_dto_list_envelope.c
     model/item_attachment_update_dto.c
     model/item_attribute_create_dto.c
     model/item_attribute_dto.c
+    model/item_attribute_dto_collection_query_parameters.c
     model/item_attribute_dto_envelope.c
     model/item_attribute_dto_list_envelope.c
     model/item_attribute_option_create_dto.c
     model/item_attribute_option_dto.c
+    model/item_attribute_option_dto_collection_query_parameters.c
     model/item_attribute_option_dto_envelope.c
     model/item_attribute_option_dto_list_envelope.c
     model/item_attribute_option_update_dto.c
     model/item_attribute_update_dto.c
     model/item_brand_create_dto.c
     model/item_brand_dto.c
+    model/item_brand_dto_collection_query_parameters.c
     model/item_brand_dto_envelope.c
     model/item_brand_dto_list_envelope.c
     model/item_brand_update_dto.c
     model/item_bundle_create_dto.c
     model/item_bundle_dto.c
+    model/item_bundle_dto_collection_query_parameters.c
     model/item_bundle_dto_envelope.c
     model/item_bundle_dto_list_envelope.c
     model/item_bundle_update_dto.c
     model/item_category_create_dto.c
     model/item_category_dto.c
+    model/item_category_dto_collection_query_parameters.c
     model/item_category_dto_envelope.c
     model/item_category_dto_list_envelope.c
     model/item_category_update_dto.c
     model/item_family_create_dto.c
     model/item_family_dto.c
+    model/item_family_dto_collection_query_parameters.c
     model/item_family_dto_envelope.c
     model/item_family_dto_list_envelope.c
     model/item_family_update_dto.c
     model/item_google_category_dto.c
+    model/item_google_category_dto_collection_query_parameters.c
     model/item_google_category_dto_envelope.c
     model/item_google_category_dto_list_envelope.c
     model/item_image_create_dto.c
     model/item_image_dto.c
+    model/item_image_dto_collection_query_parameters.c
     model/item_image_dto_envelope.c
     model/item_image_dto_list_envelope.c
     model/item_image_update_dto.c
     model/item_question_create_dto.c
     model/item_question_dto.c
+    model/item_question_dto_collection_query_parameters.c
     model/item_question_dto_envelope.c
     model/item_question_dto_list_envelope.c
     model/item_question_record_create_dto.c
     model/item_question_update_dto.c
     model/item_refund_policy_dto.c
+    model/item_refund_policy_dto_collection_query_parameters.c
     model/item_refund_policy_dto_envelope.c
     model/item_refund_policy_dto_list_envelope.c
     model/item_return_policy_dto.c
+    model/item_return_policy_dto_collection_query_parameters.c
     model/item_return_policy_dto_envelope.c
     model/item_return_policy_dto_list_envelope.c
     model/item_review_create_dto.c
     model/item_review_dto.c
+    model/item_review_dto_collection_query_parameters.c
     model/item_review_dto_envelope.c
     model/item_review_dto_list_envelope.c
     model/item_review_record_create_dto.c
     model/item_review_update_dto.c
     model/item_shipping_policy_dto.c
+    model/item_shipping_policy_dto_collection_query_parameters.c
     model/item_shipping_policy_dto_envelope.c
     model/item_shipping_policy_dto_list_envelope.c
     model/item_tag_create_dto.c
     model/item_tag_dto.c
+    model/item_tag_dto_collection_query_parameters.c
     model/item_tag_dto_envelope.c
     model/item_tag_dto_list_envelope.c
     model/item_tag_update_dto.c
     model/item_tax_policy_dto.c
+    model/item_tax_policy_dto_collection_query_parameters.c
     model/item_tax_policy_dto_envelope.c
     model/item_tax_policy_dto_list_envelope.c
     model/item_type_create_dto.c
     model/item_type_dto.c
+    model/item_type_dto_collection_query_parameters.c
     model/item_type_dto_envelope.c
     model/item_type_dto_list_envelope.c
     model/item_type_update_dto.c
     model/item_warranty_policy_dto.c
+    model/item_warranty_policy_dto_collection_query_parameters.c
     model/item_warranty_policy_dto_envelope.c
     model/item_warranty_policy_dto_list_envelope.c
     model/login_request.c
     model/merchant_dto.c
+    model/merchant_dto_collection_query_parameters.c
     model/merchant_dto_envelope.c
     model/merchant_dto_list_envelope.c
     model/money.c
     model/money_envelope.c
-    model/operation.c
+    model/patch_operation.c
     model/pricing_rule_dto.c
     model/pricing_rule_dto_envelope.c
     model/pricing_rule_dto_list_envelope.c
@@ -203,6 +223,7 @@ set(HDRS
     model/bulk_product.h
     model/catalog_item_create_dto.h
     model/catalog_item_dto.h
+    model/catalog_item_dto_collection_query_parameters.h
     model/catalog_item_dto_envelope.h
     model/catalog_item_dto_list_envelope.h
     model/catalog_item_update_dto.h
@@ -216,91 +237,110 @@ set(HDRS
     model/int32_envelope.h
     model/item_attachment_create_dto.h
     model/item_attachment_dto.h
+    model/item_attachment_dto_collection_query_parameters.h
     model/item_attachment_dto_envelope.h
     model/item_attachment_dto_list_envelope.h
     model/item_attachment_update_dto.h
     model/item_attribute_create_dto.h
     model/item_attribute_dto.h
+    model/item_attribute_dto_collection_query_parameters.h
     model/item_attribute_dto_envelope.h
     model/item_attribute_dto_list_envelope.h
     model/item_attribute_option_create_dto.h
     model/item_attribute_option_dto.h
+    model/item_attribute_option_dto_collection_query_parameters.h
     model/item_attribute_option_dto_envelope.h
     model/item_attribute_option_dto_list_envelope.h
     model/item_attribute_option_update_dto.h
     model/item_attribute_update_dto.h
     model/item_brand_create_dto.h
     model/item_brand_dto.h
+    model/item_brand_dto_collection_query_parameters.h
     model/item_brand_dto_envelope.h
     model/item_brand_dto_list_envelope.h
     model/item_brand_update_dto.h
     model/item_bundle_create_dto.h
     model/item_bundle_dto.h
+    model/item_bundle_dto_collection_query_parameters.h
     model/item_bundle_dto_envelope.h
     model/item_bundle_dto_list_envelope.h
     model/item_bundle_update_dto.h
     model/item_category_create_dto.h
     model/item_category_dto.h
+    model/item_category_dto_collection_query_parameters.h
     model/item_category_dto_envelope.h
     model/item_category_dto_list_envelope.h
     model/item_category_update_dto.h
     model/item_family_create_dto.h
     model/item_family_dto.h
+    model/item_family_dto_collection_query_parameters.h
     model/item_family_dto_envelope.h
     model/item_family_dto_list_envelope.h
     model/item_family_update_dto.h
     model/item_google_category_dto.h
+    model/item_google_category_dto_collection_query_parameters.h
     model/item_google_category_dto_envelope.h
     model/item_google_category_dto_list_envelope.h
     model/item_image_create_dto.h
     model/item_image_dto.h
+    model/item_image_dto_collection_query_parameters.h
     model/item_image_dto_envelope.h
     model/item_image_dto_list_envelope.h
     model/item_image_update_dto.h
     model/item_question_create_dto.h
     model/item_question_dto.h
+    model/item_question_dto_collection_query_parameters.h
     model/item_question_dto_envelope.h
     model/item_question_dto_list_envelope.h
     model/item_question_record_create_dto.h
     model/item_question_update_dto.h
     model/item_refund_policy_dto.h
+    model/item_refund_policy_dto_collection_query_parameters.h
     model/item_refund_policy_dto_envelope.h
     model/item_refund_policy_dto_list_envelope.h
     model/item_return_policy_dto.h
+    model/item_return_policy_dto_collection_query_parameters.h
     model/item_return_policy_dto_envelope.h
     model/item_return_policy_dto_list_envelope.h
     model/item_review_create_dto.h
     model/item_review_dto.h
+    model/item_review_dto_collection_query_parameters.h
     model/item_review_dto_envelope.h
     model/item_review_dto_list_envelope.h
     model/item_review_record_create_dto.h
     model/item_review_update_dto.h
     model/item_shipping_policy_dto.h
+    model/item_shipping_policy_dto_collection_query_parameters.h
     model/item_shipping_policy_dto_envelope.h
     model/item_shipping_policy_dto_list_envelope.h
     model/item_tag_create_dto.h
     model/item_tag_dto.h
+    model/item_tag_dto_collection_query_parameters.h
     model/item_tag_dto_envelope.h
     model/item_tag_dto_list_envelope.h
     model/item_tag_update_dto.h
     model/item_tax_policy_dto.h
+    model/item_tax_policy_dto_collection_query_parameters.h
     model/item_tax_policy_dto_envelope.h
     model/item_tax_policy_dto_list_envelope.h
     model/item_type_create_dto.h
     model/item_type_dto.h
+    model/item_type_dto_collection_query_parameters.h
     model/item_type_dto_envelope.h
     model/item_type_dto_list_envelope.h
     model/item_type_update_dto.h
     model/item_warranty_policy_dto.h
+    model/item_warranty_policy_dto_collection_query_parameters.h
     model/item_warranty_policy_dto_envelope.h
     model/item_warranty_policy_dto_list_envelope.h
     model/login_request.h
     model/merchant_dto.h
+    model/merchant_dto_collection_query_parameters.h
     model/merchant_dto_envelope.h
     model/merchant_dto_list_envelope.h
     model/money.h
     model/money_envelope.h
-    model/operation.h
+    model/patch_operation.h
     model/pricing_rule_dto.h
     model/pricing_rule_dto_envelope.h
     model/pricing_rule_dto_list_envelope.h

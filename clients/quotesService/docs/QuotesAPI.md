@@ -295,7 +295,7 @@ No authorization required
 //
 // Retrieves a list of extended quotes for the specified tenant, supporting OData query options.
 //
-extended_quote_dto_list_envelope_t* QuotesAPI_getExtendedQuotes(apiClient_t *apiClient, char *tenantId);
+extended_quote_dto_list_envelope_t* QuotesAPI_getExtendedQuotes(apiClient_t *apiClient, char *tenantId, extended_quote_dto_collection_query_parameters_t *extended_quote_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -303,6 +303,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**extended_quote_dto_collection_query_parameters** | **[extended_quote_dto_collection_query_parameters_t](extended_quote_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -315,7 +316,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -391,7 +392,7 @@ No authorization required
 //
 // Retrieves all quote lines for the specified quote and tenant.
 //
-quote_line_dto_list_envelope_t* QuotesAPI_getQuoteLines(apiClient_t *apiClient, char *tenantId, char *quoteId, char *itemId);
+quote_line_dto_list_envelope_t* QuotesAPI_getQuoteLines(apiClient_t *apiClient, char *tenantId, char *quoteId, char *itemId, quote_line_dto_collection_query_parameters_t *quote_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -401,6 +402,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **quoteId** | **char \*** |  | 
 **itemId** | **char \*** |  | [optional] 
+**quote_line_dto_collection_query_parameters** | **[quote_line_dto_collection_query_parameters_t](quote_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -413,7 +415,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -424,7 +426,7 @@ No authorization required
 //
 // Retrieves the total count of quote lines for the specified quote and tenant.
 //
-int32_envelope_t* QuotesAPI_getQuoteLinesCount(apiClient_t *apiClient, char *tenantId, char *quoteId);
+int32_envelope_t* QuotesAPI_getQuoteLinesCount(apiClient_t *apiClient, char *tenantId, char *quoteId, quote_line_dto_collection_query_parameters_t *quote_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -433,6 +435,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **quoteId** | **char \*** |  | 
+**quote_line_dto_collection_query_parameters** | **[quote_line_dto_collection_query_parameters_t](quote_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -445,7 +448,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -456,7 +459,7 @@ No authorization required
 //
 // Retrieves a list of quotes for the specified tenant, supporting OData query options.
 //
-quote_dto_list_envelope_t* QuotesAPI_getQuotes(apiClient_t *apiClient, char *tenantId);
+quote_dto_list_envelope_t* QuotesAPI_getQuotes(apiClient_t *apiClient, char *tenantId, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -464,6 +467,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**quote_dto_collection_query_parameters** | **[quote_dto_collection_query_parameters_t](quote_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -476,7 +480,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -487,7 +491,7 @@ No authorization required
 //
 // Retrieves the total count of quotes for the specified tenant, supporting OData query options.
 //
-int32_envelope_t* QuotesAPI_getQuotesCount(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* QuotesAPI_getQuotesCount(apiClient_t *apiClient, char *tenantId, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -495,6 +499,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**quote_dto_collection_query_parameters** | **[quote_dto_collection_query_parameters_t](quote_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -507,7 +512,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -518,7 +523,7 @@ No authorization required
 //
 // Partially updates an existing quote for the specified tenant and quote ID using a JSON Patch document.
 //
-empty_envelope_t* QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, list_t *operation);
+empty_envelope_t* QuotesAPI_patchQuoteAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -527,7 +532,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **quoteId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -551,7 +556,7 @@ No authorization required
 //
 // Partially updates an existing quote line for the specified quote and tenant using a JSON Patch document.
 //
-empty_envelope_t* QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, char *quoteLineId, list_t *operation);
+empty_envelope_t* QuotesAPI_patchQuoteLineAsync(apiClient_t *apiClient, char *tenantId, char *quoteId, char *quoteLineId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -561,7 +566,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **quoteId** | **char \*** |  | 
 **quoteLineId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

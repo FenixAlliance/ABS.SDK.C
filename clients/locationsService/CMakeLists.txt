@@ -64,11 +64,12 @@ set(SRCS
     model/int32_envelope.c
     model/location_create_dto.c
     model/location_dto.c
+    model/location_dto_collection_query_parameters.c
     model/location_dto_envelope.c
     model/location_dto_i_read_only_list_envelope.c
     model/location_update_dto.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -97,11 +98,12 @@ set(HDRS
     model/int32_envelope.h
     model/location_create_dto.h
     model/location_dto.h
+    model/location_dto_collection_query_parameters.h
     model/location_dto_envelope.h
     model/location_dto_i_read_only_list_envelope.h
     model/location_update_dto.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

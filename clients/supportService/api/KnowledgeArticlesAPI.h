@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/knowledge_article_create_dto.h"
+#include "../model/knowledge_article_dto_collection_query_parameters.h"
 #include "../model/knowledge_article_dto_envelope.h"
 #include "../model/knowledge_article_dto_list_envelope.h"
 #include "../model/knowledge_article_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a knowledge article
@@ -36,13 +37,13 @@ KnowledgeArticlesAPI_getKnowledgeArticleAsync(apiClient_t *apiClient, char *tena
 // Retrieve knowledge articles
 //
 knowledge_article_dto_list_envelope_t*
-KnowledgeArticlesAPI_getKnowledgeArticlesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+KnowledgeArticlesAPI_getKnowledgeArticlesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, knowledge_article_dto_collection_query_parameters_t *knowledge_article_dto_collection_query_parameters);
 
 
 // Get knowledge articles count
 //
 int32_envelope_t*
-KnowledgeArticlesAPI_getKnowledgeArticlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+KnowledgeArticlesAPI_getKnowledgeArticlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, knowledge_article_dto_collection_query_parameters_t *knowledge_article_dto_collection_query_parameters);
 
 
 // Patch a knowledge article
@@ -50,7 +51,7 @@ KnowledgeArticlesAPI_getKnowledgeArticlesCountAsync(apiClient_t *apiClient, char
 // Partially updates an existing knowledge article by its unique identifier.
 //
 empty_envelope_t*
-KnowledgeArticlesAPI_patchKnowledgeArticleAsync(apiClient_t *apiClient, char *tenantId, char *knowledgeArticleId, char *api_version, char *x_api_version, list_t *operation);
+KnowledgeArticlesAPI_patchKnowledgeArticleAsync(apiClient_t *apiClient, char *tenantId, char *knowledgeArticleId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a knowledge article

@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_family_create_dto.h"
+#include "../model/item_family_dto_collection_query_parameters.h"
 #include "../model/item_family_dto_envelope.h"
 #include "../model/item_family_dto_list_envelope.h"
 #include "../model/item_family_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new item family
@@ -36,7 +37,7 @@ ItemFamiliesAPI_deleteItemFamilyAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves all item families for the specified tenant using OData query options.
 //
 item_family_dto_list_envelope_t*
-ItemFamiliesAPI_getItemFamiliesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemFamiliesAPI_getItemFamiliesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_family_dto_collection_query_parameters_t *item_family_dto_collection_query_parameters);
 
 
 // Get item families count
@@ -44,7 +45,7 @@ ItemFamiliesAPI_getItemFamiliesAsync(apiClient_t *apiClient, char *tenantId, cha
 // Returns the count of item families for the specified tenant.
 //
 int32_envelope_t*
-ItemFamiliesAPI_getItemFamiliesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemFamiliesAPI_getItemFamiliesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_family_dto_collection_query_parameters_t *item_family_dto_collection_query_parameters);
 
 
 // Get item family by ID
@@ -60,7 +61,7 @@ ItemFamiliesAPI_getItemFamilyByIdAsync(apiClient_t *apiClient, char *itemFamilyI
 // Partially updates an existing item family for the specified tenant using a JSON Patch document.
 //
 empty_envelope_t*
-ItemFamiliesAPI_patchItemFamilyAsync(apiClient_t *apiClient, char *tenantId, char *itemFamilyId, char *api_version, char *x_api_version, list_t *operation);
+ItemFamiliesAPI_patchItemFamilyAsync(apiClient_t *apiClient, char *tenantId, char *itemFamilyId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item family

@@ -84,7 +84,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -138,10 +137,12 @@ Category | Method | HTTP request | Description
  - [currency_id_t](docs/currency_id.md)
  - [discount_create_dto_t](docs/discount_create_dto.md)
  - [discount_dto_t](docs/discount_dto.md)
+ - [discount_dto_collection_query_parameters_t](docs/discount_dto_collection_query_parameters.md)
  - [discount_dto_envelope_t](docs/discount_dto_envelope.md)
  - [discount_dto_list_envelope_t](docs/discount_dto_list_envelope.md)
  - [discount_list_create_dto_t](docs/discount_list_create_dto.md)
  - [discount_list_dto_t](docs/discount_list_dto.md)
+ - [discount_list_dto_collection_query_parameters_t](docs/discount_list_dto_collection_query_parameters.md)
  - [discount_list_dto_envelope_t](docs/discount_list_dto_envelope.md)
  - [discount_list_dto_list_envelope_t](docs/discount_list_dto_list_envelope.md)
  - [discount_list_update_dto_t](docs/discount_list_update_dto.md)
@@ -157,20 +158,23 @@ Category | Method | HTTP request | Description
  - [item_price_calculation_envelope_t](docs/item_price_calculation_envelope.md)
  - [item_price_create_dto_t](docs/item_price_create_dto.md)
  - [item_price_dto_t](docs/item_price_dto.md)
+ - [item_price_dto_collection_query_parameters_t](docs/item_price_dto_collection_query_parameters.md)
  - [item_price_dto_envelope_t](docs/item_price_dto_envelope.md)
  - [item_price_dto_list_envelope_t](docs/item_price_dto_list_envelope.md)
  - [item_price_update_dto_t](docs/item_price_update_dto.md)
  - [login_request_t](docs/login_request.md)
  - [money_t](docs/money.md)
  - [money_envelope_t](docs/money_envelope.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [price_list_create_dto_t](docs/price_list_create_dto.md)
  - [price_list_dto_t](docs/price_list_dto.md)
+ - [price_list_dto_collection_query_parameters_t](docs/price_list_dto_collection_query_parameters.md)
  - [price_list_dto_envelope_t](docs/price_list_dto_envelope.md)
  - [price_list_dto_list_envelope_t](docs/price_list_dto_list_envelope.md)
  - [price_list_update_dto_t](docs/price_list_update_dto.md)
  - [pricing_rule_create_dto_t](docs/pricing_rule_create_dto.md)
  - [pricing_rule_dto_t](docs/pricing_rule_dto.md)
+ - [pricing_rule_dto_collection_query_parameters_t](docs/pricing_rule_dto_collection_query_parameters.md)
  - [pricing_rule_dto_envelope_t](docs/pricing_rule_dto_envelope.md)
  - [pricing_rule_dto_list_envelope_t](docs/pricing_rule_dto_list_envelope.md)
  - [pricing_rule_update_dto_t](docs/pricing_rule_update_dto.md)
@@ -180,6 +184,7 @@ Category | Method | HTTP request | Description
  - [reset_password_request_t](docs/reset_password_request.md)
  - [rounding_policy_create_dto_t](docs/rounding_policy_create_dto.md)
  - [rounding_policy_dto_t](docs/rounding_policy_dto.md)
+ - [rounding_policy_dto_collection_query_parameters_t](docs/rounding_policy_dto_collection_query_parameters.md)
  - [rounding_policy_dto_envelope_t](docs/rounding_policy_dto_envelope.md)
  - [rounding_policy_dto_list_envelope_t](docs/rounding_policy_dto_list_envelope.md)
  - [rounding_policy_update_dto_t](docs/rounding_policy_update_dto.md)

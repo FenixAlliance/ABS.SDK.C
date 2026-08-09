@@ -7,10 +7,12 @@
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/extended_sales_literature_dto_collection_query_parameters.h"
 #include "../model/extended_sales_literature_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/sales_literature_create_dto.h"
+#include "../model/sales_literature_dto_collection_query_parameters.h"
 #include "../model/sales_literature_dto_envelope.h"
 #include "../model/sales_literature_dto_list_envelope.h"
 #include "../model/sales_literature_update_dto.h"
@@ -21,7 +23,7 @@
 // Returns the total count of sales literatures for the specified tenant with OData filter support.
 //
 int32_envelope_t*
-SalesLiteraturesAPI_countSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId);
+SalesLiteraturesAPI_countSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId, sales_literature_dto_collection_query_parameters_t *sales_literature_dto_collection_query_parameters);
 
 
 // Create a sales literature
@@ -45,7 +47,7 @@ SalesLiteraturesAPI_deleteSalesLiteratureAsync(apiClient_t *apiClient, char *ten
 // Retrieves a list of sales literatures with extended details for the specified tenant with OData query support.
 //
 extended_sales_literature_dto_list_envelope_t*
-SalesLiteraturesAPI_getExtendedSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId);
+SalesLiteraturesAPI_getExtendedSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId, extended_sales_literature_dto_collection_query_parameters_t *extended_sales_literature_dto_collection_query_parameters);
 
 
 // Get sales literature by ID
@@ -61,7 +63,7 @@ SalesLiteraturesAPI_getSalesLiteratureAsync(apiClient_t *apiClient, char *tenant
 // Retrieves a list of sales literatures for the specified tenant with OData query support.
 //
 sales_literature_dto_list_envelope_t*
-SalesLiteraturesAPI_getSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId);
+SalesLiteraturesAPI_getSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId, sales_literature_dto_collection_query_parameters_t *sales_literature_dto_collection_query_parameters);
 
 
 // Patch a sales literature
@@ -69,7 +71,7 @@ SalesLiteraturesAPI_getSalesLiteraturesAsync(apiClient_t *apiClient, char *tenan
 // Partially updates an existing sales literature using a JSON Patch document.
 //
 empty_envelope_t*
-SalesLiteraturesAPI_patchSalesLiteratureAsync(apiClient_t *apiClient, char *tenantId, char *salesLiteratureId, list_t *operation);
+SalesLiteraturesAPI_patchSalesLiteratureAsync(apiClient_t *apiClient, char *tenantId, char *salesLiteratureId, list_t *patch_operation);
 
 
 // Update a sales literature

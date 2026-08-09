@@ -53,6 +53,7 @@ typedef struct quote_create_dto_t {
     char *individual_id; // string
     char *payment_term_id; // string
     char *organization_id; // string
+    char *receiver_tenant_id; // string
     char *first_name; // string
     char *last_name; // string
     char *company_name; // string
@@ -93,7 +94,6 @@ typedef struct quote_create_dto_t {
     quotesservice_quote_create_dto_TAXCALCULATIONMETHOD_e tax_calculation_method; //enum
     char *cart_id; // string
     char *deal_unit_id; // string
-    char *receiver_tenant_id; // string
     char *effective_to; //date time
     char *effective_from; //date time
     quotesservice_quote_create_dto_QUOTESTATUS_e quote_status; //enum
@@ -111,6 +111,7 @@ quote_create_dto_t *quote_create_dto_create(
     char *individual_id,
     char *payment_term_id,
     char *organization_id,
+    char *receiver_tenant_id,
     char *first_name,
     char *last_name,
     char *company_name,
@@ -151,7 +152,6 @@ quote_create_dto_t *quote_create_dto_create(
     quotesservice_quote_create_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     char *cart_id,
     char *deal_unit_id,
-    char *receiver_tenant_id,
     char *effective_to,
     char *effective_from,
     quotesservice_quote_create_dto_QUOTESTATUS_e quote_status,

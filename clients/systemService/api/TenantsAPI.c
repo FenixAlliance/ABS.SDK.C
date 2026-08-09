@@ -561,13 +561,13 @@ end:
 // This action is only available for global administrators.
 //
 extended_tenant_dto_list_envelope_t*
-TenantsAPI_getAllExtendedTenants(apiClient_t *apiClient, char *api_version, char *x_api_version)
+TenantsAPI_getAllExtendedTenants(apiClient_t *apiClient, char *api_version, char *x_api_version, extended_tenant_dto_collection_query_parameters_t *extended_tenant_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -601,8 +601,19 @@ TenantsAPI_getAllExtendedTenants(apiClient_t *apiClient, char *api_version, char
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters = NULL;
+    if (extended_tenant_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters = extended_tenant_dto_collection_query_parameters_convertToJSON(extended_tenant_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -643,7 +654,7 @@ TenantsAPI_getAllExtendedTenants(apiClient_t *apiClient, char *api_version, char
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -654,6 +665,11 @@ TenantsAPI_getAllExtendedTenants(apiClient_t *apiClient, char *api_version, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -678,13 +694,13 @@ end:
 // This action is only available for global administrators.
 //
 tenant_dto_list_envelope_t*
-TenantsAPI_getAllTenants(apiClient_t *apiClient, char *api_version, char *x_api_version)
+TenantsAPI_getAllTenants(apiClient_t *apiClient, char *api_version, char *x_api_version, tenant_dto_collection_query_parameters_t *tenant_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -718,8 +734,19 @@ TenantsAPI_getAllTenants(apiClient_t *apiClient, char *api_version, char *x_api_
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_tenant_dto_collection_query_parameters = NULL;
+    if (tenant_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_tenant_dto_collection_query_parameters = tenant_dto_collection_query_parameters_convertToJSON(tenant_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_tenant_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -760,7 +787,7 @@ TenantsAPI_getAllTenants(apiClient_t *apiClient, char *api_version, char *x_api_
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -771,6 +798,11 @@ TenantsAPI_getAllTenants(apiClient_t *apiClient, char *api_version, char *x_api_
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_tenant_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_tenant_dto_collection_query_parameters);
+        localVarSingleItemJSON_tenant_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -795,13 +827,13 @@ end:
 // This action is only available for global administrators.
 //
 int32_envelope_t*
-TenantsAPI_getExtendedTenantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version)
+TenantsAPI_getExtendedTenantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, extended_tenant_dto_collection_query_parameters_t *extended_tenant_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -835,8 +867,19 @@ TenantsAPI_getExtendedTenantsCount(apiClient_t *apiClient, char *api_version, ch
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters = NULL;
+    if (extended_tenant_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters = extended_tenant_dto_collection_query_parameters_convertToJSON(extended_tenant_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -877,7 +920,7 @@ TenantsAPI_getExtendedTenantsCount(apiClient_t *apiClient, char *api_version, ch
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -888,6 +931,11 @@ TenantsAPI_getExtendedTenantsCount(apiClient_t *apiClient, char *api_version, ch
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_tenant_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1042,12 +1090,12 @@ end:
 
 }
 
-// Get the total count of tenants available on this suite server instance.
+// Get the per-tenant admin module grants for a specific tenant.
 //
 // This action is only available for global administrators.
 //
-int32_envelope_t*
-TenantsAPI_getTenantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version)
+module_grant_dto_list_envelope_t*
+TenantsAPI_getTenantModuleGrants(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1057,10 +1105,27 @@ TenantsAPI_getTenantsCount(apiClient_t *apiClient, char *api_version, char *x_ap
     char      *localVarBodyParameters = NULL;
 
     // create the path
-    long sizeOfPath = strlen("/api/v2/SystemService/Tenants/Count")+1;
+    long sizeOfPath = strlen("/api/v2/SystemService/Tenants/{tenantId}/ModuleGrants")+1;
     char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Tenants/Count");
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Tenants/{tenantId}/ModuleGrants");
 
+
+    // Path Params
+    long sizeOfPathParams_tenantId = strlen(tenantId)+3 + strlen("{ tenantId }");
+    if(tenantId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_tenantId = malloc(sizeOfPathParams_tenantId);
+    sprintf(localVarToReplace_tenantId, "{%s}", "tenantId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_tenantId, tenantId);
+    if(tenantId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_tenantId = malloc(sizeOfPathParams_tenantId);
+    sprintf(localVarToReplace_tenantId, "{%s}", "tenantId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_tenantId, tenantId);
 
 
 
@@ -1113,7 +1178,7 @@ TenantsAPI_getTenantsCount(apiClient_t *apiClient, char *api_version, char *x_ap
     //}
     //nonprimitive not container
     cJSON *TenantsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    int32_envelope_t *elementToReturn = int32_envelope_parseFromJSON(TenantsAPIlocalVarJSON);
+    module_grant_dto_list_envelope_t *elementToReturn = module_grant_dto_list_envelope_parseFromJSON(TenantsAPIlocalVarJSON);
     cJSON_Delete(TenantsAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;
@@ -1131,6 +1196,7 @@ TenantsAPI_getTenantsCount(apiClient_t *apiClient, char *api_version, char *x_ap
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    free(localVarToReplace_tenantId);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
         keyHeader_x_api_version = NULL;
@@ -1159,12 +1225,145 @@ end:
 
 }
 
+// Get the total count of tenants available on this suite server instance.
+//
+// This action is only available for global administrators.
+//
+int32_envelope_t*
+TenantsAPI_getTenantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, tenant_dto_collection_query_parameters_t *tenant_dto_collection_query_parameters)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/SystemService/Tenants/Count")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Tenants/Count");
+
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_tenant_dto_collection_query_parameters = NULL;
+    if (tenant_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_tenant_dto_collection_query_parameters = tenant_dto_collection_query_parameters_convertToJSON(tenant_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_tenant_dto_collection_query_parameters);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *TenantsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    int32_envelope_t *elementToReturn = int32_envelope_parseFromJSON(TenantsAPIlocalVarJSON);
+    cJSON_Delete(TenantsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_tenant_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_tenant_dto_collection_query_parameters);
+        localVarSingleItemJSON_tenant_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Partially update a specific tenant by ID.
 //
 // This action is only available for global administrators.
 //
 empty_envelope_t*
-TenantsAPI_patchTenant(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *operation)
+TenantsAPI_patchTenant(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1224,14 +1423,14 @@ TenantsAPI_patchTenant(apiClient_t *apiClient, char *tenantId, char *api_version
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1239,16 +1438,16 @@ TenantsAPI_patchTenant(apiClient_t *apiClient, char *tenantId, char *api_version
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1306,17 +1505,196 @@ TenantsAPI_patchTenant(apiClient_t *apiClient, char *tenantId, char *api_version
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Replace the per-tenant admin module grants for a specific tenant.
+//
+// This action is only available for global administrators. Grants supplement licensing.
+//
+empty_envelope_t*
+TenantsAPI_setTenantModuleGrants(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *module_grant_dto)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/SystemService/Tenants/{tenantId}/ModuleGrants")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Tenants/{tenantId}/ModuleGrants");
+
+
+    // Path Params
+    long sizeOfPathParams_tenantId = strlen(tenantId)+3 + strlen("{ tenantId }");
+    if(tenantId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_tenantId = malloc(sizeOfPathParams_tenantId);
+    sprintf(localVarToReplace_tenantId, "{%s}", "tenantId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_tenantId, tenantId);
+    if(tenantId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_tenantId = malloc(sizeOfPathParams_tenantId);
+    sprintf(localVarToReplace_tenantId, "{%s}", "tenantId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_tenantId, tenantId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_module_grant_dto = NULL;
+    cJSON *localVarItemJSON_module_grant_dto = NULL;
+    cJSON *localVarSingleItemJSON_module_grant_dto = NULL;
+    if (module_grant_dto != NULL)
+    {
+        localVarItemJSON_module_grant_dto = cJSON_CreateObject();
+        localVarSingleItemJSON_module_grant_dto = cJSON_AddArrayToObject(localVarItemJSON_module_grant_dto, "module_grant_dto");
+        if (localVarSingleItemJSON_module_grant_dto == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *module_grant_dtoBodyListEntry;
+    list_ForEach(module_grant_dtoBodyListEntry, module_grant_dto)
+    {
+        localVar_module_grant_dto = module_grant_dto_convertToJSON(module_grant_dtoBodyListEntry->data);
+        if(localVar_module_grant_dto == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_module_grant_dto, localVar_module_grant_dto);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_module_grant_dto);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "PUT");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *TenantsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(TenantsAPIlocalVarJSON);
+    cJSON_Delete(TenantsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_tenantId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if (localVarItemJSON_module_grant_dto) {
+        cJSON_Delete(localVarItemJSON_module_grant_dto);
+        localVarItemJSON_module_grant_dto = NULL;
+    }
+    if (localVarSingleItemJSON_module_grant_dto) {
+        cJSON_Delete(localVarSingleItemJSON_module_grant_dto);
+        localVarSingleItemJSON_module_grant_dto = NULL;
+    }
+    if (localVar_module_grant_dto) {
+        cJSON_Delete(localVar_module_grant_dto);
+        localVar_module_grant_dto = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_api_version){

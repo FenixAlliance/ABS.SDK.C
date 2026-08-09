@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/quick_sign_signed_document_dto.h"
 #include "../model/signature_verification_dto.h"
 #include "../model/signed_document_create_dto.h"
 #include "../model/signed_document_dto.h"
+#include "../model/signed_document_dto_collection_query_parameters.h"
 #include "../model/signed_document_dto_list_envelope.h"
 #include "../model/signed_document_update_dto.h"
 
@@ -46,7 +47,7 @@ SignedDocumentsAPI_getSignedDocumentByIdAsync(apiClient_t *apiClient, char *tena
 // Retrieves all signed documents for the specified tenant.
 //
 signed_document_dto_list_envelope_t*
-SignedDocumentsAPI_getSignedDocumentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SignedDocumentsAPI_getSignedDocumentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signed_document_dto_collection_query_parameters_t *signed_document_dto_collection_query_parameters);
 
 
 // Get signed documents count
@@ -54,7 +55,7 @@ SignedDocumentsAPI_getSignedDocumentsAsync(apiClient_t *apiClient, char *tenantI
 // Returns the count of signed documents for the specified tenant.
 //
 int32_envelope_t*
-SignedDocumentsAPI_getSignedDocumentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SignedDocumentsAPI_getSignedDocumentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signed_document_dto_collection_query_parameters_t *signed_document_dto_collection_query_parameters);
 
 
 // Patch a signed document
@@ -62,7 +63,7 @@ SignedDocumentsAPI_getSignedDocumentsCountAsync(apiClient_t *apiClient, char *te
 // Patch a signed document
 //
 empty_envelope_t*
-SignedDocumentsAPI_patchSignedDocumentAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+SignedDocumentsAPI_patchSignedDocumentAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Create, freeze, and quick-sign a document in one call

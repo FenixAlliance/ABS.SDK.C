@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **correlation_id** | **char \*** |  | [optional] 
 **scopes** | **list_t \*** |  | [optional] 
 **error** | **char \*** |  | [optional] 
+**run_as** | **identityservice_auth_result_RUNAS_e** |  | [optional] 
+**principal_kind** | **identityservice_auth_result_PRINCIPALKIND_e** |  | [optional] 
+**provenance** | [**execution_provenance_t**](execution_provenance.md) \* |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

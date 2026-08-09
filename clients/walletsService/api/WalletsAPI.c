@@ -1231,13 +1231,13 @@ end:
 // Get incoming payments of a specific wallet by ID.
 //
 payment_dto_list_envelope_t*
-WalletsAPI_getIncomingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getIncomingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1288,8 +1288,19 @@ WalletsAPI_getIncomingPaymentsAsync(apiClient_t *apiClient, char *walletId, char
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    if (payment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = payment_dto_collection_query_parameters_convertToJSON(payment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1330,7 +1341,7 @@ WalletsAPI_getIncomingPaymentsAsync(apiClient_t *apiClient, char *walletId, char
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -1342,6 +1353,11 @@ WalletsAPI_getIncomingPaymentsAsync(apiClient_t *apiClient, char *walletId, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1366,13 +1382,13 @@ end:
 // Get incoming payments count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getIncomingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getIncomingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1423,8 +1439,19 @@ WalletsAPI_getIncomingPaymentsCountAsync(apiClient_t *apiClient, char *walletId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    if (payment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = payment_dto_collection_query_parameters_convertToJSON(payment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1465,7 +1492,7 @@ WalletsAPI_getIncomingPaymentsCountAsync(apiClient_t *apiClient, char *walletId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -1477,6 +1504,11 @@ WalletsAPI_getIncomingPaymentsCountAsync(apiClient_t *apiClient, char *walletId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1501,13 +1533,13 @@ end:
 // Get incoming invoices of a specific wallet by ID.
 //
 invoice_dto_list_envelope_t*
-WalletsAPI_getIncomingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getIncomingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1558,8 +1590,19 @@ WalletsAPI_getIncomingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    if (invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = invoice_dto_collection_query_parameters_convertToJSON(invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1600,7 +1643,7 @@ WalletsAPI_getIncomingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -1612,6 +1655,11 @@ WalletsAPI_getIncomingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1636,13 +1684,13 @@ end:
 // Get incoming invoices count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getIncomingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getIncomingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1693,8 +1741,19 @@ WalletsAPI_getIncomingWalletInvoicesCountAsync(apiClient_t *apiClient, char *wal
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    if (invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = invoice_dto_collection_query_parameters_convertToJSON(invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1735,7 +1794,7 @@ WalletsAPI_getIncomingWalletInvoicesCountAsync(apiClient_t *apiClient, char *wal
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -1747,6 +1806,11 @@ WalletsAPI_getIncomingWalletInvoicesCountAsync(apiClient_t *apiClient, char *wal
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1924,13 +1988,13 @@ end:
 // Get locations of a specific wallet by ID.
 //
 location_dto_list_envelope_t*
-WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1981,8 +2045,19 @@ WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, ch
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    if (location_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_location_dto_collection_query_parameters = location_dto_collection_query_parameters_convertToJSON(location_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_location_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2023,7 +2098,7 @@ WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, ch
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -2035,6 +2110,11 @@ WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, ch
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_location_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_location_dto_collection_query_parameters);
+        localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2059,13 +2139,13 @@ end:
 // Get locations count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2116,8 +2196,19 @@ WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletI
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    if (location_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_location_dto_collection_query_parameters = location_dto_collection_query_parameters_convertToJSON(location_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_location_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2158,7 +2249,7 @@ WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletI
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -2170,6 +2261,11 @@ WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_location_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_location_dto_collection_query_parameters);
+        localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2194,13 +2290,13 @@ end:
 // Get outgoing payments of a specific wallet by ID.
 //
 payment_dto_list_envelope_t*
-WalletsAPI_getOutgoingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getOutgoingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2251,8 +2347,19 @@ WalletsAPI_getOutgoingPaymentsAsync(apiClient_t *apiClient, char *walletId, char
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    if (payment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = payment_dto_collection_query_parameters_convertToJSON(payment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2293,7 +2400,7 @@ WalletsAPI_getOutgoingPaymentsAsync(apiClient_t *apiClient, char *walletId, char
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -2305,6 +2412,11 @@ WalletsAPI_getOutgoingPaymentsAsync(apiClient_t *apiClient, char *walletId, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2329,13 +2441,13 @@ end:
 // Get outgoing payments count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getOutgoingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getOutgoingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2386,8 +2498,19 @@ WalletsAPI_getOutgoingPaymentsCountAsync(apiClient_t *apiClient, char *walletId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    if (payment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = payment_dto_collection_query_parameters_convertToJSON(payment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2428,7 +2551,7 @@ WalletsAPI_getOutgoingPaymentsCountAsync(apiClient_t *apiClient, char *walletId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -2440,6 +2563,11 @@ WalletsAPI_getOutgoingPaymentsCountAsync(apiClient_t *apiClient, char *walletId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2464,13 +2592,13 @@ end:
 // Get outgoing invoices of a specific wallet by ID.
 //
 invoice_dto_list_envelope_t*
-WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2521,8 +2649,19 @@ WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    if (invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = invoice_dto_collection_query_parameters_convertToJSON(invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2563,7 +2702,7 @@ WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -2575,6 +2714,11 @@ WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2599,13 +2743,13 @@ end:
 // Get outgoing invoices count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getOutgoingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getOutgoingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2656,8 +2800,19 @@ WalletsAPI_getOutgoingWalletInvoicesCountAsync(apiClient_t *apiClient, char *wal
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    if (invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = invoice_dto_collection_query_parameters_convertToJSON(invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2698,7 +2853,7 @@ WalletsAPI_getOutgoingWalletInvoicesCountAsync(apiClient_t *apiClient, char *wal
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -2710,6 +2865,11 @@ WalletsAPI_getOutgoingWalletInvoicesCountAsync(apiClient_t *apiClient, char *wal
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2887,13 +3047,13 @@ end:
 // Get bank accounts of a specific wallet by ID.
 //
 bank_account_dto_list_envelope_t*
-WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, bank_account_dto_collection_query_parameters_t *bank_account_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2944,8 +3104,19 @@ WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, ch
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_bank_account_dto_collection_query_parameters = NULL;
+    if (bank_account_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_bank_account_dto_collection_query_parameters = bank_account_dto_collection_query_parameters_convertToJSON(bank_account_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_bank_account_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2986,7 +3157,7 @@ WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, ch
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -2998,6 +3169,11 @@ WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, ch
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_bank_account_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_bank_account_dto_collection_query_parameters);
+        localVarSingleItemJSON_bank_account_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3022,13 +3198,13 @@ end:
 // Get bank accounts count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, bank_account_dto_collection_query_parameters_t *bank_account_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3079,8 +3255,19 @@ WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletI
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_bank_account_dto_collection_query_parameters = NULL;
+    if (bank_account_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_bank_account_dto_collection_query_parameters = bank_account_dto_collection_query_parameters_convertToJSON(bank_account_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_bank_account_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3121,7 +3308,7 @@ WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletI
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -3133,6 +3320,11 @@ WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_bank_account_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_bank_account_dto_collection_query_parameters);
+        localVarSingleItemJSON_bank_account_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3157,13 +3349,13 @@ end:
 // Get chargebacks of a specific wallet by ID.
 //
 payment_chargeback_dto_list_envelope_t*
-WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_chargeback_dto_collection_query_parameters_t *payment_chargeback_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3214,8 +3406,19 @@ WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, cha
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters = NULL;
+    if (payment_chargeback_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters = payment_chargeback_dto_collection_query_parameters_convertToJSON(payment_chargeback_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3256,7 +3459,7 @@ WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, cha
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -3268,6 +3471,11 @@ WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, cha
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3292,13 +3500,13 @@ end:
 // Get chargebacks count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletChargebacksCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletChargebacksCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_chargeback_dto_collection_query_parameters_t *payment_chargeback_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3349,8 +3557,19 @@ WalletsAPI_getWalletChargebacksCountAsync(apiClient_t *apiClient, char *walletId
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters = NULL;
+    if (payment_chargeback_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters = payment_chargeback_dto_collection_query_parameters_convertToJSON(payment_chargeback_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3391,7 +3610,7 @@ WalletsAPI_getWalletChargebacksCountAsync(apiClient_t *apiClient, char *walletId
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -3403,6 +3622,11 @@ WalletsAPI_getWalletChargebacksCountAsync(apiClient_t *apiClient, char *walletId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_chargeback_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3562,13 +3786,13 @@ end:
 // Get extended orders of a specific wallet by ID.
 //
 extended_order_dto_list_envelope_t*
-WalletsAPI_getWalletExtendedOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletExtendedOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, extended_order_dto_collection_query_parameters_t *extended_order_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3619,8 +3843,19 @@ WalletsAPI_getWalletExtendedOrdersAsync(apiClient_t *apiClient, char *walletId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_order_dto_collection_query_parameters = NULL;
+    if (extended_order_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_order_dto_collection_query_parameters = extended_order_dto_collection_query_parameters_convertToJSON(extended_order_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_order_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3661,7 +3896,7 @@ WalletsAPI_getWalletExtendedOrdersAsync(apiClient_t *apiClient, char *walletId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -3673,6 +3908,11 @@ WalletsAPI_getWalletExtendedOrdersAsync(apiClient_t *apiClient, char *walletId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_extended_order_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_order_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_order_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3697,13 +3937,13 @@ end:
 // Get invoices of a specific wallet by ID.
 //
 invoice_dto_list_envelope_t*
-WalletsAPI_getWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3754,8 +3994,19 @@ WalletsAPI_getWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    if (invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = invoice_dto_collection_query_parameters_convertToJSON(invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3796,7 +4047,7 @@ WalletsAPI_getWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -3808,6 +4059,11 @@ WalletsAPI_getWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3832,13 +4088,13 @@ end:
 // Get invoices count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3889,8 +4145,19 @@ WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    if (invoice_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = invoice_dto_collection_query_parameters_convertToJSON(invoice_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3931,7 +4198,7 @@ WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -3943,6 +4210,11 @@ WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_invoice_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3967,13 +4239,13 @@ end:
 // Get orders of a specific wallet by ID.
 //
 order_dto_list_envelope_t*
-WalletsAPI_getWalletOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4024,8 +4296,19 @@ WalletsAPI_getWalletOrdersAsync(apiClient_t *apiClient, char *walletId, char *ap
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_order_dto_collection_query_parameters = NULL;
+    if (order_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_order_dto_collection_query_parameters = order_dto_collection_query_parameters_convertToJSON(order_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_order_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4066,7 +4349,7 @@ WalletsAPI_getWalletOrdersAsync(apiClient_t *apiClient, char *walletId, char *ap
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -4078,6 +4361,11 @@ WalletsAPI_getWalletOrdersAsync(apiClient_t *apiClient, char *walletId, char *ap
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_order_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_order_dto_collection_query_parameters);
+        localVarSingleItemJSON_order_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4102,13 +4390,13 @@ end:
 // Get orders count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletOrdersCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletOrdersCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4159,8 +4447,19 @@ WalletsAPI_getWalletOrdersCountAsync(apiClient_t *apiClient, char *walletId, cha
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_order_dto_collection_query_parameters = NULL;
+    if (order_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_order_dto_collection_query_parameters = order_dto_collection_query_parameters_convertToJSON(order_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_order_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4201,7 +4500,7 @@ WalletsAPI_getWalletOrdersCountAsync(apiClient_t *apiClient, char *walletId, cha
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -4213,6 +4512,11 @@ WalletsAPI_getWalletOrdersCountAsync(apiClient_t *apiClient, char *walletId, cha
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_order_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_order_dto_collection_query_parameters);
+        localVarSingleItemJSON_order_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4237,13 +4541,13 @@ end:
 // Get payments of a specific wallet by ID.
 //
 payment_dto_list_envelope_t*
-WalletsAPI_getWalletPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4294,8 +4598,19 @@ WalletsAPI_getWalletPaymentsAsync(apiClient_t *apiClient, char *walletId, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    if (payment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = payment_dto_collection_query_parameters_convertToJSON(payment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4336,7 +4651,7 @@ WalletsAPI_getWalletPaymentsAsync(apiClient_t *apiClient, char *walletId, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -4348,6 +4663,11 @@ WalletsAPI_getWalletPaymentsAsync(apiClient_t *apiClient, char *walletId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4372,13 +4692,13 @@ end:
 // Get payments count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4429,8 +4749,19 @@ WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    if (payment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = payment_dto_collection_query_parameters_convertToJSON(payment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4471,7 +4802,7 @@ WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -4483,6 +4814,11 @@ WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4507,13 +4843,13 @@ end:
 // Get quotes of a specific wallet by ID.
 //
 quote_dto_list_envelope_t*
-WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4564,8 +4900,19 @@ WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *ap
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_quote_dto_collection_query_parameters = NULL;
+    if (quote_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_quote_dto_collection_query_parameters = quote_dto_collection_query_parameters_convertToJSON(quote_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_quote_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4606,7 +4953,7 @@ WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *ap
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -4618,6 +4965,11 @@ WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *ap
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_quote_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_quote_dto_collection_query_parameters);
+        localVarSingleItemJSON_quote_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4642,13 +4994,13 @@ end:
 // Get quotes count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4699,8 +5051,19 @@ WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, cha
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_quote_dto_collection_query_parameters = NULL;
+    if (quote_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_quote_dto_collection_query_parameters = quote_dto_collection_query_parameters_convertToJSON(quote_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_quote_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4741,7 +5104,7 @@ WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, cha
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -4753,6 +5116,11 @@ WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, cha
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_quote_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_quote_dto_collection_query_parameters);
+        localVarSingleItemJSON_quote_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4777,13 +5145,13 @@ end:
 // Get refunds of a specific wallet by ID.
 //
 payment_refund_dto_list_envelope_t*
-WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_refund_dto_collection_query_parameters_t *payment_refund_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4834,8 +5202,19 @@ WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *a
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_refund_dto_collection_query_parameters = NULL;
+    if (payment_refund_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_refund_dto_collection_query_parameters = payment_refund_dto_collection_query_parameters_convertToJSON(payment_refund_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_refund_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4876,7 +5255,7 @@ WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *a
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -4888,6 +5267,11 @@ WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *a
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_refund_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_refund_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_refund_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4912,13 +5296,13 @@ end:
 // Get refunds count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletRefundsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletRefundsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_refund_dto_collection_query_parameters_t *payment_refund_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4969,8 +5353,19 @@ WalletsAPI_getWalletRefundsCountAsync(apiClient_t *apiClient, char *walletId, ch
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_refund_dto_collection_query_parameters = NULL;
+    if (payment_refund_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_refund_dto_collection_query_parameters = payment_refund_dto_collection_query_parameters_convertToJSON(payment_refund_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_refund_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -5011,7 +5406,7 @@ WalletsAPI_getWalletRefundsCountAsync(apiClient_t *apiClient, char *walletId, ch
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -5023,6 +5418,11 @@ WalletsAPI_getWalletRefundsCountAsync(apiClient_t *apiClient, char *walletId, ch
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_refund_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_refund_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_refund_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -5200,13 +5600,13 @@ end:
 // Get payment tokens of a specific wallet by ID.
 //
 payment_token_dto_list_envelope_t*
-WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_token_dto_collection_query_parameters_t *payment_token_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -5257,8 +5657,19 @@ WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *ap
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_token_dto_collection_query_parameters = NULL;
+    if (payment_token_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_token_dto_collection_query_parameters = payment_token_dto_collection_query_parameters_convertToJSON(payment_token_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_token_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -5299,7 +5710,7 @@ WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *ap
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -5311,6 +5722,11 @@ WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *ap
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_token_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_token_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_token_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -5335,13 +5751,13 @@ end:
 // Get payment tokens count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_token_dto_collection_query_parameters_t *payment_token_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -5392,8 +5808,19 @@ WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, cha
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_payment_token_dto_collection_query_parameters = NULL;
+    if (payment_token_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_payment_token_dto_collection_query_parameters = payment_token_dto_collection_query_parameters_convertToJSON(payment_token_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_payment_token_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -5434,7 +5861,7 @@ WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, cha
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -5446,6 +5873,11 @@ WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, cha
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_payment_token_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_payment_token_dto_collection_query_parameters);
+        localVarSingleItemJSON_payment_token_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -5470,13 +5902,13 @@ end:
 // Get withdraw requests of a specific wallet by ID.
 //
 wallet_withdraw_request_dto_list_envelope_t*
-WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_request_dto_collection_query_parameters_t *wallet_withdraw_request_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -5527,8 +5959,19 @@ WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters = NULL;
+    if (wallet_withdraw_request_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters = wallet_withdraw_request_dto_collection_query_parameters_convertToJSON(wallet_withdraw_request_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -5569,7 +6012,7 @@ WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -5581,6 +6024,11 @@ WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters);
+        localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -5605,13 +6053,13 @@ end:
 // Get withdraw requests count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_request_dto_collection_query_parameters_t *wallet_withdraw_request_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -5662,8 +6110,19 @@ WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *wal
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters = NULL;
+    if (wallet_withdraw_request_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters = wallet_withdraw_request_dto_collection_query_parameters_convertToJSON(wallet_withdraw_request_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -5704,7 +6163,7 @@ WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *wal
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -5716,6 +6175,11 @@ WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *wal
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters);
+        localVarSingleItemJSON_wallet_withdraw_request_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -5740,13 +6204,13 @@ end:
 // Get withdraws of a specific wallet by ID.
 //
 wallet_withdraw_dto_list_envelope_t*
-WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_dto_collection_query_parameters_t *wallet_withdraw_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -5797,8 +6261,19 @@ WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters = NULL;
+    if (wallet_withdraw_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters = wallet_withdraw_dto_collection_query_parameters_convertToJSON(wallet_withdraw_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -5839,7 +6314,7 @@ WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -5851,6 +6326,11 @@ WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters);
+        localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -5875,13 +6355,13 @@ end:
 // Get withdraws count of a specific wallet by ID.
 //
 int32_envelope_t*
-WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version)
+WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_dto_collection_query_parameters_t *wallet_withdraw_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -5932,8 +6412,19 @@ WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters = NULL;
+    if (wallet_withdraw_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters = wallet_withdraw_dto_collection_query_parameters_convertToJSON(wallet_withdraw_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -5974,7 +6465,7 @@ WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
     if (keyHeader_x_api_version) {
@@ -5986,6 +6477,11 @@ WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters);
+        localVarSingleItemJSON_wallet_withdraw_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -6010,7 +6506,7 @@ end:
 // Partially update a specific bank account of a specific wallet by ID.
 //
 empty_envelope_t*
-WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version, list_t *operation)
+WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -6087,14 +6583,14 @@ WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, c
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -6102,16 +6598,16 @@ WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, c
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -6170,17 +6666,17 @@ WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_api_version){
@@ -6207,7 +6703,7 @@ end:
 // Partially update a specific payment token of a specific wallet by ID.
 //
 empty_envelope_t*
-WalletsAPI_patchWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tokenId, char *api_version, char *x_api_version, list_t *operation)
+WalletsAPI_patchWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tokenId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -6284,14 +6780,14 @@ WalletsAPI_patchWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *t
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -6299,16 +6795,16 @@ WalletsAPI_patchWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *t
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -6367,17 +6863,17 @@ WalletsAPI_patchWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *t
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_api_version){

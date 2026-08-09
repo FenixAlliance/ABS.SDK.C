@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_unit_create_dto.h"
+#include "../model/tenant_unit_dto_collection_query_parameters.h"
 #include "../model/tenant_unit_dto_envelope.h"
 #include "../model/tenant_unit_dto_list_envelope.h"
 #include "../model/tenant_unit_update_dto.h"
@@ -44,7 +45,7 @@ UnitsAPI_getTenantUnitById(apiClient_t *apiClient, char *tenantId, char *tenantU
 // Retrieve a list of tenant units
 //
 tenant_unit_dto_list_envelope_t*
-UnitsAPI_getTenantUnits(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+UnitsAPI_getTenantUnits(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_unit_dto_collection_query_parameters_t *tenant_unit_dto_collection_query_parameters);
 
 
 // Get the count of tenant units
@@ -52,7 +53,7 @@ UnitsAPI_getTenantUnits(apiClient_t *apiClient, char *tenantId, char *api_versio
 // Get the count of tenant units
 //
 int32_envelope_t*
-UnitsAPI_getTenantUnitsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+UnitsAPI_getTenantUnitsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_unit_dto_collection_query_parameters_t *tenant_unit_dto_collection_query_parameters);
 
 
 // Patch a tenant unit
@@ -60,7 +61,7 @@ UnitsAPI_getTenantUnitsCount(apiClient_t *apiClient, char *tenantId, char *api_v
 // Patch a tenant unit
 //
 empty_envelope_t*
-UnitsAPI_patchTenantUnit(apiClient_t *apiClient, char *tenantId, char *tenantUnitId, char *api_version, char *x_api_version, list_t *operation);
+UnitsAPI_patchTenantUnit(apiClient_t *apiClient, char *tenantId, char *tenantUnitId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant unit

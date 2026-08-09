@@ -10,9 +10,10 @@
 #include "../model/int32_envelope.h"
 #include "../model/non_fungible_token_create_dto.h"
 #include "../model/non_fungible_token_dto.h"
+#include "../model/non_fungible_token_dto_collection_query_parameters.h"
 #include "../model/non_fungible_token_dto_list_envelope.h"
 #include "../model/non_fungible_token_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new NFT
@@ -44,7 +45,7 @@ NonFungibleTokensAPI_getNonFungibleTokenByIdAsync(apiClient_t *apiClient, char *
 // Retrieves all NFTs for the specified tenant.
 //
 non_fungible_token_dto_list_envelope_t*
-NonFungibleTokensAPI_getNonFungibleTokensAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+NonFungibleTokensAPI_getNonFungibleTokensAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, non_fungible_token_dto_collection_query_parameters_t *non_fungible_token_dto_collection_query_parameters);
 
 
 // Get NFTs count
@@ -52,7 +53,7 @@ NonFungibleTokensAPI_getNonFungibleTokensAsync(apiClient_t *apiClient, char *ten
 // Returns the count of NFTs for the specified tenant.
 //
 int32_envelope_t*
-NonFungibleTokensAPI_getNonFungibleTokensCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+NonFungibleTokensAPI_getNonFungibleTokensCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, non_fungible_token_dto_collection_query_parameters_t *non_fungible_token_dto_collection_query_parameters);
 
 
 // Patch a non-fungible token
@@ -60,7 +61,7 @@ NonFungibleTokensAPI_getNonFungibleTokensCountAsync(apiClient_t *apiClient, char
 // Patch a non-fungible token
 //
 empty_envelope_t*
-NonFungibleTokensAPI_patchNonFungibleTokenAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+NonFungibleTokensAPI_patchNonFungibleTokenAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an NFT

@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_team_create_dto.h"
+#include "../model/tenant_team_dto_collection_query_parameters.h"
 #include "../model/tenant_team_dto_envelope.h"
 #include "../model/tenant_team_dto_list_envelope.h"
 #include "../model/tenant_team_update_dto.h"
@@ -44,7 +45,7 @@ TeamsAPI_getTenantTeamById(apiClient_t *apiClient, char *tenantId, char *tenantT
 // Retrieve a list of tenant teams
 //
 tenant_team_dto_list_envelope_t*
-TeamsAPI_getTenantTeams(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TeamsAPI_getTenantTeams(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_team_dto_collection_query_parameters_t *tenant_team_dto_collection_query_parameters);
 
 
 // Get the count of tenant teams
@@ -52,7 +53,7 @@ TeamsAPI_getTenantTeams(apiClient_t *apiClient, char *tenantId, char *api_versio
 // Get the count of tenant teams
 //
 int32_envelope_t*
-TeamsAPI_getTenantTeamsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TeamsAPI_getTenantTeamsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_team_dto_collection_query_parameters_t *tenant_team_dto_collection_query_parameters);
 
 
 // Patch a tenant team
@@ -60,7 +61,7 @@ TeamsAPI_getTenantTeamsCount(apiClient_t *apiClient, char *tenantId, char *api_v
 // Patch a tenant team
 //
 empty_envelope_t*
-TeamsAPI_patchTenantTeam(apiClient_t *apiClient, char *tenantId, char *tenantTeamId, char *api_version, char *x_api_version, list_t *operation);
+TeamsAPI_patchTenantTeam(apiClient_t *apiClient, char *tenantId, char *tenantTeamId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant team

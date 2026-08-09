@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_industry_create_dto.h"
+#include "../model/tenant_industry_dto_collection_query_parameters.h"
 #include "../model/tenant_industry_dto_envelope.h"
 #include "../model/tenant_industry_dto_list_envelope.h"
 #include "../model/tenant_industry_update_dto.h"
@@ -36,7 +37,7 @@ IndustriesAPI_deleteTenantIndustry(apiClient_t *apiClient, char *tenantId, char 
 // Retrieve a list of tenant industries
 //
 tenant_industry_dto_list_envelope_t*
-IndustriesAPI_getTenantIndustries(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+IndustriesAPI_getTenantIndustries(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_industry_dto_collection_query_parameters_t *tenant_industry_dto_collection_query_parameters);
 
 
 // Get the count of tenant industries
@@ -44,7 +45,7 @@ IndustriesAPI_getTenantIndustries(apiClient_t *apiClient, char *tenantId, char *
 // Get the count of tenant industries
 //
 int32_envelope_t*
-IndustriesAPI_getTenantIndustriesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+IndustriesAPI_getTenantIndustriesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_industry_dto_collection_query_parameters_t *tenant_industry_dto_collection_query_parameters);
 
 
 // Retrieve a single tenant industry by its ID
@@ -60,7 +61,7 @@ IndustriesAPI_getTenantIndustryById(apiClient_t *apiClient, char *tenantId, char
 // Patch a tenant industry
 //
 empty_envelope_t*
-IndustriesAPI_patchTenantIndustryAsync(apiClient_t *apiClient, char *tenantId, char *tenantIndustryId, char *api_version, char *x_api_version, list_t *operation);
+IndustriesAPI_patchTenantIndustryAsync(apiClient_t *apiClient, char *tenantId, char *tenantIndustryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant industry

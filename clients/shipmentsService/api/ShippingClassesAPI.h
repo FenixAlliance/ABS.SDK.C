@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/shipping_class_create_dto.h"
+#include "../model/shipping_class_dto_collection_query_parameters.h"
 #include "../model/shipping_class_dto_envelope.h"
 #include "../model/shipping_class_dto_list_envelope.h"
 #include "../model/shipping_class_update_dto.h"
@@ -44,7 +45,7 @@ ShippingClassesAPI_getShippingClassByIdAsync(apiClient_t *apiClient, char *tenan
 // Retrieves all shipping classes for the specified tenant.
 //
 shipping_class_dto_list_envelope_t*
-ShippingClassesAPI_getShippingClassesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShippingClassesAPI_getShippingClassesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shipping_class_dto_collection_query_parameters_t *shipping_class_dto_collection_query_parameters);
 
 
 // Get shipping classes count
@@ -52,7 +53,7 @@ ShippingClassesAPI_getShippingClassesAsync(apiClient_t *apiClient, char *tenantI
 // Returns the count of shipping classes.
 //
 int32_envelope_t*
-ShippingClassesAPI_getShippingClassesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShippingClassesAPI_getShippingClassesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shipping_class_dto_collection_query_parameters_t *shipping_class_dto_collection_query_parameters);
 
 
 // Patch a shipping class
@@ -60,7 +61,7 @@ ShippingClassesAPI_getShippingClassesCountAsync(apiClient_t *apiClient, char *te
 // Partially updates an existing shipping class using JSON Patch.
 //
 empty_envelope_t*
-ShippingClassesAPI_patchShippingClassAsync(apiClient_t *apiClient, char *tenantId, char *classId, char *api_version, char *x_api_version, list_t *operation);
+ShippingClassesAPI_patchShippingClassAsync(apiClient_t *apiClient, char *tenantId, char *classId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a shipping class

@@ -8,11 +8,13 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/unit_create_dto.h"
+#include "../model/unit_dto_collection_query_parameters.h"
 #include "../model/unit_dto_envelope.h"
 #include "../model/unit_dto_list_envelope.h"
 #include "../model/unit_group_create_dto.h"
+#include "../model/unit_group_dto_collection_query_parameters.h"
 #include "../model/unit_group_dto_envelope.h"
 #include "../model/unit_group_dto_list_envelope.h"
 #include "../model/unit_group_update_dto.h"
@@ -72,7 +74,7 @@ UnitGroupsAPI_getUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *un
 // Retrieves a list of unit groups for the specified tenant with OData query support.
 //
 unit_group_dto_list_envelope_t*
-UnitGroupsAPI_getUnitGroupsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+UnitGroupsAPI_getUnitGroupsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, unit_group_dto_collection_query_parameters_t *unit_group_dto_collection_query_parameters);
 
 
 // Get the count of unit groups
@@ -80,7 +82,7 @@ UnitGroupsAPI_getUnitGroupsAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Returns the total count of unit groups for the specified tenant with OData query support.
 //
 int32_envelope_t*
-UnitGroupsAPI_getUnitGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+UnitGroupsAPI_getUnitGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, unit_group_dto_collection_query_parameters_t *unit_group_dto_collection_query_parameters);
 
 
 // Retrieve units for a unit group
@@ -88,7 +90,7 @@ UnitGroupsAPI_getUnitGroupsCountAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves a list of units belonging to a specific unit group.
 //
 unit_dto_list_envelope_t*
-UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version);
+UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, unit_dto_collection_query_parameters_t *unit_dto_collection_query_parameters);
 
 
 // Get the count of units in a unit group
@@ -96,7 +98,7 @@ UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGr
 // Returns the total count of units in a specific unit group.
 //
 int32_envelope_t*
-UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version);
+UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, unit_dto_collection_query_parameters_t *unit_dto_collection_query_parameters);
 
 
 // Patch a unit within a unit group
@@ -104,7 +106,7 @@ UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *u
 // Partially updates an existing unit within a specific unit group.
 //
 empty_envelope_t*
-UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *unitId, char *api_version, char *x_api_version, list_t *operation);
+UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *unitId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a unit group
@@ -112,7 +114,7 @@ UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitG
 // Partially updates an existing unit group by its unique identifier.
 //
 empty_envelope_t*
-UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, list_t *operation);
+UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a unit within a unit group

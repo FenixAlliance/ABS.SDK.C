@@ -5,19 +5,22 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/assign_journal_to_book_request.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/journal_create_dto.h"
+#include "../model/journal_dto_collection_query_parameters.h"
 #include "../model/journal_dto_envelope.h"
 #include "../model/journal_dto_i_read_only_list_envelope.h"
 #include "../model/journal_entry_create_dto.h"
+#include "../model/journal_entry_dto_collection_query_parameters.h"
 #include "../model/journal_entry_dto_envelope.h"
 #include "../model/journal_entry_dto_i_read_only_list_envelope.h"
 #include "../model/journal_entry_update_dto.h"
 #include "../model/journal_update_dto.h"
 #include "../model/money_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/reverse_journal_entry_request.h"
 
 
@@ -26,7 +29,7 @@
 // Returns the sum of all credit amounts for entries in the specified journal, normalized to the target currency.
 //
 money_envelope_t*
-JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version);
+JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters);
 
 
 // Aggregate journal entry debits
@@ -34,7 +37,15 @@ JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tena
 // Returns the sum of all debit amounts for entries in the specified journal, normalized to the target currency.
 //
 money_envelope_t*
-JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version);
+JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters);
+
+
+// Bind a journal to a financial book
+//
+// Establishes the one-way Journal↔FinancialBook binding (finish-line #5): binds an unbound journal to the supplied book and sets its book-scoped code, enforcing (Tenant, Book, Code) uniqueness. Binding an unbound journal or re-affirming the same book succeeds; a duplicate code in the book is rejected (400), and re-homing an already-bound journal to a DIFFERENT book is rejected by the aggregate. Requires the journals_update permission.
+//
+empty_envelope_t*
+JournalsAPI_assignJournalToBookAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, assign_journal_to_book_request_t *assign_journal_to_book_request);
 
 
 // Count journals
@@ -42,7 +53,7 @@ JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenan
 // Returns the count of journals for the tenant.
 //
 int32_envelope_t*
-JournalsAPI_countJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JournalsAPI_countJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, journal_dto_collection_query_parameters_t *journal_dto_collection_query_parameters);
 
 
 // Create journal
@@ -90,7 +101,7 @@ JournalsAPI_getJournalDetailsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Gets entries for the specified journal.
 //
 journal_entry_dto_i_read_only_list_envelope_t*
-JournalsAPI_getJournalEntriesAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version);
+JournalsAPI_getJournalEntriesAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters);
 
 
 // Count journal entries
@@ -98,7 +109,7 @@ JournalsAPI_getJournalEntriesAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the number of entries in the specified journal.
 //
 int32_envelope_t*
-JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version);
+JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters);
 
 
 // Get journal entry by ID
@@ -114,7 +125,7 @@ JournalsAPI_getJournalEntryDetailsAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all journals for the specified tenant.
 //
 journal_dto_i_read_only_list_envelope_t*
-JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, journal_dto_collection_query_parameters_t *journal_dto_collection_query_parameters);
 
 
 // Patch a journal
@@ -122,7 +133,7 @@ JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 // Partially updates a journal.
 //
 empty_envelope_t*
-JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, list_t *operation);
+JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a journal entry
@@ -130,7 +141,7 @@ JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *jour
 // Partially updates a journal entry.
 //
 empty_envelope_t*
-JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Post a draft journal entry

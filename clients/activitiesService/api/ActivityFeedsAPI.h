@@ -5,13 +5,16 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/activity_feed_dto_collection_query_parameters.h"
 #include "../model/activity_feed_dto_envelope.h"
 #include "../model/activity_feed_dto_list_envelope.h"
 #include "../model/activity_record_create_dto.h"
+#include "../model/activity_record_dto_collection_query_parameters.h"
 #include "../model/activity_record_dto_envelope.h"
 #include "../model/activity_record_dto_list_envelope.h"
 #include "../model/activity_record_update_dto.h"
 #include "../model/activity_type_create_dto.h"
+#include "../model/activity_type_dto_collection_query_parameters.h"
 #include "../model/activity_type_dto_envelope.h"
 #include "../model/activity_type_dto_list_envelope.h"
 #include "../model/activity_type_update_dto.h"
@@ -19,7 +22,7 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Count Activity Types
@@ -27,7 +30,7 @@
 // Count activity types for the current tenant.
 //
 int32_envelope_t*
-ActivityFeedsAPI_countActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ActivityFeedsAPI_countActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_type_dto_collection_query_parameters_t *activity_type_dto_collection_query_parameters);
 
 
 // Create an activity
@@ -67,7 +70,7 @@ ActivityFeedsAPI_deleteActivityTypeAsync(apiClient_t *apiClient, char *tenantId,
 // Retrieves activities for a specific activity feed.
 //
 activity_record_dto_list_envelope_t*
-ActivityFeedsAPI_getActivitiesAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version);
+ActivityFeedsAPI_getActivitiesAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version, activity_record_dto_collection_query_parameters_t *activity_record_dto_collection_query_parameters);
 
 
 // Count activities
@@ -75,7 +78,7 @@ ActivityFeedsAPI_getActivitiesAsync(apiClient_t *apiClient, char *tenantId, char
 // Returns the count of activities for a specific activity feed.
 //
 int32_envelope_t*
-ActivityFeedsAPI_getActivitiesCountAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version);
+ActivityFeedsAPI_getActivitiesCountAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version, activity_record_dto_collection_query_parameters_t *activity_record_dto_collection_query_parameters);
 
 
 // Get activity by ID
@@ -99,7 +102,7 @@ ActivityFeedsAPI_getActivityFeedAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves a list of activity feeds for the specified tenant.
 //
 activity_feed_dto_list_envelope_t*
-ActivityFeedsAPI_getActivityFeedsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ActivityFeedsAPI_getActivityFeedsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_feed_dto_collection_query_parameters_t *activity_feed_dto_collection_query_parameters);
 
 
 // Count activity feeds
@@ -107,7 +110,7 @@ ActivityFeedsAPI_getActivityFeedsAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of activity feeds for the specified tenant.
 //
 int32_envelope_t*
-ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_feed_dto_collection_query_parameters_t *activity_feed_dto_collection_query_parameters);
 
 
 // Count activity records
@@ -115,7 +118,7 @@ ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenant
 // Returns the tenant-wide count of activity records across all feeds owned by the tenant.
 //
 int32_envelope_t*
-ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_record_dto_collection_query_parameters_t *activity_record_dto_collection_query_parameters);
 
 
 // Get Activity Type
@@ -131,7 +134,7 @@ ActivityFeedsAPI_getActivityTypeByIdAsync(apiClient_t *apiClient, char *tenantId
 // Get a list of activity types for the current tenant.
 //
 activity_type_dto_list_envelope_t*
-ActivityFeedsAPI_getActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ActivityFeedsAPI_getActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_type_dto_collection_query_parameters_t *activity_type_dto_collection_query_parameters);
 
 
 // Patch an activity
@@ -139,7 +142,7 @@ ActivityFeedsAPI_getActivityTypesAsync(apiClient_t *apiClient, char *tenantId, c
 // Patch an activity
 //
 empty_envelope_t*
-ActivityFeedsAPI_patchActivityAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *activityId, char *api_version, char *x_api_version, list_t *operation);
+ActivityFeedsAPI_patchActivityAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *activityId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch Activity Type
@@ -147,7 +150,7 @@ ActivityFeedsAPI_patchActivityAsync(apiClient_t *apiClient, char *tenantId, char
 // Patch an activity type
 //
 empty_envelope_t*
-ActivityFeedsAPI_patchActivityTypeAsync(apiClient_t *apiClient, char *tenantId, char *activityTypeId, char *api_version, char *x_api_version, list_t *operation);
+ActivityFeedsAPI_patchActivityTypeAsync(apiClient_t *apiClient, char *tenantId, char *activityTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an activity

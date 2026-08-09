@@ -70,7 +70,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -152,9 +151,10 @@ Category | Method | HTTP request | Description
  - [info_response_t](docs/info_response.md)
  - [int32_envelope_t](docs/int32_envelope.md)
  - [login_request_t](docs/login_request.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [project_create_dto_t](docs/project_create_dto.md)
  - [project_dto_t](docs/project_dto.md)
+ - [project_dto_collection_query_parameters_t](docs/project_dto_collection_query_parameters.md)
  - [project_dto_envelope_t](docs/project_dto_envelope.md)
  - [project_dto_list_envelope_t](docs/project_dto_list_envelope.md)
  - [project_hours_approval_approver_update_dto_t](docs/project_hours_approval_approver_update_dto.md)
@@ -166,11 +166,13 @@ Category | Method | HTTP request | Description
  - [project_period_update_dto_t](docs/project_period_update_dto.md)
  - [project_task_create_dto_t](docs/project_task_create_dto.md)
  - [project_task_dto_t](docs/project_task_dto.md)
+ - [project_task_dto_collection_query_parameters_t](docs/project_task_dto_collection_query_parameters.md)
  - [project_task_dto_envelope_t](docs/project_task_dto_envelope.md)
  - [project_task_dto_list_envelope_t](docs/project_task_dto_list_envelope.md)
  - [project_task_update_dto_t](docs/project_task_update_dto.md)
  - [project_time_log_create_dto_t](docs/project_time_log_create_dto.md)
  - [project_time_log_dto_t](docs/project_time_log_dto.md)
+ - [project_time_log_dto_collection_query_parameters_t](docs/project_time_log_dto_collection_query_parameters.md)
  - [project_time_log_dto_envelope_t](docs/project_time_log_dto_envelope.md)
  - [project_time_log_dto_list_envelope_t](docs/project_time_log_dto_list_envelope.md)
  - [project_time_log_update_dto_t](docs/project_time_log_update_dto.md)
@@ -181,6 +183,7 @@ Category | Method | HTTP request | Description
  - [reset_password_request_t](docs/reset_password_request.md)
  - [task_category_create_dto_t](docs/task_category_create_dto.md)
  - [task_category_dto_t](docs/task_category_dto.md)
+ - [task_category_dto_collection_query_parameters_t](docs/task_category_dto_collection_query_parameters.md)
  - [task_category_dto_list_envelope_t](docs/task_category_dto_list_envelope.md)
  - [task_category_update_dto_t](docs/task_category_update_dto.md)
  - [task_type_create_dto_t](docs/task_type_create_dto.md)

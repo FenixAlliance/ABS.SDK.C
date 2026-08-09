@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/business_application_create_dto.h"
+#include "../model/business_application_dto_collection_query_parameters.h"
 #include "../model/business_application_dto_envelope.h"
 #include "../model/business_application_dto_list_envelope.h"
 #include "../model/business_application_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/security_permission_dto_list_envelope.h"
 #include "../model/security_role_dto_list_envelope.h"
 
@@ -46,7 +47,7 @@ ApplicationsAPI_getBusinessApplicationByIdAsync(apiClient_t *apiClient, char *te
 // Retrieves all business applications for the specified tenant.
 //
 business_application_dto_list_envelope_t*
-ApplicationsAPI_getBusinessApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ApplicationsAPI_getBusinessApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, business_application_dto_collection_query_parameters_t *business_application_dto_collection_query_parameters);
 
 
 // Get business applications count
@@ -54,7 +55,7 @@ ApplicationsAPI_getBusinessApplicationsAsync(apiClient_t *apiClient, char *tenan
 // Retrieves the count of business applications for the specified tenant.
 //
 int32_envelope_t*
-ApplicationsAPI_getBusinessApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ApplicationsAPI_getBusinessApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, business_application_dto_collection_query_parameters_t *business_application_dto_collection_query_parameters);
 
 
 // Get permissions by application
@@ -78,7 +79,7 @@ ApplicationsAPI_getRolesByApplicationAsync(apiClient_t *apiClient, char *tenantI
 // Partially updates an existing business application using a JSON Patch document.
 //
 empty_envelope_t*
-ApplicationsAPI_patchBusinessApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, list_t *operation, char *api_version, char *x_api_version);
+ApplicationsAPI_patchBusinessApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, list_t *patch_operation, char *api_version, char *x_api_version);
 
 
 // Update an existing business application

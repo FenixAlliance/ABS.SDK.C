@@ -259,7 +259,7 @@ No authorization required
 //
 // Retrieves all blog posts, optionally filtered by tenant using OData query options.
 //
-blog_post_dto_list_envelope_t* BlogPostsAPI_getBlogPostsAsync(apiClient_t *apiClient, char *tenantId);
+blog_post_dto_list_envelope_t* BlogPostsAPI_getBlogPostsAsync(apiClient_t *apiClient, char *tenantId, blog_post_dto_collection_query_parameters_t *blog_post_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -267,6 +267,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | [optional] 
+**blog_post_dto_collection_query_parameters** | **[blog_post_dto_collection_query_parameters_t](blog_post_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -279,7 +280,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -290,7 +291,7 @@ No authorization required
 //
 // Returns the total count of blog posts, optionally filtered by tenant using OData query options.
 //
-int32_envelope_t* BlogPostsAPI_getBlogPostsCountAsync(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* BlogPostsAPI_getBlogPostsCountAsync(apiClient_t *apiClient, char *tenantId, blog_post_dto_collection_query_parameters_t *blog_post_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -298,6 +299,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | [optional] 
+**blog_post_dto_collection_query_parameters** | **[blog_post_dto_collection_query_parameters_t](blog_post_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -310,7 +312,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -321,7 +323,7 @@ No authorization required
 //
 // Retrieves all categories related to a specific blog post.
 //
-blog_post_category_dto_list_envelope_t* BlogPostsAPI_getCategoriesForBlogPostAsync(apiClient_t *apiClient, char *blogPostId);
+blog_post_category_dto_list_envelope_t* BlogPostsAPI_getCategoriesForBlogPostAsync(apiClient_t *apiClient, char *blogPostId, blog_post_category_dto_collection_query_parameters_t *blog_post_category_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -329,6 +331,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **blogPostId** | **char \*** |  | 
+**blog_post_category_dto_collection_query_parameters** | **[blog_post_category_dto_collection_query_parameters_t](blog_post_category_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -341,7 +344,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -352,7 +355,7 @@ No authorization required
 //
 // Retrieves all comments for a specific blog post.
 //
-blog_post_comment_dto_list_envelope_t* BlogPostsAPI_getCommentsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId);
+blog_post_comment_dto_list_envelope_t* BlogPostsAPI_getCommentsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId, blog_post_comment_dto_collection_query_parameters_t *blog_post_comment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -360,6 +363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **blogPostId** | **char \*** |  | 
+**blog_post_comment_dto_collection_query_parameters** | **[blog_post_comment_dto_collection_query_parameters_t](blog_post_comment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -372,7 +376,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -383,7 +387,7 @@ No authorization required
 //
 // Retrieves all replies for a specific blog post comment.
 //
-blog_post_comment_dto_list_envelope_t* BlogPostsAPI_getRepliesForCommentAsync(apiClient_t *apiClient, char *commentId, char *blogPostId);
+blog_post_comment_dto_list_envelope_t* BlogPostsAPI_getRepliesForCommentAsync(apiClient_t *apiClient, char *commentId, char *blogPostId, blog_post_comment_dto_collection_query_parameters_t *blog_post_comment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -392,6 +396,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **commentId** | **char \*** |  | 
 **blogPostId** | **char \*** |  | 
+**blog_post_comment_dto_collection_query_parameters** | **[blog_post_comment_dto_collection_query_parameters_t](blog_post_comment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -404,7 +409,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -415,7 +420,7 @@ No authorization required
 //
 // Retrieves all tags related to a specific blog post.
 //
-blog_post_tag_dto_list_envelope_t* BlogPostsAPI_getTagsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId);
+blog_post_tag_dto_list_envelope_t* BlogPostsAPI_getTagsForBlogPostAsync(apiClient_t *apiClient, char *blogPostId, blog_post_tag_dto_collection_query_parameters_t *blog_post_tag_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -423,6 +428,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **blogPostId** | **char \*** |  | 
+**blog_post_tag_dto_collection_query_parameters** | **[blog_post_tag_dto_collection_query_parameters_t](blog_post_tag_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -435,7 +441,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -446,7 +452,7 @@ No authorization required
 //
 // Partially updates an existing blog post for the specified tenant.
 //
-empty_envelope_t* BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *blogPostId, list_t *operation);
+empty_envelope_t* BlogPostsAPI_patchBlogPostAsync(apiClient_t *apiClient, char *tenantId, char *blogPostId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -455,7 +461,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **blogPostId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/support_ticket_priority_create_dto.h"
+#include "../model/support_ticket_priority_dto_collection_query_parameters.h"
 #include "../model/support_ticket_priority_dto_envelope.h"
 #include "../model/support_ticket_priority_dto_list_envelope.h"
 #include "../model/support_ticket_priority_update_dto.h"
@@ -36,7 +37,7 @@ SupportTicketPrioritiesAPI_deleteSupportTicketPriorityAsync(apiClient_t *apiClie
 // Retrieves a list of support ticket priorities for the specified tenant with OData query support.
 //
 support_ticket_priority_dto_list_envelope_t*
-SupportTicketPrioritiesAPI_getSupportTicketPrioritiesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportTicketPrioritiesAPI_getSupportTicketPrioritiesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_ticket_priority_dto_collection_query_parameters_t *support_ticket_priority_dto_collection_query_parameters);
 
 
 // Get the count of support ticket priorities
@@ -44,7 +45,7 @@ SupportTicketPrioritiesAPI_getSupportTicketPrioritiesAsync(apiClient_t *apiClien
 // Returns the total count of support ticket priorities for the specified tenant with OData query support.
 //
 int32_envelope_t*
-SupportTicketPrioritiesAPI_getSupportTicketPrioritiesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportTicketPrioritiesAPI_getSupportTicketPrioritiesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_ticket_priority_dto_collection_query_parameters_t *support_ticket_priority_dto_collection_query_parameters);
 
 
 // Retrieve a support ticket priority by ID
@@ -60,7 +61,7 @@ SupportTicketPrioritiesAPI_getSupportTicketPriorityAsync(apiClient_t *apiClient,
 // Partially updates an existing support ticket priority by its unique identifier.
 //
 empty_envelope_t*
-SupportTicketPrioritiesAPI_patchSupportTicketPriorityAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketPriorityId, char *api_version, char *x_api_version, list_t *operation);
+SupportTicketPrioritiesAPI_patchSupportTicketPriorityAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketPriorityId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a support ticket priority

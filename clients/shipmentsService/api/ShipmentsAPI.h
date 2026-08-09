@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/shipment_create_dto.h"
+#include "../model/shipment_dto_collection_query_parameters.h"
 #include "../model/shipment_dto_envelope.h"
 #include "../model/shipment_dto_list_envelope.h"
 #include "../model/shipment_update_dto.h"
@@ -44,7 +45,7 @@ ShipmentsAPI_getShipmentByIdAsync(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves all shipments for the specified tenant.
 //
 shipment_dto_list_envelope_t*
-ShipmentsAPI_getShipmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShipmentsAPI_getShipmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shipment_dto_collection_query_parameters_t *shipment_dto_collection_query_parameters);
 
 
 // Get shipments count
@@ -52,7 +53,7 @@ ShipmentsAPI_getShipmentsAsync(apiClient_t *apiClient, char *tenantId, char *api
 // Returns the count of shipments for the specified tenant.
 //
 int32_envelope_t*
-ShipmentsAPI_getShipmentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShipmentsAPI_getShipmentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shipment_dto_collection_query_parameters_t *shipment_dto_collection_query_parameters);
 
 
 // Patch a shipment
@@ -60,7 +61,7 @@ ShipmentsAPI_getShipmentsCountAsync(apiClient_t *apiClient, char *tenantId, char
 // Partially updates an existing shipment using JSON Patch.
 //
 empty_envelope_t*
-ShipmentsAPI_patchShipmentAsync(apiClient_t *apiClient, char *tenantId, char *shipmentId, char *api_version, char *x_api_version, list_t *operation);
+ShipmentsAPI_patchShipmentAsync(apiClient_t *apiClient, char *tenantId, char *shipmentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a shipment

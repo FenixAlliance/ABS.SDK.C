@@ -7,17 +7,21 @@
 #include "../include/binary.h"
 #include "../model/account_create_dto.h"
 #include "../model/account_dto.h"
+#include "../model/account_dto_collection_query_parameters.h"
 #include "../model/account_dto_envelope.h"
 #include "../model/account_dto_list_envelope.h"
 #include "../model/account_relation_create_dto.h"
+#include "../model/account_relation_dto_collection_query_parameters.h"
 #include "../model/account_relation_dto_list_envelope.h"
 #include "../model/account_relation_update_dto.h"
 #include "../model/account_type_create_dto.h"
+#include "../model/account_type_dto_collection_query_parameters.h"
 #include "../model/account_type_dto_envelope.h"
 #include "../model/account_type_dto_list_envelope.h"
 #include "../model/account_type_update_dto.h"
 #include "../model/account_update_dto.h"
 #include "../model/accounting_entry_create_dto.h"
+#include "../model/accounting_entry_dto_collection_query_parameters.h"
 #include "../model/accounting_entry_dto_envelope.h"
 #include "../model/accounting_entry_dto_list_envelope.h"
 #include "../model/accounting_entry_update_dto.h"
@@ -26,7 +30,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/money_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/seed_chart_of_accounts_request.h"
 
 
@@ -35,7 +39,7 @@
 // Returns the sum of all account balances matching OData filters, normalized to the target currency using stored USD values.
 //
 money_envelope_t*
-AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId, char *currencyId, char *api_version, char *x_api_version);
+AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId, char *currencyId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters);
 
 
 // Balance account
@@ -147,7 +151,7 @@ AccountsAPI_getAccountAggregateAsync(apiClient_t *apiClient, char *tenantId, cha
 // Get account credits.
 //
 accounting_entry_dto_list_envelope_t*
-AccountsAPI_getAccountCreditsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountCreditsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 
 
 // Get account credits count
@@ -155,7 +159,7 @@ AccountsAPI_getAccountCreditsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Get account credits count.
 //
 int32_envelope_t*
-AccountsAPI_getAccountCreditsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountCreditsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 
 
 // Get account debits
@@ -163,7 +167,7 @@ AccountsAPI_getAccountCreditsCountAsync(apiClient_t *apiClient, char *tenantId, 
 // Get account debits.
 //
 accounting_entry_dto_list_envelope_t*
-AccountsAPI_getAccountDebitsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountDebitsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 
 
 // Get account debits count
@@ -171,7 +175,7 @@ AccountsAPI_getAccountDebitsAsync(apiClient_t *apiClient, char *tenantId, char *
 // Get account debits count.
 //
 int32_envelope_t*
-AccountsAPI_getAccountDebitsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountDebitsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 
 
 // Get account details
@@ -187,7 +191,7 @@ AccountsAPI_getAccountDetailsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Get account entries.
 //
 accounting_entry_dto_list_envelope_t*
-AccountsAPI_getAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 
 
 // Get account entry
@@ -203,7 +207,7 @@ AccountsAPI_getAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Get account relations.
 //
 account_relation_dto_list_envelope_t*
-AccountsAPI_getAccountRelationsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountRelationsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, account_relation_dto_collection_query_parameters_t *account_relation_dto_collection_query_parameters);
 
 
 // Get account relations count
@@ -211,7 +215,7 @@ AccountsAPI_getAccountRelationsAsync(apiClient_t *apiClient, char *tenantId, cha
 // Get account relations count.
 //
 int32_envelope_t*
-AccountsAPI_getAccountRelationsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountRelationsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, account_relation_dto_collection_query_parameters_t *account_relation_dto_collection_query_parameters);
 
 
 // Get account type by ID
@@ -227,7 +231,7 @@ AccountsAPI_getAccountTypeByIdAsync(apiClient_t *apiClient, char *tenantId, char
 // Get account types.
 //
 account_type_dto_list_envelope_t*
-AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_type_dto_collection_query_parameters_t *account_type_dto_collection_query_parameters);
 
 
 // Get account types count
@@ -235,7 +239,7 @@ AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Get account types count.
 //
 int32_envelope_t*
-AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_type_dto_collection_query_parameters_t *account_type_dto_collection_query_parameters);
 
 
 // Creates a new account
@@ -243,7 +247,7 @@ AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, ch
 // Creates a new account.
 //
 account_dto_list_envelope_t*
-AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters);
 
 
 // Get the number of accounts
@@ -251,7 +255,7 @@ AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 // Get the number of accounts.
 //
 int32_envelope_t*
-AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters);
 
 
 // Get charts of accounts
@@ -275,7 +279,7 @@ AccountsAPI_getChildAccountsAsync(apiClient_t *apiClient, char *tenantId, char *
 // Get credit account entries.
 //
 accounting_entry_dto_list_envelope_t*
-AccountsAPI_getCreditAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+AccountsAPI_getCreditAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 
 
 // Get debit account entries
@@ -283,7 +287,7 @@ AccountsAPI_getCreditAccountEntriesAsync(apiClient_t *apiClient, char *tenantId,
 // Get debit account entries.
 //
 accounting_entry_dto_list_envelope_t*
-AccountsAPI_getDebitAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+AccountsAPI_getDebitAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 
 
 // Get root accounts
@@ -291,7 +295,7 @@ AccountsAPI_getDebitAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, 
 // Get root accounts.
 //
 account_dto_list_envelope_t*
-AccountsAPI_getRootAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AccountsAPI_getRootAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters);
 
 
 // Patch an account
@@ -299,7 +303,7 @@ AccountsAPI_getRootAccountsAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Patch an account.
 //
 empty_envelope_t*
-AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
+AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch account entry
@@ -307,7 +311,7 @@ AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *acco
 // Patch account entry.
 //
 empty_envelope_t*
-AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch account relation
@@ -315,7 +319,7 @@ AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char 
 // Patch account relation.
 //
 empty_envelope_t*
-AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, char *accountRelationId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
+AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, char *accountRelationId, char *accountId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch account type
@@ -323,7 +327,7 @@ AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, ch
 // Patch account type.
 //
 empty_envelope_t*
-AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, list_t *operation);
+AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Seed chart of accounts

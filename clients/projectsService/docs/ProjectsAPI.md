@@ -294,7 +294,7 @@ No authorization required
 //
 // Gets all task categories for a specific project with OData support.
 //
-task_category_dto_list_envelope_t* ProjectsAPI_getProjectTaskCategoriesAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+task_category_dto_list_envelope_t* ProjectsAPI_getProjectTaskCategoriesAsync(apiClient_t *apiClient, char *projectId, char *tenantId, task_category_dto_collection_query_parameters_t *task_category_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -303,6 +303,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **projectId** | **char \*** |  | 
 **tenantId** | **char \*** |  | 
+**task_category_dto_collection_query_parameters** | **[task_category_dto_collection_query_parameters_t](task_category_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -315,7 +316,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -326,7 +327,7 @@ No authorization required
 //
 // Gets the count of task categories for a specific project.
 //
-int32_envelope_t* ProjectsAPI_getProjectTaskCategoriesCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+int32_envelope_t* ProjectsAPI_getProjectTaskCategoriesCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId, task_category_dto_collection_query_parameters_t *task_category_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -335,6 +336,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **projectId** | **char \*** |  | 
 **tenantId** | **char \*** |  | 
+**task_category_dto_collection_query_parameters** | **[task_category_dto_collection_query_parameters_t](task_category_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -347,7 +349,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -358,7 +360,7 @@ No authorization required
 //
 // Gets the count of time log entries for a specific project.
 //
-int32_envelope_t* ProjectsAPI_getProjectTimeLogsCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+int32_envelope_t* ProjectsAPI_getProjectTimeLogsCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_time_log_dto_collection_query_parameters_t *project_time_log_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -367,6 +369,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **projectId** | **char \*** |  | 
 **tenantId** | **char \*** |  | 
+**project_time_log_dto_collection_query_parameters** | **[project_time_log_dto_collection_query_parameters_t](project_time_log_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -379,7 +382,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -390,7 +393,7 @@ No authorization required
 //
 // Gets all projects for the current tenant with OData support.
 //
-project_dto_list_envelope_t* ProjectsAPI_getProjectsByTenantIdAsync(apiClient_t *apiClient, char *tenantId);
+project_dto_list_envelope_t* ProjectsAPI_getProjectsByTenantIdAsync(apiClient_t *apiClient, char *tenantId, project_dto_collection_query_parameters_t *project_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -398,6 +401,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**project_dto_collection_query_parameters** | **[project_dto_collection_query_parameters_t](project_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -410,7 +414,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -421,7 +425,7 @@ No authorization required
 //
 // Gets the count of projects for the current tenant.
 //
-int32_envelope_t* ProjectsAPI_getProjectsCountByTenantIdAsync(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* ProjectsAPI_getProjectsCountByTenantIdAsync(apiClient_t *apiClient, char *tenantId, project_dto_collection_query_parameters_t *project_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -429,6 +433,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**project_dto_collection_query_parameters** | **[project_dto_collection_query_parameters_t](project_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -441,7 +446,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -452,7 +457,7 @@ No authorization required
 //
 // Gets all tasks for a specific project with OData support.
 //
-project_task_dto_list_envelope_t* ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+project_task_dto_list_envelope_t* ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_task_dto_collection_query_parameters_t *project_task_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -461,6 +466,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **projectId** | **char \*** |  | 
 **tenantId** | **char \*** |  | 
+**project_task_dto_collection_query_parameters** | **[project_task_dto_collection_query_parameters_t](project_task_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -473,7 +479,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -484,7 +490,7 @@ No authorization required
 //
 // Gets the count of tasks for a specific project.
 //
-int32_envelope_t* ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+int32_envelope_t* ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_task_dto_collection_query_parameters_t *project_task_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -493,6 +499,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **projectId** | **char \*** |  | 
 **tenantId** | **char \*** |  | 
+**project_task_dto_collection_query_parameters** | **[project_task_dto_collection_query_parameters_t](project_task_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -505,7 +512,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -516,7 +523,7 @@ No authorization required
 //
 // Gets all time log entries for a specific project with OData support.
 //
-project_time_log_dto_list_envelope_t* ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+project_time_log_dto_list_envelope_t* ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_time_log_dto_collection_query_parameters_t *project_time_log_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -525,6 +532,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **projectId** | **char \*** |  | 
 **tenantId** | **char \*** |  | 
+**project_time_log_dto_collection_query_parameters** | **[project_time_log_dto_collection_query_parameters_t](project_time_log_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -537,7 +545,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -548,7 +556,7 @@ No authorization required
 //
 // Partially updates the specified project.
 //
-empty_envelope_t* ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, list_t *operation);
+empty_envelope_t* ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -557,7 +565,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **projectId** | **char \*** |  | 
 **tenantId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -581,7 +589,7 @@ No authorization required
 //
 // Partially updates the specified period for a project.
 //
-empty_envelope_t* ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, char *projectPeriodId, char *tenantId, list_t *operation);
+empty_envelope_t* ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, char *projectPeriodId, char *tenantId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -591,7 +599,7 @@ Name | Type | Description  | Notes
 **projectId** | **char \*** |  | 
 **projectPeriodId** | **char \*** |  | 
 **tenantId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -615,7 +623,7 @@ No authorization required
 //
 // Partially updates the specified task in a project.
 //
-empty_envelope_t* ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, list_t *operation);
+empty_envelope_t* ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -625,7 +633,7 @@ Name | Type | Description  | Notes
 **projectId** | **char \*** |  | 
 **projectTaskId** | **char \*** |  | 
 **tenantId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

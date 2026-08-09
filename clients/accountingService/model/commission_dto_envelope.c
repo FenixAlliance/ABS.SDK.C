@@ -10,6 +10,9 @@ commission_dto_envelope_t *commission_dto_envelope_create(
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     commission_dto_t *result
     ) {
@@ -21,6 +24,9 @@ commission_dto_envelope_t *commission_dto_envelope_create(
     commission_dto_envelope_local_var->error_message = error_message;
     commission_dto_envelope_local_var->correlation_id = correlation_id;
     commission_dto_envelope_local_var->timestamp = timestamp;
+    commission_dto_envelope_local_var->http_status = http_status;
+    commission_dto_envelope_local_var->error_code = error_code;
+    commission_dto_envelope_local_var->validation_details = validation_details;
     commission_dto_envelope_local_var->activity_id = activity_id;
     commission_dto_envelope_local_var->result = result;
 
@@ -44,6 +50,20 @@ void commission_dto_envelope_free(commission_dto_envelope_t *commission_dto_enve
     if (commission_dto_envelope->timestamp) {
         free(commission_dto_envelope->timestamp);
         commission_dto_envelope->timestamp = NULL;
+    }
+    if (commission_dto_envelope->error_code) {
+        free(commission_dto_envelope->error_code);
+        commission_dto_envelope->error_code = NULL;
+    }
+    if (commission_dto_envelope->validation_details) {
+        list_ForEach(listEntry, commission_dto_envelope->validation_details) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free (localKeyValue->key);
+            free (localKeyValue->value);
+            keyValuePair_free(localKeyValue);
+        }
+        list_freeList(commission_dto_envelope->validation_details);
+        commission_dto_envelope->validation_details = NULL;
     }
     if (commission_dto_envelope->activity_id) {
         free(commission_dto_envelope->activity_id);
@@ -91,6 +111,38 @@ cJSON *commission_dto_envelope_convertToJSON(commission_dto_envelope_t *commissi
     }
 
 
+    // commission_dto_envelope->http_status
+    if(commission_dto_envelope->http_status) {
+    if(cJSON_AddNumberToObject(item, "httpStatus", commission_dto_envelope->http_status) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // commission_dto_envelope->error_code
+    if(commission_dto_envelope->error_code) {
+    if(cJSON_AddStringToObject(item, "errorCode", commission_dto_envelope->error_code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // commission_dto_envelope->validation_details
+    if(commission_dto_envelope->validation_details) {
+    cJSON *validation_details = cJSON_AddObjectToObject(item, "validationDetails");
+    if(validation_details == NULL) {
+        goto fail; //primitive map container
+    }
+    cJSON *localMapObject = validation_details;
+    listEntry_t *validation_detailsListEntry;
+    if (commission_dto_envelope->validation_details) {
+    list_ForEach(validation_detailsListEntry, commission_dto_envelope->validation_details) {
+        keyValuePair_t *localKeyValue = (keyValuePair_t*)validation_detailsListEntry->data;
+    }
+    }
+    }
+
+
     // commission_dto_envelope->activity_id
     if(commission_dto_envelope->activity_id) {
     if(cJSON_AddStringToObject(item, "activityId", commission_dto_envelope->activity_id) == NULL) {
@@ -122,6 +174,9 @@ fail:
 commission_dto_envelope_t *commission_dto_envelope_parseFromJSON(cJSON *commission_dto_envelopeJSON){
 
     commission_dto_envelope_t *commission_dto_envelope_local_var = NULL;
+
+    // define the local map for commission_dto_envelope->validation_details
+    list_t *validation_detailsList = NULL;
 
     // define the local variable for commission_dto_envelope->result
     commission_dto_t *result_local_nonprim = NULL;
@@ -162,6 +217,44 @@ commission_dto_envelope_t *commission_dto_envelope_parseFromJSON(cJSON *commissi
     }
     }
 
+    // commission_dto_envelope->http_status
+    cJSON *http_status = cJSON_GetObjectItemCaseSensitive(commission_dto_envelopeJSON, "httpStatus");
+    if (http_status) { 
+    if(!cJSON_IsNumber(http_status))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // commission_dto_envelope->error_code
+    cJSON *error_code = cJSON_GetObjectItemCaseSensitive(commission_dto_envelopeJSON, "errorCode");
+    if (error_code) { 
+    if(!cJSON_IsString(error_code) && !cJSON_IsNull(error_code))
+    {
+    goto end; //String
+    }
+    }
+
+    // commission_dto_envelope->validation_details
+    cJSON *validation_details = cJSON_GetObjectItemCaseSensitive(commission_dto_envelopeJSON, "validationDetails");
+    if (validation_details) { 
+    cJSON *validation_details_local_map = NULL;
+    if(!cJSON_IsObject(validation_details) && !cJSON_IsNull(validation_details))
+    {
+        goto end;//primitive map container
+    }
+    if(cJSON_IsObject(validation_details))
+    {
+        validation_detailsList = list_createList();
+        keyValuePair_t *localMapKeyPair;
+        cJSON_ArrayForEach(validation_details_local_map, validation_details)
+        {
+            cJSON *localMapObject = validation_details_local_map;
+            list_addElement(validation_detailsList , localMapKeyPair);
+        }
+    }
+    }
+
     // commission_dto_envelope->activity_id
     cJSON *activity_id = cJSON_GetObjectItemCaseSensitive(commission_dto_envelopeJSON, "activityId");
     if (activity_id) { 
@@ -183,12 +276,27 @@ commission_dto_envelope_t *commission_dto_envelope_parseFromJSON(cJSON *commissi
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL,
         correlation_id && !cJSON_IsNull(correlation_id) ? strdup(correlation_id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        http_status ? http_status->valuedouble : 0,
+        error_code && !cJSON_IsNull(error_code) ? strdup(error_code->valuestring) : NULL,
+        validation_details ? validation_detailsList : NULL,
         activity_id && !cJSON_IsNull(activity_id) ? strdup(activity_id->valuestring) : NULL,
         result ? result_local_nonprim : NULL
         );
 
     return commission_dto_envelope_local_var;
 end:
+    if (validation_detailsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, validation_detailsList) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free(localKeyValue->key);
+            localKeyValue->key = NULL;
+            keyValuePair_free(localKeyValue);
+            localKeyValue = NULL;
+        }
+        list_freeList(validation_detailsList);
+        validation_detailsList = NULL;
+    }
     if (result_local_nonprim) {
         commission_dto_free(result_local_nonprim);
         result_local_nonprim = NULL;

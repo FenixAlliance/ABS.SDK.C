@@ -9,18 +9,21 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/loan_application_create_dto.h"
+#include "../model/loan_application_dto_collection_query_parameters.h"
 #include "../model/loan_application_dto_envelope.h"
 #include "../model/loan_application_dto_i_read_only_list_envelope.h"
 #include "../model/loan_create_dto.h"
+#include "../model/loan_dto_collection_query_parameters.h"
 #include "../model/loan_dto_envelope.h"
 #include "../model/loan_dto_i_read_only_list_envelope.h"
 #include "../model/loan_type_create_dto.h"
+#include "../model/loan_type_dto_collection_query_parameters.h"
 #include "../model/loan_type_dto_envelope.h"
 #include "../model/loan_type_dto_i_read_only_list_envelope.h"
 #include "../model/loan_type_update_dto.h"
 #include "../model/loan_update_dto.h"
 #include "../model/object.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a loan application
@@ -84,7 +87,7 @@ LoansAPI_getLoanApplicationDetailsAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all loan applications for the current tenant.
 //
 loan_application_dto_i_read_only_list_envelope_t*
-LoansAPI_getLoanApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LoansAPI_getLoanApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, loan_application_dto_collection_query_parameters_t *loan_application_dto_collection_query_parameters);
 
 
 // Counts loan applications
@@ -92,7 +95,7 @@ LoansAPI_getLoanApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *
 // Gets the count of loan applications for the current tenant.
 //
 int32_envelope_t*
-LoansAPI_getLoanApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LoansAPI_getLoanApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, loan_application_dto_collection_query_parameters_t *loan_application_dto_collection_query_parameters);
 
 
 // Gets a loan by ID
@@ -116,7 +119,7 @@ LoansAPI_getLoanTypeByIdAsync(apiClient_t *apiClient, char *tenantId, char *loan
 // Retrieves all loan types for the current tenant with OData support.
 //
 loan_type_dto_i_read_only_list_envelope_t*
-LoansAPI_getLoanTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LoansAPI_getLoanTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, loan_type_dto_collection_query_parameters_t *loan_type_dto_collection_query_parameters);
 
 
 // Counts loan types
@@ -124,7 +127,7 @@ LoansAPI_getLoanTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
 // Gets the count of loan types for the current tenant.
 //
 int32_envelope_t*
-LoansAPI_getLoanTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LoansAPI_getLoanTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, loan_type_dto_collection_query_parameters_t *loan_type_dto_collection_query_parameters);
 
 
 // Gets all loans
@@ -132,7 +135,7 @@ LoansAPI_getLoanTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *ap
 // Retrieves all loans for the current tenant with OData support.
 //
 loan_dto_i_read_only_list_envelope_t*
-LoansAPI_getLoansAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LoansAPI_getLoansAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, loan_dto_collection_query_parameters_t *loan_dto_collection_query_parameters);
 
 
 // Counts loans
@@ -140,7 +143,7 @@ LoansAPI_getLoansAsync(apiClient_t *apiClient, char *tenantId, char *api_version
 // Gets the count of loans for the current tenant.
 //
 int32_envelope_t*
-LoansAPI_getLoansCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LoansAPI_getLoansCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, loan_dto_collection_query_parameters_t *loan_dto_collection_query_parameters);
 
 
 // Patches a loan application
@@ -148,7 +151,7 @@ LoansAPI_getLoansCountAsync(apiClient_t *apiClient, char *tenantId, char *api_ve
 // Partially updates the specified loan application using a JSON Patch document.
 //
 empty_envelope_t*
-LoansAPI_patchLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, char *api_version, char *x_api_version, list_t *operation);
+LoansAPI_patchLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patches a loan
@@ -156,7 +159,7 @@ LoansAPI_patchLoanApplicationAsync(apiClient_t *apiClient, char *tenantId, char 
 // Partially updates the specified loan using a JSON Patch document.
 //
 empty_envelope_t*
-LoansAPI_patchLoanAsync(apiClient_t *apiClient, char *tenantId, char *loanId, char *api_version, char *x_api_version, list_t *operation);
+LoansAPI_patchLoanAsync(apiClient_t *apiClient, char *tenantId, char *loanId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patches a loan type
@@ -164,7 +167,7 @@ LoansAPI_patchLoanAsync(apiClient_t *apiClient, char *tenantId, char *loanId, ch
 // Partially updates the specified loan type using a JSON Patch document.
 //
 empty_envelope_t*
-LoansAPI_patchLoanTypeAsync(apiClient_t *apiClient, char *tenantId, char *loanTypeId, char *api_version, char *x_api_version, list_t *operation);
+LoansAPI_patchLoanTypeAsync(apiClient_t *apiClient, char *tenantId, char *loanTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates a loan application

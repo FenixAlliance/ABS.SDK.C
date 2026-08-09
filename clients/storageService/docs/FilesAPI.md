@@ -198,7 +198,7 @@ No authorization required
 
 # **FilesAPI_getFilesAsync**
 ```c
-file_upload_dto_envelope_t* FilesAPI_getFilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+file_upload_dto_envelope_t* FilesAPI_getFilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, int *top, int *skip, int *count, char *filter, char *orderBy, char *search, char *select, char *expand, int *isEmpty);
 ```
 
 ### Parameters
@@ -208,6 +208,15 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**top** | **int \*** |  | [optional] 
+**skip** | **int \*** |  | [optional] 
+**count** | **int \*** |  | [optional] 
+**filter** | **char \*** |  | [optional] 
+**orderBy** | **char \*** |  | [optional] 
+**search** | **char \*** |  | [optional] 
+**select** | **char \*** |  | [optional] 
+**expand** | **char \*** |  | [optional] 
+**isEmpty** | **int \*** |  | [optional] 
 
 ### Return type
 
@@ -220,14 +229,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json, image/png
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **FilesAPI_getFilesCountAsync**
 ```c
-long* FilesAPI_getFilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+long* FilesAPI_getFilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, int *top, int *skip, int *count, char *filter, char *orderBy, char *search, char *select, char *expand, int *isEmpty);
 ```
 
 ### Parameters
@@ -237,6 +246,15 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**top** | **int \*** |  | [optional] 
+**skip** | **int \*** |  | [optional] 
+**count** | **int \*** |  | [optional] 
+**filter** | **char \*** |  | [optional] 
+**orderBy** | **char \*** |  | [optional] 
+**search** | **char \*** |  | [optional] 
+**select** | **char \*** |  | [optional] 
+**expand** | **char \*** |  | [optional] 
+**isEmpty** | **int \*** |  | [optional] 
 
 ### Return type
 
@@ -250,7 +268,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json, image/png
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

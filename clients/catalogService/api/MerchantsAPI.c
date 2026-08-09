@@ -152,13 +152,13 @@ end:
 // Retrieves all merchants, optionally filtered by OData query options.
 //
 merchant_dto_list_envelope_t*
-MerchantsAPI_getMerchants(apiClient_t *apiClient, char *api_version, char *x_api_version)
+MerchantsAPI_getMerchants(apiClient_t *apiClient, char *api_version, char *x_api_version, merchant_dto_collection_query_parameters_t *merchant_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -192,8 +192,19 @@ MerchantsAPI_getMerchants(apiClient_t *apiClient, char *api_version, char *x_api
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_merchant_dto_collection_query_parameters = NULL;
+    if (merchant_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_merchant_dto_collection_query_parameters = merchant_dto_collection_query_parameters_convertToJSON(merchant_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_merchant_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -234,7 +245,7 @@ MerchantsAPI_getMerchants(apiClient_t *apiClient, char *api_version, char *x_api
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -245,6 +256,11 @@ MerchantsAPI_getMerchants(apiClient_t *apiClient, char *api_version, char *x_api
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_merchant_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_merchant_dto_collection_query_parameters);
+        localVarSingleItemJSON_merchant_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -269,13 +285,13 @@ end:
 // Counts the number of merchants, optionally filtered by OData query options.
 //
 int32_envelope_t*
-MerchantsAPI_getMerchantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version)
+MerchantsAPI_getMerchantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, merchant_dto_collection_query_parameters_t *merchant_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -309,8 +325,19 @@ MerchantsAPI_getMerchantsCount(apiClient_t *apiClient, char *api_version, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_merchant_dto_collection_query_parameters = NULL;
+    if (merchant_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_merchant_dto_collection_query_parameters = merchant_dto_collection_query_parameters_convertToJSON(merchant_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_merchant_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -351,7 +378,7 @@ MerchantsAPI_getMerchantsCount(apiClient_t *apiClient, char *api_version, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -362,6 +389,11 @@ MerchantsAPI_getMerchantsCount(apiClient_t *apiClient, char *api_version, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_merchant_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_merchant_dto_collection_query_parameters);
+        localVarSingleItemJSON_merchant_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;

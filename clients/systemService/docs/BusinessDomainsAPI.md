@@ -83,7 +83,7 @@ No authorization required
 //
 // Retrieve all registered business domains across every tenant (global administrators only).
 //
-business_domain_dto_list_envelope_t* BusinessDomainsAPI_getSystemBusinessDomains(apiClient_t *apiClient, char *api_version, char *x_api_version);
+business_domain_dto_list_envelope_t* BusinessDomainsAPI_getSystemBusinessDomains(apiClient_t *apiClient, char *api_version, char *x_api_version, business_domain_dto_collection_query_parameters_t *business_domain_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -92,6 +92,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**business_domain_dto_collection_query_parameters** | **[business_domain_dto_collection_query_parameters_t](business_domain_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -104,7 +105,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -115,7 +116,7 @@ No authorization required
 //
 // Get the count of all registered business domains across every tenant.
 //
-int32_envelope_t* BusinessDomainsAPI_getSystemBusinessDomainsCount(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* BusinessDomainsAPI_getSystemBusinessDomainsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, business_domain_dto_collection_query_parameters_t *business_domain_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -124,6 +125,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**business_domain_dto_collection_query_parameters** | **[business_domain_dto_collection_query_parameters_t](business_domain_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -136,7 +138,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

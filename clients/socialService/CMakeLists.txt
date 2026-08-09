@@ -58,13 +58,17 @@ set(SRCS
     model/boolean_envelope.c
     model/conversation_create_dto.c
     model/conversation_dto.c
+    model/conversation_dto_collection_query_parameters.c
+    model/conversation_dto_envelope.c
     model/conversation_dto_list_envelope.c
     model/curriculum_create_dto.c
     model/curriculum_dto.c
+    model/curriculum_dto_collection_query_parameters.c
     model/curriculum_dto_envelope.c
     model/curriculum_dto_list_envelope.c
     model/curriculum_experience_create_dto.c
     model/curriculum_experience_dto.c
+    model/curriculum_experience_dto_collection_query_parameters.c
     model/curriculum_experience_dto_envelope.c
     model/curriculum_experience_dto_list_envelope.c
     model/curriculum_experience_update_dto.c
@@ -72,6 +76,7 @@ set(SRCS
     model/empty_envelope.c
     model/error_envelope.c
     model/follow_record_dto.c
+    model/follow_record_dto_collection_query_parameters.c
     model/follow_record_dto_list_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
@@ -80,11 +85,13 @@ set(SRCS
     model/int32_envelope.c
     model/login_request.c
     model/notification_dto.c
+    model/notification_dto_collection_query_parameters.c
     model/notification_dto_envelope.c
     model/notification_dto_list_envelope.c
-    model/operation.c
+    model/patch_operation.c
     model/private_message_create_dto.c
     model/private_message_dto.c
+    model/private_message_dto_collection_query_parameters.c
     model/private_message_dto_list_envelope.c
     model/private_message_update_dto.c
     model/refresh_request.c
@@ -93,38 +100,55 @@ set(SRCS
     model/reset_password_request.c
     model/skill_create_dto.c
     model/skill_dto.c
+    model/skill_dto_collection_query_parameters.c
     model/skill_dto_envelope.c
     model/skill_dto_list_envelope.c
     model/skill_update_dto.c
+    model/social_comment_reaction_dto.c
+    model/social_comment_reaction_dto_collection_query_parameters.c
+    model/social_comment_reaction_dto_envelope.c
+    model/social_comment_reaction_dto_list_envelope.c
     model/social_feed_dto.c
+    model/social_feed_dto_collection_query_parameters.c
     model/social_feed_dto_envelope.c
     model/social_feed_dto_list_envelope.c
     model/social_feed_post_create_dto.c
     model/social_feed_post_dto.c
+    model/social_feed_post_dto_collection_query_parameters.c
     model/social_feed_post_dto_envelope.c
     model/social_feed_post_dto_list_envelope.c
     model/social_feed_post_update_dto.c
     model/social_group_create_dto.c
     model/social_group_dto.c
+    model/social_group_dto_collection_query_parameters.c
     model/social_group_dto_envelope.c
     model/social_group_dto_list_envelope.c
     model/social_group_update_dto.c
     model/social_post_attachment_create_dto.c
     model/social_post_attachment_dto.c
+    model/social_post_attachment_dto_collection_query_parameters.c
     model/social_post_attachment_dto_envelope.c
     model/social_post_attachment_dto_list_envelope.c
+    model/social_post_attachment_ref_dto.c
     model/social_post_attachment_update_dto.c
     model/social_post_comment_create_dto.c
     model/social_post_comment_dto.c
+    model/social_post_comment_dto_collection_query_parameters.c
     model/social_post_comment_dto_envelope.c
     model/social_post_comment_dto_list_envelope.c
     model/social_post_comment_update_dto.c
     model/social_post_create_dto.c
     model/social_post_dto.c
+    model/social_post_dto_collection_query_parameters.c
     model/social_post_dto_envelope.c
     model/social_post_dto_list_envelope.c
+    model/social_post_reaction_dto.c
+    model/social_post_reaction_dto_collection_query_parameters.c
+    model/social_post_reaction_dto_envelope.c
+    model/social_post_reaction_facepile_dto.c
     model/social_post_update_dto.c
     model/social_profile_dto.c
+    model/social_profile_dto_collection_query_parameters.c
     model/social_profile_dto_envelope.c
     model/social_profile_dto_list_envelope.c
     model/social_reaction_create_dto.c
@@ -132,8 +156,10 @@ set(SRCS
     model/social_reaction_dto_envelope.c
     model/social_reaction_dto_list_envelope.c
     model/social_reaction_update_dto.c
+    model/string_envelope.c
     model/two_factor_request.c
     model/two_factor_response.c
+    model/upload_social_post_image_attachment_async_request.c
     api/CurriculumExperiencesAPI.c
     api/CurriculumsAPI.c
     api/FenixAllianceABSWebAPI.c
@@ -156,13 +182,17 @@ set(HDRS
     model/boolean_envelope.h
     model/conversation_create_dto.h
     model/conversation_dto.h
+    model/conversation_dto_collection_query_parameters.h
+    model/conversation_dto_envelope.h
     model/conversation_dto_list_envelope.h
     model/curriculum_create_dto.h
     model/curriculum_dto.h
+    model/curriculum_dto_collection_query_parameters.h
     model/curriculum_dto_envelope.h
     model/curriculum_dto_list_envelope.h
     model/curriculum_experience_create_dto.h
     model/curriculum_experience_dto.h
+    model/curriculum_experience_dto_collection_query_parameters.h
     model/curriculum_experience_dto_envelope.h
     model/curriculum_experience_dto_list_envelope.h
     model/curriculum_experience_update_dto.h
@@ -170,6 +200,7 @@ set(HDRS
     model/empty_envelope.h
     model/error_envelope.h
     model/follow_record_dto.h
+    model/follow_record_dto_collection_query_parameters.h
     model/follow_record_dto_list_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
@@ -178,11 +209,13 @@ set(HDRS
     model/int32_envelope.h
     model/login_request.h
     model/notification_dto.h
+    model/notification_dto_collection_query_parameters.h
     model/notification_dto_envelope.h
     model/notification_dto_list_envelope.h
-    model/operation.h
+    model/patch_operation.h
     model/private_message_create_dto.h
     model/private_message_dto.h
+    model/private_message_dto_collection_query_parameters.h
     model/private_message_dto_list_envelope.h
     model/private_message_update_dto.h
     model/refresh_request.h
@@ -191,38 +224,55 @@ set(HDRS
     model/reset_password_request.h
     model/skill_create_dto.h
     model/skill_dto.h
+    model/skill_dto_collection_query_parameters.h
     model/skill_dto_envelope.h
     model/skill_dto_list_envelope.h
     model/skill_update_dto.h
+    model/social_comment_reaction_dto.h
+    model/social_comment_reaction_dto_collection_query_parameters.h
+    model/social_comment_reaction_dto_envelope.h
+    model/social_comment_reaction_dto_list_envelope.h
     model/social_feed_dto.h
+    model/social_feed_dto_collection_query_parameters.h
     model/social_feed_dto_envelope.h
     model/social_feed_dto_list_envelope.h
     model/social_feed_post_create_dto.h
     model/social_feed_post_dto.h
+    model/social_feed_post_dto_collection_query_parameters.h
     model/social_feed_post_dto_envelope.h
     model/social_feed_post_dto_list_envelope.h
     model/social_feed_post_update_dto.h
     model/social_group_create_dto.h
     model/social_group_dto.h
+    model/social_group_dto_collection_query_parameters.h
     model/social_group_dto_envelope.h
     model/social_group_dto_list_envelope.h
     model/social_group_update_dto.h
     model/social_post_attachment_create_dto.h
     model/social_post_attachment_dto.h
+    model/social_post_attachment_dto_collection_query_parameters.h
     model/social_post_attachment_dto_envelope.h
     model/social_post_attachment_dto_list_envelope.h
+    model/social_post_attachment_ref_dto.h
     model/social_post_attachment_update_dto.h
     model/social_post_comment_create_dto.h
     model/social_post_comment_dto.h
+    model/social_post_comment_dto_collection_query_parameters.h
     model/social_post_comment_dto_envelope.h
     model/social_post_comment_dto_list_envelope.h
     model/social_post_comment_update_dto.h
     model/social_post_create_dto.h
     model/social_post_dto.h
+    model/social_post_dto_collection_query_parameters.h
     model/social_post_dto_envelope.h
     model/social_post_dto_list_envelope.h
+    model/social_post_reaction_dto.h
+    model/social_post_reaction_dto_collection_query_parameters.h
+    model/social_post_reaction_dto_envelope.h
+    model/social_post_reaction_facepile_dto.h
     model/social_post_update_dto.h
     model/social_profile_dto.h
+    model/social_profile_dto_collection_query_parameters.h
     model/social_profile_dto_envelope.h
     model/social_profile_dto_list_envelope.h
     model/social_reaction_create_dto.h
@@ -230,8 +280,10 @@ set(HDRS
     model/social_reaction_dto_envelope.h
     model/social_reaction_dto_list_envelope.h
     model/social_reaction_update_dto.h
+    model/string_envelope.h
     model/two_factor_request.h
     model/two_factor_response.h
+    model/upload_social_post_image_attachment_async_request.h
     api/CurriculumExperiencesAPI.h
     api/CurriculumsAPI.h
     api/FenixAllianceABSWebAPI.h

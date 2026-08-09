@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/loyalty_program_create_dto.h"
+#include "../model/loyalty_program_dto_collection_query_parameters.h"
 #include "../model/loyalty_program_dto_envelope.h"
 #include "../model/loyalty_program_dto_list_envelope.h"
 #include "../model/loyalty_program_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Get loyalty programs count
@@ -20,7 +21,7 @@
 // Returns the total count of loyalty programs for the specified tenant with OData filter support.
 //
 int32_envelope_t*
-LoyaltyProgramsAPI_countLoyaltyProgramsAsync(apiClient_t *apiClient, char *tenantId);
+LoyaltyProgramsAPI_countLoyaltyProgramsAsync(apiClient_t *apiClient, char *tenantId, loyalty_program_dto_collection_query_parameters_t *loyalty_program_dto_collection_query_parameters);
 
 
 // Create a loyalty program
@@ -52,7 +53,7 @@ LoyaltyProgramsAPI_getLoyaltyProgramAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves a list of loyalty programs for the specified tenant with OData query support.
 //
 loyalty_program_dto_list_envelope_t*
-LoyaltyProgramsAPI_getLoyaltyProgramsAsync(apiClient_t *apiClient, char *tenantId);
+LoyaltyProgramsAPI_getLoyaltyProgramsAsync(apiClient_t *apiClient, char *tenantId, loyalty_program_dto_collection_query_parameters_t *loyalty_program_dto_collection_query_parameters);
 
 
 // Patch a loyalty program
@@ -60,7 +61,7 @@ LoyaltyProgramsAPI_getLoyaltyProgramsAsync(apiClient_t *apiClient, char *tenantI
 // Partially updates an existing loyalty program using a JSON Patch document.
 //
 empty_envelope_t*
-LoyaltyProgramsAPI_patchLoyaltyProgramAsync(apiClient_t *apiClient, char *tenantId, char *loyaltyProgramId, list_t *operation);
+LoyaltyProgramsAPI_patchLoyaltyProgramAsync(apiClient_t *apiClient, char *tenantId, char *loyaltyProgramId, list_t *patch_operation);
 
 
 // Update a loyalty program

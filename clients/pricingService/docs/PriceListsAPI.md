@@ -221,7 +221,7 @@ No authorization required
 //
 // Gets all price entries for a specific price list with OData support.
 //
-item_price_dto_list_envelope_t* PriceListsAPI_getPriceListPricesAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *itemId);
+item_price_dto_list_envelope_t* PriceListsAPI_getPriceListPricesAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *itemId, item_price_dto_collection_query_parameters_t *item_price_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -231,6 +231,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **priceListId** | **char \*** |  | 
 **itemId** | **char \*** |  | [optional] 
+**item_price_dto_collection_query_parameters** | **[item_price_dto_collection_query_parameters_t](item_price_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -243,7 +244,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -254,7 +255,7 @@ No authorization required
 //
 // Gets the count of price entries for a specific price list.
 //
-int32_envelope_t* PriceListsAPI_getPriceListPricesCountAsync(apiClient_t *apiClient, char *tenantId, char *priceListId);
+int32_envelope_t* PriceListsAPI_getPriceListPricesCountAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, item_price_dto_collection_query_parameters_t *item_price_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -263,6 +264,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **priceListId** | **char \*** |  | 
+**item_price_dto_collection_query_parameters** | **[item_price_dto_collection_query_parameters_t](item_price_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -275,7 +277,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -286,7 +288,7 @@ No authorization required
 //
 // Gets all price lists for the current tenant with OData support.
 //
-price_list_dto_list_envelope_t* PriceListsAPI_getPriceListsAsync(apiClient_t *apiClient, char *tenantId);
+price_list_dto_list_envelope_t* PriceListsAPI_getPriceListsAsync(apiClient_t *apiClient, char *tenantId, price_list_dto_collection_query_parameters_t *price_list_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -294,6 +296,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**price_list_dto_collection_query_parameters** | **[price_list_dto_collection_query_parameters_t](price_list_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -306,7 +309,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -317,7 +320,7 @@ No authorization required
 //
 // Gets the count of price lists for the current tenant.
 //
-int32_envelope_t* PriceListsAPI_getPriceListsCountAsync(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* PriceListsAPI_getPriceListsCountAsync(apiClient_t *apiClient, char *tenantId, price_list_dto_collection_query_parameters_t *price_list_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -325,6 +328,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**price_list_dto_collection_query_parameters** | **[price_list_dto_collection_query_parameters_t](price_list_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -337,7 +341,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -348,7 +352,7 @@ No authorization required
 //
 // Partially updates the specified price list using a JSON Patch document.
 //
-empty_envelope_t* PriceListsAPI_patchPriceListAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, list_t *operation);
+empty_envelope_t* PriceListsAPI_patchPriceListAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -357,7 +361,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **priceListId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -381,7 +385,7 @@ No authorization required
 //
 // Partially updates the specified price entry in a price list using a JSON Patch document.
 //
-empty_envelope_t* PriceListsAPI_patchPriceListPriceAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *priceId, list_t *operation);
+empty_envelope_t* PriceListsAPI_patchPriceListPriceAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *priceId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -391,7 +395,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **priceListId** | **char \*** |  | 
 **priceId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

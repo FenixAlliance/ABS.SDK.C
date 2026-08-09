@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/ledger_type_create_dto.h"
+#include "../model/ledger_type_dto_collection_query_parameters.h"
 #include "../model/ledger_type_dto_envelope.h"
 #include "../model/ledger_type_dto_i_read_only_list_envelope.h"
 #include "../model/ledger_type_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new ledger type
@@ -44,7 +45,7 @@ LedgerTypesAPI_getLedgerTypeDetailsAsync(apiClient_t *apiClient, char *tenantId,
 // Gets all ledger types for the current tenant with OData support.
 //
 ledger_type_dto_i_read_only_list_envelope_t*
-LedgerTypesAPI_getLedgerTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LedgerTypesAPI_getLedgerTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, ledger_type_dto_collection_query_parameters_t *ledger_type_dto_collection_query_parameters);
 
 
 // Counts ledger types
@@ -52,7 +53,7 @@ LedgerTypesAPI_getLedgerTypesAsync(apiClient_t *apiClient, char *tenantId, char 
 // Gets the count of ledger types for the current tenant.
 //
 int32_envelope_t*
-LedgerTypesAPI_getLedgerTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LedgerTypesAPI_getLedgerTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, ledger_type_dto_collection_query_parameters_t *ledger_type_dto_collection_query_parameters);
 
 
 // Patches a ledger type
@@ -60,7 +61,7 @@ LedgerTypesAPI_getLedgerTypesCountAsync(apiClient_t *apiClient, char *tenantId, 
 // Partially updates the specified ledger type using a JSON Patch document.
 //
 empty_envelope_t*
-LedgerTypesAPI_patchLedgerTypeAsync(apiClient_t *apiClient, char *tenantId, char *ledgerTypeId, char *api_version, char *x_api_version, list_t *operation);
+LedgerTypesAPI_patchLedgerTypeAsync(apiClient_t *apiClient, char *tenantId, char *ledgerTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates a ledger type

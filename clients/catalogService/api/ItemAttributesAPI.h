@@ -8,10 +8,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_attribute_create_dto.h"
+#include "../model/item_attribute_dto_collection_query_parameters.h"
 #include "../model/item_attribute_dto_envelope.h"
 #include "../model/item_attribute_dto_list_envelope.h"
 #include "../model/item_attribute_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Count item attributes
@@ -19,7 +20,7 @@
 // Counts all item attributes for the specified tenant.
 //
 int32_envelope_t*
-ItemAttributesAPI_countItemAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemAttributesAPI_countItemAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_attribute_dto_collection_query_parameters_t *item_attribute_dto_collection_query_parameters);
 
 
 // Create a new item attribute
@@ -51,7 +52,7 @@ ItemAttributesAPI_getItemAttributeByIdAsync(apiClient_t *apiClient, char *itemAt
 // Retrieves all item attributes for the specified tenant using OData query options.
 //
 item_attribute_dto_list_envelope_t*
-ItemAttributesAPI_getItemAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemAttributesAPI_getItemAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_attribute_dto_collection_query_parameters_t *item_attribute_dto_collection_query_parameters);
 
 
 // Patch an item attribute
@@ -59,7 +60,7 @@ ItemAttributesAPI_getItemAttributesAsync(apiClient_t *apiClient, char *tenantId,
 // Partially updates an existing item attribute for the specified tenant.
 //
 void
-ItemAttributesAPI_patchItemAttributeAsync(apiClient_t *apiClient, char *tenantId, char *itemAttributeId, char *api_version, char *x_api_version, list_t *operation);
+ItemAttributesAPI_patchItemAttributeAsync(apiClient_t *apiClient, char *tenantId, char *itemAttributeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item attribute

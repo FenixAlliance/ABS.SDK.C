@@ -8,8 +8,9 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/service_level_create_dto.h"
+#include "../model/service_level_dto_collection_query_parameters.h"
 #include "../model/service_level_dto_envelope.h"
 #include "../model/service_level_dto_i_read_only_list_envelope.h"
 #include "../model/service_level_update_dto.h"
@@ -20,7 +21,7 @@
 // Returns the count of all service levels for the specified tenant.
 //
 int32_envelope_t*
-ServiceLevelsAPI_countAllServiceLevelsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServiceLevelsAPI_countAllServiceLevelsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_level_dto_collection_query_parameters_t *service_level_dto_collection_query_parameters);
 
 
 // Create a service level
@@ -44,7 +45,7 @@ ServiceLevelsAPI_deleteServiceLevelAsync(apiClient_t *apiClient, char *tenantId,
 // Retrieves all service levels for the specified tenant.
 //
 service_level_dto_i_read_only_list_envelope_t*
-ServiceLevelsAPI_getAllServiceLevelsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServiceLevelsAPI_getAllServiceLevelsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_level_dto_collection_query_parameters_t *service_level_dto_collection_query_parameters);
 
 
 // Get a service level by ID
@@ -60,7 +61,7 @@ ServiceLevelsAPI_getServiceLevelByIdAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves all service levels for the specified service.
 //
 service_level_dto_i_read_only_list_envelope_t*
-ServiceLevelsAPI_getServiceLevelsAsync(apiClient_t *apiClient, char *tenantId, char *serviceId, char *api_version, char *x_api_version);
+ServiceLevelsAPI_getServiceLevelsAsync(apiClient_t *apiClient, char *tenantId, char *serviceId, char *api_version, char *x_api_version, service_level_dto_collection_query_parameters_t *service_level_dto_collection_query_parameters);
 
 
 // Get service levels count
@@ -68,7 +69,7 @@ ServiceLevelsAPI_getServiceLevelsAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of service levels for the specified service.
 //
 int32_envelope_t*
-ServiceLevelsAPI_getServiceLevelsCountAsync(apiClient_t *apiClient, char *tenantId, char *serviceId, char *api_version, char *x_api_version);
+ServiceLevelsAPI_getServiceLevelsCountAsync(apiClient_t *apiClient, char *tenantId, char *serviceId, char *api_version, char *x_api_version, service_level_dto_collection_query_parameters_t *service_level_dto_collection_query_parameters);
 
 
 // Patch a service level
@@ -76,7 +77,7 @@ ServiceLevelsAPI_getServiceLevelsCountAsync(apiClient_t *apiClient, char *tenant
 // Partially updates an existing service level using a JSON Patch document.
 //
 envelope_t*
-ServiceLevelsAPI_patchServiceLevelAsync(apiClient_t *apiClient, char *tenantId, char *serviceId, char *serviceLevelId, char *api_version, char *x_api_version, list_t *operation);
+ServiceLevelsAPI_patchServiceLevelAsync(apiClient_t *apiClient, char *tenantId, char *serviceId, char *serviceLevelId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a service level

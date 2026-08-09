@@ -56,15 +56,18 @@ set(SRCS
     model/object.c
     model/access_token_response.c
     model/activity_feed_dto.c
+    model/activity_feed_dto_collection_query_parameters.c
     model/activity_feed_dto_envelope.c
     model/activity_feed_dto_list_envelope.c
     model/activity_record_create_dto.c
     model/activity_record_dto.c
+    model/activity_record_dto_collection_query_parameters.c
     model/activity_record_dto_envelope.c
     model/activity_record_dto_list_envelope.c
     model/activity_record_update_dto.c
     model/activity_type_create_dto.c
     model/activity_type_dto.c
+    model/activity_type_dto_collection_query_parameters.c
     model/activity_type_dto_envelope.c
     model/activity_type_dto_list_envelope.c
     model/activity_type_update_dto.c
@@ -77,7 +80,7 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -98,15 +101,18 @@ set(HDRS
     model/object.h
     model/access_token_response.h
     model/activity_feed_dto.h
+    model/activity_feed_dto_collection_query_parameters.h
     model/activity_feed_dto_envelope.h
     model/activity_feed_dto_list_envelope.h
     model/activity_record_create_dto.h
     model/activity_record_dto.h
+    model/activity_record_dto_collection_query_parameters.h
     model/activity_record_dto_envelope.h
     model/activity_record_dto_list_envelope.h
     model/activity_record_update_dto.h
     model/activity_type_create_dto.h
     model/activity_type_dto.h
+    model/activity_type_dto_collection_query_parameters.h
     model/activity_type_dto_envelope.h
     model/activity_type_dto_list_envelope.h
     model/activity_type_update_dto.h
@@ -119,7 +125,7 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

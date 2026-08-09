@@ -8,18 +8,22 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/project_create_dto.h"
+#include "../model/project_dto_collection_query_parameters.h"
 #include "../model/project_dto_envelope.h"
 #include "../model/project_dto_list_envelope.h"
 #include "../model/project_period_create_dto.h"
 #include "../model/project_period_dto_list_envelope.h"
 #include "../model/project_period_update_dto.h"
 #include "../model/project_task_create_dto.h"
+#include "../model/project_task_dto_collection_query_parameters.h"
 #include "../model/project_task_dto_list_envelope.h"
 #include "../model/project_task_update_dto.h"
+#include "../model/project_time_log_dto_collection_query_parameters.h"
 #include "../model/project_time_log_dto_list_envelope.h"
 #include "../model/project_update_dto.h"
+#include "../model/task_category_dto_collection_query_parameters.h"
 #include "../model/task_category_dto_list_envelope.h"
 
 
@@ -92,7 +96,7 @@ ProjectsAPI_getProjectPeriodsAsync(apiClient_t *apiClient, char *projectId, char
 // Gets all task categories for a specific project with OData support.
 //
 task_category_dto_list_envelope_t*
-ProjectsAPI_getProjectTaskCategoriesAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+ProjectsAPI_getProjectTaskCategoriesAsync(apiClient_t *apiClient, char *projectId, char *tenantId, task_category_dto_collection_query_parameters_t *task_category_dto_collection_query_parameters);
 
 
 // Counts project task categories
@@ -100,7 +104,7 @@ ProjectsAPI_getProjectTaskCategoriesAsync(apiClient_t *apiClient, char *projectI
 // Gets the count of task categories for a specific project.
 //
 int32_envelope_t*
-ProjectsAPI_getProjectTaskCategoriesCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+ProjectsAPI_getProjectTaskCategoriesCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId, task_category_dto_collection_query_parameters_t *task_category_dto_collection_query_parameters);
 
 
 // Counts project time logs
@@ -108,7 +112,7 @@ ProjectsAPI_getProjectTaskCategoriesCountAsync(apiClient_t *apiClient, char *pro
 // Gets the count of time log entries for a specific project.
 //
 int32_envelope_t*
-ProjectsAPI_getProjectTimeLogsCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+ProjectsAPI_getProjectTimeLogsCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_time_log_dto_collection_query_parameters_t *project_time_log_dto_collection_query_parameters);
 
 
 // Retrieves all projects
@@ -116,7 +120,7 @@ ProjectsAPI_getProjectTimeLogsCountAsync(apiClient_t *apiClient, char *projectId
 // Gets all projects for the current tenant with OData support.
 //
 project_dto_list_envelope_t*
-ProjectsAPI_getProjectsByTenantIdAsync(apiClient_t *apiClient, char *tenantId);
+ProjectsAPI_getProjectsByTenantIdAsync(apiClient_t *apiClient, char *tenantId, project_dto_collection_query_parameters_t *project_dto_collection_query_parameters);
 
 
 // Counts projects
@@ -124,7 +128,7 @@ ProjectsAPI_getProjectsByTenantIdAsync(apiClient_t *apiClient, char *tenantId);
 // Gets the count of projects for the current tenant.
 //
 int32_envelope_t*
-ProjectsAPI_getProjectsCountByTenantIdAsync(apiClient_t *apiClient, char *tenantId);
+ProjectsAPI_getProjectsCountByTenantIdAsync(apiClient_t *apiClient, char *tenantId, project_dto_collection_query_parameters_t *project_dto_collection_query_parameters);
 
 
 // Retrieves project tasks
@@ -132,7 +136,7 @@ ProjectsAPI_getProjectsCountByTenantIdAsync(apiClient_t *apiClient, char *tenant
 // Gets all tasks for a specific project with OData support.
 //
 project_task_dto_list_envelope_t*
-ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_task_dto_collection_query_parameters_t *project_task_dto_collection_query_parameters);
 
 
 // Counts project tasks
@@ -140,7 +144,7 @@ ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, cha
 // Gets the count of tasks for a specific project.
 //
 int32_envelope_t*
-ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_task_dto_collection_query_parameters_t *project_task_dto_collection_query_parameters);
 
 
 // Retrieves project time logs
@@ -148,7 +152,7 @@ ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId
 // Gets all time log entries for a specific project with OData support.
 //
 project_time_log_dto_list_envelope_t*
-ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId);
+ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_time_log_dto_collection_query_parameters_t *project_time_log_dto_collection_query_parameters);
 
 
 // Patches a project
@@ -156,7 +160,7 @@ ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, 
 // Partially updates the specified project.
 //
 empty_envelope_t*
-ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, list_t *operation);
+ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, list_t *patch_operation);
 
 
 // Patches a project period
@@ -164,7 +168,7 @@ ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *ten
 // Partially updates the specified period for a project.
 //
 empty_envelope_t*
-ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, char *projectPeriodId, char *tenantId, list_t *operation);
+ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, char *projectPeriodId, char *tenantId, list_t *patch_operation);
 
 
 // Patches a project task
@@ -172,7 +176,7 @@ ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, cha
 // Partially updates the specified task in a project.
 //
 empty_envelope_t*
-ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, list_t *operation);
+ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, list_t *patch_operation);
 
 
 // Updates a project

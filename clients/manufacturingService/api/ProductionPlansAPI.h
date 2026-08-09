@@ -8,9 +8,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/production_plan_create_dto.h"
 #include "../model/production_plan_dto.h"
+#include "../model/production_plan_dto_collection_query_parameters.h"
 #include "../model/production_plan_dto_list_envelope.h"
 #include "../model/production_plan_update_dto.h"
 
@@ -44,7 +45,7 @@ ProductionPlansAPI_getProductionPlanByIdAsync(apiClient_t *apiClient, char *tena
 // Retrieves all production plans for the specified tenant.
 //
 production_plan_dto_list_envelope_t*
-ProductionPlansAPI_getProductionPlansAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ProductionPlansAPI_getProductionPlansAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, production_plan_dto_collection_query_parameters_t *production_plan_dto_collection_query_parameters);
 
 
 // Get production plans count
@@ -52,7 +53,7 @@ ProductionPlansAPI_getProductionPlansAsync(apiClient_t *apiClient, char *tenantI
 // Returns the count of production plans for the specified tenant.
 //
 int32_envelope_t*
-ProductionPlansAPI_getProductionPlansCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ProductionPlansAPI_getProductionPlansCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, production_plan_dto_collection_query_parameters_t *production_plan_dto_collection_query_parameters);
 
 
 // Patch a production plan
@@ -60,7 +61,7 @@ ProductionPlansAPI_getProductionPlansCountAsync(apiClient_t *apiClient, char *te
 // Patch a production plan
 //
 empty_envelope_t*
-ProductionPlansAPI_patchProductionPlanAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+ProductionPlansAPI_patchProductionPlanAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a production plan

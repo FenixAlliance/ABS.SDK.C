@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/receipt_create_dto.h"
+#include "../model/receipt_dto_collection_query_parameters.h"
 #include "../model/receipt_dto_envelope.h"
 #include "../model/receipt_dto_i_read_only_list_envelope.h"
 #include "../model/receipt_update_dto.h"
@@ -44,7 +45,7 @@ ReceiptsAPI_getReceiptDetailsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Fetches all receipts for a given tenant with OData support.
 //
 receipt_dto_i_read_only_list_envelope_t*
-ReceiptsAPI_getReceiptsAsync(apiClient_t *apiClient, char *tenantId);
+ReceiptsAPI_getReceiptsAsync(apiClient_t *apiClient, char *tenantId, receipt_dto_collection_query_parameters_t *receipt_dto_collection_query_parameters);
 
 
 // Gets count of tenant receipts
@@ -52,7 +53,7 @@ ReceiptsAPI_getReceiptsAsync(apiClient_t *apiClient, char *tenantId);
 // Returns total number of receipts for the tenant with OData filter support.
 //
 int32_envelope_t*
-ReceiptsAPI_getReceiptsCountAsync(apiClient_t *apiClient, char *tenantId);
+ReceiptsAPI_getReceiptsCountAsync(apiClient_t *apiClient, char *tenantId, receipt_dto_collection_query_parameters_t *receipt_dto_collection_query_parameters);
 
 
 // Patches a receipt
@@ -60,7 +61,7 @@ ReceiptsAPI_getReceiptsCountAsync(apiClient_t *apiClient, char *tenantId);
 // Partially updates the specified receipt using a JSON Patch document.
 //
 empty_envelope_t*
-ReceiptsAPI_patchReceiptAsync(apiClient_t *apiClient, char *tenantId, char *receiptId, list_t *operation);
+ReceiptsAPI_patchReceiptAsync(apiClient_t *apiClient, char *tenantId, char *receiptId, list_t *patch_operation);
 
 
 // Updates a receipt

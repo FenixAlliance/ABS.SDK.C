@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/refund_request_create_dto.h"
+#include "../model/refund_request_dto_collection_query_parameters.h"
 #include "../model/refund_request_dto_envelope.h"
 #include "../model/refund_request_dto_list_envelope.h"
 #include "../model/refund_request_update_dto.h"
@@ -36,13 +37,13 @@ RefundRequestsAPI_getRefundRequestAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieve refund requests
 //
 refund_request_dto_list_envelope_t*
-RefundRequestsAPI_getRefundRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+RefundRequestsAPI_getRefundRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, refund_request_dto_collection_query_parameters_t *refund_request_dto_collection_query_parameters);
 
 
 // Get refund requests count
 //
 int32_envelope_t*
-RefundRequestsAPI_getRefundRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+RefundRequestsAPI_getRefundRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, refund_request_dto_collection_query_parameters_t *refund_request_dto_collection_query_parameters);
 
 
 // Patch a refund request
@@ -50,7 +51,7 @@ RefundRequestsAPI_getRefundRequestsCountAsync(apiClient_t *apiClient, char *tena
 // Partially updates an existing refund request by its unique identifier.
 //
 empty_envelope_t*
-RefundRequestsAPI_patchRefundRequestAsync(apiClient_t *apiClient, char *tenantId, char *refundRequestId, char *api_version, char *x_api_version, list_t *operation);
+RefundRequestsAPI_patchRefundRequestAsync(apiClient_t *apiClient, char *tenantId, char *refundRequestId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a refund request

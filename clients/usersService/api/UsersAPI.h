@@ -5,6 +5,7 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/address_dto_collection_query_parameters.h"
 #include "../model/address_dto_list_envelope.h"
 #include "../model/cart_dto_envelope.h"
 #include "../model/empty_envelope.h"
@@ -12,11 +13,14 @@
 #include "../model/extended_tenant_dto_list_envelope.h"
 #include "../model/extended_tenant_enrollment_dto_list_envelope.h"
 #include "../model/extended_user_dto_envelope.h"
+#include "../model/follow_record_dto_collection_query_parameters.h"
 #include "../model/follow_record_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/notification_dto_collection_query_parameters.h"
 #include "../model/notification_dto_list_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/social_profile_dto_envelope.h"
+#include "../model/tenant_dto_collection_query_parameters.h"
 #include "../model/tenant_dto_list_envelope.h"
 #include "../model/tenant_enrollment_dto_envelope.h"
 #include "../model/tenant_enrollment_dto_list_envelope.h"
@@ -33,7 +37,7 @@
 // Count the social profiles that follow the current user
 //
 int32_envelope_t*
-UsersAPI_countCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+UsersAPI_countCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 
 
 // Count the social profiles that the current user follows
@@ -41,7 +45,7 @@ UsersAPI_countCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_versio
 // Count the social profiles that the current user follows
 //
 int32_envelope_t*
-UsersAPI_countCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+UsersAPI_countCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 
 
 // Count the notifications for the current user
@@ -49,7 +53,7 @@ UsersAPI_countCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version,
 // Count the notifications for the current user
 //
 int32_envelope_t*
-UsersAPI_countCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+UsersAPI_countCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters);
 
 
 // Count the tenants that the current user is enrolled in
@@ -57,7 +61,7 @@ UsersAPI_countCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_ve
 // Count the tenants that the current user is enrolled in
 //
 int32_envelope_t*
-UsersAPI_countCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+UsersAPI_countCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, tenant_dto_collection_query_parameters_t *tenant_dto_collection_query_parameters);
 
 
 // Get the list of addresses for the current user
@@ -65,7 +69,7 @@ UsersAPI_countCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version,
 // Get the list of addresses for the current user
 //
 address_dto_list_envelope_t*
-UsersAPI_getCurrentUserAddressesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+UsersAPI_getCurrentUserAddressesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, address_dto_collection_query_parameters_t *address_dto_collection_query_parameters);
 
 
 // Gets the current user
@@ -113,7 +117,7 @@ UsersAPI_getCurrentUserEnrollmentsExtendedAsync(apiClient_t *apiClient, char *ap
 // Get the social profiles that follow the current user
 //
 follow_record_dto_list_envelope_t*
-UsersAPI_getCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+UsersAPI_getCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 
 
 // Get the social profiles that the current user follows
@@ -121,7 +125,7 @@ UsersAPI_getCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version,
 // Get the social profiles that the current user follows
 //
 follow_record_dto_list_envelope_t*
-UsersAPI_getCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+UsersAPI_getCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 
 
 // Get the list of tenant enrollment invitations for the current user
@@ -137,7 +141,7 @@ UsersAPI_getCurrentUserInvitationAsync(apiClient_t *apiClient, char *api_version
 // Get the list of notifications for the current user
 //
 notification_dto_list_envelope_t*
-UsersAPI_getCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+UsersAPI_getCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters);
 
 
 // Get the settings for the current user
@@ -161,7 +165,7 @@ UsersAPI_getCurrentUserSocialProfileAsync(apiClient_t *apiClient, char *api_vers
 // Get the tenants that the current user is enrolled in
 //
 tenant_dto_list_envelope_t*
-UsersAPI_getCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+UsersAPI_getCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, tenant_dto_collection_query_parameters_t *tenant_dto_collection_query_parameters);
 
 
 // Get the tenants that the current user is enrolled in
@@ -201,7 +205,7 @@ UsersAPI_getExtendedCurrentUserAsync(apiClient_t *apiClient, char *api_version, 
 // Partially update the current user's profile
 //
 empty_envelope_t*
-UsersAPI_patchCurrentUserAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, list_t *operation);
+UsersAPI_patchCurrentUserAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update the current user's avatar

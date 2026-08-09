@@ -268,7 +268,7 @@ No authorization required
 //
 // Retrieves all port calls for a specific voyage.
 //
-voyage_port_call_dto_list_envelope_t* VoyagesAPI_getVoyagePortCallsAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version);
+voyage_port_call_dto_list_envelope_t* VoyagesAPI_getVoyagePortCallsAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version, voyage_port_call_dto_collection_query_parameters_t *voyage_port_call_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -279,6 +279,7 @@ Name | Type | Description  | Notes
 **voyageId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**voyage_port_call_dto_collection_query_parameters** | **[voyage_port_call_dto_collection_query_parameters_t](voyage_port_call_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -291,7 +292,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -302,7 +303,7 @@ No authorization required
 //
 // Returns the count of port calls for a specific voyage.
 //
-int32_envelope_t* VoyagesAPI_getVoyagePortCallsCountAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version);
+int32_envelope_t* VoyagesAPI_getVoyagePortCallsCountAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version, voyage_port_call_dto_collection_query_parameters_t *voyage_port_call_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -313,6 +314,7 @@ Name | Type | Description  | Notes
 **voyageId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**voyage_port_call_dto_collection_query_parameters** | **[voyage_port_call_dto_collection_query_parameters_t](voyage_port_call_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -325,7 +327,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -336,7 +338,7 @@ No authorization required
 //
 // Retrieves all voyages for the specified tenant.
 //
-voyage_dto_list_envelope_t* VoyagesAPI_getVoyagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+voyage_dto_list_envelope_t* VoyagesAPI_getVoyagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, voyage_dto_collection_query_parameters_t *voyage_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -346,6 +348,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**voyage_dto_collection_query_parameters** | **[voyage_dto_collection_query_parameters_t](voyage_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -358,7 +361,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -369,7 +372,7 @@ No authorization required
 //
 // Returns the count of voyages for the specified tenant.
 //
-int32_envelope_t* VoyagesAPI_getVoyagesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* VoyagesAPI_getVoyagesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, voyage_dto_collection_query_parameters_t *voyage_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -379,6 +382,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**voyage_dto_collection_query_parameters** | **[voyage_dto_collection_query_parameters_t](voyage_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -391,7 +395,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -402,7 +406,7 @@ No authorization required
 //
 // Partially updates an existing voyage using JSON Patch.
 //
-empty_envelope_t* VoyagesAPI_patchVoyageAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* VoyagesAPI_patchVoyageAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -413,7 +417,7 @@ Name | Type | Description  | Notes
 **voyageId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -437,7 +441,7 @@ No authorization required
 //
 // Partially updates an existing voyage port call using JSON Patch.
 //
-empty_envelope_t* VoyagesAPI_patchVoyagePortCallAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *portCallId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* VoyagesAPI_patchVoyagePortCallAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *portCallId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -449,7 +453,7 @@ Name | Type | Description  | Notes
 **portCallId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

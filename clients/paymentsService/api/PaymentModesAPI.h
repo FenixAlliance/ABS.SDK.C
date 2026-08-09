@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/payment_mode_create_dto.h"
+#include "../model/payment_mode_dto_collection_query_parameters.h"
 #include "../model/payment_mode_dto_envelope.h"
 #include "../model/payment_mode_dto_i_read_only_list_envelope.h"
 #include "../model/payment_mode_update_dto.h"
@@ -44,7 +45,7 @@ PaymentModesAPI_getPaymentModeDetailsAsync(apiClient_t *apiClient, char *tenantI
 // Gets all payment modes for the current tenant with OData support.
 //
 payment_mode_dto_i_read_only_list_envelope_t*
-PaymentModesAPI_getPaymentModesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PaymentModesAPI_getPaymentModesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payment_mode_dto_collection_query_parameters_t *payment_mode_dto_collection_query_parameters);
 
 
 // Counts payment modes
@@ -52,7 +53,7 @@ PaymentModesAPI_getPaymentModesAsync(apiClient_t *apiClient, char *tenantId, cha
 // Gets the count of payment modes for the current tenant.
 //
 int32_envelope_t*
-PaymentModesAPI_getPaymentModesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PaymentModesAPI_getPaymentModesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payment_mode_dto_collection_query_parameters_t *payment_mode_dto_collection_query_parameters);
 
 
 // Patch a payment mode
@@ -60,7 +61,7 @@ PaymentModesAPI_getPaymentModesCountAsync(apiClient_t *apiClient, char *tenantId
 // Patch a payment mode
 //
 empty_envelope_t*
-PaymentModesAPI_patchPaymentModeAsync(apiClient_t *apiClient, char *tenantId, char *paymentModeId, char *api_version, char *x_api_version, list_t *operation);
+PaymentModesAPI_patchPaymentModeAsync(apiClient_t *apiClient, char *tenantId, char *paymentModeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates a payment mode

@@ -7,13 +7,16 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/web_page_category_create_dto.h"
+#include "../model/web_page_category_dto_collection_query_parameters.h"
 #include "../model/web_page_category_dto_list_envelope.h"
 #include "../model/web_page_create_dto.h"
+#include "../model/web_page_dto_collection_query_parameters.h"
 #include "../model/web_page_dto_envelope.h"
 #include "../model/web_page_dto_list_envelope.h"
 #include "../model/web_page_tag_create_dto.h"
+#include "../model/web_page_tag_dto_collection_query_parameters.h"
 #include "../model/web_page_tag_dto_list_envelope.h"
 #include "../model/web_page_update_dto.h"
 
@@ -23,7 +26,7 @@
 // Counts all web pages for the specified tenant.
 //
 int32_envelope_t*
-WebPagesAPI_countWebPagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebPagesAPI_countWebPagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_page_dto_collection_query_parameters_t *web_page_dto_collection_query_parameters);
 
 
 // Create a web page
@@ -63,7 +66,7 @@ WebPagesAPI_deleteWebPageAsync(apiClient_t *apiClient, char *tenantId, char *web
 // Retrieves all categories related to a specific web page.
 //
 web_page_category_dto_list_envelope_t*
-WebPagesAPI_getCategoriesByWebPageAsync(apiClient_t *apiClient, char *webPageId, char *api_version, char *x_api_version);
+WebPagesAPI_getCategoriesByWebPageAsync(apiClient_t *apiClient, char *webPageId, char *api_version, char *x_api_version, web_page_category_dto_collection_query_parameters_t *web_page_category_dto_collection_query_parameters);
 
 
 // Get tags by web page
@@ -71,7 +74,7 @@ WebPagesAPI_getCategoriesByWebPageAsync(apiClient_t *apiClient, char *webPageId,
 // Retrieves all tags related to a specific web page.
 //
 web_page_tag_dto_list_envelope_t*
-WebPagesAPI_getTagsByWebPageAsync(apiClient_t *apiClient, char *webPageId, char *api_version, char *x_api_version);
+WebPagesAPI_getTagsByWebPageAsync(apiClient_t *apiClient, char *webPageId, char *api_version, char *x_api_version, web_page_tag_dto_collection_query_parameters_t *web_page_tag_dto_collection_query_parameters);
 
 
 // Get web page by ID
@@ -87,7 +90,7 @@ WebPagesAPI_getWebPageByIdAsync(apiClient_t *apiClient, char *tenantId, char *we
 // Retrieves all web pages for the specified tenant.
 //
 web_page_dto_list_envelope_t*
-WebPagesAPI_getWebPagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebPagesAPI_getWebPagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_page_dto_collection_query_parameters_t *web_page_dto_collection_query_parameters);
 
 
 // Patch a web page
@@ -95,7 +98,7 @@ WebPagesAPI_getWebPagesAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 // Partially updates an existing web page for the specified tenant.
 //
 void
-WebPagesAPI_patchWebPageAsync(apiClient_t *apiClient, char *tenantId, char *webPageId, char *api_version, char *x_api_version, list_t *operation);
+WebPagesAPI_patchWebPageAsync(apiClient_t *apiClient, char *tenantId, char *webPageId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Relate web page to category

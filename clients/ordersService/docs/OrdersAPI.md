@@ -227,7 +227,7 @@ No authorization required
 //
 // Retrieves a list of extended order details for the specified tenant.
 //
-extended_order_dto_list_envelope_t* OrdersAPI_getExtendedOrders(apiClient_t *apiClient, char *tenantId);
+extended_order_dto_list_envelope_t* OrdersAPI_getExtendedOrders(apiClient_t *apiClient, char *tenantId, extended_order_dto_collection_query_parameters_t *extended_order_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -235,6 +235,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**extended_order_dto_collection_query_parameters** | **[extended_order_dto_collection_query_parameters_t](extended_order_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -247,7 +248,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -323,7 +324,7 @@ No authorization required
 //
 // Retrieves the lines (items) for the specified order.
 //
-order_line_dto_list_envelope_t* OrdersAPI_getOrderLines(apiClient_t *apiClient, char *tenantId, char *orderId, char *itemId);
+order_line_dto_list_envelope_t* OrdersAPI_getOrderLines(apiClient_t *apiClient, char *tenantId, char *orderId, char *itemId, order_line_dto_collection_query_parameters_t *order_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -333,6 +334,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **orderId** | **char \*** |  | 
 **itemId** | **char \*** |  | [optional] 
+**order_line_dto_collection_query_parameters** | **[order_line_dto_collection_query_parameters_t](order_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -345,7 +347,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -356,7 +358,7 @@ No authorization required
 //
 // Retrieves the total number of lines for the specified order.
 //
-int32_envelope_t* OrdersAPI_getOrderLinesCount(apiClient_t *apiClient, char *tenantId, char *orderId);
+int32_envelope_t* OrdersAPI_getOrderLinesCount(apiClient_t *apiClient, char *tenantId, char *orderId, order_line_dto_collection_query_parameters_t *order_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -365,6 +367,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **orderId** | **char \*** |  | 
+**order_line_dto_collection_query_parameters** | **[order_line_dto_collection_query_parameters_t](order_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -377,7 +380,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -388,7 +391,7 @@ No authorization required
 //
 // Retrieves a list of orders for the specified tenant.
 //
-order_dto_list_envelope_t* OrdersAPI_getOrders(apiClient_t *apiClient, char *tenantId);
+order_dto_list_envelope_t* OrdersAPI_getOrders(apiClient_t *apiClient, char *tenantId, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -396,6 +399,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**order_dto_collection_query_parameters** | **[order_dto_collection_query_parameters_t](order_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -408,7 +412,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -419,7 +423,7 @@ No authorization required
 //
 // Retrieves the total number of orders for the specified tenant.
 //
-int32_envelope_t* OrdersAPI_getOrdersCount(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* OrdersAPI_getOrdersCount(apiClient_t *apiClient, char *tenantId, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -427,6 +431,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**order_dto_collection_query_parameters** | **[order_dto_collection_query_parameters_t](order_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -439,7 +444,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -450,7 +455,7 @@ No authorization required
 //
 // Applies a JSON Patch document to partially update an existing order.
 //
-empty_envelope_t* OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list_t *operation);
+empty_envelope_t* OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -459,7 +464,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **orderId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -483,7 +488,7 @@ No authorization required
 //
 // Applies a JSON Patch document to partially update a specific order line.
 //
-empty_envelope_t* OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, char *orderLineId, list_t *operation);
+empty_envelope_t* OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, char *orderLineId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -493,7 +498,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **orderId** | **char \*** |  | 
 **orderLineId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

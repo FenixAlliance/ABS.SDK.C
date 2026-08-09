@@ -120,7 +120,7 @@ No authorization required
 //
 // Retrieves all pricing rules for the specified tenant, with optional OData query options.
 //
-pricing_rule_dto_list_envelope_t* PricingRulesAPI_getPricingRules(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+pricing_rule_dto_list_envelope_t* PricingRulesAPI_getPricingRules(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, pricing_rule_dto_collection_query_parameters_t *pricing_rule_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -130,6 +130,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**pricing_rule_dto_collection_query_parameters** | **[pricing_rule_dto_collection_query_parameters_t](pricing_rule_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -142,7 +143,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -153,7 +154,7 @@ No authorization required
 //
 // Gets the count of pricing rules for the current tenant.
 //
-int32_envelope_t* PricingRulesAPI_getPricingRulesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* PricingRulesAPI_getPricingRulesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, pricing_rule_dto_collection_query_parameters_t *pricing_rule_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**pricing_rule_dto_collection_query_parameters** | **[pricing_rule_dto_collection_query_parameters_t](pricing_rule_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -175,7 +177,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -186,7 +188,7 @@ No authorization required
 //
 // Partially updates a pricing rule using a JSON Patch document.
 //
-void PricingRulesAPI_patchPricingRule(apiClient_t *apiClient, char *tenantId, char *pricingRuleId, char *api_version, char *x_api_version, list_t *operation);
+void PricingRulesAPI_patchPricingRule(apiClient_t *apiClient, char *tenantId, char *pricingRuleId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -197,7 +199,7 @@ Name | Type | Description  | Notes
 **pricingRuleId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

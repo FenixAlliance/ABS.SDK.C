@@ -57,11 +57,13 @@ set(SRCS
     model/access_token_response.c
     model/appraisal_stage_create_dto.c
     model/appraisal_stage_dto.c
+    model/appraisal_stage_dto_collection_query_parameters.c
     model/appraisal_stage_dto_envelope.c
     model/appraisal_stage_dto_list_envelope.c
     model/appraisal_stage_update_dto.c
     model/appraisal_workflow_create_dto.c
     model/appraisal_workflow_dto.c
+    model/appraisal_workflow_dto_collection_query_parameters.c
     model/appraisal_workflow_dto_envelope.c
     model/appraisal_workflow_dto_list_envelope.c
     model/appraisal_workflow_update_dto.c
@@ -69,21 +71,25 @@ set(SRCS
     model/contact_dto.c
     model/employee_appraisal_session_create_dto.c
     model/employee_appraisal_session_dto.c
+    model/employee_appraisal_session_dto_collection_query_parameters.c
     model/employee_appraisal_session_dto_envelope.c
     model/employee_appraisal_session_dto_list_envelope.c
     model/employee_appraisal_session_update_dto.c
     model/employee_profile_create_dto.c
     model/employee_profile_dto.c
+    model/employee_profile_dto_collection_query_parameters.c
     model/employee_profile_dto_envelope.c
     model/employee_profile_dto_list_envelope.c
     model/employee_profile_update_dto.c
     model/employee_type_create_dto.c
     model/employee_type_dto.c
+    model/employee_type_dto_collection_query_parameters.c
     model/employee_type_dto_envelope.c
     model/employee_type_dto_list_envelope.c
     model/employee_type_update_dto.c
     model/employer_profile_create_dto.c
     model/employer_profile_dto.c
+    model/employer_profile_dto_collection_query_parameters.c
     model/employer_profile_dto_envelope.c
     model/employer_profile_dto_list_envelope.c
     model/employer_profile_update_dto.c
@@ -92,11 +98,13 @@ set(SRCS
     model/forgot_password_request.c
     model/gig_application_create_dto.c
     model/gig_application_dto.c
+    model/gig_application_dto_collection_query_parameters.c
     model/gig_application_dto_envelope.c
     model/gig_application_dto_list_envelope.c
     model/gig_application_update_dto.c
     model/gig_create_dto.c
     model/gig_dto.c
+    model/gig_dto_collection_query_parameters.c
     model/gig_dto_envelope.c
     model/gig_dto_list_envelope.c
     model/gig_update_dto.c
@@ -106,52 +114,62 @@ set(SRCS
     model/int32_envelope.c
     model/job_applicant_profile_create_dto.c
     model/job_applicant_profile_dto.c
+    model/job_applicant_profile_dto_collection_query_parameters.c
     model/job_applicant_profile_dto_envelope.c
     model/job_applicant_profile_dto_list_envelope.c
     model/job_applicant_profile_update_dto.c
     model/job_field_create_dto.c
     model/job_field_dto.c
+    model/job_field_dto_collection_query_parameters.c
     model/job_field_dto_envelope.c
     model/job_field_dto_list_envelope.c
     model/job_field_update_dto.c
     model/job_offer_application_create_dto.c
     model/job_offer_application_dto.c
+    model/job_offer_application_dto_collection_query_parameters.c
     model/job_offer_application_dto_envelope.c
     model/job_offer_application_dto_list_envelope.c
     model/job_offer_application_update_dto.c
     model/job_offer_create_dto.c
     model/job_offer_dto.c
+    model/job_offer_dto_collection_query_parameters.c
     model/job_offer_dto_envelope.c
     model/job_offer_dto_list_envelope.c
     model/job_offer_field_record_create_dto.c
     model/job_offer_field_record_dto.c
+    model/job_offer_field_record_dto_collection_query_parameters.c
     model/job_offer_field_record_dto_envelope.c
     model/job_offer_field_record_dto_list_envelope.c
     model/job_offer_field_record_update_dto.c
     model/job_offer_update_dto.c
     model/job_title_create_dto.c
     model/job_title_dto.c
+    model/job_title_dto_collection_query_parameters.c
     model/job_title_dto_envelope.c
     model/job_title_dto_list_envelope.c
     model/job_title_update_dto.c
     model/leave_application_create_dto.c
     model/leave_application_dto.c
+    model/leave_application_dto_collection_query_parameters.c
     model/leave_application_dto_envelope.c
     model/leave_application_dto_list_envelope.c
     model/leave_application_update_dto.c
     model/leave_type_create_dto.c
     model/leave_type_dto.c
+    model/leave_type_dto_collection_query_parameters.c
     model/leave_type_dto_envelope.c
     model/leave_type_dto_list_envelope.c
     model/leave_type_update_dto.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/payroll_create_dto.c
     model/payroll_dto.c
+    model/payroll_dto_collection_query_parameters.c
     model/payroll_dto_envelope.c
     model/payroll_dto_list_envelope.c
     model/payroll_period_create_dto.c
     model/payroll_period_dto.c
+    model/payroll_period_dto_collection_query_parameters.c
     model/payroll_period_dto_envelope.c
     model/payroll_period_dto_list_envelope.c
     model/payroll_period_update_dto.c
@@ -160,6 +178,7 @@ set(SRCS
     model/register_request.c
     model/required_skill_record_create_dto.c
     model/required_skill_record_dto.c
+    model/required_skill_record_dto_collection_query_parameters.c
     model/required_skill_record_dto_envelope.c
     model/required_skill_record_dto_list_envelope.c
     model/required_skill_record_update_dto.c
@@ -167,35 +186,42 @@ set(SRCS
     model/reset_password_request.c
     model/salary_create_dto.c
     model/salary_dto.c
+    model/salary_dto_collection_query_parameters.c
     model/salary_dto_envelope.c
     model/salary_dto_list_envelope.c
     model/salary_update_dto.c
     model/schedule_create_dto.c
     model/schedule_dto.c
+    model/schedule_dto_collection_query_parameters.c
     model/schedule_dto_envelope.c
     model/schedule_dto_list_envelope.c
     model/schedule_update_dto.c
     model/shift_create_dto.c
     model/shift_dto.c
+    model/shift_dto_collection_query_parameters.c
     model/shift_dto_envelope.c
     model/shift_dto_list_envelope.c
     model/shift_update_dto.c
     model/time_interval_create_dto.c
     model/time_interval_dto.c
+    model/time_interval_dto_collection_query_parameters.c
     model/time_interval_dto_envelope.c
     model/time_interval_dto_list_envelope.c
     model/time_interval_update_dto.c
     model/training_program_course_create_dto.c
     model/training_program_course_dto.c
+    model/training_program_course_dto_collection_query_parameters.c
     model/training_program_course_dto_envelope.c
     model/training_program_course_dto_list_envelope.c
     model/training_program_course_update_dto.c
     model/training_program_create_dto.c
     model/training_program_dto.c
+    model/training_program_dto_collection_query_parameters.c
     model/training_program_dto_envelope.c
     model/training_program_dto_list_envelope.c
     model/training_program_event_create_dto.c
     model/training_program_event_dto.c
+    model/training_program_event_dto_collection_query_parameters.c
     model/training_program_event_dto_envelope.c
     model/training_program_event_dto_list_envelope.c
     model/training_program_event_update_dto.c
@@ -242,11 +268,13 @@ set(HDRS
     model/access_token_response.h
     model/appraisal_stage_create_dto.h
     model/appraisal_stage_dto.h
+    model/appraisal_stage_dto_collection_query_parameters.h
     model/appraisal_stage_dto_envelope.h
     model/appraisal_stage_dto_list_envelope.h
     model/appraisal_stage_update_dto.h
     model/appraisal_workflow_create_dto.h
     model/appraisal_workflow_dto.h
+    model/appraisal_workflow_dto_collection_query_parameters.h
     model/appraisal_workflow_dto_envelope.h
     model/appraisal_workflow_dto_list_envelope.h
     model/appraisal_workflow_update_dto.h
@@ -254,21 +282,25 @@ set(HDRS
     model/contact_dto.h
     model/employee_appraisal_session_create_dto.h
     model/employee_appraisal_session_dto.h
+    model/employee_appraisal_session_dto_collection_query_parameters.h
     model/employee_appraisal_session_dto_envelope.h
     model/employee_appraisal_session_dto_list_envelope.h
     model/employee_appraisal_session_update_dto.h
     model/employee_profile_create_dto.h
     model/employee_profile_dto.h
+    model/employee_profile_dto_collection_query_parameters.h
     model/employee_profile_dto_envelope.h
     model/employee_profile_dto_list_envelope.h
     model/employee_profile_update_dto.h
     model/employee_type_create_dto.h
     model/employee_type_dto.h
+    model/employee_type_dto_collection_query_parameters.h
     model/employee_type_dto_envelope.h
     model/employee_type_dto_list_envelope.h
     model/employee_type_update_dto.h
     model/employer_profile_create_dto.h
     model/employer_profile_dto.h
+    model/employer_profile_dto_collection_query_parameters.h
     model/employer_profile_dto_envelope.h
     model/employer_profile_dto_list_envelope.h
     model/employer_profile_update_dto.h
@@ -277,11 +309,13 @@ set(HDRS
     model/forgot_password_request.h
     model/gig_application_create_dto.h
     model/gig_application_dto.h
+    model/gig_application_dto_collection_query_parameters.h
     model/gig_application_dto_envelope.h
     model/gig_application_dto_list_envelope.h
     model/gig_application_update_dto.h
     model/gig_create_dto.h
     model/gig_dto.h
+    model/gig_dto_collection_query_parameters.h
     model/gig_dto_envelope.h
     model/gig_dto_list_envelope.h
     model/gig_update_dto.h
@@ -291,52 +325,62 @@ set(HDRS
     model/int32_envelope.h
     model/job_applicant_profile_create_dto.h
     model/job_applicant_profile_dto.h
+    model/job_applicant_profile_dto_collection_query_parameters.h
     model/job_applicant_profile_dto_envelope.h
     model/job_applicant_profile_dto_list_envelope.h
     model/job_applicant_profile_update_dto.h
     model/job_field_create_dto.h
     model/job_field_dto.h
+    model/job_field_dto_collection_query_parameters.h
     model/job_field_dto_envelope.h
     model/job_field_dto_list_envelope.h
     model/job_field_update_dto.h
     model/job_offer_application_create_dto.h
     model/job_offer_application_dto.h
+    model/job_offer_application_dto_collection_query_parameters.h
     model/job_offer_application_dto_envelope.h
     model/job_offer_application_dto_list_envelope.h
     model/job_offer_application_update_dto.h
     model/job_offer_create_dto.h
     model/job_offer_dto.h
+    model/job_offer_dto_collection_query_parameters.h
     model/job_offer_dto_envelope.h
     model/job_offer_dto_list_envelope.h
     model/job_offer_field_record_create_dto.h
     model/job_offer_field_record_dto.h
+    model/job_offer_field_record_dto_collection_query_parameters.h
     model/job_offer_field_record_dto_envelope.h
     model/job_offer_field_record_dto_list_envelope.h
     model/job_offer_field_record_update_dto.h
     model/job_offer_update_dto.h
     model/job_title_create_dto.h
     model/job_title_dto.h
+    model/job_title_dto_collection_query_parameters.h
     model/job_title_dto_envelope.h
     model/job_title_dto_list_envelope.h
     model/job_title_update_dto.h
     model/leave_application_create_dto.h
     model/leave_application_dto.h
+    model/leave_application_dto_collection_query_parameters.h
     model/leave_application_dto_envelope.h
     model/leave_application_dto_list_envelope.h
     model/leave_application_update_dto.h
     model/leave_type_create_dto.h
     model/leave_type_dto.h
+    model/leave_type_dto_collection_query_parameters.h
     model/leave_type_dto_envelope.h
     model/leave_type_dto_list_envelope.h
     model/leave_type_update_dto.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/payroll_create_dto.h
     model/payroll_dto.h
+    model/payroll_dto_collection_query_parameters.h
     model/payroll_dto_envelope.h
     model/payroll_dto_list_envelope.h
     model/payroll_period_create_dto.h
     model/payroll_period_dto.h
+    model/payroll_period_dto_collection_query_parameters.h
     model/payroll_period_dto_envelope.h
     model/payroll_period_dto_list_envelope.h
     model/payroll_period_update_dto.h
@@ -345,6 +389,7 @@ set(HDRS
     model/register_request.h
     model/required_skill_record_create_dto.h
     model/required_skill_record_dto.h
+    model/required_skill_record_dto_collection_query_parameters.h
     model/required_skill_record_dto_envelope.h
     model/required_skill_record_dto_list_envelope.h
     model/required_skill_record_update_dto.h
@@ -352,35 +397,42 @@ set(HDRS
     model/reset_password_request.h
     model/salary_create_dto.h
     model/salary_dto.h
+    model/salary_dto_collection_query_parameters.h
     model/salary_dto_envelope.h
     model/salary_dto_list_envelope.h
     model/salary_update_dto.h
     model/schedule_create_dto.h
     model/schedule_dto.h
+    model/schedule_dto_collection_query_parameters.h
     model/schedule_dto_envelope.h
     model/schedule_dto_list_envelope.h
     model/schedule_update_dto.h
     model/shift_create_dto.h
     model/shift_dto.h
+    model/shift_dto_collection_query_parameters.h
     model/shift_dto_envelope.h
     model/shift_dto_list_envelope.h
     model/shift_update_dto.h
     model/time_interval_create_dto.h
     model/time_interval_dto.h
+    model/time_interval_dto_collection_query_parameters.h
     model/time_interval_dto_envelope.h
     model/time_interval_dto_list_envelope.h
     model/time_interval_update_dto.h
     model/training_program_course_create_dto.h
     model/training_program_course_dto.h
+    model/training_program_course_dto_collection_query_parameters.h
     model/training_program_course_dto_envelope.h
     model/training_program_course_dto_list_envelope.h
     model/training_program_course_update_dto.h
     model/training_program_create_dto.h
     model/training_program_dto.h
+    model/training_program_dto_collection_query_parameters.h
     model/training_program_dto_envelope.h
     model/training_program_dto_list_envelope.h
     model/training_program_event_create_dto.h
     model/training_program_event_dto.h
+    model/training_program_event_dto_collection_query_parameters.h
     model/training_program_event_dto_envelope.h
     model/training_program_event_dto_list_envelope.h
     model/training_program_event_update_dto.h

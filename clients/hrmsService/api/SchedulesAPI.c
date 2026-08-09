@@ -500,13 +500,13 @@ end:
 // Retrieves schedules for the specified tenant.
 //
 schedule_dto_list_envelope_t*
-SchedulesAPI_getSchedulesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SchedulesAPI_getSchedulesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, schedule_dto_collection_query_parameters_t *schedule_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -552,8 +552,19 @@ SchedulesAPI_getSchedulesAsync(apiClient_t *apiClient, char *tenantId, char *api
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_schedule_dto_collection_query_parameters = NULL;
+    if (schedule_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_schedule_dto_collection_query_parameters = schedule_dto_collection_query_parameters_convertToJSON(schedule_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_schedule_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -594,7 +605,7 @@ SchedulesAPI_getSchedulesAsync(apiClient_t *apiClient, char *tenantId, char *api
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -605,6 +616,11 @@ SchedulesAPI_getSchedulesAsync(apiClient_t *apiClient, char *tenantId, char *api
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_schedule_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_schedule_dto_collection_query_parameters);
+        localVarSingleItemJSON_schedule_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -641,13 +657,13 @@ end:
 // Counts schedules for the specified tenant.
 //
 int32_envelope_t*
-SchedulesAPI_getSchedulesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+SchedulesAPI_getSchedulesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, schedule_dto_collection_query_parameters_t *schedule_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -693,8 +709,19 @@ SchedulesAPI_getSchedulesCountAsync(apiClient_t *apiClient, char *tenantId, char
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_schedule_dto_collection_query_parameters = NULL;
+    if (schedule_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_schedule_dto_collection_query_parameters = schedule_dto_collection_query_parameters_convertToJSON(schedule_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_schedule_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -735,7 +762,7 @@ SchedulesAPI_getSchedulesCountAsync(apiClient_t *apiClient, char *tenantId, char
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -746,6 +773,11 @@ SchedulesAPI_getSchedulesCountAsync(apiClient_t *apiClient, char *tenantId, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_schedule_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_schedule_dto_collection_query_parameters);
+        localVarSingleItemJSON_schedule_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -782,7 +814,7 @@ end:
 // Partially updates an existing schedule for the specified tenant.
 //
 empty_envelope_t*
-SchedulesAPI_patchScheduleAsync(apiClient_t *apiClient, char *tenantId, char *scheduleId, char *api_version, char *x_api_version, list_t *operation)
+SchedulesAPI_patchScheduleAsync(apiClient_t *apiClient, char *tenantId, char *scheduleId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -854,14 +886,14 @@ SchedulesAPI_patchScheduleAsync(apiClient_t *apiClient, char *tenantId, char *sc
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -869,16 +901,16 @@ SchedulesAPI_patchScheduleAsync(apiClient_t *apiClient, char *tenantId, char *sc
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -940,17 +972,17 @@ SchedulesAPI_patchScheduleAsync(apiClient_t *apiClient, char *tenantId, char *sc
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

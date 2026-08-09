@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/item_google_category_dto_collection_query_parameters.h"
 #include "../model/item_google_category_dto_envelope.h"
 #include "../model/item_google_category_dto_list_envelope.h"
 
@@ -32,7 +33,7 @@ ItemGoogleCategoriesAPI_getChildrenItemGoogleCategoriesByIdAsync(apiClient_t *ap
 // Retrieves all Google item categories using OData query options.
 //
 item_google_category_dto_list_envelope_t*
-ItemGoogleCategoriesAPI_getItemGoogleCategoriesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+ItemGoogleCategoriesAPI_getItemGoogleCategoriesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, item_google_category_dto_collection_query_parameters_t *item_google_category_dto_collection_query_parameters);
 
 
 // Get Google item categories count
@@ -40,7 +41,7 @@ ItemGoogleCategoriesAPI_getItemGoogleCategoriesAsync(apiClient_t *apiClient, cha
 // Retrieves the count of Google item categories using OData query options.
 //
 int32_envelope_t*
-ItemGoogleCategoriesAPI_getItemGoogleCategoriesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+ItemGoogleCategoriesAPI_getItemGoogleCategoriesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, item_google_category_dto_collection_query_parameters_t *item_google_category_dto_collection_query_parameters);
 
 
 // Get Google item categories tree

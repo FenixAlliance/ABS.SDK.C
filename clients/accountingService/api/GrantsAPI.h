@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/grant_create_dto.h"
+#include "../model/grant_dto_collection_query_parameters.h"
 #include "../model/grant_dto_envelope.h"
 #include "../model/grant_dto_i_read_only_list_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/object.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create grant
@@ -44,7 +45,7 @@ GrantsAPI_getGrantDetailsAsync(apiClient_t *apiClient, char *tenantId, char *gra
 // Retrieves a list of grants associated with the tenant.
 //
 grant_dto_i_read_only_list_envelope_t*
-GrantsAPI_getGrantsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+GrantsAPI_getGrantsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, grant_dto_collection_query_parameters_t *grant_dto_collection_query_parameters);
 
 
 // Count grants
@@ -52,7 +53,7 @@ GrantsAPI_getGrantsAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
 // Returns the number of grants for the tenant.
 //
 int32_envelope_t*
-GrantsAPI_getGrantsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+GrantsAPI_getGrantsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, grant_dto_collection_query_parameters_t *grant_dto_collection_query_parameters);
 
 
 // Patch a grant
@@ -60,7 +61,7 @@ GrantsAPI_getGrantsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_
 // Partially updates a grant.
 //
 empty_envelope_t*
-GrantsAPI_patchGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId, char *api_version, char *x_api_version, list_t *operation);
+GrantsAPI_patchGrantAsync(apiClient_t *apiClient, char *tenantId, char *grantId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update grant

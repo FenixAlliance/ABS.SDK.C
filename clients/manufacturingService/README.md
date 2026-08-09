@@ -70,7 +70,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -125,9 +124,10 @@ Category | Method | HTTP request | Description
  - [info_response_t](docs/info_response.md)
  - [int32_envelope_t](docs/int32_envelope.md)
  - [login_request_t](docs/login_request.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [production_plan_create_dto_t](docs/production_plan_create_dto.md)
  - [production_plan_dto_t](docs/production_plan_dto.md)
+ - [production_plan_dto_collection_query_parameters_t](docs/production_plan_dto_collection_query_parameters.md)
  - [production_plan_dto_list_envelope_t](docs/production_plan_dto_list_envelope.md)
  - [production_plan_update_dto_t](docs/production_plan_update_dto.md)
  - [refresh_request_t](docs/refresh_request.md)
@@ -138,14 +138,17 @@ Category | Method | HTTP request | Description
  - [two_factor_response_t](docs/two_factor_response.md)
  - [work_order_create_dto_t](docs/work_order_create_dto.md)
  - [work_order_dto_t](docs/work_order_dto.md)
+ - [work_order_dto_collection_query_parameters_t](docs/work_order_dto_collection_query_parameters.md)
  - [work_order_dto_list_envelope_t](docs/work_order_dto_list_envelope.md)
  - [work_order_type_create_dto_t](docs/work_order_type_create_dto.md)
  - [work_order_type_dto_t](docs/work_order_type_dto.md)
+ - [work_order_type_dto_collection_query_parameters_t](docs/work_order_type_dto_collection_query_parameters.md)
  - [work_order_type_dto_list_envelope_t](docs/work_order_type_dto_list_envelope.md)
  - [work_order_type_update_dto_t](docs/work_order_type_update_dto.md)
  - [work_order_update_dto_t](docs/work_order_update_dto.md)
  - [workstation_create_dto_t](docs/workstation_create_dto.md)
  - [workstation_dto_t](docs/workstation_dto.md)
+ - [workstation_dto_collection_query_parameters_t](docs/workstation_dto_collection_query_parameters.md)
  - [workstation_dto_list_envelope_t](docs/workstation_dto_list_envelope.md)
  - [workstation_update_dto_t](docs/workstation_update_dto.md)
 

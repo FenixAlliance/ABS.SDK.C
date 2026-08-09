@@ -12,7 +12,7 @@
 #include "../model/item_cart_record_dto_envelope.h"
 #include "../model/item_cart_record_dto_list_envelope.h"
 #include "../model/item_cart_record_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Add an item to a cart
@@ -84,7 +84,7 @@ RecordsAPI_isItemAlreadyInCart(apiClient_t *apiClient, char *itemID, char *cartI
 // Partially updates the specified item cart record using a JSON Patch document.
 //
 empty_envelope_t*
-RecordsAPI_patchItemCartRecord(apiClient_t *apiClient, char *recordId, char *api_version, char *x_api_version, list_t *operation);
+RecordsAPI_patchItemCartRecord(apiClient_t *apiClient, char *recordId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Remove a product from a cart

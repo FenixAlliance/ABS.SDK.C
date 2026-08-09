@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/item_question_create_dto.h"
+#include "../model/item_question_dto_collection_query_parameters.h"
 #include "../model/item_question_dto_envelope.h"
 #include "../model/item_question_dto_list_envelope.h"
 #include "../model/item_question_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new item question
@@ -42,7 +43,7 @@ ItemQuestionsAPI_getItemQuestionByIdAsync(apiClient_t *apiClient, char *itemQues
 // Retrieves all item questions for the specified tenant using OData query options.
 //
 item_question_dto_list_envelope_t*
-ItemQuestionsAPI_getItemQuestionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemQuestionsAPI_getItemQuestionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_question_dto_collection_query_parameters_t *item_question_dto_collection_query_parameters);
 
 
 // Patch an item question
@@ -50,7 +51,7 @@ ItemQuestionsAPI_getItemQuestionsAsync(apiClient_t *apiClient, char *tenantId, c
 // Partially updates an existing item question for the specified tenant using a JSON Patch document.
 //
 void
-ItemQuestionsAPI_patchItemQuestionAsync(apiClient_t *apiClient, char *tenantId, char *itemQuestionId, char *api_version, char *x_api_version, list_t *operation);
+ItemQuestionsAPI_patchItemQuestionAsync(apiClient_t *apiClient, char *tenantId, char *itemQuestionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item question

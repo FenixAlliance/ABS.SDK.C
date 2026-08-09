@@ -12,8 +12,10 @@ Method | HTTP request | Description
 [**TenantsAPI_getAllTenants**](TenantsAPI.md#TenantsAPI_getAllTenants) | **GET** /api/v2/SystemService/Tenants | Get all tenants available on this suite server instance.
 [**TenantsAPI_getExtendedTenantsCount**](TenantsAPI.md#TenantsAPI_getExtendedTenantsCount) | **GET** /api/v2/SystemService/Tenants/Extended/Count | Get the total count of extended tenants available on this suite server instance.
 [**TenantsAPI_getTenant**](TenantsAPI.md#TenantsAPI_getTenant) | **GET** /api/v2/SystemService/Tenants/{tenantId} | Get a specific tenant by ID.
+[**TenantsAPI_getTenantModuleGrants**](TenantsAPI.md#TenantsAPI_getTenantModuleGrants) | **GET** /api/v2/SystemService/Tenants/{tenantId}/ModuleGrants | Get the per-tenant admin module grants for a specific tenant.
 [**TenantsAPI_getTenantsCount**](TenantsAPI.md#TenantsAPI_getTenantsCount) | **GET** /api/v2/SystemService/Tenants/Count | Get the total count of tenants available on this suite server instance.
 [**TenantsAPI_patchTenant**](TenantsAPI.md#TenantsAPI_patchTenant) | **PATCH** /api/v2/SystemService/Tenants/{tenantId} | Partially update a specific tenant by ID.
+[**TenantsAPI_setTenantModuleGrants**](TenantsAPI.md#TenantsAPI_setTenantModuleGrants) | **PUT** /api/v2/SystemService/Tenants/{tenantId}/ModuleGrants | Replace the per-tenant admin module grants for a specific tenant.
 [**TenantsAPI_updateTenant**](TenantsAPI.md#TenantsAPI_updateTenant) | **PUT** /api/v2/SystemService/Tenants/{tenantId} | Update a specific tenant by ID.
 
 
@@ -155,7 +157,7 @@ No authorization required
 //
 // This action is only available for global administrators.
 //
-extended_tenant_dto_list_envelope_t* TenantsAPI_getAllExtendedTenants(apiClient_t *apiClient, char *api_version, char *x_api_version);
+extended_tenant_dto_list_envelope_t* TenantsAPI_getAllExtendedTenants(apiClient_t *apiClient, char *api_version, char *x_api_version, extended_tenant_dto_collection_query_parameters_t *extended_tenant_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -164,6 +166,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**extended_tenant_dto_collection_query_parameters** | **[extended_tenant_dto_collection_query_parameters_t](extended_tenant_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -176,7 +179,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -187,7 +190,7 @@ No authorization required
 //
 // This action is only available for global administrators.
 //
-tenant_dto_list_envelope_t* TenantsAPI_getAllTenants(apiClient_t *apiClient, char *api_version, char *x_api_version);
+tenant_dto_list_envelope_t* TenantsAPI_getAllTenants(apiClient_t *apiClient, char *api_version, char *x_api_version, tenant_dto_collection_query_parameters_t *tenant_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -196,6 +199,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**tenant_dto_collection_query_parameters** | **[tenant_dto_collection_query_parameters_t](tenant_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -208,7 +212,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -219,7 +223,7 @@ No authorization required
 //
 // This action is only available for global administrators.
 //
-int32_envelope_t* TenantsAPI_getExtendedTenantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* TenantsAPI_getExtendedTenantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, extended_tenant_dto_collection_query_parameters_t *extended_tenant_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -228,6 +232,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**extended_tenant_dto_collection_query_parameters** | **[extended_tenant_dto_collection_query_parameters_t](extended_tenant_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -240,7 +245,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -278,25 +283,26 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **TenantsAPI_getTenantsCount**
+# **TenantsAPI_getTenantModuleGrants**
 ```c
-// Get the total count of tenants available on this suite server instance.
+// Get the per-tenant admin module grants for a specific tenant.
 //
 // This action is only available for global administrators.
 //
-int32_envelope_t* TenantsAPI_getTenantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version);
+module_grant_dto_list_envelope_t* TenantsAPI_getTenantModuleGrants(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 
 ### Return type
 
-[int32_envelope_t](int32_envelope.md) *
+[module_grant_dto_list_envelope_t](module_grant_dto_list_envelope.md) *
 
 
 ### Authorization
@@ -310,13 +316,46 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **TenantsAPI_getTenantsCount**
+```c
+// Get the total count of tenants available on this suite server instance.
+//
+// This action is only available for global administrators.
+//
+int32_envelope_t* TenantsAPI_getTenantsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, tenant_dto_collection_query_parameters_t *tenant_dto_collection_query_parameters);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**tenant_dto_collection_query_parameters** | **[tenant_dto_collection_query_parameters_t](tenant_dto_collection_query_parameters.md) \*** |  | [optional] 
+
+### Return type
+
+[int32_envelope_t](int32_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **TenantsAPI_patchTenant**
 ```c
 // Partially update a specific tenant by ID.
 //
 // This action is only available for global administrators.
 //
-empty_envelope_t* TenantsAPI_patchTenant(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* TenantsAPI_patchTenant(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -326,7 +365,41 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TenantsAPI_setTenantModuleGrants**
+```c
+// Replace the per-tenant admin module grants for a specific tenant.
+//
+// This action is only available for global administrators. Grants supplement licensing.
+//
+empty_envelope_t* TenantsAPI_setTenantModuleGrants(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, list_t *module_grant_dto);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**module_grant_dto** | **[list_t](module_grant_dto.md) \*** |  | [optional] 
 
 ### Return type
 

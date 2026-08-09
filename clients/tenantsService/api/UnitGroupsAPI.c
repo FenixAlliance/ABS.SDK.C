@@ -972,13 +972,13 @@ end:
 // Retrieves a list of unit groups for the specified tenant with OData query support.
 //
 unit_group_dto_list_envelope_t*
-UnitGroupsAPI_getUnitGroupsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+UnitGroupsAPI_getUnitGroupsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, unit_group_dto_collection_query_parameters_t *unit_group_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1024,8 +1024,19 @@ UnitGroupsAPI_getUnitGroupsAsync(apiClient_t *apiClient, char *tenantId, char *a
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_unit_group_dto_collection_query_parameters = NULL;
+    if (unit_group_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_unit_group_dto_collection_query_parameters = unit_group_dto_collection_query_parameters_convertToJSON(unit_group_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_unit_group_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1066,7 +1077,7 @@ UnitGroupsAPI_getUnitGroupsAsync(apiClient_t *apiClient, char *tenantId, char *a
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1077,6 +1088,11 @@ UnitGroupsAPI_getUnitGroupsAsync(apiClient_t *apiClient, char *tenantId, char *a
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_unit_group_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_unit_group_dto_collection_query_parameters);
+        localVarSingleItemJSON_unit_group_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1113,13 +1129,13 @@ end:
 // Returns the total count of unit groups for the specified tenant with OData query support.
 //
 int32_envelope_t*
-UnitGroupsAPI_getUnitGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+UnitGroupsAPI_getUnitGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, unit_group_dto_collection_query_parameters_t *unit_group_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1165,8 +1181,19 @@ UnitGroupsAPI_getUnitGroupsCountAsync(apiClient_t *apiClient, char *tenantId, ch
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_unit_group_dto_collection_query_parameters = NULL;
+    if (unit_group_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_unit_group_dto_collection_query_parameters = unit_group_dto_collection_query_parameters_convertToJSON(unit_group_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_unit_group_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1207,7 +1234,7 @@ UnitGroupsAPI_getUnitGroupsCountAsync(apiClient_t *apiClient, char *tenantId, ch
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1218,6 +1245,11 @@ UnitGroupsAPI_getUnitGroupsCountAsync(apiClient_t *apiClient, char *tenantId, ch
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_unit_group_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_unit_group_dto_collection_query_parameters);
+        localVarSingleItemJSON_unit_group_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1254,13 +1286,13 @@ end:
 // Retrieves a list of units belonging to a specific unit group.
 //
 unit_dto_list_envelope_t*
-UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version)
+UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, unit_dto_collection_query_parameters_t *unit_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1316,8 +1348,19 @@ UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGr
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_unit_dto_collection_query_parameters = NULL;
+    if (unit_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_unit_dto_collection_query_parameters = unit_dto_collection_query_parameters_convertToJSON(unit_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_unit_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1358,7 +1401,7 @@ UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGr
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_unitGroupId);
     if (keyHeader_x_api_version) {
@@ -1370,6 +1413,11 @@ UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGr
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_unit_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_unit_dto_collection_query_parameters);
+        localVarSingleItemJSON_unit_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1406,13 +1454,13 @@ end:
 // Returns the total count of units in a specific unit group.
 //
 int32_envelope_t*
-UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version)
+UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, unit_dto_collection_query_parameters_t *unit_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1468,8 +1516,19 @@ UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *u
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_unit_dto_collection_query_parameters = NULL;
+    if (unit_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_unit_dto_collection_query_parameters = unit_dto_collection_query_parameters_convertToJSON(unit_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_unit_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1510,7 +1569,7 @@ UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *u
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_unitGroupId);
     if (keyHeader_x_api_version) {
@@ -1522,6 +1581,11 @@ UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *u
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_unit_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_unit_dto_collection_query_parameters);
+        localVarSingleItemJSON_unit_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1558,7 +1622,7 @@ end:
 // Partially updates an existing unit within a specific unit group.
 //
 empty_envelope_t*
-UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *unitId, char *api_version, char *x_api_version, list_t *operation)
+UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *unitId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1633,14 +1697,14 @@ UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitG
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1648,16 +1712,16 @@ UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitG
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1716,17 +1780,17 @@ UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitG
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -1765,7 +1829,7 @@ end:
 // Partially updates an existing unit group by its unique identifier.
 //
 empty_envelope_t*
-UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, list_t *operation)
+UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1830,14 +1894,14 @@ UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1845,16 +1909,16 @@ UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1912,17 +1976,17 @@ UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

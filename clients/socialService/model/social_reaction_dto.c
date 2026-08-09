@@ -21,6 +21,23 @@ socialservice_social_reaction_dto_REACTION_e social_reaction_dto_reaction_FromSt
     }
     return 0;
 }
+char* social_reaction_dto_social_profile_type_ToString(socialservice_social_reaction_dto_SOCIALPROFILETYPE_e social_profile_type) {
+    char* social_profile_typeArray[] =  { "NULL", "User", "Tenant", "Contact" };
+    return social_profile_typeArray[social_profile_type];
+}
+
+socialservice_social_reaction_dto_SOCIALPROFILETYPE_e social_reaction_dto_social_profile_type_FromString(char* social_profile_type){
+    int stringToReturn = 0;
+    char *social_profile_typeArray[] =  { "NULL", "User", "Tenant", "Contact" };
+    size_t sizeofArray = sizeof(social_profile_typeArray) / sizeof(social_profile_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(social_profile_type, social_profile_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 social_reaction_dto_t *social_reaction_dto_create(
     char *id,
@@ -29,7 +46,8 @@ social_reaction_dto_t *social_reaction_dto_create(
     char *reaction_value,
     char *social_profile_id,
     char *social_profile_name,
-    char *social_profile_avatar_url
+    char *social_profile_avatar_url,
+    socialservice_social_reaction_dto_SOCIALPROFILETYPE_e social_profile_type
     ) {
     social_reaction_dto_t *social_reaction_dto_local_var = malloc(sizeof(social_reaction_dto_t));
     if (!social_reaction_dto_local_var) {
@@ -42,6 +60,7 @@ social_reaction_dto_t *social_reaction_dto_create(
     social_reaction_dto_local_var->social_profile_id = social_profile_id;
     social_reaction_dto_local_var->social_profile_name = social_profile_name;
     social_reaction_dto_local_var->social_profile_avatar_url = social_profile_avatar_url;
+    social_reaction_dto_local_var->social_profile_type = social_profile_type;
 
     return social_reaction_dto_local_var;
 }
@@ -138,6 +157,15 @@ cJSON *social_reaction_dto_convertToJSON(social_reaction_dto_t *social_reaction_
     }
     }
 
+
+    // social_reaction_dto->social_profile_type
+    if(social_reaction_dto->social_profile_type != socialservice_social_reaction_dto_SOCIALPROFILETYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileType", social_profile_typesocial_reaction_dto_ToString(social_reaction_dto->social_profile_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -215,6 +243,17 @@ social_reaction_dto_t *social_reaction_dto_parseFromJSON(cJSON *social_reaction_
     }
     }
 
+    // social_reaction_dto->social_profile_type
+    cJSON *social_profile_type = cJSON_GetObjectItemCaseSensitive(social_reaction_dtoJSON, "socialProfileType");
+    socialservice_social_reaction_dto_SOCIALPROFILETYPE_e social_profile_typeVariable;
+    if (social_profile_type) { 
+    if(!cJSON_IsString(social_profile_type))
+    {
+    goto end; //Enum
+    }
+    social_profile_typeVariable = social_reaction_dto_social_profile_type_FromString(social_profile_type->valuestring);
+    }
+
 
     social_reaction_dto_local_var = social_reaction_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -223,7 +262,8 @@ social_reaction_dto_t *social_reaction_dto_parseFromJSON(cJSON *social_reaction_
         reaction_value && !cJSON_IsNull(reaction_value) ? strdup(reaction_value->valuestring) : NULL,
         social_profile_id && !cJSON_IsNull(social_profile_id) ? strdup(social_profile_id->valuestring) : NULL,
         social_profile_name && !cJSON_IsNull(social_profile_name) ? strdup(social_profile_name->valuestring) : NULL,
-        social_profile_avatar_url && !cJSON_IsNull(social_profile_avatar_url) ? strdup(social_profile_avatar_url->valuestring) : NULL
+        social_profile_avatar_url && !cJSON_IsNull(social_profile_avatar_url) ? strdup(social_profile_avatar_url->valuestring) : NULL,
+        social_profile_type ? social_profile_typeVariable : socialservice_social_reaction_dto_SOCIALPROFILETYPE_NULL
         );
 
     return social_reaction_dto_local_var;

@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **error_message** | **char \*** |  | [optional] 
 **correlation_id** | **char \*** |  | [optional] 
 **timestamp** | **char \*** |  | [optional] [readonly] 
+**http_status** | **int** |  | [optional] 
+**error_code** | **char \*** |  | [optional] 
+**validation_details** | **list_t*** |  | [optional] 
 **activity_id** | **char \*** |  | [optional] [readonly] 
 **result** | [**localization_string_dto_t**](localization_string_dto.md) \* |  | [optional] 
 

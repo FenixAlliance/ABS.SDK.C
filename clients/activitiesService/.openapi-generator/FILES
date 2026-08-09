@@ -9,15 +9,18 @@ docs/ActivityFeedsAPI.md
 docs/FenixAllianceABSWebAPI.md
 docs/access_token_response.md
 docs/activity_feed_dto.md
+docs/activity_feed_dto_collection_query_parameters.md
 docs/activity_feed_dto_envelope.md
 docs/activity_feed_dto_list_envelope.md
 docs/activity_record_create_dto.md
 docs/activity_record_dto.md
+docs/activity_record_dto_collection_query_parameters.md
 docs/activity_record_dto_envelope.md
 docs/activity_record_dto_list_envelope.md
 docs/activity_record_update_dto.md
 docs/activity_type_create_dto.md
 docs/activity_type_dto.md
+docs/activity_type_dto_collection_query_parameters.md
 docs/activity_type_dto_envelope.md
 docs/activity_type_dto_list_envelope.md
 docs/activity_type_update_dto.md
@@ -30,7 +33,7 @@ docs/info_request.md
 docs/info_response.md
 docs/int32_envelope.md
 docs/login_request.md
-docs/operation.md
+docs/patch_operation.md
 docs/refresh_request.md
 docs/register_request.md
 docs/resend_confirmation_email_request.md
@@ -49,6 +52,8 @@ model/access_token_response.c
 model/access_token_response.h
 model/activity_feed_dto.c
 model/activity_feed_dto.h
+model/activity_feed_dto_collection_query_parameters.c
+model/activity_feed_dto_collection_query_parameters.h
 model/activity_feed_dto_envelope.c
 model/activity_feed_dto_envelope.h
 model/activity_feed_dto_list_envelope.c
@@ -57,6 +62,8 @@ model/activity_record_create_dto.c
 model/activity_record_create_dto.h
 model/activity_record_dto.c
 model/activity_record_dto.h
+model/activity_record_dto_collection_query_parameters.c
+model/activity_record_dto_collection_query_parameters.h
 model/activity_record_dto_envelope.c
 model/activity_record_dto_envelope.h
 model/activity_record_dto_list_envelope.c
@@ -67,6 +74,8 @@ model/activity_type_create_dto.c
 model/activity_type_create_dto.h
 model/activity_type_dto.c
 model/activity_type_dto.h
+model/activity_type_dto_collection_query_parameters.c
+model/activity_type_dto_collection_query_parameters.h
 model/activity_type_dto_envelope.c
 model/activity_type_dto_envelope.h
 model/activity_type_dto_list_envelope.c
@@ -93,8 +102,8 @@ model/login_request.c
 model/login_request.h
 model/object.c
 model/object.h
-model/operation.c
-model/operation.h
+model/patch_operation.c
+model/patch_operation.h
 model/refresh_request.c
 model/refresh_request.h
 model/register_request.c
@@ -112,3 +121,7 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_activity_feed_dto_collection_query_parameters.c
+unit-test/test_activity_record_dto_collection_query_parameters.c
+unit-test/test_activity_type_dto_collection_query_parameters.c
+unit-test/test_patch_operation.c

@@ -127,7 +127,7 @@ No authorization required
 //
 // Retrieves the work-experience records of a curriculum authored on the specified social profile.
 //
-curriculum_experience_dto_list_envelope_t* CurriculumExperiencesAPI_getCurriculumExperiencesAsync(apiClient_t *apiClient, char *curriculumId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version);
+curriculum_experience_dto_list_envelope_t* CurriculumExperiencesAPI_getCurriculumExperiencesAsync(apiClient_t *apiClient, char *curriculumId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version, curriculum_experience_dto_collection_query_parameters_t *curriculum_experience_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -139,6 +139,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**curriculum_experience_dto_collection_query_parameters** | **[curriculum_experience_dto_collection_query_parameters_t](curriculum_experience_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -151,7 +152,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -162,7 +163,7 @@ No authorization required
 //
 // Returns the count of work-experience records of a curriculum.
 //
-int32_envelope_t* CurriculumExperiencesAPI_getCurriculumExperiencesCountAsync(apiClient_t *apiClient, char *curriculumId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* CurriculumExperiencesAPI_getCurriculumExperiencesCountAsync(apiClient_t *apiClient, char *curriculumId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version, curriculum_experience_dto_collection_query_parameters_t *curriculum_experience_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -174,6 +175,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**curriculum_experience_dto_collection_query_parameters** | **[curriculum_experience_dto_collection_query_parameters_t](curriculum_experience_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -186,7 +188,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -197,7 +199,7 @@ No authorization required
 //
 // Partially updates an existing work-experience record of a curriculum.
 //
-empty_envelope_t* CurriculumExperiencesAPI_patchCurriculumExperienceAsync(apiClient_t *apiClient, char *curriculumId, char *experienceId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CurriculumExperiencesAPI_patchCurriculumExperienceAsync(apiClient_t *apiClient, char *curriculumId, char *experienceId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -210,7 +212,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

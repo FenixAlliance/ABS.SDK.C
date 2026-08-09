@@ -332,7 +332,7 @@ No authorization required
 //
 // Get incoming payments of a specific wallet by ID.
 //
-payment_dto_list_envelope_t* WalletsAPI_getIncomingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+payment_dto_list_envelope_t* WalletsAPI_getIncomingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -342,6 +342,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_dto_collection_query_parameters** | **[payment_dto_collection_query_parameters_t](payment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -354,7 +355,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -365,7 +366,7 @@ No authorization required
 //
 // Get incoming payments count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getIncomingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getIncomingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -375,6 +376,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_dto_collection_query_parameters** | **[payment_dto_collection_query_parameters_t](payment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -387,7 +389,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -398,7 +400,7 @@ No authorization required
 //
 // Get incoming invoices of a specific wallet by ID.
 //
-invoice_dto_list_envelope_t* WalletsAPI_getIncomingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+invoice_dto_list_envelope_t* WalletsAPI_getIncomingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -408,6 +410,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**invoice_dto_collection_query_parameters** | **[invoice_dto_collection_query_parameters_t](invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -420,7 +423,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -431,7 +434,7 @@ No authorization required
 //
 // Get incoming invoices count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getIncomingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getIncomingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -441,6 +444,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**invoice_dto_collection_query_parameters** | **[invoice_dto_collection_query_parameters_t](invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -453,7 +457,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -498,7 +502,7 @@ No authorization required
 //
 // Get locations of a specific wallet by ID.
 //
-location_dto_list_envelope_t* WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+location_dto_list_envelope_t* WalletsAPI_getLocationsForWalletAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -508,6 +512,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**location_dto_collection_query_parameters** | **[location_dto_collection_query_parameters_t](location_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -520,7 +525,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -531,7 +536,7 @@ No authorization required
 //
 // Get locations count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getLocationsForWalletCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -541,6 +546,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**location_dto_collection_query_parameters** | **[location_dto_collection_query_parameters_t](location_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -553,7 +559,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -564,7 +570,7 @@ No authorization required
 //
 // Get outgoing payments of a specific wallet by ID.
 //
-payment_dto_list_envelope_t* WalletsAPI_getOutgoingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+payment_dto_list_envelope_t* WalletsAPI_getOutgoingPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -574,6 +580,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_dto_collection_query_parameters** | **[payment_dto_collection_query_parameters_t](payment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -586,7 +593,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -597,7 +604,7 @@ No authorization required
 //
 // Get outgoing payments count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getOutgoingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getOutgoingPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -607,6 +614,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_dto_collection_query_parameters** | **[payment_dto_collection_query_parameters_t](payment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -619,7 +627,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -630,7 +638,7 @@ No authorization required
 //
 // Get outgoing invoices of a specific wallet by ID.
 //
-invoice_dto_list_envelope_t* WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+invoice_dto_list_envelope_t* WalletsAPI_getOutgoingWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -640,6 +648,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**invoice_dto_collection_query_parameters** | **[invoice_dto_collection_query_parameters_t](invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -652,7 +661,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -663,7 +672,7 @@ No authorization required
 //
 // Get outgoing invoices count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getOutgoingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getOutgoingWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -673,6 +682,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**invoice_dto_collection_query_parameters** | **[invoice_dto_collection_query_parameters_t](invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -685,7 +695,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -730,7 +740,7 @@ No authorization required
 //
 // Get bank accounts of a specific wallet by ID.
 //
-bank_account_dto_list_envelope_t* WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+bank_account_dto_list_envelope_t* WalletsAPI_getWalletBankAccountsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, bank_account_dto_collection_query_parameters_t *bank_account_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -740,6 +750,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_account_dto_collection_query_parameters** | **[bank_account_dto_collection_query_parameters_t](bank_account_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -752,7 +763,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -763,7 +774,7 @@ No authorization required
 //
 // Get bank accounts count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getWalletBankAccountsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, bank_account_dto_collection_query_parameters_t *bank_account_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -773,6 +784,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_account_dto_collection_query_parameters** | **[bank_account_dto_collection_query_parameters_t](bank_account_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -785,7 +797,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -796,7 +808,7 @@ No authorization required
 //
 // Get chargebacks of a specific wallet by ID.
 //
-payment_chargeback_dto_list_envelope_t* WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+payment_chargeback_dto_list_envelope_t* WalletsAPI_getWalletChargebacksAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_chargeback_dto_collection_query_parameters_t *payment_chargeback_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -806,6 +818,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_chargeback_dto_collection_query_parameters** | **[payment_chargeback_dto_collection_query_parameters_t](payment_chargeback_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -818,7 +831,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -829,7 +842,7 @@ No authorization required
 //
 // Get chargebacks count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getWalletChargebacksCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getWalletChargebacksCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_chargeback_dto_collection_query_parameters_t *payment_chargeback_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -839,6 +852,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_chargeback_dto_collection_query_parameters** | **[payment_chargeback_dto_collection_query_parameters_t](payment_chargeback_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -851,7 +865,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -895,7 +909,7 @@ No authorization required
 //
 // Get extended orders of a specific wallet by ID.
 //
-extended_order_dto_list_envelope_t* WalletsAPI_getWalletExtendedOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+extended_order_dto_list_envelope_t* WalletsAPI_getWalletExtendedOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, extended_order_dto_collection_query_parameters_t *extended_order_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -905,6 +919,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**extended_order_dto_collection_query_parameters** | **[extended_order_dto_collection_query_parameters_t](extended_order_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -917,7 +932,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -928,7 +943,7 @@ No authorization required
 //
 // Get invoices of a specific wallet by ID.
 //
-invoice_dto_list_envelope_t* WalletsAPI_getWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+invoice_dto_list_envelope_t* WalletsAPI_getWalletInvoicesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -938,6 +953,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**invoice_dto_collection_query_parameters** | **[invoice_dto_collection_query_parameters_t](invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -950,7 +966,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -961,7 +977,7 @@ No authorization required
 //
 // Get invoices count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getWalletInvoicesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -971,6 +987,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**invoice_dto_collection_query_parameters** | **[invoice_dto_collection_query_parameters_t](invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -983,7 +1000,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -994,7 +1011,7 @@ No authorization required
 //
 // Get orders of a specific wallet by ID.
 //
-order_dto_list_envelope_t* WalletsAPI_getWalletOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+order_dto_list_envelope_t* WalletsAPI_getWalletOrdersAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1004,6 +1021,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**order_dto_collection_query_parameters** | **[order_dto_collection_query_parameters_t](order_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1016,7 +1034,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1027,7 +1045,7 @@ No authorization required
 //
 // Get orders count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getWalletOrdersCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getWalletOrdersCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1037,6 +1055,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**order_dto_collection_query_parameters** | **[order_dto_collection_query_parameters_t](order_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1049,7 +1068,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1060,7 +1079,7 @@ No authorization required
 //
 // Get payments of a specific wallet by ID.
 //
-payment_dto_list_envelope_t* WalletsAPI_getWalletPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+payment_dto_list_envelope_t* WalletsAPI_getWalletPaymentsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1070,6 +1089,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_dto_collection_query_parameters** | **[payment_dto_collection_query_parameters_t](payment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1082,7 +1102,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1093,7 +1113,7 @@ No authorization required
 //
 // Get payments count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getWalletPaymentsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1103,6 +1123,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_dto_collection_query_parameters** | **[payment_dto_collection_query_parameters_t](payment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1115,7 +1136,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1126,7 +1147,7 @@ No authorization required
 //
 // Get quotes of a specific wallet by ID.
 //
-quote_dto_list_envelope_t* WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+quote_dto_list_envelope_t* WalletsAPI_getWalletQuotesAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1136,6 +1157,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**quote_dto_collection_query_parameters** | **[quote_dto_collection_query_parameters_t](quote_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1148,7 +1170,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1159,7 +1181,7 @@ No authorization required
 //
 // Get quotes count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getWalletQuotesCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, quote_dto_collection_query_parameters_t *quote_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1169,6 +1191,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**quote_dto_collection_query_parameters** | **[quote_dto_collection_query_parameters_t](quote_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1181,7 +1204,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1192,7 +1215,7 @@ No authorization required
 //
 // Get refunds of a specific wallet by ID.
 //
-payment_refund_dto_list_envelope_t* WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+payment_refund_dto_list_envelope_t* WalletsAPI_getWalletRefundsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_refund_dto_collection_query_parameters_t *payment_refund_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1202,6 +1225,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_refund_dto_collection_query_parameters** | **[payment_refund_dto_collection_query_parameters_t](payment_refund_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1214,7 +1238,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1225,7 +1249,7 @@ No authorization required
 //
 // Get refunds count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getWalletRefundsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getWalletRefundsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_refund_dto_collection_query_parameters_t *payment_refund_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1235,6 +1259,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_refund_dto_collection_query_parameters** | **[payment_refund_dto_collection_query_parameters_t](payment_refund_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1247,7 +1272,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1292,7 +1317,7 @@ No authorization required
 //
 // Get payment tokens of a specific wallet by ID.
 //
-payment_token_dto_list_envelope_t* WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+payment_token_dto_list_envelope_t* WalletsAPI_getWalletTokensAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_token_dto_collection_query_parameters_t *payment_token_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1302,6 +1327,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_token_dto_collection_query_parameters** | **[payment_token_dto_collection_query_parameters_t](payment_token_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1314,7 +1340,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1325,7 +1351,7 @@ No authorization required
 //
 // Get payment tokens count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getWalletTokensCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, payment_token_dto_collection_query_parameters_t *payment_token_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1335,6 +1361,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_token_dto_collection_query_parameters** | **[payment_token_dto_collection_query_parameters_t](payment_token_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1347,7 +1374,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1358,7 +1385,7 @@ No authorization required
 //
 // Get withdraw requests of a specific wallet by ID.
 //
-wallet_withdraw_request_dto_list_envelope_t* WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+wallet_withdraw_request_dto_list_envelope_t* WalletsAPI_getWalletWithdrawRequestsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_request_dto_collection_query_parameters_t *wallet_withdraw_request_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1368,6 +1395,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**wallet_withdraw_request_dto_collection_query_parameters** | **[wallet_withdraw_request_dto_collection_query_parameters_t](wallet_withdraw_request_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1380,7 +1408,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1391,7 +1419,7 @@ No authorization required
 //
 // Get withdraw requests count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getWalletWithdrawRequestsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_request_dto_collection_query_parameters_t *wallet_withdraw_request_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1401,6 +1429,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**wallet_withdraw_request_dto_collection_query_parameters** | **[wallet_withdraw_request_dto_collection_query_parameters_t](wallet_withdraw_request_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1413,7 +1442,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1424,7 +1453,7 @@ No authorization required
 //
 // Get withdraws of a specific wallet by ID.
 //
-wallet_withdraw_dto_list_envelope_t* WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+wallet_withdraw_dto_list_envelope_t* WalletsAPI_getWalletWithdrawsAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_dto_collection_query_parameters_t *wallet_withdraw_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1434,6 +1463,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**wallet_withdraw_dto_collection_query_parameters** | **[wallet_withdraw_dto_collection_query_parameters_t](wallet_withdraw_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1446,7 +1476,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1457,7 +1487,7 @@ No authorization required
 //
 // Get withdraws count of a specific wallet by ID.
 //
-int32_envelope_t* WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version);
+int32_envelope_t* WalletsAPI_getWalletWithdrawsCountAsync(apiClient_t *apiClient, char *walletId, char *api_version, char *x_api_version, wallet_withdraw_dto_collection_query_parameters_t *wallet_withdraw_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1467,6 +1497,7 @@ Name | Type | Description  | Notes
 **walletId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**wallet_withdraw_dto_collection_query_parameters** | **[wallet_withdraw_dto_collection_query_parameters_t](wallet_withdraw_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1479,7 +1510,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1490,7 +1521,7 @@ No authorization required
 //
 // Partially update a specific bank account of a specific wallet by ID.
 //
-empty_envelope_t* WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* WalletsAPI_patchWalletBankAccountAsync(apiClient_t *apiClient, char *walletId, char *bankAccountId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1501,7 +1532,7 @@ Name | Type | Description  | Notes
 **bankAccountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1525,7 +1556,7 @@ No authorization required
 //
 // Partially update a specific payment token of a specific wallet by ID.
 //
-empty_envelope_t* WalletsAPI_patchWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tokenId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* WalletsAPI_patchWalletTokenAsync(apiClient_t *apiClient, char *walletId, char *tokenId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1536,7 +1567,7 @@ Name | Type | Description  | Notes
 **tokenId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

@@ -6,6 +6,7 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/appraisal_workflow_create_dto.h"
+#include "../model/appraisal_workflow_dto_collection_query_parameters.h"
 #include "../model/appraisal_workflow_dto_envelope.h"
 #include "../model/appraisal_workflow_dto_list_envelope.h"
 #include "../model/appraisal_workflow_update_dto.h"
@@ -43,7 +44,7 @@ AppraisalWorkflowsAPI_getAppraisalWorkflowByIdAsync(apiClient_t *apiClient, char
 // Retrieves appraisal workflows for the specified tenant.
 //
 appraisal_workflow_dto_list_envelope_t*
-AppraisalWorkflowsAPI_getAppraisalWorkflowsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AppraisalWorkflowsAPI_getAppraisalWorkflowsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, appraisal_workflow_dto_collection_query_parameters_t *appraisal_workflow_dto_collection_query_parameters);
 
 
 // Count appraisal workflows
@@ -51,7 +52,7 @@ AppraisalWorkflowsAPI_getAppraisalWorkflowsAsync(apiClient_t *apiClient, char *t
 // Counts appraisal workflows for the specified tenant.
 //
 int32_envelope_t*
-AppraisalWorkflowsAPI_getAppraisalWorkflowsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AppraisalWorkflowsAPI_getAppraisalWorkflowsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, appraisal_workflow_dto_collection_query_parameters_t *appraisal_workflow_dto_collection_query_parameters);
 
 
 // Update an appraisal workflow

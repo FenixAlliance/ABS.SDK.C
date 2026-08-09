@@ -8,12 +8,14 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/seaway_bill_create_dto.h"
+#include "../model/seaway_bill_dto_collection_query_parameters.h"
 #include "../model/seaway_bill_dto_envelope.h"
 #include "../model/seaway_bill_dto_list_envelope.h"
 #include "../model/seaway_bill_update_dto.h"
 #include "../model/waybill_line_create_dto.h"
+#include "../model/waybill_line_dto_collection_query_parameters.h"
 #include "../model/waybill_line_dto_list_envelope.h"
 #include "../model/waybill_line_update_dto.h"
 
@@ -63,7 +65,7 @@ SeawayBillsAPI_getSeawayBillByIdAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves all lines for a specific seaway bill.
 //
 waybill_line_dto_list_envelope_t*
-SeawayBillsAPI_getSeawayBillLinesAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version);
+SeawayBillsAPI_getSeawayBillLinesAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, waybill_line_dto_collection_query_parameters_t *waybill_line_dto_collection_query_parameters);
 
 
 // Get seaway bill lines count
@@ -71,7 +73,7 @@ SeawayBillsAPI_getSeawayBillLinesAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of lines for a specific seaway bill.
 //
 int32_envelope_t*
-SeawayBillsAPI_getSeawayBillLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version);
+SeawayBillsAPI_getSeawayBillLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, waybill_line_dto_collection_query_parameters_t *waybill_line_dto_collection_query_parameters);
 
 
 // Get all seaway bills
@@ -79,7 +81,7 @@ SeawayBillsAPI_getSeawayBillLinesCountAsync(apiClient_t *apiClient, char *tenant
 // Retrieves all seaway bills for the specified tenant.
 //
 seaway_bill_dto_list_envelope_t*
-SeawayBillsAPI_getSeawayBillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SeawayBillsAPI_getSeawayBillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, seaway_bill_dto_collection_query_parameters_t *seaway_bill_dto_collection_query_parameters);
 
 
 // Get seaway bills count
@@ -87,7 +89,7 @@ SeawayBillsAPI_getSeawayBillsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the count of seaway bills for the specified tenant.
 //
 int32_envelope_t*
-SeawayBillsAPI_getSeawayBillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SeawayBillsAPI_getSeawayBillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, seaway_bill_dto_collection_query_parameters_t *seaway_bill_dto_collection_query_parameters);
 
 
 // Issue a seaway bill
@@ -119,7 +121,7 @@ SeawayBillsAPI_markSeawayBillInTransitAsync(apiClient_t *apiClient, char *tenant
 // Partially updates an existing seaway bill using a JSON Patch document.
 //
 empty_envelope_t*
-SeawayBillsAPI_patchSeawayBillAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, list_t *operation);
+SeawayBillsAPI_patchSeawayBillAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a seaway bill line
@@ -127,7 +129,7 @@ SeawayBillsAPI_patchSeawayBillAsync(apiClient_t *apiClient, char *tenantId, char
 // Partially updates a line on a seaway bill using a JSON Patch document.
 //
 empty_envelope_t*
-SeawayBillsAPI_patchSeawayBillLineAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+SeawayBillsAPI_patchSeawayBillLineAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *lineId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Release a seaway bill

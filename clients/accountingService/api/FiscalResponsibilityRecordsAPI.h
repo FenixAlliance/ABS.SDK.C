@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/fiscal_responsibility_record_create_dto.h"
+#include "../model/fiscal_responsibility_record_dto_collection_query_parameters.h"
 #include "../model/fiscal_responsibility_record_dto_envelope.h"
 #include "../model/fiscal_responsibility_record_dto_list_envelope.h"
 #include "../model/fiscal_responsibility_record_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a fiscal responsibility record
@@ -44,7 +45,7 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecord(apiClient_t *apiCli
 // Retrieves all fiscal responsibility records for the specified fiscal responsibility.
 //
 fiscal_responsibility_record_dto_list_envelope_t*
-FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
+FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version, fiscal_responsibility_record_dto_collection_query_parameters_t *fiscal_responsibility_record_dto_collection_query_parameters);
 
 
 // Get fiscal responsibility records count
@@ -52,7 +53,7 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiCl
 // Returns the total count of fiscal responsibility records for the specified fiscal responsibility.
 //
 int32_envelope_t*
-FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
+FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version, fiscal_responsibility_record_dto_collection_query_parameters_t *fiscal_responsibility_record_dto_collection_query_parameters);
 
 
 // Patch a fiscal responsibility record
@@ -60,7 +61,7 @@ FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *
 // Partially updates a fiscal responsibility record.
 //
 empty_envelope_t*
-FiscalResponsibilityRecordsAPI_patchFiscalResponsibilityRecordAsync(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, list_t *operation);
+FiscalResponsibilityRecordsAPI_patchFiscalResponsibilityRecordAsync(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a fiscal responsibility record

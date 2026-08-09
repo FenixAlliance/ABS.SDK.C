@@ -58,20 +58,24 @@ set(SRCS
     model/contact_dto.c
     model/deal_unit_create_dto.c
     model/deal_unit_dto.c
+    model/deal_unit_dto_collection_query_parameters.c
     model/deal_unit_dto_envelope.c
     model/deal_unit_dto_list_envelope.c
     model/deal_unit_flow_create_dto.c
     model/deal_unit_flow_dto.c
+    model/deal_unit_flow_dto_collection_query_parameters.c
     model/deal_unit_flow_dto_envelope.c
     model/deal_unit_flow_dto_list_envelope.c
     model/deal_unit_flow_stage_create_dto.c
     model/deal_unit_flow_stage_dto.c
+    model/deal_unit_flow_stage_dto_collection_query_parameters.c
     model/deal_unit_flow_stage_dto_envelope.c
     model/deal_unit_flow_stage_dto_list_envelope.c
     model/deal_unit_flow_stage_update_dto.c
     model/deal_unit_flow_update_dto.c
     model/deal_unit_line_create_dto.c
     model/deal_unit_line_dto.c
+    model/deal_unit_line_dto_collection_query_parameters.c
     model/deal_unit_line_dto_envelope.c
     model/deal_unit_line_dto_list_envelope.c
     model/deal_unit_line_update_dto.c
@@ -79,6 +83,7 @@ set(SRCS
     model/empty_envelope.c
     model/error_envelope.c
     model/extended_deal_unit_dto.c
+    model/extended_deal_unit_dto_collection_query_parameters.c
     model/extended_deal_unit_dto_envelope.c
     model/extended_deal_unit_dto_list_envelope.c
     model/forgot_password_request.c
@@ -87,7 +92,7 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -114,20 +119,24 @@ set(HDRS
     model/contact_dto.h
     model/deal_unit_create_dto.h
     model/deal_unit_dto.h
+    model/deal_unit_dto_collection_query_parameters.h
     model/deal_unit_dto_envelope.h
     model/deal_unit_dto_list_envelope.h
     model/deal_unit_flow_create_dto.h
     model/deal_unit_flow_dto.h
+    model/deal_unit_flow_dto_collection_query_parameters.h
     model/deal_unit_flow_dto_envelope.h
     model/deal_unit_flow_dto_list_envelope.h
     model/deal_unit_flow_stage_create_dto.h
     model/deal_unit_flow_stage_dto.h
+    model/deal_unit_flow_stage_dto_collection_query_parameters.h
     model/deal_unit_flow_stage_dto_envelope.h
     model/deal_unit_flow_stage_dto_list_envelope.h
     model/deal_unit_flow_stage_update_dto.h
     model/deal_unit_flow_update_dto.h
     model/deal_unit_line_create_dto.h
     model/deal_unit_line_dto.h
+    model/deal_unit_line_dto_collection_query_parameters.h
     model/deal_unit_line_dto_envelope.h
     model/deal_unit_line_dto_list_envelope.h
     model/deal_unit_line_update_dto.h
@@ -135,6 +144,7 @@ set(HDRS
     model/empty_envelope.h
     model/error_envelope.h
     model/extended_deal_unit_dto.h
+    model/extended_deal_unit_dto_collection_query_parameters.h
     model/extended_deal_unit_dto_envelope.h
     model/extended_deal_unit_dto_list_envelope.h
     model/forgot_password_request.h
@@ -143,7 +153,7 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

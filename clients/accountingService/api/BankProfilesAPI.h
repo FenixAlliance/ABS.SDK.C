@@ -5,6 +5,7 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/bank_profile_dto_collection_query_parameters.h"
 #include "../model/bank_profile_dto_list_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
@@ -15,7 +16,7 @@
 // Retrieves all bank profiles for the specified tenant using OData query options.
 //
 bank_profile_dto_list_envelope_t*
-BankProfilesAPI_getBankProfiles(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BankProfilesAPI_getBankProfiles(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bank_profile_dto_collection_query_parameters_t *bank_profile_dto_collection_query_parameters);
 
 
 // Get bank profiles count
@@ -23,6 +24,6 @@ BankProfilesAPI_getBankProfiles(apiClient_t *apiClient, char *tenantId, char *ap
 // Returns the count of bank profiles for the specified tenant.
 //
 int32_envelope_t*
-BankProfilesAPI_getBankProfilesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BankProfilesAPI_getBankProfilesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bank_profile_dto_collection_query_parameters_t *bank_profile_dto_collection_query_parameters);
 
 

@@ -1283,13 +1283,13 @@ end:
 // Retrieves all cost centre budgets for the specified tenant using OData query options.
 //
 cost_centre_budget_dto_list_envelope_t*
-CostCentresAPI_getCostCentreBudgets(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+CostCentresAPI_getCostCentreBudgets(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_budget_dto_collection_query_parameters_t *cost_centre_budget_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1335,8 +1335,19 @@ CostCentresAPI_getCostCentreBudgets(apiClient_t *apiClient, char *tenantId, char
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_cost_centre_budget_dto_collection_query_parameters = NULL;
+    if (cost_centre_budget_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_cost_centre_budget_dto_collection_query_parameters = cost_centre_budget_dto_collection_query_parameters_convertToJSON(cost_centre_budget_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_cost_centre_budget_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1377,7 +1388,7 @@ CostCentresAPI_getCostCentreBudgets(apiClient_t *apiClient, char *tenantId, char
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1388,6 +1399,11 @@ CostCentresAPI_getCostCentreBudgets(apiClient_t *apiClient, char *tenantId, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_cost_centre_budget_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_cost_centre_budget_dto_collection_query_parameters);
+        localVarSingleItemJSON_cost_centre_budget_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1583,13 +1599,13 @@ end:
 // Retrieves all cost centre groups for the specified tenant using OData query options.
 //
 cost_centre_group_dto_list_envelope_t*
-CostCentresAPI_getCostCentreGroups(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+CostCentresAPI_getCostCentreGroups(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_group_dto_collection_query_parameters_t *cost_centre_group_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1635,8 +1651,19 @@ CostCentresAPI_getCostCentreGroups(apiClient_t *apiClient, char *tenantId, char 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters = NULL;
+    if (cost_centre_group_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters = cost_centre_group_dto_collection_query_parameters_convertToJSON(cost_centre_group_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1677,7 +1704,7 @@ CostCentresAPI_getCostCentreGroups(apiClient_t *apiClient, char *tenantId, char 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1688,6 +1715,11 @@ CostCentresAPI_getCostCentreGroups(apiClient_t *apiClient, char *tenantId, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters);
+        localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1724,13 +1756,13 @@ end:
 // Retrieves the count of cost centre groups for the specified tenant using OData query options.
 //
 int32_envelope_t*
-CostCentresAPI_getCostCentreGroupsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+CostCentresAPI_getCostCentreGroupsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_group_dto_collection_query_parameters_t *cost_centre_group_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1776,8 +1808,19 @@ CostCentresAPI_getCostCentreGroupsCount(apiClient_t *apiClient, char *tenantId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters = NULL;
+    if (cost_centre_group_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters = cost_centre_group_dto_collection_query_parameters_convertToJSON(cost_centre_group_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1818,7 +1861,7 @@ CostCentresAPI_getCostCentreGroupsCount(apiClient_t *apiClient, char *tenantId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1829,6 +1872,11 @@ CostCentresAPI_getCostCentreGroupsCount(apiClient_t *apiClient, char *tenantId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters);
+        localVarSingleItemJSON_cost_centre_group_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1865,13 +1913,13 @@ end:
 // Retrieves all cost centres for the specified tenant using OData query options.
 //
 cost_centre_dto_list_envelope_t*
-CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_dto_collection_query_parameters_t *cost_centre_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1917,8 +1965,19 @@ CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_cost_centre_dto_collection_query_parameters = NULL;
+    if (cost_centre_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_cost_centre_dto_collection_query_parameters = cost_centre_dto_collection_query_parameters_convertToJSON(cost_centre_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_cost_centre_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1959,7 +2018,7 @@ CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1970,6 +2029,11 @@ CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_cost_centre_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_cost_centre_dto_collection_query_parameters);
+        localVarSingleItemJSON_cost_centre_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2006,13 +2070,13 @@ end:
 // Retrieves the count of cost centres for the specified tenant using OData query options.
 //
 int32_envelope_t*
-CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_dto_collection_query_parameters_t *cost_centre_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2058,8 +2122,19 @@ CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_cost_centre_dto_collection_query_parameters = NULL;
+    if (cost_centre_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_cost_centre_dto_collection_query_parameters = cost_centre_dto_collection_query_parameters_convertToJSON(cost_centre_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_cost_centre_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2100,7 +2175,7 @@ CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -2111,6 +2186,11 @@ CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_cost_centre_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_cost_centre_dto_collection_query_parameters);
+        localVarSingleItemJSON_cost_centre_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2147,7 +2227,7 @@ end:
 // Partially updates an existing cost centre.
 //
 empty_envelope_t*
-CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *costCentreId, char *api_version, char *x_api_version, list_t *operation)
+CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *costCentreId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2219,14 +2299,14 @@ CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *cos
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2234,16 +2314,16 @@ CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *cos
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2301,17 +2381,17 @@ CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *cos
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -2350,7 +2430,7 @@ end:
 // Partially updates an existing cost centre budget.
 //
 empty_envelope_t*
-CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *operation)
+CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2422,14 +2502,14 @@ CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, cha
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2437,16 +2517,16 @@ CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, cha
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2504,17 +2584,17 @@ CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, cha
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -2553,7 +2633,7 @@ end:
 // Partially updates an existing cost centre group.
 //
 empty_envelope_t*
-CostCentresAPI_patchCostCentreGroup(apiClient_t *apiClient, char *tenantId, char *groupId, char *api_version, char *x_api_version, list_t *operation)
+CostCentresAPI_patchCostCentreGroup(apiClient_t *apiClient, char *tenantId, char *groupId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2625,14 +2705,14 @@ CostCentresAPI_patchCostCentreGroup(apiClient_t *apiClient, char *tenantId, char
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2640,16 +2720,16 @@ CostCentresAPI_patchCostCentreGroup(apiClient_t *apiClient, char *tenantId, char
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2707,17 +2787,17 @@ CostCentresAPI_patchCostCentreGroup(apiClient_t *apiClient, char *tenantId, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

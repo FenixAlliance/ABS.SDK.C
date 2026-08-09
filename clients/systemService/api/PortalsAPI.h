@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/web_portal_create_dto.h"
+#include "../model/web_portal_dto_collection_query_parameters.h"
 #include "../model/web_portal_dto_envelope.h"
 #include "../model/web_portal_dto_list_envelope.h"
 #include "../model/web_portal_update_dto.h"
@@ -44,7 +45,7 @@ PortalsAPI_getSystemPortalById(apiClient_t *apiClient, char *portalId, char *api
 // Retrieve a list of all web portals in the system
 //
 web_portal_dto_list_envelope_t*
-PortalsAPI_getSystemPortals(apiClient_t *apiClient, char *api_version, char *x_api_version);
+PortalsAPI_getSystemPortals(apiClient_t *apiClient, char *api_version, char *x_api_version, web_portal_dto_collection_query_parameters_t *web_portal_dto_collection_query_parameters);
 
 
 // Get the count of system portals
@@ -52,7 +53,7 @@ PortalsAPI_getSystemPortals(apiClient_t *apiClient, char *api_version, char *x_a
 // Get the count of all web portals in the system
 //
 int32_envelope_t*
-PortalsAPI_getSystemPortalsCount(apiClient_t *apiClient, char *api_version, char *x_api_version);
+PortalsAPI_getSystemPortalsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, web_portal_dto_collection_query_parameters_t *web_portal_dto_collection_query_parameters);
 
 
 // Partially update a system portal
@@ -60,7 +61,7 @@ PortalsAPI_getSystemPortalsCount(apiClient_t *apiClient, char *api_version, char
 // Partially update an existing web portal in the system using a JSON Patch document
 //
 empty_envelope_t*
-PortalsAPI_patchSystemPortal(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, list_t *operation);
+PortalsAPI_patchSystemPortal(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a system portal

@@ -4,6 +4,23 @@
 #include "fiscal_period_dto.h"
 
 
+char* fiscal_period_dto_status_ToString(accountingservice_fiscal_period_dto_STATUS_e status) {
+    char* statusArray[] =  { "NULL", "Open", "Closed", "Locked" };
+    return statusArray[status];
+}
+
+accountingservice_fiscal_period_dto_STATUS_e fiscal_period_dto_status_FromString(char* status){
+    int stringToReturn = 0;
+    char *statusArray[] =  { "NULL", "Open", "Closed", "Locked" };
+    size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(status, statusArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 fiscal_period_dto_t *fiscal_period_dto_create(
     char *id,
@@ -13,7 +30,8 @@ fiscal_period_dto_t *fiscal_period_dto_create(
     char *to_date,
     char *tenant_id,
     char *enrollment_id,
-    char *fiscal_year_id
+    char *fiscal_year_id,
+    accountingservice_fiscal_period_dto_STATUS_e status
     ) {
     fiscal_period_dto_t *fiscal_period_dto_local_var = malloc(sizeof(fiscal_period_dto_t));
     if (!fiscal_period_dto_local_var) {
@@ -27,6 +45,7 @@ fiscal_period_dto_t *fiscal_period_dto_create(
     fiscal_period_dto_local_var->tenant_id = tenant_id;
     fiscal_period_dto_local_var->enrollment_id = enrollment_id;
     fiscal_period_dto_local_var->fiscal_year_id = fiscal_year_id;
+    fiscal_period_dto_local_var->status = status;
 
     return fiscal_period_dto_local_var;
 }
@@ -138,6 +157,15 @@ cJSON *fiscal_period_dto_convertToJSON(fiscal_period_dto_t *fiscal_period_dto) {
     }
     }
 
+
+    // fiscal_period_dto->status
+    if(fiscal_period_dto->status != accountingservice_fiscal_period_dto_STATUS_NULL) {
+    if(cJSON_AddStringToObject(item, "status", statusfiscal_period_dto_ToString(fiscal_period_dto->status)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -222,6 +250,17 @@ fiscal_period_dto_t *fiscal_period_dto_parseFromJSON(cJSON *fiscal_period_dtoJSO
     }
     }
 
+    // fiscal_period_dto->status
+    cJSON *status = cJSON_GetObjectItemCaseSensitive(fiscal_period_dtoJSON, "status");
+    accountingservice_fiscal_period_dto_STATUS_e statusVariable;
+    if (status) { 
+    if(!cJSON_IsString(status))
+    {
+    goto end; //Enum
+    }
+    statusVariable = fiscal_period_dto_status_FromString(status->valuestring);
+    }
+
 
     fiscal_period_dto_local_var = fiscal_period_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -231,7 +270,8 @@ fiscal_period_dto_t *fiscal_period_dto_parseFromJSON(cJSON *fiscal_period_dtoJSO
         to_date && !cJSON_IsNull(to_date) ? strdup(to_date->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
-        fiscal_year_id && !cJSON_IsNull(fiscal_year_id) ? strdup(fiscal_year_id->valuestring) : NULL
+        fiscal_year_id && !cJSON_IsNull(fiscal_year_id) ? strdup(fiscal_year_id->valuestring) : NULL,
+        status ? statusVariable : accountingservice_fiscal_period_dto_STATUS_NULL
         );
 
     return fiscal_period_dto_local_var;

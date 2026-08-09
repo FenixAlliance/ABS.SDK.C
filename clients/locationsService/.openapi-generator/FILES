@@ -17,11 +17,12 @@ docs/info_response.md
 docs/int32_envelope.md
 docs/location_create_dto.md
 docs/location_dto.md
+docs/location_dto_collection_query_parameters.md
 docs/location_dto_envelope.md
 docs/location_dto_i_read_only_list_envelope.md
 docs/location_update_dto.md
 docs/login_request.md
-docs/operation.md
+docs/patch_operation.md
 docs/refresh_request.md
 docs/register_request.md
 docs/resend_confirmation_email_request.md
@@ -56,6 +57,8 @@ model/location_create_dto.c
 model/location_create_dto.h
 model/location_dto.c
 model/location_dto.h
+model/location_dto_collection_query_parameters.c
+model/location_dto_collection_query_parameters.h
 model/location_dto_envelope.c
 model/location_dto_envelope.h
 model/location_dto_i_read_only_list_envelope.c
@@ -66,8 +69,8 @@ model/login_request.c
 model/login_request.h
 model/object.c
 model/object.h
-model/operation.c
-model/operation.h
+model/patch_operation.c
+model/patch_operation.h
 model/refresh_request.c
 model/refresh_request.h
 model/register_request.c
@@ -85,3 +88,5 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_location_dto_collection_query_parameters.c
+unit-test/test_patch_operation.c

@@ -15,7 +15,24 @@
 
 typedef struct auth_result_t auth_result_t;
 
+#include "execution_provenance.h"
 #include "object.h"
+
+// Enum RUNAS for auth_result
+
+typedef enum  { identityservice_auth_result_RUNAS_NULL = 0, identityservice_auth_result_RUNAS_Invoker, identityservice_auth_result_RUNAS_Application, identityservice_auth_result_RUNAS_System, identityservice_auth_result_RUNAS_Service } identityservice_auth_result_RUNAS_e;
+
+char* auth_result_run_as_ToString(identityservice_auth_result_RUNAS_e run_as);
+
+identityservice_auth_result_RUNAS_e auth_result_run_as_FromString(char* run_as);
+
+// Enum PRINCIPALKIND for auth_result
+
+typedef enum  { identityservice_auth_result_PRINCIPALKIND_NULL = 0, identityservice_auth_result_PRINCIPALKIND_Human, identityservice_auth_result_PRINCIPALKIND_Agent, identityservice_auth_result_PRINCIPALKIND_Application, identityservice_auth_result_PRINCIPALKIND_Service, identityservice_auth_result_PRINCIPALKIND_System } identityservice_auth_result_PRINCIPALKIND_e;
+
+char* auth_result_principal_kind_ToString(identityservice_auth_result_PRINCIPALKIND_e principal_kind);
+
+identityservice_auth_result_PRINCIPALKIND_e auth_result_principal_kind_FromString(char* principal_kind);
 
 
 
@@ -28,6 +45,9 @@ typedef struct auth_result_t {
     char *correlation_id; // string
     list_t *scopes; //primitive container
     char *error; // string
+    identityservice_auth_result_RUNAS_e run_as; //enum
+    identityservice_auth_result_PRINCIPALKIND_e principal_kind; //enum
+    struct execution_provenance_t *provenance; //model
 
 } auth_result_t;
 
@@ -39,7 +59,10 @@ auth_result_t *auth_result_create(
     object_t *enrollment_id,
     char *correlation_id,
     list_t *scopes,
-    char *error
+    char *error,
+    identityservice_auth_result_RUNAS_e run_as,
+    identityservice_auth_result_PRINCIPALKIND_e principal_kind,
+    execution_provenance_t *provenance
 );
 
 void auth_result_free(auth_result_t *auth_result);

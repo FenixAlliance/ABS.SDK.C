@@ -113,7 +113,7 @@ No authorization required
 ```c
 // Retrieve refund requests
 //
-refund_request_dto_list_envelope_t* RefundRequestsAPI_getRefundRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+refund_request_dto_list_envelope_t* RefundRequestsAPI_getRefundRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, refund_request_dto_collection_query_parameters_t *refund_request_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -123,6 +123,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**refund_request_dto_collection_query_parameters** | **[refund_request_dto_collection_query_parameters_t](refund_request_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -135,7 +136,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -144,7 +145,7 @@ No authorization required
 ```c
 // Get refund requests count
 //
-int32_envelope_t* RefundRequestsAPI_getRefundRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* RefundRequestsAPI_getRefundRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, refund_request_dto_collection_query_parameters_t *refund_request_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -154,6 +155,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**refund_request_dto_collection_query_parameters** | **[refund_request_dto_collection_query_parameters_t](refund_request_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -166,7 +168,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -177,7 +179,7 @@ No authorization required
 //
 // Partially updates an existing refund request by its unique identifier.
 //
-empty_envelope_t* RefundRequestsAPI_patchRefundRequestAsync(apiClient_t *apiClient, char *tenantId, char *refundRequestId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* RefundRequestsAPI_patchRefundRequestAsync(apiClient_t *apiClient, char *tenantId, char *refundRequestId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -188,7 +190,7 @@ Name | Type | Description  | Notes
 **refundRequestId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

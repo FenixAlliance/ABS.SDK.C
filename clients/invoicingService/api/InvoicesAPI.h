@@ -9,30 +9,37 @@
 #include "../model/empty_envelope.h"
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/extended_invoice_dto_collection_query_parameters.h"
 #include "../model/extended_invoice_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/invoice_adjustment_create_dto.h"
+#include "../model/invoice_adjustment_dto_collection_query_parameters.h"
 #include "../model/invoice_adjustment_dto_envelope.h"
 #include "../model/invoice_adjustment_dto_i_read_only_list_envelope.h"
 #include "../model/invoice_adjustment_update_dto.h"
 #include "../model/invoice_create_dto.h"
+#include "../model/invoice_dto_collection_query_parameters.h"
 #include "../model/invoice_dto_envelope.h"
 #include "../model/invoice_dto_list_envelope.h"
 #include "../model/invoice_line_applied_tax_create_dto.h"
+#include "../model/invoice_line_applied_tax_dto_collection_query_parameters.h"
 #include "../model/invoice_line_applied_tax_dto_i_read_only_list_envelope.h"
 #include "../model/invoice_line_applied_tax_update_dto.h"
 #include "../model/invoice_line_create_dto.h"
+#include "../model/invoice_line_dto_collection_query_parameters.h"
 #include "../model/invoice_line_dto_envelope.h"
 #include "../model/invoice_line_dto_i_read_only_list_envelope.h"
 #include "../model/invoice_line_dto_list_envelope.h"
 #include "../model/invoice_line_update_dto.h"
 #include "../model/invoice_reference_create_dto.h"
+#include "../model/invoice_reference_dto_collection_query_parameters.h"
 #include "../model/invoice_reference_dto_envelope.h"
 #include "../model/invoice_reference_dto_i_read_only_list_envelope.h"
 #include "../model/invoice_reference_update_dto.h"
 #include "../model/invoice_update_dto.h"
 #include "../model/money_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
+#include "../model/payment_dto_collection_query_parameters.h"
 #include "../model/payment_dto_i_read_only_list_envelope.h"
 
 
@@ -185,7 +192,7 @@ InvoicesAPI_getExtendedInvoice(apiClient_t *apiClient, char *tenantId, char *inv
 // Retrieves a list of extended invoice details for the specified tenant.
 //
 extended_invoice_dto_list_envelope_t*
-InvoicesAPI_getExtendedInvoices(apiClient_t *apiClient, char *tenantId);
+InvoicesAPI_getExtendedInvoices(apiClient_t *apiClient, char *tenantId, extended_invoice_dto_collection_query_parameters_t *extended_invoice_dto_collection_query_parameters);
 
 
 // Get the count of extended invoices.
@@ -193,7 +200,7 @@ InvoicesAPI_getExtendedInvoices(apiClient_t *apiClient, char *tenantId);
 // Retrieves the total count of extended invoices for the specified tenant.
 //
 int32_envelope_t*
-InvoicesAPI_getExtendedInvoicesCount(apiClient_t *apiClient, char *tenantId);
+InvoicesAPI_getExtendedInvoicesCount(apiClient_t *apiClient, char *tenantId, extended_invoice_dto_collection_query_parameters_t *extended_invoice_dto_collection_query_parameters);
 
 
 // Get an invoice by ID.
@@ -217,7 +224,7 @@ InvoicesAPI_getInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char *i
 // Retrieves the adjustments for the specified invoice.
 //
 invoice_adjustment_dto_i_read_only_list_envelope_t*
-InvoicesAPI_getInvoiceAdjustments(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+InvoicesAPI_getInvoiceAdjustments(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_adjustment_dto_collection_query_parameters_t *invoice_adjustment_dto_collection_query_parameters);
 
 
 // Get the count of invoice adjustments.
@@ -225,7 +232,7 @@ InvoicesAPI_getInvoiceAdjustments(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves the total count of adjustments for the specified invoice.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoiceAdjustmentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+InvoicesAPI_getInvoiceAdjustmentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_adjustment_dto_collection_query_parameters_t *invoice_adjustment_dto_collection_query_parameters);
 
 
 // Get an invoice line by ID.
@@ -241,7 +248,7 @@ InvoicesAPI_getInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoice
 // Retrieves the taxes applied to the specified invoice line.
 //
 invoice_line_applied_tax_dto_i_read_only_list_envelope_t*
-InvoicesAPI_getInvoiceLineTaxes(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId);
+InvoicesAPI_getInvoiceLineTaxes(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, invoice_line_applied_tax_dto_collection_query_parameters_t *invoice_line_applied_tax_dto_collection_query_parameters);
 
 
 // Get the count of taxes for an invoice line.
@@ -249,7 +256,7 @@ InvoicesAPI_getInvoiceLineTaxes(apiClient_t *apiClient, char *tenantId, char *in
 // Retrieves the total count of taxes applied to the specified invoice line.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoiceLineTaxesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId);
+InvoicesAPI_getInvoiceLineTaxesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, invoice_line_applied_tax_dto_collection_query_parameters_t *invoice_line_applied_tax_dto_collection_query_parameters);
 
 
 // Get invoice lines.
@@ -257,7 +264,7 @@ InvoicesAPI_getInvoiceLineTaxesCount(apiClient_t *apiClient, char *tenantId, cha
 // Retrieves the invoice lines for the specified invoice.
 //
 invoice_line_dto_list_envelope_t*
-InvoicesAPI_getInvoiceLines(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *itemId);
+InvoicesAPI_getInvoiceLines(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *itemId, invoice_line_dto_collection_query_parameters_t *invoice_line_dto_collection_query_parameters);
 
 
 // Get the count of invoice lines.
@@ -265,7 +272,7 @@ InvoicesAPI_getInvoiceLines(apiClient_t *apiClient, char *tenantId, char *invoic
 // Retrieves the total count of invoice lines for the specified invoice.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoiceLinesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+InvoicesAPI_getInvoiceLinesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_line_dto_collection_query_parameters_t *invoice_line_dto_collection_query_parameters);
 
 
 // Get payments for an invoice.
@@ -273,7 +280,7 @@ InvoicesAPI_getInvoiceLinesCount(apiClient_t *apiClient, char *tenantId, char *i
 // Retrieves the list of payments related to the specified invoice.
 //
 payment_dto_i_read_only_list_envelope_t*
-InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *invoiceId, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 
 
 // Get the count of payments for an invoice.
@@ -281,7 +288,7 @@ InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *inv
 // Retrieves the total count of payments for the specified invoice.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 
 
 // Get an invoice reference by ID.
@@ -297,7 +304,7 @@ InvoicesAPI_getInvoiceReference(apiClient_t *apiClient, char *tenantId, char *in
 // Retrieves the references for the specified invoice.
 //
 invoice_reference_dto_i_read_only_list_envelope_t*
-InvoicesAPI_getInvoiceReferences(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+InvoicesAPI_getInvoiceReferences(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_reference_dto_collection_query_parameters_t *invoice_reference_dto_collection_query_parameters);
 
 
 // Get the count of invoice references.
@@ -305,7 +312,7 @@ InvoicesAPI_getInvoiceReferences(apiClient_t *apiClient, char *tenantId, char *i
 // Retrieves the total count of references for the specified invoice.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoiceReferencesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+InvoicesAPI_getInvoiceReferencesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_reference_dto_collection_query_parameters_t *invoice_reference_dto_collection_query_parameters);
 
 
 // Get a list of invoices.
@@ -313,7 +320,7 @@ InvoicesAPI_getInvoiceReferencesCount(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves a list of invoices for the specified tenant.
 //
 invoice_dto_list_envelope_t*
-InvoicesAPI_getInvoices(apiClient_t *apiClient, char *tenantId);
+InvoicesAPI_getInvoices(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 
 
 // Get the count of invoices.
@@ -321,7 +328,7 @@ InvoicesAPI_getInvoices(apiClient_t *apiClient, char *tenantId);
 // Retrieves the total count of invoices for the specified tenant.
 //
 int32_envelope_t*
-InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId);
+InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 
 
 // Sum tenant purchase-invoice totals.
@@ -329,7 +336,7 @@ InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId);
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseInvoice, filtered by the supplied OData date range.
 //
 money_envelope_t*
-InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId);
+InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 
 
 // Sum tenant sales-invoice totals.
@@ -337,7 +344,7 @@ InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId);
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvoice, filtered by the supplied OData date range.
 //
 money_envelope_t*
-InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId);
+InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 
 
 // Patch an invoice.
@@ -345,7 +352,7 @@ InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId);
 // Partially updates the specified invoice for the tenant.
 //
 empty_envelope_t*
-InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId, list_t *operation);
+InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId, list_t *patch_operation);
 
 
 // Patch an invoice adjustment.
@@ -353,7 +360,7 @@ InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId
 // Partially updates the specified adjustment for the invoice.
 //
 empty_envelope_t*
-InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceAdjustmentId, list_t *operation);
+InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceAdjustmentId, list_t *patch_operation);
 
 
 // Patch an invoice line.
@@ -361,7 +368,7 @@ InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char 
 // Partially updates the specified invoice line.
 //
 empty_envelope_t*
-InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, list_t *operation);
+InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, list_t *patch_operation);
 
 
 // Patch a tax for an invoice line.
@@ -369,7 +376,7 @@ InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoi
 // Partially updates the specified tax entry for the invoice line.
 //
 empty_envelope_t*
-InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, char *invoiceLineTaxId, list_t *operation);
+InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, char *invoiceLineTaxId, list_t *patch_operation);
 
 
 // Patch an invoice reference.
@@ -377,7 +384,7 @@ InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *in
 // Partially updates the specified reference for the invoice.
 //
 empty_envelope_t*
-InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceReferenceId, list_t *operation);
+InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceReferenceId, list_t *patch_operation);
 
 
 // Preview the rendered email for an invoice.

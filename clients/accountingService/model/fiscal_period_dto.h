@@ -16,6 +16,14 @@
 typedef struct fiscal_period_dto_t fiscal_period_dto_t;
 
 
+// Enum STATUS for fiscal_period_dto
+
+typedef enum  { accountingservice_fiscal_period_dto_STATUS_NULL = 0, accountingservice_fiscal_period_dto_STATUS_Open, accountingservice_fiscal_period_dto_STATUS_Closed, accountingservice_fiscal_period_dto_STATUS_Locked } accountingservice_fiscal_period_dto_STATUS_e;
+
+char* fiscal_period_dto_status_ToString(accountingservice_fiscal_period_dto_STATUS_e status);
+
+accountingservice_fiscal_period_dto_STATUS_e fiscal_period_dto_status_FromString(char* status);
+
 
 
 typedef struct fiscal_period_dto_t {
@@ -27,6 +35,7 @@ typedef struct fiscal_period_dto_t {
     char *tenant_id; // string
     char *enrollment_id; // string
     char *fiscal_year_id; // string
+    accountingservice_fiscal_period_dto_STATUS_e status; //enum
 
 } fiscal_period_dto_t;
 
@@ -38,7 +47,8 @@ fiscal_period_dto_t *fiscal_period_dto_create(
     char *to_date,
     char *tenant_id,
     char *enrollment_id,
-    char *fiscal_year_id
+    char *fiscal_year_id,
+    accountingservice_fiscal_period_dto_STATUS_e status
 );
 
 void fiscal_period_dto_free(fiscal_period_dto_t *fiscal_period_dto);

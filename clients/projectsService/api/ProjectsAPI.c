@@ -995,13 +995,13 @@ end:
 // Gets all task categories for a specific project with OData support.
 //
 task_category_dto_list_envelope_t*
-ProjectsAPI_getProjectTaskCategoriesAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
+ProjectsAPI_getProjectTaskCategoriesAsync(apiClient_t *apiClient, char *projectId, char *tenantId, task_category_dto_collection_query_parameters_t *task_category_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1040,8 +1040,19 @@ ProjectsAPI_getProjectTaskCategoriesAsync(apiClient_t *apiClient, char *projectI
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_task_category_dto_collection_query_parameters = NULL;
+    if (task_category_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_task_category_dto_collection_query_parameters = task_category_dto_collection_query_parameters_convertToJSON(task_category_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_task_category_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1082,9 +1093,14 @@ ProjectsAPI_getProjectTaskCategoriesAsync(apiClient_t *apiClient, char *projectI
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_projectId);
+    if (localVarSingleItemJSON_task_category_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_task_category_dto_collection_query_parameters);
+        localVarSingleItemJSON_task_category_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1109,13 +1125,13 @@ end:
 // Gets the count of task categories for a specific project.
 //
 int32_envelope_t*
-ProjectsAPI_getProjectTaskCategoriesCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
+ProjectsAPI_getProjectTaskCategoriesCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId, task_category_dto_collection_query_parameters_t *task_category_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1154,8 +1170,19 @@ ProjectsAPI_getProjectTaskCategoriesCountAsync(apiClient_t *apiClient, char *pro
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_task_category_dto_collection_query_parameters = NULL;
+    if (task_category_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_task_category_dto_collection_query_parameters = task_category_dto_collection_query_parameters_convertToJSON(task_category_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_task_category_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1196,9 +1223,14 @@ ProjectsAPI_getProjectTaskCategoriesCountAsync(apiClient_t *apiClient, char *pro
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_projectId);
+    if (localVarSingleItemJSON_task_category_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_task_category_dto_collection_query_parameters);
+        localVarSingleItemJSON_task_category_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1223,13 +1255,13 @@ end:
 // Gets the count of time log entries for a specific project.
 //
 int32_envelope_t*
-ProjectsAPI_getProjectTimeLogsCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
+ProjectsAPI_getProjectTimeLogsCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_time_log_dto_collection_query_parameters_t *project_time_log_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1268,8 +1300,19 @@ ProjectsAPI_getProjectTimeLogsCountAsync(apiClient_t *apiClient, char *projectId
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_project_time_log_dto_collection_query_parameters = NULL;
+    if (project_time_log_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_project_time_log_dto_collection_query_parameters = project_time_log_dto_collection_query_parameters_convertToJSON(project_time_log_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_project_time_log_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1310,9 +1353,14 @@ ProjectsAPI_getProjectTimeLogsCountAsync(apiClient_t *apiClient, char *projectId
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_projectId);
+    if (localVarSingleItemJSON_project_time_log_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_project_time_log_dto_collection_query_parameters);
+        localVarSingleItemJSON_project_time_log_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1337,13 +1385,13 @@ end:
 // Gets all projects for the current tenant with OData support.
 //
 project_dto_list_envelope_t*
-ProjectsAPI_getProjectsByTenantIdAsync(apiClient_t *apiClient, char *tenantId)
+ProjectsAPI_getProjectsByTenantIdAsync(apiClient_t *apiClient, char *tenantId, project_dto_collection_query_parameters_t *project_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1365,8 +1413,19 @@ ProjectsAPI_getProjectsByTenantIdAsync(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_project_dto_collection_query_parameters = NULL;
+    if (project_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_project_dto_collection_query_parameters = project_dto_collection_query_parameters_convertToJSON(project_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_project_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1407,8 +1466,13 @@ ProjectsAPI_getProjectsByTenantIdAsync(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_project_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_project_dto_collection_query_parameters);
+        localVarSingleItemJSON_project_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1433,13 +1497,13 @@ end:
 // Gets the count of projects for the current tenant.
 //
 int32_envelope_t*
-ProjectsAPI_getProjectsCountByTenantIdAsync(apiClient_t *apiClient, char *tenantId)
+ProjectsAPI_getProjectsCountByTenantIdAsync(apiClient_t *apiClient, char *tenantId, project_dto_collection_query_parameters_t *project_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1461,8 +1525,19 @@ ProjectsAPI_getProjectsCountByTenantIdAsync(apiClient_t *apiClient, char *tenant
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_project_dto_collection_query_parameters = NULL;
+    if (project_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_project_dto_collection_query_parameters = project_dto_collection_query_parameters_convertToJSON(project_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_project_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1503,8 +1578,13 @@ ProjectsAPI_getProjectsCountByTenantIdAsync(apiClient_t *apiClient, char *tenant
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_project_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_project_dto_collection_query_parameters);
+        localVarSingleItemJSON_project_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1529,13 +1609,13 @@ end:
 // Gets all tasks for a specific project with OData support.
 //
 project_task_dto_list_envelope_t*
-ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
+ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_task_dto_collection_query_parameters_t *project_task_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1574,8 +1654,19 @@ ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, cha
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_project_task_dto_collection_query_parameters = NULL;
+    if (project_task_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_project_task_dto_collection_query_parameters = project_task_dto_collection_query_parameters_convertToJSON(project_task_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_project_task_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1616,9 +1707,14 @@ ProjectsAPI_getTasksForProjectAsync(apiClient_t *apiClient, char *projectId, cha
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_projectId);
+    if (localVarSingleItemJSON_project_task_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_project_task_dto_collection_query_parameters);
+        localVarSingleItemJSON_project_task_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1643,13 +1739,13 @@ end:
 // Gets the count of tasks for a specific project.
 //
 int32_envelope_t*
-ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
+ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_task_dto_collection_query_parameters_t *project_task_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1688,8 +1784,19 @@ ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_project_task_dto_collection_query_parameters = NULL;
+    if (project_task_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_project_task_dto_collection_query_parameters = project_task_dto_collection_query_parameters_convertToJSON(project_task_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_project_task_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1730,9 +1837,14 @@ ProjectsAPI_getTasksForProjectCountAsync(apiClient_t *apiClient, char *projectId
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_projectId);
+    if (localVarSingleItemJSON_project_task_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_project_task_dto_collection_query_parameters);
+        localVarSingleItemJSON_project_task_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1757,13 +1869,13 @@ end:
 // Gets all time log entries for a specific project with OData support.
 //
 project_time_log_dto_list_envelope_t*
-ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId)
+ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, project_time_log_dto_collection_query_parameters_t *project_time_log_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1802,8 +1914,19 @@ ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, 
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_project_time_log_dto_collection_query_parameters = NULL;
+    if (project_time_log_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_project_time_log_dto_collection_query_parameters = project_time_log_dto_collection_query_parameters_convertToJSON(project_time_log_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_project_time_log_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1844,9 +1967,14 @@ ProjectsAPI_getTimeLogsForProjectAsync(apiClient_t *apiClient, char *projectId, 
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_projectId);
+    if (localVarSingleItemJSON_project_time_log_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_project_time_log_dto_collection_query_parameters);
+        localVarSingleItemJSON_project_time_log_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1871,7 +1999,7 @@ end:
 // Partially updates the specified project.
 //
 empty_envelope_t*
-ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, list_t *operation)
+ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *tenantId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1919,14 +2047,14 @@ ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *ten
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1934,16 +2062,16 @@ ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *ten
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1992,17 +2120,17 @@ ProjectsAPI_patchProjectAsync(apiClient_t *apiClient, char *projectId, char *ten
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_projectId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -2029,7 +2157,7 @@ end:
 // Partially updates the specified period for a project.
 //
 empty_envelope_t*
-ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, char *projectPeriodId, char *tenantId, list_t *operation)
+ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, char *projectPeriodId, char *tenantId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -2094,14 +2222,14 @@ ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, cha
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2109,16 +2237,16 @@ ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, cha
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2168,17 +2296,17 @@ ProjectsAPI_patchProjectPeriodAsync(apiClient_t *apiClient, char *projectId, cha
     free(localVarPath);
     free(localVarToReplace_projectId);
     free(localVarToReplace_projectPeriodId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -2205,7 +2333,7 @@ end:
 // Partially updates the specified task in a project.
 //
 empty_envelope_t*
-ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, list_t *operation)
+ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, char *projectTaskId, char *tenantId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -2270,14 +2398,14 @@ ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, ch
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2285,16 +2413,16 @@ ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, ch
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2344,17 +2472,17 @@ ProjectsAPI_patchTaskForProjectAsync(apiClient_t *apiClient, char *projectId, ch
     free(localVarPath);
     free(localVarToReplace_projectId);
     free(localVarToReplace_projectTaskId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

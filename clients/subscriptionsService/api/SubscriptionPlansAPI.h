@@ -9,7 +9,8 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
+#include "../model/subscription_dto_collection_query_parameters.h"
 #include "../model/subscription_plan_create_dto.h"
 #include "../model/subscription_plan_dto_envelope.h"
 #include "../model/subscription_plan_dto_i_read_only_list_envelope.h"
@@ -45,7 +46,7 @@ SubscriptionPlansAPI_getSubscriptionPlanByIdAsync(apiClient_t *apiClient, char *
 // Retrieves all subscription plans for the specified tenant.
 //
 subscription_plan_dto_i_read_only_list_envelope_t*
-SubscriptionPlansAPI_getSubscriptionPlansAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SubscriptionPlansAPI_getSubscriptionPlansAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, subscription_dto_collection_query_parameters_t *subscription_dto_collection_query_parameters);
 
 
 // Get subscription plans count
@@ -53,7 +54,7 @@ SubscriptionPlansAPI_getSubscriptionPlansAsync(apiClient_t *apiClient, char *ten
 // Returns the count of subscription plans for the specified tenant.
 //
 int32_envelope_t*
-SubscriptionPlansAPI_getSubscriptionPlansCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SubscriptionPlansAPI_getSubscriptionPlansCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, subscription_dto_collection_query_parameters_t *subscription_dto_collection_query_parameters);
 
 
 // Patch a subscription plan
@@ -61,7 +62,7 @@ SubscriptionPlansAPI_getSubscriptionPlansCountAsync(apiClient_t *apiClient, char
 // Patch a subscription plan
 //
 empty_envelope_t*
-SubscriptionPlansAPI_patchSubscriptionPlanAsync(apiClient_t *apiClient, char *tenantId, char *planId, char *api_version, char *x_api_version, list_t *operation);
+SubscriptionPlansAPI_patchSubscriptionPlanAsync(apiClient_t *apiClient, char *tenantId, char *planId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a subscription plan

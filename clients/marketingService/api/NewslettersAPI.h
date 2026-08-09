@@ -9,9 +9,10 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/newsletter_create_dto.h"
+#include "../model/newsletter_dto_collection_query_parameters.h"
 #include "../model/newsletter_dto_envelope.h"
 #include "../model/newsletter_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a newsletter
@@ -43,7 +44,7 @@ NewslettersAPI_getNewsletterDetailsAsync(apiClient_t *apiClient, char *tenantId,
 // Retrieves a collection of newsletters for the specified tenant using OData query options.
 //
 void
-NewslettersAPI_getNewsletterODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+NewslettersAPI_getNewsletterODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, newsletter_dto_collection_query_parameters_t *newsletter_dto_collection_query_parameters);
 
 
 // Get newsletters count
@@ -51,7 +52,7 @@ NewslettersAPI_getNewsletterODataAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of newsletters for the specified tenant using OData query options.
 //
 int32_envelope_t*
-NewslettersAPI_getNewslettersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+NewslettersAPI_getNewslettersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, newsletter_dto_collection_query_parameters_t *newsletter_dto_collection_query_parameters);
 
 
 // Patch a newsletter
@@ -59,7 +60,7 @@ NewslettersAPI_getNewslettersCountAsync(apiClient_t *apiClient, char *tenantId, 
 // Partially updates a newsletter by its ID using JSON Patch.
 //
 empty_envelope_t*
-NewslettersAPI_patchNewsletterAsync(apiClient_t *apiClient, char *tenantId, char *newsletterId, char *api_version, char *x_api_version, list_t *operation);
+NewslettersAPI_patchNewsletterAsync(apiClient_t *apiClient, char *tenantId, char *newsletterId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a newsletter

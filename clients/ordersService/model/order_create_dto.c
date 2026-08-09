@@ -100,6 +100,7 @@ order_create_dto_t *order_create_dto_create(
     char *individual_id,
     char *payment_term_id,
     char *organization_id,
+    char *receiver_tenant_id,
     char *first_name,
     char *last_name,
     char *company_name,
@@ -148,7 +149,6 @@ order_create_dto_t *order_create_dto_create(
     ordersservice_order_create_dto_ORDERSTATUS_e order_status,
     ordersservice_order_create_dto_QUOTESTATUS_e quote_status,
     ordersservice_order_create_dto_FREIGHTTERMS_e freight_terms,
-    char *receiver_tenant_id,
     char *shipping_location_id,
     char *qualified_identifier,
     double total_taxes_in_usd,
@@ -174,6 +174,7 @@ order_create_dto_t *order_create_dto_create(
     order_create_dto_local_var->individual_id = individual_id;
     order_create_dto_local_var->payment_term_id = payment_term_id;
     order_create_dto_local_var->organization_id = organization_id;
+    order_create_dto_local_var->receiver_tenant_id = receiver_tenant_id;
     order_create_dto_local_var->first_name = first_name;
     order_create_dto_local_var->last_name = last_name;
     order_create_dto_local_var->company_name = company_name;
@@ -222,7 +223,6 @@ order_create_dto_t *order_create_dto_create(
     order_create_dto_local_var->order_status = order_status;
     order_create_dto_local_var->quote_status = quote_status;
     order_create_dto_local_var->freight_terms = freight_terms;
-    order_create_dto_local_var->receiver_tenant_id = receiver_tenant_id;
     order_create_dto_local_var->shipping_location_id = shipping_location_id;
     order_create_dto_local_var->qualified_identifier = qualified_identifier;
     order_create_dto_local_var->total_taxes_in_usd = total_taxes_in_usd;
@@ -275,6 +275,10 @@ void order_create_dto_free(order_create_dto_t *order_create_dto) {
     if (order_create_dto->organization_id) {
         free(order_create_dto->organization_id);
         order_create_dto->organization_id = NULL;
+    }
+    if (order_create_dto->receiver_tenant_id) {
+        free(order_create_dto->receiver_tenant_id);
+        order_create_dto->receiver_tenant_id = NULL;
     }
     if (order_create_dto->first_name) {
         free(order_create_dto->first_name);
@@ -396,10 +400,6 @@ void order_create_dto_free(order_create_dto_t *order_create_dto) {
         free(order_create_dto->customer_notes);
         order_create_dto->customer_notes = NULL;
     }
-    if (order_create_dto->receiver_tenant_id) {
-        free(order_create_dto->receiver_tenant_id);
-        order_create_dto->receiver_tenant_id = NULL;
-    }
     if (order_create_dto->shipping_location_id) {
         free(order_create_dto->shipping_location_id);
         order_create_dto->shipping_location_id = NULL;
@@ -496,6 +496,14 @@ cJSON *order_create_dto_convertToJSON(order_create_dto_t *order_create_dto) {
     // order_create_dto->organization_id
     if(order_create_dto->organization_id) {
     if(cJSON_AddStringToObject(item, "organizationId", order_create_dto->organization_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // order_create_dto->receiver_tenant_id
+    if(order_create_dto->receiver_tenant_id) {
+    if(cJSON_AddStringToObject(item, "receiverTenantId", order_create_dto->receiver_tenant_id) == NULL) {
     goto fail; //String
     }
     }
@@ -890,14 +898,6 @@ cJSON *order_create_dto_convertToJSON(order_create_dto_t *order_create_dto) {
     }
 
 
-    // order_create_dto->receiver_tenant_id
-    if(order_create_dto->receiver_tenant_id) {
-    if(cJSON_AddStringToObject(item, "receiverTenantId", order_create_dto->receiver_tenant_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // order_create_dto->shipping_location_id
     if(order_create_dto->shipping_location_id) {
     if(cJSON_AddStringToObject(item, "shippingLocationId", order_create_dto->shipping_location_id) == NULL) {
@@ -1088,6 +1088,15 @@ order_create_dto_t *order_create_dto_parseFromJSON(cJSON *order_create_dtoJSON){
     cJSON *organization_id = cJSON_GetObjectItemCaseSensitive(order_create_dtoJSON, "organizationId");
     if (organization_id) { 
     if(!cJSON_IsString(organization_id) && !cJSON_IsNull(organization_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // order_create_dto->receiver_tenant_id
+    cJSON *receiver_tenant_id = cJSON_GetObjectItemCaseSensitive(order_create_dtoJSON, "receiverTenantId");
+    if (receiver_tenant_id) { 
+    if(!cJSON_IsString(receiver_tenant_id) && !cJSON_IsNull(receiver_tenant_id))
     {
     goto end; //String
     }
@@ -1535,15 +1544,6 @@ order_create_dto_t *order_create_dto_parseFromJSON(cJSON *order_create_dtoJSON){
     freight_termsVariable = order_create_dto_freight_terms_FromString(freight_terms->valuestring);
     }
 
-    // order_create_dto->receiver_tenant_id
-    cJSON *receiver_tenant_id = cJSON_GetObjectItemCaseSensitive(order_create_dtoJSON, "receiverTenantId");
-    if (receiver_tenant_id) { 
-    if(!cJSON_IsString(receiver_tenant_id) && !cJSON_IsNull(receiver_tenant_id))
-    {
-    goto end; //String
-    }
-    }
-
     // order_create_dto->shipping_location_id
     cJSON *shipping_location_id = cJSON_GetObjectItemCaseSensitive(order_create_dtoJSON, "shippingLocationId");
     if (shipping_location_id) { 
@@ -1666,6 +1666,7 @@ order_create_dto_t *order_create_dto_parseFromJSON(cJSON *order_create_dtoJSON){
         individual_id && !cJSON_IsNull(individual_id) ? strdup(individual_id->valuestring) : NULL,
         payment_term_id && !cJSON_IsNull(payment_term_id) ? strdup(payment_term_id->valuestring) : NULL,
         organization_id && !cJSON_IsNull(organization_id) ? strdup(organization_id->valuestring) : NULL,
+        receiver_tenant_id && !cJSON_IsNull(receiver_tenant_id) ? strdup(receiver_tenant_id->valuestring) : NULL,
         first_name && !cJSON_IsNull(first_name) ? strdup(first_name->valuestring) : NULL,
         last_name && !cJSON_IsNull(last_name) ? strdup(last_name->valuestring) : NULL,
         company_name && !cJSON_IsNull(company_name) ? strdup(company_name->valuestring) : NULL,
@@ -1714,7 +1715,6 @@ order_create_dto_t *order_create_dto_parseFromJSON(cJSON *order_create_dtoJSON){
         order_status ? order_statusVariable : ordersservice_order_create_dto_ORDERSTATUS_NULL,
         quote_status ? quote_statusVariable : ordersservice_order_create_dto_QUOTESTATUS_NULL,
         freight_terms ? freight_termsVariable : ordersservice_order_create_dto_FREIGHTTERMS_NULL,
-        receiver_tenant_id && !cJSON_IsNull(receiver_tenant_id) ? strdup(receiver_tenant_id->valuestring) : NULL,
         shipping_location_id && !cJSON_IsNull(shipping_location_id) ? strdup(shipping_location_id->valuestring) : NULL,
         qualified_identifier && !cJSON_IsNull(qualified_identifier) ? strdup(qualified_identifier->valuestring) : NULL,
         total_taxes_in_usd ? total_taxes_in_usd->valuedouble : 0,

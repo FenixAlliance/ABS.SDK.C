@@ -45,6 +45,7 @@ accountingservice_receipt_create_dto_RECEIPTTYPE_e receipt_create_dto_receipt_ty
 typedef struct receipt_create_dto_t {
     char *id; // string
     char *timestamp; //date time
+    int closed; //boolean
     char *title; // string
     char *price_list_id; // string
     char *description; // string
@@ -62,6 +63,7 @@ typedef struct receipt_create_dto_t {
     char *country_id; // string
     char *state_id; // string
     char *city_id; // string
+    double forex_rate; //numeric
     char *currency_id; // string
     double total_detail; //numeric
     char *total_detail_currency_id; // string
@@ -90,10 +92,8 @@ typedef struct receipt_create_dto_t {
     accountingservice_receipt_create_dto_COSTCALCULATIONMETHOD_e cost_calculation_method; //enum
     accountingservice_receipt_create_dto_TAXCALCULATIONMETHOD_e tax_calculation_method; //enum
     char *payment_id; // string
-    double forex_rate; //numeric
     double total_amount; //numeric
     double total_amount_in_usd; //numeric
-    int closed; //boolean
     char *contact_id; // string
     accountingservice_receipt_create_dto_RECEIPTTYPE_e receipt_type; //enum
     char *order_id; // string
@@ -104,6 +104,7 @@ typedef struct receipt_create_dto_t {
 receipt_create_dto_t *receipt_create_dto_create(
     char *id,
     char *timestamp,
+    int closed,
     char *title,
     char *price_list_id,
     char *description,
@@ -121,6 +122,7 @@ receipt_create_dto_t *receipt_create_dto_create(
     char *country_id,
     char *state_id,
     char *city_id,
+    double forex_rate,
     char *currency_id,
     double total_detail,
     char *total_detail_currency_id,
@@ -149,10 +151,8 @@ receipt_create_dto_t *receipt_create_dto_create(
     accountingservice_receipt_create_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     accountingservice_receipt_create_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     char *payment_id,
-    double forex_rate,
     double total_amount,
     double total_amount_in_usd,
-    int closed,
     char *contact_id,
     accountingservice_receipt_create_dto_RECEIPTTYPE_e receipt_type,
     char *order_id,

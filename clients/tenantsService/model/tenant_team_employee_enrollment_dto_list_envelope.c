@@ -10,6 +10,9 @@ tenant_team_employee_enrollment_dto_list_envelope_t *tenant_team_employee_enroll
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     list_t *result
     ) {
@@ -21,6 +24,9 @@ tenant_team_employee_enrollment_dto_list_envelope_t *tenant_team_employee_enroll
     tenant_team_employee_enrollment_dto_list_envelope_local_var->error_message = error_message;
     tenant_team_employee_enrollment_dto_list_envelope_local_var->correlation_id = correlation_id;
     tenant_team_employee_enrollment_dto_list_envelope_local_var->timestamp = timestamp;
+    tenant_team_employee_enrollment_dto_list_envelope_local_var->http_status = http_status;
+    tenant_team_employee_enrollment_dto_list_envelope_local_var->error_code = error_code;
+    tenant_team_employee_enrollment_dto_list_envelope_local_var->validation_details = validation_details;
     tenant_team_employee_enrollment_dto_list_envelope_local_var->activity_id = activity_id;
     tenant_team_employee_enrollment_dto_list_envelope_local_var->result = result;
 
@@ -44,6 +50,20 @@ void tenant_team_employee_enrollment_dto_list_envelope_free(tenant_team_employee
     if (tenant_team_employee_enrollment_dto_list_envelope->timestamp) {
         free(tenant_team_employee_enrollment_dto_list_envelope->timestamp);
         tenant_team_employee_enrollment_dto_list_envelope->timestamp = NULL;
+    }
+    if (tenant_team_employee_enrollment_dto_list_envelope->error_code) {
+        free(tenant_team_employee_enrollment_dto_list_envelope->error_code);
+        tenant_team_employee_enrollment_dto_list_envelope->error_code = NULL;
+    }
+    if (tenant_team_employee_enrollment_dto_list_envelope->validation_details) {
+        list_ForEach(listEntry, tenant_team_employee_enrollment_dto_list_envelope->validation_details) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free (localKeyValue->key);
+            free (localKeyValue->value);
+            keyValuePair_free(localKeyValue);
+        }
+        list_freeList(tenant_team_employee_enrollment_dto_list_envelope->validation_details);
+        tenant_team_employee_enrollment_dto_list_envelope->validation_details = NULL;
     }
     if (tenant_team_employee_enrollment_dto_list_envelope->activity_id) {
         free(tenant_team_employee_enrollment_dto_list_envelope->activity_id);
@@ -94,6 +114,38 @@ cJSON *tenant_team_employee_enrollment_dto_list_envelope_convertToJSON(tenant_te
     }
 
 
+    // tenant_team_employee_enrollment_dto_list_envelope->http_status
+    if(tenant_team_employee_enrollment_dto_list_envelope->http_status) {
+    if(cJSON_AddNumberToObject(item, "httpStatus", tenant_team_employee_enrollment_dto_list_envelope->http_status) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // tenant_team_employee_enrollment_dto_list_envelope->error_code
+    if(tenant_team_employee_enrollment_dto_list_envelope->error_code) {
+    if(cJSON_AddStringToObject(item, "errorCode", tenant_team_employee_enrollment_dto_list_envelope->error_code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // tenant_team_employee_enrollment_dto_list_envelope->validation_details
+    if(tenant_team_employee_enrollment_dto_list_envelope->validation_details) {
+    cJSON *validation_details = cJSON_AddObjectToObject(item, "validationDetails");
+    if(validation_details == NULL) {
+        goto fail; //primitive map container
+    }
+    cJSON *localMapObject = validation_details;
+    listEntry_t *validation_detailsListEntry;
+    if (tenant_team_employee_enrollment_dto_list_envelope->validation_details) {
+    list_ForEach(validation_detailsListEntry, tenant_team_employee_enrollment_dto_list_envelope->validation_details) {
+        keyValuePair_t *localKeyValue = (keyValuePair_t*)validation_detailsListEntry->data;
+    }
+    }
+    }
+
+
     // tenant_team_employee_enrollment_dto_list_envelope->activity_id
     if(tenant_team_employee_enrollment_dto_list_envelope->activity_id) {
     if(cJSON_AddStringToObject(item, "activityId", tenant_team_employee_enrollment_dto_list_envelope->activity_id) == NULL) {
@@ -132,6 +184,9 @@ fail:
 tenant_team_employee_enrollment_dto_list_envelope_t *tenant_team_employee_enrollment_dto_list_envelope_parseFromJSON(cJSON *tenant_team_employee_enrollment_dto_list_envelopeJSON){
 
     tenant_team_employee_enrollment_dto_list_envelope_t *tenant_team_employee_enrollment_dto_list_envelope_local_var = NULL;
+
+    // define the local map for tenant_team_employee_enrollment_dto_list_envelope->validation_details
+    list_t *validation_detailsList = NULL;
 
     // define the local list for tenant_team_employee_enrollment_dto_list_envelope->result
     list_t *resultList = NULL;
@@ -172,6 +227,44 @@ tenant_team_employee_enrollment_dto_list_envelope_t *tenant_team_employee_enroll
     }
     }
 
+    // tenant_team_employee_enrollment_dto_list_envelope->http_status
+    cJSON *http_status = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_dto_list_envelopeJSON, "httpStatus");
+    if (http_status) { 
+    if(!cJSON_IsNumber(http_status))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // tenant_team_employee_enrollment_dto_list_envelope->error_code
+    cJSON *error_code = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_dto_list_envelopeJSON, "errorCode");
+    if (error_code) { 
+    if(!cJSON_IsString(error_code) && !cJSON_IsNull(error_code))
+    {
+    goto end; //String
+    }
+    }
+
+    // tenant_team_employee_enrollment_dto_list_envelope->validation_details
+    cJSON *validation_details = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_dto_list_envelopeJSON, "validationDetails");
+    if (validation_details) { 
+    cJSON *validation_details_local_map = NULL;
+    if(!cJSON_IsObject(validation_details) && !cJSON_IsNull(validation_details))
+    {
+        goto end;//primitive map container
+    }
+    if(cJSON_IsObject(validation_details))
+    {
+        validation_detailsList = list_createList();
+        keyValuePair_t *localMapKeyPair;
+        cJSON_ArrayForEach(validation_details_local_map, validation_details)
+        {
+            cJSON *localMapObject = validation_details_local_map;
+            list_addElement(validation_detailsList , localMapKeyPair);
+        }
+    }
+    }
+
     // tenant_team_employee_enrollment_dto_list_envelope->activity_id
     cJSON *activity_id = cJSON_GetObjectItemCaseSensitive(tenant_team_employee_enrollment_dto_list_envelopeJSON, "activityId");
     if (activity_id) { 
@@ -208,12 +301,27 @@ tenant_team_employee_enrollment_dto_list_envelope_t *tenant_team_employee_enroll
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL,
         correlation_id && !cJSON_IsNull(correlation_id) ? strdup(correlation_id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        http_status ? http_status->valuedouble : 0,
+        error_code && !cJSON_IsNull(error_code) ? strdup(error_code->valuestring) : NULL,
+        validation_details ? validation_detailsList : NULL,
         activity_id && !cJSON_IsNull(activity_id) ? strdup(activity_id->valuestring) : NULL,
         result ? resultList : NULL
         );
 
     return tenant_team_employee_enrollment_dto_list_envelope_local_var;
 end:
+    if (validation_detailsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, validation_detailsList) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free(localKeyValue->key);
+            localKeyValue->key = NULL;
+            keyValuePair_free(localKeyValue);
+            localKeyValue = NULL;
+        }
+        list_freeList(validation_detailsList);
+        validation_detailsList = NULL;
+    }
     if (resultList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, resultList) {

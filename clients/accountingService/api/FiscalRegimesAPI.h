@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/fiscal_regime_create_dto.h"
+#include "../model/fiscal_regime_dto_collection_query_parameters.h"
 #include "../model/fiscal_regime_dto_envelope.h"
 #include "../model/fiscal_regime_dto_list_envelope.h"
 #include "../model/fiscal_regime_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a fiscal regime
@@ -44,7 +45,7 @@ FiscalRegimesAPI_getFiscalRegime(apiClient_t *apiClient, char *tenantId, char *f
 // Retrieves all fiscal regimes for the specified fiscal authority.
 //
 fiscal_regime_dto_list_envelope_t*
-FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
+FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version, fiscal_regime_dto_collection_query_parameters_t *fiscal_regime_dto_collection_query_parameters);
 
 
 // Get fiscal regimes count
@@ -52,7 +53,7 @@ FiscalRegimesAPI_getFiscalRegimes(apiClient_t *apiClient, char *tenantId, char *
 // Returns the total count of fiscal regimes for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version, fiscal_regime_dto_collection_query_parameters_t *fiscal_regime_dto_collection_query_parameters);
 
 
 // Patch a fiscal regime
@@ -60,7 +61,7 @@ FiscalRegimesAPI_getFiscalRegimesCount(apiClient_t *apiClient, char *tenantId, c
 // Partially updates a fiscal regime.
 //
 empty_envelope_t*
-FiscalRegimesAPI_patchFiscalRegimeAsync(apiClient_t *apiClient, char *tenantId, char *regimeId, char *api_version, char *x_api_version, list_t *operation);
+FiscalRegimesAPI_patchFiscalRegimeAsync(apiClient_t *apiClient, char *tenantId, char *regimeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a fiscal regime

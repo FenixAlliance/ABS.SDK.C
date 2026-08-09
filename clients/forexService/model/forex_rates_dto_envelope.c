@@ -10,6 +10,9 @@ forex_rates_dto_envelope_t *forex_rates_dto_envelope_create(
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     forex_rates_dto_t *result
     ) {
@@ -21,6 +24,9 @@ forex_rates_dto_envelope_t *forex_rates_dto_envelope_create(
     forex_rates_dto_envelope_local_var->error_message = error_message;
     forex_rates_dto_envelope_local_var->correlation_id = correlation_id;
     forex_rates_dto_envelope_local_var->timestamp = timestamp;
+    forex_rates_dto_envelope_local_var->http_status = http_status;
+    forex_rates_dto_envelope_local_var->error_code = error_code;
+    forex_rates_dto_envelope_local_var->validation_details = validation_details;
     forex_rates_dto_envelope_local_var->activity_id = activity_id;
     forex_rates_dto_envelope_local_var->result = result;
 
@@ -44,6 +50,20 @@ void forex_rates_dto_envelope_free(forex_rates_dto_envelope_t *forex_rates_dto_e
     if (forex_rates_dto_envelope->timestamp) {
         free(forex_rates_dto_envelope->timestamp);
         forex_rates_dto_envelope->timestamp = NULL;
+    }
+    if (forex_rates_dto_envelope->error_code) {
+        free(forex_rates_dto_envelope->error_code);
+        forex_rates_dto_envelope->error_code = NULL;
+    }
+    if (forex_rates_dto_envelope->validation_details) {
+        list_ForEach(listEntry, forex_rates_dto_envelope->validation_details) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free (localKeyValue->key);
+            free (localKeyValue->value);
+            keyValuePair_free(localKeyValue);
+        }
+        list_freeList(forex_rates_dto_envelope->validation_details);
+        forex_rates_dto_envelope->validation_details = NULL;
     }
     if (forex_rates_dto_envelope->activity_id) {
         free(forex_rates_dto_envelope->activity_id);
@@ -91,6 +111,38 @@ cJSON *forex_rates_dto_envelope_convertToJSON(forex_rates_dto_envelope_t *forex_
     }
 
 
+    // forex_rates_dto_envelope->http_status
+    if(forex_rates_dto_envelope->http_status) {
+    if(cJSON_AddNumberToObject(item, "httpStatus", forex_rates_dto_envelope->http_status) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // forex_rates_dto_envelope->error_code
+    if(forex_rates_dto_envelope->error_code) {
+    if(cJSON_AddStringToObject(item, "errorCode", forex_rates_dto_envelope->error_code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // forex_rates_dto_envelope->validation_details
+    if(forex_rates_dto_envelope->validation_details) {
+    cJSON *validation_details = cJSON_AddObjectToObject(item, "validationDetails");
+    if(validation_details == NULL) {
+        goto fail; //primitive map container
+    }
+    cJSON *localMapObject = validation_details;
+    listEntry_t *validation_detailsListEntry;
+    if (forex_rates_dto_envelope->validation_details) {
+    list_ForEach(validation_detailsListEntry, forex_rates_dto_envelope->validation_details) {
+        keyValuePair_t *localKeyValue = (keyValuePair_t*)validation_detailsListEntry->data;
+    }
+    }
+    }
+
+
     // forex_rates_dto_envelope->activity_id
     if(forex_rates_dto_envelope->activity_id) {
     if(cJSON_AddStringToObject(item, "activityId", forex_rates_dto_envelope->activity_id) == NULL) {
@@ -122,6 +174,9 @@ fail:
 forex_rates_dto_envelope_t *forex_rates_dto_envelope_parseFromJSON(cJSON *forex_rates_dto_envelopeJSON){
 
     forex_rates_dto_envelope_t *forex_rates_dto_envelope_local_var = NULL;
+
+    // define the local map for forex_rates_dto_envelope->validation_details
+    list_t *validation_detailsList = NULL;
 
     // define the local variable for forex_rates_dto_envelope->result
     forex_rates_dto_t *result_local_nonprim = NULL;
@@ -162,6 +217,44 @@ forex_rates_dto_envelope_t *forex_rates_dto_envelope_parseFromJSON(cJSON *forex_
     }
     }
 
+    // forex_rates_dto_envelope->http_status
+    cJSON *http_status = cJSON_GetObjectItemCaseSensitive(forex_rates_dto_envelopeJSON, "httpStatus");
+    if (http_status) { 
+    if(!cJSON_IsNumber(http_status))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // forex_rates_dto_envelope->error_code
+    cJSON *error_code = cJSON_GetObjectItemCaseSensitive(forex_rates_dto_envelopeJSON, "errorCode");
+    if (error_code) { 
+    if(!cJSON_IsString(error_code) && !cJSON_IsNull(error_code))
+    {
+    goto end; //String
+    }
+    }
+
+    // forex_rates_dto_envelope->validation_details
+    cJSON *validation_details = cJSON_GetObjectItemCaseSensitive(forex_rates_dto_envelopeJSON, "validationDetails");
+    if (validation_details) { 
+    cJSON *validation_details_local_map = NULL;
+    if(!cJSON_IsObject(validation_details) && !cJSON_IsNull(validation_details))
+    {
+        goto end;//primitive map container
+    }
+    if(cJSON_IsObject(validation_details))
+    {
+        validation_detailsList = list_createList();
+        keyValuePair_t *localMapKeyPair;
+        cJSON_ArrayForEach(validation_details_local_map, validation_details)
+        {
+            cJSON *localMapObject = validation_details_local_map;
+            list_addElement(validation_detailsList , localMapKeyPair);
+        }
+    }
+    }
+
     // forex_rates_dto_envelope->activity_id
     cJSON *activity_id = cJSON_GetObjectItemCaseSensitive(forex_rates_dto_envelopeJSON, "activityId");
     if (activity_id) { 
@@ -183,12 +276,27 @@ forex_rates_dto_envelope_t *forex_rates_dto_envelope_parseFromJSON(cJSON *forex_
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL,
         correlation_id && !cJSON_IsNull(correlation_id) ? strdup(correlation_id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        http_status ? http_status->valuedouble : 0,
+        error_code && !cJSON_IsNull(error_code) ? strdup(error_code->valuestring) : NULL,
+        validation_details ? validation_detailsList : NULL,
         activity_id && !cJSON_IsNull(activity_id) ? strdup(activity_id->valuestring) : NULL,
         result ? result_local_nonprim : NULL
         );
 
     return forex_rates_dto_envelope_local_var;
 end:
+    if (validation_detailsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, validation_detailsList) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free(localKeyValue->key);
+            localKeyValue->key = NULL;
+            keyValuePair_free(localKeyValue);
+            localKeyValue = NULL;
+        }
+        list_freeList(validation_detailsList);
+        validation_detailsList = NULL;
+    }
     if (result_local_nonprim) {
         forex_rates_dto_free(result_local_nonprim);
         result_local_nonprim = NULL;

@@ -9,6 +9,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/tenant_invitation_create_dto.h"
+#include "../model/tenant_invitation_dto_collection_query_parameters.h"
 #include "../model/tenant_invitation_dto_envelope.h"
 #include "../model/tenant_invitation_dto_list_envelope.h"
 
@@ -50,7 +51,7 @@ InvitationsAPI_getTenantInvitationById(apiClient_t *apiClient, char *tenantId, c
 // Retrieve a list of tenant invitations
 //
 tenant_invitation_dto_list_envelope_t*
-InvitationsAPI_getTenantInvitations(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+InvitationsAPI_getTenantInvitations(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_invitation_dto_collection_query_parameters_t *tenant_invitation_dto_collection_query_parameters);
 
 
 // Get the count of tenant invitations
@@ -58,7 +59,7 @@ InvitationsAPI_getTenantInvitations(apiClient_t *apiClient, char *tenantId, char
 // Get the count of tenant invitations
 //
 int32_envelope_t*
-InvitationsAPI_getTenantInvitationsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+InvitationsAPI_getTenantInvitationsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_invitation_dto_collection_query_parameters_t *tenant_invitation_dto_collection_query_parameters);
 
 
 // Send an invitation to a user to join a tenant

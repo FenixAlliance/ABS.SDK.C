@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/item_warranty_policy_dto_collection_query_parameters.h"
 #include "../model/item_warranty_policy_dto_envelope.h"
 #include "../model/item_warranty_policy_dto_list_envelope.h"
 
@@ -16,7 +17,7 @@
 // Counts all warranty policies for a specific item.
 //
 int32_envelope_t*
-ItemWarrantyPoliciesAPI_countItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemWarrantyPoliciesAPI_countItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_warranty_policy_dto_collection_query_parameters_t *item_warranty_policy_dto_collection_query_parameters);
 
 
 // Get item warranty policies
@@ -24,7 +25,7 @@ ItemWarrantyPoliciesAPI_countItemWarrantyPoliciesAsync(apiClient_t *apiClient, c
 // Retrieves all warranty policies for a specific item.
 //
 item_warranty_policy_dto_list_envelope_t*
-ItemWarrantyPoliciesAPI_getItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemWarrantyPoliciesAPI_getItemWarrantyPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_warranty_policy_dto_collection_query_parameters_t *item_warranty_policy_dto_collection_query_parameters);
 
 
 // Get item warranty policy by ID

@@ -70,7 +70,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -145,6 +144,7 @@ Category | Method | HTTP request | Description
  - [envelope_t](docs/envelope.md)
  - [error_envelope_t](docs/error_envelope.md)
  - [extended_invoice_dto_t](docs/extended_invoice_dto.md)
+ - [extended_invoice_dto_collection_query_parameters_t](docs/extended_invoice_dto_collection_query_parameters.md)
  - [extended_invoice_dto_list_envelope_t](docs/extended_invoice_dto_list_envelope.md)
  - [forgot_password_request_t](docs/forgot_password_request.md)
  - [http_validation_problem_details_t](docs/http_validation_problem_details.md)
@@ -153,25 +153,30 @@ Category | Method | HTTP request | Description
  - [int32_envelope_t](docs/int32_envelope.md)
  - [invoice_adjustment_create_dto_t](docs/invoice_adjustment_create_dto.md)
  - [invoice_adjustment_dto_t](docs/invoice_adjustment_dto.md)
+ - [invoice_adjustment_dto_collection_query_parameters_t](docs/invoice_adjustment_dto_collection_query_parameters.md)
  - [invoice_adjustment_dto_envelope_t](docs/invoice_adjustment_dto_envelope.md)
  - [invoice_adjustment_dto_i_read_only_list_envelope_t](docs/invoice_adjustment_dto_i_read_only_list_envelope.md)
  - [invoice_adjustment_update_dto_t](docs/invoice_adjustment_update_dto.md)
  - [invoice_create_dto_t](docs/invoice_create_dto.md)
  - [invoice_dto_t](docs/invoice_dto.md)
+ - [invoice_dto_collection_query_parameters_t](docs/invoice_dto_collection_query_parameters.md)
  - [invoice_dto_envelope_t](docs/invoice_dto_envelope.md)
  - [invoice_dto_list_envelope_t](docs/invoice_dto_list_envelope.md)
  - [invoice_line_applied_tax_create_dto_t](docs/invoice_line_applied_tax_create_dto.md)
  - [invoice_line_applied_tax_dto_t](docs/invoice_line_applied_tax_dto.md)
+ - [invoice_line_applied_tax_dto_collection_query_parameters_t](docs/invoice_line_applied_tax_dto_collection_query_parameters.md)
  - [invoice_line_applied_tax_dto_i_read_only_list_envelope_t](docs/invoice_line_applied_tax_dto_i_read_only_list_envelope.md)
  - [invoice_line_applied_tax_update_dto_t](docs/invoice_line_applied_tax_update_dto.md)
  - [invoice_line_create_dto_t](docs/invoice_line_create_dto.md)
  - [invoice_line_dto_t](docs/invoice_line_dto.md)
+ - [invoice_line_dto_collection_query_parameters_t](docs/invoice_line_dto_collection_query_parameters.md)
  - [invoice_line_dto_envelope_t](docs/invoice_line_dto_envelope.md)
  - [invoice_line_dto_i_read_only_list_envelope_t](docs/invoice_line_dto_i_read_only_list_envelope.md)
  - [invoice_line_dto_list_envelope_t](docs/invoice_line_dto_list_envelope.md)
  - [invoice_line_update_dto_t](docs/invoice_line_update_dto.md)
  - [invoice_reference_create_dto_t](docs/invoice_reference_create_dto.md)
  - [invoice_reference_dto_t](docs/invoice_reference_dto.md)
+ - [invoice_reference_dto_collection_query_parameters_t](docs/invoice_reference_dto_collection_query_parameters.md)
  - [invoice_reference_dto_envelope_t](docs/invoice_reference_dto_envelope.md)
  - [invoice_reference_dto_i_read_only_list_envelope_t](docs/invoice_reference_dto_i_read_only_list_envelope.md)
  - [invoice_reference_update_dto_t](docs/invoice_reference_update_dto.md)
@@ -179,8 +184,9 @@ Category | Method | HTTP request | Description
  - [login_request_t](docs/login_request.md)
  - [money_t](docs/money.md)
  - [money_envelope_t](docs/money_envelope.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [payment_dto_t](docs/payment_dto.md)
+ - [payment_dto_collection_query_parameters_t](docs/payment_dto_collection_query_parameters.md)
  - [payment_dto_i_read_only_list_envelope_t](docs/payment_dto_i_read_only_list_envelope.md)
  - [refresh_request_t](docs/refresh_request.md)
  - [register_request_t](docs/register_request.md)

@@ -8,9 +8,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/signing_profile_create_dto.h"
 #include "../model/signing_profile_dto.h"
+#include "../model/signing_profile_dto_collection_query_parameters.h"
 #include "../model/signing_profile_dto_list_envelope.h"
 #include "../model/signing_profile_update_dto.h"
 
@@ -44,7 +45,7 @@ SigningProfilesAPI_getSigningProfileByIdAsync(apiClient_t *apiClient, char *tena
 // Retrieves all signing profiles for the specified tenant.
 //
 signing_profile_dto_list_envelope_t*
-SigningProfilesAPI_getSigningProfilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningProfilesAPI_getSigningProfilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_profile_dto_collection_query_parameters_t *signing_profile_dto_collection_query_parameters);
 
 
 // Get signing profiles count
@@ -52,7 +53,7 @@ SigningProfilesAPI_getSigningProfilesAsync(apiClient_t *apiClient, char *tenantI
 // Returns the count of signing profiles for the specified tenant.
 //
 int32_envelope_t*
-SigningProfilesAPI_getSigningProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningProfilesAPI_getSigningProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_profile_dto_collection_query_parameters_t *signing_profile_dto_collection_query_parameters);
 
 
 // Patch a signing profile
@@ -60,7 +61,7 @@ SigningProfilesAPI_getSigningProfilesCountAsync(apiClient_t *apiClient, char *te
 // Patch a signing profile
 //
 empty_envelope_t*
-SigningProfilesAPI_patchSigningProfileAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+SigningProfilesAPI_patchSigningProfileAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a signing profile

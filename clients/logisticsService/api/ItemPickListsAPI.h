@@ -9,14 +9,16 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_pick_list_create_dto.h"
+#include "../model/item_pick_list_dto_collection_query_parameters.h"
 #include "../model/item_pick_list_dto_envelope.h"
 #include "../model/item_pick_list_dto_list_envelope.h"
 #include "../model/item_pick_list_entry_create_dto.h"
+#include "../model/item_pick_list_entry_dto_collection_query_parameters.h"
 #include "../model/item_pick_list_entry_dto_envelope.h"
 #include "../model/item_pick_list_entry_dto_list_envelope.h"
 #include "../model/item_pick_list_entry_update_dto.h"
 #include "../model/item_pick_list_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an item pick list
@@ -64,7 +66,7 @@ ItemPickListsAPI_getItemPickListByIdAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves all entries for the specified pick list.
 //
 item_pick_list_entry_dto_list_envelope_t*
-ItemPickListsAPI_getItemPickListEntriesAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *api_version, char *x_api_version);
+ItemPickListsAPI_getItemPickListEntriesAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *api_version, char *x_api_version, item_pick_list_entry_dto_collection_query_parameters_t *item_pick_list_entry_dto_collection_query_parameters);
 
 
 // Get pick list entries count
@@ -72,7 +74,7 @@ ItemPickListsAPI_getItemPickListEntriesAsync(apiClient_t *apiClient, char *tenan
 // Returns the count of pick list entries.
 //
 int32_envelope_t*
-ItemPickListsAPI_getItemPickListEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *api_version, char *x_api_version);
+ItemPickListsAPI_getItemPickListEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *api_version, char *x_api_version, item_pick_list_entry_dto_collection_query_parameters_t *item_pick_list_entry_dto_collection_query_parameters);
 
 
 // Get pick list entry by ID
@@ -88,7 +90,7 @@ ItemPickListsAPI_getItemPickListEntryByIdAsync(apiClient_t *apiClient, char *ten
 // Retrieves all item pick lists for the specified tenant.
 //
 item_pick_list_dto_list_envelope_t*
-ItemPickListsAPI_getItemPickListsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemPickListsAPI_getItemPickListsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_pick_list_dto_collection_query_parameters_t *item_pick_list_dto_collection_query_parameters);
 
 
 // Get item pick lists count
@@ -96,7 +98,7 @@ ItemPickListsAPI_getItemPickListsAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of item pick lists.
 //
 int32_envelope_t*
-ItemPickListsAPI_getItemPickListsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemPickListsAPI_getItemPickListsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_pick_list_dto_collection_query_parameters_t *item_pick_list_dto_collection_query_parameters);
 
 
 // Patch an item pick list
@@ -104,7 +106,7 @@ ItemPickListsAPI_getItemPickListsCountAsync(apiClient_t *apiClient, char *tenant
 // Applies a JSON Patch document to an item pick list.
 //
 empty_envelope_t*
-ItemPickListsAPI_patchItemPickListAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *api_version, char *x_api_version, list_t *operation);
+ItemPickListsAPI_patchItemPickListAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a pick list entry
@@ -112,7 +114,7 @@ ItemPickListsAPI_patchItemPickListAsync(apiClient_t *apiClient, char *tenantId, 
 // Applies a JSON Patch document to a pick list entry.
 //
 empty_envelope_t*
-ItemPickListsAPI_patchItemPickListEntryAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+ItemPickListsAPI_patchItemPickListEntryAsync(apiClient_t *apiClient, char *tenantId, char *pickListId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item pick list

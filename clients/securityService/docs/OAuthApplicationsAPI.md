@@ -292,7 +292,7 @@ No authorization required
 //
 // Partially updates an existing OAuth application using a JSON Patch document.
 //
-empty_envelope_t* OAuthApplicationsAPI_patchOAuthApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, list_t *operation, char *api_version, char *x_api_version);
+empty_envelope_t* OAuthApplicationsAPI_patchOAuthApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, list_t *patch_operation, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **applicationId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

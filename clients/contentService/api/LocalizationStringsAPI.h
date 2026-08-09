@@ -9,6 +9,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/localization_string_create_dto.h"
+#include "../model/localization_string_dto_collection_query_parameters.h"
 #include "../model/localization_string_dto_envelope.h"
 #include "../model/localization_string_dto_list_envelope.h"
 #include "../model/localization_string_update_dto.h"
@@ -19,7 +20,7 @@
 // Counts all localization strings for the specified tenant.
 //
 int32_envelope_t*
-LocalizationStringsAPI_countLocalizationStringsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LocalizationStringsAPI_countLocalizationStringsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, localization_string_dto_collection_query_parameters_t *localization_string_dto_collection_query_parameters);
 
 
 // Create a localization string
@@ -51,7 +52,7 @@ LocalizationStringsAPI_getLocalizationStringByIdAsync(apiClient_t *apiClient, ch
 // Retrieves all localization strings for the specified tenant.
 //
 localization_string_dto_list_envelope_t*
-LocalizationStringsAPI_getLocalizationStringsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LocalizationStringsAPI_getLocalizationStringsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, localization_string_dto_collection_query_parameters_t *localization_string_dto_collection_query_parameters);
 
 
 // Update a localization string

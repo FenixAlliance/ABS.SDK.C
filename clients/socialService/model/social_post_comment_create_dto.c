@@ -111,11 +111,10 @@ cJSON *social_post_comment_create_dto_convertToJSON(social_post_comment_create_d
 
 
     // social_post_comment_create_dto->message
-    if (!social_post_comment_create_dto->message) {
-        goto fail;
-    }
+    if(social_post_comment_create_dto->message) {
     if(cJSON_AddStringToObject(item, "message", social_post_comment_create_dto->message) == NULL) {
     goto fail; //String
+    }
     }
 
 
@@ -199,14 +198,11 @@ social_post_comment_create_dto_t *social_post_comment_create_dto_parseFromJSON(c
 
     // social_post_comment_create_dto->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(social_post_comment_create_dtoJSON, "message");
-    if (!message) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(message))
+    if (message) { 
+    if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
     goto end; //String
+    }
     }
 
     // social_post_comment_create_dto->body_html
@@ -269,7 +265,7 @@ social_post_comment_create_dto_t *social_post_comment_create_dto_parseFromJSON(c
     social_post_comment_create_dto_local_var = social_post_comment_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
-        strdup(message->valuestring),
+        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
         body_html && !cJSON_IsNull(body_html) ? strdup(body_html->valuestring) : NULL,
         body_format ? body_formatVariable : socialservice_social_post_comment_create_dto_BODYFORMAT_NULL,
         parent_comment_id && !cJSON_IsNull(parent_comment_id) ? strdup(parent_comment_id->valuestring) : NULL,

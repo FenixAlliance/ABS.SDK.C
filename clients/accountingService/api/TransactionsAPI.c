@@ -828,13 +828,13 @@ end:
 // Retrieves all transaction categories for the specified tenant.
 //
 transaction_category_dto_list_envelope_t*
-TransactionsAPI_getTransactionCategories(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+TransactionsAPI_getTransactionCategories(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_category_dto_collection_query_parameters_t *transaction_category_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -880,8 +880,19 @@ TransactionsAPI_getTransactionCategories(apiClient_t *apiClient, char *tenantId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_transaction_category_dto_collection_query_parameters = NULL;
+    if (transaction_category_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_transaction_category_dto_collection_query_parameters = transaction_category_dto_collection_query_parameters_convertToJSON(transaction_category_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_transaction_category_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -922,7 +933,7 @@ TransactionsAPI_getTransactionCategories(apiClient_t *apiClient, char *tenantId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -933,6 +944,11 @@ TransactionsAPI_getTransactionCategories(apiClient_t *apiClient, char *tenantId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_transaction_category_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_transaction_category_dto_collection_query_parameters);
+        localVarSingleItemJSON_transaction_category_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -969,13 +985,13 @@ end:
 // Returns total number of transaction categories for the tenant.
 //
 int32_envelope_t*
-TransactionsAPI_getTransactionCategoriesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+TransactionsAPI_getTransactionCategoriesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_category_dto_collection_query_parameters_t *transaction_category_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1021,8 +1037,19 @@ TransactionsAPI_getTransactionCategoriesCount(apiClient_t *apiClient, char *tena
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_transaction_category_dto_collection_query_parameters = NULL;
+    if (transaction_category_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_transaction_category_dto_collection_query_parameters = transaction_category_dto_collection_query_parameters_convertToJSON(transaction_category_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_transaction_category_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1063,7 +1090,7 @@ TransactionsAPI_getTransactionCategoriesCount(apiClient_t *apiClient, char *tena
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1074,6 +1101,11 @@ TransactionsAPI_getTransactionCategoriesCount(apiClient_t *apiClient, char *tena
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_transaction_category_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_transaction_category_dto_collection_query_parameters);
+        localVarSingleItemJSON_transaction_category_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1273,13 +1305,13 @@ end:
 // Retrieves all transactions for the specified tenant using OData query options.
 //
 transaction_dto_list_envelope_t*
-TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_dto_collection_query_parameters_t *transaction_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1325,8 +1357,19 @@ TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *ap
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_transaction_dto_collection_query_parameters = NULL;
+    if (transaction_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_transaction_dto_collection_query_parameters = transaction_dto_collection_query_parameters_convertToJSON(transaction_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_transaction_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1367,7 +1410,7 @@ TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *ap
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1378,6 +1421,11 @@ TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *ap
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_transaction_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_transaction_dto_collection_query_parameters);
+        localVarSingleItemJSON_transaction_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1414,13 +1462,13 @@ end:
 // Returns total number of transactions for the tenant with OData filter support.
 //
 int32_envelope_t*
-TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_dto_collection_query_parameters_t *transaction_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1466,8 +1514,19 @@ TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, cha
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_transaction_dto_collection_query_parameters = NULL;
+    if (transaction_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_transaction_dto_collection_query_parameters = transaction_dto_collection_query_parameters_convertToJSON(transaction_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_transaction_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1508,7 +1567,7 @@ TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, cha
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1519,6 +1578,11 @@ TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, cha
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_transaction_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_transaction_dto_collection_query_parameters);
+        localVarSingleItemJSON_transaction_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1555,7 +1619,7 @@ end:
 // Partially updates an existing transaction identified by its unique identifier.
 //
 empty_envelope_t*
-TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *transactionId, char *api_version, char *x_api_version, list_t *operation)
+TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *transactionId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1627,14 +1691,14 @@ TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *t
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1642,16 +1706,16 @@ TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *t
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1709,17 +1773,17 @@ TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *t
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -1758,7 +1822,7 @@ end:
 // Partially updates an existing transaction category identified by its unique identifier.
 //
 empty_envelope_t*
-TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *operation)
+TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1830,14 +1894,14 @@ TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId,
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1845,16 +1909,16 @@ TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId,
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1912,17 +1976,17 @@ TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

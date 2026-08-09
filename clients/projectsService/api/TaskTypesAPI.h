@@ -7,7 +7,7 @@
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/task_type_create_dto.h"
 #include "../model/task_type_dto.h"
 #include "../model/task_type_update_dto.h"
@@ -42,7 +42,7 @@ TaskTypesAPI_getTaskTypeByIdAsync(apiClient_t *apiClient, char *taskTypeId, char
 // Partially updates the specified task type.
 //
 empty_envelope_t*
-TaskTypesAPI_patchTaskTypeAsync(apiClient_t *apiClient, char *taskTypeId, char *tenantId, list_t *operation);
+TaskTypesAPI_patchTaskTypeAsync(apiClient_t *apiClient, char *taskTypeId, char *tenantId, list_t *patch_operation);
 
 
 // Updates a task type

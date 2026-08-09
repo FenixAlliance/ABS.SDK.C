@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/shipping_courier_create_dto.h"
+#include "../model/shipping_courier_dto_collection_query_parameters.h"
 #include "../model/shipping_courier_dto_envelope.h"
 #include "../model/shipping_courier_dto_list_envelope.h"
 #include "../model/shipping_courier_update_dto.h"
@@ -44,7 +45,7 @@ ShippingCouriersAPI_getShippingCourierByIdAsync(apiClient_t *apiClient, char *te
 // Retrieves all shipping couriers for the specified tenant.
 //
 shipping_courier_dto_list_envelope_t*
-ShippingCouriersAPI_getShippingCouriersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShippingCouriersAPI_getShippingCouriersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shipping_courier_dto_collection_query_parameters_t *shipping_courier_dto_collection_query_parameters);
 
 
 // Get shipping couriers count
@@ -52,7 +53,7 @@ ShippingCouriersAPI_getShippingCouriersAsync(apiClient_t *apiClient, char *tenan
 // Returns the count of shipping couriers for the specified tenant.
 //
 int32_envelope_t*
-ShippingCouriersAPI_getShippingCouriersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShippingCouriersAPI_getShippingCouriersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shipping_courier_dto_collection_query_parameters_t *shipping_courier_dto_collection_query_parameters);
 
 
 // Patch a shipping courier
@@ -60,7 +61,7 @@ ShippingCouriersAPI_getShippingCouriersCountAsync(apiClient_t *apiClient, char *
 // Partially updates an existing shipping courier using JSON Patch.
 //
 empty_envelope_t*
-ShippingCouriersAPI_patchShippingCourierAsync(apiClient_t *apiClient, char *tenantId, char *courierId, char *api_version, char *x_api_version, list_t *operation);
+ShippingCouriersAPI_patchShippingCourierAsync(apiClient_t *apiClient, char *tenantId, char *courierId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a shipping courier

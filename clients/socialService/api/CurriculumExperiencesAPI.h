@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/curriculum_experience_create_dto.h"
+#include "../model/curriculum_experience_dto_collection_query_parameters.h"
 #include "../model/curriculum_experience_dto_envelope.h"
 #include "../model/curriculum_experience_dto_list_envelope.h"
 #include "../model/curriculum_experience_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a curriculum experience
@@ -44,7 +45,7 @@ CurriculumExperiencesAPI_getCurriculumExperienceAsync(apiClient_t *apiClient, ch
 // Retrieves the work-experience records of a curriculum authored on the specified social profile.
 //
 curriculum_experience_dto_list_envelope_t*
-CurriculumExperiencesAPI_getCurriculumExperiencesAsync(apiClient_t *apiClient, char *curriculumId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version);
+CurriculumExperiencesAPI_getCurriculumExperiencesAsync(apiClient_t *apiClient, char *curriculumId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version, curriculum_experience_dto_collection_query_parameters_t *curriculum_experience_dto_collection_query_parameters);
 
 
 // Count curriculum experiences
@@ -52,7 +53,7 @@ CurriculumExperiencesAPI_getCurriculumExperiencesAsync(apiClient_t *apiClient, c
 // Returns the count of work-experience records of a curriculum.
 //
 int32_envelope_t*
-CurriculumExperiencesAPI_getCurriculumExperiencesCountAsync(apiClient_t *apiClient, char *curriculumId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version);
+CurriculumExperiencesAPI_getCurriculumExperiencesCountAsync(apiClient_t *apiClient, char *curriculumId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version, curriculum_experience_dto_collection_query_parameters_t *curriculum_experience_dto_collection_query_parameters);
 
 
 // Patch a curriculum experience
@@ -60,7 +61,7 @@ CurriculumExperiencesAPI_getCurriculumExperiencesCountAsync(apiClient_t *apiClie
 // Partially updates an existing work-experience record of a curriculum.
 //
 empty_envelope_t*
-CurriculumExperiencesAPI_patchCurriculumExperienceAsync(apiClient_t *apiClient, char *curriculumId, char *experienceId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version, list_t *operation);
+CurriculumExperiencesAPI_patchCurriculumExperienceAsync(apiClient_t *apiClient, char *curriculumId, char *experienceId, char *socialProfileId, char *tenantId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a curriculum experience

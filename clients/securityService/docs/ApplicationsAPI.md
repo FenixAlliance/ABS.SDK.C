@@ -123,7 +123,7 @@ No authorization required
 //
 // Retrieves all business applications for the specified tenant.
 //
-business_application_dto_list_envelope_t* ApplicationsAPI_getBusinessApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+business_application_dto_list_envelope_t* ApplicationsAPI_getBusinessApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, business_application_dto_collection_query_parameters_t *business_application_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -133,6 +133,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**business_application_dto_collection_query_parameters** | **[business_application_dto_collection_query_parameters_t](business_application_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -145,7 +146,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -156,7 +157,7 @@ No authorization required
 //
 // Retrieves the count of business applications for the specified tenant.
 //
-int32_envelope_t* ApplicationsAPI_getBusinessApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* ApplicationsAPI_getBusinessApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, business_application_dto_collection_query_parameters_t *business_application_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -166,6 +167,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**business_application_dto_collection_query_parameters** | **[business_application_dto_collection_query_parameters_t](business_application_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -178,7 +180,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -257,7 +259,7 @@ No authorization required
 //
 // Partially updates an existing business application using a JSON Patch document.
 //
-empty_envelope_t* ApplicationsAPI_patchBusinessApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, list_t *operation, char *api_version, char *x_api_version);
+empty_envelope_t* ApplicationsAPI_patchBusinessApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, list_t *patch_operation, char *api_version, char *x_api_version);
 ```
 
 ### Parameters
@@ -266,7 +268,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **applicationId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
 

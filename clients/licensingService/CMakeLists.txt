@@ -64,26 +64,31 @@ set(SRCS
     model/int32_envelope.c
     model/license_attribute_create_dto.c
     model/license_attribute_dto.c
+    model/license_attribute_dto_collection_query_parameters.c
     model/license_attribute_dto_list_envelope.c
     model/license_attribute_update_dto.c
     model/license_create_dto.c
     model/license_dto.c
+    model/license_dto_collection_query_parameters.c
     model/license_dto_list_envelope.c
     model/license_feature_create_dto.c
     model/license_feature_dto.c
+    model/license_feature_dto_collection_query_parameters.c
     model/license_feature_dto_list_envelope.c
     model/license_feature_update_dto.c
     model/license_type_create_dto.c
     model/license_type_dto.c
+    model/license_type_dto_collection_query_parameters.c
     model/license_type_dto_list_envelope.c
     model/license_type_update_dto.c
     model/license_update_dto.c
     model/licensing_certificate_create_dto.c
     model/licensing_certificate_dto.c
+    model/licensing_certificate_dto_collection_query_parameters.c
     model/licensing_certificate_dto_list_envelope.c
     model/licensing_certificate_update_dto.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -116,26 +121,31 @@ set(HDRS
     model/int32_envelope.h
     model/license_attribute_create_dto.h
     model/license_attribute_dto.h
+    model/license_attribute_dto_collection_query_parameters.h
     model/license_attribute_dto_list_envelope.h
     model/license_attribute_update_dto.h
     model/license_create_dto.h
     model/license_dto.h
+    model/license_dto_collection_query_parameters.h
     model/license_dto_list_envelope.h
     model/license_feature_create_dto.h
     model/license_feature_dto.h
+    model/license_feature_dto_collection_query_parameters.h
     model/license_feature_dto_list_envelope.h
     model/license_feature_update_dto.h
     model/license_type_create_dto.h
     model/license_type_dto.h
+    model/license_type_dto_collection_query_parameters.h
     model/license_type_dto_list_envelope.h
     model/license_type_update_dto.h
     model/license_update_dto.h
     model/licensing_certificate_create_dto.h
     model/licensing_certificate_dto.h
+    model/licensing_certificate_dto_collection_query_parameters.h
     model/licensing_certificate_dto_list_envelope.h
     model/licensing_certificate_update_dto.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

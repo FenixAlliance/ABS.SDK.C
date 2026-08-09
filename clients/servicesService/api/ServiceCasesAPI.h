@@ -8,8 +8,9 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/service_case_create_dto.h"
+#include "../model/service_case_dto_collection_query_parameters.h"
 #include "../model/service_case_dto_envelope.h"
 #include "../model/service_case_dto_i_read_only_list_envelope.h"
 #include "../model/service_case_update_dto.h"
@@ -44,7 +45,7 @@ ServiceCasesAPI_getServiceCaseByIdAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all service cases for the specified tenant.
 //
 service_case_dto_i_read_only_list_envelope_t*
-ServiceCasesAPI_getServiceCasesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServiceCasesAPI_getServiceCasesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_case_dto_collection_query_parameters_t *service_case_dto_collection_query_parameters);
 
 
 // Get service cases count
@@ -52,7 +53,7 @@ ServiceCasesAPI_getServiceCasesAsync(apiClient_t *apiClient, char *tenantId, cha
 // Returns the count of service cases for the specified tenant.
 //
 int32_envelope_t*
-ServiceCasesAPI_getServiceCasesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServiceCasesAPI_getServiceCasesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_case_dto_collection_query_parameters_t *service_case_dto_collection_query_parameters);
 
 
 // Patch a service case
@@ -60,7 +61,7 @@ ServiceCasesAPI_getServiceCasesCountAsync(apiClient_t *apiClient, char *tenantId
 // Partially updates an existing service case using a JSON Patch document.
 //
 envelope_t*
-ServiceCasesAPI_patchServiceCaseAsync(apiClient_t *apiClient, char *tenantId, char *serviceCaseId, char *api_version, char *x_api_version, list_t *operation);
+ServiceCasesAPI_patchServiceCaseAsync(apiClient_t *apiClient, char *tenantId, char *serviceCaseId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a service case

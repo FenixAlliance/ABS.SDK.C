@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_wiki_create_dto.h"
 #include "../model/course_wiki_dto.h"
+#include "../model/course_wiki_dto_collection_query_parameters.h"
 #include "../model/course_wiki_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new course wiki
@@ -42,7 +43,7 @@ CourseWikisAPI_getCourseWikiByIdAsync(apiClient_t *apiClient, char *wikiId, char
 // Retrieves all course wikis for the specified tenant.
 //
 list_t*
-CourseWikisAPI_getCourseWikisAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseWikisAPI_getCourseWikisAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_wiki_dto_collection_query_parameters_t *course_wiki_dto_collection_query_parameters);
 
 
 // Get course wikis count
@@ -50,7 +51,7 @@ CourseWikisAPI_getCourseWikisAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the count of course wikis for the specified tenant.
 //
 int*
-CourseWikisAPI_getCourseWikisCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseWikisAPI_getCourseWikisCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_wiki_dto_collection_query_parameters_t *course_wiki_dto_collection_query_parameters);
 
 
 // Patch a course wiki
@@ -58,7 +59,7 @@ CourseWikisAPI_getCourseWikisCountAsync(apiClient_t *apiClient, char *tenantId, 
 // Partially updates a course wiki for the specified tenant.
 //
 empty_envelope_t*
-CourseWikisAPI_patchCourseWikiAsync(apiClient_t *apiClient, char *tenantId, char *wikiId, char *api_version, char *x_api_version, list_t *operation);
+CourseWikisAPI_patchCourseWikiAsync(apiClient_t *apiClient, char *tenantId, char *wikiId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course wiki

@@ -16,6 +16,14 @@
 typedef struct social_feed_post_create_dto_t social_feed_post_create_dto_t;
 
 
+// Enum BODYFORMAT for social_feed_post_create_dto
+
+typedef enum  { socialservice_social_feed_post_create_dto_BODYFORMAT_NULL = 0, socialservice_social_feed_post_create_dto_BODYFORMAT_PlainText, socialservice_social_feed_post_create_dto_BODYFORMAT_Html } socialservice_social_feed_post_create_dto_BODYFORMAT_e;
+
+char* social_feed_post_create_dto_body_format_ToString(socialservice_social_feed_post_create_dto_BODYFORMAT_e body_format);
+
+socialservice_social_feed_post_create_dto_BODYFORMAT_e social_feed_post_create_dto_body_format_FromString(char* body_format);
+
 
 
 typedef struct social_feed_post_create_dto_t {
@@ -25,6 +33,9 @@ typedef struct social_feed_post_create_dto_t {
     char *message; // string
     char *social_feed_id; // string
     char *social_profile_id; // string
+    char *body_html; // string
+    socialservice_social_feed_post_create_dto_BODYFORMAT_e body_format; //enum
+    char *background_style; // string
 
 } social_feed_post_create_dto_t;
 
@@ -34,7 +45,10 @@ social_feed_post_create_dto_t *social_feed_post_create_dto_create(
     char *title,
     char *message,
     char *social_feed_id,
-    char *social_profile_id
+    char *social_profile_id,
+    char *body_html,
+    socialservice_social_feed_post_create_dto_BODYFORMAT_e body_format,
+    char *background_style
 );
 
 void social_feed_post_create_dto_free(social_feed_post_create_dto_t *social_feed_post_create_dto);

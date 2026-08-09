@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/asset_type_create_dto.h"
+#include "../model/asset_type_dto_collection_query_parameters.h"
 #include "../model/asset_type_dto_envelope.h"
 #include "../model/asset_type_dto_list_envelope.h"
 #include "../model/asset_type_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new asset type
@@ -44,7 +45,7 @@ AssetTypesAPI_getAssetType(apiClient_t *apiClient, char *tenantId, char *_typeId
 // Retrieves all asset types for the authenticated tenant.
 //
 asset_type_dto_list_envelope_t*
-AssetTypesAPI_getAssetTypes(apiClient_t *apiClient, char *tenantId);
+AssetTypesAPI_getAssetTypes(apiClient_t *apiClient, char *tenantId, asset_type_dto_collection_query_parameters_t *asset_type_dto_collection_query_parameters);
 
 
 // Gets the count of asset types
@@ -52,7 +53,7 @@ AssetTypesAPI_getAssetTypes(apiClient_t *apiClient, char *tenantId);
 // Returns the total number of asset types for the authenticated tenant.
 //
 int32_envelope_t*
-AssetTypesAPI_getAssetTypesCount(apiClient_t *apiClient, char *tenantId);
+AssetTypesAPI_getAssetTypesCount(apiClient_t *apiClient, char *tenantId, asset_type_dto_collection_query_parameters_t *asset_type_dto_collection_query_parameters);
 
 
 // Partially updates an existing asset type
@@ -60,7 +61,7 @@ AssetTypesAPI_getAssetTypesCount(apiClient_t *apiClient, char *tenantId);
 // Applies a JSON Patch document to an existing asset type for the authenticated tenant.
 //
 empty_envelope_t*
-AssetTypesAPI_patchAssetType(apiClient_t *apiClient, char *tenantId, char *_typeId, list_t *operation);
+AssetTypesAPI_patchAssetType(apiClient_t *apiClient, char *tenantId, char *_typeId, list_t *patch_operation);
 
 
 // Updates an existing asset type

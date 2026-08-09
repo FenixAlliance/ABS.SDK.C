@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/email_group_create_dto.h"
+#include "../model/email_group_dto_collection_query_parameters.h"
 #include "../model/email_group_dto_envelope.h"
 #include "../model/email_group_dto_list_envelope.h"
 #include "../model/email_group_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an email group
@@ -44,7 +45,7 @@ EmailGroupsAPI_getEmailGroupDetailsAsync(apiClient_t *apiClient, char *tenantId,
 // Returns the count of email groups for the specified tenant using OData query options.
 //
 int32_envelope_t*
-EmailGroupsAPI_getEmailGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EmailGroupsAPI_getEmailGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, email_group_dto_collection_query_parameters_t *email_group_dto_collection_query_parameters);
 
 
 // Get email groups
@@ -52,7 +53,7 @@ EmailGroupsAPI_getEmailGroupsCountAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves a collection of email groups for the specified tenant using OData query options.
 //
 email_group_dto_list_envelope_t*
-EmailGroupsAPI_getEmailGroupsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EmailGroupsAPI_getEmailGroupsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, email_group_dto_collection_query_parameters_t *email_group_dto_collection_query_parameters);
 
 
 // Patch an email group
@@ -60,7 +61,7 @@ EmailGroupsAPI_getEmailGroupsODataAsync(apiClient_t *apiClient, char *tenantId, 
 // Partially updates an email group by its ID using JSON Patch.
 //
 empty_envelope_t*
-EmailGroupsAPI_patchEmailGroupAsync(apiClient_t *apiClient, char *tenantId, char *emailgroupId, char *api_version, char *x_api_version, list_t *operation);
+EmailGroupsAPI_patchEmailGroupAsync(apiClient_t *apiClient, char *tenantId, char *emailgroupId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an email group

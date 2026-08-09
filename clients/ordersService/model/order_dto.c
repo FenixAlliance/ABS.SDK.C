@@ -99,6 +99,7 @@ order_dto_t *order_dto_create(
     char *city_id,
     char *customer_notes,
     ordersservice_order_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
+    ordersservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     double forex_rate,
     char *forex_rates_snapshot,
     char *currency_id,
@@ -149,7 +150,6 @@ order_dto_t *order_dto_create(
     char *qualified_identifier,
     char *seller_billing_profile_id,
     char *buyer_billing_profile_id,
-    ordersservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     ordersservice_order_dto_FREIGHTTERMS_e freight_terms,
     ordersservice_order_dto_ORDERSTATUS_e order_status,
     char *requested_delivery_date,
@@ -192,6 +192,7 @@ order_dto_t *order_dto_create(
     order_dto_local_var->city_id = city_id;
     order_dto_local_var->customer_notes = customer_notes;
     order_dto_local_var->tax_calculation_method = tax_calculation_method;
+    order_dto_local_var->cost_calculation_method = cost_calculation_method;
     order_dto_local_var->forex_rate = forex_rate;
     order_dto_local_var->forex_rates_snapshot = forex_rates_snapshot;
     order_dto_local_var->currency_id = currency_id;
@@ -242,7 +243,6 @@ order_dto_t *order_dto_create(
     order_dto_local_var->qualified_identifier = qualified_identifier;
     order_dto_local_var->seller_billing_profile_id = seller_billing_profile_id;
     order_dto_local_var->buyer_billing_profile_id = buyer_billing_profile_id;
-    order_dto_local_var->cost_calculation_method = cost_calculation_method;
     order_dto_local_var->freight_terms = freight_terms;
     order_dto_local_var->order_status = order_status;
     order_dto_local_var->requested_delivery_date = requested_delivery_date;
@@ -664,6 +664,15 @@ cJSON *order_dto_convertToJSON(order_dto_t *order_dto) {
     }
 
 
+    // order_dto->cost_calculation_method
+    if(order_dto->cost_calculation_method != ordersservice_order_dto_COSTCALCULATIONMETHOD_NULL) {
+    if(cJSON_AddStringToObject(item, "costCalculationMethod", cost_calculation_methodorder_dto_ToString(order_dto->cost_calculation_method)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // order_dto->forex_rate
     if(order_dto->forex_rate) {
     if(cJSON_AddNumberToObject(item, "forexRate", order_dto->forex_rate) == NULL) {
@@ -1064,15 +1073,6 @@ cJSON *order_dto_convertToJSON(order_dto_t *order_dto) {
     }
 
 
-    // order_dto->cost_calculation_method
-    if(order_dto->cost_calculation_method != ordersservice_order_dto_COSTCALCULATIONMETHOD_NULL) {
-    if(cJSON_AddStringToObject(item, "costCalculationMethod", cost_calculation_methodorder_dto_ToString(order_dto->cost_calculation_method)) == NULL)
-    {
-    goto fail; //Enum
-    }
-    }
-
-
     // order_dto->freight_terms
     if(order_dto->freight_terms != ordersservice_order_dto_FREIGHTTERMS_NULL) {
     if(cJSON_AddStringToObject(item, "freightTerms", freight_termsorder_dto_ToString(order_dto->freight_terms)) == NULL)
@@ -1407,6 +1407,17 @@ order_dto_t *order_dto_parseFromJSON(cJSON *order_dtoJSON){
     goto end; //Enum
     }
     tax_calculation_methodVariable = order_dto_tax_calculation_method_FromString(tax_calculation_method->valuestring);
+    }
+
+    // order_dto->cost_calculation_method
+    cJSON *cost_calculation_method = cJSON_GetObjectItemCaseSensitive(order_dtoJSON, "costCalculationMethod");
+    ordersservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_methodVariable;
+    if (cost_calculation_method) { 
+    if(!cJSON_IsString(cost_calculation_method))
+    {
+    goto end; //Enum
+    }
+    cost_calculation_methodVariable = order_dto_cost_calculation_method_FromString(cost_calculation_method->valuestring);
     }
 
     // order_dto->forex_rate
@@ -1859,17 +1870,6 @@ order_dto_t *order_dto_parseFromJSON(cJSON *order_dtoJSON){
     }
     }
 
-    // order_dto->cost_calculation_method
-    cJSON *cost_calculation_method = cJSON_GetObjectItemCaseSensitive(order_dtoJSON, "costCalculationMethod");
-    ordersservice_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_methodVariable;
-    if (cost_calculation_method) { 
-    if(!cJSON_IsString(cost_calculation_method))
-    {
-    goto end; //Enum
-    }
-    cost_calculation_methodVariable = order_dto_cost_calculation_method_FromString(cost_calculation_method->valuestring);
-    }
-
     // order_dto->freight_terms
     cJSON *freight_terms = cJSON_GetObjectItemCaseSensitive(order_dtoJSON, "freightTerms");
     ordersservice_order_dto_FREIGHTTERMS_e freight_termsVariable;
@@ -2009,6 +2009,7 @@ order_dto_t *order_dto_parseFromJSON(cJSON *order_dtoJSON){
         city_id && !cJSON_IsNull(city_id) ? strdup(city_id->valuestring) : NULL,
         customer_notes && !cJSON_IsNull(customer_notes) ? strdup(customer_notes->valuestring) : NULL,
         tax_calculation_method ? tax_calculation_methodVariable : ordersservice_order_dto_TAXCALCULATIONMETHOD_NULL,
+        cost_calculation_method ? cost_calculation_methodVariable : ordersservice_order_dto_COSTCALCULATIONMETHOD_NULL,
         forex_rate ? forex_rate->valuedouble : 0,
         forex_rates_snapshot && !cJSON_IsNull(forex_rates_snapshot) ? strdup(forex_rates_snapshot->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
@@ -2059,7 +2060,6 @@ order_dto_t *order_dto_parseFromJSON(cJSON *order_dtoJSON){
         qualified_identifier && !cJSON_IsNull(qualified_identifier) ? strdup(qualified_identifier->valuestring) : NULL,
         seller_billing_profile_id && !cJSON_IsNull(seller_billing_profile_id) ? strdup(seller_billing_profile_id->valuestring) : NULL,
         buyer_billing_profile_id && !cJSON_IsNull(buyer_billing_profile_id) ? strdup(buyer_billing_profile_id->valuestring) : NULL,
-        cost_calculation_method ? cost_calculation_methodVariable : ordersservice_order_dto_COSTCALCULATIONMETHOD_NULL,
         freight_terms ? freight_termsVariable : ordersservice_order_dto_FREIGHTTERMS_NULL,
         order_status ? order_statusVariable : ordersservice_order_dto_ORDERSTATUS_NULL,
         requested_delivery_date && !cJSON_IsNull(requested_delivery_date) ? strdup(requested_delivery_date->valuestring) : NULL,

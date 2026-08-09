@@ -118,7 +118,6 @@ typedef struct quote_line_update_dto_t {
     char *price_list_item_id; // string
     char *unit_id; // string
     char *unit_group_id; // string
-    char *forex_rates_snapshot; // string
     double total_base_amount_in_usd; //numeric
     double total_profit_in_usd; //numeric
     double total_detail_amount_in_usd; //numeric
@@ -233,7 +232,6 @@ quote_line_update_dto_t *quote_line_update_dto_create(
     char *price_list_item_id,
     char *unit_id,
     char *unit_group_id,
-    char *forex_rates_snapshot,
     double total_base_amount_in_usd,
     double total_profit_in_usd,
     double total_detail_amount_in_usd,

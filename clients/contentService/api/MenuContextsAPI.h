@@ -9,6 +9,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/menu_context_create_dto.h"
+#include "../model/menu_context_dto_collection_query_parameters.h"
 #include "../model/menu_context_dto_envelope.h"
 #include "../model/menu_context_dto_list_envelope.h"
 #include "../model/menu_context_update_dto.h"
@@ -19,7 +20,7 @@
 // Counts all menu contexts for the specified tenant.
 //
 int32_envelope_t*
-MenuContextsAPI_countMenuContextsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MenuContextsAPI_countMenuContextsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, menu_context_dto_collection_query_parameters_t *menu_context_dto_collection_query_parameters);
 
 
 // Create a menu context
@@ -51,7 +52,7 @@ MenuContextsAPI_getMenuContextByIdAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all menu contexts for the specified tenant.
 //
 menu_context_dto_list_envelope_t*
-MenuContextsAPI_getMenuContextsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MenuContextsAPI_getMenuContextsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, menu_context_dto_collection_query_parameters_t *menu_context_dto_collection_query_parameters);
 
 
 // Update a menu context

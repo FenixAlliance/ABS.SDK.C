@@ -8,20 +8,23 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
+#include "../model/social_feed_dto_collection_query_parameters.h"
 #include "../model/social_feed_dto_envelope.h"
 #include "../model/social_feed_dto_list_envelope.h"
 #include "../model/social_feed_post_create_dto.h"
+#include "../model/social_feed_post_dto_collection_query_parameters.h"
 #include "../model/social_feed_post_dto_envelope.h"
 #include "../model/social_feed_post_dto_list_envelope.h"
 #include "../model/social_feed_post_update_dto.h"
+#include "../model/string_envelope.h"
 
 
 // Create a social feed post
 //
 // Creates a new post in a specific social feed.
 //
-social_feed_post_dto_envelope_t*
+string_envelope_t*
 SocialFeedsAPI_createFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version, social_feed_post_create_dto_t *social_feed_post_create_dto);
 
 
@@ -38,7 +41,7 @@ SocialFeedsAPI_deleteFeedPostAsync(apiClient_t *apiClient, char *socialProfileId
 // Retrieves a list of social feeds for the specified social profile.
 //
 social_feed_dto_list_envelope_t*
-SocialFeedsAPI_getFeedNotifications(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialFeedsAPI_getFeedNotifications(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_feed_dto_collection_query_parameters_t *social_feed_dto_collection_query_parameters);
 
 
 // Get social feed post by ID
@@ -54,7 +57,7 @@ SocialFeedsAPI_getFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, c
 // Retrieves a list of posts for a specific social feed.
 //
 social_feed_post_dto_list_envelope_t*
-SocialFeedsAPI_getFeedPostsAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version);
+SocialFeedsAPI_getFeedPostsAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version, social_feed_post_dto_collection_query_parameters_t *social_feed_post_dto_collection_query_parameters);
 
 
 // Count social feed posts
@@ -62,7 +65,7 @@ SocialFeedsAPI_getFeedPostsAsync(apiClient_t *apiClient, char *socialProfileId, 
 // Returns the count of posts for a specific social feed.
 //
 int32_envelope_t*
-SocialFeedsAPI_getFeedPostsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version);
+SocialFeedsAPI_getFeedPostsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version, social_feed_post_dto_collection_query_parameters_t *social_feed_post_dto_collection_query_parameters);
 
 
 // Get social feed by ID
@@ -78,7 +81,7 @@ SocialFeedsAPI_getNotificationAsync(apiClient_t *apiClient, char *socialProfileI
 // Returns the count of social feeds for the specified social profile.
 //
 int32_envelope_t*
-SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_feed_dto_collection_query_parameters_t *social_feed_dto_collection_query_parameters);
 
 
 // Patch a social feed post
@@ -86,7 +89,7 @@ SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialPr
 // Partially updates an existing post in a specific social feed using a JSON Patch document.
 //
 empty_envelope_t*
-SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *feedPostId, char *api_version, char *x_api_version, list_t *operation);
+SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *feedPostId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a social feed post

@@ -8,6 +8,7 @@
 #include "../model/batch_stock_item_update_request.h"
 #include "../model/bulk_product.h"
 #include "../model/catalog_item_create_dto.h"
+#include "../model/catalog_item_dto_collection_query_parameters.h"
 #include "../model/catalog_item_dto_envelope.h"
 #include "../model/catalog_item_dto_list_envelope.h"
 #include "../model/catalog_item_update_dto.h"
@@ -15,40 +16,54 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_attachment_create_dto.h"
+#include "../model/item_attachment_dto_collection_query_parameters.h"
 #include "../model/item_attachment_dto_envelope.h"
 #include "../model/item_attachment_dto_list_envelope.h"
 #include "../model/item_attribute_option_dto_envelope.h"
 #include "../model/item_attribute_option_dto_list_envelope.h"
+#include "../model/item_brand_dto_collection_query_parameters.h"
 #include "../model/item_brand_dto_envelope.h"
 #include "../model/item_brand_dto_list_envelope.h"
+#include "../model/item_category_dto_collection_query_parameters.h"
 #include "../model/item_category_dto_envelope.h"
 #include "../model/item_category_dto_list_envelope.h"
+#include "../model/item_google_category_dto_collection_query_parameters.h"
 #include "../model/item_google_category_dto_envelope.h"
 #include "../model/item_google_category_dto_list_envelope.h"
+#include "../model/item_image_dto_collection_query_parameters.h"
 #include "../model/item_image_dto_envelope.h"
 #include "../model/item_image_dto_list_envelope.h"
+#include "../model/item_question_dto_collection_query_parameters.h"
 #include "../model/item_question_dto_envelope.h"
 #include "../model/item_question_dto_list_envelope.h"
 #include "../model/item_question_record_create_dto.h"
+#include "../model/item_refund_policy_dto_collection_query_parameters.h"
 #include "../model/item_refund_policy_dto_envelope.h"
 #include "../model/item_refund_policy_dto_list_envelope.h"
+#include "../model/item_return_policy_dto_collection_query_parameters.h"
 #include "../model/item_return_policy_dto_envelope.h"
 #include "../model/item_return_policy_dto_list_envelope.h"
+#include "../model/item_review_dto_collection_query_parameters.h"
 #include "../model/item_review_dto_envelope.h"
 #include "../model/item_review_dto_list_envelope.h"
 #include "../model/item_review_record_create_dto.h"
+#include "../model/item_shipping_policy_dto_collection_query_parameters.h"
 #include "../model/item_shipping_policy_dto_envelope.h"
 #include "../model/item_shipping_policy_dto_list_envelope.h"
+#include "../model/item_tag_dto_collection_query_parameters.h"
 #include "../model/item_tag_dto_envelope.h"
 #include "../model/item_tag_dto_list_envelope.h"
+#include "../model/item_tax_policy_dto_collection_query_parameters.h"
 #include "../model/item_tax_policy_dto_envelope.h"
 #include "../model/item_tax_policy_dto_list_envelope.h"
+#include "../model/item_type_dto_collection_query_parameters.h"
 #include "../model/item_type_dto_envelope.h"
 #include "../model/item_type_dto_list_envelope.h"
+#include "../model/item_warranty_policy_dto_collection_query_parameters.h"
 #include "../model/item_warranty_policy_dto_envelope.h"
 #include "../model/item_warranty_policy_dto_list_envelope.h"
 #include "../model/money_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/pricing_rule_dto_envelope.h"
 #include "../model/pricing_rule_dto_list_envelope.h"
 
@@ -74,7 +89,7 @@ ItemsAPI_bulkUpsertStockItems(apiClient_t *apiClient, char *tenantId, char *api_
 // Counts the number of tags associated with a specific stock item.
 //
 int32_envelope_t*
-ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_tag_dto_collection_query_parameters_t *item_tag_dto_collection_query_parameters);
 
 
 // Count stock items by business
@@ -82,7 +97,7 @@ ItemsAPI_countStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char
 // Counts the number of stock items for a business, optionally filtered by tenant and OData query options.
 //
 int32_envelope_t*
-ItemsAPI_countStockItemsByBusiness(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemsAPI_countStockItemsByBusiness(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, catalog_item_dto_collection_query_parameters_t *catalog_item_dto_collection_query_parameters);
 
 
 // Create a new stock item
@@ -130,7 +145,7 @@ ItemsAPI_getStockItemAttachmentById(apiClient_t *apiClient, char *itemId, char *
 // Retrieves all attachments associated with a specific stock item.
 //
 item_attachment_dto_list_envelope_t*
-ItemsAPI_getStockItemAttachmentsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemAttachmentsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_attachment_dto_collection_query_parameters_t *item_attachment_dto_collection_query_parameters);
 
 
 // Get attribute option by ID for a stock item
@@ -162,7 +177,7 @@ ItemsAPI_getStockItemBrandById(apiClient_t *apiClient, char *itemId, char *itemB
 // Retrieves all brands associated with a specific stock item.
 //
 item_brand_dto_list_envelope_t*
-ItemsAPI_getStockItemBrandsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemBrandsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_brand_dto_collection_query_parameters_t *item_brand_dto_collection_query_parameters);
 
 
 // Get stock item by ID
@@ -178,7 +193,7 @@ ItemsAPI_getStockItemById(apiClient_t *apiClient, char *itemId, char *api_versio
 // Retrieves all categories associated with a specific stock item.
 //
 item_category_dto_list_envelope_t*
-ItemsAPI_getStockItemCategoriesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemCategoriesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_category_dto_collection_query_parameters_t *item_category_dto_collection_query_parameters);
 
 
 // Get category by ID for a stock item
@@ -194,7 +209,7 @@ ItemsAPI_getStockItemCategoryById(apiClient_t *apiClient, char *itemId, char *it
 // Retrieves all Google categories associated with a specific stock item.
 //
 item_google_category_dto_list_envelope_t*
-ItemsAPI_getStockItemGoogleCategoriesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemGoogleCategoriesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_google_category_dto_collection_query_parameters_t *item_google_category_dto_collection_query_parameters);
 
 
 // Get Google category by ID for a stock item
@@ -218,7 +233,7 @@ ItemsAPI_getStockItemImageById(apiClient_t *apiClient, char *itemId, char *itemI
 // Retrieves all images associated with a specific stock item.
 //
 item_image_dto_list_envelope_t*
-ItemsAPI_getStockItemImagesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemImagesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_image_dto_collection_query_parameters_t *item_image_dto_collection_query_parameters);
 
 
 // Get price rule by ID for a stock item
@@ -250,7 +265,7 @@ ItemsAPI_getStockItemQuestionById(apiClient_t *apiClient, char *itemId, char *it
 // Retrieves all questions associated with a specific stock item.
 //
 item_question_dto_list_envelope_t*
-ItemsAPI_getStockItemQuestionsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemQuestionsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_question_dto_collection_query_parameters_t *item_question_dto_collection_query_parameters);
 
 
 // Get refund policies for a stock item
@@ -258,7 +273,7 @@ ItemsAPI_getStockItemQuestionsByItemId(apiClient_t *apiClient, char *itemId, cha
 // Retrieves all refund policies associated with a specific stock item.
 //
 item_refund_policy_dto_list_envelope_t*
-ItemsAPI_getStockItemRefundPoliciesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemRefundPoliciesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_refund_policy_dto_collection_query_parameters_t *item_refund_policy_dto_collection_query_parameters);
 
 
 // Get refund policy by ID for a stock item
@@ -274,7 +289,7 @@ ItemsAPI_getStockItemRefundPolicyById(apiClient_t *apiClient, char *itemId, char
 // Retrieves all return policies associated with a specific stock item.
 //
 item_return_policy_dto_list_envelope_t*
-ItemsAPI_getStockItemReturnPoliciesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemReturnPoliciesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_return_policy_dto_collection_query_parameters_t *item_return_policy_dto_collection_query_parameters);
 
 
 // Get return policy by ID for a stock item
@@ -298,7 +313,7 @@ ItemsAPI_getStockItemReviewById(apiClient_t *apiClient, char *itemId, char *item
 // Retrieves all reviews associated with a specific stock item.
 //
 item_review_dto_list_envelope_t*
-ItemsAPI_getStockItemReviewsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemReviewsByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_review_dto_collection_query_parameters_t *item_review_dto_collection_query_parameters);
 
 
 // Get shipping policies for a stock item
@@ -306,7 +321,7 @@ ItemsAPI_getStockItemReviewsByItemId(apiClient_t *apiClient, char *itemId, char 
 // Retrieves all shipping policies associated with a specific stock item.
 //
 item_shipping_policy_dto_list_envelope_t*
-ItemsAPI_getStockItemShippingPoliciesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemShippingPoliciesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_shipping_policy_dto_collection_query_parameters_t *item_shipping_policy_dto_collection_query_parameters);
 
 
 // Get shipping policy by ID for a stock item
@@ -330,7 +345,7 @@ ItemsAPI_getStockItemTagById(apiClient_t *apiClient, char *tenantId, char *itemI
 // Retrieves all tags associated with a specific stock item.
 //
 item_tag_dto_list_envelope_t*
-ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_tag_dto_collection_query_parameters_t *item_tag_dto_collection_query_parameters);
 
 
 // Get tax policies for a stock item
@@ -338,7 +353,7 @@ ItemsAPI_getStockItemTagsByItemId(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves all tax policies associated with a specific stock item.
 //
 item_tax_policy_dto_list_envelope_t*
-ItemsAPI_getStockItemTaxPoliciesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemTaxPoliciesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_tax_policy_dto_collection_query_parameters_t *item_tax_policy_dto_collection_query_parameters);
 
 
 // Get tax policy by ID for a stock item
@@ -362,7 +377,7 @@ ItemsAPI_getStockItemTypeById(apiClient_t *apiClient, char *tenantId, char *item
 // Retrieves all types associated with a specific stock item.
 //
 item_type_dto_list_envelope_t*
-ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_type_dto_collection_query_parameters_t *item_type_dto_collection_query_parameters);
 
 
 // Get warranty policies for a stock item
@@ -370,7 +385,7 @@ ItemsAPI_getStockItemTypesByItemId(apiClient_t *apiClient, char *tenantId, char 
 // Retrieves all warranty policies associated with a specific stock item.
 //
 item_warranty_policy_dto_list_envelope_t*
-ItemsAPI_getStockItemWarrantyPoliciesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemWarrantyPoliciesByItemId(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_warranty_policy_dto_collection_query_parameters_t *item_warranty_policy_dto_collection_query_parameters);
 
 
 // Get warranty policy by ID for a stock item
@@ -386,7 +401,7 @@ ItemsAPI_getStockItemWarrantyPolicyById(apiClient_t *apiClient, char *itemId, ch
 // Retrieves the maximum price among all stock items, optionally filtered by tenant and OData query options.
 //
 money_envelope_t*
-ItemsAPI_getStockItemsOdataMaxPrice(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemsOdataMaxPrice(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, catalog_item_dto_collection_query_parameters_t *catalog_item_dto_collection_query_parameters);
 
 
 // Get min price of stock items
@@ -394,7 +409,7 @@ ItemsAPI_getStockItemsOdataMaxPrice(apiClient_t *apiClient, char *tenantId, char
 // Retrieves the minimum price among all stock items, optionally filtered by tenant and OData query options.
 //
 money_envelope_t*
-ItemsAPI_getStockItemsOdataMinPrice(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemsOdataMinPrice(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, catalog_item_dto_collection_query_parameters_t *catalog_item_dto_collection_query_parameters);
 
 
 // Get all stock items
@@ -402,7 +417,7 @@ ItemsAPI_getStockItemsOdataMinPrice(apiClient_t *apiClient, char *tenantId, char
 // Retrieves all stock items, optionally filtered by tenant and OData query options.
 //
 catalog_item_dto_list_envelope_t*
-ItemsAPI_getStockItemsQuery(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemsAPI_getStockItemsQuery(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, catalog_item_dto_collection_query_parameters_t *catalog_item_dto_collection_query_parameters);
 
 
 // Patch a stock item
@@ -410,7 +425,7 @@ ItemsAPI_getStockItemsQuery(apiClient_t *apiClient, char *tenantId, char *api_ve
 // Partially updates an existing stock item for the specified tenant and item ID.
 //
 void
-ItemsAPI_patchStockItem(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, list_t *operation);
+ItemsAPI_patchStockItem(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Recalculate stock item prices

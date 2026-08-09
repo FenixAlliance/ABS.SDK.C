@@ -343,7 +343,7 @@ No authorization required
 //
 // Get the currently acting tenant share classes.
 //
-share_class_dto_list_envelope_t* SharesAPI_getShareClasses(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+share_class_dto_list_envelope_t* SharesAPI_getShareClasses(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_class_dto_collection_query_parameters_t *share_class_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -353,6 +353,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**share_class_dto_collection_query_parameters** | **[share_class_dto_collection_query_parameters_t](share_class_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -365,7 +366,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -376,7 +377,7 @@ No authorization required
 //
 // Get the currently acting tenant share classes count.
 //
-int32_envelope_t* SharesAPI_getShareClassesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* SharesAPI_getShareClassesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_class_dto_collection_query_parameters_t *share_class_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -386,6 +387,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**share_class_dto_collection_query_parameters** | **[share_class_dto_collection_query_parameters_t](share_class_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -398,7 +400,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -443,7 +445,7 @@ No authorization required
 //
 // Get the currently acting tenant share issuances.
 //
-share_issuance_dto_list_envelope_t* SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+share_issuance_dto_list_envelope_t* SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_issuance_dto_collection_query_parameters_t *share_issuance_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -453,6 +455,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**share_issuance_dto_collection_query_parameters** | **[share_issuance_dto_collection_query_parameters_t](share_issuance_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -465,7 +468,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -476,7 +479,7 @@ No authorization required
 //
 // Get the currently acting tenant share issuances count.
 //
-int32_envelope_t* SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_issuance_dto_collection_query_parameters_t *share_issuance_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -486,6 +489,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**share_issuance_dto_collection_query_parameters** | **[share_issuance_dto_collection_query_parameters_t](share_issuance_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -498,7 +502,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -509,7 +513,7 @@ No authorization required
 //
 // Returns SUM(ShareIssuance.Quantity) for the tenant, filtered by the supplied OData date range.
 //
-decimal_envelope_t* SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+decimal_envelope_t* SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_issuance_dto_collection_query_parameters_t *share_issuance_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -519,6 +523,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**share_issuance_dto_collection_query_parameters** | **[share_issuance_dto_collection_query_parameters_t](share_issuance_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -531,7 +536,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -610,7 +615,7 @@ No authorization required
 //
 // Get the currently acting tenant share transfer reasons.
 //
-share_transfer_reason_dto_list_envelope_t* SharesAPI_getShareTransferReasons(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+share_transfer_reason_dto_list_envelope_t* SharesAPI_getShareTransferReasons(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_reason_dto_collection_query_parameters_t *share_transfer_reason_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -620,6 +625,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**share_transfer_reason_dto_collection_query_parameters** | **[share_transfer_reason_dto_collection_query_parameters_t](share_transfer_reason_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -632,7 +638,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -643,7 +649,7 @@ No authorization required
 //
 // Get the currently acting tenant share transfer reasons count.
 //
-int32_envelope_t* SharesAPI_getShareTransferReasonsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* SharesAPI_getShareTransferReasonsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_reason_dto_collection_query_parameters_t *share_transfer_reason_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -653,6 +659,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**share_transfer_reason_dto_collection_query_parameters** | **[share_transfer_reason_dto_collection_query_parameters_t](share_transfer_reason_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -665,7 +672,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -676,7 +683,7 @@ No authorization required
 //
 // Get the currently acting tenant share transfers.
 //
-share_transfer_dto_list_envelope_t* SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+share_transfer_dto_list_envelope_t* SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_dto_collection_query_parameters_t *share_transfer_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -686,6 +693,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**share_transfer_dto_collection_query_parameters** | **[share_transfer_dto_collection_query_parameters_t](share_transfer_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -698,7 +706,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -709,7 +717,7 @@ No authorization required
 //
 // Get the currently acting tenant share transfers count.
 //
-int32_envelope_t* SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_dto_collection_query_parameters_t *share_transfer_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -719,6 +727,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**share_transfer_dto_collection_query_parameters** | **[share_transfer_dto_collection_query_parameters_t](share_transfer_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -731,7 +740,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -742,7 +751,7 @@ No authorization required
 //
 // Partially updates a share class using a JSON Patch document.
 //
-empty_envelope_t* SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareClassId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareClassId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -753,7 +762,7 @@ Name | Type | Description  | Notes
 **shareClassId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -777,7 +786,7 @@ No authorization required
 //
 // Partially updates a share issuance using a JSON Patch document.
 //
-empty_envelope_t* SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issuanceId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issuanceId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -788,7 +797,7 @@ Name | Type | Description  | Notes
 **issuanceId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -812,7 +821,7 @@ No authorization required
 //
 // Partially updates a share transfer using a JSON Patch document.
 //
-empty_envelope_t* SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *transferId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *transferId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -823,7 +832,7 @@ Name | Type | Description  | Notes
 **transferId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -847,7 +856,7 @@ No authorization required
 //
 // Partially updates a share transfer reason using a JSON Patch document.
 //
-empty_envelope_t* SharesAPI_patchShareTransferReason(apiClient_t *apiClient, char *tenantId, char *reasonId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* SharesAPI_patchShareTransferReason(apiClient_t *apiClient, char *tenantId, char *reasonId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -858,7 +867,7 @@ Name | Type | Description  | Notes
 **reasonId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

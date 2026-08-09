@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/port_create_dto.h"
+#include "../model/port_dto_collection_query_parameters.h"
 #include "../model/port_dto_envelope.h"
 #include "../model/port_dto_list_envelope.h"
 #include "../model/port_update_dto.h"
@@ -44,7 +45,7 @@ PortsAPI_getPortByIdAsync(apiClient_t *apiClient, char *tenantId, char *portId, 
 // Retrieves all ports for the specified tenant.
 //
 port_dto_list_envelope_t*
-PortsAPI_getPortsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PortsAPI_getPortsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, port_dto_collection_query_parameters_t *port_dto_collection_query_parameters);
 
 
 // Get ports count
@@ -52,7 +53,7 @@ PortsAPI_getPortsAsync(apiClient_t *apiClient, char *tenantId, char *api_version
 // Returns the count of ports for the specified tenant.
 //
 int32_envelope_t*
-PortsAPI_getPortsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PortsAPI_getPortsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, port_dto_collection_query_parameters_t *port_dto_collection_query_parameters);
 
 
 // Patch a port
@@ -60,7 +61,7 @@ PortsAPI_getPortsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_ve
 // Partially updates an existing port using JSON Patch.
 //
 empty_envelope_t*
-PortsAPI_patchPortAsync(apiClient_t *apiClient, char *tenantId, char *portId, char *api_version, char *x_api_version, list_t *operation);
+PortsAPI_patchPortAsync(apiClient_t *apiClient, char *tenantId, char *portId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a port

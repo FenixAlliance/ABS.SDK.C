@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/maintenance_visit_create_dto.h"
+#include "../model/maintenance_visit_dto_collection_query_parameters.h"
 #include "../model/maintenance_visit_dto_envelope.h"
 #include "../model/maintenance_visit_dto_list_envelope.h"
 #include "../model/object.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a maintenance visit
@@ -36,13 +37,13 @@ MaintenanceVisitsAPI_getMaintenanceVisitAsync(apiClient_t *apiClient, char *tena
 // Retrieve maintenance visits
 //
 maintenance_visit_dto_list_envelope_t*
-MaintenanceVisitsAPI_getMaintenanceVisitsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MaintenanceVisitsAPI_getMaintenanceVisitsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, maintenance_visit_dto_collection_query_parameters_t *maintenance_visit_dto_collection_query_parameters);
 
 
 // Get maintenance visits count
 //
 int32_envelope_t*
-MaintenanceVisitsAPI_getMaintenanceVisitsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MaintenanceVisitsAPI_getMaintenanceVisitsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, maintenance_visit_dto_collection_query_parameters_t *maintenance_visit_dto_collection_query_parameters);
 
 
 // Patch a maintenance visit
@@ -50,7 +51,7 @@ MaintenanceVisitsAPI_getMaintenanceVisitsCountAsync(apiClient_t *apiClient, char
 // Partially updates an existing maintenance visit by its unique identifier.
 //
 empty_envelope_t*
-MaintenanceVisitsAPI_patchMaintenanceVisitAsync(apiClient_t *apiClient, char *tenantId, char *maintenanceVisitId, char *api_version, char *x_api_version, list_t *operation);
+MaintenanceVisitsAPI_patchMaintenanceVisitAsync(apiClient_t *apiClient, char *tenantId, char *maintenanceVisitId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a maintenance visit

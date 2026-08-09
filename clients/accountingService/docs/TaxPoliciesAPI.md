@@ -276,7 +276,7 @@ No authorization required
 //
 // Retrieves all applied tax policy records for the specified tax policy.
 //
-applied_tax_policy_record_dto_list_envelope_t* TaxPoliciesAPI_getAppliedTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version);
+applied_tax_policy_record_dto_list_envelope_t* TaxPoliciesAPI_getAppliedTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version, applied_tax_policy_record_dto_collection_query_parameters_t *applied_tax_policy_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -287,6 +287,7 @@ Name | Type | Description  | Notes
 **taxPolicyId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**applied_tax_policy_record_dto_collection_query_parameters** | **[applied_tax_policy_record_dto_collection_query_parameters_t](applied_tax_policy_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -299,7 +300,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -310,7 +311,7 @@ No authorization required
 //
 // Returns the total count of applied tax policy records for the specified tax policy.
 //
-int32_envelope_t* TaxPoliciesAPI_getAppliedTaxPolicyRecordsCount(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version);
+int32_envelope_t* TaxPoliciesAPI_getAppliedTaxPolicyRecordsCount(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version, applied_tax_policy_record_dto_collection_query_parameters_t *applied_tax_policy_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -321,6 +322,7 @@ Name | Type | Description  | Notes
 **taxPolicyId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**applied_tax_policy_record_dto_collection_query_parameters** | **[applied_tax_policy_record_dto_collection_query_parameters_t](applied_tax_policy_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -333,7 +335,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -379,7 +381,7 @@ No authorization required
 //
 // Retrieves all item tax policy records for the specified tax policy.
 //
-item_tax_policy_record_dto_list_envelope_t* TaxPoliciesAPI_getItemTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version);
+item_tax_policy_record_dto_list_envelope_t* TaxPoliciesAPI_getItemTaxPolicyRecords(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *api_version, char *x_api_version, item_tax_policy_record_dto_collection_query_parameters_t *item_tax_policy_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -390,6 +392,7 @@ Name | Type | Description  | Notes
 **taxPolicyId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**item_tax_policy_record_dto_collection_query_parameters** | **[item_tax_policy_record_dto_collection_query_parameters_t](item_tax_policy_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -402,7 +405,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -413,7 +416,7 @@ No authorization required
 //
 // Retrieves all tax policies for the specified tenant using OData query options.
 //
-tax_policy_dto_list_envelope_t* TaxPoliciesAPI_getTaxPolicies(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+tax_policy_dto_list_envelope_t* TaxPoliciesAPI_getTaxPolicies(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tax_policy_dto_collection_query_parameters_t *tax_policy_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -423,6 +426,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**tax_policy_dto_collection_query_parameters** | **[tax_policy_dto_collection_query_parameters_t](tax_policy_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -435,7 +439,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -446,7 +450,7 @@ No authorization required
 //
 // Retrieves all tax policies associated with the specified fiscal authority.
 //
-tax_policy_dto_list_envelope_t* TaxPoliciesAPI_getTaxPoliciesByAuthority(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version);
+tax_policy_dto_list_envelope_t* TaxPoliciesAPI_getTaxPoliciesByAuthority(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version, tax_policy_dto_collection_query_parameters_t *tax_policy_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -457,6 +461,7 @@ Name | Type | Description  | Notes
 **authorityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**tax_policy_dto_collection_query_parameters** | **[tax_policy_dto_collection_query_parameters_t](tax_policy_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -469,7 +474,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -480,7 +485,7 @@ No authorization required
 //
 // Returns the count of tax policies for the specified tenant.
 //
-int32_envelope_t* TaxPoliciesAPI_getTaxPoliciesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* TaxPoliciesAPI_getTaxPoliciesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tax_policy_dto_collection_query_parameters_t *tax_policy_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -490,6 +495,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**tax_policy_dto_collection_query_parameters** | **[tax_policy_dto_collection_query_parameters_t](tax_policy_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -502,7 +508,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -547,7 +553,7 @@ No authorization required
 //
 // Partially updates an existing applied tax policy record identified by its unique identifier.
 //
-empty_envelope_t* TaxPoliciesAPI_patchAppliedTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *appliedTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* TaxPoliciesAPI_patchAppliedTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *appliedTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -559,7 +565,7 @@ Name | Type | Description  | Notes
 **appliedTaxPolicyRecordId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -583,7 +589,7 @@ No authorization required
 //
 // Partially updates an existing item tax policy record identified by its unique identifier.
 //
-empty_envelope_t* TaxPoliciesAPI_patchItemTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *itemTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* TaxPoliciesAPI_patchItemTaxPolicyRecord(apiClient_t *apiClient, char *tenantId, char *taxPolicyId, char *itemTaxPolicyRecordId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -595,7 +601,7 @@ Name | Type | Description  | Notes
 **itemTaxPolicyRecordId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -619,7 +625,7 @@ No authorization required
 //
 // Partially updates an existing tax policy identified by its unique identifier.
 //
-empty_envelope_t* TaxPoliciesAPI_patchTaxPolicy(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* TaxPoliciesAPI_patchTaxPolicy(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -630,7 +636,7 @@ Name | Type | Description  | Notes
 **id** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

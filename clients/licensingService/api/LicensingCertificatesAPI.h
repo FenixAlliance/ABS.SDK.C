@@ -10,9 +10,10 @@
 #include "../model/int32_envelope.h"
 #include "../model/licensing_certificate_create_dto.h"
 #include "../model/licensing_certificate_dto.h"
+#include "../model/licensing_certificate_dto_collection_query_parameters.h"
 #include "../model/licensing_certificate_dto_list_envelope.h"
 #include "../model/licensing_certificate_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new licensing certificate
@@ -44,7 +45,7 @@ LicensingCertificatesAPI_getLicensingCertificateByIdAsync(apiClient_t *apiClient
 // Retrieves all licensing certificates for the specified tenant.
 //
 licensing_certificate_dto_list_envelope_t*
-LicensingCertificatesAPI_getLicensingCertificatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LicensingCertificatesAPI_getLicensingCertificatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, licensing_certificate_dto_collection_query_parameters_t *licensing_certificate_dto_collection_query_parameters);
 
 
 // Get licensing certificates count
@@ -52,7 +53,7 @@ LicensingCertificatesAPI_getLicensingCertificatesAsync(apiClient_t *apiClient, c
 // Returns the count of licensing certificates for the specified tenant.
 //
 int32_envelope_t*
-LicensingCertificatesAPI_getLicensingCertificatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LicensingCertificatesAPI_getLicensingCertificatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, licensing_certificate_dto_collection_query_parameters_t *licensing_certificate_dto_collection_query_parameters);
 
 
 // Patch a licensing certificate
@@ -60,7 +61,7 @@ LicensingCertificatesAPI_getLicensingCertificatesCountAsync(apiClient_t *apiClie
 // Patch a licensing certificate for the specified tenant.
 //
 empty_envelope_t*
-LicensingCertificatesAPI_patchLicensingCertificateAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+LicensingCertificatesAPI_patchLicensingCertificateAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a licensing certificate

@@ -7,8 +7,9 @@
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/payment_create_dto.h"
+#include "../model/payment_dto_collection_query_parameters.h"
 #include "../model/payment_dto_list_envelope.h"
 #include "../model/payment_update_dto.h"
 
@@ -50,7 +51,7 @@ PaymentsAPI_getPaymentAsyncV2(apiClient_t *apiClient, char *tenantId, char *paym
 // Gets all payments for the current tenant with OData support.
 //
 payment_dto_list_envelope_t*
-PaymentsAPI_getPaymentsAsync(apiClient_t *apiClient, char *tenantId);
+PaymentsAPI_getPaymentsAsync(apiClient_t *apiClient, char *tenantId, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 
 
 // Patch a payment
@@ -58,7 +59,7 @@ PaymentsAPI_getPaymentsAsync(apiClient_t *apiClient, char *tenantId);
 // Patch a payment
 //
 empty_envelope_t*
-PaymentsAPI_patchPaymentAsync(apiClient_t *apiClient, char *tenantId, char *paymentId, list_t *operation);
+PaymentsAPI_patchPaymentAsync(apiClient_t *apiClient, char *tenantId, char *paymentId, list_t *patch_operation);
 
 
 // Updates a payment

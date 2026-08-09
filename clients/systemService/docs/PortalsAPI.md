@@ -118,7 +118,7 @@ No authorization required
 //
 // Retrieve a list of all web portals in the system
 //
-web_portal_dto_list_envelope_t* PortalsAPI_getSystemPortals(apiClient_t *apiClient, char *api_version, char *x_api_version);
+web_portal_dto_list_envelope_t* PortalsAPI_getSystemPortals(apiClient_t *apiClient, char *api_version, char *x_api_version, web_portal_dto_collection_query_parameters_t *web_portal_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -127,6 +127,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**web_portal_dto_collection_query_parameters** | **[web_portal_dto_collection_query_parameters_t](web_portal_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -139,7 +140,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -150,7 +151,7 @@ No authorization required
 //
 // Get the count of all web portals in the system
 //
-int32_envelope_t* PortalsAPI_getSystemPortalsCount(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* PortalsAPI_getSystemPortalsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, web_portal_dto_collection_query_parameters_t *web_portal_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -159,6 +160,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**web_portal_dto_collection_query_parameters** | **[web_portal_dto_collection_query_parameters_t](web_portal_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -171,7 +173,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -182,7 +184,7 @@ No authorization required
 //
 // Partially update an existing web portal in the system using a JSON Patch document
 //
-empty_envelope_t* PortalsAPI_patchSystemPortal(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* PortalsAPI_patchSystemPortal(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -192,7 +194,7 @@ Name | Type | Description  | Notes
 **portalId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

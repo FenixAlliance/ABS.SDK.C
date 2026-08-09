@@ -7,9 +7,10 @@
 #include "../include/binary.h"
 #include "../model/course_grading_rubric_create_dto.h"
 #include "../model/course_grading_rubric_dto.h"
+#include "../model/course_grading_rubric_dto_collection_query_parameters.h"
 #include "../model/course_grading_rubric_update_dto.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a course grading rubric
@@ -41,7 +42,7 @@ CourseGradingRubricsAPI_getCourseGradingRubricByIdAsync(apiClient_t *apiClient, 
 // Retrieves all course grading rubrics for the specified tenant.
 //
 list_t*
-CourseGradingRubricsAPI_getCourseGradingRubricsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseGradingRubricsAPI_getCourseGradingRubricsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_grading_rubric_dto_collection_query_parameters_t *course_grading_rubric_dto_collection_query_parameters);
 
 
 // Get course grading rubrics count
@@ -49,7 +50,7 @@ CourseGradingRubricsAPI_getCourseGradingRubricsAsync(apiClient_t *apiClient, cha
 // Returns the count of course grading rubrics for the specified tenant.
 //
 int*
-CourseGradingRubricsAPI_getCourseGradingRubricsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseGradingRubricsAPI_getCourseGradingRubricsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_grading_rubric_dto_collection_query_parameters_t *course_grading_rubric_dto_collection_query_parameters);
 
 
 // Patch a course grading rubric
@@ -57,7 +58,7 @@ CourseGradingRubricsAPI_getCourseGradingRubricsCountAsync(apiClient_t *apiClient
 // Partially updates an existing course grading rubric.
 //
 void
-CourseGradingRubricsAPI_patchCourseGradingRubricAsync(apiClient_t *apiClient, char *tenantId, char *rubricId, char *api_version, char *x_api_version, list_t *operation);
+CourseGradingRubricsAPI_patchCourseGradingRubricAsync(apiClient_t *apiClient, char *tenantId, char *rubricId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course grading rubric

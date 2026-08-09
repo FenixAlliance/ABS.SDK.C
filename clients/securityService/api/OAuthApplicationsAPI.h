@@ -14,7 +14,7 @@
 #include "../model/o_auth_application_update_dto.h"
 #include "../model/o_auth_authorization_dto_envelope.h"
 #include "../model/o_auth_authorization_dto_list_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new OAuth application
@@ -86,7 +86,7 @@ OAuthApplicationsAPI_getOAuthAuthorizationsCountAsync(apiClient_t *apiClient, ch
 // Partially updates an existing OAuth application using a JSON Patch document.
 //
 empty_envelope_t*
-OAuthApplicationsAPI_patchOAuthApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, list_t *operation, char *api_version, char *x_api_version);
+OAuthApplicationsAPI_patchOAuthApplicationAsync(apiClient_t *apiClient, char *tenantId, char *applicationId, list_t *patch_operation, char *api_version, char *x_api_version);
 
 
 // Update an existing OAuth application

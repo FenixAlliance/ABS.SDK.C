@@ -87,7 +87,7 @@ No authorization required
 //
 // Retrieves salaries for the specified tenant.
 //
-salary_dto_list_envelope_t* SalariesAPI_getSalariesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+salary_dto_list_envelope_t* SalariesAPI_getSalariesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, salary_dto_collection_query_parameters_t *salary_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -97,6 +97,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**salary_dto_collection_query_parameters** | **[salary_dto_collection_query_parameters_t](salary_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -109,7 +110,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -120,7 +121,7 @@ No authorization required
 //
 // Counts salaries for the specified tenant.
 //
-int32_envelope_t* SalariesAPI_getSalariesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* SalariesAPI_getSalariesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, salary_dto_collection_query_parameters_t *salary_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -130,6 +131,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**salary_dto_collection_query_parameters** | **[salary_dto_collection_query_parameters_t](salary_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -142,7 +144,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -187,7 +189,7 @@ No authorization required
 //
 // Partially updates an existing salary for the specified tenant.
 //
-empty_envelope_t* SalariesAPI_patchSalaryAsync(apiClient_t *apiClient, char *tenantId, char *salaryId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* SalariesAPI_patchSalaryAsync(apiClient_t *apiClient, char *tenantId, char *salaryId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -198,7 +200,7 @@ Name | Type | Description  | Notes
 **salaryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

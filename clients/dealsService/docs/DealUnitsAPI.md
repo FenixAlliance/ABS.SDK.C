@@ -257,7 +257,7 @@ No authorization required
 //
 // Retrieves a list of lines for a specific deal unit with OData query support.
 //
-deal_unit_line_dto_list_envelope_t* DealUnitsAPI_getDealUnitLinesAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *itemId);
+deal_unit_line_dto_list_envelope_t* DealUnitsAPI_getDealUnitLinesAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *itemId, deal_unit_line_dto_collection_query_parameters_t *deal_unit_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -267,6 +267,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **dealUnitId** | **char \*** |  | 
 **itemId** | **char \*** |  | [optional] 
+**deal_unit_line_dto_collection_query_parameters** | **[deal_unit_line_dto_collection_query_parameters_t](deal_unit_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -279,7 +280,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -290,7 +291,7 @@ No authorization required
 //
 // Returns the total count of lines for a specific deal unit with OData filter support.
 //
-int32_envelope_t* DealUnitsAPI_getDealUnitLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId);
+int32_envelope_t* DealUnitsAPI_getDealUnitLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, deal_unit_line_dto_collection_query_parameters_t *deal_unit_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -299,6 +300,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **dealUnitId** | **char \*** |  | 
+**deal_unit_line_dto_collection_query_parameters** | **[deal_unit_line_dto_collection_query_parameters_t](deal_unit_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -311,7 +313,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -355,7 +357,7 @@ No authorization required
 //
 // Retrieves a list of deal units for the specified tenant with OData query support.
 //
-deal_unit_dto_list_envelope_t* DealUnitsAPI_getDealUnitsAsync(apiClient_t *apiClient, char *tenantId);
+deal_unit_dto_list_envelope_t* DealUnitsAPI_getDealUnitsAsync(apiClient_t *apiClient, char *tenantId, deal_unit_dto_collection_query_parameters_t *deal_unit_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -363,6 +365,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**deal_unit_dto_collection_query_parameters** | **[deal_unit_dto_collection_query_parameters_t](deal_unit_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -375,7 +378,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -386,7 +389,7 @@ No authorization required
 //
 // Returns the total count of deal units for the specified tenant with OData filter support.
 //
-int32_envelope_t* DealUnitsAPI_getDealUnitsCountAsync(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* DealUnitsAPI_getDealUnitsCountAsync(apiClient_t *apiClient, char *tenantId, deal_unit_dto_collection_query_parameters_t *deal_unit_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -394,6 +397,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**deal_unit_dto_collection_query_parameters** | **[deal_unit_dto_collection_query_parameters_t](deal_unit_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -406,7 +410,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -449,7 +453,7 @@ No authorization required
 //
 // Retrieves a list of deal units with extended details for the specified tenant with OData query support.
 //
-extended_deal_unit_dto_list_envelope_t* DealUnitsAPI_getExtendedDealUnitsAsync(apiClient_t *apiClient, char *tenantId);
+extended_deal_unit_dto_list_envelope_t* DealUnitsAPI_getExtendedDealUnitsAsync(apiClient_t *apiClient, char *tenantId, extended_deal_unit_dto_collection_query_parameters_t *extended_deal_unit_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -457,6 +461,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**extended_deal_unit_dto_collection_query_parameters** | **[extended_deal_unit_dto_collection_query_parameters_t](extended_deal_unit_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -469,7 +474,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -480,7 +485,7 @@ No authorization required
 //
 // Partially updates an existing deal unit by its unique identifier using a JSON Patch document.
 //
-empty_envelope_t* DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, list_t *operation);
+empty_envelope_t* DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -489,7 +494,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **dealUnitId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -513,7 +518,7 @@ No authorization required
 //
 // Partially updates an existing line within a specific deal unit using a JSON Patch document.
 //
-empty_envelope_t* DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *dealUnitLineId, list_t *operation);
+empty_envelope_t* DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *dealUnitLineId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -523,7 +528,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **dealUnitId** | **char \*** |  | 
 **dealUnitLineId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

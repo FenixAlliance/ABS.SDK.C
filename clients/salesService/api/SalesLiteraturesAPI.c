@@ -17,13 +17,13 @@
 // Returns the total count of sales literatures for the specified tenant with OData filter support.
 //
 int32_envelope_t*
-SalesLiteraturesAPI_countSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId)
+SalesLiteraturesAPI_countSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId, sales_literature_dto_collection_query_parameters_t *sales_literature_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -45,8 +45,19 @@ SalesLiteraturesAPI_countSalesLiteraturesAsync(apiClient_t *apiClient, char *ten
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_sales_literature_dto_collection_query_parameters = NULL;
+    if (sales_literature_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_sales_literature_dto_collection_query_parameters = sales_literature_dto_collection_query_parameters_convertToJSON(sales_literature_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_sales_literature_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -83,8 +94,13 @@ SalesLiteraturesAPI_countSalesLiteraturesAsync(apiClient_t *apiClient, char *ten
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_sales_literature_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_sales_literature_dto_collection_query_parameters);
+        localVarSingleItemJSON_sales_literature_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -327,13 +343,13 @@ end:
 // Retrieves a list of sales literatures with extended details for the specified tenant with OData query support.
 //
 extended_sales_literature_dto_list_envelope_t*
-SalesLiteraturesAPI_getExtendedSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId)
+SalesLiteraturesAPI_getExtendedSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId, extended_sales_literature_dto_collection_query_parameters_t *extended_sales_literature_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -355,8 +371,19 @@ SalesLiteraturesAPI_getExtendedSalesLiteraturesAsync(apiClient_t *apiClient, cha
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_sales_literature_dto_collection_query_parameters = NULL;
+    if (extended_sales_literature_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_sales_literature_dto_collection_query_parameters = extended_sales_literature_dto_collection_query_parameters_convertToJSON(extended_sales_literature_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_sales_literature_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -393,8 +420,13 @@ SalesLiteraturesAPI_getExtendedSalesLiteraturesAsync(apiClient_t *apiClient, cha
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_extended_sales_literature_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_sales_literature_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_sales_literature_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -529,13 +561,13 @@ end:
 // Retrieves a list of sales literatures for the specified tenant with OData query support.
 //
 sales_literature_dto_list_envelope_t*
-SalesLiteraturesAPI_getSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId)
+SalesLiteraturesAPI_getSalesLiteraturesAsync(apiClient_t *apiClient, char *tenantId, sales_literature_dto_collection_query_parameters_t *sales_literature_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -557,8 +589,19 @@ SalesLiteraturesAPI_getSalesLiteraturesAsync(apiClient_t *apiClient, char *tenan
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_sales_literature_dto_collection_query_parameters = NULL;
+    if (sales_literature_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_sales_literature_dto_collection_query_parameters = sales_literature_dto_collection_query_parameters_convertToJSON(sales_literature_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_sales_literature_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -595,8 +638,13 @@ SalesLiteraturesAPI_getSalesLiteraturesAsync(apiClient_t *apiClient, char *tenan
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_sales_literature_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_sales_literature_dto_collection_query_parameters);
+        localVarSingleItemJSON_sales_literature_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -621,7 +669,7 @@ end:
 // Partially updates an existing sales literature using a JSON Patch document.
 //
 empty_envelope_t*
-SalesLiteraturesAPI_patchSalesLiteratureAsync(apiClient_t *apiClient, char *tenantId, char *salesLiteratureId, list_t *operation)
+SalesLiteraturesAPI_patchSalesLiteratureAsync(apiClient_t *apiClient, char *tenantId, char *salesLiteratureId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -669,14 +717,14 @@ SalesLiteraturesAPI_patchSalesLiteratureAsync(apiClient_t *apiClient, char *tena
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -684,16 +732,16 @@ SalesLiteraturesAPI_patchSalesLiteratureAsync(apiClient_t *apiClient, char *tena
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -738,17 +786,17 @@ SalesLiteraturesAPI_patchSalesLiteratureAsync(apiClient_t *apiClient, char *tena
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_salesLiteratureId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

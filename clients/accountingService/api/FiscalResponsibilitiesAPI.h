@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/fiscal_responsibility_create_dto.h"
+#include "../model/fiscal_responsibility_dto_collection_query_parameters.h"
 #include "../model/fiscal_responsibility_dto_envelope.h"
 #include "../model/fiscal_responsibility_dto_list_envelope.h"
 #include "../model/fiscal_responsibility_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a fiscal responsibility
@@ -36,7 +37,7 @@ FiscalResponsibilitiesAPI_deleteFiscalResponsibility(apiClient_t *apiClient, cha
 // Retrieves all fiscal responsibilities for the specified fiscal authority.
 //
 fiscal_responsibility_dto_list_envelope_t*
-FiscalResponsibilitiesAPI_getFiscalResponsibilities(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
+FiscalResponsibilitiesAPI_getFiscalResponsibilities(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version, fiscal_responsibility_dto_collection_query_parameters_t *fiscal_responsibility_dto_collection_query_parameters);
 
 
 // Get fiscal responsibilities count
@@ -44,7 +45,7 @@ FiscalResponsibilitiesAPI_getFiscalResponsibilities(apiClient_t *apiClient, char
 // Returns the total count of fiscal responsibilities for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalResponsibilitiesAPI_getFiscalResponsibilitiesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+FiscalResponsibilitiesAPI_getFiscalResponsibilitiesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version, fiscal_responsibility_dto_collection_query_parameters_t *fiscal_responsibility_dto_collection_query_parameters);
 
 
 // Get fiscal responsibility by ID
@@ -60,7 +61,7 @@ FiscalResponsibilitiesAPI_getFiscalResponsibility(apiClient_t *apiClient, char *
 // Partially updates a fiscal responsibility.
 //
 empty_envelope_t*
-FiscalResponsibilitiesAPI_patchFiscalResponsibilityAsync(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityId, char *api_version, char *x_api_version, list_t *operation);
+FiscalResponsibilitiesAPI_patchFiscalResponsibilityAsync(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a fiscal responsibility

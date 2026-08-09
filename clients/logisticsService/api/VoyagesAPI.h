@@ -8,11 +8,13 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/voyage_create_dto.h"
+#include "../model/voyage_dto_collection_query_parameters.h"
 #include "../model/voyage_dto_envelope.h"
 #include "../model/voyage_dto_list_envelope.h"
 #include "../model/voyage_port_call_create_dto.h"
+#include "../model/voyage_port_call_dto_collection_query_parameters.h"
 #include "../model/voyage_port_call_dto_list_envelope.h"
 #include "../model/voyage_port_call_update_dto.h"
 #include "../model/voyage_update_dto.h"
@@ -79,7 +81,7 @@ VoyagesAPI_getVoyageByIdAsync(apiClient_t *apiClient, char *tenantId, char *voya
 // Retrieves all port calls for a specific voyage.
 //
 voyage_port_call_dto_list_envelope_t*
-VoyagesAPI_getVoyagePortCallsAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version);
+VoyagesAPI_getVoyagePortCallsAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version, voyage_port_call_dto_collection_query_parameters_t *voyage_port_call_dto_collection_query_parameters);
 
 
 // Get voyage port calls count
@@ -87,7 +89,7 @@ VoyagesAPI_getVoyagePortCallsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the count of port calls for a specific voyage.
 //
 int32_envelope_t*
-VoyagesAPI_getVoyagePortCallsCountAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version);
+VoyagesAPI_getVoyagePortCallsCountAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version, voyage_port_call_dto_collection_query_parameters_t *voyage_port_call_dto_collection_query_parameters);
 
 
 // Get all voyages
@@ -95,7 +97,7 @@ VoyagesAPI_getVoyagePortCallsCountAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all voyages for the specified tenant.
 //
 voyage_dto_list_envelope_t*
-VoyagesAPI_getVoyagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+VoyagesAPI_getVoyagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, voyage_dto_collection_query_parameters_t *voyage_dto_collection_query_parameters);
 
 
 // Get voyages count
@@ -103,7 +105,7 @@ VoyagesAPI_getVoyagesAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
 // Returns the count of voyages for the specified tenant.
 //
 int32_envelope_t*
-VoyagesAPI_getVoyagesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+VoyagesAPI_getVoyagesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, voyage_dto_collection_query_parameters_t *voyage_dto_collection_query_parameters);
 
 
 // Patch a voyage
@@ -111,7 +113,7 @@ VoyagesAPI_getVoyagesCountAsync(apiClient_t *apiClient, char *tenantId, char *ap
 // Partially updates an existing voyage using JSON Patch.
 //
 empty_envelope_t*
-VoyagesAPI_patchVoyageAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version, list_t *operation);
+VoyagesAPI_patchVoyageAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a voyage port call
@@ -119,7 +121,7 @@ VoyagesAPI_patchVoyageAsync(apiClient_t *apiClient, char *tenantId, char *voyage
 // Partially updates an existing voyage port call using JSON Patch.
 //
 empty_envelope_t*
-VoyagesAPI_patchVoyagePortCallAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *portCallId, char *api_version, char *x_api_version, list_t *operation);
+VoyagesAPI_patchVoyagePortCallAsync(apiClient_t *apiClient, char *tenantId, char *voyageId, char *portCallId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Start a voyage

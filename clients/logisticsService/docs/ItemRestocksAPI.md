@@ -198,7 +198,7 @@ No authorization required
 //
 // Retrieves all entries for the specified restock.
 //
-item_restock_entry_dto_list_envelope_t* ItemRestocksAPI_getItemRestockEntriesAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version);
+item_restock_entry_dto_list_envelope_t* ItemRestocksAPI_getItemRestockEntriesAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version, item_restock_entry_dto_collection_query_parameters_t *item_restock_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -209,6 +209,7 @@ Name | Type | Description  | Notes
 **restockId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**item_restock_entry_dto_collection_query_parameters** | **[item_restock_entry_dto_collection_query_parameters_t](item_restock_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -221,7 +222,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -232,7 +233,7 @@ No authorization required
 //
 // Returns the count of restock entries.
 //
-int32_envelope_t* ItemRestocksAPI_getItemRestockEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version);
+int32_envelope_t* ItemRestocksAPI_getItemRestockEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version, item_restock_entry_dto_collection_query_parameters_t *item_restock_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -243,6 +244,7 @@ Name | Type | Description  | Notes
 **restockId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**item_restock_entry_dto_collection_query_parameters** | **[item_restock_entry_dto_collection_query_parameters_t](item_restock_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -255,7 +257,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -301,7 +303,7 @@ No authorization required
 //
 // Retrieves all item restocks for the specified tenant.
 //
-item_restock_dto_list_envelope_t* ItemRestocksAPI_getItemRestocksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+item_restock_dto_list_envelope_t* ItemRestocksAPI_getItemRestocksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_restock_dto_collection_query_parameters_t *item_restock_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -311,6 +313,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**item_restock_dto_collection_query_parameters** | **[item_restock_dto_collection_query_parameters_t](item_restock_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -323,7 +326,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -334,7 +337,7 @@ No authorization required
 //
 // Returns the count of item restocks.
 //
-int32_envelope_t* ItemRestocksAPI_getItemRestocksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* ItemRestocksAPI_getItemRestocksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_restock_dto_collection_query_parameters_t *item_restock_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -344,6 +347,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**item_restock_dto_collection_query_parameters** | **[item_restock_dto_collection_query_parameters_t](item_restock_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -356,7 +360,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -367,7 +371,7 @@ No authorization required
 //
 // Applies a JSON Patch document to an item restock.
 //
-empty_envelope_t* ItemRestocksAPI_patchItemRestockAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* ItemRestocksAPI_patchItemRestockAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -378,7 +382,7 @@ Name | Type | Description  | Notes
 **restockId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -402,7 +406,7 @@ No authorization required
 //
 // Applies a JSON Patch document to a restock entry.
 //
-empty_envelope_t* ItemRestocksAPI_patchItemRestockEntryAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* ItemRestocksAPI_patchItemRestockEntryAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -414,7 +418,7 @@ Name | Type | Description  | Notes
 **entryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

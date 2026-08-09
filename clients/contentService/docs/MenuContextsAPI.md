@@ -18,7 +18,7 @@ Method | HTTP request | Description
 //
 // Counts all menu contexts for the specified tenant.
 //
-int32_envelope_t* MenuContextsAPI_countMenuContextsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* MenuContextsAPI_countMenuContextsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, menu_context_dto_collection_query_parameters_t *menu_context_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -28,6 +28,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**menu_context_dto_collection_query_parameters** | **[menu_context_dto_collection_query_parameters_t](menu_context_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -40,7 +41,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -153,7 +154,7 @@ No authorization required
 //
 // Retrieves all menu contexts for the specified tenant.
 //
-menu_context_dto_list_envelope_t* MenuContextsAPI_getMenuContextsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+menu_context_dto_list_envelope_t* MenuContextsAPI_getMenuContextsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, menu_context_dto_collection_query_parameters_t *menu_context_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**menu_context_dto_collection_query_parameters** | **[menu_context_dto_collection_query_parameters_t](menu_context_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -175,7 +177,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

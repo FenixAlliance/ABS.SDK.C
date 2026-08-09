@@ -6,33 +6,39 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/asset_category_create_dto.h"
+#include "../model/asset_category_dto_collection_query_parameters.h"
 #include "../model/asset_category_dto_envelope.h"
 #include "../model/asset_category_dto_list_envelope.h"
 #include "../model/asset_category_update_dto.h"
 #include "../model/asset_create_dto.h"
 #include "../model/asset_depreciation_record_create_dto.h"
+#include "../model/asset_depreciation_record_dto_collection_query_parameters.h"
 #include "../model/asset_depreciation_record_dto_envelope.h"
 #include "../model/asset_depreciation_record_dto_list_envelope.h"
 #include "../model/asset_depreciation_record_update_dto.h"
+#include "../model/asset_dto_collection_query_parameters.h"
 #include "../model/asset_dto_envelope.h"
 #include "../model/asset_dto_list_envelope.h"
 #include "../model/asset_repair_create_dto.h"
+#include "../model/asset_repair_dto_collection_query_parameters.h"
 #include "../model/asset_repair_dto_envelope.h"
 #include "../model/asset_repair_dto_list_envelope.h"
 #include "../model/asset_repair_update_dto.h"
 #include "../model/asset_transfer_create_dto.h"
+#include "../model/asset_transfer_dto_collection_query_parameters.h"
 #include "../model/asset_transfer_dto_envelope.h"
 #include "../model/asset_transfer_dto_list_envelope.h"
 #include "../model/asset_transfer_update_dto.h"
 #include "../model/asset_update_dto.h"
 #include "../model/asset_value_amend_create_dto.h"
+#include "../model/asset_value_amend_dto_collection_query_parameters.h"
 #include "../model/asset_value_amend_dto_envelope.h"
 #include "../model/asset_value_amend_dto_list_envelope.h"
 #include "../model/asset_value_amend_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new asset
@@ -144,7 +150,7 @@ AssetsAPI_getAsset(apiClient_t *apiClient, char *tenantId, char *assetId);
 // Retrieves all asset categories for the authenticated tenant.
 //
 asset_category_dto_list_envelope_t*
-AssetsAPI_getAssetAssetCategories(apiClient_t *apiClient, char *tenantId);
+AssetsAPI_getAssetAssetCategories(apiClient_t *apiClient, char *tenantId, asset_category_dto_collection_query_parameters_t *asset_category_dto_collection_query_parameters);
 
 
 // Gets the count of asset categories
@@ -152,7 +158,7 @@ AssetsAPI_getAssetAssetCategories(apiClient_t *apiClient, char *tenantId);
 // Returns the total number of asset categories for the authenticated tenant.
 //
 int32_envelope_t*
-AssetsAPI_getAssetAssetCategoriesCount(apiClient_t *apiClient, char *tenantId);
+AssetsAPI_getAssetAssetCategoriesCount(apiClient_t *apiClient, char *tenantId, asset_category_dto_collection_query_parameters_t *asset_category_dto_collection_query_parameters);
 
 
 // Gets a specific asset category
@@ -176,7 +182,7 @@ AssetsAPI_getAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, cha
 // Retrieves all depreciation records for the specified asset.
 //
 asset_depreciation_record_dto_list_envelope_t*
-AssetsAPI_getAssetDepreciationRecords(apiClient_t *apiClient, char *tenantId, char *assetId);
+AssetsAPI_getAssetDepreciationRecords(apiClient_t *apiClient, char *tenantId, char *assetId, asset_depreciation_record_dto_collection_query_parameters_t *asset_depreciation_record_dto_collection_query_parameters);
 
 
 // Gets count of depreciation records for a specific asset
@@ -184,7 +190,7 @@ AssetsAPI_getAssetDepreciationRecords(apiClient_t *apiClient, char *tenantId, ch
 // Returns the total number of depreciation records for the specified asset.
 //
 int32_envelope_t*
-AssetsAPI_getAssetDepreciationRecordsCount(apiClient_t *apiClient, char *tenantId, char *assetId);
+AssetsAPI_getAssetDepreciationRecordsCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_depreciation_record_dto_collection_query_parameters_t *asset_depreciation_record_dto_collection_query_parameters);
 
 
 // Gets a specific repair for an asset
@@ -200,7 +206,7 @@ AssetsAPI_getAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId, 
 // Retrieves all repair records for the specified asset.
 //
 asset_repair_dto_list_envelope_t*
-AssetsAPI_getAssetRepairs(apiClient_t *apiClient, char *tenantId, char *assetId);
+AssetsAPI_getAssetRepairs(apiClient_t *apiClient, char *tenantId, char *assetId, asset_repair_dto_collection_query_parameters_t *asset_repair_dto_collection_query_parameters);
 
 
 // Gets count of repairs for a specific asset
@@ -208,7 +214,7 @@ AssetsAPI_getAssetRepairs(apiClient_t *apiClient, char *tenantId, char *assetId)
 // Returns the total number of repair records for the specified asset.
 //
 int32_envelope_t*
-AssetsAPI_getAssetRepairsCount(apiClient_t *apiClient, char *tenantId, char *assetId);
+AssetsAPI_getAssetRepairsCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_repair_dto_collection_query_parameters_t *asset_repair_dto_collection_query_parameters);
 
 
 // Gets a specific transfer for an asset
@@ -224,7 +230,7 @@ AssetsAPI_getAssetTransfer(apiClient_t *apiClient, char *tenantId, char *assetId
 // Retrieves all transfer records for the specified asset.
 //
 asset_transfer_dto_list_envelope_t*
-AssetsAPI_getAssetTransfers(apiClient_t *apiClient, char *tenantId, char *assetId);
+AssetsAPI_getAssetTransfers(apiClient_t *apiClient, char *tenantId, char *assetId, asset_transfer_dto_collection_query_parameters_t *asset_transfer_dto_collection_query_parameters);
 
 
 // Gets count of transfers for a specific asset
@@ -232,7 +238,7 @@ AssetsAPI_getAssetTransfers(apiClient_t *apiClient, char *tenantId, char *assetI
 // Returns the total number of transfer records for the specified asset.
 //
 int32_envelope_t*
-AssetsAPI_getAssetTransfersCount(apiClient_t *apiClient, char *tenantId, char *assetId);
+AssetsAPI_getAssetTransfersCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_transfer_dto_collection_query_parameters_t *asset_transfer_dto_collection_query_parameters);
 
 
 // Gets a specific value amendment for an asset
@@ -248,7 +254,7 @@ AssetsAPI_getAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *asset
 // Retrieves all value amendment records for the specified asset.
 //
 asset_value_amend_dto_list_envelope_t*
-AssetsAPI_getAssetValueAmends(apiClient_t *apiClient, char *tenantId, char *assetId);
+AssetsAPI_getAssetValueAmends(apiClient_t *apiClient, char *tenantId, char *assetId, asset_value_amend_dto_collection_query_parameters_t *asset_value_amend_dto_collection_query_parameters);
 
 
 // Gets count of value amendments for a specific asset
@@ -256,7 +262,7 @@ AssetsAPI_getAssetValueAmends(apiClient_t *apiClient, char *tenantId, char *asse
 // Returns the total number of value amendment records for the specified asset.
 //
 int32_envelope_t*
-AssetsAPI_getAssetValueAmendsCount(apiClient_t *apiClient, char *tenantId, char *assetId);
+AssetsAPI_getAssetValueAmendsCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_value_amend_dto_collection_query_parameters_t *asset_value_amend_dto_collection_query_parameters);
 
 
 // Gets all assets for the current tenant
@@ -264,7 +270,7 @@ AssetsAPI_getAssetValueAmendsCount(apiClient_t *apiClient, char *tenantId, char 
 // Retrieves all assets for the authenticated tenant with optional filtering.
 //
 asset_dto_list_envelope_t*
-AssetsAPI_getAssets(apiClient_t *apiClient, char *tenantId);
+AssetsAPI_getAssets(apiClient_t *apiClient, char *tenantId, asset_dto_collection_query_parameters_t *asset_dto_collection_query_parameters);
 
 
 // Gets the count of assets
@@ -272,7 +278,7 @@ AssetsAPI_getAssets(apiClient_t *apiClient, char *tenantId);
 // Returns the total number of assets for the authenticated tenant.
 //
 int32_envelope_t*
-AssetsAPI_getAssetsCount(apiClient_t *apiClient, char *tenantId);
+AssetsAPI_getAssetsCount(apiClient_t *apiClient, char *tenantId, asset_dto_collection_query_parameters_t *asset_dto_collection_query_parameters);
 
 
 // Partially updates an existing asset
@@ -280,7 +286,7 @@ AssetsAPI_getAssetsCount(apiClient_t *apiClient, char *tenantId);
 // Applies a JSON Patch document to an existing asset for the authenticated tenant.
 //
 empty_envelope_t*
-AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list_t *operation);
+AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list_t *patch_operation);
 
 
 // Partially updates an existing asset category
@@ -288,7 +294,7 @@ AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list
 // Applies a JSON Patch document to an existing asset category for the authenticated tenant.
 //
 empty_envelope_t*
-AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *operation);
+AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *patch_operation);
 
 
 // Partially updates a depreciation record for an asset
@@ -296,7 +302,7 @@ AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *
 // Applies a JSON Patch document to an existing depreciation record for the specified asset.
 //
 empty_envelope_t*
-AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, char *assetId, char *recordId, list_t *operation);
+AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, char *assetId, char *recordId, list_t *patch_operation);
 
 
 // Partially updates a repair for an asset
@@ -304,7 +310,7 @@ AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, c
 // Applies a JSON Patch document to an existing repair record for the specified asset.
 //
 empty_envelope_t*
-AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId, char *repairId, list_t *operation);
+AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId, char *repairId, list_t *patch_operation);
 
 
 // Partially updates a transfer for an asset
@@ -312,7 +318,7 @@ AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId
 // Applies a JSON Patch document to an existing transfer record for the specified asset.
 //
 empty_envelope_t*
-AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *assetId, char *transferId, list_t *operation);
+AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *assetId, char *transferId, list_t *patch_operation);
 
 
 // Partially updates a value amendment for an asset
@@ -320,7 +326,7 @@ AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *asset
 // Applies a JSON Patch document to an existing value amendment record for the specified asset.
 //
 empty_envelope_t*
-AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *assetId, char *amendId, list_t *operation);
+AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *assetId, char *amendId, list_t *patch_operation);
 
 
 // Updates an existing asset

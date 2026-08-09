@@ -57,6 +57,7 @@ set(SRCS
     model/access_token_response.c
     model/bank_account_create_dto.c
     model/bank_account_dto.c
+    model/bank_account_dto_collection_query_parameters.c
     model/bank_account_dto_envelope.c
     model/bank_account_dto_list_envelope.c
     model/bank_account_update_dto.c
@@ -64,6 +65,7 @@ set(SRCS
     model/empty_envelope.c
     model/error_envelope.c
     model/extended_order_dto.c
+    model/extended_order_dto_collection_query_parameters.c
     model/extended_order_dto_list_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
@@ -71,29 +73,37 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/invoice_dto.c
+    model/invoice_dto_collection_query_parameters.c
     model/invoice_dto_list_envelope.c
     model/location_create_dto.c
     model/location_dto.c
+    model/location_dto_collection_query_parameters.c
     model/location_dto_envelope.c
     model/location_dto_list_envelope.c
     model/location_update_dto.c
     model/login_request.c
-    model/operation.c
     model/order_dto.c
+    model/order_dto_collection_query_parameters.c
     model/order_dto_list_envelope.c
+    model/patch_operation.c
     model/payment_chargeback_dto.c
+    model/payment_chargeback_dto_collection_query_parameters.c
     model/payment_chargeback_dto_list_envelope.c
     model/payment_create_dto.c
     model/payment_dto.c
+    model/payment_dto_collection_query_parameters.c
     model/payment_dto_list_envelope.c
     model/payment_refund_dto.c
+    model/payment_refund_dto_collection_query_parameters.c
     model/payment_refund_dto_list_envelope.c
     model/payment_token_create_dto.c
     model/payment_token_dto.c
+    model/payment_token_dto_collection_query_parameters.c
     model/payment_token_dto_envelope.c
     model/payment_token_dto_list_envelope.c
     model/payment_token_update_dto.c
     model/quote_dto.c
+    model/quote_dto_collection_query_parameters.c
     model/quote_dto_list_envelope.c
     model/refresh_request.c
     model/register_request.c
@@ -107,9 +117,11 @@ set(SRCS
     model/wallet_dto.c
     model/wallet_dto_envelope.c
     model/wallet_withdraw_dto.c
+    model/wallet_withdraw_dto_collection_query_parameters.c
     model/wallet_withdraw_dto_list_envelope.c
     model/wallet_withdraw_request_create_dto.c
     model/wallet_withdraw_request_dto.c
+    model/wallet_withdraw_request_dto_collection_query_parameters.c
     model/wallet_withdraw_request_dto_list_envelope.c
     api/FenixAllianceABSWebAPI.c
     api/WalletsAPI.c
@@ -126,6 +138,7 @@ set(HDRS
     model/access_token_response.h
     model/bank_account_create_dto.h
     model/bank_account_dto.h
+    model/bank_account_dto_collection_query_parameters.h
     model/bank_account_dto_envelope.h
     model/bank_account_dto_list_envelope.h
     model/bank_account_update_dto.h
@@ -133,6 +146,7 @@ set(HDRS
     model/empty_envelope.h
     model/error_envelope.h
     model/extended_order_dto.h
+    model/extended_order_dto_collection_query_parameters.h
     model/extended_order_dto_list_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
@@ -140,29 +154,37 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/invoice_dto.h
+    model/invoice_dto_collection_query_parameters.h
     model/invoice_dto_list_envelope.h
     model/location_create_dto.h
     model/location_dto.h
+    model/location_dto_collection_query_parameters.h
     model/location_dto_envelope.h
     model/location_dto_list_envelope.h
     model/location_update_dto.h
     model/login_request.h
-    model/operation.h
     model/order_dto.h
+    model/order_dto_collection_query_parameters.h
     model/order_dto_list_envelope.h
+    model/patch_operation.h
     model/payment_chargeback_dto.h
+    model/payment_chargeback_dto_collection_query_parameters.h
     model/payment_chargeback_dto_list_envelope.h
     model/payment_create_dto.h
     model/payment_dto.h
+    model/payment_dto_collection_query_parameters.h
     model/payment_dto_list_envelope.h
     model/payment_refund_dto.h
+    model/payment_refund_dto_collection_query_parameters.h
     model/payment_refund_dto_list_envelope.h
     model/payment_token_create_dto.h
     model/payment_token_dto.h
+    model/payment_token_dto_collection_query_parameters.h
     model/payment_token_dto_envelope.h
     model/payment_token_dto_list_envelope.h
     model/payment_token_update_dto.h
     model/quote_dto.h
+    model/quote_dto_collection_query_parameters.h
     model/quote_dto_list_envelope.h
     model/refresh_request.h
     model/register_request.h
@@ -176,9 +198,11 @@ set(HDRS
     model/wallet_dto.h
     model/wallet_dto_envelope.h
     model/wallet_withdraw_dto.h
+    model/wallet_withdraw_dto_collection_query_parameters.h
     model/wallet_withdraw_dto_list_envelope.h
     model/wallet_withdraw_request_create_dto.h
     model/wallet_withdraw_request_dto.h
+    model/wallet_withdraw_request_dto_collection_query_parameters.h
     model/wallet_withdraw_request_dto_list_envelope.h
     api/FenixAllianceABSWebAPI.h
     api/WalletsAPI.h

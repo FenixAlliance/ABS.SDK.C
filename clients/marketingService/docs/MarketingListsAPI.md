@@ -121,7 +121,7 @@ No authorization required
 //
 // Retrieves a collection of marketing lists for the specified tenant using OData query options.
 //
-marketing_list_dto_list_envelope_t* MarketingListsAPI_getMarketingListODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+marketing_list_dto_list_envelope_t* MarketingListsAPI_getMarketingListODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_list_dto_collection_query_parameters_t *marketing_list_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -131,6 +131,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**marketing_list_dto_collection_query_parameters** | **[marketing_list_dto_collection_query_parameters_t](marketing_list_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -143,7 +144,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -154,7 +155,7 @@ No authorization required
 //
 // Returns the count of marketing lists for the specified tenant using OData query options.
 //
-int32_envelope_t* MarketingListsAPI_getMarketingListsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* MarketingListsAPI_getMarketingListsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_list_dto_collection_query_parameters_t *marketing_list_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -164,6 +165,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**marketing_list_dto_collection_query_parameters** | **[marketing_list_dto_collection_query_parameters_t](marketing_list_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -176,7 +178,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -187,7 +189,7 @@ No authorization required
 //
 // Partially updates a marketing list by its ID using JSON Patch.
 //
-empty_envelope_t* MarketingListsAPI_patchMarketingListAsync(apiClient_t *apiClient, char *tenantId, char *marketinglistId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* MarketingListsAPI_patchMarketingListAsync(apiClient_t *apiClient, char *tenantId, char *marketinglistId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -198,7 +200,7 @@ Name | Type | Description  | Notes
 **marketinglistId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

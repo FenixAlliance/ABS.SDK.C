@@ -8,11 +8,13 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/truck_create_dto.h"
+#include "../model/truck_dto_collection_query_parameters.h"
 #include "../model/truck_dto_envelope.h"
 #include "../model/truck_dto_list_envelope.h"
 #include "../model/truck_trip_create_dto.h"
+#include "../model/truck_trip_dto_collection_query_parameters.h"
 #include "../model/truck_trip_dto_list_envelope.h"
 #include "../model/truck_trip_update_dto.h"
 #include "../model/truck_update_dto.h"
@@ -103,7 +105,7 @@ TrucksAPI_getTruckByIdAsync(apiClient_t *apiClient, char *tenantId, char *truckI
 // Retrieves all trips for a specific truck.
 //
 truck_trip_dto_list_envelope_t*
-TrucksAPI_getTruckTripsAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version);
+TrucksAPI_getTruckTripsAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, truck_trip_dto_collection_query_parameters_t *truck_trip_dto_collection_query_parameters);
 
 
 // Get truck trips count
@@ -111,7 +113,7 @@ TrucksAPI_getTruckTripsAsync(apiClient_t *apiClient, char *tenantId, char *truck
 // Returns the count of trips for a specific truck.
 //
 int32_envelope_t*
-TrucksAPI_getTruckTripsCountAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version);
+TrucksAPI_getTruckTripsCountAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, truck_trip_dto_collection_query_parameters_t *truck_trip_dto_collection_query_parameters);
 
 
 // Get all trucks
@@ -119,7 +121,7 @@ TrucksAPI_getTruckTripsCountAsync(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves all trucks for the specified tenant.
 //
 truck_dto_list_envelope_t*
-TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, truck_dto_collection_query_parameters_t *truck_dto_collection_query_parameters);
 
 
 // Get trucks count
@@ -127,7 +129,7 @@ TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
 // Returns the count of trucks for the specified tenant.
 //
 int32_envelope_t*
-TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, truck_dto_collection_query_parameters_t *truck_dto_collection_query_parameters);
 
 
 // Patch a truck
@@ -135,7 +137,7 @@ TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_
 // Partially updates an existing truck using JSON Patch.
 //
 empty_envelope_t*
-TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, list_t *operation);
+TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a truck trip
@@ -143,7 +145,7 @@ TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId,
 // Partially updates an existing truck trip using JSON Patch.
 //
 empty_envelope_t*
-TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *tripId, char *api_version, char *x_api_version, list_t *operation);
+TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *tripId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a truck

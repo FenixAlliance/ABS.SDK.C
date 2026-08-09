@@ -7,12 +7,13 @@
 #include "../include/binary.h"
 #include "../model/contact_source_create_dto.h"
 #include "../model/contact_source_dto.h"
+#include "../model/contact_source_dto_collection_query_parameters.h"
 #include "../model/contact_source_dto_list_envelope.h"
 #include "../model/contact_source_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new contact source
@@ -44,7 +45,7 @@ ContactSourcesAPI_getContactSourceByIdAsync(apiClient_t *apiClient, char *tenant
 // Retrieves all contact sources for the specified tenant.
 //
 contact_source_dto_list_envelope_t*
-ContactSourcesAPI_getContactSourcesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactSourcesAPI_getContactSourcesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_source_dto_collection_query_parameters_t *contact_source_dto_collection_query_parameters);
 
 
 // Get contact sources count
@@ -52,7 +53,7 @@ ContactSourcesAPI_getContactSourcesAsync(apiClient_t *apiClient, char *tenantId,
 // Returns the count of contact sources for the specified tenant.
 //
 int32_envelope_t*
-ContactSourcesAPI_getContactSourcesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactSourcesAPI_getContactSourcesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_source_dto_collection_query_parameters_t *contact_source_dto_collection_query_parameters);
 
 
 // Patch a contact source
@@ -60,7 +61,7 @@ ContactSourcesAPI_getContactSourcesCountAsync(apiClient_t *apiClient, char *tena
 // Patch a contact source
 //
 empty_envelope_t*
-ContactSourcesAPI_patchContactSourceAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+ContactSourcesAPI_patchContactSourceAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a contact source

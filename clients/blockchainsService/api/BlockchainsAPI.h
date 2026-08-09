@@ -7,16 +7,18 @@
 #include "../include/binary.h"
 #include "../model/blockchain_block_create_dto.h"
 #include "../model/blockchain_block_dto.h"
+#include "../model/blockchain_block_dto_collection_query_parameters.h"
 #include "../model/blockchain_block_dto_list_envelope.h"
 #include "../model/blockchain_block_update_dto.h"
 #include "../model/blockchain_create_dto.h"
 #include "../model/blockchain_dto.h"
+#include "../model/blockchain_dto_collection_query_parameters.h"
 #include "../model/blockchain_dto_list_envelope.h"
 #include "../model/blockchain_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new blockchain
@@ -56,13 +58,13 @@ BlockchainsAPI_getBlockchainBlockByIdAsync(apiClient_t *apiClient, char *tenantI
 // Get blocks for a blockchain
 //
 blockchain_block_dto_list_envelope_t*
-BlockchainsAPI_getBlockchainBlocksAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version);
+BlockchainsAPI_getBlockchainBlocksAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version, blockchain_block_dto_collection_query_parameters_t *blockchain_block_dto_collection_query_parameters);
 
 
 // Get block count for a blockchain
 //
 int32_envelope_t*
-BlockchainsAPI_getBlockchainBlocksCountAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version);
+BlockchainsAPI_getBlockchainBlocksCountAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *api_version, char *x_api_version, blockchain_block_dto_collection_query_parameters_t *blockchain_block_dto_collection_query_parameters);
 
 
 // Get blockchain by ID
@@ -78,7 +80,7 @@ BlockchainsAPI_getBlockchainByIdAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves all blockchains for the specified tenant.
 //
 blockchain_dto_list_envelope_t*
-BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, blockchain_dto_collection_query_parameters_t *blockchain_dto_collection_query_parameters);
 
 
 // Get blockchains count
@@ -86,7 +88,7 @@ BlockchainsAPI_getBlockchainsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the count of blockchains for the specified tenant.
 //
 int32_envelope_t*
-BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, blockchain_dto_collection_query_parameters_t *blockchain_dto_collection_query_parameters);
 
 
 // Patch a blockchain
@@ -94,7 +96,7 @@ BlockchainsAPI_getBlockchainsCountAsync(apiClient_t *apiClient, char *tenantId, 
 // Patch a blockchain
 //
 empty_envelope_t*
-BlockchainsAPI_patchBlockchainAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+BlockchainsAPI_patchBlockchainAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a blockchain block
@@ -102,7 +104,7 @@ BlockchainsAPI_patchBlockchainAsync(apiClient_t *apiClient, char *tenantId, char
 // Patch a blockchain block
 //
 empty_envelope_t*
-BlockchainsAPI_patchBlockchainBlockAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *blockId, char *api_version, char *x_api_version, list_t *operation);
+BlockchainsAPI_patchBlockchainBlockAsync(apiClient_t *apiClient, char *tenantId, char *blockchainId, char *blockId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a blockchain

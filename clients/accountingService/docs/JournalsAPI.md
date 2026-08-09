@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**JournalsAPI_aggregateJournalEntryCreditsAsync**](JournalsAPI.md#JournalsAPI_aggregateJournalEntryCreditsAsync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Credits | Aggregate journal entry credits
 [**JournalsAPI_aggregateJournalEntryDebitsAsync**](JournalsAPI.md#JournalsAPI_aggregateJournalEntryDebitsAsync) | **GET** /api/v2/AccountingService/Journals/{journalId}/Entries/Aggregate/Debits | Aggregate journal entry debits
+[**JournalsAPI_assignJournalToBookAsync**](JournalsAPI.md#JournalsAPI_assignJournalToBookAsync) | **POST** /api/v2/AccountingService/Journals/{journalId}/AssignToBook | Bind a journal to a financial book
 [**JournalsAPI_countJournalsAsync**](JournalsAPI.md#JournalsAPI_countJournalsAsync) | **GET** /api/v2/AccountingService/Journals/Count | Count journals
 [**JournalsAPI_createJournalAsync**](JournalsAPI.md#JournalsAPI_createJournalAsync) | **POST** /api/v2/AccountingService/Journals | Create journal
 [**JournalsAPI_createJournalEntryAsync**](JournalsAPI.md#JournalsAPI_createJournalEntryAsync) | **POST** /api/v2/AccountingService/Journals/{journalId}/Entries | Create journal entry
@@ -30,7 +31,7 @@ Method | HTTP request | Description
 //
 // Returns the sum of all credit amounts for entries in the specified journal, normalized to the target currency.
 //
-money_envelope_t* JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version);
+money_envelope_t* JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -42,6 +43,7 @@ Name | Type | Description  | Notes
 **currencyId** | **char \*** |  | [optional] [default to &#39;USD.USA&#39;]
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**journal_entry_dto_collection_query_parameters** | **[journal_entry_dto_collection_query_parameters_t](journal_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -54,7 +56,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -65,7 +67,7 @@ No authorization required
 //
 // Returns the sum of all debit amounts for entries in the specified journal, normalized to the target currency.
 //
-money_envelope_t* JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version);
+money_envelope_t* JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -77,6 +79,7 @@ Name | Type | Description  | Notes
 **currencyId** | **char \*** |  | [optional] [default to &#39;USD.USA&#39;]
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**journal_entry_dto_collection_query_parameters** | **[journal_entry_dto_collection_query_parameters_t](journal_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -89,7 +92,42 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JournalsAPI_assignJournalToBookAsync**
+```c
+// Bind a journal to a financial book
+//
+// Establishes the one-way Journal↔FinancialBook binding (finish-line #5): binds an unbound journal to the supplied book and sets its book-scoped code, enforcing (Tenant, Book, Code) uniqueness. Binding an unbound journal or re-affirming the same book succeeds; a duplicate code in the book is rejected (400), and re-homing an already-bound journal to a DIFFERENT book is rejected by the aggregate. Requires the journals_update permission.
+//
+empty_envelope_t* JournalsAPI_assignJournalToBookAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, assign_journal_to_book_request_t *assign_journal_to_book_request);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**tenantId** | **char \*** |  | 
+**journalId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**assign_journal_to_book_request** | **[assign_journal_to_book_request_t](assign_journal_to_book_request.md) \*** |  | [optional] 
+
+### Return type
+
+[empty_envelope_t](empty_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -100,7 +138,7 @@ No authorization required
 //
 // Returns the count of journals for the tenant.
 //
-int32_envelope_t* JournalsAPI_countJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* JournalsAPI_countJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, journal_dto_collection_query_parameters_t *journal_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -110,6 +148,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**journal_dto_collection_query_parameters** | **[journal_dto_collection_query_parameters_t](journal_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -122,7 +161,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -305,7 +344,7 @@ No authorization required
 //
 // Gets entries for the specified journal.
 //
-journal_entry_dto_i_read_only_list_envelope_t* JournalsAPI_getJournalEntriesAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version);
+journal_entry_dto_i_read_only_list_envelope_t* JournalsAPI_getJournalEntriesAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -316,6 +355,7 @@ Name | Type | Description  | Notes
 **journalId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**journal_entry_dto_collection_query_parameters** | **[journal_entry_dto_collection_query_parameters_t](journal_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -328,7 +368,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -339,7 +379,7 @@ No authorization required
 //
 // Returns the number of entries in the specified journal.
 //
-int32_envelope_t* JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version);
+int32_envelope_t* JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -350,6 +390,7 @@ Name | Type | Description  | Notes
 **journalId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**journal_entry_dto_collection_query_parameters** | **[journal_entry_dto_collection_query_parameters_t](journal_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -362,7 +403,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -408,7 +449,7 @@ No authorization required
 //
 // Retrieves all journals for the specified tenant.
 //
-journal_dto_i_read_only_list_envelope_t* JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+journal_dto_i_read_only_list_envelope_t* JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, journal_dto_collection_query_parameters_t *journal_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -418,6 +459,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**journal_dto_collection_query_parameters** | **[journal_dto_collection_query_parameters_t](journal_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -430,7 +472,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -441,7 +483,7 @@ No authorization required
 //
 // Partially updates a journal.
 //
-empty_envelope_t* JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -452,7 +494,7 @@ Name | Type | Description  | Notes
 **journalId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -476,7 +518,7 @@ No authorization required
 //
 // Partially updates a journal entry.
 //
-empty_envelope_t* JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -488,7 +530,7 @@ Name | Type | Description  | Notes
 **entryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

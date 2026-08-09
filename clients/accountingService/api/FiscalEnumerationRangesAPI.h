@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/invoice_enumeration_range_create_dto.h"
+#include "../model/invoice_enumeration_range_dto_collection_query_parameters.h"
 #include "../model/invoice_enumeration_range_dto_envelope.h"
 #include "../model/invoice_enumeration_range_dto_list_envelope.h"
 #include "../model/invoice_enumeration_range_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an invoice enumeration range
@@ -44,7 +45,7 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRange(apiClient_t *apiClient, ch
 // Retrieves all invoice enumeration ranges for the specified fiscal authority.
 //
 invoice_enumeration_range_dto_list_envelope_t*
-FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
+FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version, invoice_enumeration_range_dto_collection_query_parameters_t *invoice_enumeration_range_dto_collection_query_parameters);
 
 
 // Get invoice enumeration ranges count
@@ -52,7 +53,7 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, c
 // Returns the total count of invoice enumeration ranges for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version, invoice_enumeration_range_dto_collection_query_parameters_t *invoice_enumeration_range_dto_collection_query_parameters);
 
 
 // Patch an invoice enumeration range
@@ -60,7 +61,7 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClie
 // Partially updates an invoice enumeration range.
 //
 empty_envelope_t*
-FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, list_t *operation);
+FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an invoice enumeration range

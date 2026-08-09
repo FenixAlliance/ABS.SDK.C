@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_team_record_create_dto.h"
+#include "../model/tenant_team_record_dto_collection_query_parameters.h"
 #include "../model/tenant_team_record_dto_envelope.h"
 #include "../model/tenant_team_record_dto_list_envelope.h"
 #include "../model/tenant_team_record_update_dto.h"
@@ -44,7 +45,7 @@ TeamRecordsAPI_getTenantTeamRecordById(apiClient_t *apiClient, char *tenantId, c
 // Retrieve a list of tenant team records
 //
 tenant_team_record_dto_list_envelope_t*
-TeamRecordsAPI_getTenantTeamRecords(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TeamRecordsAPI_getTenantTeamRecords(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_team_record_dto_collection_query_parameters_t *tenant_team_record_dto_collection_query_parameters);
 
 
 // Get the count of tenant team records
@@ -52,7 +53,7 @@ TeamRecordsAPI_getTenantTeamRecords(apiClient_t *apiClient, char *tenantId, char
 // Get the count of tenant team records
 //
 int32_envelope_t*
-TeamRecordsAPI_getTenantTeamRecordsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TeamRecordsAPI_getTenantTeamRecordsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_team_record_dto_collection_query_parameters_t *tenant_team_record_dto_collection_query_parameters);
 
 
 // Patch a tenant team record
@@ -60,7 +61,7 @@ TeamRecordsAPI_getTenantTeamRecordsCount(apiClient_t *apiClient, char *tenantId,
 // Patch a tenant team record
 //
 empty_envelope_t*
-TeamRecordsAPI_patchTenantTeamRecord(apiClient_t *apiClient, char *tenantId, char *tenantTeamRecordId, char *api_version, char *x_api_version, list_t *operation);
+TeamRecordsAPI_patchTenantTeamRecord(apiClient_t *apiClient, char *tenantId, char *tenantTeamRecordId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant team record

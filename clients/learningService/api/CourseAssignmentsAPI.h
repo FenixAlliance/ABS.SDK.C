@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_assignment_create_dto.h"
 #include "../model/course_assignment_dto.h"
+#include "../model/course_assignment_dto_collection_query_parameters.h"
 #include "../model/course_assignment_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new course assignment
@@ -42,7 +43,7 @@ CourseAssignmentsAPI_getCourseAssignmentByIdAsync(apiClient_t *apiClient, char *
 // Retrieves all course assignments for the specified tenant.
 //
 list_t*
-CourseAssignmentsAPI_getCourseAssignmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseAssignmentsAPI_getCourseAssignmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_assignment_dto_collection_query_parameters_t *course_assignment_dto_collection_query_parameters);
 
 
 // Get course assignments count
@@ -50,7 +51,7 @@ CourseAssignmentsAPI_getCourseAssignmentsAsync(apiClient_t *apiClient, char *ten
 // Returns the count of course assignments for the specified tenant.
 //
 int*
-CourseAssignmentsAPI_getCourseAssignmentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseAssignmentsAPI_getCourseAssignmentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_assignment_dto_collection_query_parameters_t *course_assignment_dto_collection_query_parameters);
 
 
 // Patch a course assignment
@@ -58,7 +59,7 @@ CourseAssignmentsAPI_getCourseAssignmentsCountAsync(apiClient_t *apiClient, char
 // Partially updates a course assignment for the specified tenant.
 //
 empty_envelope_t*
-CourseAssignmentsAPI_patchCourseAssignmentAsync(apiClient_t *apiClient, char *tenantId, char *assignmentId, char *api_version, char *x_api_version, list_t *operation);
+CourseAssignmentsAPI_patchCourseAssignmentAsync(apiClient_t *apiClient, char *tenantId, char *assignmentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course assignment

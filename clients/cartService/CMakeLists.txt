@@ -82,7 +82,7 @@ set(SRCS
     model/item_to_compare_cart_record_dto_list_envelope.c
     model/login_request.c
     model/new_wish_list_request.c
-    model/operation.c
+    model/patch_operation.c
     model/product_to_wish_list_request.c
     model/refresh_request.c
     model/register_request.c
@@ -137,7 +137,7 @@ set(HDRS
     model/item_to_compare_cart_record_dto_list_envelope.h
     model/login_request.h
     model/new_wish_list_request.h
-    model/operation.h
+    model/patch_operation.h
     model/product_to_wish_list_request.h
     model/refresh_request.h
     model/register_request.h

@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/fiscal_identification_type_create_dto.h"
+#include "../model/fiscal_identification_type_dto_collection_query_parameters.h"
 #include "../model/fiscal_identification_type_dto_envelope.h"
 #include "../model/fiscal_identification_type_dto_list_envelope.h"
 #include "../model/fiscal_identification_type_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a fiscal identification type
@@ -44,7 +45,7 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationType(apiClient_t *apiClient,
 // Retrieves all fiscal identification types for the specified fiscal authority.
 //
 fiscal_identification_type_dto_list_envelope_t*
-FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version);
+FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version, fiscal_identification_type_dto_collection_query_parameters_t *fiscal_identification_type_dto_collection_query_parameters);
 
 
 // Get fiscal identification types count
@@ -52,7 +53,7 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationTypes(apiClient_t *apiClient
 // Returns the total count of fiscal identification types for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version);
+FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version, fiscal_identification_type_dto_collection_query_parameters_t *fiscal_identification_type_dto_collection_query_parameters);
 
 
 // Patch a fiscal identification type
@@ -60,7 +61,7 @@ FiscalIdentificationTypesAPI_getFiscalIdentificationTypesCount(apiClient_t *apiC
 // Partially updates a fiscal identification type.
 //
 empty_envelope_t*
-FiscalIdentificationTypesAPI_patchFiscalIdentificationTypeAsync(apiClient_t *apiClient, char *tenantId, char *identificationTypeId, char *api_version, char *x_api_version, list_t *operation);
+FiscalIdentificationTypesAPI_patchFiscalIdentificationTypeAsync(apiClient_t *apiClient, char *tenantId, char *identificationTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a fiscal identification type

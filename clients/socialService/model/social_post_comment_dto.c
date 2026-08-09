@@ -4,6 +4,23 @@
 #include "social_post_comment_dto.h"
 
 
+char* social_post_comment_dto_social_profile_type_ToString(socialservice_social_post_comment_dto_SOCIALPROFILETYPE_e social_profile_type) {
+    char* social_profile_typeArray[] =  { "NULL", "User", "Tenant", "Contact" };
+    return social_profile_typeArray[social_profile_type];
+}
+
+socialservice_social_post_comment_dto_SOCIALPROFILETYPE_e social_post_comment_dto_social_profile_type_FromString(char* social_profile_type){
+    int stringToReturn = 0;
+    char *social_profile_typeArray[] =  { "NULL", "User", "Tenant", "Contact" };
+    size_t sizeofArray = sizeof(social_profile_typeArray) / sizeof(social_profile_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(social_profile_type, social_profile_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 char* social_post_comment_dto_body_format_ToString(socialservice_social_post_comment_dto_BODYFORMAT_e body_format) {
     char* body_formatArray[] =  { "NULL", "PlainText", "Html" };
     return body_formatArray[body_format];
@@ -21,6 +38,23 @@ socialservice_social_post_comment_dto_BODYFORMAT_e social_post_comment_dto_body_
     }
     return 0;
 }
+char* social_post_comment_dto_my_reaction_ToString(socialservice_social_post_comment_dto_MYREACTION_e my_reaction) {
+    char* my_reactionArray[] =  { "NULL", "Like", "Happy", "HaHa", "Love", "Sad", "Angry", "Wow", "Afraid" };
+    return my_reactionArray[my_reaction];
+}
+
+socialservice_social_post_comment_dto_MYREACTION_e social_post_comment_dto_my_reaction_FromString(char* my_reaction){
+    int stringToReturn = 0;
+    char *my_reactionArray[] =  { "NULL", "Like", "Happy", "HaHa", "Love", "Sad", "Angry", "Wow", "Afraid" };
+    size_t sizeofArray = sizeof(my_reactionArray) / sizeof(my_reactionArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(my_reaction, my_reactionArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 social_post_comment_dto_t *social_post_comment_dto_create(
     char *id,
@@ -31,9 +65,15 @@ social_post_comment_dto_t *social_post_comment_dto_create(
     char *social_feed_post_id,
     char *social_profile_name,
     char *social_profile_avatar_url,
+    socialservice_social_post_comment_dto_SOCIALPROFILETYPE_e social_profile_type,
     char *body_html,
     socialservice_social_post_comment_dto_BODYFORMAT_e body_format,
-    char *social_post_id
+    int reply_count,
+    int reactions_count,
+    char *social_post_id,
+    list_t *facepile,
+    socialservice_social_post_comment_dto_MYREACTION_e my_reaction,
+    char *my_reaction_id
     ) {
     social_post_comment_dto_t *social_post_comment_dto_local_var = malloc(sizeof(social_post_comment_dto_t));
     if (!social_post_comment_dto_local_var) {
@@ -47,9 +87,15 @@ social_post_comment_dto_t *social_post_comment_dto_create(
     social_post_comment_dto_local_var->social_feed_post_id = social_feed_post_id;
     social_post_comment_dto_local_var->social_profile_name = social_profile_name;
     social_post_comment_dto_local_var->social_profile_avatar_url = social_profile_avatar_url;
+    social_post_comment_dto_local_var->social_profile_type = social_profile_type;
     social_post_comment_dto_local_var->body_html = body_html;
     social_post_comment_dto_local_var->body_format = body_format;
+    social_post_comment_dto_local_var->reply_count = reply_count;
+    social_post_comment_dto_local_var->reactions_count = reactions_count;
     social_post_comment_dto_local_var->social_post_id = social_post_id;
+    social_post_comment_dto_local_var->facepile = facepile;
+    social_post_comment_dto_local_var->my_reaction = my_reaction;
+    social_post_comment_dto_local_var->my_reaction_id = my_reaction_id;
 
     return social_post_comment_dto_local_var;
 }
@@ -99,6 +145,17 @@ void social_post_comment_dto_free(social_post_comment_dto_t *social_post_comment
     if (social_post_comment_dto->social_post_id) {
         free(social_post_comment_dto->social_post_id);
         social_post_comment_dto->social_post_id = NULL;
+    }
+    if (social_post_comment_dto->facepile) {
+        list_ForEach(listEntry, social_post_comment_dto->facepile) {
+            social_post_reaction_facepile_dto_free(listEntry->data);
+        }
+        list_freeList(social_post_comment_dto->facepile);
+        social_post_comment_dto->facepile = NULL;
+    }
+    if (social_post_comment_dto->my_reaction_id) {
+        free(social_post_comment_dto->my_reaction_id);
+        social_post_comment_dto->my_reaction_id = NULL;
     }
     free(social_post_comment_dto);
 }
@@ -170,6 +227,15 @@ cJSON *social_post_comment_dto_convertToJSON(social_post_comment_dto_t *social_p
     }
 
 
+    // social_post_comment_dto->social_profile_type
+    if(social_post_comment_dto->social_profile_type != socialservice_social_post_comment_dto_SOCIALPROFILETYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileType", social_profile_typesocial_post_comment_dto_ToString(social_post_comment_dto->social_profile_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // social_post_comment_dto->body_html
     if(social_post_comment_dto->body_html) {
     if(cJSON_AddStringToObject(item, "bodyHtml", social_post_comment_dto->body_html) == NULL) {
@@ -187,9 +253,62 @@ cJSON *social_post_comment_dto_convertToJSON(social_post_comment_dto_t *social_p
     }
 
 
+    // social_post_comment_dto->reply_count
+    if(social_post_comment_dto->reply_count) {
+    if(cJSON_AddNumberToObject(item, "replyCount", social_post_comment_dto->reply_count) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // social_post_comment_dto->reactions_count
+    if(social_post_comment_dto->reactions_count) {
+    if(cJSON_AddNumberToObject(item, "reactionsCount", social_post_comment_dto->reactions_count) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
     // social_post_comment_dto->social_post_id
     if(social_post_comment_dto->social_post_id) {
     if(cJSON_AddStringToObject(item, "socialPostId", social_post_comment_dto->social_post_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // social_post_comment_dto->facepile
+    if(social_post_comment_dto->facepile) {
+    cJSON *facepile = cJSON_AddArrayToObject(item, "facepile");
+    if(facepile == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *facepileListEntry;
+    if (social_post_comment_dto->facepile) {
+    list_ForEach(facepileListEntry, social_post_comment_dto->facepile) {
+    cJSON *itemLocal = social_post_reaction_facepile_dto_convertToJSON(facepileListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(facepile, itemLocal);
+    }
+    }
+    }
+
+
+    // social_post_comment_dto->my_reaction
+    if(social_post_comment_dto->my_reaction != socialservice_social_post_comment_dto_MYREACTION_NULL) {
+    if(cJSON_AddStringToObject(item, "myReaction", my_reactionsocial_post_comment_dto_ToString(social_post_comment_dto->my_reaction)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
+    // social_post_comment_dto->my_reaction_id
+    if(social_post_comment_dto->my_reaction_id) {
+    if(cJSON_AddStringToObject(item, "myReactionId", social_post_comment_dto->my_reaction_id) == NULL) {
     goto fail; //String
     }
     }
@@ -205,6 +324,9 @@ fail:
 social_post_comment_dto_t *social_post_comment_dto_parseFromJSON(cJSON *social_post_comment_dtoJSON){
 
     social_post_comment_dto_t *social_post_comment_dto_local_var = NULL;
+
+    // define the local list for social_post_comment_dto->facepile
+    list_t *facepileList = NULL;
 
     // social_post_comment_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "id");
@@ -278,6 +400,17 @@ social_post_comment_dto_t *social_post_comment_dto_parseFromJSON(cJSON *social_p
     }
     }
 
+    // social_post_comment_dto->social_profile_type
+    cJSON *social_profile_type = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "socialProfileType");
+    socialservice_social_post_comment_dto_SOCIALPROFILETYPE_e social_profile_typeVariable;
+    if (social_profile_type) { 
+    if(!cJSON_IsString(social_profile_type))
+    {
+    goto end; //Enum
+    }
+    social_profile_typeVariable = social_post_comment_dto_social_profile_type_FromString(social_profile_type->valuestring);
+    }
+
     // social_post_comment_dto->body_html
     cJSON *body_html = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "bodyHtml");
     if (body_html) { 
@@ -298,10 +431,69 @@ social_post_comment_dto_t *social_post_comment_dto_parseFromJSON(cJSON *social_p
     body_formatVariable = social_post_comment_dto_body_format_FromString(body_format->valuestring);
     }
 
+    // social_post_comment_dto->reply_count
+    cJSON *reply_count = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "replyCount");
+    if (reply_count) { 
+    if(!cJSON_IsNumber(reply_count))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // social_post_comment_dto->reactions_count
+    cJSON *reactions_count = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "reactionsCount");
+    if (reactions_count) { 
+    if(!cJSON_IsNumber(reactions_count))
+    {
+    goto end; //Numeric
+    }
+    }
+
     // social_post_comment_dto->social_post_id
     cJSON *social_post_id = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "socialPostId");
     if (social_post_id) { 
     if(!cJSON_IsString(social_post_id) && !cJSON_IsNull(social_post_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // social_post_comment_dto->facepile
+    cJSON *facepile = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "facepile");
+    if (facepile) { 
+    cJSON *facepile_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(facepile)){
+        goto end; //nonprimitive container
+    }
+
+    facepileList = list_createList();
+
+    cJSON_ArrayForEach(facepile_local_nonprimitive,facepile )
+    {
+        if(!cJSON_IsObject(facepile_local_nonprimitive)){
+            goto end;
+        }
+        social_post_reaction_facepile_dto_t *facepileItem = social_post_reaction_facepile_dto_parseFromJSON(facepile_local_nonprimitive);
+
+        list_addElement(facepileList, facepileItem);
+    }
+    }
+
+    // social_post_comment_dto->my_reaction
+    cJSON *my_reaction = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "myReaction");
+    socialservice_social_post_comment_dto_MYREACTION_e my_reactionVariable;
+    if (my_reaction) { 
+    if(!cJSON_IsString(my_reaction))
+    {
+    goto end; //Enum
+    }
+    my_reactionVariable = social_post_comment_dto_my_reaction_FromString(my_reaction->valuestring);
+    }
+
+    // social_post_comment_dto->my_reaction_id
+    cJSON *my_reaction_id = cJSON_GetObjectItemCaseSensitive(social_post_comment_dtoJSON, "myReactionId");
+    if (my_reaction_id) { 
+    if(!cJSON_IsString(my_reaction_id) && !cJSON_IsNull(my_reaction_id))
     {
     goto end; //String
     }
@@ -317,13 +509,28 @@ social_post_comment_dto_t *social_post_comment_dto_parseFromJSON(cJSON *social_p
         social_feed_post_id && !cJSON_IsNull(social_feed_post_id) ? strdup(social_feed_post_id->valuestring) : NULL,
         social_profile_name && !cJSON_IsNull(social_profile_name) ? strdup(social_profile_name->valuestring) : NULL,
         social_profile_avatar_url && !cJSON_IsNull(social_profile_avatar_url) ? strdup(social_profile_avatar_url->valuestring) : NULL,
+        social_profile_type ? social_profile_typeVariable : socialservice_social_post_comment_dto_SOCIALPROFILETYPE_NULL,
         body_html && !cJSON_IsNull(body_html) ? strdup(body_html->valuestring) : NULL,
         body_format ? body_formatVariable : socialservice_social_post_comment_dto_BODYFORMAT_NULL,
-        social_post_id && !cJSON_IsNull(social_post_id) ? strdup(social_post_id->valuestring) : NULL
+        reply_count ? reply_count->valuedouble : 0,
+        reactions_count ? reactions_count->valuedouble : 0,
+        social_post_id && !cJSON_IsNull(social_post_id) ? strdup(social_post_id->valuestring) : NULL,
+        facepile ? facepileList : NULL,
+        my_reaction ? my_reactionVariable : socialservice_social_post_comment_dto_MYREACTION_NULL,
+        my_reaction_id && !cJSON_IsNull(my_reaction_id) ? strdup(my_reaction_id->valuestring) : NULL
         );
 
     return social_post_comment_dto_local_var;
 end:
+    if (facepileList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, facepileList) {
+            social_post_reaction_facepile_dto_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(facepileList);
+        facepileList = NULL;
+    }
     return NULL;
 
 }

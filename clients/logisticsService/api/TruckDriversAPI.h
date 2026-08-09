@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/truck_driver_create_dto.h"
+#include "../model/truck_driver_dto_collection_query_parameters.h"
 #include "../model/truck_driver_dto_envelope.h"
 #include "../model/truck_driver_dto_list_envelope.h"
 #include "../model/truck_driver_update_dto.h"
@@ -60,7 +61,7 @@ TruckDriversAPI_getTruckDriverByIdAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all truck drivers for the specified tenant.
 //
 truck_driver_dto_list_envelope_t*
-TruckDriversAPI_getTruckDriversAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TruckDriversAPI_getTruckDriversAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, truck_driver_dto_collection_query_parameters_t *truck_driver_dto_collection_query_parameters);
 
 
 // Get truck drivers count
@@ -68,7 +69,7 @@ TruckDriversAPI_getTruckDriversAsync(apiClient_t *apiClient, char *tenantId, cha
 // Returns the count of truck drivers for the specified tenant.
 //
 int32_envelope_t*
-TruckDriversAPI_getTruckDriversCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TruckDriversAPI_getTruckDriversCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, truck_driver_dto_collection_query_parameters_t *truck_driver_dto_collection_query_parameters);
 
 
 // Patch a truck driver
@@ -76,7 +77,7 @@ TruckDriversAPI_getTruckDriversCountAsync(apiClient_t *apiClient, char *tenantId
 // Partially updates an existing truck driver using JSON Patch.
 //
 empty_envelope_t*
-TruckDriversAPI_patchTruckDriverAsync(apiClient_t *apiClient, char *tenantId, char *driverId, char *api_version, char *x_api_version, list_t *operation);
+TruckDriversAPI_patchTruckDriverAsync(apiClient_t *apiClient, char *tenantId, char *driverId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a truck driver

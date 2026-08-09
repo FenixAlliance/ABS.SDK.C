@@ -156,7 +156,7 @@ No authorization required
 //
 // Retrieve a list of options for the current user
 //
-option_dto_list_envelope_t* OptionsAPI_getUserOptions(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version);
+option_dto_list_envelope_t* OptionsAPI_getUserOptions(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -166,6 +166,7 @@ Name | Type | Description  | Notes
 **portalId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**option_dto_collection_query_parameters** | **[option_dto_collection_query_parameters_t](option_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -178,7 +179,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -189,7 +190,7 @@ No authorization required
 //
 // Get the count of options for the current user
 //
-int32_envelope_t* OptionsAPI_getUserOptionsCount(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version);
+int32_envelope_t* OptionsAPI_getUserOptionsCount(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -199,6 +200,7 @@ Name | Type | Description  | Notes
 **portalId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**option_dto_collection_query_parameters** | **[option_dto_collection_query_parameters_t](option_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -211,7 +213,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -222,7 +224,7 @@ No authorization required
 //
 // Partially updates a user option using a JSON Patch document
 //
-empty_envelope_t* OptionsAPI_patchUserOption(apiClient_t *apiClient, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* OptionsAPI_patchUserOption(apiClient_t *apiClient, char *optionId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -232,7 +234,7 @@ Name | Type | Description  | Notes
 **optionId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

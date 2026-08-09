@@ -291,64 +291,6 @@ end:
 }
 
 void
-FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost(apiClient_t *apiClient, char *agentId)
-{
-    list_t    *localVarQueryParameters = NULL;
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = NULL;
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-
-    // create the path
-    long sizeOfPath = strlen("/api/v2/AIService/Agents/{agentId}/agui")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/api/v2/AIService/Agents/{agentId}/agui");
-
-
-    // Path Params
-    long sizeOfPathParams_agentId = strlen(agentId)+3 + strlen("{ agentId }");
-    if(agentId == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_agentId = malloc(sizeOfPathParams_agentId);
-    sprintf(localVarToReplace_agentId, "{%s}", "agentId");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_agentId, agentId);
-
-
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    "POST");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","OK");
-    //}
-    //No return type
-end:
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    
-    
-    
-    
-    
-    free(localVarPath);
-    free(localVarToReplace_agentId);
-
-}
-
-void
 FenixAllianceABSWebAPI_forgotPasswordPost(apiClient_t *apiClient, forgot_password_request_t *forgot_password_request)
 {
     list_t    *localVarQueryParameters = NULL;

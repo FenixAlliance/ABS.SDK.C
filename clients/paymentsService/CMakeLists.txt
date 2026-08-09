@@ -55,6 +55,7 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
+    model/create_provider_webhook_registration_request.c
     model/empty_envelope.c
     model/error_envelope.c
     model/forgot_password_request.c
@@ -63,26 +64,35 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/payment_create_dto.c
     model/payment_dto.c
+    model/payment_dto_collection_query_parameters.c
     model/payment_dto_list_envelope.c
     model/payment_method_create_dto.c
     model/payment_method_dto.c
+    model/payment_method_dto_collection_query_parameters.c
     model/payment_method_dto_envelope.c
     model/payment_method_dto_i_read_only_list_envelope.c
     model/payment_method_update_dto.c
     model/payment_mode_create_dto.c
     model/payment_mode_dto.c
+    model/payment_mode_dto_collection_query_parameters.c
     model/payment_mode_dto_envelope.c
     model/payment_mode_dto_i_read_only_list_envelope.c
     model/payment_mode_update_dto.c
+    model/payment_provider_registration_dto.c
+    model/payment_provider_registration_dto_collection_query_parameters.c
+    model/payment_provider_registration_dto_list_envelope.c
     model/payment_term_create_dto.c
     model/payment_term_dto.c
+    model/payment_term_dto_collection_query_parameters.c
     model/payment_term_dto_envelope.c
     model/payment_term_dto_i_read_only_list_envelope.c
     model/payment_term_update_dto.c
     model/payment_update_dto.c
+    model/provider_webhook_registration_created_dto.c
+    model/provider_webhook_registration_created_dto_envelope.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -92,6 +102,7 @@ set(SRCS
     api/FenixAllianceABSWebAPI.c
     api/PaymentMethodsAPI.c
     api/PaymentModesAPI.c
+    api/PaymentProviderRegistrationsAPI.c
     api/PaymentTermsAPI.c
     api/PaymentsAPI.c
 
@@ -105,6 +116,7 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
+    model/create_provider_webhook_registration_request.h
     model/empty_envelope.h
     model/error_envelope.h
     model/forgot_password_request.h
@@ -113,26 +125,35 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/payment_create_dto.h
     model/payment_dto.h
+    model/payment_dto_collection_query_parameters.h
     model/payment_dto_list_envelope.h
     model/payment_method_create_dto.h
     model/payment_method_dto.h
+    model/payment_method_dto_collection_query_parameters.h
     model/payment_method_dto_envelope.h
     model/payment_method_dto_i_read_only_list_envelope.h
     model/payment_method_update_dto.h
     model/payment_mode_create_dto.h
     model/payment_mode_dto.h
+    model/payment_mode_dto_collection_query_parameters.h
     model/payment_mode_dto_envelope.h
     model/payment_mode_dto_i_read_only_list_envelope.h
     model/payment_mode_update_dto.h
+    model/payment_provider_registration_dto.h
+    model/payment_provider_registration_dto_collection_query_parameters.h
+    model/payment_provider_registration_dto_list_envelope.h
     model/payment_term_create_dto.h
     model/payment_term_dto.h
+    model/payment_term_dto_collection_query_parameters.h
     model/payment_term_dto_envelope.h
     model/payment_term_dto_i_read_only_list_envelope.h
     model/payment_term_update_dto.h
     model/payment_update_dto.h
+    model/provider_webhook_registration_created_dto.h
+    model/provider_webhook_registration_created_dto_envelope.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
@@ -142,6 +163,7 @@ set(HDRS
     api/FenixAllianceABSWebAPI.h
     api/PaymentMethodsAPI.h
     api/PaymentModesAPI.h
+    api/PaymentProviderRegistrationsAPI.h
     api/PaymentTermsAPI.h
     api/PaymentsAPI.h
 
@@ -228,6 +250,7 @@ set(HDRS "")
 #    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-PaymentMethodsAPI.c
 #    unit-tests/manual-PaymentModesAPI.c
+#    unit-tests/manual-PaymentProviderRegistrationsAPI.c
 #    unit-tests/manual-PaymentTermsAPI.c
 #    unit-tests/manual-PaymentsAPI.c
 #)

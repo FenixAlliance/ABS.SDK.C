@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/social_group_create_dto.h"
+#include "../model/social_group_dto_collection_query_parameters.h"
 #include "../model/social_group_dto_envelope.h"
 #include "../model/social_group_dto_list_envelope.h"
 #include "../model/social_group_update_dto.h"
@@ -20,7 +21,7 @@
 // Counts all social groups for the specified tenant.
 //
 int32_envelope_t*
-SocialGroupsAPI_countSocialGroupsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SocialGroupsAPI_countSocialGroupsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, social_group_dto_collection_query_parameters_t *social_group_dto_collection_query_parameters);
 
 
 // Create a social group
@@ -52,7 +53,7 @@ SocialGroupsAPI_getSocialGroupByIdAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all social groups for the specified tenant.
 //
 social_group_dto_list_envelope_t*
-SocialGroupsAPI_getSocialGroupsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SocialGroupsAPI_getSocialGroupsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, social_group_dto_collection_query_parameters_t *social_group_dto_collection_query_parameters);
 
 
 // Patch a social group
@@ -60,7 +61,7 @@ SocialGroupsAPI_getSocialGroupsAsync(apiClient_t *apiClient, char *tenantId, cha
 // Partially updates an existing social group using a JSON Patch document.
 //
 empty_envelope_t*
-SocialGroupsAPI_patchSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *socialGroupId, char *api_version, char *x_api_version, list_t *operation);
+SocialGroupsAPI_patchSocialGroupAsync(apiClient_t *apiClient, char *tenantId, char *socialProfileId, char *socialGroupId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a social group

@@ -14,20 +14,24 @@ docs/access_token_response.md
 docs/contact_dto.md
 docs/deal_unit_create_dto.md
 docs/deal_unit_dto.md
+docs/deal_unit_dto_collection_query_parameters.md
 docs/deal_unit_dto_envelope.md
 docs/deal_unit_dto_list_envelope.md
 docs/deal_unit_flow_create_dto.md
 docs/deal_unit_flow_dto.md
+docs/deal_unit_flow_dto_collection_query_parameters.md
 docs/deal_unit_flow_dto_envelope.md
 docs/deal_unit_flow_dto_list_envelope.md
 docs/deal_unit_flow_stage_create_dto.md
 docs/deal_unit_flow_stage_dto.md
+docs/deal_unit_flow_stage_dto_collection_query_parameters.md
 docs/deal_unit_flow_stage_dto_envelope.md
 docs/deal_unit_flow_stage_dto_list_envelope.md
 docs/deal_unit_flow_stage_update_dto.md
 docs/deal_unit_flow_update_dto.md
 docs/deal_unit_line_create_dto.md
 docs/deal_unit_line_dto.md
+docs/deal_unit_line_dto_collection_query_parameters.md
 docs/deal_unit_line_dto_envelope.md
 docs/deal_unit_line_dto_list_envelope.md
 docs/deal_unit_line_update_dto.md
@@ -35,6 +39,7 @@ docs/deal_unit_update_dto.md
 docs/empty_envelope.md
 docs/error_envelope.md
 docs/extended_deal_unit_dto.md
+docs/extended_deal_unit_dto_collection_query_parameters.md
 docs/extended_deal_unit_dto_envelope.md
 docs/extended_deal_unit_dto_list_envelope.md
 docs/forgot_password_request.md
@@ -43,7 +48,7 @@ docs/info_request.md
 docs/info_response.md
 docs/int32_envelope.md
 docs/login_request.md
-docs/operation.md
+docs/patch_operation.md
 docs/refresh_request.md
 docs/register_request.md
 docs/resend_confirmation_email_request.md
@@ -69,6 +74,8 @@ model/deal_unit_create_dto.c
 model/deal_unit_create_dto.h
 model/deal_unit_dto.c
 model/deal_unit_dto.h
+model/deal_unit_dto_collection_query_parameters.c
+model/deal_unit_dto_collection_query_parameters.h
 model/deal_unit_dto_envelope.c
 model/deal_unit_dto_envelope.h
 model/deal_unit_dto_list_envelope.c
@@ -77,6 +84,8 @@ model/deal_unit_flow_create_dto.c
 model/deal_unit_flow_create_dto.h
 model/deal_unit_flow_dto.c
 model/deal_unit_flow_dto.h
+model/deal_unit_flow_dto_collection_query_parameters.c
+model/deal_unit_flow_dto_collection_query_parameters.h
 model/deal_unit_flow_dto_envelope.c
 model/deal_unit_flow_dto_envelope.h
 model/deal_unit_flow_dto_list_envelope.c
@@ -85,6 +94,8 @@ model/deal_unit_flow_stage_create_dto.c
 model/deal_unit_flow_stage_create_dto.h
 model/deal_unit_flow_stage_dto.c
 model/deal_unit_flow_stage_dto.h
+model/deal_unit_flow_stage_dto_collection_query_parameters.c
+model/deal_unit_flow_stage_dto_collection_query_parameters.h
 model/deal_unit_flow_stage_dto_envelope.c
 model/deal_unit_flow_stage_dto_envelope.h
 model/deal_unit_flow_stage_dto_list_envelope.c
@@ -97,6 +108,8 @@ model/deal_unit_line_create_dto.c
 model/deal_unit_line_create_dto.h
 model/deal_unit_line_dto.c
 model/deal_unit_line_dto.h
+model/deal_unit_line_dto_collection_query_parameters.c
+model/deal_unit_line_dto_collection_query_parameters.h
 model/deal_unit_line_dto_envelope.c
 model/deal_unit_line_dto_envelope.h
 model/deal_unit_line_dto_list_envelope.c
@@ -111,6 +124,8 @@ model/error_envelope.c
 model/error_envelope.h
 model/extended_deal_unit_dto.c
 model/extended_deal_unit_dto.h
+model/extended_deal_unit_dto_collection_query_parameters.c
+model/extended_deal_unit_dto_collection_query_parameters.h
 model/extended_deal_unit_dto_envelope.c
 model/extended_deal_unit_dto_envelope.h
 model/extended_deal_unit_dto_list_envelope.c
@@ -129,8 +144,8 @@ model/login_request.c
 model/login_request.h
 model/object.c
 model/object.h
-model/operation.c
-model/operation.h
+model/patch_operation.c
+model/patch_operation.h
 model/refresh_request.c
 model/refresh_request.h
 model/register_request.c
@@ -154,3 +169,9 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_deal_unit_dto_collection_query_parameters.c
+unit-test/test_deal_unit_flow_dto_collection_query_parameters.c
+unit-test/test_deal_unit_flow_stage_dto_collection_query_parameters.c
+unit-test/test_deal_unit_line_dto_collection_query_parameters.c
+unit-test/test_extended_deal_unit_dto_collection_query_parameters.c
+unit-test/test_patch_operation.c

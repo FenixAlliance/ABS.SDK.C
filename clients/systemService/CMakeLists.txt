@@ -55,11 +55,22 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
+    model/application_principal_detail_dto.c
+    model/application_principal_detail_dto_envelope.c
+    model/application_principal_dto.c
+    model/application_principal_dto_collection_query_parameters.c
+    model/application_principal_dto_i_read_only_list_envelope.c
+    model/application_principal_permission_request_dto.c
+    model/application_principal_provision_request_dto.c
+    model/application_principal_provisioning_result_dto.c
+    model/application_principal_provisioning_result_dto_envelope.c
     model/boolean_envelope.c
     model/business_domain_dto.c
+    model/business_domain_dto_collection_query_parameters.c
     model/business_domain_dto_envelope.c
     model/business_domain_dto_list_envelope.c
     model/cart_dto.c
+    model/cart_dto_collection_query_parameters.c
     model/cart_dto_envelope.c
     model/cart_dto_list_envelope.c
     model/email_dispatch_request.c
@@ -67,11 +78,15 @@ set(SRCS
     model/envelope.c
     model/error_envelope.c
     model/extended_tenant_dto.c
+    model/extended_tenant_dto_collection_query_parameters.c
     model/extended_tenant_dto_list_envelope.c
     model/extended_user_dto.c
+    model/extended_user_dto_collection_query_parameters.c
     model/extended_user_dto_envelope.c
     model/extended_user_dto_list_envelope.c
     model/forgot_password_request.c
+    model/guest_cart_purge_result_dto.c
+    model/guest_cart_purge_result_dto_envelope.c
     model/http_validation_problem_details.c
     model/i_open_api_contact.c
     model/i_open_api_definition_spec.c
@@ -79,25 +94,48 @@ set(SRCS
     model/i_open_api_license.c
     model/i_validation_failure.c
     model/i_validation_failure_list_envelope.c
+    model/inbox_admin_reason_dto.c
+    model/inbox_health_dto.c
+    model/inbox_health_dto_envelope.c
+    model/inbox_message_dto.c
+    model/inbox_message_dto_collection_query_parameters.c
+    model/inbox_message_dto_envelope.c
+    model/inbox_message_dto_i_read_only_list_envelope.c
+    model/inbox_replay_result_dto.c
+    model/inbox_replay_result_dto_envelope.c
     model/info_request.c
     model/info_response.c
     model/int32_envelope.c
     model/ip_lookup_dto.c
+    model/ip_lookup_dto_collection_query_parameters.c
     model/ip_lookup_dto_envelope.c
     model/ip_lookup_dto_list_envelope.c
     model/license_validation_request.c
     model/login_request.c
+    model/module_grant_dto.c
+    model/module_grant_dto_list_envelope.c
     model/object_email_dispatch_request.c
-    model/operation.c
     model/option_create_dto.c
     model/option_dto.c
+    model/option_dto_collection_query_parameters.c
     model/option_dto_envelope.c
     model/option_dto_list_envelope.c
     model/option_update_dto.c
+    model/outbox_admin_reason_dto.c
+    model/outbox_health_dto.c
+    model/outbox_health_dto_envelope.c
+    model/outbox_message_dto.c
+    model/outbox_message_dto_collection_query_parameters.c
+    model/outbox_message_dto_envelope.c
+    model/outbox_message_dto_i_read_only_list_envelope.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
+    model/security_permission_dto.c
+    model/security_role_dto.c
+    model/set_user_password_dto.c
     model/social_profile_dto.c
     model/string_list_envelope.c
     model/studio_module.c
@@ -113,34 +151,46 @@ set(SRCS
     model/system_overview_dto_envelope.c
     model/tenant_create_dto.c
     model/tenant_dto.c
+    model/tenant_dto_collection_query_parameters.c
     model/tenant_dto_envelope.c
     model/tenant_dto_list_envelope.c
+    model/tenant_enrollment_dto.c
     model/tenant_update_dto.c
     model/two_factor_request.c
     model/two_factor_response.c
+    model/user_admin_detail_dto.c
+    model/user_admin_detail_dto_envelope.c
+    model/user_admin_update_dto.c
     model/user_create_dto.c
     model/user_dto.c
+    model/user_dto_collection_query_parameters.c
     model/user_dto_envelope.c
     model/user_dto_list_envelope.c
+    model/user_external_login_dto.c
+    model/user_order_summary_dto.c
     model/user_settings_dto.c
     model/user_update_dto.c
     model/wallet_dto.c
     model/web_portal_create_dto.c
     model/web_portal_dto.c
+    model/web_portal_dto_collection_query_parameters.c
     model/web_portal_dto_envelope.c
     model/web_portal_dto_list_envelope.c
     model/web_portal_update_dto.c
     api/AntiforgeryAPI.c
+    api/ApplicationPrincipalsAPI.c
     api/BusinessDomainsAPI.c
     api/CartsAPI.c
     api/ContactOptionsAPI.c
     api/EmailsAPI.c
     api/FenixAllianceABSWebAPI.c
     api/IPLookupsAPI.c
+    api/InboxAPI.c
     api/LicensingAPI.c
     api/MigrationsAPI.c
     api/ModulesAPI.c
     api/OptionsAPI.c
+    api/OutboxAPI.c
     api/OverviewAPI.c
     api/PortalsAPI.c
     api/TenantOptionsAPI.c
@@ -158,11 +208,22 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
+    model/application_principal_detail_dto.h
+    model/application_principal_detail_dto_envelope.h
+    model/application_principal_dto.h
+    model/application_principal_dto_collection_query_parameters.h
+    model/application_principal_dto_i_read_only_list_envelope.h
+    model/application_principal_permission_request_dto.h
+    model/application_principal_provision_request_dto.h
+    model/application_principal_provisioning_result_dto.h
+    model/application_principal_provisioning_result_dto_envelope.h
     model/boolean_envelope.h
     model/business_domain_dto.h
+    model/business_domain_dto_collection_query_parameters.h
     model/business_domain_dto_envelope.h
     model/business_domain_dto_list_envelope.h
     model/cart_dto.h
+    model/cart_dto_collection_query_parameters.h
     model/cart_dto_envelope.h
     model/cart_dto_list_envelope.h
     model/email_dispatch_request.h
@@ -170,11 +231,15 @@ set(HDRS
     model/envelope.h
     model/error_envelope.h
     model/extended_tenant_dto.h
+    model/extended_tenant_dto_collection_query_parameters.h
     model/extended_tenant_dto_list_envelope.h
     model/extended_user_dto.h
+    model/extended_user_dto_collection_query_parameters.h
     model/extended_user_dto_envelope.h
     model/extended_user_dto_list_envelope.h
     model/forgot_password_request.h
+    model/guest_cart_purge_result_dto.h
+    model/guest_cart_purge_result_dto_envelope.h
     model/http_validation_problem_details.h
     model/i_open_api_contact.h
     model/i_open_api_definition_spec.h
@@ -182,25 +247,48 @@ set(HDRS
     model/i_open_api_license.h
     model/i_validation_failure.h
     model/i_validation_failure_list_envelope.h
+    model/inbox_admin_reason_dto.h
+    model/inbox_health_dto.h
+    model/inbox_health_dto_envelope.h
+    model/inbox_message_dto.h
+    model/inbox_message_dto_collection_query_parameters.h
+    model/inbox_message_dto_envelope.h
+    model/inbox_message_dto_i_read_only_list_envelope.h
+    model/inbox_replay_result_dto.h
+    model/inbox_replay_result_dto_envelope.h
     model/info_request.h
     model/info_response.h
     model/int32_envelope.h
     model/ip_lookup_dto.h
+    model/ip_lookup_dto_collection_query_parameters.h
     model/ip_lookup_dto_envelope.h
     model/ip_lookup_dto_list_envelope.h
     model/license_validation_request.h
     model/login_request.h
+    model/module_grant_dto.h
+    model/module_grant_dto_list_envelope.h
     model/object_email_dispatch_request.h
-    model/operation.h
     model/option_create_dto.h
     model/option_dto.h
+    model/option_dto_collection_query_parameters.h
     model/option_dto_envelope.h
     model/option_dto_list_envelope.h
     model/option_update_dto.h
+    model/outbox_admin_reason_dto.h
+    model/outbox_health_dto.h
+    model/outbox_health_dto_envelope.h
+    model/outbox_message_dto.h
+    model/outbox_message_dto_collection_query_parameters.h
+    model/outbox_message_dto_envelope.h
+    model/outbox_message_dto_i_read_only_list_envelope.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
+    model/security_permission_dto.h
+    model/security_role_dto.h
+    model/set_user_password_dto.h
     model/social_profile_dto.h
     model/string_list_envelope.h
     model/studio_module.h
@@ -216,34 +304,46 @@ set(HDRS
     model/system_overview_dto_envelope.h
     model/tenant_create_dto.h
     model/tenant_dto.h
+    model/tenant_dto_collection_query_parameters.h
     model/tenant_dto_envelope.h
     model/tenant_dto_list_envelope.h
+    model/tenant_enrollment_dto.h
     model/tenant_update_dto.h
     model/two_factor_request.h
     model/two_factor_response.h
+    model/user_admin_detail_dto.h
+    model/user_admin_detail_dto_envelope.h
+    model/user_admin_update_dto.h
     model/user_create_dto.h
     model/user_dto.h
+    model/user_dto_collection_query_parameters.h
     model/user_dto_envelope.h
     model/user_dto_list_envelope.h
+    model/user_external_login_dto.h
+    model/user_order_summary_dto.h
     model/user_settings_dto.h
     model/user_update_dto.h
     model/wallet_dto.h
     model/web_portal_create_dto.h
     model/web_portal_dto.h
+    model/web_portal_dto_collection_query_parameters.h
     model/web_portal_dto_envelope.h
     model/web_portal_dto_list_envelope.h
     model/web_portal_update_dto.h
     api/AntiforgeryAPI.h
+    api/ApplicationPrincipalsAPI.h
     api/BusinessDomainsAPI.h
     api/CartsAPI.h
     api/ContactOptionsAPI.h
     api/EmailsAPI.h
     api/FenixAllianceABSWebAPI.h
     api/IPLookupsAPI.h
+    api/InboxAPI.h
     api/LicensingAPI.h
     api/MigrationsAPI.h
     api/ModulesAPI.h
     api/OptionsAPI.h
+    api/OutboxAPI.h
     api/OverviewAPI.h
     api/PortalsAPI.h
     api/TenantOptionsAPI.h
@@ -332,16 +432,19 @@ set(HDRS "")
 ## set source files
 #set(SRCS
 #    unit-tests/manual-AntiforgeryAPI.c
+#    unit-tests/manual-ApplicationPrincipalsAPI.c
 #    unit-tests/manual-BusinessDomainsAPI.c
 #    unit-tests/manual-CartsAPI.c
 #    unit-tests/manual-ContactOptionsAPI.c
 #    unit-tests/manual-EmailsAPI.c
 #    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-IPLookupsAPI.c
+#    unit-tests/manual-InboxAPI.c
 #    unit-tests/manual-LicensingAPI.c
 #    unit-tests/manual-MigrationsAPI.c
 #    unit-tests/manual-ModulesAPI.c
 #    unit-tests/manual-OptionsAPI.c
+#    unit-tests/manual-OutboxAPI.c
 #    unit-tests/manual-OverviewAPI.c
 #    unit-tests/manual-PortalsAPI.c
 #    unit-tests/manual-TenantOptionsAPI.c

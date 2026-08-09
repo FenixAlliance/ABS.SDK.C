@@ -6,6 +6,7 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/business_domain_create_dto.h"
+#include "../model/business_domain_dto_collection_query_parameters.h"
 #include "../model/business_domain_dto_envelope.h"
 #include "../model/business_domain_dto_list_envelope.h"
 #include "../model/business_domain_update_dto.h"
@@ -43,7 +44,7 @@ BusinessDomainsAPI_getBusinessDomainByIdAsync(apiClient_t *apiClient, char *tena
 // Retrieves business domains for the specified tenant.
 //
 business_domain_dto_list_envelope_t*
-BusinessDomainsAPI_getBusinessDomainsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BusinessDomainsAPI_getBusinessDomainsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, business_domain_dto_collection_query_parameters_t *business_domain_dto_collection_query_parameters);
 
 
 // Get business domains count
@@ -51,7 +52,7 @@ BusinessDomainsAPI_getBusinessDomainsAsync(apiClient_t *apiClient, char *tenantI
 // Retrieves the count of business domains for the specified tenant.
 //
 int32_envelope_t*
-BusinessDomainsAPI_getBusinessDomainsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BusinessDomainsAPI_getBusinessDomainsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, business_domain_dto_collection_query_parameters_t *business_domain_dto_collection_query_parameters);
 
 
 // Update a business domain

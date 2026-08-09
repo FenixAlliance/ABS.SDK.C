@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/location_create_dto.h"
+#include "../model/location_dto_collection_query_parameters.h"
 #include "../model/location_dto_envelope.h"
 #include "../model/location_dto_i_read_only_list_envelope.h"
 #include "../model/location_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create Location
@@ -60,7 +61,7 @@ LocationsAPI_getLocationAsync(apiClient_t *apiClient, char *tenantId, char *loca
 // Get all locations with OData query support.
 //
 location_dto_i_read_only_list_envelope_t*
-LocationsAPI_getLocationsAsync(apiClient_t *apiClient, char *tenantId);
+LocationsAPI_getLocationsAsync(apiClient_t *apiClient, char *tenantId, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters);
 
 
 // Get Locations Count
@@ -68,7 +69,7 @@ LocationsAPI_getLocationsAsync(apiClient_t *apiClient, char *tenantId);
 // Get the count of locations with OData query support.
 //
 int32_envelope_t*
-LocationsAPI_getLocationsCountAsync(apiClient_t *apiClient, char *tenantId);
+LocationsAPI_getLocationsCountAsync(apiClient_t *apiClient, char *tenantId, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters);
 
 
 // Get Wallet Location
@@ -84,7 +85,7 @@ LocationsAPI_getWalletLocationAsync(apiClient_t *apiClient, char *walletId, char
 // Get locations for a specific wallet by ID.
 //
 location_dto_i_read_only_list_envelope_t*
-LocationsAPI_getWalletLocationsAsync(apiClient_t *apiClient, char *walletId);
+LocationsAPI_getWalletLocationsAsync(apiClient_t *apiClient, char *walletId, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters);
 
 
 // Get Wallet Locations Count
@@ -92,7 +93,7 @@ LocationsAPI_getWalletLocationsAsync(apiClient_t *apiClient, char *walletId);
 // Get the count of locations for a specific wallet by ID.
 //
 int32_envelope_t*
-LocationsAPI_getWalletLocationsCountAsync(apiClient_t *apiClient, char *walletId);
+LocationsAPI_getWalletLocationsCountAsync(apiClient_t *apiClient, char *walletId, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters);
 
 
 // Patch a location
@@ -100,7 +101,7 @@ LocationsAPI_getWalletLocationsCountAsync(apiClient_t *apiClient, char *walletId
 // Patch a location
 //
 empty_envelope_t*
-LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *locationId, list_t *operation);
+LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *locationId, list_t *patch_operation);
 
 
 // Patch a wallet location
@@ -108,7 +109,7 @@ LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *lo
 // Patch a wallet location
 //
 empty_envelope_t*
-LocationsAPI_patchWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, list_t *operation);
+LocationsAPI_patchWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, list_t *patch_operation);
 
 
 // Update Location

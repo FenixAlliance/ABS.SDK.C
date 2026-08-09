@@ -5,10 +5,12 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/cart_dto_collection_query_parameters.h"
 #include "../model/cart_dto_envelope.h"
 #include "../model/cart_dto_list_envelope.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/guest_cart_purge_result_dto_envelope.h"
 #include "../model/int32_envelope.h"
 
 
@@ -33,7 +35,7 @@ CartsAPI_getSystemCartById(apiClient_t *apiClient, char *cartId, char *api_versi
 // Retrieve a list of all carts in the system
 //
 cart_dto_list_envelope_t*
-CartsAPI_getSystemCarts(apiClient_t *apiClient, char *api_version, char *x_api_version);
+CartsAPI_getSystemCarts(apiClient_t *apiClient, char *api_version, char *x_api_version, cart_dto_collection_query_parameters_t *cart_dto_collection_query_parameters);
 
 
 // Get the count of system carts
@@ -41,6 +43,14 @@ CartsAPI_getSystemCarts(apiClient_t *apiClient, char *api_version, char *x_api_v
 // Get the count of all carts in the system
 //
 int32_envelope_t*
-CartsAPI_getSystemCartsCount(apiClient_t *apiClient, char *api_version, char *x_api_version);
+CartsAPI_getSystemCartsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, cart_dto_collection_query_parameters_t *cart_dto_collection_query_parameters);
+
+
+// Purge all guest carts
+//
+// Deletes every guest cart, cascading its item cart records, compare records and wish lists, and returns the removed-row counts. Idempotent.
+//
+guest_cart_purge_result_dto_envelope_t*
+CartsAPI_purgeSystemGuestCarts(apiClient_t *apiClient, char *api_version, char *x_api_version);
 
 

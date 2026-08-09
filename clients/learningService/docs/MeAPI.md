@@ -55,7 +55,7 @@ No authorization required
 ```c
 // Get current user's completion certificates
 //
-course_completion_certificate_dto_i_read_only_list_envelope_t* MeAPI_getMyCertificatesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+course_completion_certificate_dto_i_read_only_list_envelope_t* MeAPI_getMyCertificatesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, course_completion_certificate_dto_collection_query_parameters_t *course_completion_certificate_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -64,6 +64,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_completion_certificate_dto_collection_query_parameters** | **[course_completion_certificate_dto_collection_query_parameters_t](course_completion_certificate_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -76,7 +77,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -85,7 +86,7 @@ No authorization required
 ```c
 // Get current user's certificates count
 //
-int* MeAPI_getMyCertificatesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int* MeAPI_getMyCertificatesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, course_completion_certificate_dto_collection_query_parameters_t *course_completion_certificate_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -94,6 +95,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_completion_certificate_dto_collection_query_parameters** | **[course_completion_certificate_dto_collection_query_parameters_t](course_completion_certificate_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -107,7 +109,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -116,7 +118,7 @@ No authorization required
 ```c
 // Get current user's course enrollments
 //
-course_enrollment_dto_i_read_only_list_envelope_t* MeAPI_getMyEnrollmentsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+course_enrollment_dto_i_read_only_list_envelope_t* MeAPI_getMyEnrollmentsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, course_enrollment_dto_collection_query_parameters_t *course_enrollment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -125,6 +127,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_enrollment_dto_collection_query_parameters** | **[course_enrollment_dto_collection_query_parameters_t](course_enrollment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -137,7 +140,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -146,7 +149,7 @@ No authorization required
 ```c
 // Get current user's enrollment count
 //
-int* MeAPI_getMyEnrollmentsCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int* MeAPI_getMyEnrollmentsCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, course_enrollment_dto_collection_query_parameters_t *course_enrollment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -155,6 +158,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_enrollment_dto_collection_query_parameters** | **[course_enrollment_dto_collection_query_parameters_t](course_enrollment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -168,7 +172,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -207,7 +211,7 @@ No authorization required
 ```c
 // Get current user's instructor courses
 //
-course_dto_i_read_only_list_envelope_t* MeAPI_getMyInstructorCoursesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+course_dto_i_read_only_list_envelope_t* MeAPI_getMyInstructorCoursesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, course_dto_collection_query_parameters_t *course_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -216,6 +220,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_dto_collection_query_parameters** | **[course_dto_collection_query_parameters_t](course_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -228,7 +233,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -237,7 +242,7 @@ No authorization required
 ```c
 // Get current user's instructor courses count
 //
-int* MeAPI_getMyInstructorCoursesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int* MeAPI_getMyInstructorCoursesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, course_dto_collection_query_parameters_t *course_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -246,6 +251,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_dto_collection_query_parameters** | **[course_dto_collection_query_parameters_t](course_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -259,7 +265,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -268,7 +274,7 @@ No authorization required
 ```c
 // Get current user's instructor profiles
 //
-instructor_profile_dto_i_read_only_list_envelope_t* MeAPI_getMyInstructorProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+instructor_profile_dto_i_read_only_list_envelope_t* MeAPI_getMyInstructorProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, instructor_profile_dto_collection_query_parameters_t *instructor_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -277,6 +283,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**instructor_profile_dto_collection_query_parameters** | **[instructor_profile_dto_collection_query_parameters_t](instructor_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -289,7 +296,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -298,7 +305,7 @@ No authorization required
 ```c
 // Get current user's instructor profiles count
 //
-int* MeAPI_getMyInstructorProfilesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int* MeAPI_getMyInstructorProfilesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, instructor_profile_dto_collection_query_parameters_t *instructor_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -307,6 +314,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**instructor_profile_dto_collection_query_parameters** | **[instructor_profile_dto_collection_query_parameters_t](instructor_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -320,7 +328,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -359,7 +367,7 @@ No authorization required
 ```c
 // Get current user's enrolled courses
 //
-course_dto_i_read_only_list_envelope_t* MeAPI_getMyStudentCoursesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+course_dto_i_read_only_list_envelope_t* MeAPI_getMyStudentCoursesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, course_dto_collection_query_parameters_t *course_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -368,6 +376,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_dto_collection_query_parameters** | **[course_dto_collection_query_parameters_t](course_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -380,7 +389,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -389,7 +398,7 @@ No authorization required
 ```c
 // Get current user's enrolled courses count
 //
-int* MeAPI_getMyStudentCoursesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int* MeAPI_getMyStudentCoursesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, course_dto_collection_query_parameters_t *course_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -398,6 +407,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_dto_collection_query_parameters** | **[course_dto_collection_query_parameters_t](course_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -411,7 +421,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -420,7 +430,7 @@ No authorization required
 ```c
 // Get current user's student profiles
 //
-student_profile_dto_i_read_only_list_envelope_t* MeAPI_getMyStudentProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+student_profile_dto_i_read_only_list_envelope_t* MeAPI_getMyStudentProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, student_profile_dto_collection_query_parameters_t *student_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -429,6 +439,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**student_profile_dto_collection_query_parameters** | **[student_profile_dto_collection_query_parameters_t](student_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -441,7 +452,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -450,7 +461,7 @@ No authorization required
 ```c
 // Get current user's student profiles count
 //
-int* MeAPI_getMyStudentProfilesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int* MeAPI_getMyStudentProfilesCountAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, student_profile_dto_collection_query_parameters_t *student_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -459,6 +470,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**student_profile_dto_collection_query_parameters** | **[student_profile_dto_collection_query_parameters_t](student_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -472,7 +484,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

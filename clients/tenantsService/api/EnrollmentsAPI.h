@@ -7,9 +7,11 @@
 #include "../include/binary.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/extended_tenant_enrollment_dto_collection_query_parameters.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_enrollment_create_dto.h"
+#include "../model/tenant_enrollment_dto_collection_query_parameters.h"
 #include "../model/tenant_enrollment_dto_envelope.h"
 #include "../model/tenant_enrollment_dto_list_envelope.h"
 #include "../model/tenant_enrollment_update_dto.h"
@@ -36,7 +38,7 @@ EnrollmentsAPI_deleteTenantEnrollment(apiClient_t *apiClient, char *tenantId, ch
 // Retrieve a list of tenant enrollments
 //
 tenant_enrollment_dto_list_envelope_t*
-EnrollmentsAPI_getExtendedTenantEnrollments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EnrollmentsAPI_getExtendedTenantEnrollments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_tenant_enrollment_dto_collection_query_parameters_t *extended_tenant_enrollment_dto_collection_query_parameters);
 
 
 // Get the count of tenant enrollments
@@ -44,7 +46,7 @@ EnrollmentsAPI_getExtendedTenantEnrollments(apiClient_t *apiClient, char *tenant
 // Get the count of tenant enrollments
 //
 int32_envelope_t*
-EnrollmentsAPI_getExtendedTenantEnrollmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EnrollmentsAPI_getExtendedTenantEnrollmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_tenant_enrollment_dto_collection_query_parameters_t *extended_tenant_enrollment_dto_collection_query_parameters);
 
 
 // Retrieve a single tenant enrollment by its ID
@@ -60,7 +62,7 @@ EnrollmentsAPI_getTenantEnrollmentById(apiClient_t *apiClient, char *tenantId, c
 // Retrieve a list of tenant enrollments
 //
 tenant_enrollment_dto_list_envelope_t*
-EnrollmentsAPI_getTenantEnrollments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EnrollmentsAPI_getTenantEnrollments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_enrollment_dto_collection_query_parameters_t *tenant_enrollment_dto_collection_query_parameters);
 
 
 // Get the count of tenant enrollments
@@ -68,7 +70,7 @@ EnrollmentsAPI_getTenantEnrollments(apiClient_t *apiClient, char *tenantId, char
 // Get the count of tenant enrollments
 //
 int32_envelope_t*
-EnrollmentsAPI_getTenantEnrollmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EnrollmentsAPI_getTenantEnrollmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_enrollment_dto_collection_query_parameters_t *tenant_enrollment_dto_collection_query_parameters);
 
 
 // Patch a tenant enrollment
@@ -76,7 +78,7 @@ EnrollmentsAPI_getTenantEnrollmentsCount(apiClient_t *apiClient, char *tenantId,
 // Patch a tenant enrollment
 //
 empty_envelope_t*
-EnrollmentsAPI_patchTenantEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char *enrollmentId, char *api_version, char *x_api_version, list_t *operation);
+EnrollmentsAPI_patchTenantEnrollmentAsync(apiClient_t *apiClient, char *tenantId, char *enrollmentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant enrollment

@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_category_create_dto.h"
 #include "../model/course_category_dto.h"
+#include "../model/course_category_dto_collection_query_parameters.h"
 #include "../model/course_category_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new course category
@@ -34,7 +35,7 @@ CourseCategoriesAPI_deleteCourseCategoryAsync(apiClient_t *apiClient, char *tena
 // Retrieves all course categories for the specified tenant.
 //
 list_t*
-CourseCategoriesAPI_getCourseCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseCategoriesAPI_getCourseCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_category_dto_collection_query_parameters_t *course_category_dto_collection_query_parameters);
 
 
 // Get course categories count
@@ -42,7 +43,7 @@ CourseCategoriesAPI_getCourseCategoriesAsync(apiClient_t *apiClient, char *tenan
 // Returns the count of course categories for the specified tenant.
 //
 int*
-CourseCategoriesAPI_getCourseCategoriesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseCategoriesAPI_getCourseCategoriesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_category_dto_collection_query_parameters_t *course_category_dto_collection_query_parameters);
 
 
 // Get course category by ID
@@ -58,7 +59,7 @@ CourseCategoriesAPI_getCourseCategoryByIdAsync(apiClient_t *apiClient, char *cat
 // Partially updates a course category for the specified tenant.
 //
 empty_envelope_t*
-CourseCategoriesAPI_patchCourseCategoryAsync(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *operation);
+CourseCategoriesAPI_patchCourseCategoryAsync(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course category

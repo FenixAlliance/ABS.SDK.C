@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
 #include "../model/option_create_dto.h"
+#include "../model/option_dto_collection_query_parameters.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
 #include "../model/option_update_dto.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new contact option
@@ -52,7 +53,7 @@ OptionsAPI_getContactOptionByKey(apiClient_t *apiClient, char *tenantId, char *c
 // Retrieve a list of options for a contact
 //
 option_dto_list_envelope_t*
-OptionsAPI_getContactOptions(apiClient_t *apiClient, char *tenantId, char *contactId, char *portalId, char *api_version, char *x_api_version);
+OptionsAPI_getContactOptions(apiClient_t *apiClient, char *tenantId, char *contactId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Get the count of contact options
@@ -60,7 +61,7 @@ OptionsAPI_getContactOptions(apiClient_t *apiClient, char *tenantId, char *conta
 // Get the count of options for a contact
 //
 int32_envelope_t*
-OptionsAPI_getContactOptionsCount(apiClient_t *apiClient, char *tenantId, char *contactId, char *portalId, char *api_version, char *x_api_version);
+OptionsAPI_getContactOptionsCount(apiClient_t *apiClient, char *tenantId, char *contactId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Patch a contact option
@@ -68,7 +69,7 @@ OptionsAPI_getContactOptionsCount(apiClient_t *apiClient, char *tenantId, char *
 // Patch a contact option
 //
 empty_envelope_t*
-OptionsAPI_patchContactOptionAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+OptionsAPI_patchContactOptionAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *optionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a contact option by key
@@ -76,7 +77,7 @@ OptionsAPI_patchContactOptionAsync(apiClient_t *apiClient, char *tenantId, char 
 // Patch a contact option by key
 //
 empty_envelope_t*
-OptionsAPI_patchContactOptionByKeyAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *key, char *api_version, char *x_api_version, list_t *operation);
+OptionsAPI_patchContactOptionByKeyAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *key, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a contact option

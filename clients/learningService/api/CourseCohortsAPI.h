@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_cohort_create_dto.h"
 #include "../model/course_cohort_dto.h"
+#include "../model/course_cohort_dto_collection_query_parameters.h"
 #include "../model/course_cohort_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new course cohort
@@ -42,7 +43,7 @@ CourseCohortsAPI_getCourseCohortByIdAsync(apiClient_t *apiClient, char *cohortId
 // Retrieves all course cohorts for the specified tenant.
 //
 list_t*
-CourseCohortsAPI_getCourseCohortsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseCohortsAPI_getCourseCohortsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_cohort_dto_collection_query_parameters_t *course_cohort_dto_collection_query_parameters);
 
 
 // Get course cohorts count
@@ -50,7 +51,7 @@ CourseCohortsAPI_getCourseCohortsAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of course cohorts for the specified tenant.
 //
 int*
-CourseCohortsAPI_getCourseCohortsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseCohortsAPI_getCourseCohortsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_cohort_dto_collection_query_parameters_t *course_cohort_dto_collection_query_parameters);
 
 
 // Patch a course cohort
@@ -58,7 +59,7 @@ CourseCohortsAPI_getCourseCohortsCountAsync(apiClient_t *apiClient, char *tenant
 // Partially updates a course cohort for the specified tenant.
 //
 empty_envelope_t*
-CourseCohortsAPI_patchCourseCohortAsync(apiClient_t *apiClient, char *tenantId, char *cohortId, char *api_version, char *x_api_version, list_t *operation);
+CourseCohortsAPI_patchCourseCohortAsync(apiClient_t *apiClient, char *tenantId, char *cohortId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course cohort

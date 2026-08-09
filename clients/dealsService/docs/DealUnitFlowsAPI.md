@@ -221,7 +221,7 @@ No authorization required
 //
 // Retrieves a list of stages for a specific deal unit flow with OData query support.
 //
-deal_unit_flow_stage_dto_list_envelope_t* DealUnitFlowsAPI_getDealUnitFlowStagesAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId);
+deal_unit_flow_stage_dto_list_envelope_t* DealUnitFlowsAPI_getDealUnitFlowStagesAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, deal_unit_flow_stage_dto_collection_query_parameters_t *deal_unit_flow_stage_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -230,6 +230,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **dealUnitFlowId** | **char \*** |  | 
+**deal_unit_flow_stage_dto_collection_query_parameters** | **[deal_unit_flow_stage_dto_collection_query_parameters_t](deal_unit_flow_stage_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -242,7 +243,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -253,7 +254,7 @@ No authorization required
 //
 // Returns the total count of stages for a specific deal unit flow with OData filter support.
 //
-int32_envelope_t* DealUnitFlowsAPI_getDealUnitFlowStagesCountAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId);
+int32_envelope_t* DealUnitFlowsAPI_getDealUnitFlowStagesCountAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, deal_unit_flow_stage_dto_collection_query_parameters_t *deal_unit_flow_stage_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -262,6 +263,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **dealUnitFlowId** | **char \*** |  | 
+**deal_unit_flow_stage_dto_collection_query_parameters** | **[deal_unit_flow_stage_dto_collection_query_parameters_t](deal_unit_flow_stage_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -274,7 +276,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -285,7 +287,7 @@ No authorization required
 //
 // Retrieves a list of deal unit flows for the specified tenant with OData query support.
 //
-deal_unit_flow_dto_list_envelope_t* DealUnitFlowsAPI_getDealUnitFlowsAsync(apiClient_t *apiClient, char *tenantId);
+deal_unit_flow_dto_list_envelope_t* DealUnitFlowsAPI_getDealUnitFlowsAsync(apiClient_t *apiClient, char *tenantId, deal_unit_flow_dto_collection_query_parameters_t *deal_unit_flow_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -293,6 +295,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**deal_unit_flow_dto_collection_query_parameters** | **[deal_unit_flow_dto_collection_query_parameters_t](deal_unit_flow_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -305,7 +308,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -316,7 +319,7 @@ No authorization required
 //
 // Returns the total count of deal unit flows for the specified tenant with OData filter support.
 //
-int32_envelope_t* DealUnitFlowsAPI_getDealUnitFlowsCountAsync(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* DealUnitFlowsAPI_getDealUnitFlowsCountAsync(apiClient_t *apiClient, char *tenantId, deal_unit_flow_dto_collection_query_parameters_t *deal_unit_flow_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -324,6 +327,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**deal_unit_flow_dto_collection_query_parameters** | **[deal_unit_flow_dto_collection_query_parameters_t](deal_unit_flow_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -336,7 +340,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -347,7 +351,7 @@ No authorization required
 //
 // Partially updates an existing deal unit flow by its unique identifier using a JSON Patch document.
 //
-empty_envelope_t* DealUnitFlowsAPI_patchDealUnitFlowAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, list_t *operation);
+empty_envelope_t* DealUnitFlowsAPI_patchDealUnitFlowAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -356,7 +360,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **dealUnitFlowId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -380,7 +384,7 @@ No authorization required
 //
 // Partially updates an existing stage within a specific deal unit flow using a JSON Patch document.
 //
-empty_envelope_t* DealUnitFlowsAPI_patchDealUnitFlowStageAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, char *dealUnitFlowStageId, list_t *operation);
+empty_envelope_t* DealUnitFlowsAPI_patchDealUnitFlowStageAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, char *dealUnitFlowStageId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -390,7 +394,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **dealUnitFlowId** | **char \*** |  | 
 **dealUnitFlowStageId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

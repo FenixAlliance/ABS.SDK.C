@@ -196,7 +196,7 @@ No authorization required
 //
 // Retrieves all transaction categories for the specified tenant.
 //
-transaction_category_dto_list_envelope_t* TransactionsAPI_getTransactionCategories(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+transaction_category_dto_list_envelope_t* TransactionsAPI_getTransactionCategories(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_category_dto_collection_query_parameters_t *transaction_category_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -206,6 +206,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**transaction_category_dto_collection_query_parameters** | **[transaction_category_dto_collection_query_parameters_t](transaction_category_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -218,7 +219,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -229,7 +230,7 @@ No authorization required
 //
 // Returns total number of transaction categories for the tenant.
 //
-int32_envelope_t* TransactionsAPI_getTransactionCategoriesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* TransactionsAPI_getTransactionCategoriesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_category_dto_collection_query_parameters_t *transaction_category_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -239,6 +240,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**transaction_category_dto_collection_query_parameters** | **[transaction_category_dto_collection_query_parameters_t](transaction_category_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -251,7 +253,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -296,7 +298,7 @@ No authorization required
 //
 // Retrieves all transactions for the specified tenant using OData query options.
 //
-transaction_dto_list_envelope_t* TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+transaction_dto_list_envelope_t* TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_dto_collection_query_parameters_t *transaction_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -306,6 +308,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**transaction_dto_collection_query_parameters** | **[transaction_dto_collection_query_parameters_t](transaction_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -318,7 +321,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -329,7 +332,7 @@ No authorization required
 //
 // Returns total number of transactions for the tenant with OData filter support.
 //
-int32_envelope_t* TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_dto_collection_query_parameters_t *transaction_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -339,6 +342,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**transaction_dto_collection_query_parameters** | **[transaction_dto_collection_query_parameters_t](transaction_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -351,7 +355,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -362,7 +366,7 @@ No authorization required
 //
 // Partially updates an existing transaction identified by its unique identifier.
 //
-empty_envelope_t* TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *transactionId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *transactionId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -373,7 +377,7 @@ Name | Type | Description  | Notes
 **transactionId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -397,7 +401,7 @@ No authorization required
 //
 // Partially updates an existing transaction category identified by its unique identifier.
 //
-empty_envelope_t* TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -408,7 +412,7 @@ Name | Type | Description  | Notes
 **categoryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

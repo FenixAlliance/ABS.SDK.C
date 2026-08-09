@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/payment_method_create_dto.h"
+#include "../model/payment_method_dto_collection_query_parameters.h"
 #include "../model/payment_method_dto_envelope.h"
 #include "../model/payment_method_dto_i_read_only_list_envelope.h"
 #include "../model/payment_method_update_dto.h"
@@ -44,7 +45,7 @@ PaymentMethodsAPI_getPaymentMethodDetailsAsync(apiClient_t *apiClient, char *ten
 // Gets all payment methods for the current tenant with OData support.
 //
 payment_method_dto_i_read_only_list_envelope_t*
-PaymentMethodsAPI_getPaymentMethodsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PaymentMethodsAPI_getPaymentMethodsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payment_method_dto_collection_query_parameters_t *payment_method_dto_collection_query_parameters);
 
 
 // Counts payment methods
@@ -52,7 +53,7 @@ PaymentMethodsAPI_getPaymentMethodsAsync(apiClient_t *apiClient, char *tenantId,
 // Gets the count of payment methods for the current tenant.
 //
 int32_envelope_t*
-PaymentMethodsAPI_getPaymentMethodsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PaymentMethodsAPI_getPaymentMethodsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payment_method_dto_collection_query_parameters_t *payment_method_dto_collection_query_parameters);
 
 
 // Patch a payment method
@@ -60,7 +61,7 @@ PaymentMethodsAPI_getPaymentMethodsCountAsync(apiClient_t *apiClient, char *tena
 // Patch a payment method
 //
 empty_envelope_t*
-PaymentMethodsAPI_patchPaymentMethodAsync(apiClient_t *apiClient, char *tenantId, char *paymentMethodId, char *api_version, char *x_api_version, list_t *operation);
+PaymentMethodsAPI_patchPaymentMethodAsync(apiClient_t *apiClient, char *tenantId, char *paymentMethodId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates a payment method

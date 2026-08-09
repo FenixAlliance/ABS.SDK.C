@@ -55,14 +55,25 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/access_token_response.c
+    model/application_principal_detail_dto.c
+    model/application_principal_detail_dto_envelope.c
+    model/application_principal_dto.c
+    model/application_principal_dto_collection_query_parameters.c
+    model/application_principal_dto_list_envelope.c
+    model/application_principal_permission_request_dto.c
+    model/application_principal_provision_request_dto.c
+    model/application_principal_provisioning_result_dto.c
+    model/application_principal_provisioning_result_dto_envelope.c
     model/business_application_create_dto.c
     model/business_application_dto.c
+    model/business_application_dto_collection_query_parameters.c
     model/business_application_dto_envelope.c
     model/business_application_dto_list_envelope.c
     model/business_application_simple_dto.c
     model/business_application_simple_dto_list_envelope.c
     model/business_application_update_dto.c
     model/business_security_log_dto.c
+    model/business_security_log_dto_collection_query_parameters.c
     model/business_security_log_dto_list_envelope.c
     model/empty_envelope.c
     model/error_envelope.c
@@ -72,6 +83,7 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/log_dto.c
+    model/log_dto_collection_query_parameters.c
     model/log_dto_list_envelope.c
     model/login_request.c
     model/o_auth_application_create_dto.c
@@ -82,20 +94,23 @@ set(SRCS
     model/o_auth_authorization_dto.c
     model/o_auth_authorization_dto_envelope.c
     model/o_auth_authorization_dto_list_envelope.c
-    model/operation.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
     model/security_certificate_dto.c
+    model/security_certificate_dto_collection_query_parameters.c
     model/security_certificate_dto_list_envelope.c
     model/security_permission_create_dto.c
     model/security_permission_dto.c
+    model/security_permission_dto_collection_query_parameters.c
     model/security_permission_dto_envelope.c
     model/security_permission_dto_list_envelope.c
     model/security_permission_update_dto.c
     model/security_role_create_dto.c
     model/security_role_dto.c
+    model/security_role_dto_collection_query_parameters.c
     model/security_role_dto_envelope.c
     model/security_role_dto_list_envelope.c
     model/security_role_update_dto.c
@@ -104,7 +119,9 @@ set(SRCS
     model/two_factor_request.c
     model/two_factor_response.c
     model/webhook_request_dto.c
+    model/webhook_request_dto_collection_query_parameters.c
     model/webhook_request_dto_list_envelope.c
+    api/ApplicationPrincipalsAPI.c
     api/ApplicationsAPI.c
     api/FenixAllianceABSWebAPI.c
     api/LogsAPI.c
@@ -125,14 +142,25 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/access_token_response.h
+    model/application_principal_detail_dto.h
+    model/application_principal_detail_dto_envelope.h
+    model/application_principal_dto.h
+    model/application_principal_dto_collection_query_parameters.h
+    model/application_principal_dto_list_envelope.h
+    model/application_principal_permission_request_dto.h
+    model/application_principal_provision_request_dto.h
+    model/application_principal_provisioning_result_dto.h
+    model/application_principal_provisioning_result_dto_envelope.h
     model/business_application_create_dto.h
     model/business_application_dto.h
+    model/business_application_dto_collection_query_parameters.h
     model/business_application_dto_envelope.h
     model/business_application_dto_list_envelope.h
     model/business_application_simple_dto.h
     model/business_application_simple_dto_list_envelope.h
     model/business_application_update_dto.h
     model/business_security_log_dto.h
+    model/business_security_log_dto_collection_query_parameters.h
     model/business_security_log_dto_list_envelope.h
     model/empty_envelope.h
     model/error_envelope.h
@@ -142,6 +170,7 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/log_dto.h
+    model/log_dto_collection_query_parameters.h
     model/log_dto_list_envelope.h
     model/login_request.h
     model/o_auth_application_create_dto.h
@@ -152,20 +181,23 @@ set(HDRS
     model/o_auth_authorization_dto.h
     model/o_auth_authorization_dto_envelope.h
     model/o_auth_authorization_dto_list_envelope.h
-    model/operation.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
     model/security_certificate_dto.h
+    model/security_certificate_dto_collection_query_parameters.h
     model/security_certificate_dto_list_envelope.h
     model/security_permission_create_dto.h
     model/security_permission_dto.h
+    model/security_permission_dto_collection_query_parameters.h
     model/security_permission_dto_envelope.h
     model/security_permission_dto_list_envelope.h
     model/security_permission_update_dto.h
     model/security_role_create_dto.h
     model/security_role_dto.h
+    model/security_role_dto_collection_query_parameters.h
     model/security_role_dto_envelope.h
     model/security_role_dto_list_envelope.h
     model/security_role_update_dto.h
@@ -174,7 +206,9 @@ set(HDRS
     model/two_factor_request.h
     model/two_factor_response.h
     model/webhook_request_dto.h
+    model/webhook_request_dto_collection_query_parameters.h
     model/webhook_request_dto_list_envelope.h
+    api/ApplicationPrincipalsAPI.h
     api/ApplicationsAPI.h
     api/FenixAllianceABSWebAPI.h
     api/LogsAPI.h
@@ -265,6 +299,7 @@ set(HDRS "")
 ## This section shows how to use the above compiled library to compile the source files
 ## set source files
 #set(SRCS
+#    unit-tests/manual-ApplicationPrincipalsAPI.c
 #    unit-tests/manual-ApplicationsAPI.c
 #    unit-tests/manual-FenixAllianceABSWebAPI.c
 #    unit-tests/manual-LogsAPI.c

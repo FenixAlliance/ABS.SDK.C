@@ -120,7 +120,7 @@ No authorization required
 //
 // Retrieves appraisal workflows for the specified tenant.
 //
-appraisal_workflow_dto_list_envelope_t* AppraisalWorkflowsAPI_getAppraisalWorkflowsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+appraisal_workflow_dto_list_envelope_t* AppraisalWorkflowsAPI_getAppraisalWorkflowsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, appraisal_workflow_dto_collection_query_parameters_t *appraisal_workflow_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -130,6 +130,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**appraisal_workflow_dto_collection_query_parameters** | **[appraisal_workflow_dto_collection_query_parameters_t](appraisal_workflow_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -142,7 +143,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -153,7 +154,7 @@ No authorization required
 //
 // Counts appraisal workflows for the specified tenant.
 //
-int32_envelope_t* AppraisalWorkflowsAPI_getAppraisalWorkflowsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* AppraisalWorkflowsAPI_getAppraisalWorkflowsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, appraisal_workflow_dto_collection_query_parameters_t *appraisal_workflow_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**appraisal_workflow_dto_collection_query_parameters** | **[appraisal_workflow_dto_collection_query_parameters_t](appraisal_workflow_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -175,7 +177,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

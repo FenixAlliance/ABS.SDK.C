@@ -9,8 +9,9 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/subscription_create_dto.h"
+#include "../model/subscription_dto_collection_query_parameters.h"
 #include "../model/subscription_dto_envelope.h"
 #include "../model/subscription_dto_i_read_only_list_envelope.h"
 #include "../model/subscription_update_dto.h"
@@ -45,7 +46,7 @@ SubscriptionsAPI_getSubscriptionByIdAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves all subscriptions for the specified tenant.
 //
 subscription_dto_i_read_only_list_envelope_t*
-SubscriptionsAPI_getSubscriptionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SubscriptionsAPI_getSubscriptionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, subscription_dto_collection_query_parameters_t *subscription_dto_collection_query_parameters);
 
 
 // Get subscriptions count
@@ -53,7 +54,7 @@ SubscriptionsAPI_getSubscriptionsAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of subscriptions for the specified tenant.
 //
 int32_envelope_t*
-SubscriptionsAPI_getSubscriptionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SubscriptionsAPI_getSubscriptionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, subscription_dto_collection_query_parameters_t *subscription_dto_collection_query_parameters);
 
 
 // Patch a subscription
@@ -61,7 +62,7 @@ SubscriptionsAPI_getSubscriptionsCountAsync(apiClient_t *apiClient, char *tenant
 // Patch a subscription
 //
 empty_envelope_t*
-SubscriptionsAPI_patchSubscriptionAsync(apiClient_t *apiClient, char *tenantId, char *subscriptionId, char *api_version, char *x_api_version, list_t *operation);
+SubscriptionsAPI_patchSubscriptionAsync(apiClient_t *apiClient, char *tenantId, char *subscriptionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a subscription

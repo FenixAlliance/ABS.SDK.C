@@ -287,13 +287,13 @@ end:
 // Retrieve a list of all carts in the system
 //
 cart_dto_list_envelope_t*
-CartsAPI_getSystemCarts(apiClient_t *apiClient, char *api_version, char *x_api_version)
+CartsAPI_getSystemCarts(apiClient_t *apiClient, char *api_version, char *x_api_version, cart_dto_collection_query_parameters_t *cart_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -327,8 +327,19 @@ CartsAPI_getSystemCarts(apiClient_t *apiClient, char *api_version, char *x_api_v
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_cart_dto_collection_query_parameters = NULL;
+    if (cart_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_cart_dto_collection_query_parameters = cart_dto_collection_query_parameters_convertToJSON(cart_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_cart_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -369,7 +380,7 @@ CartsAPI_getSystemCarts(apiClient_t *apiClient, char *api_version, char *x_api_v
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -380,6 +391,11 @@ CartsAPI_getSystemCarts(apiClient_t *apiClient, char *api_version, char *x_api_v
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_cart_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_cart_dto_collection_query_parameters);
+        localVarSingleItemJSON_cart_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -404,7 +420,140 @@ end:
 // Get the count of all carts in the system
 //
 int32_envelope_t*
-CartsAPI_getSystemCartsCount(apiClient_t *apiClient, char *api_version, char *x_api_version)
+CartsAPI_getSystemCartsCount(apiClient_t *apiClient, char *api_version, char *x_api_version, cart_dto_collection_query_parameters_t *cart_dto_collection_query_parameters)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/SystemService/Carts/Count")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Carts/Count");
+
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_cart_dto_collection_query_parameters = NULL;
+    if (cart_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_cart_dto_collection_query_parameters = cart_dto_collection_query_parameters_convertToJSON(cart_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_cart_dto_collection_query_parameters);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *CartsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    int32_envelope_t *elementToReturn = int32_envelope_parseFromJSON(CartsAPIlocalVarJSON);
+    cJSON_Delete(CartsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_cart_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_cart_dto_collection_query_parameters);
+        localVarSingleItemJSON_cart_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Purge all guest carts
+//
+// Deletes every guest cart, cascading its item cart records, compare records and wish lists, and returns the removed-row counts. Idempotent.
+//
+guest_cart_purge_result_dto_envelope_t*
+CartsAPI_purgeSystemGuestCarts(apiClient_t *apiClient, char *api_version, char *x_api_version)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -414,9 +563,9 @@ CartsAPI_getSystemCartsCount(apiClient_t *apiClient, char *api_version, char *x_
     char      *localVarBodyParameters = NULL;
 
     // create the path
-    long sizeOfPath = strlen("/api/v2/SystemService/Carts/Count")+1;
+    long sizeOfPath = strlen("/api/v2/SystemService/Carts/Guests")+1;
     char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Carts/Count");
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SystemService/Carts/Guests");
 
 
 
@@ -454,7 +603,7 @@ CartsAPI_getSystemCartsCount(apiClient_t *apiClient, char *api_version, char *x_
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
-                    "GET");
+                    "DELETE");
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 403) {
@@ -470,7 +619,7 @@ CartsAPI_getSystemCartsCount(apiClient_t *apiClient, char *api_version, char *x_
     //}
     //nonprimitive not container
     cJSON *CartsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    int32_envelope_t *elementToReturn = int32_envelope_parseFromJSON(CartsAPIlocalVarJSON);
+    guest_cart_purge_result_dto_envelope_t *elementToReturn = guest_cart_purge_result_dto_envelope_parseFromJSON(CartsAPIlocalVarJSON);
     cJSON_Delete(CartsAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;

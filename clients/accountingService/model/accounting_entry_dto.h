@@ -29,6 +29,7 @@ accountingservice_accounting_entry_dto_DIRECTION_e accounting_entry_dto_directio
 
 typedef struct accounting_entry_dto_t {
     char *id; // string
+    char *timestamp; //date time
     char *tenant_id; // string
     char *enrollment_id; // string
     char *journal_entry_id; // string
@@ -47,7 +48,6 @@ typedef struct accounting_entry_dto_t {
     char *forex_rates_snapshot; // string
     char *cost_centre_id; // string
     char *project_id; // string
-    char *timestamp; //date time
     double debit; //numeric
     double credit; //numeric
     struct money_t *amount; //model
@@ -57,6 +57,7 @@ typedef struct accounting_entry_dto_t {
 
 accounting_entry_dto_t *accounting_entry_dto_create(
     char *id,
+    char *timestamp,
     char *tenant_id,
     char *enrollment_id,
     char *journal_entry_id,
@@ -75,7 +76,6 @@ accounting_entry_dto_t *accounting_entry_dto_create(
     char *forex_rates_snapshot,
     char *cost_centre_id,
     char *project_id,
-    char *timestamp,
     double debit,
     double credit,
     money_t *amount,

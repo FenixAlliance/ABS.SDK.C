@@ -58,10 +58,12 @@ set(SRCS
     model/currency_id.c
     model/discount_create_dto.c
     model/discount_dto.c
+    model/discount_dto_collection_query_parameters.c
     model/discount_dto_envelope.c
     model/discount_dto_list_envelope.c
     model/discount_list_create_dto.c
     model/discount_list_dto.c
+    model/discount_list_dto_collection_query_parameters.c
     model/discount_list_dto_envelope.c
     model/discount_list_dto_list_envelope.c
     model/discount_list_update_dto.c
@@ -77,20 +79,23 @@ set(SRCS
     model/item_price_calculation_envelope.c
     model/item_price_create_dto.c
     model/item_price_dto.c
+    model/item_price_dto_collection_query_parameters.c
     model/item_price_dto_envelope.c
     model/item_price_dto_list_envelope.c
     model/item_price_update_dto.c
     model/login_request.c
     model/money.c
     model/money_envelope.c
-    model/operation.c
+    model/patch_operation.c
     model/price_list_create_dto.c
     model/price_list_dto.c
+    model/price_list_dto_collection_query_parameters.c
     model/price_list_dto_envelope.c
     model/price_list_dto_list_envelope.c
     model/price_list_update_dto.c
     model/pricing_rule_create_dto.c
     model/pricing_rule_dto.c
+    model/pricing_rule_dto_collection_query_parameters.c
     model/pricing_rule_dto_envelope.c
     model/pricing_rule_dto_list_envelope.c
     model/pricing_rule_update_dto.c
@@ -100,6 +105,7 @@ set(SRCS
     model/reset_password_request.c
     model/rounding_policy_create_dto.c
     model/rounding_policy_dto.c
+    model/rounding_policy_dto_collection_query_parameters.c
     model/rounding_policy_dto_envelope.c
     model/rounding_policy_dto_list_envelope.c
     model/rounding_policy_update_dto.c
@@ -125,10 +131,12 @@ set(HDRS
     model/currency_id.h
     model/discount_create_dto.h
     model/discount_dto.h
+    model/discount_dto_collection_query_parameters.h
     model/discount_dto_envelope.h
     model/discount_dto_list_envelope.h
     model/discount_list_create_dto.h
     model/discount_list_dto.h
+    model/discount_list_dto_collection_query_parameters.h
     model/discount_list_dto_envelope.h
     model/discount_list_dto_list_envelope.h
     model/discount_list_update_dto.h
@@ -144,20 +152,23 @@ set(HDRS
     model/item_price_calculation_envelope.h
     model/item_price_create_dto.h
     model/item_price_dto.h
+    model/item_price_dto_collection_query_parameters.h
     model/item_price_dto_envelope.h
     model/item_price_dto_list_envelope.h
     model/item_price_update_dto.h
     model/login_request.h
     model/money.h
     model/money_envelope.h
-    model/operation.h
+    model/patch_operation.h
     model/price_list_create_dto.h
     model/price_list_dto.h
+    model/price_list_dto_collection_query_parameters.h
     model/price_list_dto_envelope.h
     model/price_list_dto_list_envelope.h
     model/price_list_update_dto.h
     model/pricing_rule_create_dto.h
     model/pricing_rule_dto.h
+    model/pricing_rule_dto_collection_query_parameters.h
     model/pricing_rule_dto_envelope.h
     model/pricing_rule_dto_list_envelope.h
     model/pricing_rule_update_dto.h
@@ -167,6 +178,7 @@ set(HDRS
     model/reset_password_request.h
     model/rounding_policy_create_dto.h
     model/rounding_policy_dto.h
+    model/rounding_policy_dto_collection_query_parameters.h
     model/rounding_policy_dto_envelope.h
     model/rounding_policy_dto_list_envelope.h
     model/rounding_policy_update_dto.h

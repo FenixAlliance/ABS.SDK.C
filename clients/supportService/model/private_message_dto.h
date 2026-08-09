@@ -16,6 +16,14 @@
 typedef struct private_message_dto_t private_message_dto_t;
 
 
+// Enum SOCIALPROFILETYPE for private_message_dto
+
+typedef enum  { supportservice_private_message_dto_SOCIALPROFILETYPE_NULL = 0, supportservice_private_message_dto_SOCIALPROFILETYPE_User, supportservice_private_message_dto_SOCIALPROFILETYPE_Tenant, supportservice_private_message_dto_SOCIALPROFILETYPE_Contact } supportservice_private_message_dto_SOCIALPROFILETYPE_e;
+
+char* private_message_dto_social_profile_type_ToString(supportservice_private_message_dto_SOCIALPROFILETYPE_e social_profile_type);
+
+supportservice_private_message_dto_SOCIALPROFILETYPE_e private_message_dto_social_profile_type_FromString(char* social_profile_type);
+
 
 
 typedef struct private_message_dto_t {
@@ -30,6 +38,9 @@ typedef struct private_message_dto_t {
     char *sent_timestamp; //date time
     char *read_timestamp; //date time
     char *received_timestamp; //date time
+    char *social_profile_name; // string
+    char *social_profile_avatar_url; // string
+    supportservice_private_message_dto_SOCIALPROFILETYPE_e social_profile_type; //enum
 
 } private_message_dto_t;
 
@@ -44,7 +55,10 @@ private_message_dto_t *private_message_dto_create(
     char *receiver_social_profile_id,
     char *sent_timestamp,
     char *read_timestamp,
-    char *received_timestamp
+    char *received_timestamp,
+    char *social_profile_name,
+    char *social_profile_avatar_url,
+    supportservice_private_message_dto_SOCIALPROFILETYPE_e social_profile_type
 );
 
 void private_message_dto_free(private_message_dto_t *private_message_dto);

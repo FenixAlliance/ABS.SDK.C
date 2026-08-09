@@ -70,7 +70,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -124,6 +123,7 @@ Category | Method | HTTP request | Description
 
  - [access_token_response_t](docs/access_token_response.md)
  - [address_dto_t](docs/address_dto.md)
+ - [address_dto_collection_query_parameters_t](docs/address_dto_collection_query_parameters.md)
  - [address_dto_list_envelope_t](docs/address_dto_list_envelope.md)
  - [cart_dto_t](docs/cart_dto.md)
  - [cart_dto_envelope_t](docs/cart_dto_envelope.md)
@@ -136,6 +136,7 @@ Category | Method | HTTP request | Description
  - [extended_user_dto_t](docs/extended_user_dto.md)
  - [extended_user_dto_envelope_t](docs/extended_user_dto_envelope.md)
  - [follow_record_dto_t](docs/follow_record_dto.md)
+ - [follow_record_dto_collection_query_parameters_t](docs/follow_record_dto_collection_query_parameters.md)
  - [follow_record_dto_list_envelope_t](docs/follow_record_dto_list_envelope.md)
  - [forgot_password_request_t](docs/forgot_password_request.md)
  - [http_validation_problem_details_t](docs/http_validation_problem_details.md)
@@ -144,13 +145,15 @@ Category | Method | HTTP request | Description
  - [int32_envelope_t](docs/int32_envelope.md)
  - [login_request_t](docs/login_request.md)
  - [notification_dto_t](docs/notification_dto.md)
+ - [notification_dto_collection_query_parameters_t](docs/notification_dto_collection_query_parameters.md)
  - [notification_dto_list_envelope_t](docs/notification_dto_list_envelope.md)
- - [operation_t](docs/operation.md)
  - [option_create_dto_t](docs/option_create_dto.md)
  - [option_dto_t](docs/option_dto.md)
+ - [option_dto_collection_query_parameters_t](docs/option_dto_collection_query_parameters.md)
  - [option_dto_envelope_t](docs/option_dto_envelope.md)
  - [option_dto_list_envelope_t](docs/option_dto_list_envelope.md)
  - [option_update_dto_t](docs/option_update_dto.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [refresh_request_t](docs/refresh_request.md)
  - [register_request_t](docs/register_request.md)
  - [resend_confirmation_email_request_t](docs/resend_confirmation_email_request.md)
@@ -158,6 +161,7 @@ Category | Method | HTTP request | Description
  - [social_profile_dto_t](docs/social_profile_dto.md)
  - [social_profile_dto_envelope_t](docs/social_profile_dto_envelope.md)
  - [tenant_dto_t](docs/tenant_dto.md)
+ - [tenant_dto_collection_query_parameters_t](docs/tenant_dto_collection_query_parameters.md)
  - [tenant_dto_list_envelope_t](docs/tenant_dto_list_envelope.md)
  - [tenant_enrollment_dto_t](docs/tenant_enrollment_dto.md)
  - [tenant_enrollment_dto_envelope_t](docs/tenant_enrollment_dto_envelope.md)

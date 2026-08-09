@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/inquiry_request_create_dto.h"
+#include "../model/inquiry_request_dto_collection_query_parameters.h"
 #include "../model/inquiry_request_dto_envelope.h"
 #include "../model/inquiry_request_dto_list_envelope.h"
 #include "../model/inquiry_request_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an inquiry request
@@ -36,13 +37,13 @@ InquiryRequestsAPI_getInquiryRequestAsync(apiClient_t *apiClient, char *tenantId
 // Retrieve inquiry requests
 //
 inquiry_request_dto_list_envelope_t*
-InquiryRequestsAPI_getInquiryRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+InquiryRequestsAPI_getInquiryRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, inquiry_request_dto_collection_query_parameters_t *inquiry_request_dto_collection_query_parameters);
 
 
 // Get inquiry requests count
 //
 int32_envelope_t*
-InquiryRequestsAPI_getInquiryRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+InquiryRequestsAPI_getInquiryRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, inquiry_request_dto_collection_query_parameters_t *inquiry_request_dto_collection_query_parameters);
 
 
 // Patch an inquiry request
@@ -50,7 +51,7 @@ InquiryRequestsAPI_getInquiryRequestsCountAsync(apiClient_t *apiClient, char *te
 // Partially updates an existing inquiry request by its unique identifier.
 //
 empty_envelope_t*
-InquiryRequestsAPI_patchInquiryRequestAsync(apiClient_t *apiClient, char *tenantId, char *inquiryRequestId, char *api_version, char *x_api_version, list_t *operation);
+InquiryRequestsAPI_patchInquiryRequestAsync(apiClient_t *apiClient, char *tenantId, char *inquiryRequestId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an inquiry request

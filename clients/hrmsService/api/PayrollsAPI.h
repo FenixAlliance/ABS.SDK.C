@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/payroll_create_dto.h"
+#include "../model/payroll_dto_collection_query_parameters.h"
 #include "../model/payroll_dto_envelope.h"
 #include "../model/payroll_dto_list_envelope.h"
 #include "../model/payroll_update_dto.h"
@@ -44,7 +45,7 @@ PayrollsAPI_getPayrollByIdAsync(apiClient_t *apiClient, char *tenantId, char *pa
 // Retrieves payrolls for the specified tenant.
 //
 payroll_dto_list_envelope_t*
-PayrollsAPI_getPayrollsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PayrollsAPI_getPayrollsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payroll_dto_collection_query_parameters_t *payroll_dto_collection_query_parameters);
 
 
 // Count payrolls
@@ -52,7 +53,7 @@ PayrollsAPI_getPayrollsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 // Counts payrolls for the specified tenant.
 //
 int32_envelope_t*
-PayrollsAPI_getPayrollsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PayrollsAPI_getPayrollsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payroll_dto_collection_query_parameters_t *payroll_dto_collection_query_parameters);
 
 
 // Patch a payroll
@@ -60,7 +61,7 @@ PayrollsAPI_getPayrollsCountAsync(apiClient_t *apiClient, char *tenantId, char *
 // Partially updates an existing payroll for the specified tenant.
 //
 empty_envelope_t*
-PayrollsAPI_patchPayrollAsync(apiClient_t *apiClient, char *tenantId, char *payrollId, char *api_version, char *x_api_version, list_t *operation);
+PayrollsAPI_patchPayrollAsync(apiClient_t *apiClient, char *tenantId, char *payrollId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a payroll

@@ -89,7 +89,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -115,21 +114,28 @@ Category | Method | HTTP request | Description
 
  - [access_token_response_t](docs/access_token_response.md)
  - [city_dto_t](docs/city_dto.md)
+ - [city_dto_collection_query_parameters_t](docs/city_dto_collection_query_parameters.md)
  - [city_dto_list_envelope_t](docs/city_dto_list_envelope.md)
  - [country_calling_code_dto_t](docs/country_calling_code_dto.md)
+ - [country_calling_code_dto_collection_query_parameters_t](docs/country_calling_code_dto_collection_query_parameters.md)
  - [country_calling_code_dto_list_envelope_t](docs/country_calling_code_dto_list_envelope.md)
  - [country_dto_t](docs/country_dto.md)
+ - [country_dto_collection_query_parameters_t](docs/country_dto_collection_query_parameters.md)
  - [country_dto_envelope_t](docs/country_dto_envelope.md)
  - [country_dto_list_envelope_t](docs/country_dto_list_envelope.md)
  - [country_language_dto_t](docs/country_language_dto.md)
+ - [country_language_dto_collection_query_parameters_t](docs/country_language_dto_collection_query_parameters.md)
  - [country_language_dto_envelope_t](docs/country_language_dto_envelope.md)
  - [country_language_dto_list_envelope_t](docs/country_language_dto_list_envelope.md)
  - [country_state_dto_t](docs/country_state_dto.md)
+ - [country_state_dto_collection_query_parameters_t](docs/country_state_dto_collection_query_parameters.md)
  - [country_state_dto_envelope_t](docs/country_state_dto_envelope.md)
  - [country_state_dto_list_envelope_t](docs/country_state_dto_list_envelope.md)
  - [country_top_level_domain_dto_t](docs/country_top_level_domain_dto.md)
+ - [country_top_level_domain_dto_collection_query_parameters_t](docs/country_top_level_domain_dto_collection_query_parameters.md)
  - [country_top_level_domain_dto_list_envelope_t](docs/country_top_level_domain_dto_list_envelope.md)
  - [currency_dto_t](docs/currency_dto.md)
+ - [currency_dto_collection_query_parameters_t](docs/currency_dto_collection_query_parameters.md)
  - [currency_dto_envelope_t](docs/currency_dto_envelope.md)
  - [currency_dto_list_envelope_t](docs/currency_dto_list_envelope.md)
  - [error_envelope_t](docs/error_envelope.md)
@@ -144,6 +150,7 @@ Category | Method | HTTP request | Description
  - [resend_confirmation_email_request_t](docs/resend_confirmation_email_request.md)
  - [reset_password_request_t](docs/reset_password_request.md)
  - [timezone_dto_t](docs/timezone_dto.md)
+ - [timezone_dto_collection_query_parameters_t](docs/timezone_dto_collection_query_parameters.md)
  - [timezone_dto_envelope_t](docs/timezone_dto_envelope.md)
  - [timezone_dto_list_envelope_t](docs/timezone_dto_list_envelope.md)
  - [two_factor_request_t](docs/two_factor_request.md)

@@ -24,6 +24,9 @@ typedef struct google_recaptcha_integration_options_t {
     char *site_key; // string
     char *secret_key; // string
     char *version; // string
+    char *project_id; // string
+    char *api_key; // string
+    double score_threshold; //numeric
 
 } google_recaptcha_integration_options_t;
 
@@ -32,7 +35,10 @@ google_recaptcha_integration_options_t *google_recaptcha_integration_options_cre
     char *site,
     char *site_key,
     char *secret_key,
-    char *version
+    char *version,
+    char *project_id,
+    char *api_key,
+    double score_threshold
 );
 
 void google_recaptcha_integration_options_free(google_recaptcha_integration_options_t *google_recaptcha_integration_options);

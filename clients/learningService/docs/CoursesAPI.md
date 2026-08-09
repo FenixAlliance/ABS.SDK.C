@@ -120,7 +120,7 @@ No authorization required
 //
 // Retrieves all course articles for a specific course wiki.
 //
-list_t* CoursesAPI_getCourseArticlesByCourseWikiAsync(apiClient_t *apiClient, char *courseId, char *wikiId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseArticlesByCourseWikiAsync(apiClient_t *apiClient, char *courseId, char *wikiId, char *api_version, char *x_api_version, course_article_dto_collection_query_parameters_t *course_article_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -131,6 +131,7 @@ Name | Type | Description  | Notes
 **wikiId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_article_dto_collection_query_parameters** | **[course_article_dto_collection_query_parameters_t](course_article_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -143,7 +144,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -154,7 +155,7 @@ No authorization required
 //
 // Returns the count of course articles for a specific course wiki.
 //
-int* CoursesAPI_getCourseArticlesByCourseWikiCountAsync(apiClient_t *apiClient, char *courseId, char *wikiId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseArticlesByCourseWikiCountAsync(apiClient_t *apiClient, char *courseId, char *wikiId, char *api_version, char *x_api_version, course_article_dto_collection_query_parameters_t *course_article_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -165,6 +166,7 @@ Name | Type | Description  | Notes
 **wikiId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_article_dto_collection_query_parameters** | **[course_article_dto_collection_query_parameters_t](course_article_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -178,7 +180,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -189,7 +191,7 @@ No authorization required
 //
 // Retrieves all course assignments for a specific course.
 //
-list_t* CoursesAPI_getCourseAssignmentsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseAssignmentsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_assignment_dto_collection_query_parameters_t *course_assignment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -199,6 +201,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_assignment_dto_collection_query_parameters** | **[course_assignment_dto_collection_query_parameters_t](course_assignment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -211,7 +214,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -222,7 +225,7 @@ No authorization required
 //
 // Returns the count of course assignments for a specific course.
 //
-int* CoursesAPI_getCourseAssignmentsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseAssignmentsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_assignment_dto_collection_query_parameters_t *course_assignment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -232,6 +235,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_assignment_dto_collection_query_parameters** | **[course_assignment_dto_collection_query_parameters_t](course_assignment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -245,7 +249,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -290,7 +294,7 @@ No authorization required
 //
 // Retrieves all course categories for a specific course.
 //
-list_t* CoursesAPI_getCourseCategoriesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseCategoriesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_category_dto_collection_query_parameters_t *course_category_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -300,6 +304,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_category_dto_collection_query_parameters** | **[course_category_dto_collection_query_parameters_t](course_category_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -312,7 +317,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -323,7 +328,7 @@ No authorization required
 //
 // Returns the count of course categories for a specific course.
 //
-int* CoursesAPI_getCourseCategoriesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseCategoriesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_category_dto_collection_query_parameters_t *course_category_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -333,6 +338,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_category_dto_collection_query_parameters** | **[course_category_dto_collection_query_parameters_t](course_category_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -346,7 +352,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -357,7 +363,7 @@ No authorization required
 //
 // Retrieves all course cohorts for a specific course.
 //
-list_t* CoursesAPI_getCourseCohortsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseCohortsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_cohort_dto_collection_query_parameters_t *course_cohort_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -367,6 +373,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_cohort_dto_collection_query_parameters** | **[course_cohort_dto_collection_query_parameters_t](course_cohort_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -379,7 +386,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -390,7 +397,7 @@ No authorization required
 //
 // Returns the count of course cohorts for a specific course.
 //
-int* CoursesAPI_getCourseCohortsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseCohortsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_cohort_dto_collection_query_parameters_t *course_cohort_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -400,6 +407,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_cohort_dto_collection_query_parameters** | **[course_cohort_dto_collection_query_parameters_t](course_cohort_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -413,7 +421,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -424,7 +432,7 @@ No authorization required
 //
 // Retrieves all enrollments for a specific course.
 //
-list_t* CoursesAPI_getCourseEnrollmentsByCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseEnrollmentsByCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version, course_enrollment_dto_collection_query_parameters_t *course_enrollment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -435,6 +443,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_enrollment_dto_collection_query_parameters** | **[course_enrollment_dto_collection_query_parameters_t](course_enrollment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -447,7 +456,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -458,7 +467,7 @@ No authorization required
 //
 // Retrieves all course files for a specific course.
 //
-list_t* CoursesAPI_getCourseFilesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseFilesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_file_dto_collection_query_parameters_t *course_file_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -468,6 +477,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_file_dto_collection_query_parameters** | **[course_file_dto_collection_query_parameters_t](course_file_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -480,7 +490,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -491,7 +501,7 @@ No authorization required
 //
 // Returns the count of course files for a specific course.
 //
-int* CoursesAPI_getCourseFilesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseFilesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_file_dto_collection_query_parameters_t *course_file_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -501,6 +511,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_file_dto_collection_query_parameters** | **[course_file_dto_collection_query_parameters_t](course_file_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -514,7 +525,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -525,7 +536,7 @@ No authorization required
 //
 // Retrieves all course forums for a specific course.
 //
-list_t* CoursesAPI_getCourseForumsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseForumsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_forum_dto_collection_query_parameters_t *course_forum_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -535,6 +546,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_forum_dto_collection_query_parameters** | **[course_forum_dto_collection_query_parameters_t](course_forum_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -547,7 +559,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -558,7 +570,7 @@ No authorization required
 //
 // Returns the count of course forums for a specific course.
 //
-int* CoursesAPI_getCourseForumsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseForumsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_forum_dto_collection_query_parameters_t *course_forum_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -568,6 +580,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_forum_dto_collection_query_parameters** | **[course_forum_dto_collection_query_parameters_t](course_forum_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -581,7 +594,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -592,7 +605,7 @@ No authorization required
 //
 // Retrieves all course handouts for a specific course.
 //
-list_t* CoursesAPI_getCourseHandoutsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseHandoutsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_handout_dto_collection_query_parameters_t *course_handout_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -602,6 +615,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_handout_dto_collection_query_parameters** | **[course_handout_dto_collection_query_parameters_t](course_handout_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -614,7 +628,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -625,7 +639,7 @@ No authorization required
 //
 // Returns the count of course handouts for a specific course.
 //
-int* CoursesAPI_getCourseHandoutsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseHandoutsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_handout_dto_collection_query_parameters_t *course_handout_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -635,6 +649,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_handout_dto_collection_query_parameters** | **[course_handout_dto_collection_query_parameters_t](course_handout_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -648,7 +663,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -659,7 +674,7 @@ No authorization required
 //
 // Retrieves all course libraries for a specific course.
 //
-list_t* CoursesAPI_getCourseLibrariesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseLibrariesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_library_dto_collection_query_parameters_t *course_library_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -669,6 +684,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_library_dto_collection_query_parameters** | **[course_library_dto_collection_query_parameters_t](course_library_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -681,7 +697,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -692,7 +708,7 @@ No authorization required
 //
 // Returns the count of course libraries for a specific course.
 //
-int* CoursesAPI_getCourseLibrariesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseLibrariesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_library_dto_collection_query_parameters_t *course_library_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -702,6 +718,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_library_dto_collection_query_parameters** | **[course_library_dto_collection_query_parameters_t](course_library_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -715,7 +732,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -726,7 +743,7 @@ No authorization required
 //
 // Retrieves all course pages for a specific course.
 //
-list_t* CoursesAPI_getCoursePagesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCoursePagesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_page_dto_collection_query_parameters_t *course_page_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -736,6 +753,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_page_dto_collection_query_parameters** | **[course_page_dto_collection_query_parameters_t](course_page_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -748,7 +766,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -759,7 +777,7 @@ No authorization required
 //
 // Returns the count of course pages for a specific course.
 //
-int* CoursesAPI_getCoursePagesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCoursePagesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_page_dto_collection_query_parameters_t *course_page_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -769,6 +787,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_page_dto_collection_query_parameters** | **[course_page_dto_collection_query_parameters_t](course_page_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -782,7 +801,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -793,7 +812,7 @@ No authorization required
 //
 // Retrieves all course problem sets for a specific course.
 //
-list_t* CoursesAPI_getCourseProblemSetsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseProblemSetsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_problem_set_dto_collection_query_parameters_t *course_problem_set_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -803,6 +822,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_problem_set_dto_collection_query_parameters** | **[course_problem_set_dto_collection_query_parameters_t](course_problem_set_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -815,7 +835,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -826,7 +846,7 @@ No authorization required
 //
 // Returns the count of course problem sets for a specific course.
 //
-int* CoursesAPI_getCourseProblemSetsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseProblemSetsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_problem_set_dto_collection_query_parameters_t *course_problem_set_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -836,6 +856,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_problem_set_dto_collection_query_parameters** | **[course_problem_set_dto_collection_query_parameters_t](course_problem_set_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -849,7 +870,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -860,7 +881,7 @@ No authorization required
 //
 // Retrieves all course sections for a specific course.
 //
-list_t* CoursesAPI_getCourseSectionsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseSectionsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_section_dto_collection_query_parameters_t *course_section_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -870,6 +891,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_section_dto_collection_query_parameters** | **[course_section_dto_collection_query_parameters_t](course_section_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -882,7 +904,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -893,7 +915,7 @@ No authorization required
 //
 // Returns the count of course sections for a specific course.
 //
-int* CoursesAPI_getCourseSectionsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseSectionsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_section_dto_collection_query_parameters_t *course_section_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -903,6 +925,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_section_dto_collection_query_parameters** | **[course_section_dto_collection_query_parameters_t](course_section_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -916,7 +939,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -927,7 +950,7 @@ No authorization required
 //
 // Retrieves all course unit components for a specific course.
 //
-list_t* CoursesAPI_getCourseUnitComponentsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseUnitComponentsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_unit_component_dto_collection_query_parameters_t *course_unit_component_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -937,6 +960,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_unit_component_dto_collection_query_parameters** | **[course_unit_component_dto_collection_query_parameters_t](course_unit_component_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -949,7 +973,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -960,7 +984,7 @@ No authorization required
 //
 // Returns the count of course unit components for a specific course.
 //
-int* CoursesAPI_getCourseUnitComponentsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseUnitComponentsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_unit_component_dto_collection_query_parameters_t *course_unit_component_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -970,6 +994,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_unit_component_dto_collection_query_parameters** | **[course_unit_component_dto_collection_query_parameters_t](course_unit_component_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -983,7 +1008,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -994,7 +1019,7 @@ No authorization required
 //
 // Retrieves all course units for a specific course section.
 //
-list_t* CoursesAPI_getCourseUnitsBySectionAsync(apiClient_t *apiClient, char *courseId, char *sectionId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseUnitsBySectionAsync(apiClient_t *apiClient, char *courseId, char *sectionId, char *api_version, char *x_api_version, course_unit_dto_collection_query_parameters_t *course_unit_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1005,6 +1030,7 @@ Name | Type | Description  | Notes
 **sectionId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_unit_dto_collection_query_parameters** | **[course_unit_dto_collection_query_parameters_t](course_unit_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1017,7 +1043,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1028,7 +1054,7 @@ No authorization required
 //
 // Returns the count of course units for a specific course section.
 //
-int* CoursesAPI_getCourseUnitsBySectionCountAsync(apiClient_t *apiClient, char *courseId, char *sectionId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseUnitsBySectionCountAsync(apiClient_t *apiClient, char *courseId, char *sectionId, char *api_version, char *x_api_version, course_unit_dto_collection_query_parameters_t *course_unit_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1039,6 +1065,7 @@ Name | Type | Description  | Notes
 **sectionId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_unit_dto_collection_query_parameters** | **[course_unit_dto_collection_query_parameters_t](course_unit_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1052,7 +1079,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1063,7 +1090,7 @@ No authorization required
 //
 // Retrieves all course updates for a specific course.
 //
-list_t* CoursesAPI_getCourseUpdatesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseUpdatesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_news_dto_collection_query_parameters_t *course_news_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1073,6 +1100,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_news_dto_collection_query_parameters** | **[course_news_dto_collection_query_parameters_t](course_news_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1085,7 +1113,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1096,7 +1124,7 @@ No authorization required
 //
 // Returns the count of course updates for a specific course.
 //
-int* CoursesAPI_getCourseUpdatesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseUpdatesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_news_dto_collection_query_parameters_t *course_news_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1106,6 +1134,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_news_dto_collection_query_parameters** | **[course_news_dto_collection_query_parameters_t](course_news_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1119,7 +1148,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1130,7 +1159,7 @@ No authorization required
 //
 // Retrieves all course wikis for a specific course.
 //
-list_t* CoursesAPI_getCourseWikisByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCourseWikisByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_wiki_dto_collection_query_parameters_t *course_wiki_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1140,6 +1169,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_wiki_dto_collection_query_parameters** | **[course_wiki_dto_collection_query_parameters_t](course_wiki_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1152,7 +1182,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1163,7 +1193,7 @@ No authorization required
 //
 // Returns the count of course wikis for a specific course.
 //
-int* CoursesAPI_getCourseWikisByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCourseWikisByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_wiki_dto_collection_query_parameters_t *course_wiki_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1173,6 +1203,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_wiki_dto_collection_query_parameters** | **[course_wiki_dto_collection_query_parameters_t](course_wiki_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1186,7 +1217,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1197,7 +1228,7 @@ No authorization required
 //
 // Retrieves courses. When tenantId is provided, returns tenant-scoped courses; otherwise returns all courses.
 //
-list_t* CoursesAPI_getCoursesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+list_t* CoursesAPI_getCoursesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_dto_collection_query_parameters_t *course_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1207,6 +1238,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_dto_collection_query_parameters** | **[course_dto_collection_query_parameters_t](course_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1219,7 +1251,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1230,7 +1262,7 @@ No authorization required
 //
 // Returns the count of courses. When tenantId is provided, returns tenant-scoped count; otherwise returns global count.
 //
-int* CoursesAPI_getCoursesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int* CoursesAPI_getCoursesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_dto_collection_query_parameters_t *course_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1240,6 +1272,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_dto_collection_query_parameters** | **[course_dto_collection_query_parameters_t](course_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1253,7 +1286,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1398,7 +1431,7 @@ No authorization required
 //
 // Partially updates a course for the specified tenant.
 //
-empty_envelope_t* CoursesAPI_patchCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CoursesAPI_patchCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1409,7 +1442,7 @@ Name | Type | Description  | Notes
 **courseId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

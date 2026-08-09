@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/store_create_dto.h"
+#include "../model/store_dto_collection_query_parameters.h"
 #include "../model/store_dto_envelope.h"
 #include "../model/store_dto_list_envelope.h"
 #include "../model/store_update_dto.h"
@@ -20,7 +21,7 @@
 // Returns the total count of stores for the specified tenant with OData filter support.
 //
 int32_envelope_t*
-StoresAPI_countStoresAsync(apiClient_t *apiClient, char *tenantId);
+StoresAPI_countStoresAsync(apiClient_t *apiClient, char *tenantId, store_dto_collection_query_parameters_t *store_dto_collection_query_parameters);
 
 
 // Create a store
@@ -52,7 +53,7 @@ StoresAPI_getStoreAsync(apiClient_t *apiClient, char *tenantId, char *storeId);
 // Retrieves a list of stores for the specified tenant with OData query support.
 //
 store_dto_list_envelope_t*
-StoresAPI_getStoresAsync(apiClient_t *apiClient, char *tenantId);
+StoresAPI_getStoresAsync(apiClient_t *apiClient, char *tenantId, store_dto_collection_query_parameters_t *store_dto_collection_query_parameters);
 
 
 // Patch a store
@@ -60,7 +61,7 @@ StoresAPI_getStoresAsync(apiClient_t *apiClient, char *tenantId);
 // Partially updates an existing store using a JSON Patch document.
 //
 empty_envelope_t*
-StoresAPI_patchStoreAsync(apiClient_t *apiClient, char *tenantId, char *storeId, list_t *operation);
+StoresAPI_patchStoreAsync(apiClient_t *apiClient, char *tenantId, char *storeId, list_t *patch_operation);
 
 
 // Update a store

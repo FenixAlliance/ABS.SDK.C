@@ -9,6 +9,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/web_component_create_dto.h"
+#include "../model/web_component_dto_collection_query_parameters.h"
 #include "../model/web_component_dto_envelope.h"
 #include "../model/web_component_dto_list_envelope.h"
 #include "../model/web_component_update_dto.h"
@@ -19,7 +20,7 @@
 // Counts all web components for the specified tenant.
 //
 int32_envelope_t*
-WebComponentsAPI_countWebComponentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebComponentsAPI_countWebComponentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_component_dto_collection_query_parameters_t *web_component_dto_collection_query_parameters);
 
 
 // Create a web component
@@ -51,7 +52,7 @@ WebComponentsAPI_getWebComponentByIdAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves all web components for the specified tenant.
 //
 web_component_dto_list_envelope_t*
-WebComponentsAPI_getWebComponentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebComponentsAPI_getWebComponentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_component_dto_collection_query_parameters_t *web_component_dto_collection_query_parameters);
 
 
 // Update a web component

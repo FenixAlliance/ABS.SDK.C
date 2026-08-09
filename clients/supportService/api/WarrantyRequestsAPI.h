@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/warranty_request_create_dto.h"
+#include "../model/warranty_request_dto_collection_query_parameters.h"
 #include "../model/warranty_request_dto_envelope.h"
 #include "../model/warranty_request_dto_list_envelope.h"
 #include "../model/warranty_request_update_dto.h"
@@ -36,13 +37,13 @@ WarrantyRequestsAPI_getWarrantyRequestAsync(apiClient_t *apiClient, char *tenant
 // Retrieve warranty requests
 //
 warranty_request_dto_list_envelope_t*
-WarrantyRequestsAPI_getWarrantyRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WarrantyRequestsAPI_getWarrantyRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, warranty_request_dto_collection_query_parameters_t *warranty_request_dto_collection_query_parameters);
 
 
 // Get warranty requests count
 //
 int32_envelope_t*
-WarrantyRequestsAPI_getWarrantyRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WarrantyRequestsAPI_getWarrantyRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, warranty_request_dto_collection_query_parameters_t *warranty_request_dto_collection_query_parameters);
 
 
 // Patch a warranty request
@@ -50,7 +51,7 @@ WarrantyRequestsAPI_getWarrantyRequestsCountAsync(apiClient_t *apiClient, char *
 // Partially updates an existing warranty request by its unique identifier.
 //
 empty_envelope_t*
-WarrantyRequestsAPI_patchWarrantyRequestAsync(apiClient_t *apiClient, char *tenantId, char *warrantyRequestId, char *api_version, char *x_api_version, list_t *operation);
+WarrantyRequestsAPI_patchWarrantyRequestAsync(apiClient_t *apiClient, char *tenantId, char *warrantyRequestId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a warranty request

@@ -121,14 +121,19 @@ Category | Method | HTTP request | Description
 *SocialGroupsAPI* | [**SocialGroupsAPI_getSocialGroupsAsync**](docs/SocialGroupsAPI.md#SocialGroupsAPI_getSocialGroupsAsync) | **GET** /api/v2/SocialService/SocialGroups | Get social groups
 *SocialGroupsAPI* | [**SocialGroupsAPI_patchSocialGroupAsync**](docs/SocialGroupsAPI.md#SocialGroupsAPI_patchSocialGroupAsync) | **PATCH** /api/v2/SocialService/SocialGroups/{socialGroupId} | Patch a social group
 *SocialGroupsAPI* | [**SocialGroupsAPI_updateSocialGroupAsync**](docs/SocialGroupsAPI.md#SocialGroupsAPI_updateSocialGroupAsync) | **PUT** /api/v2/SocialService/SocialGroups/{socialGroupId} | Update a social group
+*SocialPostsAPI* | [**SocialPostsAPI_createSocialCommentReactionAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_createSocialCommentReactionAsync) | **POST** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions | Create a social comment reaction
 *SocialPostsAPI* | [**SocialPostsAPI_createSocialPostAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_createSocialPostAsync) | **POST** /api/v2/SocialService/SocialPosts | Create a social post
 *SocialPostsAPI* | [**SocialPostsAPI_createSocialPostAttachmentAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_createSocialPostAttachmentAsync) | **POST** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments | Create a social post attachment
 *SocialPostsAPI* | [**SocialPostsAPI_createSocialPostCommentAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_createSocialPostCommentAsync) | **POST** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments | Create a social post comment
 *SocialPostsAPI* | [**SocialPostsAPI_createSocialPostReactionAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_createSocialPostReactionAsync) | **POST** /api/v2/SocialService/SocialPosts/{socialPostId}/Reactions | Create a social post reaction
+*SocialPostsAPI* | [**SocialPostsAPI_deleteSocialCommentReactionAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_deleteSocialCommentReactionAsync) | **DELETE** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions/{reactionId} | Delete a social comment reaction
 *SocialPostsAPI* | [**SocialPostsAPI_deleteSocialPostAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_deleteSocialPostAsync) | **DELETE** /api/v2/SocialService/SocialPosts/{socialPostId} | Delete a social post
 *SocialPostsAPI* | [**SocialPostsAPI_deleteSocialPostAttachmentAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_deleteSocialPostAttachmentAsync) | **DELETE** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments/{attachmentId} | Delete a social post attachment
 *SocialPostsAPI* | [**SocialPostsAPI_deleteSocialPostCommentAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_deleteSocialPostCommentAsync) | **DELETE** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId} | Delete a social post comment
 *SocialPostsAPI* | [**SocialPostsAPI_deleteSocialPostReactionAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_deleteSocialPostReactionAsync) | **DELETE** /api/v2/SocialService/SocialPosts/{socialPostId}/Reactions/{reactionId} | Delete a social post reaction
+*SocialPostsAPI* | [**SocialPostsAPI_getSocialCommentReactionAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_getSocialCommentReactionAsync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions/{reactionId} | Get social comment reaction by ID
+*SocialPostsAPI* | [**SocialPostsAPI_getSocialCommentReactionsAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_getSocialCommentReactionsAsync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions | Get social comment reactions
+*SocialPostsAPI* | [**SocialPostsAPI_getSocialCommentReactionsCountAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_getSocialCommentReactionsCountAsync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions/Count | Count social comment reactions
 *SocialPostsAPI* | [**SocialPostsAPI_getSocialPostAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_getSocialPostAsync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId} | Get social post by ID
 *SocialPostsAPI* | [**SocialPostsAPI_getSocialPostAttachmentAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_getSocialPostAttachmentAsync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments/{attachmentId} | Get social post attachment by ID
 *SocialPostsAPI* | [**SocialPostsAPI_getSocialPostAttachmentsAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_getSocialPostAttachmentsAsync) | **GET** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments | Get social post attachments
@@ -142,10 +147,12 @@ Category | Method | HTTP request | Description
 *SocialPostsAPI* | [**SocialPostsAPI_getSocialPostsAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_getSocialPostsAsync) | **GET** /api/v2/SocialService/SocialPosts | Get social posts
 *SocialPostsAPI* | [**SocialPostsAPI_getSocialPostsCountAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_getSocialPostsCountAsync) | **GET** /api/v2/SocialService/SocialPosts/Count | Count social posts
 *SocialPostsAPI* | [**SocialPostsAPI_patchSocialPostAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_patchSocialPostAsync) | **PATCH** /api/v2/SocialService/SocialPosts/{socialPostId} | Patch a social post
+*SocialPostsAPI* | [**SocialPostsAPI_updateSocialCommentReactionAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_updateSocialCommentReactionAsync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId}/Reactions/{reactionId} | Update a social comment reaction
 *SocialPostsAPI* | [**SocialPostsAPI_updateSocialPostAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_updateSocialPostAsync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId} | Update a social post
 *SocialPostsAPI* | [**SocialPostsAPI_updateSocialPostAttachmentAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_updateSocialPostAttachmentAsync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments/{attachmentId} | Update a social post attachment
 *SocialPostsAPI* | [**SocialPostsAPI_updateSocialPostCommentAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_updateSocialPostCommentAsync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId}/Comments/{commentId} | Update a social post comment
 *SocialPostsAPI* | [**SocialPostsAPI_updateSocialPostReactionAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_updateSocialPostReactionAsync) | **PUT** /api/v2/SocialService/SocialPosts/{socialPostId}/Reactions/{reactionId} | Update a social post reaction
+*SocialPostsAPI* | [**SocialPostsAPI_uploadSocialPostImageAttachmentAsync**](docs/SocialPostsAPI.md#SocialPostsAPI_uploadSocialPostImageAttachmentAsync) | **POST** /api/v2/SocialService/SocialPosts/{socialPostId}/Attachments/Image | Upload a social post image attachment
 *SocialProfilesAPI* | [**SocialProfilesAPI_countConversationsAsync**](docs/SocialProfilesAPI.md#SocialProfilesAPI_countConversationsAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Conversations/Count | Count Conversations
 *SocialProfilesAPI* | [**SocialProfilesAPI_countFollowedProfilesAsync**](docs/SocialProfilesAPI.md#SocialProfilesAPI_countFollowedProfilesAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Follows/Profiles/Count | Count Followed Profiles
 *SocialProfilesAPI* | [**SocialProfilesAPI_countFollowerProfilesAsync**](docs/SocialProfilesAPI.md#SocialProfilesAPI_countFollowerProfilesAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Followers/Profiles/Count | Count Follower Profiles
@@ -167,6 +174,7 @@ Category | Method | HTTP request | Description
 *SocialProfilesAPI* | [**SocialProfilesAPI_getMessagesAsync**](docs/SocialProfilesAPI.md#SocialProfilesAPI_getMessagesAsync) | **GET** /api/v2/SocialService/SocialProfiles/{conversationId}/Messages | Get Messages
 *SocialProfilesAPI* | [**SocialProfilesAPI_getNotificationByIdAsync**](docs/SocialProfilesAPI.md#SocialProfilesAPI_getNotificationByIdAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications/{notificationId} | Get Notification
 *SocialProfilesAPI* | [**SocialProfilesAPI_getNotificationsAsync**](docs/SocialProfilesAPI.md#SocialProfilesAPI_getNotificationsAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications | Get Notifications
+*SocialProfilesAPI* | [**SocialProfilesAPI_getOrCreateDirectConversationAsync**](docs/SocialProfilesAPI.md#SocialProfilesAPI_getOrCreateDirectConversationAsync) | **POST** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Conversations/Direct | Get or Create Direct Conversation
 *SocialProfilesAPI* | [**SocialProfilesAPI_getSocialProfileAsync**](docs/SocialProfilesAPI.md#SocialProfilesAPI_getSocialProfileAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId} | Get Social Profile
 *SocialProfilesAPI* | [**SocialProfilesAPI_getSocialProfilesAsync**](docs/SocialProfilesAPI.md#SocialProfilesAPI_getSocialProfilesAsync) | **GET** /api/v2/SocialService/SocialProfiles | Get Social Profiles
 *SocialProfilesAPI* | [**SocialProfilesAPI_unfollowAsync**](docs/SocialProfilesAPI.md#SocialProfilesAPI_unfollowAsync) | **DELETE** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Follows/{followedSocialProfileId} | Unfollow
@@ -179,13 +187,17 @@ Category | Method | HTTP request | Description
  - [boolean_envelope_t](docs/boolean_envelope.md)
  - [conversation_create_dto_t](docs/conversation_create_dto.md)
  - [conversation_dto_t](docs/conversation_dto.md)
+ - [conversation_dto_collection_query_parameters_t](docs/conversation_dto_collection_query_parameters.md)
+ - [conversation_dto_envelope_t](docs/conversation_dto_envelope.md)
  - [conversation_dto_list_envelope_t](docs/conversation_dto_list_envelope.md)
  - [curriculum_create_dto_t](docs/curriculum_create_dto.md)
  - [curriculum_dto_t](docs/curriculum_dto.md)
+ - [curriculum_dto_collection_query_parameters_t](docs/curriculum_dto_collection_query_parameters.md)
  - [curriculum_dto_envelope_t](docs/curriculum_dto_envelope.md)
  - [curriculum_dto_list_envelope_t](docs/curriculum_dto_list_envelope.md)
  - [curriculum_experience_create_dto_t](docs/curriculum_experience_create_dto.md)
  - [curriculum_experience_dto_t](docs/curriculum_experience_dto.md)
+ - [curriculum_experience_dto_collection_query_parameters_t](docs/curriculum_experience_dto_collection_query_parameters.md)
  - [curriculum_experience_dto_envelope_t](docs/curriculum_experience_dto_envelope.md)
  - [curriculum_experience_dto_list_envelope_t](docs/curriculum_experience_dto_list_envelope.md)
  - [curriculum_experience_update_dto_t](docs/curriculum_experience_update_dto.md)
@@ -193,6 +205,7 @@ Category | Method | HTTP request | Description
  - [empty_envelope_t](docs/empty_envelope.md)
  - [error_envelope_t](docs/error_envelope.md)
  - [follow_record_dto_t](docs/follow_record_dto.md)
+ - [follow_record_dto_collection_query_parameters_t](docs/follow_record_dto_collection_query_parameters.md)
  - [follow_record_dto_list_envelope_t](docs/follow_record_dto_list_envelope.md)
  - [forgot_password_request_t](docs/forgot_password_request.md)
  - [http_validation_problem_details_t](docs/http_validation_problem_details.md)
@@ -201,11 +214,13 @@ Category | Method | HTTP request | Description
  - [int32_envelope_t](docs/int32_envelope.md)
  - [login_request_t](docs/login_request.md)
  - [notification_dto_t](docs/notification_dto.md)
+ - [notification_dto_collection_query_parameters_t](docs/notification_dto_collection_query_parameters.md)
  - [notification_dto_envelope_t](docs/notification_dto_envelope.md)
  - [notification_dto_list_envelope_t](docs/notification_dto_list_envelope.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [private_message_create_dto_t](docs/private_message_create_dto.md)
  - [private_message_dto_t](docs/private_message_dto.md)
+ - [private_message_dto_collection_query_parameters_t](docs/private_message_dto_collection_query_parameters.md)
  - [private_message_dto_list_envelope_t](docs/private_message_dto_list_envelope.md)
  - [private_message_update_dto_t](docs/private_message_update_dto.md)
  - [refresh_request_t](docs/refresh_request.md)
@@ -214,38 +229,55 @@ Category | Method | HTTP request | Description
  - [reset_password_request_t](docs/reset_password_request.md)
  - [skill_create_dto_t](docs/skill_create_dto.md)
  - [skill_dto_t](docs/skill_dto.md)
+ - [skill_dto_collection_query_parameters_t](docs/skill_dto_collection_query_parameters.md)
  - [skill_dto_envelope_t](docs/skill_dto_envelope.md)
  - [skill_dto_list_envelope_t](docs/skill_dto_list_envelope.md)
  - [skill_update_dto_t](docs/skill_update_dto.md)
+ - [social_comment_reaction_dto_t](docs/social_comment_reaction_dto.md)
+ - [social_comment_reaction_dto_collection_query_parameters_t](docs/social_comment_reaction_dto_collection_query_parameters.md)
+ - [social_comment_reaction_dto_envelope_t](docs/social_comment_reaction_dto_envelope.md)
+ - [social_comment_reaction_dto_list_envelope_t](docs/social_comment_reaction_dto_list_envelope.md)
  - [social_feed_dto_t](docs/social_feed_dto.md)
+ - [social_feed_dto_collection_query_parameters_t](docs/social_feed_dto_collection_query_parameters.md)
  - [social_feed_dto_envelope_t](docs/social_feed_dto_envelope.md)
  - [social_feed_dto_list_envelope_t](docs/social_feed_dto_list_envelope.md)
  - [social_feed_post_create_dto_t](docs/social_feed_post_create_dto.md)
  - [social_feed_post_dto_t](docs/social_feed_post_dto.md)
+ - [social_feed_post_dto_collection_query_parameters_t](docs/social_feed_post_dto_collection_query_parameters.md)
  - [social_feed_post_dto_envelope_t](docs/social_feed_post_dto_envelope.md)
  - [social_feed_post_dto_list_envelope_t](docs/social_feed_post_dto_list_envelope.md)
  - [social_feed_post_update_dto_t](docs/social_feed_post_update_dto.md)
  - [social_group_create_dto_t](docs/social_group_create_dto.md)
  - [social_group_dto_t](docs/social_group_dto.md)
+ - [social_group_dto_collection_query_parameters_t](docs/social_group_dto_collection_query_parameters.md)
  - [social_group_dto_envelope_t](docs/social_group_dto_envelope.md)
  - [social_group_dto_list_envelope_t](docs/social_group_dto_list_envelope.md)
  - [social_group_update_dto_t](docs/social_group_update_dto.md)
  - [social_post_attachment_create_dto_t](docs/social_post_attachment_create_dto.md)
  - [social_post_attachment_dto_t](docs/social_post_attachment_dto.md)
+ - [social_post_attachment_dto_collection_query_parameters_t](docs/social_post_attachment_dto_collection_query_parameters.md)
  - [social_post_attachment_dto_envelope_t](docs/social_post_attachment_dto_envelope.md)
  - [social_post_attachment_dto_list_envelope_t](docs/social_post_attachment_dto_list_envelope.md)
+ - [social_post_attachment_ref_dto_t](docs/social_post_attachment_ref_dto.md)
  - [social_post_attachment_update_dto_t](docs/social_post_attachment_update_dto.md)
  - [social_post_comment_create_dto_t](docs/social_post_comment_create_dto.md)
  - [social_post_comment_dto_t](docs/social_post_comment_dto.md)
+ - [social_post_comment_dto_collection_query_parameters_t](docs/social_post_comment_dto_collection_query_parameters.md)
  - [social_post_comment_dto_envelope_t](docs/social_post_comment_dto_envelope.md)
  - [social_post_comment_dto_list_envelope_t](docs/social_post_comment_dto_list_envelope.md)
  - [social_post_comment_update_dto_t](docs/social_post_comment_update_dto.md)
  - [social_post_create_dto_t](docs/social_post_create_dto.md)
  - [social_post_dto_t](docs/social_post_dto.md)
+ - [social_post_dto_collection_query_parameters_t](docs/social_post_dto_collection_query_parameters.md)
  - [social_post_dto_envelope_t](docs/social_post_dto_envelope.md)
  - [social_post_dto_list_envelope_t](docs/social_post_dto_list_envelope.md)
+ - [social_post_reaction_dto_t](docs/social_post_reaction_dto.md)
+ - [social_post_reaction_dto_collection_query_parameters_t](docs/social_post_reaction_dto_collection_query_parameters.md)
+ - [social_post_reaction_dto_envelope_t](docs/social_post_reaction_dto_envelope.md)
+ - [social_post_reaction_facepile_dto_t](docs/social_post_reaction_facepile_dto.md)
  - [social_post_update_dto_t](docs/social_post_update_dto.md)
  - [social_profile_dto_t](docs/social_profile_dto.md)
+ - [social_profile_dto_collection_query_parameters_t](docs/social_profile_dto_collection_query_parameters.md)
  - [social_profile_dto_envelope_t](docs/social_profile_dto_envelope.md)
  - [social_profile_dto_list_envelope_t](docs/social_profile_dto_list_envelope.md)
  - [social_reaction_create_dto_t](docs/social_reaction_create_dto.md)
@@ -253,8 +285,10 @@ Category | Method | HTTP request | Description
  - [social_reaction_dto_envelope_t](docs/social_reaction_dto_envelope.md)
  - [social_reaction_dto_list_envelope_t](docs/social_reaction_dto_list_envelope.md)
  - [social_reaction_update_dto_t](docs/social_reaction_update_dto.md)
+ - [string_envelope_t](docs/string_envelope.md)
  - [two_factor_request_t](docs/two_factor_request.md)
  - [two_factor_response_t](docs/two_factor_response.md)
+ - [upload_social_post_image_attachment_async_request_t](docs/upload_social_post_image_attachment_async_request.md)
 
 
 ## Documentation for Authorization

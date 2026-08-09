@@ -63,41 +63,48 @@ set(SRCS
     model/info_response.c
     model/inquiry_request_create_dto.c
     model/inquiry_request_dto.c
+    model/inquiry_request_dto_collection_query_parameters.c
     model/inquiry_request_dto_envelope.c
     model/inquiry_request_dto_list_envelope.c
     model/inquiry_request_update_dto.c
     model/int32_envelope.c
     model/item_refund_policy_create_dto.c
     model/item_refund_policy_dto.c
+    model/item_refund_policy_dto_collection_query_parameters.c
     model/item_refund_policy_dto_envelope.c
     model/item_refund_policy_dto_list_envelope.c
     model/item_refund_policy_update_dto.c
     model/item_return_policy_create_dto.c
     model/item_return_policy_dto.c
+    model/item_return_policy_dto_collection_query_parameters.c
     model/item_return_policy_dto_envelope.c
     model/item_return_policy_dto_list_envelope.c
     model/item_return_policy_update_dto.c
     model/item_warranty_policy_create_dto.c
     model/item_warranty_policy_dto.c
+    model/item_warranty_policy_dto_collection_query_parameters.c
     model/item_warranty_policy_dto_envelope.c
     model/item_warranty_policy_dto_list_envelope.c
     model/item_warranty_policy_update_dto.c
     model/knowledge_article_create_dto.c
     model/knowledge_article_dto.c
+    model/knowledge_article_dto_collection_query_parameters.c
     model/knowledge_article_dto_envelope.c
     model/knowledge_article_dto_list_envelope.c
     model/knowledge_article_update_dto.c
     model/login_request.c
     model/maintenance_visit_create_dto.c
     model/maintenance_visit_dto.c
+    model/maintenance_visit_dto_collection_query_parameters.c
     model/maintenance_visit_dto_envelope.c
     model/maintenance_visit_dto_list_envelope.c
-    model/operation.c
+    model/patch_operation.c
     model/private_message_dto.c
     model/private_message_dto_list_envelope.c
     model/refresh_request.c
     model/refund_request_create_dto.c
     model/refund_request_dto.c
+    model/refund_request_dto_collection_query_parameters.c
     model/refund_request_dto_envelope.c
     model/refund_request_dto_list_envelope.c
     model/refund_request_update_dto.c
@@ -106,39 +113,47 @@ set(SRCS
     model/reset_password_request.c
     model/return_request_create_dto.c
     model/return_request_dto.c
+    model/return_request_dto_collection_query_parameters.c
     model/return_request_dto_envelope.c
     model/return_request_dto_list_envelope.c
     model/return_request_update_dto.c
     model/support_entitlement_create_dto.c
     model/support_entitlement_dto.c
+    model/support_entitlement_dto_collection_query_parameters.c
     model/support_entitlement_dto_envelope.c
     model/support_entitlement_dto_list_envelope.c
     model/support_entitlement_update_dto.c
     model/support_request_attachment_create_dto.c
     model/support_request_attachment_dto.c
+    model/support_request_attachment_dto_collection_query_parameters.c
     model/support_request_attachment_dto_envelope.c
     model/support_request_attachment_dto_list_envelope.c
     model/support_request_attachment_update_dto.c
     model/support_request_create_dto.c
     model/support_request_dto.c
+    model/support_request_dto_collection_query_parameters.c
     model/support_request_dto_envelope.c
     model/support_request_dto_list_envelope.c
     model/support_request_update_dto.c
     model/support_ticket_conversation_create_dto.c
     model/support_ticket_conversation_dto.c
+    model/support_ticket_conversation_dto_collection_query_parameters.c
     model/support_ticket_conversation_dto_envelope.c
     model/support_ticket_conversation_dto_list_envelope.c
     model/support_ticket_create_dto.c
     model/support_ticket_dto.c
+    model/support_ticket_dto_collection_query_parameters.c
     model/support_ticket_dto_envelope.c
     model/support_ticket_dto_list_envelope.c
     model/support_ticket_priority_create_dto.c
     model/support_ticket_priority_dto.c
+    model/support_ticket_priority_dto_collection_query_parameters.c
     model/support_ticket_priority_dto_envelope.c
     model/support_ticket_priority_dto_list_envelope.c
     model/support_ticket_priority_update_dto.c
     model/support_ticket_type_create_dto.c
     model/support_ticket_type_dto.c
+    model/support_ticket_type_dto_collection_query_parameters.c
     model/support_ticket_type_dto_envelope.c
     model/support_ticket_type_dto_list_envelope.c
     model/support_ticket_type_update_dto.c
@@ -147,6 +162,7 @@ set(SRCS
     model/two_factor_response.c
     model/warranty_request_create_dto.c
     model/warranty_request_dto.c
+    model/warranty_request_dto_collection_query_parameters.c
     model/warranty_request_dto_envelope.c
     model/warranty_request_dto_list_envelope.c
     model/warranty_request_update_dto.c
@@ -185,41 +201,48 @@ set(HDRS
     model/info_response.h
     model/inquiry_request_create_dto.h
     model/inquiry_request_dto.h
+    model/inquiry_request_dto_collection_query_parameters.h
     model/inquiry_request_dto_envelope.h
     model/inquiry_request_dto_list_envelope.h
     model/inquiry_request_update_dto.h
     model/int32_envelope.h
     model/item_refund_policy_create_dto.h
     model/item_refund_policy_dto.h
+    model/item_refund_policy_dto_collection_query_parameters.h
     model/item_refund_policy_dto_envelope.h
     model/item_refund_policy_dto_list_envelope.h
     model/item_refund_policy_update_dto.h
     model/item_return_policy_create_dto.h
     model/item_return_policy_dto.h
+    model/item_return_policy_dto_collection_query_parameters.h
     model/item_return_policy_dto_envelope.h
     model/item_return_policy_dto_list_envelope.h
     model/item_return_policy_update_dto.h
     model/item_warranty_policy_create_dto.h
     model/item_warranty_policy_dto.h
+    model/item_warranty_policy_dto_collection_query_parameters.h
     model/item_warranty_policy_dto_envelope.h
     model/item_warranty_policy_dto_list_envelope.h
     model/item_warranty_policy_update_dto.h
     model/knowledge_article_create_dto.h
     model/knowledge_article_dto.h
+    model/knowledge_article_dto_collection_query_parameters.h
     model/knowledge_article_dto_envelope.h
     model/knowledge_article_dto_list_envelope.h
     model/knowledge_article_update_dto.h
     model/login_request.h
     model/maintenance_visit_create_dto.h
     model/maintenance_visit_dto.h
+    model/maintenance_visit_dto_collection_query_parameters.h
     model/maintenance_visit_dto_envelope.h
     model/maintenance_visit_dto_list_envelope.h
-    model/operation.h
+    model/patch_operation.h
     model/private_message_dto.h
     model/private_message_dto_list_envelope.h
     model/refresh_request.h
     model/refund_request_create_dto.h
     model/refund_request_dto.h
+    model/refund_request_dto_collection_query_parameters.h
     model/refund_request_dto_envelope.h
     model/refund_request_dto_list_envelope.h
     model/refund_request_update_dto.h
@@ -228,39 +251,47 @@ set(HDRS
     model/reset_password_request.h
     model/return_request_create_dto.h
     model/return_request_dto.h
+    model/return_request_dto_collection_query_parameters.h
     model/return_request_dto_envelope.h
     model/return_request_dto_list_envelope.h
     model/return_request_update_dto.h
     model/support_entitlement_create_dto.h
     model/support_entitlement_dto.h
+    model/support_entitlement_dto_collection_query_parameters.h
     model/support_entitlement_dto_envelope.h
     model/support_entitlement_dto_list_envelope.h
     model/support_entitlement_update_dto.h
     model/support_request_attachment_create_dto.h
     model/support_request_attachment_dto.h
+    model/support_request_attachment_dto_collection_query_parameters.h
     model/support_request_attachment_dto_envelope.h
     model/support_request_attachment_dto_list_envelope.h
     model/support_request_attachment_update_dto.h
     model/support_request_create_dto.h
     model/support_request_dto.h
+    model/support_request_dto_collection_query_parameters.h
     model/support_request_dto_envelope.h
     model/support_request_dto_list_envelope.h
     model/support_request_update_dto.h
     model/support_ticket_conversation_create_dto.h
     model/support_ticket_conversation_dto.h
+    model/support_ticket_conversation_dto_collection_query_parameters.h
     model/support_ticket_conversation_dto_envelope.h
     model/support_ticket_conversation_dto_list_envelope.h
     model/support_ticket_create_dto.h
     model/support_ticket_dto.h
+    model/support_ticket_dto_collection_query_parameters.h
     model/support_ticket_dto_envelope.h
     model/support_ticket_dto_list_envelope.h
     model/support_ticket_priority_create_dto.h
     model/support_ticket_priority_dto.h
+    model/support_ticket_priority_dto_collection_query_parameters.h
     model/support_ticket_priority_dto_envelope.h
     model/support_ticket_priority_dto_list_envelope.h
     model/support_ticket_priority_update_dto.h
     model/support_ticket_type_create_dto.h
     model/support_ticket_type_dto.h
+    model/support_ticket_type_dto_collection_query_parameters.h
     model/support_ticket_type_dto_envelope.h
     model/support_ticket_type_dto_list_envelope.h
     model/support_ticket_type_update_dto.h
@@ -269,6 +300,7 @@ set(HDRS
     model/two_factor_response.h
     model/warranty_request_create_dto.h
     model/warranty_request_dto.h
+    model/warranty_request_dto_collection_query_parameters.h
     model/warranty_request_dto_envelope.h
     model/warranty_request_dto_list_envelope.h
     model/warranty_request_update_dto.h

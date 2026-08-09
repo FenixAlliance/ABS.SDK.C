@@ -233,7 +233,7 @@ No authorization required
 //
 // Retrieves all lines for a specific bill of lading.
 //
-bill_of_lading_line_dto_list_envelope_t* BillsOfLadingAPI_getBillOfLadingLinesAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version);
+bill_of_lading_line_dto_list_envelope_t* BillsOfLadingAPI_getBillOfLadingLinesAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version, bill_of_lading_line_dto_collection_query_parameters_t *bill_of_lading_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -244,6 +244,7 @@ Name | Type | Description  | Notes
 **billOfLadingId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bill_of_lading_line_dto_collection_query_parameters** | **[bill_of_lading_line_dto_collection_query_parameters_t](bill_of_lading_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -256,7 +257,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -267,7 +268,7 @@ No authorization required
 //
 // Returns the count of lines for a specific bill of lading.
 //
-int32_envelope_t* BillsOfLadingAPI_getBillOfLadingLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version);
+int32_envelope_t* BillsOfLadingAPI_getBillOfLadingLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version, bill_of_lading_line_dto_collection_query_parameters_t *bill_of_lading_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -278,6 +279,7 @@ Name | Type | Description  | Notes
 **billOfLadingId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bill_of_lading_line_dto_collection_query_parameters** | **[bill_of_lading_line_dto_collection_query_parameters_t](bill_of_lading_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -290,7 +292,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -301,7 +303,7 @@ No authorization required
 //
 // Retrieves all bills of lading for the specified tenant.
 //
-bill_of_lading_dto_list_envelope_t* BillsOfLadingAPI_getBillsOfLadingAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+bill_of_lading_dto_list_envelope_t* BillsOfLadingAPI_getBillsOfLadingAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bill_of_lading_dto_collection_query_parameters_t *bill_of_lading_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -311,6 +313,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bill_of_lading_dto_collection_query_parameters** | **[bill_of_lading_dto_collection_query_parameters_t](bill_of_lading_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -323,7 +326,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -334,7 +337,7 @@ No authorization required
 //
 // Returns the count of bills of lading for the specified tenant.
 //
-int32_envelope_t* BillsOfLadingAPI_getBillsOfLadingCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* BillsOfLadingAPI_getBillsOfLadingCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bill_of_lading_dto_collection_query_parameters_t *bill_of_lading_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -344,6 +347,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bill_of_lading_dto_collection_query_parameters** | **[bill_of_lading_dto_collection_query_parameters_t](bill_of_lading_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -356,7 +360,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -367,7 +371,7 @@ No authorization required
 //
 // Partially updates an existing bill of lading using JSON Patch.
 //
-empty_envelope_t* BillsOfLadingAPI_patchBillOfLadingAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BillsOfLadingAPI_patchBillOfLadingAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -378,7 +382,7 @@ Name | Type | Description  | Notes
 **billOfLadingId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -402,7 +406,7 @@ No authorization required
 //
 // Partially updates an existing line on a bill of lading using JSON Patch.
 //
-empty_envelope_t* BillsOfLadingAPI_patchBillOfLadingLineAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BillsOfLadingAPI_patchBillOfLadingLineAsync(apiClient_t *apiClient, char *tenantId, char *billOfLadingId, char *lineId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -414,7 +418,7 @@ Name | Type | Description  | Notes
 **lineId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

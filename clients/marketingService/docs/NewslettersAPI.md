@@ -121,7 +121,7 @@ No authorization required
 //
 // Retrieves a collection of newsletters for the specified tenant using OData query options.
 //
-void NewslettersAPI_getNewsletterODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+void NewslettersAPI_getNewsletterODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, newsletter_dto_collection_query_parameters_t *newsletter_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -131,6 +131,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**newsletter_dto_collection_query_parameters** | **[newsletter_dto_collection_query_parameters_t](newsletter_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -142,7 +143,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -153,7 +154,7 @@ No authorization required
 //
 // Returns the count of newsletters for the specified tenant using OData query options.
 //
-int32_envelope_t* NewslettersAPI_getNewslettersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* NewslettersAPI_getNewslettersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, newsletter_dto_collection_query_parameters_t *newsletter_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**newsletter_dto_collection_query_parameters** | **[newsletter_dto_collection_query_parameters_t](newsletter_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -175,7 +177,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -186,7 +188,7 @@ No authorization required
 //
 // Partially updates a newsletter by its ID using JSON Patch.
 //
-empty_envelope_t* NewslettersAPI_patchNewsletterAsync(apiClient_t *apiClient, char *tenantId, char *newsletterId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* NewslettersAPI_patchNewsletterAsync(apiClient_t *apiClient, char *tenantId, char *newsletterId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -197,7 +199,7 @@ Name | Type | Description  | Notes
 **newsletterId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

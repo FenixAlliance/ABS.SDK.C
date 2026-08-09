@@ -20,13 +20,14 @@ docs/info_request.md
 docs/info_response.md
 docs/int32_envelope.md
 docs/login_request.md
-docs/operation.md
+docs/patch_operation.md
 docs/refresh_request.md
 docs/register_request.md
 docs/resend_confirmation_email_request.md
 docs/reset_password_request.md
 docs/subscription_create_dto.md
 docs/subscription_dto.md
+docs/subscription_dto_collection_query_parameters.md
 docs/subscription_dto_envelope.md
 docs/subscription_dto_i_read_only_list_envelope.md
 docs/subscription_plan_create_dto.md
@@ -67,8 +68,8 @@ model/login_request.c
 model/login_request.h
 model/object.c
 model/object.h
-model/operation.c
-model/operation.h
+model/patch_operation.c
+model/patch_operation.h
 model/refresh_request.c
 model/refresh_request.h
 model/register_request.c
@@ -81,6 +82,8 @@ model/subscription_create_dto.c
 model/subscription_create_dto.h
 model/subscription_dto.c
 model/subscription_dto.h
+model/subscription_dto_collection_query_parameters.c
+model/subscription_dto_collection_query_parameters.h
 model/subscription_dto_envelope.c
 model/subscription_dto_envelope.h
 model/subscription_dto_i_read_only_list_envelope.c
@@ -106,3 +109,5 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_patch_operation.c
+unit-test/test_subscription_dto_collection_query_parameters.c

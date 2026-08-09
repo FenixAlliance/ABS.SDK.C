@@ -113,7 +113,7 @@ No authorization required
 ```c
 // Get marketing leads count
 //
-int32_envelope_t* MarketingLeadsAPI_getMarketingLeadsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* MarketingLeadsAPI_getMarketingLeadsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_lead_dto_collection_query_parameters_t *marketing_lead_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -123,6 +123,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**marketing_lead_dto_collection_query_parameters** | **[marketing_lead_dto_collection_query_parameters_t](marketing_lead_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -135,7 +136,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -146,7 +147,7 @@ No authorization required
 //
 // Retrieves a collection of marketing leads for the specified tenant using OData query options.
 //
-marketing_lead_dto_list_envelope_t* MarketingLeadsAPI_getMarketingLeadsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+marketing_lead_dto_list_envelope_t* MarketingLeadsAPI_getMarketingLeadsODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_lead_dto_collection_query_parameters_t *marketing_lead_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -156,6 +157,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**marketing_lead_dto_collection_query_parameters** | **[marketing_lead_dto_collection_query_parameters_t](marketing_lead_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -168,7 +170,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -179,7 +181,7 @@ No authorization required
 //
 // Partially updates a marketing lead by its ID using JSON Patch.
 //
-empty_envelope_t* MarketingLeadsAPI_patchMarketingLeadAsync(apiClient_t *apiClient, char *tenantId, char *marketingLeadId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* MarketingLeadsAPI_patchMarketingLeadAsync(apiClient_t *apiClient, char *tenantId, char *marketingLeadId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -190,7 +192,7 @@ Name | Type | Description  | Notes
 **marketingLeadId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

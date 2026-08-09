@@ -837,13 +837,13 @@ end:
 // Retrieves a list of lines for a specific deal unit with OData query support.
 //
 deal_unit_line_dto_list_envelope_t*
-DealUnitsAPI_getDealUnitLinesAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *itemId)
+DealUnitsAPI_getDealUnitLinesAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *itemId, deal_unit_line_dto_collection_query_parameters_t *deal_unit_line_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -894,8 +894,19 @@ DealUnitsAPI_getDealUnitLinesAsync(apiClient_t *apiClient, char *tenantId, char 
         keyPairQuery_itemId = keyValuePair_create(keyQuery_itemId, valueQuery_itemId);
         list_addElement(localVarQueryParameters,keyPairQuery_itemId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters = NULL;
+    if (deal_unit_line_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters = deal_unit_line_dto_collection_query_parameters_convertToJSON(deal_unit_line_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -932,9 +943,14 @@ DealUnitsAPI_getDealUnitLinesAsync(apiClient_t *apiClient, char *tenantId, char 
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_dealUnitId);
+    if (localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters);
+        localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -971,13 +987,13 @@ end:
 // Returns the total count of lines for a specific deal unit with OData filter support.
 //
 int32_envelope_t*
-DealUnitsAPI_getDealUnitLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId)
+DealUnitsAPI_getDealUnitLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, deal_unit_line_dto_collection_query_parameters_t *deal_unit_line_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1016,8 +1032,19 @@ DealUnitsAPI_getDealUnitLinesCountAsync(apiClient_t *apiClient, char *tenantId, 
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters = NULL;
+    if (deal_unit_line_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters = deal_unit_line_dto_collection_query_parameters_convertToJSON(deal_unit_line_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1054,9 +1081,14 @@ DealUnitsAPI_getDealUnitLinesCountAsync(apiClient_t *apiClient, char *tenantId, 
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_dealUnitId);
+    if (localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters);
+        localVarSingleItemJSON_deal_unit_line_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1209,13 +1241,13 @@ end:
 // Retrieves a list of deal units for the specified tenant with OData query support.
 //
 deal_unit_dto_list_envelope_t*
-DealUnitsAPI_getDealUnitsAsync(apiClient_t *apiClient, char *tenantId)
+DealUnitsAPI_getDealUnitsAsync(apiClient_t *apiClient, char *tenantId, deal_unit_dto_collection_query_parameters_t *deal_unit_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1237,8 +1269,19 @@ DealUnitsAPI_getDealUnitsAsync(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_deal_unit_dto_collection_query_parameters = NULL;
+    if (deal_unit_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_deal_unit_dto_collection_query_parameters = deal_unit_dto_collection_query_parameters_convertToJSON(deal_unit_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_deal_unit_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1275,8 +1318,13 @@ DealUnitsAPI_getDealUnitsAsync(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_deal_unit_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_deal_unit_dto_collection_query_parameters);
+        localVarSingleItemJSON_deal_unit_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1301,13 +1349,13 @@ end:
 // Returns the total count of deal units for the specified tenant with OData filter support.
 //
 int32_envelope_t*
-DealUnitsAPI_getDealUnitsCountAsync(apiClient_t *apiClient, char *tenantId)
+DealUnitsAPI_getDealUnitsCountAsync(apiClient_t *apiClient, char *tenantId, deal_unit_dto_collection_query_parameters_t *deal_unit_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1329,8 +1377,19 @@ DealUnitsAPI_getDealUnitsCountAsync(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_deal_unit_dto_collection_query_parameters = NULL;
+    if (deal_unit_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_deal_unit_dto_collection_query_parameters = deal_unit_dto_collection_query_parameters_convertToJSON(deal_unit_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_deal_unit_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1367,8 +1426,13 @@ DealUnitsAPI_getDealUnitsCountAsync(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_deal_unit_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_deal_unit_dto_collection_query_parameters);
+        localVarSingleItemJSON_deal_unit_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1503,13 +1567,13 @@ end:
 // Retrieves a list of deal units with extended details for the specified tenant with OData query support.
 //
 extended_deal_unit_dto_list_envelope_t*
-DealUnitsAPI_getExtendedDealUnitsAsync(apiClient_t *apiClient, char *tenantId)
+DealUnitsAPI_getExtendedDealUnitsAsync(apiClient_t *apiClient, char *tenantId, extended_deal_unit_dto_collection_query_parameters_t *extended_deal_unit_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1531,8 +1595,19 @@ DealUnitsAPI_getExtendedDealUnitsAsync(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_deal_unit_dto_collection_query_parameters = NULL;
+    if (extended_deal_unit_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_deal_unit_dto_collection_query_parameters = extended_deal_unit_dto_collection_query_parameters_convertToJSON(extended_deal_unit_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_deal_unit_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1569,8 +1644,13 @@ DealUnitsAPI_getExtendedDealUnitsAsync(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_extended_deal_unit_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_deal_unit_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_deal_unit_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1595,7 +1675,7 @@ end:
 // Partially updates an existing deal unit by its unique identifier using a JSON Patch document.
 //
 empty_envelope_t*
-DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, list_t *operation)
+DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1643,14 +1723,14 @@ DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *de
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1658,16 +1738,16 @@ DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *de
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1712,17 +1792,17 @@ DealUnitsAPI_patchDealUnitAsync(apiClient_t *apiClient, char *tenantId, char *de
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_dealUnitId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -1749,7 +1829,7 @@ end:
 // Partially updates an existing line within a specific deal unit using a JSON Patch document.
 //
 empty_envelope_t*
-DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *dealUnitLineId, list_t *operation)
+DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitId, char *dealUnitLineId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1814,14 +1894,14 @@ DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1829,16 +1909,16 @@ DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1884,17 +1964,17 @@ DealUnitsAPI_patchDealUnitLineAsync(apiClient_t *apiClient, char *tenantId, char
     free(localVarPath);
     free(localVarToReplace_dealUnitId);
     free(localVarToReplace_dealUnitLineId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

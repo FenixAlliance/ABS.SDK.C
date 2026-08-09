@@ -16,7 +16,7 @@
 //
 // Creates a new post in a specific social feed.
 //
-social_feed_post_dto_envelope_t*
+string_envelope_t*
 SocialFeedsAPI_createFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version, social_feed_post_create_dto_t *social_feed_post_create_dto)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -118,12 +118,12 @@ SocialFeedsAPI_createFeedPostAsync(apiClient_t *apiClient, char *socialProfileId
     //    printf("%s\n","Unauthorized");
     //}
     // uncomment below to debug the error response
-    //if (apiClient->response_code == 201) {
-    //    printf("%s\n","Created");
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
     //}
     //nonprimitive not container
     cJSON *SocialFeedsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    social_feed_post_dto_envelope_t *elementToReturn = social_feed_post_dto_envelope_parseFromJSON(SocialFeedsAPIlocalVarJSON);
+    string_envelope_t *elementToReturn = string_envelope_parseFromJSON(SocialFeedsAPIlocalVarJSON);
     cJSON_Delete(SocialFeedsAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;
@@ -369,13 +369,13 @@ end:
 // Retrieves a list of social feeds for the specified social profile.
 //
 social_feed_dto_list_envelope_t*
-SocialFeedsAPI_getFeedNotifications(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialFeedsAPI_getFeedNotifications(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_feed_dto_collection_query_parameters_t *social_feed_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -421,8 +421,19 @@ SocialFeedsAPI_getFeedNotifications(apiClient_t *apiClient, char *socialProfileI
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_social_feed_dto_collection_query_parameters = NULL;
+    if (social_feed_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_social_feed_dto_collection_query_parameters = social_feed_dto_collection_query_parameters_convertToJSON(social_feed_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_social_feed_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -463,7 +474,7 @@ SocialFeedsAPI_getFeedNotifications(apiClient_t *apiClient, char *socialProfileI
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -474,6 +485,11 @@ SocialFeedsAPI_getFeedNotifications(apiClient_t *apiClient, char *socialProfileI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_social_feed_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_social_feed_dto_collection_query_parameters);
+        localVarSingleItemJSON_social_feed_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_socialProfileId){
         free(keyQuery_socialProfileId);
         keyQuery_socialProfileId = NULL;
@@ -687,13 +703,13 @@ end:
 // Retrieves a list of posts for a specific social feed.
 //
 social_feed_post_dto_list_envelope_t*
-SocialFeedsAPI_getFeedPostsAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version)
+SocialFeedsAPI_getFeedPostsAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version, social_feed_post_dto_collection_query_parameters_t *social_feed_post_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -756,8 +772,19 @@ SocialFeedsAPI_getFeedPostsAsync(apiClient_t *apiClient, char *socialProfileId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters = NULL;
+    if (social_feed_post_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters = social_feed_post_dto_collection_query_parameters_convertToJSON(social_feed_post_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -798,7 +825,7 @@ SocialFeedsAPI_getFeedPostsAsync(apiClient_t *apiClient, char *socialProfileId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialFeedId);
     if (keyHeader_x_api_version) {
@@ -810,6 +837,11 @@ SocialFeedsAPI_getFeedPostsAsync(apiClient_t *apiClient, char *socialProfileId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters);
+        localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_socialProfileId){
         free(keyQuery_socialProfileId);
         keyQuery_socialProfileId = NULL;
@@ -846,13 +878,13 @@ end:
 // Returns the count of posts for a specific social feed.
 //
 int32_envelope_t*
-SocialFeedsAPI_getFeedPostsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version)
+SocialFeedsAPI_getFeedPostsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *api_version, char *x_api_version, social_feed_post_dto_collection_query_parameters_t *social_feed_post_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -915,8 +947,19 @@ SocialFeedsAPI_getFeedPostsCountAsync(apiClient_t *apiClient, char *socialProfil
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters = NULL;
+    if (social_feed_post_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters = social_feed_post_dto_collection_query_parameters_convertToJSON(social_feed_post_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -957,7 +1000,7 @@ SocialFeedsAPI_getFeedPostsCountAsync(apiClient_t *apiClient, char *socialProfil
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialFeedId);
     if (keyHeader_x_api_version) {
@@ -969,6 +1012,11 @@ SocialFeedsAPI_getFeedPostsCountAsync(apiClient_t *apiClient, char *socialProfil
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters);
+        localVarSingleItemJSON_social_feed_post_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_socialProfileId){
         free(keyQuery_socialProfileId);
         keyQuery_socialProfileId = NULL;
@@ -1164,13 +1212,13 @@ end:
 // Returns the count of social feeds for the specified social profile.
 //
 int32_envelope_t*
-SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_feed_dto_collection_query_parameters_t *social_feed_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1216,8 +1264,19 @@ SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialPr
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_social_feed_dto_collection_query_parameters = NULL;
+    if (social_feed_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_social_feed_dto_collection_query_parameters = social_feed_dto_collection_query_parameters_convertToJSON(social_feed_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_social_feed_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1258,7 +1317,7 @@ SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialPr
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1269,6 +1328,11 @@ SocialFeedsAPI_getNotificationsCountAsync(apiClient_t *apiClient, char *socialPr
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_social_feed_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_social_feed_dto_collection_query_parameters);
+        localVarSingleItemJSON_social_feed_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_socialProfileId){
         free(keyQuery_socialProfileId);
         keyQuery_socialProfileId = NULL;
@@ -1305,7 +1369,7 @@ end:
 // Partially updates an existing post in a specific social feed using a JSON Patch document.
 //
 empty_envelope_t*
-SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *feedPostId, char *api_version, char *x_api_version, list_t *operation)
+SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId, char *socialFeedId, char *feedPostId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -1394,14 +1458,14 @@ SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId,
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1409,16 +1473,16 @@ SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId,
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1477,17 +1541,17 @@ SocialFeedsAPI_patchFeedPostAsync(apiClient_t *apiClient, char *socialProfileId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_socialProfileId){

@@ -123,7 +123,7 @@ No authorization required
 //
 // Retrieves all fiscal responsibility records for the specified fiscal responsibility.
 //
-fiscal_responsibility_record_dto_list_envelope_t* FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
+fiscal_responsibility_record_dto_list_envelope_t* FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecords(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version, fiscal_responsibility_record_dto_collection_query_parameters_t *fiscal_responsibility_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -135,6 +135,7 @@ Name | Type | Description  | Notes
 **fiscalResponsibilityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**fiscal_responsibility_record_dto_collection_query_parameters** | **[fiscal_responsibility_record_dto_collection_query_parameters_t](fiscal_responsibility_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -147,7 +148,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -158,7 +159,7 @@ No authorization required
 //
 // Returns the total count of fiscal responsibility records for the specified fiscal responsibility.
 //
-int32_envelope_t* FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version);
+int32_envelope_t* FiscalResponsibilityRecordsAPI_getFiscalResponsibilityRecordsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *fiscalResponsibilityId, char *api_version, char *x_api_version, fiscal_responsibility_record_dto_collection_query_parameters_t *fiscal_responsibility_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -170,6 +171,7 @@ Name | Type | Description  | Notes
 **fiscalResponsibilityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**fiscal_responsibility_record_dto_collection_query_parameters** | **[fiscal_responsibility_record_dto_collection_query_parameters_t](fiscal_responsibility_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -182,7 +184,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -193,7 +195,7 @@ No authorization required
 //
 // Partially updates a fiscal responsibility record.
 //
-empty_envelope_t* FiscalResponsibilityRecordsAPI_patchFiscalResponsibilityRecordAsync(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* FiscalResponsibilityRecordsAPI_patchFiscalResponsibilityRecordAsync(apiClient_t *apiClient, char *tenantId, char *fiscalResponsibilityRecordId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -204,7 +206,7 @@ Name | Type | Description  | Notes
 **fiscalResponsibilityRecordId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

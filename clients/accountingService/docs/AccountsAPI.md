@@ -54,7 +54,7 @@ Method | HTTP request | Description
 //
 // Returns the sum of all account balances matching OData filters, normalized to the target currency using stored USD values.
 //
-money_envelope_t* AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId, char *currencyId, char *api_version, char *x_api_version);
+money_envelope_t* AccountsAPI_aggregateAccountsBalanceAsync(apiClient_t *apiClient, char *tenantId, char *currencyId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -65,6 +65,7 @@ Name | Type | Description  | Notes
 **currencyId** | **char \*** |  | [optional] [default to &#39;USD.USA&#39;]
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**account_dto_collection_query_parameters** | **[account_dto_collection_query_parameters_t](account_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -77,7 +78,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -536,7 +537,7 @@ No authorization required
 //
 // Get account credits.
 //
-accounting_entry_dto_list_envelope_t* AccountsAPI_getAccountCreditsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+accounting_entry_dto_list_envelope_t* AccountsAPI_getAccountCreditsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -547,6 +548,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**accounting_entry_dto_collection_query_parameters** | **[accounting_entry_dto_collection_query_parameters_t](accounting_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -559,7 +561,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -570,7 +572,7 @@ No authorization required
 //
 // Get account credits count.
 //
-int32_envelope_t* AccountsAPI_getAccountCreditsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+int32_envelope_t* AccountsAPI_getAccountCreditsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -581,6 +583,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**accounting_entry_dto_collection_query_parameters** | **[accounting_entry_dto_collection_query_parameters_t](accounting_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -593,7 +596,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -604,7 +607,7 @@ No authorization required
 //
 // Get account debits.
 //
-accounting_entry_dto_list_envelope_t* AccountsAPI_getAccountDebitsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+accounting_entry_dto_list_envelope_t* AccountsAPI_getAccountDebitsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -615,6 +618,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**accounting_entry_dto_collection_query_parameters** | **[accounting_entry_dto_collection_query_parameters_t](accounting_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -627,7 +631,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -638,7 +642,7 @@ No authorization required
 //
 // Get account debits count.
 //
-int32_envelope_t* AccountsAPI_getAccountDebitsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+int32_envelope_t* AccountsAPI_getAccountDebitsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -649,6 +653,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**accounting_entry_dto_collection_query_parameters** | **[accounting_entry_dto_collection_query_parameters_t](accounting_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -661,7 +666,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -706,7 +711,7 @@ No authorization required
 //
 // Get account entries.
 //
-accounting_entry_dto_list_envelope_t* AccountsAPI_getAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+accounting_entry_dto_list_envelope_t* AccountsAPI_getAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -717,6 +722,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**accounting_entry_dto_collection_query_parameters** | **[accounting_entry_dto_collection_query_parameters_t](accounting_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -729,7 +735,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -775,7 +781,7 @@ No authorization required
 //
 // Get account relations.
 //
-account_relation_dto_list_envelope_t* AccountsAPI_getAccountRelationsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+account_relation_dto_list_envelope_t* AccountsAPI_getAccountRelationsAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, account_relation_dto_collection_query_parameters_t *account_relation_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -786,6 +792,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**account_relation_dto_collection_query_parameters** | **[account_relation_dto_collection_query_parameters_t](account_relation_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -798,7 +805,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -809,7 +816,7 @@ No authorization required
 //
 // Get account relations count.
 //
-int32_envelope_t* AccountsAPI_getAccountRelationsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+int32_envelope_t* AccountsAPI_getAccountRelationsCountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, account_relation_dto_collection_query_parameters_t *account_relation_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -820,6 +827,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**account_relation_dto_collection_query_parameters** | **[account_relation_dto_collection_query_parameters_t](account_relation_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -832,7 +840,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -877,7 +885,7 @@ No authorization required
 //
 // Get account types.
 //
-account_type_dto_list_envelope_t* AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+account_type_dto_list_envelope_t* AccountsAPI_getAccountTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_type_dto_collection_query_parameters_t *account_type_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -887,6 +895,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**account_type_dto_collection_query_parameters** | **[account_type_dto_collection_query_parameters_t](account_type_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -899,7 +908,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -910,7 +919,7 @@ No authorization required
 //
 // Get account types count.
 //
-int32_envelope_t* AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* AccountsAPI_getAccountTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_type_dto_collection_query_parameters_t *account_type_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -920,6 +929,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**account_type_dto_collection_query_parameters** | **[account_type_dto_collection_query_parameters_t](account_type_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -932,7 +942,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -943,7 +953,7 @@ No authorization required
 //
 // Creates a new account.
 //
-account_dto_list_envelope_t* AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+account_dto_list_envelope_t* AccountsAPI_getAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -953,6 +963,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**account_dto_collection_query_parameters** | **[account_dto_collection_query_parameters_t](account_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -965,7 +976,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -976,7 +987,7 @@ No authorization required
 //
 // Get the number of accounts.
 //
-int32_envelope_t* AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* AccountsAPI_getAccountsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -986,6 +997,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**account_dto_collection_query_parameters** | **[account_dto_collection_query_parameters_t](account_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -998,7 +1010,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1075,7 +1087,7 @@ No authorization required
 //
 // Get credit account entries.
 //
-accounting_entry_dto_list_envelope_t* AccountsAPI_getCreditAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+accounting_entry_dto_list_envelope_t* AccountsAPI_getCreditAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1086,6 +1098,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**accounting_entry_dto_collection_query_parameters** | **[accounting_entry_dto_collection_query_parameters_t](accounting_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1098,7 +1111,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1109,7 +1122,7 @@ No authorization required
 //
 // Get debit account entries.
 //
-accounting_entry_dto_list_envelope_t* AccountsAPI_getDebitAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version);
+accounting_entry_dto_list_envelope_t* AccountsAPI_getDebitAccountEntriesAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, accounting_entry_dto_collection_query_parameters_t *accounting_entry_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1120,6 +1133,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**accounting_entry_dto_collection_query_parameters** | **[accounting_entry_dto_collection_query_parameters_t](accounting_entry_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1132,7 +1146,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1143,7 +1157,7 @@ No authorization required
 //
 // Get root accounts.
 //
-account_dto_list_envelope_t* AccountsAPI_getRootAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+account_dto_list_envelope_t* AccountsAPI_getRootAccountsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_dto_collection_query_parameters_t *account_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1153,6 +1167,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**account_dto_collection_query_parameters** | **[account_dto_collection_query_parameters_t](account_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1165,7 +1180,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1176,7 +1191,7 @@ No authorization required
 //
 // Patch an account.
 //
-empty_envelope_t* AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* AccountsAPI_patchAccountAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1187,7 +1202,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1211,7 +1226,7 @@ No authorization required
 //
 // Patch account entry.
 //
-empty_envelope_t* AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* AccountsAPI_patchAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *accountId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1223,7 +1238,7 @@ Name | Type | Description  | Notes
 **entryId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1247,7 +1262,7 @@ No authorization required
 //
 // Patch account relation.
 //
-empty_envelope_t* AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, char *accountRelationId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* AccountsAPI_patchAccountRelationAsync(apiClient_t *apiClient, char *tenantId, char *accountRelationId, char *accountId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1259,7 +1274,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1283,7 +1298,7 @@ No authorization required
 //
 // Patch account type.
 //
-empty_envelope_t* AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* AccountsAPI_patchAccountTypeAsync(apiClient_t *apiClient, char *tenantId, char *accountTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1294,7 +1309,7 @@ Name | Type | Description  | Notes
 **accountTypeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

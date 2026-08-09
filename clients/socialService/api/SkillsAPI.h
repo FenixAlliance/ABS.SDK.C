@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/skill_create_dto.h"
+#include "../model/skill_dto_collection_query_parameters.h"
 #include "../model/skill_dto_envelope.h"
 #include "../model/skill_dto_list_envelope.h"
 #include "../model/skill_update_dto.h"
@@ -44,7 +45,7 @@ SkillsAPI_getSkillByIdAsync(apiClient_t *apiClient, char *tenantId, char *skillI
 // Retrieves the skill catalog for the specified tenant.
 //
 skill_dto_list_envelope_t*
-SkillsAPI_getSkillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SkillsAPI_getSkillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, skill_dto_collection_query_parameters_t *skill_dto_collection_query_parameters);
 
 
 // Count skills
@@ -52,7 +53,7 @@ SkillsAPI_getSkillsAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
 // Counts skill catalog entries for the specified tenant.
 //
 int32_envelope_t*
-SkillsAPI_getSkillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SkillsAPI_getSkillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, skill_dto_collection_query_parameters_t *skill_dto_collection_query_parameters);
 
 
 // Patch a skill
@@ -60,7 +61,7 @@ SkillsAPI_getSkillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_
 // Partially updates an existing skill for the specified tenant.
 //
 empty_envelope_t*
-SkillsAPI_patchSkillAsync(apiClient_t *apiClient, char *tenantId, char *skillId, char *api_version, char *x_api_version, list_t *operation);
+SkillsAPI_patchSkillAsync(apiClient_t *apiClient, char *tenantId, char *skillId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a skill

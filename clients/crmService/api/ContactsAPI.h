@@ -8,22 +8,26 @@
 #include "../model/cart_dto_envelope.h"
 #include "../model/contact_create_dto.h"
 #include "../model/contact_dto.h"
+#include "../model/contact_dto_collection_query_parameters.h"
 #include "../model/contact_dto_envelope.h"
 #include "../model/contact_dto_list_envelope.h"
 #include "../model/contact_email_create_dto.h"
+#include "../model/contact_email_dto_collection_query_parameters.h"
 #include "../model/contact_email_dto_list_envelope.h"
 #include "../model/contact_email_update_dto.h"
 #include "../model/contact_profile_create_dto.h"
+#include "../model/contact_profile_dto_collection_query_parameters.h"
 #include "../model/contact_profile_dto_list_envelope.h"
 #include "../model/contact_profile_update_dto.h"
 #include "../model/contact_update_dto.h"
 #include "../model/email_dispatch_request.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/extended_contact_dto_collection_query_parameters.h"
 #include "../model/extended_contact_dto_envelope.h"
 #include "../model/extended_contact_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/social_profile_dto_envelope.h"
 #include "../model/wallet_dto_envelope.h"
 
@@ -89,7 +93,7 @@ ContactsAPI_getBusinessOwnedIndividualAsync(apiClient_t *apiClient, char *tenant
 // Get all contacts of type individual
 //
 contact_dto_list_envelope_t*
-ContactsAPI_getBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactsAPI_getBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 
 
 // Get all contacts of type individual count
@@ -97,7 +101,7 @@ ContactsAPI_getBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenan
 // Get all contacts of type individual count
 //
 contact_dto_list_envelope_t*
-ContactsAPI_getBusinessOwnedIndividualsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactsAPI_getBusinessOwnedIndividualsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 
 
 // Get a Contact of type Organization by ID
@@ -113,7 +117,7 @@ ContactsAPI_getBusinessOwnedOrganizationAsync(apiClient_t *apiClient, char *tena
 // Get all contacts of type organization
 //
 list_t*
-ContactsAPI_getBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactsAPI_getBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 
 
 // Get all contacts of type organization count
@@ -121,7 +125,7 @@ ContactsAPI_getBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *ten
 // Get all contacts of type organization count
 //
 contact_dto_list_envelope_t*
-ContactsAPI_getBusinessOwnedOrganizationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactsAPI_getBusinessOwnedOrganizationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 
 
 // Get a contact by ID
@@ -153,7 +157,7 @@ ContactsAPI_getContactCartAsync(apiClient_t *apiClient, char *tenantId, char *co
 // Get all email addresses for the specified contact.
 //
 contact_email_dto_list_envelope_t*
-ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_email_dto_collection_query_parameters_t *contact_email_dto_collection_query_parameters);
 
 
 // Get contact email addresses count
@@ -161,7 +165,7 @@ ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *
 // Returns the count of email addresses for the specified contact.
 //
 int32_envelope_t*
-ContactsAPI_getContactEmailsCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+ContactsAPI_getContactEmailsCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_email_dto_collection_query_parameters_t *contact_email_dto_collection_query_parameters);
 
 
 // Get a contact's social profile
@@ -185,7 +189,7 @@ ContactsAPI_getContactWalletAsync(apiClient_t *apiClient, char *tenantId, char *
 // Get all business owned contacts
 //
 contact_dto_list_envelope_t*
-ContactsAPI_getContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactsAPI_getContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 
 
 // Get all business owned contacts count
@@ -193,7 +197,7 @@ ContactsAPI_getContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 // Get all business owned contacts count
 //
 contact_dto_list_envelope_t*
-ContactsAPI_getContactsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactsAPI_getContactsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters);
 
 
 // Get all contacts of type individual
@@ -201,7 +205,7 @@ ContactsAPI_getContactsCountAsync(apiClient_t *apiClient, char *tenantId, char *
 // Get all contacts of type individual
 //
 extended_contact_dto_list_envelope_t*
-ContactsAPI_getExtendedBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactsAPI_getExtendedBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_contact_dto_collection_query_parameters_t *extended_contact_dto_collection_query_parameters);
 
 
 // Get all contacts of type organization
@@ -209,7 +213,7 @@ ContactsAPI_getExtendedBusinessOwnedIndividualsAsync(apiClient_t *apiClient, cha
 // Get all contacts of type organization
 //
 extended_contact_dto_list_envelope_t*
-ContactsAPI_getExtendedBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactsAPI_getExtendedBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_contact_dto_collection_query_parameters_t *extended_contact_dto_collection_query_parameters);
 
 
 // Get a contact by ID
@@ -225,7 +229,7 @@ ContactsAPI_getExtendedContactAsync(apiClient_t *apiClient, char *tenantId, char
 // Get all business owned contacts
 //
 extended_contact_dto_list_envelope_t*
-ContactsAPI_getExtendedContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactsAPI_getExtendedContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_contact_dto_collection_query_parameters_t *extended_contact_dto_collection_query_parameters);
 
 
 // Get individual related individuals
@@ -273,7 +277,7 @@ ContactsAPI_getProfilesForContactAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of profiles for the specified contact.
 //
 int32_envelope_t*
-ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version);
+ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_profile_dto_collection_query_parameters_t *contact_profile_dto_collection_query_parameters);
 
 
 // Patch a contact
@@ -281,7 +285,7 @@ ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenant
 // Patch a contact
 //
 empty_envelope_t*
-ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, list_t *operation);
+ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a contact email address
@@ -289,7 +293,7 @@ ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *cont
 // Partially updates an existing email address for the specified contact.
 //
 void
-ContactsAPI_patchContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *emailId, char *api_version, char *x_api_version, list_t *operation);
+ContactsAPI_patchContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *emailId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Preview the rendered email for a contact.

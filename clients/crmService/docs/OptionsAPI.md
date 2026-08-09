@@ -165,7 +165,7 @@ No authorization required
 //
 // Retrieve a list of options for a contact
 //
-option_dto_list_envelope_t* OptionsAPI_getContactOptions(apiClient_t *apiClient, char *tenantId, char *contactId, char *portalId, char *api_version, char *x_api_version);
+option_dto_list_envelope_t* OptionsAPI_getContactOptions(apiClient_t *apiClient, char *tenantId, char *contactId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -177,6 +177,7 @@ Name | Type | Description  | Notes
 **portalId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**option_dto_collection_query_parameters** | **[option_dto_collection_query_parameters_t](option_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -189,7 +190,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -200,7 +201,7 @@ No authorization required
 //
 // Get the count of options for a contact
 //
-int32_envelope_t* OptionsAPI_getContactOptionsCount(apiClient_t *apiClient, char *tenantId, char *contactId, char *portalId, char *api_version, char *x_api_version);
+int32_envelope_t* OptionsAPI_getContactOptionsCount(apiClient_t *apiClient, char *tenantId, char *contactId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -212,6 +213,7 @@ Name | Type | Description  | Notes
 **portalId** | **char \*** |  | [optional] 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**option_dto_collection_query_parameters** | **[option_dto_collection_query_parameters_t](option_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -224,7 +226,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -235,7 +237,7 @@ No authorization required
 //
 // Patch a contact option
 //
-empty_envelope_t* OptionsAPI_patchContactOptionAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* OptionsAPI_patchContactOptionAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *optionId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -247,7 +249,7 @@ Name | Type | Description  | Notes
 **optionId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -271,7 +273,7 @@ No authorization required
 //
 // Patch a contact option by key
 //
-empty_envelope_t* OptionsAPI_patchContactOptionByKeyAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *key, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* OptionsAPI_patchContactOptionByKeyAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *key, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -283,7 +285,7 @@ Name | Type | Description  | Notes
 **key** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

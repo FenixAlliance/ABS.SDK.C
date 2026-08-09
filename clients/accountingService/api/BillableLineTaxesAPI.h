@@ -6,12 +6,13 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/applied_item_tax_record_create_dto.h"
+#include "../model/applied_item_tax_record_dto_collection_query_parameters.h"
 #include "../model/applied_item_tax_record_dto_i_read_only_list_envelope.h"
 #include "../model/applied_item_tax_record_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new tax for a billable line.
@@ -35,7 +36,7 @@ BillableLineTaxesAPI_deleteBillableLineTax(apiClient_t *apiClient, char *tenantI
 // Retrieves the taxes applied to the specified billable line.
 //
 applied_item_tax_record_dto_i_read_only_list_envelope_t*
-BillableLineTaxesAPI_getBillableLineTaxes(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *api_version, char *x_api_version);
+BillableLineTaxesAPI_getBillableLineTaxes(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *api_version, char *x_api_version, applied_item_tax_record_dto_collection_query_parameters_t *applied_item_tax_record_dto_collection_query_parameters);
 
 
 // Get the count of taxes for a billable line.
@@ -43,7 +44,7 @@ BillableLineTaxesAPI_getBillableLineTaxes(apiClient_t *apiClient, char *tenantId
 // Retrieves the total count of taxes applied to the specified billable line.
 //
 int32_envelope_t*
-BillableLineTaxesAPI_getBillableLineTaxesCount(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *api_version, char *x_api_version);
+BillableLineTaxesAPI_getBillableLineTaxesCount(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *api_version, char *x_api_version, applied_item_tax_record_dto_collection_query_parameters_t *applied_item_tax_record_dto_collection_query_parameters);
 
 
 // Patch a billable line tax
@@ -51,7 +52,7 @@ BillableLineTaxesAPI_getBillableLineTaxesCount(apiClient_t *apiClient, char *ten
 // Partially updates a billable line tax.
 //
 empty_envelope_t*
-BillableLineTaxesAPI_patchBillableLineTaxAsync(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *taxId, char *api_version, char *x_api_version, list_t *operation);
+BillableLineTaxesAPI_patchBillableLineTaxAsync(apiClient_t *apiClient, char *tenantId, char *billableLineId, char *taxId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tax for a billable line.

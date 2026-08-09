@@ -59,6 +59,7 @@ accountingservice_receipt_create_dto_RECEIPTTYPE_e receipt_create_dto_receipt_ty
 receipt_create_dto_t *receipt_create_dto_create(
     char *id,
     char *timestamp,
+    int closed,
     char *title,
     char *price_list_id,
     char *description,
@@ -76,6 +77,7 @@ receipt_create_dto_t *receipt_create_dto_create(
     char *country_id,
     char *state_id,
     char *city_id,
+    double forex_rate,
     char *currency_id,
     double total_detail,
     char *total_detail_currency_id,
@@ -104,10 +106,8 @@ receipt_create_dto_t *receipt_create_dto_create(
     accountingservice_receipt_create_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     accountingservice_receipt_create_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
     char *payment_id,
-    double forex_rate,
     double total_amount,
     double total_amount_in_usd,
-    int closed,
     char *contact_id,
     accountingservice_receipt_create_dto_RECEIPTTYPE_e receipt_type,
     char *order_id,
@@ -119,6 +119,7 @@ receipt_create_dto_t *receipt_create_dto_create(
     }
     receipt_create_dto_local_var->id = id;
     receipt_create_dto_local_var->timestamp = timestamp;
+    receipt_create_dto_local_var->closed = closed;
     receipt_create_dto_local_var->title = title;
     receipt_create_dto_local_var->price_list_id = price_list_id;
     receipt_create_dto_local_var->description = description;
@@ -136,6 +137,7 @@ receipt_create_dto_t *receipt_create_dto_create(
     receipt_create_dto_local_var->country_id = country_id;
     receipt_create_dto_local_var->state_id = state_id;
     receipt_create_dto_local_var->city_id = city_id;
+    receipt_create_dto_local_var->forex_rate = forex_rate;
     receipt_create_dto_local_var->currency_id = currency_id;
     receipt_create_dto_local_var->total_detail = total_detail;
     receipt_create_dto_local_var->total_detail_currency_id = total_detail_currency_id;
@@ -164,10 +166,8 @@ receipt_create_dto_t *receipt_create_dto_create(
     receipt_create_dto_local_var->cost_calculation_method = cost_calculation_method;
     receipt_create_dto_local_var->tax_calculation_method = tax_calculation_method;
     receipt_create_dto_local_var->payment_id = payment_id;
-    receipt_create_dto_local_var->forex_rate = forex_rate;
     receipt_create_dto_local_var->total_amount = total_amount;
     receipt_create_dto_local_var->total_amount_in_usd = total_amount_in_usd;
-    receipt_create_dto_local_var->closed = closed;
     receipt_create_dto_local_var->contact_id = contact_id;
     receipt_create_dto_local_var->receipt_type = receipt_type;
     receipt_create_dto_local_var->order_id = order_id;
@@ -348,6 +348,14 @@ cJSON *receipt_create_dto_convertToJSON(receipt_create_dto_t *receipt_create_dto
     }
 
 
+    // receipt_create_dto->closed
+    if(receipt_create_dto->closed) {
+    if(cJSON_AddBoolToObject(item, "closed", receipt_create_dto->closed) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
     // receipt_create_dto->title
     if(receipt_create_dto->title) {
     if(cJSON_AddStringToObject(item, "title", receipt_create_dto->title) == NULL) {
@@ -480,6 +488,14 @@ cJSON *receipt_create_dto_convertToJSON(receipt_create_dto_t *receipt_create_dto
     if(receipt_create_dto->city_id) {
     if(cJSON_AddStringToObject(item, "cityId", receipt_create_dto->city_id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // receipt_create_dto->forex_rate
+    if(receipt_create_dto->forex_rate) {
+    if(cJSON_AddNumberToObject(item, "forexRate", receipt_create_dto->forex_rate) == NULL) {
+    goto fail; //Numeric
     }
     }
 
@@ -710,14 +726,6 @@ cJSON *receipt_create_dto_convertToJSON(receipt_create_dto_t *receipt_create_dto
     }
 
 
-    // receipt_create_dto->forex_rate
-    if(receipt_create_dto->forex_rate) {
-    if(cJSON_AddNumberToObject(item, "forexRate", receipt_create_dto->forex_rate) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
     // receipt_create_dto->total_amount
     if(receipt_create_dto->total_amount) {
     if(cJSON_AddNumberToObject(item, "totalAmount", receipt_create_dto->total_amount) == NULL) {
@@ -730,14 +738,6 @@ cJSON *receipt_create_dto_convertToJSON(receipt_create_dto_t *receipt_create_dto
     if(receipt_create_dto->total_amount_in_usd) {
     if(cJSON_AddNumberToObject(item, "totalAmountInUSD", receipt_create_dto->total_amount_in_usd) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // receipt_create_dto->closed
-    if(receipt_create_dto->closed) {
-    if(cJSON_AddBoolToObject(item, "closed", receipt_create_dto->closed) == NULL) {
-    goto fail; //Bool
     }
     }
 
@@ -801,6 +801,15 @@ receipt_create_dto_t *receipt_create_dto_parseFromJSON(cJSON *receipt_create_dto
     if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
     {
     goto end; //DateTime
+    }
+    }
+
+    // receipt_create_dto->closed
+    cJSON *closed = cJSON_GetObjectItemCaseSensitive(receipt_create_dtoJSON, "closed");
+    if (closed) { 
+    if(!cJSON_IsBool(closed))
+    {
+    goto end; //Bool
     }
     }
 
@@ -954,6 +963,15 @@ receipt_create_dto_t *receipt_create_dto_parseFromJSON(cJSON *receipt_create_dto
     if(!cJSON_IsString(city_id) && !cJSON_IsNull(city_id))
     {
     goto end; //String
+    }
+    }
+
+    // receipt_create_dto->forex_rate
+    cJSON *forex_rate = cJSON_GetObjectItemCaseSensitive(receipt_create_dtoJSON, "forexRate");
+    if (forex_rate) { 
+    if(!cJSON_IsNumber(forex_rate))
+    {
+    goto end; //Numeric
     }
     }
 
@@ -1213,15 +1231,6 @@ receipt_create_dto_t *receipt_create_dto_parseFromJSON(cJSON *receipt_create_dto
     }
     }
 
-    // receipt_create_dto->forex_rate
-    cJSON *forex_rate = cJSON_GetObjectItemCaseSensitive(receipt_create_dtoJSON, "forexRate");
-    if (forex_rate) { 
-    if(!cJSON_IsNumber(forex_rate))
-    {
-    goto end; //Numeric
-    }
-    }
-
     // receipt_create_dto->total_amount
     cJSON *total_amount = cJSON_GetObjectItemCaseSensitive(receipt_create_dtoJSON, "totalAmount");
     if (total_amount) { 
@@ -1237,15 +1246,6 @@ receipt_create_dto_t *receipt_create_dto_parseFromJSON(cJSON *receipt_create_dto
     if(!cJSON_IsNumber(total_amount_in_usd))
     {
     goto end; //Numeric
-    }
-    }
-
-    // receipt_create_dto->closed
-    cJSON *closed = cJSON_GetObjectItemCaseSensitive(receipt_create_dtoJSON, "closed");
-    if (closed) { 
-    if(!cJSON_IsBool(closed))
-    {
-    goto end; //Bool
     }
     }
 
@@ -1291,6 +1291,7 @@ receipt_create_dto_t *receipt_create_dto_parseFromJSON(cJSON *receipt_create_dto
     receipt_create_dto_local_var = receipt_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        closed ? closed->valueint : 0,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         price_list_id && !cJSON_IsNull(price_list_id) ? strdup(price_list_id->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
@@ -1308,6 +1309,7 @@ receipt_create_dto_t *receipt_create_dto_parseFromJSON(cJSON *receipt_create_dto
         country_id && !cJSON_IsNull(country_id) ? strdup(country_id->valuestring) : NULL,
         state_id && !cJSON_IsNull(state_id) ? strdup(state_id->valuestring) : NULL,
         city_id && !cJSON_IsNull(city_id) ? strdup(city_id->valuestring) : NULL,
+        forex_rate ? forex_rate->valuedouble : 0,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
         total_detail ? total_detail->valuedouble : 0,
         total_detail_currency_id && !cJSON_IsNull(total_detail_currency_id) ? strdup(total_detail_currency_id->valuestring) : NULL,
@@ -1336,10 +1338,8 @@ receipt_create_dto_t *receipt_create_dto_parseFromJSON(cJSON *receipt_create_dto
         cost_calculation_method ? cost_calculation_methodVariable : accountingservice_receipt_create_dto_COSTCALCULATIONMETHOD_NULL,
         tax_calculation_method ? tax_calculation_methodVariable : accountingservice_receipt_create_dto_TAXCALCULATIONMETHOD_NULL,
         payment_id && !cJSON_IsNull(payment_id) ? strdup(payment_id->valuestring) : NULL,
-        forex_rate ? forex_rate->valuedouble : 0,
         total_amount ? total_amount->valuedouble : 0,
         total_amount_in_usd ? total_amount_in_usd->valuedouble : 0,
-        closed ? closed->valueint : 0,
         contact_id && !cJSON_IsNull(contact_id) ? strdup(contact_id->valuestring) : NULL,
         receipt_type ? receipt_typeVariable : accountingservice_receipt_create_dto_RECEIPTTYPE_NULL,
         order_id && !cJSON_IsNull(order_id) ? strdup(order_id->valuestring) : NULL,

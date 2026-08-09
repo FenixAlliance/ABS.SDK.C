@@ -17,13 +17,13 @@
 // Count activity types for the current tenant.
 //
 int32_envelope_t*
-ActivityFeedsAPI_countActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ActivityFeedsAPI_countActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_type_dto_collection_query_parameters_t *activity_type_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -69,8 +69,19 @@ ActivityFeedsAPI_countActivityTypesAsync(apiClient_t *apiClient, char *tenantId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_activity_type_dto_collection_query_parameters = NULL;
+    if (activity_type_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_activity_type_dto_collection_query_parameters = activity_type_dto_collection_query_parameters_convertToJSON(activity_type_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_activity_type_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -111,7 +122,7 @@ ActivityFeedsAPI_countActivityTypesAsync(apiClient_t *apiClient, char *tenantId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -122,6 +133,11 @@ ActivityFeedsAPI_countActivityTypesAsync(apiClient_t *apiClient, char *tenantId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_activity_type_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_activity_type_dto_collection_query_parameters);
+        localVarSingleItemJSON_activity_type_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -826,13 +842,13 @@ end:
 // Retrieves activities for a specific activity feed.
 //
 activity_record_dto_list_envelope_t*
-ActivityFeedsAPI_getActivitiesAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version)
+ActivityFeedsAPI_getActivitiesAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version, activity_record_dto_collection_query_parameters_t *activity_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -895,8 +911,19 @@ ActivityFeedsAPI_getActivitiesAsync(apiClient_t *apiClient, char *tenantId, char
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_activity_record_dto_collection_query_parameters = NULL;
+    if (activity_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_activity_record_dto_collection_query_parameters = activity_record_dto_collection_query_parameters_convertToJSON(activity_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_activity_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -937,7 +964,7 @@ ActivityFeedsAPI_getActivitiesAsync(apiClient_t *apiClient, char *tenantId, char
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_activityFeedId);
     if (keyHeader_x_api_version) {
@@ -949,6 +976,11 @@ ActivityFeedsAPI_getActivitiesAsync(apiClient_t *apiClient, char *tenantId, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_activity_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_activity_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_activity_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -985,13 +1017,13 @@ end:
 // Returns the count of activities for a specific activity feed.
 //
 int32_envelope_t*
-ActivityFeedsAPI_getActivitiesCountAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version)
+ActivityFeedsAPI_getActivitiesCountAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version, activity_record_dto_collection_query_parameters_t *activity_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1054,8 +1086,19 @@ ActivityFeedsAPI_getActivitiesCountAsync(apiClient_t *apiClient, char *tenantId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_activity_record_dto_collection_query_parameters = NULL;
+    if (activity_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_activity_record_dto_collection_query_parameters = activity_record_dto_collection_query_parameters_convertToJSON(activity_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_activity_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1096,7 +1139,7 @@ ActivityFeedsAPI_getActivitiesCountAsync(apiClient_t *apiClient, char *tenantId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_activityFeedId);
     if (keyHeader_x_api_version) {
@@ -1108,6 +1151,11 @@ ActivityFeedsAPI_getActivitiesCountAsync(apiClient_t *apiClient, char *tenantId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_activity_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_activity_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_activity_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1480,13 +1528,13 @@ end:
 // Retrieves a list of activity feeds for the specified tenant.
 //
 activity_feed_dto_list_envelope_t*
-ActivityFeedsAPI_getActivityFeedsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ActivityFeedsAPI_getActivityFeedsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_feed_dto_collection_query_parameters_t *activity_feed_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1532,8 +1580,19 @@ ActivityFeedsAPI_getActivityFeedsAsync(apiClient_t *apiClient, char *tenantId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_activity_feed_dto_collection_query_parameters = NULL;
+    if (activity_feed_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_activity_feed_dto_collection_query_parameters = activity_feed_dto_collection_query_parameters_convertToJSON(activity_feed_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_activity_feed_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1574,7 +1633,7 @@ ActivityFeedsAPI_getActivityFeedsAsync(apiClient_t *apiClient, char *tenantId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1585,6 +1644,11 @@ ActivityFeedsAPI_getActivityFeedsAsync(apiClient_t *apiClient, char *tenantId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_activity_feed_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_activity_feed_dto_collection_query_parameters);
+        localVarSingleItemJSON_activity_feed_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1621,13 +1685,13 @@ end:
 // Returns the count of activity feeds for the specified tenant.
 //
 int32_envelope_t*
-ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_feed_dto_collection_query_parameters_t *activity_feed_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1673,8 +1737,19 @@ ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenant
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_activity_feed_dto_collection_query_parameters = NULL;
+    if (activity_feed_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_activity_feed_dto_collection_query_parameters = activity_feed_dto_collection_query_parameters_convertToJSON(activity_feed_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_activity_feed_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1715,7 +1790,7 @@ ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenant
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1726,6 +1801,11 @@ ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenant
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_activity_feed_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_activity_feed_dto_collection_query_parameters);
+        localVarSingleItemJSON_activity_feed_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1762,13 +1842,13 @@ end:
 // Returns the tenant-wide count of activity records across all feeds owned by the tenant.
 //
 int32_envelope_t*
-ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_record_dto_collection_query_parameters_t *activity_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1814,8 +1894,19 @@ ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tena
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_activity_record_dto_collection_query_parameters = NULL;
+    if (activity_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_activity_record_dto_collection_query_parameters = activity_record_dto_collection_query_parameters_convertToJSON(activity_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_activity_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1856,7 +1947,7 @@ ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tena
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1867,6 +1958,11 @@ ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tena
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_activity_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_activity_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_activity_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2062,13 +2158,13 @@ end:
 // Get a list of activity types for the current tenant.
 //
 activity_type_dto_list_envelope_t*
-ActivityFeedsAPI_getActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ActivityFeedsAPI_getActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_type_dto_collection_query_parameters_t *activity_type_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2114,8 +2210,19 @@ ActivityFeedsAPI_getActivityTypesAsync(apiClient_t *apiClient, char *tenantId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_activity_type_dto_collection_query_parameters = NULL;
+    if (activity_type_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_activity_type_dto_collection_query_parameters = activity_type_dto_collection_query_parameters_convertToJSON(activity_type_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_activity_type_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2156,7 +2263,7 @@ ActivityFeedsAPI_getActivityTypesAsync(apiClient_t *apiClient, char *tenantId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -2167,6 +2274,11 @@ ActivityFeedsAPI_getActivityTypesAsync(apiClient_t *apiClient, char *tenantId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_activity_type_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_activity_type_dto_collection_query_parameters);
+        localVarSingleItemJSON_activity_type_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2203,7 +2315,7 @@ end:
 // Patch an activity
 //
 empty_envelope_t*
-ActivityFeedsAPI_patchActivityAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *activityId, char *api_version, char *x_api_version, list_t *operation)
+ActivityFeedsAPI_patchActivityAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *activityId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2292,14 +2404,14 @@ ActivityFeedsAPI_patchActivityAsync(apiClient_t *apiClient, char *tenantId, char
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2307,16 +2419,16 @@ ActivityFeedsAPI_patchActivityAsync(apiClient_t *apiClient, char *tenantId, char
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2375,17 +2487,17 @@ ActivityFeedsAPI_patchActivityAsync(apiClient_t *apiClient, char *tenantId, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -2424,7 +2536,7 @@ end:
 // Patch an activity type
 //
 empty_envelope_t*
-ActivityFeedsAPI_patchActivityTypeAsync(apiClient_t *apiClient, char *tenantId, char *activityTypeId, char *api_version, char *x_api_version, list_t *operation)
+ActivityFeedsAPI_patchActivityTypeAsync(apiClient_t *apiClient, char *tenantId, char *activityTypeId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2496,14 +2608,14 @@ ActivityFeedsAPI_patchActivityTypeAsync(apiClient_t *apiClient, char *tenantId, 
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2511,16 +2623,16 @@ ActivityFeedsAPI_patchActivityTypeAsync(apiClient_t *apiClient, char *tenantId, 
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2578,17 +2690,17 @@ ActivityFeedsAPI_patchActivityTypeAsync(apiClient_t *apiClient, char *tenantId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

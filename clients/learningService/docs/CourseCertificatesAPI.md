@@ -360,7 +360,7 @@ No authorization required
 //
 // Partially updates a course certificate for the specified tenant.
 //
-empty_envelope_t* CourseCertificatesAPI_patchCourseCertificateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CourseCertificatesAPI_patchCourseCertificateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 **courseCertificateId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -395,7 +395,7 @@ No authorization required
 //
 // Partially updates a course certificate template for the specified tenant.
 //
-empty_envelope_t* CourseCertificatesAPI_patchCourseCertificateTemplateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateTemplateId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CourseCertificatesAPI_patchCourseCertificateTemplateAsync(apiClient_t *apiClient, char *tenantId, char *courseCertificateTemplateId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -406,7 +406,7 @@ Name | Type | Description  | Notes
 **courseCertificateTemplateId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

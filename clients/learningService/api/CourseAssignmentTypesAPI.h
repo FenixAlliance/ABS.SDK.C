@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_assignment_type_create_dto.h"
 #include "../model/course_assignment_type_dto.h"
+#include "../model/course_assignment_type_dto_collection_query_parameters.h"
 #include "../model/course_assignment_type_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a course assignment type
@@ -42,7 +43,7 @@ CourseAssignmentTypesAPI_getCourseAssignmentTypeByIdAsync(apiClient_t *apiClient
 // Retrieves all course assignment types for the specified tenant.
 //
 list_t*
-CourseAssignmentTypesAPI_getCourseAssignmentTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseAssignmentTypesAPI_getCourseAssignmentTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_assignment_type_dto_collection_query_parameters_t *course_assignment_type_dto_collection_query_parameters);
 
 
 // Get course assignment types count
@@ -50,7 +51,7 @@ CourseAssignmentTypesAPI_getCourseAssignmentTypesAsync(apiClient_t *apiClient, c
 // Returns the count of course assignment types for the specified tenant.
 //
 int*
-CourseAssignmentTypesAPI_getCourseAssignmentTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseAssignmentTypesAPI_getCourseAssignmentTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_assignment_type_dto_collection_query_parameters_t *course_assignment_type_dto_collection_query_parameters);
 
 
 // Patch a course assignment type
@@ -58,7 +59,7 @@ CourseAssignmentTypesAPI_getCourseAssignmentTypesCountAsync(apiClient_t *apiClie
 // Partially updates a course assignment type for the specified tenant.
 //
 empty_envelope_t*
-CourseAssignmentTypesAPI_patchCourseAssignmentTypeAsync(apiClient_t *apiClient, char *tenantId, char *assignmentTypeId, char *api_version, char *x_api_version, list_t *operation);
+CourseAssignmentTypesAPI_patchCourseAssignmentTypeAsync(apiClient_t *apiClient, char *tenantId, char *assignmentTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course assignment type

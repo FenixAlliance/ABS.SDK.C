@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/rounding_policy_create_dto.h"
+#include "../model/rounding_policy_dto_collection_query_parameters.h"
 #include "../model/rounding_policy_dto_envelope.h"
 #include "../model/rounding_policy_dto_list_envelope.h"
 #include "../model/rounding_policy_update_dto.h"
@@ -36,7 +37,7 @@ RoundingPoliciesAPI_deleteRoundingPolicyAsync(apiClient_t *apiClient, char *tena
 // Retrieves all rounding policies for the current tenant with OData support.
 //
 rounding_policy_dto_list_envelope_t*
-RoundingPoliciesAPI_getRoundingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+RoundingPoliciesAPI_getRoundingPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, rounding_policy_dto_collection_query_parameters_t *rounding_policy_dto_collection_query_parameters);
 
 
 // Counts rounding policies
@@ -44,7 +45,7 @@ RoundingPoliciesAPI_getRoundingPoliciesAsync(apiClient_t *apiClient, char *tenan
 // Gets the count of rounding policies for the current tenant.
 //
 int32_envelope_t*
-RoundingPoliciesAPI_getRoundingPoliciesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+RoundingPoliciesAPI_getRoundingPoliciesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, rounding_policy_dto_collection_query_parameters_t *rounding_policy_dto_collection_query_parameters);
 
 
 // Gets a rounding policy by ID
@@ -60,7 +61,7 @@ RoundingPoliciesAPI_getRoundingPolicyByIdAsync(apiClient_t *apiClient, char *ten
 // Partially updates the specified rounding policy using a JSON Patch document.
 //
 empty_envelope_t*
-RoundingPoliciesAPI_patchRoundingPolicyAsync(apiClient_t *apiClient, char *tenantId, char *roundingPolicyId, char *api_version, char *x_api_version, list_t *operation);
+RoundingPoliciesAPI_patchRoundingPolicyAsync(apiClient_t *apiClient, char *tenantId, char *roundingPolicyId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates a rounding policy

@@ -9,8 +9,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/security_permission_create_dto.h"
+#include "../model/security_permission_dto_collection_query_parameters.h"
 #include "../model/security_permission_dto_envelope.h"
 #include "../model/security_permission_dto_list_envelope.h"
 #include "../model/security_permission_update_dto.h"
@@ -87,7 +88,7 @@ PermissionsAPI_getPermissionAsync(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves all security permissions for the specified tenant.
 //
 security_permission_dto_list_envelope_t*
-PermissionsAPI_getPermissionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PermissionsAPI_getPermissionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, security_permission_dto_collection_query_parameters_t *security_permission_dto_collection_query_parameters);
 
 
 // Get permissions by enrollment
@@ -103,7 +104,7 @@ PermissionsAPI_getPermissionsByEnrollmentAsync(apiClient_t *apiClient, char *ten
 // Retrieves the count of security permissions for the specified tenant.
 //
 int32_envelope_t*
-PermissionsAPI_getPermissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PermissionsAPI_getPermissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, security_permission_dto_collection_query_parameters_t *security_permission_dto_collection_query_parameters);
 
 
 // Get roles by permission
@@ -119,7 +120,7 @@ PermissionsAPI_getRolesByPermissionAsync(apiClient_t *apiClient, char *tenantId,
 // Partially updates an existing security permission using a JSON Patch document.
 //
 empty_envelope_t*
-PermissionsAPI_patchPermissionAsync(apiClient_t *apiClient, char *tenantId, char *securityPermissionId, list_t *operation, char *api_version, char *x_api_version);
+PermissionsAPI_patchPermissionAsync(apiClient_t *apiClient, char *tenantId, char *securityPermissionId, list_t *patch_operation, char *api_version, char *x_api_version);
 
 
 // Revoke a permission from a business application

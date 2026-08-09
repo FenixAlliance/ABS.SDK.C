@@ -63,9 +63,10 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/production_plan_create_dto.c
     model/production_plan_dto.c
+    model/production_plan_dto_collection_query_parameters.c
     model/production_plan_dto_list_envelope.c
     model/production_plan_update_dto.c
     model/refresh_request.c
@@ -76,14 +77,17 @@ set(SRCS
     model/two_factor_response.c
     model/work_order_create_dto.c
     model/work_order_dto.c
+    model/work_order_dto_collection_query_parameters.c
     model/work_order_dto_list_envelope.c
     model/work_order_type_create_dto.c
     model/work_order_type_dto.c
+    model/work_order_type_dto_collection_query_parameters.c
     model/work_order_type_dto_list_envelope.c
     model/work_order_type_update_dto.c
     model/work_order_update_dto.c
     model/workstation_create_dto.c
     model/workstation_dto.c
+    model/workstation_dto_collection_query_parameters.c
     model/workstation_dto_list_envelope.c
     model/workstation_update_dto.c
     api/FenixAllianceABSWebAPI.c
@@ -110,9 +114,10 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/production_plan_create_dto.h
     model/production_plan_dto.h
+    model/production_plan_dto_collection_query_parameters.h
     model/production_plan_dto_list_envelope.h
     model/production_plan_update_dto.h
     model/refresh_request.h
@@ -123,14 +128,17 @@ set(HDRS
     model/two_factor_response.h
     model/work_order_create_dto.h
     model/work_order_dto.h
+    model/work_order_dto_collection_query_parameters.h
     model/work_order_dto_list_envelope.h
     model/work_order_type_create_dto.h
     model/work_order_type_dto.h
+    model/work_order_type_dto_collection_query_parameters.h
     model/work_order_type_dto_list_envelope.h
     model/work_order_type_update_dto.h
     model/work_order_update_dto.h
     model/workstation_create_dto.h
     model/workstation_dto.h
+    model/workstation_dto_collection_query_parameters.h
     model/workstation_dto_list_envelope.h
     model/workstation_update_dto.h
     api/FenixAllianceABSWebAPI.h

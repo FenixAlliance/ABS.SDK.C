@@ -71,7 +71,7 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/prepare_and_create_async_request.c
     model/prepare_and_quick_sign_async_request.c
     model/quick_sign_signed_document_dto.c
@@ -81,37 +81,47 @@ set(SRCS
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
     model/signature_dto.c
+    model/signature_dto_collection_query_parameters.c
     model/signature_dto_list_envelope.c
     model/signature_verification_dto.c
     model/signed_document_attachment_create_dto.c
     model/signed_document_attachment_dto.c
+    model/signed_document_attachment_dto_collection_query_parameters.c
     model/signed_document_attachment_dto_list_envelope.c
     model/signed_document_attachment_update_dto.c
     model/signed_document_create_dto.c
     model/signed_document_dto.c
+    model/signed_document_dto_collection_query_parameters.c
     model/signed_document_dto_list_envelope.c
     model/signed_document_update_dto.c
     model/signing_certificate_create_dto.c
     model/signing_certificate_dto.c
+    model/signing_certificate_dto_collection_query_parameters.c
     model/signing_certificate_dto_list_envelope.c
     model/signing_certificate_update_dto.c
     model/signing_log_dto.c
+    model/signing_log_dto_collection_query_parameters.c
     model/signing_log_dto_list_envelope.c
     model/signing_participant_dto.c
+    model/signing_participant_dto_collection_query_parameters.c
     model/signing_participant_dto_list_envelope.c
     model/signing_profile_create_dto.c
     model/signing_profile_dto.c
+    model/signing_profile_dto_collection_query_parameters.c
     model/signing_profile_dto_list_envelope.c
     model/signing_profile_graphical_representation_create_dto.c
     model/signing_profile_graphical_representation_dto.c
+    model/signing_profile_graphical_representation_dto_collection_query_parameters.c
     model/signing_profile_graphical_representation_dto_list_envelope.c
     model/signing_profile_graphical_representation_update_dto.c
     model/signing_profile_update_dto.c
     model/signing_request_dto.c
+    model/signing_request_dto_collection_query_parameters.c
     model/signing_request_dto_list_envelope.c
     model/trust_artifact_reference_dto.c
     model/trust_artifact_reference_dto_envelope.c
     model/trust_signing_provider_descriptor_dto.c
+    model/trust_signing_provider_descriptor_dto_collection_query_parameters.c
     model/trust_signing_provider_descriptor_dto_list_envelope.c
     model/trust_signing_readiness_dto.c
     model/trust_signing_readiness_dto_envelope.c
@@ -158,7 +168,7 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/prepare_and_create_async_request.h
     model/prepare_and_quick_sign_async_request.h
     model/quick_sign_signed_document_dto.h
@@ -168,37 +178,47 @@ set(HDRS
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
     model/signature_dto.h
+    model/signature_dto_collection_query_parameters.h
     model/signature_dto_list_envelope.h
     model/signature_verification_dto.h
     model/signed_document_attachment_create_dto.h
     model/signed_document_attachment_dto.h
+    model/signed_document_attachment_dto_collection_query_parameters.h
     model/signed_document_attachment_dto_list_envelope.h
     model/signed_document_attachment_update_dto.h
     model/signed_document_create_dto.h
     model/signed_document_dto.h
+    model/signed_document_dto_collection_query_parameters.h
     model/signed_document_dto_list_envelope.h
     model/signed_document_update_dto.h
     model/signing_certificate_create_dto.h
     model/signing_certificate_dto.h
+    model/signing_certificate_dto_collection_query_parameters.h
     model/signing_certificate_dto_list_envelope.h
     model/signing_certificate_update_dto.h
     model/signing_log_dto.h
+    model/signing_log_dto_collection_query_parameters.h
     model/signing_log_dto_list_envelope.h
     model/signing_participant_dto.h
+    model/signing_participant_dto_collection_query_parameters.h
     model/signing_participant_dto_list_envelope.h
     model/signing_profile_create_dto.h
     model/signing_profile_dto.h
+    model/signing_profile_dto_collection_query_parameters.h
     model/signing_profile_dto_list_envelope.h
     model/signing_profile_graphical_representation_create_dto.h
     model/signing_profile_graphical_representation_dto.h
+    model/signing_profile_graphical_representation_dto_collection_query_parameters.h
     model/signing_profile_graphical_representation_dto_list_envelope.h
     model/signing_profile_graphical_representation_update_dto.h
     model/signing_profile_update_dto.h
     model/signing_request_dto.h
+    model/signing_request_dto_collection_query_parameters.h
     model/signing_request_dto_list_envelope.h
     model/trust_artifact_reference_dto.h
     model/trust_artifact_reference_dto_envelope.h
     model/trust_signing_provider_descriptor_dto.h
+    model/trust_signing_provider_descriptor_dto_collection_query_parameters.h
     model/trust_signing_provider_descriptor_dto_list_envelope.h
     model/trust_signing_readiness_dto.h
     model/trust_signing_readiness_dto_envelope.h

@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/employee_type_create_dto.h"
+#include "../model/employee_type_dto_collection_query_parameters.h"
 #include "../model/employee_type_dto_envelope.h"
 #include "../model/employee_type_dto_list_envelope.h"
 #include "../model/employee_type_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an employee type
@@ -44,7 +45,7 @@ EmployeeTypesAPI_getEmployeeTypeByIdAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves employee types for the specified tenant.
 //
 employee_type_dto_list_envelope_t*
-EmployeeTypesAPI_getEmployeeTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EmployeeTypesAPI_getEmployeeTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, employee_type_dto_collection_query_parameters_t *employee_type_dto_collection_query_parameters);
 
 
 // Count employee types
@@ -52,7 +53,7 @@ EmployeeTypesAPI_getEmployeeTypesAsync(apiClient_t *apiClient, char *tenantId, c
 // Counts employee types for the specified tenant.
 //
 int32_envelope_t*
-EmployeeTypesAPI_getEmployeeTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EmployeeTypesAPI_getEmployeeTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, employee_type_dto_collection_query_parameters_t *employee_type_dto_collection_query_parameters);
 
 
 // Patch an employee type
@@ -60,7 +61,7 @@ EmployeeTypesAPI_getEmployeeTypesCountAsync(apiClient_t *apiClient, char *tenant
 // Partially updates an existing employee type for the specified tenant.
 //
 empty_envelope_t*
-EmployeeTypesAPI_patchEmployeeTypeAsync(apiClient_t *apiClient, char *tenantId, char *employeeTypeId, char *api_version, char *x_api_version, list_t *operation);
+EmployeeTypesAPI_patchEmployeeTypeAsync(apiClient_t *apiClient, char *tenantId, char *employeeTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an employee type

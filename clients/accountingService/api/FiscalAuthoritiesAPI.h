@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/fiscal_authority_create_dto.h"
+#include "../model/fiscal_authority_dto_collection_query_parameters.h"
 #include "../model/fiscal_authority_dto_envelope.h"
 #include "../model/fiscal_authority_dto_list_envelope.h"
 #include "../model/fiscal_authority_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a fiscal authority
@@ -36,7 +37,7 @@ FiscalAuthoritiesAPI_deleteFiscalAuthority(apiClient_t *apiClient, char *tenantI
 // Retrieves all fiscal authorities for the specified tenant using OData query options.
 //
 fiscal_authority_dto_list_envelope_t*
-FiscalAuthoritiesAPI_getFiscalAuthorities(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+FiscalAuthoritiesAPI_getFiscalAuthorities(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_authority_dto_collection_query_parameters_t *fiscal_authority_dto_collection_query_parameters);
 
 
 // Get fiscal authorities count
@@ -44,7 +45,7 @@ FiscalAuthoritiesAPI_getFiscalAuthorities(apiClient_t *apiClient, char *tenantId
 // Returns the total count of fiscal authorities for the specified tenant.
 //
 int32_envelope_t*
-FiscalAuthoritiesAPI_getFiscalAuthoritiesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+FiscalAuthoritiesAPI_getFiscalAuthoritiesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_authority_dto_collection_query_parameters_t *fiscal_authority_dto_collection_query_parameters);
 
 
 // Get fiscal authority by ID
@@ -60,7 +61,7 @@ FiscalAuthoritiesAPI_getFiscalAuthority(apiClient_t *apiClient, char *tenantId, 
 // Partially updates a fiscal authority.
 //
 empty_envelope_t*
-FiscalAuthoritiesAPI_patchFiscalAuthorityAsync(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version, list_t *operation);
+FiscalAuthoritiesAPI_patchFiscalAuthorityAsync(apiClient_t *apiClient, char *tenantId, char *authorityId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a fiscal authority

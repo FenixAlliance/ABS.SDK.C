@@ -10,6 +10,9 @@ item_category_dto_list_envelope_t *item_category_dto_list_envelope_create(
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     list_t *result
     ) {
@@ -21,6 +24,9 @@ item_category_dto_list_envelope_t *item_category_dto_list_envelope_create(
     item_category_dto_list_envelope_local_var->error_message = error_message;
     item_category_dto_list_envelope_local_var->correlation_id = correlation_id;
     item_category_dto_list_envelope_local_var->timestamp = timestamp;
+    item_category_dto_list_envelope_local_var->http_status = http_status;
+    item_category_dto_list_envelope_local_var->error_code = error_code;
+    item_category_dto_list_envelope_local_var->validation_details = validation_details;
     item_category_dto_list_envelope_local_var->activity_id = activity_id;
     item_category_dto_list_envelope_local_var->result = result;
 
@@ -44,6 +50,20 @@ void item_category_dto_list_envelope_free(item_category_dto_list_envelope_t *ite
     if (item_category_dto_list_envelope->timestamp) {
         free(item_category_dto_list_envelope->timestamp);
         item_category_dto_list_envelope->timestamp = NULL;
+    }
+    if (item_category_dto_list_envelope->error_code) {
+        free(item_category_dto_list_envelope->error_code);
+        item_category_dto_list_envelope->error_code = NULL;
+    }
+    if (item_category_dto_list_envelope->validation_details) {
+        list_ForEach(listEntry, item_category_dto_list_envelope->validation_details) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free (localKeyValue->key);
+            free (localKeyValue->value);
+            keyValuePair_free(localKeyValue);
+        }
+        list_freeList(item_category_dto_list_envelope->validation_details);
+        item_category_dto_list_envelope->validation_details = NULL;
     }
     if (item_category_dto_list_envelope->activity_id) {
         free(item_category_dto_list_envelope->activity_id);
@@ -94,6 +114,38 @@ cJSON *item_category_dto_list_envelope_convertToJSON(item_category_dto_list_enve
     }
 
 
+    // item_category_dto_list_envelope->http_status
+    if(item_category_dto_list_envelope->http_status) {
+    if(cJSON_AddNumberToObject(item, "httpStatus", item_category_dto_list_envelope->http_status) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // item_category_dto_list_envelope->error_code
+    if(item_category_dto_list_envelope->error_code) {
+    if(cJSON_AddStringToObject(item, "errorCode", item_category_dto_list_envelope->error_code) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_category_dto_list_envelope->validation_details
+    if(item_category_dto_list_envelope->validation_details) {
+    cJSON *validation_details = cJSON_AddObjectToObject(item, "validationDetails");
+    if(validation_details == NULL) {
+        goto fail; //primitive map container
+    }
+    cJSON *localMapObject = validation_details;
+    listEntry_t *validation_detailsListEntry;
+    if (item_category_dto_list_envelope->validation_details) {
+    list_ForEach(validation_detailsListEntry, item_category_dto_list_envelope->validation_details) {
+        keyValuePair_t *localKeyValue = (keyValuePair_t*)validation_detailsListEntry->data;
+    }
+    }
+    }
+
+
     // item_category_dto_list_envelope->activity_id
     if(item_category_dto_list_envelope->activity_id) {
     if(cJSON_AddStringToObject(item, "activityId", item_category_dto_list_envelope->activity_id) == NULL) {
@@ -132,6 +184,9 @@ fail:
 item_category_dto_list_envelope_t *item_category_dto_list_envelope_parseFromJSON(cJSON *item_category_dto_list_envelopeJSON){
 
     item_category_dto_list_envelope_t *item_category_dto_list_envelope_local_var = NULL;
+
+    // define the local map for item_category_dto_list_envelope->validation_details
+    list_t *validation_detailsList = NULL;
 
     // define the local list for item_category_dto_list_envelope->result
     list_t *resultList = NULL;
@@ -172,6 +227,44 @@ item_category_dto_list_envelope_t *item_category_dto_list_envelope_parseFromJSON
     }
     }
 
+    // item_category_dto_list_envelope->http_status
+    cJSON *http_status = cJSON_GetObjectItemCaseSensitive(item_category_dto_list_envelopeJSON, "httpStatus");
+    if (http_status) { 
+    if(!cJSON_IsNumber(http_status))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // item_category_dto_list_envelope->error_code
+    cJSON *error_code = cJSON_GetObjectItemCaseSensitive(item_category_dto_list_envelopeJSON, "errorCode");
+    if (error_code) { 
+    if(!cJSON_IsString(error_code) && !cJSON_IsNull(error_code))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_category_dto_list_envelope->validation_details
+    cJSON *validation_details = cJSON_GetObjectItemCaseSensitive(item_category_dto_list_envelopeJSON, "validationDetails");
+    if (validation_details) { 
+    cJSON *validation_details_local_map = NULL;
+    if(!cJSON_IsObject(validation_details) && !cJSON_IsNull(validation_details))
+    {
+        goto end;//primitive map container
+    }
+    if(cJSON_IsObject(validation_details))
+    {
+        validation_detailsList = list_createList();
+        keyValuePair_t *localMapKeyPair;
+        cJSON_ArrayForEach(validation_details_local_map, validation_details)
+        {
+            cJSON *localMapObject = validation_details_local_map;
+            list_addElement(validation_detailsList , localMapKeyPair);
+        }
+    }
+    }
+
     // item_category_dto_list_envelope->activity_id
     cJSON *activity_id = cJSON_GetObjectItemCaseSensitive(item_category_dto_list_envelopeJSON, "activityId");
     if (activity_id) { 
@@ -208,12 +301,27 @@ item_category_dto_list_envelope_t *item_category_dto_list_envelope_parseFromJSON
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL,
         correlation_id && !cJSON_IsNull(correlation_id) ? strdup(correlation_id->valuestring) : NULL,
         timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
+        http_status ? http_status->valuedouble : 0,
+        error_code && !cJSON_IsNull(error_code) ? strdup(error_code->valuestring) : NULL,
+        validation_details ? validation_detailsList : NULL,
         activity_id && !cJSON_IsNull(activity_id) ? strdup(activity_id->valuestring) : NULL,
         result ? resultList : NULL
         );
 
     return item_category_dto_list_envelope_local_var;
 end:
+    if (validation_detailsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, validation_detailsList) {
+            keyValuePair_t *localKeyValue = (keyValuePair_t*) listEntry->data;
+            free(localKeyValue->key);
+            localKeyValue->key = NULL;
+            keyValuePair_free(localKeyValue);
+            localKeyValue = NULL;
+        }
+        list_freeList(validation_detailsList);
+        validation_detailsList = NULL;
+    }
     if (resultList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, resultList) {

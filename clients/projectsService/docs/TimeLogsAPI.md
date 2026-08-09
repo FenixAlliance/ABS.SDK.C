@@ -22,7 +22,7 @@ Method | HTTP request | Description
 //
 // Returns the total count of time logs for a specific project period with OData query support.
 //
-int32_envelope_t* TimeLogsAPI_countProjectPeriodTimeLogsAsync(apiClient_t *apiClient, char *tenantId, char *projectPeriodId, char *api_version, char *x_api_version);
+int32_envelope_t* TimeLogsAPI_countProjectPeriodTimeLogsAsync(apiClient_t *apiClient, char *tenantId, char *projectPeriodId, char *api_version, char *x_api_version, project_time_log_dto_collection_query_parameters_t *project_time_log_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -33,6 +33,7 @@ Name | Type | Description  | Notes
 **projectPeriodId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**project_time_log_dto_collection_query_parameters** | **[project_time_log_dto_collection_query_parameters_t](project_time_log_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -45,7 +46,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -122,7 +123,7 @@ No authorization required
 //
 // Retrieves a list of time logs for a specific project period with OData query support.
 //
-project_time_log_dto_list_envelope_t* TimeLogsAPI_getProjectPeriodTimeLogsAsync(apiClient_t *apiClient, char *tenantId, char *projectPeriodId, char *api_version, char *x_api_version);
+project_time_log_dto_list_envelope_t* TimeLogsAPI_getProjectPeriodTimeLogsAsync(apiClient_t *apiClient, char *tenantId, char *projectPeriodId, char *api_version, char *x_api_version, project_time_log_dto_collection_query_parameters_t *project_time_log_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -133,6 +134,7 @@ Name | Type | Description  | Notes
 **projectPeriodId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**project_time_log_dto_collection_query_parameters** | **[project_time_log_dto_collection_query_parameters_t](project_time_log_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -145,7 +147,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -292,7 +294,7 @@ No authorization required
 //
 // Partially updates an existing project time log entry.
 //
-void TimeLogsAPI_patchProjectTimeLogAsync(apiClient_t *apiClient, char *timeLogId, char *tenantId, char *api_version, char *x_api_version, list_t *operation);
+void TimeLogsAPI_patchProjectTimeLogAsync(apiClient_t *apiClient, char *timeLogId, char *tenantId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -303,7 +305,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

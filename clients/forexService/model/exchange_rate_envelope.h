@@ -24,6 +24,9 @@ typedef struct exchange_rate_envelope_t {
     char *error_message; // string
     char *correlation_id; // string
     char *timestamp; //date time
+    int http_status; //numeric
+    char *error_code; // string
+    list_t* validation_details; //map
     char *activity_id; // string
     struct exchange_rate_t *result; //model
 
@@ -34,6 +37,9 @@ exchange_rate_envelope_t *exchange_rate_envelope_create(
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     exchange_rate_t *result
 );

@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/asset_category_create_dto.h"
+#include "../model/asset_category_dto_collection_query_parameters.h"
 #include "../model/asset_category_dto_envelope.h"
 #include "../model/asset_category_dto_list_envelope.h"
 #include "../model/asset_category_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new asset category
@@ -36,7 +37,7 @@ AssetCategoriesAPI_deleteAssetCategory(apiClient_t *apiClient, char *tenantId, c
 // Retrieves all asset categories for the authenticated tenant.
 //
 asset_category_dto_list_envelope_t*
-AssetCategoriesAPI_getAssetCategories(apiClient_t *apiClient, char *tenantId);
+AssetCategoriesAPI_getAssetCategories(apiClient_t *apiClient, char *tenantId, asset_category_dto_collection_query_parameters_t *asset_category_dto_collection_query_parameters);
 
 
 // Gets the count of asset categories
@@ -44,7 +45,7 @@ AssetCategoriesAPI_getAssetCategories(apiClient_t *apiClient, char *tenantId);
 // Returns the total number of asset categories for the authenticated tenant.
 //
 int32_envelope_t*
-AssetCategoriesAPI_getAssetCategoriesCount(apiClient_t *apiClient, char *tenantId);
+AssetCategoriesAPI_getAssetCategoriesCount(apiClient_t *apiClient, char *tenantId, asset_category_dto_collection_query_parameters_t *asset_category_dto_collection_query_parameters);
 
 
 // Gets a specific asset category
@@ -60,7 +61,7 @@ AssetCategoriesAPI_getAssetCategory(apiClient_t *apiClient, char *tenantId, char
 // Applies a JSON Patch document to an existing asset category for the authenticated tenant.
 //
 empty_envelope_t*
-AssetCategoriesAPI_patchAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *operation);
+AssetCategoriesAPI_patchAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *patch_operation);
 
 
 // Updates an existing asset category

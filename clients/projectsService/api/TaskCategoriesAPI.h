@@ -8,9 +8,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/task_category_create_dto.h"
 #include "../model/task_category_dto.h"
+#include "../model/task_category_dto_collection_query_parameters.h"
 #include "../model/task_category_dto_list_envelope.h"
 #include "../model/task_category_update_dto.h"
 
@@ -20,7 +21,7 @@
 // Gets the count of task categories for the current tenant.
 //
 int32_envelope_t*
-TaskCategoriesAPI_countTenantTaskCategoriesAsync(apiClient_t *apiClient, char *tenantId);
+TaskCategoriesAPI_countTenantTaskCategoriesAsync(apiClient_t *apiClient, char *tenantId, task_category_dto_collection_query_parameters_t *task_category_dto_collection_query_parameters);
 
 
 // Creates a new task category
@@ -60,7 +61,7 @@ TaskCategoriesAPI_getTaskCategoryTaskTypesAsync(apiClient_t *apiClient, char *ta
 // Gets all task categories for the current tenant with OData support.
 //
 task_category_dto_list_envelope_t*
-TaskCategoriesAPI_getTenantTaskCategoriesAsync(apiClient_t *apiClient, char *tenantId);
+TaskCategoriesAPI_getTenantTaskCategoriesAsync(apiClient_t *apiClient, char *tenantId, task_category_dto_collection_query_parameters_t *task_category_dto_collection_query_parameters);
 
 
 // Patches a task category
@@ -68,7 +69,7 @@ TaskCategoriesAPI_getTenantTaskCategoriesAsync(apiClient_t *apiClient, char *ten
 // Partially updates the specified task category.
 //
 empty_envelope_t*
-TaskCategoriesAPI_patchTaskCategoryAsync(apiClient_t *apiClient, char *taskCategoryId, char *tenantId, list_t *operation);
+TaskCategoriesAPI_patchTaskCategoryAsync(apiClient_t *apiClient, char *taskCategoryId, char *tenantId, list_t *patch_operation);
 
 
 // Updates a task category

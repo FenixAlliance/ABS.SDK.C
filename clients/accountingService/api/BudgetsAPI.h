@@ -6,17 +6,19 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/budget_account_entry_create_dto.h"
+#include "../model/budget_account_entry_dto_collection_query_parameters.h"
 #include "../model/budget_account_entry_dto_envelope.h"
 #include "../model/budget_account_entry_dto_i_read_only_list_envelope.h"
 #include "../model/budget_account_entry_update_dto.h"
 #include "../model/budget_create_dto.h"
+#include "../model/budget_dto_collection_query_parameters.h"
 #include "../model/budget_dto_envelope.h"
 #include "../model/budget_dto_i_read_only_list_envelope.h"
 #include "../model/budget_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a budget account entry
@@ -56,7 +58,7 @@ BudgetsAPI_deleteBudgetAsync(apiClient_t *apiClient, char *tenantId, char *budge
 // Get all budget account entries
 //
 budget_account_entry_dto_i_read_only_list_envelope_t*
-BudgetsAPI_getBudgetAccountEntriesCollectionAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version);
+BudgetsAPI_getBudgetAccountEntriesCollectionAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, budget_account_entry_dto_collection_query_parameters_t *budget_account_entry_dto_collection_query_parameters);
 
 
 // Gets a budget account entry by id
@@ -80,7 +82,7 @@ BudgetsAPI_getBudgetDetailsAsync(apiClient_t *apiClient, char *tenantId, char *b
 // Get all budgets
 //
 budget_dto_i_read_only_list_envelope_t*
-BudgetsAPI_getBudgetsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BudgetsAPI_getBudgetsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, budget_dto_collection_query_parameters_t *budget_dto_collection_query_parameters);
 
 
 // Get the count of budgets
@@ -88,7 +90,7 @@ BudgetsAPI_getBudgetsAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
 // Get the count of budgets.
 //
 int32_envelope_t*
-BudgetsAPI_getBudgetsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BudgetsAPI_getBudgetsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, budget_dto_collection_query_parameters_t *budget_dto_collection_query_parameters);
 
 
 // Patches a budget account entry
@@ -96,7 +98,7 @@ BudgetsAPI_getBudgetsCountAsync(apiClient_t *apiClient, char *tenantId, char *ap
 // Partially update a budget account entry using JSON Patch.
 //
 empty_envelope_t*
-BudgetsAPI_patchBudgetAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+BudgetsAPI_patchBudgetAccountEntryAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patches a budget
@@ -104,7 +106,7 @@ BudgetsAPI_patchBudgetAccountEntryAsync(apiClient_t *apiClient, char *tenantId, 
 // Partially update a budget using JSON Patch.
 //
 empty_envelope_t*
-BudgetsAPI_patchBudgetAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *operation);
+BudgetsAPI_patchBudgetAsync(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates a budget account entry

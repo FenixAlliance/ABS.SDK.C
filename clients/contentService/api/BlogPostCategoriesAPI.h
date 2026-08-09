@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/blog_post_category_create_dto.h"
+#include "../model/blog_post_category_dto_collection_query_parameters.h"
 #include "../model/blog_post_category_dto_envelope.h"
 #include "../model/blog_post_category_dto_list_envelope.h"
 #include "../model/blog_post_category_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Count blog post categories
@@ -20,7 +21,7 @@
 // Counts all blog post categories for the specified tenant.
 //
 int32_envelope_t*
-BlogPostCategoriesAPI_countBlogPostCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BlogPostCategoriesAPI_countBlogPostCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, blog_post_category_dto_collection_query_parameters_t *blog_post_category_dto_collection_query_parameters);
 
 
 // Create a blog post category
@@ -44,7 +45,7 @@ BlogPostCategoriesAPI_deleteBlogPostCategoryAsync(apiClient_t *apiClient, char *
 // Retrieves all blog post categories for the specified tenant.
 //
 blog_post_category_dto_list_envelope_t*
-BlogPostCategoriesAPI_getBlogPostCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BlogPostCategoriesAPI_getBlogPostCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, blog_post_category_dto_collection_query_parameters_t *blog_post_category_dto_collection_query_parameters);
 
 
 // Get blog post category by ID
@@ -60,7 +61,7 @@ BlogPostCategoriesAPI_getBlogPostCategoryByIdAsync(apiClient_t *apiClient, char 
 // Partially updates an existing blog post category for the specified tenant.
 //
 empty_envelope_t*
-BlogPostCategoriesAPI_patchBlogPostCategoryAsync(apiClient_t *apiClient, char *tenantId, char *blogPostCategoryId, char *api_version, char *x_api_version, list_t *operation);
+BlogPostCategoriesAPI_patchBlogPostCategoryAsync(apiClient_t *apiClient, char *tenantId, char *blogPostCategoryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a blog post category

@@ -57,10 +57,12 @@ set(SRCS
     model/access_token_response.c
     model/bill_of_lading_create_dto.c
     model/bill_of_lading_dto.c
+    model/bill_of_lading_dto_collection_query_parameters.c
     model/bill_of_lading_dto_envelope.c
     model/bill_of_lading_dto_list_envelope.c
     model/bill_of_lading_line_create_dto.c
     model/bill_of_lading_line_dto.c
+    model/bill_of_lading_line_dto_collection_query_parameters.c
     model/bill_of_lading_line_dto_envelope.c
     model/bill_of_lading_line_dto_list_envelope.c
     model/bill_of_lading_line_update_dto.c
@@ -74,47 +76,55 @@ set(SRCS
     model/int32_envelope.c
     model/item_shipping_policy_create_dto.c
     model/item_shipping_policy_dto.c
+    model/item_shipping_policy_dto_collection_query_parameters.c
     model/item_shipping_policy_dto_envelope.c
     model/item_shipping_policy_dto_list_envelope.c
     model/item_shipping_policy_update_dto.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
     model/shipment_create_dto.c
     model/shipment_dto.c
+    model/shipment_dto_collection_query_parameters.c
     model/shipment_dto_envelope.c
     model/shipment_dto_list_envelope.c
     model/shipment_update_dto.c
     model/shipping_class_create_dto.c
     model/shipping_class_dto.c
+    model/shipping_class_dto_collection_query_parameters.c
     model/shipping_class_dto_envelope.c
     model/shipping_class_dto_list_envelope.c
     model/shipping_class_update_dto.c
     model/shipping_courier_create_dto.c
     model/shipping_courier_dto.c
+    model/shipping_courier_dto_collection_query_parameters.c
     model/shipping_courier_dto_envelope.c
     model/shipping_courier_dto_list_envelope.c
     model/shipping_courier_update_dto.c
     model/shipping_label_create_dto.c
     model/shipping_label_dto.c
+    model/shipping_label_dto_collection_query_parameters.c
     model/shipping_label_dto_envelope.c
     model/shipping_label_dto_list_envelope.c
     model/shipping_label_update_dto.c
     model/shipping_method_create_dto.c
     model/shipping_method_dto.c
+    model/shipping_method_dto_collection_query_parameters.c
     model/shipping_method_dto_envelope.c
     model/shipping_method_dto_list_envelope.c
     model/shipping_method_update_dto.c
     model/shipping_region_create_dto.c
     model/shipping_region_dto.c
+    model/shipping_region_dto_collection_query_parameters.c
     model/shipping_region_dto_envelope.c
     model/shipping_region_dto_list_envelope.c
     model/shipping_region_update_dto.c
     model/shipping_zone_create_dto.c
     model/shipping_zone_dto.c
+    model/shipping_zone_dto_collection_query_parameters.c
     model/shipping_zone_dto_envelope.c
     model/shipping_zone_dto_list_envelope.c
     model/shipping_zone_update_dto.c
@@ -143,10 +153,12 @@ set(HDRS
     model/access_token_response.h
     model/bill_of_lading_create_dto.h
     model/bill_of_lading_dto.h
+    model/bill_of_lading_dto_collection_query_parameters.h
     model/bill_of_lading_dto_envelope.h
     model/bill_of_lading_dto_list_envelope.h
     model/bill_of_lading_line_create_dto.h
     model/bill_of_lading_line_dto.h
+    model/bill_of_lading_line_dto_collection_query_parameters.h
     model/bill_of_lading_line_dto_envelope.h
     model/bill_of_lading_line_dto_list_envelope.h
     model/bill_of_lading_line_update_dto.h
@@ -160,47 +172,55 @@ set(HDRS
     model/int32_envelope.h
     model/item_shipping_policy_create_dto.h
     model/item_shipping_policy_dto.h
+    model/item_shipping_policy_dto_collection_query_parameters.h
     model/item_shipping_policy_dto_envelope.h
     model/item_shipping_policy_dto_list_envelope.h
     model/item_shipping_policy_update_dto.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
     model/shipment_create_dto.h
     model/shipment_dto.h
+    model/shipment_dto_collection_query_parameters.h
     model/shipment_dto_envelope.h
     model/shipment_dto_list_envelope.h
     model/shipment_update_dto.h
     model/shipping_class_create_dto.h
     model/shipping_class_dto.h
+    model/shipping_class_dto_collection_query_parameters.h
     model/shipping_class_dto_envelope.h
     model/shipping_class_dto_list_envelope.h
     model/shipping_class_update_dto.h
     model/shipping_courier_create_dto.h
     model/shipping_courier_dto.h
+    model/shipping_courier_dto_collection_query_parameters.h
     model/shipping_courier_dto_envelope.h
     model/shipping_courier_dto_list_envelope.h
     model/shipping_courier_update_dto.h
     model/shipping_label_create_dto.h
     model/shipping_label_dto.h
+    model/shipping_label_dto_collection_query_parameters.h
     model/shipping_label_dto_envelope.h
     model/shipping_label_dto_list_envelope.h
     model/shipping_label_update_dto.h
     model/shipping_method_create_dto.h
     model/shipping_method_dto.h
+    model/shipping_method_dto_collection_query_parameters.h
     model/shipping_method_dto_envelope.h
     model/shipping_method_dto_list_envelope.h
     model/shipping_method_update_dto.h
     model/shipping_region_create_dto.h
     model/shipping_region_dto.h
+    model/shipping_region_dto_collection_query_parameters.h
     model/shipping_region_dto_envelope.h
     model/shipping_region_dto_list_envelope.h
     model/shipping_region_update_dto.h
     model/shipping_zone_create_dto.h
     model/shipping_zone_dto.h
+    model/shipping_zone_dto_collection_query_parameters.h
     model/shipping_zone_dto_envelope.h
     model/shipping_zone_dto_list_envelope.h
     model/shipping_zone_update_dto.h

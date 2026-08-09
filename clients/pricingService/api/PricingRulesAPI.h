@@ -7,8 +7,9 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/pricing_rule_create_dto.h"
+#include "../model/pricing_rule_dto_collection_query_parameters.h"
 #include "../model/pricing_rule_dto_envelope.h"
 #include "../model/pricing_rule_dto_list_envelope.h"
 #include "../model/pricing_rule_update_dto.h"
@@ -43,7 +44,7 @@ PricingRulesAPI_getPricingRuleById(apiClient_t *apiClient, char *tenantId, char 
 // Retrieves all pricing rules for the specified tenant, with optional OData query options.
 //
 pricing_rule_dto_list_envelope_t*
-PricingRulesAPI_getPricingRules(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PricingRulesAPI_getPricingRules(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, pricing_rule_dto_collection_query_parameters_t *pricing_rule_dto_collection_query_parameters);
 
 
 // Counts pricing rules
@@ -51,7 +52,7 @@ PricingRulesAPI_getPricingRules(apiClient_t *apiClient, char *tenantId, char *ap
 // Gets the count of pricing rules for the current tenant.
 //
 int32_envelope_t*
-PricingRulesAPI_getPricingRulesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PricingRulesAPI_getPricingRulesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, pricing_rule_dto_collection_query_parameters_t *pricing_rule_dto_collection_query_parameters);
 
 
 // Patch a pricing rule
@@ -59,7 +60,7 @@ PricingRulesAPI_getPricingRulesCountAsync(apiClient_t *apiClient, char *tenantId
 // Partially updates a pricing rule using a JSON Patch document.
 //
 void
-PricingRulesAPI_patchPricingRule(apiClient_t *apiClient, char *tenantId, char *pricingRuleId, char *api_version, char *x_api_version, list_t *operation);
+PricingRulesAPI_patchPricingRule(apiClient_t *apiClient, char *tenantId, char *pricingRuleId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a pricing rule

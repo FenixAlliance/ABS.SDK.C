@@ -43,11 +43,11 @@ FilesAPI_getFileThumbnailAsync(apiClient_t *apiClient, char *fileId, char *tenan
 
 
 file_upload_dto_envelope_t*
-FilesAPI_getFilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+FilesAPI_getFilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, int *top, int *skip, int *count, char *filter, char *orderBy, char *search, char *select, char *expand, int *isEmpty);
 
 
 long*
-FilesAPI_getFilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+FilesAPI_getFilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, int *top, int *skip, int *count, char *filter, char *orderBy, char *search, char *select, char *expand, int *isEmpty);
 
 
 empty_envelope_t*

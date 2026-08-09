@@ -4,6 +4,40 @@
 #include "auth_result.h"
 
 
+char* auth_result_run_as_ToString(identityservice_auth_result_RUNAS_e run_as) {
+    char* run_asArray[] =  { "NULL", "Invoker", "Application", "System", "Service" };
+    return run_asArray[run_as];
+}
+
+identityservice_auth_result_RUNAS_e auth_result_run_as_FromString(char* run_as){
+    int stringToReturn = 0;
+    char *run_asArray[] =  { "NULL", "Invoker", "Application", "System", "Service" };
+    size_t sizeofArray = sizeof(run_asArray) / sizeof(run_asArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(run_as, run_asArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+char* auth_result_principal_kind_ToString(identityservice_auth_result_PRINCIPALKIND_e principal_kind) {
+    char* principal_kindArray[] =  { "NULL", "Human", "Agent", "Application", "Service", "System" };
+    return principal_kindArray[principal_kind];
+}
+
+identityservice_auth_result_PRINCIPALKIND_e auth_result_principal_kind_FromString(char* principal_kind){
+    int stringToReturn = 0;
+    char *principal_kindArray[] =  { "NULL", "Human", "Agent", "Application", "Service", "System" };
+    size_t sizeofArray = sizeof(principal_kindArray) / sizeof(principal_kindArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(principal_kind, principal_kindArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 auth_result_t *auth_result_create(
     object_t *user_id,
@@ -13,7 +47,10 @@ auth_result_t *auth_result_create(
     object_t *enrollment_id,
     char *correlation_id,
     list_t *scopes,
-    char *error
+    char *error,
+    identityservice_auth_result_RUNAS_e run_as,
+    identityservice_auth_result_PRINCIPALKIND_e principal_kind,
+    execution_provenance_t *provenance
     ) {
     auth_result_t *auth_result_local_var = malloc(sizeof(auth_result_t));
     if (!auth_result_local_var) {
@@ -27,6 +64,9 @@ auth_result_t *auth_result_create(
     auth_result_local_var->correlation_id = correlation_id;
     auth_result_local_var->scopes = scopes;
     auth_result_local_var->error = error;
+    auth_result_local_var->run_as = run_as;
+    auth_result_local_var->principal_kind = principal_kind;
+    auth_result_local_var->provenance = provenance;
 
     return auth_result_local_var;
 }
@@ -71,6 +111,10 @@ void auth_result_free(auth_result_t *auth_result) {
     if (auth_result->error) {
         free(auth_result->error);
         auth_result->error = NULL;
+    }
+    if (auth_result->provenance) {
+        execution_provenance_free(auth_result->provenance);
+        auth_result->provenance = NULL;
     }
     free(auth_result);
 }
@@ -175,6 +219,37 @@ cJSON *auth_result_convertToJSON(auth_result_t *auth_result) {
     }
     }
 
+
+    // auth_result->run_as
+    if(auth_result->run_as != identityservice_auth_result_RUNAS_NULL) {
+    if(cJSON_AddStringToObject(item, "runAs", run_asauth_result_ToString(auth_result->run_as)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
+    // auth_result->principal_kind
+    if(auth_result->principal_kind != identityservice_auth_result_PRINCIPALKIND_NULL) {
+    if(cJSON_AddStringToObject(item, "principalKind", principal_kindauth_result_ToString(auth_result->principal_kind)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
+    // auth_result->provenance
+    if(auth_result->provenance) {
+    cJSON *provenance_local_JSON = execution_provenance_convertToJSON(auth_result->provenance);
+    if(provenance_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "provenance", provenance_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -189,6 +264,9 @@ auth_result_t *auth_result_parseFromJSON(cJSON *auth_resultJSON){
 
     // define the local list for auth_result->scopes
     list_t *scopesList = NULL;
+
+    // define the local variable for auth_result->provenance
+    execution_provenance_t *provenance_local_nonprim = NULL;
 
     // auth_result->user_id
     cJSON *user_id = cJSON_GetObjectItemCaseSensitive(auth_resultJSON, "userId");
@@ -262,6 +340,34 @@ auth_result_t *auth_result_parseFromJSON(cJSON *auth_resultJSON){
     }
     }
 
+    // auth_result->run_as
+    cJSON *run_as = cJSON_GetObjectItemCaseSensitive(auth_resultJSON, "runAs");
+    identityservice_auth_result_RUNAS_e run_asVariable;
+    if (run_as) { 
+    if(!cJSON_IsString(run_as))
+    {
+    goto end; //Enum
+    }
+    run_asVariable = auth_result_run_as_FromString(run_as->valuestring);
+    }
+
+    // auth_result->principal_kind
+    cJSON *principal_kind = cJSON_GetObjectItemCaseSensitive(auth_resultJSON, "principalKind");
+    identityservice_auth_result_PRINCIPALKIND_e principal_kindVariable;
+    if (principal_kind) { 
+    if(!cJSON_IsString(principal_kind))
+    {
+    goto end; //Enum
+    }
+    principal_kindVariable = auth_result_principal_kind_FromString(principal_kind->valuestring);
+    }
+
+    // auth_result->provenance
+    cJSON *provenance = cJSON_GetObjectItemCaseSensitive(auth_resultJSON, "provenance");
+    if (provenance) { 
+    provenance_local_nonprim = execution_provenance_parseFromJSON(provenance); //nonprimitive
+    }
+
 
     auth_result_local_var = auth_result_create (
         user_id ? user_id_local_object : NULL,
@@ -271,7 +377,10 @@ auth_result_t *auth_result_parseFromJSON(cJSON *auth_resultJSON){
         enrollment_id ? enrollment_id_local_object : NULL,
         correlation_id && !cJSON_IsNull(correlation_id) ? strdup(correlation_id->valuestring) : NULL,
         scopes ? scopesList : NULL,
-        error && !cJSON_IsNull(error) ? strdup(error->valuestring) : NULL
+        error && !cJSON_IsNull(error) ? strdup(error->valuestring) : NULL,
+        run_as ? run_asVariable : identityservice_auth_result_RUNAS_NULL,
+        principal_kind ? principal_kindVariable : identityservice_auth_result_PRINCIPALKIND_NULL,
+        provenance ? provenance_local_nonprim : NULL
         );
 
     return auth_result_local_var;
@@ -284,6 +393,10 @@ end:
         }
         list_freeList(scopesList);
         scopesList = NULL;
+    }
+    if (provenance_local_nonprim) {
+        execution_provenance_free(provenance_local_nonprim);
+        provenance_local_nonprim = NULL;
     }
     return NULL;
 

@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/web_page_category_create_dto.h"
+#include "../model/web_page_category_dto_collection_query_parameters.h"
 #include "../model/web_page_category_dto_envelope.h"
 #include "../model/web_page_category_dto_list_envelope.h"
 #include "../model/web_page_category_update_dto.h"
@@ -20,7 +21,7 @@
 // Counts all web page categories for the specified tenant.
 //
 int32_envelope_t*
-WebPageCategoriesAPI_countWebPageCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebPageCategoriesAPI_countWebPageCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_page_category_dto_collection_query_parameters_t *web_page_category_dto_collection_query_parameters);
 
 
 // Create a web page category
@@ -44,7 +45,7 @@ WebPageCategoriesAPI_deleteWebPageCategoryAsync(apiClient_t *apiClient, char *te
 // Retrieves all web page categories for the specified tenant.
 //
 web_page_category_dto_list_envelope_t*
-WebPageCategoriesAPI_getWebPageCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebPageCategoriesAPI_getWebPageCategoriesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_page_category_dto_collection_query_parameters_t *web_page_category_dto_collection_query_parameters);
 
 
 // Get web page category by ID
@@ -60,7 +61,7 @@ WebPageCategoriesAPI_getWebPageCategoryByIdAsync(apiClient_t *apiClient, char *t
 // Partially updates an existing web page category for the specified tenant.
 //
 empty_envelope_t*
-WebPageCategoriesAPI_patchWebPageCategoryAsync(apiClient_t *apiClient, char *tenantId, char *webPageCategoryId, char *api_version, char *x_api_version, list_t *operation);
+WebPageCategoriesAPI_patchWebPageCategoryAsync(apiClient_t *apiClient, char *tenantId, char *webPageCategoryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a web page category

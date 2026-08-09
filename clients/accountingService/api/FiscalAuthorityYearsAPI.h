@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/fiscal_year_create_dto.h"
+#include "../model/fiscal_year_dto_collection_query_parameters.h"
 #include "../model/fiscal_year_dto_envelope.h"
 #include "../model/fiscal_year_dto_list_envelope.h"
 #include "../model/fiscal_year_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a fiscal year
@@ -44,7 +45,7 @@ FiscalAuthorityYearsAPI_getFiscalYear(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves all fiscal years associated with the specified fiscal authority.
 //
 fiscal_year_dto_list_envelope_t*
-FiscalAuthorityYearsAPI_getFiscalYears(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version);
+FiscalAuthorityYearsAPI_getFiscalYears(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version, fiscal_year_dto_collection_query_parameters_t *fiscal_year_dto_collection_query_parameters);
 
 
 // Get fiscal years count for an authority
@@ -52,7 +53,7 @@ FiscalAuthorityYearsAPI_getFiscalYears(apiClient_t *apiClient, char *tenantId, c
 // Returns the total count of fiscal years for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalAuthorityYearsAPI_getFiscalYearsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version);
+FiscalAuthorityYearsAPI_getFiscalYearsCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version, fiscal_year_dto_collection_query_parameters_t *fiscal_year_dto_collection_query_parameters);
 
 
 // Patch a fiscal authority year
@@ -60,7 +61,7 @@ FiscalAuthorityYearsAPI_getFiscalYearsCount(apiClient_t *apiClient, char *tenant
 // Partially updates a fiscal authority year.
 //
 empty_envelope_t*
-FiscalAuthorityYearsAPI_patchFiscalAuthorityYearAsync(apiClient_t *apiClient, char *tenantId, char *fiscalYearId, char *api_version, char *x_api_version, list_t *operation);
+FiscalAuthorityYearsAPI_patchFiscalAuthorityYearAsync(apiClient_t *apiClient, char *tenantId, char *fiscalYearId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a fiscal year

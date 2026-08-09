@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/marketing_area_create_dto.h"
+#include "../model/marketing_area_dto_collection_query_parameters.h"
 #include "../model/marketing_area_dto_envelope.h"
 #include "../model/marketing_area_dto_list_envelope.h"
 #include "../model/marketing_area_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a marketing area
@@ -44,7 +45,7 @@ MarketingAreasAPI_getMarketingAreaByIdAsync(apiClient_t *apiClient, char *tenant
 // Retrieves marketing areas for the specified tenant.
 //
 marketing_area_dto_list_envelope_t*
-MarketingAreasAPI_getMarketingAreasAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MarketingAreasAPI_getMarketingAreasAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_area_dto_collection_query_parameters_t *marketing_area_dto_collection_query_parameters);
 
 
 // Count marketing areas
@@ -52,7 +53,7 @@ MarketingAreasAPI_getMarketingAreasAsync(apiClient_t *apiClient, char *tenantId,
 // Counts marketing areas for the specified tenant.
 //
 int32_envelope_t*
-MarketingAreasAPI_getMarketingAreasCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MarketingAreasAPI_getMarketingAreasCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_area_dto_collection_query_parameters_t *marketing_area_dto_collection_query_parameters);
 
 
 // Patch a marketing area
@@ -60,7 +61,7 @@ MarketingAreasAPI_getMarketingAreasCountAsync(apiClient_t *apiClient, char *tena
 // Partially updates a marketing area by its ID using JSON Patch.
 //
 empty_envelope_t*
-MarketingAreasAPI_patchMarketingAreaAsync(apiClient_t *apiClient, char *tenantId, char *marketingAreaId, char *api_version, char *x_api_version, list_t *operation);
+MarketingAreasAPI_patchMarketingAreaAsync(apiClient_t *apiClient, char *tenantId, char *marketingAreaId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a marketing area

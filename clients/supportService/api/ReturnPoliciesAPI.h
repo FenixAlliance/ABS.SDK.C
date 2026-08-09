@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_return_policy_create_dto.h"
+#include "../model/item_return_policy_dto_collection_query_parameters.h"
 #include "../model/item_return_policy_dto_envelope.h"
 #include "../model/item_return_policy_dto_list_envelope.h"
 #include "../model/item_return_policy_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new return policy
@@ -30,13 +31,13 @@ ReturnPoliciesAPI_deleteReturnPolicyAsync(apiClient_t *apiClient, char *tenantId
 // Retrieve a list of return policies
 //
 item_return_policy_dto_list_envelope_t*
-ReturnPoliciesAPI_getReturnPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ReturnPoliciesAPI_getReturnPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_return_policy_dto_collection_query_parameters_t *item_return_policy_dto_collection_query_parameters);
 
 
 // Get the count of return policies
 //
 int32_envelope_t*
-ReturnPoliciesAPI_getReturnPoliciesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ReturnPoliciesAPI_getReturnPoliciesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_return_policy_dto_collection_query_parameters_t *item_return_policy_dto_collection_query_parameters);
 
 
 // Retrieve a return policy by ID
@@ -50,7 +51,7 @@ ReturnPoliciesAPI_getReturnPolicyAsync(apiClient_t *apiClient, char *tenantId, c
 // Partially updates an existing return policy by its unique identifier.
 //
 empty_envelope_t*
-ReturnPoliciesAPI_patchReturnPolicyAsync(apiClient_t *apiClient, char *tenantId, char *returnPolicyId, char *api_version, char *x_api_version, list_t *operation);
+ReturnPoliciesAPI_patchReturnPolicyAsync(apiClient_t *apiClient, char *tenantId, char *returnPolicyId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a return policy

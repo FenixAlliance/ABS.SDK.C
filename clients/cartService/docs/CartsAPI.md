@@ -1102,7 +1102,7 @@ No authorization required
 //
 // Partially updates a cart using a JSON Patch document.
 //
-empty_envelope_t* CartsAPI_patchCartAsync(apiClient_t *apiClient, char *cartId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CartsAPI_patchCartAsync(apiClient_t *apiClient, char *cartId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1112,7 +1112,7 @@ Name | Type | Description  | Notes
 **cartId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

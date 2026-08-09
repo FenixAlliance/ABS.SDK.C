@@ -17,13 +17,13 @@
 // Returns the total number of supported timezones, with optional OData filtering.
 //
 int32_envelope_t*
-TimezonesAPI_countTimezonesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+TimezonesAPI_countTimezonesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, timezone_dto_collection_query_parameters_t *timezone_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -57,8 +57,19 @@ TimezonesAPI_countTimezonesAsync(apiClient_t *apiClient, char *api_version, char
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_timezone_dto_collection_query_parameters = NULL;
+    if (timezone_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_timezone_dto_collection_query_parameters = timezone_dto_collection_query_parameters_convertToJSON(timezone_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_timezone_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -99,7 +110,7 @@ TimezonesAPI_countTimezonesAsync(apiClient_t *apiClient, char *api_version, char
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -110,6 +121,11 @@ TimezonesAPI_countTimezonesAsync(apiClient_t *apiClient, char *api_version, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_timezone_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_timezone_dto_collection_query_parameters);
+        localVarSingleItemJSON_timezone_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -262,13 +278,13 @@ end:
 // Retrieves the list of all supported timezones with optional OData pagination and filtering.
 //
 timezone_dto_list_envelope_t*
-TimezonesAPI_getTimeZonesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+TimezonesAPI_getTimeZonesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, timezone_dto_collection_query_parameters_t *timezone_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -302,8 +318,19 @@ TimezonesAPI_getTimeZonesAsync(apiClient_t *apiClient, char *api_version, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_timezone_dto_collection_query_parameters = NULL;
+    if (timezone_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_timezone_dto_collection_query_parameters = timezone_dto_collection_query_parameters_convertToJSON(timezone_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_timezone_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -344,7 +371,7 @@ TimezonesAPI_getTimeZonesAsync(apiClient_t *apiClient, char *api_version, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -355,6 +382,11 @@ TimezonesAPI_getTimeZonesAsync(apiClient_t *apiClient, char *api_version, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_timezone_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_timezone_dto_collection_query_parameters);
+        localVarSingleItemJSON_timezone_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;

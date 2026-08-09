@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/item_return_policy_dto_collection_query_parameters.h"
 #include "../model/item_return_policy_dto_envelope.h"
 #include "../model/item_return_policy_dto_list_envelope.h"
 
@@ -16,7 +17,7 @@
 // Counts all return policies for a specific item.
 //
 int32_envelope_t*
-ItemReturnPoliciesAPI_countItemReturnPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemReturnPoliciesAPI_countItemReturnPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_return_policy_dto_collection_query_parameters_t *item_return_policy_dto_collection_query_parameters);
 
 
 // Get item return policies
@@ -24,7 +25,7 @@ ItemReturnPoliciesAPI_countItemReturnPoliciesAsync(apiClient_t *apiClient, char 
 // Retrieves all return policies for a specific item.
 //
 item_return_policy_dto_list_envelope_t*
-ItemReturnPoliciesAPI_getItemReturnPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemReturnPoliciesAPI_getItemReturnPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_return_policy_dto_collection_query_parameters_t *item_return_policy_dto_collection_query_parameters);
 
 
 // Get item return policy by ID

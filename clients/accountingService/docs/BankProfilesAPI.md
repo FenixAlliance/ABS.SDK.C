@@ -14,7 +14,7 @@ Method | HTTP request | Description
 //
 // Retrieves all bank profiles for the specified tenant using OData query options.
 //
-bank_profile_dto_list_envelope_t* BankProfilesAPI_getBankProfiles(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+bank_profile_dto_list_envelope_t* BankProfilesAPI_getBankProfiles(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bank_profile_dto_collection_query_parameters_t *bank_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -24,6 +24,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_profile_dto_collection_query_parameters** | **[bank_profile_dto_collection_query_parameters_t](bank_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -36,7 +37,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -47,7 +48,7 @@ No authorization required
 //
 // Returns the count of bank profiles for the specified tenant.
 //
-int32_envelope_t* BankProfilesAPI_getBankProfilesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* BankProfilesAPI_getBankProfilesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bank_profile_dto_collection_query_parameters_t *bank_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -57,6 +58,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_profile_dto_collection_query_parameters** | **[bank_profile_dto_collection_query_parameters_t](bank_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -69,7 +71,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

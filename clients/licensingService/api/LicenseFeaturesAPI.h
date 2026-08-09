@@ -10,9 +10,10 @@
 #include "../model/int32_envelope.h"
 #include "../model/license_feature_create_dto.h"
 #include "../model/license_feature_dto.h"
+#include "../model/license_feature_dto_collection_query_parameters.h"
 #include "../model/license_feature_dto_list_envelope.h"
 #include "../model/license_feature_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new license feature
@@ -44,7 +45,7 @@ LicenseFeaturesAPI_getLicenseFeatureByIdAsync(apiClient_t *apiClient, char *tena
 // Retrieves all license features for the specified tenant.
 //
 license_feature_dto_list_envelope_t*
-LicenseFeaturesAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LicenseFeaturesAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, license_feature_dto_collection_query_parameters_t *license_feature_dto_collection_query_parameters);
 
 
 // Get license features count
@@ -52,7 +53,7 @@ LicenseFeaturesAPI_getLicenseFeaturesAsync(apiClient_t *apiClient, char *tenantI
 // Returns the count of license features for the specified tenant.
 //
 int32_envelope_t*
-LicenseFeaturesAPI_getLicenseFeaturesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LicenseFeaturesAPI_getLicenseFeaturesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, license_feature_dto_collection_query_parameters_t *license_feature_dto_collection_query_parameters);
 
 
 // Patch a license feature
@@ -60,7 +61,7 @@ LicenseFeaturesAPI_getLicenseFeaturesCountAsync(apiClient_t *apiClient, char *te
 // Patch a license feature for the specified tenant.
 //
 empty_envelope_t*
-LicenseFeaturesAPI_patchLicenseFeatureAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+LicenseFeaturesAPI_patchLicenseFeatureAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a license feature

@@ -9,9 +9,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/ledger_dto_collection_query_parameters.h"
 #include "../model/ledger_dto_envelope.h"
 #include "../model/ledger_dto_i_read_only_list_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/update_ledger_dto.h"
 
 
@@ -44,7 +45,7 @@ LedgersAPI_getLedgerDetailsAsync(apiClient_t *apiClient, char *tenantId, char *l
 // Gets all ledgers for the current tenant with OData support.
 //
 ledger_dto_i_read_only_list_envelope_t*
-LedgersAPI_getLedgersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LedgersAPI_getLedgersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, ledger_dto_collection_query_parameters_t *ledger_dto_collection_query_parameters);
 
 
 // Counts ledgers
@@ -52,7 +53,7 @@ LedgersAPI_getLedgersAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
 // Gets the count of ledgers for the current tenant.
 //
 int32_envelope_t*
-LedgersAPI_getLedgersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LedgersAPI_getLedgersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, ledger_dto_collection_query_parameters_t *ledger_dto_collection_query_parameters);
 
 
 // Patches a ledger
@@ -60,7 +61,7 @@ LedgersAPI_getLedgersCountAsync(apiClient_t *apiClient, char *tenantId, char *ap
 // Patches the specified ledger.
 //
 empty_envelope_t*
-LedgersAPI_patchLedgerAsync(apiClient_t *apiClient, char *tenantId, char *ledgerId, char *api_version, char *x_api_version, list_t *operation);
+LedgersAPI_patchLedgerAsync(apiClient_t *apiClient, char *tenantId, char *ledgerId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates a ledger

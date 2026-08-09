@@ -9,14 +9,16 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_restock_create_dto.h"
+#include "../model/item_restock_dto_collection_query_parameters.h"
 #include "../model/item_restock_dto_envelope.h"
 #include "../model/item_restock_dto_list_envelope.h"
 #include "../model/item_restock_entry_create_dto.h"
+#include "../model/item_restock_entry_dto_collection_query_parameters.h"
 #include "../model/item_restock_entry_dto_envelope.h"
 #include "../model/item_restock_entry_dto_list_envelope.h"
 #include "../model/item_restock_entry_update_dto.h"
 #include "../model/item_restock_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an item restock
@@ -64,7 +66,7 @@ ItemRestocksAPI_getItemRestockByIdAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all entries for the specified restock.
 //
 item_restock_entry_dto_list_envelope_t*
-ItemRestocksAPI_getItemRestockEntriesAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version);
+ItemRestocksAPI_getItemRestockEntriesAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version, item_restock_entry_dto_collection_query_parameters_t *item_restock_entry_dto_collection_query_parameters);
 
 
 // Get restock entries count
@@ -72,7 +74,7 @@ ItemRestocksAPI_getItemRestockEntriesAsync(apiClient_t *apiClient, char *tenantI
 // Returns the count of restock entries.
 //
 int32_envelope_t*
-ItemRestocksAPI_getItemRestockEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version);
+ItemRestocksAPI_getItemRestockEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version, item_restock_entry_dto_collection_query_parameters_t *item_restock_entry_dto_collection_query_parameters);
 
 
 // Get restock entry by ID
@@ -88,7 +90,7 @@ ItemRestocksAPI_getItemRestockEntryByIdAsync(apiClient_t *apiClient, char *tenan
 // Retrieves all item restocks for the specified tenant.
 //
 item_restock_dto_list_envelope_t*
-ItemRestocksAPI_getItemRestocksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemRestocksAPI_getItemRestocksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_restock_dto_collection_query_parameters_t *item_restock_dto_collection_query_parameters);
 
 
 // Get item restocks count
@@ -96,7 +98,7 @@ ItemRestocksAPI_getItemRestocksAsync(apiClient_t *apiClient, char *tenantId, cha
 // Returns the count of item restocks.
 //
 int32_envelope_t*
-ItemRestocksAPI_getItemRestocksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemRestocksAPI_getItemRestocksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_restock_dto_collection_query_parameters_t *item_restock_dto_collection_query_parameters);
 
 
 // Patch an item restock
@@ -104,7 +106,7 @@ ItemRestocksAPI_getItemRestocksCountAsync(apiClient_t *apiClient, char *tenantId
 // Applies a JSON Patch document to an item restock.
 //
 empty_envelope_t*
-ItemRestocksAPI_patchItemRestockAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version, list_t *operation);
+ItemRestocksAPI_patchItemRestockAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a restock entry
@@ -112,7 +114,7 @@ ItemRestocksAPI_patchItemRestockAsync(apiClient_t *apiClient, char *tenantId, ch
 // Applies a JSON Patch document to a restock entry.
 //
 empty_envelope_t*
-ItemRestocksAPI_patchItemRestockEntryAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *entryId, char *api_version, char *x_api_version, list_t *operation);
+ItemRestocksAPI_patchItemRestockEntryAsync(apiClient_t *apiClient, char *tenantId, char *restockId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item restock

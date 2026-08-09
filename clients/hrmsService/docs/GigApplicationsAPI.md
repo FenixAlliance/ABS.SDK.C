@@ -156,7 +156,7 @@ No authorization required
 //
 // Retrieves proposals submitted against the tenant's gigs. Filter with `$filter=GigId eq '...'` or `JobApplicantProfileId eq '...'`.
 //
-gig_application_dto_list_envelope_t* GigApplicationsAPI_getGigApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+gig_application_dto_list_envelope_t* GigApplicationsAPI_getGigApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, gig_application_dto_collection_query_parameters_t *gig_application_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -166,6 +166,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**gig_application_dto_collection_query_parameters** | **[gig_application_dto_collection_query_parameters_t](gig_application_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -178,7 +179,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -189,7 +190,7 @@ No authorization required
 //
 // Counts proposals submitted against the tenant's gigs.
 //
-int32_envelope_t* GigApplicationsAPI_getGigApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* GigApplicationsAPI_getGigApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, gig_application_dto_collection_query_parameters_t *gig_application_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -199,6 +200,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**gig_application_dto_collection_query_parameters** | **[gig_application_dto_collection_query_parameters_t](gig_application_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -211,7 +213,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -222,7 +224,7 @@ No authorization required
 //
 // Partially updates an existing proposal submitted against one of the tenant's gigs.
 //
-empty_envelope_t* GigApplicationsAPI_patchGigApplicationAsync(apiClient_t *apiClient, char *tenantId, char *gigApplicationId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* GigApplicationsAPI_patchGigApplicationAsync(apiClient_t *apiClient, char *tenantId, char *gigApplicationId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -233,7 +235,7 @@ Name | Type | Description  | Notes
 **gigApplicationId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

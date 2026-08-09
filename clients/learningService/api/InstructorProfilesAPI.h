@@ -10,7 +10,7 @@
 #include "../model/instructor_profile_create_dto.h"
 #include "../model/instructor_profile_dto.h"
 #include "../model/instructor_profile_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 int*
@@ -30,7 +30,7 @@ InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdG
 
 
 empty_envelope_t*
-InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPatch(apiClient_t *apiClient, char *tenantId, char *instructorProfileId, char *api_version, char *x_api_version, list_t *operation);
+InstructorProfilesAPI_apiV2LearningServiceInstructorProfilesInstructorProfileIdPatch(apiClient_t *apiClient, char *tenantId, char *instructorProfileId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 void

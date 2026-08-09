@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_team_project_enrollment_create_dto.h"
+#include "../model/tenant_team_project_enrollment_dto_collection_query_parameters.h"
 #include "../model/tenant_team_project_enrollment_dto_envelope.h"
 #include "../model/tenant_team_project_enrollment_dto_list_envelope.h"
 #include "../model/tenant_team_project_enrollment_update_dto.h"
@@ -44,7 +45,7 @@ TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollmentById(apiClient_t *apiCli
 // Retrieve a list of tenant team project enrollments
 //
 tenant_team_project_enrollment_dto_list_envelope_t*
-TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_team_project_enrollment_dto_collection_query_parameters_t *tenant_team_project_enrollment_dto_collection_query_parameters);
 
 
 // Get the count of tenant team project enrollments
@@ -52,7 +53,7 @@ TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollments(apiClient_t *apiClient
 // Get the count of tenant team project enrollments
 //
 int32_envelope_t*
-TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_team_project_enrollment_dto_collection_query_parameters_t *tenant_team_project_enrollment_dto_collection_query_parameters);
 
 
 // Patch a tenant team project enrollment
@@ -60,7 +61,7 @@ TeamProjectEnrollmentsAPI_getTenantTeamProjectEnrollmentsCount(apiClient_t *apiC
 // Patch a tenant team project enrollment
 //
 empty_envelope_t*
-TeamProjectEnrollmentsAPI_patchTenantTeamProjectEnrollment(apiClient_t *apiClient, char *tenantId, char *tenantTeamProjectEnrollmentId, char *api_version, char *x_api_version, list_t *operation);
+TeamProjectEnrollmentsAPI_patchTenantTeamProjectEnrollment(apiClient_t *apiClient, char *tenantId, char *tenantTeamProjectEnrollmentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant team project enrollment

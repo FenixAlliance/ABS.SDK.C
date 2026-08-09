@@ -8,17 +8,20 @@
 #include "../model/email_dispatch_request.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/extended_order_dto_collection_query_parameters.h"
 #include "../model/extended_order_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
 #include "../model/order_create_dto.h"
+#include "../model/order_dto_collection_query_parameters.h"
 #include "../model/order_dto_envelope.h"
 #include "../model/order_dto_list_envelope.h"
 #include "../model/order_line_create_dto.h"
+#include "../model/order_line_dto_collection_query_parameters.h"
 #include "../model/order_line_dto_envelope.h"
 #include "../model/order_line_dto_list_envelope.h"
 #include "../model/order_line_update_dto.h"
 #include "../model/order_update_dto.h"
+#include "../model/patch_operation.h"
 
 
 // Calculates totals for an order.
@@ -74,7 +77,7 @@ OrdersAPI_deleteOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId,
 // Retrieves a list of extended order details for the specified tenant.
 //
 extended_order_dto_list_envelope_t*
-OrdersAPI_getExtendedOrders(apiClient_t *apiClient, char *tenantId);
+OrdersAPI_getExtendedOrders(apiClient_t *apiClient, char *tenantId, extended_order_dto_collection_query_parameters_t *extended_order_dto_collection_query_parameters);
 
 
 // Gets a specific order by ID.
@@ -98,7 +101,7 @@ OrdersAPI_getOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, ch
 // Retrieves the lines (items) for the specified order.
 //
 order_line_dto_list_envelope_t*
-OrdersAPI_getOrderLines(apiClient_t *apiClient, char *tenantId, char *orderId, char *itemId);
+OrdersAPI_getOrderLines(apiClient_t *apiClient, char *tenantId, char *orderId, char *itemId, order_line_dto_collection_query_parameters_t *order_line_dto_collection_query_parameters);
 
 
 // Gets the count of order lines for an order.
@@ -106,7 +109,7 @@ OrdersAPI_getOrderLines(apiClient_t *apiClient, char *tenantId, char *orderId, c
 // Retrieves the total number of lines for the specified order.
 //
 int32_envelope_t*
-OrdersAPI_getOrderLinesCount(apiClient_t *apiClient, char *tenantId, char *orderId);
+OrdersAPI_getOrderLinesCount(apiClient_t *apiClient, char *tenantId, char *orderId, order_line_dto_collection_query_parameters_t *order_line_dto_collection_query_parameters);
 
 
 // Gets a list of orders for a tenant.
@@ -114,7 +117,7 @@ OrdersAPI_getOrderLinesCount(apiClient_t *apiClient, char *tenantId, char *order
 // Retrieves a list of orders for the specified tenant.
 //
 order_dto_list_envelope_t*
-OrdersAPI_getOrders(apiClient_t *apiClient, char *tenantId);
+OrdersAPI_getOrders(apiClient_t *apiClient, char *tenantId, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters);
 
 
 // Gets the count of orders for a tenant.
@@ -122,7 +125,7 @@ OrdersAPI_getOrders(apiClient_t *apiClient, char *tenantId);
 // Retrieves the total number of orders for the specified tenant.
 //
 int32_envelope_t*
-OrdersAPI_getOrdersCount(apiClient_t *apiClient, char *tenantId);
+OrdersAPI_getOrdersCount(apiClient_t *apiClient, char *tenantId, order_dto_collection_query_parameters_t *order_dto_collection_query_parameters);
 
 
 // Partially updates an existing order.
@@ -130,7 +133,7 @@ OrdersAPI_getOrdersCount(apiClient_t *apiClient, char *tenantId);
 // Applies a JSON Patch document to partially update an existing order.
 //
 empty_envelope_t*
-OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list_t *operation);
+OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list_t *patch_operation);
 
 
 // Partially updates an order line.
@@ -138,7 +141,7 @@ OrdersAPI_patchOrder(apiClient_t *apiClient, char *tenantId, char *orderId, list
 // Applies a JSON Patch document to partially update a specific order line.
 //
 empty_envelope_t*
-OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, char *orderLineId, list_t *operation);
+OrdersAPI_patchOrderLine(apiClient_t *apiClient, char *tenantId, char *orderId, char *orderLineId, list_t *patch_operation);
 
 
 // Preview the rendered email for an Order.

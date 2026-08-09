@@ -342,7 +342,7 @@ No authorization required
 //
 // Retrieves all lines for a specific proof of delivery.
 //
-proof_of_delivery_line_dto_list_envelope_t* ProofsOfDeliveryAPI_getProofOfDeliveryLinesAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version);
+proof_of_delivery_line_dto_list_envelope_t* ProofsOfDeliveryAPI_getProofOfDeliveryLinesAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version, proof_of_delivery_line_dto_collection_query_parameters_t *proof_of_delivery_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -353,6 +353,7 @@ Name | Type | Description  | Notes
 **podId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**proof_of_delivery_line_dto_collection_query_parameters** | **[proof_of_delivery_line_dto_collection_query_parameters_t](proof_of_delivery_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -365,7 +366,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -376,7 +377,7 @@ No authorization required
 //
 // Returns the count of lines for a specific proof of delivery.
 //
-int32_envelope_t* ProofsOfDeliveryAPI_getProofOfDeliveryLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version);
+int32_envelope_t* ProofsOfDeliveryAPI_getProofOfDeliveryLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version, proof_of_delivery_line_dto_collection_query_parameters_t *proof_of_delivery_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -387,6 +388,7 @@ Name | Type | Description  | Notes
 **podId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**proof_of_delivery_line_dto_collection_query_parameters** | **[proof_of_delivery_line_dto_collection_query_parameters_t](proof_of_delivery_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -399,7 +401,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -410,7 +412,7 @@ No authorization required
 //
 // Retrieves all proofs of delivery for the specified tenant.
 //
-proof_of_delivery_dto_list_envelope_t* ProofsOfDeliveryAPI_getProofsOfDeliveryAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+proof_of_delivery_dto_list_envelope_t* ProofsOfDeliveryAPI_getProofsOfDeliveryAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, proof_of_delivery_dto_collection_query_parameters_t *proof_of_delivery_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -420,6 +422,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**proof_of_delivery_dto_collection_query_parameters** | **[proof_of_delivery_dto_collection_query_parameters_t](proof_of_delivery_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -432,7 +435,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -443,7 +446,7 @@ No authorization required
 //
 // Returns the count of proofs of delivery for the specified tenant.
 //
-int32_envelope_t* ProofsOfDeliveryAPI_getProofsOfDeliveryCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* ProofsOfDeliveryAPI_getProofsOfDeliveryCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, proof_of_delivery_dto_collection_query_parameters_t *proof_of_delivery_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -453,6 +456,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**proof_of_delivery_dto_collection_query_parameters** | **[proof_of_delivery_dto_collection_query_parameters_t](proof_of_delivery_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -465,7 +469,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -476,7 +480,7 @@ No authorization required
 //
 // Partially updates an existing proof of delivery using JSON Patch.
 //
-empty_envelope_t* ProofsOfDeliveryAPI_patchProofOfDeliveryAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* ProofsOfDeliveryAPI_patchProofOfDeliveryAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -487,7 +491,7 @@ Name | Type | Description  | Notes
 **podId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -511,7 +515,7 @@ No authorization required
 //
 // Partially updates an existing proof of delivery line using JSON Patch.
 //
-empty_envelope_t* ProofsOfDeliveryAPI_patchProofOfDeliveryLineAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* ProofsOfDeliveryAPI_patchProofOfDeliveryLineAsync(apiClient_t *apiClient, char *tenantId, char *podId, char *lineId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -523,7 +527,7 @@ Name | Type | Description  | Notes
 **lineId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

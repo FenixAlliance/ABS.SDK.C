@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/web_content_create_dto.h"
+#include "../model/web_content_dto_collection_query_parameters.h"
 #include "../model/web_content_dto_envelope.h"
 #include "../model/web_content_dto_list_envelope.h"
 #include "../model/web_content_update_dto.h"
@@ -20,7 +21,7 @@
 // Counts all web contents for the specified tenant.
 //
 int32_envelope_t*
-WebContentsAPI_countWebContentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebContentsAPI_countWebContentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_content_dto_collection_query_parameters_t *web_content_dto_collection_query_parameters);
 
 
 // Create a web content
@@ -52,7 +53,7 @@ WebContentsAPI_getWebContentByIdAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves all web contents for the specified tenant.
 //
 web_content_dto_list_envelope_t*
-WebContentsAPI_getWebContentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WebContentsAPI_getWebContentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_content_dto_collection_query_parameters_t *web_content_dto_collection_query_parameters);
 
 
 // Patch a web content
@@ -60,7 +61,7 @@ WebContentsAPI_getWebContentsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Partially updates an existing web content for the specified tenant.
 //
 empty_envelope_t*
-WebContentsAPI_patchWebContentAsync(apiClient_t *apiClient, char *tenantId, char *webContentId, char *api_version, char *x_api_version, list_t *operation);
+WebContentsAPI_patchWebContentAsync(apiClient_t *apiClient, char *tenantId, char *webContentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a web content

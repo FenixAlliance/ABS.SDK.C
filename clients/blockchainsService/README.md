@@ -84,7 +84,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -112,10 +111,12 @@ Category | Method | HTTP request | Description
  - [access_token_response_t](docs/access_token_response.md)
  - [blockchain_block_create_dto_t](docs/blockchain_block_create_dto.md)
  - [blockchain_block_dto_t](docs/blockchain_block_dto.md)
+ - [blockchain_block_dto_collection_query_parameters_t](docs/blockchain_block_dto_collection_query_parameters.md)
  - [blockchain_block_dto_list_envelope_t](docs/blockchain_block_dto_list_envelope.md)
  - [blockchain_block_update_dto_t](docs/blockchain_block_update_dto.md)
  - [blockchain_create_dto_t](docs/blockchain_create_dto.md)
  - [blockchain_dto_t](docs/blockchain_dto.md)
+ - [blockchain_dto_collection_query_parameters_t](docs/blockchain_dto_collection_query_parameters.md)
  - [blockchain_dto_list_envelope_t](docs/blockchain_dto_list_envelope.md)
  - [blockchain_update_dto_t](docs/blockchain_update_dto.md)
  - [empty_envelope_t](docs/empty_envelope.md)
@@ -128,9 +129,10 @@ Category | Method | HTTP request | Description
  - [login_request_t](docs/login_request.md)
  - [non_fungible_token_create_dto_t](docs/non_fungible_token_create_dto.md)
  - [non_fungible_token_dto_t](docs/non_fungible_token_dto.md)
+ - [non_fungible_token_dto_collection_query_parameters_t](docs/non_fungible_token_dto_collection_query_parameters.md)
  - [non_fungible_token_dto_list_envelope_t](docs/non_fungible_token_dto_list_envelope.md)
  - [non_fungible_token_update_dto_t](docs/non_fungible_token_update_dto.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [refresh_request_t](docs/refresh_request.md)
  - [register_request_t](docs/register_request.md)
  - [resend_confirmation_email_request_t](docs/resend_confirmation_email_request.md)

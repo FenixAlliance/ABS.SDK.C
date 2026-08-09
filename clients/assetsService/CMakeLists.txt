@@ -57,36 +57,43 @@ set(SRCS
     model/access_token_response.c
     model/asset_category_create_dto.c
     model/asset_category_dto.c
+    model/asset_category_dto_collection_query_parameters.c
     model/asset_category_dto_envelope.c
     model/asset_category_dto_list_envelope.c
     model/asset_category_update_dto.c
     model/asset_create_dto.c
     model/asset_depreciation_record_create_dto.c
     model/asset_depreciation_record_dto.c
+    model/asset_depreciation_record_dto_collection_query_parameters.c
     model/asset_depreciation_record_dto_envelope.c
     model/asset_depreciation_record_dto_list_envelope.c
     model/asset_depreciation_record_update_dto.c
     model/asset_dto.c
+    model/asset_dto_collection_query_parameters.c
     model/asset_dto_envelope.c
     model/asset_dto_list_envelope.c
     model/asset_repair_create_dto.c
     model/asset_repair_dto.c
+    model/asset_repair_dto_collection_query_parameters.c
     model/asset_repair_dto_envelope.c
     model/asset_repair_dto_list_envelope.c
     model/asset_repair_update_dto.c
     model/asset_transfer_create_dto.c
     model/asset_transfer_dto.c
+    model/asset_transfer_dto_collection_query_parameters.c
     model/asset_transfer_dto_envelope.c
     model/asset_transfer_dto_list_envelope.c
     model/asset_transfer_update_dto.c
     model/asset_type_create_dto.c
     model/asset_type_dto.c
+    model/asset_type_dto_collection_query_parameters.c
     model/asset_type_dto_envelope.c
     model/asset_type_dto_list_envelope.c
     model/asset_type_update_dto.c
     model/asset_update_dto.c
     model/asset_value_amend_create_dto.c
     model/asset_value_amend_dto.c
+    model/asset_value_amend_dto_collection_query_parameters.c
     model/asset_value_amend_dto_envelope.c
     model/asset_value_amend_dto_list_envelope.c
     model/asset_value_amend_update_dto.c
@@ -98,7 +105,7 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -123,36 +130,43 @@ set(HDRS
     model/access_token_response.h
     model/asset_category_create_dto.h
     model/asset_category_dto.h
+    model/asset_category_dto_collection_query_parameters.h
     model/asset_category_dto_envelope.h
     model/asset_category_dto_list_envelope.h
     model/asset_category_update_dto.h
     model/asset_create_dto.h
     model/asset_depreciation_record_create_dto.h
     model/asset_depreciation_record_dto.h
+    model/asset_depreciation_record_dto_collection_query_parameters.h
     model/asset_depreciation_record_dto_envelope.h
     model/asset_depreciation_record_dto_list_envelope.h
     model/asset_depreciation_record_update_dto.h
     model/asset_dto.h
+    model/asset_dto_collection_query_parameters.h
     model/asset_dto_envelope.h
     model/asset_dto_list_envelope.h
     model/asset_repair_create_dto.h
     model/asset_repair_dto.h
+    model/asset_repair_dto_collection_query_parameters.h
     model/asset_repair_dto_envelope.h
     model/asset_repair_dto_list_envelope.h
     model/asset_repair_update_dto.h
     model/asset_transfer_create_dto.h
     model/asset_transfer_dto.h
+    model/asset_transfer_dto_collection_query_parameters.h
     model/asset_transfer_dto_envelope.h
     model/asset_transfer_dto_list_envelope.h
     model/asset_transfer_update_dto.h
     model/asset_type_create_dto.h
     model/asset_type_dto.h
+    model/asset_type_dto_collection_query_parameters.h
     model/asset_type_dto_envelope.h
     model/asset_type_dto_list_envelope.h
     model/asset_type_update_dto.h
     model/asset_update_dto.h
     model/asset_value_amend_create_dto.h
     model/asset_value_amend_dto.h
+    model/asset_value_amend_dto_collection_query_parameters.h
     model/asset_value_amend_dto_envelope.h
     model/asset_value_amend_dto_list_envelope.h
     model/asset_value_amend_update_dto.h
@@ -164,7 +178,7 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

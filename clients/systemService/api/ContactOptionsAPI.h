@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
 #include "../model/option_create_dto.h"
+#include "../model/option_dto_collection_query_parameters.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
 #include "../model/option_update_dto.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new contact option (admin)
@@ -44,7 +45,7 @@ ContactOptionsAPI_getSystemContactOptionById(apiClient_t *apiClient, char *conta
 // Admin endpoint to retrieve options for any contact
 //
 option_dto_list_envelope_t*
-ContactOptionsAPI_getSystemContactOptions(apiClient_t *apiClient, char *contactId, char *portalId, char *api_version, char *x_api_version);
+ContactOptionsAPI_getSystemContactOptions(apiClient_t *apiClient, char *contactId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Get the count of contact options (admin)
@@ -52,7 +53,7 @@ ContactOptionsAPI_getSystemContactOptions(apiClient_t *apiClient, char *contactI
 // Admin endpoint to get the count of options for any contact
 //
 int32_envelope_t*
-ContactOptionsAPI_getSystemContactOptionsCount(apiClient_t *apiClient, char *contactId, char *portalId, char *api_version, char *x_api_version);
+ContactOptionsAPI_getSystemContactOptionsCount(apiClient_t *apiClient, char *contactId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Partially update a contact option (admin)
@@ -60,7 +61,7 @@ ContactOptionsAPI_getSystemContactOptionsCount(apiClient_t *apiClient, char *con
 // Admin endpoint to partially update an option for any contact using a JSON Patch document
 //
 empty_envelope_t*
-ContactOptionsAPI_patchSystemContactOption(apiClient_t *apiClient, char *contactId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+ContactOptionsAPI_patchSystemContactOption(apiClient_t *apiClient, char *contactId, char *optionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a contact option (admin)

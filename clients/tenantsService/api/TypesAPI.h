@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_type_create_dto.h"
+#include "../model/tenant_type_dto_collection_query_parameters.h"
 #include "../model/tenant_type_dto_envelope.h"
 #include "../model/tenant_type_dto_list_envelope.h"
 #include "../model/tenant_type_update_dto.h"
@@ -44,7 +45,7 @@ TypesAPI_getTenantTypeById(apiClient_t *apiClient, char *tenantId, char *tenantT
 // Retrieve a list of tenant types
 //
 tenant_type_dto_list_envelope_t*
-TypesAPI_getTenantTypes(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TypesAPI_getTenantTypes(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_type_dto_collection_query_parameters_t *tenant_type_dto_collection_query_parameters);
 
 
 // Get the count of tenant types
@@ -52,7 +53,7 @@ TypesAPI_getTenantTypes(apiClient_t *apiClient, char *tenantId, char *api_versio
 // Get the count of tenant types
 //
 int32_envelope_t*
-TypesAPI_getTenantTypesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TypesAPI_getTenantTypesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_type_dto_collection_query_parameters_t *tenant_type_dto_collection_query_parameters);
 
 
 // Patch a tenant type
@@ -60,7 +61,7 @@ TypesAPI_getTenantTypesCount(apiClient_t *apiClient, char *tenantId, char *api_v
 // Patch a tenant type
 //
 empty_envelope_t*
-TypesAPI_patchTenantType(apiClient_t *apiClient, char *tenantId, char *tenantTypeId, char *api_version, char *x_api_version, list_t *operation);
+TypesAPI_patchTenantType(apiClient_t *apiClient, char *tenantId, char *tenantTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant type

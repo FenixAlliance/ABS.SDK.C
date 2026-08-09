@@ -335,13 +335,13 @@ end:
 // Retrieves all course articles for a specific course wiki.
 //
 list_t*
-CoursesAPI_getCourseArticlesByCourseWikiAsync(apiClient_t *apiClient, char *courseId, char *wikiId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseArticlesByCourseWikiAsync(apiClient_t *apiClient, char *courseId, char *wikiId, char *api_version, char *x_api_version, course_article_dto_collection_query_parameters_t *course_article_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -395,8 +395,19 @@ CoursesAPI_getCourseArticlesByCourseWikiAsync(apiClient_t *apiClient, char *cour
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_article_dto_collection_query_parameters = NULL;
+    if (course_article_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_article_dto_collection_query_parameters = course_article_dto_collection_query_parameters_convertToJSON(course_article_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_article_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -443,7 +454,7 @@ CoursesAPI_getCourseArticlesByCourseWikiAsync(apiClient_t *apiClient, char *cour
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     free(localVarToReplace_wikiId);
@@ -456,6 +467,11 @@ CoursesAPI_getCourseArticlesByCourseWikiAsync(apiClient_t *apiClient, char *cour
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_article_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_article_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_article_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -480,13 +496,13 @@ end:
 // Returns the count of course articles for a specific course wiki.
 //
 int*
-CoursesAPI_getCourseArticlesByCourseWikiCountAsync(apiClient_t *apiClient, char *courseId, char *wikiId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseArticlesByCourseWikiCountAsync(apiClient_t *apiClient, char *courseId, char *wikiId, char *api_version, char *x_api_version, course_article_dto_collection_query_parameters_t *course_article_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -540,8 +556,19 @@ CoursesAPI_getCourseArticlesByCourseWikiCountAsync(apiClient_t *apiClient, char 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_article_dto_collection_query_parameters = NULL;
+    if (course_article_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_article_dto_collection_query_parameters = course_article_dto_collection_query_parameters_convertToJSON(course_article_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_article_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -572,7 +599,7 @@ CoursesAPI_getCourseArticlesByCourseWikiCountAsync(apiClient_t *apiClient, char 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     free(localVarToReplace_wikiId);
@@ -585,6 +612,11 @@ CoursesAPI_getCourseArticlesByCourseWikiCountAsync(apiClient_t *apiClient, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_article_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_article_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_article_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -609,13 +641,13 @@ end:
 // Retrieves all course assignments for a specific course.
 //
 list_t*
-CoursesAPI_getCourseAssignmentsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseAssignmentsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_assignment_dto_collection_query_parameters_t *course_assignment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -659,8 +691,19 @@ CoursesAPI_getCourseAssignmentsByCourseAsync(apiClient_t *apiClient, char *cours
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_assignment_dto_collection_query_parameters = NULL;
+    if (course_assignment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_assignment_dto_collection_query_parameters = course_assignment_dto_collection_query_parameters_convertToJSON(course_assignment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_assignment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -707,7 +750,7 @@ CoursesAPI_getCourseAssignmentsByCourseAsync(apiClient_t *apiClient, char *cours
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -719,6 +762,11 @@ CoursesAPI_getCourseAssignmentsByCourseAsync(apiClient_t *apiClient, char *cours
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_assignment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_assignment_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_assignment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -743,13 +791,13 @@ end:
 // Returns the count of course assignments for a specific course.
 //
 int*
-CoursesAPI_getCourseAssignmentsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseAssignmentsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_assignment_dto_collection_query_parameters_t *course_assignment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -793,8 +841,19 @@ CoursesAPI_getCourseAssignmentsByCourseCountAsync(apiClient_t *apiClient, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_assignment_dto_collection_query_parameters = NULL;
+    if (course_assignment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_assignment_dto_collection_query_parameters = course_assignment_dto_collection_query_parameters_convertToJSON(course_assignment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_assignment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -825,7 +884,7 @@ CoursesAPI_getCourseAssignmentsByCourseCountAsync(apiClient_t *apiClient, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -837,6 +896,11 @@ CoursesAPI_getCourseAssignmentsByCourseCountAsync(apiClient_t *apiClient, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_assignment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_assignment_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_assignment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1016,13 +1080,13 @@ end:
 // Retrieves all course categories for a specific course.
 //
 list_t*
-CoursesAPI_getCourseCategoriesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseCategoriesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_category_dto_collection_query_parameters_t *course_category_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1066,8 +1130,19 @@ CoursesAPI_getCourseCategoriesByCourseAsync(apiClient_t *apiClient, char *course
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_category_dto_collection_query_parameters = NULL;
+    if (course_category_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_category_dto_collection_query_parameters = course_category_dto_collection_query_parameters_convertToJSON(course_category_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_category_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1114,7 +1189,7 @@ CoursesAPI_getCourseCategoriesByCourseAsync(apiClient_t *apiClient, char *course
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -1126,6 +1201,11 @@ CoursesAPI_getCourseCategoriesByCourseAsync(apiClient_t *apiClient, char *course
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_category_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_category_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_category_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1150,13 +1230,13 @@ end:
 // Returns the count of course categories for a specific course.
 //
 int*
-CoursesAPI_getCourseCategoriesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseCategoriesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_category_dto_collection_query_parameters_t *course_category_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1200,8 +1280,19 @@ CoursesAPI_getCourseCategoriesByCourseCountAsync(apiClient_t *apiClient, char *c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_category_dto_collection_query_parameters = NULL;
+    if (course_category_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_category_dto_collection_query_parameters = course_category_dto_collection_query_parameters_convertToJSON(course_category_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_category_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1232,7 +1323,7 @@ CoursesAPI_getCourseCategoriesByCourseCountAsync(apiClient_t *apiClient, char *c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -1244,6 +1335,11 @@ CoursesAPI_getCourseCategoriesByCourseCountAsync(apiClient_t *apiClient, char *c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_category_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_category_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_category_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1268,13 +1364,13 @@ end:
 // Retrieves all course cohorts for a specific course.
 //
 list_t*
-CoursesAPI_getCourseCohortsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseCohortsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_cohort_dto_collection_query_parameters_t *course_cohort_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1318,8 +1414,19 @@ CoursesAPI_getCourseCohortsByCourseAsync(apiClient_t *apiClient, char *courseId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_cohort_dto_collection_query_parameters = NULL;
+    if (course_cohort_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_cohort_dto_collection_query_parameters = course_cohort_dto_collection_query_parameters_convertToJSON(course_cohort_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_cohort_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1366,7 +1473,7 @@ CoursesAPI_getCourseCohortsByCourseAsync(apiClient_t *apiClient, char *courseId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -1378,6 +1485,11 @@ CoursesAPI_getCourseCohortsByCourseAsync(apiClient_t *apiClient, char *courseId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_cohort_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_cohort_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_cohort_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1402,13 +1514,13 @@ end:
 // Returns the count of course cohorts for a specific course.
 //
 int*
-CoursesAPI_getCourseCohortsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseCohortsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_cohort_dto_collection_query_parameters_t *course_cohort_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1452,8 +1564,19 @@ CoursesAPI_getCourseCohortsByCourseCountAsync(apiClient_t *apiClient, char *cour
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_cohort_dto_collection_query_parameters = NULL;
+    if (course_cohort_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_cohort_dto_collection_query_parameters = course_cohort_dto_collection_query_parameters_convertToJSON(course_cohort_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_cohort_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1484,7 +1607,7 @@ CoursesAPI_getCourseCohortsByCourseCountAsync(apiClient_t *apiClient, char *cour
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -1496,6 +1619,11 @@ CoursesAPI_getCourseCohortsByCourseCountAsync(apiClient_t *apiClient, char *cour
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_cohort_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_cohort_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_cohort_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1520,13 +1648,13 @@ end:
 // Retrieves all enrollments for a specific course.
 //
 list_t*
-CoursesAPI_getCourseEnrollmentsByCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseEnrollmentsByCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version, course_enrollment_dto_collection_query_parameters_t *course_enrollment_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1589,8 +1717,19 @@ CoursesAPI_getCourseEnrollmentsByCourseAsync(apiClient_t *apiClient, char *tenan
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_enrollment_dto_collection_query_parameters = NULL;
+    if (course_enrollment_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_enrollment_dto_collection_query_parameters = course_enrollment_dto_collection_query_parameters_convertToJSON(course_enrollment_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_enrollment_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1637,7 +1776,7 @@ CoursesAPI_getCourseEnrollmentsByCourseAsync(apiClient_t *apiClient, char *tenan
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -1649,6 +1788,11 @@ CoursesAPI_getCourseEnrollmentsByCourseAsync(apiClient_t *apiClient, char *tenan
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_enrollment_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_enrollment_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_enrollment_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1685,13 +1829,13 @@ end:
 // Retrieves all course files for a specific course.
 //
 list_t*
-CoursesAPI_getCourseFilesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseFilesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_file_dto_collection_query_parameters_t *course_file_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1735,8 +1879,19 @@ CoursesAPI_getCourseFilesByCourseAsync(apiClient_t *apiClient, char *courseId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_file_dto_collection_query_parameters = NULL;
+    if (course_file_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_file_dto_collection_query_parameters = course_file_dto_collection_query_parameters_convertToJSON(course_file_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_file_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1783,7 +1938,7 @@ CoursesAPI_getCourseFilesByCourseAsync(apiClient_t *apiClient, char *courseId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -1795,6 +1950,11 @@ CoursesAPI_getCourseFilesByCourseAsync(apiClient_t *apiClient, char *courseId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_file_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_file_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_file_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1819,13 +1979,13 @@ end:
 // Returns the count of course files for a specific course.
 //
 int*
-CoursesAPI_getCourseFilesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseFilesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_file_dto_collection_query_parameters_t *course_file_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1869,8 +2029,19 @@ CoursesAPI_getCourseFilesByCourseCountAsync(apiClient_t *apiClient, char *course
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_file_dto_collection_query_parameters = NULL;
+    if (course_file_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_file_dto_collection_query_parameters = course_file_dto_collection_query_parameters_convertToJSON(course_file_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_file_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1901,7 +2072,7 @@ CoursesAPI_getCourseFilesByCourseCountAsync(apiClient_t *apiClient, char *course
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -1913,6 +2084,11 @@ CoursesAPI_getCourseFilesByCourseCountAsync(apiClient_t *apiClient, char *course
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_file_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_file_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_file_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1937,13 +2113,13 @@ end:
 // Retrieves all course forums for a specific course.
 //
 list_t*
-CoursesAPI_getCourseForumsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseForumsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_forum_dto_collection_query_parameters_t *course_forum_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1987,8 +2163,19 @@ CoursesAPI_getCourseForumsByCourseAsync(apiClient_t *apiClient, char *courseId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_forum_dto_collection_query_parameters = NULL;
+    if (course_forum_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_forum_dto_collection_query_parameters = course_forum_dto_collection_query_parameters_convertToJSON(course_forum_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_forum_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2035,7 +2222,7 @@ CoursesAPI_getCourseForumsByCourseAsync(apiClient_t *apiClient, char *courseId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -2047,6 +2234,11 @@ CoursesAPI_getCourseForumsByCourseAsync(apiClient_t *apiClient, char *courseId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_forum_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_forum_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_forum_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2071,13 +2263,13 @@ end:
 // Returns the count of course forums for a specific course.
 //
 int*
-CoursesAPI_getCourseForumsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseForumsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_forum_dto_collection_query_parameters_t *course_forum_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2121,8 +2313,19 @@ CoursesAPI_getCourseForumsByCourseCountAsync(apiClient_t *apiClient, char *cours
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_forum_dto_collection_query_parameters = NULL;
+    if (course_forum_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_forum_dto_collection_query_parameters = course_forum_dto_collection_query_parameters_convertToJSON(course_forum_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_forum_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2153,7 +2356,7 @@ CoursesAPI_getCourseForumsByCourseCountAsync(apiClient_t *apiClient, char *cours
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -2165,6 +2368,11 @@ CoursesAPI_getCourseForumsByCourseCountAsync(apiClient_t *apiClient, char *cours
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_forum_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_forum_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_forum_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2189,13 +2397,13 @@ end:
 // Retrieves all course handouts for a specific course.
 //
 list_t*
-CoursesAPI_getCourseHandoutsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseHandoutsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_handout_dto_collection_query_parameters_t *course_handout_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2239,8 +2447,19 @@ CoursesAPI_getCourseHandoutsByCourseAsync(apiClient_t *apiClient, char *courseId
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_handout_dto_collection_query_parameters = NULL;
+    if (course_handout_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_handout_dto_collection_query_parameters = course_handout_dto_collection_query_parameters_convertToJSON(course_handout_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_handout_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2287,7 +2506,7 @@ CoursesAPI_getCourseHandoutsByCourseAsync(apiClient_t *apiClient, char *courseId
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -2299,6 +2518,11 @@ CoursesAPI_getCourseHandoutsByCourseAsync(apiClient_t *apiClient, char *courseId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_handout_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_handout_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_handout_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2323,13 +2547,13 @@ end:
 // Returns the count of course handouts for a specific course.
 //
 int*
-CoursesAPI_getCourseHandoutsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseHandoutsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_handout_dto_collection_query_parameters_t *course_handout_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2373,8 +2597,19 @@ CoursesAPI_getCourseHandoutsByCourseCountAsync(apiClient_t *apiClient, char *cou
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_handout_dto_collection_query_parameters = NULL;
+    if (course_handout_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_handout_dto_collection_query_parameters = course_handout_dto_collection_query_parameters_convertToJSON(course_handout_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_handout_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2405,7 +2640,7 @@ CoursesAPI_getCourseHandoutsByCourseCountAsync(apiClient_t *apiClient, char *cou
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -2417,6 +2652,11 @@ CoursesAPI_getCourseHandoutsByCourseCountAsync(apiClient_t *apiClient, char *cou
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_handout_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_handout_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_handout_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2441,13 +2681,13 @@ end:
 // Retrieves all course libraries for a specific course.
 //
 list_t*
-CoursesAPI_getCourseLibrariesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseLibrariesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_library_dto_collection_query_parameters_t *course_library_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2491,8 +2731,19 @@ CoursesAPI_getCourseLibrariesByCourseAsync(apiClient_t *apiClient, char *courseI
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_library_dto_collection_query_parameters = NULL;
+    if (course_library_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_library_dto_collection_query_parameters = course_library_dto_collection_query_parameters_convertToJSON(course_library_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_library_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2539,7 +2790,7 @@ CoursesAPI_getCourseLibrariesByCourseAsync(apiClient_t *apiClient, char *courseI
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -2551,6 +2802,11 @@ CoursesAPI_getCourseLibrariesByCourseAsync(apiClient_t *apiClient, char *courseI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_library_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_library_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_library_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2575,13 +2831,13 @@ end:
 // Returns the count of course libraries for a specific course.
 //
 int*
-CoursesAPI_getCourseLibrariesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseLibrariesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_library_dto_collection_query_parameters_t *course_library_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2625,8 +2881,19 @@ CoursesAPI_getCourseLibrariesByCourseCountAsync(apiClient_t *apiClient, char *co
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_library_dto_collection_query_parameters = NULL;
+    if (course_library_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_library_dto_collection_query_parameters = course_library_dto_collection_query_parameters_convertToJSON(course_library_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_library_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2657,7 +2924,7 @@ CoursesAPI_getCourseLibrariesByCourseCountAsync(apiClient_t *apiClient, char *co
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -2669,6 +2936,11 @@ CoursesAPI_getCourseLibrariesByCourseCountAsync(apiClient_t *apiClient, char *co
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_library_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_library_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_library_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2693,13 +2965,13 @@ end:
 // Retrieves all course pages for a specific course.
 //
 list_t*
-CoursesAPI_getCoursePagesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCoursePagesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_page_dto_collection_query_parameters_t *course_page_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2743,8 +3015,19 @@ CoursesAPI_getCoursePagesByCourseAsync(apiClient_t *apiClient, char *courseId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_page_dto_collection_query_parameters = NULL;
+    if (course_page_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_page_dto_collection_query_parameters = course_page_dto_collection_query_parameters_convertToJSON(course_page_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_page_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2791,7 +3074,7 @@ CoursesAPI_getCoursePagesByCourseAsync(apiClient_t *apiClient, char *courseId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -2803,6 +3086,11 @@ CoursesAPI_getCoursePagesByCourseAsync(apiClient_t *apiClient, char *courseId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_page_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_page_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_page_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2827,13 +3115,13 @@ end:
 // Returns the count of course pages for a specific course.
 //
 int*
-CoursesAPI_getCoursePagesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCoursePagesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_page_dto_collection_query_parameters_t *course_page_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2877,8 +3165,19 @@ CoursesAPI_getCoursePagesByCourseCountAsync(apiClient_t *apiClient, char *course
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_page_dto_collection_query_parameters = NULL;
+    if (course_page_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_page_dto_collection_query_parameters = course_page_dto_collection_query_parameters_convertToJSON(course_page_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_page_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2909,7 +3208,7 @@ CoursesAPI_getCoursePagesByCourseCountAsync(apiClient_t *apiClient, char *course
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -2921,6 +3220,11 @@ CoursesAPI_getCoursePagesByCourseCountAsync(apiClient_t *apiClient, char *course
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_page_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_page_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_page_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2945,13 +3249,13 @@ end:
 // Retrieves all course problem sets for a specific course.
 //
 list_t*
-CoursesAPI_getCourseProblemSetsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseProblemSetsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_problem_set_dto_collection_query_parameters_t *course_problem_set_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2995,8 +3299,19 @@ CoursesAPI_getCourseProblemSetsByCourseAsync(apiClient_t *apiClient, char *cours
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters = NULL;
+    if (course_problem_set_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters = course_problem_set_dto_collection_query_parameters_convertToJSON(course_problem_set_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3043,7 +3358,7 @@ CoursesAPI_getCourseProblemSetsByCourseAsync(apiClient_t *apiClient, char *cours
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -3055,6 +3370,11 @@ CoursesAPI_getCourseProblemSetsByCourseAsync(apiClient_t *apiClient, char *cours
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3079,13 +3399,13 @@ end:
 // Returns the count of course problem sets for a specific course.
 //
 int*
-CoursesAPI_getCourseProblemSetsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseProblemSetsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_problem_set_dto_collection_query_parameters_t *course_problem_set_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3129,8 +3449,19 @@ CoursesAPI_getCourseProblemSetsByCourseCountAsync(apiClient_t *apiClient, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters = NULL;
+    if (course_problem_set_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters = course_problem_set_dto_collection_query_parameters_convertToJSON(course_problem_set_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3161,7 +3492,7 @@ CoursesAPI_getCourseProblemSetsByCourseCountAsync(apiClient_t *apiClient, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -3173,6 +3504,11 @@ CoursesAPI_getCourseProblemSetsByCourseCountAsync(apiClient_t *apiClient, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_problem_set_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3197,13 +3533,13 @@ end:
 // Retrieves all course sections for a specific course.
 //
 list_t*
-CoursesAPI_getCourseSectionsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseSectionsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_section_dto_collection_query_parameters_t *course_section_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3247,8 +3583,19 @@ CoursesAPI_getCourseSectionsByCourseAsync(apiClient_t *apiClient, char *courseId
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_section_dto_collection_query_parameters = NULL;
+    if (course_section_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_section_dto_collection_query_parameters = course_section_dto_collection_query_parameters_convertToJSON(course_section_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_section_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3295,7 +3642,7 @@ CoursesAPI_getCourseSectionsByCourseAsync(apiClient_t *apiClient, char *courseId
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -3307,6 +3654,11 @@ CoursesAPI_getCourseSectionsByCourseAsync(apiClient_t *apiClient, char *courseId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_section_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_section_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_section_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3331,13 +3683,13 @@ end:
 // Returns the count of course sections for a specific course.
 //
 int*
-CoursesAPI_getCourseSectionsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseSectionsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_section_dto_collection_query_parameters_t *course_section_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3381,8 +3733,19 @@ CoursesAPI_getCourseSectionsByCourseCountAsync(apiClient_t *apiClient, char *cou
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_section_dto_collection_query_parameters = NULL;
+    if (course_section_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_section_dto_collection_query_parameters = course_section_dto_collection_query_parameters_convertToJSON(course_section_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_section_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3413,7 +3776,7 @@ CoursesAPI_getCourseSectionsByCourseCountAsync(apiClient_t *apiClient, char *cou
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -3425,6 +3788,11 @@ CoursesAPI_getCourseSectionsByCourseCountAsync(apiClient_t *apiClient, char *cou
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_section_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_section_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_section_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3449,13 +3817,13 @@ end:
 // Retrieves all course unit components for a specific course.
 //
 list_t*
-CoursesAPI_getCourseUnitComponentsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseUnitComponentsByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_unit_component_dto_collection_query_parameters_t *course_unit_component_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3499,8 +3867,19 @@ CoursesAPI_getCourseUnitComponentsByCourseAsync(apiClient_t *apiClient, char *co
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters = NULL;
+    if (course_unit_component_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters = course_unit_component_dto_collection_query_parameters_convertToJSON(course_unit_component_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3547,7 +3926,7 @@ CoursesAPI_getCourseUnitComponentsByCourseAsync(apiClient_t *apiClient, char *co
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -3559,6 +3938,11 @@ CoursesAPI_getCourseUnitComponentsByCourseAsync(apiClient_t *apiClient, char *co
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3583,13 +3967,13 @@ end:
 // Returns the count of course unit components for a specific course.
 //
 int*
-CoursesAPI_getCourseUnitComponentsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseUnitComponentsByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_unit_component_dto_collection_query_parameters_t *course_unit_component_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3633,8 +4017,19 @@ CoursesAPI_getCourseUnitComponentsByCourseCountAsync(apiClient_t *apiClient, cha
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters = NULL;
+    if (course_unit_component_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters = course_unit_component_dto_collection_query_parameters_convertToJSON(course_unit_component_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3665,7 +4060,7 @@ CoursesAPI_getCourseUnitComponentsByCourseCountAsync(apiClient_t *apiClient, cha
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -3677,6 +4072,11 @@ CoursesAPI_getCourseUnitComponentsByCourseCountAsync(apiClient_t *apiClient, cha
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_unit_component_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3701,13 +4101,13 @@ end:
 // Retrieves all course units for a specific course section.
 //
 list_t*
-CoursesAPI_getCourseUnitsBySectionAsync(apiClient_t *apiClient, char *courseId, char *sectionId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseUnitsBySectionAsync(apiClient_t *apiClient, char *courseId, char *sectionId, char *api_version, char *x_api_version, course_unit_dto_collection_query_parameters_t *course_unit_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3761,8 +4161,19 @@ CoursesAPI_getCourseUnitsBySectionAsync(apiClient_t *apiClient, char *courseId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_unit_dto_collection_query_parameters = NULL;
+    if (course_unit_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_unit_dto_collection_query_parameters = course_unit_dto_collection_query_parameters_convertToJSON(course_unit_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_unit_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3809,7 +4220,7 @@ CoursesAPI_getCourseUnitsBySectionAsync(apiClient_t *apiClient, char *courseId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     free(localVarToReplace_sectionId);
@@ -3822,6 +4233,11 @@ CoursesAPI_getCourseUnitsBySectionAsync(apiClient_t *apiClient, char *courseId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_unit_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_unit_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_unit_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3846,13 +4262,13 @@ end:
 // Returns the count of course units for a specific course section.
 //
 int*
-CoursesAPI_getCourseUnitsBySectionCountAsync(apiClient_t *apiClient, char *courseId, char *sectionId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseUnitsBySectionCountAsync(apiClient_t *apiClient, char *courseId, char *sectionId, char *api_version, char *x_api_version, course_unit_dto_collection_query_parameters_t *course_unit_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3906,8 +4322,19 @@ CoursesAPI_getCourseUnitsBySectionCountAsync(apiClient_t *apiClient, char *cours
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_unit_dto_collection_query_parameters = NULL;
+    if (course_unit_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_unit_dto_collection_query_parameters = course_unit_dto_collection_query_parameters_convertToJSON(course_unit_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_unit_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3938,7 +4365,7 @@ CoursesAPI_getCourseUnitsBySectionCountAsync(apiClient_t *apiClient, char *cours
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     free(localVarToReplace_sectionId);
@@ -3951,6 +4378,11 @@ CoursesAPI_getCourseUnitsBySectionCountAsync(apiClient_t *apiClient, char *cours
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_unit_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_unit_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_unit_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3975,13 +4407,13 @@ end:
 // Retrieves all course updates for a specific course.
 //
 list_t*
-CoursesAPI_getCourseUpdatesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseUpdatesByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_news_dto_collection_query_parameters_t *course_news_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4025,8 +4457,19 @@ CoursesAPI_getCourseUpdatesByCourseAsync(apiClient_t *apiClient, char *courseId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_news_dto_collection_query_parameters = NULL;
+    if (course_news_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_news_dto_collection_query_parameters = course_news_dto_collection_query_parameters_convertToJSON(course_news_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_news_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4073,7 +4516,7 @@ CoursesAPI_getCourseUpdatesByCourseAsync(apiClient_t *apiClient, char *courseId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -4085,6 +4528,11 @@ CoursesAPI_getCourseUpdatesByCourseAsync(apiClient_t *apiClient, char *courseId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_news_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_news_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_news_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4109,13 +4557,13 @@ end:
 // Returns the count of course updates for a specific course.
 //
 int*
-CoursesAPI_getCourseUpdatesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseUpdatesByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_news_dto_collection_query_parameters_t *course_news_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4159,8 +4607,19 @@ CoursesAPI_getCourseUpdatesByCourseCountAsync(apiClient_t *apiClient, char *cour
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_news_dto_collection_query_parameters = NULL;
+    if (course_news_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_news_dto_collection_query_parameters = course_news_dto_collection_query_parameters_convertToJSON(course_news_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_news_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4191,7 +4650,7 @@ CoursesAPI_getCourseUpdatesByCourseCountAsync(apiClient_t *apiClient, char *cour
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -4203,6 +4662,11 @@ CoursesAPI_getCourseUpdatesByCourseCountAsync(apiClient_t *apiClient, char *cour
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_news_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_news_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_news_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4227,13 +4691,13 @@ end:
 // Retrieves all course wikis for a specific course.
 //
 list_t*
-CoursesAPI_getCourseWikisByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseWikisByCourseAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_wiki_dto_collection_query_parameters_t *course_wiki_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4277,8 +4741,19 @@ CoursesAPI_getCourseWikisByCourseAsync(apiClient_t *apiClient, char *courseId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_wiki_dto_collection_query_parameters = NULL;
+    if (course_wiki_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_wiki_dto_collection_query_parameters = course_wiki_dto_collection_query_parameters_convertToJSON(course_wiki_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_wiki_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4325,7 +4800,7 @@ CoursesAPI_getCourseWikisByCourseAsync(apiClient_t *apiClient, char *courseId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -4337,6 +4812,11 @@ CoursesAPI_getCourseWikisByCourseAsync(apiClient_t *apiClient, char *courseId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_wiki_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_wiki_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_wiki_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4361,13 +4841,13 @@ end:
 // Returns the count of course wikis for a specific course.
 //
 int*
-CoursesAPI_getCourseWikisByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version)
+CoursesAPI_getCourseWikisByCourseCountAsync(apiClient_t *apiClient, char *courseId, char *api_version, char *x_api_version, course_wiki_dto_collection_query_parameters_t *course_wiki_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4411,8 +4891,19 @@ CoursesAPI_getCourseWikisByCourseCountAsync(apiClient_t *apiClient, char *course
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_wiki_dto_collection_query_parameters = NULL;
+    if (course_wiki_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_wiki_dto_collection_query_parameters = course_wiki_dto_collection_query_parameters_convertToJSON(course_wiki_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_wiki_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4443,7 +4934,7 @@ CoursesAPI_getCourseWikisByCourseCountAsync(apiClient_t *apiClient, char *course
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_courseId);
     if (keyHeader_x_api_version) {
@@ -4455,6 +4946,11 @@ CoursesAPI_getCourseWikisByCourseCountAsync(apiClient_t *apiClient, char *course
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_wiki_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_wiki_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_wiki_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -4479,13 +4975,13 @@ end:
 // Retrieves courses. When tenantId is provided, returns tenant-scoped courses; otherwise returns all courses.
 //
 list_t*
-CoursesAPI_getCoursesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+CoursesAPI_getCoursesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_dto_collection_query_parameters_t *course_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4531,8 +5027,19 @@ CoursesAPI_getCoursesAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_dto_collection_query_parameters = NULL;
+    if (course_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_dto_collection_query_parameters = course_dto_collection_query_parameters_convertToJSON(course_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4579,7 +5086,7 @@ CoursesAPI_getCoursesAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -4590,6 +5097,11 @@ CoursesAPI_getCoursesAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4626,13 +5138,13 @@ end:
 // Returns the count of courses. When tenantId is provided, returns tenant-scoped count; otherwise returns global count.
 //
 int*
-CoursesAPI_getCoursesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+CoursesAPI_getCoursesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_dto_collection_query_parameters_t *course_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4678,8 +5190,19 @@ CoursesAPI_getCoursesCountAsync(apiClient_t *apiClient, char *tenantId, char *ap
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_course_dto_collection_query_parameters = NULL;
+    if (course_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_course_dto_collection_query_parameters = course_dto_collection_query_parameters_convertToJSON(course_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_course_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4710,7 +5233,7 @@ CoursesAPI_getCoursesCountAsync(apiClient_t *apiClient, char *tenantId, char *ap
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -4721,6 +5244,11 @@ CoursesAPI_getCoursesCountAsync(apiClient_t *apiClient, char *tenantId, char *ap
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_course_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_course_dto_collection_query_parameters);
+        localVarSingleItemJSON_course_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -5261,7 +5789,7 @@ end:
 // Partially updates a course for the specified tenant.
 //
 empty_envelope_t*
-CoursesAPI_patchCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version, list_t *operation)
+CoursesAPI_patchCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -5333,14 +5861,14 @@ CoursesAPI_patchCourseAsync(apiClient_t *apiClient, char *tenantId, char *course
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -5348,16 +5876,16 @@ CoursesAPI_patchCourseAsync(apiClient_t *apiClient, char *tenantId, char *course
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -5411,17 +5939,17 @@ CoursesAPI_patchCourseAsync(apiClient_t *apiClient, char *tenantId, char *course
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_team_contact_enrollment_create_dto.h"
+#include "../model/tenant_team_contact_enrollment_dto_collection_query_parameters.h"
 #include "../model/tenant_team_contact_enrollment_dto_envelope.h"
 #include "../model/tenant_team_contact_enrollment_dto_list_envelope.h"
 #include "../model/tenant_team_contact_enrollment_update_dto.h"
@@ -44,7 +45,7 @@ TeamContactEnrollmentsAPI_getTenantTeamContactEnrollmentById(apiClient_t *apiCli
 // Retrieve a list of tenant team contact enrollments
 //
 tenant_team_contact_enrollment_dto_list_envelope_t*
-TeamContactEnrollmentsAPI_getTenantTeamContactEnrollments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TeamContactEnrollmentsAPI_getTenantTeamContactEnrollments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_team_contact_enrollment_dto_collection_query_parameters_t *tenant_team_contact_enrollment_dto_collection_query_parameters);
 
 
 // Get the count of tenant team contact enrollments
@@ -52,7 +53,7 @@ TeamContactEnrollmentsAPI_getTenantTeamContactEnrollments(apiClient_t *apiClient
 // Get the count of tenant team contact enrollments
 //
 int32_envelope_t*
-TeamContactEnrollmentsAPI_getTenantTeamContactEnrollmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TeamContactEnrollmentsAPI_getTenantTeamContactEnrollmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_team_contact_enrollment_dto_collection_query_parameters_t *tenant_team_contact_enrollment_dto_collection_query_parameters);
 
 
 // Patch a tenant team contact enrollment
@@ -60,7 +61,7 @@ TeamContactEnrollmentsAPI_getTenantTeamContactEnrollmentsCount(apiClient_t *apiC
 // Patch a tenant team contact enrollment
 //
 empty_envelope_t*
-TeamContactEnrollmentsAPI_patchTenantTeamContactEnrollment(apiClient_t *apiClient, char *tenantId, char *tenantTeamContactEnrollmentId, char *api_version, char *x_api_version, list_t *operation);
+TeamContactEnrollmentsAPI_patchTenantTeamContactEnrollment(apiClient_t *apiClient, char *tenantId, char *tenantTeamContactEnrollmentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant team contact enrollment

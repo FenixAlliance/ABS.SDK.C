@@ -24,6 +24,9 @@ typedef struct json_web_key_set_envelope_t {
     char *error_message; // string
     char *correlation_id; // string
     char *timestamp; //date time
+    int http_status; //numeric
+    char *error_code; // string
+    list_t* validation_details; //map
     char *activity_id; // string
     struct json_web_key_set_t *result; //model
 
@@ -34,6 +37,9 @@ json_web_key_set_envelope_t *json_web_key_set_envelope_create(
     char *error_message,
     char *correlation_id,
     char *timestamp,
+    int http_status,
+    char *error_code,
+    list_t* validation_details,
     char *activity_id,
     json_web_key_set_t *result
 );

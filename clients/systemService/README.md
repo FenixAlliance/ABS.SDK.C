@@ -68,6 +68,16 @@ Category | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AntiforgeryAPI* | [**AntiforgeryAPI_getAndStoreTokens**](docs/AntiforgeryAPI.md#AntiforgeryAPI_getAndStoreTokens) | **GET** /api/v2/SystemService/Antiforgery/GetAndStoreTokens | Get and store antiforgery tokens
 *AntiforgeryAPI* | [**AntiforgeryAPI_isRequestValidAsync**](docs/AntiforgeryAPI.md#AntiforgeryAPI_isRequestValidAsync) | **GET** /api/v2/SystemService/Antiforgery/IsRequestValid | Validate antiforgery request
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_disableGlobalApplicationPrincipal**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_disableGlobalApplicationPrincipal) | **POST** /api/v2/SystemService/ApplicationPrincipals/{principalId}/Disable | Disable an application principal (global)
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_enableGlobalApplicationPrincipal**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_enableGlobalApplicationPrincipal) | **POST** /api/v2/SystemService/ApplicationPrincipals/{principalId}/Enable | Enable an application principal (global)
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_getGlobalApplicationPrincipal**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_getGlobalApplicationPrincipal) | **GET** /api/v2/SystemService/ApplicationPrincipals/{principalId} | Get one application principal (any tenant)
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_getGlobalApplicationPrincipals**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_getGlobalApplicationPrincipals) | **GET** /api/v2/SystemService/ApplicationPrincipals | List application principals across all tenants
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_getGlobalApplicationPrincipalsCount**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_getGlobalApplicationPrincipalsCount) | **GET** /api/v2/SystemService/ApplicationPrincipals/Count | Count application principals across all tenants
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_grantGlobalApplicationPrincipalPermission**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_grantGlobalApplicationPrincipalPermission) | **POST** /api/v2/SystemService/ApplicationPrincipals/{principalId}/Permissions | Grant a permission to an application principal (any tenant)
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_provisionGlobalApplicationPrincipal**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_provisionGlobalApplicationPrincipal) | **POST** /api/v2/SystemService/ApplicationPrincipals/Provision | Provision an application principal (any tenant, incl. system-locked)
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_provisionPaymentsConnector**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_provisionPaymentsConnector) | **POST** /api/v2/SystemService/ApplicationPrincipals/PaymentsConnector | Provision the platform payments-connector identity
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_revokeGlobalApplicationPrincipalPermission**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_revokeGlobalApplicationPrincipalPermission) | **DELETE** /api/v2/SystemService/ApplicationPrincipals/{principalId}/Permissions/{permission} | Revoke a permission from an application principal (any tenant)
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_suspendGlobalApplicationPrincipal**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_suspendGlobalApplicationPrincipal) | **POST** /api/v2/SystemService/ApplicationPrincipals/{principalId}/Suspend | Suspend an application principal (global)
 *BusinessDomainsAPI* | [**BusinessDomainsAPI_deleteSystemBusinessDomain**](docs/BusinessDomainsAPI.md#BusinessDomainsAPI_deleteSystemBusinessDomain) | **DELETE** /api/v2/SystemService/BusinessDomains/{businessDomainId} | Delete a business domain
 *BusinessDomainsAPI* | [**BusinessDomainsAPI_getSystemBusinessDomainById**](docs/BusinessDomainsAPI.md#BusinessDomainsAPI_getSystemBusinessDomainById) | **GET** /api/v2/SystemService/BusinessDomains/{businessDomainId} | Retrieve a business domain by its ID
 *BusinessDomainsAPI* | [**BusinessDomainsAPI_getSystemBusinessDomains**](docs/BusinessDomainsAPI.md#BusinessDomainsAPI_getSystemBusinessDomains) | **GET** /api/v2/SystemService/BusinessDomains | Retrieve all business domains in the system
@@ -77,6 +87,7 @@ Category | Method | HTTP request | Description
 *CartsAPI* | [**CartsAPI_getSystemCartById**](docs/CartsAPI.md#CartsAPI_getSystemCartById) | **GET** /api/v2/SystemService/Carts/{cartId} | Retrieve a single system cart by its ID
 *CartsAPI* | [**CartsAPI_getSystemCarts**](docs/CartsAPI.md#CartsAPI_getSystemCarts) | **GET** /api/v2/SystemService/Carts | Retrieve a list of system carts
 *CartsAPI* | [**CartsAPI_getSystemCartsCount**](docs/CartsAPI.md#CartsAPI_getSystemCartsCount) | **GET** /api/v2/SystemService/Carts/Count | Get the count of system carts
+*CartsAPI* | [**CartsAPI_purgeSystemGuestCarts**](docs/CartsAPI.md#CartsAPI_purgeSystemGuestCarts) | **DELETE** /api/v2/SystemService/Carts/Guests | Purge all guest carts
 *ContactOptionsAPI* | [**ContactOptionsAPI_createSystemContactOption**](docs/ContactOptionsAPI.md#ContactOptionsAPI_createSystemContactOption) | **POST** /api/v2/SystemService/Contacts/{contactId}/Options | Create a new contact option (admin)
 *ContactOptionsAPI* | [**ContactOptionsAPI_deleteSystemContactOption**](docs/ContactOptionsAPI.md#ContactOptionsAPI_deleteSystemContactOption) | **DELETE** /api/v2/SystemService/Contacts/{contactId}/Options/{optionId} | Delete a contact option (admin)
 *ContactOptionsAPI* | [**ContactOptionsAPI_getSystemContactOptionById**](docs/ContactOptionsAPI.md#ContactOptionsAPI_getSystemContactOptionById) | **GET** /api/v2/SystemService/Contacts/{contactId}/Options/{optionId} | Retrieve a single contact option by its ID (admin)
@@ -90,7 +101,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -108,6 +118,19 @@ Category | Method | HTTP request | Description
 *IPLookupsAPI* | [**IPLookupsAPI_getSystemIPLookupById**](docs/IPLookupsAPI.md#IPLookupsAPI_getSystemIPLookupById) | **GET** /api/v2/SystemService/IPLookups/{ipLookupId} | Retrieve a single system IP lookup by its ID
 *IPLookupsAPI* | [**IPLookupsAPI_getSystemIPLookups**](docs/IPLookupsAPI.md#IPLookupsAPI_getSystemIPLookups) | **GET** /api/v2/SystemService/IPLookups | Retrieve a list of system IP lookups
 *IPLookupsAPI* | [**IPLookupsAPI_getSystemIPLookupsCount**](docs/IPLookupsAPI.md#IPLookupsAPI_getSystemIPLookupsCount) | **GET** /api/v2/SystemService/IPLookups/Count | Get the count of system IP lookups
+*InboxAPI* | [**InboxAPI_cancelInboxMessageRetry**](docs/InboxAPI.md#InboxAPI_cancelInboxMessageRetry) | **POST** /api/v2/SystemService/Inbox/Messages/{id}/CancelRetry | Cancel a scheduled inbox retry
+*InboxAPI* | [**InboxAPI_deadLetterInboxMessage**](docs/InboxAPI.md#InboxAPI_deadLetterInboxMessage) | **POST** /api/v2/SystemService/Inbox/Messages/{id}/DeadLetter | Manually dead-letter an inbox message
+*InboxAPI* | [**InboxAPI_expediteInboxMessage**](docs/InboxAPI.md#InboxAPI_expediteInboxMessage) | **POST** /api/v2/SystemService/Inbox/Messages/{id}/Expedite | Expedite a retry-scheduled inbox message
+*InboxAPI* | [**InboxAPI_getDuplicateInboxMessages**](docs/InboxAPI.md#InboxAPI_getDuplicateInboxMessages) | **GET** /api/v2/SystemService/Inbox/Duplicates | List duplicate-bearing inbox messages
+*InboxAPI* | [**InboxAPI_getDuplicateInboxMessagesCount**](docs/InboxAPI.md#InboxAPI_getDuplicateInboxMessagesCount) | **GET** /api/v2/SystemService/Inbox/Duplicates/Count | Count duplicate-bearing inbox messages
+*InboxAPI* | [**InboxAPI_getInboxCorrelationChain**](docs/InboxAPI.md#InboxAPI_getInboxCorrelationChain) | **GET** /api/v2/SystemService/Inbox/Correlations/{correlationId} | Get an inbox correlation chain
+*InboxAPI* | [**InboxAPI_getInboxHealth**](docs/InboxAPI.md#InboxAPI_getInboxHealth) | **GET** /api/v2/SystemService/Inbox/Health | Get durable-inbox processor health
+*InboxAPI* | [**InboxAPI_getInboxMessage**](docs/InboxAPI.md#InboxAPI_getInboxMessage) | **GET** /api/v2/SystemService/Inbox/Messages/{id} | Get one inbox message
+*InboxAPI* | [**InboxAPI_getInboxMessages**](docs/InboxAPI.md#InboxAPI_getInboxMessages) | **GET** /api/v2/SystemService/Inbox/Messages | List inbox messages
+*InboxAPI* | [**InboxAPI_getInboxMessagesCount**](docs/InboxAPI.md#InboxAPI_getInboxMessagesCount) | **GET** /api/v2/SystemService/Inbox/Messages/Count | Count inbox messages
+*InboxAPI* | [**InboxAPI_quarantineInboxMessage**](docs/InboxAPI.md#InboxAPI_quarantineInboxMessage) | **POST** /api/v2/SystemService/Inbox/Messages/{id}/Quarantine | Manually quarantine an inbox message
+*InboxAPI* | [**InboxAPI_releaseInboxMessageLease**](docs/InboxAPI.md#InboxAPI_releaseInboxMessageLease) | **POST** /api/v2/SystemService/Inbox/Messages/{id}/ReleaseLease | Release a stuck inbox lease
+*InboxAPI* | [**InboxAPI_replayInboxMessage**](docs/InboxAPI.md#InboxAPI_replayInboxMessage) | **POST** /api/v2/SystemService/Inbox/Messages/{id}/Replay | Replay a terminal inbox message as a new generation
 *LicensingAPI* | [**LicensingAPI_getAttributesForLicenseAsync**](docs/LicensingAPI.md#LicensingAPI_getAttributesForLicenseAsync) | **GET** /api/v2/SystemService/Licensing/Licenses/{licenseId}/Attributes | Retrieve license attributes
 *LicensingAPI* | [**LicensingAPI_getFeaturesForLicenseAsync**](docs/LicensingAPI.md#LicensingAPI_getFeaturesForLicenseAsync) | **GET** /api/v2/SystemService/Licensing/Licenses/{licenseId}/Features | Retrieve license features
 *LicensingAPI* | [**LicensingAPI_getLicenseAssignmentsAsync**](docs/LicensingAPI.md#LicensingAPI_getLicenseAssignmentsAsync) | **GET** /api/v2/SystemService/Licensing/Licenses/{licenseId}/Assignments | Retrieve license assignments
@@ -129,6 +152,16 @@ Category | Method | HTTP request | Description
 *OptionsAPI* | [**OptionsAPI_patchSystemOption**](docs/OptionsAPI.md#OptionsAPI_patchSystemOption) | **PATCH** /api/v2/SystemService/Options/{optionId} | Partially update a system option
 *OptionsAPI* | [**OptionsAPI_updateSystemOption**](docs/OptionsAPI.md#OptionsAPI_updateSystemOption) | **PUT** /api/v2/SystemService/Options/{optionId} | Update a system option
 *OptionsAPI* | [**OptionsAPI_upsertSystemOption**](docs/OptionsAPI.md#OptionsAPI_upsertSystemOption) | **PUT** /api/v2/SystemService/Options/Upsert/{key} | Create or update a system option by key
+*OutboxAPI* | [**OutboxAPI_cancelOutboxMessage**](docs/OutboxAPI.md#OutboxAPI_cancelOutboxMessage) | **POST** /api/v2/SystemService/Outbox/Messages/{id}/Cancel | Cancel an outbox message
+*OutboxAPI* | [**OutboxAPI_deadLetterOutboxMessage**](docs/OutboxAPI.md#OutboxAPI_deadLetterOutboxMessage) | **POST** /api/v2/SystemService/Outbox/Messages/{id}/DeadLetter | Manually dead-letter an outbox message
+*OutboxAPI* | [**OutboxAPI_expediteOutboxMessage**](docs/OutboxAPI.md#OutboxAPI_expediteOutboxMessage) | **POST** /api/v2/SystemService/Outbox/Messages/{id}/Expedite | Expedite a failed (retry-eligible) outbox message
+*OutboxAPI* | [**OutboxAPI_getOutboxCorrelationChain**](docs/OutboxAPI.md#OutboxAPI_getOutboxCorrelationChain) | **GET** /api/v2/SystemService/Outbox/Correlations/{correlationId} | Get an outbox correlation chain
+*OutboxAPI* | [**OutboxAPI_getOutboxHealth**](docs/OutboxAPI.md#OutboxAPI_getOutboxHealth) | **GET** /api/v2/SystemService/Outbox/Health | Get durable-outbox relay health
+*OutboxAPI* | [**OutboxAPI_getOutboxMessage**](docs/OutboxAPI.md#OutboxAPI_getOutboxMessage) | **GET** /api/v2/SystemService/Outbox/Messages/{id} | Get one outbox message
+*OutboxAPI* | [**OutboxAPI_getOutboxMessages**](docs/OutboxAPI.md#OutboxAPI_getOutboxMessages) | **GET** /api/v2/SystemService/Outbox/Messages | List outbox messages
+*OutboxAPI* | [**OutboxAPI_getOutboxMessagesCount**](docs/OutboxAPI.md#OutboxAPI_getOutboxMessagesCount) | **GET** /api/v2/SystemService/Outbox/Messages/Count | Count outbox messages
+*OutboxAPI* | [**OutboxAPI_releaseOutboxMessageLease**](docs/OutboxAPI.md#OutboxAPI_releaseOutboxMessageLease) | **POST** /api/v2/SystemService/Outbox/Messages/{id}/ReleaseLease | Release a stuck outbox lease
+*OutboxAPI* | [**OutboxAPI_replayOutboxMessage**](docs/OutboxAPI.md#OutboxAPI_replayOutboxMessage) | **POST** /api/v2/SystemService/Outbox/Messages/{id}/Replay | Replay a dead-lettered or failed outbox message
 *OverviewAPI* | [**OverviewAPI_getSystemOverview**](docs/OverviewAPI.md#OverviewAPI_getSystemOverview) | **GET** /api/v2/SystemService/Overview | Get system overview information
 *PortalsAPI* | [**PortalsAPI_createSystemPortal**](docs/PortalsAPI.md#PortalsAPI_createSystemPortal) | **POST** /api/v2/SystemService/Portals | Create a new system portal
 *PortalsAPI* | [**PortalsAPI_deleteSystemPortal**](docs/PortalsAPI.md#PortalsAPI_deleteSystemPortal) | **DELETE** /api/v2/SystemService/Portals/{portalId} | Delete a system portal
@@ -152,8 +185,10 @@ Category | Method | HTTP request | Description
 *TenantsAPI* | [**TenantsAPI_getAllTenants**](docs/TenantsAPI.md#TenantsAPI_getAllTenants) | **GET** /api/v2/SystemService/Tenants | Get all tenants available on this suite server instance.
 *TenantsAPI* | [**TenantsAPI_getExtendedTenantsCount**](docs/TenantsAPI.md#TenantsAPI_getExtendedTenantsCount) | **GET** /api/v2/SystemService/Tenants/Extended/Count | Get the total count of extended tenants available on this suite server instance.
 *TenantsAPI* | [**TenantsAPI_getTenant**](docs/TenantsAPI.md#TenantsAPI_getTenant) | **GET** /api/v2/SystemService/Tenants/{tenantId} | Get a specific tenant by ID.
+*TenantsAPI* | [**TenantsAPI_getTenantModuleGrants**](docs/TenantsAPI.md#TenantsAPI_getTenantModuleGrants) | **GET** /api/v2/SystemService/Tenants/{tenantId}/ModuleGrants | Get the per-tenant admin module grants for a specific tenant.
 *TenantsAPI* | [**TenantsAPI_getTenantsCount**](docs/TenantsAPI.md#TenantsAPI_getTenantsCount) | **GET** /api/v2/SystemService/Tenants/Count | Get the total count of tenants available on this suite server instance.
 *TenantsAPI* | [**TenantsAPI_patchTenant**](docs/TenantsAPI.md#TenantsAPI_patchTenant) | **PATCH** /api/v2/SystemService/Tenants/{tenantId} | Partially update a specific tenant by ID.
+*TenantsAPI* | [**TenantsAPI_setTenantModuleGrants**](docs/TenantsAPI.md#TenantsAPI_setTenantModuleGrants) | **PUT** /api/v2/SystemService/Tenants/{tenantId}/ModuleGrants | Replace the per-tenant admin module grants for a specific tenant.
 *TenantsAPI* | [**TenantsAPI_updateTenant**](docs/TenantsAPI.md#TenantsAPI_updateTenant) | **PUT** /api/v2/SystemService/Tenants/{tenantId} | Update a specific tenant by ID.
 *UserOptionsAPI* | [**UserOptionsAPI_createSystemUserOption**](docs/UserOptionsAPI.md#UserOptionsAPI_createSystemUserOption) | **POST** /api/v2/SystemService/Users/{userId}/Options | Create a new user option (admin)
 *UserOptionsAPI* | [**UserOptionsAPI_deleteSystemUserOption**](docs/UserOptionsAPI.md#UserOptionsAPI_deleteSystemUserOption) | **DELETE** /api/v2/SystemService/Users/{userId}/Options/{optionId} | Delete a user option (admin)
@@ -169,21 +204,35 @@ Category | Method | HTTP request | Description
 *UsersAPI* | [**UsersAPI_getExtendedAccountHolderAsync**](docs/UsersAPI.md#UsersAPI_getExtendedAccountHolderAsync) | **GET** /api/v2/SystemService/Users/{userId}/Extended | Retrieve an extended user by ID
 *UsersAPI* | [**UsersAPI_getExtendedUsersAsync**](docs/UsersAPI.md#UsersAPI_getExtendedUsersAsync) | **GET** /api/v2/SystemService/Users/Extended | Retrieve a list of extended users
 *UsersAPI* | [**UsersAPI_getExtendedUsersCountAsync**](docs/UsersAPI.md#UsersAPI_getExtendedUsersCountAsync) | **GET** /api/v2/SystemService/Users/Extended/Count | Get the count of extended users
+*UsersAPI* | [**UsersAPI_getUserAdminDetailAsync**](docs/UsersAPI.md#UsersAPI_getUserAdminDetailAsync) | **GET** /api/v2/SystemService/Users/{userId}/AdminDetail | Retrieve the admin detail aggregate for a user
 *UsersAPI* | [**UsersAPI_getUserAsync**](docs/UsersAPI.md#UsersAPI_getUserAsync) | **GET** /api/v2/SystemService/Users/{userId} | Retrieve a user by ID
 *UsersAPI* | [**UsersAPI_getUsersAsync**](docs/UsersAPI.md#UsersAPI_getUsersAsync) | **GET** /api/v2/SystemService/Users | Retrieve a list of users
 *UsersAPI* | [**UsersAPI_getUsersCountAsync**](docs/UsersAPI.md#UsersAPI_getUsersCountAsync) | **GET** /api/v2/SystemService/Users/Count | Get the count of users
 *UsersAPI* | [**UsersAPI_patchAccountHolderAsync**](docs/UsersAPI.md#UsersAPI_patchAccountHolderAsync) | **PATCH** /api/v2/SystemService/Users/{userId} | Partially update a user
+*UsersAPI* | [**UsersAPI_setUserPasswordAsync**](docs/UsersAPI.md#UsersAPI_setUserPasswordAsync) | **POST** /api/v2/SystemService/Users/{userId}/Password | Set a user's password
+*UsersAPI* | [**UsersAPI_updateAccountHolderAdminProfileAsync**](docs/UsersAPI.md#UsersAPI_updateAccountHolderAdminProfileAsync) | **PUT** /api/v2/SystemService/Users/{userId}/AdminProfile | Update a user's admin-managed profile
 *UsersAPI* | [**UsersAPI_updateAccountHolderAsync**](docs/UsersAPI.md#UsersAPI_updateAccountHolderAsync) | **PUT** /api/v2/SystemService/Users/{userId} | Update a user
 
 
 ## Documentation for Models
 
  - [access_token_response_t](docs/access_token_response.md)
+ - [application_principal_detail_dto_t](docs/application_principal_detail_dto.md)
+ - [application_principal_detail_dto_envelope_t](docs/application_principal_detail_dto_envelope.md)
+ - [application_principal_dto_t](docs/application_principal_dto.md)
+ - [application_principal_dto_collection_query_parameters_t](docs/application_principal_dto_collection_query_parameters.md)
+ - [application_principal_dto_i_read_only_list_envelope_t](docs/application_principal_dto_i_read_only_list_envelope.md)
+ - [application_principal_permission_request_dto_t](docs/application_principal_permission_request_dto.md)
+ - [application_principal_provision_request_dto_t](docs/application_principal_provision_request_dto.md)
+ - [application_principal_provisioning_result_dto_t](docs/application_principal_provisioning_result_dto.md)
+ - [application_principal_provisioning_result_dto_envelope_t](docs/application_principal_provisioning_result_dto_envelope.md)
  - [boolean_envelope_t](docs/boolean_envelope.md)
  - [business_domain_dto_t](docs/business_domain_dto.md)
+ - [business_domain_dto_collection_query_parameters_t](docs/business_domain_dto_collection_query_parameters.md)
  - [business_domain_dto_envelope_t](docs/business_domain_dto_envelope.md)
  - [business_domain_dto_list_envelope_t](docs/business_domain_dto_list_envelope.md)
  - [cart_dto_t](docs/cart_dto.md)
+ - [cart_dto_collection_query_parameters_t](docs/cart_dto_collection_query_parameters.md)
  - [cart_dto_envelope_t](docs/cart_dto_envelope.md)
  - [cart_dto_list_envelope_t](docs/cart_dto_list_envelope.md)
  - [email_dispatch_request_t](docs/email_dispatch_request.md)
@@ -191,11 +240,15 @@ Category | Method | HTTP request | Description
  - [envelope_t](docs/envelope.md)
  - [error_envelope_t](docs/error_envelope.md)
  - [extended_tenant_dto_t](docs/extended_tenant_dto.md)
+ - [extended_tenant_dto_collection_query_parameters_t](docs/extended_tenant_dto_collection_query_parameters.md)
  - [extended_tenant_dto_list_envelope_t](docs/extended_tenant_dto_list_envelope.md)
  - [extended_user_dto_t](docs/extended_user_dto.md)
+ - [extended_user_dto_collection_query_parameters_t](docs/extended_user_dto_collection_query_parameters.md)
  - [extended_user_dto_envelope_t](docs/extended_user_dto_envelope.md)
  - [extended_user_dto_list_envelope_t](docs/extended_user_dto_list_envelope.md)
  - [forgot_password_request_t](docs/forgot_password_request.md)
+ - [guest_cart_purge_result_dto_t](docs/guest_cart_purge_result_dto.md)
+ - [guest_cart_purge_result_dto_envelope_t](docs/guest_cart_purge_result_dto_envelope.md)
  - [http_validation_problem_details_t](docs/http_validation_problem_details.md)
  - [i_open_api_contact_t](docs/i_open_api_contact.md)
  - [i_open_api_definition_spec_t](docs/i_open_api_definition_spec.md)
@@ -203,25 +256,48 @@ Category | Method | HTTP request | Description
  - [i_open_api_license_t](docs/i_open_api_license.md)
  - [i_validation_failure_t](docs/i_validation_failure.md)
  - [i_validation_failure_list_envelope_t](docs/i_validation_failure_list_envelope.md)
+ - [inbox_admin_reason_dto_t](docs/inbox_admin_reason_dto.md)
+ - [inbox_health_dto_t](docs/inbox_health_dto.md)
+ - [inbox_health_dto_envelope_t](docs/inbox_health_dto_envelope.md)
+ - [inbox_message_dto_t](docs/inbox_message_dto.md)
+ - [inbox_message_dto_collection_query_parameters_t](docs/inbox_message_dto_collection_query_parameters.md)
+ - [inbox_message_dto_envelope_t](docs/inbox_message_dto_envelope.md)
+ - [inbox_message_dto_i_read_only_list_envelope_t](docs/inbox_message_dto_i_read_only_list_envelope.md)
+ - [inbox_replay_result_dto_t](docs/inbox_replay_result_dto.md)
+ - [inbox_replay_result_dto_envelope_t](docs/inbox_replay_result_dto_envelope.md)
  - [info_request_t](docs/info_request.md)
  - [info_response_t](docs/info_response.md)
  - [int32_envelope_t](docs/int32_envelope.md)
  - [ip_lookup_dto_t](docs/ip_lookup_dto.md)
+ - [ip_lookup_dto_collection_query_parameters_t](docs/ip_lookup_dto_collection_query_parameters.md)
  - [ip_lookup_dto_envelope_t](docs/ip_lookup_dto_envelope.md)
  - [ip_lookup_dto_list_envelope_t](docs/ip_lookup_dto_list_envelope.md)
  - [license_validation_request_t](docs/license_validation_request.md)
  - [login_request_t](docs/login_request.md)
+ - [module_grant_dto_t](docs/module_grant_dto.md)
+ - [module_grant_dto_list_envelope_t](docs/module_grant_dto_list_envelope.md)
  - [object_email_dispatch_request_t](docs/object_email_dispatch_request.md)
- - [operation_t](docs/operation.md)
  - [option_create_dto_t](docs/option_create_dto.md)
  - [option_dto_t](docs/option_dto.md)
+ - [option_dto_collection_query_parameters_t](docs/option_dto_collection_query_parameters.md)
  - [option_dto_envelope_t](docs/option_dto_envelope.md)
  - [option_dto_list_envelope_t](docs/option_dto_list_envelope.md)
  - [option_update_dto_t](docs/option_update_dto.md)
+ - [outbox_admin_reason_dto_t](docs/outbox_admin_reason_dto.md)
+ - [outbox_health_dto_t](docs/outbox_health_dto.md)
+ - [outbox_health_dto_envelope_t](docs/outbox_health_dto_envelope.md)
+ - [outbox_message_dto_t](docs/outbox_message_dto.md)
+ - [outbox_message_dto_collection_query_parameters_t](docs/outbox_message_dto_collection_query_parameters.md)
+ - [outbox_message_dto_envelope_t](docs/outbox_message_dto_envelope.md)
+ - [outbox_message_dto_i_read_only_list_envelope_t](docs/outbox_message_dto_i_read_only_list_envelope.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [refresh_request_t](docs/refresh_request.md)
  - [register_request_t](docs/register_request.md)
  - [resend_confirmation_email_request_t](docs/resend_confirmation_email_request.md)
  - [reset_password_request_t](docs/reset_password_request.md)
+ - [security_permission_dto_t](docs/security_permission_dto.md)
+ - [security_role_dto_t](docs/security_role_dto.md)
+ - [set_user_password_dto_t](docs/set_user_password_dto.md)
  - [social_profile_dto_t](docs/social_profile_dto.md)
  - [string_list_envelope_t](docs/string_list_envelope.md)
  - [studio_module_t](docs/studio_module.md)
@@ -237,20 +313,29 @@ Category | Method | HTTP request | Description
  - [system_overview_dto_envelope_t](docs/system_overview_dto_envelope.md)
  - [tenant_create_dto_t](docs/tenant_create_dto.md)
  - [tenant_dto_t](docs/tenant_dto.md)
+ - [tenant_dto_collection_query_parameters_t](docs/tenant_dto_collection_query_parameters.md)
  - [tenant_dto_envelope_t](docs/tenant_dto_envelope.md)
  - [tenant_dto_list_envelope_t](docs/tenant_dto_list_envelope.md)
+ - [tenant_enrollment_dto_t](docs/tenant_enrollment_dto.md)
  - [tenant_update_dto_t](docs/tenant_update_dto.md)
  - [two_factor_request_t](docs/two_factor_request.md)
  - [two_factor_response_t](docs/two_factor_response.md)
+ - [user_admin_detail_dto_t](docs/user_admin_detail_dto.md)
+ - [user_admin_detail_dto_envelope_t](docs/user_admin_detail_dto_envelope.md)
+ - [user_admin_update_dto_t](docs/user_admin_update_dto.md)
  - [user_create_dto_t](docs/user_create_dto.md)
  - [user_dto_t](docs/user_dto.md)
+ - [user_dto_collection_query_parameters_t](docs/user_dto_collection_query_parameters.md)
  - [user_dto_envelope_t](docs/user_dto_envelope.md)
  - [user_dto_list_envelope_t](docs/user_dto_list_envelope.md)
+ - [user_external_login_dto_t](docs/user_external_login_dto.md)
+ - [user_order_summary_dto_t](docs/user_order_summary_dto.md)
  - [user_settings_dto_t](docs/user_settings_dto.md)
  - [user_update_dto_t](docs/user_update_dto.md)
  - [wallet_dto_t](docs/wallet_dto.md)
  - [web_portal_create_dto_t](docs/web_portal_create_dto.md)
  - [web_portal_dto_t](docs/web_portal_dto.md)
+ - [web_portal_dto_collection_query_parameters_t](docs/web_portal_dto_collection_query_parameters.md)
  - [web_portal_dto_envelope_t](docs/web_portal_dto_envelope.md)
  - [web_portal_dto_list_envelope_t](docs/web_portal_dto_list_envelope.md)
  - [web_portal_update_dto_t](docs/web_portal_update_dto.md)

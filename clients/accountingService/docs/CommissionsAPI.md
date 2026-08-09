@@ -196,7 +196,7 @@ No authorization required
 //
 // Retrieves all commissions for the specified tenant using OData query options.
 //
-commission_dto_list_envelope_t* CommissionsAPI_getCommissionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+commission_dto_list_envelope_t* CommissionsAPI_getCommissionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, commission_dto_collection_query_parameters_t *commission_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -206,6 +206,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**commission_dto_collection_query_parameters** | **[commission_dto_collection_query_parameters_t](commission_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -218,7 +219,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -229,7 +230,7 @@ No authorization required
 //
 // Retrieves the count of commissions for the specified tenant using OData query options.
 //
-int32_envelope_t* CommissionsAPI_getCommissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* CommissionsAPI_getCommissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, commission_dto_collection_query_parameters_t *commission_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -239,6 +240,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**commission_dto_collection_query_parameters** | **[commission_dto_collection_query_parameters_t](commission_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -251,7 +253,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -296,7 +298,7 @@ No authorization required
 //
 // Retrieves all payment commissions for the specified tenant using OData query options.
 //
-payment_commission_dto_list_envelope_t* CommissionsAPI_getPaymentCommissionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+payment_commission_dto_list_envelope_t* CommissionsAPI_getPaymentCommissionsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payment_commission_dto_collection_query_parameters_t *payment_commission_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -306,6 +308,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_commission_dto_collection_query_parameters** | **[payment_commission_dto_collection_query_parameters_t](payment_commission_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -318,7 +321,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -329,7 +332,7 @@ No authorization required
 //
 // Retrieves the count of payment commissions for the specified tenant using OData query options.
 //
-int32_envelope_t* CommissionsAPI_getPaymentCommissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* CommissionsAPI_getPaymentCommissionsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payment_commission_dto_collection_query_parameters_t *payment_commission_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -339,6 +342,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**payment_commission_dto_collection_query_parameters** | **[payment_commission_dto_collection_query_parameters_t](payment_commission_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -351,7 +355,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -362,7 +366,7 @@ No authorization required
 //
 // Partially updates an existing commission.
 //
-empty_envelope_t* CommissionsAPI_patchCommissionAsync(apiClient_t *apiClient, char *tenantId, char *commissionId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CommissionsAPI_patchCommissionAsync(apiClient_t *apiClient, char *tenantId, char *commissionId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -373,7 +377,7 @@ Name | Type | Description  | Notes
 **commissionId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -397,7 +401,7 @@ No authorization required
 //
 // Partially updates an existing payment commission.
 //
-empty_envelope_t* CommissionsAPI_patchPaymentCommissionAsync(apiClient_t *apiClient, char *tenantId, char *paymentCommissionId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CommissionsAPI_patchPaymentCommissionAsync(apiClient_t *apiClient, char *tenantId, char *paymentCommissionId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -408,7 +412,7 @@ Name | Type | Description  | Notes
 **paymentCommissionId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

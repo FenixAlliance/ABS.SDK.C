@@ -56,21 +56,28 @@ set(SRCS
     model/object.c
     model/access_token_response.c
     model/city_dto.c
+    model/city_dto_collection_query_parameters.c
     model/city_dto_list_envelope.c
     model/country_calling_code_dto.c
+    model/country_calling_code_dto_collection_query_parameters.c
     model/country_calling_code_dto_list_envelope.c
     model/country_dto.c
+    model/country_dto_collection_query_parameters.c
     model/country_dto_envelope.c
     model/country_dto_list_envelope.c
     model/country_language_dto.c
+    model/country_language_dto_collection_query_parameters.c
     model/country_language_dto_envelope.c
     model/country_language_dto_list_envelope.c
     model/country_state_dto.c
+    model/country_state_dto_collection_query_parameters.c
     model/country_state_dto_envelope.c
     model/country_state_dto_list_envelope.c
     model/country_top_level_domain_dto.c
+    model/country_top_level_domain_dto_collection_query_parameters.c
     model/country_top_level_domain_dto_list_envelope.c
     model/currency_dto.c
+    model/currency_dto_collection_query_parameters.c
     model/currency_dto_envelope.c
     model/currency_dto_list_envelope.c
     model/error_envelope.c
@@ -85,6 +92,7 @@ set(SRCS
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
     model/timezone_dto.c
+    model/timezone_dto_collection_query_parameters.c
     model/timezone_dto_envelope.c
     model/timezone_dto_list_envelope.c
     model/two_factor_request.c
@@ -106,21 +114,28 @@ set(HDRS
     model/object.h
     model/access_token_response.h
     model/city_dto.h
+    model/city_dto_collection_query_parameters.h
     model/city_dto_list_envelope.h
     model/country_calling_code_dto.h
+    model/country_calling_code_dto_collection_query_parameters.h
     model/country_calling_code_dto_list_envelope.h
     model/country_dto.h
+    model/country_dto_collection_query_parameters.h
     model/country_dto_envelope.h
     model/country_dto_list_envelope.h
     model/country_language_dto.h
+    model/country_language_dto_collection_query_parameters.h
     model/country_language_dto_envelope.h
     model/country_language_dto_list_envelope.h
     model/country_state_dto.h
+    model/country_state_dto_collection_query_parameters.h
     model/country_state_dto_envelope.h
     model/country_state_dto_list_envelope.h
     model/country_top_level_domain_dto.h
+    model/country_top_level_domain_dto_collection_query_parameters.h
     model/country_top_level_domain_dto_list_envelope.h
     model/currency_dto.h
+    model/currency_dto_collection_query_parameters.h
     model/currency_dto_envelope.h
     model/currency_dto_list_envelope.h
     model/error_envelope.h
@@ -135,6 +150,7 @@ set(HDRS
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
     model/timezone_dto.h
+    model/timezone_dto_collection_query_parameters.h
     model/timezone_dto_envelope.h
     model/timezone_dto_list_envelope.h
     model/two_factor_request.h

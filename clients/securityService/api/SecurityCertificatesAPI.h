@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/security_certificate_dto_collection_query_parameters.h"
 #include "../model/security_certificate_dto_list_envelope.h"
 
 
@@ -15,7 +16,7 @@
 // Retrieves security certificates for the specified tenant.
 //
 security_certificate_dto_list_envelope_t*
-SecurityCertificatesAPI_getSecurityCertificatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SecurityCertificatesAPI_getSecurityCertificatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, security_certificate_dto_collection_query_parameters_t *security_certificate_dto_collection_query_parameters);
 
 
 // Get security certificates count
@@ -23,6 +24,6 @@ SecurityCertificatesAPI_getSecurityCertificatesAsync(apiClient_t *apiClient, cha
 // Retrieves the count of security certificates for the specified tenant.
 //
 int32_envelope_t*
-SecurityCertificatesAPI_getSecurityCertificatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SecurityCertificatesAPI_getSecurityCertificatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, security_certificate_dto_collection_query_parameters_t *security_certificate_dto_collection_query_parameters);
 
 

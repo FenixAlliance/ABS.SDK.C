@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/job_applicant_profile_create_dto.h"
+#include "../model/job_applicant_profile_dto_collection_query_parameters.h"
 #include "../model/job_applicant_profile_dto_envelope.h"
 #include "../model/job_applicant_profile_dto_list_envelope.h"
 #include "../model/job_applicant_profile_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a job applicant
@@ -44,7 +45,7 @@ JobApplicantsAPI_getJobApplicantByIdAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves job applicant (candidate) profiles for the specified tenant.
 //
 job_applicant_profile_dto_list_envelope_t*
-JobApplicantsAPI_getJobApplicantsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JobApplicantsAPI_getJobApplicantsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_applicant_profile_dto_collection_query_parameters_t *job_applicant_profile_dto_collection_query_parameters);
 
 
 // Count job applicants
@@ -52,7 +53,7 @@ JobApplicantsAPI_getJobApplicantsAsync(apiClient_t *apiClient, char *tenantId, c
 // Counts job applicant profiles for the specified tenant.
 //
 int32_envelope_t*
-JobApplicantsAPI_getJobApplicantsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JobApplicantsAPI_getJobApplicantsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_applicant_profile_dto_collection_query_parameters_t *job_applicant_profile_dto_collection_query_parameters);
 
 
 // Patch a job applicant
@@ -60,7 +61,7 @@ JobApplicantsAPI_getJobApplicantsCountAsync(apiClient_t *apiClient, char *tenant
 // Partially updates an existing job applicant (candidate) profile for the specified tenant.
 //
 empty_envelope_t*
-JobApplicantsAPI_patchJobApplicantAsync(apiClient_t *apiClient, char *tenantId, char *jobApplicantId, char *api_version, char *x_api_version, list_t *operation);
+JobApplicantsAPI_patchJobApplicantAsync(apiClient_t *apiClient, char *tenantId, char *jobApplicantId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a job applicant

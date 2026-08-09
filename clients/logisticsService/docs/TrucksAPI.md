@@ -377,7 +377,7 @@ No authorization required
 //
 // Retrieves all trips for a specific truck.
 //
-truck_trip_dto_list_envelope_t* TrucksAPI_getTruckTripsAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version);
+truck_trip_dto_list_envelope_t* TrucksAPI_getTruckTripsAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, truck_trip_dto_collection_query_parameters_t *truck_trip_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -388,6 +388,7 @@ Name | Type | Description  | Notes
 **truckId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**truck_trip_dto_collection_query_parameters** | **[truck_trip_dto_collection_query_parameters_t](truck_trip_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -400,7 +401,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -411,7 +412,7 @@ No authorization required
 //
 // Returns the count of trips for a specific truck.
 //
-int32_envelope_t* TrucksAPI_getTruckTripsCountAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version);
+int32_envelope_t* TrucksAPI_getTruckTripsCountAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, truck_trip_dto_collection_query_parameters_t *truck_trip_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -422,6 +423,7 @@ Name | Type | Description  | Notes
 **truckId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**truck_trip_dto_collection_query_parameters** | **[truck_trip_dto_collection_query_parameters_t](truck_trip_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -434,7 +436,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -445,7 +447,7 @@ No authorization required
 //
 // Retrieves all trucks for the specified tenant.
 //
-truck_dto_list_envelope_t* TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+truck_dto_list_envelope_t* TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, truck_dto_collection_query_parameters_t *truck_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -455,6 +457,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**truck_dto_collection_query_parameters** | **[truck_dto_collection_query_parameters_t](truck_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -467,7 +470,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -478,7 +481,7 @@ No authorization required
 //
 // Returns the count of trucks for the specified tenant.
 //
-int32_envelope_t* TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, truck_dto_collection_query_parameters_t *truck_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -488,6 +491,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**truck_dto_collection_query_parameters** | **[truck_dto_collection_query_parameters_t](truck_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -500,7 +504,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -511,7 +515,7 @@ No authorization required
 //
 // Partially updates an existing truck using JSON Patch.
 //
-empty_envelope_t* TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -522,7 +526,7 @@ Name | Type | Description  | Notes
 **truckId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -546,7 +550,7 @@ No authorization required
 //
 // Partially updates an existing truck trip using JSON Patch.
 //
-empty_envelope_t* TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *tripId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *tripId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -558,7 +562,7 @@ Name | Type | Description  | Notes
 **tripId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

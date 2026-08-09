@@ -6,9 +6,11 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/deal_unit_flow_create_dto.h"
+#include "../model/deal_unit_flow_dto_collection_query_parameters.h"
 #include "../model/deal_unit_flow_dto_envelope.h"
 #include "../model/deal_unit_flow_dto_list_envelope.h"
 #include "../model/deal_unit_flow_stage_create_dto.h"
+#include "../model/deal_unit_flow_stage_dto_collection_query_parameters.h"
 #include "../model/deal_unit_flow_stage_dto_envelope.h"
 #include "../model/deal_unit_flow_stage_dto_list_envelope.h"
 #include "../model/deal_unit_flow_stage_update_dto.h"
@@ -16,7 +18,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a deal unit flow
@@ -72,7 +74,7 @@ DealUnitFlowsAPI_getDealUnitFlowStageAsync(apiClient_t *apiClient, char *tenantI
 // Retrieves a list of stages for a specific deal unit flow with OData query support.
 //
 deal_unit_flow_stage_dto_list_envelope_t*
-DealUnitFlowsAPI_getDealUnitFlowStagesAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId);
+DealUnitFlowsAPI_getDealUnitFlowStagesAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, deal_unit_flow_stage_dto_collection_query_parameters_t *deal_unit_flow_stage_dto_collection_query_parameters);
 
 
 // Get stages count for a deal unit flow
@@ -80,7 +82,7 @@ DealUnitFlowsAPI_getDealUnitFlowStagesAsync(apiClient_t *apiClient, char *tenant
 // Returns the total count of stages for a specific deal unit flow with OData filter support.
 //
 int32_envelope_t*
-DealUnitFlowsAPI_getDealUnitFlowStagesCountAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId);
+DealUnitFlowsAPI_getDealUnitFlowStagesCountAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, deal_unit_flow_stage_dto_collection_query_parameters_t *deal_unit_flow_stage_dto_collection_query_parameters);
 
 
 // Get deal unit flows
@@ -88,7 +90,7 @@ DealUnitFlowsAPI_getDealUnitFlowStagesCountAsync(apiClient_t *apiClient, char *t
 // Retrieves a list of deal unit flows for the specified tenant with OData query support.
 //
 deal_unit_flow_dto_list_envelope_t*
-DealUnitFlowsAPI_getDealUnitFlowsAsync(apiClient_t *apiClient, char *tenantId);
+DealUnitFlowsAPI_getDealUnitFlowsAsync(apiClient_t *apiClient, char *tenantId, deal_unit_flow_dto_collection_query_parameters_t *deal_unit_flow_dto_collection_query_parameters);
 
 
 // Get deal unit flows count
@@ -96,7 +98,7 @@ DealUnitFlowsAPI_getDealUnitFlowsAsync(apiClient_t *apiClient, char *tenantId);
 // Returns the total count of deal unit flows for the specified tenant with OData filter support.
 //
 int32_envelope_t*
-DealUnitFlowsAPI_getDealUnitFlowsCountAsync(apiClient_t *apiClient, char *tenantId);
+DealUnitFlowsAPI_getDealUnitFlowsCountAsync(apiClient_t *apiClient, char *tenantId, deal_unit_flow_dto_collection_query_parameters_t *deal_unit_flow_dto_collection_query_parameters);
 
 
 // Patch a deal unit flow
@@ -104,7 +106,7 @@ DealUnitFlowsAPI_getDealUnitFlowsCountAsync(apiClient_t *apiClient, char *tenant
 // Partially updates an existing deal unit flow by its unique identifier using a JSON Patch document.
 //
 empty_envelope_t*
-DealUnitFlowsAPI_patchDealUnitFlowAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, list_t *operation);
+DealUnitFlowsAPI_patchDealUnitFlowAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, list_t *patch_operation);
 
 
 // Patch a deal unit flow stage
@@ -112,7 +114,7 @@ DealUnitFlowsAPI_patchDealUnitFlowAsync(apiClient_t *apiClient, char *tenantId, 
 // Partially updates an existing stage within a specific deal unit flow using a JSON Patch document.
 //
 empty_envelope_t*
-DealUnitFlowsAPI_patchDealUnitFlowStageAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, char *dealUnitFlowStageId, list_t *operation);
+DealUnitFlowsAPI_patchDealUnitFlowStageAsync(apiClient_t *apiClient, char *tenantId, char *dealUnitFlowId, char *dealUnitFlowStageId, list_t *patch_operation);
 
 
 // Update a deal unit flow

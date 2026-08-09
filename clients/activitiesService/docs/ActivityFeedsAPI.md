@@ -30,7 +30,7 @@ Method | HTTP request | Description
 //
 // Count activity types for the current tenant.
 //
-int32_envelope_t* ActivityFeedsAPI_countActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* ActivityFeedsAPI_countActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_type_dto_collection_query_parameters_t *activity_type_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -40,6 +40,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**activity_type_dto_collection_query_parameters** | **[activity_type_dto_collection_query_parameters_t](activity_type_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -52,7 +53,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -201,7 +202,7 @@ No authorization required
 //
 // Retrieves activities for a specific activity feed.
 //
-activity_record_dto_list_envelope_t* ActivityFeedsAPI_getActivitiesAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version);
+activity_record_dto_list_envelope_t* ActivityFeedsAPI_getActivitiesAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version, activity_record_dto_collection_query_parameters_t *activity_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -212,6 +213,7 @@ Name | Type | Description  | Notes
 **activityFeedId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**activity_record_dto_collection_query_parameters** | **[activity_record_dto_collection_query_parameters_t](activity_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -224,7 +226,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -235,7 +237,7 @@ No authorization required
 //
 // Returns the count of activities for a specific activity feed.
 //
-int32_envelope_t* ActivityFeedsAPI_getActivitiesCountAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version);
+int32_envelope_t* ActivityFeedsAPI_getActivitiesCountAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *api_version, char *x_api_version, activity_record_dto_collection_query_parameters_t *activity_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -246,6 +248,7 @@ Name | Type | Description  | Notes
 **activityFeedId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**activity_record_dto_collection_query_parameters** | **[activity_record_dto_collection_query_parameters_t](activity_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -258,7 +261,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -338,7 +341,7 @@ No authorization required
 //
 // Retrieves a list of activity feeds for the specified tenant.
 //
-activity_feed_dto_list_envelope_t* ActivityFeedsAPI_getActivityFeedsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+activity_feed_dto_list_envelope_t* ActivityFeedsAPI_getActivityFeedsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_feed_dto_collection_query_parameters_t *activity_feed_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -348,6 +351,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**activity_feed_dto_collection_query_parameters** | **[activity_feed_dto_collection_query_parameters_t](activity_feed_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -360,7 +364,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -371,7 +375,7 @@ No authorization required
 //
 // Returns the count of activity feeds for the specified tenant.
 //
-int32_envelope_t* ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* ActivityFeedsAPI_getActivityFeedsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_feed_dto_collection_query_parameters_t *activity_feed_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -381,6 +385,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**activity_feed_dto_collection_query_parameters** | **[activity_feed_dto_collection_query_parameters_t](activity_feed_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -393,7 +398,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -404,7 +409,7 @@ No authorization required
 //
 // Returns the tenant-wide count of activity records across all feeds owned by the tenant.
 //
-int32_envelope_t* ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* ActivityFeedsAPI_getActivityRecordsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_record_dto_collection_query_parameters_t *activity_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -414,6 +419,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**activity_record_dto_collection_query_parameters** | **[activity_record_dto_collection_query_parameters_t](activity_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -426,7 +432,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -471,7 +477,7 @@ No authorization required
 //
 // Get a list of activity types for the current tenant.
 //
-activity_type_dto_list_envelope_t* ActivityFeedsAPI_getActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+activity_type_dto_list_envelope_t* ActivityFeedsAPI_getActivityTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, activity_type_dto_collection_query_parameters_t *activity_type_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -481,6 +487,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**activity_type_dto_collection_query_parameters** | **[activity_type_dto_collection_query_parameters_t](activity_type_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -493,7 +500,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -504,7 +511,7 @@ No authorization required
 //
 // Patch an activity
 //
-empty_envelope_t* ActivityFeedsAPI_patchActivityAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *activityId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* ActivityFeedsAPI_patchActivityAsync(apiClient_t *apiClient, char *tenantId, char *activityFeedId, char *activityId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -516,7 +523,7 @@ Name | Type | Description  | Notes
 **activityId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -540,7 +547,7 @@ No authorization required
 //
 // Patch an activity type
 //
-empty_envelope_t* ActivityFeedsAPI_patchActivityTypeAsync(apiClient_t *apiClient, char *tenantId, char *activityTypeId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* ActivityFeedsAPI_patchActivityTypeAsync(apiClient_t *apiClient, char *tenantId, char *activityTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -551,7 +558,7 @@ Name | Type | Description  | Notes
 **activityTypeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/leave_application_create_dto.h"
+#include "../model/leave_application_dto_collection_query_parameters.h"
 #include "../model/leave_application_dto_envelope.h"
 #include "../model/leave_application_dto_list_envelope.h"
 #include "../model/leave_application_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a leave application
@@ -44,7 +45,7 @@ LeaveApplicationsAPI_getLeaveApplicationByIdAsync(apiClient_t *apiClient, char *
 // Retrieves leave applications for the specified tenant.
 //
 leave_application_dto_list_envelope_t*
-LeaveApplicationsAPI_getLeaveApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LeaveApplicationsAPI_getLeaveApplicationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, leave_application_dto_collection_query_parameters_t *leave_application_dto_collection_query_parameters);
 
 
 // Count leave applications
@@ -52,7 +53,7 @@ LeaveApplicationsAPI_getLeaveApplicationsAsync(apiClient_t *apiClient, char *ten
 // Counts leave applications for the specified tenant.
 //
 int32_envelope_t*
-LeaveApplicationsAPI_getLeaveApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LeaveApplicationsAPI_getLeaveApplicationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, leave_application_dto_collection_query_parameters_t *leave_application_dto_collection_query_parameters);
 
 
 // Patch a leave application
@@ -60,7 +61,7 @@ LeaveApplicationsAPI_getLeaveApplicationsCountAsync(apiClient_t *apiClient, char
 // Partially updates an existing leave application for the specified tenant.
 //
 empty_envelope_t*
-LeaveApplicationsAPI_patchLeaveApplicationAsync(apiClient_t *apiClient, char *tenantId, char *leaveApplicationId, char *api_version, char *x_api_version, list_t *operation);
+LeaveApplicationsAPI_patchLeaveApplicationAsync(apiClient_t *apiClient, char *tenantId, char *leaveApplicationId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a leave application

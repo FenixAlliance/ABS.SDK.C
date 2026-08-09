@@ -8,9 +8,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/signed_document_attachment_create_dto.h"
 #include "../model/signed_document_attachment_dto.h"
+#include "../model/signed_document_attachment_dto_collection_query_parameters.h"
 #include "../model/signed_document_attachment_dto_list_envelope.h"
 #include "../model/signed_document_attachment_update_dto.h"
 
@@ -44,7 +45,7 @@ SignedDocumentAttachmentsAPI_getSignedDocumentAttachmentByIdAsync(apiClient_t *a
 // Retrieves all signed document attachments for the specified tenant.
 //
 signed_document_attachment_dto_list_envelope_t*
-SignedDocumentAttachmentsAPI_getSignedDocumentAttachmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SignedDocumentAttachmentsAPI_getSignedDocumentAttachmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signed_document_attachment_dto_collection_query_parameters_t *signed_document_attachment_dto_collection_query_parameters);
 
 
 // Get signed document attachments count
@@ -52,7 +53,7 @@ SignedDocumentAttachmentsAPI_getSignedDocumentAttachmentsAsync(apiClient_t *apiC
 // Returns the count of signed document attachments for the specified tenant.
 //
 int32_envelope_t*
-SignedDocumentAttachmentsAPI_getSignedDocumentAttachmentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SignedDocumentAttachmentsAPI_getSignedDocumentAttachmentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signed_document_attachment_dto_collection_query_parameters_t *signed_document_attachment_dto_collection_query_parameters);
 
 
 // Patch a signed document attachment
@@ -60,7 +61,7 @@ SignedDocumentAttachmentsAPI_getSignedDocumentAttachmentsCountAsync(apiClient_t 
 // Patch a signed document attachment
 //
 empty_envelope_t*
-SignedDocumentAttachmentsAPI_patchSignedDocumentAttachmentAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+SignedDocumentAttachmentsAPI_patchSignedDocumentAttachmentAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a signed document attachment

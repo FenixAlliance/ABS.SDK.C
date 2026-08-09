@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/training_program_course_create_dto.h"
+#include "../model/training_program_course_dto_collection_query_parameters.h"
 #include "../model/training_program_course_dto_envelope.h"
 #include "../model/training_program_course_dto_list_envelope.h"
 #include "../model/training_program_course_update_dto.h"
@@ -44,7 +45,7 @@ TrainingProgramCoursesAPI_getTrainingProgramCourseByIdAsync(apiClient_t *apiClie
 // Retrieves training program courses for the specified tenant.
 //
 training_program_course_dto_list_envelope_t*
-TrainingProgramCoursesAPI_getTrainingProgramCoursesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TrainingProgramCoursesAPI_getTrainingProgramCoursesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, training_program_course_dto_collection_query_parameters_t *training_program_course_dto_collection_query_parameters);
 
 
 // Count training program courses
@@ -52,7 +53,7 @@ TrainingProgramCoursesAPI_getTrainingProgramCoursesAsync(apiClient_t *apiClient,
 // Counts training program courses for the specified tenant.
 //
 int32_envelope_t*
-TrainingProgramCoursesAPI_getTrainingProgramCoursesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TrainingProgramCoursesAPI_getTrainingProgramCoursesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, training_program_course_dto_collection_query_parameters_t *training_program_course_dto_collection_query_parameters);
 
 
 // Patch a training program course
@@ -60,7 +61,7 @@ TrainingProgramCoursesAPI_getTrainingProgramCoursesCountAsync(apiClient_t *apiCl
 // Partially updates an existing training program course for the specified tenant.
 //
 empty_envelope_t*
-TrainingProgramCoursesAPI_patchTrainingProgramCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version, list_t *operation);
+TrainingProgramCoursesAPI_patchTrainingProgramCourseAsync(apiClient_t *apiClient, char *tenantId, char *courseId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a training program course

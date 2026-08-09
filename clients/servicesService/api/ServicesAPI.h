@@ -8,8 +8,9 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/service_create_dto.h"
+#include "../model/service_dto_collection_query_parameters.h"
 #include "../model/service_dto_envelope.h"
 #include "../model/service_dto_i_read_only_list_envelope.h"
 #include "../model/service_update_dto.h"
@@ -44,7 +45,7 @@ ServicesAPI_getServiceByIdAsync(apiClient_t *apiClient, char *tenantId, char *se
 // Retrieves all services for the specified tenant.
 //
 service_dto_i_read_only_list_envelope_t*
-ServicesAPI_getServicesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServicesAPI_getServicesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_dto_collection_query_parameters_t *service_dto_collection_query_parameters);
 
 
 // Get services count
@@ -52,7 +53,7 @@ ServicesAPI_getServicesAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 // Returns the count of services for the specified tenant.
 //
 int32_envelope_t*
-ServicesAPI_getServicesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServicesAPI_getServicesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_dto_collection_query_parameters_t *service_dto_collection_query_parameters);
 
 
 // Patch a service
@@ -60,7 +61,7 @@ ServicesAPI_getServicesCountAsync(apiClient_t *apiClient, char *tenantId, char *
 // Partially updates an existing service using a JSON Patch document.
 //
 envelope_t*
-ServicesAPI_patchServiceAsync(apiClient_t *apiClient, char *tenantId, char *serviceId, char *api_version, char *x_api_version, list_t *operation);
+ServicesAPI_patchServiceAsync(apiClient_t *apiClient, char *tenantId, char *serviceId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a service

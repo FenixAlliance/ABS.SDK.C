@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/fiscal_year_create_dto.h"
+#include "../model/fiscal_year_dto_collection_query_parameters.h"
 #include "../model/fiscal_year_dto_envelope.h"
 #include "../model/fiscal_year_dto_i_read_only_list_envelope.h"
 #include "../model/fiscal_year_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create fiscal year
@@ -44,7 +45,7 @@ FiscalYearsAPI_getFiscalYearDetailsAsync(apiClient_t *apiClient, char *tenantId,
 // Retrieves a list of fiscal years for the specified tenant.
 //
 fiscal_year_dto_i_read_only_list_envelope_t*
-FiscalYearsAPI_getFiscalYearsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+FiscalYearsAPI_getFiscalYearsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_year_dto_collection_query_parameters_t *fiscal_year_dto_collection_query_parameters);
 
 
 // Count fiscal years
@@ -52,7 +53,7 @@ FiscalYearsAPI_getFiscalYearsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the number of fiscal years for a tenant.
 //
 int32_envelope_t*
-FiscalYearsAPI_getFiscalYearsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+FiscalYearsAPI_getFiscalYearsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, fiscal_year_dto_collection_query_parameters_t *fiscal_year_dto_collection_query_parameters);
 
 
 // Patch a fiscal year
@@ -60,7 +61,7 @@ FiscalYearsAPI_getFiscalYearsCountAsync(apiClient_t *apiClient, char *tenantId, 
 // Partially updates a fiscal year.
 //
 empty_envelope_t*
-FiscalYearsAPI_patchFiscalYearAsync(apiClient_t *apiClient, char *tenantId, char *fiscalYearId, char *api_version, char *x_api_version, list_t *operation);
+FiscalYearsAPI_patchFiscalYearAsync(apiClient_t *apiClient, char *tenantId, char *fiscalYearId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update fiscal year

@@ -118,7 +118,7 @@ No authorization required
 //
 // Retrieves all course articles for the specified tenant.
 //
-list_t* CourseArticlesAPI_getCourseArticlesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+list_t* CourseArticlesAPI_getCourseArticlesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_article_dto_collection_query_parameters_t *course_article_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -128,6 +128,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_article_dto_collection_query_parameters** | **[course_article_dto_collection_query_parameters_t](course_article_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -140,7 +141,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -151,7 +152,7 @@ No authorization required
 //
 // Returns the count of course articles for the specified tenant.
 //
-int* CourseArticlesAPI_getCourseArticlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int* CourseArticlesAPI_getCourseArticlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_article_dto_collection_query_parameters_t *course_article_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -161,6 +162,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**course_article_dto_collection_query_parameters** | **[course_article_dto_collection_query_parameters_t](course_article_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -174,7 +176,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -185,7 +187,7 @@ No authorization required
 //
 // Partially updates a course article for the specified tenant.
 //
-empty_envelope_t* CourseArticlesAPI_patchCourseArticleAsync(apiClient_t *apiClient, char *tenantId, char *articleId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CourseArticlesAPI_patchCourseArticleAsync(apiClient_t *apiClient, char *tenantId, char *articleId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -196,7 +198,7 @@ Name | Type | Description  | Notes
 **articleId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

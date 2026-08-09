@@ -6,17 +6,21 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/bank_account_create_dto.h"
+#include "../model/bank_account_dto_collection_query_parameters.h"
 #include "../model/bank_account_dto_envelope.h"
 #include "../model/bank_account_dto_list_envelope.h"
 #include "../model/bank_account_update_dto.h"
 #include "../model/bank_create_dto.h"
+#include "../model/bank_dto_collection_query_parameters.h"
 #include "../model/bank_dto_envelope.h"
 #include "../model/bank_dto_list_envelope.h"
 #include "../model/bank_guarantee_create_dto.h"
+#include "../model/bank_guarantee_dto_collection_query_parameters.h"
 #include "../model/bank_guarantee_dto_envelope.h"
 #include "../model/bank_guarantee_dto_list_envelope.h"
 #include "../model/bank_guarantee_update_dto.h"
 #include "../model/bank_transaction_create_dto.h"
+#include "../model/bank_transaction_dto_collection_query_parameters.h"
 #include "../model/bank_transaction_dto_envelope.h"
 #include "../model/bank_transaction_dto_list_envelope.h"
 #include "../model/bank_transaction_update_dto.h"
@@ -24,7 +28,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new bank
@@ -112,7 +116,7 @@ BankingAPI_getBankAccount(apiClient_t *apiClient, char *tenantId, char *bankId, 
 // Get the currently acting tenant bank accounts.
 //
 bank_account_dto_list_envelope_t*
-BankingAPI_getBankAccounts(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+BankingAPI_getBankAccounts(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_account_dto_collection_query_parameters_t *bank_account_dto_collection_query_parameters);
 
 
 // Gets the current tenant bank accounts count
@@ -120,7 +124,7 @@ BankingAPI_getBankAccounts(apiClient_t *apiClient, char *tenantId, char *bankId,
 // Get the currently acting tenant bank accounts count.
 //
 int32_envelope_t*
-BankingAPI_getBankAccountsCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+BankingAPI_getBankAccountsCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_account_dto_collection_query_parameters_t *bank_account_dto_collection_query_parameters);
 
 
 // Gets the current tenant bank guarantee
@@ -136,7 +140,7 @@ BankingAPI_getBankGuarantee(apiClient_t *apiClient, char *tenantId, char *bankId
 // Get the currently acting tenant bank guarantees.
 //
 bank_guarantee_dto_list_envelope_t*
-BankingAPI_getBankGuarantees(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+BankingAPI_getBankGuarantees(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_guarantee_dto_collection_query_parameters_t *bank_guarantee_dto_collection_query_parameters);
 
 
 // Gets the current tenant bank guarantees count
@@ -144,7 +148,7 @@ BankingAPI_getBankGuarantees(apiClient_t *apiClient, char *tenantId, char *bankI
 // Get the currently acting tenant bank guarantees count.
 //
 int32_envelope_t*
-BankingAPI_getBankGuaranteesCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+BankingAPI_getBankGuaranteesCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_guarantee_dto_collection_query_parameters_t *bank_guarantee_dto_collection_query_parameters);
 
 
 // Gets the current tenant bank transaction
@@ -160,7 +164,7 @@ BankingAPI_getBankTransaction(apiClient_t *apiClient, char *tenantId, char *bank
 // Get the currently acting tenant bank transactions.
 //
 bank_transaction_dto_list_envelope_t*
-BankingAPI_getBankTransactions(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+BankingAPI_getBankTransactions(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_transaction_dto_collection_query_parameters_t *bank_transaction_dto_collection_query_parameters);
 
 
 // Gets the current tenant bank transactions count
@@ -168,7 +172,7 @@ BankingAPI_getBankTransactions(apiClient_t *apiClient, char *tenantId, char *ban
 // Get the currently acting tenant bank transactions count.
 //
 int32_envelope_t*
-BankingAPI_getBankTransactionsCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+BankingAPI_getBankTransactionsCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_transaction_dto_collection_query_parameters_t *bank_transaction_dto_collection_query_parameters);
 
 
 // Gets the current tenant banks
@@ -176,7 +180,7 @@ BankingAPI_getBankTransactionsCount(apiClient_t *apiClient, char *tenantId, char
 // Get the currently acting tenant banks.
 //
 bank_dto_list_envelope_t*
-BankingAPI_getBanks(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BankingAPI_getBanks(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bank_dto_collection_query_parameters_t *bank_dto_collection_query_parameters);
 
 
 // Gets the current tenant banks count
@@ -184,7 +188,7 @@ BankingAPI_getBanks(apiClient_t *apiClient, char *tenantId, char *api_version, c
 // Get the currently acting tenant banks count.
 //
 int32_envelope_t*
-BankingAPI_getBanksCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BankingAPI_getBanksCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bank_dto_collection_query_parameters_t *bank_dto_collection_query_parameters);
 
 
 // Patches a bank
@@ -192,7 +196,7 @@ BankingAPI_getBanksCount(apiClient_t *apiClient, char *tenantId, char *api_versi
 // Partially update a bank using JSON Patch.
 //
 empty_envelope_t*
-BankingAPI_patchBank(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, list_t *operation);
+BankingAPI_patchBank(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patches a bank account
@@ -200,7 +204,7 @@ BankingAPI_patchBank(apiClient_t *apiClient, char *tenantId, char *bankId, char 
 // Partially update a bank account using JSON Patch.
 //
 empty_envelope_t*
-BankingAPI_patchBankAccount(apiClient_t *apiClient, char *tenantId, char *bankId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
+BankingAPI_patchBankAccount(apiClient_t *apiClient, char *tenantId, char *bankId, char *accountId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patches a bank guarantee
@@ -208,7 +212,7 @@ BankingAPI_patchBankAccount(apiClient_t *apiClient, char *tenantId, char *bankId
 // Partially update a bank guarantee using JSON Patch.
 //
 empty_envelope_t*
-BankingAPI_patchBankGuarantee(apiClient_t *apiClient, char *tenantId, char *bankId, char *guaranteeId, char *api_version, char *x_api_version, list_t *operation);
+BankingAPI_patchBankGuarantee(apiClient_t *apiClient, char *tenantId, char *bankId, char *guaranteeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patches a bank transaction
@@ -216,7 +220,7 @@ BankingAPI_patchBankGuarantee(apiClient_t *apiClient, char *tenantId, char *bank
 // Partially update a bank transaction using JSON Patch.
 //
 empty_envelope_t*
-BankingAPI_patchBankTransaction(apiClient_t *apiClient, char *tenantId, char *bankId, char *transactionId, char *api_version, char *x_api_version, list_t *operation);
+BankingAPI_patchBankTransaction(apiClient_t *apiClient, char *tenantId, char *bankId, char *transactionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates a bank

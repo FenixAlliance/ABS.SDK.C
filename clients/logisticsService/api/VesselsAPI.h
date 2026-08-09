@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/vessel_create_dto.h"
+#include "../model/vessel_dto_collection_query_parameters.h"
 #include "../model/vessel_dto_envelope.h"
 #include "../model/vessel_dto_list_envelope.h"
 #include "../model/vessel_update_dto.h"
@@ -44,7 +45,7 @@ VesselsAPI_getVesselByIdAsync(apiClient_t *apiClient, char *tenantId, char *vess
 // Retrieves all vessels for the specified tenant.
 //
 vessel_dto_list_envelope_t*
-VesselsAPI_getVesselsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+VesselsAPI_getVesselsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, vessel_dto_collection_query_parameters_t *vessel_dto_collection_query_parameters);
 
 
 // Get vessels count
@@ -52,7 +53,7 @@ VesselsAPI_getVesselsAsync(apiClient_t *apiClient, char *tenantId, char *api_ver
 // Returns the count of vessels for the specified tenant.
 //
 int32_envelope_t*
-VesselsAPI_getVesselsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+VesselsAPI_getVesselsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, vessel_dto_collection_query_parameters_t *vessel_dto_collection_query_parameters);
 
 
 // Patch a vessel
@@ -60,7 +61,7 @@ VesselsAPI_getVesselsCountAsync(apiClient_t *apiClient, char *tenantId, char *ap
 // Partially updates an existing vessel using JSON Patch.
 //
 empty_envelope_t*
-VesselsAPI_patchVesselAsync(apiClient_t *apiClient, char *tenantId, char *vesselId, char *api_version, char *x_api_version, list_t *operation);
+VesselsAPI_patchVesselAsync(apiClient_t *apiClient, char *tenantId, char *vesselId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a vessel

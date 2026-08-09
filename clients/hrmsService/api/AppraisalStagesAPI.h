@@ -6,6 +6,7 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/appraisal_stage_create_dto.h"
+#include "../model/appraisal_stage_dto_collection_query_parameters.h"
 #include "../model/appraisal_stage_dto_envelope.h"
 #include "../model/appraisal_stage_dto_list_envelope.h"
 #include "../model/appraisal_stage_update_dto.h"
@@ -43,7 +44,7 @@ AppraisalStagesAPI_getAppraisalStageByIdAsync(apiClient_t *apiClient, char *tena
 // Retrieves appraisal stages for the specified tenant.
 //
 appraisal_stage_dto_list_envelope_t*
-AppraisalStagesAPI_getAppraisalStagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AppraisalStagesAPI_getAppraisalStagesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, appraisal_stage_dto_collection_query_parameters_t *appraisal_stage_dto_collection_query_parameters);
 
 
 // Count appraisal stages
@@ -51,7 +52,7 @@ AppraisalStagesAPI_getAppraisalStagesAsync(apiClient_t *apiClient, char *tenantI
 // Counts appraisal stages for the specified tenant.
 //
 int32_envelope_t*
-AppraisalStagesAPI_getAppraisalStagesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AppraisalStagesAPI_getAppraisalStagesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, appraisal_stage_dto_collection_query_parameters_t *appraisal_stage_dto_collection_query_parameters);
 
 
 // Update an appraisal stage

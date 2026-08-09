@@ -5,6 +5,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **char \*** |  | [optional] 
 **message** | **char \*** |  | [optional] 
+**body_html** | **char \*** |  | [optional] 
+**body_format** | **socialservice_social_feed_post_update_dto_BODYFORMAT_e** |  | [optional] 
+**background_style** | **char \*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

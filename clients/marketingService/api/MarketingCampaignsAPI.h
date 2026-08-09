@@ -9,9 +9,10 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/marketing_campaign_create_dto.h"
+#include "../model/marketing_campaign_dto_collection_query_parameters.h"
 #include "../model/marketing_campaign_dto_envelope.h"
 #include "../model/marketing_campaign_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a marketing campaign
@@ -43,7 +44,7 @@ MarketingCampaignsAPI_getMarketingCampaignDetailsAsync(apiClient_t *apiClient, c
 // Retrieves a collection of marketing campaigns for the specified tenant using OData query options.
 //
 void
-MarketingCampaignsAPI_getMarketingCampaignODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MarketingCampaignsAPI_getMarketingCampaignODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_campaign_dto_collection_query_parameters_t *marketing_campaign_dto_collection_query_parameters);
 
 
 // Get marketing campaigns count
@@ -51,7 +52,7 @@ MarketingCampaignsAPI_getMarketingCampaignODataAsync(apiClient_t *apiClient, cha
 // Returns the count of marketing campaigns for the specified tenant using OData query options.
 //
 int32_envelope_t*
-MarketingCampaignsAPI_getMarketingCampaignsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MarketingCampaignsAPI_getMarketingCampaignsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_campaign_dto_collection_query_parameters_t *marketing_campaign_dto_collection_query_parameters);
 
 
 // Patch a marketing campaign
@@ -59,7 +60,7 @@ MarketingCampaignsAPI_getMarketingCampaignsCountAsync(apiClient_t *apiClient, ch
 // Partially updates a marketing campaign by its ID using JSON Patch.
 //
 empty_envelope_t*
-MarketingCampaignsAPI_patchMarketingCampaignAsync(apiClient_t *apiClient, char *tenantId, char *marketingcampaignId, char *api_version, char *x_api_version, list_t *operation);
+MarketingCampaignsAPI_patchMarketingCampaignAsync(apiClient_t *apiClient, char *tenantId, char *marketingcampaignId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a marketing campaign

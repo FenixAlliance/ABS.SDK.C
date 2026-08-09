@@ -571,13 +571,13 @@ end:
 // Get all locations with OData query support.
 //
 location_dto_i_read_only_list_envelope_t*
-LocationsAPI_getLocationsAsync(apiClient_t *apiClient, char *tenantId)
+LocationsAPI_getLocationsAsync(apiClient_t *apiClient, char *tenantId, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -599,8 +599,19 @@ LocationsAPI_getLocationsAsync(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    if (location_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_location_dto_collection_query_parameters = location_dto_collection_query_parameters_convertToJSON(location_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_location_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -641,8 +652,13 @@ LocationsAPI_getLocationsAsync(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_location_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_location_dto_collection_query_parameters);
+        localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -667,13 +683,13 @@ end:
 // Get the count of locations with OData query support.
 //
 int32_envelope_t*
-LocationsAPI_getLocationsCountAsync(apiClient_t *apiClient, char *tenantId)
+LocationsAPI_getLocationsCountAsync(apiClient_t *apiClient, char *tenantId, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -695,8 +711,19 @@ LocationsAPI_getLocationsCountAsync(apiClient_t *apiClient, char *tenantId)
         keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
         list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    if (location_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_location_dto_collection_query_parameters = location_dto_collection_query_parameters_convertToJSON(location_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_location_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -737,8 +764,13 @@ LocationsAPI_getLocationsCountAsync(apiClient_t *apiClient, char *tenantId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
+    if (localVarSingleItemJSON_location_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_location_dto_collection_query_parameters);
+        localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -871,13 +903,13 @@ end:
 // Get locations for a specific wallet by ID.
 //
 location_dto_i_read_only_list_envelope_t*
-LocationsAPI_getWalletLocationsAsync(apiClient_t *apiClient, char *walletId)
+LocationsAPI_getWalletLocationsAsync(apiClient_t *apiClient, char *walletId, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -904,8 +936,19 @@ LocationsAPI_getWalletLocationsAsync(apiClient_t *apiClient, char *walletId)
     localVarPath = strReplace(localVarPath, localVarToReplace_walletId, walletId);
 
 
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    if (location_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_location_dto_collection_query_parameters = location_dto_collection_query_parameters_convertToJSON(location_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_location_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -946,9 +989,14 @@ LocationsAPI_getWalletLocationsAsync(apiClient_t *apiClient, char *walletId)
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
+    if (localVarSingleItemJSON_location_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_location_dto_collection_query_parameters);
+        localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     return elementToReturn;
 end:
     free(localVarPath);
@@ -961,13 +1009,13 @@ end:
 // Get the count of locations for a specific wallet by ID.
 //
 int32_envelope_t*
-LocationsAPI_getWalletLocationsCountAsync(apiClient_t *apiClient, char *walletId)
+LocationsAPI_getWalletLocationsCountAsync(apiClient_t *apiClient, char *walletId, location_dto_collection_query_parameters_t *location_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -994,8 +1042,19 @@ LocationsAPI_getWalletLocationsCountAsync(apiClient_t *apiClient, char *walletId
     localVarPath = strReplace(localVarPath, localVarToReplace_walletId, walletId);
 
 
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    if (location_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_location_dto_collection_query_parameters = location_dto_collection_query_parameters_convertToJSON(location_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_location_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1036,9 +1095,14 @@ LocationsAPI_getWalletLocationsCountAsync(apiClient_t *apiClient, char *walletId
     
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_walletId);
+    if (localVarSingleItemJSON_location_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_location_dto_collection_query_parameters);
+        localVarSingleItemJSON_location_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     return elementToReturn;
 end:
     free(localVarPath);
@@ -1051,7 +1115,7 @@ end:
 // Patch a location
 //
 empty_envelope_t*
-LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *locationId, list_t *operation)
+LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *locationId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1099,14 +1163,14 @@ LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *lo
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1114,16 +1178,16 @@ LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *lo
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1172,17 +1236,17 @@ LocationsAPI_patchLocationAsync(apiClient_t *apiClient, char *tenantId, char *lo
     list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_locationId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -1209,7 +1273,7 @@ end:
 // Patch a wallet location
 //
 empty_envelope_t*
-LocationsAPI_patchWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, list_t *operation)
+LocationsAPI_patchWalletLocationAsync(apiClient_t *apiClient, char *walletId, char *locationId, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -1262,14 +1326,14 @@ LocationsAPI_patchWalletLocationAsync(apiClient_t *apiClient, char *walletId, ch
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -1277,16 +1341,16 @@ LocationsAPI_patchWalletLocationAsync(apiClient_t *apiClient, char *walletId, ch
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -1336,17 +1400,17 @@ LocationsAPI_patchWalletLocationAsync(apiClient_t *apiClient, char *walletId, ch
     free(localVarPath);
     free(localVarToReplace_walletId);
     free(localVarToReplace_locationId);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;

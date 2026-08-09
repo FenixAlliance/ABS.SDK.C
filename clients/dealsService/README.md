@@ -102,7 +102,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -124,20 +123,24 @@ Category | Method | HTTP request | Description
  - [contact_dto_t](docs/contact_dto.md)
  - [deal_unit_create_dto_t](docs/deal_unit_create_dto.md)
  - [deal_unit_dto_t](docs/deal_unit_dto.md)
+ - [deal_unit_dto_collection_query_parameters_t](docs/deal_unit_dto_collection_query_parameters.md)
  - [deal_unit_dto_envelope_t](docs/deal_unit_dto_envelope.md)
  - [deal_unit_dto_list_envelope_t](docs/deal_unit_dto_list_envelope.md)
  - [deal_unit_flow_create_dto_t](docs/deal_unit_flow_create_dto.md)
  - [deal_unit_flow_dto_t](docs/deal_unit_flow_dto.md)
+ - [deal_unit_flow_dto_collection_query_parameters_t](docs/deal_unit_flow_dto_collection_query_parameters.md)
  - [deal_unit_flow_dto_envelope_t](docs/deal_unit_flow_dto_envelope.md)
  - [deal_unit_flow_dto_list_envelope_t](docs/deal_unit_flow_dto_list_envelope.md)
  - [deal_unit_flow_stage_create_dto_t](docs/deal_unit_flow_stage_create_dto.md)
  - [deal_unit_flow_stage_dto_t](docs/deal_unit_flow_stage_dto.md)
+ - [deal_unit_flow_stage_dto_collection_query_parameters_t](docs/deal_unit_flow_stage_dto_collection_query_parameters.md)
  - [deal_unit_flow_stage_dto_envelope_t](docs/deal_unit_flow_stage_dto_envelope.md)
  - [deal_unit_flow_stage_dto_list_envelope_t](docs/deal_unit_flow_stage_dto_list_envelope.md)
  - [deal_unit_flow_stage_update_dto_t](docs/deal_unit_flow_stage_update_dto.md)
  - [deal_unit_flow_update_dto_t](docs/deal_unit_flow_update_dto.md)
  - [deal_unit_line_create_dto_t](docs/deal_unit_line_create_dto.md)
  - [deal_unit_line_dto_t](docs/deal_unit_line_dto.md)
+ - [deal_unit_line_dto_collection_query_parameters_t](docs/deal_unit_line_dto_collection_query_parameters.md)
  - [deal_unit_line_dto_envelope_t](docs/deal_unit_line_dto_envelope.md)
  - [deal_unit_line_dto_list_envelope_t](docs/deal_unit_line_dto_list_envelope.md)
  - [deal_unit_line_update_dto_t](docs/deal_unit_line_update_dto.md)
@@ -145,6 +148,7 @@ Category | Method | HTTP request | Description
  - [empty_envelope_t](docs/empty_envelope.md)
  - [error_envelope_t](docs/error_envelope.md)
  - [extended_deal_unit_dto_t](docs/extended_deal_unit_dto.md)
+ - [extended_deal_unit_dto_collection_query_parameters_t](docs/extended_deal_unit_dto_collection_query_parameters.md)
  - [extended_deal_unit_dto_envelope_t](docs/extended_deal_unit_dto_envelope.md)
  - [extended_deal_unit_dto_list_envelope_t](docs/extended_deal_unit_dto_list_envelope.md)
  - [forgot_password_request_t](docs/forgot_password_request.md)
@@ -153,7 +157,7 @@ Category | Method | HTTP request | Description
  - [info_response_t](docs/info_response.md)
  - [int32_envelope_t](docs/int32_envelope.md)
  - [login_request_t](docs/login_request.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [refresh_request_t](docs/refresh_request.md)
  - [register_request_t](docs/register_request.md)
  - [resend_confirmation_email_request_t](docs/resend_confirmation_email_request.md)

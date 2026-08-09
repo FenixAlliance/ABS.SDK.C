@@ -70,7 +70,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -98,6 +97,10 @@ Category | Method | HTTP request | Description
 *PaymentModesAPI* | [**PaymentModesAPI_getPaymentModesCountAsync**](docs/PaymentModesAPI.md#PaymentModesAPI_getPaymentModesCountAsync) | **GET** /api/v2/PaymentsService/PaymentModes/Count | Counts payment modes
 *PaymentModesAPI* | [**PaymentModesAPI_patchPaymentModeAsync**](docs/PaymentModesAPI.md#PaymentModesAPI_patchPaymentModeAsync) | **PATCH** /api/v2/PaymentsService/PaymentModes/{paymentModeId} | Patch a payment mode
 *PaymentModesAPI* | [**PaymentModesAPI_updatePaymentModeAsync**](docs/PaymentModesAPI.md#PaymentModesAPI_updatePaymentModeAsync) | **PUT** /api/v2/PaymentsService/PaymentModes/{paymentModeId} | Updates a payment mode
+*PaymentProviderRegistrationsAPI* | [**PaymentProviderRegistrationsAPI_createAsync**](docs/PaymentProviderRegistrationsAPI.md#PaymentProviderRegistrationsAPI_createAsync) | **POST** /api/v2/PaymentsService/PaymentProviderRegistrations | Provisions a provider webhook registration
+*PaymentProviderRegistrationsAPI* | [**PaymentProviderRegistrationsAPI_getAsync**](docs/PaymentProviderRegistrationsAPI.md#PaymentProviderRegistrationsAPI_getAsync) | **GET** /api/v2/PaymentsService/PaymentProviderRegistrations | Lists the tenant's provider registrations
+*PaymentProviderRegistrationsAPI* | [**PaymentProviderRegistrationsAPI_getCountAsync**](docs/PaymentProviderRegistrationsAPI.md#PaymentProviderRegistrationsAPI_getCountAsync) | **GET** /api/v2/PaymentsService/PaymentProviderRegistrations/Count | Counts the tenant's provider registrations
+*PaymentProviderRegistrationsAPI* | [**PaymentProviderRegistrationsAPI_rotateKeyAsync**](docs/PaymentProviderRegistrationsAPI.md#PaymentProviderRegistrationsAPI_rotateKeyAsync) | **POST** /api/v2/PaymentsService/PaymentProviderRegistrations/{registrationId}/RotateKey | Rotates a registration's webhook key
 *PaymentTermsAPI* | [**PaymentTermsAPI_createPaymentTermAsync**](docs/PaymentTermsAPI.md#PaymentTermsAPI_createPaymentTermAsync) | **POST** /api/v2/PaymentsService/PaymentTerms | Creates a new payment term
 *PaymentTermsAPI* | [**PaymentTermsAPI_deletePaymentTermAsync**](docs/PaymentTermsAPI.md#PaymentTermsAPI_deletePaymentTermAsync) | **DELETE** /api/v2/PaymentsService/PaymentTerms/{paymentTermId} | Deletes a payment term
 *PaymentTermsAPI* | [**PaymentTermsAPI_getPaymentTermDetailsAsync**](docs/PaymentTermsAPI.md#PaymentTermsAPI_getPaymentTermDetailsAsync) | **GET** /api/v2/PaymentsService/PaymentTerms/{paymentTermId} | Gets a payment term by ID
@@ -117,6 +120,7 @@ Category | Method | HTTP request | Description
 ## Documentation for Models
 
  - [access_token_response_t](docs/access_token_response.md)
+ - [create_provider_webhook_registration_request_t](docs/create_provider_webhook_registration_request.md)
  - [empty_envelope_t](docs/empty_envelope.md)
  - [error_envelope_t](docs/error_envelope.md)
  - [forgot_password_request_t](docs/forgot_password_request.md)
@@ -125,26 +129,35 @@ Category | Method | HTTP request | Description
  - [info_response_t](docs/info_response.md)
  - [int32_envelope_t](docs/int32_envelope.md)
  - [login_request_t](docs/login_request.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [payment_create_dto_t](docs/payment_create_dto.md)
  - [payment_dto_t](docs/payment_dto.md)
+ - [payment_dto_collection_query_parameters_t](docs/payment_dto_collection_query_parameters.md)
  - [payment_dto_list_envelope_t](docs/payment_dto_list_envelope.md)
  - [payment_method_create_dto_t](docs/payment_method_create_dto.md)
  - [payment_method_dto_t](docs/payment_method_dto.md)
+ - [payment_method_dto_collection_query_parameters_t](docs/payment_method_dto_collection_query_parameters.md)
  - [payment_method_dto_envelope_t](docs/payment_method_dto_envelope.md)
  - [payment_method_dto_i_read_only_list_envelope_t](docs/payment_method_dto_i_read_only_list_envelope.md)
  - [payment_method_update_dto_t](docs/payment_method_update_dto.md)
  - [payment_mode_create_dto_t](docs/payment_mode_create_dto.md)
  - [payment_mode_dto_t](docs/payment_mode_dto.md)
+ - [payment_mode_dto_collection_query_parameters_t](docs/payment_mode_dto_collection_query_parameters.md)
  - [payment_mode_dto_envelope_t](docs/payment_mode_dto_envelope.md)
  - [payment_mode_dto_i_read_only_list_envelope_t](docs/payment_mode_dto_i_read_only_list_envelope.md)
  - [payment_mode_update_dto_t](docs/payment_mode_update_dto.md)
+ - [payment_provider_registration_dto_t](docs/payment_provider_registration_dto.md)
+ - [payment_provider_registration_dto_collection_query_parameters_t](docs/payment_provider_registration_dto_collection_query_parameters.md)
+ - [payment_provider_registration_dto_list_envelope_t](docs/payment_provider_registration_dto_list_envelope.md)
  - [payment_term_create_dto_t](docs/payment_term_create_dto.md)
  - [payment_term_dto_t](docs/payment_term_dto.md)
+ - [payment_term_dto_collection_query_parameters_t](docs/payment_term_dto_collection_query_parameters.md)
  - [payment_term_dto_envelope_t](docs/payment_term_dto_envelope.md)
  - [payment_term_dto_i_read_only_list_envelope_t](docs/payment_term_dto_i_read_only_list_envelope.md)
  - [payment_term_update_dto_t](docs/payment_term_update_dto.md)
  - [payment_update_dto_t](docs/payment_update_dto.md)
+ - [provider_webhook_registration_created_dto_t](docs/provider_webhook_registration_created_dto.md)
+ - [provider_webhook_registration_created_dto_envelope_t](docs/provider_webhook_registration_created_dto_envelope.md)
  - [refresh_request_t](docs/refresh_request.md)
  - [register_request_t](docs/register_request.md)
  - [resend_confirmation_email_request_t](docs/resend_confirmation_email_request.md)

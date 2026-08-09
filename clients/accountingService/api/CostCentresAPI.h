@@ -6,13 +6,16 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/cost_centre_budget_create_dto.h"
+#include "../model/cost_centre_budget_dto_collection_query_parameters.h"
 #include "../model/cost_centre_budget_dto_envelope.h"
 #include "../model/cost_centre_budget_dto_list_envelope.h"
 #include "../model/cost_centre_budget_update_dto.h"
 #include "../model/cost_centre_create_dto.h"
+#include "../model/cost_centre_dto_collection_query_parameters.h"
 #include "../model/cost_centre_dto_envelope.h"
 #include "../model/cost_centre_dto_list_envelope.h"
 #include "../model/cost_centre_group_create_dto.h"
+#include "../model/cost_centre_group_dto_collection_query_parameters.h"
 #include "../model/cost_centre_group_dto_envelope.h"
 #include "../model/cost_centre_group_dto_list_envelope.h"
 #include "../model/cost_centre_group_update_dto.h"
@@ -20,7 +23,7 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a cost centre
@@ -92,7 +95,7 @@ CostCentresAPI_getCostCentreBudget(apiClient_t *apiClient, char *tenantId, char 
 // Retrieves all cost centre budgets for the specified tenant using OData query options.
 //
 cost_centre_budget_dto_list_envelope_t*
-CostCentresAPI_getCostCentreBudgets(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CostCentresAPI_getCostCentreBudgets(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_budget_dto_collection_query_parameters_t *cost_centre_budget_dto_collection_query_parameters);
 
 
 // Get a cost centre group by id
@@ -108,7 +111,7 @@ CostCentresAPI_getCostCentreGroup(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves all cost centre groups for the specified tenant using OData query options.
 //
 cost_centre_group_dto_list_envelope_t*
-CostCentresAPI_getCostCentreGroups(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CostCentresAPI_getCostCentreGroups(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_group_dto_collection_query_parameters_t *cost_centre_group_dto_collection_query_parameters);
 
 
 // Get the count of cost centre groups for a tenant
@@ -116,7 +119,7 @@ CostCentresAPI_getCostCentreGroups(apiClient_t *apiClient, char *tenantId, char 
 // Retrieves the count of cost centre groups for the specified tenant using OData query options.
 //
 int32_envelope_t*
-CostCentresAPI_getCostCentreGroupsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CostCentresAPI_getCostCentreGroupsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_group_dto_collection_query_parameters_t *cost_centre_group_dto_collection_query_parameters);
 
 
 // Get all cost centres for a tenant
@@ -124,7 +127,7 @@ CostCentresAPI_getCostCentreGroupsCount(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all cost centres for the specified tenant using OData query options.
 //
 cost_centre_dto_list_envelope_t*
-CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_dto_collection_query_parameters_t *cost_centre_dto_collection_query_parameters);
 
 
 // Get the count of cost centres for a tenant
@@ -132,7 +135,7 @@ CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_
 // Retrieves the count of cost centres for the specified tenant using OData query options.
 //
 int32_envelope_t*
-CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_dto_collection_query_parameters_t *cost_centre_dto_collection_query_parameters);
 
 
 // Patch a cost centre
@@ -140,7 +143,7 @@ CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char 
 // Partially updates an existing cost centre.
 //
 empty_envelope_t*
-CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *costCentreId, char *api_version, char *x_api_version, list_t *operation);
+CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *costCentreId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a cost centre budget
@@ -148,7 +151,7 @@ CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *cos
 // Partially updates an existing cost centre budget.
 //
 empty_envelope_t*
-CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *operation);
+CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a cost centre group
@@ -156,7 +159,7 @@ CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, cha
 // Partially updates an existing cost centre group.
 //
 empty_envelope_t*
-CostCentresAPI_patchCostCentreGroup(apiClient_t *apiClient, char *tenantId, char *groupId, char *api_version, char *x_api_version, list_t *operation);
+CostCentresAPI_patchCostCentreGroup(apiClient_t *apiClient, char *tenantId, char *groupId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a cost centre

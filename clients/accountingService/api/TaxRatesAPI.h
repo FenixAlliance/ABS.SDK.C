@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tax_rate_create_dto.h"
+#include "../model/tax_rate_dto_collection_query_parameters.h"
 #include "../model/tax_rate_dto_envelope.h"
 #include "../model/tax_rate_dto_list_envelope.h"
 #include "../model/tax_rate_update_dto.h"
@@ -44,7 +45,7 @@ TaxRatesAPI_getTaxRate(apiClient_t *apiClient, char *tenantId, char *id, char *a
 // Retrieves all tax rates for the specified tenant using OData query options.
 //
 tax_rate_dto_list_envelope_t*
-TaxRatesAPI_getTaxRates(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TaxRatesAPI_getTaxRates(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tax_rate_dto_collection_query_parameters_t *tax_rate_dto_collection_query_parameters);
 
 
 // Get tax rates count
@@ -52,7 +53,7 @@ TaxRatesAPI_getTaxRates(apiClient_t *apiClient, char *tenantId, char *api_versio
 // Returns the count of tax rates for the specified tenant.
 //
 int32_envelope_t*
-TaxRatesAPI_getTaxRatesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TaxRatesAPI_getTaxRatesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tax_rate_dto_collection_query_parameters_t *tax_rate_dto_collection_query_parameters);
 
 
 // Patch a tax rate
@@ -60,7 +61,7 @@ TaxRatesAPI_getTaxRatesCount(apiClient_t *apiClient, char *tenantId, char *api_v
 // Partially updates an existing tax rate identified by its unique identifier.
 //
 empty_envelope_t*
-TaxRatesAPI_patchTaxRate(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+TaxRatesAPI_patchTaxRate(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tax rate

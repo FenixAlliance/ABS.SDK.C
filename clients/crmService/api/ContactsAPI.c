@@ -1220,13 +1220,13 @@ end:
 // Get all contacts of type individual
 //
 contact_dto_list_envelope_t*
-ContactsAPI_getBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ContactsAPI_getBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1272,8 +1272,19 @@ ContactsAPI_getBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenan
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    if (contact_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = contact_dto_collection_query_parameters_convertToJSON(contact_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1314,7 +1325,7 @@ ContactsAPI_getBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenan
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1325,6 +1336,11 @@ ContactsAPI_getBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenan
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_contact_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1361,13 +1377,13 @@ end:
 // Get all contacts of type individual count
 //
 contact_dto_list_envelope_t*
-ContactsAPI_getBusinessOwnedIndividualsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ContactsAPI_getBusinessOwnedIndividualsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1413,8 +1429,19 @@ ContactsAPI_getBusinessOwnedIndividualsCountAsync(apiClient_t *apiClient, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    if (contact_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = contact_dto_collection_query_parameters_convertToJSON(contact_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1455,7 +1482,7 @@ ContactsAPI_getBusinessOwnedIndividualsCountAsync(apiClient_t *apiClient, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1466,6 +1493,11 @@ ContactsAPI_getBusinessOwnedIndividualsCountAsync(apiClient_t *apiClient, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_contact_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1665,13 +1697,13 @@ end:
 // Get all contacts of type organization
 //
 list_t*
-ContactsAPI_getBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ContactsAPI_getBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1717,8 +1749,19 @@ ContactsAPI_getBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *ten
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    if (contact_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = contact_dto_collection_query_parameters_convertToJSON(contact_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1769,7 +1812,7 @@ ContactsAPI_getBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *ten
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1780,6 +1823,11 @@ ContactsAPI_getBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *ten
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_contact_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1816,13 +1864,13 @@ end:
 // Get all contacts of type organization count
 //
 contact_dto_list_envelope_t*
-ContactsAPI_getBusinessOwnedOrganizationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ContactsAPI_getBusinessOwnedOrganizationsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1868,8 +1916,19 @@ ContactsAPI_getBusinessOwnedOrganizationsCountAsync(apiClient_t *apiClient, char
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    if (contact_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = contact_dto_collection_query_parameters_convertToJSON(contact_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1910,7 +1969,7 @@ ContactsAPI_getBusinessOwnedOrganizationsCountAsync(apiClient_t *apiClient, char
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1921,6 +1980,11 @@ ContactsAPI_getBusinessOwnedOrganizationsCountAsync(apiClient_t *apiClient, char
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_contact_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2438,13 +2502,13 @@ end:
 // Get all email addresses for the specified contact.
 //
 contact_email_dto_list_envelope_t*
-ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version)
+ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_email_dto_collection_query_parameters_t *contact_email_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2507,8 +2571,19 @@ ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_contact_email_dto_collection_query_parameters = NULL;
+    if (contact_email_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_contact_email_dto_collection_query_parameters = contact_email_dto_collection_query_parameters_convertToJSON(contact_email_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_contact_email_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2549,7 +2624,7 @@ ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_contactId);
     if (keyHeader_x_api_version) {
@@ -2561,6 +2636,11 @@ ContactsAPI_getContactEmailsAsync(apiClient_t *apiClient, char *tenantId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_contact_email_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_contact_email_dto_collection_query_parameters);
+        localVarSingleItemJSON_contact_email_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2597,13 +2677,13 @@ end:
 // Returns the count of email addresses for the specified contact.
 //
 int32_envelope_t*
-ContactsAPI_getContactEmailsCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version)
+ContactsAPI_getContactEmailsCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_email_dto_collection_query_parameters_t *contact_email_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2666,8 +2746,19 @@ ContactsAPI_getContactEmailsCountAsync(apiClient_t *apiClient, char *tenantId, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_contact_email_dto_collection_query_parameters = NULL;
+    if (contact_email_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_contact_email_dto_collection_query_parameters = contact_email_dto_collection_query_parameters_convertToJSON(contact_email_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_contact_email_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2704,7 +2795,7 @@ ContactsAPI_getContactEmailsCountAsync(apiClient_t *apiClient, char *tenantId, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_contactId);
     if (keyHeader_x_api_version) {
@@ -2716,6 +2807,11 @@ ContactsAPI_getContactEmailsCountAsync(apiClient_t *apiClient, char *tenantId, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_contact_email_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_contact_email_dto_collection_query_parameters);
+        localVarSingleItemJSON_contact_email_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3078,13 +3174,13 @@ end:
 // Get all business owned contacts
 //
 contact_dto_list_envelope_t*
-ContactsAPI_getContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ContactsAPI_getContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3130,8 +3226,19 @@ ContactsAPI_getContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    if (contact_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = contact_dto_collection_query_parameters_convertToJSON(contact_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3172,7 +3279,7 @@ ContactsAPI_getContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -3183,6 +3290,11 @@ ContactsAPI_getContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_contact_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3219,13 +3331,13 @@ end:
 // Get all business owned contacts count
 //
 contact_dto_list_envelope_t*
-ContactsAPI_getContactsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ContactsAPI_getContactsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_dto_collection_query_parameters_t *contact_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3271,8 +3383,19 @@ ContactsAPI_getContactsCountAsync(apiClient_t *apiClient, char *tenantId, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    if (contact_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = contact_dto_collection_query_parameters_convertToJSON(contact_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3313,7 +3436,7 @@ ContactsAPI_getContactsCountAsync(apiClient_t *apiClient, char *tenantId, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -3324,6 +3447,11 @@ ContactsAPI_getContactsCountAsync(apiClient_t *apiClient, char *tenantId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_contact_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_contact_dto_collection_query_parameters);
+        localVarSingleItemJSON_contact_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3360,13 +3488,13 @@ end:
 // Get all contacts of type individual
 //
 extended_contact_dto_list_envelope_t*
-ContactsAPI_getExtendedBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ContactsAPI_getExtendedBusinessOwnedIndividualsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_contact_dto_collection_query_parameters_t *extended_contact_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3412,8 +3540,19 @@ ContactsAPI_getExtendedBusinessOwnedIndividualsAsync(apiClient_t *apiClient, cha
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_contact_dto_collection_query_parameters = NULL;
+    if (extended_contact_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_contact_dto_collection_query_parameters = extended_contact_dto_collection_query_parameters_convertToJSON(extended_contact_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_contact_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3454,7 +3593,7 @@ ContactsAPI_getExtendedBusinessOwnedIndividualsAsync(apiClient_t *apiClient, cha
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -3465,6 +3604,11 @@ ContactsAPI_getExtendedBusinessOwnedIndividualsAsync(apiClient_t *apiClient, cha
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_extended_contact_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_contact_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_contact_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3501,13 +3645,13 @@ end:
 // Get all contacts of type organization
 //
 extended_contact_dto_list_envelope_t*
-ContactsAPI_getExtendedBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ContactsAPI_getExtendedBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_contact_dto_collection_query_parameters_t *extended_contact_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3553,8 +3697,19 @@ ContactsAPI_getExtendedBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_contact_dto_collection_query_parameters = NULL;
+    if (extended_contact_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_contact_dto_collection_query_parameters = extended_contact_dto_collection_query_parameters_convertToJSON(extended_contact_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_contact_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3595,7 +3750,7 @@ ContactsAPI_getExtendedBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -3606,6 +3761,11 @@ ContactsAPI_getExtendedBusinessOwnedOrganizationsAsync(apiClient_t *apiClient, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_extended_contact_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_contact_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_contact_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -3801,13 +3961,13 @@ end:
 // Get all business owned contacts
 //
 extended_contact_dto_list_envelope_t*
-ContactsAPI_getExtendedContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+ContactsAPI_getExtendedContactsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, extended_contact_dto_collection_query_parameters_t *extended_contact_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3853,8 +4013,19 @@ ContactsAPI_getExtendedContactsAsync(apiClient_t *apiClient, char *tenantId, cha
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_extended_contact_dto_collection_query_parameters = NULL;
+    if (extended_contact_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_extended_contact_dto_collection_query_parameters = extended_contact_dto_collection_query_parameters_convertToJSON(extended_contact_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_extended_contact_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3895,7 +4066,7 @@ ContactsAPI_getExtendedContactsAsync(apiClient_t *apiClient, char *tenantId, cha
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -3906,6 +4077,11 @@ ContactsAPI_getExtendedContactsAsync(apiClient_t *apiClient, char *tenantId, cha
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_extended_contact_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_extended_contact_dto_collection_query_parameters);
+        localVarSingleItemJSON_extended_contact_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4741,13 +4917,13 @@ end:
 // Returns the count of profiles for the specified contact.
 //
 int32_envelope_t*
-ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version)
+ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, contact_profile_dto_collection_query_parameters_t *contact_profile_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -4810,8 +4986,19 @@ ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenant
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_contact_profile_dto_collection_query_parameters = NULL;
+    if (contact_profile_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_contact_profile_dto_collection_query_parameters = contact_profile_dto_collection_query_parameters_convertToJSON(contact_profile_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_contact_profile_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -4848,7 +5035,7 @@ ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenant
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_contactId);
     if (keyHeader_x_api_version) {
@@ -4860,6 +5047,11 @@ ContactsAPI_getProfilesForContactCountAsync(apiClient_t *apiClient, char *tenant
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_contact_profile_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_contact_profile_dto_collection_query_parameters);
+        localVarSingleItemJSON_contact_profile_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -4896,7 +5088,7 @@ end:
 // Patch a contact
 //
 empty_envelope_t*
-ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, list_t *operation)
+ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -4968,14 +5160,14 @@ ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *cont
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -4983,16 +5175,16 @@ ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *cont
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -5050,17 +5242,17 @@ ContactsAPI_patchContactAsync(apiClient_t *apiClient, char *tenantId, char *cont
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -5099,7 +5291,7 @@ end:
 // Partially updates an existing email address for the specified contact.
 //
 void
-ContactsAPI_patchContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *emailId, char *api_version, char *x_api_version, list_t *operation)
+ContactsAPI_patchContactEmailAsync(apiClient_t *apiClient, char *tenantId, char *contactId, char *emailId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -5188,14 +5380,14 @@ ContactsAPI_patchContactEmailAsync(apiClient_t *apiClient, char *tenantId, char 
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -5203,16 +5395,16 @@ ContactsAPI_patchContactEmailAsync(apiClient_t *apiClient, char *tenantId, char 
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -5264,17 +5456,17 @@ end:
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

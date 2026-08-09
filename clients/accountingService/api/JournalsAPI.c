@@ -17,13 +17,13 @@
 // Returns the sum of all credit amounts for entries in the specified journal, normalized to the target currency.
 //
 money_envelope_t*
-JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version)
+JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -98,8 +98,19 @@ JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tena
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    if (journal_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = journal_entry_dto_collection_query_parameters_convertToJSON(journal_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -140,7 +151,7 @@ JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tena
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_journalId);
     if (keyHeader_x_api_version) {
@@ -152,6 +163,11 @@ JournalsAPI_aggregateJournalEntryCreditsAsync(apiClient_t *apiClient, char *tena
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_journal_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -200,13 +216,13 @@ end:
 // Returns the sum of all debit amounts for entries in the specified journal, normalized to the target currency.
 //
 money_envelope_t*
-JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version)
+JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *currencyId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -281,8 +297,19 @@ JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenan
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    if (journal_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = journal_entry_dto_collection_query_parameters_convertToJSON(journal_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -323,7 +350,7 @@ JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenan
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_journalId);
     if (keyHeader_x_api_version) {
@@ -335,6 +362,11 @@ JournalsAPI_aggregateJournalEntryDebitsAsync(apiClient_t *apiClient, char *tenan
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_journal_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -378,18 +410,197 @@ end:
 
 }
 
-// Count journals
+// Bind a journal to a financial book
 //
-// Returns the count of journals for the tenant.
+// Establishes the one-way Journal↔FinancialBook binding (finish-line #5): binds an unbound journal to the supplied book and sets its book-scoped code, enforcing (Tenant, Book, Code) uniqueness. Binding an unbound journal or re-affirming the same book succeeds; a duplicate code in the book is rejected (400), and re-homing an already-bound journal to a DIFFERENT book is rejected by the aggregate. Requires the journals_update permission.
 //
-int32_envelope_t*
-JournalsAPI_countJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+empty_envelope_t*
+JournalsAPI_assignJournalToBookAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, assign_journal_to_book_request_t *assign_journal_to_book_request)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/AccountingService/Journals/{journalId}/AssignToBook")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/AccountingService/Journals/{journalId}/AssignToBook");
+
+
+    // Path Params
+    long sizeOfPathParams_journalId = strlen(journalId)+3 + strlen("{ journalId }");
+    if(journalId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_journalId = malloc(sizeOfPathParams_journalId);
+    sprintf(localVarToReplace_journalId, "{%s}", "journalId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_journalId, journalId);
+    if(journalId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_journalId = malloc(sizeOfPathParams_journalId);
+    sprintf(localVarToReplace_journalId, "{%s}", "journalId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_journalId, journalId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_tenantId = NULL;
+    char * valueQuery_tenantId = NULL;
+    keyValuePair_t *keyPairQuery_tenantId = 0;
+    if (tenantId)
+    {
+        keyQuery_tenantId = strdup("tenantId");
+        valueQuery_tenantId = strdup((tenantId));
+        keyPairQuery_tenantId = keyValuePair_create(keyQuery_tenantId, valueQuery_tenantId);
+        list_addElement(localVarQueryParameters,keyPairQuery_tenantId);
+    }
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_assign_journal_to_book_request = NULL;
+    if (assign_journal_to_book_request != NULL)
+    {
+        //string
+        localVarSingleItemJSON_assign_journal_to_book_request = assign_journal_to_book_request_convertToJSON(assign_journal_to_book_request);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_assign_journal_to_book_request);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Bad Request");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    //nonprimitive not container
+    cJSON *JournalsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    empty_envelope_t *elementToReturn = empty_envelope_parseFromJSON(JournalsAPIlocalVarJSON);
+    cJSON_Delete(JournalsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_journalId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_assign_journal_to_book_request) {
+        cJSON_Delete(localVarSingleItemJSON_assign_journal_to_book_request);
+        localVarSingleItemJSON_assign_journal_to_book_request = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_tenantId){
+        free(keyQuery_tenantId);
+        keyQuery_tenantId = NULL;
+    }
+    if(valueQuery_tenantId){
+        free(valueQuery_tenantId);
+        valueQuery_tenantId = NULL;
+    }
+    if(keyPairQuery_tenantId){
+        keyValuePair_free(keyPairQuery_tenantId);
+        keyPairQuery_tenantId = NULL;
+    }
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Count journals
+//
+// Returns the count of journals for the tenant.
+//
+int32_envelope_t*
+JournalsAPI_countJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, journal_dto_collection_query_parameters_t *journal_dto_collection_query_parameters)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -435,8 +646,19 @@ JournalsAPI_countJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_journal_dto_collection_query_parameters = NULL;
+    if (journal_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_journal_dto_collection_query_parameters = journal_dto_collection_query_parameters_convertToJSON(journal_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_journal_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -477,7 +699,7 @@ JournalsAPI_countJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -488,6 +710,11 @@ JournalsAPI_countJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_journal_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_journal_dto_collection_query_parameters);
+        localVarSingleItemJSON_journal_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1351,13 +1578,13 @@ end:
 // Gets entries for the specified journal.
 //
 journal_entry_dto_i_read_only_list_envelope_t*
-JournalsAPI_getJournalEntriesAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version)
+JournalsAPI_getJournalEntriesAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1420,8 +1647,19 @@ JournalsAPI_getJournalEntriesAsync(apiClient_t *apiClient, char *tenantId, char 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    if (journal_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = journal_entry_dto_collection_query_parameters_convertToJSON(journal_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1462,7 +1700,7 @@ JournalsAPI_getJournalEntriesAsync(apiClient_t *apiClient, char *tenantId, char 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_journalId);
     if (keyHeader_x_api_version) {
@@ -1474,6 +1712,11 @@ JournalsAPI_getJournalEntriesAsync(apiClient_t *apiClient, char *tenantId, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_journal_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1510,13 +1753,13 @@ end:
 // Returns the number of entries in the specified journal.
 //
 int32_envelope_t*
-JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version)
+JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, journal_entry_dto_collection_query_parameters_t *journal_entry_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1579,8 +1822,19 @@ JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, 
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    if (journal_entry_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = journal_entry_dto_collection_query_parameters_convertToJSON(journal_entry_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1621,7 +1875,7 @@ JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, 
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_journalId);
     if (keyHeader_x_api_version) {
@@ -1633,6 +1887,11 @@ JournalsAPI_getJournalEntriesCountAsync(apiClient_t *apiClient, char *tenantId, 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_journal_entry_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_journal_entry_dto_collection_query_parameters);
+        localVarSingleItemJSON_journal_entry_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1846,13 +2105,13 @@ end:
 // Retrieves all journals for the specified tenant.
 //
 journal_dto_i_read_only_list_envelope_t*
-JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, journal_dto_collection_query_parameters_t *journal_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1898,8 +2157,19 @@ JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_journal_dto_collection_query_parameters = NULL;
+    if (journal_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_journal_dto_collection_query_parameters = journal_dto_collection_query_parameters_convertToJSON(journal_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_journal_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1940,7 +2210,7 @@ JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1951,6 +2221,11 @@ JournalsAPI_getJournalsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_journal_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_journal_dto_collection_query_parameters);
+        localVarSingleItemJSON_journal_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1987,7 +2262,7 @@ end:
 // Partially updates a journal.
 //
 empty_envelope_t*
-JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, list_t *operation)
+JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2059,14 +2334,14 @@ JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *jour
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2074,16 +2349,16 @@ JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *jour
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2141,17 +2416,17 @@ JournalsAPI_patchJournalAsync(apiClient_t *apiClient, char *tenantId, char *jour
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -2190,7 +2465,7 @@ end:
 // Partially updates a journal entry.
 //
 empty_envelope_t*
-JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, list_t *operation)
+JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char *journalId, char *entryId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2279,14 +2554,14 @@ JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char 
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2294,16 +2569,16 @@ JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char 
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2362,17 +2637,17 @@ JournalsAPI_patchJournalEntryAsync(apiClient_t *apiClient, char *tenantId, char 
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

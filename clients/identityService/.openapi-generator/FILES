@@ -23,6 +23,7 @@ docs/access_token_response.md
 docs/auth_result.md
 docs/auth_result_envelope.md
 docs/error_envelope.md
+docs/execution_provenance.md
 docs/forgot_password_request.md
 docs/http_validation_problem_details.md
 docs/info_request.md
@@ -64,6 +65,8 @@ model/auth_result_envelope.c
 model/auth_result_envelope.h
 model/error_envelope.c
 model/error_envelope.h
+model/execution_provenance.c
+model/execution_provenance.h
 model/forgot_password_request.c
 model/forgot_password_request.h
 model/http_validation_problem_details.c
@@ -121,3 +124,4 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_execution_provenance.c

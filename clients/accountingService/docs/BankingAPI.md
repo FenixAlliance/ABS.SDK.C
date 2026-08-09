@@ -383,7 +383,7 @@ No authorization required
 //
 // Get the currently acting tenant bank accounts.
 //
-bank_account_dto_list_envelope_t* BankingAPI_getBankAccounts(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+bank_account_dto_list_envelope_t* BankingAPI_getBankAccounts(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_account_dto_collection_query_parameters_t *bank_account_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -394,6 +394,7 @@ Name | Type | Description  | Notes
 **bankId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_account_dto_collection_query_parameters** | **[bank_account_dto_collection_query_parameters_t](bank_account_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -406,7 +407,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -417,7 +418,7 @@ No authorization required
 //
 // Get the currently acting tenant bank accounts count.
 //
-int32_envelope_t* BankingAPI_getBankAccountsCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+int32_envelope_t* BankingAPI_getBankAccountsCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_account_dto_collection_query_parameters_t *bank_account_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -428,6 +429,7 @@ Name | Type | Description  | Notes
 **bankId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_account_dto_collection_query_parameters** | **[bank_account_dto_collection_query_parameters_t](bank_account_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -440,7 +442,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -486,7 +488,7 @@ No authorization required
 //
 // Get the currently acting tenant bank guarantees.
 //
-bank_guarantee_dto_list_envelope_t* BankingAPI_getBankGuarantees(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+bank_guarantee_dto_list_envelope_t* BankingAPI_getBankGuarantees(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_guarantee_dto_collection_query_parameters_t *bank_guarantee_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -497,6 +499,7 @@ Name | Type | Description  | Notes
 **bankId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_guarantee_dto_collection_query_parameters** | **[bank_guarantee_dto_collection_query_parameters_t](bank_guarantee_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -509,7 +512,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -520,7 +523,7 @@ No authorization required
 //
 // Get the currently acting tenant bank guarantees count.
 //
-int32_envelope_t* BankingAPI_getBankGuaranteesCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+int32_envelope_t* BankingAPI_getBankGuaranteesCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_guarantee_dto_collection_query_parameters_t *bank_guarantee_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -531,6 +534,7 @@ Name | Type | Description  | Notes
 **bankId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_guarantee_dto_collection_query_parameters** | **[bank_guarantee_dto_collection_query_parameters_t](bank_guarantee_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -543,7 +547,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -589,7 +593,7 @@ No authorization required
 //
 // Get the currently acting tenant bank transactions.
 //
-bank_transaction_dto_list_envelope_t* BankingAPI_getBankTransactions(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+bank_transaction_dto_list_envelope_t* BankingAPI_getBankTransactions(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_transaction_dto_collection_query_parameters_t *bank_transaction_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -600,6 +604,7 @@ Name | Type | Description  | Notes
 **bankId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_transaction_dto_collection_query_parameters** | **[bank_transaction_dto_collection_query_parameters_t](bank_transaction_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -612,7 +617,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -623,7 +628,7 @@ No authorization required
 //
 // Get the currently acting tenant bank transactions count.
 //
-int32_envelope_t* BankingAPI_getBankTransactionsCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version);
+int32_envelope_t* BankingAPI_getBankTransactionsCount(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, bank_transaction_dto_collection_query_parameters_t *bank_transaction_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -634,6 +639,7 @@ Name | Type | Description  | Notes
 **bankId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_transaction_dto_collection_query_parameters** | **[bank_transaction_dto_collection_query_parameters_t](bank_transaction_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -646,7 +652,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -657,7 +663,7 @@ No authorization required
 //
 // Get the currently acting tenant banks.
 //
-bank_dto_list_envelope_t* BankingAPI_getBanks(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+bank_dto_list_envelope_t* BankingAPI_getBanks(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bank_dto_collection_query_parameters_t *bank_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -667,6 +673,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_dto_collection_query_parameters** | **[bank_dto_collection_query_parameters_t](bank_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -679,7 +686,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -690,7 +697,7 @@ No authorization required
 //
 // Get the currently acting tenant banks count.
 //
-int32_envelope_t* BankingAPI_getBanksCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* BankingAPI_getBanksCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, bank_dto_collection_query_parameters_t *bank_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -700,6 +707,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**bank_dto_collection_query_parameters** | **[bank_dto_collection_query_parameters_t](bank_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -712,7 +720,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -723,7 +731,7 @@ No authorization required
 //
 // Partially update a bank using JSON Patch.
 //
-empty_envelope_t* BankingAPI_patchBank(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BankingAPI_patchBank(apiClient_t *apiClient, char *tenantId, char *bankId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -734,7 +742,7 @@ Name | Type | Description  | Notes
 **bankId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -758,7 +766,7 @@ No authorization required
 //
 // Partially update a bank account using JSON Patch.
 //
-empty_envelope_t* BankingAPI_patchBankAccount(apiClient_t *apiClient, char *tenantId, char *bankId, char *accountId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BankingAPI_patchBankAccount(apiClient_t *apiClient, char *tenantId, char *bankId, char *accountId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -770,7 +778,7 @@ Name | Type | Description  | Notes
 **accountId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -794,7 +802,7 @@ No authorization required
 //
 // Partially update a bank guarantee using JSON Patch.
 //
-empty_envelope_t* BankingAPI_patchBankGuarantee(apiClient_t *apiClient, char *tenantId, char *bankId, char *guaranteeId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BankingAPI_patchBankGuarantee(apiClient_t *apiClient, char *tenantId, char *bankId, char *guaranteeId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -806,7 +814,7 @@ Name | Type | Description  | Notes
 **guaranteeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -830,7 +838,7 @@ No authorization required
 //
 // Partially update a bank transaction using JSON Patch.
 //
-empty_envelope_t* BankingAPI_patchBankTransaction(apiClient_t *apiClient, char *tenantId, char *bankId, char *transactionId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* BankingAPI_patchBankTransaction(apiClient_t *apiClient, char *tenantId, char *bankId, char *transactionId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -842,7 +850,7 @@ Name | Type | Description  | Notes
 **transactionId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

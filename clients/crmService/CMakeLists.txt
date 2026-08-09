@@ -59,31 +59,38 @@ set(SRCS
     model/cart_dto_envelope.c
     model/contact_create_dto.c
     model/contact_dto.c
+    model/contact_dto_collection_query_parameters.c
     model/contact_dto_envelope.c
     model/contact_dto_list_envelope.c
     model/contact_email_create_dto.c
     model/contact_email_dto.c
+    model/contact_email_dto_collection_query_parameters.c
     model/contact_email_dto_list_envelope.c
     model/contact_email_update_dto.c
     model/contact_profile_create_dto.c
     model/contact_profile_dto.c
+    model/contact_profile_dto_collection_query_parameters.c
     model/contact_profile_dto_list_envelope.c
     model/contact_profile_update_dto.c
     model/contact_relation_create_dto.c
     model/contact_relation_dto.c
+    model/contact_relation_dto_collection_query_parameters.c
     model/contact_relation_dto_list_envelope.c
     model/contact_relation_type_create_dto.c
     model/contact_relation_type_dto.c
+    model/contact_relation_type_dto_collection_query_parameters.c
     model/contact_relation_type_dto_list_envelope.c
     model/contact_relation_type_update_dto.c
     model/contact_relation_update_dto.c
     model/contact_source_create_dto.c
     model/contact_source_dto.c
+    model/contact_source_dto_collection_query_parameters.c
     model/contact_source_dto_list_envelope.c
     model/contact_source_update_dto.c
     model/contact_update_dto.c
     model/contacts_group_create_dto.c
     model/contacts_group_dto.c
+    model/contacts_group_dto_collection_query_parameters.c
     model/contacts_group_dto_list_envelope.c
     model/contacts_group_update_dto.c
     model/email_dispatch_request.c
@@ -91,6 +98,7 @@ set(SRCS
     model/envelope.c
     model/error_envelope.c
     model/extended_contact_dto.c
+    model/extended_contact_dto_collection_query_parameters.c
     model/extended_contact_dto_envelope.c
     model/extended_contact_dto_list_envelope.c
     model/forgot_password_request.c
@@ -99,12 +107,13 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/operation.c
     model/option_create_dto.c
     model/option_dto.c
+    model/option_dto_collection_query_parameters.c
     model/option_dto_envelope.c
     model/option_dto_list_envelope.c
     model/option_update_dto.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -141,31 +150,38 @@ set(HDRS
     model/cart_dto_envelope.h
     model/contact_create_dto.h
     model/contact_dto.h
+    model/contact_dto_collection_query_parameters.h
     model/contact_dto_envelope.h
     model/contact_dto_list_envelope.h
     model/contact_email_create_dto.h
     model/contact_email_dto.h
+    model/contact_email_dto_collection_query_parameters.h
     model/contact_email_dto_list_envelope.h
     model/contact_email_update_dto.h
     model/contact_profile_create_dto.h
     model/contact_profile_dto.h
+    model/contact_profile_dto_collection_query_parameters.h
     model/contact_profile_dto_list_envelope.h
     model/contact_profile_update_dto.h
     model/contact_relation_create_dto.h
     model/contact_relation_dto.h
+    model/contact_relation_dto_collection_query_parameters.h
     model/contact_relation_dto_list_envelope.h
     model/contact_relation_type_create_dto.h
     model/contact_relation_type_dto.h
+    model/contact_relation_type_dto_collection_query_parameters.h
     model/contact_relation_type_dto_list_envelope.h
     model/contact_relation_type_update_dto.h
     model/contact_relation_update_dto.h
     model/contact_source_create_dto.h
     model/contact_source_dto.h
+    model/contact_source_dto_collection_query_parameters.h
     model/contact_source_dto_list_envelope.h
     model/contact_source_update_dto.h
     model/contact_update_dto.h
     model/contacts_group_create_dto.h
     model/contacts_group_dto.h
+    model/contacts_group_dto_collection_query_parameters.h
     model/contacts_group_dto_list_envelope.h
     model/contacts_group_update_dto.h
     model/email_dispatch_request.h
@@ -173,6 +189,7 @@ set(HDRS
     model/envelope.h
     model/error_envelope.h
     model/extended_contact_dto.h
+    model/extended_contact_dto_collection_query_parameters.h
     model/extended_contact_dto_envelope.h
     model/extended_contact_dto_list_envelope.h
     model/forgot_password_request.h
@@ -181,12 +198,13 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/operation.h
     model/option_create_dto.h
     model/option_dto.h
+    model/option_dto_collection_query_parameters.h
     model/option_dto_envelope.h
     model/option_dto_list_envelope.h
     model/option_update_dto.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h

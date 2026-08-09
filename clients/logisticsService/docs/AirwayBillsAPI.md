@@ -201,7 +201,7 @@ No authorization required
 //
 // Retrieves all lines for a specific airway bill.
 //
-waybill_line_dto_list_envelope_t* AirwayBillsAPI_getAirwayBillLinesAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version);
+waybill_line_dto_list_envelope_t* AirwayBillsAPI_getAirwayBillLinesAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, waybill_line_dto_collection_query_parameters_t *waybill_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -212,6 +212,7 @@ Name | Type | Description  | Notes
 **billId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**waybill_line_dto_collection_query_parameters** | **[waybill_line_dto_collection_query_parameters_t](waybill_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -224,7 +225,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -235,7 +236,7 @@ No authorization required
 //
 // Returns the count of lines for a specific airway bill.
 //
-int32_envelope_t* AirwayBillsAPI_getAirwayBillLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version);
+int32_envelope_t* AirwayBillsAPI_getAirwayBillLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, waybill_line_dto_collection_query_parameters_t *waybill_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -246,6 +247,7 @@ Name | Type | Description  | Notes
 **billId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**waybill_line_dto_collection_query_parameters** | **[waybill_line_dto_collection_query_parameters_t](waybill_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -258,7 +260,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -269,7 +271,7 @@ No authorization required
 //
 // Retrieves all airway bills for the specified tenant.
 //
-airway_bill_dto_list_envelope_t* AirwayBillsAPI_getAirwayBillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+airway_bill_dto_list_envelope_t* AirwayBillsAPI_getAirwayBillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, airway_bill_dto_collection_query_parameters_t *airway_bill_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -279,6 +281,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**airway_bill_dto_collection_query_parameters** | **[airway_bill_dto_collection_query_parameters_t](airway_bill_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -291,7 +294,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -302,7 +305,7 @@ No authorization required
 //
 // Returns the count of airway bills for the specified tenant.
 //
-int32_envelope_t* AirwayBillsAPI_getAirwayBillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* AirwayBillsAPI_getAirwayBillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, airway_bill_dto_collection_query_parameters_t *airway_bill_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -312,6 +315,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**airway_bill_dto_collection_query_parameters** | **[airway_bill_dto_collection_query_parameters_t](airway_bill_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -324,7 +328,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -471,7 +475,7 @@ No authorization required
 //
 // Partially updates an existing airway bill using a JSON Patch document.
 //
-empty_envelope_t* AirwayBillsAPI_patchAirwayBillAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* AirwayBillsAPI_patchAirwayBillAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -482,7 +486,7 @@ Name | Type | Description  | Notes
 **billId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -506,7 +510,7 @@ No authorization required
 //
 // Partially updates a line on an airway bill using a JSON Patch document.
 //
-empty_envelope_t* AirwayBillsAPI_patchAirwayBillLineAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* AirwayBillsAPI_patchAirwayBillLineAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *lineId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -518,7 +522,7 @@ Name | Type | Description  | Notes
 **lineId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

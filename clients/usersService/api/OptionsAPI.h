@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
 #include "../model/option_create_dto.h"
+#include "../model/option_dto_collection_query_parameters.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
 #include "../model/option_update_dto.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new user option
@@ -52,7 +53,7 @@ OptionsAPI_getUserOptionByKey(apiClient_t *apiClient, char *key, char *portalId,
 // Retrieve a list of options for the current user
 //
 option_dto_list_envelope_t*
-OptionsAPI_getUserOptions(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version);
+OptionsAPI_getUserOptions(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Get the count of user options
@@ -60,7 +61,7 @@ OptionsAPI_getUserOptions(apiClient_t *apiClient, char *portalId, char *api_vers
 // Get the count of options for the current user
 //
 int32_envelope_t*
-OptionsAPI_getUserOptionsCount(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version);
+OptionsAPI_getUserOptionsCount(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Patch a user option
@@ -68,7 +69,7 @@ OptionsAPI_getUserOptionsCount(apiClient_t *apiClient, char *portalId, char *api
 // Partially updates a user option using a JSON Patch document
 //
 empty_envelope_t*
-OptionsAPI_patchUserOption(apiClient_t *apiClient, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+OptionsAPI_patchUserOption(apiClient_t *apiClient, char *optionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a user option

@@ -13,7 +13,9 @@ journal_create_dto_t *journal_create_dto_create(
     char *date_time,
     char *parent_journal_id,
     char *journal_type_id,
-    char *ledger_id
+    char *ledger_id,
+    char *financial_book_id,
+    char *code
     ) {
     journal_create_dto_t *journal_create_dto_local_var = malloc(sizeof(journal_create_dto_t));
     if (!journal_create_dto_local_var) {
@@ -27,6 +29,8 @@ journal_create_dto_t *journal_create_dto_create(
     journal_create_dto_local_var->parent_journal_id = parent_journal_id;
     journal_create_dto_local_var->journal_type_id = journal_type_id;
     journal_create_dto_local_var->ledger_id = ledger_id;
+    journal_create_dto_local_var->financial_book_id = financial_book_id;
+    journal_create_dto_local_var->code = code;
 
     return journal_create_dto_local_var;
 }
@@ -68,6 +72,14 @@ void journal_create_dto_free(journal_create_dto_t *journal_create_dto) {
     if (journal_create_dto->ledger_id) {
         free(journal_create_dto->ledger_id);
         journal_create_dto->ledger_id = NULL;
+    }
+    if (journal_create_dto->financial_book_id) {
+        free(journal_create_dto->financial_book_id);
+        journal_create_dto->financial_book_id = NULL;
+    }
+    if (journal_create_dto->code) {
+        free(journal_create_dto->code);
+        journal_create_dto->code = NULL;
     }
     free(journal_create_dto);
 }
@@ -135,6 +147,22 @@ cJSON *journal_create_dto_convertToJSON(journal_create_dto_t *journal_create_dto
     // journal_create_dto->ledger_id
     if(journal_create_dto->ledger_id) {
     if(cJSON_AddStringToObject(item, "ledgerId", journal_create_dto->ledger_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // journal_create_dto->financial_book_id
+    if(journal_create_dto->financial_book_id) {
+    if(cJSON_AddStringToObject(item, "financialBookId", journal_create_dto->financial_book_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // journal_create_dto->code
+    if(journal_create_dto->code) {
+    if(cJSON_AddStringToObject(item, "code", journal_create_dto->code) == NULL) {
     goto fail; //String
     }
     }
@@ -226,6 +254,24 @@ journal_create_dto_t *journal_create_dto_parseFromJSON(cJSON *journal_create_dto
     }
     }
 
+    // journal_create_dto->financial_book_id
+    cJSON *financial_book_id = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "financialBookId");
+    if (financial_book_id) { 
+    if(!cJSON_IsString(financial_book_id) && !cJSON_IsNull(financial_book_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // journal_create_dto->code
+    cJSON *code = cJSON_GetObjectItemCaseSensitive(journal_create_dtoJSON, "code");
+    if (code) { 
+    if(!cJSON_IsString(code) && !cJSON_IsNull(code))
+    {
+    goto end; //String
+    }
+    }
+
 
     journal_create_dto_local_var = journal_create_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -235,7 +281,9 @@ journal_create_dto_t *journal_create_dto_parseFromJSON(cJSON *journal_create_dto
         date_time && !cJSON_IsNull(date_time) ? strdup(date_time->valuestring) : NULL,
         parent_journal_id && !cJSON_IsNull(parent_journal_id) ? strdup(parent_journal_id->valuestring) : NULL,
         journal_type_id && !cJSON_IsNull(journal_type_id) ? strdup(journal_type_id->valuestring) : NULL,
-        ledger_id && !cJSON_IsNull(ledger_id) ? strdup(ledger_id->valuestring) : NULL
+        ledger_id && !cJSON_IsNull(ledger_id) ? strdup(ledger_id->valuestring) : NULL,
+        financial_book_id && !cJSON_IsNull(financial_book_id) ? strdup(financial_book_id->valuestring) : NULL,
+        code && !cJSON_IsNull(code) ? strdup(code->valuestring) : NULL
         );
 
     return journal_create_dto_local_var;

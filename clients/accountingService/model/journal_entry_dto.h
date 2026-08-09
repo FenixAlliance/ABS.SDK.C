@@ -38,6 +38,7 @@ accountingservice_journal_entry_dto_STATUS_e journal_entry_dto_status_FromString
 
 typedef struct journal_entry_dto_t {
     char *id; // string
+    char *timestamp; //date time
     char *tenant_id; // string
     char *enrollment_id; // string
     char *journal_id; // string
@@ -58,7 +59,6 @@ typedef struct journal_entry_dto_t {
     char *posted_by; // string
     double forex_rate; //numeric
     char *forex_rates_snapshot; // string
-    char *timestamp; //date time
     double debit_in_usd; //numeric
     double credit_in_usd; //numeric
     list_t *accounting_entries; //nonprimitive container
@@ -66,11 +66,14 @@ typedef struct journal_entry_dto_t {
     double total_credit; //numeric
     struct money_t *total_debit_amount; //model
     struct money_t *total_credit_amount; //model
+    struct money_t *debit_in_usd_amount; //model
+    struct money_t *credit_in_usd_amount; //model
 
 } journal_entry_dto_t;
 
 journal_entry_dto_t *journal_entry_dto_create(
     char *id,
+    char *timestamp,
     char *tenant_id,
     char *enrollment_id,
     char *journal_id,
@@ -91,14 +94,15 @@ journal_entry_dto_t *journal_entry_dto_create(
     char *posted_by,
     double forex_rate,
     char *forex_rates_snapshot,
-    char *timestamp,
     double debit_in_usd,
     double credit_in_usd,
     list_t *accounting_entries,
     double total_debit,
     double total_credit,
     money_t *total_debit_amount,
-    money_t *total_credit_amount
+    money_t *total_credit_amount,
+    money_t *debit_in_usd_amount,
+    money_t *credit_in_usd_amount
 );
 
 void journal_entry_dto_free(journal_entry_dto_t *journal_entry_dto);

@@ -56,6 +56,7 @@ set(SRCS
     model/object.c
     model/access_token_response.c
     model/address_dto.c
+    model/address_dto_collection_query_parameters.c
     model/address_dto_list_envelope.c
     model/cart_dto.c
     model/cart_dto_envelope.c
@@ -68,6 +69,7 @@ set(SRCS
     model/extended_user_dto.c
     model/extended_user_dto_envelope.c
     model/follow_record_dto.c
+    model/follow_record_dto_collection_query_parameters.c
     model/follow_record_dto_list_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
@@ -76,13 +78,15 @@ set(SRCS
     model/int32_envelope.c
     model/login_request.c
     model/notification_dto.c
+    model/notification_dto_collection_query_parameters.c
     model/notification_dto_list_envelope.c
-    model/operation.c
     model/option_create_dto.c
     model/option_dto.c
+    model/option_dto_collection_query_parameters.c
     model/option_dto_envelope.c
     model/option_dto_list_envelope.c
     model/option_update_dto.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
@@ -90,6 +94,7 @@ set(SRCS
     model/social_profile_dto.c
     model/social_profile_dto_envelope.c
     model/tenant_dto.c
+    model/tenant_dto_collection_query_parameters.c
     model/tenant_dto_list_envelope.c
     model/tenant_enrollment_dto.c
     model/tenant_enrollment_dto_envelope.c
@@ -122,6 +127,7 @@ set(HDRS
     model/object.h
     model/access_token_response.h
     model/address_dto.h
+    model/address_dto_collection_query_parameters.h
     model/address_dto_list_envelope.h
     model/cart_dto.h
     model/cart_dto_envelope.h
@@ -134,6 +140,7 @@ set(HDRS
     model/extended_user_dto.h
     model/extended_user_dto_envelope.h
     model/follow_record_dto.h
+    model/follow_record_dto_collection_query_parameters.h
     model/follow_record_dto_list_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
@@ -142,13 +149,15 @@ set(HDRS
     model/int32_envelope.h
     model/login_request.h
     model/notification_dto.h
+    model/notification_dto_collection_query_parameters.h
     model/notification_dto_list_envelope.h
-    model/operation.h
     model/option_create_dto.h
     model/option_dto.h
+    model/option_dto_collection_query_parameters.h
     model/option_dto_envelope.h
     model/option_dto_list_envelope.h
     model/option_update_dto.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
@@ -156,6 +165,7 @@ set(HDRS
     model/social_profile_dto.h
     model/social_profile_dto_envelope.h
     model/tenant_dto.h
+    model/tenant_dto_collection_query_parameters.h
     model/tenant_dto_list_envelope.h
     model/tenant_enrollment_dto.h
     model/tenant_enrollment_dto_envelope.h

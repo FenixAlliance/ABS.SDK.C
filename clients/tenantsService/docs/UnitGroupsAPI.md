@@ -233,7 +233,7 @@ No authorization required
 //
 // Retrieves a list of unit groups for the specified tenant with OData query support.
 //
-unit_group_dto_list_envelope_t* UnitGroupsAPI_getUnitGroupsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+unit_group_dto_list_envelope_t* UnitGroupsAPI_getUnitGroupsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, unit_group_dto_collection_query_parameters_t *unit_group_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -243,6 +243,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**unit_group_dto_collection_query_parameters** | **[unit_group_dto_collection_query_parameters_t](unit_group_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -255,7 +256,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -266,7 +267,7 @@ No authorization required
 //
 // Returns the total count of unit groups for the specified tenant with OData query support.
 //
-int32_envelope_t* UnitGroupsAPI_getUnitGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* UnitGroupsAPI_getUnitGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, unit_group_dto_collection_query_parameters_t *unit_group_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -276,6 +277,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**unit_group_dto_collection_query_parameters** | **[unit_group_dto_collection_query_parameters_t](unit_group_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -288,7 +290,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -299,7 +301,7 @@ No authorization required
 //
 // Retrieves a list of units belonging to a specific unit group.
 //
-unit_dto_list_envelope_t* UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version);
+unit_dto_list_envelope_t* UnitGroupsAPI_getUnitsAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, unit_dto_collection_query_parameters_t *unit_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -310,6 +312,7 @@ Name | Type | Description  | Notes
 **unitGroupId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**unit_dto_collection_query_parameters** | **[unit_dto_collection_query_parameters_t](unit_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -322,7 +325,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -333,7 +336,7 @@ No authorization required
 //
 // Returns the total count of units in a specific unit group.
 //
-int32_envelope_t* UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version);
+int32_envelope_t* UnitGroupsAPI_getUnitsCountAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, unit_dto_collection_query_parameters_t *unit_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -344,6 +347,7 @@ Name | Type | Description  | Notes
 **unitGroupId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**unit_dto_collection_query_parameters** | **[unit_dto_collection_query_parameters_t](unit_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -356,7 +360,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -367,7 +371,7 @@ No authorization required
 //
 // Partially updates an existing unit within a specific unit group.
 //
-empty_envelope_t* UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *unitId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* UnitGroupsAPI_patchUnitAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *unitId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -379,7 +383,7 @@ Name | Type | Description  | Notes
 **unitId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -403,7 +407,7 @@ No authorization required
 //
 // Partially updates an existing unit group by its unique identifier.
 //
-empty_envelope_t* UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* UnitGroupsAPI_patchUnitGroupAsync(apiClient_t *apiClient, char *tenantId, char *unitGroupId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -414,7 +418,7 @@ Name | Type | Description  | Notes
 **unitGroupId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

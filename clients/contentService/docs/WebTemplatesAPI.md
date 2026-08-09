@@ -19,7 +19,7 @@ Method | HTTP request | Description
 //
 // Counts all web templates for the specified tenant.
 //
-int32_envelope_t* WebTemplatesAPI_countWebTemplatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* WebTemplatesAPI_countWebTemplatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_template_dto_collection_query_parameters_t *web_template_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -29,6 +29,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**web_template_dto_collection_query_parameters** | **[web_template_dto_collection_query_parameters_t](web_template_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -41,7 +42,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -152,7 +153,7 @@ No authorization required
 //
 // Retrieves all web templates for the specified tenant.
 //
-web_template_dto_list_envelope_t* WebTemplatesAPI_getWebTemplatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+web_template_dto_list_envelope_t* WebTemplatesAPI_getWebTemplatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_template_dto_collection_query_parameters_t *web_template_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -162,6 +163,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**web_template_dto_collection_query_parameters** | **[web_template_dto_collection_query_parameters_t](web_template_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -174,7 +176,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -185,7 +187,7 @@ No authorization required
 //
 // Partially updates an existing web template for the specified tenant.
 //
-void WebTemplatesAPI_patchWebTemplateAsync(apiClient_t *apiClient, char *tenantId, char *webTemplateId, char *api_version, char *x_api_version, list_t *operation);
+void WebTemplatesAPI_patchWebTemplateAsync(apiClient_t *apiClient, char *tenantId, char *webTemplateId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -196,7 +198,7 @@ Name | Type | Description  | Notes
 **webTemplateId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

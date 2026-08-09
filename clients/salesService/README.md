@@ -70,7 +70,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -122,6 +121,7 @@ Category | Method | HTTP request | Description
  - [empty_envelope_t](docs/empty_envelope.md)
  - [error_envelope_t](docs/error_envelope.md)
  - [extended_sales_literature_dto_t](docs/extended_sales_literature_dto.md)
+ - [extended_sales_literature_dto_collection_query_parameters_t](docs/extended_sales_literature_dto_collection_query_parameters.md)
  - [extended_sales_literature_dto_list_envelope_t](docs/extended_sales_literature_dto_list_envelope.md)
  - [forgot_password_request_t](docs/forgot_password_request.md)
  - [http_validation_problem_details_t](docs/http_validation_problem_details.md)
@@ -131,12 +131,14 @@ Category | Method | HTTP request | Description
  - [login_request_t](docs/login_request.md)
  - [loyalty_program_create_dto_t](docs/loyalty_program_create_dto.md)
  - [loyalty_program_dto_t](docs/loyalty_program_dto.md)
+ - [loyalty_program_dto_collection_query_parameters_t](docs/loyalty_program_dto_collection_query_parameters.md)
  - [loyalty_program_dto_envelope_t](docs/loyalty_program_dto_envelope.md)
  - [loyalty_program_dto_list_envelope_t](docs/loyalty_program_dto_list_envelope.md)
  - [loyalty_program_update_dto_t](docs/loyalty_program_update_dto.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [point_of_sale_create_dto_t](docs/point_of_sale_create_dto.md)
  - [point_of_sale_dto_t](docs/point_of_sale_dto.md)
+ - [point_of_sale_dto_collection_query_parameters_t](docs/point_of_sale_dto_collection_query_parameters.md)
  - [point_of_sale_dto_envelope_t](docs/point_of_sale_dto_envelope.md)
  - [point_of_sale_dto_list_envelope_t](docs/point_of_sale_dto_list_envelope.md)
  - [point_of_sale_update_dto_t](docs/point_of_sale_update_dto.md)
@@ -146,12 +148,14 @@ Category | Method | HTTP request | Description
  - [reset_password_request_t](docs/reset_password_request.md)
  - [sales_literature_create_dto_t](docs/sales_literature_create_dto.md)
  - [sales_literature_dto_t](docs/sales_literature_dto.md)
+ - [sales_literature_dto_collection_query_parameters_t](docs/sales_literature_dto_collection_query_parameters.md)
  - [sales_literature_dto_envelope_t](docs/sales_literature_dto_envelope.md)
  - [sales_literature_dto_list_envelope_t](docs/sales_literature_dto_list_envelope.md)
  - [sales_literature_type_dto_t](docs/sales_literature_type_dto.md)
  - [sales_literature_update_dto_t](docs/sales_literature_update_dto.md)
  - [store_create_dto_t](docs/store_create_dto.md)
  - [store_dto_t](docs/store_dto.md)
+ - [store_dto_collection_query_parameters_t](docs/store_dto_collection_query_parameters.md)
  - [store_dto_envelope_t](docs/store_dto_envelope.md)
  - [store_dto_list_envelope_t](docs/store_dto_list_envelope.md)
  - [store_update_dto_t](docs/store_update_dto.md)

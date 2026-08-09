@@ -7,12 +7,13 @@
 #include "../include/binary.h"
 #include "../model/contact_profile_create_dto.h"
 #include "../model/contact_profile_dto.h"
+#include "../model/contact_profile_dto_collection_query_parameters.h"
 #include "../model/contact_profile_dto_list_envelope.h"
 #include "../model/contact_profile_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new contact profile
@@ -44,7 +45,7 @@ ContactProfilesAPI_getContactProfileByIdAsync(apiClient_t *apiClient, char *tena
 // Retrieves all contact profiles for the specified tenant.
 //
 contact_profile_dto_list_envelope_t*
-ContactProfilesAPI_getContactProfilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactProfilesAPI_getContactProfilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_profile_dto_collection_query_parameters_t *contact_profile_dto_collection_query_parameters);
 
 
 // Get contact profiles count
@@ -52,7 +53,7 @@ ContactProfilesAPI_getContactProfilesAsync(apiClient_t *apiClient, char *tenantI
 // Returns the count of contact profiles for the specified tenant.
 //
 int32_envelope_t*
-ContactProfilesAPI_getContactProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactProfilesAPI_getContactProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_profile_dto_collection_query_parameters_t *contact_profile_dto_collection_query_parameters);
 
 
 // Get partner profiles count
@@ -60,7 +61,7 @@ ContactProfilesAPI_getContactProfilesCountAsync(apiClient_t *apiClient, char *te
 // Returns the count of partner contact profiles for the specified tenant.
 //
 int32_envelope_t*
-ContactProfilesAPI_getPartnerProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactProfilesAPI_getPartnerProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_profile_dto_collection_query_parameters_t *contact_profile_dto_collection_query_parameters);
 
 
 // Get patient profiles count
@@ -68,7 +69,7 @@ ContactProfilesAPI_getPartnerProfilesCountAsync(apiClient_t *apiClient, char *te
 // Returns the count of patient contact profiles for the specified tenant.
 //
 int32_envelope_t*
-ContactProfilesAPI_getPatientProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactProfilesAPI_getPatientProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_profile_dto_collection_query_parameters_t *contact_profile_dto_collection_query_parameters);
 
 
 // Patch a contact profile
@@ -76,7 +77,7 @@ ContactProfilesAPI_getPatientProfilesCountAsync(apiClient_t *apiClient, char *te
 // Patch a contact profile
 //
 empty_envelope_t*
-ContactProfilesAPI_patchContactProfileAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+ContactProfilesAPI_patchContactProfileAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a contact profile

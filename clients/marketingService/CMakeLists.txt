@@ -57,16 +57,19 @@ set(SRCS
     model/access_token_response.c
     model/email_group_create_dto.c
     model/email_group_dto.c
+    model/email_group_dto_collection_query_parameters.c
     model/email_group_dto_envelope.c
     model/email_group_dto_list_envelope.c
     model/email_group_update_dto.c
     model/email_signature_create_dto.c
     model/email_signature_dto.c
+    model/email_signature_dto_collection_query_parameters.c
     model/email_signature_dto_envelope.c
     model/email_signature_dto_list_envelope.c
     model/email_signature_update_dto.c
     model/email_template_create_dto.c
     model/email_template_dto.c
+    model/email_template_dto_collection_query_parameters.c
     model/email_template_dto_envelope.c
     model/email_template_dto_list_envelope.c
     model/email_template_update_dto.c
@@ -80,46 +83,54 @@ set(SRCS
     model/login_request.c
     model/marketing_area_create_dto.c
     model/marketing_area_dto.c
+    model/marketing_area_dto_collection_query_parameters.c
     model/marketing_area_dto_envelope.c
     model/marketing_area_dto_list_envelope.c
     model/marketing_area_update_dto.c
     model/marketing_campaign_create_dto.c
     model/marketing_campaign_dto.c
+    model/marketing_campaign_dto_collection_query_parameters.c
     model/marketing_campaign_dto_envelope.c
     model/marketing_campaign_update_dto.c
     model/marketing_lead_create_dto.c
     model/marketing_lead_dto.c
+    model/marketing_lead_dto_collection_query_parameters.c
     model/marketing_lead_dto_envelope.c
     model/marketing_lead_dto_list_envelope.c
     model/marketing_lead_update_dto.c
     model/marketing_list_create_dto.c
     model/marketing_list_dto.c
+    model/marketing_list_dto_collection_query_parameters.c
     model/marketing_list_dto_envelope.c
     model/marketing_list_dto_list_envelope.c
     model/marketing_list_update_dto.c
     model/newsletter_create_dto.c
     model/newsletter_dto.c
+    model/newsletter_dto_collection_query_parameters.c
     model/newsletter_dto_envelope.c
     model/newsletter_subscription_create_dto.c
     model/newsletter_subscription_dto.c
+    model/newsletter_subscription_dto_collection_query_parameters.c
     model/newsletter_subscription_dto_envelope.c
     model/newsletter_subscription_dto_list_envelope.c
     model/newsletter_subscription_update_dto.c
     model/newsletter_update_dto.c
-    model/operation.c
     model/order_dto.c
     model/order_dto_envelope.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
     model/social_media_post_create_dto.c
     model/social_media_post_dto.c
+    model/social_media_post_dto_collection_query_parameters.c
     model/social_media_post_dto_envelope.c
     model/social_media_post_dto_list_envelope.c
     model/social_media_post_update_dto.c
     model/social_post_bucket_create_dto.c
     model/social_post_bucket_dto.c
+    model/social_post_bucket_dto_collection_query_parameters.c
     model/social_post_bucket_dto_envelope.c
     model/social_post_bucket_dto_list_envelope.c
     model/social_post_bucket_update_dto.c
@@ -151,16 +162,19 @@ set(HDRS
     model/access_token_response.h
     model/email_group_create_dto.h
     model/email_group_dto.h
+    model/email_group_dto_collection_query_parameters.h
     model/email_group_dto_envelope.h
     model/email_group_dto_list_envelope.h
     model/email_group_update_dto.h
     model/email_signature_create_dto.h
     model/email_signature_dto.h
+    model/email_signature_dto_collection_query_parameters.h
     model/email_signature_dto_envelope.h
     model/email_signature_dto_list_envelope.h
     model/email_signature_update_dto.h
     model/email_template_create_dto.h
     model/email_template_dto.h
+    model/email_template_dto_collection_query_parameters.h
     model/email_template_dto_envelope.h
     model/email_template_dto_list_envelope.h
     model/email_template_update_dto.h
@@ -174,46 +188,54 @@ set(HDRS
     model/login_request.h
     model/marketing_area_create_dto.h
     model/marketing_area_dto.h
+    model/marketing_area_dto_collection_query_parameters.h
     model/marketing_area_dto_envelope.h
     model/marketing_area_dto_list_envelope.h
     model/marketing_area_update_dto.h
     model/marketing_campaign_create_dto.h
     model/marketing_campaign_dto.h
+    model/marketing_campaign_dto_collection_query_parameters.h
     model/marketing_campaign_dto_envelope.h
     model/marketing_campaign_update_dto.h
     model/marketing_lead_create_dto.h
     model/marketing_lead_dto.h
+    model/marketing_lead_dto_collection_query_parameters.h
     model/marketing_lead_dto_envelope.h
     model/marketing_lead_dto_list_envelope.h
     model/marketing_lead_update_dto.h
     model/marketing_list_create_dto.h
     model/marketing_list_dto.h
+    model/marketing_list_dto_collection_query_parameters.h
     model/marketing_list_dto_envelope.h
     model/marketing_list_dto_list_envelope.h
     model/marketing_list_update_dto.h
     model/newsletter_create_dto.h
     model/newsletter_dto.h
+    model/newsletter_dto_collection_query_parameters.h
     model/newsletter_dto_envelope.h
     model/newsletter_subscription_create_dto.h
     model/newsletter_subscription_dto.h
+    model/newsletter_subscription_dto_collection_query_parameters.h
     model/newsletter_subscription_dto_envelope.h
     model/newsletter_subscription_dto_list_envelope.h
     model/newsletter_subscription_update_dto.h
     model/newsletter_update_dto.h
-    model/operation.h
     model/order_dto.h
     model/order_dto_envelope.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
     model/social_media_post_create_dto.h
     model/social_media_post_dto.h
+    model/social_media_post_dto_collection_query_parameters.h
     model/social_media_post_dto_envelope.h
     model/social_media_post_dto_list_envelope.h
     model/social_media_post_update_dto.h
     model/social_post_bucket_create_dto.h
     model/social_post_bucket_dto.h
+    model/social_post_bucket_dto_collection_query_parameters.h
     model/social_post_bucket_dto_envelope.h
     model/social_post_bucket_dto_list_envelope.h
     model/social_post_bucket_update_dto.h

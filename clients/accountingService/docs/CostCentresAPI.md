@@ -304,7 +304,7 @@ No authorization required
 //
 // Retrieves all cost centre budgets for the specified tenant using OData query options.
 //
-cost_centre_budget_dto_list_envelope_t* CostCentresAPI_getCostCentreBudgets(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+cost_centre_budget_dto_list_envelope_t* CostCentresAPI_getCostCentreBudgets(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_budget_dto_collection_query_parameters_t *cost_centre_budget_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -314,6 +314,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**cost_centre_budget_dto_collection_query_parameters** | **[cost_centre_budget_dto_collection_query_parameters_t](cost_centre_budget_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -326,7 +327,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -371,7 +372,7 @@ No authorization required
 //
 // Retrieves all cost centre groups for the specified tenant using OData query options.
 //
-cost_centre_group_dto_list_envelope_t* CostCentresAPI_getCostCentreGroups(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+cost_centre_group_dto_list_envelope_t* CostCentresAPI_getCostCentreGroups(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_group_dto_collection_query_parameters_t *cost_centre_group_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -381,6 +382,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**cost_centre_group_dto_collection_query_parameters** | **[cost_centre_group_dto_collection_query_parameters_t](cost_centre_group_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -393,7 +395,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -404,7 +406,7 @@ No authorization required
 //
 // Retrieves the count of cost centre groups for the specified tenant using OData query options.
 //
-int32_envelope_t* CostCentresAPI_getCostCentreGroupsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* CostCentresAPI_getCostCentreGroupsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_group_dto_collection_query_parameters_t *cost_centre_group_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -414,6 +416,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**cost_centre_group_dto_collection_query_parameters** | **[cost_centre_group_dto_collection_query_parameters_t](cost_centre_group_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -426,7 +429,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -437,7 +440,7 @@ No authorization required
 //
 // Retrieves all cost centres for the specified tenant using OData query options.
 //
-cost_centre_dto_list_envelope_t* CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+cost_centre_dto_list_envelope_t* CostCentresAPI_getCostCentres(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_dto_collection_query_parameters_t *cost_centre_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -447,6 +450,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**cost_centre_dto_collection_query_parameters** | **[cost_centre_dto_collection_query_parameters_t](cost_centre_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -459,7 +463,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -470,7 +474,7 @@ No authorization required
 //
 // Retrieves the count of cost centres for the specified tenant using OData query options.
 //
-int32_envelope_t* CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* CostCentresAPI_getCostCentresCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, cost_centre_dto_collection_query_parameters_t *cost_centre_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -480,6 +484,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**cost_centre_dto_collection_query_parameters** | **[cost_centre_dto_collection_query_parameters_t](cost_centre_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -492,7 +497,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -503,7 +508,7 @@ No authorization required
 //
 // Partially updates an existing cost centre.
 //
-empty_envelope_t* CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *costCentreId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CostCentresAPI_patchCostCentre(apiClient_t *apiClient, char *tenantId, char *costCentreId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -514,7 +519,7 @@ Name | Type | Description  | Notes
 **costCentreId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -538,7 +543,7 @@ No authorization required
 //
 // Partially updates an existing cost centre budget.
 //
-empty_envelope_t* CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CostCentresAPI_patchCostCentreBudget(apiClient_t *apiClient, char *tenantId, char *budgetId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -549,7 +554,7 @@ Name | Type | Description  | Notes
 **budgetId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -573,7 +578,7 @@ No authorization required
 //
 // Partially updates an existing cost centre group.
 //
-empty_envelope_t* CostCentresAPI_patchCostCentreGroup(apiClient_t *apiClient, char *tenantId, char *groupId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* CostCentresAPI_patchCostCentreGroup(apiClient_t *apiClient, char *tenantId, char *groupId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -584,7 +589,7 @@ Name | Type | Description  | Notes
 **groupId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

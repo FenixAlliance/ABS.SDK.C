@@ -4,6 +4,23 @@
 #include "private_message_dto.h"
 
 
+char* private_message_dto_social_profile_type_ToString(supportservice_private_message_dto_SOCIALPROFILETYPE_e social_profile_type) {
+    char* social_profile_typeArray[] =  { "NULL", "User", "Tenant", "Contact" };
+    return social_profile_typeArray[social_profile_type];
+}
+
+supportservice_private_message_dto_SOCIALPROFILETYPE_e private_message_dto_social_profile_type_FromString(char* social_profile_type){
+    int stringToReturn = 0;
+    char *social_profile_typeArray[] =  { "NULL", "User", "Tenant", "Contact" };
+    size_t sizeofArray = sizeof(social_profile_typeArray) / sizeof(social_profile_typeArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(social_profile_type, social_profile_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 private_message_dto_t *private_message_dto_create(
     char *id,
@@ -16,7 +33,10 @@ private_message_dto_t *private_message_dto_create(
     char *receiver_social_profile_id,
     char *sent_timestamp,
     char *read_timestamp,
-    char *received_timestamp
+    char *received_timestamp,
+    char *social_profile_name,
+    char *social_profile_avatar_url,
+    supportservice_private_message_dto_SOCIALPROFILETYPE_e social_profile_type
     ) {
     private_message_dto_t *private_message_dto_local_var = malloc(sizeof(private_message_dto_t));
     if (!private_message_dto_local_var) {
@@ -33,6 +53,9 @@ private_message_dto_t *private_message_dto_create(
     private_message_dto_local_var->sent_timestamp = sent_timestamp;
     private_message_dto_local_var->read_timestamp = read_timestamp;
     private_message_dto_local_var->received_timestamp = received_timestamp;
+    private_message_dto_local_var->social_profile_name = social_profile_name;
+    private_message_dto_local_var->social_profile_avatar_url = social_profile_avatar_url;
+    private_message_dto_local_var->social_profile_type = social_profile_type;
 
     return private_message_dto_local_var;
 }
@@ -82,6 +105,14 @@ void private_message_dto_free(private_message_dto_t *private_message_dto) {
     if (private_message_dto->received_timestamp) {
         free(private_message_dto->received_timestamp);
         private_message_dto->received_timestamp = NULL;
+    }
+    if (private_message_dto->social_profile_name) {
+        free(private_message_dto->social_profile_name);
+        private_message_dto->social_profile_name = NULL;
+    }
+    if (private_message_dto->social_profile_avatar_url) {
+        free(private_message_dto->social_profile_avatar_url);
+        private_message_dto->social_profile_avatar_url = NULL;
     }
     free(private_message_dto);
 }
@@ -173,6 +204,31 @@ cJSON *private_message_dto_convertToJSON(private_message_dto_t *private_message_
     if(private_message_dto->received_timestamp) {
     if(cJSON_AddStringToObject(item, "receivedTimestamp", private_message_dto->received_timestamp) == NULL) {
     goto fail; //Date-Time
+    }
+    }
+
+
+    // private_message_dto->social_profile_name
+    if(private_message_dto->social_profile_name) {
+    if(cJSON_AddStringToObject(item, "socialProfileName", private_message_dto->social_profile_name) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // private_message_dto->social_profile_avatar_url
+    if(private_message_dto->social_profile_avatar_url) {
+    if(cJSON_AddStringToObject(item, "socialProfileAvatarUrl", private_message_dto->social_profile_avatar_url) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // private_message_dto->social_profile_type
+    if(private_message_dto->social_profile_type != supportservice_private_message_dto_SOCIALPROFILETYPE_NULL) {
+    if(cJSON_AddStringToObject(item, "socialProfileType", social_profile_typeprivate_message_dto_ToString(private_message_dto->social_profile_type)) == NULL)
+    {
+    goto fail; //Enum
     }
     }
 
@@ -287,6 +343,35 @@ private_message_dto_t *private_message_dto_parseFromJSON(cJSON *private_message_
     }
     }
 
+    // private_message_dto->social_profile_name
+    cJSON *social_profile_name = cJSON_GetObjectItemCaseSensitive(private_message_dtoJSON, "socialProfileName");
+    if (social_profile_name) { 
+    if(!cJSON_IsString(social_profile_name) && !cJSON_IsNull(social_profile_name))
+    {
+    goto end; //String
+    }
+    }
+
+    // private_message_dto->social_profile_avatar_url
+    cJSON *social_profile_avatar_url = cJSON_GetObjectItemCaseSensitive(private_message_dtoJSON, "socialProfileAvatarUrl");
+    if (social_profile_avatar_url) { 
+    if(!cJSON_IsString(social_profile_avatar_url) && !cJSON_IsNull(social_profile_avatar_url))
+    {
+    goto end; //String
+    }
+    }
+
+    // private_message_dto->social_profile_type
+    cJSON *social_profile_type = cJSON_GetObjectItemCaseSensitive(private_message_dtoJSON, "socialProfileType");
+    supportservice_private_message_dto_SOCIALPROFILETYPE_e social_profile_typeVariable;
+    if (social_profile_type) { 
+    if(!cJSON_IsString(social_profile_type))
+    {
+    goto end; //Enum
+    }
+    social_profile_typeVariable = private_message_dto_social_profile_type_FromString(social_profile_type->valuestring);
+    }
+
 
     private_message_dto_local_var = private_message_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
@@ -299,7 +384,10 @@ private_message_dto_t *private_message_dto_parseFromJSON(cJSON *private_message_
         receiver_social_profile_id && !cJSON_IsNull(receiver_social_profile_id) ? strdup(receiver_social_profile_id->valuestring) : NULL,
         sent_timestamp && !cJSON_IsNull(sent_timestamp) ? strdup(sent_timestamp->valuestring) : NULL,
         read_timestamp && !cJSON_IsNull(read_timestamp) ? strdup(read_timestamp->valuestring) : NULL,
-        received_timestamp && !cJSON_IsNull(received_timestamp) ? strdup(received_timestamp->valuestring) : NULL
+        received_timestamp && !cJSON_IsNull(received_timestamp) ? strdup(received_timestamp->valuestring) : NULL,
+        social_profile_name && !cJSON_IsNull(social_profile_name) ? strdup(social_profile_name->valuestring) : NULL,
+        social_profile_avatar_url && !cJSON_IsNull(social_profile_avatar_url) ? strdup(social_profile_avatar_url->valuestring) : NULL,
+        social_profile_type ? social_profile_typeVariable : supportservice_private_message_dto_SOCIALPROFILETYPE_NULL
         );
 
     return private_message_dto_local_var;

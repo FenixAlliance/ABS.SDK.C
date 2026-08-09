@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/job_offer_create_dto.h"
+#include "../model/job_offer_dto_collection_query_parameters.h"
 #include "../model/job_offer_dto_envelope.h"
 #include "../model/job_offer_dto_list_envelope.h"
 #include "../model/job_offer_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Close a job offer
@@ -60,7 +61,7 @@ JobOffersAPI_getJobOfferByIdAsync(apiClient_t *apiClient, char *tenantId, char *
 // Retrieves job offers for the specified tenant.
 //
 job_offer_dto_list_envelope_t*
-JobOffersAPI_getJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JobOffersAPI_getJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_offer_dto_collection_query_parameters_t *job_offer_dto_collection_query_parameters);
 
 
 // Count job offers
@@ -68,7 +69,7 @@ JobOffersAPI_getJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api
 // Counts job offers for the specified tenant.
 //
 int32_envelope_t*
-JobOffersAPI_getJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JobOffersAPI_getJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_offer_dto_collection_query_parameters_t *job_offer_dto_collection_query_parameters);
 
 
 // Get public job offer by ID
@@ -84,7 +85,7 @@ JobOffersAPI_getPublicJobOfferByIdAsync(apiClient_t *apiClient, char *jobOfferId
 // Retrieves published job offers for the Talent Portal. Anonymous; optionally scoped to a single tenant.
 //
 job_offer_dto_list_envelope_t*
-JobOffersAPI_getPublicJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JobOffersAPI_getPublicJobOffersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_offer_dto_collection_query_parameters_t *job_offer_dto_collection_query_parameters);
 
 
 // Count public job offers
@@ -92,7 +93,7 @@ JobOffersAPI_getPublicJobOffersAsync(apiClient_t *apiClient, char *tenantId, cha
 // Counts published job offers for the Talent Portal. Anonymous; optionally scoped to a single tenant.
 //
 int32_envelope_t*
-JobOffersAPI_getPublicJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+JobOffersAPI_getPublicJobOffersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, job_offer_dto_collection_query_parameters_t *job_offer_dto_collection_query_parameters);
 
 
 // Patch a job offer
@@ -100,7 +101,7 @@ JobOffersAPI_getPublicJobOffersCountAsync(apiClient_t *apiClient, char *tenantId
 // Partially updates an existing job offer for the specified tenant.
 //
 empty_envelope_t*
-JobOffersAPI_patchJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, list_t *operation);
+JobOffersAPI_patchJobOfferAsync(apiClient_t *apiClient, char *tenantId, char *jobOfferId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Publish a job offer

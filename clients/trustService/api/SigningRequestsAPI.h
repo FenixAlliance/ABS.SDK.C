@@ -14,6 +14,7 @@
 #include "../model/signing_participant_dto.h"
 #include "../model/signing_participant_dto_list_envelope.h"
 #include "../model/signing_request_dto.h"
+#include "../model/signing_request_dto_collection_query_parameters.h"
 #include "../model/signing_request_dto_list_envelope.h"
 #include "../model/void_signing_request_dto.h"
 
@@ -66,13 +67,13 @@ SigningRequestsAPI_getSigningRequestParticipantsAsync(apiClient_t *apiClient, ch
 // Get all signing requests
 //
 signing_request_dto_list_envelope_t*
-SigningRequestsAPI_getSigningRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningRequestsAPI_getSigningRequestsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_request_dto_collection_query_parameters_t *signing_request_dto_collection_query_parameters);
 
 
 // Get signing requests count
 //
 int32_envelope_t*
-SigningRequestsAPI_getSigningRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SigningRequestsAPI_getSigningRequestsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_request_dto_collection_query_parameters_t *signing_request_dto_collection_query_parameters);
 
 
 // Create, store, freeze a document and open a signing request in one call

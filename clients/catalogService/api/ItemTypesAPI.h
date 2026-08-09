@@ -8,10 +8,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_type_create_dto.h"
+#include "../model/item_type_dto_collection_query_parameters.h"
 #include "../model/item_type_dto_envelope.h"
 #include "../model/item_type_dto_list_envelope.h"
 #include "../model/item_type_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Count item types
@@ -19,7 +20,7 @@
 // Counts all item types for the specified tenant.
 //
 int32_envelope_t*
-ItemTypesAPI_countItemTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemTypesAPI_countItemTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_type_dto_collection_query_parameters_t *item_type_dto_collection_query_parameters);
 
 
 // Create a new item type
@@ -51,7 +52,7 @@ ItemTypesAPI_getItemTypeByIdAsync(apiClient_t *apiClient, char *itemTypeID, char
 // Retrieves all item types for the specified tenant using OData query options.
 //
 item_type_dto_list_envelope_t*
-ItemTypesAPI_getItemTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemTypesAPI_getItemTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_type_dto_collection_query_parameters_t *item_type_dto_collection_query_parameters);
 
 
 // Patch an item type
@@ -59,7 +60,7 @@ ItemTypesAPI_getItemTypesAsync(apiClient_t *apiClient, char *tenantId, char *api
 // Partially updates an existing item type for the specified tenant.
 //
 void
-ItemTypesAPI_patchItemTypeAsync(apiClient_t *apiClient, char *tenantId, char *itemTypeID, char *api_version, char *x_api_version, list_t *operation);
+ItemTypesAPI_patchItemTypeAsync(apiClient_t *apiClient, char *tenantId, char *itemTypeID, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item type

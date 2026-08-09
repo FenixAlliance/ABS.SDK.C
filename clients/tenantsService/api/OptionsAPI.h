@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
 #include "../model/option_create_dto.h"
+#include "../model/option_dto_collection_query_parameters.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
 #include "../model/option_update_dto.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new tenant option
@@ -52,7 +53,7 @@ OptionsAPI_getTenantOptionByKey(apiClient_t *apiClient, char *tenantId, char *ke
 // Retrieve a list of tenant options
 //
 option_dto_list_envelope_t*
-OptionsAPI_getTenantOptions(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version);
+OptionsAPI_getTenantOptions(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Get the count of tenant options
@@ -60,7 +61,7 @@ OptionsAPI_getTenantOptions(apiClient_t *apiClient, char *tenantId, char *portal
 // Get the count of tenant options
 //
 int32_envelope_t*
-OptionsAPI_getTenantOptionsCount(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version);
+OptionsAPI_getTenantOptionsCount(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Patch a tenant option
@@ -68,7 +69,7 @@ OptionsAPI_getTenantOptionsCount(apiClient_t *apiClient, char *tenantId, char *p
 // Patch a tenant option
 //
 empty_envelope_t*
-OptionsAPI_patchTenantOption(apiClient_t *apiClient, char *tenantId, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+OptionsAPI_patchTenantOption(apiClient_t *apiClient, char *tenantId, char *optionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant option

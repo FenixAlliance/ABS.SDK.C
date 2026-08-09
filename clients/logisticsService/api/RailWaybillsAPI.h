@@ -8,12 +8,14 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/rail_waybill_create_dto.h"
+#include "../model/rail_waybill_dto_collection_query_parameters.h"
 #include "../model/rail_waybill_dto_envelope.h"
 #include "../model/rail_waybill_dto_list_envelope.h"
 #include "../model/rail_waybill_update_dto.h"
 #include "../model/waybill_line_create_dto.h"
+#include "../model/waybill_line_dto_collection_query_parameters.h"
 #include "../model/waybill_line_dto_list_envelope.h"
 #include "../model/waybill_line_update_dto.h"
 
@@ -63,7 +65,7 @@ RailWaybillsAPI_getRailWaybillByIdAsync(apiClient_t *apiClient, char *tenantId, 
 // Retrieves all lines for a specific rail waybill.
 //
 waybill_line_dto_list_envelope_t*
-RailWaybillsAPI_getRailWaybillLinesAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version);
+RailWaybillsAPI_getRailWaybillLinesAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, waybill_line_dto_collection_query_parameters_t *waybill_line_dto_collection_query_parameters);
 
 
 // Get rail waybill lines count
@@ -71,7 +73,7 @@ RailWaybillsAPI_getRailWaybillLinesAsync(apiClient_t *apiClient, char *tenantId,
 // Returns the count of lines for a specific rail waybill.
 //
 int32_envelope_t*
-RailWaybillsAPI_getRailWaybillLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version);
+RailWaybillsAPI_getRailWaybillLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, waybill_line_dto_collection_query_parameters_t *waybill_line_dto_collection_query_parameters);
 
 
 // Get all rail waybills
@@ -79,7 +81,7 @@ RailWaybillsAPI_getRailWaybillLinesCountAsync(apiClient_t *apiClient, char *tena
 // Retrieves all rail waybills for the specified tenant.
 //
 rail_waybill_dto_list_envelope_t*
-RailWaybillsAPI_getRailWaybillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+RailWaybillsAPI_getRailWaybillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, rail_waybill_dto_collection_query_parameters_t *rail_waybill_dto_collection_query_parameters);
 
 
 // Get rail waybills count
@@ -87,7 +89,7 @@ RailWaybillsAPI_getRailWaybillsAsync(apiClient_t *apiClient, char *tenantId, cha
 // Returns the count of rail waybills for the specified tenant.
 //
 int32_envelope_t*
-RailWaybillsAPI_getRailWaybillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+RailWaybillsAPI_getRailWaybillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, rail_waybill_dto_collection_query_parameters_t *rail_waybill_dto_collection_query_parameters);
 
 
 // Issue a rail waybill
@@ -119,7 +121,7 @@ RailWaybillsAPI_markRailWaybillInTransitAsync(apiClient_t *apiClient, char *tena
 // Partially updates an existing rail waybill using a JSON Patch document.
 //
 empty_envelope_t*
-RailWaybillsAPI_patchRailWaybillAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, list_t *operation);
+RailWaybillsAPI_patchRailWaybillAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a rail waybill line
@@ -127,7 +129,7 @@ RailWaybillsAPI_patchRailWaybillAsync(apiClient_t *apiClient, char *tenantId, ch
 // Partially updates a line on a rail waybill using a JSON Patch document.
 //
 empty_envelope_t*
-RailWaybillsAPI_patchRailWaybillLineAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+RailWaybillsAPI_patchRailWaybillLineAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *lineId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Remove a rail waybill line

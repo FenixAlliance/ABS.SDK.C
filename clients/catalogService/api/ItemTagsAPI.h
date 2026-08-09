@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/item_tag_create_dto.h"
+#include "../model/item_tag_dto_collection_query_parameters.h"
 #include "../model/item_tag_dto_envelope.h"
 #include "../model/item_tag_dto_list_envelope.h"
 #include "../model/item_tag_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new item tag
@@ -42,7 +43,7 @@ ItemTagsAPI_getItemTagByIdAsync(apiClient_t *apiClient, char *itemTagId, char *t
 // Retrieves all item tags for the specified tenant using OData query options.
 //
 item_tag_dto_list_envelope_t*
-ItemTagsAPI_getItemTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemTagsAPI_getItemTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_tag_dto_collection_query_parameters_t *item_tag_dto_collection_query_parameters);
 
 
 // Patch an item tag
@@ -50,7 +51,7 @@ ItemTagsAPI_getItemTagsAsync(apiClient_t *apiClient, char *tenantId, char *api_v
 // Partially updates an existing item tag for the specified tenant.
 //
 void
-ItemTagsAPI_patchItemTagAsync(apiClient_t *apiClient, char *tenantId, char *itemTagId, char *api_version, char *x_api_version, list_t *operation);
+ItemTagsAPI_patchItemTagAsync(apiClient_t *apiClient, char *tenantId, char *itemTagId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item tag

@@ -63,9 +63,10 @@ set(SRCS
     model/info_response.c
     model/int32_envelope.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/project_create_dto.c
     model/project_dto.c
+    model/project_dto_collection_query_parameters.c
     model/project_dto_envelope.c
     model/project_dto_list_envelope.c
     model/project_hours_approval_approver_update_dto.c
@@ -77,11 +78,13 @@ set(SRCS
     model/project_period_update_dto.c
     model/project_task_create_dto.c
     model/project_task_dto.c
+    model/project_task_dto_collection_query_parameters.c
     model/project_task_dto_envelope.c
     model/project_task_dto_list_envelope.c
     model/project_task_update_dto.c
     model/project_time_log_create_dto.c
     model/project_time_log_dto.c
+    model/project_time_log_dto_collection_query_parameters.c
     model/project_time_log_dto_envelope.c
     model/project_time_log_dto_list_envelope.c
     model/project_time_log_update_dto.c
@@ -92,6 +95,7 @@ set(SRCS
     model/reset_password_request.c
     model/task_category_create_dto.c
     model/task_category_dto.c
+    model/task_category_dto_collection_query_parameters.c
     model/task_category_dto_list_envelope.c
     model/task_category_update_dto.c
     model/task_type_create_dto.c
@@ -125,9 +129,10 @@ set(HDRS
     model/info_response.h
     model/int32_envelope.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/project_create_dto.h
     model/project_dto.h
+    model/project_dto_collection_query_parameters.h
     model/project_dto_envelope.h
     model/project_dto_list_envelope.h
     model/project_hours_approval_approver_update_dto.h
@@ -139,11 +144,13 @@ set(HDRS
     model/project_period_update_dto.h
     model/project_task_create_dto.h
     model/project_task_dto.h
+    model/project_task_dto_collection_query_parameters.h
     model/project_task_dto_envelope.h
     model/project_task_dto_list_envelope.h
     model/project_task_update_dto.h
     model/project_time_log_create_dto.h
     model/project_time_log_dto.h
+    model/project_time_log_dto_collection_query_parameters.h
     model/project_time_log_dto_envelope.h
     model/project_time_log_dto_list_envelope.h
     model/project_time_log_update_dto.h
@@ -154,6 +161,7 @@ set(HDRS
     model/reset_password_request.h
     model/task_category_create_dto.h
     model/task_category_dto.h
+    model/task_category_dto_collection_query_parameters.h
     model/task_category_dto_list_envelope.h
     model/task_category_update_dto.h
     model/task_type_create_dto.h

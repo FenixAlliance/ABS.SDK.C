@@ -17,13 +17,13 @@
 // Count the social profiles that follow the current user
 //
 int32_envelope_t*
-UsersAPI_countCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+UsersAPI_countCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -57,9 +57,21 @@ UsersAPI_countCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_versio
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    if (follow_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = follow_record_dto_collection_query_parameters_convertToJSON(follow_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     list_addElement(localVarHeaderType,"multipart/form-data"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -96,7 +108,7 @@ UsersAPI_countCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_versio
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -107,6 +119,11 @@ UsersAPI_countCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_versio
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_follow_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -131,13 +148,13 @@ end:
 // Count the social profiles that the current user follows
 //
 int32_envelope_t*
-UsersAPI_countCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+UsersAPI_countCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -171,9 +188,21 @@ UsersAPI_countCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    if (follow_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = follow_record_dto_collection_query_parameters_convertToJSON(follow_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     list_addElement(localVarHeaderType,"multipart/form-data"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -210,7 +239,7 @@ UsersAPI_countCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -221,6 +250,11 @@ UsersAPI_countCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_follow_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -245,13 +279,13 @@ end:
 // Count the notifications for the current user
 //
 int32_envelope_t*
-UsersAPI_countCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+UsersAPI_countCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -285,9 +319,21 @@ UsersAPI_countCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_ve
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_notification_dto_collection_query_parameters = NULL;
+    if (notification_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_notification_dto_collection_query_parameters = notification_dto_collection_query_parameters_convertToJSON(notification_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_notification_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     list_addElement(localVarHeaderType,"multipart/form-data"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -324,7 +370,7 @@ UsersAPI_countCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_ve
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -335,6 +381,11 @@ UsersAPI_countCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_ve
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_notification_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_notification_dto_collection_query_parameters);
+        localVarSingleItemJSON_notification_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -359,13 +410,13 @@ end:
 // Count the tenants that the current user is enrolled in
 //
 int32_envelope_t*
-UsersAPI_countCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+UsersAPI_countCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, tenant_dto_collection_query_parameters_t *tenant_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -399,9 +450,21 @@ UsersAPI_countCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_tenant_dto_collection_query_parameters = NULL;
+    if (tenant_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_tenant_dto_collection_query_parameters = tenant_dto_collection_query_parameters_convertToJSON(tenant_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_tenant_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     list_addElement(localVarHeaderType,"multipart/form-data"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -442,7 +505,7 @@ UsersAPI_countCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -453,6 +516,11 @@ UsersAPI_countCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_tenant_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_tenant_dto_collection_query_parameters);
+        localVarSingleItemJSON_tenant_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -477,13 +545,13 @@ end:
 // Get the list of addresses for the current user
 //
 address_dto_list_envelope_t*
-UsersAPI_getCurrentUserAddressesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+UsersAPI_getCurrentUserAddressesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, address_dto_collection_query_parameters_t *address_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -517,9 +585,21 @@ UsersAPI_getCurrentUserAddressesAsync(apiClient_t *apiClient, char *api_version,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_address_dto_collection_query_parameters = NULL;
+    if (address_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_address_dto_collection_query_parameters = address_dto_collection_query_parameters_convertToJSON(address_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_address_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     list_addElement(localVarHeaderType,"multipart/form-data"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -556,7 +636,7 @@ UsersAPI_getCurrentUserAddressesAsync(apiClient_t *apiClient, char *api_version,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -567,6 +647,11 @@ UsersAPI_getCurrentUserAddressesAsync(apiClient_t *apiClient, char *api_version,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_address_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_address_dto_collection_query_parameters);
+        localVarSingleItemJSON_address_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1159,13 +1244,13 @@ end:
 // Get the social profiles that follow the current user
 //
 follow_record_dto_list_envelope_t*
-UsersAPI_getCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+UsersAPI_getCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1199,9 +1284,21 @@ UsersAPI_getCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    if (follow_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = follow_record_dto_collection_query_parameters_convertToJSON(follow_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     list_addElement(localVarHeaderType,"multipart/form-data"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1238,7 +1335,7 @@ UsersAPI_getCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1249,6 +1346,11 @@ UsersAPI_getCurrentUserFollowersAsync(apiClient_t *apiClient, char *api_version,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_follow_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1273,13 +1375,13 @@ end:
 // Get the social profiles that the current user follows
 //
 follow_record_dto_list_envelope_t*
-UsersAPI_getCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+UsersAPI_getCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1313,9 +1415,21 @@ UsersAPI_getCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    if (follow_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = follow_record_dto_collection_query_parameters_convertToJSON(follow_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     list_addElement(localVarHeaderType,"multipart/form-data"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1352,7 +1466,7 @@ UsersAPI_getCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1363,6 +1477,11 @@ UsersAPI_getCurrentUserFollowsAsync(apiClient_t *apiClient, char *api_version, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_follow_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1501,13 +1620,13 @@ end:
 // Get the list of notifications for the current user
 //
 notification_dto_list_envelope_t*
-UsersAPI_getCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+UsersAPI_getCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1541,9 +1660,21 @@ UsersAPI_getCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_vers
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_notification_dto_collection_query_parameters = NULL;
+    if (notification_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_notification_dto_collection_query_parameters = notification_dto_collection_query_parameters_convertToJSON(notification_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_notification_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     list_addElement(localVarHeaderType,"multipart/form-data"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1580,7 +1711,7 @@ UsersAPI_getCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_vers
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1591,6 +1722,11 @@ UsersAPI_getCurrentUserNotificationsAsync(apiClient_t *apiClient, char *api_vers
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_notification_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_notification_dto_collection_query_parameters);
+        localVarSingleItemJSON_notification_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1843,13 +1979,13 @@ end:
 // Get the tenants that the current user is enrolled in
 //
 tenant_dto_list_envelope_t*
-UsersAPI_getCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+UsersAPI_getCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, tenant_dto_collection_query_parameters_t *tenant_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1883,9 +2019,21 @@ UsersAPI_getCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_tenant_dto_collection_query_parameters = NULL;
+    if (tenant_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_tenant_dto_collection_query_parameters = tenant_dto_collection_query_parameters_convertToJSON(tenant_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_tenant_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
     list_addElement(localVarHeaderType,"multipart/form-data"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1926,7 +2074,7 @@ UsersAPI_getCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1937,6 +2085,11 @@ UsersAPI_getCurrentUserTenantsAsync(apiClient_t *apiClient, char *api_version, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_tenant_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_tenant_dto_collection_query_parameters);
+        localVarSingleItemJSON_tenant_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2439,7 +2592,7 @@ end:
 // Partially update the current user's profile
 //
 empty_envelope_t*
-UsersAPI_patchCurrentUserAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, list_t *operation)
+UsersAPI_patchCurrentUserAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2482,14 +2635,14 @@ UsersAPI_patchCurrentUserAsync(apiClient_t *apiClient, char *api_version, char *
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2497,16 +2650,16 @@ UsersAPI_patchCurrentUserAsync(apiClient_t *apiClient, char *api_version, char *
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2561,17 +2714,17 @@ UsersAPI_patchCurrentUserAsync(apiClient_t *apiClient, char *api_version, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_api_version){

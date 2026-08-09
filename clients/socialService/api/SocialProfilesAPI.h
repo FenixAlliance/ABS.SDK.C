@@ -7,16 +7,22 @@
 #include "../include/binary.h"
 #include "../model/boolean_envelope.h"
 #include "../model/conversation_create_dto.h"
+#include "../model/conversation_dto_collection_query_parameters.h"
+#include "../model/conversation_dto_envelope.h"
 #include "../model/conversation_dto_list_envelope.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/follow_record_dto_collection_query_parameters.h"
 #include "../model/follow_record_dto_list_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/notification_dto_collection_query_parameters.h"
 #include "../model/notification_dto_envelope.h"
 #include "../model/notification_dto_list_envelope.h"
 #include "../model/private_message_create_dto.h"
+#include "../model/private_message_dto_collection_query_parameters.h"
 #include "../model/private_message_dto_list_envelope.h"
 #include "../model/private_message_update_dto.h"
+#include "../model/social_profile_dto_collection_query_parameters.h"
 #include "../model/social_profile_dto_envelope.h"
 #include "../model/social_profile_dto_list_envelope.h"
 
@@ -26,7 +32,7 @@
 // Count conversations for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_countConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, conversation_dto_collection_query_parameters_t *conversation_dto_collection_query_parameters);
 
 
 // Count Followed Profiles
@@ -34,7 +40,7 @@ SocialProfilesAPI_countConversationsAsync(apiClient_t *apiClient, char *socialPr
 // Count followed profiles for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_countFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 
 
 // Count Follower Profiles
@@ -42,7 +48,7 @@ SocialProfilesAPI_countFollowedProfilesAsync(apiClient_t *apiClient, char *socia
 // Count follower profiles for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_countFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 
 
 // Count Followers
@@ -50,7 +56,7 @@ SocialProfilesAPI_countFollowerProfilesAsync(apiClient_t *apiClient, char *socia
 // Count followers for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_countFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 
 
 // Count Follows
@@ -58,7 +64,7 @@ SocialProfilesAPI_countFollowersAsync(apiClient_t *apiClient, char *socialProfil
 // Count follows for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 
 
 // Count Messages
@@ -66,7 +72,7 @@ SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileI
 // Count messages for a conversation.
 //
 int32_envelope_t*
-SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version);
+SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version, private_message_dto_collection_query_parameters_t *private_message_dto_collection_query_parameters);
 
 
 // Count Notifications
@@ -74,7 +80,7 @@ SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfile
 // Count notifications for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_countNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters);
 
 
 // Count Social Profiles
@@ -82,7 +88,7 @@ SocialProfilesAPI_countNotificationsAsync(apiClient_t *apiClient, char *socialPr
 // Count social profiles.
 //
 int32_envelope_t*
-SocialProfilesAPI_countSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+SocialProfilesAPI_countSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 
 
 // Create Conversation
@@ -130,7 +136,7 @@ SocialProfilesAPI_followExistsAsync(apiClient_t *apiClient, char *socialProfileI
 // Get a list of conversations for a social profile.
 //
 conversation_dto_list_envelope_t*
-SocialProfilesAPI_getConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_getConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, conversation_dto_collection_query_parameters_t *conversation_dto_collection_query_parameters);
 
 
 // Get Followed Profiles
@@ -138,7 +144,7 @@ SocialProfilesAPI_getConversationsAsync(apiClient_t *apiClient, char *socialProf
 // Get a list of followed profiles for a social profile.
 //
 social_profile_dto_list_envelope_t*
-SocialProfilesAPI_getFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_getFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 
 
 // Get Follower Profiles
@@ -146,7 +152,7 @@ SocialProfilesAPI_getFollowedProfilesAsync(apiClient_t *apiClient, char *socialP
 // Get a list of follower profiles for a social profile.
 //
 social_profile_dto_list_envelope_t*
-SocialProfilesAPI_getFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_getFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 
 
 // Get Followers
@@ -154,7 +160,7 @@ SocialProfilesAPI_getFollowerProfilesAsync(apiClient_t *apiClient, char *socialP
 // Get a list of followers for a social profile.
 //
 follow_record_dto_list_envelope_t*
-SocialProfilesAPI_getFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_getFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 
 
 // Get Follows
@@ -162,7 +168,7 @@ SocialProfilesAPI_getFollowersAsync(apiClient_t *apiClient, char *socialProfileI
 // Get a list of follows for a social profile.
 //
 follow_record_dto_list_envelope_t*
-SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 
 
 // Get Messages
@@ -170,7 +176,7 @@ SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId,
 // Get a list of messages for a conversation.
 //
 private_message_dto_list_envelope_t*
-SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version);
+SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version, private_message_dto_collection_query_parameters_t *private_message_dto_collection_query_parameters);
 
 
 // Get Notification
@@ -186,7 +192,15 @@ SocialProfilesAPI_getNotificationByIdAsync(apiClient_t *apiClient, char *socialP
 // Get a list of notifications for a social profile.
 //
 notification_dto_list_envelope_t*
-SocialProfilesAPI_getNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+SocialProfilesAPI_getNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters);
+
+
+// Get or Create Direct Conversation
+//
+// Get or create the direct two-party conversation between the acting profile and a counterparty.
+//
+conversation_dto_envelope_t*
+SocialProfilesAPI_getOrCreateDirectConversationAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, char *body);
 
 
 // Get Social Profile
@@ -202,7 +216,7 @@ SocialProfilesAPI_getSocialProfileAsync(apiClient_t *apiClient, char *socialProf
 // Get a list of social profiles.
 //
 social_profile_dto_list_envelope_t*
-SocialProfilesAPI_getSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+SocialProfilesAPI_getSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 
 
 // Unfollow

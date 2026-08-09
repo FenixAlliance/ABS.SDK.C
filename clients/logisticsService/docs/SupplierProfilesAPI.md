@@ -121,7 +121,7 @@ No authorization required
 //
 // Retrieves all supplier profiles for the specified tenant.
 //
-supplier_profile_dto_list_envelope_t* SupplierProfilesAPI_getSupplierProfilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+supplier_profile_dto_list_envelope_t* SupplierProfilesAPI_getSupplierProfilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, supplier_profile_dto_collection_query_parameters_t *supplier_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -131,6 +131,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**supplier_profile_dto_collection_query_parameters** | **[supplier_profile_dto_collection_query_parameters_t](supplier_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -143,7 +144,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -154,7 +155,7 @@ No authorization required
 //
 // Returns the count of supplier profiles for the specified tenant.
 //
-int32_envelope_t* SupplierProfilesAPI_getSupplierProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* SupplierProfilesAPI_getSupplierProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, supplier_profile_dto_collection_query_parameters_t *supplier_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -164,6 +165,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**supplier_profile_dto_collection_query_parameters** | **[supplier_profile_dto_collection_query_parameters_t](supplier_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -176,7 +178,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -187,7 +189,7 @@ No authorization required
 //
 // Applies a JSON Patch document to a supplier profile.
 //
-empty_envelope_t* SupplierProfilesAPI_patchSupplierProfileAsync(apiClient_t *apiClient, char *tenantId, char *supplierProfileId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* SupplierProfilesAPI_patchSupplierProfileAsync(apiClient_t *apiClient, char *tenantId, char *supplierProfileId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -198,7 +200,7 @@ Name | Type | Description  | Notes
 **supplierProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

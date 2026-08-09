@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/support_request_attachment_create_dto.h"
+#include "../model/support_request_attachment_dto_collection_query_parameters.h"
 #include "../model/support_request_attachment_dto_envelope.h"
 #include "../model/support_request_attachment_dto_list_envelope.h"
 #include "../model/support_request_attachment_update_dto.h"
@@ -44,7 +45,7 @@ SupportRequestAttachmentsAPI_getSupportRequestAttachmentAsync(apiClient_t *apiCl
 // Retrieves a list of support request attachments for the specified tenant with OData query support.
 //
 support_request_attachment_dto_list_envelope_t*
-SupportRequestAttachmentsAPI_getSupportRequestAttachmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportRequestAttachmentsAPI_getSupportRequestAttachmentsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_request_attachment_dto_collection_query_parameters_t *support_request_attachment_dto_collection_query_parameters);
 
 
 // Get the count of support request attachments
@@ -52,7 +53,7 @@ SupportRequestAttachmentsAPI_getSupportRequestAttachmentsAsync(apiClient_t *apiC
 // Returns the total count of support request attachments for the specified tenant with OData query support.
 //
 int32_envelope_t*
-SupportRequestAttachmentsAPI_getSupportRequestAttachmentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportRequestAttachmentsAPI_getSupportRequestAttachmentsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_request_attachment_dto_collection_query_parameters_t *support_request_attachment_dto_collection_query_parameters);
 
 
 // Patch a support request attachment
@@ -60,7 +61,7 @@ SupportRequestAttachmentsAPI_getSupportRequestAttachmentsCountAsync(apiClient_t 
 // Partially updates an existing support request attachment by its unique identifier.
 //
 empty_envelope_t*
-SupportRequestAttachmentsAPI_patchSupportRequestAttachmentAsync(apiClient_t *apiClient, char *tenantId, char *supportRequestAttachmentId, char *api_version, char *x_api_version, list_t *operation);
+SupportRequestAttachmentsAPI_patchSupportRequestAttachmentAsync(apiClient_t *apiClient, char *tenantId, char *supportRequestAttachmentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a support request attachment

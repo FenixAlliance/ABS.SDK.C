@@ -58,6 +58,7 @@ set(SRCS
     model/auth_result.c
     model/auth_result_envelope.c
     model/error_envelope.c
+    model/execution_provenance.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
     model/info_request.c
@@ -103,6 +104,7 @@ set(HDRS
     model/auth_result.h
     model/auth_result_envelope.h
     model/error_envelope.h
+    model/execution_provenance.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
     model/info_request.h

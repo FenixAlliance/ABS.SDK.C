@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/billing_profile_create_dto.h"
+#include "../model/billing_profile_dto_collection_query_parameters.h"
 #include "../model/billing_profile_dto_envelope.h"
 #include "../model/billing_profile_dto_i_read_only_list_envelope.h"
 #include "../model/billing_profile_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new billing profile
@@ -44,7 +45,7 @@ BillingProfilesAPI_getBillingProfileByIdAsync(apiClient_t *apiClient, char *tena
 // Fetches all billing profiles for a tenant with support for OData queries.
 //
 billing_profile_dto_i_read_only_list_envelope_t*
-BillingProfilesAPI_getBillingProfilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BillingProfilesAPI_getBillingProfilesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, billing_profile_dto_collection_query_parameters_t *billing_profile_dto_collection_query_parameters);
 
 
 // Gets the count of billing profiles
@@ -52,7 +53,7 @@ BillingProfilesAPI_getBillingProfilesAsync(apiClient_t *apiClient, char *tenantI
 // Returns the number of billing profiles for a tenant, supporting OData filtering.
 //
 int32_envelope_t*
-BillingProfilesAPI_getBillingProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+BillingProfilesAPI_getBillingProfilesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, billing_profile_dto_collection_query_parameters_t *billing_profile_dto_collection_query_parameters);
 
 
 // Patch a billing profile
@@ -60,7 +61,7 @@ BillingProfilesAPI_getBillingProfilesCountAsync(apiClient_t *apiClient, char *te
 // Partially updates a billing profile.
 //
 empty_envelope_t*
-BillingProfilesAPI_patchBillingProfileAsync(apiClient_t *apiClient, char *tenantId, char *billingProfileId, char *api_version, char *x_api_version, list_t *operation);
+BillingProfilesAPI_patchBillingProfileAsync(apiClient_t *apiClient, char *tenantId, char *billingProfileId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates an existing billing profile

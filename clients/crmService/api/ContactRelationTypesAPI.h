@@ -7,12 +7,13 @@
 #include "../include/binary.h"
 #include "../model/contact_relation_type_create_dto.h"
 #include "../model/contact_relation_type_dto.h"
+#include "../model/contact_relation_type_dto_collection_query_parameters.h"
 #include "../model/contact_relation_type_dto_list_envelope.h"
 #include "../model/contact_relation_type_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new contact relation type
@@ -44,7 +45,7 @@ ContactRelationTypesAPI_getContactRelationTypeByIdAsync(apiClient_t *apiClient, 
 // Retrieves all contact relation types for the specified tenant.
 //
 contact_relation_type_dto_list_envelope_t*
-ContactRelationTypesAPI_getContactRelationTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactRelationTypesAPI_getContactRelationTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_relation_type_dto_collection_query_parameters_t *contact_relation_type_dto_collection_query_parameters);
 
 
 // Get contact relation types count
@@ -52,7 +53,7 @@ ContactRelationTypesAPI_getContactRelationTypesAsync(apiClient_t *apiClient, cha
 // Returns the count of contact relation types for the specified tenant.
 //
 int32_envelope_t*
-ContactRelationTypesAPI_getContactRelationTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ContactRelationTypesAPI_getContactRelationTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, contact_relation_type_dto_collection_query_parameters_t *contact_relation_type_dto_collection_query_parameters);
 
 
 // Patch a contact relation type
@@ -60,7 +61,7 @@ ContactRelationTypesAPI_getContactRelationTypesCountAsync(apiClient_t *apiClient
 // Patch a contact relation type
 //
 empty_envelope_t*
-ContactRelationTypesAPI_patchContactRelationTypeAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+ContactRelationTypesAPI_patchContactRelationTypeAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a contact relation type

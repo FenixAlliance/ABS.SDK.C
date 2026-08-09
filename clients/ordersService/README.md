@@ -70,7 +70,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -114,6 +113,7 @@ Category | Method | HTTP request | Description
  - [empty_envelope_t](docs/empty_envelope.md)
  - [error_envelope_t](docs/error_envelope.md)
  - [extended_order_dto_t](docs/extended_order_dto.md)
+ - [extended_order_dto_collection_query_parameters_t](docs/extended_order_dto_collection_query_parameters.md)
  - [extended_order_dto_list_envelope_t](docs/extended_order_dto_list_envelope.md)
  - [forgot_password_request_t](docs/forgot_password_request.md)
  - [http_validation_problem_details_t](docs/http_validation_problem_details.md)
@@ -121,17 +121,19 @@ Category | Method | HTTP request | Description
  - [info_response_t](docs/info_response.md)
  - [int32_envelope_t](docs/int32_envelope.md)
  - [login_request_t](docs/login_request.md)
- - [operation_t](docs/operation.md)
  - [order_create_dto_t](docs/order_create_dto.md)
  - [order_dto_t](docs/order_dto.md)
+ - [order_dto_collection_query_parameters_t](docs/order_dto_collection_query_parameters.md)
  - [order_dto_envelope_t](docs/order_dto_envelope.md)
  - [order_dto_list_envelope_t](docs/order_dto_list_envelope.md)
  - [order_line_create_dto_t](docs/order_line_create_dto.md)
  - [order_line_dto_t](docs/order_line_dto.md)
+ - [order_line_dto_collection_query_parameters_t](docs/order_line_dto_collection_query_parameters.md)
  - [order_line_dto_envelope_t](docs/order_line_dto_envelope.md)
  - [order_line_dto_list_envelope_t](docs/order_line_dto_list_envelope.md)
  - [order_line_update_dto_t](docs/order_line_update_dto.md)
  - [order_update_dto_t](docs/order_update_dto.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [refresh_request_t](docs/refresh_request.md)
  - [register_request_t](docs/register_request.md)
  - [resend_confirmation_email_request_t](docs/resend_confirmation_email_request.md)

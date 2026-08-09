@@ -9,19 +9,23 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/share_class_create_dto.h"
+#include "../model/share_class_dto_collection_query_parameters.h"
 #include "../model/share_class_dto_envelope.h"
 #include "../model/share_class_dto_list_envelope.h"
 #include "../model/share_class_update_dto.h"
 #include "../model/share_issuance_create_dto.h"
+#include "../model/share_issuance_dto_collection_query_parameters.h"
 #include "../model/share_issuance_dto_envelope.h"
 #include "../model/share_issuance_dto_list_envelope.h"
 #include "../model/share_issuance_update_dto.h"
 #include "../model/share_transfer_create_dto.h"
+#include "../model/share_transfer_dto_collection_query_parameters.h"
 #include "../model/share_transfer_dto_envelope.h"
 #include "../model/share_transfer_dto_list_envelope.h"
 #include "../model/share_transfer_reason_create_dto.h"
+#include "../model/share_transfer_reason_dto_collection_query_parameters.h"
 #include "../model/share_transfer_reason_dto_envelope.h"
 #include "../model/share_transfer_reason_dto_list_envelope.h"
 #include "../model/share_transfer_reason_update_dto.h"
@@ -105,7 +109,7 @@ SharesAPI_getShareClass(apiClient_t *apiClient, char *tenantId, char *shareClass
 // Get the currently acting tenant share classes.
 //
 share_class_dto_list_envelope_t*
-SharesAPI_getShareClasses(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SharesAPI_getShareClasses(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_class_dto_collection_query_parameters_t *share_class_dto_collection_query_parameters);
 
 
 // Gets the current tenant share classes count
@@ -113,7 +117,7 @@ SharesAPI_getShareClasses(apiClient_t *apiClient, char *tenantId, char *api_vers
 // Get the currently acting tenant share classes count.
 //
 int32_envelope_t*
-SharesAPI_getShareClassesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SharesAPI_getShareClassesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_class_dto_collection_query_parameters_t *share_class_dto_collection_query_parameters);
 
 
 // Gets a share issuance by id
@@ -129,7 +133,7 @@ SharesAPI_getShareIssuance(apiClient_t *apiClient, char *tenantId, char *issuanc
 // Get the currently acting tenant share issuances.
 //
 share_issuance_dto_list_envelope_t*
-SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_issuance_dto_collection_query_parameters_t *share_issuance_dto_collection_query_parameters);
 
 
 // Gets the current tenant share issuances count
@@ -137,7 +141,7 @@ SharesAPI_getShareIssuances(apiClient_t *apiClient, char *tenantId, char *api_ve
 // Get the currently acting tenant share issuances count.
 //
 int32_envelope_t*
-SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_issuance_dto_collection_query_parameters_t *share_issuance_dto_collection_query_parameters);
 
 
 // Sum tenant share issuance quantities
@@ -145,7 +149,7 @@ SharesAPI_getShareIssuancesCount(apiClient_t *apiClient, char *tenantId, char *a
 // Returns SUM(ShareIssuance.Quantity) for the tenant, filtered by the supplied OData date range.
 //
 decimal_envelope_t*
-SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SharesAPI_getShareIssuancesSum(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_issuance_dto_collection_query_parameters_t *share_issuance_dto_collection_query_parameters);
 
 
 // Gets a share transfer by id
@@ -169,7 +173,7 @@ SharesAPI_getShareTransferReason(apiClient_t *apiClient, char *tenantId, char *r
 // Get the currently acting tenant share transfer reasons.
 //
 share_transfer_reason_dto_list_envelope_t*
-SharesAPI_getShareTransferReasons(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SharesAPI_getShareTransferReasons(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_reason_dto_collection_query_parameters_t *share_transfer_reason_dto_collection_query_parameters);
 
 
 // Gets the current tenant share transfer reasons count
@@ -177,7 +181,7 @@ SharesAPI_getShareTransferReasons(apiClient_t *apiClient, char *tenantId, char *
 // Get the currently acting tenant share transfer reasons count.
 //
 int32_envelope_t*
-SharesAPI_getShareTransferReasonsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SharesAPI_getShareTransferReasonsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_reason_dto_collection_query_parameters_t *share_transfer_reason_dto_collection_query_parameters);
 
 
 // Gets the current tenant share transfers
@@ -185,7 +189,7 @@ SharesAPI_getShareTransferReasonsCount(apiClient_t *apiClient, char *tenantId, c
 // Get the currently acting tenant share transfers.
 //
 share_transfer_dto_list_envelope_t*
-SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_dto_collection_query_parameters_t *share_transfer_dto_collection_query_parameters);
 
 
 // Gets the current tenant share transfers count
@@ -193,7 +197,7 @@ SharesAPI_getShareTransfers(apiClient_t *apiClient, char *tenantId, char *api_ve
 // Get the currently acting tenant share transfers count.
 //
 int32_envelope_t*
-SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, share_transfer_dto_collection_query_parameters_t *share_transfer_dto_collection_query_parameters);
 
 
 // Patches a share class
@@ -201,7 +205,7 @@ SharesAPI_getShareTransfersCount(apiClient_t *apiClient, char *tenantId, char *a
 // Partially updates a share class using a JSON Patch document.
 //
 empty_envelope_t*
-SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareClassId, char *api_version, char *x_api_version, list_t *operation);
+SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareClassId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patches a share issuance
@@ -209,7 +213,7 @@ SharesAPI_patchShareClass(apiClient_t *apiClient, char *tenantId, char *shareCla
 // Partially updates a share issuance using a JSON Patch document.
 //
 empty_envelope_t*
-SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issuanceId, char *api_version, char *x_api_version, list_t *operation);
+SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issuanceId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patches a share transfer
@@ -217,7 +221,7 @@ SharesAPI_patchShareIssuance(apiClient_t *apiClient, char *tenantId, char *issua
 // Partially updates a share transfer using a JSON Patch document.
 //
 empty_envelope_t*
-SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *transferId, char *api_version, char *x_api_version, list_t *operation);
+SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *transferId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patches a share transfer reason
@@ -225,7 +229,7 @@ SharesAPI_patchShareTransfer(apiClient_t *apiClient, char *tenantId, char *trans
 // Partially updates a share transfer reason using a JSON Patch document.
 //
 empty_envelope_t*
-SharesAPI_patchShareTransferReason(apiClient_t *apiClient, char *tenantId, char *reasonId, char *api_version, char *x_api_version, list_t *operation);
+SharesAPI_patchShareTransferReason(apiClient_t *apiClient, char *tenantId, char *reasonId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates an existing share class

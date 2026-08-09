@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_retain_sample_create_dto.h"
+#include "../model/item_retain_sample_dto_collection_query_parameters.h"
 #include "../model/item_retain_sample_dto_envelope.h"
 #include "../model/item_retain_sample_dto_list_envelope.h"
 #include "../model/item_retain_sample_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an item retain sample
@@ -44,7 +45,7 @@ ItemRetainSamplesAPI_getItemRetainSampleByIdAsync(apiClient_t *apiClient, char *
 // Retrieves all item retain samples for the specified tenant.
 //
 item_retain_sample_dto_list_envelope_t*
-ItemRetainSamplesAPI_getItemRetainSamplesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemRetainSamplesAPI_getItemRetainSamplesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_retain_sample_dto_collection_query_parameters_t *item_retain_sample_dto_collection_query_parameters);
 
 
 // Get item retain samples count
@@ -52,7 +53,7 @@ ItemRetainSamplesAPI_getItemRetainSamplesAsync(apiClient_t *apiClient, char *ten
 // Returns the count of item retain samples.
 //
 int32_envelope_t*
-ItemRetainSamplesAPI_getItemRetainSamplesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ItemRetainSamplesAPI_getItemRetainSamplesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, item_retain_sample_dto_collection_query_parameters_t *item_retain_sample_dto_collection_query_parameters);
 
 
 // Patch an item retain sample
@@ -60,7 +61,7 @@ ItemRetainSamplesAPI_getItemRetainSamplesCountAsync(apiClient_t *apiClient, char
 // Applies a JSON Patch document to an item retain sample.
 //
 empty_envelope_t*
-ItemRetainSamplesAPI_patchItemRetainSampleAsync(apiClient_t *apiClient, char *tenantId, char *retainSampleId, char *api_version, char *x_api_version, list_t *operation);
+ItemRetainSamplesAPI_patchItemRetainSampleAsync(apiClient_t *apiClient, char *tenantId, char *retainSampleId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item retain sample

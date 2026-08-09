@@ -49,7 +49,7 @@ No authorization required
 //
 // Retrieves all signing logs for the specified tenant.
 //
-signing_log_dto_list_envelope_t* SigningLogsAPI_getSigningLogsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+signing_log_dto_list_envelope_t* SigningLogsAPI_getSigningLogsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_log_dto_collection_query_parameters_t *signing_log_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -59,6 +59,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**signing_log_dto_collection_query_parameters** | **[signing_log_dto_collection_query_parameters_t](signing_log_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -71,7 +72,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -82,7 +83,7 @@ No authorization required
 //
 // Returns the count of signing logs for the specified tenant.
 //
-int32_envelope_t* SigningLogsAPI_getSigningLogsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* SigningLogsAPI_getSigningLogsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, signing_log_dto_collection_query_parameters_t *signing_log_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -92,6 +93,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**signing_log_dto_collection_query_parameters** | **[signing_log_dto_collection_query_parameters_t](signing_log_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -104,7 +106,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

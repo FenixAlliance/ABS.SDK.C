@@ -63,78 +63,101 @@ set(SRCS
     model/count_dto_envelope.c
     model/course_article_create_dto.c
     model/course_article_dto.c
+    model/course_article_dto_collection_query_parameters.c
     model/course_article_update_dto.c
     model/course_assignment_component_create_dto.c
     model/course_assignment_component_dto.c
+    model/course_assignment_component_dto_collection_query_parameters.c
     model/course_assignment_component_update_dto.c
     model/course_assignment_create_dto.c
     model/course_assignment_dto.c
+    model/course_assignment_dto_collection_query_parameters.c
     model/course_assignment_type_create_dto.c
     model/course_assignment_type_dto.c
+    model/course_assignment_type_dto_collection_query_parameters.c
     model/course_assignment_type_update_dto.c
     model/course_assignment_update_dto.c
     model/course_category_create_dto.c
     model/course_category_dto.c
+    model/course_category_dto_collection_query_parameters.c
     model/course_category_update_dto.c
     model/course_certificate_template_create_dto.c
     model/course_certificate_template_dto.c
     model/course_certificate_template_update_dto.c
     model/course_cohort_create_dto.c
     model/course_cohort_dto.c
+    model/course_cohort_dto_collection_query_parameters.c
     model/course_cohort_update_dto.c
     model/course_completion_certificate_create_dto.c
     model/course_completion_certificate_dto.c
+    model/course_completion_certificate_dto_collection_query_parameters.c
     model/course_completion_certificate_dto_i_read_only_list_envelope.c
     model/course_completion_certificate_update_dto.c
     model/course_content_group_create_dto.c
     model/course_content_group_dto.c
+    model/course_content_group_dto_collection_query_parameters.c
     model/course_content_group_update_dto.c
     model/course_create_dto.c
     model/course_dto.c
+    model/course_dto_collection_query_parameters.c
     model/course_dto_i_read_only_list_envelope.c
     model/course_enrollment_create_dto.c
     model/course_enrollment_dto.c
+    model/course_enrollment_dto_collection_query_parameters.c
     model/course_enrollment_dto_i_read_only_list_envelope.c
     model/course_enrollment_update_dto.c
     model/course_file_create_dto.c
     model/course_file_dto.c
+    model/course_file_dto_collection_query_parameters.c
     model/course_file_update_dto.c
     model/course_forum_create_dto.c
     model/course_forum_dto.c
+    model/course_forum_dto_collection_query_parameters.c
     model/course_forum_update_dto.c
     model/course_grading_rubric_create_dto.c
     model/course_grading_rubric_dto.c
+    model/course_grading_rubric_dto_collection_query_parameters.c
     model/course_grading_rubric_update_dto.c
     model/course_handout_create_dto.c
     model/course_handout_dto.c
+    model/course_handout_dto_collection_query_parameters.c
     model/course_handout_update_dto.c
     model/course_library_create_dto.c
     model/course_library_dto.c
+    model/course_library_dto_collection_query_parameters.c
     model/course_library_update_dto.c
     model/course_news_create_dto.c
     model/course_news_dto.c
+    model/course_news_dto_collection_query_parameters.c
     model/course_news_update_dto.c
     model/course_page_create_dto.c
     model/course_page_dto.c
+    model/course_page_dto_collection_query_parameters.c
     model/course_page_update_dto.c
     model/course_problem_set_create_dto.c
     model/course_problem_set_dto.c
+    model/course_problem_set_dto_collection_query_parameters.c
     model/course_problem_set_update_dto.c
     model/course_section_create_dto.c
     model/course_section_dto.c
+    model/course_section_dto_collection_query_parameters.c
     model/course_section_update_dto.c
     model/course_team_membership_create_dto.c
     model/course_team_membership_dto.c
+    model/course_team_membership_dto_collection_query_parameters.c
     model/course_team_membership_update_dto.c
     model/course_unit_component_create_dto.c
     model/course_unit_component_dto.c
+    model/course_unit_component_dto_collection_query_parameters.c
     model/course_unit_component_update_dto.c
     model/course_unit_create_dto.c
     model/course_unit_dto.c
+    model/course_unit_dto_collection_query_parameters.c
     model/course_unit_update_dto.c
     model/course_update_dto.c
     model/course_wiki_create_dto.c
     model/course_wiki_dto.c
+    model/course_wiki_dto_collection_query_parameters.c
     model/course_wiki_update_dto.c
     model/empty_envelope.c
     model/error_envelope.c
@@ -144,16 +167,18 @@ set(SRCS
     model/info_response.c
     model/instructor_profile_create_dto.c
     model/instructor_profile_dto.c
+    model/instructor_profile_dto_collection_query_parameters.c
     model/instructor_profile_dto_i_read_only_list_envelope.c
     model/instructor_profile_update_dto.c
     model/login_request.c
-    model/operation.c
+    model/patch_operation.c
     model/refresh_request.c
     model/register_request.c
     model/resend_confirmation_email_request.c
     model/reset_password_request.c
     model/student_profile_create_dto.c
     model/student_profile_dto.c
+    model/student_profile_dto_collection_query_parameters.c
     model/student_profile_dto_i_read_only_list_envelope.c
     model/student_profile_update_dto.c
     model/two_factor_request.c
@@ -204,78 +229,101 @@ set(HDRS
     model/count_dto_envelope.h
     model/course_article_create_dto.h
     model/course_article_dto.h
+    model/course_article_dto_collection_query_parameters.h
     model/course_article_update_dto.h
     model/course_assignment_component_create_dto.h
     model/course_assignment_component_dto.h
+    model/course_assignment_component_dto_collection_query_parameters.h
     model/course_assignment_component_update_dto.h
     model/course_assignment_create_dto.h
     model/course_assignment_dto.h
+    model/course_assignment_dto_collection_query_parameters.h
     model/course_assignment_type_create_dto.h
     model/course_assignment_type_dto.h
+    model/course_assignment_type_dto_collection_query_parameters.h
     model/course_assignment_type_update_dto.h
     model/course_assignment_update_dto.h
     model/course_category_create_dto.h
     model/course_category_dto.h
+    model/course_category_dto_collection_query_parameters.h
     model/course_category_update_dto.h
     model/course_certificate_template_create_dto.h
     model/course_certificate_template_dto.h
     model/course_certificate_template_update_dto.h
     model/course_cohort_create_dto.h
     model/course_cohort_dto.h
+    model/course_cohort_dto_collection_query_parameters.h
     model/course_cohort_update_dto.h
     model/course_completion_certificate_create_dto.h
     model/course_completion_certificate_dto.h
+    model/course_completion_certificate_dto_collection_query_parameters.h
     model/course_completion_certificate_dto_i_read_only_list_envelope.h
     model/course_completion_certificate_update_dto.h
     model/course_content_group_create_dto.h
     model/course_content_group_dto.h
+    model/course_content_group_dto_collection_query_parameters.h
     model/course_content_group_update_dto.h
     model/course_create_dto.h
     model/course_dto.h
+    model/course_dto_collection_query_parameters.h
     model/course_dto_i_read_only_list_envelope.h
     model/course_enrollment_create_dto.h
     model/course_enrollment_dto.h
+    model/course_enrollment_dto_collection_query_parameters.h
     model/course_enrollment_dto_i_read_only_list_envelope.h
     model/course_enrollment_update_dto.h
     model/course_file_create_dto.h
     model/course_file_dto.h
+    model/course_file_dto_collection_query_parameters.h
     model/course_file_update_dto.h
     model/course_forum_create_dto.h
     model/course_forum_dto.h
+    model/course_forum_dto_collection_query_parameters.h
     model/course_forum_update_dto.h
     model/course_grading_rubric_create_dto.h
     model/course_grading_rubric_dto.h
+    model/course_grading_rubric_dto_collection_query_parameters.h
     model/course_grading_rubric_update_dto.h
     model/course_handout_create_dto.h
     model/course_handout_dto.h
+    model/course_handout_dto_collection_query_parameters.h
     model/course_handout_update_dto.h
     model/course_library_create_dto.h
     model/course_library_dto.h
+    model/course_library_dto_collection_query_parameters.h
     model/course_library_update_dto.h
     model/course_news_create_dto.h
     model/course_news_dto.h
+    model/course_news_dto_collection_query_parameters.h
     model/course_news_update_dto.h
     model/course_page_create_dto.h
     model/course_page_dto.h
+    model/course_page_dto_collection_query_parameters.h
     model/course_page_update_dto.h
     model/course_problem_set_create_dto.h
     model/course_problem_set_dto.h
+    model/course_problem_set_dto_collection_query_parameters.h
     model/course_problem_set_update_dto.h
     model/course_section_create_dto.h
     model/course_section_dto.h
+    model/course_section_dto_collection_query_parameters.h
     model/course_section_update_dto.h
     model/course_team_membership_create_dto.h
     model/course_team_membership_dto.h
+    model/course_team_membership_dto_collection_query_parameters.h
     model/course_team_membership_update_dto.h
     model/course_unit_component_create_dto.h
     model/course_unit_component_dto.h
+    model/course_unit_component_dto_collection_query_parameters.h
     model/course_unit_component_update_dto.h
     model/course_unit_create_dto.h
     model/course_unit_dto.h
+    model/course_unit_dto_collection_query_parameters.h
     model/course_unit_update_dto.h
     model/course_update_dto.h
     model/course_wiki_create_dto.h
     model/course_wiki_dto.h
+    model/course_wiki_dto_collection_query_parameters.h
     model/course_wiki_update_dto.h
     model/empty_envelope.h
     model/error_envelope.h
@@ -285,16 +333,18 @@ set(HDRS
     model/info_response.h
     model/instructor_profile_create_dto.h
     model/instructor_profile_dto.h
+    model/instructor_profile_dto_collection_query_parameters.h
     model/instructor_profile_dto_i_read_only_list_envelope.h
     model/instructor_profile_update_dto.h
     model/login_request.h
-    model/operation.h
+    model/patch_operation.h
     model/refresh_request.h
     model/register_request.h
     model/resend_confirmation_email_request.h
     model/reset_password_request.h
     model/student_profile_create_dto.h
     model/student_profile_dto.h
+    model/student_profile_dto_collection_query_parameters.h
     model/student_profile_dto_i_read_only_list_envelope.h
     model/student_profile_update_dto.h
     model/two_factor_request.h

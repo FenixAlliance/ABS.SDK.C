@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
 #include "../model/option_create_dto.h"
+#include "../model/option_dto_collection_query_parameters.h"
 #include "../model/option_dto_envelope.h"
 #include "../model/option_dto_list_envelope.h"
 #include "../model/option_update_dto.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new system option
@@ -52,7 +53,7 @@ OptionsAPI_getSystemOptionByKey(apiClient_t *apiClient, char *portalId, char *ke
 // Retrieve a list of system options for a portal
 //
 option_dto_list_envelope_t*
-OptionsAPI_getSystemOptions(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version);
+OptionsAPI_getSystemOptions(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Get the count of system options
@@ -60,7 +61,7 @@ OptionsAPI_getSystemOptions(apiClient_t *apiClient, char *portalId, char *api_ve
 // Get the count of system options for a portal
 //
 int32_envelope_t*
-OptionsAPI_getSystemOptionsCount(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version);
+OptionsAPI_getSystemOptionsCount(apiClient_t *apiClient, char *portalId, char *api_version, char *x_api_version, option_dto_collection_query_parameters_t *option_dto_collection_query_parameters);
 
 
 // Partially update a system option
@@ -68,7 +69,7 @@ OptionsAPI_getSystemOptionsCount(apiClient_t *apiClient, char *portalId, char *a
 // Partially update a system option using a JSON Patch document
 //
 empty_envelope_t*
-OptionsAPI_patchSystemOption(apiClient_t *apiClient, char *optionId, char *api_version, char *x_api_version, list_t *operation);
+OptionsAPI_patchSystemOption(apiClient_t *apiClient, char *optionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a system option

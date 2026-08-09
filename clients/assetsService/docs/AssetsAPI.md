@@ -476,7 +476,7 @@ No authorization required
 //
 // Retrieves all asset categories for the authenticated tenant.
 //
-asset_category_dto_list_envelope_t* AssetsAPI_getAssetAssetCategories(apiClient_t *apiClient, char *tenantId);
+asset_category_dto_list_envelope_t* AssetsAPI_getAssetAssetCategories(apiClient_t *apiClient, char *tenantId, asset_category_dto_collection_query_parameters_t *asset_category_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -484,6 +484,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**asset_category_dto_collection_query_parameters** | **[asset_category_dto_collection_query_parameters_t](asset_category_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -496,7 +497,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -507,7 +508,7 @@ No authorization required
 //
 // Returns the total number of asset categories for the authenticated tenant.
 //
-int32_envelope_t* AssetsAPI_getAssetAssetCategoriesCount(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* AssetsAPI_getAssetAssetCategoriesCount(apiClient_t *apiClient, char *tenantId, asset_category_dto_collection_query_parameters_t *asset_category_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -515,6 +516,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**asset_category_dto_collection_query_parameters** | **[asset_category_dto_collection_query_parameters_t](asset_category_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -527,7 +529,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -603,7 +605,7 @@ No authorization required
 //
 // Retrieves all depreciation records for the specified asset.
 //
-asset_depreciation_record_dto_list_envelope_t* AssetsAPI_getAssetDepreciationRecords(apiClient_t *apiClient, char *tenantId, char *assetId);
+asset_depreciation_record_dto_list_envelope_t* AssetsAPI_getAssetDepreciationRecords(apiClient_t *apiClient, char *tenantId, char *assetId, asset_depreciation_record_dto_collection_query_parameters_t *asset_depreciation_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -612,6 +614,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
+**asset_depreciation_record_dto_collection_query_parameters** | **[asset_depreciation_record_dto_collection_query_parameters_t](asset_depreciation_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -624,7 +627,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -635,7 +638,7 @@ No authorization required
 //
 // Returns the total number of depreciation records for the specified asset.
 //
-int32_envelope_t* AssetsAPI_getAssetDepreciationRecordsCount(apiClient_t *apiClient, char *tenantId, char *assetId);
+int32_envelope_t* AssetsAPI_getAssetDepreciationRecordsCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_depreciation_record_dto_collection_query_parameters_t *asset_depreciation_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -644,6 +647,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
+**asset_depreciation_record_dto_collection_query_parameters** | **[asset_depreciation_record_dto_collection_query_parameters_t](asset_depreciation_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -656,7 +660,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -700,7 +704,7 @@ No authorization required
 //
 // Retrieves all repair records for the specified asset.
 //
-asset_repair_dto_list_envelope_t* AssetsAPI_getAssetRepairs(apiClient_t *apiClient, char *tenantId, char *assetId);
+asset_repair_dto_list_envelope_t* AssetsAPI_getAssetRepairs(apiClient_t *apiClient, char *tenantId, char *assetId, asset_repair_dto_collection_query_parameters_t *asset_repair_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -709,6 +713,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
+**asset_repair_dto_collection_query_parameters** | **[asset_repair_dto_collection_query_parameters_t](asset_repair_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -721,7 +726,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -732,7 +737,7 @@ No authorization required
 //
 // Returns the total number of repair records for the specified asset.
 //
-int32_envelope_t* AssetsAPI_getAssetRepairsCount(apiClient_t *apiClient, char *tenantId, char *assetId);
+int32_envelope_t* AssetsAPI_getAssetRepairsCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_repair_dto_collection_query_parameters_t *asset_repair_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -741,6 +746,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
+**asset_repair_dto_collection_query_parameters** | **[asset_repair_dto_collection_query_parameters_t](asset_repair_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -753,7 +759,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -797,7 +803,7 @@ No authorization required
 //
 // Retrieves all transfer records for the specified asset.
 //
-asset_transfer_dto_list_envelope_t* AssetsAPI_getAssetTransfers(apiClient_t *apiClient, char *tenantId, char *assetId);
+asset_transfer_dto_list_envelope_t* AssetsAPI_getAssetTransfers(apiClient_t *apiClient, char *tenantId, char *assetId, asset_transfer_dto_collection_query_parameters_t *asset_transfer_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -806,6 +812,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
+**asset_transfer_dto_collection_query_parameters** | **[asset_transfer_dto_collection_query_parameters_t](asset_transfer_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -818,7 +825,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -829,7 +836,7 @@ No authorization required
 //
 // Returns the total number of transfer records for the specified asset.
 //
-int32_envelope_t* AssetsAPI_getAssetTransfersCount(apiClient_t *apiClient, char *tenantId, char *assetId);
+int32_envelope_t* AssetsAPI_getAssetTransfersCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_transfer_dto_collection_query_parameters_t *asset_transfer_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -838,6 +845,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
+**asset_transfer_dto_collection_query_parameters** | **[asset_transfer_dto_collection_query_parameters_t](asset_transfer_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -850,7 +858,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -894,7 +902,7 @@ No authorization required
 //
 // Retrieves all value amendment records for the specified asset.
 //
-asset_value_amend_dto_list_envelope_t* AssetsAPI_getAssetValueAmends(apiClient_t *apiClient, char *tenantId, char *assetId);
+asset_value_amend_dto_list_envelope_t* AssetsAPI_getAssetValueAmends(apiClient_t *apiClient, char *tenantId, char *assetId, asset_value_amend_dto_collection_query_parameters_t *asset_value_amend_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -903,6 +911,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
+**asset_value_amend_dto_collection_query_parameters** | **[asset_value_amend_dto_collection_query_parameters_t](asset_value_amend_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -915,7 +924,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -926,7 +935,7 @@ No authorization required
 //
 // Returns the total number of value amendment records for the specified asset.
 //
-int32_envelope_t* AssetsAPI_getAssetValueAmendsCount(apiClient_t *apiClient, char *tenantId, char *assetId);
+int32_envelope_t* AssetsAPI_getAssetValueAmendsCount(apiClient_t *apiClient, char *tenantId, char *assetId, asset_value_amend_dto_collection_query_parameters_t *asset_value_amend_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -935,6 +944,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
+**asset_value_amend_dto_collection_query_parameters** | **[asset_value_amend_dto_collection_query_parameters_t](asset_value_amend_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -947,7 +957,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -958,7 +968,7 @@ No authorization required
 //
 // Retrieves all assets for the authenticated tenant with optional filtering.
 //
-asset_dto_list_envelope_t* AssetsAPI_getAssets(apiClient_t *apiClient, char *tenantId);
+asset_dto_list_envelope_t* AssetsAPI_getAssets(apiClient_t *apiClient, char *tenantId, asset_dto_collection_query_parameters_t *asset_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -966,6 +976,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**asset_dto_collection_query_parameters** | **[asset_dto_collection_query_parameters_t](asset_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -978,7 +989,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -989,7 +1000,7 @@ No authorization required
 //
 // Returns the total number of assets for the authenticated tenant.
 //
-int32_envelope_t* AssetsAPI_getAssetsCount(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* AssetsAPI_getAssetsCount(apiClient_t *apiClient, char *tenantId, asset_dto_collection_query_parameters_t *asset_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -997,6 +1008,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**asset_dto_collection_query_parameters** | **[asset_dto_collection_query_parameters_t](asset_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1009,7 +1021,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1020,7 +1032,7 @@ No authorization required
 //
 // Applies a JSON Patch document to an existing asset for the authenticated tenant.
 //
-empty_envelope_t* AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list_t *operation);
+empty_envelope_t* AssetsAPI_patchAsset(apiClient_t *apiClient, char *tenantId, char *assetId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1029,7 +1041,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1053,7 +1065,7 @@ No authorization required
 //
 // Applies a JSON Patch document to an existing asset category for the authenticated tenant.
 //
-empty_envelope_t* AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *operation);
+empty_envelope_t* AssetsAPI_patchAssetAssetCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1062,7 +1074,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **categoryId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1086,7 +1098,7 @@ No authorization required
 //
 // Applies a JSON Patch document to an existing depreciation record for the specified asset.
 //
-empty_envelope_t* AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, char *assetId, char *recordId, list_t *operation);
+empty_envelope_t* AssetsAPI_patchAssetDepreciationRecord(apiClient_t *apiClient, char *tenantId, char *assetId, char *recordId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1096,7 +1108,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
 **recordId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1120,7 +1132,7 @@ No authorization required
 //
 // Applies a JSON Patch document to an existing repair record for the specified asset.
 //
-empty_envelope_t* AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId, char *repairId, list_t *operation);
+empty_envelope_t* AssetsAPI_patchAssetRepair(apiClient_t *apiClient, char *tenantId, char *assetId, char *repairId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1130,7 +1142,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
 **repairId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1154,7 +1166,7 @@ No authorization required
 //
 // Applies a JSON Patch document to an existing transfer record for the specified asset.
 //
-empty_envelope_t* AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *assetId, char *transferId, list_t *operation);
+empty_envelope_t* AssetsAPI_patchAssetTransfer(apiClient_t *apiClient, char *tenantId, char *assetId, char *transferId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1164,7 +1176,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
 **transferId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1188,7 +1200,7 @@ No authorization required
 //
 // Applies a JSON Patch document to an existing value amendment record for the specified asset.
 //
-empty_envelope_t* AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *assetId, char *amendId, list_t *operation);
+empty_envelope_t* AssetsAPI_patchAssetValueAmend(apiClient_t *apiClient, char *tenantId, char *assetId, char *amendId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1198,7 +1210,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **assetId** | **char \*** |  | 
 **amendId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

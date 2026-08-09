@@ -9,6 +9,7 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/training_program_create_dto.h"
+#include "../model/training_program_dto_collection_query_parameters.h"
 #include "../model/training_program_dto_envelope.h"
 #include "../model/training_program_dto_list_envelope.h"
 #include "../model/training_program_update_dto.h"
@@ -43,7 +44,7 @@ TrainingProgramsAPI_getTrainingProgramByIdAsync(apiClient_t *apiClient, char *te
 // Retrieves training programs for the specified tenant.
 //
 training_program_dto_list_envelope_t*
-TrainingProgramsAPI_getTrainingProgramsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TrainingProgramsAPI_getTrainingProgramsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, training_program_dto_collection_query_parameters_t *training_program_dto_collection_query_parameters);
 
 
 // Count training programs
@@ -51,7 +52,7 @@ TrainingProgramsAPI_getTrainingProgramsAsync(apiClient_t *apiClient, char *tenan
 // Counts training programs for the specified tenant.
 //
 int32_envelope_t*
-TrainingProgramsAPI_getTrainingProgramsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TrainingProgramsAPI_getTrainingProgramsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, training_program_dto_collection_query_parameters_t *training_program_dto_collection_query_parameters);
 
 
 // Update a training program

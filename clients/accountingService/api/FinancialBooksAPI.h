@@ -8,11 +8,12 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/financial_book_create_dto.h"
+#include "../model/financial_book_dto_collection_query_parameters.h"
 #include "../model/financial_book_dto_envelope.h"
 #include "../model/financial_book_dto_list_envelope.h"
 #include "../model/financial_book_update_dto.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new financial book
@@ -44,7 +45,7 @@ FinancialBooksAPI_getFinancialBookDetailsAsync(apiClient_t *apiClient, char *ten
 // Retrieves all financial books for the specified tenant using OData query options.
 //
 financial_book_dto_list_envelope_t*
-FinancialBooksAPI_getFinancialBooksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+FinancialBooksAPI_getFinancialBooksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, financial_book_dto_collection_query_parameters_t *financial_book_dto_collection_query_parameters);
 
 
 // Get the count of financial books
@@ -52,7 +53,7 @@ FinancialBooksAPI_getFinancialBooksAsync(apiClient_t *apiClient, char *tenantId,
 // Get the count of financial books.
 //
 int32_envelope_t*
-FinancialBooksAPI_getFinancialBooksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+FinancialBooksAPI_getFinancialBooksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, financial_book_dto_collection_query_parameters_t *financial_book_dto_collection_query_parameters);
 
 
 // Patch a financial book
@@ -60,7 +61,7 @@ FinancialBooksAPI_getFinancialBooksCountAsync(apiClient_t *apiClient, char *tena
 // Partially updates a financial book.
 //
 empty_envelope_t*
-FinancialBooksAPI_patchFinancialBookAsync(apiClient_t *apiClient, char *tenantId, char *financialBookId, char *api_version, char *x_api_version, list_t *operation);
+FinancialBooksAPI_patchFinancialBookAsync(apiClient_t *apiClient, char *tenantId, char *financialBookId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates an existing financial book

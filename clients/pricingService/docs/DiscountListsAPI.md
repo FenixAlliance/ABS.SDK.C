@@ -188,7 +188,7 @@ No authorization required
 //
 // Gets all discount entries for a specific discount list with OData support.
 //
-discount_dto_list_envelope_t* DiscountListsAPI_getDiscountListEntries(apiClient_t *apiClient, char *tenantId, char *discountListId);
+discount_dto_list_envelope_t* DiscountListsAPI_getDiscountListEntries(apiClient_t *apiClient, char *tenantId, char *discountListId, discount_dto_collection_query_parameters_t *discount_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -197,6 +197,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **discountListId** | **char \*** |  | 
+**discount_dto_collection_query_parameters** | **[discount_dto_collection_query_parameters_t](discount_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -209,7 +210,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -220,7 +221,7 @@ No authorization required
 //
 // Gets the count of discount entries for a specific discount list.
 //
-int32_envelope_t* DiscountListsAPI_getDiscountListEntriesCount(apiClient_t *apiClient, char *tenantId, char *discountListId);
+int32_envelope_t* DiscountListsAPI_getDiscountListEntriesCount(apiClient_t *apiClient, char *tenantId, char *discountListId, discount_dto_collection_query_parameters_t *discount_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -229,6 +230,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **discountListId** | **char \*** |  | 
+**discount_dto_collection_query_parameters** | **[discount_dto_collection_query_parameters_t](discount_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -241,7 +243,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -285,7 +287,7 @@ No authorization required
 //
 // Gets all discount lists for the current tenant with OData support.
 //
-discount_list_dto_list_envelope_t* DiscountListsAPI_getDiscountLists(apiClient_t *apiClient, char *tenantId);
+discount_list_dto_list_envelope_t* DiscountListsAPI_getDiscountLists(apiClient_t *apiClient, char *tenantId, discount_list_dto_collection_query_parameters_t *discount_list_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -293,6 +295,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**discount_list_dto_collection_query_parameters** | **[discount_list_dto_collection_query_parameters_t](discount_list_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -305,7 +308,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -316,7 +319,7 @@ No authorization required
 //
 // Gets the count of discount lists for the current tenant.
 //
-int32_envelope_t* DiscountListsAPI_getDiscountListsCount(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* DiscountListsAPI_getDiscountListsCount(apiClient_t *apiClient, char *tenantId, discount_list_dto_collection_query_parameters_t *discount_list_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -324,6 +327,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**discount_list_dto_collection_query_parameters** | **[discount_list_dto_collection_query_parameters_t](discount_list_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -336,7 +340,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -347,7 +351,7 @@ No authorization required
 //
 // Partially updates the specified discount list using a JSON Patch document.
 //
-empty_envelope_t* DiscountListsAPI_patchDiscountList(apiClient_t *apiClient, char *tenantId, char *discountListId, list_t *operation);
+empty_envelope_t* DiscountListsAPI_patchDiscountList(apiClient_t *apiClient, char *tenantId, char *discountListId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -356,7 +360,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **discountListId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -380,7 +384,7 @@ No authorization required
 //
 // Partially updates the specified discount entry using a JSON Patch document.
 //
-empty_envelope_t* DiscountListsAPI_patchDiscountListEntry(apiClient_t *apiClient, char *tenantId, char *discountListId, char *discountListEntryId, list_t *operation);
+empty_envelope_t* DiscountListsAPI_patchDiscountListEntry(apiClient_t *apiClient, char *tenantId, char *discountListId, char *discountListEntryId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -390,7 +394,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **discountListId** | **char \*** |  | 
 **discountListEntryId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

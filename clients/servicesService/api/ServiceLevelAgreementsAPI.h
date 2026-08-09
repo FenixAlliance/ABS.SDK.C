@@ -8,8 +8,9 @@
 #include "../model/envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/service_level_agreement_create_dto.h"
+#include "../model/service_level_agreement_dto_collection_query_parameters.h"
 #include "../model/service_level_agreement_dto_envelope.h"
 #include "../model/service_level_agreement_dto_i_read_only_list_envelope.h"
 #include "../model/service_level_agreement_update_dto.h"
@@ -44,7 +45,7 @@ ServiceLevelAgreementsAPI_getServiceLevelAgreementByIdAsync(apiClient_t *apiClie
 // Retrieves all service level agreements for the specified tenant.
 //
 service_level_agreement_dto_i_read_only_list_envelope_t*
-ServiceLevelAgreementsAPI_getServiceLevelAgreementsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServiceLevelAgreementsAPI_getServiceLevelAgreementsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_level_agreement_dto_collection_query_parameters_t *service_level_agreement_dto_collection_query_parameters);
 
 
 // Get service level agreements count
@@ -52,7 +53,7 @@ ServiceLevelAgreementsAPI_getServiceLevelAgreementsAsync(apiClient_t *apiClient,
 // Returns the count of service level agreements for the specified tenant.
 //
 int32_envelope_t*
-ServiceLevelAgreementsAPI_getServiceLevelAgreementsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ServiceLevelAgreementsAPI_getServiceLevelAgreementsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, service_level_agreement_dto_collection_query_parameters_t *service_level_agreement_dto_collection_query_parameters);
 
 
 // Patch a service level agreement
@@ -60,7 +61,7 @@ ServiceLevelAgreementsAPI_getServiceLevelAgreementsCountAsync(apiClient_t *apiCl
 // Partially updates an existing service level agreement using a JSON Patch document.
 //
 envelope_t*
-ServiceLevelAgreementsAPI_patchServiceLevelAgreementAsync(apiClient_t *apiClient, char *tenantId, char *serviceLevelAgreementId, char *api_version, char *x_api_version, list_t *operation);
+ServiceLevelAgreementsAPI_patchServiceLevelAgreementAsync(apiClient_t *apiClient, char *tenantId, char *serviceLevelAgreementId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a service level agreement

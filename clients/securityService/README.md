@@ -66,6 +66,15 @@ All URIs are relative to *https://absuite.net*
 
 Category | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_disableApplicationPrincipalAsync**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_disableApplicationPrincipalAsync) | **POST** /api/v2/SecurityService/ApplicationPrincipals/{principalId}/Disable | Disable an application principal
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_enableApplicationPrincipalAsync**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_enableApplicationPrincipalAsync) | **POST** /api/v2/SecurityService/ApplicationPrincipals/{principalId}/Enable | Enable an application principal
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_getApplicationPrincipalAsync**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_getApplicationPrincipalAsync) | **GET** /api/v2/SecurityService/ApplicationPrincipals/{principalId} | Get application principal by ID
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_getApplicationPrincipalsAsync**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_getApplicationPrincipalsAsync) | **GET** /api/v2/SecurityService/ApplicationPrincipals | Get all application principals
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_getApplicationPrincipalsCountAsync**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_getApplicationPrincipalsCountAsync) | **GET** /api/v2/SecurityService/ApplicationPrincipals/Count | Get application principals count
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_grantPermissionAsync**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_grantPermissionAsync) | **POST** /api/v2/SecurityService/ApplicationPrincipals/{principalId}/Permissions | Grant a permission to an application principal
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_provisionApplicationPrincipalAsync**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_provisionApplicationPrincipalAsync) | **POST** /api/v2/SecurityService/ApplicationPrincipals/Provision | Provision an application principal
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_revokePermissionAsync**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_revokePermissionAsync) | **DELETE** /api/v2/SecurityService/ApplicationPrincipals/{principalId}/Permissions/{permission} | Revoke a permission from an application principal
+*ApplicationPrincipalsAPI* | [**ApplicationPrincipalsAPI_suspendApplicationPrincipalAsync**](docs/ApplicationPrincipalsAPI.md#ApplicationPrincipalsAPI_suspendApplicationPrincipalAsync) | **POST** /api/v2/SecurityService/ApplicationPrincipals/{principalId}/Suspend | Suspend an application principal
 *ApplicationsAPI* | [**ApplicationsAPI_createBusinessApplicationAsync**](docs/ApplicationsAPI.md#ApplicationsAPI_createBusinessApplicationAsync) | **POST** /api/v2/SecurityService/Applications | Create a new business application
 *ApplicationsAPI* | [**ApplicationsAPI_deleteBusinessApplicationAsync**](docs/ApplicationsAPI.md#ApplicationsAPI_deleteBusinessApplicationAsync) | **DELETE** /api/v2/SecurityService/Applications/{applicationId} | Delete a business application
 *ApplicationsAPI* | [**ApplicationsAPI_getBusinessApplicationByIdAsync**](docs/ApplicationsAPI.md#ApplicationsAPI_getBusinessApplicationByIdAsync) | **GET** /api/v2/SecurityService/Applications/{applicationId} | Get business application by ID
@@ -79,7 +88,6 @@ Category | Method | HTTP request | Description
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageDownloadPersonalDataPost) | **POST** /Account/Manage/DownloadPersonalData | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountManageLinkExternalLoginPost) | **POST** /Account/Manage/LinkExternalLogin | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_accountPerformExternalLoginPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_accountPerformExternalLoginPost) | **POST** /Account/PerformExternalLogin | 
-*FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_apiV2AIServiceAgentsAgentIdAguiPost) | **POST** /api/v2/AIService/Agents/{agentId}/agui | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_forgotPasswordPost**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_forgotPasswordPost) | **POST** /forgotPassword | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_healthGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_healthGet) | **GET** /health | 
 *FenixAllianceABSWebAPI* | [**FenixAllianceABSWebAPI_helloGet**](docs/FenixAllianceABSWebAPI.md#FenixAllianceABSWebAPI_helloGet) | **GET** /hello | 
@@ -150,14 +158,25 @@ Category | Method | HTTP request | Description
 ## Documentation for Models
 
  - [access_token_response_t](docs/access_token_response.md)
+ - [application_principal_detail_dto_t](docs/application_principal_detail_dto.md)
+ - [application_principal_detail_dto_envelope_t](docs/application_principal_detail_dto_envelope.md)
+ - [application_principal_dto_t](docs/application_principal_dto.md)
+ - [application_principal_dto_collection_query_parameters_t](docs/application_principal_dto_collection_query_parameters.md)
+ - [application_principal_dto_list_envelope_t](docs/application_principal_dto_list_envelope.md)
+ - [application_principal_permission_request_dto_t](docs/application_principal_permission_request_dto.md)
+ - [application_principal_provision_request_dto_t](docs/application_principal_provision_request_dto.md)
+ - [application_principal_provisioning_result_dto_t](docs/application_principal_provisioning_result_dto.md)
+ - [application_principal_provisioning_result_dto_envelope_t](docs/application_principal_provisioning_result_dto_envelope.md)
  - [business_application_create_dto_t](docs/business_application_create_dto.md)
  - [business_application_dto_t](docs/business_application_dto.md)
+ - [business_application_dto_collection_query_parameters_t](docs/business_application_dto_collection_query_parameters.md)
  - [business_application_dto_envelope_t](docs/business_application_dto_envelope.md)
  - [business_application_dto_list_envelope_t](docs/business_application_dto_list_envelope.md)
  - [business_application_simple_dto_t](docs/business_application_simple_dto.md)
  - [business_application_simple_dto_list_envelope_t](docs/business_application_simple_dto_list_envelope.md)
  - [business_application_update_dto_t](docs/business_application_update_dto.md)
  - [business_security_log_dto_t](docs/business_security_log_dto.md)
+ - [business_security_log_dto_collection_query_parameters_t](docs/business_security_log_dto_collection_query_parameters.md)
  - [business_security_log_dto_list_envelope_t](docs/business_security_log_dto_list_envelope.md)
  - [empty_envelope_t](docs/empty_envelope.md)
  - [error_envelope_t](docs/error_envelope.md)
@@ -167,6 +186,7 @@ Category | Method | HTTP request | Description
  - [info_response_t](docs/info_response.md)
  - [int32_envelope_t](docs/int32_envelope.md)
  - [log_dto_t](docs/log_dto.md)
+ - [log_dto_collection_query_parameters_t](docs/log_dto_collection_query_parameters.md)
  - [log_dto_list_envelope_t](docs/log_dto_list_envelope.md)
  - [login_request_t](docs/login_request.md)
  - [o_auth_application_create_dto_t](docs/o_auth_application_create_dto.md)
@@ -177,20 +197,23 @@ Category | Method | HTTP request | Description
  - [o_auth_authorization_dto_t](docs/o_auth_authorization_dto.md)
  - [o_auth_authorization_dto_envelope_t](docs/o_auth_authorization_dto_envelope.md)
  - [o_auth_authorization_dto_list_envelope_t](docs/o_auth_authorization_dto_list_envelope.md)
- - [operation_t](docs/operation.md)
+ - [patch_operation_t](docs/patch_operation.md)
  - [refresh_request_t](docs/refresh_request.md)
  - [register_request_t](docs/register_request.md)
  - [resend_confirmation_email_request_t](docs/resend_confirmation_email_request.md)
  - [reset_password_request_t](docs/reset_password_request.md)
  - [security_certificate_dto_t](docs/security_certificate_dto.md)
+ - [security_certificate_dto_collection_query_parameters_t](docs/security_certificate_dto_collection_query_parameters.md)
  - [security_certificate_dto_list_envelope_t](docs/security_certificate_dto_list_envelope.md)
  - [security_permission_create_dto_t](docs/security_permission_create_dto.md)
  - [security_permission_dto_t](docs/security_permission_dto.md)
+ - [security_permission_dto_collection_query_parameters_t](docs/security_permission_dto_collection_query_parameters.md)
  - [security_permission_dto_envelope_t](docs/security_permission_dto_envelope.md)
  - [security_permission_dto_list_envelope_t](docs/security_permission_dto_list_envelope.md)
  - [security_permission_update_dto_t](docs/security_permission_update_dto.md)
  - [security_role_create_dto_t](docs/security_role_create_dto.md)
  - [security_role_dto_t](docs/security_role_dto.md)
+ - [security_role_dto_collection_query_parameters_t](docs/security_role_dto_collection_query_parameters.md)
  - [security_role_dto_envelope_t](docs/security_role_dto_envelope.md)
  - [security_role_dto_list_envelope_t](docs/security_role_dto_list_envelope.md)
  - [security_role_update_dto_t](docs/security_role_update_dto.md)
@@ -199,6 +222,7 @@ Category | Method | HTTP request | Description
  - [two_factor_request_t](docs/two_factor_request.md)
  - [two_factor_response_t](docs/two_factor_response.md)
  - [webhook_request_dto_t](docs/webhook_request_dto.md)
+ - [webhook_request_dto_collection_query_parameters_t](docs/webhook_request_dto_collection_query_parameters.md)
  - [webhook_request_dto_list_envelope_t](docs/webhook_request_dto_list_envelope.md)
 
 

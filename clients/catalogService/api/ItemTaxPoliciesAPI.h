@@ -7,6 +7,7 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
+#include "../model/item_tax_policy_dto_collection_query_parameters.h"
 #include "../model/item_tax_policy_dto_envelope.h"
 #include "../model/item_tax_policy_dto_list_envelope.h"
 
@@ -16,7 +17,7 @@
 // Counts all tax policies for a specific item.
 //
 int32_envelope_t*
-ItemTaxPoliciesAPI_countItemTaxPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemTaxPoliciesAPI_countItemTaxPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_tax_policy_dto_collection_query_parameters_t *item_tax_policy_dto_collection_query_parameters);
 
 
 // Get item tax policies
@@ -24,7 +25,7 @@ ItemTaxPoliciesAPI_countItemTaxPoliciesAsync(apiClient_t *apiClient, char *tenan
 // Retrieves all tax policies for a specific item.
 //
 item_tax_policy_dto_list_envelope_t*
-ItemTaxPoliciesAPI_getItemTaxPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version);
+ItemTaxPoliciesAPI_getItemTaxPoliciesAsync(apiClient_t *apiClient, char *tenantId, char *itemId, char *api_version, char *x_api_version, item_tax_policy_dto_collection_query_parameters_t *item_tax_policy_dto_collection_query_parameters);
 
 
 // Get item tax policy by ID

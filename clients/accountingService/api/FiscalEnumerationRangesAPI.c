@@ -510,13 +510,13 @@ end:
 // Retrieves all invoice enumeration ranges for the specified fiscal authority.
 //
 invoice_enumeration_range_dto_list_envelope_t*
-FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version)
+FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *authorityId, char *api_version, char *x_api_version, invoice_enumeration_range_dto_collection_query_parameters_t *invoice_enumeration_range_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -584,8 +584,19 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, c
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters = NULL;
+    if (invoice_enumeration_range_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters = invoice_enumeration_range_dto_collection_query_parameters_convertToJSON(invoice_enumeration_range_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -626,7 +637,7 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, c
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_authorityId);
     if (keyHeader_x_api_version) {
@@ -638,6 +649,11 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRanges(apiClient_t *apiClient, c
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -686,13 +702,13 @@ end:
 // Returns the total count of invoice enumeration ranges for the specified fiscal authority.
 //
 int32_envelope_t*
-FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version)
+FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClient, char *tenantId, char *fiscalAuthorityId, char *api_version, char *x_api_version, invoice_enumeration_range_dto_collection_query_parameters_t *invoice_enumeration_range_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -755,8 +771,19 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClie
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters = NULL;
+    if (invoice_enumeration_range_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters = invoice_enumeration_range_dto_collection_query_parameters_convertToJSON(invoice_enumeration_range_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -797,7 +824,7 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClie
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_fiscalAuthorityId);
     if (keyHeader_x_api_version) {
@@ -809,6 +836,11 @@ FiscalEnumerationRangesAPI_getInvoiceEnumerationRangesCount(apiClient_t *apiClie
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters);
+        localVarSingleItemJSON_invoice_enumeration_range_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -845,7 +877,7 @@ end:
 // Partially updates an invoice enumeration range.
 //
 empty_envelope_t*
-FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, list_t *operation)
+FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync(apiClient_t *apiClient, char *tenantId, char *enumerationRangeId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -917,14 +949,14 @@ FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync(apiClient_t *apiClie
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -932,16 +964,16 @@ FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync(apiClient_t *apiClie
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -999,17 +1031,17 @@ FiscalEnumerationRangesAPI_patchFiscalEnumerationRangeAsync(apiClient_t *apiClie
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

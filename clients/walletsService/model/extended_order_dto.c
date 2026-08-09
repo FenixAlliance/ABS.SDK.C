@@ -99,6 +99,7 @@ extended_order_dto_t *extended_order_dto_create(
     char *city_id,
     char *customer_notes,
     walletsservice_extended_order_dto_TAXCALCULATIONMETHOD_e tax_calculation_method,
+    walletsservice_extended_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     double forex_rate,
     char *forex_rates_snapshot,
     char *currency_id,
@@ -149,7 +150,6 @@ extended_order_dto_t *extended_order_dto_create(
     char *qualified_identifier,
     char *seller_billing_profile_id,
     char *buyer_billing_profile_id,
-    walletsservice_extended_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_method,
     walletsservice_extended_order_dto_FREIGHTTERMS_e freight_terms,
     walletsservice_extended_order_dto_ORDERSTATUS_e order_status,
     char *requested_delivery_date,
@@ -198,6 +198,7 @@ extended_order_dto_t *extended_order_dto_create(
     extended_order_dto_local_var->city_id = city_id;
     extended_order_dto_local_var->customer_notes = customer_notes;
     extended_order_dto_local_var->tax_calculation_method = tax_calculation_method;
+    extended_order_dto_local_var->cost_calculation_method = cost_calculation_method;
     extended_order_dto_local_var->forex_rate = forex_rate;
     extended_order_dto_local_var->forex_rates_snapshot = forex_rates_snapshot;
     extended_order_dto_local_var->currency_id = currency_id;
@@ -248,7 +249,6 @@ extended_order_dto_t *extended_order_dto_create(
     extended_order_dto_local_var->qualified_identifier = qualified_identifier;
     extended_order_dto_local_var->seller_billing_profile_id = seller_billing_profile_id;
     extended_order_dto_local_var->buyer_billing_profile_id = buyer_billing_profile_id;
-    extended_order_dto_local_var->cost_calculation_method = cost_calculation_method;
     extended_order_dto_local_var->freight_terms = freight_terms;
     extended_order_dto_local_var->order_status = order_status;
     extended_order_dto_local_var->requested_delivery_date = requested_delivery_date;
@@ -700,6 +700,15 @@ cJSON *extended_order_dto_convertToJSON(extended_order_dto_t *extended_order_dto
     }
 
 
+    // extended_order_dto->cost_calculation_method
+    if(extended_order_dto->cost_calculation_method != walletsservice_extended_order_dto_COSTCALCULATIONMETHOD_NULL) {
+    if(cJSON_AddStringToObject(item, "costCalculationMethod", cost_calculation_methodextended_order_dto_ToString(extended_order_dto->cost_calculation_method)) == NULL)
+    {
+    goto fail; //Enum
+    }
+    }
+
+
     // extended_order_dto->forex_rate
     if(extended_order_dto->forex_rate) {
     if(cJSON_AddNumberToObject(item, "forexRate", extended_order_dto->forex_rate) == NULL) {
@@ -1096,15 +1105,6 @@ cJSON *extended_order_dto_convertToJSON(extended_order_dto_t *extended_order_dto
     if(extended_order_dto->buyer_billing_profile_id) {
     if(cJSON_AddStringToObject(item, "buyerBillingProfileId", extended_order_dto->buyer_billing_profile_id) == NULL) {
     goto fail; //String
-    }
-    }
-
-
-    // extended_order_dto->cost_calculation_method
-    if(extended_order_dto->cost_calculation_method != walletsservice_extended_order_dto_COSTCALCULATIONMETHOD_NULL) {
-    if(cJSON_AddStringToObject(item, "costCalculationMethod", cost_calculation_methodextended_order_dto_ToString(extended_order_dto->cost_calculation_method)) == NULL)
-    {
-    goto fail; //Enum
     }
     }
 
@@ -1539,6 +1539,17 @@ extended_order_dto_t *extended_order_dto_parseFromJSON(cJSON *extended_order_dto
     goto end; //Enum
     }
     tax_calculation_methodVariable = extended_order_dto_tax_calculation_method_FromString(tax_calculation_method->valuestring);
+    }
+
+    // extended_order_dto->cost_calculation_method
+    cJSON *cost_calculation_method = cJSON_GetObjectItemCaseSensitive(extended_order_dtoJSON, "costCalculationMethod");
+    walletsservice_extended_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_methodVariable;
+    if (cost_calculation_method) { 
+    if(!cJSON_IsString(cost_calculation_method))
+    {
+    goto end; //Enum
+    }
+    cost_calculation_methodVariable = extended_order_dto_cost_calculation_method_FromString(cost_calculation_method->valuestring);
     }
 
     // extended_order_dto->forex_rate
@@ -1991,17 +2002,6 @@ extended_order_dto_t *extended_order_dto_parseFromJSON(cJSON *extended_order_dto
     }
     }
 
-    // extended_order_dto->cost_calculation_method
-    cJSON *cost_calculation_method = cJSON_GetObjectItemCaseSensitive(extended_order_dtoJSON, "costCalculationMethod");
-    walletsservice_extended_order_dto_COSTCALCULATIONMETHOD_e cost_calculation_methodVariable;
-    if (cost_calculation_method) { 
-    if(!cJSON_IsString(cost_calculation_method))
-    {
-    goto end; //Enum
-    }
-    cost_calculation_methodVariable = extended_order_dto_cost_calculation_method_FromString(cost_calculation_method->valuestring);
-    }
-
     // extended_order_dto->freight_terms
     cJSON *freight_terms = cJSON_GetObjectItemCaseSensitive(extended_order_dtoJSON, "freightTerms");
     walletsservice_extended_order_dto_FREIGHTTERMS_e freight_termsVariable;
@@ -2177,6 +2177,7 @@ extended_order_dto_t *extended_order_dto_parseFromJSON(cJSON *extended_order_dto
         city_id && !cJSON_IsNull(city_id) ? strdup(city_id->valuestring) : NULL,
         customer_notes && !cJSON_IsNull(customer_notes) ? strdup(customer_notes->valuestring) : NULL,
         tax_calculation_method ? tax_calculation_methodVariable : walletsservice_extended_order_dto_TAXCALCULATIONMETHOD_NULL,
+        cost_calculation_method ? cost_calculation_methodVariable : walletsservice_extended_order_dto_COSTCALCULATIONMETHOD_NULL,
         forex_rate ? forex_rate->valuedouble : 0,
         forex_rates_snapshot && !cJSON_IsNull(forex_rates_snapshot) ? strdup(forex_rates_snapshot->valuestring) : NULL,
         currency_id && !cJSON_IsNull(currency_id) ? strdup(currency_id->valuestring) : NULL,
@@ -2227,7 +2228,6 @@ extended_order_dto_t *extended_order_dto_parseFromJSON(cJSON *extended_order_dto
         qualified_identifier && !cJSON_IsNull(qualified_identifier) ? strdup(qualified_identifier->valuestring) : NULL,
         seller_billing_profile_id && !cJSON_IsNull(seller_billing_profile_id) ? strdup(seller_billing_profile_id->valuestring) : NULL,
         buyer_billing_profile_id && !cJSON_IsNull(buyer_billing_profile_id) ? strdup(buyer_billing_profile_id->valuestring) : NULL,
-        cost_calculation_method ? cost_calculation_methodVariable : walletsservice_extended_order_dto_COSTCALCULATIONMETHOD_NULL,
         freight_terms ? freight_termsVariable : walletsservice_extended_order_dto_FREIGHTTERMS_NULL,
         order_status ? order_statusVariable : walletsservice_extended_order_dto_ORDERSTATUS_NULL,
         requested_delivery_date && !cJSON_IsNull(requested_delivery_date) ? strdup(requested_delivery_date->valuestring) : NULL,

@@ -7,9 +7,10 @@
 #include "../include/binary.h"
 #include "../model/course_handout_create_dto.h"
 #include "../model/course_handout_dto.h"
+#include "../model/course_handout_dto_collection_query_parameters.h"
 #include "../model/course_handout_update_dto.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a course handout
@@ -41,7 +42,7 @@ CourseHandoutsAPI_getCourseHandoutByIdAsync(apiClient_t *apiClient, char *handou
 // Retrieves all course handouts for the specified tenant.
 //
 list_t*
-CourseHandoutsAPI_getCourseHandoutsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseHandoutsAPI_getCourseHandoutsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_handout_dto_collection_query_parameters_t *course_handout_dto_collection_query_parameters);
 
 
 // Get course handouts count
@@ -49,7 +50,7 @@ CourseHandoutsAPI_getCourseHandoutsAsync(apiClient_t *apiClient, char *tenantId,
 // Returns the count of course handouts for the specified tenant.
 //
 int*
-CourseHandoutsAPI_getCourseHandoutsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseHandoutsAPI_getCourseHandoutsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_handout_dto_collection_query_parameters_t *course_handout_dto_collection_query_parameters);
 
 
 // Patch a course handout
@@ -57,7 +58,7 @@ CourseHandoutsAPI_getCourseHandoutsCountAsync(apiClient_t *apiClient, char *tena
 // Partially updates an existing course handout.
 //
 void
-CourseHandoutsAPI_patchCourseHandoutAsync(apiClient_t *apiClient, char *tenantId, char *handoutId, char *api_version, char *x_api_version, list_t *operation);
+CourseHandoutsAPI_patchCourseHandoutAsync(apiClient_t *apiClient, char *tenantId, char *handoutId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course handout

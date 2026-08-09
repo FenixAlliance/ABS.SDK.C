@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/email_template_create_dto.h"
+#include "../model/email_template_dto_collection_query_parameters.h"
 #include "../model/email_template_dto_envelope.h"
 #include "../model/email_template_dto_list_envelope.h"
 #include "../model/email_template_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create an email template
@@ -44,7 +45,7 @@ EmailTemplatesAPI_getEmailTemplateDetailsAsync(apiClient_t *apiClient, char *ten
 // Returns the count of email templates for the specified tenant using OData query options.
 //
 int32_envelope_t*
-EmailTemplatesAPI_getEmailTemplatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EmailTemplatesAPI_getEmailTemplatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, email_template_dto_collection_query_parameters_t *email_template_dto_collection_query_parameters);
 
 
 // Get email templates
@@ -52,7 +53,7 @@ EmailTemplatesAPI_getEmailTemplatesCountAsync(apiClient_t *apiClient, char *tena
 // Retrieves a collection of email templates for the specified tenant using OData query options.
 //
 email_template_dto_list_envelope_t*
-EmailTemplatesAPI_getEmailTemplatesODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+EmailTemplatesAPI_getEmailTemplatesODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, email_template_dto_collection_query_parameters_t *email_template_dto_collection_query_parameters);
 
 
 // Patch an email template
@@ -60,7 +61,7 @@ EmailTemplatesAPI_getEmailTemplatesODataAsync(apiClient_t *apiClient, char *tena
 // Partially updates an email template by its ID using JSON Patch.
 //
 empty_envelope_t*
-EmailTemplatesAPI_patchEmailTemplateAsync(apiClient_t *apiClient, char *tenantId, char *emailTemplateId, char *api_version, char *x_api_version, list_t *operation);
+EmailTemplatesAPI_patchEmailTemplateAsync(apiClient_t *apiClient, char *tenantId, char *emailTemplateId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an email template

@@ -9,11 +9,13 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/item_price_create_dto.h"
+#include "../model/item_price_dto_collection_query_parameters.h"
 #include "../model/item_price_dto_envelope.h"
 #include "../model/item_price_dto_list_envelope.h"
 #include "../model/item_price_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/price_list_create_dto.h"
+#include "../model/price_list_dto_collection_query_parameters.h"
 #include "../model/price_list_dto_envelope.h"
 #include "../model/price_list_dto_list_envelope.h"
 #include "../model/price_list_update_dto.h"
@@ -72,7 +74,7 @@ PriceListsAPI_getPriceListPriceAsync(apiClient_t *apiClient, char *tenantId, cha
 // Gets all price entries for a specific price list with OData support.
 //
 item_price_dto_list_envelope_t*
-PriceListsAPI_getPriceListPricesAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *itemId);
+PriceListsAPI_getPriceListPricesAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *itemId, item_price_dto_collection_query_parameters_t *item_price_dto_collection_query_parameters);
 
 
 // Counts prices in a price list
@@ -80,7 +82,7 @@ PriceListsAPI_getPriceListPricesAsync(apiClient_t *apiClient, char *tenantId, ch
 // Gets the count of price entries for a specific price list.
 //
 int32_envelope_t*
-PriceListsAPI_getPriceListPricesCountAsync(apiClient_t *apiClient, char *tenantId, char *priceListId);
+PriceListsAPI_getPriceListPricesCountAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, item_price_dto_collection_query_parameters_t *item_price_dto_collection_query_parameters);
 
 
 // Retrieves all price lists
@@ -88,7 +90,7 @@ PriceListsAPI_getPriceListPricesCountAsync(apiClient_t *apiClient, char *tenantI
 // Gets all price lists for the current tenant with OData support.
 //
 price_list_dto_list_envelope_t*
-PriceListsAPI_getPriceListsAsync(apiClient_t *apiClient, char *tenantId);
+PriceListsAPI_getPriceListsAsync(apiClient_t *apiClient, char *tenantId, price_list_dto_collection_query_parameters_t *price_list_dto_collection_query_parameters);
 
 
 // Counts price lists
@@ -96,7 +98,7 @@ PriceListsAPI_getPriceListsAsync(apiClient_t *apiClient, char *tenantId);
 // Gets the count of price lists for the current tenant.
 //
 int32_envelope_t*
-PriceListsAPI_getPriceListsCountAsync(apiClient_t *apiClient, char *tenantId);
+PriceListsAPI_getPriceListsCountAsync(apiClient_t *apiClient, char *tenantId, price_list_dto_collection_query_parameters_t *price_list_dto_collection_query_parameters);
 
 
 // Patches a price list
@@ -104,7 +106,7 @@ PriceListsAPI_getPriceListsCountAsync(apiClient_t *apiClient, char *tenantId);
 // Partially updates the specified price list using a JSON Patch document.
 //
 empty_envelope_t*
-PriceListsAPI_patchPriceListAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, list_t *operation);
+PriceListsAPI_patchPriceListAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, list_t *patch_operation);
 
 
 // Patches a price list entry
@@ -112,7 +114,7 @@ PriceListsAPI_patchPriceListAsync(apiClient_t *apiClient, char *tenantId, char *
 // Partially updates the specified price entry in a price list using a JSON Patch document.
 //
 empty_envelope_t*
-PriceListsAPI_patchPriceListPriceAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *priceId, list_t *operation);
+PriceListsAPI_patchPriceListPriceAsync(apiClient_t *apiClient, char *tenantId, char *priceListId, char *priceId, list_t *patch_operation);
 
 
 // Updates a price list

@@ -7,8 +7,9 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/project_time_log_create_dto.h"
+#include "../model/project_time_log_dto_collection_query_parameters.h"
 #include "../model/project_time_log_dto_envelope.h"
 #include "../model/project_time_log_dto_list_envelope.h"
 #include "../model/project_time_log_update_dto.h"
@@ -19,7 +20,7 @@
 // Returns the total count of time logs for a specific project period with OData query support.
 //
 int32_envelope_t*
-TimeLogsAPI_countProjectPeriodTimeLogsAsync(apiClient_t *apiClient, char *tenantId, char *projectPeriodId, char *api_version, char *x_api_version);
+TimeLogsAPI_countProjectPeriodTimeLogsAsync(apiClient_t *apiClient, char *tenantId, char *projectPeriodId, char *api_version, char *x_api_version, project_time_log_dto_collection_query_parameters_t *project_time_log_dto_collection_query_parameters);
 
 
 // Create a new project time log
@@ -43,7 +44,7 @@ TimeLogsAPI_deleteProjectTimeLogAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves a list of time logs for a specific project period with OData query support.
 //
 project_time_log_dto_list_envelope_t*
-TimeLogsAPI_getProjectPeriodTimeLogsAsync(apiClient_t *apiClient, char *tenantId, char *projectPeriodId, char *api_version, char *x_api_version);
+TimeLogsAPI_getProjectPeriodTimeLogsAsync(apiClient_t *apiClient, char *tenantId, char *projectPeriodId, char *api_version, char *x_api_version, project_time_log_dto_collection_query_parameters_t *project_time_log_dto_collection_query_parameters);
 
 
 // Retrieve a project time log by ID
@@ -83,7 +84,7 @@ TimeLogsAPI_getProjectTimeLogsCreatedByContactAsync(apiClient_t *apiClient, char
 // Partially updates an existing project time log entry.
 //
 void
-TimeLogsAPI_patchProjectTimeLogAsync(apiClient_t *apiClient, char *timeLogId, char *tenantId, char *api_version, char *x_api_version, list_t *operation);
+TimeLogsAPI_patchProjectTimeLogAsync(apiClient_t *apiClient, char *timeLogId, char *tenantId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a project time log

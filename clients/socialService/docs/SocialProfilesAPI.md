@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**SocialProfilesAPI_getMessagesAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getMessagesAsync) | **GET** /api/v2/SocialService/SocialProfiles/{conversationId}/Messages | Get Messages
 [**SocialProfilesAPI_getNotificationByIdAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getNotificationByIdAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications/{notificationId} | Get Notification
 [**SocialProfilesAPI_getNotificationsAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getNotificationsAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Notifications | Get Notifications
+[**SocialProfilesAPI_getOrCreateDirectConversationAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getOrCreateDirectConversationAsync) | **POST** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Conversations/Direct | Get or Create Direct Conversation
 [**SocialProfilesAPI_getSocialProfileAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getSocialProfileAsync) | **GET** /api/v2/SocialService/SocialProfiles/{socialProfileId} | Get Social Profile
 [**SocialProfilesAPI_getSocialProfilesAsync**](SocialProfilesAPI.md#SocialProfilesAPI_getSocialProfilesAsync) | **GET** /api/v2/SocialService/SocialProfiles | Get Social Profiles
 [**SocialProfilesAPI_unfollowAsync**](SocialProfilesAPI.md#SocialProfilesAPI_unfollowAsync) | **DELETE** /api/v2/SocialService/SocialProfiles/{socialProfileId}/Follows/{followedSocialProfileId} | Unfollow
@@ -37,7 +38,7 @@ Method | HTTP request | Description
 //
 // Count conversations for a social profile.
 //
-int32_envelope_t* SocialProfilesAPI_countConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+int32_envelope_t* SocialProfilesAPI_countConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, conversation_dto_collection_query_parameters_t *conversation_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -47,6 +48,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**conversation_dto_collection_query_parameters** | **[conversation_dto_collection_query_parameters_t](conversation_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -59,7 +61,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -70,7 +72,7 @@ No authorization required
 //
 // Count followed profiles for a social profile.
 //
-int32_envelope_t* SocialProfilesAPI_countFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+int32_envelope_t* SocialProfilesAPI_countFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -80,6 +82,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**social_profile_dto_collection_query_parameters** | **[social_profile_dto_collection_query_parameters_t](social_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -92,7 +95,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -103,7 +106,7 @@ No authorization required
 //
 // Count follower profiles for a social profile.
 //
-int32_envelope_t* SocialProfilesAPI_countFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+int32_envelope_t* SocialProfilesAPI_countFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -113,6 +116,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**social_profile_dto_collection_query_parameters** | **[social_profile_dto_collection_query_parameters_t](social_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -125,7 +129,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -136,7 +140,7 @@ No authorization required
 //
 // Count followers for a social profile.
 //
-int32_envelope_t* SocialProfilesAPI_countFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+int32_envelope_t* SocialProfilesAPI_countFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -146,6 +150,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**follow_record_dto_collection_query_parameters** | **[follow_record_dto_collection_query_parameters_t](follow_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -158,7 +163,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -169,7 +174,7 @@ No authorization required
 //
 // Count follows for a social profile.
 //
-int32_envelope_t* SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+int32_envelope_t* SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -179,6 +184,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**follow_record_dto_collection_query_parameters** | **[follow_record_dto_collection_query_parameters_t](follow_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -191,7 +197,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -202,7 +208,7 @@ No authorization required
 //
 // Count messages for a conversation.
 //
-int32_envelope_t* SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version);
+int32_envelope_t* SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version, private_message_dto_collection_query_parameters_t *private_message_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -213,6 +219,7 @@ Name | Type | Description  | Notes
 **conversationId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**private_message_dto_collection_query_parameters** | **[private_message_dto_collection_query_parameters_t](private_message_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -225,7 +232,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -236,7 +243,7 @@ No authorization required
 //
 // Count notifications for a social profile.
 //
-int32_envelope_t* SocialProfilesAPI_countNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+int32_envelope_t* SocialProfilesAPI_countNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -246,6 +253,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**notification_dto_collection_query_parameters** | **[notification_dto_collection_query_parameters_t](notification_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -258,7 +266,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -269,7 +277,7 @@ No authorization required
 //
 // Count social profiles.
 //
-int32_envelope_t* SocialProfilesAPI_countSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* SocialProfilesAPI_countSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -278,6 +286,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**social_profile_dto_collection_query_parameters** | **[social_profile_dto_collection_query_parameters_t](social_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -290,7 +299,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -473,7 +482,7 @@ No authorization required
 //
 // Get a list of conversations for a social profile.
 //
-conversation_dto_list_envelope_t* SocialProfilesAPI_getConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+conversation_dto_list_envelope_t* SocialProfilesAPI_getConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, conversation_dto_collection_query_parameters_t *conversation_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -483,6 +492,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**conversation_dto_collection_query_parameters** | **[conversation_dto_collection_query_parameters_t](conversation_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -495,7 +505,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -506,7 +516,7 @@ No authorization required
 //
 // Get a list of followed profiles for a social profile.
 //
-social_profile_dto_list_envelope_t* SocialProfilesAPI_getFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+social_profile_dto_list_envelope_t* SocialProfilesAPI_getFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -516,6 +526,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**social_profile_dto_collection_query_parameters** | **[social_profile_dto_collection_query_parameters_t](social_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -528,7 +539,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -539,7 +550,7 @@ No authorization required
 //
 // Get a list of follower profiles for a social profile.
 //
-social_profile_dto_list_envelope_t* SocialProfilesAPI_getFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+social_profile_dto_list_envelope_t* SocialProfilesAPI_getFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -549,6 +560,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**social_profile_dto_collection_query_parameters** | **[social_profile_dto_collection_query_parameters_t](social_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -561,7 +573,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -572,7 +584,7 @@ No authorization required
 //
 // Get a list of followers for a social profile.
 //
-follow_record_dto_list_envelope_t* SocialProfilesAPI_getFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+follow_record_dto_list_envelope_t* SocialProfilesAPI_getFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -582,6 +594,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**follow_record_dto_collection_query_parameters** | **[follow_record_dto_collection_query_parameters_t](follow_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -594,7 +607,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -605,7 +618,7 @@ No authorization required
 //
 // Get a list of follows for a social profile.
 //
-follow_record_dto_list_envelope_t* SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+follow_record_dto_list_envelope_t* SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -615,6 +628,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**follow_record_dto_collection_query_parameters** | **[follow_record_dto_collection_query_parameters_t](follow_record_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -627,7 +641,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -638,7 +652,7 @@ No authorization required
 //
 // Get a list of messages for a conversation.
 //
-private_message_dto_list_envelope_t* SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version);
+private_message_dto_list_envelope_t* SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version, private_message_dto_collection_query_parameters_t *private_message_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -649,6 +663,7 @@ Name | Type | Description  | Notes
 **conversationId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**private_message_dto_collection_query_parameters** | **[private_message_dto_collection_query_parameters_t](private_message_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -661,7 +676,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -706,7 +721,7 @@ No authorization required
 //
 // Get a list of notifications for a social profile.
 //
-notification_dto_list_envelope_t* SocialProfilesAPI_getNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version);
+notification_dto_list_envelope_t* SocialProfilesAPI_getNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -716,6 +731,7 @@ Name | Type | Description  | Notes
 **socialProfileId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**notification_dto_collection_query_parameters** | **[notification_dto_collection_query_parameters_t](notification_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -728,7 +744,41 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **SocialProfilesAPI_getOrCreateDirectConversationAsync**
+```c
+// Get or Create Direct Conversation
+//
+// Get or create the direct two-party conversation between the acting profile and a counterparty.
+//
+conversation_dto_envelope_t* SocialProfilesAPI_getOrCreateDirectConversationAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, char *body);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**socialProfileId** | **char \*** |  | 
+**api_version** | **char \*** |  | [optional] 
+**x_api_version** | **char \*** |  | [optional] 
+**body** | **char \*** |  | [optional] 
+
+### Return type
+
+[conversation_dto_envelope_t](conversation_dto_envelope.md) *
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -772,7 +822,7 @@ No authorization required
 //
 // Get a list of social profiles.
 //
-social_profile_dto_list_envelope_t* SocialProfilesAPI_getSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+social_profile_dto_list_envelope_t* SocialProfilesAPI_getSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -781,6 +831,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**social_profile_dto_collection_query_parameters** | **[social_profile_dto_collection_query_parameters_t](social_profile_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -793,7 +844,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

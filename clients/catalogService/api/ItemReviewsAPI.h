@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/error_envelope.h"
 #include "../model/item_review_create_dto.h"
+#include "../model/item_review_dto_collection_query_parameters.h"
 #include "../model/item_review_dto_envelope.h"
 #include "../model/item_review_dto_list_envelope.h"
 #include "../model/item_review_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new item review
@@ -42,7 +43,7 @@ ItemReviewsAPI_getItemReviewByIdAsync(apiClient_t *apiClient, char *itemReviewId
 // Retrieves all item reviews for the specified item using OData query options.
 //
 item_review_dto_list_envelope_t*
-ItemReviewsAPI_getItemReviewsAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version);
+ItemReviewsAPI_getItemReviewsAsync(apiClient_t *apiClient, char *itemId, char *api_version, char *x_api_version, item_review_dto_collection_query_parameters_t *item_review_dto_collection_query_parameters);
 
 
 // Patch an item review
@@ -50,7 +51,7 @@ ItemReviewsAPI_getItemReviewsAsync(apiClient_t *apiClient, char *itemId, char *a
 // Partially updates an existing item review for the specified tenant.
 //
 void
-ItemReviewsAPI_patchItemReviewAsync(apiClient_t *apiClient, char *tenantId, char *itemReviewId, char *api_version, char *x_api_version, list_t *operation);
+ItemReviewsAPI_patchItemReviewAsync(apiClient_t *apiClient, char *tenantId, char *itemReviewId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update an item review

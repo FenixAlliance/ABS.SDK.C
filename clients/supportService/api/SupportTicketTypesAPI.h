@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/support_ticket_type_create_dto.h"
+#include "../model/support_ticket_type_dto_collection_query_parameters.h"
 #include "../model/support_ticket_type_dto_envelope.h"
 #include "../model/support_ticket_type_dto_list_envelope.h"
 #include "../model/support_ticket_type_update_dto.h"
@@ -44,7 +45,7 @@ SupportTicketTypesAPI_getSupportTicketTypeAsync(apiClient_t *apiClient, char *te
 // Retrieves a list of support ticket types for the specified tenant with OData query support.
 //
 support_ticket_type_dto_list_envelope_t*
-SupportTicketTypesAPI_getSupportTicketTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportTicketTypesAPI_getSupportTicketTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_ticket_type_dto_collection_query_parameters_t *support_ticket_type_dto_collection_query_parameters);
 
 
 // Get the count of support ticket types
@@ -52,7 +53,7 @@ SupportTicketTypesAPI_getSupportTicketTypesAsync(apiClient_t *apiClient, char *t
 // Returns the total count of support ticket types for the specified tenant with OData query support.
 //
 int32_envelope_t*
-SupportTicketTypesAPI_getSupportTicketTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+SupportTicketTypesAPI_getSupportTicketTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, support_ticket_type_dto_collection_query_parameters_t *support_ticket_type_dto_collection_query_parameters);
 
 
 // Patch a support ticket type
@@ -60,7 +61,7 @@ SupportTicketTypesAPI_getSupportTicketTypesCountAsync(apiClient_t *apiClient, ch
 // Partially updates an existing support ticket type by its unique identifier.
 //
 empty_envelope_t*
-SupportTicketTypesAPI_patchSupportTicketTypeAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketTypeId, char *api_version, char *x_api_version, list_t *operation);
+SupportTicketTypesAPI_patchSupportTicketTypeAsync(apiClient_t *apiClient, char *tenantId, char *supportTicketTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a support ticket type

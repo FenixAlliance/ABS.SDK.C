@@ -8,12 +8,14 @@
 #include "../model/business_domain_dto_list_envelope.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
+#include "../model/execution_context_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/portal_options_envelope.h"
 #include "../model/portal_settings.h"
 #include "../model/portal_settings_envelope.h"
 #include "../model/web_portal_create_dto.h"
+#include "../model/web_portal_dto_collection_query_parameters.h"
 #include "../model/web_portal_dto_envelope.h"
 #include "../model/web_portal_dto_list_envelope.h"
 #include "../model/web_portal_update_dto.h"
@@ -32,7 +34,7 @@ PortalsAPI_bindWebPortalDomainAsync(apiClient_t *apiClient, char *tenantId, char
 // Counts all portals for the specified tenant.
 //
 int32_envelope_t*
-PortalsAPI_countPortalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PortalsAPI_countPortalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_portal_dto_collection_query_parameters_t *web_portal_dto_collection_query_parameters);
 
 
 // Create a new web portal
@@ -72,7 +74,7 @@ PortalsAPI_getCurrentWebPortalOptionsAsync(apiClient_t *apiClient, char *api_ver
 // Retrieves all portals for the specified tenant.
 //
 web_portal_dto_list_envelope_t*
-PortalsAPI_getPortalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PortalsAPI_getPortalsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, web_portal_dto_collection_query_parameters_t *web_portal_dto_collection_query_parameters);
 
 
 // Get the root portal
@@ -119,7 +121,7 @@ PortalsAPI_getWebPortalSettingsAsync(apiClient_t *apiClient, char *portalId, cha
 //
 // Initialize the current portal for the current user.
 //
-web_portal_dto_envelope_t*
+execution_context_envelope_t*
 PortalsAPI_initializeCurrentWebPortalAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
 
 
@@ -128,7 +130,7 @@ PortalsAPI_initializeCurrentWebPortalAsync(apiClient_t *apiClient, char *api_ver
 // Partially update a web portal
 //
 empty_envelope_t*
-PortalsAPI_patchWebPortalAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version, list_t *operation);
+PortalsAPI_patchWebPortalAsync(apiClient_t *apiClient, char *tenantId, char *portalId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Search for a portal by its domain

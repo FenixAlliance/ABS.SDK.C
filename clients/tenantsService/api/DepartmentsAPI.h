@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/tenant_department_create_dto.h"
+#include "../model/tenant_department_dto_collection_query_parameters.h"
 #include "../model/tenant_department_dto_envelope.h"
 #include "../model/tenant_department_dto_list_envelope.h"
 #include "../model/tenant_department_update_dto.h"
@@ -44,7 +45,7 @@ DepartmentsAPI_getTenantDepartmentById(apiClient_t *apiClient, char *tenantId, c
 // Retrieve a list of tenant departments
 //
 tenant_department_dto_list_envelope_t*
-DepartmentsAPI_getTenantDepartments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+DepartmentsAPI_getTenantDepartments(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_department_dto_collection_query_parameters_t *tenant_department_dto_collection_query_parameters);
 
 
 // Get the count of tenant departments
@@ -52,7 +53,7 @@ DepartmentsAPI_getTenantDepartments(apiClient_t *apiClient, char *tenantId, char
 // Get the count of tenant departments
 //
 int32_envelope_t*
-DepartmentsAPI_getTenantDepartmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+DepartmentsAPI_getTenantDepartmentsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, tenant_department_dto_collection_query_parameters_t *tenant_department_dto_collection_query_parameters);
 
 
 // Patch a tenant department
@@ -60,7 +61,7 @@ DepartmentsAPI_getTenantDepartmentsCount(apiClient_t *apiClient, char *tenantId,
 // Patch a tenant department
 //
 empty_envelope_t*
-DepartmentsAPI_patchTenantDepartmentAsync(apiClient_t *apiClient, char *tenantId, char *tenantDepartmentId, char *api_version, char *x_api_version, list_t *operation);
+DepartmentsAPI_patchTenantDepartmentAsync(apiClient_t *apiClient, char *tenantId, char *tenantDepartmentId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a tenant department

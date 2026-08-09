@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/required_skill_record_create_dto.h"
+#include "../model/required_skill_record_dto_collection_query_parameters.h"
 #include "../model/required_skill_record_dto_envelope.h"
 #include "../model/required_skill_record_dto_list_envelope.h"
 #include "../model/required_skill_record_update_dto.h"
@@ -44,7 +45,7 @@ RequiredSkillsAPI_getRequiredSkillByIdAsync(apiClient_t *apiClient, char *tenant
 // Retrieves required-skill records for the specified tenant. Filter by `$filter=JobOfferId eq '...'` or `EmployerProfileId eq '...'`.
 //
 required_skill_record_dto_list_envelope_t*
-RequiredSkillsAPI_getRequiredSkillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+RequiredSkillsAPI_getRequiredSkillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, required_skill_record_dto_collection_query_parameters_t *required_skill_record_dto_collection_query_parameters);
 
 
 // Count required skills
@@ -52,7 +53,7 @@ RequiredSkillsAPI_getRequiredSkillsAsync(apiClient_t *apiClient, char *tenantId,
 // Counts required-skill records for the specified tenant.
 //
 int32_envelope_t*
-RequiredSkillsAPI_getRequiredSkillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+RequiredSkillsAPI_getRequiredSkillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, required_skill_record_dto_collection_query_parameters_t *required_skill_record_dto_collection_query_parameters);
 
 
 // Patch a required skill
@@ -60,7 +61,7 @@ RequiredSkillsAPI_getRequiredSkillsCountAsync(apiClient_t *apiClient, char *tena
 // Partially updates an existing required-skill record for the specified tenant.
 //
 empty_envelope_t*
-RequiredSkillsAPI_patchRequiredSkillAsync(apiClient_t *apiClient, char *tenantId, char *requiredSkillId, char *api_version, char *x_api_version, list_t *operation);
+RequiredSkillsAPI_patchRequiredSkillAsync(apiClient_t *apiClient, char *tenantId, char *requiredSkillId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a required skill

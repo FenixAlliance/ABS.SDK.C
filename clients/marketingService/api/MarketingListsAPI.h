@@ -9,10 +9,11 @@
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
 #include "../model/marketing_list_create_dto.h"
+#include "../model/marketing_list_dto_collection_query_parameters.h"
 #include "../model/marketing_list_dto_envelope.h"
 #include "../model/marketing_list_dto_list_envelope.h"
 #include "../model/marketing_list_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a marketing list
@@ -44,7 +45,7 @@ MarketingListsAPI_getMarketingListDetailsAsync(apiClient_t *apiClient, char *ten
 // Retrieves a collection of marketing lists for the specified tenant using OData query options.
 //
 marketing_list_dto_list_envelope_t*
-MarketingListsAPI_getMarketingListODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MarketingListsAPI_getMarketingListODataAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_list_dto_collection_query_parameters_t *marketing_list_dto_collection_query_parameters);
 
 
 // Get marketing lists count
@@ -52,7 +53,7 @@ MarketingListsAPI_getMarketingListODataAsync(apiClient_t *apiClient, char *tenan
 // Returns the count of marketing lists for the specified tenant using OData query options.
 //
 int32_envelope_t*
-MarketingListsAPI_getMarketingListsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+MarketingListsAPI_getMarketingListsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, marketing_list_dto_collection_query_parameters_t *marketing_list_dto_collection_query_parameters);
 
 
 // Patch a marketing list
@@ -60,7 +61,7 @@ MarketingListsAPI_getMarketingListsCountAsync(apiClient_t *apiClient, char *tena
 // Partially updates a marketing list by its ID using JSON Patch.
 //
 empty_envelope_t*
-MarketingListsAPI_patchMarketingListAsync(apiClient_t *apiClient, char *tenantId, char *marketinglistId, char *api_version, char *x_api_version, list_t *operation);
+MarketingListsAPI_patchMarketingListAsync(apiClient_t *apiClient, char *tenantId, char *marketinglistId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a marketing list

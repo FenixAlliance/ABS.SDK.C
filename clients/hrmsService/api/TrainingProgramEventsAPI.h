@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/training_program_event_create_dto.h"
+#include "../model/training_program_event_dto_collection_query_parameters.h"
 #include "../model/training_program_event_dto_envelope.h"
 #include "../model/training_program_event_dto_list_envelope.h"
 #include "../model/training_program_event_update_dto.h"
@@ -44,7 +45,7 @@ TrainingProgramEventsAPI_getTrainingProgramEventByIdAsync(apiClient_t *apiClient
 // Retrieves training program events for the specified tenant.
 //
 training_program_event_dto_list_envelope_t*
-TrainingProgramEventsAPI_getTrainingProgramEventsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TrainingProgramEventsAPI_getTrainingProgramEventsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, training_program_event_dto_collection_query_parameters_t *training_program_event_dto_collection_query_parameters);
 
 
 // Count training program events
@@ -52,7 +53,7 @@ TrainingProgramEventsAPI_getTrainingProgramEventsAsync(apiClient_t *apiClient, c
 // Counts training program events for the specified tenant.
 //
 int32_envelope_t*
-TrainingProgramEventsAPI_getTrainingProgramEventsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TrainingProgramEventsAPI_getTrainingProgramEventsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, training_program_event_dto_collection_query_parameters_t *training_program_event_dto_collection_query_parameters);
 
 
 // Patch a training program event
@@ -60,7 +61,7 @@ TrainingProgramEventsAPI_getTrainingProgramEventsCountAsync(apiClient_t *apiClie
 // Partially updates an existing training program event for the specified tenant.
 //
 empty_envelope_t*
-TrainingProgramEventsAPI_patchTrainingProgramEventAsync(apiClient_t *apiClient, char *tenantId, char *eventId, char *api_version, char *x_api_version, list_t *operation);
+TrainingProgramEventsAPI_patchTrainingProgramEventAsync(apiClient_t *apiClient, char *tenantId, char *eventId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a training program event

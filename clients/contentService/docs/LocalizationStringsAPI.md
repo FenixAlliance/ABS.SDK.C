@@ -18,7 +18,7 @@ Method | HTTP request | Description
 //
 // Counts all localization strings for the specified tenant.
 //
-int32_envelope_t* LocalizationStringsAPI_countLocalizationStringsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* LocalizationStringsAPI_countLocalizationStringsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, localization_string_dto_collection_query_parameters_t *localization_string_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -28,6 +28,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**localization_string_dto_collection_query_parameters** | **[localization_string_dto_collection_query_parameters_t](localization_string_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -40,7 +41,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -153,7 +154,7 @@ No authorization required
 //
 // Retrieves all localization strings for the specified tenant.
 //
-localization_string_dto_list_envelope_t* LocalizationStringsAPI_getLocalizationStringsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+localization_string_dto_list_envelope_t* LocalizationStringsAPI_getLocalizationStringsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, localization_string_dto_collection_query_parameters_t *localization_string_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**localization_string_dto_collection_query_parameters** | **[localization_string_dto_collection_query_parameters_t](localization_string_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -175,7 +177,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

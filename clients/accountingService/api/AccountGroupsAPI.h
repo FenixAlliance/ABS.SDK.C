@@ -6,13 +6,14 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/account_group_create_dto.h"
+#include "../model/account_group_dto_collection_query_parameters.h"
 #include "../model/account_group_dto_envelope.h"
 #include "../model/account_group_dto_list_envelope.h"
 #include "../model/account_group_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Creates a new account group
@@ -44,7 +45,7 @@ AccountGroupsAPI_getAccountGroup(apiClient_t *apiClient, char *tenantId, char *a
 // Get the currently acting tenant account groups.
 //
 account_group_dto_list_envelope_t*
-AccountGroupsAPI_getAccountGroups(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AccountGroupsAPI_getAccountGroups(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_group_dto_collection_query_parameters_t *account_group_dto_collection_query_parameters);
 
 
 // Gets the current tenant accounts count
@@ -52,7 +53,7 @@ AccountGroupsAPI_getAccountGroups(apiClient_t *apiClient, char *tenantId, char *
 // Get the currently acting tenant accounts count.
 //
 int32_envelope_t*
-AccountGroupsAPI_getAccountGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AccountGroupsAPI_getAccountGroupsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, account_group_dto_collection_query_parameters_t *account_group_dto_collection_query_parameters);
 
 
 // Patch an account group
@@ -60,7 +61,7 @@ AccountGroupsAPI_getAccountGroupsCountAsync(apiClient_t *apiClient, char *tenant
 // Partially updates an account group.
 //
 empty_envelope_t*
-AccountGroupsAPI_patchAccountGroupAsync(apiClient_t *apiClient, char *tenantId, char *accountGroupId, char *api_version, char *x_api_version, list_t *operation);
+AccountGroupsAPI_patchAccountGroupAsync(apiClient_t *apiClient, char *tenantId, char *accountGroupId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates an existing account group

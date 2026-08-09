@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/shipping_zone_create_dto.h"
+#include "../model/shipping_zone_dto_collection_query_parameters.h"
 #include "../model/shipping_zone_dto_envelope.h"
 #include "../model/shipping_zone_dto_list_envelope.h"
 #include "../model/shipping_zone_update_dto.h"
@@ -44,7 +45,7 @@ ShippingZonesAPI_getShippingZoneByIdAsync(apiClient_t *apiClient, char *tenantId
 // Retrieves all shipping zones for the specified tenant.
 //
 shipping_zone_dto_list_envelope_t*
-ShippingZonesAPI_getShippingZonesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShippingZonesAPI_getShippingZonesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shipping_zone_dto_collection_query_parameters_t *shipping_zone_dto_collection_query_parameters);
 
 
 // Get shipping zones count
@@ -52,7 +53,7 @@ ShippingZonesAPI_getShippingZonesAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of shipping zones.
 //
 int32_envelope_t*
-ShippingZonesAPI_getShippingZonesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+ShippingZonesAPI_getShippingZonesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, shipping_zone_dto_collection_query_parameters_t *shipping_zone_dto_collection_query_parameters);
 
 
 // Patch a shipping zone
@@ -60,7 +61,7 @@ ShippingZonesAPI_getShippingZonesCountAsync(apiClient_t *apiClient, char *tenant
 // Partially updates an existing shipping zone using JSON Patch.
 //
 empty_envelope_t*
-ShippingZonesAPI_patchShippingZoneAsync(apiClient_t *apiClient, char *tenantId, char *zoneId, char *api_version, char *x_api_version, list_t *operation);
+ShippingZonesAPI_patchShippingZoneAsync(apiClient_t *apiClient, char *tenantId, char *zoneId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a shipping zone

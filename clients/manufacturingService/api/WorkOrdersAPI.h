@@ -8,9 +8,10 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/work_order_create_dto.h"
 #include "../model/work_order_dto.h"
+#include "../model/work_order_dto_collection_query_parameters.h"
 #include "../model/work_order_dto_list_envelope.h"
 #include "../model/work_order_update_dto.h"
 
@@ -44,7 +45,7 @@ WorkOrdersAPI_getWorkOrderByIdAsync(apiClient_t *apiClient, char *tenantId, char
 // Retrieves all work orders for the specified tenant.
 //
 work_order_dto_list_envelope_t*
-WorkOrdersAPI_getWorkOrdersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WorkOrdersAPI_getWorkOrdersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, work_order_dto_collection_query_parameters_t *work_order_dto_collection_query_parameters);
 
 
 // Get work orders count
@@ -52,7 +53,7 @@ WorkOrdersAPI_getWorkOrdersAsync(apiClient_t *apiClient, char *tenantId, char *a
 // Returns the count of work orders for the specified tenant.
 //
 int32_envelope_t*
-WorkOrdersAPI_getWorkOrdersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+WorkOrdersAPI_getWorkOrdersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, work_order_dto_collection_query_parameters_t *work_order_dto_collection_query_parameters);
 
 
 // Patch a work order
@@ -60,7 +61,7 @@ WorkOrdersAPI_getWorkOrdersCountAsync(apiClient_t *apiClient, char *tenantId, ch
 // Patch a work order
 //
 empty_envelope_t*
-WorkOrdersAPI_patchWorkOrderAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+WorkOrdersAPI_patchWorkOrderAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a work order

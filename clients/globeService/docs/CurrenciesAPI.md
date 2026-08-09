@@ -15,7 +15,7 @@ Method | HTTP request | Description
 //
 // Returns the total number of enabled currencies, with optional OData filtering.
 //
-int32_envelope_t* CurrenciesAPI_countCurrenciesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+int32_envelope_t* CurrenciesAPI_countCurrenciesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, currency_dto_collection_query_parameters_t *currency_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -24,6 +24,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**currency_dto_collection_query_parameters** | **[currency_dto_collection_query_parameters_t](currency_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -36,7 +37,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -80,7 +81,7 @@ No authorization required
 //
 // Retrieves the list of all enabled currencies with optional OData pagination and filtering.
 //
-currency_dto_list_envelope_t* CurrenciesAPI_getEnabledCurrenciesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version);
+currency_dto_list_envelope_t* CurrenciesAPI_getEnabledCurrenciesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, currency_dto_collection_query_parameters_t *currency_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -89,6 +90,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**currency_dto_collection_query_parameters** | **[currency_dto_collection_query_parameters_t](currency_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -101,7 +103,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

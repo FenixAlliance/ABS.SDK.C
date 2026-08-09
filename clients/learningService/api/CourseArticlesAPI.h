@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_article_create_dto.h"
 #include "../model/course_article_dto.h"
+#include "../model/course_article_dto_collection_query_parameters.h"
 #include "../model/course_article_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new course article
@@ -42,7 +43,7 @@ CourseArticlesAPI_getCourseArticleByIdAsync(apiClient_t *apiClient, char *articl
 // Retrieves all course articles for the specified tenant.
 //
 list_t*
-CourseArticlesAPI_getCourseArticlesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseArticlesAPI_getCourseArticlesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_article_dto_collection_query_parameters_t *course_article_dto_collection_query_parameters);
 
 
 // Get course articles count
@@ -50,7 +51,7 @@ CourseArticlesAPI_getCourseArticlesAsync(apiClient_t *apiClient, char *tenantId,
 // Returns the count of course articles for the specified tenant.
 //
 int*
-CourseArticlesAPI_getCourseArticlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseArticlesAPI_getCourseArticlesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_article_dto_collection_query_parameters_t *course_article_dto_collection_query_parameters);
 
 
 // Patch a course article
@@ -58,7 +59,7 @@ CourseArticlesAPI_getCourseArticlesCountAsync(apiClient_t *apiClient, char *tena
 // Partially updates a course article for the specified tenant.
 //
 empty_envelope_t*
-CourseArticlesAPI_patchCourseArticleAsync(apiClient_t *apiClient, char *tenantId, char *articleId, char *api_version, char *x_api_version, list_t *operation);
+CourseArticlesAPI_patchCourseArticleAsync(apiClient_t *apiClient, char *tenantId, char *articleId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course article

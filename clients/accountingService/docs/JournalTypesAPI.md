@@ -121,7 +121,7 @@ No authorization required
 //
 // Fetches all journal types for the current tenant with OData support.
 //
-journal_type_dto_i_read_only_list_envelope_t* JournalTypesAPI_getJournalTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+journal_type_dto_i_read_only_list_envelope_t* JournalTypesAPI_getJournalTypesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, journal_type_dto_collection_query_parameters_t *journal_type_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -131,6 +131,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**journal_type_dto_collection_query_parameters** | **[journal_type_dto_collection_query_parameters_t](journal_type_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -143,7 +144,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -154,7 +155,7 @@ No authorization required
 //
 // Returns the total number of journal types available for the tenant.
 //
-int32_envelope_t* JournalTypesAPI_getJournalTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* JournalTypesAPI_getJournalTypesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, journal_type_dto_collection_query_parameters_t *journal_type_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -164,6 +165,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**journal_type_dto_collection_query_parameters** | **[journal_type_dto_collection_query_parameters_t](journal_type_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -176,7 +178,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -187,7 +189,7 @@ No authorization required
 //
 // Partially updates a journal type.
 //
-empty_envelope_t* JournalTypesAPI_patchJournalTypeAsync(apiClient_t *apiClient, char *tenantId, char *journalTypeId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* JournalTypesAPI_patchJournalTypeAsync(apiClient_t *apiClient, char *tenantId, char *journalTypeId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -198,7 +200,7 @@ Name | Type | Description  | Notes
 **journalTypeId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

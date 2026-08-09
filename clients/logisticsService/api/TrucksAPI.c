@@ -1689,13 +1689,13 @@ end:
 // Retrieves all trips for a specific truck.
 //
 truck_trip_dto_list_envelope_t*
-TrucksAPI_getTruckTripsAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version)
+TrucksAPI_getTruckTripsAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, truck_trip_dto_collection_query_parameters_t *truck_trip_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1758,8 +1758,19 @@ TrucksAPI_getTruckTripsAsync(apiClient_t *apiClient, char *tenantId, char *truck
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_truck_trip_dto_collection_query_parameters = NULL;
+    if (truck_trip_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_truck_trip_dto_collection_query_parameters = truck_trip_dto_collection_query_parameters_convertToJSON(truck_trip_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_truck_trip_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1796,7 +1807,7 @@ TrucksAPI_getTruckTripsAsync(apiClient_t *apiClient, char *tenantId, char *truck
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_truckId);
     if (keyHeader_x_api_version) {
@@ -1808,6 +1819,11 @@ TrucksAPI_getTruckTripsAsync(apiClient_t *apiClient, char *tenantId, char *truck
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_truck_trip_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_truck_trip_dto_collection_query_parameters);
+        localVarSingleItemJSON_truck_trip_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1844,13 +1860,13 @@ end:
 // Returns the count of trips for a specific truck.
 //
 int32_envelope_t*
-TrucksAPI_getTruckTripsCountAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version)
+TrucksAPI_getTruckTripsCountAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, truck_trip_dto_collection_query_parameters_t *truck_trip_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1913,8 +1929,19 @@ TrucksAPI_getTruckTripsCountAsync(apiClient_t *apiClient, char *tenantId, char *
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_truck_trip_dto_collection_query_parameters = NULL;
+    if (truck_trip_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_truck_trip_dto_collection_query_parameters = truck_trip_dto_collection_query_parameters_convertToJSON(truck_trip_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_truck_trip_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1951,7 +1978,7 @@ TrucksAPI_getTruckTripsCountAsync(apiClient_t *apiClient, char *tenantId, char *
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_truckId);
     if (keyHeader_x_api_version) {
@@ -1963,6 +1990,11 @@ TrucksAPI_getTruckTripsCountAsync(apiClient_t *apiClient, char *tenantId, char *
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_truck_trip_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_truck_trip_dto_collection_query_parameters);
+        localVarSingleItemJSON_truck_trip_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -1999,13 +2031,13 @@ end:
 // Retrieves all trucks for the specified tenant.
 //
 truck_dto_list_envelope_t*
-TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, truck_dto_collection_query_parameters_t *truck_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2051,8 +2083,19 @@ TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_truck_dto_collection_query_parameters = NULL;
+    if (truck_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_truck_dto_collection_query_parameters = truck_dto_collection_query_parameters_convertToJSON(truck_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_truck_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2093,7 +2136,7 @@ TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -2104,6 +2147,11 @@ TrucksAPI_getTrucksAsync(apiClient_t *apiClient, char *tenantId, char *api_versi
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_truck_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_truck_dto_collection_query_parameters);
+        localVarSingleItemJSON_truck_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2140,13 +2188,13 @@ end:
 // Returns the count of trucks for the specified tenant.
 //
 int32_envelope_t*
-TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version)
+TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, truck_dto_collection_query_parameters_t *truck_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2192,8 +2240,19 @@ TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_truck_dto_collection_query_parameters = NULL;
+    if (truck_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_truck_dto_collection_query_parameters = truck_dto_collection_query_parameters_convertToJSON(truck_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_truck_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2230,7 +2289,7 @@ TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -2241,6 +2300,11 @@ TrucksAPI_getTrucksCountAsync(apiClient_t *apiClient, char *tenantId, char *api_
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_truck_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_truck_dto_collection_query_parameters);
+        localVarSingleItemJSON_truck_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_tenantId){
         free(keyQuery_tenantId);
         keyQuery_tenantId = NULL;
@@ -2277,7 +2341,7 @@ end:
 // Partially updates an existing truck using JSON Patch.
 //
 empty_envelope_t*
-TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, list_t *operation)
+TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2349,14 +2413,14 @@ TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId,
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2364,16 +2428,16 @@ TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId,
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2435,17 +2499,17 @@ TrucksAPI_patchTruckAsync(apiClient_t *apiClient, char *tenantId, char *truckId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){
@@ -2484,7 +2548,7 @@ end:
 // Partially updates an existing truck trip using JSON Patch.
 //
 empty_envelope_t*
-TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *tripId, char *api_version, char *x_api_version, list_t *operation)
+TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truckId, char *tripId, char *api_version, char *x_api_version, list_t *patch_operation)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
@@ -2573,14 +2637,14 @@ TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truc
 
     // Body Param
     //notstring
-    cJSON *localVar_operation = NULL;
-    cJSON *localVarItemJSON_operation = NULL;
-    cJSON *localVarSingleItemJSON_operation = NULL;
-    if (operation != NULL)
+    cJSON *localVar_patch_operation = NULL;
+    cJSON *localVarItemJSON_patch_operation = NULL;
+    cJSON *localVarSingleItemJSON_patch_operation = NULL;
+    if (patch_operation != NULL)
     {
-        localVarItemJSON_operation = cJSON_CreateObject();
-        localVarSingleItemJSON_operation = cJSON_AddArrayToObject(localVarItemJSON_operation, "operation");
-        if (localVarSingleItemJSON_operation == NULL)
+        localVarItemJSON_patch_operation = cJSON_CreateObject();
+        localVarSingleItemJSON_patch_operation = cJSON_AddArrayToObject(localVarItemJSON_patch_operation, "patch_operation");
+        if (localVarSingleItemJSON_patch_operation == NULL)
         {
             // nonprimitive container
 
@@ -2588,16 +2652,16 @@ TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truc
         }
     }
 
-    listEntry_t *operationBodyListEntry;
-    list_ForEach(operationBodyListEntry, operation)
+    listEntry_t *patch_operationBodyListEntry;
+    list_ForEach(patch_operationBodyListEntry, patch_operation)
     {
-        localVar_operation = operation_convertToJSON(operationBodyListEntry->data);
-        if(localVar_operation == NULL)
+        localVar_patch_operation = patch_operation_convertToJSON(patch_operationBodyListEntry->data);
+        if(localVar_patch_operation == NULL)
         {
             goto end;
         }
-        cJSON_AddItemToArray(localVarSingleItemJSON_operation, localVar_operation);
-        localVarBodyParameters = cJSON_Print(localVarItemJSON_operation);
+        cJSON_AddItemToArray(localVarSingleItemJSON_patch_operation, localVar_patch_operation);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_patch_operation);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
@@ -2660,17 +2724,17 @@ TrucksAPI_patchTruckTripAsync(apiClient_t *apiClient, char *tenantId, char *truc
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
-    if (localVarItemJSON_operation) {
-        cJSON_Delete(localVarItemJSON_operation);
-        localVarItemJSON_operation = NULL;
+    if (localVarItemJSON_patch_operation) {
+        cJSON_Delete(localVarItemJSON_patch_operation);
+        localVarItemJSON_patch_operation = NULL;
     }
-    if (localVarSingleItemJSON_operation) {
-        cJSON_Delete(localVarSingleItemJSON_operation);
-        localVarSingleItemJSON_operation = NULL;
+    if (localVarSingleItemJSON_patch_operation) {
+        cJSON_Delete(localVarSingleItemJSON_patch_operation);
+        localVarSingleItemJSON_patch_operation = NULL;
     }
-    if (localVar_operation) {
-        cJSON_Delete(localVar_operation);
-        localVar_operation = NULL;
+    if (localVar_patch_operation) {
+        cJSON_Delete(localVar_patch_operation);
+        localVar_patch_operation = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_tenantId){

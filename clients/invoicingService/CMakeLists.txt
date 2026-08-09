@@ -61,6 +61,7 @@ set(SRCS
     model/envelope.c
     model/error_envelope.c
     model/extended_invoice_dto.c
+    model/extended_invoice_dto_collection_query_parameters.c
     model/extended_invoice_dto_list_envelope.c
     model/forgot_password_request.c
     model/http_validation_problem_details.c
@@ -69,25 +70,30 @@ set(SRCS
     model/int32_envelope.c
     model/invoice_adjustment_create_dto.c
     model/invoice_adjustment_dto.c
+    model/invoice_adjustment_dto_collection_query_parameters.c
     model/invoice_adjustment_dto_envelope.c
     model/invoice_adjustment_dto_i_read_only_list_envelope.c
     model/invoice_adjustment_update_dto.c
     model/invoice_create_dto.c
     model/invoice_dto.c
+    model/invoice_dto_collection_query_parameters.c
     model/invoice_dto_envelope.c
     model/invoice_dto_list_envelope.c
     model/invoice_line_applied_tax_create_dto.c
     model/invoice_line_applied_tax_dto.c
+    model/invoice_line_applied_tax_dto_collection_query_parameters.c
     model/invoice_line_applied_tax_dto_i_read_only_list_envelope.c
     model/invoice_line_applied_tax_update_dto.c
     model/invoice_line_create_dto.c
     model/invoice_line_dto.c
+    model/invoice_line_dto_collection_query_parameters.c
     model/invoice_line_dto_envelope.c
     model/invoice_line_dto_i_read_only_list_envelope.c
     model/invoice_line_dto_list_envelope.c
     model/invoice_line_update_dto.c
     model/invoice_reference_create_dto.c
     model/invoice_reference_dto.c
+    model/invoice_reference_dto_collection_query_parameters.c
     model/invoice_reference_dto_envelope.c
     model/invoice_reference_dto_i_read_only_list_envelope.c
     model/invoice_reference_update_dto.c
@@ -95,8 +101,9 @@ set(SRCS
     model/login_request.c
     model/money.c
     model/money_envelope.c
-    model/operation.c
+    model/patch_operation.c
     model/payment_dto.c
+    model/payment_dto_collection_query_parameters.c
     model/payment_dto_i_read_only_list_envelope.c
     model/refresh_request.c
     model/register_request.c
@@ -127,6 +134,7 @@ set(HDRS
     model/envelope.h
     model/error_envelope.h
     model/extended_invoice_dto.h
+    model/extended_invoice_dto_collection_query_parameters.h
     model/extended_invoice_dto_list_envelope.h
     model/forgot_password_request.h
     model/http_validation_problem_details.h
@@ -135,25 +143,30 @@ set(HDRS
     model/int32_envelope.h
     model/invoice_adjustment_create_dto.h
     model/invoice_adjustment_dto.h
+    model/invoice_adjustment_dto_collection_query_parameters.h
     model/invoice_adjustment_dto_envelope.h
     model/invoice_adjustment_dto_i_read_only_list_envelope.h
     model/invoice_adjustment_update_dto.h
     model/invoice_create_dto.h
     model/invoice_dto.h
+    model/invoice_dto_collection_query_parameters.h
     model/invoice_dto_envelope.h
     model/invoice_dto_list_envelope.h
     model/invoice_line_applied_tax_create_dto.h
     model/invoice_line_applied_tax_dto.h
+    model/invoice_line_applied_tax_dto_collection_query_parameters.h
     model/invoice_line_applied_tax_dto_i_read_only_list_envelope.h
     model/invoice_line_applied_tax_update_dto.h
     model/invoice_line_create_dto.h
     model/invoice_line_dto.h
+    model/invoice_line_dto_collection_query_parameters.h
     model/invoice_line_dto_envelope.h
     model/invoice_line_dto_i_read_only_list_envelope.h
     model/invoice_line_dto_list_envelope.h
     model/invoice_line_update_dto.h
     model/invoice_reference_create_dto.h
     model/invoice_reference_dto.h
+    model/invoice_reference_dto_collection_query_parameters.h
     model/invoice_reference_dto_envelope.h
     model/invoice_reference_dto_i_read_only_list_envelope.h
     model/invoice_reference_update_dto.h
@@ -161,8 +174,9 @@ set(HDRS
     model/login_request.h
     model/money.h
     model/money_envelope.h
-    model/operation.h
+    model/patch_operation.h
     model/payment_dto.h
+    model/payment_dto_collection_query_parameters.h
     model/payment_dto_i_read_only_list_envelope.h
     model/refresh_request.h
     model/register_request.h

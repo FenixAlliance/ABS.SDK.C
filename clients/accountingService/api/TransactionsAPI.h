@@ -8,12 +8,14 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/transaction_category_create_dto.h"
+#include "../model/transaction_category_dto_collection_query_parameters.h"
 #include "../model/transaction_category_dto_envelope.h"
 #include "../model/transaction_category_dto_list_envelope.h"
 #include "../model/transaction_category_update_dto.h"
 #include "../model/transaction_create_dto.h"
+#include "../model/transaction_dto_collection_query_parameters.h"
 #include "../model/transaction_dto_envelope.h"
 #include "../model/transaction_dto_list_envelope.h"
 #include "../model/transaction_update_dto.h"
@@ -64,7 +66,7 @@ TransactionsAPI_getTransaction(apiClient_t *apiClient, char *tenantId, char *tra
 // Retrieves all transaction categories for the specified tenant.
 //
 transaction_category_dto_list_envelope_t*
-TransactionsAPI_getTransactionCategories(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TransactionsAPI_getTransactionCategories(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_category_dto_collection_query_parameters_t *transaction_category_dto_collection_query_parameters);
 
 
 // Get transaction categories count
@@ -72,7 +74,7 @@ TransactionsAPI_getTransactionCategories(apiClient_t *apiClient, char *tenantId,
 // Returns total number of transaction categories for the tenant.
 //
 int32_envelope_t*
-TransactionsAPI_getTransactionCategoriesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TransactionsAPI_getTransactionCategoriesCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_category_dto_collection_query_parameters_t *transaction_category_dto_collection_query_parameters);
 
 
 // Get transaction category by ID
@@ -88,7 +90,7 @@ TransactionsAPI_getTransactionCategory(apiClient_t *apiClient, char *tenantId, c
 // Retrieves all transactions for the specified tenant using OData query options.
 //
 transaction_dto_list_envelope_t*
-TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_dto_collection_query_parameters_t *transaction_dto_collection_query_parameters);
 
 
 // Get transactions count
@@ -96,7 +98,7 @@ TransactionsAPI_getTransactions(apiClient_t *apiClient, char *tenantId, char *ap
 // Returns total number of transactions for the tenant with OData filter support.
 //
 int32_envelope_t*
-TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, transaction_dto_collection_query_parameters_t *transaction_dto_collection_query_parameters);
 
 
 // Patch a transaction
@@ -104,7 +106,7 @@ TransactionsAPI_getTransactionsCount(apiClient_t *apiClient, char *tenantId, cha
 // Partially updates an existing transaction identified by its unique identifier.
 //
 empty_envelope_t*
-TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *transactionId, char *api_version, char *x_api_version, list_t *operation);
+TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *transactionId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch a transaction category
@@ -112,7 +114,7 @@ TransactionsAPI_patchTransaction(apiClient_t *apiClient, char *tenantId, char *t
 // Partially updates an existing transaction category identified by its unique identifier.
 //
 empty_envelope_t*
-TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *operation);
+TransactionsAPI_patchTransactionCategory(apiClient_t *apiClient, char *tenantId, char *categoryId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a transaction

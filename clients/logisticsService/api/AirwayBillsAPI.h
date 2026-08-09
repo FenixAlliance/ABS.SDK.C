@@ -6,14 +6,16 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/airway_bill_create_dto.h"
+#include "../model/airway_bill_dto_collection_query_parameters.h"
 #include "../model/airway_bill_dto_envelope.h"
 #include "../model/airway_bill_dto_list_envelope.h"
 #include "../model/airway_bill_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/waybill_line_create_dto.h"
+#include "../model/waybill_line_dto_collection_query_parameters.h"
 #include "../model/waybill_line_dto_list_envelope.h"
 #include "../model/waybill_line_update_dto.h"
 
@@ -63,7 +65,7 @@ AirwayBillsAPI_getAirwayBillByIdAsync(apiClient_t *apiClient, char *tenantId, ch
 // Retrieves all lines for a specific airway bill.
 //
 waybill_line_dto_list_envelope_t*
-AirwayBillsAPI_getAirwayBillLinesAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version);
+AirwayBillsAPI_getAirwayBillLinesAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, waybill_line_dto_collection_query_parameters_t *waybill_line_dto_collection_query_parameters);
 
 
 // Get airway bill lines count
@@ -71,7 +73,7 @@ AirwayBillsAPI_getAirwayBillLinesAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of lines for a specific airway bill.
 //
 int32_envelope_t*
-AirwayBillsAPI_getAirwayBillLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version);
+AirwayBillsAPI_getAirwayBillLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, waybill_line_dto_collection_query_parameters_t *waybill_line_dto_collection_query_parameters);
 
 
 // Get all airway bills
@@ -79,7 +81,7 @@ AirwayBillsAPI_getAirwayBillLinesCountAsync(apiClient_t *apiClient, char *tenant
 // Retrieves all airway bills for the specified tenant.
 //
 airway_bill_dto_list_envelope_t*
-AirwayBillsAPI_getAirwayBillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AirwayBillsAPI_getAirwayBillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, airway_bill_dto_collection_query_parameters_t *airway_bill_dto_collection_query_parameters);
 
 
 // Get airway bills count
@@ -87,7 +89,7 @@ AirwayBillsAPI_getAirwayBillsAsync(apiClient_t *apiClient, char *tenantId, char 
 // Returns the count of airway bills for the specified tenant.
 //
 int32_envelope_t*
-AirwayBillsAPI_getAirwayBillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+AirwayBillsAPI_getAirwayBillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, airway_bill_dto_collection_query_parameters_t *airway_bill_dto_collection_query_parameters);
 
 
 // Issue an airway bill
@@ -127,7 +129,7 @@ AirwayBillsAPI_markAirwayBillInTransitAsync(apiClient_t *apiClient, char *tenant
 // Partially updates an existing airway bill using a JSON Patch document.
 //
 empty_envelope_t*
-AirwayBillsAPI_patchAirwayBillAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, list_t *operation);
+AirwayBillsAPI_patchAirwayBillAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Patch an airway bill line
@@ -135,7 +137,7 @@ AirwayBillsAPI_patchAirwayBillAsync(apiClient_t *apiClient, char *tenantId, char
 // Partially updates a line on an airway bill using a JSON Patch document.
 //
 empty_envelope_t*
-AirwayBillsAPI_patchAirwayBillLineAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+AirwayBillsAPI_patchAirwayBillLineAsync(apiClient_t *apiClient, char *tenantId, char *billId, char *lineId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Remove an airway bill line

@@ -654,7 +654,7 @@ No authorization required
 //
 // Retrieves a list of extended invoice details for the specified tenant.
 //
-extended_invoice_dto_list_envelope_t* InvoicesAPI_getExtendedInvoices(apiClient_t *apiClient, char *tenantId);
+extended_invoice_dto_list_envelope_t* InvoicesAPI_getExtendedInvoices(apiClient_t *apiClient, char *tenantId, extended_invoice_dto_collection_query_parameters_t *extended_invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -662,6 +662,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**extended_invoice_dto_collection_query_parameters** | **[extended_invoice_dto_collection_query_parameters_t](extended_invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -674,7 +675,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -685,7 +686,7 @@ No authorization required
 //
 // Retrieves the total count of extended invoices for the specified tenant.
 //
-int32_envelope_t* InvoicesAPI_getExtendedInvoicesCount(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* InvoicesAPI_getExtendedInvoicesCount(apiClient_t *apiClient, char *tenantId, extended_invoice_dto_collection_query_parameters_t *extended_invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -693,6 +694,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**extended_invoice_dto_collection_query_parameters** | **[extended_invoice_dto_collection_query_parameters_t](extended_invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -705,7 +707,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -781,7 +783,7 @@ No authorization required
 //
 // Retrieves the adjustments for the specified invoice.
 //
-invoice_adjustment_dto_i_read_only_list_envelope_t* InvoicesAPI_getInvoiceAdjustments(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+invoice_adjustment_dto_i_read_only_list_envelope_t* InvoicesAPI_getInvoiceAdjustments(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_adjustment_dto_collection_query_parameters_t *invoice_adjustment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -790,6 +792,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
+**invoice_adjustment_dto_collection_query_parameters** | **[invoice_adjustment_dto_collection_query_parameters_t](invoice_adjustment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -802,7 +805,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -813,7 +816,7 @@ No authorization required
 //
 // Retrieves the total count of adjustments for the specified invoice.
 //
-int32_envelope_t* InvoicesAPI_getInvoiceAdjustmentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+int32_envelope_t* InvoicesAPI_getInvoiceAdjustmentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_adjustment_dto_collection_query_parameters_t *invoice_adjustment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -822,6 +825,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
+**invoice_adjustment_dto_collection_query_parameters** | **[invoice_adjustment_dto_collection_query_parameters_t](invoice_adjustment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -834,7 +838,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -878,7 +882,7 @@ No authorization required
 //
 // Retrieves the taxes applied to the specified invoice line.
 //
-invoice_line_applied_tax_dto_i_read_only_list_envelope_t* InvoicesAPI_getInvoiceLineTaxes(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId);
+invoice_line_applied_tax_dto_i_read_only_list_envelope_t* InvoicesAPI_getInvoiceLineTaxes(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, invoice_line_applied_tax_dto_collection_query_parameters_t *invoice_line_applied_tax_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -888,6 +892,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
 **invoiceLineId** | **char \*** |  | 
+**invoice_line_applied_tax_dto_collection_query_parameters** | **[invoice_line_applied_tax_dto_collection_query_parameters_t](invoice_line_applied_tax_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -900,7 +905,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -911,7 +916,7 @@ No authorization required
 //
 // Retrieves the total count of taxes applied to the specified invoice line.
 //
-int32_envelope_t* InvoicesAPI_getInvoiceLineTaxesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId);
+int32_envelope_t* InvoicesAPI_getInvoiceLineTaxesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, invoice_line_applied_tax_dto_collection_query_parameters_t *invoice_line_applied_tax_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -921,6 +926,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
 **invoiceLineId** | **char \*** |  | 
+**invoice_line_applied_tax_dto_collection_query_parameters** | **[invoice_line_applied_tax_dto_collection_query_parameters_t](invoice_line_applied_tax_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -933,7 +939,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -944,7 +950,7 @@ No authorization required
 //
 // Retrieves the invoice lines for the specified invoice.
 //
-invoice_line_dto_list_envelope_t* InvoicesAPI_getInvoiceLines(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *itemId);
+invoice_line_dto_list_envelope_t* InvoicesAPI_getInvoiceLines(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *itemId, invoice_line_dto_collection_query_parameters_t *invoice_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -954,6 +960,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
 **itemId** | **char \*** |  | [optional] 
+**invoice_line_dto_collection_query_parameters** | **[invoice_line_dto_collection_query_parameters_t](invoice_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -966,7 +973,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -977,7 +984,7 @@ No authorization required
 //
 // Retrieves the total count of invoice lines for the specified invoice.
 //
-int32_envelope_t* InvoicesAPI_getInvoiceLinesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+int32_envelope_t* InvoicesAPI_getInvoiceLinesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_line_dto_collection_query_parameters_t *invoice_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -986,6 +993,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
+**invoice_line_dto_collection_query_parameters** | **[invoice_line_dto_collection_query_parameters_t](invoice_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -998,7 +1006,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1009,7 +1017,7 @@ No authorization required
 //
 // Retrieves the list of payments related to the specified invoice.
 //
-payment_dto_i_read_only_list_envelope_t* InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+payment_dto_i_read_only_list_envelope_t* InvoicesAPI_getInvoicePayments(apiClient_t *apiClient, char *tenantId, char *invoiceId, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1018,6 +1026,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
+**payment_dto_collection_query_parameters** | **[payment_dto_collection_query_parameters_t](payment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1030,7 +1039,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1041,7 +1050,7 @@ No authorization required
 //
 // Retrieves the total count of payments for the specified invoice.
 //
-int32_envelope_t* InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+int32_envelope_t* InvoicesAPI_getInvoicePaymentsCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, payment_dto_collection_query_parameters_t *payment_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1050,6 +1059,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
+**payment_dto_collection_query_parameters** | **[payment_dto_collection_query_parameters_t](payment_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1062,7 +1072,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1106,7 +1116,7 @@ No authorization required
 //
 // Retrieves the references for the specified invoice.
 //
-invoice_reference_dto_i_read_only_list_envelope_t* InvoicesAPI_getInvoiceReferences(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+invoice_reference_dto_i_read_only_list_envelope_t* InvoicesAPI_getInvoiceReferences(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_reference_dto_collection_query_parameters_t *invoice_reference_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1115,6 +1125,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
+**invoice_reference_dto_collection_query_parameters** | **[invoice_reference_dto_collection_query_parameters_t](invoice_reference_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1127,7 +1138,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1138,7 +1149,7 @@ No authorization required
 //
 // Retrieves the total count of references for the specified invoice.
 //
-int32_envelope_t* InvoicesAPI_getInvoiceReferencesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId);
+int32_envelope_t* InvoicesAPI_getInvoiceReferencesCount(apiClient_t *apiClient, char *tenantId, char *invoiceId, invoice_reference_dto_collection_query_parameters_t *invoice_reference_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1147,6 +1158,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
+**invoice_reference_dto_collection_query_parameters** | **[invoice_reference_dto_collection_query_parameters_t](invoice_reference_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1159,7 +1171,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1170,7 +1182,7 @@ No authorization required
 //
 // Retrieves a list of invoices for the specified tenant.
 //
-invoice_dto_list_envelope_t* InvoicesAPI_getInvoices(apiClient_t *apiClient, char *tenantId);
+invoice_dto_list_envelope_t* InvoicesAPI_getInvoices(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1178,6 +1190,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**invoice_dto_collection_query_parameters** | **[invoice_dto_collection_query_parameters_t](invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1190,7 +1203,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1201,7 +1214,7 @@ No authorization required
 //
 // Retrieves the total count of invoices for the specified tenant.
 //
-int32_envelope_t* InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId);
+int32_envelope_t* InvoicesAPI_getInvoicesCount(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1209,6 +1222,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**invoice_dto_collection_query_parameters** | **[invoice_dto_collection_query_parameters_t](invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1221,7 +1235,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1232,7 +1246,7 @@ No authorization required
 //
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == PurchaseInvoice, filtered by the supplied OData date range.
 //
-money_envelope_t* InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId);
+money_envelope_t* InvoicesAPI_getPurchaseInvoicesSum(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1240,6 +1254,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**invoice_dto_collection_query_parameters** | **[invoice_dto_collection_query_parameters_t](invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1252,7 +1267,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1263,7 +1278,7 @@ No authorization required
 //
 // Returns SUM(Invoice.TotalAmountInUSD) for invoices with InvoiceType == SalesInvoice, filtered by the supplied OData date range.
 //
-money_envelope_t* InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId);
+money_envelope_t* InvoicesAPI_getSalesInvoicesSum(apiClient_t *apiClient, char *tenantId, invoice_dto_collection_query_parameters_t *invoice_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -1271,6 +1286,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
+**invoice_dto_collection_query_parameters** | **[invoice_dto_collection_query_parameters_t](invoice_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1283,7 +1299,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1294,7 +1310,7 @@ No authorization required
 //
 // Partially updates the specified invoice for the tenant.
 //
-empty_envelope_t* InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId, list_t *operation);
+empty_envelope_t* InvoicesAPI_patchInvoice(apiClient_t *apiClient, char *tenantId, char *invoiceId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1303,7 +1319,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1327,7 +1343,7 @@ No authorization required
 //
 // Partially updates the specified adjustment for the invoice.
 //
-empty_envelope_t* InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceAdjustmentId, list_t *operation);
+empty_envelope_t* InvoicesAPI_patchInvoiceAdjustment(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceAdjustmentId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1337,7 +1353,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
 **invoiceAdjustmentId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1361,7 +1377,7 @@ No authorization required
 //
 // Partially updates the specified invoice line.
 //
-empty_envelope_t* InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, list_t *operation);
+empty_envelope_t* InvoicesAPI_patchInvoiceLine(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1371,7 +1387,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
 **invoiceLineId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1395,7 +1411,7 @@ No authorization required
 //
 // Partially updates the specified tax entry for the invoice line.
 //
-empty_envelope_t* InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, char *invoiceLineTaxId, list_t *operation);
+empty_envelope_t* InvoicesAPI_patchInvoiceLineTax(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceLineId, char *invoiceLineTaxId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1406,7 +1422,7 @@ Name | Type | Description  | Notes
 **invoiceId** | **char \*** |  | 
 **invoiceLineId** | **char \*** |  | 
 **invoiceLineTaxId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -1430,7 +1446,7 @@ No authorization required
 //
 // Partially updates the specified reference for the invoice.
 //
-empty_envelope_t* InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceReferenceId, list_t *operation);
+empty_envelope_t* InvoicesAPI_patchInvoiceReference(apiClient_t *apiClient, char *tenantId, char *invoiceId, char *invoiceReferenceId, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -1440,7 +1456,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **invoiceId** | **char \*** |  | 
 **invoiceReferenceId** | **char \*** |  | 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

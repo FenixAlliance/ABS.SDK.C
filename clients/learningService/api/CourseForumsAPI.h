@@ -7,9 +7,10 @@
 #include "../include/binary.h"
 #include "../model/course_forum_create_dto.h"
 #include "../model/course_forum_dto.h"
+#include "../model/course_forum_dto_collection_query_parameters.h"
 #include "../model/course_forum_update_dto.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a course forum
@@ -41,7 +42,7 @@ CourseForumsAPI_getCourseForumByIdAsync(apiClient_t *apiClient, char *forumId, c
 // Retrieves all course forums for the specified tenant.
 //
 list_t*
-CourseForumsAPI_getCourseForumsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseForumsAPI_getCourseForumsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_forum_dto_collection_query_parameters_t *course_forum_dto_collection_query_parameters);
 
 
 // Get course forums count
@@ -49,7 +50,7 @@ CourseForumsAPI_getCourseForumsAsync(apiClient_t *apiClient, char *tenantId, cha
 // Returns the count of course forums for the specified tenant.
 //
 int*
-CourseForumsAPI_getCourseForumsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseForumsAPI_getCourseForumsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_forum_dto_collection_query_parameters_t *course_forum_dto_collection_query_parameters);
 
 
 // Patch a course forum
@@ -57,7 +58,7 @@ CourseForumsAPI_getCourseForumsCountAsync(apiClient_t *apiClient, char *tenantId
 // Partially updates an existing course forum.
 //
 void
-CourseForumsAPI_patchCourseForumAsync(apiClient_t *apiClient, char *tenantId, char *forumId, char *api_version, char *x_api_version, list_t *operation);
+CourseForumsAPI_patchCourseForumAsync(apiClient_t *apiClient, char *tenantId, char *forumId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course forum

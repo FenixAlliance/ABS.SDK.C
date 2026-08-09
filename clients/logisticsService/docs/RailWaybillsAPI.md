@@ -200,7 +200,7 @@ No authorization required
 //
 // Retrieves all lines for a specific rail waybill.
 //
-waybill_line_dto_list_envelope_t* RailWaybillsAPI_getRailWaybillLinesAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version);
+waybill_line_dto_list_envelope_t* RailWaybillsAPI_getRailWaybillLinesAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, waybill_line_dto_collection_query_parameters_t *waybill_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -211,6 +211,7 @@ Name | Type | Description  | Notes
 **waybillId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**waybill_line_dto_collection_query_parameters** | **[waybill_line_dto_collection_query_parameters_t](waybill_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -223,7 +224,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -234,7 +235,7 @@ No authorization required
 //
 // Returns the count of lines for a specific rail waybill.
 //
-int32_envelope_t* RailWaybillsAPI_getRailWaybillLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version);
+int32_envelope_t* RailWaybillsAPI_getRailWaybillLinesCountAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, waybill_line_dto_collection_query_parameters_t *waybill_line_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -245,6 +246,7 @@ Name | Type | Description  | Notes
 **waybillId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**waybill_line_dto_collection_query_parameters** | **[waybill_line_dto_collection_query_parameters_t](waybill_line_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -257,7 +259,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -268,7 +270,7 @@ No authorization required
 //
 // Retrieves all rail waybills for the specified tenant.
 //
-rail_waybill_dto_list_envelope_t* RailWaybillsAPI_getRailWaybillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+rail_waybill_dto_list_envelope_t* RailWaybillsAPI_getRailWaybillsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, rail_waybill_dto_collection_query_parameters_t *rail_waybill_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -278,6 +280,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**rail_waybill_dto_collection_query_parameters** | **[rail_waybill_dto_collection_query_parameters_t](rail_waybill_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -290,7 +293,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -301,7 +304,7 @@ No authorization required
 //
 // Returns the count of rail waybills for the specified tenant.
 //
-int32_envelope_t* RailWaybillsAPI_getRailWaybillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* RailWaybillsAPI_getRailWaybillsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, rail_waybill_dto_collection_query_parameters_t *rail_waybill_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -311,6 +314,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**rail_waybill_dto_collection_query_parameters** | **[rail_waybill_dto_collection_query_parameters_t](rail_waybill_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -323,7 +327,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -436,7 +440,7 @@ No authorization required
 //
 // Partially updates an existing rail waybill using a JSON Patch document.
 //
-empty_envelope_t* RailWaybillsAPI_patchRailWaybillAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* RailWaybillsAPI_patchRailWaybillAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -447,7 +451,7 @@ Name | Type | Description  | Notes
 **waybillId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -471,7 +475,7 @@ No authorization required
 //
 // Partially updates a line on a rail waybill using a JSON Patch document.
 //
-empty_envelope_t* RailWaybillsAPI_patchRailWaybillLineAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *lineId, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* RailWaybillsAPI_patchRailWaybillLineAsync(apiClient_t *apiClient, char *tenantId, char *waybillId, char *lineId, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -483,7 +487,7 @@ Name | Type | Description  | Notes
 **lineId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

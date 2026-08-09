@@ -17,13 +17,13 @@
 // Count conversations for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_countConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, conversation_dto_collection_query_parameters_t *conversation_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -74,8 +74,19 @@ SocialProfilesAPI_countConversationsAsync(apiClient_t *apiClient, char *socialPr
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_conversation_dto_collection_query_parameters = NULL;
+    if (conversation_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_conversation_dto_collection_query_parameters = conversation_dto_collection_query_parameters_convertToJSON(conversation_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_conversation_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -116,7 +127,7 @@ SocialProfilesAPI_countConversationsAsync(apiClient_t *apiClient, char *socialPr
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -128,6 +139,11 @@ SocialProfilesAPI_countConversationsAsync(apiClient_t *apiClient, char *socialPr
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_conversation_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_conversation_dto_collection_query_parameters);
+        localVarSingleItemJSON_conversation_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -152,13 +168,13 @@ end:
 // Count followed profiles for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_countFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -209,8 +225,19 @@ SocialProfilesAPI_countFollowedProfilesAsync(apiClient_t *apiClient, char *socia
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    if (social_profile_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = social_profile_dto_collection_query_parameters_convertToJSON(social_profile_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -251,7 +278,7 @@ SocialProfilesAPI_countFollowedProfilesAsync(apiClient_t *apiClient, char *socia
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -263,6 +290,11 @@ SocialProfilesAPI_countFollowedProfilesAsync(apiClient_t *apiClient, char *socia
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_social_profile_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -287,13 +319,13 @@ end:
 // Count follower profiles for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_countFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -344,8 +376,19 @@ SocialProfilesAPI_countFollowerProfilesAsync(apiClient_t *apiClient, char *socia
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    if (social_profile_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = social_profile_dto_collection_query_parameters_convertToJSON(social_profile_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -386,7 +429,7 @@ SocialProfilesAPI_countFollowerProfilesAsync(apiClient_t *apiClient, char *socia
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -398,6 +441,11 @@ SocialProfilesAPI_countFollowerProfilesAsync(apiClient_t *apiClient, char *socia
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_social_profile_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -422,13 +470,13 @@ end:
 // Count followers for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_countFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -479,8 +527,19 @@ SocialProfilesAPI_countFollowersAsync(apiClient_t *apiClient, char *socialProfil
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    if (follow_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = follow_record_dto_collection_query_parameters_convertToJSON(follow_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -521,7 +580,7 @@ SocialProfilesAPI_countFollowersAsync(apiClient_t *apiClient, char *socialProfil
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -533,6 +592,11 @@ SocialProfilesAPI_countFollowersAsync(apiClient_t *apiClient, char *socialProfil
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_follow_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -557,13 +621,13 @@ end:
 // Count follows for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -614,8 +678,19 @@ SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileI
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    if (follow_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = follow_record_dto_collection_query_parameters_convertToJSON(follow_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -656,7 +731,7 @@ SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileI
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -668,6 +743,11 @@ SocialProfilesAPI_countFollowsAsync(apiClient_t *apiClient, char *socialProfileI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_follow_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -692,13 +772,13 @@ end:
 // Count messages for a conversation.
 //
 int32_envelope_t*
-SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version)
+SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version, private_message_dto_collection_query_parameters_t *private_message_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -761,8 +841,19 @@ SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfile
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_private_message_dto_collection_query_parameters = NULL;
+    if (private_message_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_private_message_dto_collection_query_parameters = private_message_dto_collection_query_parameters_convertToJSON(private_message_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_private_message_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -803,7 +894,7 @@ SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfile
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_conversationId);
     if (keyHeader_x_api_version) {
@@ -815,6 +906,11 @@ SocialProfilesAPI_countMessagesAsync(apiClient_t *apiClient, char *socialProfile
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_private_message_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_private_message_dto_collection_query_parameters);
+        localVarSingleItemJSON_private_message_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_socialProfileId){
         free(keyQuery_socialProfileId);
         keyQuery_socialProfileId = NULL;
@@ -851,13 +947,13 @@ end:
 // Count notifications for a social profile.
 //
 int32_envelope_t*
-SocialProfilesAPI_countNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_countNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -908,8 +1004,19 @@ SocialProfilesAPI_countNotificationsAsync(apiClient_t *apiClient, char *socialPr
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_notification_dto_collection_query_parameters = NULL;
+    if (notification_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_notification_dto_collection_query_parameters = notification_dto_collection_query_parameters_convertToJSON(notification_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_notification_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -950,7 +1057,7 @@ SocialProfilesAPI_countNotificationsAsync(apiClient_t *apiClient, char *socialPr
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -962,6 +1069,11 @@ SocialProfilesAPI_countNotificationsAsync(apiClient_t *apiClient, char *socialPr
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_notification_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_notification_dto_collection_query_parameters);
+        localVarSingleItemJSON_notification_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -986,13 +1098,13 @@ end:
 // Count social profiles.
 //
 int32_envelope_t*
-SocialProfilesAPI_countSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+SocialProfilesAPI_countSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1026,8 +1138,19 @@ SocialProfilesAPI_countSocialProfilesAsync(apiClient_t *apiClient, char *api_ver
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    if (social_profile_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = social_profile_dto_collection_query_parameters_convertToJSON(social_profile_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -1068,7 +1191,7 @@ SocialProfilesAPI_countSocialProfilesAsync(apiClient_t *apiClient, char *api_ver
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -1079,6 +1202,11 @@ SocialProfilesAPI_countSocialProfilesAsync(apiClient_t *apiClient, char *api_ver
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_social_profile_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -1912,13 +2040,13 @@ end:
 // Get a list of conversations for a social profile.
 //
 conversation_dto_list_envelope_t*
-SocialProfilesAPI_getConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_getConversationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, conversation_dto_collection_query_parameters_t *conversation_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -1969,8 +2097,19 @@ SocialProfilesAPI_getConversationsAsync(apiClient_t *apiClient, char *socialProf
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_conversation_dto_collection_query_parameters = NULL;
+    if (conversation_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_conversation_dto_collection_query_parameters = conversation_dto_collection_query_parameters_convertToJSON(conversation_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_conversation_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2011,7 +2150,7 @@ SocialProfilesAPI_getConversationsAsync(apiClient_t *apiClient, char *socialProf
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -2023,6 +2162,11 @@ SocialProfilesAPI_getConversationsAsync(apiClient_t *apiClient, char *socialProf
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_conversation_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_conversation_dto_collection_query_parameters);
+        localVarSingleItemJSON_conversation_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2047,13 +2191,13 @@ end:
 // Get a list of followed profiles for a social profile.
 //
 social_profile_dto_list_envelope_t*
-SocialProfilesAPI_getFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_getFollowedProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2104,8 +2248,19 @@ SocialProfilesAPI_getFollowedProfilesAsync(apiClient_t *apiClient, char *socialP
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    if (social_profile_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = social_profile_dto_collection_query_parameters_convertToJSON(social_profile_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2146,7 +2301,7 @@ SocialProfilesAPI_getFollowedProfilesAsync(apiClient_t *apiClient, char *socialP
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -2158,6 +2313,11 @@ SocialProfilesAPI_getFollowedProfilesAsync(apiClient_t *apiClient, char *socialP
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_social_profile_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2182,13 +2342,13 @@ end:
 // Get a list of follower profiles for a social profile.
 //
 social_profile_dto_list_envelope_t*
-SocialProfilesAPI_getFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_getFollowerProfilesAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2239,8 +2399,19 @@ SocialProfilesAPI_getFollowerProfilesAsync(apiClient_t *apiClient, char *socialP
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    if (social_profile_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = social_profile_dto_collection_query_parameters_convertToJSON(social_profile_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2281,7 +2452,7 @@ SocialProfilesAPI_getFollowerProfilesAsync(apiClient_t *apiClient, char *socialP
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -2293,6 +2464,11 @@ SocialProfilesAPI_getFollowerProfilesAsync(apiClient_t *apiClient, char *socialP
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_social_profile_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2317,13 +2493,13 @@ end:
 // Get a list of followers for a social profile.
 //
 follow_record_dto_list_envelope_t*
-SocialProfilesAPI_getFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_getFollowersAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2374,8 +2550,19 @@ SocialProfilesAPI_getFollowersAsync(apiClient_t *apiClient, char *socialProfileI
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    if (follow_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = follow_record_dto_collection_query_parameters_convertToJSON(follow_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2416,7 +2603,7 @@ SocialProfilesAPI_getFollowersAsync(apiClient_t *apiClient, char *socialProfileI
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -2428,6 +2615,11 @@ SocialProfilesAPI_getFollowersAsync(apiClient_t *apiClient, char *socialProfileI
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_follow_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2452,13 +2644,13 @@ end:
 // Get a list of follows for a social profile.
 //
 follow_record_dto_list_envelope_t*
-SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, follow_record_dto_collection_query_parameters_t *follow_record_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2509,8 +2701,19 @@ SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId,
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    if (follow_record_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = follow_record_dto_collection_query_parameters_convertToJSON(follow_record_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2551,7 +2754,7 @@ SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId,
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -2563,6 +2766,11 @@ SocialProfilesAPI_getFollowsAsync(apiClient_t *apiClient, char *socialProfileId,
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_follow_record_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_follow_record_dto_collection_query_parameters);
+        localVarSingleItemJSON_follow_record_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -2587,13 +2795,13 @@ end:
 // Get a list of messages for a conversation.
 //
 private_message_dto_list_envelope_t*
-SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version)
+SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId, char *conversationId, char *api_version, char *x_api_version, private_message_dto_collection_query_parameters_t *private_message_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2656,8 +2864,19 @@ SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_private_message_dto_collection_query_parameters = NULL;
+    if (private_message_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_private_message_dto_collection_query_parameters = private_message_dto_collection_query_parameters_convertToJSON(private_message_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_private_message_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2698,7 +2917,7 @@ SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_conversationId);
     if (keyHeader_x_api_version) {
@@ -2710,6 +2929,11 @@ SocialProfilesAPI_getMessagesAsync(apiClient_t *apiClient, char *socialProfileId
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_private_message_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_private_message_dto_collection_query_parameters);
+        localVarSingleItemJSON_private_message_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_socialProfileId){
         free(keyQuery_socialProfileId);
         keyQuery_socialProfileId = NULL;
@@ -2899,13 +3123,13 @@ end:
 // Get a list of notifications for a social profile.
 //
 notification_dto_list_envelope_t*
-SocialProfilesAPI_getNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version)
+SocialProfilesAPI_getNotificationsAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, notification_dto_collection_query_parameters_t *notification_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -2956,8 +3180,19 @@ SocialProfilesAPI_getNotificationsAsync(apiClient_t *apiClient, char *socialProf
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_notification_dto_collection_query_parameters = NULL;
+    if (notification_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_notification_dto_collection_query_parameters = notification_dto_collection_query_parameters_convertToJSON(notification_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_notification_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -2998,7 +3233,7 @@ SocialProfilesAPI_getNotificationsAsync(apiClient_t *apiClient, char *socialProf
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_socialProfileId);
     if (keyHeader_x_api_version) {
@@ -3010,6 +3245,162 @@ SocialProfilesAPI_getNotificationsAsync(apiClient_t *apiClient, char *socialProf
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_notification_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_notification_dto_collection_query_parameters);
+        localVarSingleItemJSON_notification_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_api_version){
+        free(keyQuery_api_version);
+        keyQuery_api_version = NULL;
+    }
+    if(valueQuery_api_version){
+        free(valueQuery_api_version);
+        valueQuery_api_version = NULL;
+    }
+    if(keyPairQuery_api_version){
+        keyValuePair_free(keyPairQuery_api_version);
+        keyPairQuery_api_version = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Get or Create Direct Conversation
+//
+// Get or create the direct two-party conversation between the acting profile and a counterparty.
+//
+conversation_dto_envelope_t*
+SocialProfilesAPI_getOrCreateDirectConversationAsync(apiClient_t *apiClient, char *socialProfileId, char *api_version, char *x_api_version, char *body)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = list_createList();
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/api/v2/SocialService/SocialProfiles/{socialProfileId}/Conversations/Direct")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/api/v2/SocialService/SocialProfiles/{socialProfileId}/Conversations/Direct");
+
+
+    // Path Params
+    long sizeOfPathParams_socialProfileId = strlen(socialProfileId)+3 + strlen("{ socialProfileId }");
+    if(socialProfileId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_socialProfileId = malloc(sizeOfPathParams_socialProfileId);
+    sprintf(localVarToReplace_socialProfileId, "{%s}", "socialProfileId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_socialProfileId, socialProfileId);
+    if(socialProfileId == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_socialProfileId = malloc(sizeOfPathParams_socialProfileId);
+    sprintf(localVarToReplace_socialProfileId, "{%s}", "socialProfileId");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_socialProfileId, socialProfileId);
+
+
+
+    // header parameters
+    char *keyHeader_x_api_version = NULL;
+    char * valueHeader_x_api_version = 0;
+    keyValuePair_t *keyPairHeader_x_api_version = 0;
+    if (x_api_version) {
+        keyHeader_x_api_version = strdup("x-api-version");
+        valueHeader_x_api_version = strdup((x_api_version));
+        keyPairHeader_x_api_version = keyValuePair_create(keyHeader_x_api_version, valueHeader_x_api_version);
+        list_addElement(localVarHeaderParameters,keyPairHeader_x_api_version);
+    }
+
+
+    // query parameters
+    char *keyQuery_api_version = NULL;
+    char * valueQuery_api_version = NULL;
+    keyValuePair_t *keyPairQuery_api_version = 0;
+    if (api_version)
+    {
+        keyQuery_api_version = strdup("api-version");
+        valueQuery_api_version = strdup((api_version));
+        keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
+        list_addElement(localVarQueryParameters,keyPairQuery_api_version);
+    }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_body = NULL;
+    if (body != NULL)
+    {
+        //string
+        localVarSingleItemJSON_body = char_convertToJSON(body);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_body);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","OK");
+    //}
+    //nonprimitive not container
+    cJSON *SocialProfilesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    conversation_dto_envelope_t *elementToReturn = conversation_dto_envelope_parseFromJSON(SocialProfilesAPIlocalVarJSON);
+    cJSON_Delete(SocialProfilesAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    list_freeList(localVarHeaderParameters);
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_socialProfileId);
+    if (keyHeader_x_api_version) {
+        free(keyHeader_x_api_version);
+        keyHeader_x_api_version = NULL;
+    }
+    if (valueHeader_x_api_version) {
+        free(valueHeader_x_api_version);
+        valueHeader_x_api_version = NULL;
+    }
+    free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_body) {
+        cJSON_Delete(localVarSingleItemJSON_body);
+        localVarSingleItemJSON_body = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;
@@ -3169,13 +3560,13 @@ end:
 // Get a list of social profiles.
 //
 social_profile_dto_list_envelope_t*
-SocialProfilesAPI_getSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version)
+SocialProfilesAPI_getSocialProfilesAsync(apiClient_t *apiClient, char *api_version, char *x_api_version, social_profile_dto_collection_query_parameters_t *social_profile_dto_collection_query_parameters)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = list_createList();
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -3209,8 +3600,19 @@ SocialProfilesAPI_getSocialProfilesAsync(apiClient_t *apiClient, char *api_versi
         keyPairQuery_api_version = keyValuePair_create(keyQuery_api_version, valueQuery_api_version);
         list_addElement(localVarQueryParameters,keyPairQuery_api_version);
     }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    if (social_profile_dto_collection_query_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = social_profile_dto_collection_query_parameters_convertToJSON(social_profile_dto_collection_query_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarHeaderType,"application/xml"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"application/xml"); //consumes
     apiClient_invoke(apiClient,
                     localVarPath,
                     localVarQueryParameters,
@@ -3251,7 +3653,7 @@ SocialProfilesAPI_getSocialProfilesAsync(apiClient_t *apiClient, char *api_versi
     list_freeList(localVarHeaderParameters);
     
     list_freeList(localVarHeaderType);
-    
+    list_freeList(localVarContentType);
     free(localVarPath);
     if (keyHeader_x_api_version) {
         free(keyHeader_x_api_version);
@@ -3262,6 +3664,11 @@ SocialProfilesAPI_getSocialProfilesAsync(apiClient_t *apiClient, char *api_versi
         valueHeader_x_api_version = NULL;
     }
     free(keyPairHeader_x_api_version);
+    if (localVarSingleItemJSON_social_profile_dto_collection_query_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_social_profile_dto_collection_query_parameters);
+        localVarSingleItemJSON_social_profile_dto_collection_query_parameters = NULL;
+    }
+    free(localVarBodyParameters);
     if(keyQuery_api_version){
         free(keyQuery_api_version);
         keyQuery_api_version = NULL;

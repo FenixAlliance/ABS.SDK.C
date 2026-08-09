@@ -7,10 +7,11 @@
 #include "../include/binary.h"
 #include "../model/course_news_create_dto.h"
 #include "../model/course_news_dto.h"
+#include "../model/course_news_dto_collection_query_parameters.h"
 #include "../model/course_news_update_dto.h"
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new course update
@@ -42,7 +43,7 @@ CourseUpdatesAPI_getCourseUpdateByIdAsync(apiClient_t *apiClient, char *updateId
 // Retrieves all course updates for the specified tenant.
 //
 list_t*
-CourseUpdatesAPI_getCourseUpdatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseUpdatesAPI_getCourseUpdatesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_news_dto_collection_query_parameters_t *course_news_dto_collection_query_parameters);
 
 
 // Get course updates count
@@ -50,7 +51,7 @@ CourseUpdatesAPI_getCourseUpdatesAsync(apiClient_t *apiClient, char *tenantId, c
 // Returns the count of course updates for the specified tenant.
 //
 int*
-CourseUpdatesAPI_getCourseUpdatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+CourseUpdatesAPI_getCourseUpdatesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, course_news_dto_collection_query_parameters_t *course_news_dto_collection_query_parameters);
 
 
 // Patch a course update
@@ -58,7 +59,7 @@ CourseUpdatesAPI_getCourseUpdatesCountAsync(apiClient_t *apiClient, char *tenant
 // Partially updates a course update for the specified tenant.
 //
 empty_envelope_t*
-CourseUpdatesAPI_patchCourseUpdateAsync(apiClient_t *apiClient, char *tenantId, char *updateId, char *api_version, char *x_api_version, list_t *operation);
+CourseUpdatesAPI_patchCourseUpdateAsync(apiClient_t *apiClient, char *tenantId, char *updateId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a course update

@@ -24,6 +24,7 @@ accountingservice_accounting_entry_dto_DIRECTION_e accounting_entry_dto_directio
 
 accounting_entry_dto_t *accounting_entry_dto_create(
     char *id,
+    char *timestamp,
     char *tenant_id,
     char *enrollment_id,
     char *journal_entry_id,
@@ -42,7 +43,6 @@ accounting_entry_dto_t *accounting_entry_dto_create(
     char *forex_rates_snapshot,
     char *cost_centre_id,
     char *project_id,
-    char *timestamp,
     double debit,
     double credit,
     money_t *amount,
@@ -53,6 +53,7 @@ accounting_entry_dto_t *accounting_entry_dto_create(
         return NULL;
     }
     accounting_entry_dto_local_var->id = id;
+    accounting_entry_dto_local_var->timestamp = timestamp;
     accounting_entry_dto_local_var->tenant_id = tenant_id;
     accounting_entry_dto_local_var->enrollment_id = enrollment_id;
     accounting_entry_dto_local_var->journal_entry_id = journal_entry_id;
@@ -71,7 +72,6 @@ accounting_entry_dto_t *accounting_entry_dto_create(
     accounting_entry_dto_local_var->forex_rates_snapshot = forex_rates_snapshot;
     accounting_entry_dto_local_var->cost_centre_id = cost_centre_id;
     accounting_entry_dto_local_var->project_id = project_id;
-    accounting_entry_dto_local_var->timestamp = timestamp;
     accounting_entry_dto_local_var->debit = debit;
     accounting_entry_dto_local_var->credit = credit;
     accounting_entry_dto_local_var->amount = amount;
@@ -89,6 +89,10 @@ void accounting_entry_dto_free(accounting_entry_dto_t *accounting_entry_dto) {
     if (accounting_entry_dto->id) {
         free(accounting_entry_dto->id);
         accounting_entry_dto->id = NULL;
+    }
+    if (accounting_entry_dto->timestamp) {
+        free(accounting_entry_dto->timestamp);
+        accounting_entry_dto->timestamp = NULL;
     }
     if (accounting_entry_dto->tenant_id) {
         free(accounting_entry_dto->tenant_id);
@@ -138,10 +142,6 @@ void accounting_entry_dto_free(accounting_entry_dto_t *accounting_entry_dto) {
         free(accounting_entry_dto->project_id);
         accounting_entry_dto->project_id = NULL;
     }
-    if (accounting_entry_dto->timestamp) {
-        free(accounting_entry_dto->timestamp);
-        accounting_entry_dto->timestamp = NULL;
-    }
     if (accounting_entry_dto->amount) {
         money_free(accounting_entry_dto->amount);
         accounting_entry_dto->amount = NULL;
@@ -160,6 +160,14 @@ cJSON *accounting_entry_dto_convertToJSON(accounting_entry_dto_t *accounting_ent
     if(accounting_entry_dto->id) {
     if(cJSON_AddStringToObject(item, "id", accounting_entry_dto->id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // accounting_entry_dto->timestamp
+    if(accounting_entry_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", accounting_entry_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
     }
     }
 
@@ -309,14 +317,6 @@ cJSON *accounting_entry_dto_convertToJSON(accounting_entry_dto_t *accounting_ent
     }
 
 
-    // accounting_entry_dto->timestamp
-    if(accounting_entry_dto->timestamp) {
-    if(cJSON_AddStringToObject(item, "timestamp", accounting_entry_dto->timestamp) == NULL) {
-    goto fail; //Date-Time
-    }
-    }
-
-
     // accounting_entry_dto->debit
     if(accounting_entry_dto->debit) {
     if(cJSON_AddNumberToObject(item, "debit", accounting_entry_dto->debit) == NULL) {
@@ -382,6 +382,15 @@ accounting_entry_dto_t *accounting_entry_dto_parseFromJSON(cJSON *accounting_ent
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
     goto end; //String
+    }
+    }
+
+    // accounting_entry_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(accounting_entry_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
     }
     }
 
@@ -549,15 +558,6 @@ accounting_entry_dto_t *accounting_entry_dto_parseFromJSON(cJSON *accounting_ent
     }
     }
 
-    // accounting_entry_dto->timestamp
-    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(accounting_entry_dtoJSON, "timestamp");
-    if (timestamp) { 
-    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
-    {
-    goto end; //DateTime
-    }
-    }
-
     // accounting_entry_dto->debit
     cJSON *debit = cJSON_GetObjectItemCaseSensitive(accounting_entry_dtoJSON, "debit");
     if (debit) { 
@@ -591,6 +591,7 @@ accounting_entry_dto_t *accounting_entry_dto_parseFromJSON(cJSON *accounting_ent
 
     accounting_entry_dto_local_var = accounting_entry_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         journal_entry_id && !cJSON_IsNull(journal_entry_id) ? strdup(journal_entry_id->valuestring) : NULL,
@@ -609,7 +610,6 @@ accounting_entry_dto_t *accounting_entry_dto_parseFromJSON(cJSON *accounting_ent
         forex_rates_snapshot && !cJSON_IsNull(forex_rates_snapshot) ? strdup(forex_rates_snapshot->valuestring) : NULL,
         cost_centre_id && !cJSON_IsNull(cost_centre_id) ? strdup(cost_centre_id->valuestring) : NULL,
         project_id && !cJSON_IsNull(project_id) ? strdup(project_id->valuestring) : NULL,
-        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         debit ? debit->valuedouble : 0,
         credit ? credit->valuedouble : 0,
         amount ? amount_local_nonprim : NULL,

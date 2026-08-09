@@ -119,7 +119,7 @@ No authorization required
 //
 // Retrieves all work orders for the specified tenant.
 //
-work_order_dto_list_envelope_t* WorkOrdersAPI_getWorkOrdersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+work_order_dto_list_envelope_t* WorkOrdersAPI_getWorkOrdersAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, work_order_dto_collection_query_parameters_t *work_order_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -129,6 +129,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**work_order_dto_collection_query_parameters** | **[work_order_dto_collection_query_parameters_t](work_order_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -141,7 +142,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -152,7 +153,7 @@ No authorization required
 //
 // Returns the count of work orders for the specified tenant.
 //
-int32_envelope_t* WorkOrdersAPI_getWorkOrdersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+int32_envelope_t* WorkOrdersAPI_getWorkOrdersCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, work_order_dto_collection_query_parameters_t *work_order_dto_collection_query_parameters);
 ```
 
 ### Parameters
@@ -162,6 +163,7 @@ Name | Type | Description  | Notes
 **tenantId** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
+**work_order_dto_collection_query_parameters** | **[work_order_dto_collection_query_parameters_t](work_order_dto_collection_query_parameters.md) \*** |  | [optional] 
 
 ### Return type
 
@@ -174,7 +176,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -185,7 +187,7 @@ No authorization required
 //
 // Patch a work order
 //
-empty_envelope_t* WorkOrdersAPI_patchWorkOrderAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+empty_envelope_t* WorkOrdersAPI_patchWorkOrderAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 ```
 
 ### Parameters
@@ -196,7 +198,7 @@ Name | Type | Description  | Notes
 **id** | **char \*** |  | 
 **api_version** | **char \*** |  | [optional] 
 **x_api_version** | **char \*** |  | [optional] 
-**operation** | **[list_t](operation.md) \*** |  | [optional] 
+**patch_operation** | **[list_t](patch_operation.md) \*** |  | [optional] 
 
 ### Return type
 

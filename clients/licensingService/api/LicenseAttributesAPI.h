@@ -10,9 +10,10 @@
 #include "../model/int32_envelope.h"
 #include "../model/license_attribute_create_dto.h"
 #include "../model/license_attribute_dto.h"
+#include "../model/license_attribute_dto_collection_query_parameters.h"
 #include "../model/license_attribute_dto_list_envelope.h"
 #include "../model/license_attribute_update_dto.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 
 
 // Create a new license attribute
@@ -44,7 +45,7 @@ LicenseAttributesAPI_getLicenseAttributeByIdAsync(apiClient_t *apiClient, char *
 // Retrieves all license attributes for the specified tenant.
 //
 license_attribute_dto_list_envelope_t*
-LicenseAttributesAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LicenseAttributesAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, license_attribute_dto_collection_query_parameters_t *license_attribute_dto_collection_query_parameters);
 
 
 // Get license attributes count
@@ -52,7 +53,7 @@ LicenseAttributesAPI_getLicenseAttributesAsync(apiClient_t *apiClient, char *ten
 // Returns the count of license attributes for the specified tenant.
 //
 int32_envelope_t*
-LicenseAttributesAPI_getLicenseAttributesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+LicenseAttributesAPI_getLicenseAttributesCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, license_attribute_dto_collection_query_parameters_t *license_attribute_dto_collection_query_parameters);
 
 
 // Patch a license attribute
@@ -60,7 +61,7 @@ LicenseAttributesAPI_getLicenseAttributesCountAsync(apiClient_t *apiClient, char
 // Patch a license attribute for the specified tenant.
 //
 empty_envelope_t*
-LicenseAttributesAPI_patchLicenseAttributeAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *operation);
+LicenseAttributesAPI_patchLicenseAttributeAsync(apiClient_t *apiClient, char *tenantId, char *id, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Update a license attribute

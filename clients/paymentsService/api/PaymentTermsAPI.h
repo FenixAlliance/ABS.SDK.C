@@ -8,8 +8,9 @@
 #include "../model/empty_envelope.h"
 #include "../model/error_envelope.h"
 #include "../model/int32_envelope.h"
-#include "../model/operation.h"
+#include "../model/patch_operation.h"
 #include "../model/payment_term_create_dto.h"
+#include "../model/payment_term_dto_collection_query_parameters.h"
 #include "../model/payment_term_dto_envelope.h"
 #include "../model/payment_term_dto_i_read_only_list_envelope.h"
 #include "../model/payment_term_update_dto.h"
@@ -44,7 +45,7 @@ PaymentTermsAPI_getPaymentTermDetailsAsync(apiClient_t *apiClient, char *tenantI
 // Gets all payment terms for the current tenant with OData support.
 //
 payment_term_dto_i_read_only_list_envelope_t*
-PaymentTermsAPI_getPaymentTermsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PaymentTermsAPI_getPaymentTermsAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payment_term_dto_collection_query_parameters_t *payment_term_dto_collection_query_parameters);
 
 
 // Counts payment terms
@@ -52,7 +53,7 @@ PaymentTermsAPI_getPaymentTermsAsync(apiClient_t *apiClient, char *tenantId, cha
 // Gets the count of payment terms for the current tenant.
 //
 int32_envelope_t*
-PaymentTermsAPI_getPaymentTermsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version);
+PaymentTermsAPI_getPaymentTermsCountAsync(apiClient_t *apiClient, char *tenantId, char *api_version, char *x_api_version, payment_term_dto_collection_query_parameters_t *payment_term_dto_collection_query_parameters);
 
 
 // Patch a payment term
@@ -60,7 +61,7 @@ PaymentTermsAPI_getPaymentTermsCountAsync(apiClient_t *apiClient, char *tenantId
 // Patch a payment term
 //
 empty_envelope_t*
-PaymentTermsAPI_patchPaymentTermAsync(apiClient_t *apiClient, char *tenantId, char *paymentTermId, char *api_version, char *x_api_version, list_t *operation);
+PaymentTermsAPI_patchPaymentTermAsync(apiClient_t *apiClient, char *tenantId, char *paymentTermId, char *api_version, char *x_api_version, list_t *patch_operation);
 
 
 // Updates a payment term

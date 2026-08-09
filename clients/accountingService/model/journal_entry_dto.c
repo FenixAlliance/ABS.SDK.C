@@ -41,6 +41,7 @@ accountingservice_journal_entry_dto_STATUS_e journal_entry_dto_status_FromString
 
 journal_entry_dto_t *journal_entry_dto_create(
     char *id,
+    char *timestamp,
     char *tenant_id,
     char *enrollment_id,
     char *journal_id,
@@ -61,20 +62,22 @@ journal_entry_dto_t *journal_entry_dto_create(
     char *posted_by,
     double forex_rate,
     char *forex_rates_snapshot,
-    char *timestamp,
     double debit_in_usd,
     double credit_in_usd,
     list_t *accounting_entries,
     double total_debit,
     double total_credit,
     money_t *total_debit_amount,
-    money_t *total_credit_amount
+    money_t *total_credit_amount,
+    money_t *debit_in_usd_amount,
+    money_t *credit_in_usd_amount
     ) {
     journal_entry_dto_t *journal_entry_dto_local_var = malloc(sizeof(journal_entry_dto_t));
     if (!journal_entry_dto_local_var) {
         return NULL;
     }
     journal_entry_dto_local_var->id = id;
+    journal_entry_dto_local_var->timestamp = timestamp;
     journal_entry_dto_local_var->tenant_id = tenant_id;
     journal_entry_dto_local_var->enrollment_id = enrollment_id;
     journal_entry_dto_local_var->journal_id = journal_id;
@@ -95,7 +98,6 @@ journal_entry_dto_t *journal_entry_dto_create(
     journal_entry_dto_local_var->posted_by = posted_by;
     journal_entry_dto_local_var->forex_rate = forex_rate;
     journal_entry_dto_local_var->forex_rates_snapshot = forex_rates_snapshot;
-    journal_entry_dto_local_var->timestamp = timestamp;
     journal_entry_dto_local_var->debit_in_usd = debit_in_usd;
     journal_entry_dto_local_var->credit_in_usd = credit_in_usd;
     journal_entry_dto_local_var->accounting_entries = accounting_entries;
@@ -103,6 +105,8 @@ journal_entry_dto_t *journal_entry_dto_create(
     journal_entry_dto_local_var->total_credit = total_credit;
     journal_entry_dto_local_var->total_debit_amount = total_debit_amount;
     journal_entry_dto_local_var->total_credit_amount = total_credit_amount;
+    journal_entry_dto_local_var->debit_in_usd_amount = debit_in_usd_amount;
+    journal_entry_dto_local_var->credit_in_usd_amount = credit_in_usd_amount;
 
     return journal_entry_dto_local_var;
 }
@@ -116,6 +120,10 @@ void journal_entry_dto_free(journal_entry_dto_t *journal_entry_dto) {
     if (journal_entry_dto->id) {
         free(journal_entry_dto->id);
         journal_entry_dto->id = NULL;
+    }
+    if (journal_entry_dto->timestamp) {
+        free(journal_entry_dto->timestamp);
+        journal_entry_dto->timestamp = NULL;
     }
     if (journal_entry_dto->tenant_id) {
         free(journal_entry_dto->tenant_id);
@@ -181,10 +189,6 @@ void journal_entry_dto_free(journal_entry_dto_t *journal_entry_dto) {
         free(journal_entry_dto->forex_rates_snapshot);
         journal_entry_dto->forex_rates_snapshot = NULL;
     }
-    if (journal_entry_dto->timestamp) {
-        free(journal_entry_dto->timestamp);
-        journal_entry_dto->timestamp = NULL;
-    }
     if (journal_entry_dto->accounting_entries) {
         list_ForEach(listEntry, journal_entry_dto->accounting_entries) {
             accounting_entry_dto_free(listEntry->data);
@@ -200,6 +204,14 @@ void journal_entry_dto_free(journal_entry_dto_t *journal_entry_dto) {
         money_free(journal_entry_dto->total_credit_amount);
         journal_entry_dto->total_credit_amount = NULL;
     }
+    if (journal_entry_dto->debit_in_usd_amount) {
+        money_free(journal_entry_dto->debit_in_usd_amount);
+        journal_entry_dto->debit_in_usd_amount = NULL;
+    }
+    if (journal_entry_dto->credit_in_usd_amount) {
+        money_free(journal_entry_dto->credit_in_usd_amount);
+        journal_entry_dto->credit_in_usd_amount = NULL;
+    }
     free(journal_entry_dto);
 }
 
@@ -210,6 +222,14 @@ cJSON *journal_entry_dto_convertToJSON(journal_entry_dto_t *journal_entry_dto) {
     if(journal_entry_dto->id) {
     if(cJSON_AddStringToObject(item, "id", journal_entry_dto->id) == NULL) {
     goto fail; //String
+    }
+    }
+
+
+    // journal_entry_dto->timestamp
+    if(journal_entry_dto->timestamp) {
+    if(cJSON_AddStringToObject(item, "timestamp", journal_entry_dto->timestamp) == NULL) {
+    goto fail; //Date-Time
     }
     }
 
@@ -376,14 +396,6 @@ cJSON *journal_entry_dto_convertToJSON(journal_entry_dto_t *journal_entry_dto) {
     }
 
 
-    // journal_entry_dto->timestamp
-    if(journal_entry_dto->timestamp) {
-    if(cJSON_AddStringToObject(item, "timestamp", journal_entry_dto->timestamp) == NULL) {
-    goto fail; //Date-Time
-    }
-    }
-
-
     // journal_entry_dto->debit_in_usd
     if(journal_entry_dto->debit_in_usd) {
     if(cJSON_AddNumberToObject(item, "debitInUsd", journal_entry_dto->debit_in_usd) == NULL) {
@@ -461,6 +473,32 @@ cJSON *journal_entry_dto_convertToJSON(journal_entry_dto_t *journal_entry_dto) {
     }
     }
 
+
+    // journal_entry_dto->debit_in_usd_amount
+    if(journal_entry_dto->debit_in_usd_amount) {
+    cJSON *debit_in_usd_amount_local_JSON = money_convertToJSON(journal_entry_dto->debit_in_usd_amount);
+    if(debit_in_usd_amount_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "debitInUsdAmount", debit_in_usd_amount_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // journal_entry_dto->credit_in_usd_amount
+    if(journal_entry_dto->credit_in_usd_amount) {
+    cJSON *credit_in_usd_amount_local_JSON = money_convertToJSON(journal_entry_dto->credit_in_usd_amount);
+    if(credit_in_usd_amount_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "creditInUsdAmount", credit_in_usd_amount_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -482,12 +520,27 @@ journal_entry_dto_t *journal_entry_dto_parseFromJSON(cJSON *journal_entry_dtoJSO
     // define the local variable for journal_entry_dto->total_credit_amount
     money_t *total_credit_amount_local_nonprim = NULL;
 
+    // define the local variable for journal_entry_dto->debit_in_usd_amount
+    money_t *debit_in_usd_amount_local_nonprim = NULL;
+
+    // define the local variable for journal_entry_dto->credit_in_usd_amount
+    money_t *credit_in_usd_amount_local_nonprim = NULL;
+
     // journal_entry_dto->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "id");
     if (id) { 
     if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
     goto end; //String
+    }
+    }
+
+    // journal_entry_dto->timestamp
+    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "timestamp");
+    if (timestamp) { 
+    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
+    {
+    goto end; //DateTime
     }
     }
 
@@ -675,15 +728,6 @@ journal_entry_dto_t *journal_entry_dto_parseFromJSON(cJSON *journal_entry_dtoJSO
     }
     }
 
-    // journal_entry_dto->timestamp
-    cJSON *timestamp = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "timestamp");
-    if (timestamp) { 
-    if(!cJSON_IsString(timestamp) && !cJSON_IsNull(timestamp))
-    {
-    goto end; //DateTime
-    }
-    }
-
     // journal_entry_dto->debit_in_usd
     cJSON *debit_in_usd = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "debitInUsd");
     if (debit_in_usd) { 
@@ -753,9 +797,22 @@ journal_entry_dto_t *journal_entry_dto_parseFromJSON(cJSON *journal_entry_dtoJSO
     total_credit_amount_local_nonprim = money_parseFromJSON(total_credit_amount); //nonprimitive
     }
 
+    // journal_entry_dto->debit_in_usd_amount
+    cJSON *debit_in_usd_amount = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "debitInUsdAmount");
+    if (debit_in_usd_amount) { 
+    debit_in_usd_amount_local_nonprim = money_parseFromJSON(debit_in_usd_amount); //nonprimitive
+    }
+
+    // journal_entry_dto->credit_in_usd_amount
+    cJSON *credit_in_usd_amount = cJSON_GetObjectItemCaseSensitive(journal_entry_dtoJSON, "creditInUsdAmount");
+    if (credit_in_usd_amount) { 
+    credit_in_usd_amount_local_nonprim = money_parseFromJSON(credit_in_usd_amount); //nonprimitive
+    }
+
 
     journal_entry_dto_local_var = journal_entry_dto_create (
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         tenant_id && !cJSON_IsNull(tenant_id) ? strdup(tenant_id->valuestring) : NULL,
         enrollment_id && !cJSON_IsNull(enrollment_id) ? strdup(enrollment_id->valuestring) : NULL,
         journal_id && !cJSON_IsNull(journal_id) ? strdup(journal_id->valuestring) : NULL,
@@ -776,14 +833,15 @@ journal_entry_dto_t *journal_entry_dto_parseFromJSON(cJSON *journal_entry_dtoJSO
         posted_by && !cJSON_IsNull(posted_by) ? strdup(posted_by->valuestring) : NULL,
         forex_rate ? forex_rate->valuedouble : 0,
         forex_rates_snapshot && !cJSON_IsNull(forex_rates_snapshot) ? strdup(forex_rates_snapshot->valuestring) : NULL,
-        timestamp && !cJSON_IsNull(timestamp) ? strdup(timestamp->valuestring) : NULL,
         debit_in_usd ? debit_in_usd->valuedouble : 0,
         credit_in_usd ? credit_in_usd->valuedouble : 0,
         accounting_entries ? accounting_entriesList : NULL,
         total_debit ? total_debit->valuedouble : 0,
         total_credit ? total_credit->valuedouble : 0,
         total_debit_amount ? total_debit_amount_local_nonprim : NULL,
-        total_credit_amount ? total_credit_amount_local_nonprim : NULL
+        total_credit_amount ? total_credit_amount_local_nonprim : NULL,
+        debit_in_usd_amount ? debit_in_usd_amount_local_nonprim : NULL,
+        credit_in_usd_amount ? credit_in_usd_amount_local_nonprim : NULL
         );
 
     return journal_entry_dto_local_var;
@@ -804,6 +862,14 @@ end:
     if (total_credit_amount_local_nonprim) {
         money_free(total_credit_amount_local_nonprim);
         total_credit_amount_local_nonprim = NULL;
+    }
+    if (debit_in_usd_amount_local_nonprim) {
+        money_free(debit_in_usd_amount_local_nonprim);
+        debit_in_usd_amount_local_nonprim = NULL;
+    }
+    if (credit_in_usd_amount_local_nonprim) {
+        money_free(credit_in_usd_amount_local_nonprim);
+        credit_in_usd_amount_local_nonprim = NULL;
     }
     return NULL;
 
