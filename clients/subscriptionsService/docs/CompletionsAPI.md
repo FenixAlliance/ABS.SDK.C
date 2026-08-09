@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CompletionsAPI_apiV2AiServiceCompletionsCompleteGet**](CompletionsAPI.md#CompletionsAPI_apiV2AiServiceCompletionsCompleteGet) | **GET** /api/v2/AiService/Completions/Complete | 
+[**CompletionsAPI_apiV2AiServiceCompletionsCompleteGet**](CompletionsAPI.md#CompletionsAPI_apiV2AiServiceCompletionsCompleteGet) | **GET** /api/v2/IntelligenceService/Completions/Complete | 
 
 
 # **CompletionsAPI_apiV2AiServiceCompletionsCompleteGet**

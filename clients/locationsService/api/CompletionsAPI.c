@@ -23,9 +23,9 @@ CompletionsAPI_apiV2AiServiceCompletionsCompleteGet(apiClient_t *apiClient, char
     char      *localVarBodyParameters = NULL;
 
     // create the path
-    long sizeOfPath = strlen("/api/v2/AiService/Completions/Complete")+1;
+    long sizeOfPath = strlen("/api/v2/IntelligenceService/Completions/Complete")+1;
     char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/api/v2/AiService/Completions/Complete");
+    snprintf(localVarPath, sizeOfPath, "/api/v2/IntelligenceService/Completions/Complete");
 
 
 
